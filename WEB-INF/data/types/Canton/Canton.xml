@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Canton" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="t1_12422" interfaces="fr.cd44.jcmsplugin.socle.interfaces.CantonInterface">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="superficie" editor="double" required="false" compactDisplay="false" type="double" decimals="2" default="0" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unitPos="after">
+      <label xml:lang="fr">Superficie</label>
+    </field>
+    <field name="imageDuCanton" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Image du canton</label>
+    </field>
+    <field name="cantonCode" editor="int" required="false" compactDisplay="false" type="int" default="0" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unitPos="after">
+      <label xml:lang="fr">Code canton</label>
+      <description xml:lang="fr">Code unique associé à ce canton utilisé pour le fonctionnement interne du moteur de recherche à facettes. Merci de valoriser ce champ avec une valeur non nulle.</description>
+    </field>
+    <field name="city" editor="link" required="false" compactDisplay="false" type="generated.City" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Commune</label>
+      <description xml:lang="fr">Ne remplir que pour les villes liées à plusieurs cantons.</description>
+    </field>
+    <field name="idCantonAtlas" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Id canton atlas</label>
+    </field>
+    <field name="population" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Population</label>
+    </field>
+    <field name="populationSource" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Mention et source population</label>
+    </field>
+    <field name="cantonFromTheSky" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Le canton vu du ciel</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Canton</label>
+</type>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Carousel" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="elements1" editor="link" required="true" compactDisplay="false" type="generated.CarouselElement[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Elements</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Carrousel</label>
+</type>
+

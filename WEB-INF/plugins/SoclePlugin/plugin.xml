@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plugin PUBLIC "-//JALIOS//DTD JCMS-PLUGIN 1.4//EN" "http://support.jalios.com/dtd/jcms-plugin-1.4.dtd">
+
+<plugin name="SoclePlugin" version="0.1" author="DEP44" license="DEP44" initialize="true" jcms="" order="0" url="" jsync="true" appserver="">
+
+  <label xml:lang="fr">Socle technique</label>
+  <description xml:lang="fr">Socle technique</description>
+
+  <types>
+    <type name="City"></type>
+    <type name="Canton"></type>
+    <type name="Delegation"></type>
+    <type name="News"></type>
+    <type name="CollectivityArticle"></type>
+    <type name="Help"></type>
+    <type name="Place"></type>
+    <type name="Carousel"></type>
+    <type name="CarouselElement"></type>
+      
+    <templates type="News">
+        <template name="default" file="newsQueryDisplay.jsp" usage="query">
+            <label xml:lang="fr">Gabarit de résultats dans la page "Actualités"</label>
+        </template>
+        <template name="default" file="newsFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">Actualité en pleine page</label>
+      </template>
+    </templates>
+    
+  </types>
+
+  <java-classes>
+    <java class="fr.cd44.jcmsplugin.socle.interfaces.CantonInterface" />
+    <java class="fr.cd44.jcmsplugin.socle.interfaces.CityInterface" />
+    <java class="fr.cd44.jcmsplugin.socle.interfaces.PlaceInterface" />
+  </java-classes>
+  
+  <private-files>
+    <file path="properties/plugin.prop" />
+    <file path="properties/languages/en.prop" />
+    <file path="properties/languages/fr.prop" />
+  </private-files>
+  <public-files>
+    <directory path="docs" />
+    <directory path="css" />
+    <directory path="js" />
+    <directory path="jsp" />
+    <directory path="types" />    
+  </public-files>
+</plugin>
+

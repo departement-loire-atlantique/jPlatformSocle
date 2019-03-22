@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Place" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" interfaces="fr.cd44.jcmsplugin.socle.interfaces.PlaceInterface">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="description" editor="wysiwyg" required="false" type="String" searchable="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="true" descriptionType="text" html="false" checkHtml="true" wikiwyg="false" toolbars="basic,format,style,font" abstract="true" truncate="400" inline="true">
+      <label xml:lang="fr">Description</label>
+      <label xml:lang="en">Description</label>
+    </field>
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Illustration principale</label>
+    </field>
+    <field name="illustrationCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Copyright illustration</label>
+    </field>
+    <field name="illustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Légende Illustration</label>
+    </field>
+    <field name="learnMoreLink" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">Lien en savoir plus</label>
+    </field>
+    <field name="serviceOrHubOrUnit" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Service / Pôle / Unité</label>
+    </field>
+    <field name="street" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" size="150" ml="true" html="false" checkHtml="true" descriptionType="text" wiki="true" wikiwyg="false">
+      <label xml:lang="fr">Adresse</label>
+    </field>
+    <field name="postalBox" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" wiki="true" wikiwyg="false">
+      <label xml:lang="fr">Boîte postale</label>
+    </field>
+    <field name="zipCode" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="city" editor="link" required="true" compactDisplay="false" type="generated.City" parent="false">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="cities" editor="link" required="false" compactDisplay="false" type="generated.City[]">
+      <label xml:lang="fr">Autres communes</label>
+    </field>
+    <field name="canton" editor="link" required="true" compactDisplay="false" type="generated.Canton" parent="false">
+      <label xml:lang="fr">Canton</label>
+    </field>
+    <field name="accessMap" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Plan d'accès</label>
+    </field>
+    <field name="phones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="fax" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Fax</label>
+    </field>
+    <field name="mails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Courriel</label>
+    </field>
+    <field name="websites" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Sites Internet</label>
+    </field>
+    <field name="hours" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Horaires</label>
+    </field>
+    <field name="openToPublic" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Accueil public</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+      <offLabel xml:lang="en">No</offLabel>
+    </field>
+    <field name="transport" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Transports</label>
+    </field>
+    <field name="placeMapListLabels" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" tabGroup="redirectToMap">
+      <label xml:lang="fr">Libellé liste / carte lieux</label>
+    </field>
+    <field name="redirecttomap" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="redirectToMap">
+      <label xml:lang="fr">Redirection vers des cartes</label>
+      <description xml:lang="fr">Choisir les portlets redirection.</description>
+    </field>
+    <field name="typesDeLieux" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="j_6">
+      <label xml:lang="fr">Types de lieux</label>
+    </field>
+    <field name="placeMapList" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_6" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Thématiques / Besoins</label>
+    </field>
+    <field name="solisId" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">ID Solis</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Fiche lieux</label>
+</type>
+
