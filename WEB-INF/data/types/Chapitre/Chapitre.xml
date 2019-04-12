@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Chapitre" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Chapitre</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="timecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Chapitre" pattern="\d\d\:\d\d\:\d\d">
+      <label xml:lang="fr">Timecode</label>
+      <description xml:lang="fr">Format hh:mm:ss - Exemple pour 30 minutes, 20 secondes : 00:30:20</description>
+    </field>
+    <field name="libelleTimecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="Chapitre">
+      <label xml:lang="fr">Libellé du Timecode</label>
+    </field>
+    <field name="lienContenuWysiwyg" editor="link" required="true" compactDisplay="false" type="generated.WysiwygBlock[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien contenu wysiwyg</label>
+    </field>
+  </fields>
+</type>
+

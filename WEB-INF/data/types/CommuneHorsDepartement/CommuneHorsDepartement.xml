@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="CommuneHorsDepartement" superclass="generated.City" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Commune hors département</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field type="super" />
+  </fields>
+</type>
+

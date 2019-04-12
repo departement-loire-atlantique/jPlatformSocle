@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ResultatDeRecherche" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Résultat de recherche</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Image</label>
+    </field>
+    <field name="motsCles" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" wiki="true" wikiwyg="false">
+      <label xml:lang="fr">Termes de recherche supplémentaires</label>
+      <description xml:lang="fr">Ces termes, séparés par des virgules, seront indexés par le moteur de recherche.</description>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="tooltip" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien externe</label>
+      <description xml:lang="fr">C'est le lien externe qui est prévaut sur la catégorie pour la redirection, s'il est renseigné.</description>
+    </field>
+    <field name="categorie" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="keyword" exclusive="false" root="$plugin.tools.resultatDeRecherche.categories" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie</label>
+      <description xml:lang="fr">La catégorie est obligatoire afin d'assurer une redirection.</description>
+    </field>
+  </fields>
+</type>
+

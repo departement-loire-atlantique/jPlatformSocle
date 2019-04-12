@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Directory" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="$plugin.corporateidentity.newsPortalCategory">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="newsThematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.news.theme.cat" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Thématique d'actualité</label>
+    </field>
+    <field name="othersNewsThematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.news.theme.other.cat" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Thématique d'actualité supplémentaires</label>
+    </field>
+    <field name="illustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Illustration</label>
+    </field>
+    <field name="illustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende illustration</label>
+    </field>
+    <field name="illustrationCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright illustration</label>
+    </field>
+    <field name="directoryContent" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$plugin.corporateidentity.directory.content.cat">
+      <label xml:lang="fr">Contenu du dossier</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Dossier</label>
+  <label xml:lang="en">Directory</label>
+</type>
+

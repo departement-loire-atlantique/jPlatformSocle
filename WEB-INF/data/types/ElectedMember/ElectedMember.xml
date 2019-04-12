@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ElectedMember" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="c_5072">
+  <title ml="false" searchable="true">
+    <label xml:lang="fr">Nom complet</label>
+  </title>
+  <fields>
+    <field name="firstName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Prénom</label>
+    </field>
+    <field name="nom" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom</label>
+    </field>
+    <field name="picture" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Photo</label>
+    </field>
+    <field name="imageMedaillon" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Image Médaillon</label>
+    </field>
+    <field name="gender" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Civilité</label>
+      <onLabel xml:lang="fr">Homme</onLabel>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <offLabel xml:lang="fr">Femme</offLabel>
+      <offLabel xml:lang="en">No</offLabel>
+    </field>
+    <field name="functions" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5314" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Fonctions</label>
+    </field>
+    <field name="committees" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5332" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Commissions</label>
+    </field>
+    <field name="missionThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="p1_283851" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mission thématique</label>
+    </field>
+    <field name="vicepresidentLie" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember" parent="false">
+      <label xml:lang="fr">Vice-Président lié</label>
+    </field>
+    <field name="canton" editor="link" required="true" compactDisplay="false" type="generated.Canton" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Canton</label>
+    </field>
+    <field name="deputy" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Remplaçant(e)</label>
+    </field>
+    <field name="councillor" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Autre conseiller départemental</label>
+    </field>
+    <field name="politicalParty" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_5298">
+      <label xml:lang="fr">Parti Politique</label>
+    </field>
+    <field name="politicalGroup" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_5309" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Groupe Politique</label>
+    </field>
+    <field name="nouvelEluOuReelu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nouvel élu ou réélu</label>
+      <onLabel xml:lang="fr">Élu</onLabel>
+      <offLabel xml:lang="fr">Réélu</offLabel>
+    </field>
+    <field name="firstElectionYear" editor="int" required="false" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unitPos="after">
+      <label xml:lang="fr">Année Election</label>
+    </field>
+    <field name="biography" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Biographie</label>
+    </field>
+    <field name="currentMandate" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Mandats Actuels</label>
+    </field>
+    <field name="historicalCGMandates" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Historique Mandats CG</label>
+    </field>
+    <field name="otherLocalNationalMandates" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Autres Mandats Locaux Nationaux</label>
+    </field>
+    <field name="commitmentsFunction" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="150" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Fonction pour le suivi des engagements</label>
+    </field>
+    <field name="mails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false">
+      <label xml:lang="fr">Courriel</label>
+    </field>
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="permanence" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Permanence</label>
+    </field>
+    <field name="webSites" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Site Internet</label>
+    </field>
+    <field name="facebook" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Facebook</label>
+    </field>
+    <field name="twitter" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Twitter</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Elu</label>
+  <label xml:lang="en">Elected Member</label>
+</type>
+

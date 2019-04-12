@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="WysiwygBlock" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="dmCloudIds" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Identifiant dmcloud</label>
+      <description xml:lang="fr">Coller ici l'identifiant DmCloud de votre vidéo.&#xD;
+N'oublier pas de renseigner le champs "Document transcript" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>
+    <field name="youtubeUrls" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">URL Vidéo Youtube</label>
+      <description xml:lang="fr">Coller ici le lien vers la vidéo Youtube&#xD;
+N'oublier pas de renseigner les champs "Document transcript" et "Sous-titres" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>
+    <field name="titreLivreCalameo" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Titre livre Calameo</label>
+      <description xml:lang="fr">Doit être obligatoirement rempli en présence d'un livre Calameo (afin de faciliter l'accessibilité du contenu aux personnes en situation de handicap).</description>
+    </field>
+    <field name="calameoUrls" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">URL Livre Calameo</label>
+      <description xml:lang="fr">Coller le lien vers le livre Calameo.&#xD;
+N'oublier pas de renseigner les champs "Titre livre Calameo", "Lien téléchargement Calameo" et "Document transcript" . Cela permet d'améliorer l'accessibilité du site aux personnes en situation de handicap.</description>
+    </field>
+    <field name="lienTelechargementCalameo" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien téléchargement Calameo</label>
+      <description xml:lang="fr">Lien de téléchargement direct du livre Calameo</description>
+    </field>
+    <field name="titreDiaporamaSlideShare" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Titre diaporama SlideShare</label>
+      <description xml:lang="fr">Doit être obligatoirement rempli en présence d'un diaporama SlideShare (afin de faciliter l'accessibilité du contenu aux personnes en situation de handicap).</description>
+    </field>
+    <field name="slideshareUrls" editor="textarea" required="false" compactDisplay="false" type="String[]" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Code Embed SlideShare</label>
+      <description xml:lang="fr">Coller ici le code disponible présent après avoir cliquer sur le lien "Intégrer" (présent au dessus du diaporama).&#xD;
+N'oublier pas de renseigner le champ "Titre", "Document transcript" et "Lien direct SlideShare" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>
+    <field name="lienDirectSlideShare" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien direct SlideShare</label>
+    </field>
+    <field name="flickrUrls" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="tooltip" html="false" checkHtml="true">
+      <label xml:lang="fr">URL Album Flickr</label>
+      <description xml:lang="fr">N'oublier pas de renseigner le champs "Document transcript" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>
+    <field name="soundCloudUrls" editor="textarea" required="false" compactDisplay="false" type="String[]" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Code Embed Soundcloud</label>
+      <description xml:lang="fr">Coller ici le code disponible présent après avoir cliquer sur le lien "Intégrer" (présent au dessus du diaporama)&#xD;
+N'oublier pas de renseigner le champs "Document transcript" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>
+    <field name="htmlBlock" editor="textarea" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="true" checkHtml="false" descriptionType="text" rows="20" cols="100" wiki="true" wikiwyg="false">
+      <label xml:lang="fr">Code HTML/script</label>
+      <description xml:lang="fr">Vous devez faire partie du groupe autorisé (pour des questions de sécurité) afin de contribuer ce champ.&#xD;
+Pour les formulaires YourMailingListProvider devant s'afficher en modal, utiliser les champs dédiés.</description>
+    </field>
+    <field name="websitesPartTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Titre Encart Sites Internet</label>
+    </field>
+    <field name="documentTranscript" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false">
+      <label xml:lang="fr">Document transcript</label>
+    </field>
+    <field name="websiteNames" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" tabGroup="websites">
+      <label xml:lang="fr">Noms des sites Internet</label>
+    </field>
+    <field name="websiteUrls" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="websites" html="false" checkHtml="true">
+      <label xml:lang="fr">Adresses des sites Internet</label>
+    </field>
+    <field name="documentsPartTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Titre Encart Documents</label>
+    </field>
+    <field name="documents" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Documents</label>
+    </field>
+    <field name="soustitre" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="insetPortlet" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets</label>
+    </field>
+    <field name="ymlpIFrameLink" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="ymlp">
+      <label xml:lang="fr">URL du formulaire YMLP</label>
+      <description xml:lang="fr">Choisir le lien dans la partie intitulée : "Formulaire d'inscription hébergé"</description>
+    </field>
+    <field name="ymlpIFrameTitle" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="ymlp">
+      <label xml:lang="fr">Titre du formulaire YMLP</label>
+      <description xml:lang="fr">Titre du formulaire. A remplir obligatoirement dans le cadre de la politique d'accessibilité du site.</description>
+    </field>
+    <field name="ymlpIFrameHeight" editor="int" required="false" compactDisplay="false" type="int[]" default="0" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unitPos="after" tabGroup="ymlp" unit="px">
+      <label xml:lang="fr">Hauteur du formulaire YMLP</label>
+      <description xml:lang="fr">Hauteur du formulaire. A remplir pour ajuster l'affichage à la hauteur du formulaire (valeur par défaut : 400)</description>
+    </field>
+  </fields>
+  <label xml:lang="fr">Bloc de contenu Wysiwyg</label>
+</type>
+

@@ -7,15 +7,24 @@
   <description xml:lang="fr">Socle technique</description>
 
   <types>
-    <type name="City"></type>
+    <type name="AlertCG"></type>
+    <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
-    <type name="Delegation"></type>
-    <type name="News"></type>
-    <type name="CollectivityArticle"></type>
-    <type name="Help"></type>
-    <type name="Place"></type>
     <type name="Carousel"></type>
     <type name="CarouselElement"></type>
+    <type name="Chapitre"></type>
+    <type name="City"></type>
+    <type name="CollectivityArticle"></type>
+    <type name="CommuneHorsDepartement"></type>
+    <type name="Delegation"></type>
+    <type name="Directory"></type>
+    <type name="ElectedMember"></type>
+    <type name="Help"></type>
+    <type name="News"></type>
+    <type name="Place"></type>
+    <type name="ResultatDeRecherche"></type>
+    <type name="WelcomeSection"></type>
+    <type name="WysiwygBlock"></type>
       
     <templates type="News">
         <template name="default" file="newsQueryDisplay.jsp" usage="query">

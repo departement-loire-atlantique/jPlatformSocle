@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ArticleGeolocalise" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Article géolocalisé</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field cols="80" compactDisplay="false" editor="textarea" wiki="true" maxlength="5000" name="summary" required="false" rows="5" searchable="true" type="String" ml="false" descriptionType="tooltip" html="false" checkHtml="false" wikiwyg="false" abstract="true" truncate="400">
+      <label xml:lang="fr">Résumé</label>
+      <description xml:lang="fr">Le résumé est affiché dans les infobulles sur les cartes ainsi que dans la vue liste des contenus</description>
+    </field>
+    <field cols="80" compactDisplay="false" editor="textarea" wiki="true" maxlength="5000" name="intro" required="false" rows="3" searchable="true" type="String" ml="true" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Chapeau</label>
+    </field>
+    <field cols="80" compactDisplay="false" editor="wysiwyg" wiki="true" name="content" required="false" rows="20" searchable="true" type="String" ml="false" descriptionType="tooltip" html="false" toolbars="basic,format,style,font,table" checkHtml="true" inline="true">
+      <label xml:lang="fr">Contenu</label>
+    </field>
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Illustration principale</label>
+    </field>
+    <field name="illustrationCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Copyright illustration</label>
+    </field>
+    <field name="illustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Légende Illustration</label>
+    </field>
+    <field name="cities" editor="link" required="false" compactDisplay="false" type="generated.City[]">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false">
+      <label xml:lang="fr">Canton</label>
+    </field>
+  </fields>
+</type>
+
