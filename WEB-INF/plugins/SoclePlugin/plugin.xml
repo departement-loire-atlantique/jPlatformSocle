@@ -40,6 +40,12 @@
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>
   </java-classes>
+ 
+  <plugincomponents>
+    <datacontroller        class="fr.cg44.plugin.socle.indexation.datacontroller.IndexationDataController" types="City Canton" />
+    <policyfilter          class="fr.cg44.plugin.socle.indexation.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
+    <policyfilter          class="fr.cg44.plugin.socle.indexation.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
+  </plugincomponents>
   
   <private-files>
     <file path="properties/plugin.prop" />
