@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="Place" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" interfaces="fr.cd44.jcmsplugin.socle.interfaces.PlaceInterface">
+<type name="Place" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" interfaces="fr.cg44.plugin.socle.interfaces.PlaceInterface">
   <title ml="true">
     <label xml:lang="fr">Titre</label>
     <label xml:lang="en">Title</label>

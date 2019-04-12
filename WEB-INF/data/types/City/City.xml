@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="City" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="c_5077" interfaces="fr.cd44.jcmsplugin.socle.interfaces.CityInterface">
+<type name="City" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="c_5077" interfaces="fr.cg44.plugin.socle.interfaces.CityInterface">
   <title ml="true" searchable="true">
     <label xml:lang="fr">Nom de la commune</label>
     <label xml:lang="en">Title</label>
