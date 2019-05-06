@@ -9,7 +9,6 @@ import org.apache.lucene.document.StringField;
 
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.policy.BasicLuceneSearchEnginePolicyFilter;
-import com.jalios.jcms.search.LucenePublicationSearchEngine;
 import com.jalios.util.Util;
 
 import generated.Canton;
@@ -65,8 +64,10 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 		try {
 			// Récupère le champ "cities" du type de contenu pour l'indéxer si celui-ci est présent
 			City[] cityPubTab = (City[]) publication.getFieldValue("cities");
-			for(City itCommune : cityPubTab) {
-				indexCityCode(doc, itCommune);
+			if(Util.notEmpty(cityPubTab)) {
+				for(City itCommune : cityPubTab) {
+					indexCityCode(doc, itCommune);
+				}
 			}
 		} catch (NoSuchFieldException e) {
 			LOGGER.debug("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
@@ -112,8 +113,7 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	private void indexCityCode(Document doc, City city){
 		if(Util.notEmpty(city)) {
 			Integer cityCode = city.getCityCode();
-			// TODO INDEX_FIELD_CITY
-			Field cityField = new StringField(LucenePublicationSearchEngine.ALLFIELDS_FIELD, Integer.toString(cityCode), Field.Store.NO);
+			Field cityField = new StringField(INDEX_FIELD_CITY, Integer.toString(cityCode), Field.Store.NO);
 			doc.add(cityField);	
 		}
 	}

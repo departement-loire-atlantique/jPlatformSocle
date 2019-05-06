@@ -55,8 +55,7 @@ public class PublicationFacetedSearchCantonEnginePolicyFilter extends BasicLucen
 	private void indexCantonCode(Document doc, Canton canton){
 		if(Util.notEmpty(canton)) {
 			Integer cantonCode = canton.getCantonCode();
-			// TODO INDEX_FIELD_CANTON
-			Field cityField = new StringField(LucenePublicationSearchEngine.ALLFIELDS_FIELD, Integer.toString(cantonCode), Field.Store.NO);
+			Field cityField = new StringField(INDEX_FIELD_CANTON, Integer.toString(cantonCode), Field.Store.NO);
 			doc.add(cityField);	
 		}
 	}
