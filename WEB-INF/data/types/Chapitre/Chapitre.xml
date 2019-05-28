@@ -12,9 +12,6 @@
     <field name="libelleTimecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="Chapitre">
       <label xml:lang="fr">Libellé du Timecode</label>
     </field>
-    <field name="lienContenuWysiwyg" editor="link" required="true" compactDisplay="false" type="generated.WysiwygBlock[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Lien contenu wysiwyg</label>
-    </field>
   </fields>
 </type>
 
