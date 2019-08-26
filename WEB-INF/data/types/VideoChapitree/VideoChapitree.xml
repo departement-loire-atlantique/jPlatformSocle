@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="VideoChapitree" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="urlVideo" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="2000" ml="false" openWindow="false">
+      <label xml:lang="fr">URL Vidéo</label>
+    </field>
+    <field name="chapitre" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre">
+      <label xml:lang="fr">Chapitre</label>
+    </field>
+    <field name="timecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" pattern="\d\d\:\d\d\:\d\d">
+      <label xml:lang="fr">Timecode</label>
+      <description xml:lang="fr">Format hh:mm:ss - Exemple pour 30 minutes, 20 secondes : 00:30:20</description>
+    </field>
+    <field name="libelleTimecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="chapitre">
+      <label xml:lang="fr">Libellé du Timecode</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">VideoChapitree</label>
+</type>
+

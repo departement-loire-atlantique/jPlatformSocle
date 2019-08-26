@@ -1,1 +1,12 @@
 plugin.socle.newsPortalCategory:Catégorie du portail d'actualités
+
+# ------ 7357 ajout d'extradata sur les catégories
+extra.Category.plugin.tools.index: Catégorie à indexer
+extra.Category.plugin.tools.index.help: Cette catégorie doit-elle être indéxée ?
+extra.Category.plugin.tools.sitemap: Catégorie affichée dans le plan du site ?
+extra.Category.plugin.tools.sitemap.help: Indiquer "non" sur une catégorie parente pour masquer l'affichage d'une branche sur le plan du site
+extra.Category.plugin.tools.result.title: Titre du résultat de recherche
+extra.Category.plugin.tools.result.title.help: Titre qui sera affecté au resultat de recherche
+extra.Category.plugin.tools.blank : Ouverture dans un nouvel onglet ?
+extra.Category.plugin.tools.blank.help : Le lien sur cette catégorie (menu...) doit-il s'ouvrir dans un nouvel onglet ?
+extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de la catégorie

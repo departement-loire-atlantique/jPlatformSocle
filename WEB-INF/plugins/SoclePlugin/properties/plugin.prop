@@ -2,3 +2,10 @@
 #  Propriétés éditables
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
+
+# ------ 7357 ajout d'extradata sur les catégories
+extra.Category.plugin.tools.index.boolean: false
+extra.Category.plugin.tools.sitemap.boolean: true
+extra.Category.plugin.tools.result.title:
+extra.Category.plugin.tools.blank.boolean: false
+extra.Category.plugin.tools.synonyme.facet.title:
