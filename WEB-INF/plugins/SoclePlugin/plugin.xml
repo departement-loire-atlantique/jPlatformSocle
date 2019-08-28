@@ -34,24 +34,65 @@
             <label xml:lang="fr">Actualité en pleine page</label>
       </template>
     </templates>
+    <templates type="CollectivityArticle">
+        <template name="embed" file="doCollectivityArticleEmbedDisplay.jsp" usage="embed">
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
+        <template name="refonte" file="doCollectivityArticleFullDisplayRefonte.jsp" usage="full">
+            <label xml:lang="fr">Gabarit full pour la refonte</label>
+        </template>
+    </templates>
+    <templates type="FileDocument">
+        <template name="embed" file="doFileDocumentEmbedDisplay.jsp" usage="embed">
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
+    </templates>
+    <templates type="VideoChapitree">
+        <template name="embed" file="doVideoChapitreeEmbedDisplay.jsp" usage="embed">
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
+        <template name="full" file="doVideoChapitreeFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">Gabarit full pour la refonte</label>
+        </template>
+    </templates>
+    <templates type="PortletNavigate">
+        <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
+          <label xml:lang="fr">Gabarit menu accordéon</label>
+        </template>
+      </templates>    
     
   </types>
 
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>
   </java-classes>
-  
+
+  <plugincomponents>
+    <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
+  </plugincomponents>
+    
   <private-files>
     <file path="properties/plugin.prop" />
-    <file path="properties/languages/en.prop" />
     <file path="properties/languages/fr.prop" />
+    <file path="c.tld" />
+    <file path="wysiwyg/configuration-charteconfig.conf" />
+    <file path="wysiwyg/configuration-styles.conf" />
   </private-files>
   <public-files>
     <directory path="docs" />
     <directory path="css" />
     <directory path="js" />
     <directory path="jsp" />
-    <directory path="types" />    
+    <directory path="types" />
+    <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
+    <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
+    <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>    
   </public-files>
+  <webapp-files>
+    <file path="WEB-INF/tags/categoryList.tag" />
+    <file path="WEB-INF/tags/toggle.tag" />
+    <file path="jcore/doEmptyHeader.jspf" />
+    <file path="jcore/doEmptyFooter.jspf" />
+  </webapp-files>  
 </plugin>
 

@@ -11,7 +11,7 @@
     <field name="youtubeInShortUrl" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
       <label xml:lang="fr">Url Youtube en bref</label>
     </field>
-    <field name="targetCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="targetCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="popup" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Rubrique concernée</label>
       <description xml:lang="fr">Ce champ combine la rubrique concerné et le menu de 1er niveau.&#xD;
 Vous devez donc cocher la catégorie du service (ou de la partie institutionnelle) concernée ainsi que les catégories filles qui apparaîtront dans la colonne de gauche du menu de navigation étendu.</description>

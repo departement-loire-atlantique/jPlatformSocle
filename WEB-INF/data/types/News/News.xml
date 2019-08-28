@@ -9,7 +9,7 @@
       <label xml:lang="en">Description</label>
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="newsThematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5518" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="newsThematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="keyword" exclusive="false" root="j_3" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Thématique d'actualité</label>
     </field>
     <field name="othersNewsThematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5536" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">

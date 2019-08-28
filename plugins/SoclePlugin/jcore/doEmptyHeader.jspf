@@ -1,0 +1,195 @@
+<%@page import="com.jalios.jcms.mention.MentionManager"%><%
+%><%@page import="fr.cg44.plugin.socle.SocleConstants"%><%
+%><jalios:include target="EMPTY_HEADER_START" targetContext="empty" /><% 
+  
+  // Set Http Name headers
+  String channelKeyWords = channel.getProperty("channel.keywords","");
+  String publicationKeyWords = (String)request.getAttribute("metakeywords");
+  String strKeyWords = Util.getString(channelKeyWords, "") + (Util.notEmpty(channelKeyWords) && Util.notEmpty(publicationKeyWords) ? ", " : "") + Util.getString(publicationKeyWords, "");
+
+  String channelDescription = channel.getProperty("channel.description","");
+  String publicationDescription = (String)request.getAttribute("metadescription");
+  String strDescription = Util.getString(channelDescription, "") + (Util.notEmpty(channelDescription) && Util.notEmpty(publicationDescription) ? ", " : "") + Util.getString(publicationDescription, "");
+    
+  jcmsContext.addHttpNameHeader("keywords",    strKeyWords);
+  jcmsContext.addHttpNameHeader("description", strDescription);
+
+  // Set Title / DotType / Zone
+  String titleOfThePage = jcmsContext.getPageTitle("");
+  String titlePrefix    = (String) request.getAttribute("title.prefix");
+  String headTitle      = (titlePrefix == null ? (channel.getName() + " - ") : (!"".equals(titlePrefix) ? titlePrefix : "")) + titleOfThePage;
+  String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
+  String pageImage      = (String) request.getAttribute("metaimage");
+  
+  boolean opengraphEnabled = channel.getBooleanProperty(PortalManager.SEO_OPENGRAPH_ENABLED_PROP, true);
+  
+  if (opengraphEnabled) {
+    if (Util.notEmpty(strDescription)) {
+	    jcmsContext.addCustomHeader("<meta property=\"og:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
+    }
+    if (Util.notEmpty(titleOfThePage)) {
+      jcmsContext.addCustomHeader("<meta property=\"og:title\" content=\""+ encodeForHTMLAttribute(titleOfThePage) + "\" />");
+    }
+    if (Util.notEmpty(pageImage)) {
+      jcmsContext.addCustomHeader("<meta property=\"og:image\" content=\""+ pageImage + "\" />");
+    }
+    if (Util.notEmpty(channel.getName())) {
+      jcmsContext.addCustomHeader("<meta property=\"og:site_name\" content=\""+ encodeForHTMLAttribute(channel.getName()) + "\" />");
+    }
+	  jcmsContext.addHttpNameHeader("twitter:card", strDescription);
+  }
+  
+  jcmsContext.setPageTitle(titleOfThePage);
+  jcmsContext.setPageZone(jcmsContext.getPageZone("Public"));
+    
+  if (trace != null) {
+    trace.put("title", titleOfThePage);
+  }
+  
+  // Do not perform compile if site is not in devmode
+  if (channel.getBooleanProperty("channel.dev-mode.enabled", true)){
+  
+	  // Handle LESS params
+	  if (isLogged && HttpUtil.hasParameter(request, "less-compile")) {
+	    boolean full = getBooleanParameter("less-compile",false);
+	    boolean partial = getBooleanParameter("partial", false);
+	    if (partial) {
+	      File coreLess = new File(channel.getRealPath("css/jalios/core/core.less"));
+	      coreLess.setLastModified(System.currentTimeMillis());
+	    }
+	    ResourceHelper.getInstance().compileLESS(full && !partial);
+	  }
+	  
+	  if (isLogged && channel.getBooleanProperty("channel.less-compile.auto",false)){
+	    ResourceHelper.getInstance().compileLESS(false);
+	  }
+  }
+  
+  // Setup Headers
+  jcmsContext.internalSetupEmptyHeader();
+  
+  // Setup Ajax Request
+  if (Util.toBoolean(request.getAttribute("RegiserAjaxContext"),true)){
+    AjaxManager.getInstance().registerContext(jcmsContext);
+  }
+    
+  // Warn user in fail safe mode
+  if (channel.isFailSafeMode()) {
+    jcmsContext.addMsg(new JcmsMessage(JcmsMessage.Level.WARN, glp("ui.com.msg.failsafe-mode")));
+  }
+  
+  // HTML Tag hook
+  String htmlXmlns  = Util.getString(request.getAttribute("channel.html.xmlns"),channel.getProperty("channel.html.xmlns"));
+  htmlXmlns = Util.notEmpty(htmlXmlns) ? "xmlns=\""+ htmlXmlns +"\"" : "";
+  
+  String htmlLang   = JcmsUtil.getLangAttributes(userLang);
+  String htmlDebug  = debug ? "debug='true'" : "";
+  String htmlAttrib = "";
+  Map<String,String> htmlAttribMap = (Map<String,String>) request.getAttribute("channel.html.attributes"); 
+  if (htmlAttribMap != null){
+    if (!htmlAttribMap.containsKey("class")){ htmlAttribMap.put("class","no-js"); }
+    for (Iterator it = htmlAttribMap.entrySet().iterator() ; it.hasNext() ; ) { 
+      Map.Entry itHeader = (Map.Entry) it.next();
+      htmlAttrib += itHeader.getKey() + "=\"" + itHeader.getValue() +"\"";
+    }
+  }
+  
+%><%= docType %>
+<html <%= htmlLang %> <%= htmlXmlns %> <%= htmlAttrib %> <%= htmlDebug %>>
+<head>
+  <base href="<%= ServletUtil.getBaseUrl(request) %>" <% if (HttpUtil.hasParameter(request, "basetarget")) { %>target="<%= encodeForHTMLAttribute(HttpUtil.getAlphaNumParameter(request, "basetarget", "_blank")) %>"<% } %> />
+  
+  <meta charset="UTF-8" />
+<%
+  for (Iterator it = jcmsContext.getHttpEquivHeaders().entrySet().iterator() ; it.hasNext() ; ) {
+    Map.Entry itHeader = (Map.Entry) it.next();
+%>  <%= JcmsUtil.getXHtmlMetaHttpEquivTag(String.valueOf(itHeader.getKey()), String.valueOf(itHeader.getValue())) %>
+<% }
+  for (Iterator it = jcmsContext.getHttpNameHeaders().entrySet().iterator() ; it.hasNext() ; ) {
+    Map.Entry itHeader = (Map.Entry) it.next(); 
+%>  <%= JcmsUtil.getXHtmlMetaTag(String.valueOf(itHeader.getKey()), String.valueOf(itHeader.getValue())) %>
+<% } %>
+  <title><%= Util.html2Ascii(headTitle) %></title>
+<%
+// DEP44 : désactivation des styles en front office sauf pour les membres autorisés
+if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
+    if (!Util.toBoolean(request.getAttribute("css-at-bottom"), false)) {
+	  for (Iterator it = jcmsContext.getFinalCSSMap().entrySet().iterator() ; it.hasNext() ; ) { 
+	    Map.Entry itHeader = (Map.Entry) it.next();
+	    String css   = Util.getString(itHeader.getKey(),"");
+	    String media = Util.getString(itHeader.getValue(), "all");
+	    // FIXME: StartsWith CSSPacker
+	    String rel   = css.endsWith(".less") ? "stylesheet/less" : "stylesheet";
+	  %>
+	  <link rel="<%= rel %>" href="<%= HttpUtil.encodeForHTMLAttribute(css) %>" media="<%= media %>" /><%
+	  }
+	}
+}
+%>
+
+  <style media="all">
+  <!--  <% if (Util.notEmpty(jcmsContext.getStyleHeaders())) {
+    for (Iterator it = jcmsContext.getStyleHeaders().entrySet().iterator() ; it.hasNext() ; ) {
+      Map.Entry itHeader = (Map.Entry) it.next(); %>
+    <%= itHeader.getKey() %><% }} %>
+    .js .wdglang-<%= channel.getLanguage() %> { display: block; }
+  -->
+  </style>
+  
+<% if (Util.notEmpty(request.getAttribute("customHeaderStyleContent"))) { %>
+  <style><%= request.getAttribute("customHeaderStyleContent") %></style>
+<% } %> 
+  
+  <script <%= cspNonceAttribute %>>
+  /* <![CDATA[ */
+    document._contextPath = '<%= ServletUtil.getContextPath(request) %>';
+  /* ]]> */
+  </script>
+<%
+String favIcon = channel.getProperty("channel.favicon", "");
+if (Util.notEmpty(favIcon)){
+  final String absoluteFavIconUrl = ServletUtil.toAbsoluteUrl(request, favIcon);
+  final String favIconAdditionnalParam = (absoluteFavIconUrl.contains("?") ? "&amp;" : "?") + "v=" + com.jalios.jcms.HttpUtil.encodeForURL(com.jalios.jcms.tools.PackerUtils.getPackVersion()); 
+  %>  <link rel="shortcut icon" href="<%= absoluteFavIconUrl %><%= favIconAdditionnalParam %>" />
+<%
+}
+for (Iterator it = jcmsContext.getCustomHeaders().iterator() ; it.hasNext() ; ) {
+  %>  <%= Util.getString(it.next(),"") %>
+<% } %><%
+%><%@ include file="/custom/jcms/doCustomHeader.jsp" %>
+<jalios:include target="EMPTY_HEADER" targetContext="header" /><%
+%></head>
+<%
+{
+  String classValues = Util.getString(jcmsContext.getBodyAttributes().get("class"), "");
+  classValues += " body site-" + Util.buildID(channel.getName());
+  classValues = classValues + " browser-" + jcmsContext.getBrowser().getBrowserShortName();
+  if (jcmsContext.getBrowser().supportCSS3()) {
+    classValues += " browser-css3";
+  }
+  if (!TTCardManager.getInstance().isTTCardEnabled()) {
+    classValues += " jcms-ttcard-enabled";
+  }
+  
+  if (!MentionManager.getInstance().isMentionEnabled()) {
+    classValues += " jcms-mention-disabled";
+  }
+  String zoneCss = Util.getString(request.getAttribute("zone"), "");
+  if (Util.notEmpty(zoneCss)) {
+    classValues += " zone_" + zoneCss;
+  }
+    
+  classValues += " WS_"+workspace.getId();
+    
+  jcmsContext.addBodyAttributes("class", classValues);
+}
+%>
+<body <% for (Iterator it = jcmsContext.getBodyAttributes().entrySet().iterator() ; it.hasNext() ; ) { Map.Entry itHeader = (Map.Entry) it.next(); %> <%= itHeader.getKey() %>="<%= itHeader.getValue() %>"<%}%>><jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" /><%
+  %><script <%= cspNonceAttribute %>>document.body.className = document.body.className + ' js'</script><%
+  boolean jcmsShieldEnabled = Util.toBoolean(request.getAttribute("com.jalios.jcms.JCMS_JS_SHIELD"), false);
+  if (jcmsShieldEnabled) { %>
+<div id="jcmsShield" style="position: absolute; background: url('s.gif'); z-index: 4000; width:3500px; height:3500px;"><jalios:icon src="progress-anim" alt='<%= glp("ui.work.form.txt.wait") %>'/></div><%
+  }
+%>
+<a id="top" style="display:block;"></a>
+<% request.setAttribute("doEmptyHeader-done", Boolean.TRUE); %>

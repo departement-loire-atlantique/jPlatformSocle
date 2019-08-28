@@ -2,6 +2,16 @@
 #  Propriétés éditables
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
+$id.jcmsplugin.socle.visible-topbar.group:
+jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css
+jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
+
+# ------------------------------------------------------------
+#  Wysiwyg
+# ------------------------------------------------------------
+wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
+wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
+
 
 # ------ 7357 ajout d'extradata sur les catégories
 extra.Category.plugin.tools.index.boolean: false
