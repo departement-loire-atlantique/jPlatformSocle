@@ -36,6 +36,10 @@ Socle des contenus éditorial :
 -	Résultat de recherche (ResultatDeRecherche)
 -	Chapitre de vidéo YouTube (Chapitre)
 
+Un nouveau type de contenu "**VideoChapitree**" a été créée pour faciliter la saisie et fonctionner avec l'insertion unifiée.
+
+**LE GABARIT EST A REVOIR : js inclus dans le corps de la JSP + bug si plusieurs vidéos ajoutées dans un article**
+
 Socle des contenus représentant le découpage territorial (synchronisés entre tous les sites depuis le site institutionnel) :
 
 -	Canton (Canton)
@@ -48,27 +52,32 @@ Socle des contenus représentant le découpage territorial (synchronisés entre 
 
 Fichiers :
 + configuration-charteconfig.conf
-+ wysiwyg.css
-
-
-TODO : revoir le style de l'encadré pour suivre les recon (div + classe css) >> Script si on change le code pour les encadrés (simple DIV)
-Style utiles ?
-Reprise des styles ?
-Mieux comprendre comment faire des nouveaux styles (exemple puor le message warning)
-   
-Désormais les liens vers les documents interne sont des jalios:link
-=> migration des URLs possible (Question SEO ?)   
-
-
-
++ configuration-styles.conf
 
 => Ajout du fichier configuration-charteconfig.conf pour surcharger les options de la configuration par defaut du wysiwyg.
 
+Permet notamment de personnaliser la liste des types de blocs à appliquer au texte sélectionné (**paragraphe**, **titre 2-6**, **encadré**, **bouton**...)
 
-CSS pour rendu en back office :
-Choix des styles pour les WYSIWYG (content_css: 'plugins/ChartePlugin/css/wysiwyg.css, css/jalios/core/fonts/webfont-roboto.css, css/jalios/core/font-icons.css,css/jalios/core/bootstrap.css,css/jalios/core/core.css,css/jalios/core/jalios-wysiwyg-editor.css,js/jalios/core/wysiwyg/plugins/mention/css/rte-content.css'
+=> Ajout du fichier configuration-styles.conf pour ajouter une liste de styles "**Formats**" à l'éditeur wysiwyg.
 
-Choix des boutons et fonctionalités : désactivation de H1 seulement, le reste est par défaut
+Permet de choisir le type style à appliquer (**h1/h2/h3/h4-like**, **bouton noir/vert/jaune**,...). Agit en complément de la liste des types de blocs.
+
+Ex : je sélectionne mon texte puis je choisi "**En-tête 2**" dans la liste des blocs, puis je choisis "**h1-like**" dans la liste des formats.
+
+
+Pour le rendu graphique en mode édition, la css du design system a été chargée.
+
+Choix des boutons et fonctionalités : désactivation de H1 seulement.
+
+
+**TODO** : revoir le style de l'encadré pour suivre les recon (div + classe css) >> Script si on change le code pour les encadrés (simple DIV)
+
++ Style utiles ?
++ Reprise des styles ?
++ Mieux comprendre comment faire des nouveaux styles
+   
+Désormais les liens vers les documents internes sont des jalios:link
+=> migration des URLs possible (Question SEO ?) 
 
 # Affichage de la topbar pour un groupe d'utilisateurs uniquement
 
@@ -94,11 +103,17 @@ Nos utilisons la notion de fichiers "**.tag**" de la norme **JSP Taglibs 2.0** p
 
 Ce sont en fait des fichiers JSP à déposer sous "**WEB-INF/tags/**". Le serveur d'application les reconnait automatiquement.
 
-Pour passer des variables à un tag depuis un gabarit par exemple, la bibliothèque **c.tld** (JSTL core) est nécessaire et doit être ajoutée à la section des taglibs dans le fichier web.xml.
+Pour passer des variables à un tag depuis un gabarit par exemple, la bibliothèque **c.tld** (JSTL core) est nécessaire et doit être ajoutée à la section des taglibs dans le fichier **web.xml**. Nécessite églament la lib **taglibs-standard-impl-1.2.5.jar**.
 
 # Gabarits personnalisés
 
 Le module contient les gabarits d'affichage des différents types de contenus / portlets.
+
+# Gabarits embed
+
+Des exemples de gabarits "embed" ont été faits pour les articles de rubrique, les documents, et les vidéos chapitrées. C'est juste pour illustrer la notion d'insertion unifiée.
+
+Ces gabarits seront à recharter.e
 
 ## TODO 
 
