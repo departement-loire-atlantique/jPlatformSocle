@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="design-system.tld" prefix="ds" %>
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%
 News obj = (News) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
@@ -18,8 +17,8 @@ listCatThematiques.addAll(obj.getOthersNewsThematics(loggedMember));
 %>  
 
 <div class="news-page-actualite-full-display">
-    <ds:tag objs="<%=listCatThematiques %>"/>
-	<ds:title obj="<%=obj%>" title="test" css="testA testB" level="" edit="true"/>	
+    <%--<ds:tag objs="<%=listCatThematiques %>"/>-->
+	<%--<ds:title obj="<%=obj%>" title="test" css="testA testB" level="" edit="true"/>-->	
 	
 	<%--TODO Redirection vers le sommaire ou le dossier--%>
     
@@ -31,7 +30,7 @@ listCatThematiques.addAll(obj.getOthersNewsThematics(loggedMember));
     <div class="introduction visible-desktop printOnly row-fluid">
 		<div class="span6 abstract"><jalios:wiki><%=obj.getAbstract()%></jalios:wiki><jalios:edit pub="<%=obj%>" fields="description" /></div>
 		<div class="span6 illustration printHide">
-		  <ds:figure image="<%=obj.getMainIllustration()%>" legend="<%=obj.getMainIllustrationLegend()%>" copyright="<%= obj.getMainIllustrationCopyright()%>" link=""/>
+		  <%--<ds:figure image="<%=obj.getMainIllustration()%>" legend="<%=obj.getMainIllustrationLegend()%>" copyright="<%= obj.getMainIllustrationCopyright()%>" link=""/>-->
 		</div>
 	</div>
 
