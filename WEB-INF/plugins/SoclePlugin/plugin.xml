@@ -59,7 +59,12 @@
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Gabarit menu accordéon</label>
         </template>
-      </templates>    
+    </templates>
+	<templates type="PortletQueryForeach">
+        <template name="facet" file="doPortletQueryForeachFacet.jsp" usage="box">
+            <label xml:lang="fr">Recherche à facettes</label>
+        </template>
+    </templates>
     
   </types>
 
