@@ -9,7 +9,7 @@
       <label xml:lang="en">Abstract</label>
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" dataimage="true">
       <label xml:lang="fr">Image</label>
     </field>
     <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
@@ -39,6 +39,9 @@
       <onLabel xml:lang="en">Yes</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
       <offLabel xml:lang="en">No</offLabel>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_1088868" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
     </field>
   </fields>
   <label xml:lang="fr">Element Carrousel</label>

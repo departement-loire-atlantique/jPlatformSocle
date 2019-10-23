@@ -12,6 +12,57 @@ jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 
+wysiwyg.sanitize-html.whitelist.default.tags:\
+  a[class|style|id|href|title|rel|name|hreflang|target],\
+  abbr[class|style|id|title],\
+  acronym[class|style|id|title],\
+  address,\
+  b,\
+  blockquote[class|style|id|cite],\
+  br,\
+  caption,\
+  cite,\
+  code,\
+  col[class|span|width],\
+  colgroup[class|span|width],\
+  dd,\
+  div[class|style|id|title|lang|dir],\
+  dl,\
+  dt,\
+  em,\
+  h1[class|style|id],\
+  h2[class|style|id],\
+  h3[class|style|id],\
+  h4[class|style|id],\
+  h5[class|style|id],\
+  h6[class|style|id],\
+  hr,\
+  i[class],\
+  img[class|style|align|alt|height|src|title|width],\
+  li[class|style|id],\
+  ol[class|style|id|start|type],\
+  p[class|style|id|title|lang|dir],\
+  pre[class|style|id|lang|dir],\
+  q[cite],\
+  small,\
+  span[class|style|id|title|lang|dir],\
+  s[class|style|id],\
+  strike[class|style|id],\
+  strong[class|style|id],\
+  sub,\
+  sup,\
+  table[class|style|id|border|cellspacing|cellpadding|summary|width|align|valign],\
+  tbody,\
+  td[class|style|id|colspan|rowspan|width|align|valign],\
+  tfoot,\
+  th[class|style|id|colspan|rowspan|width|align|valign],\
+  thead,\
+  tr[class|style|id|align|valign],\
+  tt,\
+  u,\
+  ul[class|style|id|type]
+
+
 
 # ------ 7357 ajout d'extradata sur les catégories
 extra.Category.plugin.tools.index.boolean: false
@@ -19,3 +70,15 @@ extra.Category.plugin.tools.sitemap.boolean: true
 extra.Category.plugin.tools.result.title:
 extra.Category.plugin.tools.blank.boolean: false
 extra.Category.plugin.tools.synonyme.facet.title:
+
+media.data-template.horizontalCard.Content: /plugins/ProtoPlugin/jsp/horizontalCardTemplate.jsp
+media.data-template.verticalCard.Content: /plugins/ProtoPlugin/jsp/verticalCardTemplate.jsp
+
+jcms.resource.tt-card-enabled:false
+channel.sidebar.enabled: false
+channel.topbar.enabled: true
+channel.topbar.site.enabled: true
+
+jcmsplugin.proto.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
+jcmsplugin.proto.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+

@@ -1,0 +1,42 @@
+<%
+// Détermination du lien avec priorité au lien interne
+String urlCard = "";
+if(Util.notEmpty(obj.getInternalLink())) {
+	urlCard = obj.getInternalLink().getDisplayUrl(userLocale);
+} else {
+      if(Util.notEmpty(obj.getExternalLink())) {
+    	  urlCard = obj.getExternalLink();
+      }
+}
+
+// Nouvel onglet ?
+String target = "";
+if(obj.getNewTab()) {
+  target = "target=\"_blank\"";
+}
+
+// Mise en place du titre et du alt
+StringBuffer title = new StringBuffer(obj.getLinkTitle());    
+if(Util.isEmpty(title.toString())) title = new StringBuffer(obj.getTitle());
+
+StringBuffer altValue = new StringBuffer(title.toString());    
+
+// Légende
+if(Util.notEmpty(obj.getImageLegend())) {
+  altValue.append(" - ").append(obj.getImageLegend());
+}
+
+// Copyright
+if(Util.notEmpty(obj.getImageCopyright())) {
+  altValue.append(" - ");
+  altValue.append(obj.getImageCopyright()); 
+}
+
+// Target = blank
+if(Util.notEmpty(obj.getNewTab())) {
+  if(obj.getNewTab()) {
+    altValue.append(" - ").append(JcmsUtil.glpd("jcmsplugin.socle.accessibily.newTabLabel"));
+    title.append(" - ").append(JcmsUtil.glpd("jcmsplugin.socle.accessibily.newTabLabel"));
+  }
+}
+%>

@@ -6,10 +6,10 @@
 %><%@ include file='/jcore/portal/doPortletParams.jspf'%><%
 %><%@ include file='/types/PortletNavigate/doInitPortletNavigate.jspf'%><%
 %>
-<%--
-Menu de navigation déroulant (collapse)
-Affiche systématiquement 2 niveaux (le 1er niveau sous forme de titre, et le 2è sous forme de "collapser"),
-puis boucle récursivement jusqu'à afficher le nombre max de niveaux paramétré dans la portlet.
+<%-- SGU
+    Menu de navigation déroulant (collapse)
+    Affiche systématiquement 2 niveaux (le 1er niveau sous forme de titre, et le 2è sous forme de "collapser"),
+    puis boucle récursivement jusqu'à afficher le nombre max de niveaux paramétré dans la portlet.
  --%><%
 
 if (((rootCategory == null) || (rootCategory.isLeaf())) && box.getHideWhenNoResults()){
@@ -25,9 +25,9 @@ int maxLevels = box.getLevels();
 <jalios:foreach collection="<%= rootSet %>" type="Category"	name="itCatLevel1"><%
 %><h2 class="h3-like"><%=itCatLevel1%></h2><%
 TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel1);
-%><ul class="cd44-collapser"><%
+%><ul class="ds44-collapser"><%
     %><jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2"><%
-	%> <li class="cd44-collapser_element"><%
+	%> <li class="ds44-collapser_element"><%
 	%><%
 	%><%-- On regarde si la catégorie contient des catégries filles autorisées : si oui génération des enfants, si non lien direct --%><%
 	TreeSet<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
@@ -38,7 +38,7 @@ TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCa
 		          <ds:categoryList rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
 		      </ds:toggle><%
 		    }else{%>
-		    	<jalios:link data="<%=itCatLevel1%>" css="cd44-collapser--links"><%=itCatLevel2.getName()%></jalios:link>
+		    	<jalios:link data="<%=itCatLevel1%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
 		    <%}%>
         </li><%
 	%></jalios:foreach><%

@@ -42,16 +42,18 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 // Tri des catégories filles + filtre sur catégories autorisées
 TreeSet<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
 
-
 // Calcul du niveau d'itération courant
 int itLevel = currentLevel!=null ? currentLevel : 0;
 itLevel++;
-%><%
 
-%><jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>"><%
-%><ul class="cd44-list"><%
+// Style pour le padding des listes imbriquées (padding doublé au-delà du niveau 1)
+String paddingClass = "ds44--xl-padding-lr";
+%>
+<jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>"><%
+if(itLevel>1) paddingClass = "ds44--2xl-padding-l";
+%><ul class="<%=paddingClass%>"><%
 	for(Category itCategory : childrenCatSet){
-	%><li><jalios:link data="<%=itCategory%>" css="cd44-collapser_content--links"><%=itCategory.getName()%></jalios:link><%
+	%><li><jalios:link data="<%=itCategory%>" css="ds44-collapser_content--link"><%=itCategory.getName()%></jalios:link><%
 	    %><ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/></li><%
 	}%><%
 %></ul><%
