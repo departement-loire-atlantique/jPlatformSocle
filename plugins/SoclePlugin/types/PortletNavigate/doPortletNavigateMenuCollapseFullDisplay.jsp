@@ -38,7 +38,7 @@ TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCa
 		          <ds:categoryList rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
 		      </ds:toggle><%
 		    }else{%>
-		    	<jalios:link data="<%=itCatLevel1%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+		    	<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
 		    <%}%>
         </li><%
 	%></jalios:foreach><%
