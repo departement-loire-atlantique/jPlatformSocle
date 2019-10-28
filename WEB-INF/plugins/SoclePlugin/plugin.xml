@@ -25,6 +25,7 @@
     <type name="ResultatDeRecherche"></type>
     <type name="WelcomeSection"></type>
     <type name="WysiwygBlock"></type>
+    <type name="VideoChapitree"></type>
     
     <!-- Types de contenus -->  
     <templates type="CarouselElement">

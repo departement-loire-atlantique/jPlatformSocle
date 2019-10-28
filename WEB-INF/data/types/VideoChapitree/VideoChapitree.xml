@@ -4,20 +4,53 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="urlVideo" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="2000" ml="false" openWindow="false">
+    <field name="urlVideo" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="2000" ml="false" openWindow="false" tab="common">
       <label xml:lang="fr">URL Vidéo</label>
+      <description xml:lang="fr">Collez ici le lien vers la vidéo Youtube&#xD;
+    N'oubliez pas de renseigner les champs "Document transcript" et "Sous-titres" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
+    </field>  
+    <field name="hasChapters" editor="boolean" required="false" compactDisplay="false" tab="common" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Vidéo avec chapitres ?</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>  
+    <field name="summary" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" tab="common">
+      <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="chapitre" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre">
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" dataimage="true" tab="common">
+      <label xml:lang="fr">Image</label>
+    </field>
+    <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="common">
+      <label xml:lang="fr">Légende Image</label>
+    </field>
+    <field name="imageCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="common">
+      <label xml:lang="fr">Copyright image</label>
+    </field>
+    <field name="transcriptFile" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
+      <label xml:lang="fr">Fichier de transcript</label>
+    </field>    
+    <field name="subtitleFile" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
+      <label xml:lang="fr">Fichier de sous-titre</label>
+    </field>    
+    <field name="chapitre" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Chapitre</label>
     </field>
-    <field name="timecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" pattern="\d\d\:\d\d\:\d\d">
+    <field name="timecode" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" pattern="\d\d\:\d\d\:\d\d" tab="chapters">
       <label xml:lang="fr">Timecode</label>
       <description xml:lang="fr">Format hh:mm:ss - Exemple pour 30 minutes, 20 secondes : 00:30:20</description>
     </field>
-    <field name="libelleTimecode" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="chapitre">
+    <field name="libelleTimecode" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Libellé du Timecode</label>
     </field>
   </fields>
   <label xml:lang="fr">VideoChapitree</label>
+  <tabs>
+    <tab id="common">
+      <label xml:lang="fr">Commun</label>
+    </tab>
+    <tab id="chapters">
+      <label xml:lang="fr">Chapitres</label>
+    </tab>
+  </tabs>
 </type>
 
