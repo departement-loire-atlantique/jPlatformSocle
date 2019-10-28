@@ -3,6 +3,8 @@
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
+
+
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 
@@ -71,8 +73,8 @@ extra.Category.plugin.tools.result.title:
 extra.Category.plugin.tools.blank.boolean: false
 extra.Category.plugin.tools.synonyme.facet.title:
 
-media.data-template.horizontalCard.Content: /plugins/ProtoPlugin/jsp/horizontalCardTemplate.jsp
-media.data-template.verticalCard.Content: /plugins/ProtoPlugin/jsp/verticalCardTemplate.jsp
+media.data-template.horizontalCard.Content: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
+media.data-template.verticalCard.Content: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
