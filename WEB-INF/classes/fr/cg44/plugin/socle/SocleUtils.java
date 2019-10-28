@@ -17,8 +17,6 @@ import com.jalios.util.Util;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
-	private static Member loggedMember = channel.getCurrentLoggedMember();
-	private static final String userLang = channel.getCurrentJcmsContext().getUserLang();
 	private static final Logger LOGGER = Logger.getLogger(SocleUtils.class);
 
 
@@ -29,6 +27,8 @@ public final class SocleUtils {
 	 * @return Un TreeSet de catégories enfants, filtré et trié. Null si la catégorie n'existe pas.
 	 */
 	public static TreeSet<Category> getOrderedAuthorizedChildrenSet(Category cat) {
+		Member loggedMember = channel.getCurrentLoggedMember();
+		String userLang = channel.getCurrentJcmsContext().getUserLang();
 		if(Util.notEmpty(cat)) {
 			DataSelector authorizedCategoriesSelector = Category.getAuthorizedSelector(loggedMember);
 			TreeSet<Category> childrenSet = new TreeSet<Category>(cat.getOrderComparator(userLang));
