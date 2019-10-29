@@ -14,7 +14,7 @@
 <% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %><%
 
 %>
-<button type="button" aria-controls="#collapser-elem-<%=uid%>"	class="ds44-collapser_button"><%=title%><i class="icon icon-down"></i></button>
-<div class="ds44-collapser_content" id="collapser-elem-<%=uid%>" aria-expanded="false">
+<button type="button" aria-controls="#collapser-elem-<%=uid%>"	class="ds44-collapser_button" aria-expanded="false"><%=title%><i class="icon icon-down" aria-hidden="true"></i></button>
+<div class="ds44-collapser_content" id="collapser-elem-<%=uid%>">
   <jsp:doBody/>
 </div>

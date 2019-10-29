@@ -1,0 +1,121 @@
+<%--
+  @Deprecated: False
+  @Customizable: True
+  @Requestable: False
+  @Summary: Page footer
+  @Category: Presentation / Cobalt
+--%><%@page import="com.jalios.util.Util"%><%
+%><%@page import="fr.cg44.plugin.socle.SocleConstants"%><%
+%><%@ include file='/jcore/toastr/doToastr.jspf' %><%
+%><%@ include file="/jcore/wiki/doWikiToolbar.jspf" %><jalios:include target="EMPTY_FOOTER" targetContext="htmlcomments"/><%= com.jalios.jcms.taglib.LangTag.getLangFormMenu() %><%
+
+%><%
+{
+  for (Iterator itCssFooter = jcmsContext.getFinalCSSFooterMap().entrySet().iterator() ; itCssFooter.hasNext() ; ) { 
+    Map.Entry cssFooterEntry = (Map.Entry) itCssFooter.next();
+    String css   = Util.getString(cssFooterEntry.getKey(),"");
+    String media = Util.getString(cssFooterEntry.getValue(), "all");
+    // FIXME: StartsWith CSSPacker
+    String rel   = css.endsWith(".less") ? "stylesheet/less" : "stylesheet";
+  %>
+  <link rel="<%= rel %>" href="<%= HttpUtil.encodeForHTMLAttribute(css) %>" media="<%= media %>" property="stylesheet" /><% } %><%
+}
+
+boolean serveJS = Util.toBoolean(channel.getProperty("channel.serve-js-to-anonymous", ""), false);
+// DEP44 : désactivation des JS en front office
+//if (serveJS || isLogged) {
+if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
+%>
+<script <%= cspNonceAttribute %>>
+/* <![CDATA[ */
+  document.t0 = new Date().getTime();
+/* ]]> */
+</script>
+<%
+ // JavaScript File => jcmsContext.addJavaScript(jsPath)
+ for (String jsPath : jcmsContext.getFinalJavaScriptSet()) { %>
+  <script src="<%= HttpUtil.encodeForHTMLAttribute(jsPath) %>"></script><%
+ }
+
+%>
+<script <%= cspNonceAttribute %>>
+/* <![CDATA[ */
+ var domLoadFunc = function() { 
+   var t1 = new Date().getTime(); 
+<%
+	 // JavaScript Code => jcmsContext.addJavaScriptCode(jsCode)
+	 Set<String> onLoadJsCodeSet = jcmsContext.getJavaScriptCodeSet();
+	 if (Util.notEmpty(onLoadJsCodeSet)) { 
+	   for (String jsCode : onLoadJsCodeSet) { %>
+	     <%= jsCode %><%
+	   }
+	 }
+
+   // Mark CSS files as loaded (for later call to Ajax.loadStyleSheet)
+   Set<String> cssSet = jcmsContext.getCSSHeaders().keySet();
+   if (Util.notEmpty(cssSet)) { %>
+     jQuery.jalios.DOM.markResources('<%= Util.join(cssSet, "', '") %>');<%
+   }
+
+   // Mark JavaScript files as loaded (for later call to Ajax.loadJavaScript)
+   Set<String> jsSet = jcmsContext.getJavaScriptSet();
+   if (Util.notEmpty(jsSet)) { %>
+     jQuery.jalios.DOM.markResources('<%= Util.join(jsSet, "', '") %>');<%
+   }
+
+   // Hide JCMS shield (see doEmptyHeader.jsp, prevents click before event registration)
+   boolean jcmsShieldEnabled1 = Util.toBoolean(request.getAttribute("com.jalios.jcms.JCMS_JS_SHIELD"), false);
+   if (jcmsShieldEnabled1) { %>
+     var jcmsShield = $('jcmsShield');
+     if (jcmsShield) { jcmsShield.remove(); }<%
+   }
+%>  
+	  var t2 = new Date().getTime();
+	  JcmsLogger.info('JSPPage', 'OnLoad in '+(t2-t1)+' ms', ' All JS in '+(t2-document.t0)+' ms');
+	  document.body.className = document.body.className + ' js-ready';
+	  document.isAjaxRefresh = true;
+  };
+  
+  // Do things when DOM is ready
+  jQuery(document).ready(function() {
+    domLoadFunc.defer(); // Why defer ?
+    jQuery(document).trigger(jQuery.Event("jalios:ready"));
+  });
+/* ]]> */
+</script>
+<% } /* (serveJS || isLogged) */ 
+
+  // Ajax-Deflate
+  String ajaxCtxtDeflate = (String) request.getAttribute("AjaxCtxtDeflate");
+  if (Util.notEmpty(ajaxCtxtDeflate)){ 
+    %><div id="AjaxCtxtDeflate" style="display:none;"><%= ajaxCtxtDeflate %></div><%
+  }
+  
+  // CSRF
+  if (HttpUtil.isCSRFEnabled()) {
+    %><div id="CSRFTokenElm" style="display:none;"><%= HttpUtil.getCSRFToken(request) %></div><%
+  } 
+%>
+<%
+if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
+	if (Util.toBoolean(request.getAttribute("css-at-bottom"), false)) {
+	  for (Iterator itCssFooter = jcmsContext.getFinalCSSMap().entrySet().iterator() ; itCssFooter.hasNext() ; ) { 
+	    Map.Entry itCssFooterEntry = (Map.Entry) itCssFooter.next();
+	    String css   = Util.getString(itCssFooterEntry.getKey(),"");
+	    String media = Util.getString(itCssFooterEntry.getValue(), "all");
+	    // FIXME: StartsWith CSSPacker
+	    String rel   = css.endsWith(".less") ? "stylesheet/less" : "stylesheet";
+	  %>
+	  <link rel="<%= rel %>" href="<%= HttpUtil.encodeForHTMLAttribute(css) %>" media="<%= media %>" /><%
+	  }
+	}
+}
+%>
+</body>
+</html>
+<%@ include file='/admin/analytics/doAddEventData.jspf' %>
+<%
+  if (debug) {
+    System.out.println((System.currentTimeMillis()-startPageRequest)+"ms to generate page\n");
+  }
+%>
