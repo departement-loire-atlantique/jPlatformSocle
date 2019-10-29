@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type expirable="false" name="Article" reviewable="true" visible="true" debatable="false" superclass="generated.AbstractElement" categoryRequired="true" categoryTab="true" version="4.0" unitFieldEdition="true" audienced="false" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
+  <title ml="true" searchable="true" />
+  <fields>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
+      <label xml:lang="fr">Image bandeau</label>
+    </field>
+    <field name="imageBandeauCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Image bandeau Copyright</label>
+    </field>
+    <field name="imageBandeauLegende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Image bandeau Légende</label>
+    </field>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field type="super" />
+  </fields>
+  <label xml:lang="en">Article</label>
+  <label xml:lang="fr">Article</label>
+</type>
+

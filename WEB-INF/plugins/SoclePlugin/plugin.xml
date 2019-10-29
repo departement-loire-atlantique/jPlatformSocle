@@ -7,7 +7,10 @@
   <description xml:lang="fr">Socle technique</description>
 
   <types>
+    <type name="AbstractElement"></type>
+    <type name="Actualite"></type>
     <type name="AlertCG"></type>
+    <type name="Article"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
@@ -18,16 +21,38 @@
     <type name="CommuneHorsDepartement"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
+    <type name="Dossier"></type>
     <type name="ElectedMember"></type>
     <type name="Help"></type>
     <type name="News"></type>
     <type name="Place"></type>
     <type name="ResultatDeRecherche"></type>
+    <type name="Tuile"></type>
     <type name="WelcomeSection"></type>
     <type name="WysiwygBlock"></type>
     <type name="VideoChapitree"></type>
     
-    <!-- Types de contenus -->  
+    <!-- Types de contenus -->    
+    <templates type="Actualite">
+        <template name="default" file="doActualiteFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+        </template>
+    </templates>  
+    <templates type="Article">
+        <template name="default" file="doArticleFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+        </template>
+    </templates>  
+    <templates type="Dossier">
+        <template name="defaulr" file="doDossierFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+        </template>
+    </templates>   
+    <templates type="Tuile">
+        <template name="default" file="doTuileFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+        </template>
+    </templates>   
     <templates type="CarouselElement">
         <template name="horizontalCard" file="doCarouselElementHorizontalCardDisplay.jsp" usage="horizontalCard">
             <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
