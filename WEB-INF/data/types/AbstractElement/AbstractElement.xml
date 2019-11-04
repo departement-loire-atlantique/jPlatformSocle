@@ -5,9 +5,27 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="imageCarte" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
-      <label xml:lang="fr">Image carte</label>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image principale</label>
     </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
+      <label xml:lang="fr">Image bandeau</label>
+    </field>
+    <field name="imageBandeauCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Image bandeau Copyright</label>
+    </field>
+    <field name="imageBandeauLegende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Image bandeau Légende</label>
+    </field>   
   </fields>
   <label xml:lang="fr">[Abstract] Element</label>
 </type>
