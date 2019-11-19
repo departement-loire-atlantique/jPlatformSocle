@@ -26,6 +26,8 @@ jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.accessibily.newTabLabel:Ouverture dans un nouvel onglet
 jcmsplugin.socle.social-networks-follow.label:Suivez-nous sur les réseaux sociaux :
 
+jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
