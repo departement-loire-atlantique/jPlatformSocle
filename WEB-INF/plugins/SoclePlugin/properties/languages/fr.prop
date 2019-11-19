@@ -20,6 +20,11 @@ jcmsplugin.socle.css-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.js-urls: URLs des fichiers js à charger dans le portail
 jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 
+# Réseaux sociaux
+jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
+jcmsplugin.socle.socialnetworks.labels.help:Attention : la liste doit commencer par un "@" (ex : @|Facebook|Twitter). Le nom du picto utilisé pour l'affichage correspond au label en minuscule et sans espaces.
+jcmsplugin.socle.socialnetworks.urls:URLs des réseaux sociaux (bien respecter l'ordre correspondant aux labels)
+
 # ------------------------------------------------------------
 #  Libellés
 # ------------------------------------------------------------
