@@ -4,10 +4,10 @@
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 
-
+# ------------------------------------------------------------
+#  Header
+# ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
-jcmsplugin.socle.site.alt.logo: Retour à l’accueil du site loire Atlantique
-jcmsplugin.socle.site.header.titre:
 jcmsplugin.socle.site.header.cat:
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
