@@ -23,6 +23,7 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="FicheAide"></type>  
     <type name="Help"></type>
     <type name="News"></type>
     <type name="Place"></type>
