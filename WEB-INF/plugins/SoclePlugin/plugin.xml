@@ -36,19 +36,24 @@
     <!-- Types de contenus -->    
     <templates type="Actualite">
         <template name="default" file="doActualiteFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">gabarit full pour actualité</label>
         </template>
     </templates>  
     <templates type="Article">
         <template name="default" file="doArticleFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">gabarit full pour article</label>
         </template>
     </templates>  
     <templates type="Dossier">
         <template name="defaulr" file="doDossierFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">gabarit full pour dossier</label>
         </template>
-    </templates>   
+    </templates> 
+    <templates type="FicheAide">
+        <template name="default" file="doFicheAideFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">gabarit full pour fiche aide</label>
+        </template>
+    </templates>    
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
