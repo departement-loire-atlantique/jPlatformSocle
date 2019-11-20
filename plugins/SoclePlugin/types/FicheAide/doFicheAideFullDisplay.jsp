@@ -8,7 +8,8 @@
     <section class="ds44-container-fluid">
 
         <div class="ds44-pageHeaderContainer">
-            <jalios:if predicate="<%= Util.notEmpty(obj.getImagePrincipale()) %>">
+            <!-- TODO condition sur l'image mobile -->
+            <jalios:if predicate="<%= Util.notEmpty(obj.getImagePrincipale()) %>">               
                 <picture class="ds44-pageHeaderContainer__pictureContainer">
                     <img src="<%=obj.getImagePrincipale()%>" alt="" class="ds44-headerImg" />
                 </picture>
@@ -19,6 +20,16 @@
                 <h1 class="h1-like ds44-text--colorInvert"><%=obj.getTitle() %></h1>
             </div>
         </div>
+    
+        <!-- TODO Liste des onglets -->
+        
+        
+        <!-- TODO ONGLET - En résumé -->
+        
+        <%= obj.getChapo() %>
+        
+        <jalios:wysiwyg><%= obj.getPrecisionsBeneficiaires() %></jalios:wysiwyg>            
+        
     
     </section>
         
