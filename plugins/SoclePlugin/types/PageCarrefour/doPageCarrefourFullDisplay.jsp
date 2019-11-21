@@ -16,8 +16,10 @@
 	            </picture>
             </jalios:if>
             <div class="ds44-titleContainer">
-                <!-- Fil d'ariane (TODO : à mettre en property) -->
-                <jalios:include id="c_1088465"/>
+                <!-- Fil d'ariane -->
+                <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+                    <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
+                </jalios:if>
                 <h1 class="h1-like ds44-text--colorInvert"><%=obj.getTitle() %></h1>
             </div>
         </div>
@@ -29,8 +31,10 @@
                         <p class="ds44-introduction"><%= obj.getDescription(userLang) %></p>
                     </jalios:if>
                     
-                    <%-- Menu de nav catégories (à mettre en prop) --%>
-                    <jalios:include id="c_1088673"/>
+                    <%-- Menu de nav catégories --%>
+                    <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.pagecarrefour.portlet.nav.id")) %>'>
+                        <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.pagecarrefour.portlet.nav.id") %>'/>
+                    </jalios:if>
                 </div>
                 
                 <%-- Colonne de droite (affichée systématiquement même si portlets vides) --%>
