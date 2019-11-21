@@ -31,6 +31,8 @@
     <type name="WelcomeSection"></type>
     <type name="WysiwygBlock"></type>
     <type name="VideoChapitree"></type>
+    <type name="PageCarrefour"></type>
+    
     
     <!-- Types de contenus -->    
     <templates type="Actualite">
@@ -90,8 +92,8 @@
             <label xml:lang="fr">Gabarit full pour la refonte</label>
         </template>
     </templates>
-    <templates type="WelcomeSection">
-        <template name="default" file="doWelcomeSectionFullDisplay.jsp" usage='full'>
+    <templates type="PageCarrefour">
+        <template name="default" file="doPageCarrefourFullDisplay.jsp" usage='full'>
             <label xml:lang="fr">DS44 : gabarit Spécifique</label>
         </template>
     </templates>    
