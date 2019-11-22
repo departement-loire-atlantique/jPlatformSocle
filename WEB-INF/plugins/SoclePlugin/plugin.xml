@@ -46,7 +46,7 @@
         </template>
     </templates>  
     <templates type="Dossier">
-        <template name="defaulr" file="doDossierFullDisplay.jsp" usage="full">
+        <template name="default" file="doDossierFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>   
