@@ -38,3 +38,8 @@ jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administrati
 # ------------------------------------------------------------
 jcmsplugin.socle.site.alt.logo: Retour à l’accueil du site loire Atlantique
 jcmsplugin.socle.site.header.titre:
+
+# ------------------------------------------------------------
+#  Fil ariane
+# ------------------------------------------------------------
+jcmsplugin.socle.breadcrumb.position:Votre position
