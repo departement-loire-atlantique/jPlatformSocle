@@ -37,32 +37,29 @@
     <!-- Types de contenus -->    
     <templates type="Actualite">
         <template name="default" file="doActualiteFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>  
     <templates type="Article">
         <template name="default" file="doArticleFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>  
     <templates type="Dossier">
         <template name="defaulr" file="doDossierFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>   
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>   
+    </templates>  
     <templates type="CarouselElement">
-        <template name="horizontalCard" file="doCarouselElementHorizontalCardDisplay.jsp" usage="horizontalCard">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+        <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-        <template name="verticalCard" file="doCarouselElementVerticalCardDisplay.jsp" usage="verticalCard">
-            <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
-        </template>
-    </templates>
+
     <templates type="CollectivityArticle">
         <template name="embed" file="doCollectivityArticleEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
@@ -161,6 +158,7 @@
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
+    <file path="WEB-INF/tags/card.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
