@@ -59,7 +59,7 @@
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-
+    </templates>
     <templates type="CollectivityArticle">
         <template name="embed" file="doCollectivityArticleEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
