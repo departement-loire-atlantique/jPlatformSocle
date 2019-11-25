@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%
-String[] socialNetworksLabels = channel.getStringArrayProperty("jcmsplugin.proto.socialnetworks.labels", new String[]{});
+String[] socialNetworksLabels = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.labels", new String[]{});
 List<String> socialNetworksLabelsList = Arrays.asList(socialNetworksLabels);
 
-String[] socialNetworksUrls = channel.getStringArrayProperty("jcmsplugin.proto.socialnetworks.urls", new String[]{});
+String[] socialNetworksUrls = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.urls", new String[]{});
 List<String> socialNetworksUrlsList = Arrays.asList(socialNetworksUrls);
 
 if(socialNetworksLabelsList.size()!=socialNetworksUrlsList.size()){

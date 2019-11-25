@@ -5,6 +5,12 @@ $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 
 # ------------------------------------------------------------
+#  Propriété spécifiques à un site
+# ------------------------------------------------------------
+jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
+jcmsplugin.socle.portlet.filariane.id: c_1088465
+
+# ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
@@ -12,6 +18,8 @@ jcmsplugin.socle.site.header.cat:
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
+
+
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -78,14 +86,17 @@ extra.Category.plugin.tools.result.title:
 extra.Category.plugin.tools.blank.boolean: false
 extra.Category.plugin.tools.synonyme.facet.title:
 
-media.data-template.horizontalCard.Content: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
-media.data-template.verticalCard.Content: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
+media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
+media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
+media.data-template.horizontalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementHorizontalCardDisplay.jsp
+media.data-template.verticalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementVerticalCardDisplay.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
 channel.topbar.enabled: true
 channel.topbar.site.enabled: true
 
-jcmsplugin.proto.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
-jcmsplugin.proto.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
+jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+
 

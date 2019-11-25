@@ -32,21 +32,23 @@
     <type name="WelcomeSection"></type>
     <type name="WysiwygBlock"></type>
     <type name="VideoChapitree"></type>
+    <type name="PageCarrefour"></type>
+    
     
     <!-- Types de contenus -->    
     <templates type="Actualite">
         <template name="default" file="doActualiteFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">gabarit full pour actualité</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>  
     <templates type="Article">
         <template name="default" file="doArticleFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">gabarit full pour article</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>  
     <templates type="Dossier">
-        <template name="defaulr" file="doDossierFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">gabarit full pour dossier</label>
+        <template name="default" file="doDossierFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates> 
     <templates type="FicheAide">
@@ -56,15 +58,12 @@
     </templates>    
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>   
+    </templates>  
     <templates type="CarouselElement">
-        <template name="horizontalCard" file="doCarouselElementHorizontalCardDisplay.jsp" usage="horizontalCard">
-            <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
-        </template>
-        <template name="verticalCard" file="doCarouselElementVerticalCardDisplay.jsp" usage="verticalCard">
-            <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
+        <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
     <templates type="CollectivityArticle">
@@ -96,8 +95,8 @@
             <label xml:lang="fr">Gabarit full pour la refonte</label>
         </template>
     </templates>
-    <templates type="WelcomeSection">
-        <template name="default" file="doWelcomeSectionFullDisplay.jsp" usage='full'>
+    <templates type="PageCarrefour">
+        <template name="default" file="doPageCarrefourFullDisplay.jsp" usage='full'>
             <label xml:lang="fr">DS44 : gabarit Spécifique</label>
         </template>
     </templates>    
@@ -165,6 +164,7 @@
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
+    <file path="WEB-INF/tags/card.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
