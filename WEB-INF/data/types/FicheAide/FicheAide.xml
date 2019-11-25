@@ -45,6 +45,28 @@
     <field name="piecesAFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pièces à fournir</label>
     </field>
+    <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
+      <label xml:lang="fr">Documents utiles</label>
+    </field>
+    <field name="edemarche" editor="boolean" required="false" compactDisplay="false" tab="demande" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">E-demarche</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="urlEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Url e-démarche</label>
+    </field>
+    <field name="urlSuiviEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Url suivi e-démarche</label>
+    </field>
+    <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Durée e-démarche</label>
+    </field>
+    <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Intro suivre une demande</label>
+    </field>
   </fields>
   <tabs>
     <tab id="contact">
