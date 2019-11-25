@@ -92,6 +92,12 @@
                                   </div>
                                 </div>
                             </section>
+                            
+                            <!-- Potlet encadrés -->
+                            <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
+                                <jalios:include pub="<%= itPortlet %>" />
+                            </jalios:foreach>
+                            
                         </aside>
                     </div>
 
@@ -120,6 +126,7 @@
 
  
                         <aside class="col-4">                   
+                            <!-- Bon à savoir --> 
                             <section class="ds44-box ds44-theme ds44-mb3">
                                 <div class="ds44-innerBoxContainer">
                                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreEncartBonASavoir() %></p>
@@ -127,6 +134,7 @@
                                 </div>
                             </section>
                        
+                            <!-- Témoignages --> 
                             <section class="ds44-box">
                                 <p role="heading" aria-level="2" class="ds44-box-heading">Témoignages</p>
                                 <div class="ds44-bgGray">
@@ -137,6 +145,12 @@
                                   </div>
                                 </div>
                               </section>
+                              
+                              <!-- Potlet encadrés -->
+                              <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
+                                <jalios:include pub="<%= itPortlet %>" />
+                              </jalios:foreach>
+                              
                         </aside>
 
                     </div>
