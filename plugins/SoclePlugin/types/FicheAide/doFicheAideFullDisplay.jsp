@@ -18,8 +18,10 @@
             </picture>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44--xl-padding">
-                    <!-- Fil d'ariane (TODO : à mettre en property) -->
-                    <jalios:include id="c_1088465"/>
+                    <!-- Fil d'ariane -->
+	                <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+	                    <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
+	                </jalios:if>
                     <h1 class="h1-like ds44-text--colorInvert"><%= obj.getTitle() %></h1>
                 </div>
             </div>
@@ -44,16 +46,113 @@
                             <a class="js-tablist__link ds44-tabs__link" id="label_id_third" role="tab" aria-controls="id_third" tabindex="-1" aria-selected="false"><%= glp("jcmsplugin.socle.onglet.faq") %></a>
                         </li>
                     </ul>
+                    
                     <!-- Contact / faire demande / suivre demande  -->
                     <ul class="ds44-flex-container ds44-fse ds44--l-padding-tb ds44-flex-grow1-large ds44-blocBtnOnglets ds44-list">
                         <li class="mrs mls ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-qui-contacter" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
                         </li>
+
                         <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
+
+                            <div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
+                                <div class="ds44-modal-box">
+                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer la boite de dialogue" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+
+                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
+
+                                    <div class="ds44-modal-gab">
+                                        <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
+
+                                        
+                                        <jalios:select>
+                                            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+                                            <div class="ds44-noCut">    
+                                                <p class="txtcenter"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                            </div>
+                                            </jalios:if>
+                                            <jalios:default>
+                                            <div class="ds44-multiCol ds44-multiCol--border ds44-mt3">
+                                                <div class="ds44-noCut prm">
+                                                    <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
+                                                    
+                                                    <jalios:select>
+                                                          <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
+                                                              <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
+                                                          </jalios:if>
+                                                          <jalios:default>
+                                                              <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
+                                                                  <% 
+                                                                  // Récupérer l'extension du fichier
+                                                                  String fileType = "FILE";
+                                                                  if (itDoc.getFilename().lastIndexOf('.') != -1 && itDoc.getFilename().lastIndexOf('.')+1 <= itDoc.getFilename().length()) {
+                                                                      fileType = itDoc.getFilename().substring(itDoc.getFilename().lastIndexOf('.') + 1).toUpperCase();
+                                                                  }
+                                                                  // Récupérer la taille du fichier
+                                                                  long size = itDoc.getFile().length() >= 0 ? itDoc.getFile().length() : 0;
+                                                                  String[] units = new String[] {"B", "KB", "MB", "GB", "TB"};
+                                                                  int digitGroups = (int)(Math.log10(size) / Math.log10(1024));
+                                                                  String fileSize = new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) 
+                                                                          + " " + units[digitGroups];
+                                                                  %>
+                                                                  <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                                              </jalios:foreach>
+                                                          </jalios:default>
+                                                    </jalios:select>
+                                                    
+                                                </div>
+                                                <div class="ds44-noCut plm">
+        
+                                                    <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+        
+                                                    <p class="ds44-btn--invert"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                                </div>
+                                            </div>
+                                            </jalios:default>
+                                        </jalios:select>
+                                    </div>
+                                </div>                              
+                            </div>
                         </li>
+
                         <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
+                        
+                            <!-- TODO faire une demande et traduire les libellés -->
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
+
+                            <div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
+                                <div class="ds44-modal-box">
+                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer la boite de dialogue" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+
+                                    <h2 class="h2-like">Suivre une demande en cours</h2>
+
+                                    <div class="ds44-modal-gab">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="ds44-multiCol ds44-multiCol--border ds44-mt3">
+                                            <div class="ds44-noCut prm">
+                                                <h3 class="h3-like">Vous avez un code de suivi :</h3>
+
+                                                <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
+
+                                                <div class="ds44-form__container">
+                                                    <label for="name" class="ds44-formLabel ds44-mb-std"><span class="ds44-labelTypePlaceholder ds44-moveLabel">Code de suivi</span> <input type="text" id="name" class="ds44-inpStd" required /></label>
+
+                                                    <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="ds44-noCut plm">
+
+                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+
+                                                <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>       
+                            </div>
                         </li>
                     </ul>
 

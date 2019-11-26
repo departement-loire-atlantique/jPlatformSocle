@@ -50,6 +50,11 @@ jcmsplugin.socle.demande.qui-contacter: Qui contacter
 jcmsplugin.socle.demande.faire-demande: Faire une demande
 jcmsplugin.socle.demande.suivre-demande: Suivre ma demande
 
+jcmsplugin.socle.ficheaide.docutils.label: Documents utiles :
+jcmsplugin.socle.ficheaide.enligne.label: En ligne :
+jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
+jcmsplugin.socle.ficheaide.nodoc.label: Aucun document disponible
+
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
 jcmsplugin.socle.titre.comment-demande: Comment faire une demande ?
