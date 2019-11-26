@@ -65,9 +65,13 @@
 
                     <div class="grid-12-small-1">
                         <div class="col-7">
-                            <p class="ds44-introduction"><%= obj.getChapo() %></p>
-                            <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-                            <jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>                                        
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+                                <p class="ds44-introduction"><%= obj.getChapo() %></p>
+                            </jalios:if>
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui()) %>">
+                                <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+                                <jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>  
+                            </jalios:if>                                      
                         </div>
 
                         <div class="col-1 grid-offset"></div>
@@ -85,18 +89,26 @@
                 <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_second" aria-hidden="true">      
                 
                     <div class="grid-12-small-1">
-                        <div class="col-7">                 
-                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-                            <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
+                        <div class="col-7"> 
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
+                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+                                <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
+                            </jalios:if>
                             
-                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
-                            <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
-
-                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-                            <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
-        
-                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
-                            <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi()) %>">
+                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+                                <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
+                            </jalios:if>
+                            
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande()) %>">
+                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+                                <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
+                            </jalios:if>
+                            
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir()) %>">
+                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+                                <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
+                            </jalios:if>
                         </div>
 
                         <div class="col-1 grid-offset"></div>
