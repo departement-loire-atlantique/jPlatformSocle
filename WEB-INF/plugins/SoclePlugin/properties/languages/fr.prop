@@ -46,6 +46,10 @@ jcmsplugin.socle.onglet.resume: En résumé
 jcmsplugin.socle.onglet.detail: En détail
 jcmsplugin.socle.onglet.faq: FAQ
 
+jcmsplugin.socle.demande.qui-contacter: Qui contacter
+jcmsplugin.socle.demande.faire-demande: Faire une demande
+jcmsplugin.socle.demande.suivre-demande: Suivre ma demande
+
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
 jcmsplugin.socle.titre.comment-demande: Comment faire une demande ?

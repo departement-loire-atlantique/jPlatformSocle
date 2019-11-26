@@ -47,13 +47,13 @@
                     <!-- Contact / faire demande / suivre demande  -->
                     <ul class="ds44-flex-container ds44-fse ds44--l-padding-tb ds44-flex-grow1-large ds44-blocBtnOnglets ds44-list">
                         <li class="mrs mls ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Qui contacter</span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
                         </li>
                         <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Faire une demande</span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
                         </li>
                         <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Suivre ma demande</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
                         </li>
                     </ul>
 
