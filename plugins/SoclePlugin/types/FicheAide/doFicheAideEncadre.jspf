@@ -11,14 +11,20 @@
 <!-- Témoignages -->
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
     <section class="ds44-box">
-        <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.temoignage") %></p>
-        <div class="ds44-bgGray">
-          <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
-          <div class="ds44--m-padding">
-            <p role="heading" aria-level="3"><a href="#">Monique a am�nag� son logement</a></p>
-            <p>86 ans - Retrait�e - Nantes</p>
-          </div>
-        </div>
+        <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignage") %></p>        
+        <jalios:foreach name="itVideo" type="VideoChapitree" collection="<%= Arrays.asList(obj.getVideo()) %>">
+	        <div class="ds44-bgGray">
+	          <jalios:if predicate="<%= Util.notEmpty(itVideo.getImage()) %>">
+	              <picture><img src="<%= itVideo.getImage() %>" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
+	          </jalios:if>
+	          <div class="ds44--m-padding">
+	            <p role="heading" aria-level="3"><a href="<%= itVideo.getDisplayUrl(userLocale) %>"><%= itVideo.getTitle() %></a></p>
+	            <jalios:if predicate="<%= Util.notEmpty(itVideo.getSummary()) %>">
+	               <p><%= itVideo.getSummary() %></p>
+	            </jalios:if>
+	          </div>
+	        </div>
+        </jalios:foreach>
     </section>
 </jalios:if>
 
