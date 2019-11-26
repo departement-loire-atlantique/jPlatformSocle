@@ -40,6 +40,20 @@ jcmsplugin.socle.site.alt.logo: Retour à l’accueil du site loire Atlantique
 jcmsplugin.socle.site.header.titre:
 
 # ------------------------------------------------------------
+#  Contenu
+# ------------------------------------------------------------
+jcmsplugin.socle.onglet.resume: En résumé
+jcmsplugin.socle.onglet.detail: En détail
+jcmsplugin.socle.onglet.faq: FAQ
+
+jcmsplugin.socle.titre.pour-qui: Pour qui ?
+jcmsplugin.socle.titre.quoi: C’est quoi ?
+jcmsplugin.socle.titre.comment-demande: Comment faire une demande ?
+jcmsplugin.socle.titre.fournir-documents: Quels documents fournir ?
+
+jcmsplugin.socle.titre.temoignage: Témoignages
+
+# ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
 jcmsplugin.socle.breadcrumb.position:Votre position

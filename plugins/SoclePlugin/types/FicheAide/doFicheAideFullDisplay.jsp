@@ -35,13 +35,13 @@
                     <!-- Résumé / détail / FAQ -->
                     <ul class="js-tablist ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" role="tablist" id="tabs">
                         <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_first" role="tab" aria-controls="id_first" tabindex="0" aria-selected="true">En résumé</a>
+                            <a class="js-tablist__link ds44-tabs__link" id="label_id_first" role="tab" aria-controls="id_first" tabindex="0" aria-selected="true"><%= glp("jcmsplugin.socle.onglet.resume") %></a>
                         </li>
                         <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_second" role="tab" aria-controls="id_second" tabindex="-1" aria-selected="false">En détail</a>
+                            <a class="js-tablist__link ds44-tabs__link" id="label_id_second" role="tab" aria-controls="id_second" tabindex="-1" aria-selected="false"><%= glp("jcmsplugin.socle.onglet.detail") %></a>
                         </li>
                         <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_third" role="tab" aria-controls="id_third" tabindex="-1" aria-selected="false">FAQ</a>
+                            <a class="js-tablist__link ds44-tabs__link" id="label_id_third" role="tab" aria-controls="id_third" tabindex="-1" aria-selected="false"><%= glp("jcmsplugin.socle.onglet.faq") %></a>
                         </li>
                     </ul>
                     <!-- Contact / faire demande / suivre demande  -->
@@ -66,7 +66,7 @@
                     <div class="grid-12-small-1">
                         <div class="col-7">
                             <p class="ds44-introduction"><%= obj.getChapo() %></p>
-                            <h2 class="h2-like mtm">Pour qui ?</h2>
+                            <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
                             <jalios:wysiwyg><%= obj.getPrecisionsBeneficiaires() %></jalios:wysiwyg>                                        
                         </div>
 
@@ -83,7 +83,7 @@
 
                             <!-- Témoignages -->  
                             <section class="ds44-box">
-                                <p role="heading" aria-level="2" class="ds44-box-heading">Témoignages</p>
+                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.temoignage") %></p>
                                 <div class="ds44-bgGray">
                                   <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
                                   <div class="ds44--m-padding">
@@ -109,21 +109,20 @@
                 
                     <div class="grid-12-small-1">
                         <div class="col-7">                 
-                            <h2 class="h2-like">Pour qui ?</h2>
+                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
                             <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
                             
-                            <h2 class="h2-like">C’est quoi ?</h2>
+                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
                             <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
 
+                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
                             <jalios:wysiwyg><%= obj.getModalites() %></jalios:wysiwyg>
         
+                            <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
                             <jalios:wysiwyg><%= obj.getPiecesAFournir() %></jalios:wysiwyg>
                         </div>
 
- 
-
                         <div class="col-1 grid-offset"></div>
-
  
                         <aside class="col-4">                   
                             <!-- Bon à savoir --> 
@@ -144,13 +143,12 @@
                                     <p>86 ans - Retraitée - Nantes</p>
                                   </div>
                                 </div>
-                              </section>
+                             </section>
                               
-                              <!-- Potlet encadrés -->
-                              <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
+                             <!-- Potlet encadrés -->
+                             <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
                                 <jalios:include pub="<%= itPortlet %>" />
-                              </jalios:foreach>
-                              
+                             </jalios:foreach>                              
                         </aside>
 
                     </div>
