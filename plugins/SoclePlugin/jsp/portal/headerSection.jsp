@@ -66,7 +66,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRoot
 			            </jalios:foreach>
 			            </ul>
 			            <hr class="ds44-navSep" />
-			            <ul class="ds44-navList ds44-multiCol ds44-xl-gap">
+			            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
                         <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
                             <li><a href="#" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
                         </jalios:foreach>
@@ -76,7 +76,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRoot
 			        <div class="ds44-container-fixed ds44-posBot ds44-container-relmob">
 			            <div class="ds44-flex-container ds44-flex-align-center">
 			                <p class="h4-like mbm ds44-hide-mobile">Suivez-nous sur les réseaux</p>
-			                <ul class="ds44-list ds44-flex-container">                
+			                <ul class="ds44-list ds44-flex-container ds44-list">                
 			                    <li><a href="https://www.facebook.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Facebook"><i class="icon icon-facebook" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Facebook</span></a></li>
 			                    <li><a href="https://twitter.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Twitter"><i class="icon icon-twitter" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Twitter</span></a></li>
 			                    <li><a href="http://instagram.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Instagram"><i class="icon icon-instagram" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Instagram</span></a></li>

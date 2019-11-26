@@ -32,7 +32,7 @@
                 <p role="heading" aria-level="1" class="ds44-menuBackLink"><%= rootCat.getName() %></p>
             </div>
 
-            <ul class="ds44-navListN2 ds44-multiCol ds44-xl-gap ds44-xl-fluid-margin">
+            <ul class="ds44-navListN2 ds44-multiCol ds44-xl-gap ds44-xl-fluid-margin ds44-list">
             <jalios:foreach collection="<%= rootCat.getChildrenSet() %>" name="itCat" type="Category">
                 <li><a href="#" class="ds44-menuLink ds44-menuLink--subLvl"><%= itCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
             </jalios:foreach>
