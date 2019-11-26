@@ -48,14 +48,14 @@
     <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Documents utiles</label>
     </field>
+    <field name="edemarche" editor="category" required="false" compactDisplay="false" tab="demande" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p2_1054474">
+      <label xml:lang="fr">E-demarche</label>
+    </field>
     <field name="urlEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Url e-démarche</label>
     </field>
     <field name="urlSuiviEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Url suivi e-démarche</label>
-    </field>
-    <field name="edemarche" editor="category" required="false" compactDisplay="false" tab="demande" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p2_1054474">
-      <label xml:lang="fr">E-demarche</label>
     </field>
     <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Durée e-démarche</label>
