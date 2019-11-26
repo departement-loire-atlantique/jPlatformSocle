@@ -83,7 +83,7 @@
 
                             <!-- Témoignages -->  
                             <section class="ds44-box">
-                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.temoignage") %></p>
+                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.temoignage") %></p>
                                 <div class="ds44-bgGray">
                                   <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
                                   <div class="ds44--m-padding">
@@ -135,7 +135,7 @@
                        
                             <!-- Témoignages --> 
                             <section class="ds44-box">
-                                <p role="heading" aria-level="2" class="ds44-box-heading">Témoignages</p>
+                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.temoignage") %></p>
                                 <div class="ds44-bgGray">
                                   <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
                                   <div class="ds44--m-padding">
