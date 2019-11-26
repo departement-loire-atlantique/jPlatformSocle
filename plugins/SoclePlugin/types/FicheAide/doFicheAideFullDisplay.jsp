@@ -73,32 +73,9 @@
                         <div class="col-1 grid-offset"></div>
 
                         <aside class="col-4">     
-                            <!-- Bon à savoir -->              
-                            <section class="ds44-box ds44-theme ds44-mb3">
-                                <div class="ds44-innerBoxContainer">
-                                    <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreEncartBonASavoir() %></p>
-                                    <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
-                                </div>
-                            </section>
-
-                            <!-- Témoignages -->  
-                            <section class="ds44-box">
-                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.temoignage") %></p>
-                                <div class="ds44-bgGray">
-                                  <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
-                                  <div class="ds44--m-padding">
-                                    <p role="heading" aria-level="3"><a href="#">Monique a aménagé son logement</a></p>
-                                    <p>86 ans - Retraitée - Nantes</p>
-                                  </div>
-                                </div>
-                            </section>
-                            
-                            <!-- Potlet encadrés -->
-                            <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
-                                <jalios:include pub="<%= itPortlet %>" />
-                            </jalios:foreach>
-                            
+                            <%@ include file="doFicheAideEncadre.jspf" %>                     
                         </aside>
+                        
                     </div>
 
                 </div>
@@ -125,30 +102,7 @@
                         <div class="col-1 grid-offset"></div>
  
                         <aside class="col-4">                   
-                            <!-- Bon à savoir --> 
-                            <section class="ds44-box ds44-theme ds44-mb3">
-                                <div class="ds44-innerBoxContainer">
-                                    <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreEncartBonASavoir() %></p>
-                                    <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
-                                </div>
-                            </section>
-                       
-                            <!-- Témoignages --> 
-                            <section class="ds44-box">
-                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.temoignage") %></p>
-                                <div class="ds44-bgGray">
-                                  <picture><img src="../../assets/images/sample-media.jpg" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
-                                  <div class="ds44--m-padding">
-                                    <p role="heading" aria-level="3"><a href="#">Monique a aménagé son logement</a></p>
-                                    <p>86 ans - Retraitée - Nantes</p>
-                                  </div>
-                                </div>
-                             </section>
-                              
-                             <!-- Potlet encadrés -->
-                             <jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
-                                <jalios:include pub="<%= itPortlet %>" />
-                             </jalios:foreach>                              
+                            <%@ include file="doFicheAideEncadre.jspf" %>                               
                         </aside>
 
                     </div>
