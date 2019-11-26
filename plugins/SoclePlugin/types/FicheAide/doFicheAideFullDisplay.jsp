@@ -67,7 +67,7 @@
                         <div class="col-7">
                             <p class="ds44-introduction"><%= obj.getChapo() %></p>
                             <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-                            <jalios:wysiwyg><%= obj.getPrecisionsBeneficiaires() %></jalios:wysiwyg>                                        
+                            <jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>                                        
                         </div>
 
                         <div class="col-1 grid-offset"></div>
@@ -113,13 +113,13 @@
                             <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
                             
                             <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
-                            <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+                            <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
 
                             <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-                            <jalios:wysiwyg><%= obj.getModalites() %></jalios:wysiwyg>
+                            <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
         
                             <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
-                            <jalios:wysiwyg><%= obj.getPiecesAFournir() %></jalios:wysiwyg>
+                            <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
                         </div>
 
                         <div class="col-1 grid-offset"></div>
