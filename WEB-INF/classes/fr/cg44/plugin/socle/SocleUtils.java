@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
+import com.jalios.jcms.FileDocument;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
 import com.jalios.util.URLUtils;
@@ -141,6 +142,19 @@ public final class SocleUtils {
 		 */
 
 		return idVideo;
-	}	  	
+	}	
+	
+	/**
+	 * Méthode qui récupère l'extension du fichier d'un contenu FileDocument.
+	 * @param fileDoc le FileDocument dont il faut récupérer l'extension de fichier
+	 * @return l'extension du fichier en uppercase si elle existe, sinon "FILE"
+	 */
+	public static String getFileExtension(FileDocument fileDoc) {
+		String fileType = "FILE";
+		if (fileDoc.getFilename().lastIndexOf('.') != -1 && fileDoc.getFilename().lastIndexOf('.')+1 <= fileDoc.getFilename().length()) {
+		  fileType = fileDoc.getFilename().substring(fileDoc.getFilename().lastIndexOf('.') + 1).toUpperCase();
+		}
+		return fileType;
+	}
 
 }
