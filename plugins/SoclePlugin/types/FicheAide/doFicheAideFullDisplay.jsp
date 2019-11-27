@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
+%><%@ page import="fr.cg44.plugin.socle.SocleUtils" %><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
 
 
@@ -84,18 +85,11 @@
                                                           <jalios:default>
                                                               <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
                                                                   <% 
-                                                                  // Récupérer l'extension du fichier
-                                                                  String fileType = "FILE";
-                                                                  if (itDoc.getFilename().lastIndexOf('.') != -1 && itDoc.getFilename().lastIndexOf('.')+1 <= itDoc.getFilename().length()) {
-                                                                      fileType = itDoc.getFilename().substring(itDoc.getFilename().lastIndexOf('.') + 1).toUpperCase();
-                                                                  }
-                                                                  // Récupérer la taille du fichier
-                                                                  long size = itDoc.getFile().length() >= 0 ? itDoc.getFile().length() : 0;
-                                                                  String[] units = new String[] {"B", "KB", "MB", "GB", "TB"};
-                                                                  int digitGroups = (int)(Math.log10(size) / Math.log10(1024));
-                                                                  String fileSize = new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) 
-                                                                          + " " + units[digitGroups];
-                                                                  %>
+		                                                  // Récupérer l'extension du fichier
+		                                                  String fileType = SocleUtils.getFileExtension(itDoc);
+		                                                  // Récupérer la taille du fichier
+		                                                  String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+		                                                  %>
                                                                   <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                                               </jalios:foreach>
                                                           </jalios:default>
