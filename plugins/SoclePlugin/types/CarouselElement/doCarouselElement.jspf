@@ -48,7 +48,7 @@ if(Util.notEmpty(obj.getNewTab())) {
 <jalios:if predicate="<%=obj.getInternalLink() instanceof FileDocument %>">
     <%
     FileDocument fd = (FileDocument) obj.getInternalLink();
-    fileType = fd.getGenericContentType().toUpperCase();
+    fileType = FileDocument.getExtension(fd.getFilename()).toUpperCase();
     fileSize = Util.formatFileSize(fd.getSize(), userLocale);
     %>
 </jalios:if>
