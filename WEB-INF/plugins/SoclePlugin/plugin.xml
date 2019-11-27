@@ -166,6 +166,7 @@
     <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="WEB-INF/tags/card.tag" />
+    <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  

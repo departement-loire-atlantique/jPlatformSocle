@@ -1,28 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
-%><% PageCarrefour obj = (PageCarrefour)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
+%><% 
+PageCarrefour obj = (PageCarrefour)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+String imageFile = obj.getImage();
+String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
+String title = obj.getTitle();
 %>
-
 
 <main role="main" id="content">
 
     <section class="ds44-container-fluid">
-
-        <div class="ds44-pageHeaderContainer">
-            <jalios:if predicate="<%= Util.notEmpty(obj.getImage()) %>">
-	            <picture class="ds44-pageHeaderContainer__pictureContainer">
-	                <img src="<%=obj.getImage()%>" alt="" class="ds44-headerImg" />
-	            </picture>
-            </jalios:if>
-            <div class="ds44-titleContainer">
-                <!-- Fil d'ariane -->
-                <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
-                    <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
-                </jalios:if>
-                <h1 class="h1-like ds44-text--colorInvert"><%=obj.getTitle() %></h1>
-            </div>
-        </div>
+        
+        <ds:titleBanner imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" breadcrumb="true"></ds:titleBanner>
 
         <div class="ds44-inner-container">
             <div class="grid-12-small-1">
