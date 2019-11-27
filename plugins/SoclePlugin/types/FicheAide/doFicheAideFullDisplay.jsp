@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-%><%@ page import="fr.cg44.plugin.socle.SocleUtils" %><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
 
 
@@ -86,7 +85,7 @@
                                                               <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
                                                                   <% 
 		                                                  // Récupérer l'extension du fichier
-		                                                  String fileType = SocleUtils.getFileExtension(itDoc);
+		                                                  String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
 		                                                  // Récupérer la taille du fichier
 		                                                  String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
 		                                                  %>
