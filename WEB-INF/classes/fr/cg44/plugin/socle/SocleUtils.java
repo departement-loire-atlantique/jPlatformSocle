@@ -141,6 +141,6 @@ public final class SocleUtils {
 		 */
 
 		return idVideo;
-	}	  	
+	}
 
 }

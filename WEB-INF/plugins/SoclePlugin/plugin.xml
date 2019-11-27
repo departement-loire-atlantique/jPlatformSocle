@@ -23,6 +23,7 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="FicheAide"></type>  
     <type name="Help"></type>
     <type name="News"></type>
     <type name="Place"></type>
@@ -49,7 +50,12 @@
         <template name="default" file="doDossierFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>   
+    </templates> 
+    <templates type="FicheAide">
+        <template name="default" file="doFicheAideFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>    
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>

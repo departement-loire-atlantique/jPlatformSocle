@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheAide" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Fiche aide</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" tab="principal" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" tab="principal" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="descriptionLongue" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+      <label xml:lang="fr">Description longue</label>
+    </field>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="beneficiairesEtThematiques" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5195" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Bénéficiaires et thématiques</label>
+    </field>
+    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Pour qui ?</label>
+    </field>
+    <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Éligibilité</label>
+    </field>
+    <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">C’est quoi ?</label>
+    </field>
+    <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Comment faire une demande ?</label>
+    </field>
+    <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Quels documents fournir ?</label>
+    </field>
+    <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
+      <label xml:lang="fr">Documents utiles</label>
+    </field>
+    <field name="edemarche" editor="category" required="false" compactDisplay="false" tab="demande" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p2_1054474">
+      <label xml:lang="fr">E-demarche</label>
+    </field>
+    <field name="urlEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Url e-démarche</label>
+    </field>
+    <field name="urlSuiviEdemarche" editor="url" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Url suivi e-démarche</label>
+    </field>
+    <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Durée e-démarche</label>
+    </field>
+    <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Intro suivre une demande</label>
+    </field>
+    <field name="titreEncartBonASavoir" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart "Bon à savoir"</label>
+    </field>
+    <field name="bonASavoir" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Bon à savoir</label>
+    </field>
+    <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre vidéo</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="encadres" type="generated.VideoChapitree[]">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
+    <field name="portletEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlet encadrés</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="contact">
+      <label xml:lang="fr">Contact</label>
+    </tab>
+    <tab id="en_detail">
+      <label xml:lang="fr">En détail</label>
+    </tab>
+    <tab id="en_resume">
+      <label xml:lang="fr">En résumé</label>
+    </tab>
+    <tab id="principal">
+      <label xml:lang="fr">Principal</label>
+    </tab>
+    <tab id="demande">
+      <label xml:lang="fr">Demande</label>
+    </tab>
+    <tab id="encadres">
+      <label xml:lang="fr">Encadrés</label>
+    </tab>
+  </tabs>
+</type>
+
