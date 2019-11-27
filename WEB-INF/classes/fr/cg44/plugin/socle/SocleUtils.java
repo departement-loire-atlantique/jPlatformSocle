@@ -79,7 +79,7 @@ public final class SocleUtils {
 	 * Transforme une URL Youtube du type :
 	 * http://www.youtube.com/watch?v=6_I70KACh4o en :
 	 * http://www.youtube.com/embed/6_I70KACh4o pour permettre l'utilisation de la
-	 * balise <object>
+	 * balise "object"
 	 * 
 	 * @param url
 	 *          L'URL Youtube
