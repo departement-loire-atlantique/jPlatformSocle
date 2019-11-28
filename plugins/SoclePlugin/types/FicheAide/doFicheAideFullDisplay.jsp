@@ -73,8 +73,8 @@
                                             </div>
                                             </jalios:if>
                                             <jalios:default>
-                                            <div class="ds44-multiCol ds44-multiCol--border ds44-mt3">
-                                                <div class="ds44-noCut prm">
+                                            <div class="ds44-flex-container ds44-mt3">
+                                                <div class="ds44-halfWidth prl">
                                                     <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
                                                     
                                                     <jalios:select>
@@ -95,7 +95,7 @@
                                                     </jalios:select>
                                                     
                                                 </div>
-                                                <div class="ds44-noCut plm">
+                                                <div class="ds44-halfWidth pll ds44-border-left">
         
                                                     <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
         
