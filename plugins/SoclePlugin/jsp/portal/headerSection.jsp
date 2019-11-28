@@ -63,7 +63,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.ge
 				                %>
 				                <li>
 				                    <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
-				                    <ds:LevelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>"/>
+				                    <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>"/>
 				                </li>
 				            </jalios:foreach>
 				            </ul>
