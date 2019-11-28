@@ -2,7 +2,7 @@
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file='/jcore/portal/doPortletParams.jsp' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
-<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+
 
 <%
 String[] headerCatListId = channel.getStringArrayProperty("jcmsplugin.socle.site.header.cat", new String[] {});
@@ -10,15 +10,17 @@ Category[] headerCatList = JcmsUtil.stringArrayToDataArray (Category.class, head
 
 String menuRootCatId = channel.getProperty("jcmsplugin.socle.site.menu.cat.root");
 Category menuRootCat = channel.getCategory(menuRootCatId);
-Set<Category> menuCatList = Util.notEmpty(menuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(menuRootCat) : new HashSet<Category>();
+Set<Category> menuCatList = Util.notEmpty(menuRootCat) ? menuRootCat.getChildrenSet() : new HashSet<Category>();
 
 String subMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.submenu.cat.root");
 Category subMenuRootCat = channel.getCategory(subMenuRootCatId);
-Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(subMenuRootCat) : new HashSet<Category>();
+Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? subMenuRootCat.getChildrenSet() : new HashSet<Category>();
 
 String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
 Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
-Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
+System.out.println(appliMenuRootCat);
+Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRootCat.getChildrenSet() : new HashSet<Category>();
+System.out.println(appliMenuCatList);
 %>
 
 
@@ -62,14 +64,14 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.ge
 				                %>
 				                <li>
 				                    <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
-				                    <ds:LevelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>"/>
+				                    <ds:menuNiveauDeux rootCat="<%= itCat %>" id='<%= navId %>'/>
 				                </li>
 				            </jalios:foreach>
 				            </ul>
 				            <hr class="ds44-navSep" />
 				            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 	                        <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
-	                            <li><a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+	                            <li><a href="#" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
 	                        </jalios:foreach>
 	                        </ul>
 				        </div>
@@ -102,7 +104,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.ge
 							                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
 							                        <ul class="ds44-list">
 							                        <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-							                            <li><a href="<%= itSubCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl"><%= itSubCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+							                            <li><a href="#" class="ds44-menuLink ds44-menuLink--subLvl"><%= itSubCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
 							                        </jalios:foreach>
 							                        </ul>
 							                    </li>
