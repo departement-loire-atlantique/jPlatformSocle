@@ -69,7 +69,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRoot
 				            <hr class="ds44-navSep" />
 				            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 	                        <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
-	                            <li><a href="#" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+	                            <li><a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
 	                        </jalios:foreach>
 	                        </ul>
 				        </div>
@@ -102,7 +102,7 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRoot
 							                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
 							                        <ul class="ds44-list">
 							                        <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-							                            <li><a href="#" class="ds44-menuLink ds44-menuLink--subLvl"><%= itSubCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+							                            <li><a href="<%= itSubCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl"><%= itSubCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
 							                        </jalios:foreach>
 							                        </ul>
 							                    </li>
