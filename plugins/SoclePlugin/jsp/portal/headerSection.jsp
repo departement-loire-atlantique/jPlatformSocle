@@ -2,6 +2,7 @@
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file='/jcore/portal/doPortletParams.jsp' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils
 
 
 <%
@@ -10,15 +11,15 @@ Category[] headerCatList = JcmsUtil.stringArrayToDataArray (Category.class, head
 
 String menuRootCatId = channel.getProperty("jcmsplugin.socle.site.menu.cat.root");
 Category menuRootCat = channel.getCategory(menuRootCatId);
-Set<Category> menuCatList = Util.notEmpty(menuRootCat) ? menuRootCat.getChildrenSet() : new HashSet<Category>();
+Set<Category> menuCatList = Util.notEmpty(menuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(menuRootCat) : new HashSet<Category>();
 
 String subMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.submenu.cat.root");
 Category subMenuRootCat = channel.getCategory(subMenuRootCatId);
-Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? subMenuRootCat.getChildrenSet() : new HashSet<Category>();
+Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(subMenuRootCat) : new HashSet<Category>();
 
 String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
 Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
-Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRootCat.getChildrenSet() : new HashSet<Category>();
+Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
 %>
 
 
