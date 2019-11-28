@@ -18,9 +18,7 @@ Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? subMenuRootCat.ge
 
 String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
 Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
-System.out.println(appliMenuRootCat);
 Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? appliMenuRootCat.getChildrenSet() : new HashSet<Category>();
-System.out.println(appliMenuCatList);
 %>
 
 
