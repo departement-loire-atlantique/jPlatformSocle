@@ -4,7 +4,8 @@
     pageEncoding="UTF-8"
     description="Deuxieme niveau du menu de navigation principal" 
     body-content="scriptless" 
-    import="com.jalios.jcms.Category"
+    import="com.jalios.jcms.Category,
+            java.util.Locale"
 %><%
 %><%@ attribute name="rootCat"
     required="true"
@@ -18,6 +19,12 @@
     rtexprvalue="true"
     type="String"
     description="Id du second niveau du menu"
+%><%@ attribute name="userLocale"
+    required="true"
+    fragment="false"
+    rtexprvalue="true"
+    type="Locale"
+    description="La valeur de userLocale pour la bonne traduction du label"
 %>
 
 <section id="<%= id %>" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv2" role="dialog" aria-label="Menu principal niveau 2">
