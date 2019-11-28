@@ -64,7 +64,7 @@ System.out.println(appliMenuCatList);
 				                %>
 				                <li>
 				                    <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
-				                    <ds:menuNiveauDeux rootCat="<%= itCat %>" id='<%= navId %>'/>
+				                    <ds:LevelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>"/>
 				                </li>
 				            </jalios:foreach>
 				            </ul>
