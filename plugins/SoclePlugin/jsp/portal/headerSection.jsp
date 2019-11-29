@@ -2,7 +2,7 @@
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file='/jcore/portal/doPortletParams.jsp' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
-<%@ page import="fr.cg44.plugin.socle.SocleUtils
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 
 
 <%
