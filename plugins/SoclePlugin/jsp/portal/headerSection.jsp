@@ -34,18 +34,19 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.ge
 
     <div class="ds44-flex-container ds44-flex-valign-center">
         <div class="ds44-colLeft">
-            <a href="index.jsp">
+            <a href="index.jsp" class="ds44-logoContainer">
                 <picture class="ds44-logo">
                     <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.site.alt.logo") %>" />
                 </picture>
             </a>
         </div>
         <div class="ds44-colRight">            
-            <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button" role="button"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large"></i></button>           
+            <button class="ds44-btnIcoText--maxi ds44--xl-padding-tb" type="button" aria-label="Ouvrir la recherche"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i></button>
             <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
-                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" type="button" role="button"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large"></i></a>                          
+                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large"></i></a>                          
             </jalios:foreach>
-            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" role="button"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--large"></i></button>
+            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" aria-label="Ourvir le menu de navigation"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i></button>
+            
             <section id="menu" class="ds44-menuBox">
 	            <section id="nav1" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1">
 				    <p role="heading" aria-level="1" class="visually-hidden">Menu</p>
