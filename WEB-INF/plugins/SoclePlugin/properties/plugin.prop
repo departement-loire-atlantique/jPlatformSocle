@@ -113,3 +113,11 @@ $jcmsplugin.socle.fichearticle.thematiquesBesoins.root: j_3
 $jcmsplugin.socle.fichearticle.delegations.root: j_3
 $jcmsplugin.socle.fichearticle.communes.root: j_3
 $jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root: j_3
+
+# Fiche Actu
+
+$jcmsplugin.socle.ficheactu.categorieDeNavigation.root: j_3
+$jcmsplugin.socle.ficheactu.thematiquesBesoins.root: j_3
+$jcmsplugin.socle.ficheactu.delegations.root: j_3
+$jcmsplugin.socle.ficheactu.communes.root: j_3
+$jcmsplugin.socle.ficheactu.toutesLesCommunesEPCI.root: j_3
