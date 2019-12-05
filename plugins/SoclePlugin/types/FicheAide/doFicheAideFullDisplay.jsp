@@ -63,7 +63,7 @@
                                     <h2 class="h2-like"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
 
                                     <div class="ds44-modal-gab">
-                                        <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
+                                        <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
                                                                                 
                                            <div class="ds44-flex-container ds44-mt3">
                                                <div class="ds44-halfWidth prl">

@@ -60,6 +60,9 @@
     <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Durée e-démarche</label>
     </field>
+    <field name="introFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tab="demande" html="false">
+      <label xml:lang="fr">Intro faire une demande</label>
+    </field>
     <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro suivre une demande</label>
     </field>
