@@ -135,13 +135,15 @@
                                                     <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="ds44-noCut plm">
-
-                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
-
-                                                <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
-
-                                            </div>
+                                            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+	                                            <div class="ds44-noCut plm">
+	
+	                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+	                                                
+	                                                <p class="txtcenter"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang) %>">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+	                                                
+	                                            </div>
+                                            </jalios:if>
                                         </div>
                                     </div>
                                 </div>       
