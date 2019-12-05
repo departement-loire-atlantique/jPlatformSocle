@@ -64,51 +64,53 @@
 
                                     <div class="ds44-modal-gab">
                                         <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
-
-                                        
-                                        <jalios:select>
-                                            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-                                            <div class="ds44-noCut">    
-                                                <p class="txtcenter"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
-                                            </div>
-                                            </jalios:if>
-                                            <jalios:default>
-                                            <div class="ds44-flex-container ds44-mt3">
-                                                <div class="ds44-halfWidth prl">
-                                                    <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
-                                                    
-                                                    <jalios:select>
-                                                          <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
-                                                              <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
-                                                          </jalios:if>
-                                                          <jalios:default>
-                                                              <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-                                                                  <% 
-		                                                  // Récupérer l'extension du fichier
-		                                                  String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-		                                                  // Récupérer la taille du fichier
-		                                                  String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-		                                                  %>
-                                                                  <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
-                                                              </jalios:foreach>
-                                                          </jalios:default>
-                                                    </jalios:select>
-                                                    
-                                                </div>
+                                                                                
+                                           <div class="ds44-flex-container ds44-mt3">
+                                               <div class="ds44-halfWidth prl">
+                                                   <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
+                                                   
+                                                   <jalios:select>
+                                                         <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
+                                                             <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
+                                                         </jalios:if>
+                                                         <jalios:default>
+                                                             <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
+                                                                 <% 
+	                                                  // Récupérer l'extension du fichier
+	                                                  String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+	                                                  // Récupérer la taille du fichier
+	                                                  String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+	                                                  %>
+                                                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                                             </jalios:foreach>
+                                                         </jalios:default>
+                                                   </jalios:select>
+                                                   
+                                               </div>
+                                               <jalios:select>
+                                                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
                                                 <div class="ds44-halfWidth pll ds44-border-left">
         
                                                     <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
         
                                                     <p class="ds44-btn--invert"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
                                                 </div>
-                                            </div>
-                                            </jalios:default>
-                                        </jalios:select>
+                                                </jalios:if>
+                                                <jalios:default>
+                                                <div class="ds44-halfWidth pll ds44-border-left">
+           
+                                                       <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+           
+                                                       <p class="ds44-btn--invert"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                                   </div>
+                                                </jalios:default>
+                                               </jalios:select>
+                                           </div>
                                     </div>
                                 </div>                              
                             </div>
                         </li>
-
+                        <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
                         <li class="mrs ds44-ongletsBtnItem">
                         
                             <!-- TODO faire une demande et traduire les libellés -->
@@ -135,20 +137,19 @@
                                                     <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
-                                            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-	                                            <div class="ds44-noCut plm">
-	
-	                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
-	                                                
-	                                                <p class="txtcenter"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang) %>">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
-	                                                
-	                                            </div>
-                                            </jalios:if>
+                                            <div class="ds44-noCut plm">
+
+                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+
+                                                <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>       
                             </div>
                         </li>
+                        </jalios:if>
                     </ul>
 
                 </div>
