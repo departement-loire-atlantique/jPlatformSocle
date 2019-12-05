@@ -121,3 +121,11 @@ $jcmsplugin.socle.ficheactu.thematiquesBesoins.root: j_3
 $jcmsplugin.socle.ficheactu.delegations.root: j_3
 $jcmsplugin.socle.ficheactu.communes.root: j_3
 $jcmsplugin.socle.ficheactu.toutesLesCommunesEPCI.root: j_3
+
+# Fiche Lieu
+
+$jcmsplugin.socle.fichelieu.typeLieu.root: j_3
+$jcmsplugin.socle.fichelieu.besoins.root: j_3
+$jcmsplugin.socle.fichelieu.publicVise.root: j_3
+$jcmsplugin.socle.fichelieu.delegations.root: j_3
+$jcmsplugin.socle.fichelieu.toutesLesCommunesEPCI.root: j_3

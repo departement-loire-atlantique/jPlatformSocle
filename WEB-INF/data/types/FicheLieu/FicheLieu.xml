@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheLieu" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Fiche Lieu</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="idReferentiel" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">ID référentiel</label>
+    </field>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="serviceDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="description" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Service du Département</label>
+    </field>
+    <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type de lieu</label>
+    </field>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="enBref" editor="textarea" required="false" compactDisplay="false" tab="description" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">En bref</label>
+    </field>
+    <field name="plusDeDetailInterne" editor="link" required="false" compactDisplay="false" tab="description" type="com.jalios.jcms.Content" parent="false">
+      <label xml:lang="fr">Plus de détail (interne)</label>
+    </field>
+    <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Plus de détail (externe)</label>
+    </field>
+    <field name="etageCouloirEscalier" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Étage - couloir - escalier</label>
+    </field>
+    <field name="entreeBatimentImmeuble" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Entrée - bâtiment - immeuble</label>
+    </field>
+    <field name="ndeVoie" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">N° de voie</label>
+    </field>
+    <field name="libelleDeVoie" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé de voie</label>
+    </field>
+    <field name="lieudit" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Lieu-dit</label>
+    </field>
+    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="planDacces" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="com.jalios.jcms.FileDocument[]" ml="true">
+      <label xml:lang="fr">Plan d'accès</label>
+    </field>
+    <field name="libelleAutreAdresse" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé autre adresse</label>
+    </field>
+    <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">CS</label>
+    </field>
+    <field name="cedex" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Cedex</label>
+    </field>
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d\d \d\d \d\d \d\d \d\d">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="email" editor="email" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="50" ml="true">
+      <label xml:lang="fr">Email</label>
+    </field>
+    <field name="siteInternet" editor="url" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Site internet</label>
+    </field>
+    <field name="typeDacces" editor="enumerate" required="true" compactDisplay="false" tab="details" type="String[]" chooser="checkbox" valueList="direct|prescription" ml="false" descriptionType="tooltip" labelList="Direct|Sur prescription" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Type d'accès</label>
+    </field>
+    <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Complément type d'accès</label>
+    </field>
+    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Pour qui ?</label>
+    </field>
+    <field name="publicVise" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.publicVise.root">
+      <label xml:lang="fr">Public visé</label>
+    </field>
+    <field name="modalitesDaccueil" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Modalités d'accueil</label>
+    </field>
+    <field name="horairesEtAcces" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Horaires et accès</label>
+    </field>
+    <field name="transportsEnCommun" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" inline="true">
+      <label xml:lang="fr">Transports en commun</label>
+    </field>
+    <field name="parkings" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Parkings</label>
+    </field>
+    <field name="enDetails" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">En détails</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.VideoChapitree[]">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
+    <field name="portletBas" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlet bas</label>
+    </field>
+    <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.FicheLieu[]">
+      <label xml:lang="fr">Autres lieux associés</label>
+    </field>
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.besoins.root">
+      <label xml:lang="fr">Besoins</label>
+    </field>
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.delegations.root">
+      <label xml:lang="fr">Délégations</label>
+    </field>
+    <field name="communesDintervention" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
+      <label xml:lang="fr">Communes d'intervention</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+    </field>
+    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">Toutes les communes EPCI</label>
+    </field>
+    <field name="canton" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.Canton" parent="false">
+      <label xml:lang="fr">Canton</label>
+    </field>
+    <field name="arretsDeTransportsEnCommunAccess" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Arrêts de transports en commun accessible</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="presenceDunePlacePMRSurLespacePu" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Présence d'une place PMR sur l'espace public</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="presenceDunePlacePMRDansLERP" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Présence d'une place PMR dans l'ERP</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="handicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">Handicap auditif</label>
+    </field>
+    <field name="handicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">Handicap mental</label>
+    </field>
+    <field name="deficiencePsychiqueEtMaladieMent" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="batimentHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">(Bâtiment) Handicap auditif</label>
+    </field>
+    <field name="batimentHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">(Bâtiment) Handicap moteur</label>
+    </field>
+    <field name="batimentHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">(Bâtiment) Handicap visuel</label>
+    </field>
+    <field name="batimentDeficiencePsychiqueEtMal" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bâtiment) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="visiophone" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Visiophone</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="sonette" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Sonette</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="signaletiqueDirectionnelle" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Signalétique directionnelle</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="entreeDePlainpied" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Entrée de plain-pied</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="portesAutomatiques" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Portes automatiques</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="rampeFixe" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Rampe fixe</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="ascenseurMontecharge" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Ascenseur / monte-charge</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="presenceDePersonnelALaccueil" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Présence de personnel à l'accueil</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="personnelDaccueilFormeAuxDiffere" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Personnel d'accueil formé aux différentes situations de handicap</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="personnelDaccueilFormeALaLangueD" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+      <label xml:lang="fr">Personnel d'accueil formé à la Langue des Signes Française (LSF)</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="siOuiHorairesDePresence" editor="textarea" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Si oui, horaires de présence</label>
+    </field>
+    <field name="accueilHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Accueil) Handicap auditif</label>
+    </field>
+    <field name="accueilHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Accueil) Handicap moteur</label>
+    </field>
+    <field name="accueilHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Accueil) Handicap visuel</label>
+    </field>
+    <field name="accueilHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Accueil) Handicap mental</label>
+    </field>
+    <field name="accueilDeficiencePsychiqueEtMala" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Accueil) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="sanitairesHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Sanitaires) Handicap auditif</label>
+    </field>
+    <field name="sanitairesHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Sanitaires) Handicap moteur</label>
+    </field>
+    <field name="sanitairesHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+      <label xml:lang="fr">(Sanitaires) Handicap visuel</label>
+    </field>
+    <field name="salleDattenteHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Salle d’attente) Handicap mental</label>
+    </field>
+    <field name="salleDattenteDeficiencePsychique" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Salle d’attente) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="bureauHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bureau) Handicap auditif</label>
+    </field>
+    <field name="bureauHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bureau) Handicap moteur</label>
+    </field>
+    <field name="bureauHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bureau) Handicap visuel</label>
+    </field>
+    <field name="bureauHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bureau) Handicap mental</label>
+    </field>
+    <field name="bureauDeficiencePsychiqueEtMalad" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+      <label xml:lang="fr">(Bureau) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="salleDeReunionHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Salle de réunion) Handicap auditif</label>
+    </field>
+    <field name="salleDeReunionHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Salle de réunion) Handicap moteur</label>
+    </field>
+    <field name="salleDeReunionHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Salle de réunion) Handicap visuel</label>
+    </field>
+    <field name="salleDeReunionHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Salle de réunion) Handicap mental</label>
+    </field>
+    <field name="salleDeReunionDeficiencePsychiqu" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">(Salle de réunion) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="planningDeMiseEnAccessibiliteDuS" editor="textfield" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Planning de mise en accessibilité du site</label>
+    </field>
+    <field name="boucleInductionMagnetiqueAccueil" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">Boucle induction magnétique - Accueil</label>
+    </field>
+    <field name="ascenseur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">Ascenseur</label>
+    </field>
+    <field name="rampeAmovible" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+      <label xml:lang="fr">Rampe amovible</label>
+    </field>
+    <field name="informationsComplementaires" editor="wysiwyg" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Informations complémentaires</label>
+    </field>
+    <field name="adresse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Adresse</label>
+    </field>
+    <field name="latitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Latitude</label>
+    </field>
+    <field name="longitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Longitude</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="coordonnees">
+      <label xml:lang="fr">Coordonnées</label>
+    </tab>
+    <tab id="description">
+      <label xml:lang="fr">Description</label>
+    </tab>
+    <tab id="details">
+      <label xml:lang="fr">Détails</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Rattachement</label>
+    </tab>
+    <tab id="accessibilite">
+      <label xml:lang="fr">Accessibilité</label>
+    </tab>
+  </tabs>
+</type>
+

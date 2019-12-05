@@ -26,6 +26,7 @@
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
+    <type name="FicheLieu"></type>  
     <type name="Help"></type>
     <type name="News"></type>
     <type name="Place"></type>
@@ -68,6 +69,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>    
+    <templates type="FicheLieu">
+        <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
