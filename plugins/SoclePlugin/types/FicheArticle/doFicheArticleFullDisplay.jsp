@@ -201,7 +201,7 @@
             <% if (Util.notEmpty(obj.getCategorieDeNavigation(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getCategorieDeNavigation(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("j_5"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichearticle.categorieDeNavigation.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -213,7 +213,7 @@
             <% if (Util.notEmpty(obj.getThematiquesBesoins(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getThematiquesBesoins(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("c_2000128"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichearticle.thematiquesBesoins.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -225,20 +225,24 @@
             <% if (Util.notEmpty(obj.getDelegations(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getDelegations(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("c_2000129"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichearticle.delegations.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field communes categoryEditor  <%= Util.isEmpty(obj.getCommunes(loggedMember)) ? "empty" : "" %>">
+  <tr class="field communes linkEditor  <%= Util.isEmpty(obj.getCommunes()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "communes", userLang) %><jalios:edit pub='<%= obj %>' fields='communes'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCommunes(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getCommunes())) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getCommunes(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("c_2000131"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
+              <jalios:foreach name="itData" type="generated.City" array="<%= obj.getCommunes() %>">
+              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
+              <li>
+              <jalios:link data='<%= itData %>'/>
+              </li>
+              <% } %>
+              </jalios:foreach>
             </ol>
             <% } %>
     </td>
@@ -257,7 +261,7 @@
             <% if (Util.notEmpty(obj.getToutesLesCommunesEPCI(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getToutesLesCommunesEPCI(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("c_2000130"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
