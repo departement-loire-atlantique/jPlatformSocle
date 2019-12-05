@@ -5,10 +5,10 @@
 <div class="fullDisplay FicheArticle <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
 <%@ include file='/front/publication/doPublicationHeader.jspf' %>
 <table class="fields">
-  <tr class="field isTypeSimple booleanEditor  ">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "isTypeSimple", userLang) %><jalios:edit pub='<%= obj %>' fields='isTypeSimple'/></td>
+  <tr class="field typeSimple booleanEditor  ">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "typeSimple", userLang) %><jalios:edit pub='<%= obj %>' fields='typeSimple'/></td>
     <td class='field-data' >
-            <%= obj.getIsTypeSimpleLabel(userLang) %>
+            <%= obj.getTypeSimpleLabel(userLang) %>
     </td>
   </tr>
   <tr class="field imagePrincipale imageEditor  <%= Util.isEmpty(obj.getImagePrincipale()) ? "empty" : "" %>">
