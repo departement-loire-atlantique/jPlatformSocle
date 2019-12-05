@@ -102,4 +102,14 @@ channel.topbar.site.enabled: true
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 
+# ------------------------------------------------------------
+#  Catégories racines des types de contenu
+# ------------------------------------------------------------
 
+# Fiche Article
+
+$jcmsplugin.socle.fichearticle.categorieDeNavigation.root: j_3
+$jcmsplugin.socle.fichearticle.thematiquesBesoins.root: j_3
+$jcmsplugin.socle.fichearticle.delegations.root: j_3
+$jcmsplugin.socle.fichearticle.communes.root: j_3
+$jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root: j_3
