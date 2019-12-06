@@ -5,11 +5,20 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
+    <field name="image" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">image</label>
     </field>
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
       <label xml:lang="fr">image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
     </field>
     <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
       <label xml:lang="fr">description</label>
