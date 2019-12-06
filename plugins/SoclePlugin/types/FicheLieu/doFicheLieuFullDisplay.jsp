@@ -21,12 +21,10 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field serviceDuDepartement enumerateEditor  <%= Util.isEmpty(obj.getServiceDuDepartement()) ? "empty" : "" %>">
+  <tr class="field serviceDuDepartement booleanEditor  ">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "serviceDuDepartement", userLang) %><jalios:edit pub='<%= obj %>' fields='serviceDuDepartement'/></td>
-    <td class='field-data' <%= gfla(obj, "serviceDuDepartement") %>>
-            <% if (Util.notEmpty(obj.getServiceDuDepartement())) { %>
-            <%= obj.getServiceDuDepartementLabel(obj.getServiceDuDepartement(), userLang) %>
-            <% } %>
+    <td class='field-data' >
+            <%= obj.getServiceDuDepartementLabel(userLang) %>
     </td>
   </tr>
   <tr class="field typeDeLieu categoryEditor  <%= Util.isEmpty(obj.getTypeDeLieu(loggedMember)) ? "empty" : "" %>">
@@ -470,59 +468,87 @@
             <%= obj.getPresenceDunePlacePMRDansLERPLabel(userLang) %>
     </td>
   </tr>
-  <tr class="field handicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field handicapAuditif categoryEditor  <%= Util.isEmpty(obj.getHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "handicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='handicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "handicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getHandicapAuditif())) { %>
-            <%= obj.getHandicapAuditifLabel(obj.getHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.handicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field handicapMental enumerateEditor  <%= Util.isEmpty(obj.getHandicapMental()) ? "empty" : "" %>">
+  <tr class="field handicapMental categoryEditor  <%= Util.isEmpty(obj.getHandicapMental(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "handicapMental", userLang) %><jalios:edit pub='<%= obj %>' fields='handicapMental'/></td>
-    <td class='field-data' <%= gfla(obj, "handicapMental") %>>
-            <% if (Util.notEmpty(obj.getHandicapMental())) { %>
-            <%= obj.getHandicapMentalLabel(obj.getHandicapMental(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getHandicapMental(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getHandicapMental(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.handicapMental.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field deficiencePsychiqueEtMaladieMent enumerateEditor  <%= Util.isEmpty(obj.getDeficiencePsychiqueEtMaladieMent()) ? "empty" : "" %>">
+  <tr class="field deficiencePsychiqueEtMaladieMent categoryEditor  <%= Util.isEmpty(obj.getDeficiencePsychiqueEtMaladieMent(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "deficiencePsychiqueEtMaladieMent", userLang) %><jalios:edit pub='<%= obj %>' fields='deficiencePsychiqueEtMaladieMent'/></td>
-    <td class='field-data' <%= gfla(obj, "deficiencePsychiqueEtMaladieMent") %>>
-            <% if (Util.notEmpty(obj.getDeficiencePsychiqueEtMaladieMent())) { %>
-            <%= obj.getDeficiencePsychiqueEtMaladieMentLabel(obj.getDeficiencePsychiqueEtMaladieMent(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getDeficiencePsychiqueEtMaladieMent(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getDeficiencePsychiqueEtMaladieMent(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field batimentHandicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getBatimentHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field batimentHandicapAuditif categoryEditor  <%= Util.isEmpty(obj.getBatimentHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "batimentHandicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='batimentHandicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "batimentHandicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getBatimentHandicapAuditif())) { %>
-            <%= obj.getBatimentHandicapAuditifLabel(obj.getBatimentHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBatimentHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBatimentHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field batimentHandicapMoteur enumerateEditor  <%= Util.isEmpty(obj.getBatimentHandicapMoteur()) ? "empty" : "" %>">
+  <tr class="field batimentHandicapMoteur categoryEditor  <%= Util.isEmpty(obj.getBatimentHandicapMoteur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "batimentHandicapMoteur", userLang) %><jalios:edit pub='<%= obj %>' fields='batimentHandicapMoteur'/></td>
-    <td class='field-data' <%= gfla(obj, "batimentHandicapMoteur") %>>
-            <% if (Util.notEmpty(obj.getBatimentHandicapMoteur())) { %>
-            <%= obj.getBatimentHandicapMoteurLabel(obj.getBatimentHandicapMoteur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBatimentHandicapMoteur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBatimentHandicapMoteur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field batimentHandicapVisuel enumerateEditor  <%= Util.isEmpty(obj.getBatimentHandicapVisuel()) ? "empty" : "" %>">
+  <tr class="field batimentHandicapVisuel categoryEditor  <%= Util.isEmpty(obj.getBatimentHandicapVisuel(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "batimentHandicapVisuel", userLang) %><jalios:edit pub='<%= obj %>' fields='batimentHandicapVisuel'/></td>
-    <td class='field-data' <%= gfla(obj, "batimentHandicapVisuel") %>>
-            <% if (Util.notEmpty(obj.getBatimentHandicapVisuel())) { %>
-            <%= obj.getBatimentHandicapVisuelLabel(obj.getBatimentHandicapVisuel(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBatimentHandicapVisuel(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBatimentHandicapVisuel(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field batimentDeficiencePsychiqueEtMal enumerateEditor  <%= Util.isEmpty(obj.getBatimentDeficiencePsychiqueEtMal()) ? "empty" : "" %>">
+  <tr class="field batimentDeficiencePsychiqueEtMal categoryEditor  <%= Util.isEmpty(obj.getBatimentDeficiencePsychiqueEtMal(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "batimentDeficiencePsychiqueEtMal", userLang) %><jalios:edit pub='<%= obj %>' fields='batimentDeficiencePsychiqueEtMal'/></td>
-    <td class='field-data' <%= gfla(obj, "batimentDeficiencePsychiqueEtMal") %>>
-            <% if (Util.notEmpty(obj.getBatimentDeficiencePsychiqueEtMal())) { %>
-            <%= obj.getBatimentDeficiencePsychiqueEtMalLabel(obj.getBatimentDeficiencePsychiqueEtMal(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBatimentDeficiencePsychiqueEtMal(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBatimentDeficiencePsychiqueEtMal(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.batimentDeficiencePsychiqueEtMal.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
@@ -594,163 +620,243 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field accueilHandicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getAccueilHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field accueilHandicapAuditif categoryEditor  <%= Util.isEmpty(obj.getAccueilHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "accueilHandicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='accueilHandicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "accueilHandicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getAccueilHandicapAuditif())) { %>
-            <%= obj.getAccueilHandicapAuditifLabel(obj.getAccueilHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAccueilHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAccueilHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.accueilHandicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field accueilHandicapMoteur enumerateEditor  <%= Util.isEmpty(obj.getAccueilHandicapMoteur()) ? "empty" : "" %>">
+  <tr class="field accueilHandicapMoteur categoryEditor  <%= Util.isEmpty(obj.getAccueilHandicapMoteur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "accueilHandicapMoteur", userLang) %><jalios:edit pub='<%= obj %>' fields='accueilHandicapMoteur'/></td>
-    <td class='field-data' <%= gfla(obj, "accueilHandicapMoteur") %>>
-            <% if (Util.notEmpty(obj.getAccueilHandicapMoteur())) { %>
-            <%= obj.getAccueilHandicapMoteurLabel(obj.getAccueilHandicapMoteur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAccueilHandicapMoteur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAccueilHandicapMoteur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.accueilHandicapMoteur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field accueilHandicapVisuel enumerateEditor  <%= Util.isEmpty(obj.getAccueilHandicapVisuel()) ? "empty" : "" %>">
+  <tr class="field accueilHandicapVisuel categoryEditor  <%= Util.isEmpty(obj.getAccueilHandicapVisuel(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "accueilHandicapVisuel", userLang) %><jalios:edit pub='<%= obj %>' fields='accueilHandicapVisuel'/></td>
-    <td class='field-data' <%= gfla(obj, "accueilHandicapVisuel") %>>
-            <% if (Util.notEmpty(obj.getAccueilHandicapVisuel())) { %>
-            <%= obj.getAccueilHandicapVisuelLabel(obj.getAccueilHandicapVisuel(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAccueilHandicapVisuel(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAccueilHandicapVisuel(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.accueilHandicapVisuel.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field accueilHandicapMental enumerateEditor  <%= Util.isEmpty(obj.getAccueilHandicapMental()) ? "empty" : "" %>">
+  <tr class="field accueilHandicapMental categoryEditor  <%= Util.isEmpty(obj.getAccueilHandicapMental(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "accueilHandicapMental", userLang) %><jalios:edit pub='<%= obj %>' fields='accueilHandicapMental'/></td>
-    <td class='field-data' <%= gfla(obj, "accueilHandicapMental") %>>
-            <% if (Util.notEmpty(obj.getAccueilHandicapMental())) { %>
-            <%= obj.getAccueilHandicapMentalLabel(obj.getAccueilHandicapMental(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAccueilHandicapMental(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAccueilHandicapMental(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.accueilHandicapMental.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field accueilDeficiencePsychiqueEtMala enumerateEditor  <%= Util.isEmpty(obj.getAccueilDeficiencePsychiqueEtMala()) ? "empty" : "" %>">
+  <tr class="field accueilDeficiencePsychiqueEtMala categoryEditor  <%= Util.isEmpty(obj.getAccueilDeficiencePsychiqueEtMala(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "accueilDeficiencePsychiqueEtMala", userLang) %><jalios:edit pub='<%= obj %>' fields='accueilDeficiencePsychiqueEtMala'/></td>
-    <td class='field-data' <%= gfla(obj, "accueilDeficiencePsychiqueEtMala") %>>
-            <% if (Util.notEmpty(obj.getAccueilDeficiencePsychiqueEtMala())) { %>
-            <%= obj.getAccueilDeficiencePsychiqueEtMalaLabel(obj.getAccueilDeficiencePsychiqueEtMala(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAccueilDeficiencePsychiqueEtMala(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAccueilDeficiencePsychiqueEtMala(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.accueilDeficiencePsychiqueEtMala.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field sanitairesHandicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getSanitairesHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field sanitairesHandicapAuditif categoryEditor  <%= Util.isEmpty(obj.getSanitairesHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "sanitairesHandicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='sanitairesHandicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "sanitairesHandicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getSanitairesHandicapAuditif())) { %>
-            <%= obj.getSanitairesHandicapAuditifLabel(obj.getSanitairesHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSanitairesHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSanitairesHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field sanitairesHandicapMoteur enumerateEditor  <%= Util.isEmpty(obj.getSanitairesHandicapMoteur()) ? "empty" : "" %>">
+  <tr class="field sanitairesHandicapMoteur categoryEditor  <%= Util.isEmpty(obj.getSanitairesHandicapMoteur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "sanitairesHandicapMoteur", userLang) %><jalios:edit pub='<%= obj %>' fields='sanitairesHandicapMoteur'/></td>
-    <td class='field-data' <%= gfla(obj, "sanitairesHandicapMoteur") %>>
-            <% if (Util.notEmpty(obj.getSanitairesHandicapMoteur())) { %>
-            <%= obj.getSanitairesHandicapMoteurLabel(obj.getSanitairesHandicapMoteur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSanitairesHandicapMoteur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSanitairesHandicapMoteur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.sanitairesHandicapMoteur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field sanitairesHandicapVisuel enumerateEditor  <%= Util.isEmpty(obj.getSanitairesHandicapVisuel()) ? "empty" : "" %>">
+  <tr class="field sanitairesHandicapVisuel categoryEditor  <%= Util.isEmpty(obj.getSanitairesHandicapVisuel(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "sanitairesHandicapVisuel", userLang) %><jalios:edit pub='<%= obj %>' fields='sanitairesHandicapVisuel'/></td>
-    <td class='field-data' <%= gfla(obj, "sanitairesHandicapVisuel") %>>
-            <% if (Util.notEmpty(obj.getSanitairesHandicapVisuel())) { %>
-            <%= obj.getSanitairesHandicapVisuelLabel(obj.getSanitairesHandicapVisuel(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSanitairesHandicapVisuel(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSanitairesHandicapVisuel(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDattenteHandicapMental enumerateEditor  <%= Util.isEmpty(obj.getSalleDattenteHandicapMental()) ? "empty" : "" %>">
+  <tr class="field salleDattenteHandicapMental categoryEditor  <%= Util.isEmpty(obj.getSalleDattenteHandicapMental(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDattenteHandicapMental", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDattenteHandicapMental'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDattenteHandicapMental") %>>
-            <% if (Util.notEmpty(obj.getSalleDattenteHandicapMental())) { %>
-            <%= obj.getSalleDattenteHandicapMentalLabel(obj.getSalleDattenteHandicapMental(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDattenteHandicapMental(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDattenteHandicapMental(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDattenteDeficiencePsychique enumerateEditor  <%= Util.isEmpty(obj.getSalleDattenteDeficiencePsychique()) ? "empty" : "" %>">
+  <tr class="field salleDattenteDeficiencePsychique categoryEditor  <%= Util.isEmpty(obj.getSalleDattenteDeficiencePsychique(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDattenteDeficiencePsychique", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDattenteDeficiencePsychique'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDattenteDeficiencePsychique") %>>
-            <% if (Util.notEmpty(obj.getSalleDattenteDeficiencePsychique())) { %>
-            <%= obj.getSalleDattenteDeficiencePsychiqueLabel(obj.getSalleDattenteDeficiencePsychique(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDattenteDeficiencePsychique(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDattenteDeficiencePsychique(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDattenteDeficiencePsychique.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field bureauHandicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getBureauHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field bureauHandicapAuditif categoryEditor  <%= Util.isEmpty(obj.getBureauHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "bureauHandicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='bureauHandicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "bureauHandicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getBureauHandicapAuditif())) { %>
-            <%= obj.getBureauHandicapAuditifLabel(obj.getBureauHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBureauHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBureauHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.bureauHandicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field bureauHandicapMoteur enumerateEditor  <%= Util.isEmpty(obj.getBureauHandicapMoteur()) ? "empty" : "" %>">
+  <tr class="field bureauHandicapMoteur categoryEditor  <%= Util.isEmpty(obj.getBureauHandicapMoteur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "bureauHandicapMoteur", userLang) %><jalios:edit pub='<%= obj %>' fields='bureauHandicapMoteur'/></td>
-    <td class='field-data' <%= gfla(obj, "bureauHandicapMoteur") %>>
-            <% if (Util.notEmpty(obj.getBureauHandicapMoteur())) { %>
-            <%= obj.getBureauHandicapMoteurLabel(obj.getBureauHandicapMoteur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBureauHandicapMoteur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBureauHandicapMoteur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.bureauHandicapMoteur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field bureauHandicapVisuel enumerateEditor  <%= Util.isEmpty(obj.getBureauHandicapVisuel()) ? "empty" : "" %>">
+  <tr class="field bureauHandicapVisuel categoryEditor  <%= Util.isEmpty(obj.getBureauHandicapVisuel(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "bureauHandicapVisuel", userLang) %><jalios:edit pub='<%= obj %>' fields='bureauHandicapVisuel'/></td>
-    <td class='field-data' <%= gfla(obj, "bureauHandicapVisuel") %>>
-            <% if (Util.notEmpty(obj.getBureauHandicapVisuel())) { %>
-            <%= obj.getBureauHandicapVisuelLabel(obj.getBureauHandicapVisuel(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBureauHandicapVisuel(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBureauHandicapVisuel(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.bureauHandicapVisuel.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field bureauHandicapMental enumerateEditor  <%= Util.isEmpty(obj.getBureauHandicapMental()) ? "empty" : "" %>">
+  <tr class="field bureauHandicapMental categoryEditor  <%= Util.isEmpty(obj.getBureauHandicapMental(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "bureauHandicapMental", userLang) %><jalios:edit pub='<%= obj %>' fields='bureauHandicapMental'/></td>
-    <td class='field-data' <%= gfla(obj, "bureauHandicapMental") %>>
-            <% if (Util.notEmpty(obj.getBureauHandicapMental())) { %>
-            <%= obj.getBureauHandicapMentalLabel(obj.getBureauHandicapMental(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBureauHandicapMental(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBureauHandicapMental(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.bureauHandicapMental.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field bureauDeficiencePsychiqueEtMalad enumerateEditor  <%= Util.isEmpty(obj.getBureauDeficiencePsychiqueEtMalad()) ? "empty" : "" %>">
+  <tr class="field bureauDeficiencePsychiqueEtMalad categoryEditor  <%= Util.isEmpty(obj.getBureauDeficiencePsychiqueEtMalad(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "bureauDeficiencePsychiqueEtMalad", userLang) %><jalios:edit pub='<%= obj %>' fields='bureauDeficiencePsychiqueEtMalad'/></td>
-    <td class='field-data' <%= gfla(obj, "bureauDeficiencePsychiqueEtMalad") %>>
-            <% if (Util.notEmpty(obj.getBureauDeficiencePsychiqueEtMalad())) { %>
-            <%= obj.getBureauDeficiencePsychiqueEtMaladLabel(obj.getBureauDeficiencePsychiqueEtMalad(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBureauDeficiencePsychiqueEtMalad(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBureauDeficiencePsychiqueEtMalad(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.bureauDeficiencePsychiqueEtMalad.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDeReunionHandicapAuditif enumerateEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapAuditif()) ? "empty" : "" %>">
+  <tr class="field salleDeReunionHandicapAuditif categoryEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapAuditif(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDeReunionHandicapAuditif", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDeReunionHandicapAuditif'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDeReunionHandicapAuditif") %>>
-            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapAuditif())) { %>
-            <%= obj.getSalleDeReunionHandicapAuditifLabel(obj.getSalleDeReunionHandicapAuditif(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapAuditif(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDeReunionHandicapAuditif(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDeReunionHandicapMoteur enumerateEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapMoteur()) ? "empty" : "" %>">
+  <tr class="field salleDeReunionHandicapMoteur categoryEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapMoteur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDeReunionHandicapMoteur", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDeReunionHandicapMoteur'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDeReunionHandicapMoteur") %>>
-            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapMoteur())) { %>
-            <%= obj.getSalleDeReunionHandicapMoteurLabel(obj.getSalleDeReunionHandicapMoteur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapMoteur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDeReunionHandicapMoteur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDeReunionHandicapVisuel enumerateEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapVisuel()) ? "empty" : "" %>">
+  <tr class="field salleDeReunionHandicapVisuel categoryEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapVisuel(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDeReunionHandicapVisuel", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDeReunionHandicapVisuel'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDeReunionHandicapVisuel") %>>
-            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapVisuel())) { %>
-            <%= obj.getSalleDeReunionHandicapVisuelLabel(obj.getSalleDeReunionHandicapVisuel(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapVisuel(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDeReunionHandicapVisuel(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDeReunionHandicapMental enumerateEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapMental()) ? "empty" : "" %>">
+  <tr class="field salleDeReunionHandicapMental categoryEditor  <%= Util.isEmpty(obj.getSalleDeReunionHandicapMental(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDeReunionHandicapMental", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDeReunionHandicapMental'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDeReunionHandicapMental") %>>
-            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapMental())) { %>
-            <%= obj.getSalleDeReunionHandicapMentalLabel(obj.getSalleDeReunionHandicapMental(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDeReunionHandicapMental(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDeReunionHandicapMental(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field salleDeReunionDeficiencePsychiqu enumerateEditor  <%= Util.isEmpty(obj.getSalleDeReunionDeficiencePsychiqu()) ? "empty" : "" %>">
+  <tr class="field salleDeReunionDeficiencePsychiqu categoryEditor  <%= Util.isEmpty(obj.getSalleDeReunionDeficiencePsychiqu(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "salleDeReunionDeficiencePsychiqu", userLang) %><jalios:edit pub='<%= obj %>' fields='salleDeReunionDeficiencePsychiqu'/></td>
-    <td class='field-data' <%= gfla(obj, "salleDeReunionDeficiencePsychiqu") %>>
-            <% if (Util.notEmpty(obj.getSalleDeReunionDeficiencePsychiqu())) { %>
-            <%= obj.getSalleDeReunionDeficiencePsychiquLabel(obj.getSalleDeReunionDeficiencePsychiqu(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getSalleDeReunionDeficiencePsychiqu(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getSalleDeReunionDeficiencePsychiqu(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychiqu.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
@@ -762,27 +868,39 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field boucleInductionMagnetiqueAccueil enumerateEditor  <%= Util.isEmpty(obj.getBoucleInductionMagnetiqueAccueil()) ? "empty" : "" %>">
+  <tr class="field boucleInductionMagnetiqueAccueil categoryEditor  <%= Util.isEmpty(obj.getBoucleInductionMagnetiqueAccueil(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "boucleInductionMagnetiqueAccueil", userLang) %><jalios:edit pub='<%= obj %>' fields='boucleInductionMagnetiqueAccueil'/></td>
-    <td class='field-data' <%= gfla(obj, "boucleInductionMagnetiqueAccueil") %>>
-            <% if (Util.notEmpty(obj.getBoucleInductionMagnetiqueAccueil())) { %>
-            <%= obj.getBoucleInductionMagnetiqueAccueilLabel(obj.getBoucleInductionMagnetiqueAccueil(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getBoucleInductionMagnetiqueAccueil(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getBoucleInductionMagnetiqueAccueil(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field ascenseur enumerateEditor  <%= Util.isEmpty(obj.getAscenseur()) ? "empty" : "" %>">
+  <tr class="field ascenseur categoryEditor  <%= Util.isEmpty(obj.getAscenseur(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "ascenseur", userLang) %><jalios:edit pub='<%= obj %>' fields='ascenseur'/></td>
-    <td class='field-data' <%= gfla(obj, "ascenseur") %>>
-            <% if (Util.notEmpty(obj.getAscenseur())) { %>
-            <%= obj.getAscenseurLabel(obj.getAscenseur(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getAscenseur(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getAscenseur(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.ascenseur.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field rampeAmovible enumerateEditor  <%= Util.isEmpty(obj.getRampeAmovible()) ? "empty" : "" %>">
+  <tr class="field rampeAmovible categoryEditor  <%= Util.isEmpty(obj.getRampeAmovible(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "rampeAmovible", userLang) %><jalios:edit pub='<%= obj %>' fields='rampeAmovible'/></td>
-    <td class='field-data' <%= gfla(obj, "rampeAmovible") %>>
-            <% if (Util.notEmpty(obj.getRampeAmovible())) { %>
-            <%= obj.getRampeAmovibleLabel(obj.getRampeAmovible(), userLang) %>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getRampeAmovible(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getRampeAmovible(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichelieu.rampeAmovible.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>

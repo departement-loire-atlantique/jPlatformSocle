@@ -12,8 +12,12 @@
     <field name="soustitre" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Sous-titre</label>
     </field>
-    <field name="serviceDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="description" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="true" html="false" checkHtml="true">
+    <field name="serviceDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="description" type="boolean" default="on">
       <label xml:lang="fr">Service du Département</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type de lieu</label>
@@ -156,25 +160,25 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="handicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="handicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Handicap auditif</label>
     </field>
-    <field name="handicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="handicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Handicap mental</label>
     </field>
-    <field name="deficiencePsychiqueEtMaladieMent" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="deficiencePsychiqueEtMaladieMent" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Déficience psychique et maladie mentale</label>
     </field>
-    <field name="batimentHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="batimentHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Handicap auditif</label>
     </field>
-    <field name="batimentHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="batimentHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Handicap moteur</label>
     </field>
-    <field name="batimentHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="batimentHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Handicap visuel</label>
     </field>
-    <field name="batimentDeficiencePsychiqueEtMal" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="batimentDeficiencePsychiqueEtMal" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentDeficiencePsychiqueEtMal.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Déficience psychique et maladie mentale</label>
     </field>
     <field name="visiophone" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
@@ -250,76 +254,76 @@
     <field name="siOuiHorairesDePresence" editor="textarea" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
       <label xml:lang="fr">Si oui, horaires de présence</label>
     </field>
-    <field name="accueilHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="accueilHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Handicap auditif</label>
     </field>
-    <field name="accueilHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="accueilHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Handicap moteur</label>
     </field>
-    <field name="accueilHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="accueilHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Handicap visuel</label>
     </field>
-    <field name="accueilHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="accueilHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Handicap mental</label>
     </field>
-    <field name="accueilDeficiencePsychiqueEtMala" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="accueilDeficiencePsychiqueEtMala" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilDeficiencePsychiqueEtMala.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Déficience psychique et maladie mentale</label>
     </field>
-    <field name="sanitairesHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="sanitairesHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Sanitaires) Handicap auditif</label>
     </field>
-    <field name="sanitairesHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="sanitairesHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Sanitaires) Handicap moteur</label>
     </field>
-    <field name="sanitairesHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Accessible|Aide à la personne indispensable|Non accessible">
+    <field name="sanitairesHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Sanitaires) Handicap visuel</label>
     </field>
-    <field name="salleDattenteHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="salleDattenteHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle d’attente) Handicap mental</label>
     </field>
-    <field name="salleDattenteDeficiencePsychique" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="salleDattenteDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteDeficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle d’attente) Déficience psychique et maladie mentale</label>
     </field>
-    <field name="bureauHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="bureauHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Handicap auditif</label>
     </field>
-    <field name="bureauHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="bureauHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Handicap moteur</label>
     </field>
-    <field name="bureauHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="bureauHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Handicap visuel</label>
     </field>
-    <field name="bureauHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="bureauHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Handicap mental</label>
     </field>
-    <field name="bureauDeficiencePsychiqueEtMalad" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true" html="false" checkHtml="true">
+    <field name="bureauDeficiencePsychiqueEtMalad" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauDeficiencePsychiqueEtMalad.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Déficience psychique et maladie mentale</label>
     </field>
-    <field name="salleDeReunionHandicapAuditif" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="salleDeReunionHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Handicap auditif</label>
     </field>
-    <field name="salleDeReunionHandicapMoteur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="salleDeReunionHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Handicap moteur</label>
     </field>
-    <field name="salleDeReunionHandicapVisuel" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="salleDeReunionHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Handicap visuel</label>
     </field>
-    <field name="salleDeReunionHandicapMental" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="salleDeReunionHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Handicap mental</label>
     </field>
-    <field name="salleDeReunionDeficiencePsychiqu" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="salleDeReunionDeficiencePsychiqu" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychiqu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Déficience psychique et maladie mentale</label>
     </field>
     <field name="planningDeMiseEnAccessibiliteDuS" editor="textfield" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Planning de mise en accessibilité du site</label>
     </field>
-    <field name="boucleInductionMagnetiqueAccueil" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="boucleInductionMagnetiqueAccueil" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Boucle induction magnétique - Accueil</label>
     </field>
-    <field name="ascenseur" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="ascenseur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.ascenseur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Ascenseur</label>
     </field>
-    <field name="rampeAmovible" editor="enumerate" required="false" compactDisplay="false" tab="accessibilite" type="String" chooser="listbox" valueList="accessible|aide|inaccessible" ml="false" descriptionType="tooltip" labelList="Accessible|Aide à la personne indispensable|Non accessible" searchable="true">
+    <field name="rampeAmovible" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.rampeAmovible.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Rampe amovible</label>
     </field>
     <field name="informationsComplementaires" editor="wysiwyg" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
