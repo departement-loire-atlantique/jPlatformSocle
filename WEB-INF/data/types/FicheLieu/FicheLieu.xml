@@ -329,15 +329,6 @@
     <field name="informationsComplementaires" editor="wysiwyg" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Informations complémentaires</label>
     </field>
-    <field name="adresse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Adresse</label>
-    </field>
-    <field name="latitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Latitude</label>
-    </field>
-    <field name="longitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Longitude</label>
-    </field>
   </fields>
   <tabs>
     <tab id="coordonnees">

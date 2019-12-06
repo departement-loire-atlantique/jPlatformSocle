@@ -912,30 +912,6 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field adresse textfieldEditor  <%= Util.isEmpty(obj.getAdresse(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "adresse", userLang) %><jalios:edit pub='<%= obj %>' fields='adresse'/></td>
-    <td class='field-data' <%= gfla(obj, "adresse") %>>
-            <% if (Util.notEmpty(obj.getAdresse(userLang))) { %>
-            <%= obj.getAdresse(userLang) %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field latitude textfieldEditor  <%= Util.isEmpty(obj.getLatitude(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "latitude", userLang) %><jalios:edit pub='<%= obj %>' fields='latitude'/></td>
-    <td class='field-data' <%= gfla(obj, "latitude") %>>
-            <% if (Util.notEmpty(obj.getLatitude(userLang))) { %>
-            <%= obj.getLatitude(userLang) %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field longitude textfieldEditor  <%= Util.isEmpty(obj.getLongitude(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "longitude", userLang) %><jalios:edit pub='<%= obj %>' fields='longitude'/></td>
-    <td class='field-data' <%= gfla(obj, "longitude") %>>
-            <% if (Util.notEmpty(obj.getLongitude(userLang))) { %>
-            <%= obj.getLongitude(userLang) %>
-            <% } %>
-    </td>
-  </tr>
  
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
