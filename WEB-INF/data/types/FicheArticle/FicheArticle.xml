@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheArticle" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Fiche Article</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="typeSimple" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Simple</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Onglets</offLabel>
+    </field>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image bandeau</label>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.VideoChapitree" parent="false">
+      <label xml:lang="fr">Vidéo principale</label>
+    </field>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Paragraphe">
+      <label xml:lang="fr">Titre paragraphe</label>
+    </field>
+    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
+      <label xml:lang="fr">Contenu paragraphe</label>
+    </field>
+    <field name="titreOnglet" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Onglet">
+      <label xml:lang="fr">Titre onglet</label>
+    </field>
+    <field name="contenuOnglet" editor="wysiwyg" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet">
+      <label xml:lang="fr">Contenu onglet</label>
+    </field>
+    <field name="titreEncadreLibre" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre">
+      <label xml:lang="fr">Titre encadré libre</label>
+    </field>
+    <field name="contenuEncadreLibre" editor="wysiwyg" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre">
+      <label xml:lang="fr">Contenu encadré libre</label>
+    </field>
+    <field name="portletsEncadres" editor="link" required="false" compactDisplay="false" tab="onglets" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets encadrés</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichearticle.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="thematiquesBesoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichearticle.thematiquesBesoins.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Thématiques / Besoins</label>
+    </field>
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichearticle.delegations.root">
+      <label xml:lang="fr">Délégations</label>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+    </field>
+    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">Toutes les communes EPCI</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="onglets">
+      <label xml:lang="fr">Onglets</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Rattachement</label>
+    </tab>
+  </tabs>
+</type>
+

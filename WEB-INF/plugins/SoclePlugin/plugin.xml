@@ -23,7 +23,10 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
+    <type name="FicheArticle"></type>
+    <type name="FicheLieu"></type>  
     <type name="Help"></type>
     <type name="News"></type>
     <type name="Place"></type>
@@ -51,11 +54,26 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates> 
+    <templates type="FicheActu">
+        <template name="default" file="doFicheActuFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="FicheAide">
         <template name="default" file="doFicheAideFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>    
+    <templates type="FicheArticle">
+        <template name="default" file="doFicheArticleFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>    
+    <templates type="FicheLieu">
+        <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="Tuile">
         <template name="default" file="doTuileFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -163,7 +181,7 @@
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
-    <file path="WEB-INF/tags/menuNiveauDeux.tag" />
+    <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />

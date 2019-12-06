@@ -102,4 +102,60 @@ channel.topbar.site.enabled: true
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 
+# ------------------------------------------------------------
+#  Catégories racines des types de contenu
+# ------------------------------------------------------------
 
+# Fiche Article
+
+$jcmsplugin.socle.fichearticle.categorieDeNavigation.root: j_3
+$jcmsplugin.socle.fichearticle.thematiquesBesoins.root: j_3
+$jcmsplugin.socle.fichearticle.delegations.root: j_3
+$jcmsplugin.socle.fichearticle.communes.root: j_3
+$jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root: j_3
+
+# Fiche Actu
+
+$jcmsplugin.socle.ficheactu.categorieDeNavigation.root: j_3
+$jcmsplugin.socle.ficheactu.thematiquesBesoins.root: j_3
+$jcmsplugin.socle.ficheactu.delegations.root: j_3
+$jcmsplugin.socle.ficheactu.communes.root: j_3
+$jcmsplugin.socle.ficheactu.toutesLesCommunesEPCI.root: j_3
+
+# Fiche Lieu
+
+$jcmsplugin.socle.fichelieu.typeLieu.root: j_3
+$jcmsplugin.socle.fichelieu.besoins.root: j_3
+$jcmsplugin.socle.fichelieu.publicVise.root: j_3
+$jcmsplugin.socle.fichelieu.delegations.root: j_3
+$jcmsplugin.socle.fichelieu.toutesLesCommunesEPCI.root: j_3
+$jcmsplugin.socle.fichelieu.handicapAuditif.root: j_3
+$jcmsplugin.socle.fichelieu.handicapMental.root: j_3
+$jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root: j_3
+$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root: j_3
+$jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root: j_3
+$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root: j_3
+$jcmsplugin.socle.fichelieu.batimentDeficiencePsychiqueEtMal.root: j_3
+$jcmsplugin.socle.fichelieu.siOuiHorairesDePresence.root: j_3
+$jcmsplugin.socle.fichelieu.accueilHandicapMoteur.root: j_3
+$jcmsplugin.socle.fichelieu.accueilHandicapVisuel.root: j_3
+$jcmsplugin.socle.fichelieu.accueilHandicapMental.root: j_3
+$jcmsplugin.socle.fichelieu.accueilDeficiencePsychiqueEtMala.root: j_3
+$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root: j_3
+$jcmsplugin.socle.fichelieu.sanitairesHandicapMoteur.root: j_3
+$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root: j_3
+$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root: j_3
+$jcmsplugin.socle.fichelieu.salleDattenteDeficiencePsychique.root: j_3
+$jcmsplugin.socle.fichelieu.bureauHandicapAuditif.root: j_3
+$jcmsplugin.socle.fichelieu.bureauHandicapMoteur.root: j_3
+$jcmsplugin.socle.fichelieu.bureauHandicapVisuel.root: j_3
+$jcmsplugin.socle.fichelieu.bureauHandicapMental.root: j_3
+$jcmsplugin.socle.fichelieu.bureauDeficiencePsychiqueEtMalad.root: j_3
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root: j_3
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root: j_3
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root: j_3
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root: j_3
+$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychiqu.root: j_3
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root: j_3
+$jcmsplugin.socle.fichelieu.ascenseur.root: j_3
+$jcmsplugin.socle.fichelieu.rampeAmovible.root: j_3
