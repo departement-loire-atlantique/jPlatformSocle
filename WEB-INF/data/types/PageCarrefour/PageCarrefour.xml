@@ -23,8 +23,11 @@
     <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
       <label xml:lang="fr">description</label>
     </field>
-    <field name="targetCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="targetCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.pagecarrefour.targetCategory.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Rubrique concernée</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
     </field>
     <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="tooltip" tab="sideBlocks" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Blocs du côté</label>

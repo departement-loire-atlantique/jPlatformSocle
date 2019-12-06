@@ -106,6 +106,18 @@ jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitte
 #  Catégories racines des types de contenu
 # ------------------------------------------------------------
 
+# Générique de mise en avant
+$jcmsplugin.socle.miseEnAvant.root : c_1088868
+$id.plugin.socle.page-principale.cat: c_1092546
+
+
+# Fiche aide
+$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
+$jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
+
+# Page carrefour
+$jcmsplugin.socle.pagecarrefour.targetCategory.root : j_5
+
 # Fiche Article
 
 $jcmsplugin.socle.fichearticle.categorieDeNavigation.root: j_3

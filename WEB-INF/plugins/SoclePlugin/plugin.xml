@@ -160,6 +160,7 @@
 
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
+    <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
   </plugincomponents>
     
   <private-files>
