@@ -37,6 +37,7 @@ jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administrati
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.alt.logo: Retour à l’accueil du site loire Atlantique
+jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 
 # ------------------------------------------------------------
 #  Contenu

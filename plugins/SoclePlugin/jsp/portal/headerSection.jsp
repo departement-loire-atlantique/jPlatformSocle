@@ -20,10 +20,12 @@ Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrd
 String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
 Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
 Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
+
+boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.header.show.rechercher", true);
 %>
 
 
-<header role="banner" id="top" class="ds44-container-fluid">
+<header role="banner" id="top" class="ds44-header">
 
     <ul class="ds44-list">
         <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
@@ -41,11 +43,13 @@ Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.ge
             </a>
         </div>
         <div class="ds44-colRight">            
-            <button class="ds44-btnIcoText--maxi ds44--xl-padding-tb" type="button" aria-label="Ouvrir la recherche"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i></button>
+            <jalios:if predicate="<%= displaySearchMenu %>">
+                <button class="ds44-btnIcoText--maxi ds44--xl-padding-tb" type="button" aria-label="Ouvrir la recherche"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i></button>
+            </jalios:if>
             <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
-                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large"></i></a>                          
+                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" aria-label='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>'><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
             </jalios:foreach>
-            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" aria-label="Ourvir le menu de navigation"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i></button>
+            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" aria-label="Ouvrir le menu de navigation"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i></button>
             
             <section id="menu" class="ds44-menuBox">
 	            <section id="nav1" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1">
