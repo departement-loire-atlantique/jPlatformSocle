@@ -40,13 +40,13 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="thematiquesBesoins" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.thematiquesBesoins.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="thematiquesBesoins" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.thematiquesBesoins.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Thématiques / Besoins</label>
     </field>
-    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.delegations.root">
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
       <label xml:lang="fr">Délégations</label>
     </field>
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
@@ -55,7 +55,7 @@
     <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
     </field>
-    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.toutesLesCommunesEPCI.root">
+    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
       <label xml:lang="fr">Toutes les communes EPCI</label>
     </field>
   </fields>

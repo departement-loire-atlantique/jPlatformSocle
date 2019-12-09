@@ -94,7 +94,7 @@
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
-    <field name="publicVise" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.publicVise.root">
+    <field name="publicVise" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
       <label xml:lang="fr">Public visé</label>
     </field>
     <field name="modalitesDaccueil" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
@@ -121,10 +121,10 @@
     <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.FicheLieu[]">
       <label xml:lang="fr">Autres lieux associés</label>
     </field>
-    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.besoins.root">
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
       <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.delegations.root">
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
       <label xml:lang="fr">Délégations</label>
     </field>
     <field name="communesDintervention" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
@@ -133,7 +133,7 @@
     <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
     </field>
-    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.toutesLesCommunesEPCI.root">
+    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
       <label xml:lang="fr">Toutes les communes EPCI</label>
     </field>
     <field name="canton" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.Canton" parent="false">
