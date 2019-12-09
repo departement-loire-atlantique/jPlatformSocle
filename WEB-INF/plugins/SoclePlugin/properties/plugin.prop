@@ -114,6 +114,8 @@ $id.plugin.socle.page-principale.cat: c_1092546
 # Fiche aide
 $jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
+$jcmsplugin.socle.ficheaide.besoins.root: j_3
+$jcmsplugin.socle.ficheaide.publicVise.root: j_3
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.targetCategory.root : j_5
