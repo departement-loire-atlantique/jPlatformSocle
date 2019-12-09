@@ -43,7 +43,7 @@
       <label xml:lang="fr">Libellé du Timecode</label>
     </field>
   </fields>
-  <label xml:lang="fr">VideoChapitree</label>
+  <label xml:lang="fr">Video chapitrée</label>
   <tabs>
     <tab id="common">
       <label xml:lang="fr">Commun</label>

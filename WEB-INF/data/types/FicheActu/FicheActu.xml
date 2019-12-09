@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <type name="FicheActu" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Fiche Actu</label>
+  <label xml:lang="fr">Fiche actu</label>
   <title ml="true" searchable="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
