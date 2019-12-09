@@ -423,7 +423,7 @@
     <td class='field-data' >
             <% if (Util.notEmpty(obj.getVideo())) { %>
             <ol>
-              <jalios:foreach name="itData" type="generated.VideoChapitree" array="<%= obj.getVideo() %>">
+              <jalios:foreach name="itData" type="generated.Video" array="<%= obj.getVideo() %>">
               <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
               <li>
               <jalios:link data='<%= itData %>'/>

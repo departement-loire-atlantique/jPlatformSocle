@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="VideoChapitree" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+<type name="Video" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
   <title ml="false">
     <label xml:lang="fr">Titre</label>
   </title>
@@ -43,7 +43,7 @@
       <label xml:lang="fr">Libellé du Timecode</label>
     </field>
   </fields>
-  <label xml:lang="fr">Video chapitrée</label>
+  <label xml:lang="fr">Vidéo</label>
   <tabs>
     <tab id="common">
       <label xml:lang="fr">Commun</label>
