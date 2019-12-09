@@ -34,7 +34,7 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.VideoChapitree" parent="false">
+    <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.Video" parent="false">
       <label xml:lang="fr">Vidéo principale</label>
     </field>
     <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
