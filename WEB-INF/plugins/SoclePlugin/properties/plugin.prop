@@ -110,39 +110,26 @@ jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitte
 $jcmsplugin.socle.miseEnAvant.root : c_1088868
 $id.plugin.socle.page-principale.cat: c_1092546
 
+# Générique des racines de catégories
+
+$jcmsplugin.socle.category.besoins.root: j_3
+$jcmsplugin.socle.category.publicVise.root: j_3
+$jcmsplugin.socle.category.categorieDeNavigation.root: j_3
+$jcmsplugin.socle.category.thematiquesBesoins.root: j_3
+$jcmsplugin.socle.category.delegations.root: j_3
+$jcmsplugin.socle.category.communes.root: j_3
+$jcmsplugin.socle.category.toutesLesCommunesEPCI.root: j_3
 
 # Fiche aide
 $jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
-$jcmsplugin.socle.ficheaide.besoins.root: j_3
-$jcmsplugin.socle.ficheaide.publicVise.root: j_3
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.targetCategory.root : j_5
 
-# Fiche Article
-
-$jcmsplugin.socle.fichearticle.categorieDeNavigation.root: j_3
-$jcmsplugin.socle.fichearticle.thematiquesBesoins.root: j_3
-$jcmsplugin.socle.fichearticle.delegations.root: j_3
-$jcmsplugin.socle.fichearticle.communes.root: j_3
-$jcmsplugin.socle.fichearticle.toutesLesCommunesEPCI.root: j_3
-
-# Fiche Actu
-
-$jcmsplugin.socle.ficheactu.categorieDeNavigation.root: j_3
-$jcmsplugin.socle.ficheactu.thematiquesBesoins.root: j_3
-$jcmsplugin.socle.ficheactu.delegations.root: j_3
-$jcmsplugin.socle.ficheactu.communes.root: j_3
-$jcmsplugin.socle.ficheactu.toutesLesCommunesEPCI.root: j_3
-
 # Fiche Lieu
 
 $jcmsplugin.socle.fichelieu.typeLieu.root: j_3
-$jcmsplugin.socle.fichelieu.besoins.root: j_3
-$jcmsplugin.socle.fichelieu.publicVise.root: j_3
-$jcmsplugin.socle.fichelieu.delegations.root: j_3
-$jcmsplugin.socle.fichelieu.toutesLesCommunesEPCI.root: j_3
 $jcmsplugin.socle.fichelieu.handicapAuditif.root: j_3
 $jcmsplugin.socle.fichelieu.handicapMental.root: j_3
 $jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root: j_3

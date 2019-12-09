@@ -30,7 +30,7 @@
     <field name="chapo" editor="textarea" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.besoins.root">
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
       <label xml:lang="fr">Besoins</label>
     </field>
     <field name="beneficiairesEtThematiques" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -39,7 +39,7 @@
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
-    <field name="publicsVises" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.publicVise.root">
+    <field name="publicsVises" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
       <label xml:lang="fr">Publics visés</label>
     </field>
     <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
