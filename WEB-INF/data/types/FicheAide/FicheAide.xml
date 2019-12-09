@@ -21,13 +21,19 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
+    <field name="descriptionLongue" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+      <label xml:lang="fr">Description longue</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="principal" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
     <field name="chapo" editor="textarea" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
       <label xml:lang="fr">Chapo</label>
     </field>
     <field name="besoins" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.besoins.root">
       <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="beneficiairesEtThematiques" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5195" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="beneficiairesEtThematiques" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Bénéficiaires et thématiques</label>
     </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
