@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ page import="fr.cg44.plugin.socle.SocleUtils" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-%><% VideoChapitree obj = (VideoChapitree)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
-%><%@ include file='/front/doFullDisplay.jspf' %>
-<div class="fullDisplay VideoChapitree <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
-<%@ include file='/front/publication/doPublicationHeader.jspf' %>
+%><% Video obj = (Video)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
+
+<div class="fullDisplay Video <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
 
 <% //jcmsContext.addJavaScript("plugins/SoclePlugin/js/video.js"); %>
 <%
@@ -12,7 +11,7 @@ String uniqueIDiframe = UUID.randomUUID().toString();
 String urlVideo = Util.decodeUrl(SocleUtils.buildYoutubeUrl(obj.getUrlVideo()));
 
 %>
-<H2>Gabarit FULL</H2>
+<H2>Gabarit EMBED</H2>
 <iframe id="<%=uniqueIDiframe%>" width="853" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
 
 <script>

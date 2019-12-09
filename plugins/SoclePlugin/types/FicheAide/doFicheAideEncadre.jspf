@@ -12,7 +12,7 @@
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
     <section class="ds44-box">
         <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignage") %></p>        
-        <jalios:foreach name="itVideo" type="VideoChapitree" collection="<%= Arrays.asList(obj.getVideo()) %>">
+        <jalios:foreach name="itVideo" type="Video" collection="<%= Arrays.asList(obj.getVideo()) %>">
 	        <div class="ds44-bgGray">
 	          <jalios:if predicate="<%= Util.notEmpty(itVideo.getImage()) %>">
 	              <picture><img src="<%= itVideo.getImage() %>" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
