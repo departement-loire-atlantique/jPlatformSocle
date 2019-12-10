@@ -21,6 +21,12 @@ String title = obj.getTitle();
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
                         <p class="ds44-introduction"><%= obj.getDescription(userLang) %></p>
                     </jalios:if>
+
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getTopportlets()) %>">
+                        <jalios:foreach name="itPortlet" array="<%= obj.getTopportlets() %>" type="com.jalios.jcms.Publication">
+                          <jalios:include id="<%= itPortlet.getId() %>" />
+                        </jalios:foreach>
+                    </jalios:if>
                     
                     <%-- Menu de nav catégories --%>
                     <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.pagecarrefour.portlet.nav.id")) %>'>
