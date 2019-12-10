@@ -16,7 +16,7 @@ if(socialNetworksLabelsList.size()!=socialNetworksUrlsList.size()){
 <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
 <%
 for(int i=0; i<socialNetworksLabelsList.size(); i++){%>
-    <li><a href="<%=socialNetworksUrlsList.get(i)%>" class="ds44-rsFootLink" title="<%=socialNetworksLabelsList.get(i)%>"><i class="icon icon-<%=socialNetworksLabelsList.get(i).toLowerCase().replaceAll("\\s","")%>"><span class="visually-hidden"><%= socialNetworksLabelsList.get(i)%></span></i></a></li>
+    <li><a href="<%=socialNetworksUrlsList.get(i)%>" target="blank" class="ds44-rsFootLink" title="<%=socialNetworksLabelsList.get(i)%>"><i class="icon icon-<%=socialNetworksLabelsList.get(i).toLowerCase().replaceAll("\\s","")%>"><span class="visually-hidden"><%= socialNetworksLabelsList.get(i)%></span></i></a></li>
 <%}
 %>
 </ul>

@@ -13,7 +13,7 @@
         </div>
         <div class="col-5-small-1">
             <%-- Inclusion de la portlet JSP de Newsletter --%>
-            <jalios:include id="c_1088893"/>
+            <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.site.footer.portlet.newsletter.id") %>'/>
         </div>
         <div class="col-5-small-1">
             <%-- Inclusion de la portlet réseaux sociaux --%>
