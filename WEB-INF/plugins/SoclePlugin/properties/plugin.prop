@@ -18,6 +18,7 @@ jcmsplugin.socle.site.header.cat:
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
+jcmsplugin.socle.site.header.show.rechercher: true
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
