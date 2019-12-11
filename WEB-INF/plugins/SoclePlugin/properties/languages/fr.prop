@@ -28,7 +28,7 @@ jcmsplugin.socle.socialnetworks.urls:URLs des réseaux sociaux (bien respecter l
 # ------------------------------------------------------------
 #  Libellés
 # ------------------------------------------------------------
-jcmsplugin.socle.accessibily.newTabLabel:Ouverture dans un nouvel onglet
+jcmsplugin.socle.accessibily.newTabLabel: - nouvel onglet
 jcmsplugin.socle.social-networks-follow.label:Suivez-nous sur les réseaux sociaux :
 
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
