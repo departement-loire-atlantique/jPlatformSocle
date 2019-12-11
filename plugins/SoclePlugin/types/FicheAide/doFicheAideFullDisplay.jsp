@@ -1,34 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-%><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
+%><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
+String imageFile = obj.getImagePrincipale() ;
+String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
+String title = obj.getTitle();
+%>
 
 
 <main role="main" id="content">
 
- 
+    <section class="ds44-container-fluid"> 
 
-    <section class="ds44-container-fluid">
-
- 
-
-        <div class="ds44-pageHeaderContainer">
-            <!-- TODO condition sur l'image mobile -->
-            <picture class="ds44-pageHeaderContainer__pictureContainer">
-                <img src="<%=obj.getImagePrincipale()%>" alt="" class="ds44-headerImg" />               
-            </picture>
-            <div class="ds44-titleContainer">
-                <div class="ds44-alphaGradient ds44--xl-padding">
-                    <!-- Fil d'ariane -->
-	                <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
-	                    <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
-	                </jalios:if>
-                    <h1 class="h1-like ds44-text--colorInvert"><%= obj.getTitle() %></h1>
-                </div>
-            </div>
-        </div>
-
+        <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" breadcrumb="true"></ds:titleBanner>
                     
-
         <section class="ds44-ongletsContainer">
 
             <div class="js-tabs ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">
