@@ -29,6 +29,7 @@ jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 #  Wysiwyg
 # ------------------------------------------------------------
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
+wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
