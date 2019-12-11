@@ -19,6 +19,9 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="statut" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.statut" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Statut</label>
+    </field>    
     <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type de lieu</label>
     </field>
@@ -58,10 +61,10 @@
     <field name="lieudit" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu-dit</label>
     </field>
-    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+    <field name="codePostal" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
     </field>
-    <field name="communes" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City[]">
       <label xml:lang="fr">Communes</label>
     </field>
     <field name="planDacces" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="com.jalios.jcms.FileDocument[]" ml="true">
@@ -70,12 +73,33 @@
     <field name="libelleAutreAdresse" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Libellé autre adresse</label>
     </field>
-    <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="etageCouloirEscalier2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Étage - couloir - escalier</label>
+    </field>
+    <field name="entreeBatimentImmeuble2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Entrée - bâtiment - immeuble</label>
+    </field>
+    <field name="ndeVoie2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">N° de voie</label>
+    </field>
+    <field name="libelleDeVoie2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé de voie</label>
+    </field>
+    <field name="lieudit2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Lieu-dit</label>
+    </field>
+    <field name="codePostal2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="cs2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">CS</label>
     </field>
-    <field name="cedex" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+    <field name="cedex2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Cedex</label>
     </field>
+    <field name="communes2" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City[]">
+      <label xml:lang="fr">Communes</label>
+    </field>    
     <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d\d \d\d \d\d \d\d \d\d">
       <label xml:lang="fr">Téléphone</label>
     </field>
@@ -85,7 +109,7 @@
     <field name="siteInternet" editor="url" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Site internet</label>
     </field>
-    <field name="typeDacces" editor="enumerate" required="true" compactDisplay="false" tab="details" type="String[]" chooser="checkbox" valueList="direct|prescription" ml="false" descriptionType="tooltip" labelList="Direct|Sur prescription" searchable="true" html="false" checkHtml="true">
+    <field name="typeDacces" editor="enumerate" required="true" compactDisplay="false" tab="details" type="String" chooser="checkbox" valueList="direct|prescription" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Direct|Sur prescription">
       <label xml:lang="fr">Type d'accès</label>
     </field>
     <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
@@ -130,9 +154,12 @@
     <field name="communesDintervention" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
       <label xml:lang="fr">Communes d'intervention</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="rattachement" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-    </field>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette cache ne supprimera pas ces liaisons aux communes, il faudra les effacer manuellement.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>    
     <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
       <label xml:lang="fr">Toutes les communes EPCI</label>
     </field>
@@ -163,10 +190,16 @@
     <field name="handicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Handicap auditif</label>
     </field>
+    <field name="handicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Handicap moteur</label>
+    </field>
+    <field name="handicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Handicap visuel</label>
+    </field>
     <field name="handicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.handicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Handicap mental</label>
     </field>
-    <field name="deficiencePsychiqueEtMaladieMent" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="deficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.deficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Déficience psychique et maladie mentale</label>
     </field>
     <field name="batimentHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -178,73 +211,83 @@
     <field name="batimentHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Handicap visuel</label>
     </field>
-    <field name="batimentDeficiencePsychiqueEtMal" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentDeficiencePsychiqueEtMal.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="batimentHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Bâtiment) Handicap mental</label>
+    </field>
+    <field name="batimentDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.batimentDeficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bâtiment) Déficience psychique et maladie mentale</label>
     </field>
-    <field name="visiophone" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="visiophone" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Visiophone</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="sonette" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
-      <label xml:lang="fr">Sonette</label>
+    <field name="sonnette" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
+      <label xml:lang="fr">Sonnette</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="signaletiqueDirectionnelle" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="signaletiqueDirectionnelle" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Signalétique directionnelle</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="entreeDePlainpied" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="entreeDePlainpied" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Entrée de plain-pied</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="portesAutomatiques" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="portesAutomatiques" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Portes automatiques</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="rampeFixe" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="rampeFixe" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Rampe fixe</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="ascenseurMontecharge" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="rampeAmovible" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
+      <label xml:lang="fr">Rampe amovible</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="ascenseurMontecharge" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Ascenseur / monte-charge</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="presenceDePersonnelALaccueil" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="presenceDePersonnelALaccueil" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Présence de personnel à l'accueil</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="personnelDaccueilFormeAuxDiffere" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="personnelDaccueilFormeAuxDiffere" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Personnel d'accueil formé aux différentes situations de handicap</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="personnelDaccueilFormeALaLangueD" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="on">
+    <field name="personnelDaccueilFormeALaLangueD" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false">
       <label xml:lang="fr">Personnel d'accueil formé à la Langue des Signes Française (LSF)</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
@@ -266,7 +309,7 @@
     <field name="accueilHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Handicap mental</label>
     </field>
-    <field name="accueilDeficiencePsychiqueEtMala" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilDeficiencePsychiqueEtMala.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="accueilDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.accueilDeficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Accueil) Déficience psychique et maladie mentale</label>
     </field>
     <field name="sanitairesHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -277,6 +320,21 @@
     </field>
     <field name="sanitairesHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Sanitaires) Handicap visuel</label>
+    </field>
+    <field name="sanitairesHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Sanitaires) Handicap mental</label>
+    </field>
+    <field name="sanitairesDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.sanitairesHandicapPsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Sanitaires) Déficience psychique et maladie mentale</label>
+    </field>
+    <field name="salleDattenteHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Salle d’attente) Handicap auditif</label>
+    </field>
+    <field name="salleDattenteHandicapMoteur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteHandicapMoteur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Salle d’attente) Handicap moteur</label>
+    </field>
+    <field name="salleDattenteHandicapVisuel" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteHandicapVisuel.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">(Salle d’attente) Handicap visuel</label>
     </field>
     <field name="salleDattenteHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle d’attente) Handicap mental</label>
@@ -296,7 +354,7 @@
     <field name="bureauHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Handicap mental</label>
     </field>
-    <field name="bureauDeficiencePsychiqueEtMalad" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauDeficiencePsychiqueEtMalad.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="bureauDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.bureauDeficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Bureau) Déficience psychique et maladie mentale</label>
     </field>
     <field name="salleDeReunionHandicapAuditif" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -311,7 +369,7 @@
     <field name="salleDeReunionHandicapMental" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Handicap mental</label>
     </field>
-    <field name="salleDeReunionDeficiencePsychiqu" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychiqu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="salleDeReunionDeficiencePsychique" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychique.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">(Salle de réunion) Déficience psychique et maladie mentale</label>
     </field>
     <field name="planningDeMiseEnAccessibiliteDuS" editor="textfield" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
@@ -320,15 +378,27 @@
     <field name="boucleInductionMagnetiqueAccueil" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Boucle induction magnétique - Accueil</label>
     </field>
+    <field name="boucleInductionMagnetiqueReunion" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueReunion.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Boucle induction magnétique - Réunion</label>
+    </field>
     <field name="ascenseur" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.ascenseur.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Ascenseur</label>
     </field>
-    <field name="rampeAmovible" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.rampeAmovible.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="rampeFixeAccessibilite" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.rampeFixe.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Rampe fixe</label>
+    </field>
+    <field name="rampeAmovibleAccessibilite" editor="category" required="false" compactDisplay="false" tab="accessibilite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.rampeAmovible.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Rampe amovible</label>
     </field>
     <field name="informationsComplementaires" editor="wysiwyg" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Informations complémentaires</label>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="rubriques" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Rubrique concernée</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rubriques" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>    
   </fields>
   <tabs>
     <tab id="coordonnees">
@@ -345,6 +415,9 @@
     </tab>
     <tab id="accessibilite">
       <label xml:lang="fr">Accessibilité</label>
+    </tab>
+    <tab id="rubriques">
+      <label xml:lang="fr">Rubriques</label>
     </tab>
   </tabs>
 </type>

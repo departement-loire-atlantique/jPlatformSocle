@@ -18,11 +18,14 @@ jcmsplugin.socle.site.header.cat: c_2000128
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
-jcmsplugin.socle.site.header.show.rechercher: true
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 
+# ------------------------------------------------------------
+#  Footer
+# ------------------------------------------------------------
+jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1088893
 
 
 # ------------------------------------------------------------
@@ -126,38 +129,56 @@ $jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 
 # Page carrefour
-$jcmsplugin.socle.pagecarrefour.targetCategory.root : j_5
+$jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
 
 # Fiche Lieu
 
 $jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
-$jcmsplugin.socle.fichelieu.handicapAuditif.root: c_1155349
-$jcmsplugin.socle.fichelieu.handicapMental.root: c_1155349
-$jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root: c_1155349
-$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root: c_1155349
-$jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root: c_1155349
-$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root: c_1155349
-$jcmsplugin.socle.fichelieu.batimentDeficiencePsychiqueEtMal.root: c_1155349
-$jcmsplugin.socle.fichelieu.siOuiHorairesDePresence.root: c_1155349
-$jcmsplugin.socle.fichelieu.accueilHandicapMoteur.root: c_1155349
-$jcmsplugin.socle.fichelieu.accueilHandicapVisuel.root: c_1155349
-$jcmsplugin.socle.fichelieu.accueilHandicapMental.root: c_1155349
-$jcmsplugin.socle.fichelieu.accueilDeficiencePsychiqueEtMala.root: c_1155349
-$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root: c_1155349
-$jcmsplugin.socle.fichelieu.sanitairesHandicapMoteur.root: c_1155349
-$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDattenteDeficiencePsychique.root: c_1155349
-$jcmsplugin.socle.fichelieu.bureauHandicapAuditif.root: c_1155349
-$jcmsplugin.socle.fichelieu.bureauHandicapMoteur.root: c_1155349
-$jcmsplugin.socle.fichelieu.bureauHandicapVisuel.root: c_1155349
-$jcmsplugin.socle.fichelieu.bureauHandicapMental.root: c_1155349
-$jcmsplugin.socle.fichelieu.bureauDeficiencePsychiqueEtMalad.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root: c_1155349
-$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychiqu.root: c_1155349
-$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root: c_1155349
-$jcmsplugin.socle.fichelieu.ascenseur.root: c_1155349
-$jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1155349
+$jcmsplugin.socle.fichelieu.typeLieu.statut: c_1155421
+$jcmsplugin.socle.fichelieu.handicapAuditif.root: c_1156097
+$jcmsplugin.socle.fichelieu.handicapMoteur.root: c_1156101
+$jcmsplugin.socle.fichelieu.handicapVisuel.root: c_1156105
+$jcmsplugin.socle.fichelieu.handicapMental.root: c_1156109
+$jcmsplugin.socle.fichelieu.deficiencePsychique.root: c_1156113
+
+$jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root: c_1156117
+$jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root: c_1156121
+$jcmsplugin.socle.fichelieu.batimentHandicapVisuel.root: c_1156125
+$jcmsplugin.socle.fichelieu.batimentHandicapMental.root: c_1156129
+$jcmsplugin.socle.fichelieu.batimentDeficiencePsychique.root: c_1156133
+ 
+$jcmsplugin.socle.fichelieu.accueilHandicapAuditif.root: c_1156137
+$jcmsplugin.socle.fichelieu.accueilHandicapMoteur.root: c_1156141
+$jcmsplugin.socle.fichelieu.accueilHandicapVisuel.root: c_1156145
+$jcmsplugin.socle.fichelieu.accueilHandicapMental.root: c_1156149
+$jcmsplugin.socle.fichelieu.accueilDeficiencePsychique.root: c_1156153
+
+$jcmsplugin.socle.fichelieu.sanitairesHandicapAuditif.root: c_1156157
+$jcmsplugin.socle.fichelieu.sanitairesHandicapMoteur.root: c_1156161
+$jcmsplugin.socle.fichelieu.sanitairesHandicapVisuel.root: c_1156165
+$jcmsplugin.socle.fichelieu.sanitairesHandicapMental.root: c_1156169
+$jcmsplugin.socle.fichelieu.sanitairesHandicapPsychique.root: c_1156173
+
+$jcmsplugin.socle.fichelieu.salleDattenteHandicapAuditif.root: c_1156177
+$jcmsplugin.socle.fichelieu.salleDattenteHandicapMoteur.root: c_1156181
+$jcmsplugin.socle.fichelieu.salleDattenteHandicapVisuel.root: c_1156185
+$jcmsplugin.socle.fichelieu.salleDattenteHandicapMental.root: c_1156189
+$jcmsplugin.socle.fichelieu.salleDattenteDeficiencePsychique.root: c_1156193
+ 
+$jcmsplugin.socle.fichelieu.bureauHandicapAuditif.root: c_1156197
+$jcmsplugin.socle.fichelieu.bureauHandicapMoteur.root: c_1156201
+$jcmsplugin.socle.fichelieu.bureauHandicapVisuel.root: c_1156205
+$jcmsplugin.socle.fichelieu.bureauHandicapMental.root: c_1156209
+$jcmsplugin.socle.fichelieu.bureauDeficiencePsychique.root: c_1156213
+ 
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapAuditif.root: c_1156217
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root: c_1156221
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root: c_1156225
+$jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root: c_1156229
+$jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychique.root: c_1156233
+
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root: c_1156237
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueReunion.root: c_1156241 
+$jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
+$jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
+$jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
