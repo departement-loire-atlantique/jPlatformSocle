@@ -14,7 +14,7 @@ jcmsplugin.socle.portlet.filariane.id: c_1088465
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
-jcmsplugin.socle.site.header.cat:
+jcmsplugin.socle.site.header.cat: c_2000128
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
@@ -114,7 +114,7 @@ $id.plugin.socle.page-principale.cat: c_1092546
 # Générique des racines de catégories
 
 $jcmsplugin.socle.category.besoins.root: j_3
-$jcmsplugin.socle.category.publicVise.root: j_3
+$jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_3
 $jcmsplugin.socle.category.thematiquesBesoins.root: j_3
 $jcmsplugin.socle.category.delegations.root: j_3
