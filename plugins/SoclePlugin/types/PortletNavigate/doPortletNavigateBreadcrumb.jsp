@@ -22,14 +22,15 @@ if (Util.isEmpty(ancestors) && box.getHideWhenNoResults()) {
 
 Collections.reverse(ancestors);
 
-//ancestors.add(currentCategory);
 	
 String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 int counter = 0;
 String libelleCat = "";
+String cible="";
+String libelleCible = "";
 %>
 
-<nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>'>
+<nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-smallScreens">
 	<ul class="ds44-list ds44-text--colorInvert">
 	    <li class="ds44-breadcrumb"><a href="index.jsp"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
 	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory">
@@ -38,10 +39,14 @@ String libelleCat = "";
 	            	if((itCategory.hasAncestor(rootCategory) || itCategory.equals(rootCategory)) && (counter < box.getLevels()-1)) {
 	            		libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
 	            		boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
+	            		if(targetBlank){
+	            			cible="target=\"blank\"";
+	            			libelleCible = glp("jcmsplugin.socle.accessibily.newTabLabel");
+	            		}
 		           %>
 	    
 				    <li class="ds44-breadcrumb">
-				        <a <%= nofollow %> href='<%= PortalManager.getUrlWithUpdateCtxCategories(itCategory , ctxCategories, request , !box.getNavigatePortlet()) %>' <%=targetBlank ? "target=\"blank\"" :"" %>><%= libelleCat %></a>
+				        <a <%= nofollow %> href='<%= PortalManager.getUrlWithUpdateCtxCategories(itCategory , ctxCategories, request , !box.getNavigatePortlet()) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
 				    </li>
 				    <% counter++; %>
 				  <% } %>
