@@ -162,7 +162,7 @@
                     <div class="grid-12-small-1">
                         <div class="col-7">
                             <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
-                                <div class="ds44-introduction"><%= obj.getChapo() %></div>
+                                <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                             </jalios:if>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui()) %>">
                                 <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
