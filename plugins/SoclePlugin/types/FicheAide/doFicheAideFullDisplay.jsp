@@ -58,17 +58,17 @@
 
                             <div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
                                 <div class="ds44-modal-box">
-                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer la boite de dialogue" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
-                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
+                                    <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
 
                                     <div class="ds44-modal-gab">
 
                                         <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
                                                                                 
-                                           <div class="ds44-flex-container ds44-mt3">
-                                               <div class="ds44-halfWidth prl">
-                                                   <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
+                                           <div class="ds44-mt3 grid-12-small-1">
+                                               <div class="col-6 ds44-modal-column">
+                                                   <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
                                                    
                                                    <jalios:select>
                                                          <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
@@ -90,19 +90,19 @@
                                                </div>
                                                <jalios:select>
                                                 <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-                                                <div class="ds44-halfWidth pll ds44-border-left">
+                                                <div class="col-6 ds44-modal-column">
         
-                                                    <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+                                                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
         
-                                                    <p class="ds44-btn--invert"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                                    <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
                                                 </div>
                                                 </jalios:if>
                                                 <jalios:default>
-                                                <div class="ds44-halfWidth pll ds44-border-left">
+                                                <div class="col-6 ds44-modal-column">
            
-                                                       <h3 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+                                                       <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
            
-                                                       <p class="ds44-btn--invert"><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                                       <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
                                                    </div>
                                                 </jalios:default>
                                                </jalios:select>
@@ -119,16 +119,16 @@
 
                             <div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
                                 <div class="ds44-modal-box">
-                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer la boite de dialogue" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
-                                    <h2 class="h2-like">Suivre une demande en cours</h2>
+                                    <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h2>
 
                                     <div class="ds44-modal-gab">
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                                        <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
 
-                                        <div class="ds44-multiCol ds44-multiCol--border ds44-mt3">
-                                            <div class="ds44-noCut prm">
-                                                <h3 class="h3-like">Vous avez un code de suivi :</h3>
+                                        <div class="ds44-mt3 grid-12-small-1">
+                                            <div class="col-6 ds44-modal-column">
+                                                <h2 class="h3-like">Vous avez un code de suivi :</h3>
 
                                                 <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
 
@@ -138,9 +138,9 @@
                                                     <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="ds44-noCut plm">
+                                            <div class="col-6 ds44-modal-column">
 
-                                                <h3 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+                                                <h2 class="h3-like">Vous n’avez pas de code de suivi :</h3>
 
                                                 <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
 
