@@ -113,13 +113,13 @@ $id.plugin.socle.page-principale.cat: c_1092546
 
 # Générique des racines de catégories
 
-$jcmsplugin.socle.category.besoins.root: j_3
+$jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
-$jcmsplugin.socle.category.categorieDeNavigation.root: j_3
-$jcmsplugin.socle.category.thematiquesBesoins.root: j_3
-$jcmsplugin.socle.category.delegations.root: j_3
+$jcmsplugin.socle.category.categorieDeNavigation.root: j_5
+$jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
+$jcmsplugin.socle.category.delegations.root: c_1155289
 $jcmsplugin.socle.category.communes.root: j_3
-$jcmsplugin.socle.category.toutesLesCommunesEPCI.root: j_3
+$jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 
 # Fiche aide
 $jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
@@ -130,7 +130,7 @@ $jcmsplugin.socle.pagecarrefour.targetCategory.root : j_5
 
 # Fiche Lieu
 
-$jcmsplugin.socle.fichelieu.typeLieu.root: j_3
+$jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
 $jcmsplugin.socle.fichelieu.handicapAuditif.root: j_3
 $jcmsplugin.socle.fichelieu.handicapMental.root: j_3
 $jcmsplugin.socle.fichelieu.deficiencePsychiqueEtMaladieMent.root: j_3
