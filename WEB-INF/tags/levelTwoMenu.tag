@@ -6,7 +6,9 @@
     body-content="scriptless" 
     import="com.jalios.jcms.Category,
             java.util.Locale,
-            fr.cg44.plugin.socle.SocleUtils"
+            fr.cg44.plugin.socle.SocleUtils,
+            com.jalios.jcms.JcmsUtil,
+            com.jalios.util.Util"
 %><%
 %><%@ attribute name="rootCat"
     required="true"
@@ -26,6 +28,12 @@
     rtexprvalue="true"
     type="Locale"
     description="La valeur de userLocale pour la bonne traduction du label"
+%><%@ attribute name="userLang"
+    required="true"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="La valeur de userLang pour la bonne traduction du label"
 %>
 
 <section id="<%= id %>" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv2" role="dialog" aria-label="Menu principal niveau 2">
@@ -41,7 +49,7 @@
             </div>
             <ul class="ds44-navListN2 ds44-multiCol ds44-xl-gap ds44-xl-fluid-margin ds44-list">
             <jalios:foreach collection="<%= SocleUtils.getOrderedAuthorizedChildrenSet(rootCat) %>" name="itCat" type="Category">
-                <li><a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl"><%= itCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+                <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
             </jalios:foreach>
             </ul>
         </div>

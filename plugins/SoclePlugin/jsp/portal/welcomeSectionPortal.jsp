@@ -15,12 +15,16 @@
   // Retrieve Portlet's buffer for PortletSelection
   String selection = getPortlet(bufferMap,"selection");
 %>
-  
 <%= getPortlet(bufferMap,"header") %>
-<%= getPortlet(bufferMap,"selection") %></div>
+
+<main role="main" id="content">
+    <section class="ds44-container-fluid">
+        <%= getPortlet(bufferMap,"selection") %>
+    </section>
+</main>
 
 
-<footer>
+<footer role="contentinfo">
     <section class="ds44-container-fluid">
         <%= getPortlet(bufferMap,"footer") %>
     </section>
