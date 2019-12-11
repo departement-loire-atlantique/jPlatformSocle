@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@page import="fr.cg44.plugin.socle.SocleUtils"%><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
@@ -19,7 +20,7 @@ String title = obj.getTitle();
             <div class="grid-12-small-1">
                 <div class="col-7">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
-                        <p class="ds44-introduction"><%= obj.getDescription(userLang) %></p>
+                        <p class="ds44-introduction"><%= SocleUtils.lineBreakToBr(obj.getDescription(userLang)) %></p>
                     </jalios:if>
 
                     <jalios:if predicate="<%= Util.notEmpty(obj.getTopportlets()) %>">

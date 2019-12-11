@@ -142,5 +142,12 @@ public final class SocleUtils {
 
 		return idVideo;
 	}
+	
+	/* Remplace les saut de ligne en <br>
+	 * */
+	public static String lineBreakToBr (String chaine){
+		chaine = Util.replaceAll(chaine, "\r\n", "<br>");
+		return chaine;
+	}
 
 }
