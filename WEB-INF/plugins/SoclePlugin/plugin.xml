@@ -184,6 +184,7 @@
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
+    <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />

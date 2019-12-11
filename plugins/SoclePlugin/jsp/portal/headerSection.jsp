@@ -25,7 +25,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 %>
 
 
-<header role="banner" id="top" class="ds44-header">
+<header role="banner" id="top" class="ds44-container-fluid ds44-header">
 
     <ul class="ds44-list">
         <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
@@ -57,8 +57,8 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				        
 				    <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu de navigation"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 				
-				    <nav role="navigation">
-				        <div class="ds44-inner-container ds44--antiStickyPad">
+				    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="Menu de navigation">
+				        <div class="ds44-inner-container ds44-flex-container--column ds44-flex-mauto">
 				            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 				            <% int i = 1; %>
 				            <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
@@ -68,14 +68,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				                %>
 				                <li>
 				                    <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
-				                    <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>"/>
+				                    <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
 				                </li>
 				            </jalios:foreach>
 				            </ul>
 				            <hr class="ds44-navSep" />
 				            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 	                        <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
-	                            <li><a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink"><%= itCat.getName(userLang) %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+	                            <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
 	                        </jalios:foreach>
 	                        </ul>
 				        </div>
@@ -99,8 +99,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 							    <nav role="navigation">
 							            <div class="ds44-inner-container">
 							    
-							                <button type="button" title="Retour menu principal" class="ds44-btn-backOverlay"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
-							                <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du département</p>
+							                <div class="ds44-container-menuBackLink ds44-hide-mobile">
+										        <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
+										        <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du département</p>
+										    </div>
+										
+										    <div class="ds44-container-menuBackLink ds44-show-mobile">
+										        <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du département</p>
+										    </div>
 							
 							                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-m-fluid-margin ds44-list">
 							                <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
@@ -108,7 +114,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 							                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
 							                        <ul class="ds44-list">
 							                        <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-							                            <li><a href="<%= itSubCat.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl"><%= itSubCat.getName() %><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+							                            <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
 							                        </jalios:foreach>
 							                        </ul>
 							                    </li>
