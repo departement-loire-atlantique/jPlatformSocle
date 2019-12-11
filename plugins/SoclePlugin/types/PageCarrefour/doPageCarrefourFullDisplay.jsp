@@ -19,7 +19,7 @@ String title = obj.getTitle();
             <div class="grid-12-small-1">
                 <div class="col-7">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
-                        <p class="ds44-introduction"><%= obj.getDescription(userLang) %></p>
+                        <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getDescription(userLang) %></jalios:wysiwyg></div>
                     </jalios:if>
 
                     <jalios:if predicate="<%= Util.notEmpty(obj.getTopportlets()) %>">

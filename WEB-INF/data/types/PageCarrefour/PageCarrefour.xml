@@ -20,7 +20,7 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">description</label>
     </field>
     <field name="targetCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.pagecarrefour.targetCategory.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">

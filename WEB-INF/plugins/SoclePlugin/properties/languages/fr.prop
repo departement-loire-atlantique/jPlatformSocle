@@ -66,3 +66,9 @@ jcmsplugin.socle.titre.temoignage: Témoignages
 #  Fil ariane
 # ------------------------------------------------------------
 jcmsplugin.socle.breadcrumb.position:Votre position
+
+# ------------------------------------------------------------
+#  Wysiwyg
+# ------------------------------------------------------------
+wysiwyg.configuration.simple: Simple
+wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions sans mise en forme
