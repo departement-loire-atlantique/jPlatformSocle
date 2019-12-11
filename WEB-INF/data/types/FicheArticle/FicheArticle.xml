@@ -46,7 +46,7 @@
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
-    <field name="titreOnglet" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Onglet">
+    <field name="titreOnglet" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet">
       <label xml:lang="fr">Titre onglet</label>
     </field>
     <field name="contenuOnglet" editor="wysiwyg" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet">
