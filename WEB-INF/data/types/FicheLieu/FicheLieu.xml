@@ -160,8 +160,8 @@
     <field name="besoins" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
       <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="public" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
-      <label xml:lang="fr">Public</label>
+    <field name="publics" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
+      <label xml:lang="fr">Publics</label>
     </field>
     <!-- Territoire -->
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">

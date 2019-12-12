@@ -77,11 +77,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field chapo textareaEditor  <%= Util.isEmpty(obj.getChapo(userLang)) ? "empty" : "" %>">
+  <tr class="field chapo wysiwygEditor  <%= Util.isEmpty(obj.getChapo(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "chapo", userLang) %><jalios:edit pub='<%= obj %>' fields='chapo'/></td>
     <td class='field-data' <%= gfla(obj, "chapo") %>>
             <% if (Util.notEmpty(obj.getChapo(userLang))) { %>
-            <%= obj.getChapo(userLang) %>
+            <jalios:wysiwyg data='<%= obj %>' field='chapo'><%= obj.getChapo(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -486,12 +486,12 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field public categoryEditor  <%= Util.isEmpty(obj.getPublic(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "public", userLang) %><jalios:edit pub='<%= obj %>' fields='public'/></td>
+  <tr class="field publics categoryEditor  <%= Util.isEmpty(obj.getPublics(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheLieu.class, "publics", userLang) %><jalios:edit pub='<%= obj %>' fields='publics'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getPublic(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getPublics(loggedMember))) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getPublic(loggedMember) %>" type="Category" name="itCategory" >
+            <jalios:foreach collection="<%= obj.getPublics(loggedMember) %>" type="Category" name="itCategory" >
               <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.publicVise.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
@@ -1152,4 +1152,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- BSzxFPYEmbC6qVSRMu1r4Q== --%>
+%><%-- XpOG6jtQZCg9u4KfudihVw== --%>
