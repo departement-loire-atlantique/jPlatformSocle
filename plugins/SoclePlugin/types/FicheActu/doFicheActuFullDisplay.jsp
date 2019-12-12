@@ -164,12 +164,24 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field communesIntervention linkEditor  <%= Util.isEmpty(obj.getCommunesIntervention()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "communesIntervention", userLang) %><jalios:edit pub='<%= obj %>' fields='communesIntervention'/></td>
+  <tr class="field types categoryEditor  <%= Util.isEmpty(obj.getTypes(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "types", userLang) %><jalios:edit pub='<%= obj %>' fields='types'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCommunesIntervention())) { %>
+            <% if (Util.notEmpty(obj.getTypes(loggedMember))) { %>
             <ol>
-              <jalios:foreach name="itData" type="generated.City" array="<%= obj.getCommunesIntervention() %>">
+            <jalios:foreach collection="<%= obj.getTypes(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.ficheactu.types.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field communes linkEditor  <%= Util.isEmpty(obj.getCommunes()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "communes", userLang) %><jalios:edit pub='<%= obj %>' fields='communes'/></td>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getCommunes())) { %>
+            <ol>
+              <jalios:foreach name="itData" type="generated.City" array="<%= obj.getCommunes() %>">
               <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
               <li>
               <jalios:link data='<%= itData %>'/>
