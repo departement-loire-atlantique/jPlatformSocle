@@ -14,7 +14,7 @@ jcmsplugin.socle.portlet.filariane.id: c_1088465
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
-jcmsplugin.socle.site.header.cat: c_2000128
+jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
