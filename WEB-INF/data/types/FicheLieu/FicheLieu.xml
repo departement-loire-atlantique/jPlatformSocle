@@ -6,46 +6,34 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="idReferentiel" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="idReferentiel" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">ID référentiel</label>
     </field>
-    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Sous-titre</label>
     </field>
-    <field name="serviceDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="description" type="boolean" default="on">
-      <label xml:lang="fr">Service du Département</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
-    <field name="statut" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.statut" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Statut</label>
-    </field>    
-    <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Type de lieu</label>
-    </field>
-    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true">
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true">
       <label xml:lang="fr">Image principale</label>
     </field>
-    <field name="copyright" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Copyright</label>
     </field>
-    <field name="legende" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Légende</label>
     </field>
-    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="enBref" editor="textarea" required="false" compactDisplay="false" tab="description" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
-      <label xml:lang="fr">En bref</label>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="plusDeDetailInterne" editor="link" required="false" compactDisplay="false" tab="description" type="com.jalios.jcms.Content" parent="false">
-      <label xml:lang="fr">Plus de détail (interne)</label>
-    </field>
-    <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="true" openWindow="false">
-      <label xml:lang="fr">Plus de détail (externe)</label>
-    </field>
+    <!-- Coordonnées -->
     <field name="etageCouloirEscalier" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Étage - couloir - escalier</label>
     </field>
@@ -64,8 +52,8 @@
     <field name="codePostal" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
     </field>
-    <field name="communes" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City[]">
-      <label xml:lang="fr">Communes</label>
+    <field name="commune" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" parent="false">
+      <label xml:lang="fr">Commune</label>
     </field>
     <field name="planDacces" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Plan d'accès</label>
@@ -97,10 +85,10 @@
     <field name="cedex2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Cedex</label>
     </field>
-    <field name="communes2" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City[]">
-      <label xml:lang="fr">Communes</label>
-    </field>    
-    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d\d \d\d \d\d \d\d \d\d">
+    <field name="commune2" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" parent="false">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
     </field>
     <field name="email" editor="email" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="50" ml="true">
@@ -109,7 +97,14 @@
     <field name="siteInternet" editor="url" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Site internet</label>
     </field>
-    <field name="typeDacces" editor="enumerate" required="true" compactDisplay="false" tab="details" type="String" chooser="checkbox" valueList="direct|prescription" ml="false" descriptionType="tooltip" searchable="true" html="false" checkHtml="true" labelList="Direct|Sur prescription">
+    <!-- Détails -->
+    <field name="plusDeDetailInterne" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.Content" parent="false">
+      <label xml:lang="fr">Plus de détail (interne)</label>
+    </field>
+    <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">Plus de détail (externe)</label>
+    </field>
+    <field name="typeDacces" editor="category" required="true" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type d'accès</label>
     </field>
     <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
@@ -117,9 +112,6 @@
     </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
-    </field>
-    <field name="publicVise" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
-      <label xml:lang="fr">Public visé</label>
     </field>
     <field name="modalitesDaccueil" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Modalités d'accueil</label>
@@ -133,39 +125,64 @@
     <field name="parkings" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Parkings</label>
     </field>
-    <field name="enDetails" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">En détails</label>
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Description</label>
     </field>
     <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.Video[]">
       <label xml:lang="fr">Vidéo</label>
     </field>
+    <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="details" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Autres lieux associés</label>
+    </field>
     <field name="portletBas" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlet bas</label>
     </field>
-    <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.FicheLieu[]">
-      <label xml:lang="fr">Autres lieux associés</label>
+    <!-- Navigation et classement -->
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+    <field name="serviceDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="navigation" type="boolean" default="on">
+      <label xml:lang="fr">Service du Département</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="statut" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Statut</label>
+    </field>
+    <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type de lieu</label>
+    </field>
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
       <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
-      <label xml:lang="fr">Délégations</label>
+    <field name="public" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
+      <label xml:lang="fr">Public</label>
     </field>
-    <field name="communesDintervention" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
-      <label xml:lang="fr">Communes d'intervention</label>
+    <!-- Territoire -->
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
+      <label xml:lang="fr">Communes concernées</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="rattachement" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette cache ne supprimera pas ces liaisons aux communes, il faudra les effacer manuellement.</description>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
-    </field>    
-    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
-      <label xml:lang="fr">Toutes les communes EPCI</label>
     </field>
-    <field name="canton" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.Canton" parent="false">
-      <label xml:lang="fr">Canton</label>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">EPCI concernés</label>
     </field>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
+    </field>
+    <!-- Accessibilité -->
     <field name="arretsDeTransportsEnCommunAccess" editor="boolean" required="false" compactDisplay="false" tab="accessibilite" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Arrêts de transports en commun accessible</label>
       <onLabel xml:lang="en">Yes</onLabel>
@@ -393,31 +410,22 @@
     <field name="informationsComplementaires" editor="wysiwyg" required="false" compactDisplay="false" tab="accessibilite" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Informations complémentaires</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="rubriques" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Rubrique concernée</label>
-    </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rubriques" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
-      <label xml:lang="fr">Mise en avant</label>
-    </field>    
   </fields>
   <tabs>
     <tab id="coordonnees">
       <label xml:lang="fr">Coordonnées</label>
     </tab>
-    <tab id="description">
-      <label xml:lang="fr">Description</label>
-    </tab>
     <tab id="details">
       <label xml:lang="fr">Détails</label>
     </tab>
-    <tab id="rattachement">
-      <label xml:lang="fr">Rattachement</label>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
     </tab>
     <tab id="accessibilite">
       <label xml:lang="fr">Accessibilité</label>
-    </tab>
-    <tab id="rubriques">
-      <label xml:lang="fr">Rubriques</label>
     </tab>
   </tabs>
 </type>
