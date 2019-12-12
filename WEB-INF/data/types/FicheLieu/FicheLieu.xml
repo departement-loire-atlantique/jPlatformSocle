@@ -30,7 +30,7 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
     <!-- Coordonnées -->
@@ -104,7 +104,7 @@
     <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Plus de détail (externe)</label>
     </field>
-    <field name="typeDacces" editor="category" required="true" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDacces" editor="category" required="true" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type d'accès</label>
     </field>
     <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
