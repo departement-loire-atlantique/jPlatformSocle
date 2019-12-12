@@ -6,7 +6,7 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="dateActu" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+    <field name="dateActu" editor="date" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
       <label xml:lang="fr">Date actu</label>
     </field>
     <field name="imagePrincipale" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="true">
@@ -24,7 +24,7 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.Video" parent="false" ml="false" descriptionType="tooltip" tab="video" searchable="false" html="false" checkHtml="true">
+    <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.Video" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Vidéo principale</label>
     </field>
     <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
@@ -33,38 +33,57 @@
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
-    <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true">
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" tabGroup="paragraphe">
+      <label xml:lang="fr">Titre paragraphe</label>
+    </field>
+    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="paragraphe">
+      <label xml:lang="fr">Contenu paragraphe</label>
+    </field>
+    <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sur le même thème</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="thematiquesBesoins" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.thematiquesBesoins.root" ml="false" descriptionType="tooltip" tab="rattachement" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Thématiques / Besoins</label>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
-      <label xml:lang="fr">Délégations</label>
+    <field name="besoins" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.thematiquesBesoins.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="communes" editor="link" required="false" compactDisplay="false" tab="rattachement" type="generated.City[]">
-      <label xml:lang="fr">Communes</label>
+    <field name="publicVise" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
+      <label xml:lang="fr">Public visé</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="rattachement" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="tooltip" labelList="Oui" searchable="false" html="false" checkHtml="true">
+    <field name="communesIntervention" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Communes concernées</label>
+    </field>
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="epcis" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">EPCI concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="territoire" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Oui">
       <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="toutesLesCommunesEPCI" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
-      <label xml:lang="fr">Toutes les communes EPCI</label>
+    <field name="canton" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton" parent="false">
+      <label xml:lang="fr">Canton</label>
     </field>
   </fields>
   <tabs>
-    <tab id="video">
-      <label xml:lang="fr">Vidéo</label>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
     </tab>
-    <tab id="rattachement">
-      <label xml:lang="fr">Rattachement</label>
+    <tab id="classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
     </tab>
   </tabs>
 </type>
