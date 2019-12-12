@@ -79,7 +79,7 @@
     <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
       <label xml:lang="fr">Délégations</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="rattachement">
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="territoire">
       <label xml:lang="fr">Toutes les communes du Département</label>
       <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette cache ne supprimera pas ces liaisons aux communes, il faudra les effacer manuellement.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
