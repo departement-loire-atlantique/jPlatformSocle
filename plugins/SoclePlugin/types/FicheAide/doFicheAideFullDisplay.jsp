@@ -2,7 +2,7 @@
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
-String imageFile = obj.getImagePrincipale() ;
+String imageFile = obj.getImageBandeau() ;
 String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
 String title = obj.getTitle();
 %>

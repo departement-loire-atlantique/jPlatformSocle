@@ -125,8 +125,8 @@ $jcmsplugin.socle.category.delegations.root: c_1155289
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 
 # Fiche aide
-$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
+$jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5

@@ -6,54 +6,100 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" tab="principal" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
-      <label xml:lang="fr">Image principale</label>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image bandeau</label>
     </field>
-    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" tab="principal" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>    
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image mobile</label>
     </field>
-    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Copyright</label>
     </field>
-    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Légende</label>
     </field>
-    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="descriptionLongue" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" tab="principal">
-      <label xml:lang="fr">Description longue</label>
-    </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="principal" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Mise en avant</label>
-    </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
-      <label xml:lang="fr">Besoins</label>
-    </field>
-    <field name="beneficiairesEtThematiques" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Bénéficiaires et thématiques</label>
-    </field>
-    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="en_resume" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
-    </field>
-    <field name="publicsVises" editor="category" required="false" compactDisplay="false" tab="en_resume" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
-      <label xml:lang="fr">Publics visés</label>
-    </field>
-    <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    </field> 
+    
+    <!-- Détails -->
+    <field name="intro" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Intro</label>
+    </field>    
+    <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Éligibilité</label>
     </field>
-    <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">C’est quoi ?</label>
     </field>
-    <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Comment faire une demande ?</label>
     </field>
-    <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="en_detail" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Quels documents fournir ?</label>
     </field>
+
+    <!-- Encadrés -->
+    <field name="titreEncartBonASavoir" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart "Bon à savoir"</label>
+    </field>
+    <field name="bonASavoir" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Bon à savoir</label>
+    </field>
+    <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre vidéo</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="encadres" type="generated.Video[]">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
+    <field name="portletEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlet encadrés</label>
+    </field>
+
+    <!-- Contact -->
+    <field name="instructionDelegation" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Instruction délégation</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="contactServiceParEmail" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Contact service par email</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
+      <label xml:lang="fr">Qui contacter ?</label>
+    </field>    
+    <field name="introContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Intro contact</label>
+    </field>
+    <field name="complementContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Complément contact</label>
+    </field>
+    <field name="besoinDaide" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Besoin d'aide ?</label>
+    </field>
+    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.Faq" parent="false">
+      <label xml:lang="fr">FAQ</label>
+    </field>
+    <field name="contactFAQ" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="true">
+      <label xml:lang="fr">Contact FAQ</label>
+    </field>
+    
+    <!-- Demande -->
     <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Documents utiles</label>
     </field>
@@ -72,72 +118,65 @@
     <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro suivre une demande</label>
     </field>
-    <field name="introFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tab="demande" html="false">
+    <field name="introFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Intro faire une demande</label>
     </field>
-    <field name="titreEncartBonASavoir" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre encart "Bon à savoir"</label>
+
+    <!-- Navigation et classement -->
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>    
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="bonASavoir" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Bon à savoir</label>
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
+      <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre vidéo</label>
+    <field name="publics" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
+      <label xml:lang="fr">Publics</label>
     </field>
-    <field name="video" editor="link" required="false" compactDisplay="false" tab="encadres" type="generated.Video[]">
-      <label xml:lang="fr">Vidéo</label>
+    <field name="annuaires" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.annuaires.root">
+      <label xml:lang="fr">Annuaires</label>
     </field>
-    <field name="portletEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
-      <label xml:lang="fr">Portlet encadrés</label>
+
+    <!-- Territoire -->
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
+      <label xml:lang="fr">Communes concernées</label>
     </field>
-    <field name="instructionDelegation" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Instruction délégation</label>
-      <onLabel xml:lang="en">Yes</onLabel>
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="contactServiceParEmail" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Contact service par email</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">EPCI concernés</label>
     </field>
-    <field name="introContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Intro contact</label>
-    </field>
-    <field name="complementContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Complément contact</label>
-    </field>
-    <field name="besoinDaide" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Besoin d'aide ?</label>
-    </field>
-    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.Faq" parent="false">
-      <label xml:lang="fr">FAQ</label>
-    </field>
-    <field name="contactFAQ" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="true">
-      <label xml:lang="fr">Contact FAQ</label>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
     </field>
   </fields>
   <tabs>
+    <tab id="details">
+      <label xml:lang="fr">Détails</label>
+    </tab>
+    <tab id="encadres">
+      <label xml:lang="fr">Encadrés</label>
+    </tab>
     <tab id="contact">
       <label xml:lang="fr">Contact</label>
-    </tab>
-    <tab id="en_detail">
-      <label xml:lang="fr">En détail</label>
-    </tab>
-    <tab id="en_resume">
-      <label xml:lang="fr">En résumé</label>
-    </tab>
-    <tab id="principal">
-      <label xml:lang="fr">Principal</label>
     </tab>
     <tab id="demande">
       <label xml:lang="fr">Demande</label>
     </tab>
-    <tab id="encadres">
-      <label xml:lang="fr">Encadrés</label>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
     </tab>
   </tabs>
 </type>
