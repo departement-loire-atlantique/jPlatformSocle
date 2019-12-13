@@ -70,15 +70,15 @@
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Communes concernées</label>
     </field>
+    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="territoire" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Oui">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+    </field>
     <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Délégations concernées</label>
     </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">EPCI concernées</label>
-    </field>
-    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="territoire" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Oui">
-      <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.&lt;/p&gt;&lt;/div&gt;</description>
+      <label xml:lang="fr">EPCI concernés</label>
     </field>
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton" parent="false">
       <label xml:lang="fr">Canton</label>
