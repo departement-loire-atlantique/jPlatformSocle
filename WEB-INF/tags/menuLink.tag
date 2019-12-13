@@ -40,4 +40,4 @@ if(targetBlank){
 }
 %>
 
-<li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl"title="<%=libelleCat%><%=libelleCible%>"><%=libelleCat%><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+<li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl" title="<%=libelleCat%><%=libelleCible%>" <%=cible%>><%=libelleCat%><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
