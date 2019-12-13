@@ -52,7 +52,7 @@
     <field name="codePostal" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
       <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
-    </field>    
+    </field>
     <field name="commune" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" parent="false">
       <label xml:lang="fr">Commune</label>
     </field>
@@ -81,8 +81,9 @@
       <label xml:lang="fr">Code postal</label>
       <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
     </field>
-    <field name="cs2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="cs2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">CS</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;(Saisir le numéro sans espace entre les 5 chiffres ex : 94109)&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="cedex2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Cedex</label>
@@ -107,7 +108,7 @@
     <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Plus de détail (externe)</label>
     </field>
-    <field name="typeDacces" editor="category" required="true" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDacces" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type d'accès</label>
     </field>
     <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
