@@ -40,7 +40,7 @@ String libelleCible = "";
 	            		libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
 	            		boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
 	            		if(targetBlank){
-	            			cible="target=\"blank\"";
+	            			cible="target=\"_blank\"";
 	            			libelleCible = glp("jcmsplugin.socle.accessibily.newTabLabel");
 	            		}
 		           %>
