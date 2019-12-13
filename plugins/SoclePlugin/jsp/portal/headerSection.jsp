@@ -26,31 +26,35 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 
 
 <header role="banner" id="top" class="ds44-container-fluid ds44-header">
-
-    <ul class="ds44-list">
-        <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
-        <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
-        <li><a href="#search" class="ds44-skiplinks--link">Aller à la recherche</a></li>
-        <li><a href="#" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
-    </ul>
-
-    <div class="ds44-flex-container ds44-flex-valign-center">
-        <div class="ds44-colLeft">
-            <a href="index.jsp" class="ds44-logoContainer">
-                <picture class="ds44-logo">
-                    <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.site.alt.logo") %>" />
-                </picture>
-            </a>
-        </div>
-        <div class="ds44-colRight">            
-            <jalios:if predicate="<%= displaySearchMenu %>">
-                <button class="ds44-btnIcoText--maxi ds44--xl-padding-tb" type="button" aria-label="Ouvrir la recherche"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i></button>
-            </jalios:if>
-            <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
-                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" aria-label='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>'><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
-            </jalios:foreach>
-            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" aria-label="Ouvrir le menu de navigation"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i></button>
-            
+    <div class="ds44-blocBandeau">
+	    <ul class="ds44-list">
+	        <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
+	        <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
+	        <li><a href="#search" class="ds44-skiplinks--link">Aller à la recherche</a></li>
+	        <li><a href="#" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
+	    </ul>
+	
+	    <div class="ds44-flex-container ds44-flex-valign-center">
+	        <div class="ds44-colLeft">
+	            <a href="index.jsp" class="ds44-logoContainer">
+	                <picture class="ds44-logo">
+	                    <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.site.alt.logo") %>" />
+	                </picture>
+	            </a>
+	        </div>
+	        <div class="ds44-colRight">            
+	            <jalios:if predicate="<%= displaySearchMenu %>">
+	                <button class="ds44-btnIcoText--maxi ds44--xl-padding-tb" type="button" aria-label="Ouvrir la recherche"><span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i></button>
+	            </jalios:if>
+	            <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
+	                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" aria-label='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>'><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
+	            </jalios:foreach>
+	            <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button" aria-label="Ouvrir le menu de navigation"><span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i></button>
+	        </div>
+	    </div>
+    </div>
+    
+    <div class="ds44-blocMenu">
             <section id="menu" class="ds44-menuBox">
 	            <section id="nav1" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1">
 				    <p role="heading" aria-level="1" class="visually-hidden">Menu</p>
@@ -129,8 +133,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				
 				</section>
 			</section>
-        </div>
-    </div>
+	</div>
     
 </header>
 
