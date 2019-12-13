@@ -86,9 +86,8 @@ String title = obj.getTitle();
                                 </div>                              
                             </div>
                         </li>
-                        <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-                        <li class="mrs ds44-ongletsBtnItem">
                         
+                        <li class="mrs ds44-ongletsBtnItem">
                             <!-- TODO faire une demande et traduire les libellés -->
                             <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
 
@@ -125,7 +124,6 @@ String title = obj.getTitle();
                                 </div>       
                             </div>
                         </li>
-                        </jalios:if>
                     </ul>
 
                 </div>
