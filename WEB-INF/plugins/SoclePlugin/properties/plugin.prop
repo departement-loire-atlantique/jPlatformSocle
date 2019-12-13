@@ -128,8 +128,8 @@ $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 $jcmsplugin.socle.ficheactu.types.root: c_1156291
 
 # Fiche aide
-$jcmsplugin.socle.ficheaide.beneficiairesEtThematiques.root : c_5195
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
+$jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
@@ -137,7 +137,8 @@ $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
 # Fiche Lieu
 
 $jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
-$jcmsplugin.socle.fichelieu.typeLieu.statut: c_1155421
+$jcmsplugin.socle.fichelieu.statut.root: c_1155421
+$jcmsplugin.socle.fichelieu.typeAcces.root: c_1156285
 $jcmsplugin.socle.fichelieu.handicapAuditif.root: c_1156097
 $jcmsplugin.socle.fichelieu.handicapMoteur.root: c_1156101
 $jcmsplugin.socle.fichelieu.handicapVisuel.root: c_1156105
