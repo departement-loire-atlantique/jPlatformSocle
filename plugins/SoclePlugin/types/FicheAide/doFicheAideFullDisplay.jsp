@@ -79,6 +79,7 @@ String title = obj.getTitle();
                                                     <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
         
                                                     <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                                                    <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
                                                 </div>
                                                 </jalios:if>
                                            </div>
