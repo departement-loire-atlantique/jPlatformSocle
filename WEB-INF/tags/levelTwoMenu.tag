@@ -44,7 +44,7 @@
         <div class="ds44-inner-container">
 
             <div class="ds44-posAbs ds44-posTopCont">
-                <button type="button" title="Retour menu principal" class="ds44-btn-backOverlay"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
+                <button type="button" title="Retour menu principal" class="ds44-btn-backOverlay ds44-hide-mobile"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
                 <p role="heading" aria-level="1" class="ds44-menuBackLink"><%= rootCat.getName() %></p>
             </div>
             <ul class="ds44-navListN2 ds44-multiCol ds44-xl-gap ds44-xl-fluid-margin ds44-list">

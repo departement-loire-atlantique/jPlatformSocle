@@ -56,13 +56,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     
     <div class="ds44-blocMenu">
             <section id="menu" class="ds44-menuBox">
-	            <section id="nav1" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1">
-				    <p role="heading" aria-level="1" class="visually-hidden">Menu</p>
+            
+	            <div id="nav1" class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1">
+				    <p role="heading" aria-level="1" class="visually-hidden">Menu de navigation</p>
 				        
 				    <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu de navigation"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 				
-				    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="Menu de navigation">
-				        <div class="ds44-inner-container ds44-flex-container--column ds44-flex-mauto">
+				    <nav role="navigation" class="ds44-navContainer ds44-flex-valign-center" aria-label="Menu de navigation">
+				        <div class="ds44-inner-container ds44-flex-mauto">
 				            <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 				            <% int i = 1; %>
 				            <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
@@ -85,34 +86,23 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				        </div>
 				
 				        <div class="ds44-container-fixed ds44-posBot ds44-container-relmob">
-				            <div class="ds44-flex-container ds44-flex-align-center">
-				                <p class="h4-like mbm ds44-hide-mobile">Suivez-nous sur les réseaux</p>
-				                <ul class="ds44-list ds44-flex-container ds44-list">                
-				                    <li><a href="https://www.facebook.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Facebook"><i class="icon icon-facebook" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Facebook</span></a></li>
-				                    <li><a href="https://twitter.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Twitter"><i class="icon icon-twitter" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Twitter</span></a></li>
-				                    <li><a href="http://instagram.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Instagram"><i class="icon icon-instagram" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Instagram</span></a></li>
-				                    <li><a href="http://www.youtube.com/user/LoireAtlantiqueTV" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Youtube"><i class="icon icon-youtube" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Youtube</span></a></li>
-				                    <li><a href="https://www.loire-atlantique.fr/lemag" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Mag Web"><i class="icon icon-magweb" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Magweb</span></a></li>
-				                </ul>
-				            </div>
+    
+				            <%@ include file="socialNetworksHeader.jspf" %> 
+				            
+				            <%-- Navigation sites et applis --%>
 				            <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText">Sites et applis du Département</span><i class="icon icon-down" aria-hidden="true"></i></button>
 	                        <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="Menu des sites et applications du département" id="navApplis">
-	        
+
+							    <div class="ds44-container-menuBackLink">
+							        <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
+							        <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du Département</p>
+							    </div>
+							    	        
 							    <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu des sites et applications"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 							
 							    <nav role="navigation">
-							            <div class="ds44-inner-container">
-							    
-							                <div class="ds44-container-menuBackLink ds44-hide-mobile">
-										        <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay"><i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span></button>
-										        <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du département</p>
-										    </div>
-										
-										    <div class="ds44-container-menuBackLink ds44-show-mobile">
-										        <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du département</p>
-										    </div>
-							
-							                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-m-fluid-margin ds44-list">
+                                    <div class="ds44-inner-container">
+                                        <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-m-fluid-margin ds44-list">
 							                <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
 							                    <li>
 							                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
@@ -123,15 +113,15 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 							                        </ul>
 							                    </li>
 							                </jalios:foreach>
-							                </ul>
-							            </div>
-							        </nav>
+                                        </ul>
+                                    </div>
+                                </nav>
 							
 							</section>
 				        </div>
 				    </nav>
 				
-				</section>
+				</div>
 			</section>
 	</div>
     
