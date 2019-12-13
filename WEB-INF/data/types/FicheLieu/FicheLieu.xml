@@ -49,9 +49,10 @@
     <field name="lieudit" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu-dit</label>
     </field>
-    <field name="codePostal" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+    <field name="codePostal" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
-    </field>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
+    </field>    
     <field name="commune" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" parent="false">
       <label xml:lang="fr">Commune</label>
     </field>
@@ -76,8 +77,9 @@
     <field name="lieudit2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu-dit</label>
     </field>
-    <field name="codePostal2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+    <field name="codePostal2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
     </field>
     <field name="cs2" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">CS</label>
@@ -88,8 +90,9 @@
     <field name="commune2" editor="link" required="false" compactDisplay="false" tab="coordonnees" type="generated.City" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" parent="false">
       <label xml:lang="fr">Commune</label>
     </field>
-    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 10 chiffres ex : 0240991000)</description>
     </field>
     <field name="email" editor="email" required="false" compactDisplay="false" tab="coordonnees" type="String[]" searchable="false" size="50" ml="true">
       <label xml:lang="fr">Email</label>
@@ -151,10 +154,10 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="statut" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="statut" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Statut</label>
     </field>
-    <field name="typeDeLieu" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDeLieu" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.typeLieu.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type de lieu</label>
     </field>
     <field name="besoins" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.besoins.root">
@@ -167,14 +170,14 @@
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
       <label xml:lang="fr">Communes concernées</label>
     </field>
-    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
-      <label xml:lang="fr">Délégations concernées</label>
-    </field>
     <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
       <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root">
+      <label xml:lang="fr">Délégations concernées</label>
     </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
       <label xml:lang="fr">EPCI concernés</label>
