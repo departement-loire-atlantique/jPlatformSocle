@@ -52,7 +52,7 @@ String title = obj.getTitle();
                                         <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
                                                                                 
                                            <div class="ds44-mt3 grid-12-small-1">
-                                               <div class="col-6 ds44-modal-column">
+                                               <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) ? "6" : "12" %> ds44-modal-column'>
                                                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
                                                    
                                                    <jalios:select>
@@ -73,7 +73,6 @@ String title = obj.getTitle();
                                                    </jalios:select>
                                                    
                                                </div>
-                                               <jalios:select>
                                                 <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
                                                 <div class="col-6 ds44-modal-column">
         
@@ -82,15 +81,6 @@ String title = obj.getTitle();
                                                     <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
                                                 </div>
                                                 </jalios:if>
-                                                <jalios:default>
-                                                <div class="col-6 ds44-modal-column">
-           
-                                                       <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
-           
-                                                       <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
-                                                   </div>
-                                                </jalios:default>
-                                               </jalios:select>
                                            </div>
                                     </div>
                                 </div>                              
