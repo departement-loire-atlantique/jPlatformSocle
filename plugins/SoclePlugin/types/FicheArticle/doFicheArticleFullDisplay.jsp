@@ -249,7 +249,7 @@
             <% if (Util.notEmpty(obj.getAnnuaires(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getAnnuaires(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("p1_1043453"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.fichearticle.annuaires.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>

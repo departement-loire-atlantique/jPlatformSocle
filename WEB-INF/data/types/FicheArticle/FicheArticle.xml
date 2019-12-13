@@ -73,7 +73,7 @@
     <field name="publics" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Publics</label>
     </field>
-    <field name="annuaires" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="p1_1043453">
+    <field name="annuaires" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichearticle.annuaires.root">
       <label xml:lang="fr">Annuaires</label>
     </field>
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">

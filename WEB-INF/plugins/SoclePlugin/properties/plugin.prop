@@ -131,6 +131,10 @@ $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
 
+# Fiche Article
+
+$jcmsplugin.socle.fichearticle.annuaires.root: c_1155710
+
 # Fiche Lieu
 
 $jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
