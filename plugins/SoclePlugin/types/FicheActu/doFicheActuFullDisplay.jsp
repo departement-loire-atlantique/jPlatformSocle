@@ -152,12 +152,12 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field publicVise categoryEditor  <%= Util.isEmpty(obj.getPublicVise(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "publicVise", userLang) %><jalios:edit pub='<%= obj %>' fields='publicVise'/></td>
+  <tr class="field publics categoryEditor  <%= Util.isEmpty(obj.getPublics(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "publics", userLang) %><jalios:edit pub='<%= obj %>' fields='publics'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getPublicVise(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getPublics(loggedMember))) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getPublicVise(loggedMember) %>" type="Category" name="itCategory" >
+            <jalios:foreach collection="<%= obj.getPublics(loggedMember) %>" type="Category" name="itCategory" >
               <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.publicVise.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
@@ -204,12 +204,12 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field epcis categoryEditor  <%= Util.isEmpty(obj.getEpcis(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "epcis", userLang) %><jalios:edit pub='<%= obj %>' fields='epcis'/></td>
+  <tr class="field epci categoryEditor  <%= Util.isEmpty(obj.getEpci(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "epci", userLang) %><jalios:edit pub='<%= obj %>' fields='epci'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getEpcis(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getEpci(loggedMember))) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getEpcis(loggedMember) %>" type="Category" name="itCategory" >
+            <jalios:foreach collection="<%= obj.getEpci(loggedMember) %>" type="Category" name="itCategory" >
               <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.toutesLesCommunesEPCI.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
@@ -224,11 +224,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field canton linkEditor  <%= Util.isEmpty(obj.getCanton()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "canton", userLang) %><jalios:edit pub='<%= obj %>' fields='canton'/></td>
+  <tr class="field cantons linkEditor  <%= Util.isEmpty(obj.getCantons()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "cantons", userLang) %><jalios:edit pub='<%= obj %>' fields='cantons'/></td>
     <td class='field-data' >
-            <% if (obj.getCanton() != null && obj.getCanton().canBeReadBy(loggedMember)) { %>
-            <jalios:link data='<%= obj.getCanton() %>'/>
+            <% if (obj.getCantons() != null && obj.getCantons().canBeReadBy(loggedMember)) { %>
+            <jalios:link data='<%= obj.getCantons() %>'/>
             <% } %>
     </td>
   </tr>
