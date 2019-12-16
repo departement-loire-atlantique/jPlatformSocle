@@ -65,7 +65,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 		        
                 <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu de navigation"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 		
-    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="Menu de navigation">
+    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column" aria-label="Menu de navigation">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 			            <% int i = 1; %>
@@ -106,26 +106,25 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 	                       </ul>
 			        </div>
 			
-			        <div class="ds44-flex-container">
+			        <div class="ds44-flex-container ds44-fse ds44-flex-align-center ds44-rsHeaderContainer">
 			            <jsp:include page="socialNetworksHeader.jsp"/> 
 	                </div>   
-                       <%-- Navigation sites et applis --%>
-		         <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText">Sites et applis du Département</span><i class="icon icon-down" aria-hidden="true"></i></button>
+                    <%-- Navigation sites et applis --%>
+                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText">Sites et applis du Département</span><i class="icon icon-down" aria-hidden="true"></i></button>
                     <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="Menu des sites et applications du département" id="navApplis">
 
-                          <div class="ds44-container-menuBackLink">
-                           <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
-                               <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span>
-                           </button>
-                           <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du Département</p>
-                          </div>
+                        <div class="ds44-container-menuBackLink">
+                            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
+                                <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span>
+                            </button>
+                            <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du Département</p>
+                        </div>
 
-                          <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu des sites et applications"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu des sites et applications"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
-                          <nav role="navigation">
-                              <div class="ds44-inner-container">
-				
-                                  <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
+                        <nav role="navigation">
+                            <div class="ds44-inner-container">
+                                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
 				                <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
 				                    <li>
 				                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
