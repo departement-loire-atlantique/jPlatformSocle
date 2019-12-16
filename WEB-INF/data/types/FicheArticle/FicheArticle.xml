@@ -40,25 +40,77 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Onglets</offLabel>
     </field>
+    <field name="encadresCommuns" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Encadrés communs</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Paragraphe">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
-    <field name="titreOnglet" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet">
-      <label xml:lang="fr">Titre paragraphe onglet</label>
+    <field name="titreParagrapheOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_1">
+      <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="contenuOnglet" editor="wysiwyg" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet">
-      <label xml:lang="fr">Contenu paragraphe onglet</label>
+    <field name="contenuParagrapheOnglet_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_1">
+      <label xml:lang="fr">Contenu onglet</label>
     </field>
-    <field name="titreEncadreLibre" editor="textfield" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre">
-      <label xml:lang="fr">Titre encadré libre</label>
+    <field name="titreEncadreLibre_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_1">
+      <label xml:lang="fr">Titre libre</label>
     </field>
-    <field name="contenuEncadreLibre" editor="wysiwyg" required="false" compactDisplay="false" tab="onglets" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre">
-      <label xml:lang="fr">Contenu encadré libre</label>
+    <field name="contenuEncadreLibre_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_1">
+      <label xml:lang="fr">Contenu libre</label>
     </field>
-    <field name="portletsEncadres" editor="link" required="false" compactDisplay="false" tab="onglets" type="com.jalios.jcms.portlet.PortalElement[]">
+    <field name="portletsEncadres_1" editor="link" required="false" compactDisplay="false" tab="onglet_1" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets encadrés</label>
+    </field>
+    <field name="titreParagrapheOnglet_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_2">
+      <label xml:lang="fr">Titre onglet</label>
+    </field>
+    <field name="contenuParagrapheOnglet_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_2">
+      <label xml:lang="fr">Contenu onglet</label>
+    </field>
+    <field name="titreEncadreLibre_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_2">
+      <label xml:lang="fr">Titre libre</label>
+    </field>
+    <field name="contenuEncadreLibre_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_2">
+      <label xml:lang="fr">Contenu libre</label>
+    </field>
+    <field name="portletsEncadres_2" editor="link" required="false" compactDisplay="false" tab="onglet_2" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets encadrés</label>
+    </field>
+    <field name="titreParagrapheOnglet_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_3">
+      <label xml:lang="fr">Titre onglet</label>
+    </field>
+    <field name="contenuParagrapheOnglet_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_3">
+      <label xml:lang="fr">Contenu onglet</label>
+    </field>
+    <field name="titreEncadreLibre_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_3">
+      <label xml:lang="fr">Titre libre</label>
+    </field>
+    <field name="contenuEncadreLibre_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_3">
+      <label xml:lang="fr">Contenu libre</label>
+    </field>
+    <field name="portletsEncadres_3" editor="link" required="false" compactDisplay="false" tab="onglet_3" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets encadrés</label>
+    </field>
+    <field name="titreParagrapheOnglet_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_4">
+      <label xml:lang="fr">Titre onglet</label>
+    </field>
+    <field name="contenuParagrapheOnglet_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_4">
+      <label xml:lang="fr">Contenu onglet</label>
+    </field>
+    <field name="titreEncadreLibre_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_4">
+      <label xml:lang="fr">Titre libre</label>
+    </field>
+    <field name="contenuEncadreLibre_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_4">
+      <label xml:lang="fr">Contenu libre</label>
+    </field>
+    <field name="portletsEncadres_4" editor="link" required="false" compactDisplay="false" tab="onglet_4" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets encadrés</label>
     </field>
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -68,7 +120,7 @@
       <label xml:lang="fr">Mise en avant</label>
     </field>
     <field name="besoins" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.thematiquesBesoins.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Thématiques / Besoins</label>
+      <label xml:lang="fr">Besoins</label>
     </field>
     <field name="publics" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Publics</label>
@@ -79,9 +131,9 @@
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Communes concernées</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="territoire">
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette cache ne supprimera pas ces liaisons aux communes, il faudra les effacer manuellement.</description>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
@@ -99,8 +151,17 @@
     <tab id="contenu">
       <label xml:lang="fr">Contenu</label>
     </tab>
-    <tab id="onglets">
-      <label xml:lang="fr">Onglets et encadrés</label>
+    <tab id="onglet_1">
+      <label xml:lang="fr">Onglet 1</label>
+    </tab>
+    <tab id="onglet_2">
+      <label xml:lang="fr">Onglet 2</label>
+    </tab>
+    <tab id="onglet_3">
+      <label xml:lang="fr">Onglet 3</label>
+    </tab>
+    <tab id="onglet_4">
+      <label xml:lang="fr">Onglet 4</label>
     </tab>
     <tab id="rattachement">
       <label xml:lang="fr">Navigation et classement</label>

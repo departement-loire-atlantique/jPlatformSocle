@@ -30,18 +30,13 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
-    
     <!-- Contenu -->
-    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Description</label>
-    </field>
     <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" tabGroup="paragraphe">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
-    
     <!-- Classement -->
     <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sur le même thème</label>
@@ -59,20 +54,21 @@
     <field name="besoins" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.thematiquesBesoins.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Besoins</label>
     </field>
-    <field name="publics" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root">
-      <label xml:lang="fr">Public visé</label>
+    <field name="publics" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.publicVise.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Publics</label>
     </field>
     <field name="types" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.types.root">
       <label xml:lang="fr">Types</label>
     </field>
-    
     <!-- Territoire -->
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Communes concernées</label>
     </field>
-    <field name="toutesLesCommunesDuDepartement" editor="enumerate" required="false" compactDisplay="false" tab="territoire" type="String" chooser="checkbox" valueList="true" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Oui">
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet article à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field name="delegations" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.delegations.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Délégations concernées</label>
@@ -80,8 +76,8 @@
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">EPCI concernés</label>
     </field>
-    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton" parent="false">
-      <label xml:lang="fr">Canton</label>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
     </field>
   </fields>
   <tabs>
