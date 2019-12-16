@@ -71,8 +71,17 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				                    String navId = "nav"+i;
 				                %>
 				                <li>
-				                    <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
-				                    <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+				                    <jalios:select>
+				                        <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) %>">
+				                            <% String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
+				                            <a class="ds44-menuBtn" href="<%= itCat.getDisplayUrl(userLocale) %>" title="<%= libelleCat %>"><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></a>
+				                        </jalios:if>
+				                        <jalios:default>
+				                            <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= itCat.getName(userLang) %><i class="icon icon-right" aria-hidden="true"></i></button>
+                                            <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+				                        </jalios:default>
+				                    </jalios:select>
+				                    
 				                </li>
 				            </jalios:foreach>
 				            </ul>
@@ -85,10 +94,16 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				        </div>
 				
 				        <div class="ds44-container-fixed ds44-posBot ds44-container-relmob">
-    
-				            <jsp:include page="socialNetworksHeader.jsp"/> 
-				            
-				            <%-- Navigation sites et applis --%>
+				            <div class="ds44-flex-container ds44-flex-align-center">
+				                <p class="h4-like mbm ds44-hide-mobile">Suivez-nous sur les réseaux</p>
+				                <ul class="ds44-list ds44-flex-container ds44-list">                
+				                    <li><a href="https://www.facebook.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Facebook"><i class="icon icon-facebook" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Facebook</span></a></li>
+				                    <li><a href="https://twitter.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Twitter"><i class="icon icon-twitter" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Twitter</span></a></li>
+				                    <li><a href="http://instagram.com/loireatlantique" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Instagram"><i class="icon icon-instagram" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Instagram</span></a></li>
+				                    <li><a href="http://www.youtube.com/user/LoireAtlantiqueTV" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Youtube"><i class="icon icon-youtube" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Youtube</span></a></li>
+				                    <li><a href="https://www.loire-atlantique.fr/lemag" class="ds44-rsHeadLink" title="Le Département Loire Atlantique sur Mag Web"><i class="icon icon-magweb" aria-hidden="true"></i><span class="visually-hidden">Le Département Loire Atlantique sur Magweb</span></a></li>
+				                </ul>
+				            </div>
 				            <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText">Sites et applis du Département</span><i class="icon icon-down" aria-hidden="true"></i></button>
 	                        <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="Menu des sites et applications du département" id="navApplis">
 	        
