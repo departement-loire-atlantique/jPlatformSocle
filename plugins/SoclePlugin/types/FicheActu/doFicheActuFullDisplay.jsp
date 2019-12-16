@@ -184,12 +184,10 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field toutesLesCommunesDuDepartement enumerateEditor  <%= Util.isEmpty(obj.getToutesLesCommunesDuDepartement()) ? "empty" : "" %>">
+  <tr class="field toutesLesCommunesDuDepartement booleanEditor  ">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "toutesLesCommunesDuDepartement", userLang) %><jalios:edit pub='<%= obj %>' fields='toutesLesCommunesDuDepartement'/></td>
-    <td class='field-data' <%= gfla(obj, "toutesLesCommunesDuDepartement") %>>
-            <% if (Util.notEmpty(obj.getToutesLesCommunesDuDepartement())) { %>
-            <%= obj.getToutesLesCommunesDuDepartementLabel(obj.getToutesLesCommunesDuDepartement(), userLang) %>
-            <% } %>
+    <td class='field-data' >
+            <%= obj.getToutesLesCommunesDuDepartementLabel(userLang) %>
     </td>
   </tr>
   <tr class="field delegations categoryEditor  <%= Util.isEmpty(obj.getDelegations(loggedMember)) ? "empty" : "" %>">
