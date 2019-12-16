@@ -5,6 +5,8 @@
 String imageFile = obj.getImageBandeau() ;
 String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
 String title = obj.getTitle();
+String legende = obj.getLegende(userLang);
+String copyright = obj.getCopyright(userLang);
 %>
 
 
@@ -12,7 +14,7 @@ String title = obj.getTitle();
 
     <section class="ds44-container-fluid"> 
 
-        <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" breadcrumb="true"></ds:titleBanner>
+        <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
                     
         <section class="ds44-ongletsContainer">
 

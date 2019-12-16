@@ -26,6 +26,20 @@
     type="String"
     description="Le chemin du fichier image mobile"
 %>
+<%@ attribute name="legend"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Légende de l'image"
+%>
+<%@ attribute name="copyright"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Copyright de l'image"
+%>
 <%@ attribute name="breadcrumb"
     required="false"
     fragment="false"
@@ -34,13 +48,26 @@
     description="Indique si le fil d'ariane doit être affiché"
 %>
 
+<% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
+
 <div class="ds44-pageHeaderContainer">
     <picture class="ds44-pageHeaderContainer__pictureContainer">
         <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
             <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
             <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" />
+            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
         </jalios:if>
+        
+        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
+	        <span class="ds44-imgCaption" aria-describedby="<%=uid%>">
+	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+	                <%=legend%>
+	            </jalios:if>
+	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+	                © <%=copyright%>
+	            </jalios:if>
+	        </span>
+        </jalios:if>	        
     </picture>
     
     <div class="ds44-titleContainer">
