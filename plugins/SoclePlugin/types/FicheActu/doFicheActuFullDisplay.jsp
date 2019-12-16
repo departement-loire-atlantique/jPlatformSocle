@@ -62,19 +62,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field chapo textareaEditor  <%= Util.isEmpty(obj.getChapo(userLang)) ? "empty" : "" %>">
+  <tr class="field chapo wysiwygEditor  <%= Util.isEmpty(obj.getChapo()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "chapo", userLang) %><jalios:edit pub='<%= obj %>' fields='chapo'/></td>
     <td class='field-data' <%= gfla(obj, "chapo") %>>
-            <% if (Util.notEmpty(obj.getChapo(userLang))) { %>
-            <%= obj.getChapo(userLang) %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field description wysiwygEditor  <%= Util.isEmpty(obj.getDescription(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "description", userLang) %><jalios:edit pub='<%= obj %>' fields='description'/></td>
-    <td class='field-data' <%= gfla(obj, "description") %>>
-            <% if (Util.notEmpty(obj.getDescription(userLang))) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='description'><%= obj.getDescription(userLang) %></jalios:wysiwyg>            
+            <% if (Util.notEmpty(obj.getChapo())) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='chapo'><%= obj.getChapo() %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -192,6 +184,14 @@
             <% } %>
     </td>
   </tr>
+  <tr class="field toutesLesCommunesDuDepartement enumerateEditor  <%= Util.isEmpty(obj.getToutesLesCommunesDuDepartement()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "toutesLesCommunesDuDepartement", userLang) %><jalios:edit pub='<%= obj %>' fields='toutesLesCommunesDuDepartement'/></td>
+    <td class='field-data' <%= gfla(obj, "toutesLesCommunesDuDepartement") %>>
+            <% if (Util.notEmpty(obj.getToutesLesCommunesDuDepartement())) { %>
+            <%= obj.getToutesLesCommunesDuDepartementLabel(obj.getToutesLesCommunesDuDepartement(), userLang) %>
+            <% } %>
+    </td>
+  </tr>
   <tr class="field delegations categoryEditor  <%= Util.isEmpty(obj.getDelegations(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "delegations", userLang) %><jalios:edit pub='<%= obj %>' fields='delegations'/></td>
     <td class='field-data' >
@@ -216,19 +216,19 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field toutesLesCommunesDuDepartement enumerateEditor  <%= Util.isEmpty(obj.getToutesLesCommunesDuDepartement()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "toutesLesCommunesDuDepartement", userLang) %><jalios:edit pub='<%= obj %>' fields='toutesLesCommunesDuDepartement'/></td>
-    <td class='field-data' <%= gfla(obj, "toutesLesCommunesDuDepartement") %>>
-            <% if (Util.notEmpty(obj.getToutesLesCommunesDuDepartement())) { %>
-            <%= obj.getToutesLesCommunesDuDepartementLabel(obj.getToutesLesCommunesDuDepartement(), userLang) %>
-            <% } %>
-    </td>
-  </tr>
   <tr class="field cantons linkEditor  <%= Util.isEmpty(obj.getCantons()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActu.class, "cantons", userLang) %><jalios:edit pub='<%= obj %>' fields='cantons'/></td>
     <td class='field-data' >
-            <% if (obj.getCantons() != null && obj.getCantons().canBeReadBy(loggedMember)) { %>
-            <jalios:link data='<%= obj.getCantons() %>'/>
+            <% if (Util.notEmpty(obj.getCantons())) { %>
+            <ol>
+              <jalios:foreach name="itData" type="generated.Canton" array="<%= obj.getCantons() %>">
+              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
+              <li>
+              <jalios:link data='<%= itData %>'/>
+              </li>
+              <% } %>
+              </jalios:foreach>
+            </ol>
             <% } %>
     </td>
   </tr>
