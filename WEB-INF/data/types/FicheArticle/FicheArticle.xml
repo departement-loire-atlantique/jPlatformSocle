@@ -53,62 +53,50 @@
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
-    <field name="titreParagrapheOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_1">
+    <field name="titreOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="contenuParagrapheOnglet_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_1">
-      <label xml:lang="fr">Contenu onglet</label>
+    <field name="titreParagraphe_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_1">
+      <label xml:lang="fr">Titre paragraphe</label>
     </field>
-    <field name="titreEncadreLibre_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_1">
-      <label xml:lang="fr">Titre libre</label>
-    </field>
-    <field name="contenuEncadreLibre_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_1">
-      <label xml:lang="fr">Contenu libre</label>
+    <field name="contenuParagraphe_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_1">
+      <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <field name="portletsEncadres_1" editor="link" required="false" compactDisplay="false" tab="onglet_1" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets encadrés</label>
     </field>
-    <field name="titreParagrapheOnglet_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_2">
+    <field name="titreOnglet_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="contenuParagrapheOnglet_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_2">
-      <label xml:lang="fr">Contenu onglet</label>
+    <field name="titreParagraphe_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_2">
+      <label xml:lang="fr">Titre paragraphe</label>
     </field>
-    <field name="titreEncadreLibre_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_2">
-      <label xml:lang="fr">Titre libre</label>
-    </field>
-    <field name="contenuEncadreLibre_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_2">
-      <label xml:lang="fr">Contenu libre</label>
+    <field name="contenuParagraphe_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_2">
+      <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <field name="portletsEncadres_2" editor="link" required="false" compactDisplay="false" tab="onglet_2" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets encadrés</label>
     </field>
-    <field name="titreParagrapheOnglet_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_3">
+    <field name="titreOnglet_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="contenuParagrapheOnglet_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_3">
-      <label xml:lang="fr">Contenu onglet</label>
+    <field name="titreParagraphe_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_3">
+      <label xml:lang="fr">Titre paragraphe</label>
     </field>
-    <field name="titreEncadreLibre_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_3">
-      <label xml:lang="fr">Titre libre</label>
-    </field>
-    <field name="contenuEncadreLibre_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_3">
-      <label xml:lang="fr">Contenu libre</label>
+    <field name="contenuParagraphe_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_3">
+      <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <field name="portletsEncadres_3" editor="link" required="false" compactDisplay="false" tab="onglet_3" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets encadrés</label>
     </field>
-    <field name="titreParagrapheOnglet_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Onglet_4">
+    <field name="titreOnglet_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="contenuParagrapheOnglet_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Onglet_4">
-      <label xml:lang="fr">Contenu onglet</label>
+    <field name="titreParagraphe_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_4">
+      <label xml:lang="fr">Titre paragraphe</label>
     </field>
-    <field name="titreEncadreLibre_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroupe="Encadre_4">
-      <label xml:lang="fr">Titre libre</label>
-    </field>
-    <field name="contenuEncadreLibre_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_4">
-      <label xml:lang="fr">Contenu libre</label>
+    <field name="contenuParagraphe_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroupe="Encadre_4">
+      <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <field name="portletsEncadres_4" editor="link" required="false" compactDisplay="false" tab="onglet_4" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets encadrés</label>
