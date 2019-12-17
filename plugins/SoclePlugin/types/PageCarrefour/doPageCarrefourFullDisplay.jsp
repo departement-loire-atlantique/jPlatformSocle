@@ -4,7 +4,7 @@
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
 %><% 
 PageCarrefour obj = (PageCarrefour)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-String imageFile = obj.getImage();
+String imageFile = obj.getImageBandeau();
 String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
 String title = obj.getTitle(userLang);
 String legende = obj.getLegende(userLang);
@@ -20,8 +20,8 @@ String copyright = obj.getCopyright(userLang);
         <div class="ds44-inner-container">
             <div class="grid-12-small-1">
                 <div class="col-7">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
-                        <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getDescription(userLang) %></jalios:wysiwyg></div>
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
+                        <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo(userLang) %></jalios:wysiwyg></div>
                     </jalios:if>
 
                     <jalios:if predicate="<%= Util.notEmpty(obj.getTopportlets()) %>">

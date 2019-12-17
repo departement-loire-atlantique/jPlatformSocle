@@ -5,11 +5,14 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="image" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
-      <label xml:lang="fr">image</label>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image bandeau</label>
     </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>     
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false">
-      <label xml:lang="fr">image mobile</label>
+      <label xml:lang="fr">Image mobile</label>
     </field>
     <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Copyright</label>
@@ -20,17 +23,17 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
-      <label xml:lang="fr">description</label>
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+      <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.pagecarrefour.targetCategory.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Rubrique concernée</label>
     </field>
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="tooltip" tab="sideBlocks" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Blocs du côté</label>
+    <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="tooltip" tab="encadres" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Encadrés</label>
     </field>
     <field name="topportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="tooltip" tab="topBlocks" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Blocs haut</label>
@@ -42,8 +45,8 @@
   <label xml:lang="fr">Page carrefour</label>
   <label xml:lang="en">Page carrefour</label>
   <tabs>
-    <tab id="sideBlocks">
-      <label xml:lang="fr">Blocs droite</label>
+    <tab id="encadres">
+      <label xml:lang="fr">Encadrés</label>
     </tab>
     <tab id="topBlocks">
       <label xml:lang="fr">Blocs haut</label>
