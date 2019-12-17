@@ -5,7 +5,7 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageBandeau" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image bandeau</label>
     </field>
     <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
