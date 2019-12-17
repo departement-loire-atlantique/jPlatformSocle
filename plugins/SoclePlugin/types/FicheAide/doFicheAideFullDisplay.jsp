@@ -12,10 +12,15 @@ String copyright = obj.getCopyright(userLang);
 
 <main role="main" id="content">
 
-    <section class="ds44-container-fluid"> 
-
-        <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
-                    
+    <section class="ds44-container-fluid">
+        <jalios:select> 
+	        <jalios:if predicate="<%Util.notEmpty(obj.getImageBandeau()) %>">
+	            <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+	        </jalios:if>        
+	        <jalios:default>
+	           <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
+	        </jalios:default>
+        </jalios:select>
         <section class="ds44-ongletsContainer">
 
             <div class="js-tabs ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">

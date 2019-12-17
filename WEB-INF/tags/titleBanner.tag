@@ -1,7 +1,7 @@
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag 
     pageEncoding="UTF-8"
-    description="Card" 
+    description="Titre du header avec image" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util"
 %>
@@ -74,6 +74,7 @@
         <div class="ds44-alphaGradient ds44--xl-padding">
             <!-- Fil d'ariane -->
             <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+                <%request.setAttribute("textColor","invert"); %>
                 <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
             </jalios:if>
             <h1 class="h1-like ds44-text--colorInvert"><%=title %></h1>
