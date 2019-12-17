@@ -161,7 +161,10 @@ String copyright = obj.getCopyright(userLang);
                 <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_second" aria-hidden="true">      
                 
                     <div class="grid-12-small-1">
-                        <div class="col-7"> 
+                        <div class="col-7">
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getIntro()) %>">
+                                <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getIntro()%></jalios:wysiwyg></div>
+                            </jalios:if>                         
                             <jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
                                 <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
                                 <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
