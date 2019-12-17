@@ -28,10 +28,16 @@ int counter = 0;
 String libelleCat = "";
 String cible="";
 String libelleCible = "";
+String textColorStyle = "";
+
+// texte du breadcrumb clair/sombre
+if(Util.notEmpty(request.getAttribute("textColor"))){
+	textColorStyle = "ds44-text--colorInvert";
+}
 %>
 
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-smallScreens">
-	<ul class="ds44-list ds44-text--colorInvert">
+	<ul class="ds44-list <%=textColorStyle%>">
 	    <li class="ds44-breadcrumb"><a href="index.jsp"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
 	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory">
 	            <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) %>'>
