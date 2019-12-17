@@ -161,6 +161,38 @@
         <% } %>
     </td>
   </tr>
+  <tr class="field titreEncadre_1 textfieldEditor  <%= Util.isEmpty(obj.getTitreEncadre_1()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "titreEncadre_1", userLang) %><jalios:edit pub='<%= obj %>' fields='titreEncadre_1'/></td>
+    <td class='field-data' <%= gfla(obj, "titreEncadre_1") %>>
+        <% if (Util.notEmpty(obj.getTitreEncadre_1())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getTitreEncadre_1() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field contenuEncadre_1 wysiwygEditor  <%= Util.isEmpty(obj.getContenuEncadre_1()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "contenuEncadre_1", userLang) %><jalios:edit pub='<%= obj %>' fields='contenuEncadre_1'/></td>
+    <td class='field-data' <%= gfla(obj, "contenuEncadre_1") %>>
+        <% if (Util.notEmpty(obj.getContenuEncadre_1())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getContenuEncadre_1() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <jalios:wysiwyg data='<%= obj %>' field='contenuEncadre_1'><%= itString %></jalios:wysiwyg>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
   <tr class="field portletsEncadres_1 linkEditor  <%= Util.isEmpty(obj.getPortletsEncadres_1()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "portletsEncadres_1", userLang) %><jalios:edit pub='<%= obj %>' fields='portletsEncadres_1'/></td>
     <td class='field-data' >
@@ -210,6 +242,38 @@
             <% if (Util.notEmpty(itString)) { %>
               <li>
               <jalios:wysiwyg data='<%= obj %>' field='contenuParagraphe_2'><%= itString %></jalios:wysiwyg>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field titreEncadre_2 textfieldEditor  <%= Util.isEmpty(obj.getTitreEncadre_2()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "titreEncadre_2", userLang) %><jalios:edit pub='<%= obj %>' fields='titreEncadre_2'/></td>
+    <td class='field-data' <%= gfla(obj, "titreEncadre_2") %>>
+        <% if (Util.notEmpty(obj.getTitreEncadre_2())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getTitreEncadre_2() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field contenuEncadre_2 wysiwygEditor  <%= Util.isEmpty(obj.getContenuEncadre_2()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "contenuEncadre_2", userLang) %><jalios:edit pub='<%= obj %>' fields='contenuEncadre_2'/></td>
+    <td class='field-data' <%= gfla(obj, "contenuEncadre_2") %>>
+        <% if (Util.notEmpty(obj.getContenuEncadre_2())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getContenuEncadre_2() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <jalios:wysiwyg data='<%= obj %>' field='contenuEncadre_2'><%= itString %></jalios:wysiwyg>
               </li>
             <% } %>
             </jalios:foreach>
@@ -273,6 +337,38 @@
         <% } %>
     </td>
   </tr>
+  <tr class="field titreEncadre_3 textfieldEditor  <%= Util.isEmpty(obj.getTitreEncadre_3()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "titreEncadre_3", userLang) %><jalios:edit pub='<%= obj %>' fields='titreEncadre_3'/></td>
+    <td class='field-data' <%= gfla(obj, "titreEncadre_3") %>>
+        <% if (Util.notEmpty(obj.getTitreEncadre_3())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getTitreEncadre_3() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field contenuEncadre_3 wysiwygEditor  <%= Util.isEmpty(obj.getContenuEncadre_3()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "contenuEncadre_3", userLang) %><jalios:edit pub='<%= obj %>' fields='contenuEncadre_3'/></td>
+    <td class='field-data' <%= gfla(obj, "contenuEncadre_3") %>>
+        <% if (Util.notEmpty(obj.getContenuEncadre_3())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getContenuEncadre_3() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <jalios:wysiwyg data='<%= obj %>' field='contenuEncadre_3'><%= itString %></jalios:wysiwyg>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
   <tr class="field portletsEncadres_3 linkEditor  <%= Util.isEmpty(obj.getPortletsEncadres_3()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "portletsEncadres_3", userLang) %><jalios:edit pub='<%= obj %>' fields='portletsEncadres_3'/></td>
     <td class='field-data' >
@@ -322,6 +418,38 @@
             <% if (Util.notEmpty(itString)) { %>
               <li>
               <jalios:wysiwyg data='<%= obj %>' field='contenuParagraphe_4'><%= itString %></jalios:wysiwyg>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field titreEncadre_4 textfieldEditor  <%= Util.isEmpty(obj.getTitreEncadre_4()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "titreEncadre_4", userLang) %><jalios:edit pub='<%= obj %>' fields='titreEncadre_4'/></td>
+    <td class='field-data' <%= gfla(obj, "titreEncadre_4") %>>
+        <% if (Util.notEmpty(obj.getTitreEncadre_4())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getTitreEncadre_4() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
+            <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
+    </td>
+  </tr>
+  <tr class="field contenuEncadre_4 wysiwygEditor  <%= Util.isEmpty(obj.getContenuEncadre_4()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheArticle.class, "contenuEncadre_4", userLang) %><jalios:edit pub='<%= obj %>' fields='contenuEncadre_4'/></td>
+    <td class='field-data' <%= gfla(obj, "contenuEncadre_4") %>>
+        <% if (Util.notEmpty(obj.getContenuEncadre_4())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getContenuEncadre_4() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <jalios:wysiwyg data='<%= obj %>' field='contenuEncadre_4'><%= itString %></jalios:wysiwyg>
               </li>
             <% } %>
             </jalios:foreach>
