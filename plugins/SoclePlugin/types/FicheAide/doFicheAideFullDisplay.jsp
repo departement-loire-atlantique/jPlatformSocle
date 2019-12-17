@@ -14,7 +14,7 @@ String copyright = obj.getCopyright(userLang);
 
     <section class="ds44-container-fluid">
         <jalios:select> 
-	        <jalios:if predicate="<%Util.notEmpty(obj.getImageBandeau()) %>">
+	        <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
 	            <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 	        </jalios:if>        
 	        <jalios:default>
