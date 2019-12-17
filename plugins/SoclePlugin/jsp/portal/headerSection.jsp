@@ -45,14 +45,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 	        <div class="ds44-colRight">            
 	            <jalios:if predicate="<%= displaySearchMenu %>">
 	                <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button">
-	                   <span class="ds44-btnInnerText">Rechercher</span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
+	                   <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
 	                </button>
 	            </jalios:if>
 	            <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
 	                <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" aria-label='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>'><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
 	            </jalios:foreach>
-	            <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="Ouvrir le menu de navigation" aria-controls="menu">
-	               <span class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
+	            <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu">
+	               <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.menu")%></span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
                 </button>
 	        </div>
 	    </div>
@@ -60,12 +60,12 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     
     <div class="ds44-blocMenu">
         <section class="ds44-menuBox" id="menu">
-            <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="Menu principal niveau 1" id="nav1">
-                <p role="heading" aria-level="1" class="visually-hidden">Menu</p>
+            <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="<%=glp("jcmsplugin.socle.menu.principal1")%>" id="nav1">
+                <p role="heading" aria-level="1" class="visually-hidden"><%=glp("jcmsplugin.socle.menu")%></p>
 		        
-                <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu de navigation"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
 		
-    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="Menu de navigation">
+    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 			            <% int i = 1; %>
@@ -110,17 +110,17 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 			            <jsp:include page="socialNetworksHeader.jsp"/> 
 	                </div>   
                     <%-- Navigation sites et applis --%>
-                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText">Sites et applis du Département</span><i class="icon icon-down" aria-hidden="true"></i></button>
-                    <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="Menu des sites et applications du département" id="navApplis">
+                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
+                    <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
 
                         <div class="ds44-container-menuBackLink">
                             <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
-                                <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Retour</span>
+                                <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
                             </button>
-                            <p role="heading" aria-level="1" class="ds44-menuBackLink">Sites et applis du Département</p>
+                            <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
                         </div>
 
-                        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="fermer le menu des sites et applications"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
                         <nav role="navigation">
                             <div class="ds44-inner-container">
