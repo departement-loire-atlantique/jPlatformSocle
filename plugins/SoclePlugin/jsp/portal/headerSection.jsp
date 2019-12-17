@@ -128,7 +128,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 				                <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
 				                    <li>
 				                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
-				                        <ul>
+				                        <ul class="ds44-list">
 				                        <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
 				                            <ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
 				                        </jalios:foreach>
