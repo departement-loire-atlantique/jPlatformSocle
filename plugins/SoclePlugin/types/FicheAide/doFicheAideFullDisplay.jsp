@@ -166,23 +166,31 @@ String copyright = obj.getCopyright(userLang);
                                 <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getIntro()%></jalios:wysiwyg></div>
                             </jalios:if>                         
                             <jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
-                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-                                <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
+                                <section class="ds44-contenuArticle" id="section1">    
+                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+                                    <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
+                                </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi()) %>">
-                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
-                                <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
+                                <section class="ds44-contenuArticle" id="section2">
+                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+                                    <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
+                                </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande()) %>">
-                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-                                <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
+                                <section class="ds44-contenuArticle" id="section3">                                                                    
+                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+                                    <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
+                                </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir()) %>">
-                                <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
-                                <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
+                                <section class="ds44-contenuArticle" id="section4">
+                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+                                    <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
+                                </section>
                             </jalios:if>
                         </div>
 
