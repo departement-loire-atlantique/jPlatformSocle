@@ -74,7 +74,7 @@ String copyright = obj.getCopyright(userLang);
 	                                                  // Récupérer la taille du fichier
 	                                                  String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
 	                                                  %>
-                                                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= itDoc.getTitle() %> - <%= fileType %> - <%= HtmlUtil.html2text(fileSize) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                                              </jalios:foreach>
                                                          </jalios:default>
                                                    </jalios:select>
