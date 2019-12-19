@@ -17,11 +17,9 @@
 %>
 <%= getPortlet(bufferMap,"header") %>
 
-<main role="main" id="content">
-    <section class="ds44-container-fluid">
-        <%= getPortlet(bufferMap,"selection") %>
-    </section>
-</main>
+<section class="ds44-container-fluid">
+    <%= getPortlet(bufferMap,"selection") %>
+</section>
 
 
 <footer role="contentinfo">
