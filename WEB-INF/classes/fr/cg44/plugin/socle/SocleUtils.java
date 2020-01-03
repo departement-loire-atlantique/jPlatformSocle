@@ -1,9 +1,15 @@
 package fr.cg44.plugin.socle;
 
+import static com.jalios.jcms.Channel.getChannel;
+
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
@@ -12,12 +18,19 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
+import com.jalios.jcms.Publication;
+import com.jalios.jcms.QueryResultSet;
+import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.util.ServletUtil;
 import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
 	private static final Logger LOGGER = Logger.getLogger(SocleUtils.class);
+	
+	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
+	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
 
 
 	/**
@@ -141,6 +154,28 @@ public final class SocleUtils {
 		 */
 
 		return idVideo;
+	}
+	
+	/**
+	 * Permet de récupérer le contenu principal d'une catégorie si celle-ci existe
+	 * @param currentCat la catégorie courante
+	 * @return La publication principale de la catégorie, sinon NULL
+	 */
+	public static Publication getContenuPrincipal(Category currentCat) {
+		if(currentCat != null && getChannel().getCategory(MISE_EN_AVANT_CAT_PROP) != null) {
+			Channel channel = Channel.getChannel();
+			Member loggedMember = channel.getCurrentLoggedMember();		
+			QueryHandler qh = new QueryHandler();
+			qh.setCids(getChannel().getProperty(MISE_EN_AVANT_CAT_PROP), currentCat.getId());
+			qh.setExactCat(true);
+			qh.setLoggedMember(loggedMember);
+			qh.setExactCat(true);
+			QueryResultSet result = qh.getResultSet();
+			Publication contenuPrincipal = Util.getFirst(result);		
+			return contenuPrincipal;
+		}	
+		
+		return null;
 	}
 	
 
