@@ -29,7 +29,8 @@ TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCa
     %><jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2"><%
 	%> <li class="ds44-collapser_element"><%
 	%><%
-	%><%-- On regarde si la catégorie contient des catégries filles autorisées : si oui génération des enfants, si non lien direct vers la catégorie ou sa page carrefour principale --%><%
+	%><%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour,
+	       sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%><%
 	TreeSet<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
 	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
 	boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
