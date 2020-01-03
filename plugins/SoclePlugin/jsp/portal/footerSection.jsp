@@ -17,7 +17,8 @@
         </div>
         <div class="col-5-small-1">
             <%-- Inclusion de la portlet réseaux sociaux --%>
-            <jsp:include page="socialNetworksFooter.jsp"/> 
+<%--             <jsp:include page="socialNetworksFooter.jspf"/>  --%>
+            <%@ include file='socialNetworksFooter.jspf' %>
         </div>
     </div>
     <p class="ds44-posAbs ds44-posTop ds44-posRi">

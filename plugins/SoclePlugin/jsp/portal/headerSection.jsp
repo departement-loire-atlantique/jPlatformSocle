@@ -68,11 +68,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
-			            <% int i = 1; %>
 			            <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
 			                <%
-			                    i++;
-			                    String navId = "nav"+i;
+			                    String navId = "nav"+itCounter + 1;
 			                %>
 			                <li>
 			                    <jalios:select>
@@ -107,7 +105,8 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 			        </div>
 			
 			        <div class="ds44-flex-container">
-			            <jsp:include page="socialNetworksHeader.jsp"/> 
+<%-- 			            <jsp:include page="socialNetworksHeader.jspf"/>  --%>
+			            <%@ include file='socialNetworksHeader.jspf' %>
 	                </div>   
                     <%-- Navigation sites et applis --%>
                     <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
