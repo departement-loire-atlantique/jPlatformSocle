@@ -16,11 +16,7 @@
   String selection = getPortlet(bufferMap,"selection");
 %>
 <%= getPortlet(bufferMap,"header") %>
-
-<section class="ds44-container-fluid">
-    <%= getPortlet(bufferMap,"selection") %>
-</section>
-
+<%= getPortlet(bufferMap,"selection") %>
 
 <footer role="contentinfo">
     <section class="ds44-container-fluid">
