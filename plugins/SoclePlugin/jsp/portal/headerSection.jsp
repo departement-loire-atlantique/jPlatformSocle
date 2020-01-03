@@ -27,7 +27,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 
 <header role="banner" id="top" class="ds44-header">
     <div class="ds44-blocBandeau">
-	    <ul class="ds44-list">
+	    <ul class="ds44-list ds44-skiplinks">
 	        <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
 	        <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
 	        <li><a href="#" class="ds44-skiplinks--link">Aller à la recherche</a></li>
@@ -80,14 +80,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 			                        <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) %>">
 			                             <%
 										String cible= "";
-										String libelleCible = "";
+										String title = "";
 										boolean targetBlank = "true".equals(itCat.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
 										if(targetBlank){
-										    cible="target=\"blank\" ";
-										    libelleCible = JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel");
+										    cible="target=\"_blank\" ";
+										    title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
 										}
 										%>
-			                            <a class="ds44-menuBtn" href="<%= itCat.getDisplayUrl(userLocale) %>" title="<%=libelleCat%><%=libelleCible%>" <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
+			                            <a class="ds44-menuBtn" href="<%= itCat.getDisplayUrl(userLocale) %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
 			                        </jalios:if>
 			                        <jalios:default>
 			                            <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>

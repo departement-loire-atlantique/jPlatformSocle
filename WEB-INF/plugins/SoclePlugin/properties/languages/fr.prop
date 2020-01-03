@@ -29,7 +29,7 @@ jcmsplugin.socle.social-networks-follow.label:Suivez-nous sur les réseaux socia
 # ------------------------------------------------------------
 #  Libellés communs
 # ------------------------------------------------------------
-jcmsplugin.socle.accessibily.newTabLabel: - nouvel onglet
+jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher

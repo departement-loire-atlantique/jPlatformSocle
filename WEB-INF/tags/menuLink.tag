@@ -31,13 +31,13 @@
 
 <%
 String cible= "";
-String libelleCible = "";
+String title = "";
 String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
 boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
 if(targetBlank){
-    cible="target=\"blank\" ";
-    libelleCible = JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel");
+    cible="target=\"_blank\" ";
+    title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
 }
 %>
 
-<li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl" title="<%=libelleCat%><%=libelleCible%>" <%=cible%>><%=libelleCat%><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
+<li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-menuLink ds44-menuLink--subLvl" <%=title%> <%=cible%>><%=libelleCat%><i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>

@@ -29,15 +29,19 @@ TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCa
     %><jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2"><%
 	%> <li class="ds44-collapser_element"><%
 	%><%
-	%><%-- On regarde si la catégorie contient des catégries filles autorisées : si oui génération des enfants, si non lien direct --%><%
+	%><%-- On regarde si la catégorie contient des catégries filles autorisées : si oui génération des enfants, si non lien direct vers la catégorie ou sa page carrefour principale --%><%
 	TreeSet<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
-		    if(Util.notEmpty(level3CatSet)){%>
+	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
+	boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
+            if(linkToPub) {%>
+              <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+            <% }else if(Util.notEmpty(level3CatSet)){%>
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
 		      <ds:toggle title="<%=itCatLevel2.getName() %>">
 		          <ds:categoryList rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
 		      </ds:toggle><%
-		    }else{%>
+		    }else {%>
 		    	<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
 		    <%}%>
         </li><%
