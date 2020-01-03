@@ -163,11 +163,9 @@ public final class SocleUtils {
 	 */
 	public static Publication getContenuPrincipal(Category currentCat) {
 		if(currentCat != null && getChannel().getCategory(MISE_EN_AVANT_CAT_PROP) != null) {
-			Channel channel = Channel.getChannel();
 			Member loggedMember = channel.getCurrentLoggedMember();		
 			QueryHandler qh = new QueryHandler();
 			qh.setCids(getChannel().getProperty(MISE_EN_AVANT_CAT_PROP), currentCat.getId());
-			qh.setExactCat(true);
 			qh.setLoggedMember(loggedMember);
 			qh.setExactCat(true);
 			QueryResultSet result = qh.getResultSet();
