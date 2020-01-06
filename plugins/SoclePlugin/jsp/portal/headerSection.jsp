@@ -25,7 +25,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 %>
 
 
-<header role="banner" id="top" class="ds44-header">
+<header role="banner" id="topPage" class="ds44-header">
     <div class="ds44-blocBandeau">
 	    <ul class="ds44-list ds44-skiplinks">
 	        <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
