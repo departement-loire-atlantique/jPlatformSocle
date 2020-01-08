@@ -3,10 +3,12 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -174,6 +176,30 @@ public final class SocleUtils {
 		}	
 		
 		return null;
+	}
+
+	/**
+	 * Retire tout ce qui n'est pas décimal de la chaine de caractère
+	 * Exemple 02 40-44-85 12 devient  0240448512 ou 44 000 devient 40000
+	 * @param s
+	 * @return
+	 */
+	public static String cleanNumber(String s) {
+		return s.replaceAll("\\D", "");
+	}
+
+	/**
+	 * Retire tout ce qui n'est pas décimal des chaines de caractère du tableau
+	 * Voir cleanNumber(String s) appliqué à chaque élément du tableau
+	 * @param s
+	 * @return
+	 */
+	public static String[] cleanNumber(String[] s) {
+		String[] result = new String[0];
+		if(Util.notEmpty(s)) {
+			result = Arrays.stream(s).map(elt -> cleanNumber(elt)).toArray(String[]::new);
+		}
+		return result;
 	}
 	
 

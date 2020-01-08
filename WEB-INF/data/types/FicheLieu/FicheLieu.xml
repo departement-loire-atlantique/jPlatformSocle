@@ -33,6 +33,9 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
+    <field name="idAncienContenu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" hidden="true" descriptionType="tooltip">
+      <label xml:lang="fr">ID ancien contenu</label>
+    </field>
     <!-- Coordonnées -->
     <field name="etageCouloirEscalier" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Étage - couloir - escalier</label>
