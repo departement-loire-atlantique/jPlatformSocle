@@ -68,6 +68,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
+
+	                    <% Map<Category, String> listCatNavId = new HashMap<Category, String>(); %>
+
 			            <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
 			                <%
 			                    String navId = "nav"+itCounter + 1;
@@ -89,7 +92,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 			                        </jalios:if>
 			                        <jalios:default>
 			                            <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
-	                                    <ds:levelTwoMenu rootCat="<%= itCat %>" id='<%= navId %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+                                        <% listCatNavId.put(itCat, navId); %>
 			                        </jalios:default>
 			                    </jalios:select>
 			                    
@@ -110,38 +113,44 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 	                </div>   
                     <%-- Navigation sites et applis --%>
                     <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
-                    <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
-
-                        <div class="ds44-container-menuBackLink">
-                            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
-                                <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
-                            </button>
-                            <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
-                        </div>
-
-                        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
-
-                        <nav role="navigation">
-                            <div class="ds44-inner-container">
-                                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
-				                <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
-				                    <li>
-				                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
-				                        <ul class="ds44-list">
-				                        <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-				                            <ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
-				                        </jalios:foreach>
-				                        </ul>
-				                    </li>
-				                </jalios:foreach>
-                                  </ul>
-                              </div>
-                          </nav>
-					
-                      </section>
                   </nav>
+			</div>
+	    </section>
+	    
+	    <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
+            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+        </jalios:foreach>
+        
+		<section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
+		
+		<div class="ds44-container-menuBackLink">
+			<button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
+			     <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
+			</button>
+			<p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
 		</div>
-          </section>
+		
+		<button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+		
+		<nav role="navigation">
+			<div class="ds44-inner-container">
+				<ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
+					<jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
+					<li>
+						<p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
+						<ul class="ds44-list">
+							<jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
+							<ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
+							</jalios:foreach>
+						</ul>
+					</li>
+					</jalios:foreach>
+				</ul>
+			</div>
+		</nav>
+		                    
+		</section>        
+        
 	</div>
     
 </header>
