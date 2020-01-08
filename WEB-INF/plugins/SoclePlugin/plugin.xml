@@ -179,7 +179,8 @@
     <directory path="types" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
-    <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>    
+    <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
+    <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />    
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
