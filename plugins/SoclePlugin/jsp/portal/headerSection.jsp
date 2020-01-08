@@ -68,7 +68,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
+
 	                    <% Map<Category, String> listCatNavId = new HashMap<Category, String>(); %>
+
 			            <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
 			                <%
 			                    String navId = "nav"+itCounter + 1;

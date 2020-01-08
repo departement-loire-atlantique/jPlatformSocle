@@ -30,11 +30,11 @@
 <% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
 
 <div class="ds44-alternate-container">
-	<div class="pam large-w66 mauto">
+	<div class="ds44--xl-padding-t pbs large-w66 mauto">
         <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
             <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
         </jalios:if>
-	    <h1 class="h1-like mbm" id="idTitre1"><%=title %></h1>
+	    <h1 class="h1-like mbm mtm" id="idTitre1"><%=title %></h1>
 	    <jalios:if predicate='<%=Util.notEmpty(date) %>'>
 	       <p class="ds44-textLegend">Publié le <%=date%></p>
 	    </jalios:if>
