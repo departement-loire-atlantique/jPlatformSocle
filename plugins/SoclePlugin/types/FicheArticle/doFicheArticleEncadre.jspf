@@ -1,0 +1,30 @@
+<%@page import="generated.PortletWYSIWYG"%>
+
+<jalios:foreach array="<%=currentContenusEncadres%>" type="String"
+	name="itContenu" counter="itCounter">
+	<section class="ds44-box ds44-theme mbm">
+		<div class="ds44-innerBoxContainer">
+			<jalios:if
+				predicate="<%=Util.notEmpty(currentTitresEncadres) ? Util.notEmpty(currentTitresEncadres[itCounter - 1])
+							: false%>">
+				<p class="ds44-box-heading" role="heading" aria-level="2"><%=currentTitresEncadres[itCounter - 1]%></p>
+			</jalios:if>
+			<div class="mts"><%=itContenu%></div>
+		</div>
+	</section>
+</jalios:foreach>
+
+<jalios:foreach array="<%=currentContenusPortlets%>"
+	type="PortalElement" name="itPortalElem">
+	<jalios:if predicate="<%=itPortalElem instanceof PortletWYSIWYG%>">
+		<%
+			PortletWYSIWYG itWysiwyg = (PortletWYSIWYG) itPortalElem;
+		%>
+		<section class="ds44-box mbm <%= itWysiwyg.getCssClasses() %>">
+			<div class="ds44-innerBoxContainer">
+				<p class="ds44-box-heading" role="heading" aria-level="2"><%=itWysiwyg.getTitle()%></p>
+				<div class="mts"><%=itWysiwyg.getWysiwyg()%></div>
+			</div>
+		</section>
+	</jalios:if>
+</jalios:foreach>
