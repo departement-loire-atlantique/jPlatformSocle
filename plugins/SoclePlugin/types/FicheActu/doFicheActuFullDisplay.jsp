@@ -34,9 +34,9 @@
 	       </div>
 	    </div>
 	    <section class="ds44-contenuArticle large-w66">
-	       <p class="ds44-introduction">
-	           <%= HtmlUtil.html2text(obj.getChapo()) %>
-	       </p>
+	       <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+                <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
+           </jalios:if>
 	    </section>
 	    <%-- Boucler sur les paragraphes --%>
 	    <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
