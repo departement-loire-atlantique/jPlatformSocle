@@ -20,7 +20,7 @@
 	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
 		data-tabs-prefix-class="ds44" id="onglets">
 
-		<!-- Affichage des onglets 1 à 4 s'ils existent -->
+		<!-- Affichage des onglets 1 ï¿½ 4 s'ils existent -->
 		<ul
 			class="js-tablist ds44-tabs__list ds44-theme ds44-flex-container ds44-fse ds44-list"
 			role="tablist" id="tabs">
