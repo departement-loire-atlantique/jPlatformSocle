@@ -193,6 +193,7 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
+    <file path="WEB-INF/tags/titleSimple.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  

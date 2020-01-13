@@ -6,22 +6,15 @@
 	String legende = obj.getLegende(userLang);
 	String copyright = obj.getCopyright(userLang);
 %>
-<div class="ds44-alternate-container">
-	<div class="ds44--xl-padding-t pbs large-w66 mauto">
-		<%-- TODO : intégrer le fil d'ariane --%>
-		<h1 class="h1-like mbm mtm" id="titreActualite"><%=obj.getTitle()%></h1>
-	</div>
-	<jalios:select>
-		<jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau())%>">
-			<ds:titleBanner imagePath="<%=imageFile%>"
-				mobileImagePath="<%=imageMobileFile%>" title="<%=title%>"
-				legend="<%=legende%>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
-		</jalios:if>
-		<jalios:default>
-			<ds:titleNoBanner title="<%=title%>" breadcrumb="true"></ds:titleNoBanner>
-		</jalios:default>
-	</jalios:select>
-</div>
+
+<jalios:select> 
+	<jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
+	   <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+	</jalios:if>
+	<jalios:default>
+	   <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
+	</jalios:default>
+</jalios:select>
 
 <section class="ds44-ongletsContainer">
 	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
