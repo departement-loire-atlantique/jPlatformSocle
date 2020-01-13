@@ -48,93 +48,13 @@ String copyright = obj.getCopyright(userLang);
                         <li class="mrs ds44-ongletsBtnItem">
                             <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
 
-                            <div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
-                                <div class="ds44-modal-box">
-                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
-
-                                    <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
-
-                                    <div class="ds44-modal-gab">
-
-                                        <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
-                                                                                
-                                           <div class="ds44-mt3 grid-12-small-1">
-                                               <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) ? "6" : "12" %> ds44-modal-column'>
-                                                   <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
-                                                   
-                                                   <jalios:select>
-                                                         <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
-                                                             <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
-                                                         </jalios:if>
-                                                         <jalios:default>
-                                                            <ul class="ds44-list">
-                                                            <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-                                                                <li class="mtm">
-                                                                <% 
-                                                                // Récupérer l'extension du fichier
-	                                                            String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-                                                                // Récupérer la taille du fichier
-                                                                String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-                                                                %>
-                                                                    <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
-                                                                </li>
-                                                            </jalios:foreach>
-                                                            </ul>
-                                                         </jalios:default>
-                                                   </jalios:select>
-                                                   
-                                               </div>
-                                                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-                                                <div class="col-6 ds44-modal-column">
-        
-                                                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
-        
-                                                    <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
-                                                    <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
-                                                </div>
-                                                </jalios:if>
-                                           </div>
-                                    </div>
-                                </div>                              
-                            </div>
                         </li>
                         
                         <li class="mrs ds44-ongletsBtnItem">
                             <!-- TODO faire une demande et traduire les libellés -->
                             <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
 
-                            <div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
-                                <div class="ds44-modal-box">
-                                    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
-
-                                    <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h2>
-
-                                    <div class="ds44-modal-gab">
-                                        <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
-
-                                        <div class="ds44-mt3 grid-12-small-1">
-                                            <div class="col-6 ds44-modal-column">
-                                                <h2 class="h3-like">Vous avez un code de suivi :</h3>
-
-                                                <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
-
-                                                <div class="ds44-form__container">
-                                                    <label for="name" class="ds44-formLabel ds44-mb-std"><span class="ds44-labelTypePlaceholder ds44-moveLabel">Code de suivi</span> <input type="text" id="name" class="ds44-inpStd" required /></label>
-
-                                                    <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 ds44-modal-column">
-
-                                                <h2 class="h3-like">Vous n’avez pas de code de suivi :</h3>
-
-                                                <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>       
-                            </div>
+                            
                         </li>
                     </ul>
 
@@ -230,3 +150,86 @@ String copyright = obj.getCopyright(userLang);
 
 
 </main>
+
+<div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
+    <div class="ds44-modal-box">
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+
+        <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
+
+        <div class="ds44-modal-gab">
+
+            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
+
+            <div class="ds44-mt3 grid-12-small-1">
+                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) ? "6" : "12" %> ds44-modal-column'>
+                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
+
+                    <jalios:select>
+                        <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
+                            <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
+                        </jalios:if>
+                        <jalios:default>
+                            <ul class="ds44-list">
+                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
+                                    <li class="mtm">
+                                        <% 
+                                        // Récupérer l'extension du fichier
+                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+                                        // Récupérer la taille du fichier
+                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+                                        %>
+                                        <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                    </li>
+                                </jalios:foreach>
+                            </ul>
+                        </jalios:default>
+                    </jalios:select>
+
+                </div>
+                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+                    <div class="col-6 ds44-modal-column">
+
+                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+
+                        <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
+                        <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
+                    </div>
+                </jalios:if>
+            </div>
+        </div>
+    </div>  
+</div>
+
+<div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
+    <div class="ds44-modal-box">
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+
+        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h2>
+
+        <div class="ds44-modal-gab">
+            <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
+
+            <div class="ds44-mt3 grid-12-small-1">
+                <div class="col-6 ds44-modal-column">
+                    <h2 class="h3-like">Vous avez un code de suivi :</h3>
+
+                    <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
+
+                    <div class="ds44-form__container">
+                        <label for="name" class="ds44-formLabel ds44-mb-std"><span class="ds44-labelTypePlaceholder ds44-moveLabel">Code de suivi</span> <input type="text" id="name" class="ds44-inpStd" required /></label>
+
+                        <button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div class="col-6 ds44-modal-column">
+
+                    <h2 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+
+                    <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
+
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
