@@ -34,6 +34,7 @@ jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1088893
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
+wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
@@ -60,13 +61,14 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   h5[class|style|id],\
   h6[class|style|id],\
   hr,\
-  i[class],\
+  i[class|style|aria-hidden],\
   img[class|style|align|alt|height|src|title|width],\
   li[class|style|id],\
   ol[class|style|id|start|type],\
   p[class|style|id|title|lang|dir],\
   pre[class|style|id|lang|dir],\
   q[cite],\
+  section[class],\
   small,\
   span[class|style|id|title|lang|dir],\
   s[class|style|id],\
@@ -85,7 +87,10 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   u,\
   ul[class|style|id|type]
 
-
+jcmsplugin.socle.wysiwyg.icons:icon-arrow-down icon-arrow-right icon-arrow-up icon-computer icon-csv icon-date \
+icon-directions icon-discussion icon-facebook icon-fax icon-file icon-help icon-instagram icon-link icon-magweb \
+icon-mail icon-map icon-marker icon-pdf icon-phone icon-play icon-plus icon-position icon-tag icon-time \
+icon-twitter icon-user icon-youtube
 
 # ------ 7357 ajout d'extradata sur les catégories
 extra.Category.plugin.tools.index.boolean: false

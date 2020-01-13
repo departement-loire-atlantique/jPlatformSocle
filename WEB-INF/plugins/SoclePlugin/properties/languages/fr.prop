@@ -86,3 +86,6 @@ jcmsplugin.socle.breadcrumb.position:Votre position
 # ------------------------------------------------------------
 wysiwyg.configuration.simple: Simple
 wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions sans mise en forme
+# Plugin DS Icons pour Tiny MCE
+jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
+jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace

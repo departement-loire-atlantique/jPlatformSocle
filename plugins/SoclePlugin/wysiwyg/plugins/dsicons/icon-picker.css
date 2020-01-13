@@ -1,0 +1,10 @@
+.listeIcones a{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	color: black;
+	font-size: 1.3em;
+}
+.listeIcones a:hover{
+    background-color:#d9d9d9;
+}
