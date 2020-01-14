@@ -59,14 +59,14 @@
         </jalios:if>
         
         <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
-	        <span class="ds44-imgCaption" aria-describedby="<%=uid%>">
+            <figcaption class="ds44-imgCaption">
 	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
 	                <%=legend%>
 	            </jalios:if>
 	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
 	                © <%=copyright%>
 	            </jalios:if>
-	        </span>
+	        </figcaption>
         </jalios:if>	        
     </picture>
     
