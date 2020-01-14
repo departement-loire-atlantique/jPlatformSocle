@@ -57,6 +57,69 @@
 		PortalElement[] currentContenusPortlets;
 		boolean chapoDisplayed = false;
 	%>
+	
+	
+    <%
+    for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
+
+    	//     	if(Util.notEmpty(obj.getFieldValue("titreEncadre_" + ongletCpt))){
+//     		String[] ok = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
+//     		System.out.println("ok");
+//     		System.out.println(ok[0]);
+//     	}
+    	
+    	
+    	if(Util.notEmpty(obj.getFieldValue("titreOnglet_" + ongletCpt))) {
+    		currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
+    		currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
+    		currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
+    	}%>
+    	
+    	
+    	<div id="id_1" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_1">
+    	  
+    	   <div class="grid-12-small-1">
+    	       <div class="col-7">
+
+    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo())%>">
+                        <div class="ds44-introduction">
+                            <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+                        </div>
+                    </jalios:if>
+                    
+                    
+                    
+                    
+                    
+                    <%-- Boucler sur les paragraphes --%>
+                    <jalios:foreach name="itContenu" type="String" counter="itCounter"
+                        array="<%=obj.getContenuParagraphe_1()%>">
+                        <section id="section<%=itCounter%>" class="ds44-contenuArticle">
+                            <jalios:if
+                                predicate="<%=Util.notEmpty(obj.getTitreParagraphe_1())
+                                ? Util.notEmpty(obj.getTitreParagraphe_1()[itCounter - 1])
+                                : false%>">
+                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_1()[itCounter - 1]%></h2>
+                            </jalios:if>
+                            <%=itContenu%>
+                        </section>
+                    </jalios:foreach>
+                    
+               </div>
+               
+               <div class="col-1 grid-offset"></div>
+
+                <aside class="col-4">
+                    <%@ include file="doFicheArticleEncadre.jspf"%>
+                </aside>
+    	
+    	   </div>
+        </div>
+    	
+    <%}
+    
+    %>
+	
 
 	<jalios:if predicate="<%=Util.notEmpty(obj.getTitreOnglet_1())%>">
 		<%
