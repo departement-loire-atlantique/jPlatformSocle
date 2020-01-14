@@ -17,7 +17,7 @@
 	<section id="section<%=itCounter%>"
 		class="ds44-contenuArticle large-w66">
 		<jalios:if predicate="<%=Util.notEmpty(itTitle)%>">
-			<h2 id="titreParagraphe<%=itCounter%>"><%=itTitle%></h2>
+			<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=itTitle%></h2>
 		</jalios:if>
 		<%=obj.getContenuParagraphe()[itCounter - 1]%>
 	</section>

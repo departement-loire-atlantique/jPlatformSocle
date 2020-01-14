@@ -20,7 +20,7 @@
 	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
 		data-tabs-prefix-class="ds44" id="onglets">
 
-		<!-- Affichage des onglets 1 ï¿½ 4 s'ils existent -->
+		<!-- Affichage des onglets 1 à 4 s'ils existent -->
 		<ul
 			class="js-tablist ds44-tabs__list ds44-theme ds44-flex-container ds44-fse ds44-list"
 			role="tablist" id="tabs">
@@ -82,7 +82,7 @@
 								predicate="<%=Util.notEmpty(obj.getTitreParagraphe_1())
 								? Util.notEmpty(obj.getTitreParagraphe_1()[itCounter - 1])
 								: false%>">
-								<h2 id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_1()[itCounter - 1]%></h2>
+								<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_1()[itCounter - 1]%></h2>
 							</jalios:if>
 							<%=itContenu%>
 						</section>
@@ -128,7 +128,7 @@
 								predicate="<%=Util.notEmpty(obj.getTitreParagraphe_2())
 								? Util.notEmpty(obj.getTitreParagraphe_2()[itCounter - 1])
 								: false%>">
-								<h2 id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_2()[itCounter - 1]%></h2>
+								<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_2()[itCounter - 1]%></h2>
 							</jalios:if>
 							<%=itContenu%>
 						</section>
@@ -174,7 +174,7 @@
 								predicate="<%=Util.notEmpty(obj.getTitreParagraphe_3())
 								? Util.notEmpty(obj.getTitreParagraphe_3()[itCounter - 1])
 								: false%>">
-								<h2 id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_3()[itCounter - 1]%></h2>
+								<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_3()[itCounter - 1]%></h2>
 							</jalios:if>
 							<%=itContenu%>
 						</section>
@@ -220,7 +220,7 @@
 								predicate="<%=Util.notEmpty(obj.getTitreParagraphe_4())
 								? Util.notEmpty(obj.getTitreParagraphe_4()[itCounter - 1])
 								: false%>">
-								<h2 id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_4()[itCounter - 1]%></h2>
+								<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe_4()[itCounter - 1]%></h2>
 							</jalios:if>
 							<%=itContenu%>
 						</section>
