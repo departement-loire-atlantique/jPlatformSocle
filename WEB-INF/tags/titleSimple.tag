@@ -27,6 +27,13 @@
     type="String"
     description="Le chemin du fichier image mobile"
 %>
+<%@ attribute name="alt"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Texte alternatif de l'image"
+%>
 <%@ attribute name="legend"
     required="false"
     fragment="false"
@@ -84,7 +91,7 @@
 		        <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
 		            <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
 		            <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-		            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+		            <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-headerImg" id="<%=uid%>"/>
 		        </jalios:if>
 		        
 		        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">

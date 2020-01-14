@@ -1,5 +1,6 @@
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheActu obj = (FicheActu)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><%@ include file='/front/doFullDisplay.jspf' %><%
@@ -15,24 +16,10 @@
 %>
 <main id="content" role="main">
 	<article class="ds44-container-fluid">
-	    <div class="ds44-alternate-container">
-	        <div class="ds44--xl-padding-t pbs large-w66 mauto">
-	            <%-- TODO : intégrer le fil d'ariane --%>
-	            <h1 class="h1-like mbm mtm" id="titreActualite"><%= obj.getTitle() %></h1>
-	            <p class="ds44-textLegend"><%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getDateActu())) %></p>
-	        </div>
-	    </div>
-	    <%-- TODO : voir comment se gèrent les images mobiles --%>
-	    <div class="ds44-alternate-container ds44-img50">
-	       <div class="large-w75 mauto">
-	           <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= lblFigure %>">
-	               <img class="ds44-w100 ds44-imgRatio" src="<%= obj.getImagePrincipale() %>" alt="<%= obj.getTexteAlternatif() %>"/>
-	               <jalios:if predicate="<%= Util.notEmpty(lblFigure) %>">
-	               <figcaption class="ds44-imgCaption"><%= lblFigure %></figcaption>
-	               </jalios:if>
-	           </figure>
-	       </div>
-	    </div>
+	    <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
+		    title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
+		    copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
+		    userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
 	    <section class="ds44-contenuArticle large-w66">
 	       <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
                 <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
@@ -42,7 +29,7 @@
 	    <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
 	       <section id="section<%= itCounter %>" class="ds44-contenuArticle large-w66">
 	       <jalios:if predicate="<%= Util.notEmpty(itTitle) %>">
-	           <h2 id="titreParagraphe<%= itCounter %>"><%= itTitle %></h2>
+	           <h2 id="titreParagraphe<%= itCounter %>" class="h2-like"><%= itTitle %></h2>
 	       </jalios:if>
 	       <%= obj.getContenuParagraphe()[itCounter-1] %>
 	       </section>

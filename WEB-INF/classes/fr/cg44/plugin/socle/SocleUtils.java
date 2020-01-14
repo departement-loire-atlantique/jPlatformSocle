@@ -211,6 +211,7 @@ public final class SocleUtils {
 	 * @return
 	 */
 	public static String formatDate(String format, Date date) {
+		if (Util.isEmpty(date)) return "";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
