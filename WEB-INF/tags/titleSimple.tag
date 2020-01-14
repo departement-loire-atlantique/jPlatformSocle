@@ -4,7 +4,8 @@
     pageEncoding="UTF-8"
     description="Titre du header simple" 
     body-content="scriptless" 
-    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil"
+    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat"
 %>
 <%@ attribute name="title"
     required="true"
@@ -84,15 +85,13 @@
     </div>
 </div>
 <jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-<% if (Util.isEmpty(mobileImagePath)) mobileImagePath = imagePath; %>
+<% if (Util.isEmpty(mobileImagePath)) { mobileImagePath = ThumbnailTag.buildThumbnail(imagePath, 140, 140, imagePath); } %>
     <div class="ds44-alternate-container ds44-img50">
         <div class="large-w75 mauto">
             <picture class="ds44-legendeContainer ds44-container-imgRatio">
-		        <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
-		            <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
-		            <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-		            <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-headerImg" id="<%=uid%>"/>
-		        </jalios:if>
+		        <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+		        <source media="(min-width: 36em)" srcset="<%=imagePath%>">
+		        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-headerImg" id="<%=uid%>"/>
 		        
 		        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
 		            <span class="ds44-imgCaption" aria-describedby="<%=uid%>">
