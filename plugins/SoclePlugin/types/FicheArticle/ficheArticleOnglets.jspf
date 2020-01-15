@@ -63,7 +63,7 @@
     	}%>
     	
     	
-    	<div id="id_<%= ongletCpt %>" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_<%= ongletCpt %>">
+    	<div id="id_<%= ongletCpt %>" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " aria-hidden='true'" : "" %>>
     	  
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
@@ -72,6 +72,7 @@
                         <div class="ds44-introduction">
                             <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                         </div>
+                        <% chapoDisplayed = true; %>
                     </jalios:if>
                     
                     <%-- Boucler sur les paragraphes --%>
