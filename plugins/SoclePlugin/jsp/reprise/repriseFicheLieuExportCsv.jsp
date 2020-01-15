@@ -10,7 +10,24 @@ response.setHeader("Content-Disposition", "attachment; filename=places.csv");
 //inform doInitPage to set the proper content type
 request.setAttribute("ContentType", "text/csv; charset=" + channel.getProperty("csv.charset"));
 
-%><%@ include file="/jcore/doInitPage.jsp" %><%
+%><%@ include file="/jcore/doInitPage.jsp" %><%!
+
+public static FicheLieu getNewFiche(String idPlace) {
+    QueryHandler qh = new QueryHandler();
+    qh.setExactType(true);
+    qh.setTypes(FicheLieu.class.getSimpleName());
+    QueryResultSet result = qh.getResultSet();
+    
+    for(Publication itPub : result) {  
+        FicheLieu itFiche = (FicheLieu) (itPub);
+        if(idPlace.equals(itFiche.getIdAncienContenu())) {
+            return itFiche;
+        }
+    }    
+    return null;
+}
+
+%><%
 
 if (!isLogged) {
   sendForbidden(request, response);
@@ -22,6 +39,8 @@ qh.setExactType(true);
 qh.setTypes(Place.class.getSimpleName());
 QueryResultSet result = qh.getResultSet();
 
+if (Util.isEmpty(result)) return;
+
 PrintWriter printWriter = new PrintWriter(out);
 
 String separator = ";";
@@ -31,6 +50,8 @@ String newLine = "\n";
 StringBuffer csvHeader = new StringBuffer();
 
 csvHeader.append("Identifiant");
+csvHeader.append(separator);
+csvHeader.append("ID Fiche Lieu");
 csvHeader.append(separator);
 csvHeader.append("Titre");
 csvHeader.append(separator);
@@ -47,11 +68,13 @@ printWriter.write(csvHeader.toString());
 
 StringBuffer csvData = new StringBuffer();
 
-for(Publication itPub : result) {
+for (Publication itPub : result) {
     
     Place itPlace = (Place) itPub;    
     
-    logger.info("Checking place " + itPlace.getId());
+    if (!itPlace.isInVisibleState()) continue;
+    
+    FicheLieu itAssociatedLieu = getNewFiche(itPlace.getId());
     
     StringBuffer itPhones = new StringBuffer();
     if (Util.notEmpty(itPlace.getPhones())) {
@@ -64,6 +87,8 @@ for(Publication itPub : result) {
     }
         
     csvData.append(itPlace.getId());
+    csvData.append(separator);
+    csvData.append(Util.isEmpty(itAssociatedLieu) ? "" : itAssociatedLieu.getId());
     csvData.append(separator);
     csvData.append(itPlace.getTitle());
     csvData.append(separator);
