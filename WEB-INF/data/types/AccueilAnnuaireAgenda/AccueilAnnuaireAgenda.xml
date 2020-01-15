@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="AccueilAnnuaireAgenda" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Accueil annuaire / agenda</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image bandeau</label>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="typeAnnuaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Annuaire</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Agenda</offLabel>
+    </field>
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire">
+      <label xml:lang="fr">Titre paragraphe</label>
+    </field>
+    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire" html="false">
+      <label xml:lang="fr">Contenu paragraphe</label>
+    </field>
+    <field name="soustitreRecherche" editor="textfield" required="false" compactDisplay="false" tab="recherche" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre recherche</label>
+    </field>
+    <field name="introRecherche" editor="textarea" required="false" compactDisplay="false" tab="recherche" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Intro recherche</label>
+    </field>
+    <field name="portletRecherche" editor="link" required="true" compactDisplay="false" tab="recherche" type="com.jalios.jcms.portlet.PortalElement" parent="false">
+      <label xml:lang="fr">Portlet recherche</label>
+    </field>
+    <field name="soustitreSelectionAgenda" editor="textfield" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre sélection agenda</label>
+    </field>
+    <field name="introSelectionAgenda" editor="textarea" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Intro sélection agenda</label>
+    </field>
+    <field name="alaUneAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">À la une agenda</label>
+    </field>
+    <field name="carrouselAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">Carrousel agenda</label>
+    </field>
+    <field name="titreEncadresLibres" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encadresAgenda">
+      <label xml:lang="fr">Titre encadrés libres</label>
+    </field>
+    <field name="contenusEncadresLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="encadresAgenda" html="false">
+      <label xml:lang="fr">Contenus encadrés libres</label>
+    </field>
+    <field name="portletsEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets encadrés</label>
+    </field>
+    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contenus_bas" type="generated.Faq" parent="false">
+      <label xml:lang="fr">FAQ</label>
+    </field>
+    <field name="portletsBas" editor="link" required="false" compactDisplay="false" tab="contenus_bas" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets bas</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_1154084">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="agenda">
+      <label xml:lang="fr">Agenda</label>
+    </tab>
+    <tab id="annuaire">
+      <label xml:lang="fr">Annuaire</label>
+    </tab>
+    <tab id="encadres">
+      <label xml:lang="fr">Encadrés</label>
+    </tab>
+    <tab id="recherche">
+      <label xml:lang="fr">Recherche</label>
+    </tab>
+    <tab id="contenus_bas">
+      <label xml:lang="fr">Contenus bas</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+</type>
+
