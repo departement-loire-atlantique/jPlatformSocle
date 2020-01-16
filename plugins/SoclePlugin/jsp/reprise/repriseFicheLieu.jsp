@@ -61,6 +61,10 @@ if(!isAdmin) {
 <p><i>Affiche les champs Téléphone, Adresse, Code Postal, Boîte Postale dans un fichier CSV</i></p>
 <a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
 
+<h3>Export CSV des nouvelles Fiches Lieu</h3>
+<a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp?exportNew=true" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
+
+
 <% 
 
 if(getBooleanParameter("cedex", false)) {
