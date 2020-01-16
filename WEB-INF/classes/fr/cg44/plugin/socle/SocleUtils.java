@@ -3,7 +3,9 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -202,5 +204,16 @@ public final class SocleUtils {
 		return result;
 	}
 	
+	/**
+	 * Retourne un String formaté à partir d'une date
+	 * @param format
+	 * @param date
+	 * @return
+	 */
+	public static String formatDate(String format, Date date) {
+		if (Util.isEmpty(date)) return "";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		return sdf.format(date);
+	}
 
 }

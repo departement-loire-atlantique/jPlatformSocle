@@ -58,12 +58,11 @@ if(!isAdmin) {
 
 
 <h3>Export CSV des anciennes Fiches Lieu</h3>
-<p><i>Affiche les champs Téléphone, Adresse, Code Postal, Boîte Postale dans un fichier CSV</i></p>
+<p><i>Affiche les champs TÃ©lÃ©phone, Adresse, Code Postal, BoÃ®te Postale dans un fichier CSV</i></p>
 <a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
 
 <h3>Export CSV des nouvelles Fiches Lieu</h3>
 <a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp?exportNew=true" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
-
 
 <% 
 
@@ -200,11 +199,11 @@ for(Publication itPub : result) {
 		   itFiche.setCommunes(itPlace.getCities());
 		   
 		   
-		   // TODO mapping délegation categorie -> contenu
+		   // TODO mapping dÃ©legation categorie -> contenu
 		   
 		   itFiche.setCantons(new Canton[]{itPlace.getCanton()});
 		   		   
-		   // Reprise de toutes les catégories
+		   // Reprise de toutes les catÃ©gories
 		   itFiche.setCategorySet(categories);
 		   
 		   
@@ -212,7 +211,7 @@ for(Publication itPub : result) {
 		   itFiche.setExtraData("extra.Place.plugin.tools.geolocation.longitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.longitude"));
 		   itFiche.setExtraData("extra.Place.plugin.tools.geolocation.latitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.latitude"));
 		   
-		   // meta donné et écriture
+		   // meta donnÃ© et Ã©criture
 		   itFiche.setAuthor(itPlace.getAuthor());
 		   itFiche.performCreate(itPlace.getAuthor());
 	}

@@ -1,0 +1,24 @@
+
+<ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
+    title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
+    copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getPdate()) %>' 
+    userLang="<%= userLang %>" breadcrumb="true"></ds:titleSimple>
+
+<section class="ds44-contenuArticle large-w66">
+	<jalios:if predicate="<%=Util.notEmpty(obj.getChapo())%>">
+		<div class="ds44-introduction">
+			<jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+		</div>
+	</jalios:if>
+</section>
+<%-- Boucler sur les paragraphes --%>
+<jalios:foreach name="itTitle" type="String" counter="itCounter"
+	array="<%=obj.getTitreParagraphe()%>">
+	<section id="section<%=itCounter%>"
+		class="ds44-contenuArticle large-w66">
+		<jalios:if predicate="<%=Util.notEmpty(itTitle)%>">
+			<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=itTitle%></h2>
+		</jalios:if>
+		<%=obj.getContenuParagraphe()[itCounter - 1]%>
+	</section>
+</jalios:foreach>

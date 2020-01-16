@@ -35,6 +35,9 @@ jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
 jcmsplugin.socle.fermer: Fermer
 jcmsplugin.socle.retour: Retour
+jcmsplugin.socle.publiele: Publié le {0}
+jcmsplugin.socle.symbol.copyright: ©
+jcmsplugin.socle.illustration: illustration
 
 # ------------------------------------------------------------
 #  Header
