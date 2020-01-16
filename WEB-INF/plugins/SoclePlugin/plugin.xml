@@ -180,7 +180,10 @@
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
-    <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />    
+    <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
+    <file path="types/FicheArticle/ficheArticleSimple.jspf" />
+    <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
+    <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/categoryList.tag" />
@@ -190,6 +193,7 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
+    <file path="WEB-INF/tags/titleSimple.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
