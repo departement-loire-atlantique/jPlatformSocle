@@ -2,7 +2,8 @@
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="com.jalios.jcms.handler.QueryHandler"%>
-<%  
+<%@page import="java.io.IOException" %>
+<%
 %><%@ include file="/jcore/doInitPage.jsp" %><%!
 
 public static FicheLieu getNewFiche(String idPlace) {
@@ -56,7 +57,9 @@ if(!isAdmin) {
 </form>
 
 
-
+<h3>Export CSV des anciennes Fiches Lieu</h3>
+<p><i>Affiche les champs Téléphone, Adresse, Code Postal, Boîte Postale dans un fichier CSV</i></p>
+<a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
 
 <% 
 
@@ -90,32 +93,32 @@ if(getBooleanParameter("cedex", false)) {
 
 
 if(getBooleanParameter("virgule", false)) {
-	
-	QueryHandler qh = new QueryHandler();
-	qh.setExactType(true);
-	qh.setTypes(FicheLieu.class.getSimpleName());
-	QueryResultSet result = qh.getResultSet();
-	
-	Pattern pattern = Pattern.compile("(^, *)(.*)");
-	
-	
-	for(Publication itPub : result) {
-		
-		
-		FicheLieu itFiche = (FicheLieu) itPub;    
-		
+    
+    QueryHandler qh = new QueryHandler();
+    qh.setExactType(true);
+    qh.setTypes(FicheLieu.class.getSimpleName());
+    QueryResultSet result = qh.getResultSet();
+    
+    Pattern pattern = Pattern.compile("(^, *)(.*)");
+    
+    
+    for(Publication itPub : result) {
+        
+        
+        FicheLieu itFiche = (FicheLieu) itPub;    
+        
         Matcher matcher = pattern.matcher(itFiche.getLibelleDeVoie());
-		
+        
         if(matcher.matches()) {
-        	FicheLieu clone = (FicheLieu) (itFiche.getUpdateInstance());
-        	
-        	clone.setLibelleDeVoie(matcher.group(2).trim());
-        	clone.performUpdate(itFiche.getAuthor());
-        	out.print(itFiche.getDisplayUrl(userLocale) + "<br/>");
+            FicheLieu clone = (FicheLieu) (itFiche.getUpdateInstance());
+            
+            clone.setLibelleDeVoie(matcher.group(2).trim());
+            clone.performUpdate(itFiche.getAuthor());
+            out.print(itFiche.getDisplayUrl(userLocale) + "<br/>");
         }
-		
-	}
-	
+        
+    }
+    
 }
 
 
