@@ -13,11 +13,11 @@ String copyright = obj.getCopyright(userLang);
 
 <main role="main" id="content">
 
-    <section class="ds44-container-fluid">
+    <section class="ds44-container-large">
         
         <ds:titleBanner imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 
-        <div class="ds44-inner-container">
+        <div class="ds44-inner-container ds44-xl-margin-tb">
             <div class="grid-12-small-1">
                 <div class="col-7">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
