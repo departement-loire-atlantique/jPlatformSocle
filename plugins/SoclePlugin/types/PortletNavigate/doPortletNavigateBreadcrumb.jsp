@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ include file='/types/PortletNavigate/doInitPortletNavigate.jspf' %>
@@ -37,10 +38,10 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 %>
 
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-smallScreens">
-	<ul class="ds44-list <%=textColorStyle%>">
-	    <li class="ds44-breadcrumb"><a href="index.jsp"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
+	<ul class="ds44-breadcrumb <%=textColorStyle%>">
+	    <li class="ds44-breadcrumb_item"><a href="index.jsp" title='<%= glp("jcmsplugin.socle.header.ariane.accueil") %>' alt='<%= glp("jcmsplugin.socle.header.ariane.accueil") %>'><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
 	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory">
-	            <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) %>'>
+	            <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
 	                <%
 	            	if((itCategory.hasAncestor(rootCategory) || itCategory.equals(rootCategory)) && (counter < box.getLevels()-1)) {
 	            		libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
@@ -51,14 +52,14 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 	            		}
 		           %>
 	    
-				    <li class="ds44-breadcrumb">
-				        <a <%= nofollow %> href='<%= PortalManager.getUrlWithUpdateCtxCategories(itCategory , ctxCategories, request , !box.getNavigatePortlet()) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
+				    <li class="ds44-breadcrumb_item">
+				        <a <%= nofollow %> href='<%= SocleUtils.getContenuPrincipal(itCategory).getDisplayUrl(userLocale) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
 				    </li>
 				    <% counter++; %>
 				  <% } %>
 	        </jalios:if>
 	    </jalios:foreach>
-	    <li class="ds44-breadcrumb" aria-current="location">
+	    <li class="ds44-breadcrumb_item" aria-current="location">
             <%= Util.notEmpty(currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : currentCategory.getName(userLang) %>
         </li>
 	</ul>
