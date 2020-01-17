@@ -11,7 +11,7 @@
         
 <%
 List<Category> ancestors  = currentCategory.getAncestorList();
-	
+    
 for (Iterator<Category> it = rootCategory.getAncestorList().iterator() ; it.hasNext() ;) {
   ancestors.remove(it.next());
 }
@@ -23,7 +23,7 @@ if (Util.isEmpty(ancestors) && box.getHideWhenNoResults()) {
 
 Collections.reverse(ancestors);
 
-	
+    
 String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 int counter = 0;
 String libelleCat = "";
@@ -35,44 +35,45 @@ String lblAltTitle = glp("jcmsplugin.socle.retour.accueil");
 
 // texte du breadcrumb clair/sombre
 if(Util.notEmpty(request.getAttribute("textColor"))){
-	textColorStyle = "ds44-text--colorInvert";
+    textColorStyle = "ds44-text--colorInvert";
 }
 %>
 
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-mobile">
-	<ul class="ds44-list ds44-breadcrumb <%=textColorStyle%>">
-	    <li class="ds44-breadcrumb_item"><a href="index.jsp" title="<%= lblAltTitle %>" alt="<%= lblAltTitle %>"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
-	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" skip="<%= 2 %>" counter="itCounter">
-	       <jalios:select>
-	         <jalios:if predicate='<%= itCounter == 1 %>'>
-	                <% 
-	                libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+    <ul class="ds44-list ds44-breadcrumb <%=textColorStyle%>">
+        <li class="ds44-breadcrumb_item"><a href="index.jsp" title="<%= lblAltTitle %>" alt="<%= lblAltTitle %>"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
+        <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" skip="<%= 2 %>" counter="itCounter">
+           <jalios:select>
+             <jalios:if predicate='<%= itCounter == 1 %>'>
+                    <% 
+                    libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+                    counter++;
                     %>
                     <li class="ds44-breadcrumb_item"><span><%= libelleCat %></span></li>
-	         </jalios:if>
-	         <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
-	                <%
-	            	if((itCategory.hasAncestor(rootCategory) || itCategory.equals(rootCategory)) && (counter < box.getLevels()-1)) {
-	            		libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
-	            		boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
-	            		if(targetBlank){
-	            			cible="target=\"_blank\"";
-	            			libelleCible = glp("jcmsplugin.socle.accessibily.newTabLabel");
-	            		}
-		           %>
-	    
-				    <li class="ds44-breadcrumb_item">
-				        <a <%= nofollow %> href='<%= SocleUtils.getContenuPrincipal(itCategory).getDisplayUrl(userLocale) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
-				    </li>
-				    <% counter++; %>
-				  <% } %>
-	        </jalios:if>
-	       </jalios:select>
-	    </jalios:foreach>
-	    <li class="ds44-breadcrumb_item" aria-current="location">
+             </jalios:if>
+             <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
+                    <%
+                    if((itCategory.hasAncestor(rootCategory) || itCategory.equals(rootCategory)) && (counter < box.getLevels()-1)) {
+                        libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+                        boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
+                        if(targetBlank){
+                            cible="target=\"_blank\"";
+                            libelleCible = glp("jcmsplugin.socle.accessibily.newTabLabel");
+                        }
+                   %>
+        
+                    <li class="ds44-breadcrumb_item">
+                        <a <%= nofollow %> href='<%= SocleUtils.getContenuPrincipal(itCategory).getDisplayUrl(userLocale) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
+                    </li>
+                    <% counter++; %>
+                  <% } %>
+            </jalios:if>
+           </jalios:select>
+        </jalios:foreach>
+        <li class="ds44-breadcrumb_item" aria-current="location">
             <%= Util.notEmpty(currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : currentCategory.getName(userLang) %>
         </li>
-	</ul>
+    </ul>
 </nav>
 
 <% 
