@@ -42,8 +42,15 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-mobile">
 	<ul class="ds44-list ds44-breadcrumb <%=textColorStyle%>">
 	    <li class="ds44-breadcrumb_item"><a href="index.jsp" title="<%= lblAltTitle %>" alt="<%= lblAltTitle %>"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
-	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory">
-	            <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
+	    <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" skip="<%= 2 %>" counter="itCounter">
+	       <jalios:select>
+	         <jalios:if predicate='<%= itCounter == 1 %>'>
+	                <% 
+	                libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+                    %>
+                    <li class="ds44-breadcrumb_item"><span><%= libelleCat %></span></li>
+	         </jalios:if>
+	         <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
 	                <%
 	            	if((itCategory.hasAncestor(rootCategory) || itCategory.equals(rootCategory)) && (counter < box.getLevels()-1)) {
 	            		libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
@@ -60,6 +67,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 				    <% counter++; %>
 				  <% } %>
 	        </jalios:if>
+	       </jalios:select>
 	    </jalios:foreach>
 	    <li class="ds44-breadcrumb_item" aria-current="location">
             <%= Util.notEmpty(currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? currentCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : currentCategory.getName(userLang) %>
