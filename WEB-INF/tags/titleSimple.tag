@@ -87,14 +87,14 @@
     </div>
 </div>
 <jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-<% if (Util.isEmpty(mobileImagePath)) { mobileImagePath = ThumbnailTag.buildThumbnail(imagePath, 140, 140, imagePath); } %>
+<% if (Util.isEmpty(mobileImagePath)) { mobileImagePath = ThumbnailTag.buildThumbnail(imagePath, 480, 480, imagePath); } %>
     <div class="ds44-img50">
         <div class="ds44-inner-container">
             <div class="ds44-grid12-offset-1">
 	            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
 			        <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
 			        <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-			        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-headerImg" id="<%=uid%>"/>
+			        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
 			        
 			        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
 			            <span class="ds44-imgCaption" aria-describedby="<%=uid%>">

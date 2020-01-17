@@ -1,7 +1,7 @@
 
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
     title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-    copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getPdate()) %>' 
+    copyright="<%= obj.getCopyright() %>" 
     userLang="<%= userLang %>" breadcrumb="true"></ds:titleSimple>
 
 <section class="ds44-contenuArticle">
