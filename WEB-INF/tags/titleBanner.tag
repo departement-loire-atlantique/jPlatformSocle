@@ -71,7 +71,7 @@
     </picture>
     
     <div class="ds44-titleContainer">
-        <div class="ds44-alphaGradient ds44--xl-padding">
+        <div class="ds44-alphaGradient ds44-alphaGradient--header">
             <!-- Fil d'ariane -->
             <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
                 <%request.setAttribute("textColor","invert"); %>

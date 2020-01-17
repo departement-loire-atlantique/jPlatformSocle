@@ -48,10 +48,10 @@ int itLevel = currentLevel!=null ? currentLevel : 0;
 itLevel++;
 
 // Style pour le padding des listes imbriquées (padding doublé au-delà du niveau 1)
-String paddingClass = "ds44--xl-padding-lr";
+String paddingClass = "ds44-list ds44-collapser_content--level2";
 %>
 <jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>">
-    <% if(itLevel>1) paddingClass = "ds44--2xl-padding-l"; %>
+    <% if(itLevel>1) paddingClass = "ds44-list ds44-collapser_content--level3"; %>
     <ul class="<%=paddingClass%>">
     <%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour, sinon génération des enfants. --%>
     <%
