@@ -3,9 +3,9 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ include file='/types/PortletNavigate/doInitPortletNavigate.jspf' %>
 
-<%-- SGU : inspiré de doPortletNavigateLocation.jsp
-    On adapte la liste au design system et on gère les extradatas de catégories (libellé, target)
-    Les liens pointent vers les catégories. Un portalPolicyFilter s'occupe de rediriger vers le
+<%-- SGU : inspirÃ© de doPortletNavigateLocation.jsp
+    On adapte la liste au design system et on gÃ¨re les extradatas de catÃ©gories (libellÃ©, target)
+    Les liens pointent vers les catÃ©gories. Un portalPolicyFilter s'occupe de rediriger vers le
     bon contenu.
 --%>
         
@@ -31,7 +31,7 @@ String cible="";
 String libelleCible = "";
 String textColorStyle = "";
 
-String lblAltTitle = glp("jcmsplugin.socle.header.ariane.accueil");
+String lblAltTitle = glp("jcmsplugin.socle.retour.accueil");
 
 // texte du breadcrumb clair/sombre
 if(Util.notEmpty(request.getAttribute("textColor"))){
