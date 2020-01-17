@@ -53,6 +53,7 @@ jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
+jcmsplugin.socle.header.ariane.accueil: Retour à l'accueil du site loire-atlantique.fr
 
 # ------------------------------------------------------------
 #  Contenu
