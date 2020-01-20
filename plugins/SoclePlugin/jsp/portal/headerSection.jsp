@@ -25,8 +25,8 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 %>
 
 
-<header role="banner" id="topPage" class="ds44-header">
-    <div class="ds44-blocBandeau">
+<header role="banner" id="topPage">
+    <div class="ds44-blocBandeau ds44-header">
 	    <ul class="ds44-list ds44-skiplinks">
 	        <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
 	        <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
@@ -65,7 +65,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 
                 <p role="heading" aria-level="1" class="visually-hidden"><%=glp("jcmsplugin.socle.menu")%></p>
 		
-    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column ds44-flex-valign-center" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
+    		    <nav role="navigation" class="ds44-navContainer ds44-flex-container--column" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
 	                <div class="ds44-inner-container ds44-flex-mauto">
 	                    <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
 
@@ -107,7 +107,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 	                       </ul>
 			        </div>
 			
-			        <div class="ds44-flex-container">
+			        <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
 <%-- 			            <jsp:include page="socialNetworksHeader.jspf"/>  --%>
 			            <%@ include file='socialNetworksHeader.jspf' %>
 	                </div>   
