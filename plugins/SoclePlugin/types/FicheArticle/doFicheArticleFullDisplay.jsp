@@ -17,13 +17,13 @@
     <article class="ds44-container-fluid">
         <%-- Sélection qui dépend de l'image principale et du champ "Type d'article --%>
         <jalios:select>
-            <jalios:if predicate="<%= Util.isEmpty(obj.getImagePrincipale()) || !obj.getTypeSimple() %>">
-                <%-- Include du gabarit onglet --%>
-                <%@ include file="ficheArticleOnglets.jspf" %>
-            </jalios:if>
-            <jalios:default>
+            <jalios:if predicate="<%= Util.notEmpty(obj.getImagePrincipale()) || obj.getTypeSimple() %>">
                 <%-- Include du gabarit simple --%>
                 <%@ include file="ficheArticleSimple.jspf" %>
+            </jalios:if>
+            <jalios:default>
+                <%-- Include du gabarit onglet --%>
+                <%@ include file="ficheArticleOnglets.jspf" %>
             </jalios:default>
         </jalios:select>
         
