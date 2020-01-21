@@ -155,7 +155,7 @@ String copyright = obj.getCopyright(userLang);
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
-        <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h2>
+        <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h1>
 
         <div class="ds44-modal-gab">
 
@@ -163,7 +163,7 @@ String copyright = obj.getCopyright(userLang);
 
             <div class="ds44-mt3 grid-12-small-1">
                 <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) ? "6" : "12" %> ds44-modal-column'>
-                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h3>
+                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 
                     <jalios:select>
                         <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
@@ -190,7 +190,7 @@ String copyright = obj.getCopyright(userLang);
                 <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
                     <div class="col-6 ds44-modal-column">
 
-                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h3>
+                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
 
                         <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></a></p>
                         <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
@@ -205,14 +205,14 @@ String copyright = obj.getCopyright(userLang);
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
 
-        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h2>
+        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h1>
 
         <div class="ds44-modal-gab">
             <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
 
             <div class="ds44-mt3 grid-12-small-1">
                 <div class="col-6 ds44-modal-column">
-                    <h2 class="h3-like">Vous avez un code de suivi :</h3>
+                    <h2 class="h3-like">Vous avez un code de suivi :</h2>
 
                     <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
 
@@ -224,7 +224,7 @@ String copyright = obj.getCopyright(userLang);
                 </div>
                 <div class="col-6 ds44-modal-column">
 
-                    <h2 class="h3-like">Vous n’avez pas de code de suivi :</h3>
+                    <h2 class="h3-like">Vous n’avez pas de code de suivi :</h2>
 
                     <p><button class="ds44-btnStd ds44-btn--invert" type="button"><span class="ds44-btnInnerText">Connectez-vous</span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
 
