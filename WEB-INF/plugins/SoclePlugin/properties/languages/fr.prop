@@ -25,6 +25,7 @@ jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par
 jcmsplugin.socle.socialnetworks.labels.help:Attention : la liste doit commencer par un "@" (ex : @|Facebook|Twitter). Le nom du picto utilisé pour l'affichage correspond au label en minuscule et sans espaces.
 jcmsplugin.socle.socialnetworks.urls:URLs des réseaux sociaux (bien respecter l'ordre correspondant aux labels)
 jcmsplugin.socle.social-networks-follow.label:Suivez-nous sur les réseaux sociaux :
+jcmsplugin.socle.socialnetworks.title:Le Département de Loire-Atlantique sur 
 
 # ------------------------------------------------------------
 #  Libellés communs
