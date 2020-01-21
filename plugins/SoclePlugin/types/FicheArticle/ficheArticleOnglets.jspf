@@ -1,4 +1,5 @@
 
+<%@page import="com.jalios.jcms.HttpUtil"%>
 <%
 	String imageFile = obj.getImageBandeau();
 	String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
@@ -17,31 +18,34 @@
 </jalios:select>
 
 <section class="ds44-ongletsContainer">
-	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
+	<div class="ds44-tabs" data-existing-hx="h2"
 		data-tabs-prefix-class="ds44" id="onglets">
-
-		<!-- Affichage des onglets 1 à 4 s'ils existent -->
-		<ul
-			class="js-tablist ds44-tabs__list ds44-theme ds44-flex-container ds44-fse ds44-list"
-			role="tablist" id="tabs">
-			<%
-			  String titreOnglet;
-			  boolean firstTabDisplayed = false;
-			  for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
-				  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt));
-				%>
-				<jalios:if predicate="<%=Util.notEmpty(titreOnglet)%>">
-					<li class="js-tablist__item ds44-tabs__item ds44-fg1"
-						role="presentation" id="tabs__<%= ongletCpt %>"><a
-						class="js-tablist__link ds44-tabs__link" id="label_id_<%= ongletCpt %>" role="tab"
-						aria-controls="id_<%= ongletCpt %>" tabindex="0"<%= !firstTabDisplayed ? " aria-selected='true'" : ""%>><%=titreOnglet%></a>
-					</li>
-					<% firstTabDisplayed = true; %>
-				</jalios:if>
-				<%
-			  }
-			%>
-		</ul>
+				
+			<nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
+	
+				<!-- Affichage des onglets 1 à 4 s'ils existent -->
+				<ul
+					class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" id="tabs">
+					<%
+					  String titreOnglet;
+					  boolean firstTabDisplayed = false;
+					  for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
+						  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt));
+						%>
+						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuEncadre_" + ongletCpt))%>'>
+							<li class="ds44-tabs__item ds44-fg1" id="tabs__<%= ongletCpt %>"><a
+								class="js-tablist__link ds44-tabs__link<%= !firstTabDisplayed ? " ds44-tabs__linkSelected" : "" %>" id="label_id_<%= ongletCpt %>"
+								<%= !firstTabDisplayed ? " aria-current='true'" : ""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
+							</li>
+							<% firstTabDisplayed = true; %>
+						</jalios:if>
+						<%
+					  }
+					%>
+				</ul>
+			
+			</nav>
+			
 	</div>
 	<%
 		String[] currentTitresEncadres;
@@ -63,8 +67,9 @@
     	}%>
     	
     	
-    	<div id="id_<%= ongletCpt %>" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " aria-hidden='true'" : "" %>>
-    	  
+    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " aria-hidden='true'" : "" %>>
+    	   <a name="onglet-<%= ongletCpt %>" id="onglet-<%= ongletCpt %>"></a>
+    	   <h2 class="visually-hidden">Onglet <%= ongletCpt %></h2>
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
 
@@ -91,13 +96,16 @@
                     
                </div>
                
-               <div class="col-1 grid-offset"></div>
+               <div class="col-1 grid-offset ds44-hide-tinyToLarge"></div>
 
                 <aside class="col-4">
                     <%@ include file="doFicheArticleEncadre.jspf"%>
                 </aside>
     	
     	   </div>
+    	   
+    	   <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_<%= ongletCpt %>">Revenir à l'onglet <%= ongletCpt %></a></p>
+    	   
         </div>
     	
     <%}
