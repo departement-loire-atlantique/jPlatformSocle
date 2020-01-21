@@ -18,7 +18,7 @@
 </jalios:select>
 
 <section class="ds44-ongletsContainer">
-	<div class="ds44-tabs" data-existing-hx="h2"
+	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
 		data-tabs-prefix-class="ds44" id="onglets">
 				
 			<nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
@@ -32,7 +32,7 @@
 					  for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
 						  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt));
 						%>
-						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuEncadre_" + ongletCpt))%>'>
+						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))%>'>
 							<li class="ds44-tabs__item ds44-fg1" id="tabs__<%= ongletCpt %>"><a
 								class="js-tablist__link ds44-tabs__link<%= !firstTabDisplayed ? " ds44-tabs__linkSelected" : "" %>" id="label_id_<%= ongletCpt %>"
 								<%= !firstTabDisplayed ? " aria-current='true'" : ""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
@@ -48,10 +48,14 @@
 			
 	</div>
 	<%
-		String[] currentTitresEncadres;
-		String[] currentContenusEncadres;
-		PortalElement[] currentContenusPortlets;
+        String[] currentTitresParagraphes = new String[0];
+        String[] currentContenusParagraphes = new String[0];
+		String[] currentTitresEncadres = new String[0];
+		String[] currentContenusEncadres = new String[0];
+		PortalElement[] currentContenusPortlets = new PortalElement[0];
 		boolean chapoDisplayed = false;
+		boolean encadresCommunsFound = false;
+		
 	%>
 	
 	
@@ -59,21 +63,26 @@
     for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
     	
     	if(Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))) {
-    		currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
-    		currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
-    		currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
+    		currentTitresParagraphes = (String[]) (obj.getFieldValue("titreParagraphe_" + ongletCpt));
+            currentContenusParagraphes = (String[]) (obj.getFieldValue("contenuParagraphe_" + ongletCpt));
+    		if (obj.getEncadresCommuns() ? !encadresCommunsFound : true) {
+    			currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
+                currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
+                currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
+                if (obj.getEncadresCommuns()) encadresCommunsFound = true;
+            }
     	} else {
     		break;
     	}%>
     	
     	
-    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " aria-hidden='true'" : "" %>>
+    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
     	   <a name="onglet-<%= ongletCpt %>" id="onglet-<%= ongletCpt %>"></a>
     	   <h2 class="visually-hidden">Onglet <%= ongletCpt %></h2>
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
 
-    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo())%>">
+    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo()) && !chapoDisplayed%>">
                         <div class="ds44-introduction">
                             <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                         </div>
@@ -82,13 +91,15 @@
                     
                     <%-- Boucler sur les paragraphes --%>
                     <jalios:foreach name="itContenu" type="String" counter="itCounter"
-                        array="<%=currentContenusEncadres%>">
+                        array="<%=currentContenusParagraphes%>">
                         <section id="section<%=itCounter%>" class="ds44-contenuArticle">
                             <jalios:if
-                                predicate="<%=Util.notEmpty(currentTitresEncadres)
-                                ? Util.notEmpty(currentTitresEncadres[itCounter - 1])
-                                : false%>">
-                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresEncadres[itCounter - 1]%></h2>
+                                predicate="<%=Util.notEmpty(currentTitresParagraphes)
+                                ? (itCounter <= currentTitresParagraphes.length ?
+                                	Util.notEmpty(currentTitresParagraphes[itCounter - 1])
+                                	: false)
+                                : false %>">
+                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
                             </jalios:if>
                             <%=itContenu%>
                         </section>
