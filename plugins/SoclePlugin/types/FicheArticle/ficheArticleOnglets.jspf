@@ -95,8 +95,10 @@
                         <section id="section<%=itCounter%>" class="ds44-contenuArticle">
                             <jalios:if
                                 predicate="<%=Util.notEmpty(currentTitresParagraphes)
-                                ? Util.notEmpty(currentTitresParagraphes[itCounter - 1])
-                                : false%>">
+                                ? (itCounter <= currentTitresParagraphes.length ?
+                                	Util.notEmpty(currentTitresParagraphes[itCounter - 1])
+                                	: false)
+                                : false %>">
                                 <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
                             </jalios:if>
                             <%=itContenu%>
