@@ -32,7 +32,7 @@
 					  for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
 						  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt));
 						%>
-						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuEncadre_" + ongletCpt))%>'>
+						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))%>'>
 							<li class="ds44-tabs__item ds44-fg1" id="tabs__<%= ongletCpt %>"><a
 								class="js-tablist__link ds44-tabs__link<%= !firstTabDisplayed ? " ds44-tabs__linkSelected" : "" %>" id="label_id_<%= ongletCpt %>"
 								<%= !firstTabDisplayed ? " aria-current='true'" : ""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
@@ -77,7 +77,7 @@
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
 
-    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo())%>">
+    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo()) && !chapoDisplayed%>">
                         <div class="ds44-introduction">
                             <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                         </div>
