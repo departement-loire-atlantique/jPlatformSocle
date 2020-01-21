@@ -38,6 +38,7 @@ jcmsplugin.socle.retour: Retour
 jcmsplugin.socle.publiele: Publié le {0}
 jcmsplugin.socle.symbol.copyright: ©
 jcmsplugin.socle.illustration: illustration
+jcmsplugin.socle.navOnglet: Navigation au sein d'onglets
 
 # ------------------------------------------------------------
 #  Header
