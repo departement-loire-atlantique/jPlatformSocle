@@ -29,7 +29,7 @@
 
 <% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
 
-<div class="ds44-alternate-container">
+<div class="ds44-lightBG">
 	<div class="ds44--xl-padding-t pbs large-w66 mauto">
         <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
             <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>

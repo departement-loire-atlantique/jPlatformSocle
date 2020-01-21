@@ -14,7 +14,7 @@
     if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright();
 %>
 <main id="content" role="main">
-    <article class="ds44-container-fluid">
+    <article class="ds44-container-large">
         <%-- Sélection qui dépend de l'image principale et du champ "Type d'article --%>
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImagePrincipale()) || obj.getTypeSimple() %>">
