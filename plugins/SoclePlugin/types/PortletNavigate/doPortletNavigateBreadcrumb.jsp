@@ -41,7 +41,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-mobile">
     <ul class="ds44-list ds44-breadcrumb <%=textColorStyle%>">
-        <li class="ds44-breadcrumb_item"><a href="index.jsp" title="<%= lblAltTitle %>" alt="<%= lblAltTitle %>"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
+        <li class="ds44-breadcrumb_item"><a href="index.jsp" title="<%= lblAltTitle %>"><i class="icon icon-home icon--medium"></i><span class="visually-hidden">Accueil</span></a></li>
         <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" skip="<%= 2 %>" counter="itCounter">
            <jalios:select>
              <jalios:if predicate='<%= itCounter == 1 %>'>
