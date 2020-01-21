@@ -18,7 +18,7 @@
 </jalios:select>
 
 <section class="ds44-ongletsContainer">
-	<div class="ds44-tabs" data-existing-hx="h2"
+	<div class="js-tabs ds44-tabs" data-existing-hx="h2"
 		data-tabs-prefix-class="ds44" id="onglets">
 				
 			<nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
@@ -48,6 +48,8 @@
 			
 	</div>
 	<%
+        String[] currentTitresParagraphes;
+        String[] currentContenusParagraphes;
 		String[] currentTitresEncadres;
 		String[] currentContenusEncadres;
 		PortalElement[] currentContenusPortlets;
@@ -59,6 +61,8 @@
     for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
     	
     	if(Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))) {
+    		currentTitresParagraphes = (String[]) (obj.getFieldValue("titreParagraphe_" + ongletCpt));
+            currentContenusParagraphes = (String[]) (obj.getFieldValue("contenuParagraphe_" + ongletCpt));
     		currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
     		currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
     		currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
@@ -67,7 +71,7 @@
     	}%>
     	
     	
-    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " aria-hidden='true'" : "" %>>
+    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
     	   <a name="onglet-<%= ongletCpt %>" id="onglet-<%= ongletCpt %>"></a>
     	   <h2 class="visually-hidden">Onglet <%= ongletCpt %></h2>
     	   <div class="grid-12-small-1">
@@ -82,13 +86,13 @@
                     
                     <%-- Boucler sur les paragraphes --%>
                     <jalios:foreach name="itContenu" type="String" counter="itCounter"
-                        array="<%=currentContenusEncadres%>">
+                        array="<%=currentContenusParagraphes%>">
                         <section id="section<%=itCounter%>" class="ds44-contenuArticle">
                             <jalios:if
-                                predicate="<%=Util.notEmpty(currentTitresEncadres)
-                                ? Util.notEmpty(currentTitresEncadres[itCounter - 1])
+                                predicate="<%=Util.notEmpty(currentTitresParagraphes)
+                                ? Util.notEmpty(currentTitresParagraphes[itCounter - 1])
                                 : false%>">
-                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresEncadres[itCounter - 1]%></h2>
+                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
                             </jalios:if>
                             <%=itContenu%>
                         </section>
