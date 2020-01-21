@@ -58,7 +58,7 @@
     <%
     for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
     	
-    	if(Util.notEmpty(obj.getFieldValue("contenuEncadre_" + ongletCpt))) {
+    	if(Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))) {
     		currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
     		currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
     		currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
