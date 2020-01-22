@@ -28,7 +28,7 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 int counter = 0;
 String libelleCat = "";
 String cible="";
-String libelleCible = "";
+String title = "";
 String textColorStyle = "";
 
 String lblAltTitle = glp("jcmsplugin.socle.retour.accueil");
@@ -58,12 +58,12 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
                         boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
                         if(targetBlank){
                             cible="target=\"_blank\"";
-                            libelleCible = glp("jcmsplugin.socle.accessibily.newTabLabel");
+                            title = "title=\"" + libelleCat + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") + "\"";
                         }
                    %>
         
                     <li class="ds44-breadcrumb_item">
-                        <a <%= nofollow %> href='<%= SocleUtils.getContenuPrincipal(itCategory).getDisplayUrl(userLocale) %>' <%=cible%> title="<%=libelleCat%><%=libelleCible%>"><%= libelleCat %></a>
+                        <a <%= nofollow %> href='<%= SocleUtils.getContenuPrincipal(itCategory).getDisplayUrl(userLocale) %>' <%=cible%> <%=title%>><%= libelleCat %></a>
                     </li>
                     <% counter++; %>
                   <% } %>
