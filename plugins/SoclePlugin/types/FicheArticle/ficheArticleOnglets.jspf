@@ -115,7 +115,7 @@
     	
     	   </div>
     	   
-    	   <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_<%= ongletCpt %>">Revenir à l'onglet <%= ongletCpt %></a></p>
+    	   <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_<%= ongletCpt %>"><%= glp("jcmsplugin.socle.revenirOnglet", ongletCpt) %></a></p>
     	   
         </div>
     	
