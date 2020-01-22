@@ -8,7 +8,7 @@
 
 response.setHeader("Content-Disposition", "attachment; filename=places.csv");
 //inform doInitPage to set the proper content type
-request.setAttribute("ContentType", "text/csv; charset=" + channel.getProperty("csv.charset"));
+request.setAttribute("ContentType", "text/csv; charset=ISO-8859-1");
 
 %><%@ include file="/jcore/doInitPage.jsp" %><%!
 
