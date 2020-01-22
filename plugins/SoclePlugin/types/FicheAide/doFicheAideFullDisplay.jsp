@@ -25,17 +25,17 @@ String copyright = obj.getCopyright(userLang);
 
             <div class="js-tabs ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">
 
-                <div class="ds44-theme ds44-flex-container ds44-flex-wrap-large">
+                <nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
                     <!-- Résumé / détail / FAQ -->
-                    <ul class="js-tablist ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" role="tablist" id="tabs">
-                        <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_first" role="tab" aria-controls="id_first" tabindex="0" aria-selected="true"><%= glp("jcmsplugin.socle.onglet.resume") %></a>
+                    <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" id="tabs">
+                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
+                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_first" class="js-tablist__link ds44-tabs__link" id="label_id_first" aria-current="true"><%= glp("jcmsplugin.socle.onglet.resume") %></a>
                         </li>
-                        <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_second" role="tab" aria-controls="id_second" tabindex="-1" aria-selected="false"><%= glp("jcmsplugin.socle.onglet.detail") %></a>
+                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
+                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second"><%= glp("jcmsplugin.socle.onglet.detail") %></a>
                         </li>
-                        <li class="js-tablist__item ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
-                            <a class="js-tablist__link ds44-tabs__link" id="label_id_third" role="tab" aria-controls="id_third" tabindex="-1" aria-selected="false"><%= glp("jcmsplugin.socle.onglet.faq") %></a>
+                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
+                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third"><%= glp("jcmsplugin.socle.onglet.faq") %></a>
                         </li>
                     </ul>
                     
@@ -58,7 +58,7 @@ String copyright = obj.getCopyright(userLang);
                         </li>
                     </ul>
 
-                </div>
+                </nav>
 
                 
                 <!--  En résumé -->
@@ -82,12 +82,14 @@ String copyright = obj.getCopyright(userLang);
                         </aside>
                         
                     </div>
+                    
+                    <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_first"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.resume")) %></a></p>
 
                 </div>
 
  
                 <!-- En détail -->
-                <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_second" aria-hidden="true">      
+                <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_second" aria-hidden="true" style="display: none; opacity: 0;">      
                 
                     <div class="grid-12-small-1">
                         <div class="col-7">
@@ -130,12 +132,17 @@ String copyright = obj.getCopyright(userLang);
                         </aside>
 
                     </div>
+                    
+                    <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_second"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.detail")) %></a></p>
+                    
                 </div>
 
  
                 <!-- FAQ -->
-                <div id="id_third" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_third" aria-hidden="true">
+                <div id="id_third" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_third" aria-hidden="true" style="display: none; opacity: 0;">
                     <p>FAQ à compléter</p>
+                    
+                    <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_third"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.faq")) %></a></p>
                 </div>
 
  
