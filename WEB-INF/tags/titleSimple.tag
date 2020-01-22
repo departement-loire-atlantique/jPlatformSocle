@@ -101,20 +101,17 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 			        <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
 			        <source media="(min-width: 36em)" srcset="<%=imagePath%>">
 			        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
-			        
-                    <jalios:if predicate="<%= hasFigcaption%>">
-                        <figcaption class="ds44-imgCaption">
-	                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                            <%=legend%>
-	                        </jalios:if>
-	                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                            © <%=copyright%>
-	                        </jalios:if>
-                        </figcaption>
-                    </jalios:if>
-			    </picture>
-			    <jalios:if predicate="<%= hasFigcaption%>">
-                    </figure>
+                </picture>
+                <jalios:if predicate="<%= hasFigcaption%>">
+                    <figcaption class="ds44-imgCaption">
+                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+                            <%=legend%>
+                        </jalios:if>
+                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+                            © <%=copyright%>
+                        </jalios:if>
+                    </figcaption>
+                  </figure>
                 </jalios:if>
 			</div>
         </div>

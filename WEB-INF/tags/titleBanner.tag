@@ -55,27 +55,26 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
 <div class="ds44-pageHeaderContainer">
     <jalios:if predicate="<%= hasFigcaption%>">
-        <figure role="figure">
+        <figure role="figure" class="ds44-pageHeaderContainer__pictureContainer">
     </jalios:if>
-    <picture class="ds44-pageHeaderContainer__pictureContainer">
-        <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+    
+    <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+        <picture class="ds44-pageHeaderContainer__pictureContainer">
             <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
             <source media="(min-width: 36em)" srcset="<%=imagePath%>">
             <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
-        </jalios:if>
-        
-        <jalios:if predicate="<%= hasFigcaption%>">
-            <figcaption class="ds44-imgCaption">
-	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                <%=legend%>
-	            </jalios:if>
-	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                © <%=copyright%>
-	            </jalios:if>
-	        </figcaption>
-        </jalios:if>	        
-    </picture>
+        </picture>
+    </jalios:if>
+    
     <jalios:if predicate="<%= hasFigcaption%>">
+	    <figcaption class="ds44-imgCaption">
+	        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+	            <%=legend%>
+	        </jalios:if>
+	        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+	            © <%=copyright%>
+	        </jalios:if>
+	    </figcaption>
         </figure>
     </jalios:if>
     
