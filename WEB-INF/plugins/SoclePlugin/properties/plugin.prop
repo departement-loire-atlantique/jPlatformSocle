@@ -193,3 +193,11 @@ $jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychique.root: c_1156233
 # Accueil Annuaire / Agenda
 
 $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
+
+# ------------------------------------------------------------
+#  Configuration Infolocale
+# ------------------------------------------------------------
+
+jcmsplugin.socle.infolocale.schedule: 30 * * * * *
+jcmsplugin.socle.infolocale.login: 
+jcmsplugin.socle.infolocale.password: 

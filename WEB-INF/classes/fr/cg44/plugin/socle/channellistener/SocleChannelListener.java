@@ -2,16 +2,24 @@ package fr.cg44.plugin.socle.channellistener;
 
 import static com.jalios.jcms.Channel.getChannel;
 
+import java.text.ParseException;
+
 import org.apache.log4j.Logger;
 
+import com.jalios.jcms.Channel;
 import com.jalios.jcms.ChannelListener;
 import com.jalios.jcms.Group;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
+import com.jalios.jdring.AlarmEntry;
+import com.jalios.jdring.AlarmManager;
+import com.jalios.jdring.PastDateException;
 import com.jalios.util.JProperties;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleConstants;
+import fr.cg44.plugin.socle.alarmlistener.InfolocaleTokenAlarmListener;
+import fr.cg44.plugin.socle.infolocale.RequestManager;
 
 /**
  * Permet de créer le groupe pour la visibilité de la topbar si celui-ci n'éxiste pas,
@@ -31,6 +39,9 @@ public class SocleChannelListener extends ChannelListener{
 	public void initAfterStoreLoad() throws Exception {
 		// Permet de créer le groupe pour la visibilité de la topbar si celui-ci n'éxiste pas
 		processVisibleTopbarGroup();
+		
+		// Initialise l'alarmlistener des tokens Infolocale
+		initInfolocaleTokenAlarmListener();
 	}
 
 	
@@ -80,6 +91,25 @@ public class SocleChannelListener extends ChannelListener{
 		// Récupère le groupe depuis la propriété du module
 		Group visibleTopbarGroup = getChannel().getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP);
 		return Util.notEmpty(visibleTopbarGroup);
+	}
+	
+	/**
+	 * Initialise l'alarmlistener des tokens Infolocale
+	 */
+	private void initInfolocaleTokenAlarmListener() {
+		String schedule = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.schedule");
+		InfolocaleTokenAlarmListener alarmListener = new InfolocaleTokenAlarmListener();
+		AlarmEntry alarmEntry;
+		try {
+			alarmEntry = new AlarmEntry(schedule, alarmListener);
+			AlarmManager alarmMgr = Channel.getChannel().getCommonAlarmManager();
+		    alarmMgr.addAlarm(alarmEntry);
+		} catch (PastDateException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Effectuer la génération des tokens au démarrage
+		RequestManager.generateTokens();
 	}
 
 }

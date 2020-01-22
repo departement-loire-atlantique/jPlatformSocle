@@ -16,8 +16,9 @@
 String infoLocaleLogin = "";
 String infoLocalePwd = "";
 
-String jetonAcces ="";
-String jetonRefresh ="";
+String jetonAcces = "";
+String jetonRefresh = "";
+String username = "";
 
 HttpPost post;
 HttpGet get;
@@ -58,4 +59,32 @@ jsonObject = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
 
 <%= jsonObject.toString(2) %>
 
-<jalios:if predicate="<%= jsonObject.get(key) %>"
+<jalios:if predicate="<%= jsonObject.get("code").equals("200") %>">
+<%
+
+jetonAcces = jsonObject.get("access_token");
+jetonRefresh = jsonObject.get("refresh_token");
+username = jsonObject.get("username");
+
+%>
+</jalios:if>
+
+<%--
+
+Au démarrage :
+    Initialiser un singleton qui gérera les tokens
+    Effectuer l'authentification pour générer les deux tokens
+    
+Régulièrement après le démarrage :
+    Effectuer le rafraîchissement du token sur le singleton
+
+En cas de requête :
+    Appeler un gestionnaire de requête qui aura la liste des requêtes
+    Chaque méthode rendra son propre résultat
+    Utiliser les tokens du singleton
+    -> en cas de 401, faire remonter l'erreur
+
+En back-office :
+    Créer une page admin qui forcera la regénération des tokens sur un bouton
+
+-->
