@@ -8,7 +8,7 @@
 
 response.setHeader("Content-Disposition", "attachment; filename=places.csv");
 //inform doInitPage to set the proper content type
-request.setAttribute("ContentType", "text/csv; charset=" + channel.getProperty("csv.charset"));
+request.setAttribute("ContentType", "text/csv; charset=ISO-8859-1");
 
 %><%@ include file="/jcore/doInitPage.jsp" %><%!
 
@@ -377,13 +377,13 @@ if(getBooleanParameter("exportNew", false)) {
 	csvHeader.append(separator);
 	csvHeader.append("Titre");
 	csvHeader.append(separator);
-	csvHeader.append("Téléphone");
+	csvHeader.append("T�l�phone");
 	csvHeader.append(separator);
 	csvHeader.append("Adresse");
 	csvHeader.append(separator);
 	csvHeader.append("Code Postal");
 	csvHeader.append(separator);
-	csvHeader.append("Boîte Postale");
+	csvHeader.append("Bo�te Postale");
 	csvHeader.append(newLine);
 
 	printWriter.write(csvHeader.toString());
