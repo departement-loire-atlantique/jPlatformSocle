@@ -48,9 +48,15 @@
     description="Indique si le fil d'ariane doit être affiché"
 %>
 
-<% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
+<%
+String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+%>
 
 <div class="ds44-pageHeaderContainer">
+    <jalios:if predicate="<%= hasFigcaption%>">
+        <figure role="figure">
+    </jalios:if>
     <picture class="ds44-pageHeaderContainer__pictureContainer">
         <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
             <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
@@ -58,7 +64,7 @@
             <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
         </jalios:if>
         
-        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
+        <jalios:if predicate="<%= hasFigcaption%>">
             <figcaption class="ds44-imgCaption">
 	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
 	                <%=legend%>
@@ -69,6 +75,9 @@
 	        </figcaption>
         </jalios:if>	        
     </picture>
+    <jalios:if predicate="<%= hasFigcaption%>">
+        </figure>
+    </jalios:if>
     
     <div class="ds44-titleContainer">
         <div class="ds44-alphaGradient ds44-alphaGradient--header">

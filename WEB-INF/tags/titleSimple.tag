@@ -71,7 +71,10 @@
     description="La valeur de userLang pour la bonne traduction du label"
 %>
 
-<% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
+<%
+String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+%>
 
 <div class="ds44-lightBG">
     <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
@@ -91,22 +94,28 @@
     <div class="ds44-img50">
         <div class="ds44-inner-container">
             <div class="ds44-grid12-offset-1">
+                <jalios:if predicate="<%= hasFigcaption%>">
+                    <figure role="figure">
+                </jalios:if>
 	            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
 			        <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
 			        <source media="(min-width: 36em)" srcset="<%=imagePath%>">
 			        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
 			        
-			        <jalios:if predicate="<%= Util.notEmpty(legend) || Util.notEmpty(copyright)%>">
-			            <span class="ds44-imgCaption" aria-describedby="<%=uid%>">
-			                <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-			                    <%=legend%>
-			                </jalios:if>
-			                <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-			                    <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
-			                </jalios:if>
-			            </span>
-			        </jalios:if>            
+                    <jalios:if predicate="<%= hasFigcaption%>">
+                        <figcaption class="ds44-imgCaption">
+	                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+	                            <%=legend%>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+	                            © <%=copyright%>
+	                        </jalios:if>
+                        </figcaption>
+                    </jalios:if>
 			    </picture>
+			    <jalios:if predicate="<%= hasFigcaption%>">
+                    </figure>
+                </jalios:if>
 			</div>
         </div>
     </div>
