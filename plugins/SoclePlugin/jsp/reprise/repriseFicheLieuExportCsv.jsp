@@ -377,13 +377,13 @@ if(getBooleanParameter("exportNew", false)) {
 	csvHeader.append(separator);
 	csvHeader.append("Titre");
 	csvHeader.append(separator);
-	csvHeader.append("T�l�phone");
+	csvHeader.append("Téléphone");
 	csvHeader.append(separator);
 	csvHeader.append("Adresse");
 	csvHeader.append(separator);
 	csvHeader.append("Code Postal");
 	csvHeader.append(separator);
-	csvHeader.append("Bo�te Postale");
+	csvHeader.append("Boîte Postale");
 	csvHeader.append(newLine);
 
 	printWriter.write(csvHeader.toString());
