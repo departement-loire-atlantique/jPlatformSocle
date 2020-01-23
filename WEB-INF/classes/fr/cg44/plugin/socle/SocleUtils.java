@@ -102,8 +102,6 @@ public final class SocleUtils {
 	 *          L'URL Youtube
 	 * @return Le lien http vers la vidéo
 	 * @throws UnsupportedEncodingException 
-	 * @throws NoFormatPossibleException
-	 *           Impossible de formatter l'URL
 	 */
 	public static String buildYoutubeUrl(String url)  {
 		String builtUrl = "https://www.youtube.com/embed/" + getYoutubeVideoId(url);
