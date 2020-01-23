@@ -279,7 +279,7 @@ if(getBooleanParameter("exportNew", false)) {
         csvData.append(separator);
         csvData.append(itLieu.getSoustitre().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getAbstract().replaceAll("\n{1,}",", ").replaceAll("\r{1,}",", ").replaceAll("[, ]{2,}", ", ").replaceAll(";", ","));
+        csvData.append(itLieu.getChapo().replaceAll("\n{1,}",", ").replaceAll("\r{1,}",", ").replaceAll("[, ]{2,}", ", ").replaceAll(";", ","));
         csvData.append(separator);
         csvData.append(itLieu.getIdReferentiel().replaceAll(";", ","));
         csvData.append(separator);
