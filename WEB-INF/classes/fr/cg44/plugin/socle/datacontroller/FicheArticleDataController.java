@@ -13,12 +13,7 @@ public class FicheArticleDataController extends BasicDataController implements P
 	public ControllerStatus checkIntegrity(Data data) {
 		FicheArticle itFiche = (FicheArticle) data;
 				
-		if ( (Util.notEmpty(itFiche.getImagePrincipale()) || itFiche.getTypeSimple()) && Util.isEmpty(itFiche.getContenuParagraphe())) {
-			// Type est simple, pas de contenu -> on retourne une erreur
-			ControllerStatus status = new ControllerStatus();
-			status.setProp("msg.edit.empty-field", "Contenu paragraphe");
-			return status;
-		} else if (! itFiche.getTypeSimple() 
+		if (! itFiche.getTypeSimple() 
 				&& Util.isEmpty(itFiche.getContenuParagraphe_1()) 
 				&& Util.isEmpty(itFiche.getContenuParagraphe_2())
 				&& Util.isEmpty(itFiche.getContenuParagraphe_3())
