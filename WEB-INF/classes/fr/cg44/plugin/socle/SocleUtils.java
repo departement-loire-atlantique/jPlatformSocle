@@ -2,18 +2,17 @@ package fr.cg44.plugin.socle;
 
 import static com.jalios.jcms.Channel.getChannel;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
-import java.util.stream.Stream;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
@@ -25,7 +24,6 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
-import com.jalios.util.ServletUtil;
 import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
@@ -214,6 +212,33 @@ public final class SocleUtils {
 		if (Util.isEmpty(date)) return "";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
+	}
+	
+	/**
+	 * Génère un string à partir du contenu d'un InputStream
+	 * @param is
+	 * @return
+	 */
+	public static String convertStreamToString(InputStream is) {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		StringBuilder sb = new StringBuilder();
+		String line = null;
+		
+		try {
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+		    try {
+		        is.close();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		}
+		
+		return sb.toString();
 	}
 
 }
