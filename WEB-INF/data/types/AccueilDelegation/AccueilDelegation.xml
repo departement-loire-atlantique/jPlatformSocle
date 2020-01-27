@@ -66,10 +66,10 @@
     <field name="portletsBas" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlets bas</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="lch_1209223">
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="lch_1209315">
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
   </fields>
