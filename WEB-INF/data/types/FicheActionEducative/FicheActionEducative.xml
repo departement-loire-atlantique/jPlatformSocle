@@ -36,7 +36,7 @@
     <field name="parcoursEducationNationale" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root">
       <label xml:lang="fr">Parcours éducation nationale</label>
     </field>
-    <field name="monParcoursCollege" editor="category" required="false" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root">
+    <field name="monParcoursCollege" editor="category" required="false" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="true">
       <label xml:lang="fr">Mon parcours collège</label>
     </field>
     <field name="typeDePratique" editor="category" required="false" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.typeDePratique.root">
@@ -45,10 +45,10 @@
     <field name="niveau" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactioneducative.niveau.root">
       <label xml:lang="fr">Niveau</label>
     </field>
-    <field name="capaciteDaccueil" editor="textarea" required="false" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="capaciteDaccueil" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Capacité d'accueil</label>
     </field>
-    <field name="cout" editor="textarea" required="false" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="cout" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Coût</label>
     </field>
     <field name="priseEnChargeDeplacement" editor="boolean" required="false" compactDisplay="false" tab="pratique" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
@@ -58,10 +58,10 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="duree" editor="textarea" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="duree" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Durée</label>
     </field>
-    <field name="depotDuDossier" editor="textarea" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="depotDuDossier" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Dépôt du dossier</label>
     </field>
     <field name="realisationDeLaction" editor="textfield" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
@@ -82,7 +82,7 @@
     <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">CS</label>
     </field>
-    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" pattern="\d{5}">
+    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
       <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
     </field>
@@ -92,7 +92,7 @@
     <field name="cedex" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cedex</label>
     </field>
-    <field name="telephone" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+    <field name="telephone" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="text" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
       <description xml:lang="fr">(Saisir le numéro sans espace entre les 10 chiffres ex : 0102030405)</description>
     </field>
@@ -102,9 +102,10 @@
     <field name="format" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.format.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Format</label>
     </field>
-    <field name="chapo" editor="textarea" required="true" compactDisplay="false" tab="description" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="chapo" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="description">
       <label xml:lang="fr">Chapo</label>
     </field>
+        
     <field name="description" editor="wysiwyg" required="true" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
