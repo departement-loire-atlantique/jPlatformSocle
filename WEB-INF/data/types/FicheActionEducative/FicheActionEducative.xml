@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheActionEducative" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" categories="c_1212484|">
+  <label xml:lang="fr">Fiche action éducative</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="theme" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactioneducative.theme.root">
+      <label xml:lang="fr">Thème</label>
+    </field>
+    <field name="soustheme" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactioneducative.sousTheme.root">
+      <label xml:lang="fr">Sous-thème</label>
+    </field>
+    <field name="parcoursEducationNationale" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root">
+      <label xml:lang="fr">Parcours éducation nationale</label>
+    </field>
+    <field name="monParcoursCollege" editor="category" required="false" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root">
+      <label xml:lang="fr">Mon parcours collège</label>
+    </field>
+    <field name="typeDePratique" editor="category" required="false" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.typeDePratique.root">
+      <label xml:lang="fr">Type de pratique</label>
+    </field>
+    <field name="niveau" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactioneducative.niveau.root">
+      <label xml:lang="fr">Niveau</label>
+    </field>
+    <field name="capaciteDaccueil" editor="textarea" required="false" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Capacité d'accueil</label>
+    </field>
+    <field name="cout" editor="textarea" required="false" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Coût</label>
+    </field>
+    <field name="priseEnChargeDeplacement" editor="boolean" required="false" compactDisplay="false" tab="pratique" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Prise en charge déplacement</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="duree" editor="textarea" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Durée</label>
+    </field>
+    <field name="depotDuDossier" editor="textarea" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Dépôt du dossier</label>
+    </field>
+    <field name="realisationDeLaction" editor="textfield" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Réalisation de l'action</label>
+    </field>
+    <field name="nomEtPrenomContacts" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom et prénom Contact(s)</label>
+    </field>
+    <field name="direction" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Direction</label>
+    </field>
+    <field name="service" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Service</label>
+    </field>
+    <field name="ndeVoie" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">N° de voie</label>
+    </field>
+    <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">CS</label>
+    </field>
+    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" pattern="\d{5}">
+      <label xml:lang="fr">Code postal</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
+    </field>
+    <field name="commune" editor="link" required="true" compactDisplay="false" tab="contact" type="generated.City" parent="false">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="cedex" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cedex</label>
+    </field>
+    <field name="telephone" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+      <label xml:lang="fr">Téléphone</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 10 chiffres ex : 0102030405)</description>
+    </field>
+    <field name="mail" editor="email" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="50" ml="false">
+      <label xml:lang="fr">Mail</label>
+    </field>
+    <field name="format" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.format.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Format</label>
+    </field>
+    <field name="chapo" editor="textarea" required="true" compactDisplay="false" tab="description" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="true" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="publicVise" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Public visé</label>
+    </field>
+    <field name="calendrierEtInscription" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Calendrier et inscription</label>
+    </field>
+    <field name="titreInscription" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre inscription</label>
+    </field>
+    <field name="commentaireInscription" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Commentaire inscription</label>
+    </field>
+    <field name="urlInscription" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Url inscription</label>
+    </field>
+    <field name="titreSuivreUneDemande" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre suivre une demande</label>
+    </field>
+    <field name="commentaireSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Commentaire suivre une demande</label>
+    </field>
+    <field name="urlSuivreUneDemande" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Url suivre une demande</label>
+    </field>
+    <field name="complementTransport" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Complément transport</label>
+    </field>
+    <field name="partenairesIntervenants" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Partenaires / Intervenants</label>
+    </field>
+    <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre vidéo</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="description" type="generated.Video" parent="false">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
+    <field name="titreEncartDocumentBlocN1" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart document - bloc n°1</label>
+    </field>
+    <field name="documentsJointsBlocN1" editor="link" required="false" compactDisplay="false" tab="ressources" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Documents joints - bloc n°1</label>
+    </field>
+    <field name="titreEncartDocumentBlocN2" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart document - bloc n°2</label>
+    </field>
+    <field name="documentsJointsBlocN2" editor="link" required="false" compactDisplay="false" tab="ressources" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Documents joints - bloc n°2</label>
+    </field>
+    <field name="titreEncartDocumentBlocN3" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart document - bloc n°3</label>
+    </field>
+    <field name="documentsJointsBlocN3" editor="link" required="false" compactDisplay="false" tab="ressources" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Documents joints - bloc n°3</label>
+    </field>
+    <field name="titreEncartSiteInternet" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encart site internet</label>
+    </field>
+    <field name="nomDuSite" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom du site</label>
+    </field>
+    <field name="adresseSiteInternet" editor="url" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Adresse site internet</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="contact">
+      <label xml:lang="fr">Contact</label>
+    </tab>
+    <tab id="description">
+      <label xml:lang="fr">Description</label>
+    </tab>
+    <tab id="pratique">
+      <label xml:lang="fr">Pratique</label>
+    </tab>
+    <tab id="ressources">
+      <label xml:lang="fr">Ressources</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+</type>
+
