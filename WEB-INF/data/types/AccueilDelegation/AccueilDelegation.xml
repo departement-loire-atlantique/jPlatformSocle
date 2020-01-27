@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="AccueilDelegation" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Accueil délégation</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="imagePrincipale" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carrée</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="delegation" editor="link" required="true" compactDisplay="false" type="generated.Delegation" parent="false">
+      <label xml:lang="fr">Délégation</label>
+    </field>
+    <field name="imageCarte" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image carte</label>
+    </field>
+    <field name="titreAnnuaire" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre annuaire</label>
+    </field>
+    <field name="introAnnuaire" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Intro annuaire</label>
+    </field>
+    <field name="portletRecherche" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement" parent="false">
+      <label xml:lang="fr">Portlet recherche</label>
+    </field>
+    <field name="titreActus" editor="textfield" required="false" compactDisplay="false" tab="actus" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre actus</label>
+    </field>
+    <field name="introActus" editor="textarea" required="false" compactDisplay="false" tab="actus" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Intro actus</label>
+    </field>
+    <field name="alaUne" editor="link" required="false" compactDisplay="false" tab="actus" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">À la une</label>
+    </field>
+    <field name="carrouselActualites" editor="link" required="false" compactDisplay="false" tab="actus" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">Carrousel actualités</label>
+    </field>
+    <field name="titreAgenda" editor="textfield" required="false" compactDisplay="false" tab="agenda" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre agenda</label>
+    </field>
+    <field name="introAgenda" editor="textarea" required="false" compactDisplay="false" tab="agenda" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Intro agenda</label>
+    </field>
+    <field name="portletRechercheAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.portlet.PortalElement" parent="false">
+      <label xml:lang="fr">Portlet recherche agenda</label>
+    </field>
+    <field name="portletCarrouselAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.portlet.PortalElement" parent="false">
+      <label xml:lang="fr">Portlet carrousel agenda</label>
+    </field>
+    <field name="portletsBas" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets bas</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="lch_1209223">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="lch_1209315">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="actus">
+      <label xml:lang="fr">Actus</label>
+    </tab>
+    <tab id="agenda">
+      <label xml:lang="fr">Agenda</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+</type>
+

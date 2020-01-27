@@ -9,6 +9,7 @@
   <types>
     <type name="AbstractElement"></type>
     <type name="AccueilAnnuaireAgenda"></type>
+    <type name="AccueilDelegation"></type>
     <type name="Actualite"></type>
     <type name="AlertCG"></type>
     <type name="Article"></type>
@@ -47,6 +48,11 @@
     </templates>
     <templates type="AccueilAnnuaireAgenda">
         <template name="default" file="doAccueilAnnuaireAgendaFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="AccueilDelegation">
+        <template name="default" file="doAccueilDelegationFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
