@@ -24,6 +24,7 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
@@ -57,6 +58,11 @@
     </templates>  
     <templates type="Dossier">
         <template name="default" file="doDossierFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="FicheActionEducative">
+        <template name="default" file="doFicheActionEducativeFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates> 
