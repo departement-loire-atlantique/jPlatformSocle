@@ -82,8 +82,9 @@
     <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">CS</label>
     </field>
-    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 5 chiffres ex : 44000)</description>
     </field>
     <field name="commune" editor="link" required="true" compactDisplay="false" tab="contact" type="generated.City" parent="false">
       <label xml:lang="fr">Commune</label>
@@ -93,6 +94,7 @@
     </field>
     <field name="telephone" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
+      <description xml:lang="fr">(Saisir le numéro sans espace entre les 10 chiffres ex : 0102030405)</description>
     </field>
     <field name="mail" editor="email" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="50" ml="false">
       <label xml:lang="fr">Mail</label>
