@@ -109,7 +109,7 @@ public class SocleChannelListener extends ChannelListener{
 			e.printStackTrace();
 		}
 		// Effectuer la génération des tokens au démarrage
-		RequestManager.generateTokens();
+		RequestManager.initTokens();
 	}
 
 }
