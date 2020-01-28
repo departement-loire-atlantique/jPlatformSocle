@@ -141,19 +141,19 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field capaciteDaccueil textareaEditor  <%= Util.isEmpty(obj.getCapaciteDaccueil()) ? "empty" : "" %>">
+  <tr class="field capaciteDaccueil wysiwygEditor  <%= Util.isEmpty(obj.getCapaciteDaccueil(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "capaciteDaccueil", userLang) %><jalios:edit pub='<%= obj %>' fields='capaciteDaccueil'/></td>
     <td class='field-data' <%= gfla(obj, "capaciteDaccueil") %>>
-            <% if (Util.notEmpty(obj.getCapaciteDaccueil())) { %>
-            <%= obj.getCapaciteDaccueil() %>
+            <% if (Util.notEmpty(obj.getCapaciteDaccueil(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='capaciteDaccueil'><%= obj.getCapaciteDaccueil(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
-  <tr class="field cout textareaEditor  <%= Util.isEmpty(obj.getCout()) ? "empty" : "" %>">
+  <tr class="field cout wysiwygEditor  <%= Util.isEmpty(obj.getCout(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "cout", userLang) %><jalios:edit pub='<%= obj %>' fields='cout'/></td>
     <td class='field-data' <%= gfla(obj, "cout") %>>
-            <% if (Util.notEmpty(obj.getCout())) { %>
-            <%= obj.getCout() %>
+            <% if (Util.notEmpty(obj.getCout(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='cout'><%= obj.getCout(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -163,27 +163,27 @@
             <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
     </td>
   </tr>
-  <tr class="field duree textareaEditor  <%= Util.isEmpty(obj.getDuree()) ? "empty" : "" %>">
+  <tr class="field duree wysiwygEditor  <%= Util.isEmpty(obj.getDuree(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "duree", userLang) %><jalios:edit pub='<%= obj %>' fields='duree'/></td>
     <td class='field-data' <%= gfla(obj, "duree") %>>
-            <% if (Util.notEmpty(obj.getDuree())) { %>
-            <%= obj.getDuree() %>
+            <% if (Util.notEmpty(obj.getDuree(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='duree'><%= obj.getDuree(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
-  <tr class="field depotDuDossier textareaEditor  <%= Util.isEmpty(obj.getDepotDuDossier()) ? "empty" : "" %>">
+  <tr class="field depotDuDossier wysiwygEditor  <%= Util.isEmpty(obj.getDepotDuDossier(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "depotDuDossier", userLang) %><jalios:edit pub='<%= obj %>' fields='depotDuDossier'/></td>
     <td class='field-data' <%= gfla(obj, "depotDuDossier") %>>
-            <% if (Util.notEmpty(obj.getDepotDuDossier())) { %>
-            <%= obj.getDepotDuDossier() %>
+            <% if (Util.notEmpty(obj.getDepotDuDossier(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='depotDuDossier'><%= obj.getDepotDuDossier(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
-  <tr class="field realisationDeLaction textfieldEditor  <%= Util.isEmpty(obj.getRealisationDeLaction()) ? "empty" : "" %>">
+  <tr class="field realisationDeLaction wysiwygEditor  <%= Util.isEmpty(obj.getRealisationDeLaction()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "realisationDeLaction", userLang) %><jalios:edit pub='<%= obj %>' fields='realisationDeLaction'/></td>
     <td class='field-data' <%= gfla(obj, "realisationDeLaction") %>>
             <% if (Util.notEmpty(obj.getRealisationDeLaction())) { %>
-            <%= obj.getRealisationDeLaction() %>
+            <jalios:wysiwyg data='<%= obj %>' field='realisationDeLaction'><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -216,6 +216,14 @@
     <td class='field-data' <%= gfla(obj, "ndeVoie") %>>
             <% if (Util.notEmpty(obj.getNdeVoie())) { %>
             <%= obj.getNdeVoie() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field libelleDeVoie textfieldEditor  <%= Util.isEmpty(obj.getLibelleDeVoie()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "libelleDeVoie", userLang) %><jalios:edit pub='<%= obj %>' fields='libelleDeVoie'/></td>
+    <td class='field-data' <%= gfla(obj, "libelleDeVoie") %>>
+            <% if (Util.notEmpty(obj.getLibelleDeVoie())) { %>
+            <%= obj.getLibelleDeVoie() %>
             <% } %>
     </td>
   </tr>
@@ -295,11 +303,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field chapo textareaEditor  <%= Util.isEmpty(obj.getChapo()) ? "empty" : "" %>">
+  <tr class="field chapo wysiwygEditor  <%= Util.isEmpty(obj.getChapo(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "chapo", userLang) %><jalios:edit pub='<%= obj %>' fields='chapo'/></td>
     <td class='field-data' <%= gfla(obj, "chapo") %>>
-            <% if (Util.notEmpty(obj.getChapo())) { %>
-            <%= obj.getChapo() %>
+            <% if (Util.notEmpty(obj.getChapo(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='chapo'><%= obj.getChapo(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -324,54 +332,6 @@
     <td class='field-data' <%= gfla(obj, "calendrierEtInscription") %>>
             <% if (Util.notEmpty(obj.getCalendrierEtInscription())) { %>
             <jalios:wysiwyg data='<%= obj %>' field='calendrierEtInscription'><%= obj.getCalendrierEtInscription() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field titreInscription textfieldEditor  <%= Util.isEmpty(obj.getTitreInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "titreInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='titreInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "titreInscription") %>>
-            <% if (Util.notEmpty(obj.getTitreInscription())) { %>
-            <%= obj.getTitreInscription() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field commentaireInscription wysiwygEditor  <%= Util.isEmpty(obj.getCommentaireInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "commentaireInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='commentaireInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "commentaireInscription") %>>
-            <% if (Util.notEmpty(obj.getCommentaireInscription())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='commentaireInscription'><%= obj.getCommentaireInscription() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field urlInscription urlEditor  <%= Util.isEmpty(obj.getUrlInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "urlInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='urlInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "urlInscription") %>>
-            <% if (Util.notEmpty(obj.getUrlInscription())) { %>
-            <a href='<%= obj.getUrlInscription() %>' ><%= obj.getUrlInscription()%></a>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field titreSuivreUneDemande textfieldEditor  <%= Util.isEmpty(obj.getTitreSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "titreSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='titreSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "titreSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getTitreSuivreUneDemande())) { %>
-            <%= obj.getTitreSuivreUneDemande() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field commentaireSuivreUneDemande wysiwygEditor  <%= Util.isEmpty(obj.getCommentaireSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "commentaireSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='commentaireSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "commentaireSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getCommentaireSuivreUneDemande())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='commentaireSuivreUneDemande'><%= obj.getCommentaireSuivreUneDemande() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field urlSuivreUneDemande urlEditor  <%= Util.isEmpty(obj.getUrlSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "urlSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='urlSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "urlSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getUrlSuivreUneDemande())) { %>
-            <a href='<%= obj.getUrlSuivreUneDemande() %>' ><%= obj.getUrlSuivreUneDemande()%></a>
             <% } %>
     </td>
   </tr>
@@ -499,17 +459,33 @@
   <tr class="field nomDuSite textfieldEditor  <%= Util.isEmpty(obj.getNomDuSite()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "nomDuSite", userLang) %><jalios:edit pub='<%= obj %>' fields='nomDuSite'/></td>
     <td class='field-data' <%= gfla(obj, "nomDuSite") %>>
-            <% if (Util.notEmpty(obj.getNomDuSite())) { %>
-            <%= obj.getNomDuSite() %>
+        <% if (Util.notEmpty(obj.getNomDuSite())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getNomDuSite() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
             <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
     </td>
   </tr>
   <tr class="field adresseSiteInternet urlEditor  <%= Util.isEmpty(obj.getAdresseSiteInternet()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "adresseSiteInternet", userLang) %><jalios:edit pub='<%= obj %>' fields='adresseSiteInternet'/></td>
     <td class='field-data' <%= gfla(obj, "adresseSiteInternet") %>>
-            <% if (Util.notEmpty(obj.getAdresseSiteInternet())) { %>
-            <a href='<%= obj.getAdresseSiteInternet() %>' ><%= obj.getAdresseSiteInternet()%></a>
+        <% if (Util.notEmpty(obj.getAdresseSiteInternet())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getAdresseSiteInternet() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <a href='<%= itString %>'><%= itString %></a>
+              </li>
             <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
     </td>
   </tr>
   <tr class="field categorieDeNavigation categoryEditor  <%= Util.isEmpty(obj.getCategorieDeNavigation(loggedMember)) ? "empty" : "" %>">
@@ -540,4 +516,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- 1X9LFlCyUoKQtszQ5pt4Bg== --%>
+%><%-- IbsGyg7UZsZCqaKMj99cZQ== --%>
