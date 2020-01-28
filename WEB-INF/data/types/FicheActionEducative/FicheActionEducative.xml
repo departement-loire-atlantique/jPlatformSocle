@@ -51,7 +51,7 @@
     <field name="cout" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Coût</label>
     </field>
-    <field name="priseEnChargeDeplacement" editor="boolean" required="false" compactDisplay="false" tab="pratique" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="priseEnChargeDeplacement" editor="boolean" required="false" compactDisplay="false" tab="pratique" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Prise en charge déplacement</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
