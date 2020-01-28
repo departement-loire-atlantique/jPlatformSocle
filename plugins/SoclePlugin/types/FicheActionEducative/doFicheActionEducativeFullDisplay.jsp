@@ -179,11 +179,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field realisationDeLaction textfieldEditor  <%= Util.isEmpty(obj.getRealisationDeLaction()) ? "empty" : "" %>">
+  <tr class="field realisationDeLaction wysiwygEditor  <%= Util.isEmpty(obj.getRealisationDeLaction()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "realisationDeLaction", userLang) %><jalios:edit pub='<%= obj %>' fields='realisationDeLaction'/></td>
     <td class='field-data' <%= gfla(obj, "realisationDeLaction") %>>
             <% if (Util.notEmpty(obj.getRealisationDeLaction())) { %>
-            <%= obj.getRealisationDeLaction() %>
+            <jalios:wysiwyg data='<%= obj %>' field='realisationDeLaction'><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -516,4 +516,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- eR5BAzCW+CL24dA8IP8UBw== --%>
+%><%-- IbsGyg7UZsZCqaKMj99cZQ== --%>

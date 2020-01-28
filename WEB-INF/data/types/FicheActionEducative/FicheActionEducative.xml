@@ -64,7 +64,7 @@
     <field name="depotDuDossier" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Dépôt du dossier</label>
     </field>
-    <field name="realisationDeLaction" editor="textfield" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+    <field name="realisationDeLaction" editor="wysiwyg" required="true" compactDisplay="false" tab="pratique" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" wysiwygConfigurationId="simple" inline="true" >
       <label xml:lang="fr">Réalisation de l'action</label>
     </field>
     <field name="nomEtPrenomContacts" editor="textfield" required="true" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
