@@ -105,7 +105,6 @@
     <field name="chapo" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="description">
       <label xml:lang="fr">Chapo</label>
     </field>
-        
     <field name="description" editor="wysiwyg" required="true" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
@@ -166,10 +165,10 @@
     <field name="titreEncartSiteInternet" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre encart site internet</label>
     </field>
-    <field name="nomDuSite" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="nomDuSite" editor="textfield" required="false" compactDisplay="false" tab="ressources" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="siteGroup">
       <label xml:lang="fr">Nom du site</label>
     </field>
-    <field name="adresseSiteInternet" editor="url" required="false" compactDisplay="false" tab="ressources" type="String" searchable="false" size="80" ml="false" openWindow="false">
+    <field name="adresseSiteInternet" editor="url" required="false" compactDisplay="false" tab="ressources" type="String[]" searchable="false" size="80" ml="false" openWindow="false" descriptionType="tooltip" html="false" checkHtml="true" tabGroup="siteGroup">
       <label xml:lang="fr">Adresse site internet</label>
     </field>
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">

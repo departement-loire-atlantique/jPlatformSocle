@@ -141,19 +141,19 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field capaciteDaccueil textareaEditor  <%= Util.isEmpty(obj.getCapaciteDaccueil()) ? "empty" : "" %>">
+  <tr class="field capaciteDaccueil wysiwygEditor  <%= Util.isEmpty(obj.getCapaciteDaccueil(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "capaciteDaccueil", userLang) %><jalios:edit pub='<%= obj %>' fields='capaciteDaccueil'/></td>
     <td class='field-data' <%= gfla(obj, "capaciteDaccueil") %>>
-            <% if (Util.notEmpty(obj.getCapaciteDaccueil())) { %>
-            <%= obj.getCapaciteDaccueil() %>
+            <% if (Util.notEmpty(obj.getCapaciteDaccueil(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='capaciteDaccueil'><%= obj.getCapaciteDaccueil(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
-  <tr class="field cout textareaEditor  <%= Util.isEmpty(obj.getCout()) ? "empty" : "" %>">
+  <tr class="field cout wysiwygEditor  <%= Util.isEmpty(obj.getCout(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "cout", userLang) %><jalios:edit pub='<%= obj %>' fields='cout'/></td>
     <td class='field-data' <%= gfla(obj, "cout") %>>
-            <% if (Util.notEmpty(obj.getCout())) { %>
-            <%= obj.getCout() %>
+            <% if (Util.notEmpty(obj.getCout(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='cout'><%= obj.getCout(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -163,19 +163,19 @@
             <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
     </td>
   </tr>
-  <tr class="field duree textareaEditor  <%= Util.isEmpty(obj.getDuree()) ? "empty" : "" %>">
+  <tr class="field duree wysiwygEditor  <%= Util.isEmpty(obj.getDuree(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "duree", userLang) %><jalios:edit pub='<%= obj %>' fields='duree'/></td>
     <td class='field-data' <%= gfla(obj, "duree") %>>
-            <% if (Util.notEmpty(obj.getDuree())) { %>
-            <%= obj.getDuree() %>
+            <% if (Util.notEmpty(obj.getDuree(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='duree'><%= obj.getDuree(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
-  <tr class="field depotDuDossier textareaEditor  <%= Util.isEmpty(obj.getDepotDuDossier()) ? "empty" : "" %>">
+  <tr class="field depotDuDossier wysiwygEditor  <%= Util.isEmpty(obj.getDepotDuDossier(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "depotDuDossier", userLang) %><jalios:edit pub='<%= obj %>' fields='depotDuDossier'/></td>
     <td class='field-data' <%= gfla(obj, "depotDuDossier") %>>
-            <% if (Util.notEmpty(obj.getDepotDuDossier())) { %>
-            <%= obj.getDepotDuDossier() %>
+            <% if (Util.notEmpty(obj.getDepotDuDossier(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='depotDuDossier'><%= obj.getDepotDuDossier(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -295,11 +295,11 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field chapo textareaEditor  <%= Util.isEmpty(obj.getChapo()) ? "empty" : "" %>">
+  <tr class="field chapo wysiwygEditor  <%= Util.isEmpty(obj.getChapo(userLang)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "chapo", userLang) %><jalios:edit pub='<%= obj %>' fields='chapo'/></td>
     <td class='field-data' <%= gfla(obj, "chapo") %>>
-            <% if (Util.notEmpty(obj.getChapo())) { %>
-            <%= obj.getChapo() %>
+            <% if (Util.notEmpty(obj.getChapo(userLang))) { %>
+            <jalios:wysiwyg data='<%= obj %>' field='chapo'><%= obj.getChapo(userLang) %></jalios:wysiwyg>            
             <% } %>
     </td>
   </tr>
@@ -499,17 +499,33 @@
   <tr class="field nomDuSite textfieldEditor  <%= Util.isEmpty(obj.getNomDuSite()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "nomDuSite", userLang) %><jalios:edit pub='<%= obj %>' fields='nomDuSite'/></td>
     <td class='field-data' <%= gfla(obj, "nomDuSite") %>>
-            <% if (Util.notEmpty(obj.getNomDuSite())) { %>
-            <%= obj.getNomDuSite() %>
+        <% if (Util.notEmpty(obj.getNomDuSite())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getNomDuSite() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <%= itString %>
+              </li>
             <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
     </td>
   </tr>
   <tr class="field adresseSiteInternet urlEditor  <%= Util.isEmpty(obj.getAdresseSiteInternet()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "adresseSiteInternet", userLang) %><jalios:edit pub='<%= obj %>' fields='adresseSiteInternet'/></td>
     <td class='field-data' <%= gfla(obj, "adresseSiteInternet") %>>
-            <% if (Util.notEmpty(obj.getAdresseSiteInternet())) { %>
-            <a href='<%= obj.getAdresseSiteInternet() %>' ><%= obj.getAdresseSiteInternet()%></a>
+        <% if (Util.notEmpty(obj.getAdresseSiteInternet())) { %>
+            <ol>
+            <jalios:foreach name="itString" type="String" array="<%= obj.getAdresseSiteInternet() %>">
+            <% if (Util.notEmpty(itString)) { %>
+              <li>
+              <a href='<%= itString %>'><%= itString %></a>
+              </li>
             <% } %>
+            </jalios:foreach>
+            </ol>
+        <% } %>
     </td>
   </tr>
   <tr class="field categorieDeNavigation categoryEditor  <%= Util.isEmpty(obj.getCategorieDeNavigation(loggedMember)) ? "empty" : "" %>">
@@ -540,4 +556,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- 1X9LFlCyUoKQtszQ5pt4Bg== --%>
+%><%-- JpmId0dkhNPtWOI7ZmzmFg== --%>
