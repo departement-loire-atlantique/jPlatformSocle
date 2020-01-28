@@ -79,6 +79,9 @@
     <field name="ndeVoie" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">N° de voie</label>
     </field>
+    <field name="libelleDeVoie" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé de voie</label>
+    </field>
     <field name="cs" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">CS</label>
     </field>

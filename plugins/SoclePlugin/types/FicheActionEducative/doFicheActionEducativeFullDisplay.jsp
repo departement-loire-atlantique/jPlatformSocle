@@ -219,6 +219,14 @@
             <% } %>
     </td>
   </tr>
+  <tr class="field libelleDeVoie textfieldEditor  <%= Util.isEmpty(obj.getLibelleDeVoie()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "libelleDeVoie", userLang) %><jalios:edit pub='<%= obj %>' fields='libelleDeVoie'/></td>
+    <td class='field-data' <%= gfla(obj, "libelleDeVoie") %>>
+            <% if (Util.notEmpty(obj.getLibelleDeVoie())) { %>
+            <%= obj.getLibelleDeVoie() %>
+            <% } %>
+    </td>
+  </tr>
   <tr class="field cs textfieldEditor  <%= Util.isEmpty(obj.getCs()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "cs", userLang) %><jalios:edit pub='<%= obj %>' fields='cs'/></td>
     <td class='field-data' <%= gfla(obj, "cs") %>>
@@ -508,4 +516,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- 9ajC0kumIDLyg0eOCLc1BQ== --%>
+%><%-- eR5BAzCW+CL24dA8IP8UBw== --%>
