@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -239,6 +240,26 @@ public final class SocleUtils {
 		}
 		
 		return sb.toString();
+	}
+	
+	/**
+	 * Retourne un tableau de bytes correspondant à un ensemble de paramètres pour une requête HTTP POST
+	 * @param params
+	 * @return
+	 */
+	public static byte[] generatePostDataFromMap(Map<String, String> params) {
+		if (Util.isEmpty(params)) return new byte[0];
+		
+		StringBuilder urlParameters = new StringBuilder();
+		
+		for (Iterator<String> iter = params.keySet().iterator(); iter.hasNext();) {
+			String key = iter.next();
+			String value = params.get(key);
+			urlParameters.append(key + "=" + value);
+			if (iter.hasNext()) urlParameters.append("&"); 
+		}
+		
+		return urlParameters.toString().getBytes();
 	}
 
 }

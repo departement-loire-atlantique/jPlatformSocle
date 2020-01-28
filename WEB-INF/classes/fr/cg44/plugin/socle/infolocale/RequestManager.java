@@ -38,7 +38,7 @@ public class RequestManager {
 		
 		try {
 			
-			connection = createConnection("https://api.infolocale.fr/auth/signin", "POST", params, "application/x-www-form-urlencoded");
+			connection = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded");			
 			
 			if (Util.isEmpty(connection)) {
 				LOGGER.warn("Method initTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -61,6 +61,9 @@ public class RequestManager {
 					
 					LOGGER.debug("Tokens générés");
 					break;
+				case 400:
+					LOGGER.warn("Method initTokens => code HTTP innatendu " + status + ". Il manque des paramètres.");
+					break;
 				case 401:
 					LOGGER.warn("Method initTokens => code HTTP innatendu " + status + ". Authentification échouée.");
 					break;
@@ -79,6 +82,9 @@ public class RequestManager {
 	}
 	
 	public static void regenerateTokens() {
+
+		boolean invalidToken = false;
+		
 		TokenManager tokenManager = TokenManager.getInstance();
 		
 		Map<String, String> params = new HashMap<String,String>();
@@ -88,7 +94,7 @@ public class RequestManager {
 		
 		try {
 			
-			connection = createConnection("https://api.infolocale.fr/auth/refresh-token", "POST", params, "application/x-www-form-urlencoded");
+			connection = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded");
 			
 			if (Util.isEmpty(connection)) {
 				LOGGER.warn("Method regenerateTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -113,6 +119,7 @@ public class RequestManager {
 					break;
 				case 400:
 					LOGGER.warn("Method regenerateTokens => code HTTP innatendu " + status + ". Token non valide.");
+					invalidToken = true;
 					break;
 				case 401:
 					LOGGER.warn("Method regenerateTokens => code HTTP innatendu " + status + ". Authentification échouée.");
@@ -129,16 +136,26 @@ public class RequestManager {
 		} finally {
 			if (Util.notEmpty(connection)) connection.disconnect();
 		}
+		
+		if (invalidToken) {
+			LOGGER.debug("Token invalide. Tentative de regénération de token via authentification...");
+			initTokens();
+		}
 	}
 	
-	private static HttpURLConnection createConnection(String url, String method, Map<String, String> params, String contentType) {
+	private static HttpURLConnection createPostConnection(String url, Map<String, String> params, String contentType) {
 		HttpURLConnection connection = null;
 		try {
-			connection = IOUtil.openConnection(new URL(url), true, true, method);
+			connection = IOUtil.openConnection(new URL(url), true, true, "POST");
 			
 			if (Util.notEmpty(contentType)) connection.setRequestProperty("Content-Type", contentType);
 			if (Util.isEmpty(params)) return connection;
 			
+			byte[] dataPost = SocleUtils.generatePostDataFromMap(params);
+			
+			connection.setRequestProperty("Content-Length", String.valueOf(dataPost.length));
+			
+			connection.getOutputStream().write(dataPost);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
