@@ -327,54 +327,6 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field titreInscription textfieldEditor  <%= Util.isEmpty(obj.getTitreInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "titreInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='titreInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "titreInscription") %>>
-            <% if (Util.notEmpty(obj.getTitreInscription())) { %>
-            <%= obj.getTitreInscription() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field commentaireInscription wysiwygEditor  <%= Util.isEmpty(obj.getCommentaireInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "commentaireInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='commentaireInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "commentaireInscription") %>>
-            <% if (Util.notEmpty(obj.getCommentaireInscription())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='commentaireInscription'><%= obj.getCommentaireInscription() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field urlInscription urlEditor  <%= Util.isEmpty(obj.getUrlInscription()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "urlInscription", userLang) %><jalios:edit pub='<%= obj %>' fields='urlInscription'/></td>
-    <td class='field-data' <%= gfla(obj, "urlInscription") %>>
-            <% if (Util.notEmpty(obj.getUrlInscription())) { %>
-            <a href='<%= obj.getUrlInscription() %>' ><%= obj.getUrlInscription()%></a>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field titreSuivreUneDemande textfieldEditor  <%= Util.isEmpty(obj.getTitreSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "titreSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='titreSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "titreSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getTitreSuivreUneDemande())) { %>
-            <%= obj.getTitreSuivreUneDemande() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field commentaireSuivreUneDemande wysiwygEditor  <%= Util.isEmpty(obj.getCommentaireSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "commentaireSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='commentaireSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "commentaireSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getCommentaireSuivreUneDemande())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='commentaireSuivreUneDemande'><%= obj.getCommentaireSuivreUneDemande() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field urlSuivreUneDemande urlEditor  <%= Util.isEmpty(obj.getUrlSuivreUneDemande()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "urlSuivreUneDemande", userLang) %><jalios:edit pub='<%= obj %>' fields='urlSuivreUneDemande'/></td>
-    <td class='field-data' <%= gfla(obj, "urlSuivreUneDemande") %>>
-            <% if (Util.notEmpty(obj.getUrlSuivreUneDemande())) { %>
-            <a href='<%= obj.getUrlSuivreUneDemande() %>' ><%= obj.getUrlSuivreUneDemande()%></a>
-            <% } %>
-    </td>
-  </tr>
   <tr class="field complementTransport wysiwygEditor  <%= Util.isEmpty(obj.getComplementTransport()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheActionEducative.class, "complementTransport", userLang) %><jalios:edit pub='<%= obj %>' fields='complementTransport'/></td>
     <td class='field-data' <%= gfla(obj, "complementTransport") %>>
@@ -556,4 +508,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- JpmId0dkhNPtWOI7ZmzmFg== --%>
+%><%-- 9ajC0kumIDLyg0eOCLc1BQ== --%>

@@ -114,24 +114,6 @@
     <field name="calendrierEtInscription" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Calendrier et inscription</label>
     </field>
-    <field name="titreInscription" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre inscription</label>
-    </field>
-    <field name="commentaireInscription" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Commentaire inscription</label>
-    </field>
-    <field name="urlInscription" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" openWindow="false">
-      <label xml:lang="fr">Url inscription</label>
-    </field>
-    <field name="titreSuivreUneDemande" editor="textfield" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre suivre une demande</label>
-    </field>
-    <field name="commentaireSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Commentaire suivre une demande</label>
-    </field>
-    <field name="urlSuivreUneDemande" editor="url" required="false" compactDisplay="false" tab="description" type="String" searchable="false" size="80" ml="false" openWindow="false">
-      <label xml:lang="fr">Url suivre une demande</label>
-    </field>
     <field name="complementTransport" editor="wysiwyg" required="false" compactDisplay="false" tab="description" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Complément transport</label>
     </field>
