@@ -148,7 +148,7 @@ public class RequestManager {
 		}
 	}
 	
-	public static JSONObject extractFluxData(String fluxId) {
+public static JSONObject extractFluxData(String fluxId) {
 		
 		JSONObject fluxData = new JSONObject();
 		
@@ -164,6 +164,71 @@ public class RequestManager {
 			fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
 			
 			connection = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded");
+			
+			if (Util.isEmpty(connection)) {
+				LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
+				return fluxData;
+			}
+			
+			connection.connect();
+			
+			int status = connection.getResponseCode();
+						
+			switch (status) {
+				case 200:
+					String jsonReply = SocleUtils.convertStreamToString(connection.getInputStream());
+					
+					fluxData = new JSONObject(jsonReply);
+					fluxData.put("success", true);
+					
+					LOGGER.debug("Tokens regénérés");
+					break;
+				case 401:
+					LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Token expiré.");
+					expiredToken = true;
+					fluxData.put("failure_reason", "invalid_token");
+					break;
+				case 404:
+					LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Flux " + fluxId + " non trouvé.");
+					fluxData.put("failure_reason", "wrong_flux");
+					break;
+				default:
+					LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Veuillez verifier la configuration.");
+					fluxData.put("failure_reason", "unknown_error");
+					break;
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} finally {
+			if (Util.notEmpty(connection)) connection.disconnect();
+		}
+		
+		if (expiredToken) {
+			LOGGER.debug("Token invalide. Tentative de regénération de token...");
+			regenerateTokens();
+		}
+		
+		return fluxData;
+	}
+
+	public static JSONObject filterFluxData(String fluxId, Map<String, String> params) {
+		
+		JSONObject fluxData = new JSONObject();
+		
+		TokenManager tokenManager = TokenManager.getInstance();
+		boolean expiredToken = false;
+		
+		params.put("Authorization", "Bearer " + tokenManager.getAccessToken());
+		
+		HttpURLConnection connection = null;
+		
+		try {
+			fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
+			
+			connection = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params);
 			
 			if (Util.isEmpty(connection)) {
 				LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
