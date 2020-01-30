@@ -41,6 +41,7 @@ jcmsplugin.socle.symbol.copyright: ©
 jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
+jcmsplugin.socle.nouvelonglet: Ouvrir {0} dans un nouvel onglet
 
 # ------------------------------------------------------------
 #  Header
