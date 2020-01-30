@@ -168,7 +168,7 @@
     <td class='field-data' >
             <% if (Util.notEmpty(obj.getCarrouselAgenda())) { %>
             <ol>
-              <jalios:foreach name="itData" type="com.jalios.jcms.Content" array="<%= obj.getCarrouselAgenda() %>">
+              <jalios:foreach name="itData" type="com.jalios.jcms.portlet.PortalElement" array="<%= obj.getCarrouselAgenda() %>">
               <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
               <li>
               <jalios:link data='<%= itData %>'/>
@@ -257,7 +257,7 @@
             <% if (Util.notEmpty(obj.getCategorieDeNavigation(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getCategorieDeNavigation(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("j_5"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -269,7 +269,7 @@
             <% if (Util.notEmpty(obj.getMiseEnAvant(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getMiseEnAvant(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("c_1154084"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -279,4 +279,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- U6HjJnnVxVJEMOluEdYL2w== --%>
+%><%-- rTmipRw7eKkA6qxAXOF2kw== --%>
