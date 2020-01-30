@@ -82,6 +82,12 @@ jcmsplugin.socle.titre.fournir-documents: Quels documents fournir ?
 
 jcmsplugin.socle.titre.temoignage: Témoignages
 
+jcmsplugin.socle.titre.endetails: En détails
+jcmsplugin.socle.titre.publicvise: Public visé
+jcmsplugin.socle.titre.calinscriptions: Calendrier et inscription
+jcmsplugin.socle.titre.complementtransports: Complément transports
+jcmsplugin.socle.titre.partenairesintervenants: Partenaires et intervenants
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
