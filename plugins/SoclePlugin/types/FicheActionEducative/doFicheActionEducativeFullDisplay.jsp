@@ -167,7 +167,7 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                             	Util.notEmpty(obj.getNomDuSite()[itSiteCpt-1]);
                             String lbl = hasAssociatedTitle ? obj.getNomDuSite()[itSiteCpt-1] : itAdresse;
                             %>
-                            <p class="ds44-docListElem"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a target="_blank" title='<%= glp("jcmsplugin.socle.nouvelonglet", lbl) %>' href="<%= itAdresse %>"><%= lbl %></a></p>
+                            <p class="ds44-docListElem"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="<%= itAdresse %>"><%= lbl %></a></p>
                             </jalios:foreach>
                         </jalios:if>
                     </div>
