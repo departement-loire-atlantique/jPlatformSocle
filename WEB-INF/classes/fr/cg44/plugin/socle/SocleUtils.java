@@ -146,5 +146,102 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
+	
+	/**
+	 * Concatène et formate tous les numéros de téléphone dans un tableau en un String
+	 * Les duos de nombres sont séparés par des espaces insécables et les numéros de téléphone sont séparés par un tiret
+	 * 
+	 * @param listPhoneNumber tableau de String contenant les numéros de téléphone à concaténer
+	 * @return un String contenant tout les numéros de téléphones en entrée, un String vide si le tableau est vide
+	 */
+	public static String formatListPhoneNumber(String[] listPhoneNumber) {
+
+        StringBuffer sbfAllTel = new StringBuffer();
+        
+        if(Util.notEmpty(listPhoneNumber)) {
+        	
+			String separatorDsTel = "&nbsp;"; //espace insecable
+	        String separatorEntreTel = " - ";
+	        
+	        String[] listPhoneNumberClean = SocleUtils.cleanNumber(listPhoneNumber);
+	        
+	        for(String numTel : listPhoneNumberClean) {
+	        	
+	            StringBuffer sbfTel = new StringBuffer();
+	            sbfTel.append(numTel);
+	            
+	            for(int i = 8 ; i > 0 ; i-=2) {
+	                sbfTel.insert(i, separatorDsTel);
+	            }
+	            
+	            if(Util.notEmpty(sbfAllTel.toString())) {
+	                sbfAllTel.append(separatorEntreTel);
+	            }
+	            sbfAllTel.append(sbfTel.toString());
+	        }
+        }
+        
+        return sbfAllTel.toString();
+	}
+	
+	/**
+	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
+	 * 
+	 * [libelle]\n
+	 * [etageCouloirEscalier] [entreBatimentImmeuble] [nDeVoie] [libelleDeVoie] [lieuDit]\n
+	 * [cs]\n
+	 * [codePostal] [commune]\n
+	 * 
+	 * @param libelle
+	 * @param etageCouloirEscalier
+	 * @param entreBatimentImmeuble
+	 * @param nDeVoie
+	 * @param libelleDeVoie
+	 * @param lieuDit
+	 * @param cs
+	 * @param codePostal
+	 * @param commune
+	 * @return un String contenant une adresse avec les informations renseignées en entrée de la méthode
+	 */
+	public static String formatAddress(String libelle, String etageCouloirEscalier, 
+			String entreBatimentImmeuble, String nDeVoie, String libelleDeVoie, 
+			String lieuDit, String cs, String codePostal, String commune) {
+
+		String separator = " ";
+		String newLine = "<br>";
+		StringBuffer sbfAddr = new StringBuffer();
+		
+        if(Util.notEmpty(libelle)) {
+        	sbfAddr.append(libelle)
+              .append(newLine);
+        }
+        
+        StringBuffer sbfAddrBis = new StringBuffer();
+        String[] morcAddrArr = new String[]{ etageCouloirEscalier, entreBatimentImmeuble, nDeVoie, libelleDeVoie, lieuDit};
+        for(String morcAddr : morcAddrArr) {
+            if(Util.notEmpty(morcAddr)) {
+            	sbfAddrBis.append(morcAddr)
+                  .append(separator);
+            }
+        }
+        if(Util.notEmpty(sbfAddrBis.toString())) {
+        	sbfAddr.append(sbfAddrBis)
+        	  .append(newLine);
+        }
+        if(Util.notEmpty(cs)) {
+        	sbfAddr.append(cs)
+              .append(newLine);
+        }
+        if(Util.notEmpty(codePostal)) {
+        	sbfAddr.append(codePostal)
+              .append(separator);
+        }
+        if(Util.notEmpty(commune)) {
+        	sbfAddr.append(commune);
+        }
+        
+        return sbfAddr.toString();
+		
+	}
 
 }
