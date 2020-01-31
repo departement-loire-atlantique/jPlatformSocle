@@ -240,3 +240,7 @@ $jcmsplugin.socle.spectacleAide.cat.root: aca_7730
 # Fiche professionnel culture
 
 $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
+
+# Marché public
+
+$jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
