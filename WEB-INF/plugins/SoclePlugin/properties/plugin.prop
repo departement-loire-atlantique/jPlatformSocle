@@ -214,3 +214,7 @@ $jcmsplugin.socle.saad.plagesDintervention.root: p1_707988
 $jcmsplugin.socle.saad.typesDeService.root: p1_707985
 $jcmsplugin.socle.saad.modesDintervention.root: p1_802263
 $jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
+
+# Etablissement personnes agées
+
+$jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
