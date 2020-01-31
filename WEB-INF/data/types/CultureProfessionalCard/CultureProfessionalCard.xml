@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="CultureProfessionalCard" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="t1_10738">
+  <title ml="true" searchable="true">
+    <label xml:lang="fr">Nom</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="professionalCategory" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheProCulture.cat.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="true" type="String" searchable="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="true" descriptionType="text" abstract="true" truncate="400" html="false" checkHtml="true" wikiwyg="false" toolbars="basic,format,style,font,table">
+      <label xml:lang="fr">Description</label>
+      <label xml:lang="en">Description</label>
+    </field>
+    <field name="slideShow" editor="link" required="false" compactDisplay="false" type="generated.Carousel" parent="false">
+      <label xml:lang="fr">Diaporama</label>
+    </field>
+    <field name="publicContacts" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Contact public</label>
+    </field>
+    <field name="cgContacts" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Contact CG</label>
+    </field>
+    <field name="address" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Adresse postale</label>
+    </field>
+    <field name="postalBox" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Boîte postale</label>
+    </field>
+    <field name="zipCode" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="city" editor="link" required="false" compactDisplay="false" type="generated.City" parent="false" hidden="true">
+      <label xml:lang="fr">Ville</label>
+    </field>
+    <field name="commune" editor="link" required="false" compactDisplay="false" type="generated.City" parent="false">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="openingHours" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Horaire d'ouverture</label>
+    </field>
+    <field name="phones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Téléphones</label>
+    </field>
+    <field name="mails" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Courriels</label>
+    </field>
+    <field name="websites" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Site Internet</label>
+    </field>
+    <field name="facebook" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Facebook</label>
+    </field>
+    <field name="twitter" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Twitter</label>
+    </field>
+    <field name="youtube" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Youtube</label>
+    </field>
+    <field name="dailymotion" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Dailymotion</label>
+    </field>
+    <field name="vimeo" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Viméo</label>
+    </field>
+    <field name="mySpace" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">MySpace</label>
+    </field>
+    <field name="flickr" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Flickr</label>
+    </field>
+    <field name="pinterest" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Pinterest</label>
+    </field>
+    <field name="instagram" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Instagram</label>
+    </field>
+    <field name="viadeo" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Viadeo</label>
+    </field>
+    <field name="linkedin" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Linkedin</label>
+    </field>
+    <field name="attachedDocuments" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument[]" ml="false">
+      <label xml:lang="fr">Documents joints</label>
+    </field>
+    <field name="shows" editor="link" required="false" compactDisplay="false" type="generated.Show[]">
+      <label xml:lang="fr">Spectacles</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Fiche professionnel culture</label>
+</type>
+

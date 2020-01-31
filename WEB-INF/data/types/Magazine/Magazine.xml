@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Magazine" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Magazine</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="fieldn" editor="int" required="true" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">N°</label>
+    </field>
+    <field name="mois" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Mois</label>
+    </field>
+    <field name="annee" editor="int" required="true" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Année</label>
+    </field>
+    <field name="imageDeUne" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Image de Une</label>
+    </field>
+    <field name="copyrightImageDeUne" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright image de Une</label>
+    </field>
+    <field name="urlLiseuse" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url liseuse</label>
+    </field>
+    <field name="documentPdf" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Document pdf</label>
+    </field>
+    <field name="versionDaisy" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false">
+      <label xml:lang="fr">Version Daisy</label>
+    </field>
+    <field name="codeEmbedSoundcloud" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Code embed soundcloud</label>
+    </field>
+    <field name="titreDossier" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre dossier</label>
+    </field>
+    <field name="urlDossier" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url dossier</label>
+    </field>
+    <field name="soustitreDossier" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre dossier</label>
+    </field>
+    <field name="portrait1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Portrait 1</label>
+    </field>
+    <field name="urlPortrait1" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url portrait 1</label>
+    </field>
+    <field name="portrait2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Portrait 2</label>
+    </field>
+    <field name="urlPortrait2" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url portrait 2</label>
+    </field>
+    <field name="portrait3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Portrait 3</label>
+    </field>
+    <field name="urlPortrait3" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url portrait 3</label>
+    </field>
+    <field name="grosseActu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Actualités</label>
+    </field>
+    <field name="urlGrosseActu" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url actualités</label>
+    </field>
+    <field name="question" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Question</label>
+    </field>
+    <field name="urlQuestion" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url question</label>
+    </field>
+    <field name="rubriqueSioox1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Rubrique Sioox 1</label>
+    </field>
+    <field name="titreRubriqueSioox1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre rubrique Sioox 1</label>
+    </field>
+    <field name="urlRubriqueSioox1" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url rubrique Sioox 1</label>
+    </field>
+    <field name="rubriqueSioox2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Rubrique Sioox 2</label>
+    </field>
+    <field name="titreRubriqueSioox2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre rubrique Sioox 2</label>
+    </field>
+    <field name="urlRubriqueSioox2" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Url rubrique Sioox 2</label>
+    </field>
+    <field name="classeParticipante" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="8" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Classe participante</label>
+    </field>    
+    <field name="dataviz" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Dataviz</label>
+    </field>
+    <field name="libelleLien" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="LienUtile">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="rubriqueDuMagazine" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="LienUtile">
+      <label xml:lang="fr">Rubrique du magazine</label>
+    </field>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="LienUtile">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="LienUtile" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien externe</label>
+    </field>    
+  </fields>
+</type>
+
