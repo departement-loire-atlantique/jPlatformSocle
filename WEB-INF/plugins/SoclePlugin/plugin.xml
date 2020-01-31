@@ -21,6 +21,7 @@
     <type name="City"></type>
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
+    <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
     <type name="Dossier"></type>

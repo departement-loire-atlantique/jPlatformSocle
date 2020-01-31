@@ -236,3 +236,7 @@ $jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
 # Spectacle aidé
 
 $jcmsplugin.socle.spectacleAide.cat.root: aca_7730
+
+# Fiche professionnel culture
+
+$jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
