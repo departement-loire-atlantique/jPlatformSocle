@@ -32,6 +32,7 @@
     <type name="FicheArticle"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
+    <type name="Magazine"></type>
     <type name="News"></type>
     <type name="Place"></type>
     <type name="ResultatDeRecherche"></type>
