@@ -34,6 +34,8 @@
     <type name="News"></type>
     <type name="Place"></type>
     <type name="ResultatDeRecherche"></type>
+    <type name="SAAD"></type>
+    <type name="SeniorCitizensEstablishment"></type>
     <type name="Tuile"></type>
     <type name="WelcomeSection"></type>
     <type name="WysiwygBlock"></type>
@@ -200,6 +202,7 @@
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
+    <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
