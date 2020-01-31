@@ -37,6 +37,13 @@ if(!isAdmin) {
     <input class="btn btn-danger modal confirm" type="submit" value="Lancer la reprise"/>
 </form>
 
+<h3>Reprise des Spectacles aidés</h3>
+<form>
+    <input type="hidden" name="dataType" value="<%= Show.class.getSimpleName() %>">
+    <input type="hidden" name="executeReprise" value="true">
+    <input class="btn btn-danger modal confirm" type="submit" value="Lancer la reprise"/>
+</form>
+
 <% 
 
 String dataType = getUntrustedStringParameter("dataType", "");

@@ -37,6 +37,7 @@
     <type name="Place"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
+    <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
     <type name="Tuile"></type>
     <type name="WelcomeSection"></type>
