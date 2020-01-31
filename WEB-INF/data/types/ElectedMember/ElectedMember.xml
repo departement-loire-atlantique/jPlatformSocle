@@ -23,13 +23,13 @@
       <offLabel xml:lang="fr">Femme</offLabel>
       <offLabel xml:lang="en">No</offLabel>
     </field>
-    <field name="functions" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5314" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="functions" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.electedMember.fonctions.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Fonctions</label>
     </field>
-    <field name="committees" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5332" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="committees" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.electedMember.commissions.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Commissions</label>
     </field>
-    <field name="missionThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="p1_283851" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="missionThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.electedMember.missionThematique.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mission thématique</label>
     </field>
     <field name="vicepresidentLie" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember" parent="false">
@@ -44,10 +44,10 @@
     <field name="councillor" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Autre conseiller départemental</label>
     </field>
-    <field name="politicalParty" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_5298">
+    <field name="politicalParty" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.electedMember.partiPolitique.root">
       <label xml:lang="fr">Parti Politique</label>
     </field>
-    <field name="politicalGroup" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_5309" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="politicalGroup" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.electedMember.groupePolitique.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Groupe Politique</label>
     </field>
     <field name="nouvelEluOuReelu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
