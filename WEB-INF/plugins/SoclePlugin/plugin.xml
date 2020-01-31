@@ -25,6 +25,7 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="Equipement"></type>
     <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
