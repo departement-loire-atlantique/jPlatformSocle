@@ -203,3 +203,14 @@ $jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root: c_1212484
 $jcmsplugin.socle.ficheactioneducative.typeDePratique.root: aca_7735
 $jcmsplugin.socle.ficheactioneducative.niveau.root: c_1212444
 $jcmsplugin.socle.ficheactioneducative.format.root: c_1212451
+
+# SAAD
+
+$jcmsplugin.socle.saad.statutJuridique.root: p2_806794
+$jcmsplugin.socle.saad.typeDaide.root: p1_707983
+$jcmsplugin.socle.saad.prestations.root: p2_806591
+$jcmsplugin.socle.saad.modalitesDePaiement.root: p2_806804
+$jcmsplugin.socle.saad.plagesDintervention.root: p1_707988
+$jcmsplugin.socle.saad.typesDeService.root: p1_707985
+$jcmsplugin.socle.saad.modesDintervention.root: p1_802263
+$jcmsplugin.socle.saad.modeDeTarification.root: p2_806809

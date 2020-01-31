@@ -31,28 +31,28 @@
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="statutJuridique" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$plugin.corporateidentity.saad.statutJuridique.category">
+    <field name="statutJuridique" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.statutJuridique.root">
       <label xml:lang="fr">Statut juridique</label>
     </field>
-    <field name="modesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.saad.modesDintervention.category" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="modesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.modesDintervention.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Modes d'intervention</label>
     </field>
-    <field name="typeDaide" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.saad.typeDaide.category">
+    <field name="typeDaide" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.typeDaide.root">
       <label xml:lang="fr">Type d'aide</label>
     </field>
-    <field name="prestations" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.saad.prestations.category">
+    <field name="prestations" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.prestations.root">
       <label xml:lang="fr">Prestations</label>
     </field>
-    <field name="modalitesDePaiement" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.saad.modalitesDePaiement.category">
+    <field name="modalitesDePaiement" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.modalitesDePaiement.root">
       <label xml:lang="fr">Modalités de paiement</label>
     </field>
-    <field name="plagesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$plugin.corporateidentity.saad.plagesDintervention.category">
+    <field name="plagesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.plagesDintervention.root">
       <label xml:lang="fr">Plages d'intervention</label>
     </field>
-    <field name="typesDeService" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$plugin.corporateidentity.saad.typesDeService.category">
+    <field name="typesDeService" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.typesDeService.root">
       <label xml:lang="fr">Types de service</label>
     </field>
-    <field name="modeDeTarification" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$plugin.corporateidentity.saad.modeDeTarification.category">
+    <field name="modeDeTarification" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.modeDeTarification.root">
       <label xml:lang="fr">Mode de tarification</label>
     </field>
     <field name="descriptif" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" wikiwyg="false" html="false" checkHtml="false" descriptionType="text">
