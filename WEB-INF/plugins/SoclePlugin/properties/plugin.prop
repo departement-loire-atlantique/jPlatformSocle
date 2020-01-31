@@ -218,3 +218,29 @@ $jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
 # Etablissement personnes agées
 
 $jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
+
+# Equipements
+
+$jcmsplugin.socle.equipements.thematique.root: p2_222624
+$jcmsplugin.socle.equipements.annee.root: p2_222641
+$jcmsplugin.socle.equipements.role.root: p2_222645
+
+# Fiches élu
+
+$jcmsplugin.socle.electedMember.fonctions.root: c_5314
+$jcmsplugin.socle.electedMember.commissions.root: c_5332
+$jcmsplugin.socle.electedMember.missionThematique.root: p1_283851
+$jcmsplugin.socle.electedMember.partiPolitique.root: c_5298
+$jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
+
+# Spectacle aidé
+
+$jcmsplugin.socle.spectacleAide.cat.root: aca_7730
+
+# Fiche professionnel culture
+
+$jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
+
+# Marché public
+
+$jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215

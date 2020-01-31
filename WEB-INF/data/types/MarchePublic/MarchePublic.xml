@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="MarchePublic" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Marché public</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="dateDeLancementDuMarche" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Date de lancement du marché</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="montantEstimatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Montant estimatif</label>
+    </field>
+    <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="documents">
+      <label xml:lang="fr">Titre encart document</label>
+    </field>
+    <field name="documents" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument[]" ml="false" descriptionType="text" tabGroup="documents" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Documents</label>
+    </field>
+    <field name="servicePrescripteur" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Service prescripteur</label>
+    </field>
+    <field name="telephoneDuService" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Téléphone du service</label>
+    </field>
+    <field name="courrielDuService" editor="email" required="true" compactDisplay="false" type="String" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Courriel du service</label>
+    </field>
+    <field name="typeDePrestation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.marchePublic.typePrestation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type de prestation</label>
+    </field>
+  </fields>
+</type>
+

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="ArticleGeolocalise" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
-  <label xml:lang="fr">Article géolocalisé</label>
+<type name="Equipement" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Equipement</label>
   <title ml="false">
     <label xml:lang="fr">Titre</label>
   </title>
@@ -32,6 +32,35 @@
     </field>
     <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false">
       <label xml:lang="fr">Canton</label>
+    </field>
+    <field name="thematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.equipements.thematique.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Thématique</label>
+    </field>
+    <field name="annee" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.equipements.annee.root">
+      <label xml:lang="fr">Année</label>
+    </field>
+    <field name="role" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.equipements.role.root">
+      <label xml:lang="fr">Rôle</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">EPCI</label>
+    </field>
+    <field name="montantDeLaSubvention" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Montant de la subvention</label>
+    </field>
+    <field name="montantTotalDesTravaux" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Montant total des travaux</label>
+    </field>
+    <field name="pourcentageDepartement" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Pourcentage Département</label>
+    </field>
+    <field name="dateDeFinDeTravauxPrevue" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date de fin de travaux prévue</label>
+    </field>
+    <field name="chantierTermine" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off">
+      <label xml:lang="fr">Chantier terminé</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
     </field>
   </fields>
 </type>
