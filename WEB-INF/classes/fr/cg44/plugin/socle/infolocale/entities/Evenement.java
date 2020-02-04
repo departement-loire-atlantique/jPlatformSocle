@@ -30,6 +30,8 @@ public class Evenement extends Data {
     boolean mentionAccessibleHandicapMental = false;
     boolean mentionAccessibleHandicapMoteur = false;
     Langue[] langues;
+    String urlAnnonce;
+    String urlOrganisme;
     
     public int getEvenementId() {
         return evenementId;
@@ -186,6 +188,18 @@ public class Evenement extends Data {
     }
     public void setLangues(Langue[] langues) {
         this.langues = langues;
+    }
+    public String getUrlAnnonce() {
+        return urlAnnonce;
+    }
+    public void setUrlAnnonce(String urlAnnonce) {
+        this.urlAnnonce = urlAnnonce;
+    }
+    public String getUrlOrganisme() {
+        return urlOrganisme;
+    }
+    public void setUrlOrganisme(String urlOrganisme) {
+        this.urlOrganisme = urlOrganisme;
     }
     
 }
