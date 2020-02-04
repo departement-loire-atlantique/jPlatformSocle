@@ -2,19 +2,10 @@ package fr.cg44.plugin.socle;
 
 import static com.jalios.jcms.Channel.getChannel;
 
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 import java.util.TreeSet;
-import java.util.stream.Stream;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Category;
@@ -25,8 +16,6 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
-import com.jalios.util.ServletUtil;
-import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
 public final class SocleUtils {
@@ -147,43 +136,6 @@ public final class SocleUtils {
 		return sdf.format(date);
 	}
 	
-	/**
-	 * Concatène et formate tous les numéros de téléphone dans un tableau en un String
-	 * Les duos de nombres sont séparés par des espaces insécables et les numéros de téléphone sont séparés par un tiret
-	 * 
-	 * @param listPhoneNumber tableau de String contenant les numéros de téléphone à concaténer
-	 * @return un String contenant tous les numéros de téléphones en entrée, un String vide si le tableau est vide
-	 */
-	public static String formatListPhoneNumber(String[] listPhoneNumber) {
-
-		StringBuffer sbfAllTel = new StringBuffer();
-
-		if(Util.notEmpty(listPhoneNumber)) {
-
-			String separatorDsTel = "&nbsp;"; //espace insecable
-			String separatorEntreTel = " - ";
-
-			String[] listPhoneNumberClean = SocleUtils.cleanNumber(listPhoneNumber);
-
-			for(String numTel : listPhoneNumberClean) {
-
-				StringBuffer sbfTel = new StringBuffer();
-				sbfTel.append(numTel);
-
-				for(int i = 8 ; i > 0 ; i-=2) {
-					sbfTel.insert(i, separatorDsTel);
-				}
-
-				if(Util.notEmpty(sbfAllTel.toString())) {
-					sbfAllTel.append(separatorEntreTel);
-				}
-				sbfAllTel.append(sbfTel.toString());
-			}
-		}
-
-		return sbfAllTel.toString();
-	}
-
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
