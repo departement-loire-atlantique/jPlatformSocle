@@ -192,6 +192,7 @@
 
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>
+    <java package="unitests.fr.cg44.plugin.junit.facettes"/>   
   </java-classes>
 
   <plugincomponents>
