@@ -217,11 +217,38 @@ public final class SocleUtils {
 	}
 	
 	/**
+     * Génère un string à partir du contenu d'un InputStream
+     * @param is
+     * @return
+     */
+    public static String convertStreamToString(InputStream is) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return sb.toString();
+    }
+	
+	/**
 	 * 
 	 * @param params
 	 * @return
 	 */
-	public static String buildGetParams(Map<String, String> params) {
+	public static String buildGetParams(Map<String, Object> params) {
 	    if (Util.isEmpty(params)) return "";
 	    
 	    StringBuilder urlParams = new StringBuilder();
@@ -230,7 +257,7 @@ public final class SocleUtils {
 	    
 	    for (Iterator<String> iter = params.keySet().iterator(); iter.hasNext();) {
 	        String key = iter.next();
-	        String value = params.get(key);
+	        String value = params.get(key).toString();
 	        urlParams.append(key + "=" + value);
 	        if (iter.hasNext()) urlParams.append("&");
 	    }

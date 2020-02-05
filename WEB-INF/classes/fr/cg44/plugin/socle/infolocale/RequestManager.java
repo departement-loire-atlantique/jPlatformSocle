@@ -44,13 +44,13 @@ public class RequestManager {
         String login = channel.getProperty("jcmsplugin.socle.infolocale.login");
         String password = channel.getProperty("jcmsplugin.socle.infolocale.password");
         
-        Map<String, String> params = new HashMap<String,String>();
+        Map<String, Object> params = new HashMap<String,Object>();
         params.put("login", login);
         params.put("password", password);
         
         try {
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded");            
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded", false);            
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method initTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -96,12 +96,12 @@ public class RequestManager {
         
         TokenManager tokenManager = TokenManager.getInstance();
         
-        Map<String, String> params = new HashMap<String,String>();
+        Map<String, Object> params = new HashMap<String,Object>();
         params.put("refresh_token", tokenManager.getRefreshToken());
         
         try {
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded");
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded", false);
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method regenerateTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -148,16 +148,14 @@ public class RequestManager {
         
         JSONObject fluxData = new JSONObject();
         
-        TokenManager tokenManager = TokenManager.getInstance();
         boolean expiredToken = false;
         
-        Map<String, String> params = new HashMap<String,String>();
-        params.put("Authorization", "Bearer " + tokenManager.getAccessToken());
+        Map<String, Object> params = new HashMap<String,Object>();        
         
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded");
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -168,11 +166,8 @@ public class RequestManager {
                         
             switch (status) {
                 case 200:
-                    FluxExtraction flux = new FluxExtraction();
-                    ObjectMapper mapper = new ObjectMapper();
-                    flux = mapper.readValue(response.getEntity().getContent(), FluxExtraction.class);
                     
-                    fluxData = new JSONObject(flux);
+                    fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                     fluxData.put("success", true);
                     
                     LOGGER.debug("Tokens regénérés");
@@ -206,19 +201,16 @@ public class RequestManager {
         return fluxData;
     }
 
-    public static JSONObject filterFluxData(String fluxId, Map<String, String> params) {
+    public static JSONObject filterFluxData(String fluxId, Map<String, Object> params) {
         
         JSONObject fluxData = new JSONObject();
         
-        TokenManager tokenManager = TokenManager.getInstance();
         boolean expiredToken = false;
-        
-        params.put("Authorization", "Bearer " + tokenManager.getAccessToken());
         
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params);
+            CloseableHttpResponse response = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
@@ -229,11 +221,8 @@ public class RequestManager {
                         
             switch (status) {
                 case 200:
-                    FluxExtraction flux = new FluxExtraction();
-                    ObjectMapper mapper = new ObjectMapper();
-                    flux = mapper.readValue(response.getEntity().getContent(), FluxExtraction.class);
                     
-                    fluxData = new JSONObject(flux);
+                    fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                     fluxData.put("success", true);
                     
                     LOGGER.debug("Tokens regénérés");
@@ -267,7 +256,7 @@ public class RequestManager {
         return fluxData;
     }
     
-    private static CloseableHttpResponse createPostConnection(String url, Map<String, String> params, String contentType) {
+    private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, String contentType, boolean useToken) {
         
         CloseableHttpClient httpClient = HttpClients.createDefault();
         
@@ -276,7 +265,7 @@ public class RequestManager {
         if (Util.notEmpty(params)) {
             List<BasicNameValuePair> urlParameters = new ArrayList<>();
             for (String key : params.keySet()) {
-                urlParameters.add(new BasicNameValuePair(key,  params.get(key)));
+                urlParameters.add(new BasicNameValuePair(key, params.get(key).toString()));
             }
             
             try {
@@ -284,6 +273,10 @@ public class RequestManager {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
+        }
+        
+        if (useToken) {
+            post.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
         }
         
         CloseableHttpResponse response = null;
@@ -296,11 +289,15 @@ public class RequestManager {
         return response;
     }
     
-    private static CloseableHttpResponse createGetConnection(String url, Map<String, String> params) {
+    private static CloseableHttpResponse createGetConnection(String url, Map<String, Object> params, boolean useToken) {
         
         CloseableHttpClient httpClient = HttpClients.createDefault();
         
         HttpGet request = new HttpGet(url + SocleUtils.buildGetParams(params));
+        
+        if (useToken) {
+            request.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
+        }
         
         CloseableHttpResponse response = null;
         try {

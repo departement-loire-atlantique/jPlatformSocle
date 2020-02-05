@@ -1,3 +1,5 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.singleton.TokenManager"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.apache.http.client.methods.HttpGet"%>
 <%@page import="org.apache.http.util.EntityUtils"%>
@@ -11,63 +13,38 @@
 <%@ page contentType="text/html; charset=UTF-8"%><%
 %><%@ include file='/jcore/doInitPage.jsp'%>
 
-<%
-
-String infoLocaleLogin = "";
-String infoLocalePwd = "";
-
-String jetonAcces = "";
-String jetonRefresh = "";
-String username = "";
-
-HttpPost post;
-HttpGet get;
-
-String input;
-String output;
-
-BufferedReader br;
-
-List<BasicNameValuePair> urlParameters;
-
-CloseableHttpClient httpClient;
-CloseableHttpResponse httpResponse;
-
-JSONObject jsonObject;
-
-%>
-
 <h1>Liste de tests de flux</h1>
 
 <h2>Requête de connexion</h2>
 <p>Méthode POST-> https://api.infolocale.fr/auth/signin</p>
 
 <%
-
-post = new HttpPost("https://api.infolocale.fr/auth/signin");
-urlParameters = new ArrayList<>();
-urlParameters.add(new BasicNameValuePair("login", infoLocaleLogin));
-urlParameters.add(new BasicNameValuePair("password", infoLocalePwd));
-
-post.setEntity(new UrlEncodedFormEntity(urlParameters));
-
-httpClient = HttpClients.createDefault();
-httpResponse =httpClient.execute(post);
-
-jsonObject = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
+RequestManager.initTokens();
 %>
 
-<%= jsonObject.toString(2) %>
+<p>Token d'accès : <%= TokenManager.getInstance().getAccessToken() %></p>
+<p>Token de rafraîchissement : <%= TokenManager.getInstance().getRefreshToken() %></p>
+<p>Username : <%= TokenManager.getInstance().getUsername() %></p>
 
-<jalios:if predicate="<%= jsonObject.get("code").equals("200") %>">
+<h2>Requête de rafraîchissement</h2>
+<p>Méthode POST-> https://api.infolocale.fr/auth/refresh-token</p>
+
 <%
-
-jetonAcces = jsonObject.get("access_token");
-jetonRefresh = jsonObject.get("refresh_token");
-username = jsonObject.get("username");
-
+RequestManager.regenerateTokens();
 %>
-</jalios:if>
+
+<p>Token d'accès : <%= TokenManager.getInstance().getAccessToken() %></p>
+<p>Token de rafraîchissement : <%= TokenManager.getInstance().getRefreshToken() %></p>
+<p>Username : <%= TokenManager.getInstance().getUsername() %></p>
+
+<h2>Requête de flux</h2>
+<p>Méthode POST-> https://api.infolocale.fr/flux/f24ba875-a641-47aa-b1b5-01c23a1b6812/data</p>
+
+<%
+JSONObject extractedFlux = RequestManager.extractFluxData("f24ba875-a641-47aa-b1b5-01c23a1b6812");
+%>
+
+<%= extractedFlux.toString() %>
 
 <%--
 
@@ -87,4 +64,4 @@ En cas de requête :
 En back-office :
     Créer une page admin qui forcera la regénération des tokens sur un bouton
 
--->
+--%>

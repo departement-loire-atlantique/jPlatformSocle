@@ -5,7 +5,21 @@ public class Authentification extends FluxBase {
     String access_token;
     String refresh_token;
     String username;
+    String code;
+    String message;
     
+    public String getCode() {
+        return code;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
     public String getAccess_token() {
         return access_token;
     }

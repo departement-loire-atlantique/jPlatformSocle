@@ -41,9 +41,5 @@ public class TokenManager {
 	public void setRefreshToken(String refreshToken) {
 		this.refreshToken = refreshToken;
 	}
-
-	public void regenerateTokens() {
-		
-	}
 	
 }
