@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -216,50 +217,25 @@ public final class SocleUtils {
 	}
 	
 	/**
-	 * Génère un string à partir du contenu d'un InputStream
-	 * @param is
-	 * @return
-	 */
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		StringBuilder sb = new StringBuilder();
-		String line = null;
-		
-		try {
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-		    try {
-		        is.close();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
-		}
-		
-		return sb.toString();
-	}
-	
-	/**
-	 * Retourne un tableau de bytes correspondant à un ensemble de paramètres pour une requête HTTP POST
+	 * 
 	 * @param params
 	 * @return
 	 */
-	public static byte[] generatePostDataFromMap(Map<String, String> params) {
-		if (Util.isEmpty(params)) return new byte[0];
-		
-		StringBuilder urlParameters = new StringBuilder();
-		
-		for (Iterator<String> iter = params.keySet().iterator(); iter.hasNext();) {
-			String key = iter.next();
-			String value = params.get(key);
-			urlParameters.append(key + "=" + value);
-			if (iter.hasNext()) urlParameters.append("&"); 
-		}
-		
-		return urlParameters.toString().getBytes();
+	public static String buildGetParams(Map<String, String> params) {
+	    if (Util.isEmpty(params)) return "";
+	    
+	    StringBuilder urlParams = new StringBuilder();
+	    
+	    urlParams.append("?");
+	    
+	    for (Iterator<String> iter = params.keySet().iterator(); iter.hasNext();) {
+	        String key = iter.next();
+	        String value = params.get(key);
+	        urlParams.append(key + "=" + value);
+	        if (iter.hasNext()) urlParams.append("&");
+	    }
+	    
+	    return urlParams.toString();
 	}
 
 }

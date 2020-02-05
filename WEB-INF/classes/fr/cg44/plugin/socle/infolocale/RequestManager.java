@@ -1,20 +1,32 @@
 package fr.cg44.plugin.socle.infolocale;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jalios.io.IOUtil;
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
+import fr.cg44.plugin.socle.infolocale.fluxdata.Authentification;
+import fr.cg44.plugin.socle.infolocale.fluxdata.FluxExtraction;
 import fr.cg44.plugin.socle.infolocale.singleton.TokenManager;
 
 public class RequestManager {
@@ -36,30 +48,26 @@ public class RequestManager {
         params.put("login", login);
         params.put("password", password);
         
-        HttpURLConnection connection = null;
-        
         try {
             
-            connection = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded");            
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded");            
             
-            if (Util.isEmpty(connection)) {
+            if (Util.isEmpty(response)) {
                 LOGGER.warn("Method initTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
                 return;
             }
             
-            connection.connect();
-            
-            int status = connection.getResponseCode();
+            int status = response.getStatusLine().getStatusCode();
                         
             switch (status) {
                 case 200:
-                    String jsonReply = SocleUtils.convertStreamToString(connection.getInputStream());
+                    ObjectMapper mapper = new ObjectMapper();
                     
-                    JSONObject jsonResponse = new JSONObject(jsonReply);
+                    Authentification auth = mapper.readValue(response.getEntity().getContent(), Authentification.class);
                     
-                    tokenManager.setAccessToken(jsonResponse.getString("access_token"));
-                    tokenManager.setRefreshToken(jsonResponse.getString("refresh_token"));
-                    tokenManager.setUsername(jsonResponse.getString("username"));
+                    tokenManager.setAccessToken(auth.getAccess_token());
+                    tokenManager.setRefreshToken(auth.getRefresh_token());
+                    tokenManager.setUsername(auth.getUsername());
                     
                     LOGGER.debug("Tokens générés");
                     break;
@@ -76,10 +84,6 @@ public class RequestManager {
             
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } finally {
-            if (Util.notEmpty(connection)) connection.disconnect();
         }
     }
     
@@ -95,30 +99,26 @@ public class RequestManager {
         Map<String, String> params = new HashMap<String,String>();
         params.put("refresh_token", tokenManager.getRefreshToken());
         
-        HttpURLConnection connection = null;
-        
         try {
             
-            connection = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded");
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded");
             
-            if (Util.isEmpty(connection)) {
+            if (Util.isEmpty(response)) {
                 LOGGER.warn("Method regenerateTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
                 return;
             }
             
-            connection.connect();
-            
-            int status = connection.getResponseCode();
+            int status = response.getStatusLine().getStatusCode();
                         
             switch (status) {
                 case 200:
-                    String jsonReply = SocleUtils.convertStreamToString(connection.getInputStream());
+                    ObjectMapper mapper = new ObjectMapper();
                     
-                    JSONObject jsonResponse = new JSONObject(jsonReply);
+                    Authentification auth = mapper.readValue(response.getEntity().getContent(), Authentification.class);
                     
-                    tokenManager.setAccessToken(jsonResponse.getString("access_token"));
-                    tokenManager.setRefreshToken(jsonResponse.getString("refresh_token"));
-                    tokenManager.setUsername(jsonResponse.getString("username"));
+                    tokenManager.setAccessToken(auth.getAccess_token());
+                    tokenManager.setRefreshToken(auth.getRefresh_token());
+                    tokenManager.setUsername(auth.getUsername());
                     
                     LOGGER.debug("Tokens regénérés");
                     break;
@@ -136,10 +136,6 @@ public class RequestManager {
             
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } finally {
-            if (Util.notEmpty(connection)) connection.disconnect();
         }
         
         if (invalidToken) {
@@ -158,27 +154,25 @@ public class RequestManager {
         Map<String, String> params = new HashMap<String,String>();
         params.put("Authorization", "Bearer " + tokenManager.getAccessToken());
         
-        HttpURLConnection connection = null;
-        
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            connection = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded");
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded");
             
-            if (Util.isEmpty(connection)) {
+            if (Util.isEmpty(response)) {
                 LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
                 return fluxData;
             }
             
-            connection.connect();
-            
-            int status = connection.getResponseCode();
+            int status = response.getStatusLine().getStatusCode();
                         
             switch (status) {
                 case 200:
-                    String jsonReply = SocleUtils.convertStreamToString(connection.getInputStream());
+                    FluxExtraction flux = new FluxExtraction();
+                    ObjectMapper mapper = new ObjectMapper();
+                    flux = mapper.readValue(response.getEntity().getContent(), FluxExtraction.class);
                     
-                    fluxData = new JSONObject(jsonReply);
+                    fluxData = new JSONObject(flux);
                     fluxData.put("success", true);
                     
                     LOGGER.debug("Tokens regénérés");
@@ -202,8 +196,6 @@ public class RequestManager {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
-            if (Util.notEmpty(connection)) connection.disconnect();
         }
         
         if (expiredToken) {
@@ -223,27 +215,25 @@ public class RequestManager {
         
         params.put("Authorization", "Bearer " + tokenManager.getAccessToken());
         
-        HttpURLConnection connection = null;
-        
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            connection = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params);
+            CloseableHttpResponse response = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params);
             
-            if (Util.isEmpty(connection)) {
+            if (Util.isEmpty(response)) {
                 LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
                 return fluxData;
             }
             
-            connection.connect();
-            
-            int status = connection.getResponseCode();
+            int status = response.getStatusLine().getStatusCode();
                         
             switch (status) {
                 case 200:
-                    String jsonReply = SocleUtils.convertStreamToString(connection.getInputStream());
+                    FluxExtraction flux = new FluxExtraction();
+                    ObjectMapper mapper = new ObjectMapper();
+                    flux = mapper.readValue(response.getEntity().getContent(), FluxExtraction.class);
                     
-                    fluxData = new JSONObject(jsonReply);
+                    fluxData = new JSONObject(flux);
                     fluxData.put("success", true);
                     
                     LOGGER.debug("Tokens regénérés");
@@ -267,8 +257,6 @@ public class RequestManager {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
-            if (Util.notEmpty(connection)) connection.disconnect();
         }
         
         if (expiredToken) {
@@ -279,43 +267,51 @@ public class RequestManager {
         return fluxData;
     }
     
-    private static HttpURLConnection createPostConnection(String url, Map<String, String> params, String contentType) {
-        HttpURLConnection connection = null;
-        try {
-            connection = IOUtil.openConnection(new URL(url), true, true, "POST");
-            
-            if (Util.notEmpty(contentType)) connection.setRequestProperty("Content-Type", contentType);
-            if (Util.isEmpty(params)) return connection;
-            
-            byte[] dataPost = SocleUtils.generatePostDataFromMap(params);
-            
-            connection.setRequestProperty("Content-Length", String.valueOf(dataPost.length));
-            
-            connection.getOutputStream().write(dataPost);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private static CloseableHttpResponse createPostConnection(String url, Map<String, String> params, String contentType) {
         
-        return connection;
-    }
-    
-    private static HttpURLConnection createGetConnection(String url, Map<String, String> params) {
-        HttpURLConnection connection = null;
-        try {
-            connection = IOUtil.openConnection(new URL(url), true, true, "POST");
-            
-            if (Util.isEmpty(params)) return connection;
-            
-            for (String itKey : params.keySet()) {
-                connection.setRequestProperty(itKey, params.get(itKey));
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        
+        HttpPost post = new HttpPost(url);
+        
+        if (Util.notEmpty(params)) {
+            List<BasicNameValuePair> urlParameters = new ArrayList<>();
+            for (String key : params.keySet()) {
+                urlParameters.add(new BasicNameValuePair(key,  params.get(key)));
             }
             
+            try {
+                post.setEntity(new UrlEncodedFormEntity(urlParameters));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        CloseableHttpResponse response = null;
+        try {
+            response = httpClient.execute(post);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        return connection;
+        return response;
+    }
+    
+    private static CloseableHttpResponse createGetConnection(String url, Map<String, String> params) {
+        
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        
+        HttpGet request = new HttpGet(url + SocleUtils.buildGetParams(params));
+        
+        CloseableHttpResponse response = null;
+        try {
+            response = httpClient.execute(request);
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return response;
     }
     
 }
