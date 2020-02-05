@@ -288,7 +288,7 @@
 							sbfCommunesLiees.append(glp("jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe"))
 								.append(" ");
 
-							if (Util.notEmpty(obj.getCommune())) {
+							if (Util.notEmpty(obj.getCommunes())) {
 
 								for (City catCommune : obj.getCommunes()) {
 									sbfCommunesLiees.append(catCommune.getTitle()).append(separatorCommune);
