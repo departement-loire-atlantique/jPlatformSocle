@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletRechercheFacettes" superclass="generated.PortletSearch" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Recherche Facettes</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="rechercheDansUnRayonDe" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Recherche dans un rayon de</label>
+    </field>
+    <field name="ordreDesFacettes" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Ordre des facettes</label>
+    </field>
+    <field name="ordreDesFacettesSecondaires" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Ordre des facettes secondaire</label>
+    </field>
+    <field name="brancheDeRecherche" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_3">
+      <label xml:lang="fr">Branche de recherche</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+
