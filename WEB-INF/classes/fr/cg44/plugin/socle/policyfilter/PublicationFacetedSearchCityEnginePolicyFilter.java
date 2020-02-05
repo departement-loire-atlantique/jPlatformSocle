@@ -118,9 +118,7 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 		}
 		for(Canton itCanton : cantons) {
 			// Récupère les communes associés aux cantons (commune qui ont un lien vers le canton)
-			indexCityCode(doc, itCanton.getLinkIndexedDataSet(City.class, "canton"));
-			// Récupère la commune référencée par le canton
-			indexCityCode(doc, itCanton.getCity());			
+			indexCityCode(doc, itCanton.getLinkIndexedDataSet(City.class, "canton"));	
 		}			
 	}
 	

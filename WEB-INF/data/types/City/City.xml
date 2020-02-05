@@ -51,7 +51,7 @@
     <field name="epciWebsite" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="commune">
       <label xml:lang="fr">Site Internet EPCI</label>
     </field>
-    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false" tab="commune">
+    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton[]" parent="false" tab="commune">
       <label xml:lang="fr">Canton</label>
     </field>
     <field name="delegation" editor="link" required="false" compactDisplay="false" type="generated.Delegation" parent="false" tab="commune">

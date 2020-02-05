@@ -45,18 +45,18 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static City createCity(String name, int code, Canton canton) {
+	public static City createCity(String name, int code, Canton... cantons) {
 		City city = new City();
 		city.setTitle(name);
 		city.setCityCode(code);
-		city.setCanton(canton);
+		city.setCanton(cantons);
 		city.setAuthor(ADMIN);
 		city.performCreate(ADMIN);	
 		return city;
 	}
 
 	public static City createCity(String name, int code) {
-		return createCity(name, code, null);
+		return createCity(name, code, new Canton[]{});
 	}
 	
 	/**
@@ -66,22 +66,18 @@ public class SocleDataInit   {
 	 * @param city
 	 * @return
 	 */
-	public static Canton createCanton(String name, int code, City city) {
+	public static Canton createCanton(String name, int code) {
 		Canton canton = new Canton();
 		canton.setTitle(name);
 		canton.setCantonCode(code);
-		canton.setCity(city);
 		canton.setAuthor(ADMIN);
 		canton.performCreate(ADMIN);	
 		return canton;
 	}
-	
-	public static Canton createCanton(String name, City city) {
-		return createCanton(name, 0, city);
-	}
+
 	
 	public static Canton createCanton(String name) {
-		return createCanton(name, 0, null);
+		return createCanton(name, 0);
 	}
 
 	/**

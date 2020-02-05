@@ -191,8 +191,7 @@
   </types>
 
   <java-classes>
-    <java package="fr.cg44.plugin.socle"/>
-    <java package="fr.cg44.plugin.junit.facettes"/>   
+    <java package="fr.cg44.plugin.socle"/>   
   </java-classes>
 
   <plugincomponents>
@@ -238,6 +237,9 @@
     <file path="WEB-INF/tags/titleSimple.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
+    <!-- Tests unitaires -->
+    <file path="unitests/fr/cg44/plugin/junit/facettes/SearchCityTest.java" />
+    <file path="unitests/fr/cg44/plugin/junit/facettes/SocleDataInit.java" />
   </webapp-files>  
 </plugin>
 
