@@ -2,7 +2,6 @@ package fr.cg44.plugin.socle.infolocale;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +25,6 @@ import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.fluxdata.Authentification;
-import fr.cg44.plugin.socle.infolocale.fluxdata.FluxExtraction;
 import fr.cg44.plugin.socle.infolocale.singleton.TokenManager;
 
 public class RequestManager {

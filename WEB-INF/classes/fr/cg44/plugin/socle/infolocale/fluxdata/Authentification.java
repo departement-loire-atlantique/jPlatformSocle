@@ -1,6 +1,6 @@
 package fr.cg44.plugin.socle.infolocale.fluxdata;
 
-public class Authentification extends FluxBase {
+public class Authentification {
     
     String access_token;
     String refresh_token;
