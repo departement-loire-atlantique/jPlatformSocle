@@ -51,17 +51,13 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {
 		City cityData = HttpUtil.getDataParameter(request, "commune", City.class);
-		
-		List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());
-		System.out.println(sectorResultId);
-		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
+		List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
 		Set<Publication> removeSolis = new HashSet<Publication>();
 		for(Publication itPub : set) {
 			if(itPub instanceof FicheLieu) {
 				FicheLieu itFiche = (FicheLieu) itPub;
 				String idRef = itFiche.getIdReferentiel();
 				if(Util.notEmpty(idRef) && !sectorResultId.contains(idRef)){
-					//System.out.println("remove " + idRef);
 					removeSolis.add(itPub);
 				}
 			}
@@ -77,6 +73,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 */
 	public List<SectorResult> getSectorisation() {
 		try {
+			// TODO url en static à dynamiser suivant les paramètres de rechercher
 			URL url = new URL("https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_sectorisations_geojson?p_geojson=%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B-1.77286755433447%2C47.5803362635946%5D%2C%22crs%22%3A%7B%22type%22%3A%22name%22%2C%22properties%22%3A%7B%22name%22%3A%22EPSG%3A4326%22%7D%7D%7D&sectorisation=in.%28EDS,Canton,Commune%29&select=sectorisation%2Cmatricule%2Clibelle");
 			HttpURLConnection urlConnection = IOUtil.openConnection(url, true, true, "GET");
 			urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf8");
@@ -92,7 +89,6 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 					response.append(inputLine);
 				}
 				in.close();
-				//System.out.println(response.toString());
 				ObjectMapper mapper = new ObjectMapper();
 				List<SectorResult> sectorResult = Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
 				return sectorResult;
