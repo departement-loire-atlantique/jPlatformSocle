@@ -3,7 +3,6 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -217,7 +216,7 @@ public final class SocleUtils {
 	}
 	
 	/**
-     * Génère un string à partir du contenu d'un InputStream
+     * Gï¿½nï¿½re un string ï¿½ partir du contenu d'un InputStream
      * @param is
      * @return
      */
