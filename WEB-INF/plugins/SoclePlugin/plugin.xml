@@ -238,8 +238,8 @@
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
     <!-- Tests unitaires -->
-    <file path="unitests/fr/cg44/plugin/junit/facettes/SearchCityTest.java" />
-    <file path="unitests/fr/cg44/plugin/junit/facettes/SocleDataInit.java" />
+    <file path="junit/fr/cg44/plugin/junit/facettes/SearchCityTest.java" />
+    <file path="junit/fr/cg44/plugin/junit/facettes/SocleDataInit.java" />
   </webapp-files>  
 </plugin>
 
