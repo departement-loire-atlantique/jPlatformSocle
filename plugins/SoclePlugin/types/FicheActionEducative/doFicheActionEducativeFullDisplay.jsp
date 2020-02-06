@@ -263,7 +263,6 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                                 currentDocBlocTitle = (String) obj.getFieldValue("titreEncartDocumentBlocN" + blocDocCpt);
                                 currentDocBlocElements = (FileDocument[]) obj.getFieldValue("documentsJointsBlocN" + blocDocCpt);
                             %>
-                            <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsJointsBlocN1()) %>">
                                 <jalios:if predicate="<%= Util.notEmpty(currentDocBlocTitle) %>">
                                 <p class="ds44-box-heading" role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
                                 </jalios:if>
@@ -275,9 +274,8 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                                 %>
                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                 </jalios:foreach>
-                            </jalios:if>
                             <%
-                            }
+                            } // end of for
                             %>
                         </jalios:if>
                         <jalios:if predicate="<%= Util.notEmpty(obj.getAdresseSiteInternet()) %>">
