@@ -18,6 +18,9 @@
     <field name="brancheDeRecherche" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_3">
       <label xml:lang="fr">Branche de recherche</label>
     </field>
+    <field name="ordreDesFacettesV2" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ordre des facettes V2</label>
+    </field>
     <field type="super" />
   </fields>
 </type>
