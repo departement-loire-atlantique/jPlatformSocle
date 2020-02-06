@@ -38,6 +38,8 @@
     <type name="Video"></type>
     <type name="PageCarrefour"></type>
     
+    <type name="PortletAgendaInfolocale"></type>
+    
     
     <!-- Types de contenus -->    
     <templates type="Actualite">
