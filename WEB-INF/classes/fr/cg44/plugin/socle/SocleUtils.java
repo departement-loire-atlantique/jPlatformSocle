@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.TreeSet;
-
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Category;
@@ -237,7 +236,7 @@ public final class SocleUtils {
 	}
 	
 	/**
-	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * GÃ©nÃ¨re un String de format cat1, cat2, cat3 selon une liste de catÃ©gories
 	 * @param categories
 	 * @return
 	 */

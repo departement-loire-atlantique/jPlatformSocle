@@ -8,6 +8,7 @@
 
   <types>
     <type name="AbstractElement"></type>
+    <type name="AbstractPortletFacette"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="Actualite"></type>
@@ -37,6 +38,16 @@
     <type name="MarchePublic"></type>
     <type name="News"></type>
     <type name="Place"></type>
+    <type name="PortletFacetteAdresse"></type>
+    <type name="PortletFacetteCanton"></type>
+    <type name="PortletFacetteCategorie"></type>
+    <type name="PortletFacetteCategoriesLiees"></type>
+    <type name="PortletFacetteCommune"></type>
+    <type name="PortletFacetteCommuneAdresseLiee"></type>
+    <type name="PortletFacetteDelegation"></type>
+    <type name="PortletFacetteMotcle"></type>
+    <type name="PortletFacetteTitre"></type>
+    <type name="PortletRechercheFacettes"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
     <type name="Show"></type>
@@ -169,24 +180,38 @@
             <label xml:lang="fr">DS44 : gabarit footer</label>
         </template>        
     </templates>
-      <templates type="PortletQueryForeach">
+    <templates type="PortletQueryForeach">
         <template name="horizontalCard" file="doPortletQueryForeachHorizontalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile horizontale</label>
         </template>
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
-      </templates>    
+    </templates>       
+    <templates type="PortletRechercheFacettes">
+        <template name="default" file="doPortletRechercheFacettesSimple.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletResultatRechercheFacettes">
+        <template name="default" file="doPortletResultatRechercheFacettesListMap.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit liste + carte</label>
+        </template>
+    </templates>
   </types>
 
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>
+    <java package="fr.cg44.plugin.junit.facettes"/>   
   </java-classes>
 
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
+    <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
   </plugincomponents>
     
   <private-files>
