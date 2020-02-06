@@ -1,3 +1,5 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.Evenement"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.singleton.TokenManager"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="org.json.JSONObject"%>
@@ -44,24 +46,36 @@ RequestManager.regenerateTokens();
 JSONObject extractedFlux = RequestManager.extractFluxData("f24ba875-a641-47aa-b1b5-01c23a1b6812");
 %>
 
-<%= extractedFlux.toString() %>
+<%= Util.notEmpty(extractedFlux) %>
 
-<%--
+<p>Transformation des résultats en événements</p>
 
-Au démarrage :
-    Initialiser un singleton qui gérera les tokens
-    Effectuer l'authentification pour générer les deux tokens
-    
-Régulièrement après le démarrage :
-    Effectuer le rafraîchissement du token sur le singleton
+<%
+Evenement[] evenements = InfolocaleEntityUtils.createEvenementArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+%>
 
-En cas de requête :
-    Appeler un gestionnaire de requête qui aura la liste des requêtes
-    Chaque méthode rendra son propre résultat
-    Utiliser les tokens du singleton
-    -> en cas de 401, faire remonter l'erreur
+<jalios:foreach name="itEvent" type="Evenement" array="<%= evenements %>">
+    <%= itEvent %><br/>
+</jalios:foreach>
 
-En back-office :
-    Créer une page admin qui forcera la regénération des tokens sur un bouton
+<h2>Requête de flux avec filtre</h2>
+<p>Méthode POST -> https://api.infolocale.fr/flux/f24ba875-a641-47aa-b1b5-01c23a1b6812/data</p>
 
---%>
+<%
+Map<String, Object> parameters = new HashMap<String, Object>();
+parameters.put("page", 2);
+
+extractedFlux = RequestManager.filterFluxData("f24ba875-a641-47aa-b1b5-01c23a1b6812", parameters);
+%>
+
+<%= extractedFlux %>
+
+<p>Transformation des résultats en événements</p>
+
+<%
+evenements = InfolocaleEntityUtils.createEvenementArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+%>
+
+<jalios:foreach name="itEvent" type="Evenement" array="<%= evenements %>">
+    <%= itEvent %><br/>
+</jalios:foreach>

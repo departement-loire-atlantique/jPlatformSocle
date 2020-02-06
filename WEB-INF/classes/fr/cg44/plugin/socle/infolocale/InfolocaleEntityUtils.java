@@ -17,6 +17,18 @@ import fr.cg44.plugin.socle.infolocale.entities.Photo;
 
 public class InfolocaleEntityUtils {
     
+    public static Evenement[] createEvenementArrayFromJsonArray(JSONArray jsonArray) {
+        Evenement[] itEvents = new Evenement[jsonArray.length()];
+        for (int counter = 0; counter < jsonArray.length(); counter++) {
+            try {
+                itEvents[counter] = createEvenementFromJsonItem(jsonArray.getJSONObject(counter));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return itEvents;
+    }
+    
     public static Evenement createEvenementFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         

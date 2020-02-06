@@ -208,7 +208,7 @@ public class RequestManager {
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createGetConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
