@@ -76,17 +76,6 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                                 </div>
                                 <div class="col col-5 ds44--xl-padding-l">
                                     <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
-                                    <%--
-                                        Nom, prénom
-                                            + direction
-                                            + service
-                                        N° voie, libellé voie
-                                            + CS
-                                            + CP commune
-                                            + cedex
-                                        Telephone
-                                        Nous contacter par mail (mailto)
-                                    --%>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNomEtPrenomContacts() %>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getDirection()) %>">
@@ -113,7 +102,9 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                                        <%= SocleUtils.formatListPhoneNumber(obj.getTelephone()) %>
+                                        <jalios:foreach name="itPhone" type="String" array="<%= obj.getTelephone() %>">
+                                            <jalios:phone number="<%= itPhone %>"></jalios:phone>
+                                        </jalios:foreach>
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>

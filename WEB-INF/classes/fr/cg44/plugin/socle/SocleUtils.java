@@ -137,43 +137,6 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
-	
-	/**
-	 * Concatène et formate tous les numéros de téléphone dans un tableau en un String
-	 * Les duos de nombres sont séparés par des espaces insécables et les numéros de téléphone sont séparés par un tiret
-	 * 
-	 * @param listPhoneNumber tableau de String contenant les numéros de téléphone à concaténer
-	 * @return un String contenant tous les numéros de téléphones en entrée, un String vide si le tableau est vide
-	 */
-	public static String formatListPhoneNumber(String[] listPhoneNumber) {
-
-		StringBuffer sbfAllTel = new StringBuffer();
-
-		if(Util.notEmpty(listPhoneNumber)) {
-
-			String separatorDsTel = "&nbsp;"; //espace insecable
-			String separatorEntreTel = " - ";
-
-			String[] listPhoneNumberClean = SocleUtils.cleanNumber(listPhoneNumber);
-
-			for(String numTel : listPhoneNumberClean) {
-
-				StringBuffer sbfTel = new StringBuffer();
-				sbfTel.append(numTel);
-
-				for(int i = 8 ; i > 0 ; i-=2) {
-					sbfTel.insert(i, separatorDsTel);
-				}
-
-				if(Util.notEmpty(sbfAllTel.toString())) {
-					sbfAllTel.append(separatorEntreTel);
-				}
-				sbfAllTel.append(sbfTel.toString());
-			}
-		}
-
-		return sbfAllTel.toString();
-	}
 
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
