@@ -6,7 +6,6 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field type="super" />
     <field name="titreSEO" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre SEO</label>
     </field>
@@ -79,6 +78,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field type="super" />
   </fields>
   <tabs>
     <tab id="filtres_api">
