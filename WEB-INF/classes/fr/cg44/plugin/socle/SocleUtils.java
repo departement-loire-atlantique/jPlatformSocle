@@ -2,18 +2,12 @@ package fr.cg44.plugin.socle;
 
 import static com.jalios.jcms.Channel.getChannel;
 
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.Iterator;
 import java.util.TreeSet;
-import java.util.stream.Stream;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
@@ -25,8 +19,6 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
-import com.jalios.util.ServletUtil;
-import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
 public final class SocleUtils {
@@ -242,6 +234,28 @@ public final class SocleUtils {
 
 		return sbfAddr.toString();
 
+	}
+	
+	/**
+	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * @param categories
+	 * @return
+	 */
+	public static String formatCategories(TreeSet<Category> categories) {
+	    
+	    if (Util.isEmpty(categories)) return "";
+	    
+	    String separator = ", ";
+	    StringBuilder formatted = new StringBuilder();
+	    
+	    for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+	        Category itCat = (Category) iter.next();
+	        String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+	        formatted.append(title);
+	        if (iter.hasNext()) formatted.append(separator);
+	    }
+	    
+	    return formatted.toString();
 	}
 
 }

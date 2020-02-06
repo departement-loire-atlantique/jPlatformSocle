@@ -89,6 +89,23 @@ jcmsplugin.socle.titre.calinscriptions: Calendrier et inscription
 jcmsplugin.socle.titre.complementtransports: Complément transports
 jcmsplugin.socle.titre.partenairesintervenants: Partenaires et intervenants
 
+jcmsplugin.socle.actuedu.infopratiques.label: Informations pratiques :
+jcmsplugin.socle.actuedu.votrecontact.label: Votre contact :
+jcmsplugin.socle.actuedu.theme.label: Thème :
+jcmsplugin.socle.actuedu.sstheme.label: Sous-thème :
+jcmsplugin.socle.actuedu.parcours.label: Parcours :
+jcmsplugin.socle.actuedu.typepratique.label: Type de pratique :
+jcmsplugin.socle.actuedu.niveau.label: Niveau :
+jcmsplugin.socle.actuedu.capacite.label: Capacité :
+jcmsplugin.socle.actuedu.cout.label: Coût :
+jcmsplugin.socle.actuedu.prisechargedeplacement.label: Prise en charge déplacement :
+jcmsplugin.socle.actuedu.duree.label: Durée :
+jcmsplugin.socle.actuedu.depotdossier.label: Dépôt du dossier :
+jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
+jcmsplugin.socle.actuedu.nouscontacter.label: Nous contacter par mail
+jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
+
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
