@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletFacetteCommuneAdresseLiee" superclass="generated.AbstractPortletFacette" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Facette Commune / Adresse liées</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="communesAvecAdresse" editor="link" required="false" compactDisplay="false" type="generated.City[]">
+      <label xml:lang="fr">Communes avec Adresse</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+

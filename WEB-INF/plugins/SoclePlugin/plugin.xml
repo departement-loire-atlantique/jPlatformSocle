@@ -8,6 +8,7 @@
 
   <types>
     <type name="AbstractElement"></type>
+    <type name="AbstractPortletFacette"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="Actualite"></type>
@@ -37,7 +38,16 @@
     <type name="MarchePublic"></type>
     <type name="News"></type>
     <type name="Place"></type>
-    <type name="PortletRechercheFacettes"></type> 
+    <type name="PortletFacetteAdresse"></type>
+    <type name="PortletFacetteCanton"></type>
+    <type name="PortletFacetteCategorie"></type>
+    <type name="PortletFacetteCategoriesLiees"></type>
+    <type name="PortletFacetteCommune"></type>
+    <type name="PortletFacetteCommuneAdresseLiee"></type>
+    <type name="PortletFacetteDelegation"></type>
+    <type name="PortletFacetteMotcle"></type>
+    <type name="PortletFacetteTitre"></type>
+    <type name="PortletRechercheFacettes"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
     <type name="Show"></type>
