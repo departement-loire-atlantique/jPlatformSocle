@@ -3,8 +3,10 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.TreeSet;
 import org.apache.log4j.Logger;
 
@@ -135,7 +137,7 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
-	
+
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
@@ -194,6 +196,28 @@ public final class SocleUtils {
 
 		return sbfAddr.toString();
 
+	}
+	
+	/**
+	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * @param categories
+	 * @return
+	 */
+	public static String formatCategories(TreeSet<Category> categories) {
+	    
+	    if (Util.isEmpty(categories)) return "";
+	    
+	    String separator = ", ";
+	    StringBuilder formatted = new StringBuilder();
+	    
+	    for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+	        Category itCat = (Category) iter.next();
+	        String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+	        formatted.append(title);
+	        if (iter.hasNext()) formatted.append(separator);
+	    }
+	    
+	    return formatted.toString();
 	}
 
 }
