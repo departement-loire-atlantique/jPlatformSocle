@@ -189,7 +189,7 @@
         </template>
     </templates>       
     <templates type="PortletRechercheFacettes">
-        <template name="default" file="doPortletRechercheFacettesSimple.jsp" usage='box'>
+        <template name="default" file="doPortletRechercheFacettesFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
