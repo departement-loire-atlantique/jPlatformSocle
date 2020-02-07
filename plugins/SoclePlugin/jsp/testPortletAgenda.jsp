@@ -31,7 +31,7 @@ if (Util.notEmpty(listCodesInsee)) {
     parameters.put("codeInsee", listCodesInsee);
 }
 
-paramaters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit"));
+parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit"));
 
 String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
 
