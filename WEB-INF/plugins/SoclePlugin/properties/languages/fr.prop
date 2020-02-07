@@ -95,3 +95,9 @@ wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions san
 # Plugin DS Icons pour Tiny MCE
 jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
 jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
+
+# -----------------------------------------------------------
+#  Infolocale
+# ------------------------------------------------------------
+jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
+jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut

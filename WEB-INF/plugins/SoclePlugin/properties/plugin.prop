@@ -201,3 +201,5 @@ $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
 jcmsplugin.socle.infolocale.schedule: 30 * * * * *
 jcmsplugin.socle.infolocale.login: 
 jcmsplugin.socle.infolocale.password: 
+jcmsplugin.socle.infolocale.limit: 20
+jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812

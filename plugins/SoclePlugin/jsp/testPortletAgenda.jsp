@@ -9,7 +9,9 @@
 %><%@ include file='/jcore/doInitPage.jsp'%>
 
 <%
-PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication("lch_1217680");
+PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication("$jcmsplugin.socle.temp.portletagendatest.id");
+
+if (Util.isEmpty(box)) return;
 %>
 
 <h2><%= box.getTitreSEO() %></h2>
@@ -29,7 +31,11 @@ if (Util.notEmpty(listCodesInsee)) {
     parameters.put("codeInsee", listCodesInsee);
 }
 
-JSONObject extractedFlux = RequestManager.filterFluxData("f24ba875-a641-47aa-b1b5-01c23a1b6812", parameters);
+paramaters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit"));
+
+String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
+
+JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
 %>
 
 <%= extractedFlux.getString("success") %>
