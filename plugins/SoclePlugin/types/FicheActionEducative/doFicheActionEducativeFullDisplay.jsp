@@ -103,7 +103,7 @@ boolean hasDocRessources = Util.notEmpty(obj.getDocumentsJointsBlocN1()) || Util
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                                         <jalios:foreach name="itPhone" type="String" array="<%= obj.getTelephone() %>">
-                                            <jalios:phone number="<%= itPhone %>"></jalios:phone>
+                                            <ds:phone number="<%= itPhone %>"></ds:phone>
                                         </jalios:foreach>
                                     </div>
                                     <div class="ds44-docListElem mts">
