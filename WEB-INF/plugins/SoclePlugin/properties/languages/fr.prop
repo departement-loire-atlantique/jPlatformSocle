@@ -76,10 +76,10 @@ jcmsplugin.socle.pdcv.delegation: Délégation {0}
 jcmsplugin.socle.pdcv.select.delegation: Sélectionner la délégation {0}
 jcmsplugin.socle.pdcv.nantes: Nantes
 jcmsplugin.socle.pdcv.stnazaire: Saint-Nazaire
-jcmsplugin.socle.pdcv.chateaubriand: Châteaubriand
+jcmsplugin.socle.pdcv.chateaubriand: Châteaubriant
 jcmsplugin.socle.pdcv.ancenis: Ancenis
-jcmsplugin.socle.pdcv.paysretz: pays de Retz
-jcmsplugin.socle.pdcv.vignoble: vignoble
+jcmsplugin.socle.pdcv.paysretz: Pays de retz
+jcmsplugin.socle.pdcv.vignoble: Vignoble
 
 # ------------------------------------------------------------
 #  Contenu
