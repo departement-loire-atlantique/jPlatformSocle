@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="PortletFacetteCategoriesLiees" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+<type name="PortletFacetteCategoriesLiees" superclass="generated.AbstractPortletFacette" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
   <label xml:lang="fr">Portlet Facette Catégories liées</label>
   <title ml="true">
     <label xml:lang="en">Title</label>
