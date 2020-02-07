@@ -96,8 +96,8 @@
 						tabindex="-1">
 					<area shape="poly"
 						coords="111,93,116,66,141,52,146,58,174,44,213,46,225,27,265,12,261,4,283,4,290,11,316,21,328,40,343,78,337,79,334,89,321,86,312,103,295,100,284,107,275,106,256,117,259,121,265,123,262,129,266,132,272,128,279,131,283,137,291,141,283,146,273,146,275,165,282,170,280,179,263,185,252,185,248,188,247,183,239,176,234,181,237,202,226,191,218,191,211,198,206,197,176,173,176,166,157,164,157,148,159,141,172,127,167,118,152,117,148,112,145,105,139,105,131,97,111,93"
-						href="delegationchateaubriand" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.chateaubriand") %>'
-						title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", "jcmsplugin.socle.pdcv.chateaubriand") %>'
+						href="delegationchateaubriant" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.chateaubriant") %>'
+						title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", "jcmsplugin.socle.pdcv.chateaubriant") %>'
 						data-bkp-aria-hidden="" data-bkp-tabindex="" aria-hidden="true"
 						tabindex="-1">
 					<area shape="poly"
@@ -156,8 +156,8 @@
 						data-bkp-tabindex="" aria-hidden="true" tabindex="-1">
 					<area shape="poly"
 						coords="80,62,106,77,109,83,118,83,126,90,114,101,114,115,124,116,146,140,156,136,167,140,164,129,170,124,179,132,196,128,197,122,195,106,199,102,198,95,184,94,181,85,188,76,203,76,206,71,217,73,226,61,237,62,253,43,244,2,77,2,68,30"
-						href="delegationchateaubriand" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.chateaubriand") %>'
-                        title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", "jcmsplugin.socle.pdcv.chateaubriand") %>' data-bkp-aria-hidden=""
+						href="delegationchateaubriant" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.chateaubriant") %>'
+                        title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", "jcmsplugin.socle.pdcv.chateaubriant") %>' data-bkp-aria-hidden=""
 						data-bkp-tabindex="" class="" aria-hidden="true" tabindex="-1">
 				</map> </picture>
 			</div>
