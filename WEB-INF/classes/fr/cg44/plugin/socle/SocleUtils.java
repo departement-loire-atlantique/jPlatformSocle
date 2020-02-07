@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
@@ -27,6 +28,10 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
+
+import generated.City;
+import generated.Delegation;
+import generated.PortletAgendaInfolocale;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -263,5 +268,69 @@ public final class SocleUtils {
 	    
 	    return urlParams.toString();
 	}
+	
+	/**
+	 * Récupère une liste de codes Insee 
+	 * @param box
+	 * @param loggedMember
+	 * @return
+	 */
+	public static String getCodesInseeFromPortletAgenda(PortletAgendaInfolocale box, Member loggedMember) {
+	    StringBuilder codesInsee = new StringBuilder();
+	    
+	    // récupération des Insee des délégations
+	    if (Util.notEmpty(box.getDelegations())) {
+	        for (Delegation itDeleg : box.getDelegations()) {
+	            TreeSet<City> allCities = itDeleg.getLinkIndexedDataSet(City.class);
+	            for (City itCommune : allCities) {
+	                codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	            }
+	        }
+	    }
+	    
+	    // récupération des Insee des communes
+	    if (Util.notEmpty(box.getCommunes())) {
+	        TreeSet<City> allCities = new TreeSet<City>(Arrays.asList(box.getCommunes()));
+            for (City itCommune : allCities) {
+	            codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	        }
+	    }
+	    
+	    // Récupération des Insee des EPCIs
+	    if (Util.notEmpty(box.getEpci(loggedMember))) {
+	        QueryHandler qh = new QueryHandler();
+	        qh.setCids(JcmsUtil.dataListToString(box.getEpci(loggedMember), ","));
+	        qh.setLoggedMember(loggedMember);
+	        qh.setTypes("City");
+	        QueryResultSet result = qh.getResultSet();
+	        SortedSet<Publication> listPubs = result.getAsSortedSet();
+	        for (Publication itPub : listPubs) {
+	            City itCommune = (City) itPub;
+	            codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	        }
+	    }
+	    
+	    String sortie = Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(","));
+	    return sortie;
+	}
+
+    public static StringBuilder appendInseeFromCommune(StringBuilder codesInsee, City itCommune) {
+
+        // Le code doit être supérieur à 0 (valeur vide)
+        if (itCommune.getCityCode() <= 0) return codesInsee;
+        
+        // Il ne doit pas y avoir de doublon
+        if (codesInsee.toString().contains(Integer.toString(itCommune.getCityCode()))) return codesInsee;
+        
+        // Le code INSEE doit appartenir au département 44
+        if (!Integer.toString(itCommune.getCityCode()).startsWith("44")) return codesInsee;
+        
+        StringBuilder codeInseeClone = codesInsee;
+        
+        codesInsee.append(itCommune.getCityCode());
+        codesInsee.append(",");
+        
+        return codeInseeClone;
+    }
 
 }

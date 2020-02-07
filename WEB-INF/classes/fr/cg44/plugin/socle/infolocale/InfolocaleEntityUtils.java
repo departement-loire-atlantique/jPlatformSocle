@@ -224,7 +224,7 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Commune commune = new Commune();
         try {
-            commune.setInsee(json.getString("Insee"));
+            commune.setInsee(json.getString("insee"));
             commune.setNom(json.getString("nom"));
             commune.setSlug(json.getString("slug"));
             commune.setDepartement(json.getString("departement"));
