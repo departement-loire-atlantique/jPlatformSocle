@@ -20,7 +20,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         <ds:titleSimple title="<%= obj.getTitle() %>" date='' userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" 
         breadcrumb="true" subtitle="<%= obj.getSoustitre() %>"></ds:titleSimple>
         
-        <div class="ds44-img50 ds44--xl-padding-tb">
+        <div class="ds44-img50 ds44--l-padding-tb">
             <div class="ds44-inner-container">
                 <div class="ds44-grid12-offset-1">
                     <section class="ds44-box ds44-theme">
