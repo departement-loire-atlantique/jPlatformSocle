@@ -219,5 +219,18 @@ public final class SocleUtils {
 	    
 	    return formatted.toString();
 	}
+	
+	/**
+	 * Retourne une URL valide pour le front-office
+	 * @param url
+	 * @return
+	 */
+	public static String parseUrl(String url) {
+	    if (Util.isEmpty(url)) return "";
+	    
+	    if (url.contains("http")) return url;
+	    
+	    return "https://" + url;
+	}
 
 }
