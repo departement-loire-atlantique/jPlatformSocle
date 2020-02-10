@@ -281,8 +281,8 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         </jalios:if>
                         <jalios:if predicate="<%= Util.notEmpty(obj.getAdresseSiteInternet()) %>">
                             <jalios:if predicate="<%= addLineBreak %>">
-	                            <br/>
-	                            <% addLineBreak = false; %>
+                                <br/>
+                                <% addLineBreak = false; %>
                             </jalios:if>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartSiteInternet()) %>">
                             <p class="ds44-box-heading" role="heading" aria-level="2"><%= obj.getTitreEncartSiteInternet() %></p>
