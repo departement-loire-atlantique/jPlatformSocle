@@ -35,8 +35,8 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                             <strong> <%= SocleUtils.formatCategories(obj.getTheme(loggedMember)) %></strong>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getSoustheme(loggedMember)) %>">
-	                                        <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) %>"><br/></jalios:if>
-	                                        <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember)) %>
+                                            <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) %>"><br/></jalios:if>
+                                            <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember)) %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
                                             <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) %>"><br/></jalios:if>
@@ -168,7 +168,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         </jalios:if>
                         <div class="col mll mbs">
                             <p class="ds44-wsg-exergue"><%= obj.getFormat(loggedMember).first().getName() %></p>
-                            <br/>
+                            <div class="ds44-mb-std"></div>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                         </div>
                     </div>
