@@ -168,6 +168,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         </jalios:if>
                         <div class="col mll mbs">
                             <p class="ds44-wsg-exergue"><%= obj.getFormat(loggedMember).first().getName() %></p>
+                            <br/>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                         </div>
                     </div>
