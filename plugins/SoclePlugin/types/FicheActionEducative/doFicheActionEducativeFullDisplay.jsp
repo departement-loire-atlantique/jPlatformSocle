@@ -244,6 +244,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         </jalios:if>
         
         <jalios:if predicate="<%= hasBlocRessource %>">
+        <% boolean addLineBreak = false; %>
         <section id="blocRessources" class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
@@ -257,7 +258,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 if (Util.isEmpty(obj.getFieldValue("documentsJointsBlocN" + blocDocCpt))) continue;
                                 currentDocBlocTitle = (String) obj.getFieldValue("titreEncartDocumentBlocN" + blocDocCpt);
                                 currentDocBlocElements = (FileDocument[]) obj.getFieldValue("documentsJointsBlocN" + blocDocCpt);
-                            %>
+                            %>  
+                                <jalios:if predicate="<%= addLineBreak %>">
+                                    <br/>
+                                    <% addLineBreak = false; %>
+                                </jalios:if>
                                 <jalios:if predicate="<%= Util.notEmpty(currentDocBlocTitle) %>">
                                 <p class="ds44-box-heading" role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
                                 </jalios:if>
@@ -269,11 +274,16 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 %>
                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                 </jalios:foreach>
+                                <% addLineBreak = true; %>
                             <%
                             } // end of for
                             %>
                         </jalios:if>
                         <jalios:if predicate="<%= Util.notEmpty(obj.getAdresseSiteInternet()) %>">
+                            <jalios:if predicate="<%= addLineBreak %>">
+	                            <br/>
+	                            <% addLineBreak = false; %>
+                            </jalios:if>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartSiteInternet()) %>">
                             <p class="ds44-box-heading" role="heading" aria-level="2"><%= obj.getTitreEncartSiteInternet() %></p>
                             </jalios:if>
