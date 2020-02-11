@@ -3,6 +3,7 @@
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
+jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
