@@ -74,7 +74,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
-                                        <strong><%= glp("jcmsplugin.socle.actuedu.depotdossier.label") %></strong> <jalios:wysiwyg><%= obj.getDepotDuDossier() %></jalios:wysiwyg>
+                                        <jalios:wysiwyg><%= obj.getDepotDuDossier().replace("<div class=\"wysiwyg\"><p>", "<div class=\"wysiwyg\"><p>" + "<strong>" + glp("jcmsplugin.socle.actuedu.depotdossier.label") + "</strong> ") %></jalios:wysiwyg>
                                         <strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
                                     </div>
                                 </div>
