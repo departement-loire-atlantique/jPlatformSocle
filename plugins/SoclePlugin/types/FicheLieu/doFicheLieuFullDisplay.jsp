@@ -69,10 +69,7 @@
 							<div class="grid-2-small-1 ds44-grid12-offset-1">
 								<div class="col">
 
-									<jalios:if
-										predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces())
-												|| (Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.longitude"))
-														&& Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.latitude")))%>'>
+									<jalios:if predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces()) || Util.notEmpty(localisation) %>'>
 										<p role="heading" aria-level="3" class="ds44-box-heading"><%=obj.getServiceDuDepartement() ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
 
 										<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
