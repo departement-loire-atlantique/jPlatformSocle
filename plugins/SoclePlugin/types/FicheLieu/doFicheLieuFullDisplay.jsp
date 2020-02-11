@@ -218,7 +218,9 @@
 							%>
 							<figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= sbfLegendeCopyright.toString() %>'>
 								<img src='<%= obj.getImagePrincipale() %>' alt="" class="ds44-w100 ds44-imgRatio">
-								<figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
+								<jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
+									<figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
+								</jalios:if>
 							</figure>
 						</div>
 					</jalios:if>
