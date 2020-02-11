@@ -163,7 +163,7 @@
 												<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
 												<% Boolean hasOnlyOneMail = obj.getEmail().length == 1; %>
 												<jalios:foreach name="email" type="String" array='<%=obj.getEmail()%>'>
-													<a href='<%="#mailto:" + email%>' aria-label='<%=glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") + " :" + email%>'> 
+													<a href='<%="mailto:" + email%>' aria-label='<%=glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") + " :" + email%>'> 
 														<%= hasOnlyOneMail ? glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") : email%>
 													</a>
 												</jalios:foreach>
@@ -202,7 +202,7 @@
 	<section class="ds44-contenuArticle" id="section1">
 		<div class="ds44-inner-container ds44-mtb3">
 			<div class="ds44-grid12-offset-1">
-				<div class="grid-2-small-1">
+				<div class="grid-<%= Util.notEmpty(obj.getImagePrincipale()) ? "2" : "1" %>-small-1">
 					
 					<jalios:if predicate='<%=Util.notEmpty(obj.getImagePrincipale())%>'>
 						<div class="col mrl mbs">
@@ -229,7 +229,7 @@
 						<div class="col mll mbs">
 
 							<jalios:if predicate='<%=Util.notEmpty(obj.getChapo())%>'>
-								<p class="ds44-introduction"><%= obj.getChapo() %></p>
+								<div class="ds44-introduction"><%= obj.getChapo() %></div>
 							</jalios:if>
 
 							<jalios:if predicate='<%=Util.notEmpty(obj.getPlusDeDetailInterne()) || Util.notEmpty(obj.getPlusDeDetailExterne())%>'>
@@ -422,22 +422,22 @@
 						<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.autre-lieu-associes") %></p>
 
 						<jalios:foreach name="ficheLieu" type="FicheLieu" array='<%= obj.getAutresLieuxAssocies() %>'>
-							<p class="ds44-docListElem mtm">
+							<div class="ds44-docListElem mtm">
 								<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i> 
 								<a href='<%= ficheLieu.getDisplayUrl(userLocale) %>'
 									aria-label='<%= ficheLieu.getTitle() %>'> 
 									<%= ficheLieu.getTitle() %>
 								</a>
-							</p>
-							<%
-								String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
-								String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
-										ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
-										ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche, "");
-							%>
-							<p>
-								<%= addresseFiche %>
-							</p>
+								<%
+									String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
+									String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
+											ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
+											ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche, "");
+								%>
+								<p>
+									<%= addresseFiche %>
+								</p>
+							</div>
 						</jalios:foreach>
 
 					</div>
