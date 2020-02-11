@@ -247,12 +247,8 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 currentDocBlocElements = (FileDocument[]) obj.getFieldValue("documentsJointsBlocN" + blocDocCpt);
                             %>  
                                 <ul class="ds44-list">
-                                <jalios:if predicate="<%= addLineBreak %>">
-                                    <br/>
-                                    <% addLineBreak = false; %>
-                                </jalios:if>
                                 <jalios:if predicate="<%= Util.notEmpty(currentDocBlocTitle) %>">
-                                <p class="ds44-box-heading" role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
+                                <p class='ds44-box-heading <%= addLineBreak ? "ds44-mt-std" : "" %>' role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
                                 </jalios:if>
                                 <jalios:foreach name="itDoc" type="FileDocument" array="<%= currentDocBlocElements %>">
                                 <li class="mts">
@@ -277,7 +273,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 <% addLineBreak = false; %>
                             </jalios:if>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartSiteInternet()) %>">
-                            <p class="ds44-box-heading" role="heading" aria-level="2"><%= obj.getTitreEncartSiteInternet() %></p>
+                            <p class='ds44-box-heading <%= addLineBreak ? "ds44-mt-std" : "" %>' role="heading" aria-level="2"><%= obj.getTitreEncartSiteInternet() %></p>
                             </jalios:if>
                             <jalios:foreach name="itAdresse" type="String" array="<%= obj.getAdresseSiteInternet() %>" counter="itSiteCpt">
                             <%
