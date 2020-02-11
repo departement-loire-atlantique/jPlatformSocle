@@ -198,7 +198,7 @@ public final class SocleUtils {
 		String[] morcAddrArr3 = new String[]{ codePostal, commune};
 		for(String morcAddr : morcAddrArr3) {
 			if(Util.notEmpty(morcAddr)) {
-				sbfAddrBis.append(morcAddr)
+				sbfAddr.append(morcAddr)
 				.append(separator);
 			}
 		}
