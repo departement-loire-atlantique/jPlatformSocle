@@ -88,21 +88,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getService()) %>">
                                             <br/><%= obj.getService() %>
                                         </jalios:if>
-                                    </div>
-                                    <div class="ds44-docListElem mts">
-                                        <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-                                        <jalios:if predicate="<%= Util.notEmpty(obj.getNdeVoie()) && Util.notEmpty(obj.getLibelleDeVoie()) %>">
-                                            <%= obj.getNdeVoie() %> <%= obj.getLibelleDeVoie() %>
-                                            <br/>
-                                        </jalios:if>
-                                        <jalios:if predicate="<%= Util.notEmpty(obj.getCs()) %>">
-                                            <%= glp("jcmsplugin.socle.label.cs")%> <%= obj.getCs() %>
-                                            <br/>
-                                        </jalios:if>
-                                        <%= obj.getCodePostal() %><jalios:if predicate="<%= Util.notEmpty(obj.getCommune()) %>"> <%= obj.getCommune().getTitle() %></jalios:if>
-                                        <jalios:if predicate="<%= Util.notEmpty(obj.getCedex()) %>">
-                                            <br/><%= glp("jcmsplugin.socle.label.cedex")%> <%= obj.getCedex() %>
-                                        </jalios:if>
+                                        <%= SocleUtils.formatAddress(null, null, null, obj.getNdeVoie(), obj.getLibelleDeVoie(), null, obj.getCs(), obj.getCodePostal(), obj.getCommune().getTitle(), obj.getCedex()) %>
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
