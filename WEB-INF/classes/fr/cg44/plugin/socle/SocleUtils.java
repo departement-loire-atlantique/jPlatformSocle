@@ -226,8 +226,7 @@ public final class SocleUtils {
 		StringBuffer sbfLocalisation = new StringBuffer();
 		
 		if (Util.notEmpty(longitude) && Util.notEmpty(latitude)) {
-			
-			sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
+      sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
 					.append("directions?engine=graphhopper_car&route=")
 					.append(latitude)
 					.append("%2C")
