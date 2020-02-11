@@ -174,8 +174,8 @@
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
 												<jalios:foreach name="site" type="String" array='<%=obj.getSiteInternet()%>'>
-													<a href='<%=site%>' aria-label='<%=glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") %>' target="_blank"> 
-														<%=obj.getSiteInternet().length > 1 ? site : glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
+													<a href='<%=SocleUtils.parseUrl(site)%>' aria-label='<%=glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") %>' target="_blank"> 
+														<%=obj.getSiteInternet().length > 1 ? SocleUtils.parseUrl(site) : glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 													</a>
 												</jalios:foreach>
 											</p>
