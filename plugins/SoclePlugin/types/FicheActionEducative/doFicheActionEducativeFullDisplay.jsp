@@ -74,7 +74,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
-                                        <strong><%= glp("jcmsplugin.socle.actuedu.depotdossier.label") %></strong> <jalios:wysiwyg><%= obj.getDepotDuDossier() %></jalios:wysiwyg>
+                                        <jalios:wysiwyg><%= obj.getDepotDuDossier().replace("<div class=\"wysiwyg\"><p>", "<div class=\"wysiwyg\"><p>" + "<strong>" + glp("jcmsplugin.socle.actuedu.depotdossier.label") + "</strong> ") %></jalios:wysiwyg>
                                         <strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                             <br/><%= obj.getDirection() %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getService()) %>">
-                                            <br/><%= obj.getService() %>
+                                            <br/><%= obj.getService() %><br/>
                                         </jalios:if>
                                         <%= SocleUtils.formatAddress(null, null, null, obj.getNdeVoie(), obj.getLibelleDeVoie(), null, obj.getCs(), obj.getCodePostal(), obj.getCommune().getTitle(), obj.getCedex()) %>
                                     </div>
@@ -152,7 +152,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                           </jalios:if>
                         </div>
                         </jalios:if>
-                        <div class="col mll mbs">
+                        <div class='col <%= hasImage ? "mll" : "" %> mbs'>
                             <p class="ds44-wsg-exergue"><%= obj.getFormat(loggedMember).first().getName() %></p>
                             <div class="ds44-mb-std"></div>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
@@ -246,6 +246,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 currentDocBlocTitle = (String) obj.getFieldValue("titreEncartDocumentBlocN" + blocDocCpt);
                                 currentDocBlocElements = (FileDocument[]) obj.getFieldValue("documentsJointsBlocN" + blocDocCpt);
                             %>  
+                                <ul class="ds44-list">
                                 <jalios:if predicate="<%= addLineBreak %>">
                                     <br/>
                                     <% addLineBreak = false; %>
@@ -253,15 +254,19 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 <jalios:if predicate="<%= Util.notEmpty(currentDocBlocTitle) %>">
                                 <p class="ds44-box-heading" role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
                                 </jalios:if>
-                                <jalios:foreach name="itDoc" type="FileDocument" array="<%= currentDocBlocElements %>"><%
+                                <jalios:foreach name="itDoc" type="FileDocument" array="<%= currentDocBlocElements %>">
+                                <li class="mts">
+                                <%
                                 // Récupérer l'extension du fichier
                                 String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
                                 // Récupérer la taille du fichier
                                 String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
                                 %>
                                 <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                </li>
                                 </jalios:foreach>
                                 <% addLineBreak = true; %>
+                                </ul>
                             <%
                             } // end of for
                             %>
