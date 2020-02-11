@@ -164,6 +164,7 @@ public final class SocleUtils {
 		String separator = " ";
 		String newLine = "<br>";
 		StringBuffer sbfAddr = new StringBuffer();
+		String userLang = Channel.getChannel().getCurrentUserLang();
 
 		StringBuffer sbfAddrBis = new StringBuffer();
 		String[] morcAddrArr = new String[]{ libelle, etageCouloirEscalier, entreBatimentImmeuble};
@@ -189,7 +190,8 @@ public final class SocleUtils {
 			.append(newLine);
 		}
 		if(Util.notEmpty(cs)) {
-			sbfAddr.append("CS ")
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cs"))
+			.append(" ")
 			.append(cs)
 			.append(newLine);
 		}
@@ -201,7 +203,8 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append("Cedex ")
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
+			.append(" ")
 			.append(cedex)
 			.append(newLine);
 		}
