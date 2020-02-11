@@ -16,4 +16,4 @@
 String displayedPhone = number.replaceAll("..", "$0 ");
 String linkPhone = "+33" + number.substring(1);
 %>
-<a href="tel:<%= linkPhone %>" title="<%= displayedPhone %>"><%= displayedPhone %></a>
+<a class="ds44-m-t-xl-noUnderline" href="tel:<%= linkPhone %>" title="<%= displayedPhone %>"><%= displayedPhone %></a>

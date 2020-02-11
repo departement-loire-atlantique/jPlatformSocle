@@ -121,9 +121,6 @@ jcmsplugin.socle.titre.partenairesintervenants: Partenaires et intervenants
 
 jcmsplugin.socle.actuedu.infopratiques.label: Informations pratiques :
 jcmsplugin.socle.actuedu.votrecontact.label: Votre contact :
-jcmsplugin.socle.actuedu.theme.label: Thème :
-jcmsplugin.socle.actuedu.sstheme.label: Sous-thème :
-jcmsplugin.socle.actuedu.parcours.label: Parcours :
 jcmsplugin.socle.actuedu.typepratique.label: Type de pratique :
 jcmsplugin.socle.actuedu.niveau.label: Niveau :
 jcmsplugin.socle.actuedu.capacite.label: Capacité :
