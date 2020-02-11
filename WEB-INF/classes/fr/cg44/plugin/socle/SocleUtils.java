@@ -198,7 +198,7 @@ public final class SocleUtils {
 		String[] morcAddrArr3 = new String[]{ codePostal, commune};
 		for(String morcAddr : morcAddrArr3) {
 			if(Util.notEmpty(morcAddr)) {
-				sbfAddrBis.append(morcAddr)
+				sbfAddr.append(morcAddr)
 				.append(separator);
 			}
 		}
@@ -226,7 +226,8 @@ public final class SocleUtils {
 		StringBuffer sbfLocalisation = new StringBuffer();
 		
 		if (Util.notEmpty(longitude) && Util.notEmpty(latitude)) {
-      sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
+			
+			sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
 					.append("directions?engine=graphhopper_car&route=")
 					.append(latitude)
 					.append("%2C")
@@ -252,7 +253,7 @@ public final class SocleUtils {
 		
 		return formatOpenStreetMapLink(latitude, longitude, "11");
 	}
-	
+
 	/**
 	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
 	 * @param categories

@@ -1,3 +1,5 @@
+<%@tag import="com.jalios.jcms.context.JcmsContext"%>
+<%@tag import="com.jalios.util.Browser"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag 
     pageEncoding="UTF-8"
@@ -15,5 +17,12 @@
 <%
 String displayedPhone = number.replaceAll("..", "$0 ");
 String linkPhone = "+33" + number.substring(1);
+
+JcmsContext jcmsContext = Channel.getChannel().getCurrentJcmsContext();
 %>
-<a class="ds44-m-t-xl-noUnderline" href="tel:<%= linkPhone %>" title="<%= displayedPhone %>"><%= displayedPhone %></a>
+<jalios:if predicate='<%= ! jcmsContext.getBrowser().isSmallDevice() %>'>
+	<%= displayedPhone %><br>
+</jalios:if>
+<jalios:if predicate='<%= jcmsContext.getBrowser().isSmallDevice() %>'>
+	<a class="ds44-m-t-xl-noUnderline" href="tel:<%= linkPhone %>" title="<%= displayedPhone %>"><%= displayedPhone %></a>
+</jalios:if>
