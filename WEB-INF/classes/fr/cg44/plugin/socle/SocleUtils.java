@@ -159,20 +159,22 @@ public final class SocleUtils {
 	 */
 	public static String formatAddress(String libelle, String etageCouloirEscalier, 
 			String entreBatimentImmeuble, String nDeVoie, String libelleDeVoie, 
-			String lieuDit, String cs, String codePostal, String commune) {
+			String lieuDit, String cs, String codePostal, String commune, String cedex) {
 
 		String separator = " ";
 		String newLine = "<br>";
 		StringBuffer sbfAddr = new StringBuffer();
 
-		if(Util.notEmpty(libelle)) {
-			sbfAddr.append(libelle)
-			.append(newLine);
-		}
-
 		StringBuffer sbfAddrBis = new StringBuffer();
-		String[] morcAddrArr = new String[]{ etageCouloirEscalier, entreBatimentImmeuble, nDeVoie, libelleDeVoie, lieuDit};
+		String[] morcAddrArr = new String[]{ libelle, etageCouloirEscalier, entreBatimentImmeuble};
 		for(String morcAddr : morcAddrArr) {
+			if(Util.notEmpty(morcAddr)) {
+				sbfAddrBis.append(morcAddr)
+				.append(newLine);
+			}
+		}
+		String[] morcAddrArr2 = new String[]{ nDeVoie, libelleDeVoie};
+		for(String morcAddr : morcAddrArr2) {
 			if(Util.notEmpty(morcAddr)) {
 				sbfAddrBis.append(morcAddr)
 				.append(separator);
@@ -182,20 +184,71 @@ public final class SocleUtils {
 			sbfAddr.append(sbfAddrBis)
 			.append(newLine);
 		}
-		if(Util.notEmpty(cs)) {
-			sbfAddr.append(cs)
+		if(Util.notEmpty(lieuDit)) {
+			sbfAddr.append(lieuDit)
 			.append(newLine);
 		}
-		if(Util.notEmpty(codePostal)) {
-			sbfAddr.append(codePostal)
-			.append(separator);
+		if(Util.notEmpty(cs)) {
+			sbfAddr.append("CS ")
+			.append(cs)
+			.append(newLine);
 		}
-		if(Util.notEmpty(commune)) {
-			sbfAddr.append(commune);
+		String[] morcAddrArr3 = new String[]{ codePostal, commune};
+		for(String morcAddr : morcAddrArr3) {
+			if(Util.notEmpty(morcAddr)) {
+				sbfAddrBis.append(morcAddr)
+				.append(separator);
+			}
+		}
+		if(Util.notEmpty(cedex)) {
+			sbfAddr.append("Cedex ")
+			.append(cedex)
+			.append(newLine);
 		}
 
 		return sbfAddr.toString();
 
+	}
+	
+	
+	/**
+	 * Créé une url oppenstreetmap à partir des coordonnées et du zoom souhaité
+	 * @param latitude
+	 * @param longitude
+	 * @param zoom
+	 * @return une url qui ouvre une page openstreetmap
+	 */
+	public static String formatOpenStreetMapLink(String latitude, String longitude, String zoom) {
+		
+		StringBuffer sbfLocalisation = new StringBuffer();
+		
+		if (Util.notEmpty(longitude) && Util.notEmpty(latitude)) {
+			
+			sbfLocalisation.append("https://www.openstreetmap.org/")
+					.append("directions?engine=graphhopper_car&route=")
+					.append(latitude)
+					.append("%2C")
+					.append(longitude)
+					.append("#map=")
+					.append(zoom)
+					.append("/")
+					.append(latitude)
+					.append("/")
+					.append(longitude);
+		}
+		
+		return sbfLocalisation.toString();
+	}
+	
+	/**
+	 * Créé une url oppenstreetmap à partir des coordonnées
+	 * @param latitude
+	 * @param longitude
+	 * @return une url qui ouvre une page openstreetmap avec un zoom par defaut
+	 */
+	public static String formatOpenStreetMapLink(String latitude, String longitude) {
+		
+		return formatOpenStreetMapLink(latitude, longitude, "11");
 	}
 	
 	/**
