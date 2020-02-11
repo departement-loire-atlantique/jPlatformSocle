@@ -49,6 +49,8 @@ jcmsplugin.socle.nouvelonglet: Ouvrir {0} dans un nouvel onglet
 jcmsplugin.socle.retourALaListe: Retour à la liste 
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
+jcmsplugin.socle.label.cs: CS
+jcmsplugin.socle.label.cedex: Cedex
 
 # ------------------------------------------------------------
 #  Header
