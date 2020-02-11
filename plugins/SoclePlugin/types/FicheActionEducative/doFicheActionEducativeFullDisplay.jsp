@@ -63,11 +63,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </jalios:if>
                                     <jalios:if predicate="<%= Util.notEmpty(obj.getCout()) %>">
                                     <div class="ds44-docListElem mts">
-                                        <i class="icon icon-cross ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getCout() %></jalios:wysiwyg>
+                                        <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getCout() %></jalios:wysiwyg>
                                     </div>
                                     </jalios:if>
                                     <div class="ds44-docListElem mts">
-                                        <i class="icon icon-cross ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
+                                        <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-time ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getDuree() %></jalios:wysiwyg>
