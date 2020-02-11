@@ -280,7 +280,7 @@
 
 	<jalios:if
 		predicate='<%=Util.notEmpty(obj.getPourQui()) || (!obj.getToutesLesCommunesDuDepartement()
-						&& (Util.notEmpty(obj.getCommune()) || Util.notEmpty(obj.getEpci(loggedMember))))%>'>
+						&& (Util.notEmpty(obj.getCommunes()) || Util.notEmpty(obj.getEpci(loggedMember))))%>'>
 		<section class="ds44-contenuArticle" id="section2">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
@@ -300,10 +300,10 @@
 							sbfCommunesLiees.append(glp("jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe"))
 								.append(" ");
 
-							if (Util.notEmpty(obj.getCommune())) {
+							if (Util.notEmpty(obj.getCommunes())) {
 
-								for (City catCommune : obj.getCommunes()) {
-									sbfCommunesLiees.append(catCommune.getTitle()).append(separatorCommune);
+								for (City itCommune : obj.getCommunes()) {
+									sbfCommunesLiees.append(itCommune.getTitle()).append(separatorCommune);
 								}
 
 							} else if (Util.notEmpty(obj.getEpci(loggedMember))) {
