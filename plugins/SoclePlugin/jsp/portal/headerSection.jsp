@@ -131,7 +131,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         </jalios:foreach>
         
         <%-- Bloc près de chez vous --%>
+        <jalios:if predicate='<%= Util.notEmpty(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
         <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
+        </jalios:if>
         
         <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
         
