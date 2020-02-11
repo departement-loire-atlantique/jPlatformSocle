@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%
 	FicheLieu obj = (FicheLieu) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
@@ -151,8 +152,8 @@
 										<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-												<jalios:foreach name="numTel" type="String" array='<%= obj.getTelephone() %>'>
-													<jalios:phone number='<%= numTel %>'/>
+												<jalios:foreach name="numTel" type="String" array="<%= obj.getTelephone() %>">
+													<ds:phone number="<%= numTel %>"/>
 												</jalios:foreach>
 											</p>
 										</jalios:if>

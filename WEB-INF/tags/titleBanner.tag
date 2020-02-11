@@ -60,7 +60,9 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
     
     <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
         <picture class="ds44-pageHeaderContainer__pictureContainer">
-            <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+            <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+                <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+            </jalios:if>
             <source media="(min-width: 36em)" srcset="<%=imagePath%>">
             <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
         </picture>

@@ -101,6 +101,10 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 			                    
 			                </li>
 			            </jalios:foreach>
+			                <%-- Bloc près de chez vous --%>
+			                <li>
+			                 <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-expanded="true" data-bkp-aria-hidden="" data-bkp-tabindex=""><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
+			                </li>
 			            </ul>
 			            <hr class="ds44-navSep" />
 			            <ul class="ds44-multiCol ds44-xl-gap ds44-list">
@@ -123,6 +127,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 	    <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
             <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
         </jalios:foreach>
+        
+        <%-- Bloc près de chez vous --%>
+        <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
         
 		<section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
 		

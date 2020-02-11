@@ -14,11 +14,13 @@ extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de l
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
-$id.jcmsplugin.socle.visible-topbar.group:Groupe pour la topbar 
+$id.jcmsplugin.socle.visible-topbar.group:ID du groupe pour la topbar
+jcmsplugin.socle.visible-topbar.group.name:Groupe pour la topbar
 jcmsplugin.socle.css-urls: URLs des fichiers css à charger dans le portail
 jcmsplugin.socle.css-urls.help: Séparer les valeurs par des espaces 
 jcmsplugin.socle.js-urls: URLs des fichiers js à charger dans le portail
 jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
+jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
@@ -36,14 +38,19 @@ jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
 jcmsplugin.socle.fermer: Fermer
 jcmsplugin.socle.retour: Retour
+jcmsplugin.socle.valider: Valider
+jcmsplugin.socle.ou: Ou
 jcmsplugin.socle.publiele: Publié le {0}
 jcmsplugin.socle.symbol.copyright: ©
 jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
+jcmsplugin.socle.nouvelonglet: Ouvrir {0} dans un nouvel onglet
 jcmsplugin.socle.retourALaListe: Retour à la liste 
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
+jcmsplugin.socle.label.cs: CS
+jcmsplugin.socle.label.cedex: Cedex
 
 # ------------------------------------------------------------
 #  Header
@@ -59,6 +66,23 @@ jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
+jcmsplugin.socle.menu.pdcv: Près de chez vous
+
+# ------------------------------------------------------------
+#  Près de chez vous
+# ------------------------------------------------------------
+
+jcmsplugin.socle.pdcv.consultez: Consultez l'actualité ou trouvez des contacts près de chez vous :
+jcmsplugin.socle.pdcv.votrecommune: Votre commune
+jcmsplugin.socle.pdcv.carte.alt: carte réactive des zones de délégations du département
+jcmsplugin.socle.pdcv.delegation: Délégation {0}
+jcmsplugin.socle.pdcv.select.delegation: Sélectionner la délégation {0}
+jcmsplugin.socle.pdcv.nantes: Nantes
+jcmsplugin.socle.pdcv.stnazaire: Saint-Nazaire
+jcmsplugin.socle.pdcv.chateaubriant: Châteaubriant
+jcmsplugin.socle.pdcv.ancenis: Ancenis
+jcmsplugin.socle.pdcv.paysretz: Pays de retz
+jcmsplugin.socle.pdcv.vignoble: Vignoble
 
 # ------------------------------------------------------------
 #  Contenu
@@ -87,6 +111,26 @@ jcmsplugin.socle.titre.horaires-acces: Horaires et accès :
 jcmsplugin.socle.titre.autre-lieu-associes: Autres lieux associés :
 
 jcmsplugin.socle.titre.temoignage: Témoignages
+
+
+jcmsplugin.socle.titre.endetails: En détails
+jcmsplugin.socle.titre.publicvise: Public visé
+jcmsplugin.socle.titre.calinscriptions: Calendrier et inscription
+jcmsplugin.socle.titre.complementtransports: Complément transports
+jcmsplugin.socle.titre.partenairesintervenants: Partenaires et intervenants
+
+jcmsplugin.socle.actuedu.infopratiques.label: Informations pratiques :
+jcmsplugin.socle.actuedu.votrecontact.label: Votre contact :
+jcmsplugin.socle.actuedu.typepratique.label: Type de pratique :
+jcmsplugin.socle.actuedu.niveau.label: Niveau :
+jcmsplugin.socle.actuedu.capacite.label: Capacité :
+jcmsplugin.socle.actuedu.cout.label: Coût :
+jcmsplugin.socle.actuedu.prisechargedeplacement.label: Prise en charge déplacement :
+jcmsplugin.socle.actuedu.duree.label: Durée :
+jcmsplugin.socle.actuedu.depotdossier.label: Dépôt du dossier :
+jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
+jcmsplugin.socle.actuedu.nouscontacter.label: Nous contacter par mail
+jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
 
 jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d'accès
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte

@@ -3,6 +3,7 @@
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
+jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -14,6 +15,7 @@ jcmsplugin.socle.portlet.filariane.id: c_1088465
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.png
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
@@ -126,7 +128,6 @@ $jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
 $jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
-$jcmsplugin.socle.category.delegations.root: c_1155289
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 
 # Fiche actu

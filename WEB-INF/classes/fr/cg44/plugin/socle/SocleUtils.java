@@ -3,8 +3,10 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.TreeSet;
 import org.apache.log4j.Logger;
 
@@ -135,7 +137,7 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
-	
+
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
@@ -162,6 +164,7 @@ public final class SocleUtils {
 		String separator = " ";
 		String newLine = "<br>";
 		StringBuffer sbfAddr = new StringBuffer();
+		String userLang = Channel.getChannel().getCurrentUserLang();
 
 		StringBuffer sbfAddrBis = new StringBuffer();
 		String[] morcAddrArr = new String[]{ libelle, etageCouloirEscalier, entreBatimentImmeuble};
@@ -187,7 +190,8 @@ public final class SocleUtils {
 			.append(newLine);
 		}
 		if(Util.notEmpty(cs)) {
-			sbfAddr.append("CS ")
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cs"))
+			.append(" ")
 			.append(cs)
 			.append(newLine);
 		}
@@ -199,7 +203,8 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append("Cedex ")
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
+			.append(" ")
 			.append(cedex)
 			.append(newLine);
 		}
@@ -247,6 +252,41 @@ public final class SocleUtils {
 	public static String formatOpenStreetMapLink(String latitude, String longitude) {
 		
 		return formatOpenStreetMapLink(latitude, longitude, "11");
+	}
+
+	/**
+	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * @param categories
+	 * @return
+	 */
+	public static String formatCategories(TreeSet<Category> categories) {
+	    
+	    if (Util.isEmpty(categories)) return "";
+	    
+	    String separator = ", ";
+	    StringBuilder formatted = new StringBuilder();
+	    
+	    for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+	        Category itCat = (Category) iter.next();
+	        String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+	        formatted.append(title);
+	        if (iter.hasNext()) formatted.append(separator);
+	    }
+	    
+	    return formatted.toString();
+	}
+	
+	/**
+	 * Retourne une URL valide pour le front-office
+	 * @param url
+	 * @return
+	 */
+	public static String parseUrl(String url) {
+	    if (Util.isEmpty(url)) return "";
+	    
+	    if (url.contains("http")) return url;
+	    
+	    return "https://" + url;
 	}
 
 }
