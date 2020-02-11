@@ -227,7 +227,7 @@ public final class SocleUtils {
 		
 		if (Util.notEmpty(longitude) && Util.notEmpty(latitude)) {
 			
-			sbfLocalisation.append("https://www.openstreetmap.org/")
+			sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
 					.append("directions?engine=graphhopper_car&route=")
 					.append(latitude)
 					.append("%2C")
