@@ -54,7 +54,6 @@
     <type name="SeniorCitizensEstablishment"></type>
     <type name="Tuile"></type>
     <type name="WelcomeSection"></type>
-    <type name="WysiwygBlock"></type>
     <type name="Video"></type>
     <type name="PageCarrefour"></type>
     
@@ -224,8 +223,6 @@
   </private-files>
   <public-files>
     <directory path="docs" />
-    <directory path="css" />
-    <directory path="js" />
     <directory path="jsp" />
     <directory path="types" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
