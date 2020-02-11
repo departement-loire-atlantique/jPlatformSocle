@@ -80,7 +80,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                             %>
                             <li>
                                 <jalios:select>
-                                    <jalios:if predicate="<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>">
+                                    <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
                                         <%-- Bloc près de chez vous --%>
                                         <li>
                                          <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-expanded="true" data-bkp-aria-hidden="" data-bkp-tabindex=""><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
@@ -117,7 +117,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                     </div>
             
                     <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
-<%-- 			            <jsp:include page="socialNetworksHeader.jspf"/>  --%>
+<%--                         <jsp:include page="socialNetworksHeader.jspf"/>  --%>
                         <%@ include file='socialNetworksHeader.jspf' %>
                     </div>   
                     <%-- Navigation sites et applis --%>
