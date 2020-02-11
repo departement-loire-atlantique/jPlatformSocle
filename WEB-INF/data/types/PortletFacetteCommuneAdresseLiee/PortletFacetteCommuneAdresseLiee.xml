@@ -6,8 +6,9 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="communesAvecAdresse" editor="link" required="false" compactDisplay="false" type="generated.City[]">
+    <field name="communesAvecAdresse" editor="link" required="false" compactDisplay="false" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Communes avec Adresse</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Renseigner ici la liste des communes qui vont nécessiter une adresse pour rediriger correctement l’utilisateur (Nantes, Rezé, …)&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field type="super" />
   </fields>
