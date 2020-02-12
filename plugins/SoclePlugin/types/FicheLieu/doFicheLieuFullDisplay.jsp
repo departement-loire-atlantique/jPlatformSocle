@@ -28,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ds44-img50 ds44--xl-padding-tb">
+	<div class="ds44-img50 ds44--l-padding-tb">
 		<div class="ds44-inner-container">
 			<div class="ds44-grid12-offset-1">
 				<%
@@ -76,17 +76,7 @@
 										<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-												<jalios:if predicate='<%=Util.notEmpty(localisation)%>'>
-													<a href='<%= localisation%>' 
-														aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
-														target="_blank">
-														
-														<%=adresse%>
-													</a>
-												</jalios:if>
-												<jalios:if predicate='<%=Util.isEmpty(localisation)%>'>
-													<%=adresse%>
-												</jalios:if>
+												<%=adresse%>
 											</p>
 										</jalios:if>
 
@@ -200,7 +190,7 @@
 	</div>
 
 	<section class="ds44-contenuArticle" id="section1">
-		<div class="ds44-inner-container ds44-mtb3">
+		<div class='ds44-inner-container <%= Util.notEmpty(obj.getImagePrincipale()) ? "ds44-mtb3" : "ds44-mb3"%>'>
 			<div class="ds44-grid12-offset-1">
 				<div class="grid-<%= Util.notEmpty(obj.getImagePrincipale()) ? "2" : "1" %>-small-1">
 					
@@ -228,7 +218,7 @@
 					<jalios:if
 						predicate='<%=Util.notEmpty(obj.getChapo()) || Util.notEmpty(obj.getPlusDeDetailInterne())
 						|| Util.notEmpty(obj.getPlusDeDetailExterne())%>'>
-						<div class="col mll mbs">
+						<div class='col <%= Util.notEmpty(obj.getImagePrincipale()) ? "mll" : "" %> mbs'>
 
 							<jalios:if predicate='<%=Util.notEmpty(obj.getChapo())%>'>
 								<div class="ds44-introduction"><%= obj.getChapo() %></div>
@@ -255,7 +245,7 @@
 										
 									} else if(Util.notEmpty(obj.getPlusDeDetailExterne())) {
 										
-										url = obj.getPlusDeDetailExterne();
+										url = SocleUtils.parseUrl(obj.getPlusDeDetailExterne());
 										isOpenInNewTab = true;
 										sbfTitle.append(" ")
 											.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
@@ -362,10 +352,12 @@
 								<i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i>
 								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
 								<%= obj.getTransportsEnCommun().substring(24, obj.getTransportsEnCommun().length()-10) %>
+								<%-- Lien Destineo congele - manque adresse depart
 								<br> 
 								<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 									<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") %> 
-								</a>
+								</a> 
+								--%>
 							</p>
 						</jalios:if>
 
