@@ -9,19 +9,19 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.Date;
-import fr.cg44.plugin.socle.infolocale.entities.Evenement;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import generated.EvenementInfolocale;
 
 public class InfolocaleEntityUtils {
     
-    public static Evenement[] createEvenementArrayFromJsonArray(JSONArray jsonArray) {
-        Evenement[] itEvents = new Evenement[jsonArray.length()];
+    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
+        EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itEvents[counter] = createEvenementFromJsonItem(jsonArray.getJSONObject(counter));
+                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -29,10 +29,10 @@ public class InfolocaleEntityUtils {
         return itEvents;
     }
     
-    public static Evenement createEvenementFromJsonItem(JSONObject json) {
+    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         
-        Evenement itEvent = new Evenement();
+        EvenementInfolocale itEvent = new EvenementInfolocale();
         
         try {
             itEvent.setId("INFOLOC-"+json.getInt("id"));
@@ -77,7 +77,7 @@ public class InfolocaleEntityUtils {
             itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
         } catch (JSONException e) {
             e.printStackTrace();
-            itEvent = new Evenement();
+            itEvent = new EvenementInfolocale();
         }
         
         return itEvent;

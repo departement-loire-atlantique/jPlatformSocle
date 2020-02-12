@@ -2,7 +2,6 @@
 <%@page import="com.jalios.jcms.handler.QueryHandler"%>
 <%@page import="javafx.scene.shape.Box"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.Evenement"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="org.json.JSONObject"%>
 <%@ page contentType="text/html; charset=UTF-8"%><%
@@ -43,9 +42,9 @@ JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
 <p>Transformation des résultats en événements</p>
 
 <%
-Evenement[] evenements = InfolocaleEntityUtils.createEvenementArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
 %>
 
-<jalios:foreach name="itEvent" type="Evenement" array="<%= evenements %>">
+<jalios:foreach name="itEvent" type="EvenementInfolocale" array="<%= evenements %>">
     <%= itEvent %><br/>
 </jalios:foreach>

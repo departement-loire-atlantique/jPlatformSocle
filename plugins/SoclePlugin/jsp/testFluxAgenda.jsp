@@ -1,4 +1,3 @@
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.Evenement"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.singleton.TokenManager"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
@@ -51,10 +50,9 @@ JSONObject extractedFlux = RequestManager.extractFluxData("f24ba875-a641-47aa-b1
 <p>Transformation des résultats en événements</p>
 
 <%
-Evenement[] evenements = InfolocaleEntityUtils.createEvenementArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
 %>
-
-<jalios:foreach name="itEvent" type="Evenement" array="<%= evenements %>">
+<jalios:foreach name="itEvent" type="EvenementInfolocale" array="<%= evenements %>">
     <%= itEvent %><br/>
 </jalios:foreach>
 
@@ -73,9 +71,8 @@ extractedFlux = RequestManager.filterFluxData("f24ba875-a641-47aa-b1b5-01c23a1b6
 <p>Transformation des résultats en événements</p>
 
 <%
-evenements = InfolocaleEntityUtils.createEvenementArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
 %>
-
-<jalios:foreach name="itEvent" type="Evenement" array="<%= evenements %>">
+<jalios:foreach name="itEvent" type="EvenementInfolocale" array="<%= evenements %>">
     <%= itEvent %><br/>
 </jalios:foreach>

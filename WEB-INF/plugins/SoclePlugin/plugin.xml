@@ -24,6 +24,7 @@
     <type name="Directory"></type>
     <type name="Dossier"></type>
     <type name="ElectedMember"></type>
+    <type name="EvenementInfolocale"></type>
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
