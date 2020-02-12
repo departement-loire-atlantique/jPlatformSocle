@@ -233,15 +233,16 @@
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
   </public-files>
   <webapp-files>
+    <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
-    <file path="WEB-INF/tags/toggle.tag" />
-    <file path="WEB-INF/tags/card.tag" />
+    <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
