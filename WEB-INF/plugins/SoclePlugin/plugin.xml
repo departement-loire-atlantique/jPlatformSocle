@@ -7,13 +7,11 @@
   <description xml:lang="fr">Socle technique</description>
 
   <types>
-    <type name="AbstractElement"></type>
     <type name="AbstractPortletFacette"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="Actualite"></type>
     <type name="AlertCG"></type>
-    <type name="Article"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
@@ -54,7 +52,6 @@
     <type name="SeniorCitizensEstablishment"></type>
     <type name="Tuile"></type>
     <type name="WelcomeSection"></type>
-    <type name="WysiwygBlock"></type>
     <type name="Video"></type>
     <type name="PageCarrefour"></type>
     
@@ -224,8 +221,6 @@
   </private-files>
   <public-files>
     <directory path="docs" />
-    <directory path="css" />
-    <directory path="js" />
     <directory path="jsp" />
     <directory path="types" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
@@ -243,6 +238,7 @@
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="WEB-INF/tags/card.tag" />
+    <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />

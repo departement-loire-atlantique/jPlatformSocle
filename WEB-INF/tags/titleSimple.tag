@@ -15,7 +15,7 @@
     description="Le titre affiché sur l'image"
 %>
 <%@ attribute name="imagePath"
-    required="true"
+    required="false"
     fragment="false"
     rtexprvalue="true"
     type="String"
@@ -48,6 +48,13 @@
     rtexprvalue="true"
     type="String"
     description="Copyright de l'image"
+%>
+<%@ attribute name="subtitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Sous-titre"
 %>
 <%@ attribute name="date"
     required="false"
@@ -83,6 +90,9 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	        <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
         </jalios:if>
         <h1 class="h1-like mbs mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt" id="titreActualite"><%=title%></h1>
+        <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
+        <h2 id="sousTitre" class="h2-like"><%= subtitle %></h2>
+        </jalios:if>
         <jalios:if predicate="<%= Util.notEmpty(date) %>">
             <p class="ds44-textLegend"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.publiele", date) %></p>
         </jalios:if>

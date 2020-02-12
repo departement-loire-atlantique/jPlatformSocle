@@ -3,8 +3,10 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.TreeSet;
 import org.apache.log4j.Logger;
 
@@ -135,7 +137,7 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
-	
+
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
@@ -157,20 +159,23 @@ public final class SocleUtils {
 	 */
 	public static String formatAddress(String libelle, String etageCouloirEscalier, 
 			String entreBatimentImmeuble, String nDeVoie, String libelleDeVoie, 
-			String lieuDit, String cs, String codePostal, String commune) {
+			String lieuDit, String cs, String codePostal, String commune, String cedex) {
 
 		String separator = " ";
 		String newLine = "<br>";
 		StringBuffer sbfAddr = new StringBuffer();
-
-		if(Util.notEmpty(libelle)) {
-			sbfAddr.append(libelle)
-			.append(newLine);
-		}
+		String userLang = Channel.getChannel().getCurrentUserLang();
 
 		StringBuffer sbfAddrBis = new StringBuffer();
-		String[] morcAddrArr = new String[]{ etageCouloirEscalier, entreBatimentImmeuble, nDeVoie, libelleDeVoie, lieuDit};
+		String[] morcAddrArr = new String[]{ libelle, etageCouloirEscalier, entreBatimentImmeuble};
 		for(String morcAddr : morcAddrArr) {
+			if(Util.notEmpty(morcAddr)) {
+				sbfAddrBis.append(morcAddr)
+				.append(newLine);
+			}
+		}
+		String[] morcAddrArr2 = new String[]{ nDeVoie, libelleDeVoie};
+		for(String morcAddr : morcAddrArr2) {
 			if(Util.notEmpty(morcAddr)) {
 				sbfAddrBis.append(morcAddr)
 				.append(separator);
@@ -180,20 +185,108 @@ public final class SocleUtils {
 			sbfAddr.append(sbfAddrBis)
 			.append(newLine);
 		}
-		if(Util.notEmpty(cs)) {
-			sbfAddr.append(cs)
+		if(Util.notEmpty(lieuDit)) {
+			sbfAddr.append(lieuDit)
 			.append(newLine);
 		}
-		if(Util.notEmpty(codePostal)) {
-			sbfAddr.append(codePostal)
-			.append(separator);
+		if(Util.notEmpty(cs)) {
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cs"))
+			.append(" ")
+			.append(cs)
+			.append(newLine);
 		}
-		if(Util.notEmpty(commune)) {
-			sbfAddr.append(commune);
+		String[] morcAddrArr3 = new String[]{ codePostal, commune};
+		for(String morcAddr : morcAddrArr3) {
+			if(Util.notEmpty(morcAddr)) {
+				sbfAddr.append(morcAddr)
+				.append(separator);
+			}
+		}
+		if(Util.notEmpty(cedex)) {
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
+			.append(" ")
+			.append(cedex)
+			.append(newLine);
 		}
 
 		return sbfAddr.toString();
 
+	}
+	
+	
+	/**
+	 * Créé une url oppenstreetmap à partir des coordonnées et du zoom souhaité
+	 * @param latitude
+	 * @param longitude
+	 * @param zoom
+	 * @return une url qui ouvre une page openstreetmap
+	 */
+	public static String formatOpenStreetMapLink(String latitude, String longitude, String zoom) {
+		
+		StringBuffer sbfLocalisation = new StringBuffer();
+		
+		if (Util.notEmpty(longitude) && Util.notEmpty(latitude)) {
+			
+			sbfLocalisation.append(Channel.getChannel().getProperty("jcmsplugin.socle.openstreetmap.url"))
+					.append("directions?engine=graphhopper_car&route=")
+					.append(latitude)
+					.append("%2C")
+					.append(longitude)
+					.append("#map=")
+					.append(zoom)
+					.append("/")
+					.append(latitude)
+					.append("/")
+					.append(longitude);
+		}
+		
+		return sbfLocalisation.toString();
+	}
+	
+	/**
+	 * Créé une url oppenstreetmap à partir des coordonnées
+	 * @param latitude
+	 * @param longitude
+	 * @return une url qui ouvre une page openstreetmap avec un zoom par defaut
+	 */
+	public static String formatOpenStreetMapLink(String latitude, String longitude) {
+		
+		return formatOpenStreetMapLink(latitude, longitude, "11");
+	}
+
+	/**
+	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * @param categories
+	 * @return
+	 */
+	public static String formatCategories(TreeSet<Category> categories) {
+	    
+	    if (Util.isEmpty(categories)) return "";
+	    
+	    String separator = ", ";
+	    StringBuilder formatted = new StringBuilder();
+	    
+	    for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+	        Category itCat = (Category) iter.next();
+	        String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+	        formatted.append(title);
+	        if (iter.hasNext()) formatted.append(separator);
+	    }
+	    
+	    return formatted.toString();
+	}
+	
+	/**
+	 * Retourne une URL valide pour le front-office
+	 * @param url
+	 * @return
+	 */
+	public static String parseUrl(String url) {
+	    if (Util.isEmpty(url)) return "";
+	    
+	    if (url.contains("http")) return url;
+	    
+	    return "https://" + url;
 	}
 
 }

@@ -3,7 +3,7 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
 String imageFile = obj.getImageBandeau() ;
-String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
+String imageMobileFile = obj.getImageMobile();
 String title = obj.getTitle();
 String legende = obj.getLegende(userLang);
 String copyright = obj.getCopyright(userLang);
@@ -14,7 +14,7 @@ String copyright = obj.getCopyright(userLang);
 
     <section class="ds44-container-large">
         <jalios:select> 
-	        <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
+	        <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) && !clientBrowser.isSmallDevice() %>">
 	            <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 	        </jalios:if>        
 	        <jalios:default>

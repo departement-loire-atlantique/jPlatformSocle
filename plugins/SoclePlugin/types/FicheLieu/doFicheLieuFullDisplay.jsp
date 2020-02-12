@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%
 	FicheLieu obj = (FicheLieu) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
@@ -11,7 +12,7 @@
 
 	<div class="ds44-lightBG ds44-posRel">
 		<%-- TODO bouton Retour a la liste --%>
-		<%-- <a class="ds44-btnStd ds44-btnStd--retourPage" type="button" title='<%= glp("jcmsplugin.socle.retourALaListeLieux") %>'> 
+		<%-- <a class="ds44-btnStd ds44-btnStd--retourPage" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
 			<i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
 			<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span>
 		</a> --%>
@@ -31,25 +32,20 @@
 		<div class="ds44-inner-container">
 			<div class="ds44-grid12-offset-1">
 				<%
-					StringBuffer sbfLocalisation = new StringBuffer();
-					if(Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.longitude"))
-							&& Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.latitude"))) {
-						sbfLocalisation.append("https://www.openstreetmap.org/directions?route=")
-								.append(obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude"))
-								.append("%2C")
-								.append(obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude"));
-					}					
-					String localisation = sbfLocalisation.toString();
-					
+					String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
+					String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
+					String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
+
 					String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
 					String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
 							obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
-							obj.getCodePostal(), commune);
+							obj.getCodePostal(), commune, "");
 
 					String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
 					String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 							obj.getEtageCouloirEscalier2(), obj.getEntreeBatimentImmeuble2(), obj.getNdeVoie2(),
-							obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire);
+							obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
+							obj.getCedex2());
 				%>
 				<jalios:if
 					predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)
@@ -74,17 +70,17 @@
 							<div class="grid-2-small-1 ds44-grid12-offset-1">
 								<div class="col">
 
-									<jalios:if
-										predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces())
-												|| (Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.longitude"))
-														&& Util.notEmpty(obj.getExtraData("extra.Place.plugin.tools.geolocation.latitude")))%>'>
+									<jalios:if predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces()) || Util.notEmpty(localisation) %>'>
 										<p role="heading" aria-level="3" class="ds44-box-heading"><%=obj.getServiceDuDepartement() ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
 
 										<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
 												<jalios:if predicate='<%=Util.notEmpty(localisation)%>'>
-													<a href="<%= localisation%>" aria-label="<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle()%>"> 
+													<a href='<%= localisation%>' 
+														aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
+														target="_blank">
+														
 														<%=adresse%>
 													</a>
 												</jalios:if>
@@ -101,34 +97,34 @@
 											</p> --%>
 
 										<jalios:if predicate='<%= Util.notEmpty(obj.getPlanDacces()) %>'>
-											<jalios:if predicate="<%= obj.getPlanDacces().length == 1 %>">
+											
 												<p class="ds44-docListElem mts">
 													<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i> 
-													<a href="<%= obj.getPlanDacces()[0].getDisplayLink(userLocale) %>"
-														aria-label="<%= glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label")+" : " + obj.getTitle()%>"> 
-														<%= glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label") %>
-													</a>
-												</p>
-											</jalios:if>
-											<jalios:if predicate="<%= obj.getPlanDacces().length > 1 %>">
-												<p class="ds44-docListElem mts">
-													<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i> 
-													<jalios:foreach name="planDacces" type="Media" array="<%= obj.getPlanDacces() %>">
-														<a href="<%= planDacces.getDownloadUrl() %>" 
-															download="<%= encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>" 
-															aria-label="<%= glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label")+" : " + obj.getTitle()%>"> 
-															<%= planDacces.getDataName(userLang) %>
+													
+													<% Boolean hasOnlyOnePlan = obj.getPlanDacces().length == 1; %>
+													<jalios:foreach name="planDacces" type="FileDocument" array='<%= obj.getPlanDacces() %>'>
+													
+														<% String linkText = hasOnlyOnePlan ? glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label") : planDacces.getDataName(userLang); %>
+														<a href='<%= planDacces.getDownloadUrl() %>' 
+															download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
+															aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label")+" : " + obj.getTitle())%>'> 
+															
+															<%= linkText %>
 														</a>
+														
 													</jalios:foreach>
 												</p>
-											</jalios:if>
+											
 										</jalios:if>
 
 										<jalios:if
 											predicate='<%= Util.notEmpty(localisation) %>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
-												<a href="<%= localisation%>" aria-label="<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle()%>"> 
+												<a href='<%= localisation%>' 
+													aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
+													target="_blank"> 
+													
 													<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
 												</a>
 											</p>
@@ -138,7 +134,7 @@
 										<%-- <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.accessibilite-lieu.titre") %></p>
 										<p class="ds44-docListElem mts">
 											<i class="icon icon-right ds44-docListIco" aria-hidden="true"></i> 
-											<a href="#" aria-label="<%= glp("jcmsplugin.socle.ficheaide.info-accessibilite.label") + " : " + obj.getTitle()%>">
+											<a href="#" aria-label='<%= glp("jcmsplugin.socle.ficheaide.info-accessibilite.label") + " : " + obj.getTitle()%>'>
 												<%= glp("jcmsplugin.socle.ficheaide.info-accessibilite.label") %>
 											</a>
 										</p> --%>
@@ -157,7 +153,7 @@
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 												<jalios:foreach name="numTel" type="String" array="<%= obj.getTelephone() %>">
-													<jalios:phone number="<%= numTel %>"/>
+													<ds:phone number="<%= numTel %>"/>
 												</jalios:foreach>
 											</p>
 										</jalios:if>
@@ -165,9 +161,10 @@
 										<jalios:if predicate='<%=Util.notEmpty(obj.getEmail())%>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-												<jalios:foreach name="email" type="String" array="<%=obj.getEmail()%>">
-													<a href="<%="#mailto:" + email%>" aria-label="<%=glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") + email%>"> 
-														<%=email%>
+												<% Boolean hasOnlyOneMail = obj.getEmail().length == 1; %>
+												<jalios:foreach name="email" type="String" array='<%=obj.getEmail()%>'>
+													<a href='<%="mailto:" + email%>' aria-label='<%=HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") + " :" + email)%>'> 
+														<%= hasOnlyOneMail ? glp("jcmsplugin.socle.ficheaide.contacter.label") + " " + glp("jcmsplugin.socle.ficheaide.par-mail.label") : email%>
 													</a>
 												</jalios:foreach>
 											</p>
@@ -176,9 +173,9 @@
 										<jalios:if predicate='<%=Util.notEmpty(obj.getSiteInternet())%>'>
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
-												<jalios:foreach name="site" type="String" array="<%=obj.getSiteInternet()%>">
-													<a href="<%=site%>" aria-label="<%=glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") %>" target="_blank"> 
-														<%=obj.getSiteInternet().length > 1 ? site : glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
+												<jalios:foreach name="site" type="String" array='<%=obj.getSiteInternet()%>'>
+													<a href='<%=SocleUtils.parseUrl(site)%>' aria-label='<%=HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label") + " " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
+														<%=obj.getSiteInternet().length > 1 ? SocleUtils.parseUrl(site) : glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 													</a>
 												</jalios:foreach>
 											</p>
@@ -205,7 +202,7 @@
 	<section class="ds44-contenuArticle" id="section1">
 		<div class="ds44-inner-container ds44-mtb3">
 			<div class="ds44-grid12-offset-1">
-				<div class="grid-2-small-1">
+				<div class="grid-<%= Util.notEmpty(obj.getImagePrincipale()) ? "2" : "1" %>-small-1">
 					
 					<jalios:if predicate='<%=Util.notEmpty(obj.getImagePrincipale())%>'>
 						<div class="col mrl mbs">
@@ -219,9 +216,11 @@
 										.append(obj.getCopyright());
 								}
 							%>
-							<figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= sbfLegendeCopyright.toString() %>">
-								<img src="<%= obj.getImagePrincipale() %>" alt="" class="ds44-w100 ds44-imgRatio">
-								<figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
+							<figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString()) %>'>
+								<img src='<%= obj.getImagePrincipale() %>' alt="" class="ds44-w100 ds44-imgRatio">
+								<jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
+									<figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
+								</jalios:if>
 							</figure>
 						</div>
 					</jalios:if>
@@ -232,27 +231,43 @@
 						<div class="col mll mbs">
 
 							<jalios:if predicate='<%=Util.notEmpty(obj.getChapo())%>'>
-								<p class="ds44-introduction"><%= obj.getChapo() %></p>
+								<div class="ds44-introduction"><%= obj.getChapo() %></div>
 							</jalios:if>
 
 							<jalios:if predicate='<%=Util.notEmpty(obj.getPlusDeDetailInterne()) || Util.notEmpty(obj.getPlusDeDetailExterne())%>'>
 								<%
 									String url = "";
-									String title = "";
+									Boolean isOpenInNewTab = false;
+									StringBuffer sbfTitle = new StringBuffer();
+									sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
 									
 									if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
 										
-										url = obj.getPlusDeDetailInterne().getDisplayUrl(userLocale);
-										title = glp("jcmsplugin.socle.plusDeDetails");
+										if(obj.getPlusDeDetailInterne() instanceof FileDocument) {
+											
+											url = ((FileDocument)obj.getPlusDeDetailInterne()).getDownloadUrl();
+											isOpenInNewTab = true;
+											sbfTitle.append(" ")
+												.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+										} else {
+											url = obj.getPlusDeDetailInterne().getDisplayUrl(userLocale);
+										}
 										
 									} else if(Util.notEmpty(obj.getPlusDeDetailExterne())) {
 										
 										url = obj.getPlusDeDetailExterne();
-										title = glp("jcmsplugin.socle.plusDeDetails") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
+										isOpenInNewTab = true;
+										sbfTitle.append(" ")
+											.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
 										
 									}
 								%>
-								<a href="<%= url %>" class="ds44-btnStd ds44-btnStd--large" type="button" title="<%= title %>"> 
+								<a href='<%= url %>' 
+									class="ds44-btnStd ds44-btnStd--large" 
+									type="button" 
+									title='<%= HttpUtil.encodeForHTMLAttribute(sbfTitle.toString()) %>' 
+									target='<%= isOpenInNewTab ? "_blank" : ""%>'> 
+									
 									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.plusDeDetails") %></span> 
 									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 								</a>
@@ -268,7 +283,7 @@
 
 	<jalios:if
 		predicate='<%=Util.notEmpty(obj.getPourQui()) || (!obj.getToutesLesCommunesDuDepartement()
-						&& (Util.notEmpty(obj.getCommune()) || Util.notEmpty(obj.getEpci(loggedMember))))%>'>
+						&& (Util.notEmpty(obj.getCommunes()) || Util.notEmpty(obj.getEpci(loggedMember))))%>'>
 		<section class="ds44-contenuArticle" id="section2">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
@@ -288,10 +303,10 @@
 							sbfCommunesLiees.append(glp("jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe"))
 								.append(" ");
 
-							if (Util.notEmpty(obj.getCommune())) {
+							if (Util.notEmpty(obj.getCommunes())) {
 
-								for (City catCommune : obj.getCommunes()) {
-									sbfCommunesLiees.append(catCommune.getTitle()).append(separatorCommune);
+								for (City itCommune : obj.getCommunes()) {
+									sbfCommunesLiees.append(itCommune.getTitle()).append(separatorCommune);
 								}
 
 							} else if (Util.notEmpty(obj.getEpci(loggedMember))) {
@@ -348,7 +363,7 @@
 								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
 								<%= obj.getTransportsEnCommun().substring(24, obj.getTransportsEnCommun().length()-10) %>
 								<br> 
-								<a href="#" aria-label="<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") %>" target="_blank"> 
+								<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 									<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") %> 
 								</a>
 							</p>
@@ -364,7 +379,7 @@
 
 						<%-- TODO accessibilite --%>
 						<%-- <button class="ds44-btnStd ds44-btnStd--large mtm" type="button"
-							aria-label="<%=glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") + " : " + obj.getTitle()%>">
+							aria-label='<%=glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") + " : " + obj.getTitle()%>'>
 							<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") %></span> <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 						</button> --%>
 					</div>
@@ -408,23 +423,23 @@
 					<div class="ds44-wsg-encadreApplat">
 						<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.autre-lieu-associes") %></p>
 
-						<jalios:foreach name="ficheLieu" type="FicheLieu" array="<%= obj.getAutresLieuxAssocies() %>">
-							<p class="ds44-docListElem mtm">
+						<jalios:foreach name="ficheLieu" type="FicheLieu" array='<%= obj.getAutresLieuxAssocies() %>'>
+							<div class="ds44-docListElem mtm">
 								<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i> 
-								<a href="<%= "#mailto:"+ficheLieu.getEmailMLE() %>"
-									aria-label="<%= glp("jcmsplugin.socle.ficheaide.contacter.label") + " "+ficheLieu.getTitle()+" : "+ficheLieu.getEmailMLE() %>"> 
+								<a href='<%= ficheLieu.getDisplayUrl(userLocale) %>'
+									aria-label='<%= HttpUtil.encodeForHTMLAttribute(ficheLieu.getTitle()) %>'> 
 									<%= ficheLieu.getTitle() %>
 								</a>
-							</p>
-							<%
-								String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
-								String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
-										ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
-										ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche);
-							%>
-							<p>
-								<%= addresseFiche %>
-							</p>
+								<%
+									String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
+									String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
+											ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
+											ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche, "");
+								%>
+								<p>
+									<%= addresseFiche %>
+								</p>
+							</div>
 						</jalios:foreach>
 
 					</div>
@@ -434,8 +449,8 @@
 	</jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getPortletBas()) %>'>
-		<jalios:foreach name="portlet" type="PortalElement" array="<%= obj.getPortletBas() %>">
-			<jalios:include pub="<%= portlet %>"></jalios:include>
+		<jalios:foreach name="portlet" type="PortalElement" array='<%= obj.getPortletBas() %>'>
+			<jalios:include pub='<%= portlet %>'></jalios:include>
 		</jalios:foreach>
 	</jalios:if>
 

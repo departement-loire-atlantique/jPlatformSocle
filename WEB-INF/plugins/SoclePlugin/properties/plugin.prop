@@ -3,6 +3,7 @@
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
+jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -14,10 +15,12 @@ jcmsplugin.socle.portlet.filariane.id: c_1088465
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.png
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
+$jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
@@ -126,7 +129,6 @@ $jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
 $jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
-$jcmsplugin.socle.category.delegations.root: c_1155289
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 
 # Fiche actu
@@ -189,6 +191,12 @@ $jcmsplugin.socle.fichelieu.salleDeReunionHandicapMoteur.root: c_1156221
 $jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root: c_1156225
 $jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root: c_1156229
 $jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychique.root: c_1156233
+
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root: c_1156237
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueReunion.root: c_1156241 
+$jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
+$jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
+$jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
 
 # Accueil Annuaire / Agenda
 
