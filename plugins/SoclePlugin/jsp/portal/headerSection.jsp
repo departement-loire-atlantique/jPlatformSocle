@@ -138,7 +138,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
         
         <div class="ds44-container-menuBackLink">
-            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay ds44-hide-mobile">
+            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">
                  <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
             </button>
             <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
