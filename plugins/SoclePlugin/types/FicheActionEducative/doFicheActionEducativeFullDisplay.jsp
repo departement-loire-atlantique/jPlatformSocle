@@ -133,8 +133,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         <div class='col mrl mbs<%= Util.isEmpty(obj.getImageMobile()) ? " ds44-hide-mobile" : ""%>'>
                            <jalios:if predicate="<%= hasFigcaption%>">
                            <figure role="figure">
-                           </jalios:if>
                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= HttpUtil.encodeForHTMLAttribute(obj.getLegende() + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright()) %>'>
+                           </jalios:if>
+                           <jalios:if predicate="<%= !hadFigcaption %>">
+                           <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure">
+                           </jalios:if>
                               <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : HttpUtil.encodeForHTMLAttribute(obj.getImageMobile()) %>'>
                               <source media="(min-width: 36em)" srcset="<%=HttpUtil.encodeForHTMLAttribute(obj.getImagePrincipale())%>">
                               <img src="<%=HttpUtil.encodeForHTMLAttribute(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
