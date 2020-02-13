@@ -6,6 +6,7 @@ String dateFin;
 String rubrique;
 String recherche;
 Integer organisme;
+Integer resultatsMax;
 
 String flux;
 
@@ -19,6 +20,7 @@ dateFin = Util.getString(request.getAttribute("dateFin"), null);
 rubrique = Util.getString(request.getAttribute("rubrique"), null);
 recherche = Util.getString(request.getAttribute("recherche"), null);
 organisme = Util.toInteger(request.getAttribute("organisme"), null);
+resultatsMax = Util.toInteger(request.getAttribute("resultatsMax"), null);
 flux = Util.getString(request.getAttribute("flux"), null);
 accessibiliteMental = Util.toBoolean(request.getAttribute("accessibiliteMental"), false);
 accessibiliteMoteur = Util.toBoolean(request.getAttribute("accessibiliteMoteur"), false);
@@ -47,8 +49,11 @@ if (Util.notEmpty(recherche)) {
 if (Util.notEmpty(organisme)) {
     parameters.put("organisme", organisme);
 }
-
-parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+if (Util.notEmpty(resultatsMax)) {
+    parameters.put("limit", resultatsMax);
+} else {
+    parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+}
 
 String idFlux = Util.isEmpty(flux) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : flux;
 
