@@ -13,9 +13,8 @@ import com.jalios.servlet.http.MockHttpServletRequest;
 
 import generated.Canton;
 import generated.City;
+import generated.ContenuDeTest;
 import generated.Delegation;
-import generated.ElectedMember;
-import generated.FicheLieu;
 
 /**
  * Permet la création de données pour les tests unitaires
@@ -36,6 +35,7 @@ public class SocleDataInit   {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.addParameter("commune", city.getCityCode() + "");
 		QueryHandler qh = new QueryHandler();
+		qh.setTypes("ContenuDeTest");
 		qh.setRequest(request);
 		return qh.getResultSet();
 	}
@@ -152,18 +152,18 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, City commune, City[] communes, Boolean allCity, Category[] categories, Delegation[] delegations, Canton... canton) {
-		FicheLieu ficheLieu = new FicheLieu();
-		ficheLieu.setTitle(name);
-		ficheLieu.setCommune(commune);
-		ficheLieu.setCommunes(communes);
-		ficheLieu.setToutesLesCommunesDuDepartement(allCity);
-		ficheLieu.setCategories(categories);
-		ficheLieu.setCantons(canton);
-		ficheLieu.setDelegations(delegations);
-		ficheLieu.setAuthor(ADMIN);
-		ficheLieu.performCreate(ADMIN);
-		return ficheLieu;
+	public static ContenuDeTest createPub(String name, City commune, City[] communes, Boolean allCity, Category[] categories, Delegation[] delegations, Canton... canton) {
+		ContenuDeTest pub = new ContenuDeTest();
+		pub.setTitle(name);
+		pub.setCommune(commune);
+		pub.setCommunes(communes);
+		pub.setToutesLesCommunesDuDepartement(allCity);
+		pub.setCategories(categories);
+		pub.setCantons(canton);
+		pub.setDelegations(delegations);
+		pub.setAuthor(ADMIN);
+		pub.performCreate(ADMIN);
+		return pub;
 	}
 	
 	
@@ -173,8 +173,8 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, City commune, Canton... canton) {
-		return createFicheLieu(name, commune, null, false, new Category[] {}, new Delegation[] {}, canton);
+	public static ContenuDeTest createPub(String name, City commune, Canton... canton) {
+		return createPub(name, commune, null, false, new Category[] {}, new Delegation[] {}, canton);
 	}
 	
 	
@@ -184,8 +184,8 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, City[] communes, Canton... canton) {
-		return createFicheLieu(name, null, communes, false, new Category[] {},  new Delegation[] {}, canton);
+	public static ContenuDeTest createPub(String name, City[] communes, Canton... canton) {
+		return createPub(name, null, communes, false, new Category[] {},  new Delegation[] {}, canton);
 	}
 	
 	
@@ -195,8 +195,8 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, Canton... canton) {
-		return createFicheLieu(name, null, null, false, new Category[] {}, new Delegation[] {}, canton);
+	public static ContenuDeTest createPub(String name, Canton... canton) {
+		return createPub(name, null, null, false, new Category[] {}, new Delegation[] {}, canton);
 	}
 	
 	
@@ -206,8 +206,8 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, Delegation... delegations) {
-		return createFicheLieu(name, null, null, false, new Category[] {}, delegations);
+	public static ContenuDeTest createPub(String name, Delegation... delegations) {
+		return createPub(name, null, null, false, new Category[] {}, delegations);
 	}
 	
 	
@@ -217,8 +217,8 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static FicheLieu createFicheLieu(String name, Category... categories) {
-		return createFicheLieu(name, null, null, false, categories,  new Delegation[] {});
+	public static ContenuDeTest createPub(String name, Category... categories) {
+		return createPub(name, null, null, false, categories,  new Delegation[] {});
 	}
 	
 	
@@ -229,14 +229,13 @@ public class SocleDataInit   {
 	 * @param canton
 	 * @return
 	 */
-	public static ElectedMember createElu(String name, Canton canton) {
-		ElectedMember elu = new ElectedMember();
-		elu.setTitle(name);
-		elu.setCanton(canton);
-		elu.setAuthor(ADMIN);
-		elu.performCreate(ADMIN);
-		return elu;
+	public static ContenuDeTest createPub(String name, Canton canton) {
+		ContenuDeTest pub = new ContenuDeTest();
+		pub.setTitle(name);
+		pub.setCanton(canton);
+		pub.setAuthor(ADMIN);
+		pub.performCreate(ADMIN);
+		return pub;
 	}
-
 
 }

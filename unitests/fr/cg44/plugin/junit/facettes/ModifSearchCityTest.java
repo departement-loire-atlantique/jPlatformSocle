@@ -4,8 +4,7 @@ import static fr.cg44.plugin.junit.facettes.SocleDataInit.createCanton;
 import static fr.cg44.plugin.junit.facettes.SocleDataInit.createCategoryEpci;
 import static fr.cg44.plugin.junit.facettes.SocleDataInit.createDelegation;
 import static fr.cg44.plugin.junit.facettes.SocleDataInit.createCity;
-import static fr.cg44.plugin.junit.facettes.SocleDataInit.createElu;
-import static fr.cg44.plugin.junit.facettes.SocleDataInit.createFicheLieu;
+import static fr.cg44.plugin.junit.facettes.SocleDataInit.createPub;
 import static fr.cg44.plugin.junit.facettes.SocleDataInit.getResultSearchCity;
 import static org.junit.Assert.assertEquals;
 
@@ -23,8 +22,7 @@ import com.jalios.jcms.test.JcmsTestCase4;
 import generated.Canton;
 import generated.City;
 import generated.Delegation;
-import generated.ElectedMember;
-import generated.FicheLieu;
+import generated.ContenuDeTest;
 
 /**
  * Test unitaire de la classe IndexationDataController pour la ré-indexation après modification d'une commune
@@ -37,7 +35,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	static City city1_1 = createCity("Commune 1.1", 1110);
 	// Fiche lieux sur commune 1.1
-	static FicheLieu ficheLieu1_1 = createFicheLieu("ficheLieu 1.1", city1_1);
+	static ContenuDeTest pub1_1 = createPub("pub 1.1", city1_1);
 
 	
 	/**
@@ -47,7 +45,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static City city2_2 = createCity("Commune 2.2", 1220);
 	static City city2_3 = createCity("Commune 2.3", 1230);
 	// Fiche lieux sur commune 2.1
-	static FicheLieu ficheLieu2_1 = createFicheLieu("ficheLieu 2.1", new City[] {city2_1, city2_2, city2_3});
+	static ContenuDeTest pub2_1 = createPub("pub 2.1", new City[] {city2_1, city2_2, city2_3});
 
 	
 	/**
@@ -60,18 +58,18 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static Canton canton3_4 = createCanton("Canton 3.4");
 	// Création des communes avec le canton 2.1
 	static City city3_1 = createCity("Commune 3.1", 1310, new Canton[] {canton3_1, canton3_2});
-	// Elu sur canton 3.1
-	static ElectedMember elu3_1 = createElu("Elu 3.1", canton3_1);
-	static ElectedMember elu3_2 = createElu("Elu 3.2", canton3_1);
-	// Elu sur canton 3.2
-	static ElectedMember elu3_3 = createElu("Elu 3.3", canton3_2);
-	static ElectedMember elu3_4 = createElu("Elu 3.4", canton3_2);
-	// Elu sur canton 3.3
-	static ElectedMember elu3_5 = createElu("Elu 3.3", canton3_3);
-	static ElectedMember elu3_6 = createElu("Elu 3.4", canton3_3);
-	// Elu sur canton 3.4
-	static ElectedMember elu3_7 = createElu("Elu 3.3", canton3_4);
-	static ElectedMember elu3_8 = createElu("Elu 3.4", canton3_4);
+	// ContenuDeTest sur canton 3.1
+	static ContenuDeTest pub3_1 = createPub("ContenuDeTest 3.1", canton3_1);
+	static ContenuDeTest pub3_2 = createPub("ContenuDeTest 3.2", canton3_1);
+	// ContenuDeTest sur canton 3.2
+	static ContenuDeTest pub3_3 = createPub("ContenuDeTest 3.3", canton3_2);
+	static ContenuDeTest pub3_4 = createPub("ContenuDeTest 3.4", canton3_2);
+	// ContenuDeTest sur canton 3.3
+	static ContenuDeTest pub3_5 = createPub("ContenuDeTest 3.3", canton3_3);
+	static ContenuDeTest pub3_6 = createPub("ContenuDeTest 3.4", canton3_3);
+	// ContenuDeTest sur canton 3.4
+	static ContenuDeTest pub3_7 = createPub("ContenuDeTest 3.3", canton3_4);
+	static ContenuDeTest pub3_8 = createPub("ContenuDeTest 3.4", canton3_4);
 	
 	
 	/**
@@ -86,10 +84,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// Création des communes
 	static City city4_1 = createCity("Commune 4.1", 410, canton4_1, canton4_2);
 	// Fiche lieux
-	static FicheLieu ficheLieu4_1 = createFicheLieu("FicheLieu 4.1", canton4_1, canton4_2, canton4_3, canton4_4);
-	static FicheLieu ficheLieu4_2 = createFicheLieu("FicheLieu 4.2", canton4_1, canton4_4);
-	static FicheLieu ficheLieu4_3 = createFicheLieu("FicheLieu 4.3", canton4_3, canton4_4);
-	static FicheLieu ficheLieu4_4 = createFicheLieu("FicheLieu 4.4", canton4_4, canton4_5);
+	static ContenuDeTest pub4_1 = createPub("ContenuDeTest 4.1", canton4_1, canton4_2, canton4_3, canton4_4);
+	static ContenuDeTest pub4_2 = createPub("ContenuDeTest 4.2", canton4_1, canton4_4);
+	static ContenuDeTest pub4_3 = createPub("ContenuDeTest 4.3", canton4_3, canton4_4);
+	static ContenuDeTest pub4_4 = createPub("ContenuDeTest 4.4", canton4_4, canton4_5);
 	
 	
 	/**
@@ -103,10 +101,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// Création des communes
 	static City city5_1 = createCity("Commune 4.1", 510, delegation5_1);
 	// Fiche lieux
-	static FicheLieu ficheLieu5_1 = createFicheLieu("FicheLieu 5.1", new Delegation[] {delegation5_1, delegation5_2, delegation5_3, delegation5_4});
-	static FicheLieu ficheLieu5_2 = createFicheLieu("FicheLieu 5.2", new Delegation[] {delegation5_1, delegation5_2});
-	static FicheLieu ficheLieu5_3 = createFicheLieu("FicheLieu 5.3", new Delegation[] {delegation5_2, delegation5_3});
-	static FicheLieu ficheLieu5_4 = createFicheLieu("FicheLieu 5.4", new Delegation[] {delegation5_1, delegation5_4});
+	static ContenuDeTest pub5_1 = createPub("ContenuDeTest 5.1", new Delegation[] {delegation5_1, delegation5_2, delegation5_3, delegation5_4});
+	static ContenuDeTest pub5_2 = createPub("ContenuDeTest 5.2", new Delegation[] {delegation5_1, delegation5_2});
+	static ContenuDeTest pub5_3 = createPub("ContenuDeTest 5.3", new Delegation[] {delegation5_2, delegation5_3});
+	static ContenuDeTest pub5_4 = createPub("ContenuDeTest 5.4", new Delegation[] {delegation5_1, delegation5_4});
 	
 
 	/**
@@ -121,13 +119,13 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// Création commune
 	static City city6_1 = createCity("Commune 6.1", 610, epci6_1, epci6_2);
 	// Fiche lieux sur l'EPCI
-	static FicheLieu ficheLieu6_1 = createFicheLieu("FicheLieu 6.1", epci6_1);
-	static FicheLieu ficheLieu6_2 = createFicheLieu("FicheLieu 6.2", epci6_2);
-	static FicheLieu ficheLieu6_3 = createFicheLieu("FicheLieu 6.3", epci6_1, epci6_2);
-	static FicheLieu ficheLieu6_4 = createFicheLieu("FicheLieu 6.4", epci6_1, epci6_3);
-	static FicheLieu ficheLieu6_5 = createFicheLieu("FicheLieu 6.5", epci6_3, epci6_4);
-	static FicheLieu ficheLieu6_6 = createFicheLieu("FicheLieu 6.6", epci6_4);
-	static FicheLieu ficheLieu6_7 = createFicheLieu("FicheLieu 6.7", epci6_1, epci6_4);
+	static ContenuDeTest pub6_1 = createPub("ContenuDeTest 6.1", epci6_1);
+	static ContenuDeTest pub6_2 = createPub("ContenuDeTest 6.2", epci6_2);
+	static ContenuDeTest pub6_3 = createPub("ContenuDeTest 6.3", epci6_1, epci6_2);
+	static ContenuDeTest pub6_4 = createPub("ContenuDeTest 6.4", epci6_1, epci6_3);
+	static ContenuDeTest pub6_5 = createPub("ContenuDeTest 6.5", epci6_3, epci6_4);
+	static ContenuDeTest pub6_6 = createPub("ContenuDeTest 6.6", epci6_4);
+	static ContenuDeTest pub6_7 = createPub("ContenuDeTest 6.7", epci6_1, epci6_4);
 	
 	
 	@BeforeClass
@@ -248,9 +246,9 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectCommune() {		
 		// Recherche sur commune 1.1
-		// city 1.1 est référencée par : ficheLieu 1.1 et ficheLieu 1.2
+		// city 1.1 est référencée par : pub 1.1 et pub 1.2
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu1_1);	    
+		resultatTestSet.add(pub1_1);	    
 	    assertEquals("Recherche sur commune 1.1 invalide", resultatTestSet, getResultSearchCity(city1_1));	
 	}
 
@@ -263,7 +261,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectCommunes() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu2_1);	    
+		resultatTestSet.add(pub2_1);	    
 	    assertEquals("Recherche sur commune 2.1 invalide", resultatTestSet, getResultSearchCity(city2_1));
 	    assertEquals("Recherche sur commune 2.2 invalide", resultatTestSet, getResultSearchCity(city2_2));
 	    assertEquals("Recherche sur commune 2.3 invalide", resultatTestSet, getResultSearchCity(city2_3));
@@ -278,12 +276,12 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectCanton() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(elu3_3);
-		resultatTestSet.add(elu3_4);
-		resultatTestSet.add(elu3_5);
-		resultatTestSet.add(elu3_6);
-		resultatTestSet.add(elu3_7);
-		resultatTestSet.add(elu3_8);
+		resultatTestSet.add(pub3_3);
+		resultatTestSet.add(pub3_4);
+		resultatTestSet.add(pub3_5);
+		resultatTestSet.add(pub3_6);
+		resultatTestSet.add(pub3_7);
+		resultatTestSet.add(pub3_8);
 	    assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city3_1));    
 	}
 	
@@ -296,8 +294,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectCantons() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu4_1);
-		resultatTestSet.add(ficheLieu4_3);
+		resultatTestSet.add(pub4_1);
+		resultatTestSet.add(pub4_3);
 	    assertEquals("Recherche sur commune 4.1 invalide", resultatTestSet, getResultSearchCity(city4_1));    
 	}
 	
@@ -310,9 +308,9 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectDelegations() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu5_1);
-		resultatTestSet.add(ficheLieu5_2);
-		resultatTestSet.add(ficheLieu5_3);
+		resultatTestSet.add(pub5_1);
+		resultatTestSet.add(pub5_2);
+		resultatTestSet.add(pub5_3);
 	    assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));    
 	}
 	
@@ -325,10 +323,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 */
 	public void recherchePubDirectEpci() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu6_2);
-		resultatTestSet.add(ficheLieu6_3);
-		resultatTestSet.add(ficheLieu6_4);
-		resultatTestSet.add(ficheLieu6_5);
+		resultatTestSet.add(pub6_2);
+		resultatTestSet.add(pub6_3);
+		resultatTestSet.add(pub6_4);
+		resultatTestSet.add(pub6_5);
 	    assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));    
 	}
 	
@@ -340,14 +338,14 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	 * Test sur les publications qui sont sur toutes les communes
 	 */
 	public void recherchePubAllCommunes() {			
-		FicheLieu ficheLieu7_1 = createFicheLieu("FicheLieu 4.1", null, null, true, new Category[] {}, new Delegation[] {});		
+		ContenuDeTest pub7_1 = createPub("ContenuDeTest 4.1", null, null, true, new Category[] {}, new Delegation[] {});		
 		try { Thread.sleep(1000); } catch(Exception ex) { }		
 		City city7_1 = createCity("commune 7.1", 710);		
 		try { Thread.sleep(1000); } catch(Exception ex) { }		
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(ficheLieu7_1);
+		resultatTestSet.add(pub7_1);
 	    assertEquals("Recherche sur commune 7.1 invalide", resultatTestSet, getResultSearchCity(city7_1));       
-	    ficheLieu7_1.performDelete(channel.getDefaultAdmin());
+	    pub7_1.performDelete(channel.getDefaultAdmin());
 	    city7_1.performDelete(channel.getDefaultAdmin());
 	}
 
