@@ -8,7 +8,8 @@
             java.util.Locale,
             fr.cg44.plugin.socle.SocleUtils,
             com.jalios.jcms.JcmsUtil,
-            com.jalios.util.Util"
+            com.jalios.util.Util,
+            java.util.SortedSet"
 %><%
 %><%@ attribute name="rootCat"
     required="true"
@@ -46,7 +47,8 @@
     <nav role="navigation" aria-label="Menu de navigation" class="ds44-navContainer ds44-flex-container--column ds44-fse ds44-tiny-to-med-ftop">
         <div class="ds44-navList">
             <ul class="ds44-navListN2 ds44-multiCol ds44-xl-gap ds44-xl-fluid-margin ds44-list">
-            <jalios:foreach collection="<%= SocleUtils.getOrderedAuthorizedChildrenSet(rootCat) %>" name="itCat" type="Category">
+            <% SortedSet<Category> orderedAuthorizedChildrenSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat); %>
+            <jalios:foreach collection="<%= orderedAuthorizedChildrenSet %>" name="itCat" type="Category">
                 <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
             </jalios:foreach>
             </ul>
