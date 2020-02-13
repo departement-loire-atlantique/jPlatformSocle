@@ -283,9 +283,9 @@ public final class SocleUtils {
 	public static String parseUrl(String url) {
 	    if (Util.isEmpty(url)) return "";
 	    
-	    if (url.contains("http")) return url;
+	    if (url.contains("http")) return url.replace("'", "").replace("\"", "");
 	    
-	    return "https://" + url;
+	    return "https://" + url.replace("'", "").replace("\"", "");
 	}
 
 }
