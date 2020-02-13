@@ -135,7 +135,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                            <figure role="figure">
                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= HttpUtil.encodeForHTMLAttribute(obj.getLegende() + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright()) %>'>
                            </jalios:if>
-                           <jalios:if predicate="<%= !hadFigcaption %>">
+                           <jalios:if predicate="<%= !hasFigcaption %>">
                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure">
                            </jalios:if>
                               <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : HttpUtil.encodeForHTMLAttribute(obj.getImageMobile()) %>'>
