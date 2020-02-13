@@ -1,0 +1,57 @@
+<%
+String codeInsee;
+Integer rayon;
+String dateDebut;
+String dateFin;
+String rubrique;
+String recherche;
+Integer organisme;
+
+String flux;
+
+boolean accessibiliteMental;
+boolean accessibiliteMoteur;
+boolean accessibiliteVisuel;
+codeInsee = Util.getString(request.getAttribute("codeInsee"), null);
+rayon = Util.toInteger(request.getAttribute("rayon"), null);
+dateDebut = Util.getString(request.getAttribute("dateDebut"), null);
+dateFin = Util.getString(request.getAttribute("dateFin"), null);
+rubrique = Util.getString(request.getAttribute("rubrique"), null);
+recherche = Util.getString(request.getAttribute("recherche"), null);
+organisme = Util.toInteger(request.getAttribute("organisme"), null);
+flux = Util.getString(request.getAttribute("flux"), null);
+accessibiliteMental = Util.toBoolean(request.getAttribute("accessibiliteMental"), false);
+accessibiliteMoteur = Util.toBoolean(request.getAttribute("accessibiliteMoteur"), false);
+accessibiliteVisuel = Util.toBoolean(request.getAttribute("accessibiliteVisuel"), false);
+
+Map<String, Object> parameters = new HashMap<String, Object>();
+
+if (Util.notEmpty(codeInsee)) {
+    parameters.put("codeInsee", codeInsee);
+}
+if (Util.notEmpty(rayon)) {
+    parameters.put("rayon", rayon);
+}
+if (Util.notEmpty(dateDebut)) {
+    parameters.put("dateDebut", dateDebut);
+}
+if (Util.notEmpty(dateFin)) {
+    parameters.put("dateFin", dateFin);
+}
+if (Util.notEmpty(rubrique)) {
+    parameters.put("rubrique", rubrique);
+}
+if (Util.notEmpty(recherche)) {
+    parameters.put("recherche", recherche);
+}
+if (Util.notEmpty(organisme)) {
+    parameters.put("organisme", organisme);
+}
+
+parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+
+String idFlux = Util.isEmpty(flux) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : flux;
+
+JSONObject extractedFlux = RequestManager.filterFluxData(idFlux, parameters);
+
+%>

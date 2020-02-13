@@ -168,7 +168,6 @@ public class RequestManager {
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                     fluxData.put("success", true);
                     
-                    LOGGER.debug("Tokens regénérés");
                     break;
                 case 401:
                     LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Token expiré.");
@@ -223,7 +222,6 @@ public class RequestManager {
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                     fluxData.put("success", true);
                     
-                    LOGGER.debug("Tokens regénérés");
                     break;
                 case 401:
                     LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Token expiré.");
