@@ -27,6 +27,11 @@ import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.fluxdata.Authentification;
 import fr.cg44.plugin.socle.infolocale.singleton.TokenManager;
 
+/**
+ * Classe permettant d'effectuer les différentes requêtes vers l'API Infolocale
+ * @author lchoquet
+ *
+ */
 public class RequestManager {
     
     private static final Logger LOGGER = Logger.getLogger(RequestManager.class);
@@ -142,6 +147,9 @@ public class RequestManager {
         }
     }
     
+    /**
+     * Extrait des données à partir d'un flux de l'API Infolocale
+     */
     public static JSONObject extractFluxData(String fluxId) {
         
         JSONObject fluxData = new JSONObject();
@@ -198,6 +206,9 @@ public class RequestManager {
         return fluxData;
     }
 
+    /**
+     * Extrait des données à partir d'un flux de l'API Infolocale en intégrant des paramètres de tri
+     */
     public static JSONObject filterFluxData(String fluxId, Map<String, Object> params) {
         
         JSONObject fluxData = new JSONObject();
@@ -252,6 +263,9 @@ public class RequestManager {
         return fluxData;
     }
     
+    /**
+     * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête POST
+     */
     private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, String contentType, boolean useToken) {
         
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -285,6 +299,9 @@ public class RequestManager {
         return response;
     }
     
+    /**
+     * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête GET
+     */
     private static CloseableHttpResponse createGetConnection(String url, Map<String, Object> params, boolean useToken) {
         
         CloseableHttpClient httpClient = HttpClients.createDefault();

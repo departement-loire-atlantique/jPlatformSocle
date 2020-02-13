@@ -10,6 +10,11 @@ import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
 
+/**
+ * Classe utilisée pour le type de contenu EvenementInfolocale afin d'ajouter champs et getters/setters
+ * @author lchoquet
+ *
+ */
 public class EvenementContent extends Content {
     
     Lieu lieu;

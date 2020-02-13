@@ -1,5 +1,10 @@
 package fr.cg44.plugin.socle.infolocale.singleton;
 
+/**
+ * Singleton qui s'occupe de conserver les tokens d'authentification pour l'API infolocale
+ * @author lchoquet
+ *
+ */
 public class TokenManager {
 	
 	private TokenManager() {}

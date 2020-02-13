@@ -21,8 +21,17 @@ import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
 import generated.EvenementInfolocale;
 
+
+/**
+ * Ensemble de méthodes utilisées pour la gestion de données Infolocales
+ * @author lchoquet
+ *
+ */
 public class InfolocaleEntityUtils {
     
+    /**
+     * Créé un tableau d'évenements infolocale à partir de JSON
+     */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
         EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
@@ -35,6 +44,9 @@ public class InfolocaleEntityUtils {
         return itEvents;
     }
     
+    /**
+     * Créé un événement infolocale depuis du JSON
+     */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         
@@ -89,6 +101,9 @@ public class InfolocaleEntityUtils {
         return itEvent;
     }
 
+    /**
+     * Créé un tableau d'objets Langue depuis du JSON
+     */
     public static Langue[] createLanguesArrayFromJsonArray(JSONArray jsonArray) {
         Langue[] itLangues = new Langue[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
@@ -101,6 +116,9 @@ public class InfolocaleEntityUtils {
         return itLangues;
     }
 
+    /**
+     * Créé un objet Langue depuis du JSON
+     */
     public static Langue createLangueFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Langue langue = new Langue();
@@ -114,6 +132,9 @@ public class InfolocaleEntityUtils {
         return langue;
     }
 
+    /**
+     * Créé un tableau d'objets Photo depuis du JSON
+     */
     public static Photo[] createPhotosArrayFromJsonArray(JSONArray jsonArray) {
         Photo[] itPhotos = new Photo[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
@@ -126,6 +147,9 @@ public class InfolocaleEntityUtils {
         return itPhotos;
     }
 
+    /**
+     * Créé un objet Photo depuis du JSON
+     */
     public static Photo createPhotoFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Photo photo = new Photo();
@@ -140,6 +164,9 @@ public class InfolocaleEntityUtils {
         return photo;
     }
 
+    /**
+     * Créé un objet Genre depuis du JSON
+     */
     public static Genre createGenreFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Genre genre = new Genre();
@@ -154,6 +181,9 @@ public class InfolocaleEntityUtils {
         return genre;
     }
 
+    /**
+     * Créé un tableau d'objets Contact depuis du JSON
+     */
     public static Contact[] createContactArrayFromJsonArray(JSONArray jsonArray) {
         Contact[] itContacts = new Contact[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
@@ -166,6 +196,9 @@ public class InfolocaleEntityUtils {
         return itContacts;
     }
 
+    /**
+     * Créé un object Contact depuis du JSON
+     */
     public static Contact createContactFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Contact contact = new Contact();
@@ -182,6 +215,9 @@ public class InfolocaleEntityUtils {
         return contact;
     }
 
+    /**
+     * Créé un tableau d'objets Date (infolocale) depuis du JSON
+     */
     public static Date[] createDateArrayFromJsonArray(JSONArray jsonArray) {
         Date[] itDates = new Date[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
@@ -194,6 +230,9 @@ public class InfolocaleEntityUtils {
         return itDates;
     }
 
+    /**
+     * Créé un objet Date (infolocale) depuis du JSON
+     */
     public static Date createDateFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Date date = new Date();
@@ -208,6 +247,9 @@ public class InfolocaleEntityUtils {
         return date;
     }
 
+    /**
+     * Créé un objet Lieu depuis du JSON
+     */
     public static Lieu createLieuFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Lieu lieu = new Lieu();
@@ -226,6 +268,9 @@ public class InfolocaleEntityUtils {
         return lieu;
     }
 
+    /**
+     * Créé un objet Commune depuis du JSON
+     */
     public static Commune createCommuneFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         Commune commune = new Commune();
@@ -244,6 +289,9 @@ public class InfolocaleEntityUtils {
         return commune;
     }
     
+    /**
+     * Effectue un tri sur un tableau d'objets EvenementInfolocale à partir de paramètres
+     */
     public static EvenementInfolocale[] sortEvenementInfolocaleArray(EvenementInfolocale[] arrayEvents, Map<String, Object> sortParameters) {
         
         if (Util.isEmpty(arrayEvents)) return new EvenementInfolocale[0];
@@ -266,24 +314,29 @@ public class InfolocaleEntityUtils {
         
         for (Iterator<EvenementInfolocale> iter = listEvents.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
+            
+            // Tri sur la mention d'accessibilité : handicap mental
             if (accessibiliteMental ? !itEvent.getMentionAccessibleHandicapMental() : false) {
                 iter.remove();
                 continue;
             }
+            // Tri sur la mention d'accessibilité : handicap moteur
             if (accessibiliteMoteur ? !itEvent.getMentionAccessibleHandicapMoteur() : false) {
                 iter.remove();
                 continue;
             }
+            // Tri sur la mention d'accessibilité : handicap visuel
             if (accessibiliteVisuel ? !itEvent.getMentionAccessibleHandicapVisuel() : false) {
                 iter.remove();
                 continue;
             }
+            // Tri sur l'exclusion de certains IDs d'événements
             if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(itEvent.getEvenementId())) : false) {
                 iter.remove();
                 continue;
             }
         }
-        
+        // Tronquer la liste de résultats en fonction du nombre maximum de résultats
         if (resultatsMax < listEvents.size()) {
             listEvents = new ArrayList<EvenementInfolocale>(listEvents.subList(0, resultatsMax));
         }

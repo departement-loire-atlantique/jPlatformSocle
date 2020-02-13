@@ -1,5 +1,10 @@
 package fr.cg44.plugin.socle.infolocale.fluxdata;
 
+/**
+ * Classe Bean de la réponse JSON pour l'authentification sur l'API Infolocale
+ * @author lchoquet
+ *
+ */
 public class Authentification {
     
     String access_token;

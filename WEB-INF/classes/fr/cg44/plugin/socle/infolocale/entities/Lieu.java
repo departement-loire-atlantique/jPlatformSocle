@@ -2,6 +2,11 @@ package fr.cg44.plugin.socle.infolocale.entities;
 
 import com.jalios.jcms.Data;
 
+/**
+ * Classe Bean de l'objet Lieu retourné par l'API infolocale
+ * @author lchoquet
+ *
+ */
 public class Lieu extends Data {
     
     String nom;
