@@ -21,11 +21,11 @@ import generated.Delegation;
  *
  */
 public class SocleDataInit   {
-	
-	
+
+
 	private static final Member ADMIN = getChannel().getDefaultAdmin();
-	
-	
+
+
 	/**
 	 * Lance la recherche sur une commune
 	 * Retoune les fiches lieux corrspondantes à la recherche
@@ -39,7 +39,7 @@ public class SocleDataInit   {
 		qh.setRequest(request);
 		return qh.getResultSet();
 	}
-	
+
 	/**
 	 * Création d'une commune
 	 * @param name
@@ -59,15 +59,15 @@ public class SocleDataInit   {
 		city.performCreate(ADMIN);	
 		return city;
 	}
-	
+
 	public static City createCity(String name, int code, Canton... cantons) {
 		return createCity(name, code, new Category[] {}, new String[] {}, new Delegation(), cantons);
 	}
-	
+
 	public static City createCity(String name, int code, Delegation delegation) {
 		return createCity(name, code, new Category[] {}, new String[] {}, delegation);
 	}
-	
+
 	public static City createCity(String name, int code, Category... epci) {
 		return createCity(name, code, epci, new String[] {}, new Delegation());
 	}
@@ -75,11 +75,11 @@ public class SocleDataInit   {
 	public static City createCity(String name, int code) {
 		return createCity(name, code,new Category[] {}, new String[] {}, new Delegation());
 	}
-	
+
 	public static City createCity(String name, int code, String... communes) {
 		return createCity(name, code, new Category[] {}, communes, new Delegation());
 	}
-	
+
 	/**
 	 * Création d'un canton
 	 * @param name
@@ -96,12 +96,12 @@ public class SocleDataInit   {
 		return canton;
 	}
 
-	
+
 	public static Canton createCanton(String name) {
 		return createCanton(name, 0);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une délégations
 	 * @param name
@@ -116,8 +116,8 @@ public class SocleDataInit   {
 		delegation.performCreate(ADMIN);	
 		return delegation;
 	}
-	
-	
+
+
 	/**
 	 * Création d'une catégorie
 	 * @param name
@@ -132,8 +132,8 @@ public class SocleDataInit   {
 		cat.performCreate(ADMIN);
 		return cat;
 	}
-	
-	
+
+
 	/**
 	 * Création d'une EPCI (catégorie)
 	 * @param name
@@ -143,8 +143,8 @@ public class SocleDataInit   {
 		Category parent = Channel.getChannel().getCategory("$jcmsplugin.socle.category.toutesLesCommunesEPCI.root");
 		return createCategory(name, parent);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et commune (optionnel canton)
 	 * @param name
@@ -165,8 +165,8 @@ public class SocleDataInit   {
 		pub.performCreate(ADMIN);
 		return pub;
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et canton(s)
 	 * @param name
@@ -176,8 +176,8 @@ public class SocleDataInit   {
 	public static ContenuDeTest createPub(String name, City commune, Canton... canton) {
 		return createPub(name, commune, null, false, new Category[] {}, new Delegation[] {}, canton);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et canton(s)
 	 * @param name
@@ -187,8 +187,8 @@ public class SocleDataInit   {
 	public static ContenuDeTest createPub(String name, City[] communes, Canton... canton) {
 		return createPub(name, null, communes, false, new Category[] {},  new Delegation[] {}, canton);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et canton(s)
 	 * @param name
@@ -198,8 +198,8 @@ public class SocleDataInit   {
 	public static ContenuDeTest createPub(String name, Canton... canton) {
 		return createPub(name, null, null, false, new Category[] {}, new Delegation[] {}, canton);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et canton(s)
 	 * @param name
@@ -209,8 +209,8 @@ public class SocleDataInit   {
 	public static ContenuDeTest createPub(String name, Delegation... delegations) {
 		return createPub(name, null, null, false, new Category[] {}, delegations);
 	}
-	
-	
+
+
 	/**
 	 * Création d'une fiche lieux avec nom et categorie(s)
 	 * @param name
@@ -220,8 +220,8 @@ public class SocleDataInit   {
 	public static ContenuDeTest createPub(String name, Category... categories) {
 		return createPub(name, null, null, false, categories,  new Delegation[] {});
 	}
-	
-	
+
+
 	/**
 	 * Création d'un élu avec nom et canton
 	 * @param name

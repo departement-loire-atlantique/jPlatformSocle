@@ -37,7 +37,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// Fiche lieux sur commune 1.1
 	static ContenuDeTest pub1_1 = createPub("pub 1.1", city1_1);
 
-	
+
 	/**
 	 * TU 2 recherchePubDirectCommunes
 	 */
@@ -47,7 +47,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// Fiche lieux sur commune 2.1
 	static ContenuDeTest pub2_1 = createPub("pub 2.1", new City[] {city2_1, city2_2, city2_3});
 
-	
+
 	/**
 	 * TU 3 recherchePubRefCantonCommune
 	 */
@@ -70,8 +70,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	// ContenuDeTest sur canton 3.4
 	static ContenuDeTest pub3_7 = createPub("ContenuDeTest 3.3", canton3_4);
 	static ContenuDeTest pub3_8 = createPub("ContenuDeTest 3.4", canton3_4);
-	
-	
+
+
 	/**
 	 * TU 4 recherchePubRefCantonsCommune
 	 */
@@ -88,8 +88,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub4_2 = createPub("ContenuDeTest 4.2", canton4_1, canton4_4);
 	static ContenuDeTest pub4_3 = createPub("ContenuDeTest 4.3", canton4_3, canton4_4);
 	static ContenuDeTest pub4_4 = createPub("ContenuDeTest 4.4", canton4_4, canton4_5);
-	
-	
+
+
 	/**
 	 * TU 5 recherchePubRefCantonsCommune
 	 */
@@ -105,7 +105,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub5_2 = createPub("ContenuDeTest 5.2", new Delegation[] {delegation5_1, delegation5_2});
 	static ContenuDeTest pub5_3 = createPub("ContenuDeTest 5.3", new Delegation[] {delegation5_2, delegation5_3});
 	static ContenuDeTest pub5_4 = createPub("ContenuDeTest 5.4", new Delegation[] {delegation5_1, delegation5_4});
-	
+
 
 	/**
 	 * TU 6 recherchePubRefEpciCommune
@@ -126,37 +126,37 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub6_5 = createPub("ContenuDeTest 6.5", epci6_3, epci6_4);
 	static ContenuDeTest pub6_6 = createPub("ContenuDeTest 6.6", epci6_4);
 	static ContenuDeTest pub6_7 = createPub("ContenuDeTest 6.7", epci6_1, epci6_4);
-	
-	
+
+
 	@BeforeClass
 	/**
 	 * Création des données de test pour chaque test unitaire
 	 */
 	public static void avantTest() {	
-		
+
 		// L'indexation des publications ayant lieu de manière asynchrone dans un thread dédié.
 		// la recherche textuelle d'une publication immédiatement après sa création pourrait ne pas renvoyer de résultat.
 		// Il est alors nécessaire de faire appel à une temporisation.
 		try { Thread.sleep(1000); } catch(Exception ex) { }	
-		
+
 		// Modification données test 1
 		modifDataRecherchePubDirectCommune();
-		
+
 		// Modification données test 2
 		modifDataRecherchePubDirectCommunes();
-		
+
 		// Modification données test 3
 		modifDataRecherchePubDirectCanton();
-		
+
 		// Modification données test 4
 		modifDataRecherchePubDirectCantons();
-		
+
 		// Modification données test 5
 		modifDataRecherchePubDirectDelegations();
-		
+
 		// Modification données test 6
 		modifDataRecherchePubDirectEpci();
-		
+
 		// temporisation pour l'indexation de la modification
 		try { Thread.sleep(1000); } catch(Exception ex) { }			
 	}
@@ -197,8 +197,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		clone3_1.setCanton(new Canton[] {canton3_2, canton3_3, canton3_4});
 		clone3_1.performUpdate(admin);
 	}
-	
-	
+
+
 	/**
 	 * Modification données test 4
 	 * Données de test pour recherchePubDirectCantons
@@ -210,8 +210,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		clone4_1.setCanton(new Canton[] {canton4_2, canton4_3});
 		clone4_1.performUpdate(admin);
 	}
-	
-	
+
+
 	/**
 	 * Modification données test 5
 	 * Données de test pour recherchePubDirectDelegations
@@ -223,8 +223,8 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		clone5_1.setDelegation(delegation5_2);
 		clone5_1.performUpdate(admin);
 	}
-	
-	
+
+
 	/**
 	 * Modification données test 6
 	 * Données de test pour recherchePubDirectEpci
@@ -236,7 +236,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		clone6_1.setCategories(new Category[] {epci6_2, epci6_3});
 		clone6_1.performUpdate(admin);
 	}
-	
+
 
 	@Test
 	/**
@@ -249,7 +249,7 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		// city 1.1 est référencée par : pub 1.1 et pub 1.2
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub1_1);	    
-	    assertEquals("Recherche sur commune 1.1 invalide", resultatTestSet, getResultSearchCity(city1_1));	
+		assertEquals("Recherche sur commune 1.1 invalide", resultatTestSet, getResultSearchCity(city1_1));	
 	}
 
 
@@ -262,9 +262,9 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	public void recherchePubDirectCommunes() {	
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub2_1);	    
-	    assertEquals("Recherche sur commune 2.1 invalide", resultatTestSet, getResultSearchCity(city2_1));
-	    assertEquals("Recherche sur commune 2.2 invalide", resultatTestSet, getResultSearchCity(city2_2));
-	    assertEquals("Recherche sur commune 2.3 invalide", resultatTestSet, getResultSearchCity(city2_3));
+		assertEquals("Recherche sur commune 2.1 invalide", resultatTestSet, getResultSearchCity(city2_1));
+		assertEquals("Recherche sur commune 2.2 invalide", resultatTestSet, getResultSearchCity(city2_2));
+		assertEquals("Recherche sur commune 2.3 invalide", resultatTestSet, getResultSearchCity(city2_3));
 	}
 
 
@@ -282,10 +282,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		resultatTestSet.add(pub3_6);
 		resultatTestSet.add(pub3_7);
 		resultatTestSet.add(pub3_8);
-	    assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city3_1));    
+		assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city3_1));    
 	}
-	
-	
+
+
 	@Test
 	/**
 	 * Test 4 recherche
@@ -296,10 +296,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub4_1);
 		resultatTestSet.add(pub4_3);
-	    assertEquals("Recherche sur commune 4.1 invalide", resultatTestSet, getResultSearchCity(city4_1));    
+		assertEquals("Recherche sur commune 4.1 invalide", resultatTestSet, getResultSearchCity(city4_1));    
 	}
-	
-	
+
+
 	@Test
 	/**
 	 * Test 5 recherche
@@ -311,10 +311,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		resultatTestSet.add(pub5_1);
 		resultatTestSet.add(pub5_2);
 		resultatTestSet.add(pub5_3);
-	    assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));    
+		assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));    
 	}
-	
-	
+
+
 	@Test
 	/**
 	 * Test 6 recherche
@@ -327,10 +327,10 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		resultatTestSet.add(pub6_3);
 		resultatTestSet.add(pub6_4);
 		resultatTestSet.add(pub6_5);
-	    assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));    
+		assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));    
 	}
-	
-	
+
+
 	@Test
 	/**
 	 * Test 7 recherche
@@ -344,11 +344,11 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		try { Thread.sleep(1000); } catch(Exception ex) { }		
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub7_1);
-	    assertEquals("Recherche sur commune 7.1 invalide", resultatTestSet, getResultSearchCity(city7_1));       
-	    pub7_1.performDelete(channel.getDefaultAdmin());
-	    city7_1.performDelete(channel.getDefaultAdmin());
+		assertEquals("Recherche sur commune 7.1 invalide", resultatTestSet, getResultSearchCity(city7_1));       
+		pub7_1.performDelete(channel.getDefaultAdmin());
+		city7_1.performDelete(channel.getDefaultAdmin());
 	}
 
-	
-	
+
+
 }

@@ -42,7 +42,7 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub1_2 = createPub("ContenuDeTest 1.2", city1_1);
 	// Création des fiches lieux sur commune 1.2
 	static ContenuDeTest pub1_3 = createPub("ContenuDeTest 1.3", city1_2);
-	
+
 	/**
 	 * TU 2 recherchePubRefCantonCommune -> indexCommunesDuCanton
 	 * Test 2 : Publications reliées à un canton
@@ -60,8 +60,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub2_2 = createPub("ContenuDeTest 2.2", canton2_1);
 	// ContenuDeTest sur canton 2.2
 	static ContenuDeTest pub2_3 = createPub("ContenuDeTest 2.3", canton2_2);
-	
-	
+
+
 	/**
 	 * TU 3 recherchePubRefCantonsCommune -> indexCommunesDesCantons
 	 * Test 3 : Publications reliées à plusieurs cantons
@@ -76,8 +76,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static City city3_3 = createCity("Commune 3.3", 330, canton3_3);
 	// Fiche lieux sur canton 3.1 et 3.2
 	static ContenuDeTest pub3_1 = createPub("ContenuDeTest 3.1", canton3_1, canton3_2);
-	
-	
+
+
 	/**
 	 * TU 5 recherchePubRefEpciCommune -> indexCommunesDesEPCI
 	 * Test 5 : Publications reliées à plusieurs EPCI
@@ -102,8 +102,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub5_3 = createPub("ContenuDeTest 5.3", epci5_1, epci5_2);
 	// Fiche lieux sur l'EPCI 5.3
 	static ContenuDeTest pub5_4 = createPub("ContenuDeTest 5.4", epci5_3);
-	
-	
+
+
 	/**
 	 * TU 6 recherchePubDirectCommunes -> indexCommunes
 	 * Test 6 : Publications reliées à plusieurs communes
@@ -119,7 +119,7 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub6_1 = createPub("ContenuDeTest 6.1", new City[] {city6_1, city6_2, city6_3, city6_4});
 	static ContenuDeTest pub6_2 = createPub("ContenuDeTest 6.2", new City[] {city6_4, city6_5, city6_6});
 
-	
+
 	/**
 	 * TU 7 recherchePubRefDelegationsCommune -> indexCommunesDesDelegations
 	 * Test 7 : Publications reliées à plusieurs délégations
@@ -134,8 +134,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 	static City city7_3 = createCity("Commune 7.3", 730, delegation7_3);
 	// Fiche lieux sur delegation 3.1 et 3.2
 	static ContenuDeTest pub7_1 = createPub("ContenuDeTest 7.1", delegation7_1, delegation7_2);
-	
-	
+
+
 	/**
 	 * Création des données de test pour chaque test unitaire
 	 */
@@ -146,8 +146,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 		// Il est alors nécessaire de faire appel à une temporisation.
 		try { Thread.sleep(1000); } catch(Exception ex) { }		
 	}
-		 
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 1
 	 * Fiche lieux -> Commune
@@ -179,8 +179,8 @@ public class SearchCityTest extends JcmsTestCase4  {
 		resultatTestSet.add(pub1_3);    
 		assertEquals("Recherche sur commune 1.2 invalide", resultatTestSet, getResultSearchCity(city1_2));
 	}
-	
-		
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 2
 	 * ContenuDeTest -> Canton <- Commune
@@ -188,7 +188,7 @@ public class SearchCityTest extends JcmsTestCase4  {
 	 * Les ContenuDeTests référencement indirectement la commune dans leur champ "canton" (le canton référence la commune)
 	 * Chaque commune référence son canton (exemple réel : ((Commune) Saint-Lumine-de-Clisson, Clisson, Gétigné) -> ((Canton) Clisson) )
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 2.1
@@ -199,9 +199,9 @@ public class SearchCityTest extends JcmsTestCase4  {
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub2_1);
 		resultatTestSet.add(pub2_2);   	    
-	    assertEquals("Recherche sur commune 2.1 invalide", resultatTestSet, getResultSearchCity(city2_1));		    
+		assertEquals("Recherche sur commune 2.1 invalide", resultatTestSet, getResultSearchCity(city2_1));		    
 	}
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 2.2
@@ -212,9 +212,9 @@ public class SearchCityTest extends JcmsTestCase4  {
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub2_1);
 		resultatTestSet.add(pub2_2);		    	    	    
-	    assertEquals("Recherche sur commune 2.2 invalide", resultatTestSet, getResultSearchCity(city2_2));		    
+		assertEquals("Recherche sur commune 2.2 invalide", resultatTestSet, getResultSearchCity(city2_2));		    
 	}
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 2.2
@@ -224,17 +224,17 @@ public class SearchCityTest extends JcmsTestCase4  {
 		// city 2.3 est référencée par : ContenuDeTest 2.3
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub2_3);    	    
-	    assertEquals("Recherche sur commune 2.3 invalide", resultatTestSet, getResultSearchCity(city2_3));		    
+		assertEquals("Recherche sur commune 2.3 invalide", resultatTestSet, getResultSearchCity(city2_3));		    
 	}
-	
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 3 : Publication reliées à plusieurs cantons
 	 * Fiche lieux -> Cantons <- Commune
 	 * Test de recherche sur des Fiche lieux
 	 * Les Fiche lieux référencement indirectement des communes dans leur champ "cantons" 
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 3.1, 3.2 et 3.3
@@ -242,26 +242,26 @@ public class SearchCityTest extends JcmsTestCase4  {
 	public void recherchePubRefCantonsCommune() {			
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub3_1);    
-	    assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city3_1));	
-	    assertEquals("Recherche sur commune 3.2 invalide", resultatTestSet, getResultSearchCity(city3_2));
-	    resultatTestSet.clear();
-	    assertEquals("Recherche sur commune 3.3 invalide", resultatTestSet, getResultSearchCity(city3_3));
-	    
+		assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city3_1));	
+		assertEquals("Recherche sur commune 3.2 invalide", resultatTestSet, getResultSearchCity(city3_2));
+		resultatTestSet.clear();
+		assertEquals("Recherche sur commune 3.3 invalide", resultatTestSet, getResultSearchCity(city3_3));
+
 	}
-	
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 4 : Publication reliées à toutes les communes
 	 * Fiche lieux -> toutes les communes
 	 * Test de recherche sur des Fiche lieux
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 4.1 et 4.2 et 4.3
 	 */
 	public void recherchePubToutesCommune() {	
-		
+
 		/**
 		 * Création d'un contenu indéxé sur toute les communes
 		 * Création isolé dans le test car impact les autres tests
@@ -274,32 +274,32 @@ public class SearchCityTest extends JcmsTestCase4  {
 		City city4_3 = createCity("Commune 4.3", 430);
 		// Fiche lieux sur canton 3.1 et 3.2
 		ContenuDeTest pub4_1 = createPub("ContenuDeTest 4.1", null, null, true, new Category[] {}, new Delegation[] {});	
-		
+
 		avantTest();
-		
+
 		// Recherche sur commune 3.1
 		// city 3.1 est référencée par : ContenuDeTest 3.1
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub4_1);    
-	    assertEquals("Recherche sur commune 4.1 invalide", resultatTestSet, getResultSearchCity(city4_1));	
-	    assertEquals("Recherche sur commune 4.2 invalide", resultatTestSet, getResultSearchCity(city4_2));
-	    assertEquals("Recherche sur commune 4.3 invalide", resultatTestSet, getResultSearchCity(city4_3));	
-	    
-	    // Supprime le contenu indexé sur toutes les communes
-	    city4_1.performDelete(channel.getDefaultAdmin());
-	    city4_2.performDelete(channel.getDefaultAdmin());
-	    city4_3.performDelete(channel.getDefaultAdmin());
-	    pub4_1.performDelete(channel.getDefaultAdmin());	    
+		assertEquals("Recherche sur commune 4.1 invalide", resultatTestSet, getResultSearchCity(city4_1));	
+		assertEquals("Recherche sur commune 4.2 invalide", resultatTestSet, getResultSearchCity(city4_2));
+		assertEquals("Recherche sur commune 4.3 invalide", resultatTestSet, getResultSearchCity(city4_3));	
+
+		// Supprime le contenu indexé sur toutes les communes
+		city4_1.performDelete(channel.getDefaultAdmin());
+		city4_2.performDelete(channel.getDefaultAdmin());
+		city4_3.performDelete(channel.getDefaultAdmin());
+		pub4_1.performDelete(channel.getDefaultAdmin());	    
 	}
-	
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 5 : Publication reliées à des EPCI
 	 * Fiche lieux -> EPCI <- Commune
 	 * Test de recherche sur des Fiche lieux
 	 * Les Fiche lieux référencement indirectement des communes dans leur champ "EPCI" 
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur communes
@@ -309,25 +309,25 @@ public class SearchCityTest extends JcmsTestCase4  {
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub5_1);
 		resultatTestSet.add(pub5_3);	    
-	    assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));
-	    assertEquals("Recherche sur commune 5.2 invalide", resultatTestSet, getResultSearchCity(city5_2));
-	    resultatTestSet.add(pub5_4);
-	    assertEquals("Recherche sur commune 5.3 invalide", resultatTestSet, getResultSearchCity(city5_3));
-	    // Recherche sur commune 5.4, 5.5 et 5.6
-	    resultatTestSet.clear();
-	    resultatTestSet.add(pub5_2);
-	    resultatTestSet.add(pub5_3);
-	    assertEquals("Recherche sur commune 5.4 invalide", resultatTestSet, getResultSearchCity(city5_4));
-	    assertEquals("Recherche sur commune 5.5 invalide", resultatTestSet, getResultSearchCity(city5_5));
-	    assertEquals("Recherche sur commune 5.6 invalide", resultatTestSet, getResultSearchCity(city5_6));	    
+		assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));
+		assertEquals("Recherche sur commune 5.2 invalide", resultatTestSet, getResultSearchCity(city5_2));
+		resultatTestSet.add(pub5_4);
+		assertEquals("Recherche sur commune 5.3 invalide", resultatTestSet, getResultSearchCity(city5_3));
+		// Recherche sur commune 5.4, 5.5 et 5.6
+		resultatTestSet.clear();
+		resultatTestSet.add(pub5_2);
+		resultatTestSet.add(pub5_3);
+		assertEquals("Recherche sur commune 5.4 invalide", resultatTestSet, getResultSearchCity(city5_4));
+		assertEquals("Recherche sur commune 5.5 invalide", resultatTestSet, getResultSearchCity(city5_5));
+		assertEquals("Recherche sur commune 5.6 invalide", resultatTestSet, getResultSearchCity(city5_6));	    
 	}
-	
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 6 : Publication reliées à plusieurs communes
 	 * Fiche lieux -> Communes
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune avec contenu rataché à des EPCI
@@ -336,29 +336,29 @@ public class SearchCityTest extends JcmsTestCase4  {
 		// Recherche sur commune 6.1, 6.2 et 6.3
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub6_1);
-	    assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));
-	    assertEquals("Recherche sur commune 6.2 invalide", resultatTestSet, getResultSearchCity(city6_2));
-	    assertEquals("Recherche sur commune 6.3 invalide", resultatTestSet, getResultSearchCity(city6_3));
-	    // Recherche sur commune 6.5 et 6.6
-	    resultatTestSet.clear();
-	    resultatTestSet.add(pub6_2);
-	    assertEquals("Recherche sur commune 6.5 invalide", resultatTestSet, getResultSearchCity(city6_5));
-	    assertEquals("Recherche sur commune 6.6 invalide", resultatTestSet, getResultSearchCity(city6_6));
-	    // Recherche sur commune 6.4
-	    resultatTestSet.clear();
-	    resultatTestSet.add(pub6_1);
-	    resultatTestSet.add(pub6_2);
-	    assertEquals("Recherche sur commune 6.4 invalide", resultatTestSet, getResultSearchCity(city6_4));
+		assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));
+		assertEquals("Recherche sur commune 6.2 invalide", resultatTestSet, getResultSearchCity(city6_2));
+		assertEquals("Recherche sur commune 6.3 invalide", resultatTestSet, getResultSearchCity(city6_3));
+		// Recherche sur commune 6.5 et 6.6
+		resultatTestSet.clear();
+		resultatTestSet.add(pub6_2);
+		assertEquals("Recherche sur commune 6.5 invalide", resultatTestSet, getResultSearchCity(city6_5));
+		assertEquals("Recherche sur commune 6.6 invalide", resultatTestSet, getResultSearchCity(city6_6));
+		// Recherche sur commune 6.4
+		resultatTestSet.clear();
+		resultatTestSet.add(pub6_1);
+		resultatTestSet.add(pub6_2);
+		assertEquals("Recherche sur commune 6.4 invalide", resultatTestSet, getResultSearchCity(city6_4));
 	}
-	
-	
+
+
 	/*-----------------------------------------------------------------------------------/
 	 * Test 7 : Publication reliées à plusieurs délégation
 	 * Fiche lieux -> délégations <- Commune
 	 * Test de recherche sur des Fiche lieux
 	 * Les Fiche lieux référencement indirectement des communes dans leur champ "délégations" 
 	 *-----------------------------------------------------------------------------------*/
-	
+
 	@Test
 	/**
 	 * Test recherche sur commune 3.1 et 3.2
@@ -366,11 +366,11 @@ public class SearchCityTest extends JcmsTestCase4  {
 	public void recherchePubRefDelegationsCommune() {			
 		Set<Publication> resultatTestSet = new HashSet<Publication>();
 		resultatTestSet.add(pub7_1);    
-	    assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city7_1));	
-	    assertEquals("Recherche sur commune 3.2 invalide", resultatTestSet, getResultSearchCity(city7_2));
-	    resultatTestSet.clear();
-	    assertEquals("Recherche sur commune 3.3 invalide", resultatTestSet, getResultSearchCity(city7_3));
+		assertEquals("Recherche sur commune 3.1 invalide", resultatTestSet, getResultSearchCity(city7_1));	
+		assertEquals("Recherche sur commune 3.2 invalide", resultatTestSet, getResultSearchCity(city7_2));
+		resultatTestSet.clear();
+		assertEquals("Recherche sur commune 3.3 invalide", resultatTestSet, getResultSearchCity(city7_3));
 	}
-	
-	
+
+
 }
