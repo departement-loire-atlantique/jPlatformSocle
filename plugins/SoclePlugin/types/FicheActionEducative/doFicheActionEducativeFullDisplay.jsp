@@ -51,7 +51,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </jalios:if>
                                     <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) || Util.notEmpty(obj.getCapaciteDaccueil()) %>">
                                     <div class="ds44-docListElem mts">
-                                        <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+                                        <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) %>">
                                             <%= SocleUtils.formatCategories(obj.getNiveau(loggedMember)) %>
                                         </jalios:if>
@@ -67,7 +67,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </div>
                                     </jalios:if>
                                     <div class="ds44-docListElem mts">
-                                        <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
+                                        <i class="icon icon-bus ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
                                     </div>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-time ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getDuree() %></jalios:wysiwyg>
