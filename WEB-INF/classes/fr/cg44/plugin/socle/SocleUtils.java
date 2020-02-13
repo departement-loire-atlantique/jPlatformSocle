@@ -103,7 +103,7 @@ public final class SocleUtils {
 
 	/**
 	 * Retire tout ce qui n'est pas décimal de la chaine de caractère
-	 * Exemple 02 40-44-85 12 devient  0240448512 ou 44 000 devient 40000
+	 * Exemple 02 40-44-85 12 devient  0240448512 ou 44 000 devient 44000
 	 * @param s
 	 * @return
 	 */
@@ -140,10 +140,13 @@ public final class SocleUtils {
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
-	 * [libelle]\n
-	 * [etageCouloirEscalier] [entreBatimentImmeuble] [nDeVoie] [libelleDeVoie] [lieuDit]\n
-	 * [cs]\n
-	 * [codePostal] [commune]\n
+	 * [libelle]<br>
+	 * [etageCouloirEscalier]<br>
+	 * [entreBatimentImmeuble]<br>
+	 * [nDeVoie] [libelleDeVoie]<br>
+	 * [lieuDit]<br>
+	 * CS [cs]<br>
+	 * [codePostal] [commune] Cedex [cedex]
 	 * 
 	 * @param libelle
 	 * @param etageCouloirEscalier
@@ -182,6 +185,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(sbfAddrBis.toString())) {
 			sbfAddr.append(sbfAddrBis)
+			.deleteCharAt(sbfAddr.length()-1)
 			.append(newLine);
 		}
 		if(Util.notEmpty(lieuDit)) {
@@ -204,8 +208,7 @@ public final class SocleUtils {
 		if(Util.notEmpty(cedex)) {
 			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
 			.append(" ")
-			.append(cedex)
-			.append(newLine);
+			.append(cedex);
 		}
 
 		return sbfAddr.toString();
@@ -215,6 +218,7 @@ public final class SocleUtils {
 	
 	/**
 	 * Créé une url oppenstreetmap à partir des coordonnées et du zoom souhaité
+	 * Par exemple : https://www.openstreetmap.org/directions?engine=graphhopper_car&route=[latitude]%2C[longitude]#map=[zoom]/[latitude]/[longitude]
 	 * @param latitude
 	 * @param longitude
 	 * @param zoom
@@ -244,6 +248,7 @@ public final class SocleUtils {
 	
 	/**
 	 * Créé une url oppenstreetmap à partir des coordonnées
+	 * Par exemple : https://www.openstreetmap.org/directions?engine=graphhopper_car&route=[latitude]%2C[longitude]#map=11/[latitude]/[longitude]
 	 * @param latitude
 	 * @param longitude
 	 * @return une url qui ouvre une page openstreetmap avec un zoom par defaut
@@ -254,7 +259,7 @@ public final class SocleUtils {
 	}
 
 	/**
-	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
 	 * @param categories
 	 * @return
 	 */
