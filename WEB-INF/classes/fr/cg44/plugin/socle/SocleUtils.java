@@ -3,13 +3,11 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.SortedSet;
 import java.util.TreeSet;
-import org.apache.log4j.Logger;
-
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
@@ -22,19 +20,21 @@ import com.jalios.util.Util;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
-	private static final Logger LOGGER = Logger.getLogger(SocleUtils.class);
 	
 	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
 	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
 
-
+	private SocleUtils() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	/**
 	 * A partir d'une catégorie parent, retourne un TreeSet de ses enfants, trié et filtré en fonction des droits de l'utilisateur.
 	 * 
 	 * @param cat La catégorie parent pour laquelle on doit récupérer les enfants.
 	 * @return Un TreeSet de catégories enfants, filtré et trié. Null si la catégorie n'existe pas.
 	 */
-	public static TreeSet<Category> getOrderedAuthorizedChildrenSet(Category cat) {
+	public static SortedSet<Category> getOrderedAuthorizedChildrenSet(Category cat) {
 		Member loggedMember = channel.getCurrentLoggedMember();
 		String userLang = channel.getCurrentJcmsContext().getUserLang();
 		if(Util.notEmpty(cat)) {
@@ -44,7 +44,7 @@ public final class SocleUtils {
 			JcmsUtil.applyDataSelector(childrenSet, authorizedCategoriesSelector);
 			return childrenSet;
 		}
-		return null;
+		return new TreeSet<Category>();
 		
 	}
 	
@@ -95,8 +95,7 @@ public final class SocleUtils {
 			qh.setLoggedMember(loggedMember);
 			qh.setExactCat(true);
 			QueryResultSet result = qh.getResultSet();
-			Publication contenuPrincipal = Util.getFirst(result);		
-			return contenuPrincipal;
+			return Util.getFirst(result);
 		}	
 		
 		return null;
@@ -259,7 +258,7 @@ public final class SocleUtils {
 	 * @param categories
 	 * @return
 	 */
-	public static String formatCategories(TreeSet<Category> categories) {
+	public static String formatCategories(SortedSet<Category> categories) {
 	    
 	    if (Util.isEmpty(categories)) return "";
 	    
