@@ -68,22 +68,22 @@ public class IndexationDataController extends BasicDataController {
 		Boolean cityChange = cityCode != previousCityCode;
 		
 		// Récupère les canton déclarés dans la commune avant et après modification 
-		Canton[] previsousCityCantons = previousCity.getCanton();
+		Canton[] previousCityCantons = previousCity.getCanton();
 		Canton[] cityCantons = city.getCanton();
-		Boolean cantonsChange = !Arrays.equals(previsousCityCantons, cityCantons);
+		Boolean cantonsChange = !Arrays.equals(previousCityCantons, cityCantons);
 		
 		// Récupère la délégation déclarées dans la commune avant et après modification 
-		Delegation previsousCityDelegation = previousCity.getDelegation();
+		Delegation previousCityDelegation = previousCity.getDelegation();
 		Delegation cityDelegation= city.getDelegation();
-		Boolean delgationChange = !JcmsUtil.isSameId(previsousCityDelegation, cityDelegation);
+		Boolean delegationChange = !JcmsUtil.isSameId(previousCityDelegation, cityDelegation);
 		
 		// Récupère les EPCI déclarées dans la commune avant et après modification 
-		TreeSet<Category> previsousCityEpci = previousCity.getEpci(null);
+		TreeSet<Category> previousCityEpci = previousCity.getEpci(null);
 		TreeSet<Category> cityEpci = city.getEpci(null);
-		Boolean epciChange = !Util.isSameContent(previsousCityEpci, cityEpci);
+		Boolean epciChange = !Util.isSameContent(previousCityEpci, cityEpci);
 		
 		// Si le code commune ou le canton de la commune à été changé alors réindexe les contenus liés
-		if(cityChange || cantonsChange || delgationChange || epciChange) {
+		if(cityChange || cantonsChange || delegationChange || epciChange) {
 
 			// Set des publication à ré-indéxer
 			TreeSet<Publication> pubRefSet = new TreeSet<>();
@@ -98,16 +98,16 @@ public class IndexationDataController extends BasicDataController {
 			
 			// Si un ou plusieurs des cantons de la commune changent (Ajout - suppression - modification) réindexe les publication en lien avec ses cantons
 			if(cantonsChange) {
-				List<Canton> previsousCityCantonsList = previsousCityCantons!= null ? Arrays.asList(previsousCityCantons) : new ArrayList<Canton>();
+				List<Canton> previousCityCantonsList = previousCityCantons!= null ? Arrays.asList(previousCityCantons) : new ArrayList<Canton>();
 				List<Canton> cityCantonsList = cityCantons!= null ? Arrays.asList(cityCantons) : new ArrayList<Canton>();				
 				
 				// La liste des canton qui n'ont pas changé dans la commune
 				List<Canton> cantonCommunSet = new ArrayList<Canton>(cityCantonsList);
-				cantonCommunSet.retainAll(previsousCityCantonsList);
+				cantonCommunSet.retainAll(previousCityCantonsList);
 				
 				// La liste des cantons qui sont modifiés (ajouter ou enlever de la commune)
 				List<Canton> cantonSet = new ArrayList<Canton>(cityCantonsList);
-				cantonSet.addAll(previsousCityCantonsList);
+				cantonSet.addAll(previousCityCantonsList);
 				// Retire la liste des canton qui n'ont pas changé dans la commune
 				cantonSet.removeAll(cantonCommunSet);
 				
@@ -121,13 +121,13 @@ public class IndexationDataController extends BasicDataController {
 			}
 			
 			// Si la délégation de la commune change réindexe les publication en lien avec cette delegation
-			if(delgationChange) {
+			if(delegationChange) {
 				Set<Delegation> delegationSet = new HashSet<Delegation>();
 				if(Util.notEmpty(cityDelegation)) {
 					delegationSet.add(cityDelegation);
 				}
-				if(Util.notEmpty(previsousCityDelegation)) {
-					delegationSet.add(previsousCityDelegation);
+				if(Util.notEmpty(previousCityDelegation)) {
+					delegationSet.add(previousCityDelegation);
 				}
 				for(Delegation itDelegation : delegationSet) {
 					// Récupère les publications qui référencent directement la délégation (champ mono)
@@ -140,11 +140,11 @@ public class IndexationDataController extends BasicDataController {
 			if(epciChange) {
 				// La liste des epci qui n'ont pas changé dans la commune
 				Set<Category> epciCommunSet = new HashSet<Category>(cityEpci);
-				epciCommunSet.retainAll(previsousCityEpci);
+				epciCommunSet.retainAll(previousCityEpci);
 				
 				// La liste des cantons qui sont modifiés (ajouter ou enlever de la commune)
 				Set<Category> epciSet = new HashSet<Category>(cityEpci);
-				epciSet.addAll(previsousCityEpci);
+				epciSet.addAll(previousCityEpci);
 				// Retire la liste des epci qui n'ont pas changé dans la commune
 				epciSet.removeAll(epciCommunSet);
 				
