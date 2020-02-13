@@ -5,26 +5,19 @@ String dateDebut;
 String dateFin;
 String rubrique;
 String recherche;
+String order;
 Integer organisme;
-Integer resultatsMax;
-
 String flux;
 
-boolean accessibiliteMental;
-boolean accessibiliteMoteur;
-boolean accessibiliteVisuel;
 codeInsee = Util.getString(request.getAttribute("codeInsee"), null);
 rayon = Util.toInteger(request.getAttribute("rayon"), null);
 dateDebut = Util.getString(request.getAttribute("dateDebut"), null);
 dateFin = Util.getString(request.getAttribute("dateFin"), null);
 rubrique = Util.getString(request.getAttribute("rubrique"), null);
 recherche = Util.getString(request.getAttribute("recherche"), null);
+order = Util.getString(request.getAttribute("order"), null);
 organisme = Util.toInteger(request.getAttribute("organisme"), null);
-resultatsMax = Util.toInteger(request.getAttribute("resultatsMax"), null);
 flux = Util.getString(request.getAttribute("flux"), null);
-accessibiliteMental = Util.toBoolean(request.getAttribute("accessibiliteMental"), false);
-accessibiliteMoteur = Util.toBoolean(request.getAttribute("accessibiliteMoteur"), false);
-accessibiliteVisuel = Util.toBoolean(request.getAttribute("accessibiliteVisuel"), false);
 
 Map<String, Object> parameters = new HashMap<String, Object>();
 
@@ -49,14 +42,10 @@ if (Util.notEmpty(recherche)) {
 if (Util.notEmpty(organisme)) {
     parameters.put("organisme", organisme);
 }
-if (Util.notEmpty(resultatsMax)) {
-    parameters.put("limit", resultatsMax);
-} else {
-    parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
-}
 
 String idFlux = Util.isEmpty(flux) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : flux;
 
 JSONObject extractedFlux = RequestManager.filterFluxData(idFlux, parameters);
+
 
 %>

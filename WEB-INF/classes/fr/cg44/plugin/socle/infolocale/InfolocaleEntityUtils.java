@@ -1,9 +1,15 @@
 package fr.cg44.plugin.socle.infolocale;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
@@ -236,6 +242,53 @@ public class InfolocaleEntityUtils {
             commune = new Commune();
         }
         return commune;
+    }
+    
+    public static EvenementInfolocale[] sortEvenementInfolocaleArray(EvenementInfolocale[] arrayEvents, Map<String, Object> sortParameters) {
+        
+        if (Util.isEmpty(arrayEvents)) return new EvenementInfolocale[0];
+        
+        if (Util.isEmpty(sortParameters)) return arrayEvents;
+        
+        Integer resultatsMax;
+        String exclusion;
+        boolean accessibiliteMental;
+        boolean accessibiliteMoteur;
+        boolean accessibiliteVisuel;
+
+        resultatsMax = Util.toInteger(sortParameters.get("resultatsMax"), Channel.getChannel().getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+        exclusion = Util.getString(sortParameters.get("exclusion"), null);
+        accessibiliteMental = Util.toBoolean(sortParameters.get("accessibiliteMental"), false);
+        accessibiliteMoteur = Util.toBoolean(sortParameters.get("accessibiliteMoteur"), false);
+        accessibiliteVisuel = Util.toBoolean(sortParameters.get("accessibiliteVisuel"), false);
+        
+        ArrayList<EvenementInfolocale> listEvents = new ArrayList<EvenementInfolocale>(Arrays.asList(arrayEvents));
+        
+        for (Iterator<EvenementInfolocale> iter = listEvents.iterator(); iter.hasNext();) {
+            EvenementInfolocale itEvent = iter.next();
+            if (accessibiliteMental ? !itEvent.getMentionAccessibleHandicapMental() : false) {
+                iter.remove();
+                continue;
+            }
+            if (accessibiliteMoteur ? !itEvent.getMentionAccessibleHandicapMoteur() : false) {
+                iter.remove();
+                continue;
+            }
+            if (accessibiliteVisuel ? !itEvent.getMentionAccessibleHandicapVisuel() : false) {
+                iter.remove();
+                continue;
+            }
+            if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(itEvent.getEvenementId())) : false) {
+                iter.remove();
+                continue;
+            }
+        }
+        
+        if (resultatsMax < listEvents.size()) {
+            listEvents = new ArrayList<EvenementInfolocale>(listEvents.subList(0, resultatsMax));
+        }
+        
+        return listEvents.toArray(new EvenementInfolocale[listEvents.size()]);
     }
     
 }

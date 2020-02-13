@@ -1,0 +1,25 @@
+<%
+
+Integer resultatsMax;
+String exclusion;
+boolean accessibiliteMental;
+boolean accessibiliteMoteur;
+boolean accessibiliteVisuel;
+
+resultatsMax = Util.toInteger(request.getAttribute("resultatsMax"), channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+exclusion = Util.getString(request.getAttribute("exclusion"), null);
+accessibiliteMental = Util.toBoolean(request.getAttribute("accessibiliteMental"), false);
+accessibiliteMoteur = Util.toBoolean(request.getAttribute("accessibiliteMoteur"), false);
+accessibiliteVisuel = Util.toBoolean(request.getAttribute("accessibiliteVisuel"), false);
+
+Map<String, Object> postApiSortingParams = new HashMap<String, Object>();
+
+postApiSortingParams.put("resultatsMax", resultatsMax);
+postApiSortingParams.put("exclusion", exclusion);
+postApiSortingParams.put("accessibiliteMental", accessibiliteMental);
+postApiSortingParams.put("accessibiliteMoteur", accessibiliteMoteur);
+postApiSortingParams.put("accessibiliteVisuel", accessibiliteVisuel);
+
+allEvents = InfolocaleEntityUtils.sortEvenementInfolocaleArray(allEvents, postApiSortingParams);
+
+%>

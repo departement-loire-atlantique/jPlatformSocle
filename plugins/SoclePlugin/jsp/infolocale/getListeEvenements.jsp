@@ -24,6 +24,7 @@ response.setHeader("Content-Type", "application/json");
         EvenementInfolocale[] allEvents = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
         JSONArray sentData = new JSONArray();
         %>
+        <%@ include file='performPostApiSort.jspf' %>
         <jalios:foreach name="itEvent" type="EvenementInfolocale" array="<%= allEvents %>">
             <jalios:buffer name="itEventHtml">
                 <jalios:include pub="<%= itEvent %>" usage="list"/>
