@@ -197,6 +197,7 @@
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />

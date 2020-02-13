@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -51,18 +52,20 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {
 		City cityData = HttpUtil.getDataParameter(request, "commune", City.class);
-		List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
-		Set<Publication> removeSolis = new HashSet<Publication>();
-		for(Publication itPub : set) {
-			if(itPub instanceof FicheLieu) {
-				FicheLieu itFiche = (FicheLieu) itPub;
-				String idRef = itFiche.getIdReferentiel();
-				if(Util.notEmpty(idRef) && !sectorResultId.contains(idRef)){
-					removeSolis.add(itPub);
+		if(Util.notEmpty(cityData)) {
+			List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
+			Set<Publication> removeSolis = new HashSet<Publication>();
+			for(Publication itPub : set) {
+				if(itPub instanceof FicheLieu) {
+					FicheLieu itFiche = (FicheLieu) itPub;
+					String idRef = itFiche.getIdReferentiel();
+					if(Util.notEmpty(idRef) && !sectorResultId.contains(idRef)){
+						removeSolis.add(itPub);
+					}
 				}
 			}
-		}
-		set.removeAll(removeSolis);
+			set.removeAll(removeSolis);
+		}		
 		return set;
 	}
 	
@@ -96,7 +99,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche avec le référentiel externe", e);
 		}
-		return null;
+		return (List<SectorResult>) Collections.EMPTY_SET ;
 	}
 
 }
