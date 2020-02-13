@@ -115,7 +115,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 </div>
                                 <jalios:if predicate='<%= hasParcoursCollege %>'>
                                 <div class="col col-2 ds44--xl-padding-l ds44-hide-mobile">
-                                    <image id="imageParcoursCollege" class="medium-w25 small-w25 tiny-w50" src='<%= HttpUtil.encodeForHTMLAttribute(channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage()) %>' alt=""/>
+                                    <image id="imageParcoursCollege" class="medium-w25 small-w25 tiny-w50" src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>' alt=""/>
                                 </div>
                                 </jalios:if>
                             </div>
@@ -138,9 +138,9 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                            <jalios:if predicate="<%= !hasFigcaption %>">
                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure">
                            </jalios:if>
-                              <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : HttpUtil.encodeForHTMLAttribute(obj.getImageMobile()) %>'>
-                              <source media="(min-width: 36em)" srcset="<%=HttpUtil.encodeForHTMLAttribute(obj.getImagePrincipale())%>">
-                              <img src="<%=HttpUtil.encodeForHTMLAttribute(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
+                              <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : obj.getImageMobile() %>'>
+                              <source media="(min-width: 36em)" srcset="<%=obj.getImagePrincipale()%>">
+                              <img src="<%=obj.getImagePrincipale()%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
                            </picture>
                            <jalios:if predicate="<%= hasFigcaption%>">
                                <figcaption class="ds44-imgCaption">
