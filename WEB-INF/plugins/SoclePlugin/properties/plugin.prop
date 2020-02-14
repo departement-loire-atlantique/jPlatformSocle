@@ -253,3 +253,10 @@ $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
 # Marché public
 
 $jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
+
+# Fiche emploi, stage
+
+$jcmsplugin.socle.emploiStage.typeOffre.root: c_5281
+$jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
+$jcmsplugin.socle.emploiStage.filiere.root: c_1216306
+$jcmsplugin.socle.emploiStage.emploi.root: c_5285

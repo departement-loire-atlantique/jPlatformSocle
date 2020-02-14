@@ -31,6 +31,7 @@
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
+    <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
     <type name="Magazine"></type>
@@ -102,7 +103,12 @@
         <template name="default" file="doFicheArticleFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="FicheEmploiStage">
+        <template name="default" file="doFicheEmploiStageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="FicheLieu">
         <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
