@@ -12,19 +12,19 @@
     <field name="duree" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Durée</label>
     </field>
-    <field name="texteEntete" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="texteentete" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Texte en-tête</label>
     </field>
-    <field name="dateLimiteDepot" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+    <field name="dateLimiteDeDepot" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
       <label xml:lang="fr">Date limite dépôt</label>
     </field>
-    <field name="reference" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="numeroDePoste" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Référence</label>
     </field>
     <field name="positionHierarchique" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Position hiérarchique</label>
     </field>
-    <field name="directionDelegations" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.directionDelegation.root">
+    <field name="directiondelegation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.directionDelegation.root">
       <label xml:lang="fr">Direction délégations</label>
     </field>
     <field name="service" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
@@ -36,7 +36,7 @@
     <field name="rue" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Rue</label>
     </field>
-    <field name="codePostal" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
+    <field name="cp" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{5}">
       <label xml:lang="fr">Code postal</label>
     </field>
     <field name="commune" editor="link" required="true" compactDisplay="false" type="generated.City" parent="false">
@@ -45,19 +45,19 @@
     <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
       <label xml:lang="fr">Image</label>
     </field>
-    <field name="mission" editor="wysiwyg" required="true" compactDisplay="false" tab="mission" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Mission</label>
+    <field name="missions" editor="wysiwyg" required="true" compactDisplay="false" tab="mission" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Missions</label>
     </field>
     <field name="activites" editor="wysiwyg" required="true" compactDisplay="false" tab="activites" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Activités</label>
     </field>
-    <field name="filieres" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.filiere.root">
-      <label xml:lang="fr">Filières</label>
+    <field name="filiere" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.filiere.root">
+      <label xml:lang="fr">Filière</label>
     </field>
     <field name="categorieDemploi" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.emploiStage.emploi.root">
       <label xml:lang="fr">Catégorie d'emploi</label>
     </field>
-    <field name="cadreDemploi" editor="wysiwyg" required="false" compactDisplay="false" tab="profil_souhaite" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="grade" editor="wysiwyg" required="false" compactDisplay="false" tab="profil_souhaite" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Cadre d'emploi</label>
     </field>
     <field name="metierEnTension" editor="boolean" required="false" compactDisplay="false" tab="profil_souhaite" type="boolean" default="on">
@@ -67,7 +67,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="competencesAttendues" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="connaissancesEtExperiences" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Compétences attendues</label>
     </field>
     <field name="conditionsARemplir" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
