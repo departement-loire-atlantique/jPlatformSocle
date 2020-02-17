@@ -11,6 +11,8 @@ jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
 jcmsplugin.socle.portlet.filariane.id: c_1088465
 
+lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------

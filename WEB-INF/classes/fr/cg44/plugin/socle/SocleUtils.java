@@ -4,10 +4,15 @@ import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
@@ -17,6 +22,8 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
+
+import generated.City;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -286,6 +293,44 @@ public final class SocleUtils {
 	    if (url.contains("http")) return url.replace("'", "").replace("\"", "");
 	    
 	    return "https://" + url.replace("'", "").replace("\"", "");
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Publication... communes) {		
+		JsonArray jsonArray = new JsonArray();
+		for(Publication itPub : communes) {
+			City itCity = (City) itPub;
+		    JsonObject itJsonObject = new JsonObject();
+		    itJsonObject.addProperty("insee", Integer.toString(itCity.getCityCode()));
+		    itJsonObject.addProperty("libelle", itCity.getTitle());
+		    jsonArray.add(itJsonObject);
+		}		
+		return jsonArray;		
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Collection<Publication> communes) {		
+		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Set<City> communes) {		
+		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
 	}
 
 }

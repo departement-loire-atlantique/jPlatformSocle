@@ -51,7 +51,11 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			indexCommunesDesEPCI(doc, publication);
 			// Indexation de toutes les communes
 			indexAllCommunes(doc, publication);
+		}else {
+			// Indexation du code commune sur la commune
+			indexCityCode(doc, (City) publication);
 		}
+			
 	}
 	
 	
