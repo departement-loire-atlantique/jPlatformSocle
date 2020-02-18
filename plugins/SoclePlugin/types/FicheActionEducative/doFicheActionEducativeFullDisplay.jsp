@@ -293,5 +293,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
             </div>
         </section>
         </jalios:if>
+        
+        <ds:carrousel carrouselPortlet='<%= (PortletQueryForeach) channel.getPublication("lch_1217717") %>'/>
     </article>
 </main>
