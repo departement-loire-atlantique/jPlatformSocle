@@ -50,11 +50,13 @@
             
             <li class="swiper-slide">
                 <section class="ds44-card ds44-card--verticalPicture">
+                    <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
                     <a href="#" tabindex="-1" aria-hidden="true">
                         <picture class="ds44-container-imgRatio">
                             <img src="<%= urlImage %>" alt="" class="ds44-imgRatio" />
                         </picture>
                     </a>
+                    </jalios:if>
                     <div class="ds44-card__section">
                         <p role="heading" aria-level="2" class="ds44-card__title">
                             <a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink">
