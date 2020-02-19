@@ -17,8 +17,8 @@ lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
-jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.png
-jcmsplugin.socle.site.src.carte.pdcv.mobile: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.png
+jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
+jcmsplugin.socle.site.src.carte.pdcv.mobile: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
