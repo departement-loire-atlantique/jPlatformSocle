@@ -238,6 +238,7 @@
     <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
+    <file path="WEB-INF/tags/titleDelegation.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
