@@ -28,6 +28,13 @@
     type="String"
     description="Déclaration du gabarit pour le carrousel"
 %>
+<%@ attribute name="theme"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Déclaration du theme pour le carrousel"
+%>
 <jalios:select>
     <jalios:if predicate="<%= (Util.isEmpty(pubArray) && Util.isEmpty(carrouselPortlet)) || (Util.notEmpty(pubArray) && Util.notEmpty(carrouselPortlet)) %>">
         <%-- Ne rien afficher --%>
@@ -40,9 +47,12 @@
         <%-- Afficher la liste de données en dessous --%>
         <%
         
+        String themeCarousel = Util.notEmpty(theme) ? theme : "darkContext";
+        
         PortletCarousel tmpPortlet = new PortletCarousel();
         tmpPortlet.setTemplate(gabarit);
         tmpPortlet.setFirstPublications(pubArray);
+        tmpPortlet.setSelectionDuTheme(themeCarousel);
         %>
         <jalios:include pub="<%= tmpPortlet %>"/>
     </jalios:if>
