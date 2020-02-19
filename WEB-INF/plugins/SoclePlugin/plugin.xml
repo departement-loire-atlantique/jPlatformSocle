@@ -17,7 +17,7 @@
     <type name="Carousel"></type>
     <type name="CarouselElement"></type>
     <type name="Chapitre"></type>
-    <type name="City"></type>
+    <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
     <type name="ContenuDeTest"></type>
@@ -37,6 +37,7 @@
     <type name="MarchePublic"></type>
     <type name="News"></type>
     <type name="Place"></type>
+    <type name="PortletCarousel"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -185,13 +186,15 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
-        <template name="sliderTrois" file="doPortletQueryForeachSliderThreePanels.jsp" usage="box">
+    </templates>
+    <templates type="PortletCarousel">
+        <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
           <label xml:lang="fr">DS44 : carrousel trois tuiles</label>
         </template>
-        <template name="sliderQuatre" file="doPortletQueryForeachSliderFourPanels.jsp" usage="box">
+        <template name="sliderQuatre" file="doPortletCarouselSliderFourPanels.jsp" usage="box">
           <label xml:lang="fr">DS44 : carrousel quatre tuiles</label>
         </template>
-    </templates>       
+    </templates>
     <templates type="PortletRechercheFacettes">
         <template name="default" file="doPortletRechercheFacettesSimple.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>

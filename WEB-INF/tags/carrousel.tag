@@ -4,7 +4,7 @@
     description="Carrousel à quatre tuiles (En ce moment...)" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.Content,
-    generated.PortletQueryForeach, com.jalios.jcms.context.JcmsContext, com.jalios.jcms.context.JcmsJspContext,
+    generated.PortletCarousel, com.jalios.jcms.context.JcmsContext, com.jalios.jcms.context.JcmsJspContext,
     com.jalios.jcms.TypeTemplateEntry"
 %>
 <%@ attribute name="pubArray"
@@ -18,7 +18,7 @@
     required="false"
     fragment="false"
     rtexprvalue="true"
-    type="PortletQueryForeach"
+    type="PortletCarousel"
     description="Portlet Carrousel"
 %>
 <%@ attribute name="gabarit"
@@ -40,7 +40,7 @@
         <%-- Afficher la liste de données en dessous --%>
         <%
         
-        PortletQueryForeach tmpPortlet = new PortletQueryForeach();
+        PortletCarousel tmpPortlet = new PortletCarousel();
         tmpPortlet.setTemplate(gabarit);
         tmpPortlet.setFirstPublications(pubArray);
         %>
