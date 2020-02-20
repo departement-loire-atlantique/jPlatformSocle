@@ -243,17 +243,19 @@
   </types>
 
   <java-classes>
-    <java package="fr.cg44.plugin.socle"/>
-    <java package="fr.cg44.plugin.junit.facettes"/>   
+    <java package="fr.cg44.plugin.socle"/>   
   </java-classes>
 
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
+    <!--
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
+    -->
   </plugincomponents>
     
   <private-files>
@@ -278,15 +280,16 @@
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
   </public-files>
   <webapp-files>
+    <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
-    <file path="WEB-INF/tags/toggle.tag" />
-    <file path="WEB-INF/tags/card.tag" />
+    <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
