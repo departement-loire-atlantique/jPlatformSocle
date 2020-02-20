@@ -120,7 +120,7 @@
 
 				<picture class="ds44-show-mobile" data-bkp-aria-hidden=""
 					data-bkp-tabindex="" aria-hidden="true"> <img
-					src='<%= channel.getProperty("jcmsplugin.socle.site.src.carte.pdcv") %>'
+					src='<%= channel.getProperty("jcmsplugin.socle.site.src.carte.pdcv.mobile") %>'
 					alt='<%= glp("jcmsplugin.socle.pdcv.carte.alt") %>'
 					class="ds44-imgMap" usemap="#CarteDesDelegationsMob"
 					data-bkp-aria-hidden="" data-bkp-tabindex="" aria-hidden="true">

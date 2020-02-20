@@ -18,20 +18,20 @@ if (((rootCategory == null) || (rootCategory.isLeaf())) && box.getHideWhenNoResu
 }
 
 // Tri et filtre sur les catégories autorisées
-TreeSet<Category> rootSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCategory);
+Set<Category> rootSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCategory);
 
 int maxLevels = box.getLevels();
 %>
 <jalios:foreach collection="<%= rootSet %>" type="Category"	name="itCatLevel1"><%
 %><h2 class="h3-like"><%=itCatLevel1%></h2><%
-TreeSet<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel1);
+Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel1);
 %><ul class="ds44-collapser"><%
     %><jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2"><%
 	%> <li class="ds44-collapser_element"><%
 	%><%
 	%><%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour,
 	       sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%><%
-	TreeSet<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
+	Set<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
 	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
 	boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
             if(linkToPub) {%>

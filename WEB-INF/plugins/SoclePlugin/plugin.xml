@@ -20,6 +20,7 @@
     <type name="City"></type>
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
+    <type name="ContenuDeTest"></type>
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
@@ -233,11 +234,6 @@
     <templates type="PortletRechercheFacettes">
         <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
-        </template>
-    </templates>
-    <templates type="PortletResultatRechercheFacettes">
-        <template name="default" file="doPortletResultatRechercheFacettesListMap.jsp" usage='box'>
-          <label xml:lang="fr">DS44 : gabarit liste + carte</label>
         </template>
     </templates>
   </types>

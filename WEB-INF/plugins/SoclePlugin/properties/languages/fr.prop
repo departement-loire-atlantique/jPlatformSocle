@@ -21,6 +21,7 @@ jcmsplugin.socle.css-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.js-urls: URLs des fichiers js à charger dans le portail
 jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
+jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")

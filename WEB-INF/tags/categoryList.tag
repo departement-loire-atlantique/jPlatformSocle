@@ -13,6 +13,7 @@
             com.jalios.util.ServletUtil,
             com.jalios.util.Util,
             java.util.TreeSet,
+            java.util.Set,
             java.util.Locale,
             fr.cg44.plugin.socle.SocleUtils,
             generated.PageCarrefour"
@@ -44,7 +45,7 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 Locale userLocale = Channel.getChannel().getCurrentJcmsContext().getUserLocale();
 
 // Tri des catégories filles + filtre sur catégories autorisées
-TreeSet<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
+Set<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
 
 // Calcul du niveau d'itération courant
 int itLevel = currentLevel!=null ? currentLevel : 0;

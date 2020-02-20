@@ -18,10 +18,6 @@
       <label xml:lang="fr">Code canton</label>
       <description xml:lang="fr">Code unique associé à ce canton utilisé pour le fonctionnement interne du moteur de recherche à facettes. Merci de valoriser ce champ avec une valeur non nulle.</description>
     </field>
-    <field name="city" editor="link" required="false" compactDisplay="false" type="generated.City" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Commune</label>
-      <description xml:lang="fr">Ne remplir que pour les villes liées à plusieurs cantons.</description>
-    </field>
     <field name="idCantonAtlas" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Id canton atlas</label>
     </field>
