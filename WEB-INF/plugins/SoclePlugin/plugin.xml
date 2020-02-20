@@ -165,7 +165,52 @@
         <template name="light" file="doPortletDecoratorFullDisplayLightBackground.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit fond clair avec titre et description</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="PortletFacetteAdresse">
+        <template name="default" file="doPortletFacetteAdresseBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCanton">
+        <template name="default" file="doPortletFacetteCantonBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCategorie">
+        <template name="default" file="doPortletFacetteCategorieBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCategoriesLiees">
+        <template name="default" file="doPortletFacetteCategoriesLieesBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCommune">
+        <template name="default" file="doPortletFacetteCommuneBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCommuneAdresseLiee">
+        <template name="default" file="doPortletFacetteCommuneAdresseLieeBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacette">
+        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacette">
+        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacette">
+        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Gabarit menu accordéon</label>
@@ -186,7 +231,7 @@
         </template>
     </templates>       
     <templates type="PortletRechercheFacettes">
-        <template name="default" file="doPortletRechercheFacettesFullDisplay.jsp" usage='box'>
+        <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
