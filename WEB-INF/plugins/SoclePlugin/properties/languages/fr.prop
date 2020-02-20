@@ -151,6 +151,17 @@ jcmsplugin.socle.ficheaide.important: Important !
 jcmsplugin.socle.ficheaide.faire-trajet-destineo: Faire mon trajet avec Destineo
 jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l’accessibilité du lieu
 
+jcmsplugin.socle.facette.form-element: form-element
+jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
+jcmsplugin.socle.facette.adresse.default-label: Adresse
+jcmsplugin.socle.facette.canton.default-label: Canton
+jcmsplugin.socle.facette.commune.default-label: Commune
+jcmsplugin.socle.facette.delegation.default-label: Delegation
+jcmsplugin.socle.facette.titre.default-label: Titre
+jcmsplugin.socle.facette.category.hidden-label: Ouvrir le menu de choix : Select multiple large
+jcmsplugin.socle.facette.category-liees.default-label: Categories liées
+jcmsplugin.socle.facette.category-liees.hidden-label: Categories liées
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
