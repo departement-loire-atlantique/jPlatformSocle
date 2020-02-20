@@ -6,8 +6,8 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="categoriePrincipale" editor="link" required="true" compactDisplay="false" type="generated.PortletFacetteCategorie" parent="false">
-      <label xml:lang="fr">Catégorie principale</label>
+    <field name="categoriePrincipales" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_3">
+      <label xml:lang="fr">Catégorie principales</label>
     </field>
     <field name="categorieSecondaire" editor="link" required="true" compactDisplay="false" type="generated.PortletFacetteCategorie" parent="false">
       <label xml:lang="fr">Catégorie secondaire</label>

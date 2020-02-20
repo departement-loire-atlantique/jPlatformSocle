@@ -6,9 +6,13 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="communesAvecAdresse" editor="link" required="false" compactDisplay="false" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Communes avec Adresse</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Renseigner ici la liste des communes qui vont nécessiter une adresse pour rediriger correctement l’utilisateur (Nantes, Rezé, …)&lt;/p&gt;&lt;/div&gt;</description>
+    <field name="afficherToujoursAdresse" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Afficher toujours Adresse</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Si &lt;strong&gt;Oui&lt;/strong&gt;, on accède au champ adresse, qu'importe la commune renseignée ; si &lt;strong&gt;Non&lt;/strong&gt;, on accède au champ adresse seulement si la commune renseignée nécessite l'affichage de l'adresse (comme Nantes ou Rezé par exemple).&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field type="super" />
   </fields>

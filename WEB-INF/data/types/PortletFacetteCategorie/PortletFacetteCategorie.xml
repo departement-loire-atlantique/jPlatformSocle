@@ -9,13 +9,6 @@
     <field name="categoriesRacines" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_3">
       <label xml:lang="fr">Catégories racines</label>
     </field>
-    <field name="typeDaffichage" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Type d'affichage</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Cases à cocher</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Liste déroulante</offLabel>
-    </field>
     <field name="typeDeSelection" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de séléction</label>
       <onLabel xml:lang="en">Yes</onLabel>
@@ -23,15 +16,12 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Monovaluée</offLabel>
     </field>
-    <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Mode des catégories</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Union</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Intersection</offLabel>
-    </field>
-    <field name="profondeur" editor="int" required="false" compactDisplay="false" type="int" default="0">
+    <field name="profondeur" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Profondeur</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">1</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">2</offLabel>
     </field>
     <field type="super" />
   </fields>
