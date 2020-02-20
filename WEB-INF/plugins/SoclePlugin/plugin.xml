@@ -197,18 +197,18 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
-    <templates type="PortletFacette">
-        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+    <templates type="PortletFacetteDelegation">
+        <template name="default" file="doPortletFacetteDelegationBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
-    <templates type="PortletFacette">
-        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+    <templates type="PortletFacetteMotCle">
+        <template name="default" file="doPortletFacetteMotCleBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
-    <templates type="PortletFacette">
-        <template name="default" file="doPortletFacetteBoxDisplay.jsp" usage='box'>
+    <templates type="PortletFacetteTitre">
+        <template name="default" file="doPortletFacetteTitreBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
