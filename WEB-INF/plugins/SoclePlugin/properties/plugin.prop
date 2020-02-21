@@ -255,3 +255,8 @@ $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
 # Marché public
 
 $jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
+
+# FAQ
+
+$jcmsplugin.socle.faq.categorie-navigation.root: 
+$jcmsplugin.socle.faq.mise-en-avant.root: 
