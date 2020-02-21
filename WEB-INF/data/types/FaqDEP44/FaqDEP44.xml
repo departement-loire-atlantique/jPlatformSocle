@@ -30,10 +30,10 @@
     <field name="ficheLieuxLiees" editor="link" required="false" compactDisplay="false" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Fiche lieux liées</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.faq.categorie-navigation.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.faq.mise-en-avant.root">
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
   </fields>
