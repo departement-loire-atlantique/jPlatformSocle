@@ -40,7 +40,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
                         <picture class="ds44-logo">
-                            <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.retour.accueil") %>" />
+                            <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.retour.accueil") %> <%=channel.getName() %>" />
                         </picture>
                     </a>
                 </div>
