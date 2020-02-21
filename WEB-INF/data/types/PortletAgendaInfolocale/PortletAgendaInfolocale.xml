@@ -16,9 +16,6 @@
     <field name="organismesInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Organismes infolocale</label>
     </field>
-    <field name="groupesDorganismes" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Groupes d’organismes</label>
-    </field>
     <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Genre infolocale</label>
     </field>
@@ -33,9 +30,6 @@
     </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="filtres_api" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">EPCI</label>
-    </field>
-    <field name="idExclus" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">ID Exclus</label>
     </field>
     <field name="typeDaffichage" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" labelList="Liste seule|Liste + carte" valueList="list|listmap">
       <label xml:lang="fr">Type d'affichage</label>
