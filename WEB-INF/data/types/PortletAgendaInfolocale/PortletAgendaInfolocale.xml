@@ -13,14 +13,17 @@
       <label xml:lang="fr">ID de flux</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Surcharge l'ID de flux par défaut du site&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="organismesInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Organismes infolocale</label>
+    <field name="organismeInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Organisme infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à l'ID d'un organisme sur Infolocale&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Genre infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Groupes d’événements infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à une liste de thématiques personnalisées séparés par une virgule (ex. "groupe_3,groupe_12,groupe24")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="delegations" editor="link" required="false" compactDisplay="false" tab="filtres_api" type="generated.Delegation[]">
       <label xml:lang="fr">Délégations</label>
