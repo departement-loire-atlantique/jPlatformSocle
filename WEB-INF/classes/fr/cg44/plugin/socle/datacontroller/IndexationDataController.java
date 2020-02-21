@@ -39,10 +39,39 @@ public class IndexationDataController extends BasicDataController {
 				// Réindexe les contenus liées à toutes les communes lors de la création d'une commune
 				indexPubAllCity(city);
 			}
+		}else if(data instanceof Canton) {
+			if(op == OP_UPDATE ) {
+				Canton canton = (Canton) data;
+				indexPubCanton(canton, context);
+			}
 		}
 	}
 	
-		
+	
+	/**
+	 * Réindexe les contenus liées au canton si son code canton a été modifié
+	 * @param canton
+	 * @param context
+	 */
+	private void indexPubCanton(Canton canton, Map context) {
+		Canton previousCity = (Canton) context.get(DataController.CTXT_PREVIOUS_DATA);
+		// Récupère le code commune avant et après modification
+		int previousCantonCode = previousCity.getCantonCode();
+		int cantonCode = canton.getCantonCode();		
+		// Si le code canton change alors réindexe les publication en lien avec ce canton
+		if(cantonCode != previousCantonCode) {
+			// Set des publication à ré-indéxer
+			TreeSet<Publication> pubRefSet = new TreeSet<>();
+			// Récupère les publications qui référencent directement le canton (champ mono)
+			pubRefSet.addAll(canton.getLinkIndexedDataSet(Publication.class, "canton"));
+			// Récupère les publications qui référencent directement le canton (champ multiple)
+			pubRefSet.addAll(canton.getLinkIndexedDataSet(Publication.class, "cantons"));			
+			// Réindexe les publications associées au canton
+			indexPublications(pubRefSet);
+		}		
+	}
+
+
 	private void indexPubAllCity(City city) {
 		// Recherche toutes les publication qui sont cochées à oui sur le champ "toutes les communes"
 		String SearchText = PublicationFacetedSearchCityEnginePolicyFilter.INDEX_FIELD_ALL_CITY + ":\"" + "true" + "\"";			
@@ -55,7 +84,7 @@ public class IndexationDataController extends BasicDataController {
 
 
 	/**
-	 * Réindexe les contenu liées à la commune si son code commune ou canton a été modifié
+	 * Réindexe les contenus liées à la commune si son code commune ou canton a été modifié
 	 * @param data
 	 * @param context
 	 */
