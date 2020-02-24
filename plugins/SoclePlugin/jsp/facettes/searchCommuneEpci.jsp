@@ -4,7 +4,7 @@
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-String textSearch = getAlphaNumParameter("insee", "");
+String textSearch = getAlphaNumParameter("search", "");
 String[] tabSearchedFields = new String[]{"facet_city"};
 
 QueryHandler qh = new QueryHandler();
