@@ -35,11 +35,10 @@ public class UtilEnginePolicyFilter  {
 			if(publication.getFieldValue(field) instanceof Publication[]) {
 				Publication[] pubIndex = (Publication[]) publication.getFieldValue(field);
 				indexFieldCode(doc, fieldIndex, fieldCodePublication, pubIndex);
-			}else if(publication instanceof Publication) {
+			}else if(publication.getFieldValue(field) instanceof Publication) {
 				Publication pubIndex = (Publication) publication.getFieldValue(field);
 				indexFieldCode(doc, fieldIndex, fieldCodePublication, pubIndex);
-			}			
-			
+			}					
 		} catch (NoSuchFieldException e) {
 			LOGGER.trace("Le contenu : " + publication + " n'a pas de référence à " + field + " à indexer", e);
 		}	
