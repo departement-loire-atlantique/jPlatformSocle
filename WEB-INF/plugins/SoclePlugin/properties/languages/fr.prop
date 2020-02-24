@@ -57,7 +57,7 @@ jcmsplugin.socle.label.encemoment: En ce moment
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.retour.accueil: Retour à l’accueil du site loire-atlantique.fr
+jcmsplugin.socle.retour.accueil: Retour à l’accueil du site
 jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation

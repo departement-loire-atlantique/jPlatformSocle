@@ -38,6 +38,7 @@
     <type name="News"></type>
     <type name="Place"></type>
     <type name="PortletCarousel"></type>
+    <type name="PortletAgendaInfolocale"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>

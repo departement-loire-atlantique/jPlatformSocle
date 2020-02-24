@@ -312,7 +312,8 @@ public final class SocleUtils {
 			City itCity = (City) itPub;
 		    JsonObject itJsonObject = new JsonObject();
 		    itJsonObject.addProperty("insee", Integer.toString(itCity.getCityCode()));
-		    itJsonObject.addProperty("libelle", itCity.getTitle());
+		    itJsonObject.addProperty("libelle", itCity.getTitle());		    
+		    itJsonObject.addProperty("hasLinkedField", true);		    
 		    jsonArray.add(itJsonObject);
 		}		
 		return jsonArray;		
@@ -336,6 +337,33 @@ public final class SocleUtils {
 	 */
 	public static JsonArray citiestoJsonArray(Set<City> communes) {		
 		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
+	}
+	
+	
+	/**
+	 * Retourne une publication sous forme de json pour le moteur de la recherche à facettes
+	 * @param pub
+	 * @param pubListGabarit
+	 * @param pubMarkerGabarit
+	 * @return
+	 */
+	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("id", pub.getId());
+		jsonObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
+		jsonObject.addProperty("type", pub.getClass().getSimpleName());
+		jsonObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
+		jsonObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
+		if(Util.notEmpty(pubListGabarit)) {
+			jsonObject.addProperty("html_list", pubListGabarit);
+		}
+		if(Util.notEmpty(pubMarkerGabarit)) {
+			jsonObject.addProperty("html_marker", pubMarkerGabarit);
+		}
+		if(Util.notEmpty(pubFullGabarit)) {
+			jsonObject.addProperty("html_full", pubFullGabarit);
+		}
+		return jsonObject;
 	}
 
 }
