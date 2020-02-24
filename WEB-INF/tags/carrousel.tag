@@ -36,10 +36,7 @@
     description="Déclaration du theme pour le carrousel"
 %>
 <jalios:select>
-    <jalios:if predicate="<%= (Util.isEmpty(pubArray) && Util.isEmpty(carrouselPortlet)) || (Util.notEmpty(pubArray) && Util.notEmpty(carrouselPortlet)) %>">
-        <%-- Ne rien afficher --%>
-    </jalios:if>
-    <jalios:if predicate="<%= Util.notEmpty(carrouselPortlet) %>">
+    <jalios:if predicate="<%= Util.notEmpty(carrouselPortlet) && Util.isEmpty(pubArray) %>">
         <%-- Afficher la portlet --%>
         <jalios:include pub="<%= carrouselPortlet %>"/>
     </jalios:if>
