@@ -25,9 +25,15 @@
     
     <jalios:if predicate="<%= Util.notEmpty(box.getContenusEnAvant()) %>">
         <div class="ds44-container-large">
+            <jalios:if predicate="<%= box.getContenusEnAvant().length > 1 %>">
+            <div class="grid-12-small-1">
+            </jalios:if>
             <jalios:foreach name="itContenuEnAvant" type="Content" array="<%= box.getContenusEnAvant() %>" max="2">
                 <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>"/>
             </jalios:foreach>
+            <jalios:if predicate="<%= box.getContenusEnAvant().length > 1 %>">
+            </div>
+            </jalios:if>
         </div>
     </jalios:if>
     
