@@ -19,7 +19,7 @@ import generated.Delegation;
 
 
 /**
- * Indexe le code commune dans les publication qui référence des communes (directement ou au travers de cantons)
+ * Indexe le code commune dans les publications qui référencent des communes (directement ou au travers de cantons)
  */
 public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneSearchEnginePolicyFilter {
 
@@ -58,19 +58,24 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	
 	
 	/**
-	 * Indexe le code canton sur la publication
+	 * Indexe le code commune à partir de la commune récupérée sur le champ "commune" de la publication.
 	 * @param doc
-	 * @param city
+	 * @param publication
 	 */
 	private void indexCommune(Document doc, Publication publication){
 		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CITY, CODE_CITY, publication, "commune");
 	}
 	
+	
+	/**
+	 * Indexe les codes commune à partir des communes récupérées sur le champ "communes" de la publication.
+	 * @param doc
+	 * @param publication
+	 */
 	private void indexCommunes(Document doc, Publication publication){
 		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CITY, CODE_CITY, publication, "communes");
 	}
 	
-
 	
 	/**
 	 * Récupère le champ "canton" du type de contenu si celui-ci est présent pour indexer les communes référencées par ce canton

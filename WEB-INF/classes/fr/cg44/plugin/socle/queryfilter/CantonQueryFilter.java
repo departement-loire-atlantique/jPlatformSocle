@@ -19,7 +19,7 @@ public class CantonQueryFilter extends LuceneQueryFilter {
 	
 	@Override
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
-		// Récupère la ou les cantons en paramètre de recherche
+		// Récupère le ou les cantons en paramètre de recherche
 		String[] citiesCodeSearchArray = request.getParameterValues("canton");
 		addCantonSearch(qh, request, citiesCodeSearchArray);
 		return qh;
@@ -30,13 +30,14 @@ public class CantonQueryFilter extends LuceneQueryFilter {
 	 * Ajoute le filtre sur la canton
 	 * Attention la query passe en syntaxe de recherche avancée
 	 * @param qh
+	 * @param request
 	 * @param cantonCode
 	 */
 	public void addCantonSearch(QueryHandler qh, HttpServletRequest request, String... cantonCode) {		
 		if(Util.notEmpty(cantonCode)) {
 			// Passe la query en syntaxe avancée pour accepter les requêtes lucenes
 			qh.setMode("advanced");	  
-			// Requête pour la recherche sur les cantosn (OR entre les cantons)	
+			// Requête pour la recherche sur les cantons (OR entre les cantons)	
 			String cantonSearchText = "";
 			for(String itCantonCode : cantonCode) {
 				if(Util.notEmpty(cantonSearchText)) {

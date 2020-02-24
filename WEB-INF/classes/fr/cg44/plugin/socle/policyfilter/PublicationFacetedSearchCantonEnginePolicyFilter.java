@@ -6,9 +6,8 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.policy.BasicLuceneSearchEnginePolicyFilter;
 
 
-
 /**
- * Indexe le code canton dans les publication qui référence des cantons directement
+ * Indexe le code canton dans les publications qui référencent des cantons directement
  */
 public class PublicationFacetedSearchCantonEnginePolicyFilter extends BasicLuceneSearchEnginePolicyFilter {
 		
