@@ -54,9 +54,9 @@ public class IndexationDataController extends BasicDataController {
 	 * @param context
 	 */
 	private void indexPubCanton(Canton canton, Map context) {
-		Canton previousCity = (Canton) context.get(DataController.CTXT_PREVIOUS_DATA);
+		Canton previousCanton = (Canton) context.get(DataController.CTXT_PREVIOUS_DATA);
 		// Récupère le code commune avant et après modification
-		int previousCantonCode = previousCity.getCantonCode();
+		int previousCantonCode = previousCanton.getCantonCode();
 		int cantonCode = canton.getCantonCode();		
 		// Si le code canton change alors réindexe les publication en lien avec ce canton
 		if(cantonCode != previousCantonCode) {
