@@ -182,15 +182,15 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 				}
 			}
 		} catch (NoSuchFieldException e) {
-			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
+			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer à partir des EPCI", e);
 		}
 	}
 		
 	
 	/**
-	 * Indexe les codes commune sur la publication à partir du canton
+	 * Indexe les codes commune sur la publication à partir d'un ou plusieurs cantons
 	 * @param doc
-	 * @param communes
+	 * @param cantons
 	 */
 	private void indexCityCodeCanton(Document doc, Canton... cantons){
 		if (Util.isEmpty(cantons)) {
@@ -206,9 +206,9 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	
 	
 	/**
-	 * Indexe les codes commune sur la publication à partir de la délation
+	 * Indexe les codes commune sur la publication à partir de la délégation
 	 * @param doc
-	 * @param communes
+	 * @param delegations
 	 */
 	private void indexCityCodeDelegation(Document doc, Delegation... delegations){
 		if (Util.isEmpty(delegations)) {
@@ -226,7 +226,7 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	/**
 	 * Indexe le code commune sur la publication
 	 * @param doc
-	 * @param city
+	 * @param communes
 	 */
 	private void indexCityCode(Document doc, City... communes){
 		UtilEnginePolicyFilter.indexFieldCode(doc, INDEX_FIELD_CITY, CODE_CITY, communes);
@@ -236,14 +236,11 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	/**
 	 * Indexe le code commune sur la publication
 	 * @param doc
-	 * @param city
+	 * @param communes
 	 */
 	private void indexCityCode(Document doc, Set<City> communes){
 		UtilEnginePolicyFilter.indexFieldCode(doc, INDEX_FIELD_CITY, CODE_CITY, communes);
 	}
 	
-	
-	
-
 	
 }

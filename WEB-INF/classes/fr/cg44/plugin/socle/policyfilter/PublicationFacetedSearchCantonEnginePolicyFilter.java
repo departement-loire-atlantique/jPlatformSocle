@@ -27,7 +27,7 @@ public class PublicationFacetedSearchCantonEnginePolicyFilter extends BasicLucen
 	/**
 	 * Indexe le code canton sur la publication
 	 * @param doc
-	 * @param city
+	 * @param publication
 	 */
 	private void indexCanton(Document doc, Publication publication){
 		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CANTON, CODE_CANTON, publication, "canton");
@@ -36,7 +36,7 @@ public class PublicationFacetedSearchCantonEnginePolicyFilter extends BasicLucen
 	/**
 	 * Indexe le code canton sur la publication
 	 * @param doc
-	 * @param city
+	 * @param publication
 	 */
 	private void indexCantons(Document doc, Publication publication){
 		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CANTON, CODE_CANTON, publication, "cantons");
