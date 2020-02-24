@@ -248,8 +248,10 @@
     <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
+    <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />

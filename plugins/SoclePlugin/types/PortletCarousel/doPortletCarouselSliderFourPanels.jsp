@@ -1,13 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%
-    
-%><%@ include file='/jcore/doInitPage.jspf'%>
-<%
-    
-%><%@ include file='/jcore/portal/doPortletParams.jspf'%>
-<%
-    
-%>
+<%@ page contentType="text/html; charset=UTF-8"%><%
+%><%@ include file='/jcore/doInitPage.jspf'%><%
+%><%@ include file='/jcore/portal/doPortletParams.jspf'%><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%
     PortletCarousel box = (PortletCarousel) portlet;
     String themeSombre = "darkContext";
@@ -31,10 +25,17 @@
     
     <jalios:if predicate="<%= Util.notEmpty(box.getContenusEnAvant()) %>">
         <div class="ds44-container-large">
-            <%-- TODO : afficher les contenus mis en avant --%>
+            <jalios:if predicate="<%= box.getContenusEnAvant().length > 1 %>">
+            <div class="grid-12-small-1">
+            </jalios:if>
+            <jalios:foreach name="itContenuEnAvant" type="Content" array="<%= box.getContenusEnAvant() %>" max="2">
+                <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>"/>
+            </jalios:foreach>
+            <jalios:if predicate="<%= box.getContenusEnAvant().length > 1 %>">
+            </div>
+            </jalios:if>
         </div>
     </jalios:if>
-    
 
     <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large">
         <div class="swiper-container">
@@ -43,66 +44,7 @@
                 <%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
                 <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
                 
-                <%
-                String urlImage = "";
-                String title = itPub.getTitle();
-                String subTitle = "";
-                String location = "";
-                
-                try {
-                    urlImage = (String) itPub.getFieldValue("imageMobile");
-                } catch(Exception e) {}
-                if (Util.isEmpty(urlImage)) {
-                    try {
-                        urlImage = (String) itPub.getFieldValue("imageBandeau");
-                    } catch(Exception e) {}
-                }
-                if (Util.isEmpty(urlImage)) {
-                    try {
-                        urlImage = (String) itPub.getFieldValue("imagePrincipale");
-                    } catch(Exception e) {}
-                }
-                if (Util.isEmpty(urlImage)) {
-                    urlImage = "s.gif";
-                }
-                
-                // TODO : subTitle
-                
-                // TODO : location
-                
-                %>
-                
-                <li class="swiper-slide">
-                    <section class="ds44-card ds44-card--verticalPicture ds44-<%= box.getSelectionDuTheme() %>">
-                        <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
-                        <a href="#" tabindex="-1" aria-hidden="true">
-                            <picture class="ds44-container-imgRatio">
-                                <img src="<%= urlImage %>" alt="" class="ds44-imgRatio" />
-                            </picture>
-                        </a>
-                        </jalios:if>
-                        <div class="ds44-card__section">
-                            <p role="heading" aria-level="2" class="ds44-card__title">
-                                <a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink">
-                                    <%= title %>
-                                </a>
-                            </p>
-                            <jalios:if predicate="<%= Util.notEmpty(subTitle) %>">
-                            <p><%= subTitle %></p>
-                            </jalios:if>
-                            <jalios:if predicate="<%= Util.notEmpty(location) %>">
-                            <p class="ds44-cardLocalisation">
-                                <i class="icon icon-marker" aria-hidden="true"></i>
-                                <span class="ds44-iconInnerText"><%= location %></span>
-                            </p>
-                            </jalios:if>
-                            <a href="<%= itPub.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true">
-                                <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-                                <span class="visually-hidden"><%= title %></span>
-                            </a>
-                        </div>
-                    </section>
-                </li>
+                <ds:tuileSlider pub="<%= itPub %>" theme="<%= box.getSelectionDuTheme() %>"/>
                 
                 <%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
             </ul>
