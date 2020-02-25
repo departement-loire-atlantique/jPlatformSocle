@@ -9,7 +9,7 @@
 
     <ds:titleDelegation imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
             title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-            copyright="<%= obj.getCopyright() %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleDelegation>
+            copyright="<%= obj.getCopyright() %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true" delegation="<%= obj.getDelegation() %>"></ds:titleDelegation>
             
     <%-- Rechercher contact ou aide --%>
     <%-- TODO --%>
