@@ -1,3 +1,7 @@
+# Désactive l'affichage, autant que possible, dans le portail courant. Cela pose des problème de perte de catégorie courante dans notre cas/
+# https://community.jalios.com/jcms/jc1_256839/fr/quelles-sont-les-regles-qui-determinent-le-portail-d-affichage-d-une-publication
+display.use-front-session-portal: false
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
