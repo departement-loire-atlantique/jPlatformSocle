@@ -3,7 +3,6 @@ package fr.cg44.plugin.socle.policyfilter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
@@ -51,7 +50,11 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			indexCommunesDesEPCI(doc, publication);
 			// Indexation de toutes les communes
 			indexAllCommunes(doc, publication);
+		}else {
+			// Indexation du code commune sur la commune
+			indexCityCode(doc, (City) publication);
 		}
+			
 	}
 	
 	

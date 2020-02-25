@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletAgendaInfolocale" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Agenda Infolocale</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="titreSEO" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO</label>
+    </field>
+    <field name="idDeFlux" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">ID de flux</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Surcharge l'ID de flux par défaut du site&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="organismeInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Organisme infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à l'ID d'un organisme sur Infolocale&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Genre infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Groupes d’événements infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à une liste de thématiques personnalisées séparés par une virgule (ex. "groupe_3,groupe_12,groupe24")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="delegations" editor="link" required="false" compactDisplay="false" tab="filtres_api" type="generated.Delegation[]">
+      <label xml:lang="fr">Délégations</label>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="filtres_api" type="generated.City[]">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="filtres_api" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">EPCI</label>
+    </field>
+    <field name="typeDaffichage" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" labelList="Liste seule|Liste + carte" valueList="list|listmap">
+      <label xml:lang="fr">Type d'affichage</label>
+    </field>
+    <field name="comportementMarqueur" editor="enumerate" required="true" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="full|pannel|list" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Vue détaillée|Panneau|Déplacement liste">
+      <label xml:lang="fr">Comportement marqueur</label>
+    </field>
+    <field name="affichageCarrousel" editor="boolean" required="false" compactDisplay="false" tab="presentation_graphique" type="boolean" default="on">
+      <label xml:lang="fr">Affichage carrousel</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="nombreDeTuiles" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
+      <label xml:lang="fr">Nombre de tuiles</label>
+    </field>
+    <field name="typeDeTuileCarousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile carousel</label>
+    </field>
+    <field name="metadonneesTuileCarousel" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Metadonnées tuile carousel</label>
+    </field>
+    <field name="nombreDeResultats" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
+      <label xml:lang="fr">Nombre de resultats</label>
+    </field>
+    <field name="typeDeTuileResultats" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile résultats</label>
+    </field>
+    <field name="metadonneesTuileResultat" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Metadonnées tuile résultat</label>
+    </field>
+    <field name="exportPDF" editor="boolean" required="false" compactDisplay="false" tab="presentation_graphique" type="boolean" default="on">
+      <label xml:lang="fr">Export PDF</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="exportXLS" editor="boolean" required="false" compactDisplay="false" tab="presentation_graphique" type="boolean" default="on">
+      <label xml:lang="fr">Export XLS</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field type="super" />
+  </fields>
+  <tabs>
+    <tab id="filtres_api">
+      <label xml:lang="fr">Filtres API</label>
+    </tab>
+    <tab id="moteur_de_recherche">
+      <label xml:lang="fr">Moteur de recherche</label>
+    </tab>
+    <tab id="presentation_graphique">
+      <label xml:lang="fr">Présentation graphique</label>
+    </tab>
+  </tabs>
+</type>
+

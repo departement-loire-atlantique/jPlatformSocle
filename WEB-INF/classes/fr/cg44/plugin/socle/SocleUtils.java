@@ -4,10 +4,15 @@ import static com.jalios.jcms.Channel.getChannel;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
@@ -17,6 +22,8 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
+
+import generated.City;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -103,7 +110,7 @@ public final class SocleUtils {
 
 	/**
 	 * Retire tout ce qui n'est pas décimal de la chaine de caractère
-	 * Exemple 02 40-44-85 12 devient  0240448512 ou 44 000 devient 40000
+	 * Exemple 02 40-44-85 12 devient  0240448512 ou 44 000 devient 44000
 	 * @param s
 	 * @return
 	 */
@@ -140,10 +147,13 @@ public final class SocleUtils {
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
 	 * 
-	 * [libelle]\n
-	 * [etageCouloirEscalier] [entreBatimentImmeuble] [nDeVoie] [libelleDeVoie] [lieuDit]\n
-	 * [cs]\n
-	 * [codePostal] [commune]\n
+	 * [libelle]<br>
+	 * [etageCouloirEscalier]<br>
+	 * [entreBatimentImmeuble]<br>
+	 * [nDeVoie] [libelleDeVoie]<br>
+	 * [lieuDit]<br>
+	 * CS [cs]<br>
+	 * [codePostal] [commune] Cedex [cedex]
 	 * 
 	 * @param libelle
 	 * @param etageCouloirEscalier
@@ -182,6 +192,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(sbfAddrBis.toString())) {
 			sbfAddr.append(sbfAddrBis)
+			.deleteCharAt(sbfAddr.length()-1)
 			.append(newLine);
 		}
 		if(Util.notEmpty(lieuDit)) {
@@ -204,8 +215,7 @@ public final class SocleUtils {
 		if(Util.notEmpty(cedex)) {
 			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
 			.append(" ")
-			.append(cedex)
-			.append(newLine);
+			.append(cedex);
 		}
 
 		return sbfAddr.toString();
@@ -215,6 +225,7 @@ public final class SocleUtils {
 	
 	/**
 	 * Créé une url oppenstreetmap à partir des coordonnées et du zoom souhaité
+	 * Par exemple : https://www.openstreetmap.org/directions?engine=graphhopper_car&route=[latitude]%2C[longitude]#map=[zoom]/[latitude]/[longitude]
 	 * @param latitude
 	 * @param longitude
 	 * @param zoom
@@ -244,6 +255,7 @@ public final class SocleUtils {
 	
 	/**
 	 * Créé une url oppenstreetmap à partir des coordonnées
+	 * Par exemple : https://www.openstreetmap.org/directions?engine=graphhopper_car&route=[latitude]%2C[longitude]#map=11/[latitude]/[longitude]
 	 * @param latitude
 	 * @param longitude
 	 * @return une url qui ouvre une page openstreetmap avec un zoom par defaut
@@ -254,7 +266,7 @@ public final class SocleUtils {
 	}
 
 	/**
-	 * Génère un String de format cat1, cat2, cat3 selon une liste de catégories
+	 * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
 	 * @param categories
 	 * @return
 	 */
@@ -286,6 +298,72 @@ public final class SocleUtils {
 	    if (url.contains("http")) return url.replace("'", "").replace("\"", "");
 	    
 	    return "https://" + url.replace("'", "").replace("\"", "");
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Publication... communes) {		
+		JsonArray jsonArray = new JsonArray();
+		for(Publication itPub : communes) {
+			City itCity = (City) itPub;
+		    JsonObject itJsonObject = new JsonObject();
+		    itJsonObject.addProperty("insee", Integer.toString(itCity.getCityCode()));
+		    itJsonObject.addProperty("libelle", itCity.getTitle());		    
+		    itJsonObject.addProperty("hasLinkedField", true);		    
+		    jsonArray.add(itJsonObject);
+		}		
+		return jsonArray;		
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Collection<Publication> communes) {		
+		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(Set<City> communes) {		
+		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
+	}
+	
+	
+	/**
+	 * Retourne une publication sous forme de json pour le moteur de la recherche à facettes
+	 * @param pub
+	 * @param pubListGabarit
+	 * @param pubMarkerGabarit
+	 * @return
+	 */
+	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("id", pub.getId());
+		jsonObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
+		jsonObject.addProperty("type", pub.getClass().getSimpleName());
+		jsonObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
+		jsonObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
+		if(Util.notEmpty(pubListGabarit)) {
+			jsonObject.addProperty("html_list", pubListGabarit);
+		}
+		if(Util.notEmpty(pubMarkerGabarit)) {
+			jsonObject.addProperty("html_marker", pubMarkerGabarit);
+		}
+		if(Util.notEmpty(pubFullGabarit)) {
+			jsonObject.addProperty("html_full", pubFullGabarit);
+		}
+		return jsonObject;
 	}
 
 }
