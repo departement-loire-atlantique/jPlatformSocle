@@ -238,7 +238,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         <section id="blocRessources" class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <div class="ds44-wsg-encadreApplat">
+                    <div class="ds44-wsg-encadreApplat ds44-theme">
                         <jalios:if predicate="<%= hasDocRessources %>">
                             <% 
                             String currentDocBlocTitle = "";
