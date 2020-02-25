@@ -76,16 +76,16 @@
     <field name="specificitesDuPoste" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Spécificités du poste</label>
     </field>
-    <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="candidatures" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="candidature" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Modalités de candidature</label>
     </field>
-    <field name="contacts" editor="wysiwyg" required="true" compactDisplay="false" tab="candidatures" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="contacts" editor="wysiwyg" required="true" compactDisplay="false" tab="candidature" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Contacts</label>
     </field>
-    <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" tab="candidatures" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encartDocuments">
+    <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" tab="candidature" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encartDocuments">
       <label xml:lang="fr">Titre encart document</label>
     </field>
-    <field name="documentsMultiple" editor="link" required="false" compactDisplay="false" tab="candidatures" type="com.jalios.jcms.FileDocument[]" ml="false" descriptionType="tooltip" tabGroup="encartDocuments" searchable="false" html="false" checkHtml="true">
+    <field name="documentsMultiple" editor="link" required="false" compactDisplay="false" tab="candidature" type="com.jalios.jcms.FileDocument[]" ml="false" descriptionType="tooltip" tabGroup="encartDocuments" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Documents (multiple)</label>
     </field>
   </fields>
@@ -93,7 +93,7 @@
     <tab id="activites">
       <label xml:lang="fr">Activités</label>
     </tab>
-    <tab id="candidatures">
+    <tab id="candidature">
       <label xml:lang="fr">Candidature</label>
     </tab>
     <tab id="competences_attendues">
