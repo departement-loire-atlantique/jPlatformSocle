@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletCarousel" superclass="generated.PortletQueryForeach" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Carrousel</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="titreDuBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre du bloc</label>
+    </field>
+    <field name="soustitreDuBloc" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Sous-titre du bloc</label>
+    </field>
+    <field name="contenusEnAvant" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]">
+      <label xml:lang="fr">Contenus en avant</label>
+    </field>
+    <field name="selectionDuTheme" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="darkContext|whiteContext" ml="false" descriptionType="tooltip" labelList="Fond gris, tuiles blanches|Fond blanc, tuiles grises" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sélection du thème</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+
