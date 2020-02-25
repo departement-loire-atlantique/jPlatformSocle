@@ -22,33 +22,12 @@
     type="String"
     description="Le chemin du fichier image"
 %>
-<%@ attribute name="mobileImagePath"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le chemin du fichier image mobile"
-%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
     rtexprvalue="true"
     type="String"
     description="Texte alternatif de l'image"
-%>
-<%@ attribute name="legend"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Légende de l'image"
-%>
-<%@ attribute name="copyright"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Copyright de l'image"
 %>
 <%@ attribute name="breadcrumb"
     required="false"
@@ -69,6 +48,7 @@
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+
 %>
 
 <section class="ds44-container-large">
@@ -76,7 +56,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
     <div class="ds44-pageHeaderContainer ds44-pageHeaderContainer--deuxCol">
         <div class="ds44-pageHeaderContainer__left">
             <picture class="ds44-pageHeaderContainer__pictureContainer">
-            <img src="../../assets/images/header-page-carrefour.jpg" alt=""
+            <img src="<%= imagePath %>" alt="<%= alt %>"
                 class="ds44-headerImg"> </picture>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
@@ -93,7 +73,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                 <div class="ds44-innerBoxContainer">
                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.label.departementPdcv") %></p>
                     <hr>
-                    <img src="../../assets/images/deleg-st_nazaire.png" alt="">
+                    <img src="<%=  %>" alt="">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
