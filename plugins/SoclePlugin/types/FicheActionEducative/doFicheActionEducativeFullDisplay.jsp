@@ -293,5 +293,6 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
             </div>
         </section>
         </jalios:if>
+
     </article>
 </main>
