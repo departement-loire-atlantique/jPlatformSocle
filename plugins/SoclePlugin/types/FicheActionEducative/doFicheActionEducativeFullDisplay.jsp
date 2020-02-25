@@ -293,18 +293,6 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
             </div>
         </section>
         </jalios:if>
-        
-        <ds:carrousel gabarit="box.sliderTrois" carrouselPortlet='<%= (PortletCarousel) channel.getPublication("lch_1217724") %>'/>
-        
-        <%
-        Content[] arrayContent = new Content[3];
-        arrayContent[0] = (Content) channel.getPublication("c_1214350");
-        arrayContent[1] = (Content) channel.getPublication("lch_1217708");
-        arrayContent[2] = (Content) channel.getPublication("t1_9427");
-        %>
-        
-        <ds:carrousel pubArray="<%= arrayContent %>" gabarit="box.sliderTrois"/>
-        
-        <ds:carrousel pubArray="<%= arrayContent %>" gabarit="box.sliderTrois" theme="whiteContext"/>
+
     </article>
 </main>
