@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="Delegation" superclass="generated.Place" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||">
+<type name="Delegation" superclass="generated.FicheLieu" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||">
   <title ml="true" searchable="true">
     <label xml:lang="fr">Nom de la délégation</label>
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="epci" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_6">
-      <label xml:lang="fr">EPCI</label>
-    </field>
     <field name="services" editor="link" required="false" compactDisplay="false" type="generated.Place[]">
       <label xml:lang="fr">Services</label>
     </field>
