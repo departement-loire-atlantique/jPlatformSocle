@@ -54,6 +54,7 @@ jcmsplugin.socle.label.cs: CS
 jcmsplugin.socle.label.cedex: Cedex
 jcmsplugin.socle.label.monparcourscollege: Mon parcours collège
 jcmsplugin.socle.label.encemoment: En ce moment
+jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 
 # ------------------------------------------------------------
 #  Header
