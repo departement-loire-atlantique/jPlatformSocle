@@ -34,7 +34,7 @@ Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLev
 	Set<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
 	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
             if(Util.notEmpty(itContenuPrincipal)) {%>
-              <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike">TOTO<%=itCatLevel2.getName()%></jalios:link>
+              <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
             <% }else if(Util.notEmpty(level3CatSet)){%>
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
