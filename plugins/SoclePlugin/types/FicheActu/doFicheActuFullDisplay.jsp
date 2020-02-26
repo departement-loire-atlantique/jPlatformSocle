@@ -31,6 +31,7 @@
 	    </section>
 	    <%-- Boucler sur les paragraphes --%>
 	    <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
+	       <jalios:if predicate="<%= itCounter <= obj.getContenuParagraphe().length ? Util.notEmpty(obj.getContenuParagraphe()[itCounter-1]) : false %>">
 	       <section id="section<%= itCounter %>" class="ds44-contenuArticle">
 		       <div class="ds44-inner-container ds44-mtb3">
 	               <div class="ds44-grid12-offset-2">
@@ -41,6 +42,7 @@
 			       </div>
 		       </div>
 	       </section>
+	       </jalios:if>
 	    </jalios:foreach>
 	    
 	    <%-- TODO : bloc des réseaux sociaux --%>
