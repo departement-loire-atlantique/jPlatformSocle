@@ -311,9 +311,11 @@ public final class SocleUtils {
 		for(Publication itPub : communes) {
 			City itCity = (City) itPub;
 		    JsonObject itJsonObject = new JsonObject();
-		    itJsonObject.addProperty("insee", Integer.toString(itCity.getCityCode()));
-		    itJsonObject.addProperty("libelle", itCity.getTitle());		    
-		    itJsonObject.addProperty("hasLinkedField", true);		    
+		    itJsonObject.addProperty("id", Integer.toString(itCity.getCityCode()));
+		    itJsonObject.addProperty("value", itCity.getTitle());		    
+		    JsonObject itJsonMetaObject = new JsonObject();
+		    itJsonMetaObject.addProperty("hasLinkedField", true);		    
+		    itJsonObject.add("metadata", itJsonMetaObject);
 		    jsonArray.add(itJsonObject);
 		}		
 		return jsonArray;		
