@@ -242,8 +242,8 @@ if(getBooleanParameter("exportNew", false)) {
         }
         
         StringBuffer delegations = new StringBuffer();
-        if (Util.notEmpty(itLieu.getDelegations(loggedMember))) {
-            for (Iterator iter = itLieu.getDelegations(loggedMember).iterator(); iter.hasNext();) {
+        if (Util.notEmpty(itLieu.getDelegations())) {
+            for (Iterator iter = Arrays.asList(itLieu.getDelegations()).iterator(); iter.hasNext();) {
                 Category itCat = (Category) iter.next();
                 delegations.append(itCat.getName());
                 if (iter.hasNext()) delegations.append(", ");

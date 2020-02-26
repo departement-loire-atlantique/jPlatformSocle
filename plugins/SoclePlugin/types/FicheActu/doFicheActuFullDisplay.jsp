@@ -37,7 +37,7 @@
 				       <jalios:if predicate="<%= Util.notEmpty(itTitle) %>">
 				           <h2 id="titreParagraphe<%= itCounter %>"><%= itTitle %></h2>
 				       </jalios:if>
-				       <%= obj.getContenuParagraphe()[itCounter-1] %>
+				       <jalios:wysiwyg><%= obj.getContenuParagraphe()[itCounter-1] %></jalios:wysiwyg>
 			       </div>
 		       </div>
 	       </section>
