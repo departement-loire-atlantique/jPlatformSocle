@@ -57,7 +57,7 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 <jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>">
     <% if(itLevel>1) paddingClass = "ds44-list ds44-collapser_content--level3"; %>
     <ul class="<%=paddingClass%>">
-    <%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour, sinon génération des enfants. --%>
+    <%-- Si présence d'un contenu principal dans la catégorie, alors lien vers ce contenu, sinon génération des enfants. --%>
     <%
 	for(Category itCategory : childrenCatSet){
 		String cible= "";
@@ -70,8 +70,7 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 		}
 		
 		Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCategory);
-	    boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
-	    if(linkToPub) {%>
+	    if(Util.notEmpty(itContenuPrincipal)) {%>
 	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--buttonLike" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	    <%}
 	    else{%>

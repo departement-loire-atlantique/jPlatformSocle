@@ -29,13 +29,12 @@ Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLev
     %><jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2"><%
 	%> <li class="ds44-collapser_element"><%
 	%><%
-	%><%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour,
+	%><%-- Si présence d'un contenu principal sur la catégorie, alors lien vers ce contenu,
 	       sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%><%
 	Set<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
 	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
-	boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
-            if(linkToPub) {%>
-              <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+            if(Util.notEmpty(itContenuPrincipal)) {%>
+              <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike">TOTO<%=itCatLevel2.getName()%></jalios:link>
             <% }else if(Util.notEmpty(level3CatSet)){%>
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
