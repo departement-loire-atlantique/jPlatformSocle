@@ -35,7 +35,7 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	public void addCitySearch(QueryHandler qh, HttpServletRequest request, String... cityCode) {		
 		if(Util.notEmpty(cityCode)) {
 			// Passe la query en syntaxe avancée pour accepter les requêtes lucenes
-			qh.setMode("advanced");	  
+			qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
 			// Requête pour la recherche sur les communes (OR entre les communes)	
 			String citySearchText = "";
 			for(String itCityCode : cityCode) {

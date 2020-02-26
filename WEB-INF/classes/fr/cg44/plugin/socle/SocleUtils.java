@@ -352,20 +352,37 @@ public final class SocleUtils {
 	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", pub.getId());
-		jsonObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
-		jsonObject.addProperty("type", pub.getClass().getSimpleName());
-		jsonObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
-		jsonObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
+		jsonObject.addProperty("value", pub.getTitle());
+		JsonObject jsonMetaObject = new JsonObject();
+		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
+		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
+		jsonMetaObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
+		jsonMetaObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
 		if(Util.notEmpty(pubListGabarit)) {
-			jsonObject.addProperty("html_list", pubListGabarit);
+			jsonMetaObject.addProperty("html_list", pubListGabarit);
 		}
 		if(Util.notEmpty(pubMarkerGabarit)) {
-			jsonObject.addProperty("html_marker", pubMarkerGabarit);
+			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
 		}
 		if(Util.notEmpty(pubFullGabarit)) {
-			jsonObject.addProperty("html_full", pubFullGabarit);
+			jsonMetaObject.addProperty("html_full", pubFullGabarit);
 		}
+		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
+	}
+	
+	
+	/**
+	 * Retourne les Publications sous forme de json
+	 * @param publications
+	 * @return
+	 */
+	public static JsonArray publicationToJsonArray(Set<Publication> publications) {
+		JsonArray jsonArray = new JsonArray();
+		for(Publication itPub : publications) {
+			jsonArray.add(publicationToJsonObject(itPub, null, null, null));
+		}
+		return jsonArray;
 	}
 
 }
