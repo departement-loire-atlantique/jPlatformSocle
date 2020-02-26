@@ -182,6 +182,18 @@
         <% } %>
     </td>
   </tr>
+  <tr class="field reserveAgentsColleges categoryEditor  <%= Util.isEmpty(obj.getReserveAgentsColleges(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "reserveAgentsColleges", userLang) %><jalios:edit pub='<%= obj %>' fields='reserveAgentsColleges'/></td>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getReserveAgentsColleges(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getReserveAgentsColleges(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
+            <% } %>
+    </td>
+  </tr>
   <tr class="field metierEnTension booleanEditor  ">
     <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "metierEnTension", userLang) %><jalios:edit pub='<%= obj %>' fields='metierEnTension'/></td>
     <td class='field-data' >
@@ -220,11 +232,51 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field contacts wysiwygEditor  <%= Util.isEmpty(obj.getContacts()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "contacts", userLang) %><jalios:edit pub='<%= obj %>' fields='contacts'/></td>
-    <td class='field-data' <%= gfla(obj, "contacts") %>>
-            <% if (Util.notEmpty(obj.getContacts())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='contacts'><%= obj.getContacts() %></jalios:wysiwyg>            
+  <tr class="field contactRH textfieldEditor  <%= Util.isEmpty(obj.getContactRH()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "contactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='contactRH'/></td>
+    <td class='field-data' <%= gfla(obj, "contactRH") %>>
+            <% if (Util.notEmpty(obj.getContactRH())) { %>
+            <%= obj.getContactRH() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field uniteOrgaContactRH textfieldEditor  <%= Util.isEmpty(obj.getUniteOrgaContactRH()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "uniteOrgaContactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='uniteOrgaContactRH'/></td>
+    <td class='field-data' <%= gfla(obj, "uniteOrgaContactRH") %>>
+            <% if (Util.notEmpty(obj.getUniteOrgaContactRH())) { %>
+            <%= obj.getUniteOrgaContactRH() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field telContactRH textfieldEditor  <%= Util.isEmpty(obj.getTelContactRH()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "telContactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='telContactRH'/></td>
+    <td class='field-data' <%= gfla(obj, "telContactRH") %>>
+            <% if (Util.notEmpty(obj.getTelContactRH())) { %>
+            <%= obj.getTelContactRH() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field contactMetier textfieldEditor  <%= Util.isEmpty(obj.getContactMetier()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "contactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='contactMetier'/></td>
+    <td class='field-data' <%= gfla(obj, "contactMetier") %>>
+            <% if (Util.notEmpty(obj.getContactMetier())) { %>
+            <%= obj.getContactMetier() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field uniteOrgaContactMetier textfieldEditor  <%= Util.isEmpty(obj.getUniteOrgaContactMetier()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "uniteOrgaContactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='uniteOrgaContactMetier'/></td>
+    <td class='field-data' <%= gfla(obj, "uniteOrgaContactMetier") %>>
+            <% if (Util.notEmpty(obj.getUniteOrgaContactMetier())) { %>
+            <%= obj.getUniteOrgaContactMetier() %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field telContactMetier textfieldEditor  <%= Util.isEmpty(obj.getTelContactMetier()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "telContactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='telContactMetier'/></td>
+    <td class='field-data' <%= gfla(obj, "telContactMetier") %>>
+            <% if (Util.notEmpty(obj.getTelContactMetier())) { %>
+            <%= obj.getTelContactMetier() %>
             <% } %>
     </td>
   </tr>
@@ -263,8 +315,20 @@
             <% } %>
     </td>
   </tr>
+  <tr class="field categoriesDeNavigation categoryEditor  <%= Util.isEmpty(obj.getCategoriesDeNavigation(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "categoriesDeNavigation", userLang) %><jalios:edit pub='<%= obj %>' fields='categoriesDeNavigation'/></td>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getCategoriesDeNavigation(loggedMember))) { %>
+            <ol>
+            <jalios:foreach collection="<%= obj.getCategoriesDeNavigation(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("p1_924130"), " > ", true, userLang) %></a><% } %></li>
+            </jalios:foreach>
+            </ol>
+            <% } %>
+    </td>
+  </tr>
  
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- yl+VviMeoua6CLbEh9jkrQ== --%>
+%><%-- egyUkR6GqGNif5DilUqUUg== --%>
