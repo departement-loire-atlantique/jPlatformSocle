@@ -22,6 +22,20 @@
     type="String"
     description="Le chemin du fichier image"
 %>
+<%@ attribute name="mobileImagePath"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le chemin du fichier image mobile"
+%>
+<%@ attribute name="cartePath"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le chemin du fichier carte"
+%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
@@ -47,8 +61,6 @@
 <%
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
-boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
-
 %>
 
 <section class="ds44-container-large">
@@ -56,8 +68,12 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
     <div class="ds44-pageHeaderContainer ds44-pageHeaderContainer--deuxCol">
         <div class="ds44-pageHeaderContainer__left">
             <picture class="ds44-pageHeaderContainer__pictureContainer">
-            <img src="<%= imagePath %>" alt="<%= alt %>"
-                class="ds44-headerImg"> </picture>
+	            <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+	                <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+	            </jalios:if>
+	            <source media="(min-width: 36em)" srcset="<%=imagePath%>">
+	            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+            </picture>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
                     <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
@@ -73,23 +89,23 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                 <div class="ds44-innerBoxContainer">
                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.label.departementPdcv") %></p>
                     <hr>
-                    <img src="<%=  %>" alt="">
+                    <img src="<%= cartePath %>" alt="">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-                        <%= SocleUtils.formatAddress(delegation.getStreet(), null, null, null, null, null, delegation.getPostalBox(), delegation.getZipCode(), delegation.getCity().getTitle(), null) %>
+                        <%= SocleUtils.formatAddress(null, null, null, delegation.getNdeVoie(), delegation.getLibelleDeVoie(), null, null, delegation.getCodePostal(), Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : null, null) %>
                     </p>
-                    <% if (Util.notEmpty(delegation.getPhones())) { %>
+                    <% if (Util.notEmpty(delegation.getTelephone())) { %>
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                        <% for (String itPhone : delegation.getPhones()) { %>
+                        <% for (String itPhone : delegation.getTelephone()) { %>
                         <ds:phone number="<%= SocleUtils.cleanNumber(itPhone) %>"></ds:phone>
                         <% } %>
                     </p>
                     <% } %>
-                    <% if (Util.notEmpty(delegation.getMails())) { %>
+                    <% if (Util.notEmpty(delegation.getEmail())) { %>
                     <p class="ds44-docListElem mtm">
-                        <% for (String itMail : delegation.getMails()) { %>
+                        <% for (String itMail : delegation.getEmail()) { %>
                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a
                             href="mailto:<%= itMail %>"
                             aria-label='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'> <%= itMail %></a>

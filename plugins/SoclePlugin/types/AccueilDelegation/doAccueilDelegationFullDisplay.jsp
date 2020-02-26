@@ -6,10 +6,7 @@
 
 <main id="content" role="main">
 
-
-    <ds:titleDelegation imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-            title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-            copyright="<%= obj.getCopyright() %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true" delegation="<%= obj.getDelegation() %>"></ds:titleDelegation>
+    <ds:titleDelegation imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true" delegation="<%= obj.getDelegation() %>"/>
             
     <%-- Rechercher contact ou aide --%>
     <%-- TODO --%>
