@@ -7,8 +7,9 @@ String rubrique;
 String recherche;
 String order;
 String thematiquePerso;
-Integer organisme;
+String organisme;
 String flux;
+String excludeIds;
 
 codeInsee = Util.getString(request.getAttribute("codeInsee"), null);
 rayon = Util.toInteger(request.getAttribute("rayon"), null);
@@ -18,8 +19,9 @@ rubrique = Util.getString(request.getAttribute("rubrique"), null);
 recherche = Util.getString(request.getAttribute("recherche"), null);
 order = Util.getString(request.getAttribute("order"), null);
 thematiquePerso = Util.getString(request.getAttribute("thematiquePerso"), null);
-organisme = Util.toInteger(request.getAttribute("organisme"), null);
+organisme = Util.getString(request.getAttribute("organisme"), null);
 flux = Util.getString(request.getAttribute("flux"), null);
+excludeIds = Util.getString(request.getAttribute("excludeIds"), null);
 
 Map<String, Object> parameters = new HashMap<String, Object>();
 
@@ -49,6 +51,9 @@ if (Util.notEmpty(thematiquePerso)) {
 }
 if (Util.notEmpty(organisme)) {
     parameters.put("organisme", organisme);
+}
+if (Util.notEmpty(excludeIds)) {
+    parameters.put("excludeIds", excludeIds);
 }
 
 String idFlux = Util.isEmpty(flux) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : flux;
