@@ -321,7 +321,7 @@
             <% if (Util.notEmpty(obj.getCategoriesDeNavigation(loggedMember))) { %>
             <ol>
             <jalios:foreach collection="<%= obj.getCategoriesDeNavigation(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("p1_924130"), " > ", true, userLang) %></a><% } %></li>
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.categorieDeNavigation.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -331,4 +331,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- egyUkR6GqGNif5DilUqUUg== --%>
+%><%-- ROEnJu2wKXSHJcWMwvMoKQ== --%>
