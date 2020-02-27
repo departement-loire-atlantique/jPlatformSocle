@@ -5,6 +5,7 @@
 
 <%
 String cssSliderSize = "grid-4-small-1";
+String sliderAmounts = "4";
 %>
 
 <%@ include file="doPortletCarouselBoxDisplay.jspf"%>
