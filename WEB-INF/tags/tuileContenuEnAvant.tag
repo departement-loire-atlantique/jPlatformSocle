@@ -1,6 +1,6 @@
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
 <%@ attribute name="content" required="true" fragment="false"
     rtexprvalue="true" type="Content"
     description="Le contenu a afficher"%>
@@ -21,11 +21,11 @@
     String location = "";
     
     try {
-     urlImage = (String) itPub.getFieldValue("imageMobile");
+     urlImage = (String) itPub.getFieldValue("imageBandeau");
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
-      urlImage = (String) itPub.getFieldValue("imageBandeau");
+      urlImage = (String) itPub.getFieldValue("imagePrincipale");
      } catch(Exception e) {}
     }
     if (Util.isEmpty(urlImage)) {
@@ -40,6 +40,12 @@
     // TODO : subTitle
     
     // TODO : location
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
+    try {
+        subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+    } catch(Exception e) {}
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
