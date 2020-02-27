@@ -1,6 +1,6 @@
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
 <%@ attribute name="content" required="true" fragment="false"
     rtexprvalue="true" type="Content"
     description="Le contenu a afficher"%>
@@ -25,7 +25,7 @@
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
-      urlImage = (String) itPub.getFieldValue("imageBandeau");
+      urlImage = (String) itPub.getFieldValue("imagePrincipale");
      } catch(Exception e) {}
     }
     if (Util.isEmpty(urlImage)) {
@@ -37,18 +37,13 @@
      urlImage = "s.gif";
     }
     
-    // TODO : subTitle
-    
     // TODO : location
     
-    String subTitle = "";
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
-    if (itPub instanceof FicheActu) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            subTitle = sdf.parse((Date) itPub.getFieldValue("dateActu"));
-        } catch(Exception e) {}
-    }
+    try {
+        subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+    } catch(Exception e) {}
 
 
 %>

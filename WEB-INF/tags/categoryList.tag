@@ -71,10 +71,10 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 		
 		Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCategory);
 	    if(Util.notEmpty(itContenuPrincipal)) {%>
-	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--buttonLike" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	    <%}
 	    else{%>
-	       <li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a>
+	       <li><span class="ds44-collapser_content--txt"><%=libelleCat%></span>
 	           <ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/>
            </li><%
 	    }

@@ -6,13 +6,13 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="typeDoffre" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.typeOffre.root">
+    <field name="typeDoffre" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.emploiStage.typeOffre.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type d'offre</label>
     </field>
     <field name="duree" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Durée</label>
     </field>
-    <field name="texteentete" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="texteentete" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="10" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Texte en-tête</label>
     </field>
     <field name="dateLimiteDeDepot" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
