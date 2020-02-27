@@ -14,8 +14,8 @@
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Surcharge l'ID de flux par défaut du site&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="organismeInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
-      <label xml:lang="fr">Organisme infolocale</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à l'ID d'un organisme sur Infolocale&lt;/p&gt;&lt;/div&gt;</description>
+      <label xml:lang="fr">Organisme(s) infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs organismes sur Infolocale (ex. "orga_1,orga_2,orga_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Genre infolocale</label>
@@ -33,6 +33,10 @@
     </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="filtres_api" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">EPCI</label>
+    </field>
+    <field name="idsAExclure" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">IDs d'annonces à exclure</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste d'ID d'annonces à exclure (ex. "annonce_1,annonce_2,annonce_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="typeDaffichage" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" labelList="Liste seule|Liste + carte" valueList="list|listmap">
       <label xml:lang="fr">Type d'affichage</label>

@@ -27,7 +27,7 @@
 						: false %>">
 					<h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
 				</jalios:if>
-				<%=itParagraphe%>
+				<jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
 			</div>
 		</div>
 	</section>

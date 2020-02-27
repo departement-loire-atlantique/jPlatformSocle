@@ -6,7 +6,7 @@
     String sousTitreBloc = box.getSoustitreDuBloc();
 %>
 
-<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeSombre) ? " ds44-lightBG ds44-wave-white" : "" %> ds44-mtb3 ds44--xl-padding-tb'>
+<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeSombre) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
     <div class="ds44-inner-container ds44--mobile--m-padding-b">
         <header class="txtcenter">
             <h2 class="h2-like center"><%= titreBloc %></h2>

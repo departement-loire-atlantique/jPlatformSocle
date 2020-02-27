@@ -1,3 +1,7 @@
+# Désactive l'affichage, autant que possible, dans le portail courant. Cela pose des problème de perte de catégorie courante dans notre cas/
+# https://community.jalios.com/jcms/jc1_256839/fr/quelles-sont-les-regles-qui-determinent-le-portail-d-affichage-d-une-publication
+display.use-front-session-portal: false
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
@@ -255,3 +259,15 @@ $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
 # Marché public
 
 $jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
+
+# Fiche emploi, stage
+
+$jcmsplugin.socle.emploiStage.typeOffre.root: c_5281
+$jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
+$jcmsplugin.socle.emploiStage.filiere.root: c_1216306
+$jcmsplugin.socle.emploiStage.emploi.root: c_5285
+$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root: c_1220099
+$jcmsplugin.socle.emploiStage.nav.emploi: c_5067
+$jcmsplugin.socle.emploiStage.nav.stage: c_1220102
+$jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
+$jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101

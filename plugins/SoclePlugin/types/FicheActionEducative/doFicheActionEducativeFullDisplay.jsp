@@ -101,7 +101,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         <jalios:select>
                                             <jalios:if predicate="<%= obj.getMail().length == 1 %>">
                                             <%-- TODO : remplacer par un formulaire de contact --%>
-                                            <a href="mailto:<%= obj.getMail()[0] %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.actuedu.nouscontacter.label")) %>'><%= glp("jcmsplugin.socle.actuedu.nouscontacter.label") %></a>
+                                            <a href="mailto:<%= obj.getMail()[0] %>"><%= glp("jcmsplugin.socle.actuedu.nouscontacter.label") %></a>
                                             </jalios:if>
                                             <jalios:default>
                                                 <jalios:foreach name="itMail" type="String" array="<%= obj.getMail() %>">
@@ -115,7 +115,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 </div>
                                 <jalios:if predicate='<%= hasParcoursCollege %>'>
                                 <div class="col col-2 ds44--xl-padding-l ds44-hide-mobile">
-                                    <image id="imageParcoursCollege" class="medium-w25 small-w25 tiny-w50" src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>' alt=""/>
+                                    <image id="imageParcoursCollege" class="medium-w25 small-w25 tiny-w50" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>' alt=""/>
                                 </div>
                                 </jalios:if>
                             </div>
@@ -156,7 +156,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         </div>
                         </jalios:if>
                         <div class='col <%= hasImage ? "mll" : "" %> mbs'>
-                            <p class="ds44-wsg-exergue"><%= obj.getFormat(loggedMember).first().getName() %></p>
+                            <p class="ds44-wsg-exergue" title="<%= obj.getFormat(loggedMember).first().getName() %>"><%= obj.getFormat(loggedMember).first().getName() %></p>
                             <div class="ds44-mb-std"></div>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                         </div>
@@ -238,7 +238,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         <section id="blocRessources" class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <div class="ds44-wsg-encadreApplat">
+                    <div class="ds44-wsg-encadreApplat ds44-theme">
                         <jalios:if predicate="<%= hasDocRessources %>">
                             <% 
                             String currentDocBlocTitle = "";
@@ -261,7 +261,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 // Récupérer la taille du fichier
                                 String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
                                 %>
-                                <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                 </li>
                                 </jalios:foreach>
                                 <% addLineBreak = true; %>
@@ -278,6 +278,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                             <jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartSiteInternet()) %>">
                             <p class='ds44-box-heading <%= addLineBreak ? "ds44-mt-std" : "" %>' role="heading" aria-level="2"><%= obj.getTitreEncartSiteInternet() %></p>
                             </jalios:if>
+                            <ul class="ds44-list">
                             <jalios:foreach name="itAdresse" type="String" array="<%= obj.getAdresseSiteInternet() %>" counter="itSiteCpt">
                             <%
                             boolean hasAssociatedTitle = Util.isEmpty(obj.getNomDuSite()) ? false : 
@@ -285,8 +286,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 Util.notEmpty(obj.getNomDuSite()[itSiteCpt-1]);
                             String lbl = hasAssociatedTitle ? obj.getNomDuSite()[itSiteCpt-1] : itAdresse;
                             %>
-                            <p class="ds44-docListElem"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.nouvelonglet", lbl)) %>' href="<%= SocleUtils.parseUrl(itAdresse) %>"><%= lbl %></a></p>
+                            <li class="mts">
+                            <p class="ds44-docListElem"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(lbl) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>' href="<%= SocleUtils.parseUrl(itAdresse) %>"><%= lbl %></a></p>
+                            </li>
                             </jalios:foreach>
+                            </ul>
                         </jalios:if>
                     </div>
                 </div>
