@@ -18,12 +18,16 @@
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs organismes sur Infolocale (ex. "orga_1,orga_2,orga_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
-      <label xml:lang="fr">Genre infolocale</label>
+      <label xml:lang="fr">Genre(s) infolocale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
-      <label xml:lang="fr">Groupes d’événements infolocale</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à une liste de thématiques personnalisées séparés par une virgule (ex. "groupe_3,groupe_12,groupe24")&lt;/p&gt;&lt;/div&gt;</description>
+      <label xml:lang="fr">Thématiques personnalisées</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à la liste des thématiques créées spécifiquement pour un groupe d’organismes (ex. "groupe_3,groupe_12,groupe24")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="groupeDevenements" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Groupe d'événements</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;ID d'un groupe d'événement à préciser par Infolocale&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="delegations" editor="link" required="false" compactDisplay="false" tab="filtres_api" type="generated.Delegation[]">
       <label xml:lang="fr">Délégations</label>
