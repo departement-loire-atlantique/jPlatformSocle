@@ -37,8 +37,6 @@
      urlImage = "s.gif";
     }
     
-    // TODO : subTitle
-    
     // TODO : location
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -57,6 +55,9 @@
     </a>
     <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute ds44-blockAbsolute--bl">
     <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+    <% if (Util.notEmpty(subTitle)) { %>
+    <p><%= subTitle %></p>
+    <% } %>
     </div>
 </div>
 <% if (!Boolean.parseBoolean(isUnique)) { %>

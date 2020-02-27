@@ -271,20 +271,7 @@ public final class SocleUtils {
      * @return
      */
     public static String formatCategories(SortedSet<Category> categories) {
-        
-        if (Util.isEmpty(categories)) return "";
-        
-        String separator = ", ";
-        StringBuilder formatted = new StringBuilder();
-        
-        for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
-            Category itCat = (Category) iter.next();
-            String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
-            formatted.append(title);
-            if (iter.hasNext()) formatted.append(separator);
-        }
-        
-        return formatted.toString();
+        return formatCategories(categories, ", ");
     }
     
     /**
@@ -294,7 +281,7 @@ public final class SocleUtils {
      * @param separator
      * @return
      */
-    public static String formatCategoriesCustom(SortedSet<Category> categories, String separator) {
+    public static String formatCategories(SortedSet<Category> categories, String separator) {
         
         if (Util.isEmpty(categories)) return "";
         
