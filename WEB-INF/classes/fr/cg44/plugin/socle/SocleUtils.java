@@ -266,26 +266,49 @@ public final class SocleUtils {
 	}
 
 	/**
-	 * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
-	 * @param categories
-	 * @return
-	 */
-	public static String formatCategories(SortedSet<Category> categories) {
-	    
-	    if (Util.isEmpty(categories)) return "";
-	    
-	    String separator = ", ";
-	    StringBuilder formatted = new StringBuilder();
-	    
-	    for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
-	        Category itCat = (Category) iter.next();
-	        String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
-	        formatted.append(title);
-	        if (iter.hasNext()) formatted.append(separator);
-	    }
-	    
-	    return formatted.toString();
-	}
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(SortedSet<Category> categories) {
+        
+        if (Util.isEmpty(categories)) return "";
+        
+        String separator = ", ";
+        StringBuilder formatted = new StringBuilder();
+        
+        for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+            Category itCat = (Category) iter.next();
+            String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+            formatted.append(title);
+            if (iter.hasNext()) formatted.append(separator);
+        }
+        
+        return formatted.toString();
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * Le séparateur est sélectionné dans la méthode
+     * @param categories
+     * @param separator
+     * @return
+     */
+    public static String formatCategoriesCustom(SortedSet<Category> categories, String separator) {
+        
+        if (Util.isEmpty(categories)) return "";
+        
+        StringBuilder formatted = new StringBuilder();
+        
+        for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+            Category itCat = (Category) iter.next();
+            String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+            formatted.append(title);
+            if (iter.hasNext()) formatted.append(separator);
+        }
+        
+        return formatted.toString();
+    }
 	
 	/**
 	 * Retourne une URL valide pour le front-office
