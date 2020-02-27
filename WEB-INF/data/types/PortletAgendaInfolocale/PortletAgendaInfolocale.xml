@@ -58,11 +58,11 @@
     <field name="nombreDeTuiles" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
       <label xml:lang="fr">Nombre de tuiles</label>
     </field>
-    <field name="typeDeTuileCarousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Type de tuile carousel</label>
+    <field name="typeDeTuileCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile carrousel</label>
     </field>
-    <field name="metadonneesTuileCarousel" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Metadonnées tuile carousel</label>
+    <field name="metadonneesTuileCarrousel" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Metadonnées tuile carrousel</label>
     </field>
     <field name="nombreDeResultats" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
       <label xml:lang="fr">Nombre de resultats</label>
