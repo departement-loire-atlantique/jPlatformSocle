@@ -22,6 +22,20 @@
     type="String"
     description="Le chemin du fichier image"
 %>
+<%@ attribute name="legend"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Légende de l'image"
+%>
+<%@ attribute name="copyright"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Copyright de l'image"
+%>
 <%@ attribute name="mobileImagePath"
     required="false"
     fragment="false"
@@ -61,6 +75,8 @@
 <%
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+
 %>
 
 <section class="ds44-container-large">
@@ -68,12 +84,23 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
     <div class="ds44-pageHeaderContainer ds44-pageHeaderContainer--deuxCol">
         <div class="ds44-pageHeaderContainer__left">
             <picture class="ds44-pageHeaderContainer__pictureContainer">
-	            <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
-	                <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
-	            </jalios:if>
-	            <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-	            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+                <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+                    <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+                </jalios:if>
+                <source media="(min-width: 36em)" srcset="<%=imagePath%>">
+                <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
             </picture>
+            <jalios:if predicate="<%= hasFigcaption%>">
+            <figcaption class="ds44-imgCaption">
+                    <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+                        <%=legend%>
+                    </jalios:if>
+                    <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+                        © <%=copyright%>
+                    </jalios:if>
+                </figcaption>
+                </figure>
+            </jalios:if>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
                     <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
@@ -91,10 +118,13 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
                     <hr>
                     <img src="<%= cartePath %>" alt="">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
+                    <% String adresse = SocleUtils.formatAddress(null, null, null, delegation.getNdeVoie(), delegation.getLibelleDeVoie(), null, null, delegation.getCodePostal(), Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : null, null); %>
+                    <% if (Util.notEmpty(adresse)) { %>
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-                        <%= SocleUtils.formatAddress(null, null, null, delegation.getNdeVoie(), delegation.getLibelleDeVoie(), null, null, delegation.getCodePostal(), Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : null, null) %>
+                        <%= adresse %>
                     </p>
+                    <% } %>
                     <% if (Util.notEmpty(delegation.getTelephone())) { %>
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>

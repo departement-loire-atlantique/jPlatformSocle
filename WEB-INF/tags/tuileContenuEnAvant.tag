@@ -21,7 +21,7 @@
     String location = "";
     
     try {
-     urlImage = (String) itPub.getFieldValue("imageMobile");
+     urlImage = (String) itPub.getFieldValue("imagePrincipale");
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
@@ -30,7 +30,7 @@
     }
     if (Util.isEmpty(urlImage)) {
      try {
-      urlImage = (String) itPub.getFieldValue("imagePrincipale");
+      urlImage = (String) itPub.getFieldValue("imageMobile");
      } catch(Exception e) {}
     }
     if (Util.isEmpty(urlImage)) {
@@ -40,6 +40,16 @@
     // TODO : subTitle
     
     // TODO : location
+    
+    String subTitle = "";
+    
+    if (itPub instanceof FicheActu) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            subTitle = sdf.parse((Date) itPub.getFieldValue("dateActu"));
+        } catch(Exception e) {}
+    }
+
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
@@ -51,6 +61,9 @@
     </a>
     <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute ds44-blockAbsolute--bl">
     <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+    <% if (Util.notEmpty(subTitle)) { %>
+    <p><%= subTitle %></p>
+    <% } %>
     </div>
 </div>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
