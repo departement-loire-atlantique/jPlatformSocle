@@ -230,8 +230,6 @@
 											<div class="ds44-docListElem mts">
 												<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
 												<% 
-													Boolean hasOnlyOneSite = obj.getSiteInternet().length == 1;
-													
 													StringBuffer sbfAriaLabelSite = new StringBuffer();
 													sbfAriaLabelSite.append(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label"))
 														.append(" ")
@@ -241,14 +239,14 @@
 													String strAriaLabelSite = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelSite.toString());
 												%>
 
-												<jalios:if predicate='<%= hasOnlyOneSite %>'>
+												<jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 													<% String site = obj.getSiteInternet()[0]; %>
 													<a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank">
 														<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 													</a>
 												</jalios:if>
 
-												<jalios:if predicate='<%= ! hasOnlyOneSite %>'>
+												<jalios:if predicate='<%= obj.getSiteInternet().length > 1 %>'>
 													<ul class="ds44-list">
 														<jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 															<li>
