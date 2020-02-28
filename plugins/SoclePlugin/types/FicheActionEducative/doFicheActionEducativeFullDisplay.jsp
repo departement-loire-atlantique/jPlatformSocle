@@ -26,7 +26,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                     <section class="ds44-box ds44-theme">
                         <div class="ds44-innerBoxContainer">
                             <div class="grid-12-small-1 ds44-grid12-offset-1">
-                                <div class='col col-<%= hasParcoursCollege ? "5" : "6"%>'>
+                                <div class='col col-6'>
                                     <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
                                     <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) || Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
                                     <div class="ds44-docListElem mts">
@@ -78,7 +78,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         <strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
                                     </div>
                                 </div>
-                                <div class="col col-<%= hasParcoursCollege ? "5" : "6"%> ds44--xl-padding-l">
+                                <div class="col col-6 ds44--xl-padding-l">
                                     <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNomEtPrenomContacts() %>
@@ -112,12 +112,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </div>
                                     
                                     <%-- TODO : boutons s'inscrire et suivre ma demande --%>
+                                    
+                                    <jalios:if predicate='<%= hasParcoursCollege %>'>
+                                    <img id="imageParcoursCollege" class="ds44-mt3 large-w50 medium-w25 small-w25 tiny-w50 ds44-hide-mobile" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>'/>
+                                    </jalios:if>
                                 </div>
-                                <jalios:if predicate='<%= hasParcoursCollege %>'>
-                                <div class="col col-2 ds44--xl-padding-l ds44-hide-mobile">
-                                    <image id="imageParcoursCollege" class="medium-w25 small-w25 tiny-w50" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>' alt=""/>
-                                </div>
-                                </jalios:if>
                             </div>
                         </div>
                     </section>
