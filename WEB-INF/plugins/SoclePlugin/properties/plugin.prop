@@ -36,11 +36,11 @@ jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 # ------------------------------------------------------------
 #  Wysiwyg
 # ------------------------------------------------------------
+channel.forbidden-html: (javascript:)|(<\\s*(link))|(</\\s*body)
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
-wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
@@ -93,6 +93,8 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   tt,\
   u,\
   ul[class|style|id|type]
+
+wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 jcmsplugin.socle.wysiwyg.icons:icon-arrow-down icon-arrow-right icon-arrow-up icon-computer icon-csv icon-date \
 icon-directions icon-discussion icon-facebook icon-fax icon-file icon-help icon-instagram icon-link icon-magweb \
