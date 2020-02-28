@@ -21,7 +21,7 @@
     String location = "";
     
     try {
-     urlImage = (String) itPub.getFieldValue("imageBandeau");
+     urlImage = (String) itPub.getFieldValue("imagePrincipale");
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
@@ -30,7 +30,7 @@
     }
     if (Util.isEmpty(urlImage)) {
      try {
-      urlImage = (String) itPub.getFieldValue("imagePrincipale");
+      urlImage = (String) itPub.getFieldValue("imageMobile");
      } catch(Exception e) {}
     }
     if (Util.isEmpty(urlImage)) {
@@ -44,6 +44,7 @@
     try {
         subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
     } catch(Exception e) {}
+
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
