@@ -114,7 +114,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     <%-- TODO : boutons s'inscrire et suivre ma demande --%>
                                     
                                     <jalios:if predicate='<%= hasParcoursCollege %>'>
-                                    <img id="imageParcoursCollege" class="ds44-mt3 large-w50 medium-w25 small-w25 tiny-w50 ds44-hide-mobile" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>' alt=""/>
+                                    <img id="imageParcoursCollege" class="ds44-mt3 large-w50 medium-w25 small-w25 tiny-w50 ds44-hide-mobile" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>'/>
                                     </jalios:if>
                                 </div>
                             </div>
