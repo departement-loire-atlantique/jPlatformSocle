@@ -111,6 +111,10 @@
     <field name="plusDeDetailExterne" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" openWindow="false">
       <label xml:lang="fr">Plus de détail (externe)</label>
     </field>
+    <field name="texteAlternatifLien" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Texte alternatif lien</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Par exemple : Plus de détail sur les EDS&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field name="typeDacces" editor="category" required="false" compactDisplay="false" tab="details" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichelieu.typeAcces.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type d'accès</label>
     </field>
