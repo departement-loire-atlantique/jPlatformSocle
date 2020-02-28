@@ -36,11 +36,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getSoustheme(loggedMember)) %>">
                                             <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) %>"><br/></jalios:if>
-                                            <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember),  "<br/>") %>
+                                            <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember)) %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
                                             <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) %>"><br/></jalios:if>
-                                            <%= SocleUtils.formatCategories(obj.getParcoursEducationNationale(loggedMember),  "<br/>") %>
+                                            <%= SocleUtils.formatCategories(obj.getParcoursEducationNationale(loggedMember)) %>
                                         </jalios:if>
                                     </div>
                                     </jalios:if>
