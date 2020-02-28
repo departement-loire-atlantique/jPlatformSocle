@@ -79,32 +79,6 @@ public class SearchCityTest extends JcmsTestCase4  {
 
 
 	/**
-	 * TU 5 recherchePubRefEpciCommune -> indexCommunesDesEPCI
-	 * Test 5 : Publications reliées à plusieurs EPCI
-	 */
-	// Création des EPCI
-	static Category epci5_1 = createCategoryEpci("epci5_1");
-	static Category epci5_2 = createCategoryEpci("epci5_2");
-	static Category epci5_3 = createCategoryEpci("epci5_3");
-	// Création des communes sur l EPCI 5.1
-	static City city5_1 = createCity("Commune 5.1", 510, epci5_1);
-	static City city5_2 = createCity("Commune 5.2", 520, epci5_1);
-	static City city5_3 = createCity("Commune 5.3", 530, epci5_1, epci5_3);
-	// Création des communes sur l EPCI 5.2
-	static City city5_4 = createCity("Commune 5.4", 540, epci5_2);
-	static City city5_5 = createCity("Commune 5.5", 550, epci5_2);
-	static City city5_6 = createCity("Commune 5.6", 560, epci5_2);
-	// Fiche lieux sur l'EPCI 5.1
-	static ContenuDeTest pub5_1 = createPub("ContenuDeTest 5.1", epci5_1);
-	// Fiche lieux sur l'EPCI 5.2
-	static ContenuDeTest pub5_2 = createPub("ContenuDeTest 5.2", epci5_2);
-	// Fiche lieux sur l'EPCI 5.1 et 5.2
-	static ContenuDeTest pub5_3 = createPub("ContenuDeTest 5.3", epci5_1, epci5_2);
-	// Fiche lieux sur l'EPCI 5.3
-	static ContenuDeTest pub5_4 = createPub("ContenuDeTest 5.4", epci5_3);
-
-
-	/**
 	 * TU 6 recherchePubDirectCommunes -> indexCommunes
 	 * Test 6 : Publications reliées à plusieurs communes
 	 */
@@ -290,36 +264,6 @@ public class SearchCityTest extends JcmsTestCase4  {
 		city4_2.performDelete(channel.getDefaultAdmin());
 		city4_3.performDelete(channel.getDefaultAdmin());
 		pub4_1.performDelete(channel.getDefaultAdmin());	    
-	}
-
-
-	/*-----------------------------------------------------------------------------------/
-	 * Test 5 : Publication reliées à des EPCI
-	 * Fiche lieux -> EPCI <- Commune
-	 * Test de recherche sur des Fiche lieux
-	 * Les Fiche lieux référencement indirectement des communes dans leur champ "EPCI" 
-	 *-----------------------------------------------------------------------------------*/
-
-	@Test
-	/**
-	 * Test recherche sur communes
-	 */
-	public void recherchePubRefEpciCommune() {			
-		// Recherche sur commune 5.1, 5.2 et 5.3
-		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(pub5_1);
-		resultatTestSet.add(pub5_3);	    
-		assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));
-		assertEquals("Recherche sur commune 5.2 invalide", resultatTestSet, getResultSearchCity(city5_2));
-		resultatTestSet.add(pub5_4);
-		assertEquals("Recherche sur commune 5.3 invalide", resultatTestSet, getResultSearchCity(city5_3));
-		// Recherche sur commune 5.4, 5.5 et 5.6
-		resultatTestSet.clear();
-		resultatTestSet.add(pub5_2);
-		resultatTestSet.add(pub5_3);
-		assertEquals("Recherche sur commune 5.4 invalide", resultatTestSet, getResultSearchCity(city5_4));
-		assertEquals("Recherche sur commune 5.5 invalide", resultatTestSet, getResultSearchCity(city5_5));
-		assertEquals("Recherche sur commune 5.6 invalide", resultatTestSet, getResultSearchCity(city5_6));	    
 	}
 
 

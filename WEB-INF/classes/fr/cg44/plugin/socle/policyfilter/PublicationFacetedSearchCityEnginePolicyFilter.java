@@ -45,8 +45,6 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			indexCommunesDeDelegation(doc, publication);
 			// Récupère le champ "delegations" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces délégations
 			indexCommunesDesDelegations(doc, publication);
-			// Récupère le champ "EPCI" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces cantons
-			indexCommunesDesEPCI(doc, publication);
 			// Indexation de toutes les communes
 			indexAllCommunes(doc, publication);
 		}else {
@@ -165,27 +163,7 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
 		}	
 	}
-	
-	
-	/**
-	 * Récupère le champ "EPCI" du type de contenu si celui-ci est présent pour indexer les communes catégorisées dans ces catégories
-	 * @param doc
-	 * @param publication
-	 */
-	private void indexCommunesDesEPCI(Document doc, Publication publication) {
-		try {
-			// Récupère le champ "epci" du type de contenu pour l'indéxer si celui-ci est présent
-			Set<Category> epciCatSet = publication.getCategoryFieldValue("epci", null);
-			if(Util.notEmpty((epciCatSet))) {				
-				for(Category itEpciCat : epciCatSet) {					
-					indexCityCode(doc, itEpciCat.getPublicationSet(City.class, null));
-				}
-			}
-		} catch (NoSuchFieldException e) {
-			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer à partir des EPCI", e);
-		}
-	}
-		
+			
 	
 	/**
 	 * Indexe les codes commune sur la publication à partir d'un ou plusieurs cantons
