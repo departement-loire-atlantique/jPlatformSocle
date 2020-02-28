@@ -25,7 +25,7 @@
 	
 				<!-- Affichage des onglets 1 à 4 s'ils existent -->
 				<ul
-					class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" id="tabs">
+					class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
 					<%
 					  String titreOnglet;
 					  boolean firstTabDisplayed = false;
