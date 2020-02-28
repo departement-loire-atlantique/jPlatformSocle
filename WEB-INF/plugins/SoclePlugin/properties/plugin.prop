@@ -35,7 +35,7 @@ jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 # ------------------------------------------------------------
 #  Footer
 # ------------------------------------------------------------
-jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1088893
+jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1270478
 
 
 # ------------------------------------------------------------
@@ -45,6 +45,7 @@ wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/config
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
+wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
@@ -53,6 +54,7 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   address,\
   b,\
   blockquote[class|style|id|cite],\
+  button[class|type|title],\
   br,\
   caption,\
   cite,\
@@ -64,12 +66,12 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   dl,\
   dt,\
   em,\
-  h1[class|style|id],\
-  h2[class|style|id],\
-  h3[class|style|id],\
-  h4[class|style|id],\
-  h5[class|style|id],\
-  h6[class|style|id],\
+  h1[class|style|id|role],\
+  h2[class|style|id|role],\
+  h3[class|style|id|role],\
+  h4[class|style|id|role],\
+  h5[class|style|id|role],\
+  h6[class|style|id|role],\
   hr,\
   i[class|style|aria-hidden],\
   img[class|style|align|alt|height|src|title|width],\
