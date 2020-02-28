@@ -32,11 +32,6 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 
-# ------------------------------------------------------------
-#  Footer
-# ------------------------------------------------------------
-jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1270478
-
 
 # ------------------------------------------------------------
 #  Wysiwyg
