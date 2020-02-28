@@ -104,7 +104,7 @@
 													<jalios:if predicate='<%= obj.getPlanDacces().length == 1 %>'>
 														<% FileDocument planDacces = obj.getPlanDacces()[0]; %>
 														<a href='<%= planDacces.getDownloadUrl() %>' 
-															target="__blank"
+															target="_blank"
 															download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
 															aria-label='<%= strAriaLabelPlanDacces %>'> 
 															
@@ -117,7 +117,7 @@
 															<jalios:foreach name="planDacces" type="FileDocument" array='<%= obj.getPlanDacces() %>'>
 																<li>
 																	<a href='<%= planDacces.getDownloadUrl() %>' 
-																		target="__blank"
+																		target="_blank"
 																		download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
 																		aria-label='<%= strAriaLabelPlanDacces %>'> 
 																		
