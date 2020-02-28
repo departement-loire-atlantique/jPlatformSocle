@@ -56,6 +56,7 @@ jcmsplugin.socle.label.monparcourscollege: Mon parcours collège
 jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
+jcmsplugin.socle.hautDepage: Haut de page
 
 # ------------------------------------------------------------
 #  Header
@@ -169,3 +170,11 @@ wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions san
 # Plugin DS Icons pour Tiny MCE
 jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
 jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
+
+# ------------------------------------------------------------
+#  Abonnement newsletter
+# ------------------------------------------------------------
+jcmsplugin.socle.newsletter.abonnement.titre:Recevez nos infos par mail
+jcmsplugin.socle.newsletter.abonnement.chapo:Pour être alerté lors de la parution des magazines ou recevoir l’actu selon mes centres d’intérêts
+jcmsplugin.socle.newsletter.abonnement.labelBouton:Je m'abonne
+jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux informations du CD44

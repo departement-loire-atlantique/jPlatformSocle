@@ -33,7 +33,7 @@
         </div>
     </jalios:if>
 
-    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large">
+    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= sliderAmounts %>">
         <div class="swiper-container">
             <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
                 <%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>

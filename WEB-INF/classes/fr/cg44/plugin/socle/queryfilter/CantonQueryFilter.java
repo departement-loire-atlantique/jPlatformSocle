@@ -36,7 +36,7 @@ public class CantonQueryFilter extends LuceneQueryFilter {
 	public void addCantonSearch(QueryHandler qh, HttpServletRequest request, String... cantonCode) {		
 		if(Util.notEmpty(cantonCode)) {
 			// Passe la query en syntaxe avancée pour accepter les requêtes lucenes
-			qh.setMode("advanced");	  
+			qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
 			// Requête pour la recherche sur les cantons (OR entre les cantons)	
 			String cantonSearchText = "";
 			for(String itCantonCode : cantonCode) {
