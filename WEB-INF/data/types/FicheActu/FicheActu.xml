@@ -9,8 +9,14 @@
     <field name="dateActu" editor="date" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
       <label xml:lang="fr">Date actu</label>
     </field>
+    <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Lieu</label>
+    </field>
     <field name="imagePrincipale" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="true">
       <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image bandeau</label>
     </field>
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image mobile</label>
@@ -72,7 +78,7 @@
     </field>
     <field name="delegations" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Delegation[]">
       <label xml:lang="fr">Délégations concernées</label>
-    </field>    
+    </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">EPCI concernés</label>
     </field>
