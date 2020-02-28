@@ -91,7 +91,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                 <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
             </picture>
             <jalios:if predicate="<%= hasFigcaption%>">
-            <figcaption class="ds44-imgCaption">
+                <figcaption class="ds44-imgCaption">
                     <jalios:if predicate="<%= Util.notEmpty(legend)%>">
                         <%=legend%>
                     </jalios:if>
@@ -99,7 +99,6 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                         © <%=copyright%>
                     </jalios:if>
                 </figcaption>
-                </figure>
             </jalios:if>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
@@ -119,21 +118,21 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                     <img src="<%= cartePath %>" alt="">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
                     <% String adresse = SocleUtils.formatAddress(null, null, null, delegation.getNdeVoie(), delegation.getLibelleDeVoie(), null, null, delegation.getCodePostal(), Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : null, null); %>
-                    <% if (Util.notEmpty(adresse)) { %>
+                    <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
                         <%= adresse %>
                     </p>
-                    <% } %>
-                    <% if (Util.notEmpty(delegation.getTelephone())) { %>
+                    </jalios:if>
+                    <jalios:if predicate="<%= Util.notEmpty(delegation.getTelephone())%>">
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                         <% for (String itPhone : delegation.getTelephone()) { %>
                         <ds:phone number="<%= SocleUtils.cleanNumber(itPhone) %>"></ds:phone>
                         <% } %>
                     </p>
-                    <% } %>
-                    <% if (Util.notEmpty(delegation.getEmail())) { %>
+                    </jalios:if>
+                    <jalios:if predicate="<%= Util.notEmpty(delegation.getEmail()) %>">
                     <p class="ds44-docListElem mtm">
                         <% for (String itMail : delegation.getEmail()) { %>
                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a
@@ -141,7 +140,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
                             aria-label='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'> <%= itMail %></a>
                         <% } %>
                     </p>
-                    <% } %>
+                    </jalios:if>
                 </div>
             </section>
         </div>
