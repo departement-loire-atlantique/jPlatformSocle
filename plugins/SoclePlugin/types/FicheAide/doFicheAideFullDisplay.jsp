@@ -3,10 +3,33 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
 String imageFile = obj.getImageBandeau() ;
-String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
+String imageMobileFile = obj.getImageMobile();
 String title = obj.getTitle();
 String legende = obj.getLegende(userLang);
 String copyright = obj.getCopyright(userLang);
+
+boolean displayEnResume = Util.notEmpty(obj.getChapo()) || Util.notEmpty(obj.getPourQui());
+
+boolean displayDetails = Util.notEmpty(obj.getIntro())
+        || Util.notEmpty(obj.getEligibilite())
+        || Util.notEmpty(obj.getCestQuoi())
+        || Util.notEmpty(obj.getCommentFaireUneDemande())
+        || Util.notEmpty(obj.getQuelsDocumentsFournir());
+
+boolean displayFaq = Util.notEmpty(obj.getFaq()) || Util.notEmpty(obj.getContactFAQ());
+
+boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
+        || Util.notEmpty(obj.getIntroContact())
+        || Util.notEmpty(obj.getComplementContact())
+        || Util.notEmpty(obj.getBesoinDaide());
+
+boolean displayFaireDemande = Util.notEmpty(obj.getIntroFaireUneDemande())
+        || Util.notEmpty(obj.getEdemarche(loggedMember))
+        || Util.notEmpty(obj.getDocumentsUtiles())
+        || Util.notEmpty(obj.getDureeEdemarche());
+
+boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
+
 %>
 
 
@@ -14,12 +37,12 @@ String copyright = obj.getCopyright(userLang);
 
     <section class="ds44-container-large">
         <jalios:select> 
-	        <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
-	            <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
-	        </jalios:if>        
-	        <jalios:default>
-	           <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
-	        </jalios:default>
+            <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) && !clientBrowser.isSmallDevice() %>">
+                <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+            </jalios:if>        
+            <jalios:default>
+               <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
+            </jalios:default>
         </jalios:select>
         <section class="ds44-ongletsContainer">
 
@@ -28,40 +51,51 @@ String copyright = obj.getCopyright(userLang);
                 <nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
                     <!-- Résumé / détail / FAQ -->
                     <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list" id="tabs">
+                        <jalios:if predicate="<%= displayEnResume %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
                             <a href="<%= obj.getDisplayUrl(userLocale) %>#id_first" class="js-tablist__link ds44-tabs__link" id="label_id_first" aria-current="true"><%= glp("jcmsplugin.socle.onglet.resume") %></a>
                         </li>
+                        </jalios:if>
+                        <jalios:if predicate="<%= displayDetails %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
                             <a href="<%= obj.getDisplayUrl(userLocale) %>#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second"><%= glp("jcmsplugin.socle.onglet.detail") %></a>
                         </li>
+                        </jalios:if>
+                        <jalios:if predicate="<%= displayFaq %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
                             <a href="<%= obj.getDisplayUrl(userLocale) %>#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third"><%= glp("jcmsplugin.socle.onglet.faq") %></a>
                         </li>
+                        </jalios:if>
                     </ul>
                     
                     <!-- Contact / faire demande / suivre demande  -->
                     <ul class="ds44-flex-container ds44-fse ds44--l-padding-tb ds44-flex-grow1-large ds44-blocBtnOnglets ds44-list">
+                        <jalios:if predicate="<%= displayQuiContacter %>">
                         <li class="mrs mls ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-qui-contacter" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-qui-contacter" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button>
                         </li>
-
+                        </jalios:if>
+                        <jalios:if predicate="<%= displayFaireDemande %>">
                         <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-file icon--sizeL" aria-hidden="true"></i></button>
 
                         </li>
-                        
+                        </jalios:if>
+                        <jalios:if predicate="<%= displaySuivreDemande %>">
                         <li class="mrs ds44-ongletsBtnItem">
                             <!-- TODO faire une demande et traduire les libellés -->
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button>
 
                             
                         </li>
+                        </jalios:if>
                     </ul>
 
                 </nav>
 
                 
                 <!--  En résumé -->
+                <jalios:if predicate="<%= displayEnResume %>">
                 <div id="id_first" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_first">
 
                     <div class="grid-12-small-1">
@@ -86,9 +120,10 @@ String copyright = obj.getCopyright(userLang);
                     <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_first"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.resume")) %></a></p>
 
                 </div>
-
+                </jalios:if>
  
                 <!-- En détail -->
+                <jalios:if predicate="<%= displayDetails %>">
                 <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_second" aria-hidden="true" style="display: none; opacity: 0;">      
                 
                     <div class="grid-12-small-1">
@@ -136,15 +171,16 @@ String copyright = obj.getCopyright(userLang);
                     <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_second"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.detail")) %></a></p>
                     
                 </div>
-
+                </jalios:if>
  
                 <!-- FAQ -->
+                <jalios:if predicate="<%= displayFaq %>">
                 <div id="id_third" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_third" aria-hidden="true" style="display: none; opacity: 0;">
                     <p>FAQ à compléter</p>
                     
                     <p class="ds44-keyboard-show"><a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_third"><%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.faq")) %></a></p>
                 </div>
-
+                </jalios:if>
  
 
             </div>
@@ -158,6 +194,7 @@ String copyright = obj.getCopyright(userLang);
 
 </main>
 
+<jalios:if predicate="<%= displayFaireDemande %>">
 <div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
@@ -207,7 +244,9 @@ String copyright = obj.getCopyright(userLang);
         </div>
     </div>  
 </div>
+</jalios:if>
 
+<jalios:if predicate="<%= displaySuivreDemande %>">
 <div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
@@ -240,3 +279,4 @@ String copyright = obj.getCopyright(userLang);
         </div>
     </div>   
 </div>
+</jalios:if>

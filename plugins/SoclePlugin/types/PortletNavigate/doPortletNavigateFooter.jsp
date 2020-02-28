@@ -20,19 +20,26 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 %>
 
 <jalios:if predicate='<%= Util.notEmpty(navigateSet) %>'>
-    <div class="ds44-bgGray">
-        <div class="ds44-inner-container">
-            <ul class="ds44-list ds44-flex-container ds44-footerList">
-                <jalios:foreach collection='<%= navigateSet %>' type="Category" name="itCategory">
-                    <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) %>'><%
-                        String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
-                        boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;%>
-                        <li>
-                            <a <%= nofollow %> href='<%= PortalManager.getUrlWithUpdateCtxCategories(itCategory , ctxCategories, request , !box.getNavigatePortlet()) %>' <%=targetBlank ? "target=\"blank\"" :"" %> class="footerLink"><%= libelleCat %></a>
-                        </li>
-                    </jalios:if>
-                </jalios:foreach>
-            </ul>
-        </div>
-    </div>
+    <section class="ds44-container-fluid ds44-bgGray ds44--xl-padding-tb">
+        <ul class="ds44-list ds44-flex-container ds44-footerList">
+            <jalios:foreach collection='<%= navigateSet %>' type="Category" name="itCategory">
+                <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) %>'>
+                    <%
+                    String cible= "";
+                    String title = "";
+                    String lien = itCategory.getDisplayUrl(userLocale);
+                    String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+                    boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
+                    if(targetBlank){
+                        cible="target=\"_blank\" ";
+                        title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+                    }
+                    %>
+                    <li>
+                        <a class="footerLink" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %></a>
+                    </li>
+                </jalios:if>
+            </jalios:foreach>
+        </ul>
+    </section>
 </jalios:if>

@@ -58,7 +58,7 @@
     <field name="alaUneAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.Content[]">
       <label xml:lang="fr">À la une agenda</label>
     </field>
-    <field name="carrouselAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.Content[]">
+    <field name="carrouselAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Carrousel agenda</label>
     </field>
     <field name="titreEncadresLibres" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encadresAgenda">

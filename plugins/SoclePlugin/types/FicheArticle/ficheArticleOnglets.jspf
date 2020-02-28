@@ -101,7 +101,7 @@
                                 : false %>">
                                 <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
                             </jalios:if>
-                            <%=itContenu%>
+                            <jalios:wysiwyg><%=itContenu%></jalios:wysiwyg>
                         </section>
                     </jalios:foreach>
                     

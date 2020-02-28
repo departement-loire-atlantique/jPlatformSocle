@@ -1,8 +1,13 @@
+# Désactive l'affichage, autant que possible, dans le portail courant. Cela pose des problème de perte de catégorie courante dans notre cas/
+# https://community.jalios.com/jcms/jc1_256839/fr/quelles-sont-les-regles-qui-determinent-le-portail-d-affichage-d-une-publication
+display.use-front-session-portal: false
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
+jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -10,22 +15,22 @@ $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
 jcmsplugin.socle.portlet.filariane.id: c_1088465
 
+lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
+jcmsplugin.socle.site.src.carte.pdcv.mobile: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
+$jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
-
-# ------------------------------------------------------------
-#  Footer
-# ------------------------------------------------------------
-jcmsplugin.socle.site.footer.portlet.newsletter.id:c_1088893
 
 
 # ------------------------------------------------------------
@@ -35,6 +40,7 @@ wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/config
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
+wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
@@ -43,6 +49,7 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   address,\
   b,\
   blockquote[class|style|id|cite],\
+  button[class|type|title],\
   br,\
   caption,\
   cite,\
@@ -54,12 +61,12 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   dl,\
   dt,\
   em,\
-  h1[class|style|id],\
-  h2[class|style|id],\
-  h3[class|style|id],\
-  h4[class|style|id],\
-  h5[class|style|id],\
-  h6[class|style|id],\
+  h1[class|style|id|role],\
+  h2[class|style|id|role],\
+  h3[class|style|id|role],\
+  h4[class|style|id|role],\
+  h5[class|style|id|role],\
+  h6[class|style|id|role],\
   hr,\
   i[class|style|aria-hidden],\
   img[class|style|align|alt|height|src|title|width],\
@@ -126,7 +133,6 @@ $jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
 $jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
-$jcmsplugin.socle.category.delegations.root: c_1155289
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 
 # Fiche actu
@@ -190,6 +196,12 @@ $jcmsplugin.socle.fichelieu.salleDeReunionHandicapVisuel.root: c_1156225
 $jcmsplugin.socle.fichelieu.salleDeReunionHandicapMental.root: c_1156229
 $jcmsplugin.socle.fichelieu.salleDeReunionDeficiencePsychique.root: c_1156233
 
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueAccueil.root: c_1156237
+$jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueReunion.root: c_1156241 
+$jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
+$jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
+$jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
+
 # Accueil Annuaire / Agenda
 
 $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
@@ -203,3 +215,66 @@ jcmsplugin.socle.infolocale.login:
 jcmsplugin.socle.infolocale.password: 
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
+
+# Fiche Action éducative
+
+$jcmsplugin.socle.ficheactioneducative.theme.root: c_1212395
+$jcmsplugin.socle.ficheactioneducative.sousTheme.root: c_1212418
+$jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root: c_1212436
+$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root: c_1212484
+$jcmsplugin.socle.ficheactioneducative.typeDePratique.root: aca_7735
+$jcmsplugin.socle.ficheactioneducative.niveau.root: c_1212444
+$jcmsplugin.socle.ficheactioneducative.format.root: c_1212451
+
+# SAAD
+
+$jcmsplugin.socle.saad.statutJuridique.root: p2_806794
+$jcmsplugin.socle.saad.typeDaide.root: p1_707983
+$jcmsplugin.socle.saad.prestations.root: p2_806591
+$jcmsplugin.socle.saad.modalitesDePaiement.root: p2_806804
+$jcmsplugin.socle.saad.plagesDintervention.root: p1_707988
+$jcmsplugin.socle.saad.typesDeService.root: p1_707985
+$jcmsplugin.socle.saad.modesDintervention.root: p1_802263
+$jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
+
+# Etablissement personnes agées
+
+$jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
+
+# Equipements
+
+$jcmsplugin.socle.equipements.thematique.root: p2_222624
+$jcmsplugin.socle.equipements.annee.root: p2_222641
+$jcmsplugin.socle.equipements.role.root: p2_222645
+
+# Fiches élu
+
+$jcmsplugin.socle.electedMember.fonctions.root: c_5314
+$jcmsplugin.socle.electedMember.commissions.root: c_5332
+$jcmsplugin.socle.electedMember.missionThematique.root: p1_283851
+$jcmsplugin.socle.electedMember.partiPolitique.root: c_5298
+$jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
+
+# Spectacle aidé
+
+$jcmsplugin.socle.spectacleAide.cat.root: aca_7730
+
+# Fiche professionnel culture
+
+$jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
+
+# Marché public
+
+$jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
+
+# Fiche emploi, stage
+
+$jcmsplugin.socle.emploiStage.typeOffre.root: c_5281
+$jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
+$jcmsplugin.socle.emploiStage.filiere.root: c_1216306
+$jcmsplugin.socle.emploiStage.emploi.root: c_5285
+$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root: c_1220099
+$jcmsplugin.socle.emploiStage.nav.emploi: c_5067
+$jcmsplugin.socle.emploiStage.nav.stage: c_1220102
+$jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
+$jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101

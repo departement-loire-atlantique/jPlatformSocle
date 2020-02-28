@@ -13,6 +13,8 @@
             com.jalios.util.ServletUtil,
             com.jalios.util.Util,
             java.util.TreeSet,
+            java.util.Set,
+            java.util.Locale,
             fr.cg44.plugin.socle.SocleUtils,
             generated.PageCarrefour"
 %><%
@@ -35,13 +37,15 @@ required="false"
 fragment="false"
 rtexprvalue="true"
 type="Integer"
-description="Niveau courant de l'arbre"%><%
+description="Niveau courant de l'arbre"%>
 
+<%
 Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
+Locale userLocale = Channel.getChannel().getCurrentJcmsContext().getUserLocale();
 
 // Tri des catégories filles + filtre sur catégories autorisées
-TreeSet<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
+Set<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
 
 // Calcul du niveau d'itération courant
 int itLevel = currentLevel!=null ? currentLevel : 0;
@@ -53,18 +57,24 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 <jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>">
     <% if(itLevel>1) paddingClass = "ds44-list ds44-collapser_content--level3"; %>
     <ul class="<%=paddingClass%>">
-    <%-- Si présence de page carrefour comme contenu principal de la catégorie, alors lien vers cette page carrefour, sinon génération des enfants. --%>
+    <%-- Si présence d'un contenu principal dans la catégorie, alors lien vers ce contenu, sinon génération des enfants. --%>
     <%
 	for(Category itCategory : childrenCatSet){
+		String cible= "";
+		String title = "";
+		String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
+		boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
+		if(targetBlank){
+		    cible="target=\"_blank\" ";
+		    title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+		}
+		
 		Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCategory);
-	    boolean linkToPub = Util.notEmpty(itContenuPrincipal) ? itContenuPrincipal instanceof PageCarrefour : false;
-	    if(linkToPub) {%>
-	    	<li><jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCategory.getName()%></jalios:link></li>
-	    	
+	    if(Util.notEmpty(itContenuPrincipal)) {%>
+	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	    <%}
 	    else{%>
-	       <li>
-	           <jalios:link data="<%=itCategory%>" css="ds44-collapser_content--link"><%=itCategory.getName()%></jalios:link>
+	       <li><span class="ds44-collapser_content--txt"><%=libelleCat%></span>
 	           <ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/>
            </li><%
 	    }

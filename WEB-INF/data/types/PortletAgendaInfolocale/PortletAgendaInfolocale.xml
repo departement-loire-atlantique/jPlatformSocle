@@ -13,14 +13,21 @@
       <label xml:lang="fr">ID de flux</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Surcharge l'ID de flux par défaut du site&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="organismesInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Organismes infolocale</label>
+    <field name="organismeInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Organisme(s) infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs organismes sur Infolocale (ex. "orga_1,orga_2,orga_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Genre infolocale</label>
+    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Genre(s) infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Groupes d’événements infolocale</label>
+    <field name="groupesDevenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Thématiques personnalisées</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Correspond à la liste des thématiques créées spécifiquement pour un groupe d’organismes (ex. "groupe_3,groupe_12,groupe24")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="groupeDevenements" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Groupe d'événements</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;ID d'un groupe d'événement à préciser par Infolocale&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="delegations" editor="link" required="false" compactDisplay="false" tab="filtres_api" type="generated.Delegation[]">
       <label xml:lang="fr">Délégations</label>
@@ -30,6 +37,10 @@
     </field>
     <field name="epci" editor="category" required="false" compactDisplay="false" tab="filtres_api" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">EPCI</label>
+    </field>
+    <field name="idsAExclure" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">IDs d'annonces à exclure</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste d'ID d'annonces à exclure (ex. "annonce_1,annonce_2,annonce_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="typeDaffichage" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" labelList="Liste seule|Liste + carte" valueList="list|listmap">
       <label xml:lang="fr">Type d'affichage</label>
@@ -47,20 +58,30 @@
     <field name="nombreDeTuiles" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
       <label xml:lang="fr">Nombre de tuiles</label>
     </field>
-    <field name="typeDeTuileCarousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Type de tuile carousel</label>
+    <field name="typeDeTuileCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile carrousel</label>
     </field>
-    <field name="metadonneesTuileCarousel" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Metadonnées tuile carousel</label>
+    <field name="metadonneesTuileCarrousel_1" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Métadonnées tuile carrousel 1</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Métadonnées possibles : commune, genre, organisme, horaires, duree, tarif, public, accessibilite.&lt;br&gt;Il est possible d'utiliser des ID de groupes thématiques perso et de thématique perso. Ex : grtheme:id_253,theme:id_134&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="metadonneesTuileCarrousel_2" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Métadonnées tuile carrousel 2</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Métadonnées possibles : commune, genre, organisme, horaires, duree, tarif, public, accessibilite.&lt;br&gt;Il est possible d'utiliser des ID de groupes thématiques perso et de thématique perso. Ex : grtheme:id_253,theme:id_134&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="nombreDeResultats" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
-      <label xml:lang="fr">Nombre de resultats</label>
+      <label xml:lang="fr">Nombre de résultats</label>
     </field>
     <field name="typeDeTuileResultats" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de tuile résultats</label>
     </field>
-    <field name="metadonneesTuileResultat" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Metadonnées tuile résultat</label>
+    <field name="metadonneesTuileResultat_1" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Métadonnées tuile résultat 1</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Métadonnées possibles : commune, genre, organisme, horaires, duree, tarif, public, accessibilite.&lt;br&gt;Il est possible d'utiliser des ID de groupes thématiques perso et de thématique perso. Ex : grtheme:id_253,theme:id_134&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="metadonneesTuileResultat_2" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Métadonnées tuile résultat 2</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Métadonnées possibles : commune, genre, organisme, horaires, duree, tarif, public, accessibilite.&lt;br&gt;Il est possible d'utiliser des ID de groupes thématiques perso et de thématique perso. Ex : grtheme:id_253,theme:id_134&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="exportPDF" editor="boolean" required="false" compactDisplay="false" tab="presentation_graphique" type="boolean" default="on">
       <label xml:lang="fr">Export PDF</label>

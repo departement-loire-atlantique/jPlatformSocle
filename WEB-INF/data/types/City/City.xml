@@ -45,13 +45,13 @@
     <field name="closenessCities" editor="link" required="false" compactDisplay="false" type="generated.City[]" tab="commune">
       <label xml:lang="fr">Communes limitrophes</label>
     </field>
-    <field name="epci" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="j_6" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="commune">
+    <field name="epci" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="commune">
       <label xml:lang="fr">EPCI</label>
     </field>
     <field name="epciWebsite" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="commune">
       <label xml:lang="fr">Site Internet EPCI</label>
     </field>
-    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false" tab="commune">
+    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton[]" parent="false" tab="commune">
       <label xml:lang="fr">Canton</label>
     </field>
     <field name="delegation" editor="link" required="false" compactDisplay="false" type="generated.Delegation" parent="false" tab="commune">
@@ -83,7 +83,7 @@
     <field name="lieuInscription" editor="textfield" required="false" compactDisplay="false" tab="asd" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu inscription</label>
     </field>
-    <field name="nomDesCommunesDeleguees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="nomDesCommunesDeleguees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Nom des communes déléguées</label>
     </field>
   </fields>

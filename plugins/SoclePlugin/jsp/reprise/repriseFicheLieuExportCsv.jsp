@@ -8,7 +8,7 @@
 
 response.setHeader("Content-Disposition", "attachment; filename=places.csv");
 //inform doInitPage to set the proper content type
-request.setAttribute("ContentType", "text/csv; charset=" + channel.getProperty("csv.charset"));
+request.setAttribute("ContentType", "text/csv; charset=ISO-8859-1");
 
 %><%@ include file="/jcore/doInitPage.jsp" %><%!
 
@@ -40,6 +40,9 @@ String newLine = "\n";
 
 PrintWriter printWriter = new PrintWriter(out);
 
+StringBuffer csvHeader = new StringBuffer();
+StringBuffer csvData = new StringBuffer();
+
 if(getBooleanParameter("exportNew", false)) {
 	
 	QueryHandler qh = new QueryHandler();
@@ -49,21 +52,23 @@ if(getBooleanParameter("exportNew", false)) {
     
     if (Util.isEmpty(result)) return;
 
-    StringBuffer csvHeader = new StringBuffer();
-
     csvHeader.append("Identifiant");
     csvHeader.append(separator);
     csvHeader.append("Titre");
     csvHeader.append(separator);
-    csvHeader.append("ID rÃ©fÃ©rentiel");
+    csvHeader.append("Sous-titre");
+    csvHeader.append(separator);
+    csvHeader.append("Chapo");
+    csvHeader.append(separator);
+    csvHeader.append("ID référentiel");
     csvHeader.append(separator);
     csvHeader.append("Etage - couloir - escalier");
     csvHeader.append(separator);
-    csvHeader.append("EntrÃ©e - bÃ¢timent - immeuble");
+    csvHeader.append("Entrée - bâtiment - immeuble");
     csvHeader.append(separator);
-    csvHeader.append("NÂ° de voie");
+    csvHeader.append("N° de voie");
     csvHeader.append(separator);
-    csvHeader.append("LibellÃ© voie");
+    csvHeader.append("Libellé voie");
     csvHeader.append(separator);
     csvHeader.append("Lieu-dit");
     csvHeader.append(separator);
@@ -71,17 +76,17 @@ if(getBooleanParameter("exportNew", false)) {
     csvHeader.append(separator);
     csvHeader.append("Commune");
     csvHeader.append(separator);
-    csvHeader.append("Plan d'accÃ¨s");
+    csvHeader.append("Plan d'accès");
     csvHeader.append(separator);
-    csvHeader.append("LibellÃ© autre adresse");
+    csvHeader.append("Libellé autre adresse");
     csvHeader.append(separator);
     csvHeader.append("Etage - couloir - escalier 2");
     csvHeader.append(separator);
-    csvHeader.append("EntrÃ©e - bÃ¢timent - immeuble 2");
+    csvHeader.append("Entrée - bâtiment - immeuble 2");
     csvHeader.append(separator);
-    csvHeader.append("NÂ° de voie 2");
+    csvHeader.append("N° de voie 2");
     csvHeader.append(separator);
-    csvHeader.append("LibellÃ© voie 2");
+    csvHeader.append("Libellé voie 2");
     csvHeader.append(separator);
     csvHeader.append("Lieu-dit 2");
     csvHeader.append(separator);
@@ -93,25 +98,25 @@ if(getBooleanParameter("exportNew", false)) {
     csvHeader.append(separator);
     csvHeader.append("Commune 2");
     csvHeader.append(separator);
-    csvHeader.append("TÃ©lÃ©phone");
+    csvHeader.append("Téléphone");
     csvHeader.append(separator);
     csvHeader.append("Email");
     csvHeader.append(separator);
     csvHeader.append("Site internet");
     csvHeader.append(separator);
-    csvHeader.append("Plus de dÃ©tail (interne)");
+    csvHeader.append("Plus de détail (interne)");
     csvHeader.append(separator);
-    csvHeader.append("Plus de dÃ©tail (externe)");
+    csvHeader.append("Plus de détail (externe)");
     csvHeader.append(separator);
-    csvHeader.append("Type d'accÃ¨s");
+    csvHeader.append("Type d'accés");
     csvHeader.append(separator);
-    csvHeader.append("ComplÃ©ment type d'accÃ¨s");
+    csvHeader.append("Complément type d'accès");
     csvHeader.append(separator);
     csvHeader.append("Pour qui ?");
     csvHeader.append(separator);
-    csvHeader.append("ModalitÃ©s d'accueil");
+    csvHeader.append("Modalités d'accueil");
     csvHeader.append(separator);
-    csvHeader.append("Horaires et accÃ¨s");
+    csvHeader.append("Horaires et accès");
     csvHeader.append(separator);
     csvHeader.append("Transports en commun");
     csvHeader.append(separator);
@@ -119,27 +124,25 @@ if(getBooleanParameter("exportNew", false)) {
     csvHeader.append(separator);
     csvHeader.append("Description");
     csvHeader.append(separator);
-    csvHeader.append("VidÃ©o");
+    csvHeader.append("Vidéo");
     csvHeader.append(separator);
-    csvHeader.append("Autres lieux associÃ©s");
+    csvHeader.append("Autres lieux");
     csvHeader.append(separator);
     csvHeader.append("Portlet bas");
     csvHeader.append(separator);
-    csvHeader.append("Communes concernÃ©es");
+    csvHeader.append("Communes concernées");
     csvHeader.append(separator);
     csvHeader.append("Toutes communes");
     csvHeader.append(separator);
-    csvHeader.append("DÃ©lÃ©gations concernÃ©es");
+    csvHeader.append("Délégations concernées");
     csvHeader.append(separator);
-    csvHeader.append("EPCI concernÃ©es");
+    csvHeader.append("EPCI concernées");
     csvHeader.append(separator);
-    csvHeader.append("Cantons concernÃ©s");
+    csvHeader.append("Cantons concernés");
     csvHeader.append(separator);
     csvHeader.append(newLine);
 
     printWriter.write(csvHeader.toString());
-
-    StringBuffer csvData = new StringBuffer();
     
     for (Publication itPub : result) {
         
@@ -239,8 +242,8 @@ if(getBooleanParameter("exportNew", false)) {
         }
         
         StringBuffer delegations = new StringBuffer();
-        if (Util.notEmpty(itLieu.getDelegations(loggedMember))) {
-            for (Iterator iter = itLieu.getDelegations(loggedMember).iterator(); iter.hasNext();) {
+        if (Util.notEmpty(itLieu.getDelegations())) {
+            for (Iterator iter = Arrays.asList(itLieu.getDelegations()).iterator(); iter.hasNext();) {
                 Category itCat = (Category) iter.next();
                 delegations.append(itCat.getName());
                 if (iter.hasNext()) delegations.append(", ");
@@ -261,10 +264,10 @@ if(getBooleanParameter("exportNew", false)) {
         }
         
         StringBuffer cantons = new StringBuffer();
-        if (Util.notEmpty(itLieu.getPortletBas())) {
-            for (int i = 0; i < itLieu.getPortletBas().length; i++) {
-            	cantons.append(itLieu.getPortletBas()[i].getTitle());
-                if (i < itLieu.getPortletBas().length-1) cantons.append(", ");
+        if (Util.notEmpty(itLieu.getCantons())) {
+            for (int i = 0; i < itLieu.getCantons().length; i++) {
+            	cantons.append(itLieu.getCantons()[i].getTitle());
+                if (i < itLieu.getCantons().length-1) cantons.append(", ");
             }
         } else {
         	cantons.append("");
@@ -272,27 +275,31 @@ if(getBooleanParameter("exportNew", false)) {
             
         csvData.append(itLieu.getId());
         csvData.append(separator);
-        csvData.append(itLieu.getTitle());
+        csvData.append(itLieu.getTitle().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getIdReferentiel());
+        csvData.append(itLieu.getSoustitre().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getEtageCouloirEscalier());
+        csvData.append(HtmlUtil.html2text(itLieu.getChapo()).replaceAll("\n{1,}",", ").replaceAll("\r{1,}",", ").replaceAll("[, ]{2,}", ", ").replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getEntreeBatimentImmeuble());
+        csvData.append(itLieu.getIdReferentiel().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getNdeVoie());
+        csvData.append(itLieu.getEtageCouloirEscalier().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getLibelleDeVoie());
+        csvData.append(itLieu.getEntreeBatimentImmeuble().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getLieudit());
+        csvData.append(itLieu.getNdeVoie().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(itLieu.getCodePostal());
+        csvData.append(itLieu.getLibelleDeVoie().replaceAll(";", ","));
+        csvData.append(separator);
+        csvData.append(itLieu.getLieudit().replaceAll(";", ","));
+        csvData.append(separator);
+        csvData.append(itLieu.getCodePostal().replaceAll(";", ","));
         csvData.append(separator);
         csvData.append(itLieu.getCommune());
         csvData.append(separator);
         csvData.append(planDacces);
         csvData.append(separator);
-        csvData.append(itLieu.getLibelleAutreAdresse());
+        csvData.append(itLieu.getLibelleAutreAdresse().replaceAll(";", ","));
         csvData.append(separator);
         csvData.append(itLieu.getEtageCouloirEscalier2());
         csvData.append(separator);
@@ -310,7 +317,7 @@ if(getBooleanParameter("exportNew", false)) {
         csvData.append(separator);
         csvData.append(itLieu.getCedex2());
         csvData.append(separator);
-        csvData.append(itLieu.getCommune2());
+        csvData.append(Util.notEmpty(itLieu.getCommune2()) ? itLieu.getCommune2() : "");
         csvData.append(separator);
         csvData.append(telephone);
         csvData.append(separator);
@@ -318,25 +325,25 @@ if(getBooleanParameter("exportNew", false)) {
         csvData.append(separator);
         csvData.append(siteInternet);
         csvData.append(separator);
-        csvData.append(itLieu.getPlusDeDetailInterne());
+        csvData.append(Util.notEmpty(itLieu.getPlusDeDetailInterne()) ? itLieu.getPlusDeDetailInterne() : "");
         csvData.append(separator);
-        csvData.append(itLieu.getPlusDeDetailExterne());
+        csvData.append(itLieu.getPlusDeDetailExterne().replaceAll(";", ","));
         csvData.append(separator);
         csvData.append(typeDacces);
         csvData.append(separator);
-        csvData.append(itLieu.getComplementTypeDacces());
+        csvData.append(itLieu.getComplementTypeDacces().replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getPourQui()));
+        csvData.append(HtmlUtil.html2text(itLieu.getPourQui()).replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getModalitesDaccueil()));
+        csvData.append(HtmlUtil.html2text(itLieu.getModalitesDaccueil()).replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getHorairesEtAcces()));
+        csvData.append(HtmlUtil.html2text(itLieu.getHorairesEtAcces()).replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getTransportsEnCommun()));
+        csvData.append(HtmlUtil.html2text(itLieu.getTransportsEnCommun()).replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getParkings()));
+        csvData.append(HtmlUtil.html2text(itLieu.getParkings()).replaceAll(";", ","));
         csvData.append(separator);
-        csvData.append(HtmlUtil.html2text(itLieu.getDescription()));
+        csvData.append(HtmlUtil.html2text(itLieu.getDescription()).replaceAll(";", ","));
         csvData.append(separator);
         csvData.append(video);
         csvData.append(separator);
@@ -358,8 +365,6 @@ if(getBooleanParameter("exportNew", false)) {
         
     }
 
-    printWriter.write(csvData.toString());
-    
 } else {
 	QueryHandler qh = new QueryHandler();
 	
@@ -369,26 +374,22 @@ if(getBooleanParameter("exportNew", false)) {
 
 	if (Util.isEmpty(result)) return;
 
-	StringBuffer csvHeader = new StringBuffer();
-
 	csvHeader.append("Identifiant");
 	csvHeader.append(separator);
 	csvHeader.append("ID Fiche Lieu");
 	csvHeader.append(separator);
 	csvHeader.append("Titre");
 	csvHeader.append(separator);
-	csvHeader.append("TÃ©lÃ©phone");
+	csvHeader.append("Téléphone");
 	csvHeader.append(separator);
 	csvHeader.append("Adresse");
 	csvHeader.append(separator);
 	csvHeader.append("Code Postal");
 	csvHeader.append(separator);
-	csvHeader.append("BoÃ®te Postale");
+	csvHeader.append("Boîte Postale");
 	csvHeader.append(newLine);
 
 	printWriter.write(csvHeader.toString());
-
-	StringBuffer csvData = new StringBuffer();
 
 	for (Publication itPub : result) {
 	    
@@ -412,22 +413,21 @@ if(getBooleanParameter("exportNew", false)) {
 	    csvData.append(separator);
 	    csvData.append(Util.isEmpty(itAssociatedLieu) ? "" : itAssociatedLieu.getId());
 	    csvData.append(separator);
-	    csvData.append(itPlace.getTitle());
+	    csvData.append(itPlace.getTitle().replaceAll(";", ","));
 	    csvData.append(separator);
-	    csvData.append(itPhones.toString());
+	    csvData.append(itPhones.toString().replaceAll(";", ","));
 	    csvData.append(separator);
 	    csvData.append(itPlace.getStreet().replaceAll("\n{1,}",", ").replaceAll("\r{1,}",", ").replaceAll("[, ]{2,}", ", "));
 	    csvData.append(separator);
-	    csvData.append(itPlace.getZipCode());
+	    csvData.append(itPlace.getZipCode().replaceAll(";", ","));
 	    csvData.append(separator);
-	    csvData.append(itPlace.getPostalBox());
+	    csvData.append(itPlace.getPostalBox().replaceAll(";", ","));
 	    csvData.append(newLine);
 	    
 	}
-
-	printWriter.write(csvData.toString());
 	
 }
 
+printWriter.write(csvData.toString());
 
 %>
