@@ -63,7 +63,7 @@
     <field name="reserveAgentsColleges" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root">
       <label xml:lang="fr">Réservé agents des collèges</label>
     </field>
-    <field name="metierEnTension" editor="boolean" required="false" compactDisplay="false" tab="profil_souhaite" type="boolean" default="on">
+    <field name="metierEnTension" editor="boolean" required="false" compactDisplay="false" tab="profil_souhaite" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Métier en tension</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
