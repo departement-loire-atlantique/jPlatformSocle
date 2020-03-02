@@ -24,6 +24,8 @@ public class EvenementContent extends Content {
     Photo[] photos;
     Langue[] langues;
     String titre;
+    String metadata_1;
+    String metadata_2;
     
     public EvenementContent() {}
     
@@ -83,5 +85,21 @@ public class EvenementContent extends Content {
     
     public String getTitre() {
         return this.titre;
+    }
+
+    public String getMetadata_1() {
+        return metadata_1;
+    }
+
+    public void setMetadata_1(String metadata_1) {
+        this.metadata_1 = metadata_1;
+    }
+
+    public String getMetadata_2() {
+        return metadata_2;
+    }
+
+    public void setMetadata_2(String metadata_2) {
+        this.metadata_2 = metadata_2;
     }
 }

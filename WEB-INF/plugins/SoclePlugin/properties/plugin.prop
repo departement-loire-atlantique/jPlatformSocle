@@ -216,6 +216,28 @@ jcmsplugin.socle.infolocale.password:
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 
+# Metadonnees Infolocale pour le front
+
+jcmsplugin.socle.infolocale.metadata.front.commune: commune
+jcmsplugin.socle.infolocale.metadata.front.genre: genre
+jcmsplugin.socle.infolocale.metadata.front.organisme: organisme
+jcmsplugin.socle.infolocale.metadata.front.horaires: horaires
+jcmsplugin.socle.infolocale.metadata.front.duree: duree
+jcmsplugin.socle.infolocale.metadata.front.tarif: tarif
+jcmsplugin.socle.infolocale.metadata.front.public: public
+jcmsplugin.socle.infolocale.metadata.front.accessibilite: accessibilite
+jcmsplugin.socle.infolocale.metadata.front.prefix.groupeTheme: grtheme:
+jcmsplugin.socle.infolocale.metadata.front.prefix.theme: theme:
+
+jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: mentionAccessibleHandicapAuditif
+jcmsplugin.socle.infolocale.metadata.accessibilite.mental: mentionAccessibleHandicapMental
+jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: mentionAccessibleHandicapVisuel
+jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: mentionAccessibleHandicapMoteur
+jcmsplugin.socle.infolocale.metadata.thematiques: thematiques
+jcmsplugin.socle.infolocale.metadata.thematiqueId: thematiqueId
+jcmsplugin.socle.infolocale.metadata.parentId: parentId
+jcmsplugin.socle.infolocale.metadata.libelle: libelle
+
 # Fiche Action éducative
 
 $jcmsplugin.socle.ficheactioneducative.theme.root: c_1212395
