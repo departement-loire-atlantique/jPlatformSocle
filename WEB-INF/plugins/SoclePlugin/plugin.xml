@@ -173,8 +173,8 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
-    <templates type="PortletFacetteMotCle">
-        <template name="default" file="doPortletFacetteMotCleBoxDisplay.jsp" usage='box'>
+    <templates type="PortletFacetteMotcle">
+        <template name="default" file="doPortletFacetteMotcleBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
