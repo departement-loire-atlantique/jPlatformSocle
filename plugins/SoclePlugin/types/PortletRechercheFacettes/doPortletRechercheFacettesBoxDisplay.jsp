@@ -1,3 +1,4 @@
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%@ include file='/jcore/portal/doPortletParams.jspf'%>
@@ -9,30 +10,8 @@
 
 	<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-small-flex-col">
 
-		<%
-			int weight = 0;
-			int maxFacettesPrincipales = 0;
-			
-			for(AbstractPortletFacette itFacette : obj.getFacettesPrincipales()) {
-				
-				if(itFacette instanceof PortletFacetteCategoriesLiees 
-						|| itFacette instanceof PortletFacetteCommuneAdresseLiee 
-						|| (itFacette instanceof PortletFacetteAdresse
-								&& Util.notEmpty(((PortletFacetteAdresse)itFacette).getRayon(loggedMember)))) {
-					
-					weight += 2;
-					
-				} else {
-					
-					weight ++;
-				}
-				// if too much facette
-				if(weight > 4) break;
-				
-				maxFacettesPrincipales++;
-			}
-		%>
-		
+		<% int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); %>
+
 		<jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
 			<div class="ds44-fieldContainer ds44-fg1">
 				<jalios:include pub="<%= itFacette %>" usage="box"/>
@@ -49,10 +28,19 @@
 	</div>
 
 	<jalios:if predicate="<%= Util.notEmpty(obj.getFacettesSecondaires()) %>">
-		<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette">
-		
-			<div class="ds44-fieldContainer ds44-fg1">
-				<jalios:include pub="<%= itFacette %>" usage="box"/>
+		<div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col">
+			<div class="ds44-flex-container ds44-medium-flex-col">
+				<p class="ds44-heading ds44-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
+
+				<% int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesSecondaires(), loggedMember); %>
+
+				<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
+
+					<div class="ds44-fieldContainer ds44-fg1 ds44-fieldContainer--select">
+						<jalios:include pub="<%= itFacette %>" usage="box"/>
+					</div>
+
+				</jalios:foreach>
 			</div>
 			
 		</jalios:foreach>

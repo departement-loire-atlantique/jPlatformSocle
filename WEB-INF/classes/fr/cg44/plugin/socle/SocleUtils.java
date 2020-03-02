@@ -23,7 +23,12 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
+import generated.AbstractPortletFacette;
 import generated.City;
+import generated.PortletFacetteAdresse;
+import generated.PortletFacetteCategoriesLiees;
+import generated.PortletFacetteCommune;
+import generated.PortletFacetteCommuneAdresseLiee;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -364,6 +369,57 @@ public final class SocleUtils {
 			jsonObject.addProperty("html_full", pubFullGabarit);
 		}
 		return jsonObject;
+	}
+	
+	
+	/**
+	 * <p>Calcule le nombre maximum de facettes dont le poids cumulé ne dépasse pas le poids maximum en entrée.</p>
+	 * <p></p>
+	 * <p>Toutes les facettes pèsent 1, sauf :</p>
+	 * <p>- <code>PortletFacetteCategoriesLiees</code> et <code>PortletFacetteCommuneAdresseLiees</code> comptent pour 2 ;</p>
+	 * <p>- <code>PortletFacetteAdresse</code> peuvent compter pour 2 s'il affiche l'option <code>rayon</code> ;</p>
+	 * <p>- <code>PortletFacetteCommune</code> peuvent compter pour 2 s'il affiche l'option <code>commune limitrophe</code> ou  <code>commune EPCI</code> ;</p>
+	 * <p></p>
+	 * <p>Par exemple pour <code>getNbrFacetteBeforeMaxWeight(4, member, { PortletFacetteCategoriesLiees, PortletFacetteTitre, PortletFacetteCommuneAdresseLiees})</code> :</p>
+	 * <p></p>
+	 * <p>PortletFacetteCategoriesLiees pèse 2 ;</p>
+	 * <p>PortletFacetteTitre pèse 1, on a un poids total de 3 ;</p>
+	 * <p>PortletFacetteCommuneAdresseLiees pèse 2, on a un poids total de 5 qui dépasse le poids max de 4 ;</p>
+	 * <p></p>
+	 * <p>Donc seules les 2 premières facettes ne dépassent pas le poids max.</p>
+	 * <p>On retourne 2.</p>
+	 * <p></p>
+	 * @param maxWeight le poids maximum cumulé des facettes affichable
+	 * @param facetteArr le tableau des facettes à afficher
+	 * @param member l'utilisateur en cours de navigation
+	 * @return le nombre de facettes du tableau qui peuvent être affichés avant d'atteindre le poids maximum
+	 */
+	public static int getNbrFacetteBeforeMaxWeight(int maxWeight, AbstractPortletFacette[] facetteArr, Member member) {
+		int weight = 0;
+		int maxFacettesPrincipales = 0;
+		
+		for(AbstractPortletFacette itFacette : facetteArr) {
+			
+			if(itFacette instanceof PortletFacetteCategoriesLiees 
+					|| itFacette instanceof PortletFacetteCommuneAdresseLiee 
+					|| (itFacette instanceof PortletFacetteCommune
+							&& ( !((PortletFacetteCommune)itFacette).getRechercheEtendue().equalsIgnoreCase("aucune")))
+					|| (itFacette instanceof PortletFacetteAdresse
+							&& Util.notEmpty(((PortletFacetteAdresse)itFacette).getRayon(member)))) {
+				
+				weight += 2;
+				
+			} else {
+				
+				weight ++;
+			}
+			
+			if(weight > maxWeight) break;
+			
+			maxFacettesPrincipales++;
+		}
+		
+		return maxFacettesPrincipales;
 	}
 
 }
