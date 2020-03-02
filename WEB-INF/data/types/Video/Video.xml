@@ -4,16 +4,22 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
+    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre témoignage</label>
+    </field>
+    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre témoignage</label>
+    </field>
     <field name="urlVideo" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="2000" ml="false" openWindow="false" tab="common">
       <label xml:lang="fr">URL Vidéo</label>
       <description xml:lang="fr">Collez ici le lien vers la vidéo Youtube&#xD;
     N'oubliez pas de renseigner les champs "Document transcript" et "Sous-titres" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
-    </field>  
+    </field>
     <field name="hasChapters" editor="boolean" required="false" compactDisplay="false" tab="common" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Vidéo avec chapitres ?</label>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
-    </field>  
+    </field>
     <field name="summary" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" tab="common">
       <label xml:lang="fr">Chapo</label>
     </field>
@@ -28,10 +34,7 @@
     </field>
     <field name="transcriptFile" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
       <label xml:lang="fr">Fichier de transcript</label>
-    </field>    
-    <field name="subtitleFile" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
-      <label xml:lang="fr">Fichier de sous-titre</label>
-    </field>    
+    </field>
     <field name="chapitre" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Chapitre</label>
     </field>
@@ -42,14 +45,53 @@
     <field name="libelleTimecode" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Libellé du Timecode</label>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+    <field name="besoins" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.besoins.root">
+      <label xml:lang="fr">Besoins</label>
+    </field>
+    <field name="publics" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.publicVise.root">
+      <label xml:lang="fr">Publics</label>
+    </field>
+    <field name="types" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p1_967890">
+      <label xml:lang="fr">Types</label>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Communes concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="delegations" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Delegation[]">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">EPCI concernés</label>
+    </field>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
+    </field>
   </fields>
   <label xml:lang="fr">Vidéo</label>
   <tabs>
+    <tab id="chapters">
+      <label xml:lang="fr">Chapitres</label>
+    </tab>
     <tab id="common">
       <label xml:lang="fr">Commun</label>
     </tab>
-    <tab id="chapters">
-      <label xml:lang="fr">Chapitres</label>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
     </tab>
   </tabs>
 </type>
