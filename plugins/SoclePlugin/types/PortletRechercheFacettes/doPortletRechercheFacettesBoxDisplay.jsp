@@ -8,6 +8,7 @@
 
 <form data-is-ajax="true">
 
+	<p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 	<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-small-flex-col">
 
 		<% int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); %>
@@ -20,7 +21,7 @@
 
 		<div class="ds44-fieldContainer ds44-small-fg1">
 			<button class="ds44-btnStd ds44-btnStd--large ds44-theme">
-				<span class="ds44-btnInnerText">Rechercher</span>
+				<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 				<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 			</button>
 		</div>
@@ -42,8 +43,25 @@
 
 				</jalios:foreach>
 			</div>
-			
-		</jalios:foreach>
+
+			<div class="ds44-push ds44-small-fg1">
+				<ul class="ds44-list">
+					<li class="ds44-docListElem">
+						<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+						<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
+					</li>
+					<li class="ds44-docListElem">
+						<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+						<a href="#" aria-label="PDF">PDF</a>
+					</li>
+					<li class="ds44-docListElem">
+						<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+						<a href="#" aria-label="CSV">CSV</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
 	</jalios:if>
 	
 	<input type="hidden" name="boxId" value='<%= obj.getId() %>'/>
