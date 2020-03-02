@@ -1,7 +1,5 @@
 package fr.cg44.plugin.socle.policyfilter;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -21,12 +19,13 @@ import generated.Delegation;
 
 
 /**
- * Indexe le code commune dans les publication qui référence des communes (directement ou au travers de cantons)
+ * Indexe le code commune dans les publications qui référencent des communes (directement ou au travers de cantons)
  */
 public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneSearchEnginePolicyFilter {
 
 	private static final Logger LOGGER = Logger.getLogger(PublicationFacetedSearchCityEnginePolicyFilter.class);
-		
+	
+	public static final String CODE_CITY = "cityCode";
 	public static final String INDEX_FIELD_CITY = "facet_city";
 	public static final String INDEX_FIELD_ALL_CITY = "toutesLesCommunesDuDepartement";
 	
@@ -46,8 +45,6 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			indexCommunesDeDelegation(doc, publication);
 			// Récupère le champ "delegations" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces délégations
 			indexCommunesDesDelegations(doc, publication);
-			// Récupère le champ "EPCI" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces cantons
-			indexCommunesDesEPCI(doc, publication);
 			// Indexation de toutes les communes
 			indexAllCommunes(doc, publication);
 		}else {
@@ -59,34 +56,22 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	
 	
 	/**
-	 * Récupère le champ "commune" du type de contenu pour l'indéxer si celui-ci est présent
+	 * Indexe le code commune à partir de la commune récupérée sur le champ "commune" de la publication.
 	 * @param doc
 	 * @param publication
 	 */
-	private void indexCommune(Document doc, Publication publication) {
-		try {			
-			// Récupère le champ "commune" du type de contenu pour l'indéxer si celui-ci est présent
-			City cityPub = (City) publication.getFieldValue("commune");
-			indexCityCode(doc, cityPub);			
-		} catch (NoSuchFieldException e) {
-			LOGGER.trace("Le contenu n'a pas de référence à une commune à indexer", e);
-		}	
+	private void indexCommune(Document doc, Publication publication){
+		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CITY, CODE_CITY, publication, "commune");
 	}
 	
 	
 	/**
-	 * Récupère le champ "communes" du type de contenu pour l'indéxer si celui-ci est présent
+	 * Indexe les codes commune à partir des communes récupérées sur le champ "communes" de la publication.
 	 * @param doc
 	 * @param publication
 	 */
-	private void indexCommunes(Document doc, Publication publication) {
-		try {
-			// Récupère le champ "communes" du type de contenu pour l'indéxer si celui-ci est présent
-			City[] cityPubTab = (City[]) publication.getFieldValue("communes");
-			indexCityCode(doc, cityPubTab);
-		} catch (NoSuchFieldException e) {
-			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
-		}	
+	private void indexCommunes(Document doc, Publication publication){
+		UtilEnginePolicyFilter.indexField(doc, INDEX_FIELD_CITY, CODE_CITY, publication, "communes");
 	}
 	
 	
@@ -178,32 +163,12 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
 		}	
 	}
-	
-	
-	/**
-	 * Récupère le champ "EPCI" du type de contenu si celui-ci est présent pour indexer les communes catégorisées dans ces catégories
-	 * @param doc
-	 * @param publication
-	 */
-	private void indexCommunesDesEPCI(Document doc, Publication publication) {
-		try {
-			// Récupère le champ "epci" du type de contenu pour l'indéxer si celui-ci est présent
-			Set<Category> epciCatSet = publication.getCategoryFieldValue("epci", null);
-			if(Util.notEmpty((epciCatSet))) {				
-				for(Category itEpciCat : epciCatSet) {					
-					indexCityCode(doc, itEpciCat.getPublicationSet(City.class, null));
-				}
-			}
-		} catch (NoSuchFieldException e) {
-			LOGGER.trace("Le contenu n'a pas de référence à plusieurs communes à indexer", e);
-		}
-	}
-		
+			
 	
 	/**
-	 * Indexe les codes commune sur la publication à partir du canton
+	 * Indexe les codes commune sur la publication à partir d'un ou plusieurs cantons
 	 * @param doc
-	 * @param communes
+	 * @param cantons
 	 */
 	private void indexCityCodeCanton(Document doc, Canton... cantons){
 		if (Util.isEmpty(cantons)) {
@@ -219,9 +184,9 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	
 	
 	/**
-	 * Indexe les codes commune sur la publication à partir de la délation
+	 * Indexe les codes commune sur la publication à partir de la délégation
 	 * @param doc
-	 * @param communes
+	 * @param delegations
 	 */
 	private void indexCityCodeDelegation(Document doc, Delegation... delegations){
 		if (Util.isEmpty(delegations)) {
@@ -239,33 +204,21 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 	/**
 	 * Indexe le code commune sur la publication
 	 * @param doc
-	 * @param city
+	 * @param communes
 	 */
 	private void indexCityCode(Document doc, City... communes){
-		if(Util.notEmpty(communes)) {
-			indexCityCode(doc, new HashSet<City>(Arrays.asList(communes)));
-		}
+		UtilEnginePolicyFilter.indexFieldCode(doc, INDEX_FIELD_CITY, CODE_CITY, communes);
 	}
 	
 		 
 	/**
 	 * Indexe le code commune sur la publication
 	 * @param doc
-	 * @param city
+	 * @param communes
 	 */
 	private void indexCityCode(Document doc, Set<City> communes){
-		Set<City> communesSet =  Util.collectionToCleanSet(communes);
-		if(Util.notEmpty(communesSet)) {
-			for(City itCommune : communesSet) {
-				Integer cityCode = itCommune.getCityCode();
-				Field cityField = new StringField(INDEX_FIELD_CITY, Integer.toString(cityCode), Field.Store.NO);
-				doc.add(cityField);	
-			}
-		}
+		UtilEnginePolicyFilter.indexFieldCode(doc, INDEX_FIELD_CITY, CODE_CITY, communes);
 	}
 	
-	
-	
-
 	
 }

@@ -15,7 +15,7 @@
     <type name="Canton"></type>
     <type name="Carousel"></type>
     <type name="Chapitre"></type>
-    <type name="City"></type>
+    <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
     <type name="ContenuDeTest"></type>
@@ -24,16 +24,20 @@
     <type name="Directory"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
+    <type name="FaqDEP44"></type>
     <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
+    <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
     <type name="News"></type>
     <type name="Place"></type>
+    <type name="PortletCarousel"></type>
+    <type name="PortletAgendaInfolocale"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -83,7 +87,12 @@
         <template name="default" file="doFicheArticleFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="FicheEmploiStage">
+        <template name="default" file="doFicheEmploiStageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="FicheLieu">
         <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -201,7 +210,15 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
-    </templates>       
+    </templates>
+    <templates type="PortletCarousel">
+        <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
+          <label xml:lang="fr">DS44 : carrousel trois tuiles</label>
+        </template>
+        <template name="sliderQuatre" file="doPortletCarouselSliderFourPanels.jsp" usage="box">
+          <label xml:lang="fr">DS44 : carrousel quatre tuiles</label>
+        </template>
+    </templates>
     <templates type="PortletRechercheFacettes">
         <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
@@ -219,8 +236,11 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
-    <!--
+    <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />   
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
+    <!--  
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
     -->
   </plugincomponents>
@@ -248,13 +268,18 @@
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/card.tag" />
+    <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
+    <file path="WEB-INF/tags/titleDelegation.tag" />
+    <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
+    <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />

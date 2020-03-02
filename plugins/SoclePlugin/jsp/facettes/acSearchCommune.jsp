@@ -4,7 +4,7 @@
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-String textSearch = getAlphaNumParameter("autocomplete", "");
+String textSearch = getAlphaNumParameter("search", "");
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "zipCode", "codesPostaux", "nomDesCommunesDeleguees"};
 
 QueryHandler qh = new QueryHandler();

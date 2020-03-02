@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <template name="default" usage="box" file="doFaqDEP44FullDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="edit" file="editFaqDEP44.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="full" file="doFaqDEP44FullDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="query" file="doFaqDEP44ResultDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+</templates>
+

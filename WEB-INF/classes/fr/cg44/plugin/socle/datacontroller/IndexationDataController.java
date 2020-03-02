@@ -39,10 +39,39 @@ public class IndexationDataController extends BasicDataController {
 				// Réindexe les contenus liées à toutes les communes lors de la création d'une commune
 				indexPubAllCity(city);
 			}
+		}else if(data instanceof Canton) {
+			if(op == OP_UPDATE ) {
+				Canton canton = (Canton) data;
+				indexPubCanton(canton, context);
+			}
 		}
 	}
 	
-		
+	
+	/**
+	 * Réindexe les contenus liées au canton si son code canton a été modifié
+	 * @param canton
+	 * @param context
+	 */
+	private void indexPubCanton(Canton canton, Map context) {
+		Canton previousCanton = (Canton) context.get(DataController.CTXT_PREVIOUS_DATA);
+		// Récupère le code canton avant et après modification
+		int previousCantonCode = previousCanton.getCantonCode();
+		int cantonCode = canton.getCantonCode();		
+		// Si le code canton change alors réindexe les publication en lien avec ce canton
+		if(cantonCode != previousCantonCode) {
+			// Set des publication à ré-indéxer
+			TreeSet<Publication> pubRefSet = new TreeSet<>();
+			// Récupère les publications qui référencent directement le canton (champ mono)
+			pubRefSet.addAll(canton.getLinkIndexedDataSet(Publication.class, "canton"));
+			// Récupère les publications qui référencent directement le canton (champ multiple)
+			pubRefSet.addAll(canton.getLinkIndexedDataSet(Publication.class, "cantons"));			
+			// Réindexe les publications associées au canton
+			indexPublications(pubRefSet);
+		}		
+	}
+
+
 	private void indexPubAllCity(City city) {
 		// Recherche toutes les publication qui sont cochées à oui sur le champ "toutes les communes"
 		String SearchText = PublicationFacetedSearchCityEnginePolicyFilter.INDEX_FIELD_ALL_CITY + ":\"" + "true" + "\"";			
@@ -55,7 +84,7 @@ public class IndexationDataController extends BasicDataController {
 
 
 	/**
-	 * Réindexe les contenu liées à la commune si son code commune ou canton a été modifié
+	 * Réindexe les contenus liées à la commune si son code commune ou canton a été modifié
 	 * @param data
 	 * @param context
 	 */
@@ -77,13 +106,8 @@ public class IndexationDataController extends BasicDataController {
 		Delegation cityDelegation= city.getDelegation();
 		Boolean delegationChange = !JcmsUtil.isSameId(previousCityDelegation, cityDelegation);
 		
-		// Récupère les EPCI déclarées dans la commune avant et après modification 
-		TreeSet<Category> previousCityEpci = previousCity.getEpci(null);
-		TreeSet<Category> cityEpci = city.getEpci(null);
-		Boolean epciChange = !Util.isSameContent(previousCityEpci, cityEpci);
-		
 		// Si le code commune ou le canton de la commune à été changé alors réindexe les contenus liés
-		if(cityChange || cantonsChange || delegationChange || epciChange) {
+		if(cityChange || cantonsChange || delegationChange) {
 
 			// Set des publication à ré-indéxer
 			TreeSet<Publication> pubRefSet = new TreeSet<>();
@@ -135,25 +159,7 @@ public class IndexationDataController extends BasicDataController {
 					// Récupère les publications qui référencent directement le canton (champ multiple)
 					pubRefSet.addAll(itDelegation.getLinkIndexedDataSet(Publication.class, "delegations"));
 				}				
-			}
-			
-			if(epciChange) {
-				// La liste des epci qui n'ont pas changé dans la commune
-				Set<Category> epciCommunSet = new HashSet<Category>(cityEpci);
-				epciCommunSet.retainAll(previousCityEpci);
-				
-				// La liste des cantons qui sont modifiés (ajouter ou enlever de la commune)
-				Set<Category> epciSet = new HashSet<Category>(cityEpci);
-				epciSet.addAll(previousCityEpci);
-				// Retire la liste des epci qui n'ont pas changé dans la commune
-				epciSet.removeAll(epciCommunSet);
-				
-				// réindexe les publication en lien avec une epci qui à changé de commune
-				for(Category itEpci : epciSet) {
-					// Récupère les publications qui référencent directement l'epci (champ mono)
-					pubRefSet.addAll(itEpci.getPublicationSet(Publication.class, null));
-				}					
-			}
+			}			
 	
 			// Réindexe les publications associées à la commune directement ou indirectement concèrnées par un changement sur la commune
 			indexPublications(pubRefSet);

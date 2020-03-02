@@ -5,19 +5,12 @@
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 String textSearch = getAlphaNumParameter("search", "");
-String[] tabSearchedFields = new String[]{"facet_city"};
+String query = getUntrustedStringParameter("query", "");
+String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "title"};
 
-QueryHandler qh = new QueryHandler();
+QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);
-qh.setTypes("City");
 qh.setSearchedFields(tabSearchedFields);
 
-Set<City> communeEpci = new HashSet<City>();
-City communeRecherchee = (City) (Util.getFirst(qh.getResultSet())); 
-if(Util.notEmpty(communeRecherchee)) {
-	Category epciDeLaCommune = Util.getFirst(communeRecherchee.getEpci(null));
-	communeEpci = epciDeLaCommune.getPublicationSet(City.class, null);	
-}
-
 %><% 
-%><%= SocleUtils.citiestoJsonArray(communeEpci) %>
+%><%= SocleUtils.publicationToJsonArray(qh.getResultSet()) %>

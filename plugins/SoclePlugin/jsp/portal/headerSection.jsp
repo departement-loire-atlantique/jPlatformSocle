@@ -40,7 +40,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
                         <picture class="ds44-logo">
-                            <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.retour.accueil") %>" />
+                            <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.retour.accueil") %> <%=channel.getName() %>" />
                         </picture>
                     </a>
                 </div>
@@ -87,17 +87,29 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                                         </li>
                                     </jalios:if>
                                     <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
-                                    <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) %>">
-                                         <%
+                                    
+                                    <%-- Si présence de contenu principal dans la catégorie, alors lien vers ce contenu,
+                                         sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%>
+                                         
+                                    <%Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCat);%>
+                                    <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) || Util.notEmpty(itContenuPrincipal) %>">
+                                        <%
                                         String cible= "";
                                         String title = "";
+                                        String lien = "";
+                                        if(Util.notEmpty(itContenuPrincipal)){
+                                        	lien = itContenuPrincipal.getDisplayUrl(userLocale);
+                                        }
+                                        else{
+                                        	lien = itCat.getDisplayUrl(userLocale);
+                                        }
                                         boolean targetBlank = "true".equals(itCat.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
                                         if(targetBlank){
                                             cible="target=\"_blank\" ";
                                             title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
                                         }
                                         %>
-                                        <a class="ds44-menuBtn" href="<%= itCat.getDisplayUrl(userLocale) %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
+                                        <a class="ds44-menuBtn" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
                                     </jalios:if>
                                     <jalios:default>
                                         <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
