@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="PortletFacetteCommune" superclass="generated.PortletFacetteAdresse" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Portlet Facette Commune</label>
+<type name="PortletFacetteCommune" superclass="generated.AbstractPortletFacette" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
   <title ml="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="communeLimitrophe" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
-      <label xml:lang="fr">Commune limitrophe</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
-    <field name="communeEPCI" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
-      <label xml:lang="fr">Commune EPCI</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
+    <field name="rechercheEtendue" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="checkbox" valueList="aucune|limitrophe|epci" default="aucune" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Aucune|Commune limitrophe|Commune EPCI">
+      <label xml:lang="fr">Recherche étendue</label>
     </field>
     <field type="super" />
   </fields>
+  <label xml:lang="fr">Portlet Facette Commune</label>
 </type>
 
