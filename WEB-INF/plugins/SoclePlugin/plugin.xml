@@ -13,7 +13,6 @@
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
-    <type name="Carousel"></type>
     <type name="Chapitre"></type>
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
