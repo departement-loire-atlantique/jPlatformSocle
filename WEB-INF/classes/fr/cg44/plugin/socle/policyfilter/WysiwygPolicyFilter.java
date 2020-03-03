@@ -22,15 +22,18 @@ import com.jalios.util.Util;
 public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 
   private static final Logger LOGGER = Logger.getLogger(WysiwygPolicyFilter.class);
-  private static final String PREFIX_TAG_NAME = "<div";
-
-	/**
-	 * Modifie les liens externes pour qu'ils affichent la mention " - nouvelle fenêtre" dans l'attribut "title",
-	 * si un "target='_blank'" a été détecté.
-	 */
+	
 	@Override
 	public String afterRendering(final String text, final Locale userLocale) {
-
+		return checkExternalLinks(text, userLocale);
+	}
+	
+	/**
+	 * Modifie les liens externes pour qu'ils affichent la mention " - nouvelle fenêtre" dans l'attribut "title" si celui-ci n'est pas vide,
+	 * et si un "target='_blank'" a été détecté.
+	 */
+	public String checkExternalLinks(String text, Locale userLocale) {
+			
 		String result = text;
 		String prefix = JcmsUtil.getDisplayUrl();
 		String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
@@ -46,23 +49,18 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 		// récupération des liens contenant un target blank
 		while (matcherTarget.find()) {
 			url = matcherTarget.group(0);
-			LOGGER.warn("URL : "+url);
 			
 			Matcher matcherTitle = patternTitle.matcher(matcherTarget.group(0));
 			// récupération des title
 			while (matcherTitle.find()) {
 				title = matcherTitle.group(2);
-				LOGGER.warn("TITLE : "+title );
 			}
 			
 			if (title.endsWith(suffixe)) {
 				continue;
 			}
-			
-			// TODO : si pas de title trouvé, alors le générer
-			
+		
 			titleOK=title+suffixe;
-			LOGGER.warn("TITLE corrigé : "+titleOK);
 			url = url.replaceFirst(title, titleOK);
 			
 			// Intégration dans le wysiwyg
@@ -71,11 +69,9 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 
 			result = before + url + after;
 			matcherTarget = patternTarget.matcher(result);
-
-			
-
 		}
-		return result;
+		return result;		
+		
 	}
 
   
