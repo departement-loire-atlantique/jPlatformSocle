@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.io.IOUtil;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.Publication;
@@ -29,7 +29,6 @@ import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.bean.SectorResult;
-import generated.City;
 import generated.FicheLieu;
 
 
@@ -40,6 +39,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 	private static final Logger LOGGER = Logger.getLogger(SectorisationQueryFilter.class);
 
+	private static String SECTORISATION_URL_COMMUNE = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?p_commune=";
+	private static String SECTORISATION_URL_POINT = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?";
+	private static String SECTORISATION_URL_RECTANGLE = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?";
+	
 	private static int TIMEOUT = Integer.parseInt(getChannel().getProperty("jcmsplugin.socle.rest.timeout", "2000"));
 
 
@@ -50,10 +53,11 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 
 	@Override
-	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {
-		City cityData = HttpUtil.getDataParameter(request, "commune", City.class);
-		if(Util.notEmpty(cityData)) {
-			List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
+	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
+		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");
+		String sectorisation = HttpUtil.getAlphaNumParameter(request, "sectorisation", "");
+		if(Util.notEmpty(commune) && Util.notEmpty(sectorisation)) {
+			List<String> sectorResultId = getSectorisation(commune).stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
 			Set<Publication> removeSolis = new HashSet<Publication>();
 			for(Publication itPub : set) {
 				if(itPub instanceof FicheLieu) {
@@ -68,16 +72,15 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		}		
 		return set;
 	}
-	
+
 
 	/**
 	 * Retourne le résulatat du service de sectorisation
 	 * @return
 	 */
-	public List<SectorResult> getSectorisation() {
+	public List<SectorResult> getSectorisation(String CodeInseeCommune) {
 		try {
-			// TODO url en static à dynamiser suivant les paramètres de rechercher
-			URL url = new URL("https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_sectorisations_geojson?p_geojson=%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B-1.77286755433447%2C47.5803362635946%5D%2C%22crs%22%3A%7B%22type%22%3A%22name%22%2C%22properties%22%3A%7B%22name%22%3A%22EPSG%3A4326%22%7D%7D%7D&sectorisation=in.%28EDS,Canton,Commune%29&select=sectorisation%2Cmatricule%2Clibelle");
+			URL url = new URL(SECTORISATION_URL_COMMUNE + CodeInseeCommune);
 			HttpURLConnection urlConnection = IOUtil.openConnection(url, true, true, "GET");
 			urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf8");
 			urlConnection.setReadTimeout(TIMEOUT);
@@ -99,7 +102,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche avec le référentiel externe", e);
 		}
-		return (List<SectorResult>) Collections.EMPTY_SET ;
+		return Collections.EMPTY_LIST;
 	}
+
 
 }
