@@ -2,6 +2,8 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% 
+	// PAS TERMINE !
+
 	PortletFacetteCategorie obj = (PortletFacetteCategorie)portlet; 
 
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element");

@@ -2,6 +2,8 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% 
+	//PAS TERMINE !
+
 	PortletFacetteCategoriesLiees obj = (PortletFacetteCategoriesLiees)portlet; 
 
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
