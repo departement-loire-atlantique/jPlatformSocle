@@ -7,6 +7,9 @@
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
+	
+	Boolean showFiltres = true; // TODO : test si dans portail recherche facette pleine page
+	request.setAttribute("showFiltres", showFiltres);
 %>
 
 <form data-is-ajax="true">
@@ -30,8 +33,6 @@
 		</div>
 
 	</div>
-
-	<% Boolean showFiltres = true; // TODO : test si dans portail recherche facette pleine page %>
 
 	<jalios:if predicate="<%= showFiltres %>">
 		<div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col">

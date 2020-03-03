@@ -1,3 +1,8 @@
+<% 
+	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && request.getAttribute("showFiltres") ? "Std" : "Large"; 
+	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
+%>
+
 <jalios:if predicate='<%= Util.notEmpty(option) %>'>
 
 	<jalios:if predicate='<%= option.equalsIgnoreCase("limitrophe") || option.equalsIgnoreCase("epci") || option.equalsIgnoreCase("rayon") || option.equalsIgnoreCase("adresse") %>'>
@@ -25,12 +30,12 @@
 
 
 				<label for='<%= idFormElement %>' class="ds44-formLabel">
-					<span class="ds44-labelTypePlaceholderLarge">
+					<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
 						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 					</span> 
 					<input class="ds44-input-value" type="hidden" value="">
 					<input class="ds44-input-metadata" type="hidden" aria-hidden="true" value="">
-					<input type="text" id='<%= idFormElement %>' class="ds44-inpLarge ds44-champsLies-child" role="combobox"
+					<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' role="combobox"
 							aria-autocomplete="list" 
 							autocomplete="off"
 							title=<%= title %>
@@ -93,7 +98,7 @@
 
 				<div class="ds44-form__container">
 
-					<div class="ds44-select__shape ds44-inpLarge ds44-champsLies-child ds44-inputDisabled">
+					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
 						<p class="ds44-selectLabel" aria-hidden="true">
 							<%= labelOption %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
@@ -129,7 +134,7 @@
 
 				<div class="ds44-form__container">
 
-					<div class="ds44-select__shape ds44-inpLarge ds44-champsLies-child ds44-inputDisabled">
+					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
 						<p class="ds44-selectLabel" aria-hidden="true">
 							<%= glp("jcmsplugin.socle.facette.rayon.label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
@@ -184,12 +189,12 @@
 				<div class="ds44-form__container">
 
 					<label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
-						<span class="ds44-labelTypePlaceholderLarge">
+						<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
 							<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</span> 
 						<input class="ds44-input-value" type="hidden" value="">
 						<input class="ds44-input-metadata" type="hidden" value="">
-						<input type="text" id='<%= idFormElement %>' class="ds44-inpLarge ds44-champsLies-child" 
+						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' 
 								role="combobox" 
 								aria-autocomplete="list" 
 								autocomplete="off"
@@ -230,10 +235,10 @@
 
 	<div class="ds44-form__container">
 		<label for='<%= idFormElement %>' class="ds44-formLabel">
-			<span class="ds44-labelTypePlaceholderLarge">
+			<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
 				<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 			</span>
-			<input type="text" id='<%= idFormElement %>' class="ds44-inpLarge" role="combobox" 
+			<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' role="combobox" 
 					name='<%= name %>'
 					aria-autocomplete="list" 
 					autocomplete="off" 
