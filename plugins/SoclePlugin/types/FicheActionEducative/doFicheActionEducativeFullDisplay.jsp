@@ -86,7 +86,10 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                             <br/><%= obj.getDirection() %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getService()) %>">
-                                            <br/><%= obj.getService() %><br/>
+                                            <br/><%= obj.getService() %>
+                                        </jalios:if>
+                                        <jalios:if predicate="<%= Util.notEmpty(obj.getDirection()) || Util.notEmpty(obj.getService()) %>">
+                                            <br/>
                                         </jalios:if>
                                         <%= SocleUtils.formatAddress(null, null, null, obj.getNdeVoie(), obj.getLibelleDeVoie(), null, obj.getCs(), obj.getCodePostal(), obj.getCommune().getTitle(), obj.getCedex()) %>
                                     </div>
