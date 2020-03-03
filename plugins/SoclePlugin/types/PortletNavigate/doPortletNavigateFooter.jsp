@@ -20,7 +20,7 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 %>
 
 <jalios:if predicate='<%= Util.notEmpty(navigateSet) %>'>
-    <section class="ds44-container-fluid ds44-bgGray ds44--xl-padding-tb">
+    <section class="ds44-container-fluid ds44-bgGray ds44--l-padding-tb">
         <ul class="ds44-list ds44-flex-container ds44-footerList">
             <jalios:foreach collection='<%= navigateSet %>' type="Category" name="itCategory">
                 <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) %>'>
@@ -36,7 +36,7 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
                     }
                     %>
                     <li>
-                        <a class="footerLink" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %></a>
+                        <a class="ds44-footerLink" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %></a>
                     </li>
                 </jalios:if>
             </jalios:foreach>
