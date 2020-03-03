@@ -4,6 +4,9 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf'%>
 <% 
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
+	
+	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
+	request.setAttribute("query", query);
 %>
 
 <form data-is-ajax="true">
@@ -28,7 +31,9 @@
 
 	</div>
 
-	<jalios:if predicate="<%= Util.notEmpty(obj.getFacettesSecondaires()) %>">
+	<% Boolean showFiltres = true; // TODO : test si dans portail recherche facette pleine page %>
+
+	<jalios:if predicate="<%= showFiltres %>">
 		<div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col">
 			<div class="ds44-flex-container ds44-medium-flex-col">
 				<p class="ds44-heading ds44-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
@@ -63,7 +68,7 @@
 
 		</div>
 	</jalios:if>
-	
+
 	<input type="hidden" name="boxId" value='<%= obj.getId() %>'/>
-	
+
 </form>
