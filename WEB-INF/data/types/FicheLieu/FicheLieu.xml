@@ -180,7 +180,7 @@
     </field>
     <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
