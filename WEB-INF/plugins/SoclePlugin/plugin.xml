@@ -242,6 +242,7 @@
     <directory path="docs" />
     <directory path="jsp" />
     <directory path="types" />
+    <directory path="wysiwyg" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
