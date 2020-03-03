@@ -321,19 +321,21 @@ public final class SocleUtils {
 	 * @param communes
 	 * @return
 	 */
-	public static JsonArray citiestoJsonArray(Publication... communes) {		
+	public static JsonArray citiestoJsonArray(Publication... communes) {
 		JsonArray jsonArray = new JsonArray();
-		for(Publication itPub : communes) {
-			City itCity = (City) itPub;
-		    JsonObject itJsonObject = new JsonObject();
-		    itJsonObject.addProperty("id", Integer.toString(itCity.getCityCode()));
-		    itJsonObject.addProperty("value", itCity.getTitle());		    
-		    JsonObject itJsonMetaObject = new JsonObject();
-		    itJsonMetaObject.addProperty("hasLinkedField", true);		    
-		    itJsonObject.add("metadata", itJsonMetaObject);
-		    jsonArray.add(itJsonObject);
-		}		
-		return jsonArray;		
+		if(Util.notEmpty(communes)) {
+			for(Publication itPub : communes) {
+				City itCity = (City) itPub;
+				JsonObject itJsonObject = new JsonObject();
+				itJsonObject.addProperty("id", Integer.toString(itCity.getCityCode()));
+				itJsonObject.addProperty("value", itCity.getTitle());
+				JsonObject itJsonMetaObject = new JsonObject();
+				itJsonMetaObject.addProperty("hasLinkedField", true);
+				itJsonObject.add("metadata", itJsonMetaObject);
+				jsonArray.add(itJsonObject);
+			}
+		}
+		return jsonArray;
 	}
 	
 	
