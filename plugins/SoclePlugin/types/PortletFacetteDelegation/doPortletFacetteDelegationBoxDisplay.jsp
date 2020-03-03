@@ -6,8 +6,7 @@
 	
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 	String dataMode = "select-only";
-	//TODO changer/enlever data url qd autcompletion delegation faite
-	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp";
+	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query=types%3Dgenerated.Delegation";
 	String name = "delegation";
 	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.delegation.default-label");
 	String option = "";

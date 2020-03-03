@@ -6,8 +6,7 @@
 	
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 	String dataMode = "select-only";
-	//TODO changer/enlever data url qd autcompletion canton faite
-	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp";
+	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query=types%3Dgenerated.Canton";
 	String name = "canton";
 	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.canton.default-label");
 	String option = "";
