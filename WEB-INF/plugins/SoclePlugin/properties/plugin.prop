@@ -29,8 +29,8 @@ jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
 $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
-jcmsplugin.socle.css-urls://dev-design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
-jcmsplugin.socle.js-urls://dev-design.loire-atlantique.fr/js/cd44.js
+jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
+jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 
 
 # ------------------------------------------------------------
