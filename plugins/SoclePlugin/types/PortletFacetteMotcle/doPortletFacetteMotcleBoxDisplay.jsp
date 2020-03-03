@@ -6,7 +6,7 @@
 
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && request.getAttribute("showFiltres") ? "Std" : "Large"; 
+	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 %>
 
