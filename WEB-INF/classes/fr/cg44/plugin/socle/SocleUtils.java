@@ -23,6 +23,7 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
+import generated.Canton;
 import generated.City;
 
 public final class SocleUtils {
@@ -321,10 +322,12 @@ public final class SocleUtils {
 		for(Publication itPub : communes) {
 			City itCity = (City) itPub;
 		    JsonObject itJsonObject = new JsonObject();
-		    itJsonObject.addProperty("id", Integer.toString(itCity.getCityCode()));
+		    String cityCode = Integer.toString(itCity.getCityCode());
+		    itJsonObject.addProperty("id", cityCode);
 		    itJsonObject.addProperty("value", itCity.getTitle());		    
 		    JsonObject itJsonMetaObject = new JsonObject();
-		    itJsonMetaObject.addProperty("hasLinkedField", true);		    
+		    String[] needAdress = channel.getStringArrayProperty("jcmsplugin.socle.cities.needAddress", new String[]{});
+		    itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode));    
 		    itJsonObject.add("metadata", itJsonMetaObject);
 		    jsonArray.add(itJsonObject);
 		}		
@@ -361,7 +364,7 @@ public final class SocleUtils {
 	 */
 	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("id", pub.getId());
+		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
@@ -391,6 +394,33 @@ public final class SocleUtils {
 		JsonArray jsonArray = new JsonArray();
 		for(Publication itPub : publications) {
 			jsonArray.add(publicationToJsonObject(itPub, null, null, null));
+		}
+		return jsonArray;
+	}
+	
+	
+	/**
+	 * Retourne une catégorie sous forme de json
+	 * @param cat
+	 * @return
+	 */
+	public static JsonObject categoryToJsonObject(Category cat) {
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("id", cat.getId());
+		jsonObject.addProperty("value", cat.getName());
+		return jsonObject;
+	}
+	
+	
+	/**
+	 * Retourne les catégories sous forme de json
+	 * @param categories
+	 * @return
+	 */
+	public static JsonArray categoriesToJsonArray(Set<Category> categories) {
+		JsonArray jsonArray = new JsonArray();
+		for(Category itCat : categories) {
+			jsonArray.add(categoryToJsonObject(itCat));
 		}
 		return jsonArray;
 	}
