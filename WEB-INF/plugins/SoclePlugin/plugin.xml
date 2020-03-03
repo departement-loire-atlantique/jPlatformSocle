@@ -13,6 +13,8 @@
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
+    <type name="Carousel"></type>
+    <type name="CarouselElement"></type>
     <type name="Chapitre"></type>
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
@@ -63,6 +65,11 @@
     </templates>
     <templates type="AccueilDelegation">
         <template name="default" file="doAccueilDelegationFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="CarouselElement">
+        <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
