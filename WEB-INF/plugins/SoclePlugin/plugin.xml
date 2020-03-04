@@ -10,7 +10,6 @@
     <type name="AbstractPortletFacette"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
-    <type name="Actualite"></type>
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
@@ -24,7 +23,6 @@
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
-    <type name="Dossier"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
     <type name="FaqDEP44"></type>
@@ -55,18 +53,11 @@
     <type name="SAAD"></type>
     <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
-    <type name="Tuile"></type>
-    <type name="WelcomeSection"></type>
     <type name="Video"></type>
     <type name="PageCarrefour"></type>
     
     
     <!-- Types de contenus -->    
-    <templates type="Actualite">
-        <template name="default" file="doActualiteFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates>
     <templates type="AccueilAnnuaireAgenda">
         <template name="default" file="doAccueilAnnuaireAgendaFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -77,13 +68,8 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
-    <templates type="Article">
-        <template name="default" file="doArticleFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates>  
-    <templates type="Dossier">
-        <template name="default" file="doDossierFullDisplay.jsp" usage="full">
+    <templates type="CarouselElement">
+        <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -114,16 +100,6 @@
     </templates>
     <templates type="FicheLieu">
         <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates>
-    <templates type="Tuile">
-        <template name="default" file="doTuileFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates>  
-    <templates type="CarouselElement">
-        <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -175,7 +151,52 @@
         <template name="light" file="doPortletDecoratorFullDisplayLightBackground.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit fond clair avec titre et description</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="PortletFacetteAdresse">
+        <template name="default" file="doPortletFacetteAdresseBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCanton">
+        <template name="default" file="doPortletFacetteCantonBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCategorie">
+        <template name="default" file="doPortletFacetteCategorieBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCategoriesLiees">
+        <template name="default" file="doPortletFacetteCategoriesLieesBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCommune">
+        <template name="default" file="doPortletFacetteCommuneBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteCommuneAdresseLiee">
+        <template name="default" file="doPortletFacetteCommuneAdresseLieeBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteDelegation">
+        <template name="default" file="doPortletFacetteDelegationBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteMotcle">
+        <template name="default" file="doPortletFacetteMotcleBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteTitre">
+        <template name="default" file="doPortletFacetteTitreBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Gabarit menu accordéon</label>
@@ -204,7 +225,7 @@
         </template>
     </templates>
     <templates type="PortletRechercheFacettes">
-        <template name="default" file="doPortletRechercheFacettesSimple.jsp" usage='box'>
+        <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
@@ -258,7 +279,6 @@
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
-    <file path="WEB-INF/tags/menuNiveauDeux.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleDelegation.tag" />
