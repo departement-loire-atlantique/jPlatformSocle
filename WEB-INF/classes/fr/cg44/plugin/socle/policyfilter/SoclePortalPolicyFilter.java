@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jalios.jcms.Category;
-import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
-import com.jalios.jcms.QueryResultSet;
-import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.plugin.Plugin;
 import com.jalios.jcms.policy.BasicPortalPolicyFilter;
 import com.jalios.jcms.portlet.PortalManager;
