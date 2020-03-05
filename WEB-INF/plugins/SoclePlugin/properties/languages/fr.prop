@@ -38,6 +38,8 @@ jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
+jcmsplugin.socle.selectionner: Sélectionner
+jcmsplugin.socle.obligatoire: obligatoire
 jcmsplugin.socle.fermer: Fermer
 jcmsplugin.socle.retour: Retour
 jcmsplugin.socle.valider: Valider
@@ -165,6 +167,30 @@ jcmsplugin.socle.faq.consulter-question-frequente: Consultez les questions les p
 jcmsplugin.socle.faq.plus-questions: Plus de questions
 jcmsplugin.socle.faq.poser-question: Posez une question :
 jcmsplugin.socle.faq.ex-email: Ex : votrenom@email.com
+
+jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
+jcmsplugin.socle.facette.filtrer-par: Filter par
+jcmsplugin.socle.facette.form-element: form-element
+jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
+jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
+jcmsplugin.socle.facette.adresse.default-label: Adresse
+jcmsplugin.socle.facette.canton.default-label: Canton
+jcmsplugin.socle.facette.commune.default-label: Commune
+jcmsplugin.socle.facette.delegation.default-label: Delegation
+jcmsplugin.socle.facette.rayon.label: Rayon
+jcmsplugin.socle.facette.commune-limitrophe.label: Nom de la commune limitrophe
+jcmsplugin.socle.facette.epci.label: Nom de l'epci
+jcmsplugin.socle.facette.titre.default-label: Titre
+jcmsplugin.socle.facette.all-commune.label: Toutes les communes
+jcmsplugin.socle.facette.select-all-commune.label: Sélectionner toutes les communes
+jcmsplugin.socle.facette.autour-moi.label: Autour de moi
+jcmsplugin.socle.facette.select-autour-moi.label: Sélectionner les communes autour de moi
+jcmsplugin.socle.facette.category.hidden-label: Ouvrir le menu de choix : Select multiple large
+jcmsplugin.socle.facette.choisir-adresse.label: Choisir une Adresse liée
+jcmsplugin.socle.facette.category-liees.default-label: Categories liées
+jcmsplugin.socle.facette.category-liees.hidden-label: Categories liées
+jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
+jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
 
 # ------------------------------------------------------------
 #  Fil ariane
