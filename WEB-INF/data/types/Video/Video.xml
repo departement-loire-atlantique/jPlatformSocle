@@ -4,12 +4,6 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="encadre">
-      <label xml:lang="fr">Titre témoignage</label>
-    </field>
-    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="encadre">
-      <label xml:lang="fr">Sous-titre témoignage</label>
-    </field>
     <field name="urlVideo" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="2000" ml="false" openWindow="false" tab="common">
       <label xml:lang="fr">URL Vidéo</label>
       <description xml:lang="fr">Collez ici le lien vers la vidéo Youtube&#xD;
@@ -37,6 +31,12 @@
     </field>
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="common" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Description</label>
+    </field>
+    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="encadre">
+      <label xml:lang="fr">Titre témoignage</label>
+    </field>
+    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="encadre">
+      <label xml:lang="fr">Sous-titre témoignage</label>
     </field>
     <field name="chapitre" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Chapitre</label>
