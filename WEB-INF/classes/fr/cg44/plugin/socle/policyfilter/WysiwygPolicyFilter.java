@@ -50,25 +50,25 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 		while (matcherTarget.find()) {
 			url = matcherTarget.group(0);
 			
-			Matcher matcherTitle = patternTitle.matcher(matcherTarget.group(0));
+			Matcher matcherTitle = patternTitle.matcher(url);
 			// récupération des title
 			while (matcherTitle.find()) {
 				title = matcherTitle.group(2);
-			}
 			
-			if (title.endsWith(suffixe)) {
-				continue;
-			}
-		
-			titleOK=title+suffixe;
-			url = url.replaceFirst(title, titleOK);
+				if (title.endsWith(suffixe)) {
+					continue;
+				}
 			
-			// Intégration dans le wysiwyg
-			String before = result.substring(0, matcherTarget.start());
-			String after = result.substring(matcherTarget.end(), result.length());
-
-			result = before + url + after;
-			matcherTarget = patternTarget.matcher(result);
+				titleOK=title+suffixe;
+				url = url.replaceFirst(title, titleOK);
+				
+				// Intégration dans le wysiwyg
+				String before = result.substring(0, matcherTarget.start());
+				String after = result.substring(matcherTarget.end(), result.length());
+	
+				result = before + url + after;
+				matcherTarget = patternTarget.matcher(result);
+			}
 		}
 		return result;		
 		
