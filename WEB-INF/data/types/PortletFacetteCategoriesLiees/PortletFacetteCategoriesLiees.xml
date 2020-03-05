@@ -6,7 +6,7 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="categoriePrincipales" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root">
+    <field name="categoriePrincipales" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.cat.root">
       <label xml:lang="fr">Catégorie principales</label>
     </field>
     <field name="categorieSecondaire" editor="link" required="true" compactDisplay="false" type="generated.PortletFacetteCategorie" parent="false">
