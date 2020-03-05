@@ -25,7 +25,7 @@
     <type name="Directory"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
-    <type name="FaqDEP44"></type>
+    <type name="FaqAccueil"></type>
     <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
     <type name="FicheAide"></type>  
@@ -73,6 +73,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="FaqAccueil">
+        <template name="default" file="doFaqAccueilFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates> 
     <templates type="FicheActionEducative">
         <template name="default" file="doFicheActionEducativeFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
