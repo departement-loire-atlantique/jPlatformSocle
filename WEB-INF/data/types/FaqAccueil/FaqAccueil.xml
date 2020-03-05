@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="FaqDEP44" superclass="generated.Faq" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Faq DEP44</label>
+<type name="FaqAccueil" superclass="generated.Faq" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
   <title ml="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
@@ -10,12 +9,12 @@
     <field name="typeDeFormulaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de formulaire</label>
       <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Formulaire simple</onLabel>
+      <onLabel xml:lang="fr">Simple</onLabel>
       <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Formulaire Délégation</offLabel>
+      <offLabel xml:lang="fr">Délégation</offLabel>
     </field>
-    <field name="destinataire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Destinataire</label>
+    <field name="destinataireParDefaut" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Destinataire par défaut</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
@@ -24,11 +23,8 @@
     <field name="emailSpecifique" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="formulaire" html="false" checkHtml="true">
       <label xml:lang="fr">Email spécifique</label>
     </field>
-    <field name="servicesDelegationsLies" editor="link" required="false" compactDisplay="false" type="generated.Delegation[]" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Services délégations liés</label>
-    </field>
-    <field name="ficheLieuxLiees" editor="link" required="false" compactDisplay="false" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Fiche lieux liées</label>
+    <field name="servicesLies" editor="link" required="false" compactDisplay="false" tab="formulaire" type="generated.FicheLieu[]">
+      <label xml:lang="fr">Services liés</label>
     </field>
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
@@ -45,5 +41,6 @@
       <label xml:lang="fr">Formulaire</label>
     </tab>
   </tabs>
+  <label xml:lang="fr">FAQ Accueil</label>
 </type>
 
