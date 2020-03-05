@@ -26,7 +26,8 @@
 		</jalios:foreach>
 
 		<div class="ds44-fieldContainer ds44-small-fg1">
-			<button class="ds44-btnStd ds44-btnStd--large ds44-theme">
+			<% String styleButton = showFiltres ? "" : "--large"; %>
+			<button class='<%= "ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
 				<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 				<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 			</button>
@@ -50,22 +51,25 @@
 				</jalios:foreach>
 			</div>
 
-			<div class="ds44-push ds44-small-fg1">
-				<ul class="ds44-list">
-					<li class="ds44-docListElem">
-						<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
-					</li>
-					<li class="ds44-docListElem">
-						<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="PDF">PDF</a>
-					</li>
-					<li class="ds44-docListElem">
-						<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="CSV">CSV</a>
-					</li>
-				</ul>
-			</div>
+			<% Boolean hasFonctionsAdditionnelles = false; // TODO %>
+			<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
+				<div class="ds44-push ds44-small-fg1">
+					<ul class="ds44-list">
+						<li class="ds44-docListElem">
+							<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
+						</li>
+						<li class="ds44-docListElem">
+							<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="PDF">PDF</a>
+						</li>
+						<li class="ds44-docListElem">
+							<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="CSV">CSV</a>
+						</li>
+					</ul>
+				</div>
+			</jalios:if>
 
 		</div>
 	</jalios:if>
