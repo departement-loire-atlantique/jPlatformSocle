@@ -8,6 +8,7 @@ display.use-front-session-portal: false
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
+jcmsplugin.socle.contact-faq.default-mail: 
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
