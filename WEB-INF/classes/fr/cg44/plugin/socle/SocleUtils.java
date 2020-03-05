@@ -24,6 +24,7 @@ import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
+import generated.Canton;
 import generated.City;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
