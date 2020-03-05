@@ -5,8 +5,14 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
+    <field name="titre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre</label>
+    </field>
     <field name="titreSEO" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre SEO</label>
+    </field>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre</label>
     </field>
     <field name="facettesPrincipales" editor="link" required="true" compactDisplay="false" type="generated.AbstractPortletFacette[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facettes principales</label>
