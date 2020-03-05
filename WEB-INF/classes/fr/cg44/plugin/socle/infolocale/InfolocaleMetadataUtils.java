@@ -14,8 +14,19 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.socle.infolocale.entities.Date;
 import generated.EvenementInfolocale;
 
+/**
+ * Classe gérant la récupération de métadonnées d'événements infolocale
+ * @author LChoquet
+ *
+ */
 public class InfolocaleMetadataUtils {
     
+    /**
+     * Récupère la ou les données Metadata demandées
+     * @param metadata
+     * @param jsonEvent
+     * @return
+     */
     public static String getMetadata(String metadata, JSONObject jsonEvent) {
         
         Channel channel = Channel.getChannel();
@@ -65,6 +76,11 @@ public class InfolocaleMetadataUtils {
         return "";
     }
     
+    /**
+     * Récupère la métadonnée Commune
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaCommune(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
         try {
@@ -74,6 +90,11 @@ public class InfolocaleMetadataUtils {
         }
     }
     
+    /**
+     * Récupère la métadonnée Genre
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaGenre(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
         try {
@@ -83,15 +104,21 @@ public class InfolocaleMetadataUtils {
         }
     }
     
+    /**
+     * Récupère la métadonnée Organismes
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaOrganismes(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        try {
-            return itEvent.getOrganismeNom();
-        } catch (Exception e) {
-            return "";
-        }
+        return Util.isEmpty(itEvent.getOrganismeNom()) ? "" : itEvent.getOrganismeNom();
     }
     
+    /**
+     * Récupère les métadonnées Horaires
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaHoraires(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
         try {
@@ -107,70 +134,135 @@ public class InfolocaleMetadataUtils {
         }
     }
     
+    /**
+     * Récupère la métadonnée Durée
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaDuree(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        try {
-            return itEvent.getDuree() + " jour(s)"; // TODO : vérifier la nature de la durée sur l'API
-        } catch (Exception e) {
-            return "";
-        }
+        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " jour(s)"; // TODO : vérifier la nature de la durée sur l'API
     }
     
+    /**
+     * Récupère la métadonnée Tarif
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaTarif(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
+        return Util.isEmpty(itEvent.getTarif()) ? "" : itEvent.getTarif();
+    }
+    
+    /**
+     * Récupère les métadonnées Public
+     * @param jsonEvent
+     * @return
+     */
+    private static String getMetaPublic(JSONObject jsonEvent) {
+        Channel channel = Channel.getChannel();
+        StringBuilder publicString = new StringBuilder();
+        String separator = ", ";
         try {
-            return itEvent.getTarif();
+            JSONArray categoriesAge = jsonEvent.getJSONArray(channel.getProperty("jcmsplugin.socle.infolocale.metadata.categoriesAge"));
+            for (int count = 0; count < categoriesAge.length(); count++) {
+                try {
+                    String toAdd = "";
+                    if (Util.notEmpty(publicString.toString())) toAdd = separator;
+                    toAdd += categoriesAge.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.libelle"));
+                    publicString.append(toAdd);
+                } catch (Exception e) {}
+            }
+            return publicString.toString();
         } catch (Exception e) {
             return "";
         }
     }
     
-    private static String getMetaPublic(JSONObject jsonEvent) {
-        // TODO Auto-generated method stub
-        // Voir comment récupérer le public visé
-        return null;
-    }
-    
+    /**
+     * Récupère les métadonnées Accessibilité sous la forme d'un bloc HTML
+     * @param jsonEvent
+     * @return
+     */
     private static String getMetaAccessibilite(JSONObject jsonEvent) {
         Channel channel = Channel.getChannel();
         StringBuilder accessibilite = new StringBuilder();
         String separator = ", ";
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif"))) {
+                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif") + "\"></i>");
+                accessibilite.append("<span class=\"visibility-hidden\">");
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.auditif"));
+                accessibilite.append("</span>");
             }
         }
         catch (Exception e) {}
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
+                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental") + "\"></i>");
+                accessibilite.append("<span class=\"visibility-hidden\">");
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.mental"));
+                accessibilite.append("</span>");
             }
         }
         catch (Exception e) {}
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
+                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel") + "\"></i>");
+                accessibilite.append("<span class=\"visibility-hidden\">");
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.visuel"));
+                accessibilite.append("</span>");
             }
         }
         catch (Exception e) {}
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
+                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur") + "\"></i>");
+                accessibilite.append("<span class=\"visibility-hidden\">");
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.moteur"));
+                accessibilite.append("</span>");
             }
         }
         catch (Exception e) {}
         return accessibilite.toString();
     }
     
+    /**
+     * Récupère les métadonnées des thèmes ayant un groupe parent précis
+     * @param jsonEvent
+     * @param id
+     * @return
+     */
     private static String getMetaGroupeTheme(JSONObject jsonEvent, String id) {
-        // TODO Auto-generated method stub
-        // Voir comment récupérer le libellé de la thématique parent
-        return null;
+        Channel channel = Channel.getChannel();
+        StringBuilder publicString = new StringBuilder();
+        String separator = ", ";
+        try {
+            JSONArray thematiques = jsonEvent.getJSONArray(channel.getProperty("jcmsplugin.socle.infolocale.metadata.thematiques"));
+            for (int count = 0; count < thematiques.length(); count++) {
+                try {
+                    if (! thematiques.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.parentId")).equals(id)) continue;
+                    String toAdd = "";
+                    if (Util.notEmpty(publicString.toString())) toAdd = separator;
+                    toAdd += thematiques.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.libelle"));
+                    publicString.append(toAdd);
+                } catch (Exception e) {}
+            }
+            return publicString.toString();
+        } catch (Exception e) {
+            return "";
+        }
     }
     
+    /**
+     * Récupère la métadonnée d'une thématique correspondant à l'ID indiquée
+     * @param jsonEvent
+     * @param id
+     * @return
+     */
     private static String getMetaTheme(JSONObject jsonEvent, String id) {
         Channel channel = Channel.getChannel();
         try {
@@ -187,4 +279,14 @@ public class InfolocaleMetadataUtils {
         return "";
     }
     
+    /**
+     * Récupère l'icône visuelle pour une métadonnée
+     * @param metadata
+     * @return
+     */
+    public static String getMetadataIcon(String metadata) {
+        return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.icon." + metadata.replace(":", ""));
+        
+    }
+
 }

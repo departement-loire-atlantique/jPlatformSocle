@@ -237,6 +237,21 @@ jcmsplugin.socle.infolocale.metadata.thematiques: thematiques
 jcmsplugin.socle.infolocale.metadata.thematiqueId: thematiqueId
 jcmsplugin.socle.infolocale.metadata.parentId: parentId
 jcmsplugin.socle.infolocale.metadata.libelle: libelle
+jcmsplugin.socle.infolocale.metadata.categoriesAge: categoriesAge
+
+jcmsplugin.socle.infolocale.metadata.icon.commune: icon-marker
+jcmsplugin.socle.infolocale.metadata.icon.genre: icon-tag
+jcmsplugin.socle.infolocale.metadata.icon.organisme: icon-user-group
+jcmsplugin.socle.infolocale.metadata.icon.horaires: icon-time
+jcmsplugin.socle.infolocale.metadata.icon.duree: icon-time
+jcmsplugin.socle.infolocale.metadata.icon.tarif: icon-cost
+jcmsplugin.socle.infolocale.metadata.icon.public: icon-user-group
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif: icon-handicap-auditif
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental: icon-handicap-mental
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel: icon-handicap-visuel
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur: icon-handicap-moteur
+jcmsplugin.socle.infolocale.metadata.icon.grtheme: icon-tag
+jcmsplugin.socle.infolocale.metadata.icon.theme: icon-tag
 
 # Fiche Action éducative
 
