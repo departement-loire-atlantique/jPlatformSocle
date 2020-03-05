@@ -14,7 +14,7 @@
 			<div class="col-6-small-1">
 				<p class="h4-like" aria-level="3" role="heading"><%= glp("jcmsplugin.socle.faq.consulter-question-frequente") %></p>
 				<ul class="ds44-collapser ds44-mb-std ">
-					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' max='<%= obj.getNombreDeQuestionsAffiches() %>'>
+					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' max='<%= obj.getNombreDeQuestionsAffichees() %>'>
 						<li class="ds44-collapser_element">
 							<button type="button" class="ds44-collapser_button">
 								<%= itQuestRep.getTitle(userLang) %>
@@ -30,7 +30,7 @@
 						</li>
 					</jalios:foreach>
 				</ul>
-				<jalios:if predicate='<%= obj.getLinkIndexedDataSet(FaqEntry.class).size() > obj.getNombreDeQuestionsAffiches() %>'>
+				<jalios:if predicate='<%= obj.getLinkIndexedDataSet(FaqEntry.class).size() > obj.getNombreDeQuestionsAffichees() %>'>
 					<button class="ds44-btnStd ds44-btnStd--large" type="button" title="Afficher plus de questions">
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.faq.plus-questions") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>

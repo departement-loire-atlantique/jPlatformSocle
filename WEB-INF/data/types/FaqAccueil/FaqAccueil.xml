@@ -6,8 +6,8 @@
   </title>
   <fields>
     <field type="super" />
-    <field name="nombreDeQuestionsAffiches" editor="int" required="false" compactDisplay="false" tab="formulaire" type="int" default="5" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" unitPos="after">
-      <label xml:lang="fr">Nombre de questions affichés</label>
+    <field name="nombreDeQuestionsAffichees" editor="int" required="false" compactDisplay="false" tab="formulaire" type="int" default="5" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" unitPos="after">
+      <label xml:lang="fr">Nombre de questions affichées</label>
     </field>
     <field name="typeDeFormulaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="formulaire" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de formulaire</label>
