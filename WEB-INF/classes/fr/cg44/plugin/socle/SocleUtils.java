@@ -430,9 +430,12 @@ public final class SocleUtils {
 		
 		for(AbstractPortletFacette itFacette : facetteArr) {
 			
+			
+			
 			if(itFacette instanceof PortletFacetteCategoriesLiees 
 					|| itFacette instanceof PortletFacetteCommuneAdresseLiee 
 					|| (itFacette instanceof PortletFacetteCommune
+							&& Util.notEmpty(((PortletFacetteCommune)itFacette).getRechercheEtendue())
 							&& ( !((PortletFacetteCommune)itFacette).getRechercheEtendue().equalsIgnoreCase("aucune")))
 					|| (itFacette instanceof PortletFacetteAdresse
 							&& Util.notEmpty(((PortletFacetteAdresse)itFacette).getRayon(member)))) {
