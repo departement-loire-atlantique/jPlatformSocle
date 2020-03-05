@@ -8,6 +8,7 @@ display.use-front-session-portal: false
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
+jcmsplugin.socle.contact-faq.default-mail: 
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -16,6 +17,7 @@ jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
 jcmsplugin.socle.portlet.filariane.id: c_1088465
 
 lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
+jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
 
 # ------------------------------------------------------------
 #  Header

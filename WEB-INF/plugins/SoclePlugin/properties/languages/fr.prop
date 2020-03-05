@@ -22,6 +22,7 @@ jcmsplugin.socle.js-urls: URLs des fichiers js à charger dans le portail
 jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
+jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
 
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
@@ -159,6 +160,14 @@ jcmsplugin.socle.ficheaide.important: Important !
 jcmsplugin.socle.ficheaide.faire-trajet-destineo: Faire mon trajet avec Destineo
 jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l’accessibilité du lieu
 
+jcmsplugin.socle.faq.votre-question: Votre question
+jcmsplugin.socle.faq.votre-email: Votre email
+jcmsplugin.socle.faq.vous-avez-question: Vous avez une question ?
+jcmsplugin.socle.faq.consulter-question-frequente: Consultez les questions les plus fréquentes :
+jcmsplugin.socle.faq.plus-questions: Plus de questions
+jcmsplugin.socle.faq.poser-question: Posez une question :
+jcmsplugin.socle.faq.ex-email: Ex : votrenom@email.com
+
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
 jcmsplugin.socle.facette.filtrer-par: Filter par
 jcmsplugin.socle.facette.form-element: form-element
@@ -167,7 +176,7 @@ jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le
 jcmsplugin.socle.facette.adresse.default-label: Adresse
 jcmsplugin.socle.facette.canton.default-label: Canton
 jcmsplugin.socle.facette.commune.default-label: Commune
-jcmsplugin.socle.facette.delegation.default-label: Delegation
+jcmsplugin.socle.facette.delegation.default-label: Délégation
 jcmsplugin.socle.facette.rayon.label: Rayon
 jcmsplugin.socle.facette.commune-limitrophe.label: Nom de la commune limitrophe
 jcmsplugin.socle.facette.epci.label: Nom de l'epci
@@ -177,9 +186,8 @@ jcmsplugin.socle.facette.select-all-commune.label: Sélectionner toutes les comm
 jcmsplugin.socle.facette.autour-moi.label: Autour de moi
 jcmsplugin.socle.facette.select-autour-moi.label: Sélectionner les communes autour de moi
 jcmsplugin.socle.facette.category.hidden-label: Ouvrir le menu de choix : Select multiple large
-jcmsplugin.socle.facette.choisir-adresse.label: Choisir une Adresse liée
-jcmsplugin.socle.facette.category-liees.default-label: Categories liées
-jcmsplugin.socle.facette.category-liees.hidden-label: Categories liées
+jcmsplugin.socle.facette.choisir-adresse.label: Choisir une adresse liée
+jcmsplugin.socle.facette.category-liees.label: Catégories liées
 jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
 jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
 

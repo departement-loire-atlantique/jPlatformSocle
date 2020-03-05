@@ -9,7 +9,11 @@
 	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp";
 	String name = "commune";
 	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label");
+<<<<<<< HEAD
 	String option = Util.isEmpty(obj.getRechercheEtendue()) || obj.getRechercheEtendue().equalsIgnoreCase("aucune") ? "" : obj.getRechercheEtendue();
+=======
+	String option = obj.getRechercheEtendue().equalsIgnoreCase("aucune") ? "" : obj.getRechercheEtendue();
+>>>>>>> refs/remotes/origin/master
 	TreeSet<Category> setRayons = new TreeSet<Category>();
 %>
 
