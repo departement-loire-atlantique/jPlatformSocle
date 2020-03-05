@@ -30,7 +30,7 @@
 
 
 				<label for='<%= idFormElement %>' class="ds44-formLabel">
-					<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
+					<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 					</span> 
 					<input class="ds44-input-value" type="hidden" value="">
@@ -189,7 +189,7 @@
 				<div class="ds44-form__container">
 
 					<label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
-						<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
+						<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 							<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</span> 
 						<input class="ds44-input-value" type="hidden" value="">
@@ -235,7 +235,7 @@
 
 	<div class="ds44-form__container">
 		<label for='<%= idFormElement %>' class="ds44-formLabel">
-			<span class='<%= "ds44-labelTypePlaceholder" + styleChamps2 %>'>
+			<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 				<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 			</span>
 			<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' role="combobox" 
