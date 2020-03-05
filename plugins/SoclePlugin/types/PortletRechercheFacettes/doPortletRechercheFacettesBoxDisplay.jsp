@@ -8,7 +8,10 @@
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
 	
-	Boolean showFiltres = true; // TODO : test si dans portail recherche facette pleine page
+	Object publication = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+	Boolean isInRechercheFacette = Util.isEmpty(publication);
+	Boolean hasFonctionsAdditionnelles = false; // TODO
+	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
 %>
 
@@ -51,7 +54,6 @@
 				</jalios:foreach>
 			</div>
 
-			<% Boolean hasFonctionsAdditionnelles = false; // TODO %>
 			<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
 				<div class="ds44-push ds44-small-fg1">
 					<ul class="ds44-list">
