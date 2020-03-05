@@ -18,7 +18,7 @@ boolean displayDetails = Util.notEmpty(obj.getIntro())
 
 boolean displayFaq = Util.notEmpty(obj.getFaq());
 
-request.addParameter("contactfaq", obj.getContactFAQ(userlang));
+request.setAttribute("contactfaq", obj.getContactFAQ(userLang));
 
 boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getIntroContact())

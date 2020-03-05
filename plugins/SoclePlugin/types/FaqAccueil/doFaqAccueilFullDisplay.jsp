@@ -48,8 +48,8 @@
 					
 					//TODO ecraser mail s'il y a un mail de contact par defaut pour le service
 					
-					if(Util.notEmpty(request.getParameter("contactfaq"))) {
-						mail = request.getParameter("contactfaq");
+					if(Util.notEmpty(request.getAttribute("contactfaq"))) {
+						mail = request.getAttribute("contactfaq").toString();
 					}
 				%>
 				<form>
