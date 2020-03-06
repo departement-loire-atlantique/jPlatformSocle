@@ -8,9 +8,21 @@
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
 	
-	Boolean showFiltres = true; // TODO : test si dans portail recherche facette pleine page
+	Object publication = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+	Boolean isInRechercheFacette = Util.isEmpty(publication);
+	Boolean hasFonctionsAdditionnelles = false; // TODO
+	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
 %>
+
+<div class="ds44-inner-container ds44--mobile--m-padding-b">
+	<header class="txtcenter">
+		<h2 class="h2-like center"><%= Util.notEmpty(obj.getTitre(userLang)) ? obj.getTitre(userLang) : obj.getTitle(userLang) %></h2>
+		<jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre(userLang)) %>'>
+			<p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getSoustitre(userLang) %></p>
+		</jalios:if>
+	</header>
+</div>
 
 <form data-is-ajax="true">
 
@@ -26,7 +38,8 @@
 		</jalios:foreach>
 
 		<div class="ds44-fieldContainer ds44-small-fg1">
-			<button class="ds44-btnStd ds44-btnStd--large ds44-theme">
+			<% String styleButton = showFiltres ? "" : "--large"; %>
+			<button class='<%= "ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
 				<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 				<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 			</button>
@@ -50,22 +63,24 @@
 				</jalios:foreach>
 			</div>
 
-			<div class="ds44-push ds44-small-fg1">
-				<ul class="ds44-list">
-					<li class="ds44-docListElem">
-						<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
-					</li>
-					<li class="ds44-docListElem">
-						<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="PDF">PDF</a>
-					</li>
-					<li class="ds44-docListElem">
-						<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-						<a href="#" aria-label="CSV">CSV</a>
-					</li>
-				</ul>
-			</div>
+			<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
+				<div class="ds44-push ds44-small-fg1">
+					<ul class="ds44-list">
+						<li class="ds44-docListElem">
+							<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
+						</li>
+						<li class="ds44-docListElem">
+							<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="PDF">PDF</a>
+						</li>
+						<li class="ds44-docListElem">
+							<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+							<a href="#" aria-label="CSV">CSV</a>
+						</li>
+					</ul>
+				</div>
+			</jalios:if>
 
 		</div>
 	</jalios:if>

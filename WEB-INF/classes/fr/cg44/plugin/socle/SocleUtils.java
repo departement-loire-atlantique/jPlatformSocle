@@ -23,9 +23,9 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
+import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
-import generated.AbstractPortletFacette;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
 import generated.PortletFacetteCommune;
@@ -405,7 +405,6 @@ public final class SocleUtils {
 		return jsonArray;
 	}
 	
-
 	/**
 	 * <p>Calcule le nombre maximum de facettes dont le poids cumulé ne dépasse pas le poids maximum en entrée.</p>
 	 * <p></p>
@@ -437,6 +436,7 @@ public final class SocleUtils {
 			if(itFacette instanceof PortletFacetteCategoriesLiees 
 					|| itFacette instanceof PortletFacetteCommuneAdresseLiee 
 					|| (itFacette instanceof PortletFacetteCommune
+							&& Util.notEmpty(((PortletFacetteCommune)itFacette).getRechercheEtendue())
 							&& ( !((PortletFacetteCommune)itFacette).getRechercheEtendue().equalsIgnoreCase("aucune")))
 					|| (itFacette instanceof PortletFacetteAdresse
 							&& Util.notEmpty(((PortletFacetteAdresse)itFacette).getRayon(member)))) {
@@ -454,9 +454,9 @@ public final class SocleUtils {
 		}
 		
 		return maxFacettesPrincipales;
-  }
-	
-  
+	}
+
+
 	/**
 	 * Retourne une catégorie sous forme de json
 	 * @param cat
@@ -482,5 +482,5 @@ public final class SocleUtils {
 		}
 		return jsonArray;
 	}
-
+	
 }

@@ -25,11 +25,11 @@
 			<div class="ds44-posRel ds44-fg1">
 				<div id='<%= idFormElement + "-2" %>' class="ds44-inpLarge ds44-inpLarge--last ds44-inputDisabled" role="listbox">
 					<p role="heading" aria-level="2" class="ds44-formLabel ds44-moveLabel" id="titreChamp1">
-						<span class="ds44-labelLarge"><%= glp("jcmsplugin.socle.facette.category-liees.default-label") %></span>
+						<span class="ds44-labelLarge"><%= glp("jcmsplugin.socle.facette.category-liees.label") %></span>
 					</p>
 					<button class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" type="button">
 						<i class="icon icon-down" aria-hidden="true"></i>
-						<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.category-liees.hidden-label") %></span>
+						<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.category-liees.label") %></span>
 					</button>
 				</div>
 			</div>
