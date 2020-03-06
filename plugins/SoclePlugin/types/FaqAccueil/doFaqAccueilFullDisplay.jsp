@@ -7,7 +7,10 @@
 
 <section class="ds44-container-fluid ds44--xxl-padding-tb">
 	<header class="txtcenter ds44--xxl-padding-b">
-		<h2 class="h2-like"><%= Util.notEmpty(obj.getDescription(userLang)) ? obj.getDescription(userLang) : glp("jcmsplugin.socle.faq.vous-avez-question") %></h2>
+		<h2 class="h2-like"><%= glp("jcmsplugin.socle.faq.vous-avez-question") %></h2>
+		<jalios:if predicate='<%= Util.notEmpty(obj.getDescription(userLang)) %>'>
+			<%= obj.getDescription(userLang) %>
+		</jalios:if>
 	</header>
 	<div class="ds44-inner-container ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44--xl-padding-lr">
 		<div class="grid-12-small-1">
