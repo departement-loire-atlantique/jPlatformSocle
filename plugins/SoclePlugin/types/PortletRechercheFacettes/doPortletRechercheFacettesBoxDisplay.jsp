@@ -49,19 +49,22 @@
 
 	<jalios:if predicate="<%= showFiltres %>">
 		<div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col">
-			<div class="ds44-flex-container ds44-medium-flex-col">
-				<p class="ds44-heading ds44-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
 
-				<% int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesSecondaires(), loggedMember); %>
+			<jalios:if predicate='<%= Util.notEmpty(obj.getFacettesSecondaires()) %>'>
+				<div class="ds44-flex-container ds44-medium-flex-col">
+					<p class="ds44-heading ds44-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
 
-				<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
+					<% int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesSecondaires(), loggedMember); %>
 
-					<div class="ds44-fieldContainer ds44-fg1 ds44-fieldContainer--select">
-						<jalios:include pub="<%= itFacette %>" usage="box"/>
-					</div>
+					<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
 
-				</jalios:foreach>
-			</div>
+						<div class="ds44-fieldContainer ds44-fg1 ds44-fieldContainer--select">
+							<jalios:include pub="<%= itFacette %>" usage="box"/>
+						</div>
+
+					</jalios:foreach>
+				</div>
+			</jalios:if>
 
 			<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
 				<div class="ds44-push ds44-small-fg1">
