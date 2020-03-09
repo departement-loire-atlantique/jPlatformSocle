@@ -18,9 +18,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SectorResult {
-
+	
+	@JsonProperty("entite_id")
+	private String entiteId;	
 	@JsonProperty("sectorisation")
 	private String sectorisation;
+	@JsonProperty("origine_matricule_id")
+	private String origineMatriculeId;
 	@JsonProperty("matricule")
 	private String matricule;
 	@JsonProperty("libelle")
@@ -28,6 +32,17 @@ public class SectorResult {
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+		
+	@JsonProperty("entite_id")
+	public String getEntiteId() {
+		return entiteId;
+	}
+
+	@JsonProperty("entite_id")
+	public void setEntiteId(String entiteId) {
+		this.entiteId = entiteId;
+	}
+	
 	@JsonProperty("sectorisation")
 	public String getSectorisation() {
 		return sectorisation;
@@ -36,6 +51,16 @@ public class SectorResult {
 	@JsonProperty("sectorisation")
 	public void setSectorisation(String sectorisation) {
 		this.sectorisation = sectorisation;
+	}
+		
+	@JsonProperty("origine_matricule_id")
+	public String getOrigineMatriculeId() {
+		return origineMatriculeId;
+	}
+
+	@JsonProperty("origine_matricule_id")
+	public void setOrigineMatriculeId(String origineMatriculeId) {
+		this.origineMatriculeId = origineMatriculeId;
 	}
 
 	@JsonProperty("matricule")
@@ -68,4 +93,10 @@ public class SectorResult {
 		this.additionalProperties.put(name, value);
 	}
 
+	/**
+	 * Renvoie un idendifiant unique de l'entité
+	 */
+	public String getUniqueId() {
+		return "1".equals(getOrigineMatriculeId()) ? getMatricule() : getEntiteId();
+	}
 }
