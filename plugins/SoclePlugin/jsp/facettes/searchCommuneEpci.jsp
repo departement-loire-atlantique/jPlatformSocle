@@ -4,7 +4,10 @@
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-String textSearch = getAlphaNumParameter("search", "");
+
+response.setContentType("application/json");
+
+String textSearch = getAlphaNumParameter("q", "");
 String[] tabSearchedFields = new String[]{"facet_city"};
 
 QueryHandler qh = new QueryHandler();
