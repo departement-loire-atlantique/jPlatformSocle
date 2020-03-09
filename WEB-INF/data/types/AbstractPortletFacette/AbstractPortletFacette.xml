@@ -5,10 +5,10 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="label" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="label" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Label</label>
     </field>
-    <field name="facetteObligatoire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+    <field name="facetteObligatoire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facette obligatoire</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>

@@ -21,7 +21,7 @@
     String location = "";
     
     try {
-     urlImage = (String) itPub.getFieldValue("imagePrincipale");
+     urlImage = (String) itPub.getFieldValue("imageBandeau");
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
@@ -37,12 +37,14 @@
      urlImage = "s.gif";
     }
     
-    // TODO : location
-    
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     try {
         subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+    } catch(Exception e) {}
+    
+    try {
+        location = (String) itPub.getFieldValue("lieu");
     } catch(Exception e) {}
 
 
@@ -58,6 +60,12 @@
     <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
     <% if (Util.notEmpty(subTitle)) { %>
     <p><%= subTitle %></p>
+    <% } %>
+    <% if (Util.notEmpty(location)) { %>
+    <p class="ds44-cardLocalisation">
+        <i class="icon icon-marker" aria-hidden="true"></i>
+        <span class="ds44-iconInnerText"><%= location %></span>
+    </p>
     <% } %>
     </div>
 </div>

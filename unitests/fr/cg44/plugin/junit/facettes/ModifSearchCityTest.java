@@ -107,27 +107,6 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 	static ContenuDeTest pub5_4 = createPub("ContenuDeTest 5.4", new Delegation[] {delegation5_1, delegation5_4});
 
 
-	/**
-	 * TU 6 recherchePubRefEpciCommune
-	 * Test 6 : Publications reliées à plusieurs EPCI
-	 */
-	// Création des EPCI
-	static Category epci6_1 = createCategoryEpci("epci6_1");
-	static Category epci6_2 = createCategoryEpci("epci6_2");
-	static Category epci6_3 = createCategoryEpci("epci6_3");
-	static Category epci6_4 = createCategoryEpci("epci6_4");
-	// Création commune
-	static City city6_1 = createCity("Commune 6.1", 610, epci6_1, epci6_2);
-	// Fiche lieux sur l'EPCI
-	static ContenuDeTest pub6_1 = createPub("ContenuDeTest 6.1", epci6_1);
-	static ContenuDeTest pub6_2 = createPub("ContenuDeTest 6.2", epci6_2);
-	static ContenuDeTest pub6_3 = createPub("ContenuDeTest 6.3", epci6_1, epci6_2);
-	static ContenuDeTest pub6_4 = createPub("ContenuDeTest 6.4", epci6_1, epci6_3);
-	static ContenuDeTest pub6_5 = createPub("ContenuDeTest 6.5", epci6_3, epci6_4);
-	static ContenuDeTest pub6_6 = createPub("ContenuDeTest 6.6", epci6_4);
-	static ContenuDeTest pub6_7 = createPub("ContenuDeTest 6.7", epci6_1, epci6_4);
-
-
 	@BeforeClass
 	/**
 	 * Création des données de test pour chaque test unitaire
@@ -153,9 +132,6 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 
 		// Modification données test 5
 		modifDataRecherchePubDirectDelegations();
-
-		// Modification données test 6
-		modifDataRecherchePubDirectEpci();
 
 		// temporisation pour l'indexation de la modification
 		try { Thread.sleep(1000); } catch(Exception ex) { }			
@@ -222,19 +198,6 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		City clone5_1 = (City) city5_1.getUpdateInstance();
 		clone5_1.setDelegation(delegation5_2);
 		clone5_1.performUpdate(admin);
-	}
-
-
-	/**
-	 * Modification données test 6
-	 * Données de test pour recherchePubDirectEpci
-	 */
-	private static void modifDataRecherchePubDirectEpci() {
-		// Change les epci
-		// epci6_1 et epci6_2 -> epci6_2 et epci 6_3
-		City clone6_1 = (City) city6_1.getUpdateInstance();
-		clone6_1.setCategories(new Category[] {epci6_2, epci6_3});
-		clone6_1.performUpdate(admin);
 	}
 
 
@@ -312,22 +275,6 @@ public class ModifSearchCityTest extends JcmsTestCase4  {
 		resultatTestSet.add(pub5_2);
 		resultatTestSet.add(pub5_3);
 		assertEquals("Recherche sur commune 5.1 invalide", resultatTestSet, getResultSearchCity(city5_1));    
-	}
-
-
-	@Test
-	/**
-	 * Test 6 recherche
-	 * Après modification de l'epci de la commune recherchée
-	 * Test sur les publications qui référencent directement des epci (champ multiple)
-	 */
-	public void recherchePubDirectEpci() {	
-		Set<Publication> resultatTestSet = new HashSet<Publication>();
-		resultatTestSet.add(pub6_2);
-		resultatTestSet.add(pub6_3);
-		resultatTestSet.add(pub6_4);
-		resultatTestSet.add(pub6_5);
-		assertEquals("Recherche sur commune 6.1 invalide", resultatTestSet, getResultSearchCity(city6_1));    
 	}
 
 

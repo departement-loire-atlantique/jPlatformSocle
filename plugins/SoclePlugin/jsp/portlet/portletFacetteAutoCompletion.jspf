@@ -1,0 +1,262 @@
+<% 
+	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") ? "Std" : "Large"; 
+	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
+%>
+
+<jalios:if predicate='<%= Util.notEmpty(option) %>'>
+
+	<jalios:if predicate='<%= option.equalsIgnoreCase("limitrophe") || option.equalsIgnoreCase("epci") || option.equalsIgnoreCase("rayon") || option.equalsIgnoreCase("adresse") %>'>
+
+		<%
+			String title = glp("jcmsplugin.socle.selectionner") + " " + label + " - ";
+			if(option.equalsIgnoreCase("rayon")) {
+				title += glp("jcmsplugin.socle.facette.rayon.label");
+			} else {
+				title += glp("jcmsplugin.socle.facette.maj-sous-theme.label")+" ";
+				if(option.equalsIgnoreCase("limitrophe")) {
+					title += glp("jcmsplugin.socle.facette.commune-limitrophe.label")+" ";
+				} else if(option.equalsIgnoreCase("epci")) {
+					title += glp("jcmsplugin.socle.facette.epci.label")+" ";
+				} else if(option.equalsIgnoreCase("adresse")) {
+					title += glp("jcmsplugin.socle.facette.adresse.default-label")+" ";
+				}
+				title += glp("jcmsplugin.socle.facette.tri-alphabetique.label");
+			}
+			title += " - "+glp("jcmsplugin.socle.obligatoire");
+		%>
+
+		<div class="ds44-fieldContainer ds44-champsLies">
+			<div class="ds44-form__container">
+
+
+				<label for='<%= idFormElement %>' class="ds44-formLabel">
+					<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+					</span> 
+					<input class="ds44-input-value" type="hidden" value="">
+					<input class="ds44-input-metadata" type="hidden" aria-hidden="true" value="">
+					<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' role="combobox"
+							aria-autocomplete="list" 
+							autocomplete="off"
+							title=<%= title %>
+							name='<%= name %>'
+							data-url='<%= dataUrl %>'
+							data-mode='<%= dataMode %>' 
+							<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> 
+							aria-owns='<%= "owned_listbox_" + idFormElement %>' 
+							aria-expanded="false" 
+							aria-activedescendant='<%= "selected_option_" + idFormElement %>' />
+					<button class="ds44-reset" type="button" style="display: none;">
+						<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+						<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
+					</button>
+
+					<div class="ds44-autocomp-container hidden" aria-hidden="true">
+						<div class="ds44-autocomp-buttons ds44-flex-container" aria-hidden="true">
+							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" 
+									data-value="allCity" 
+									data-text='<%= glp("jcmsplugin.socle.facette.all-commune.label") %>'
+									aria-label='<%= glp("jcmsplugin.socle.facette.select-all-commune.label") %>' 
+									aria-hidden="true" 
+									tabindex="-1">
+								<%= glp("jcmsplugin.socle.facette.all-commune.label") %>
+							</button>
+							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light selected_option" type="button" 
+									data-value="aroundMe"
+									data-text='<%= glp("jcmsplugin.socle.facette.autour-moi.label") %>' 
+									aria-label='<%= glp("jcmsplugin.socle.facette.select-autour-moi.label") %>' 
+									id='<%= "selected_option_" + idFormElement %>'
+									aria-selected="true" 
+									aria-pressed="true" 
+									aria-hidden="true" 
+									tabindex="-1">
+								<span class="ds44-btnInnerText" aria-hidden="true"><%= glp("jcmsplugin.socle.facette.autour-moi.label") %></span>
+								<i class="icon icon-position icon--sizeM" aria-hidden="true"></i>
+							</button>
+						</div>
+						<div class="ds44-autocomp-list" aria-hidden="true">
+							<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
+						</div>
+					</div> 
+				</label>
+
+			</div>
+
+			<jalios:if predicate='<%= option.equalsIgnoreCase("limitrophe") || option.equalsIgnoreCase("epci") %>'>
+
+				<% 
+					String dataUrlOption = "";
+					String labelOption = "";
+					if(option.equalsIgnoreCase("limitrophe")) {
+						dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneLimit.jsp";
+						labelOption = glp("jcmsplugin.socle.facette.commune-limitrophe.label");
+					} else if(option.equalsIgnoreCase("epci")) {
+						dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneEpci.jsp";
+						labelOption = glp("jcmsplugin.socle.facette.epci.label");
+					}
+				%>
+
+				<div class="ds44-form__container">
+
+					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
+						<p class="ds44-selectLabel" aria-hidden="true">
+							<%= labelOption %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						</p>
+						<div id='<%= idFormElement %>' class="ds44-selectDisplay" 
+								name='<%= name %>' 
+								data-url='<%= dataUrlOption %>' 
+								data-required="true" 
+								data-disabled="true">
+						</div>
+						<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+								aria-expanded="false" 
+								title='<%= labelOption + " - " + glp("jcmsplugin.socle.obligatoire") %>'
+								aria-required="true">
+							<i class="icon icon-down icon--sizeL" aria-hidden="true"></i>
+							<span id='<%= "button-message-"+idFormElement %>' class="visually-hidden"><%= labelOption %></span>
+						</button>
+					</div>
+
+					<div class="ds44-select-container hidden">
+						<div class="ds44-listSelect">
+							<ul class="ds44-list" id='<%= "listbox-"+idFormElement %>'></ul>
+						</div>
+						<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" aria-describedby='<%= "button-message-"+idFormElement %>'>
+							<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
+							<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+
+			</jalios:if>
+
+			<jalios:if predicate='<%= option.equalsIgnoreCase("rayon") %>'>
+
+				<div class="ds44-form__container">
+
+					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
+						<p class="ds44-selectLabel" aria-hidden="true">
+							<%= glp("jcmsplugin.socle.facette.rayon.label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						</p>
+						<input class="ds44-input-value" type="hidden" value="">
+						<div id='<%= idFormElement %>' class="ds44-selectDisplay" data-values="[&quot;aroundMe&quot;]"></div>
+						<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+								aria-expanded="false" 
+								title='<%= glp("jcmsplugin.socle.facette.rayon.label") + " - " + glp("jcmsplugin.socle.obligatoire") %>'
+								aria-required="true" 
+								tabindex="-1" 
+								readonly="true">
+							<i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+							<span id='<%= "button-message-"+idFormElement %>' class="visually-hidden">
+								<%= glp("jcmsplugin.socle.facette.rayon.label") %>
+							</span>
+						</button>
+					</div>
+	
+					<div class="ds44-select-container hidden" data-bkp-aria-hidden="" aria-hidden="true">
+						<div class="ds44-listSelect" data-bkp-aria-hidden="" aria-hidden="true">
+							<ul class="ds44-list" role="listbox" 
+									id='<%= "listbox-"+idFormElement %>' 
+									aria-labelledby='<%= "button-message-"+idFormElement %>' 
+									aria-required="true"
+									data-bkp-aria-hidden="" 
+									aria-hidden="true">
+								<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
+									<li class="ds44-select-list_elem" role="option" 
+											data-value='<%= itCat.getName() %>' 
+											tabindex="0" 
+											data-bkp-aria-hidden="" 
+											aria-hidden="true">
+										<%= itCat.getName() %>
+									</li>
+								</jalios:foreach>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+			</jalios:if>
+
+			<jalios:if predicate='<%= option.equalsIgnoreCase("adresse") %>'>
+
+				<%
+					String titleOption = glp("jcmsplugin.socle.selectionner") + " " + label + " - " + glp("jcmsplugin.socle.obligatoire");
+					// TODO : changer/supprimer dataUrlOption qd autocompletion js pr adresse termine
+					String dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneLimit.jsp";
+				%>
+
+				<div class="ds44-form__container">
+
+					<label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
+						<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+							<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						</span> 
+						<input class="ds44-input-value" type="hidden" value="">
+						<input class="ds44-input-metadata" type="hidden" value="">
+						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' 
+								role="combobox" 
+								aria-autocomplete="list" 
+								autocomplete="off"
+								title='<%= titleOption %>'
+								data-url='<%= dataUrlOption %>' 
+								data-mode="select-only" 
+								required="" 
+								aria-required="true" 
+								readonly="true" 
+								aria-readonly="true"
+								aria-owns='<%= "owned_listbox_"+idFormElement %>' 
+								aria-expanded="false">
+						<button class="ds44-reset" type="button" style="display: none;">
+							<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+							<span class="visually-hidden">
+								<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.facette.adresse.default-label")) %>
+							</span>
+						</button>
+
+						<div class="ds44-autocomp-container hidden" aria-hidden="true">
+							<div class="ds44-autocomp-list" aria-hidden="true">
+								<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
+							</div>
+						</div>
+					</label>
+				
+				</div>
+
+			</jalios:if>
+
+		</div>
+
+	</jalios:if>
+	
+</jalios:if>
+
+<jalios:if predicate='<%= Util.isEmpty(option) %>'>
+
+	<div class="ds44-form__container">
+		<label for='<%= idFormElement %>' class="ds44-formLabel">
+			<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+				<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+			</span>
+			<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' role="combobox" 
+					name='<%= name %>'
+					aria-autocomplete="list" 
+					autocomplete="off" 
+					data-url='<%= dataUrl %>' 
+					data-mode='<%= dataMode %>' 
+					<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> />
+
+			<button class="ds44-reset" type="button">
+				<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+				<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
+			</button>
+
+			<div class="ds44-autocomp-container hidden">
+				<div class="ds44-autocomp-list">
+					<ul class="ds44-list" role="listbox"></ul>
+				</div>
+			</div>
+		</label>
+	</div>
+
+</jalios:if>

@@ -8,6 +8,7 @@ display.use-front-session-portal: false
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
+jcmsplugin.socle.contact-faq.default-mail: 
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -16,6 +17,8 @@ jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
 jcmsplugin.socle.portlet.filariane.id: c_1088465
 
 lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
+jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
+$jcmsplugin.socle.cat.root: j_3
 
 # ------------------------------------------------------------
 #  Header
@@ -36,11 +39,11 @@ jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 # ------------------------------------------------------------
 #  Wysiwyg
 # ------------------------------------------------------------
+channel.forbidden-html: (javascript:)|(<\\s*(link))|(</\\s*body)
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
-wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
@@ -93,6 +96,8 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   tt,\
   u,\
   ul[class|style|id|type]
+
+wysiwyg.sanitize-html.whitelist.iframe.enabled: true
 
 jcmsplugin.socle.wysiwyg.icons:icon-arrow-down icon-arrow-right icon-arrow-up icon-computer icon-csv icon-date \
 icon-directions icon-discussion icon-facebook icon-fax icon-file icon-help icon-instagram icon-link icon-magweb \
@@ -315,3 +320,7 @@ $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102
 $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
+
+# Video
+
+$jcmsplugin.socle.video.types.root: c_1270060

@@ -11,7 +11,7 @@
     </field>
     <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
       <label xml:lang="fr">Image carrée</label>
-    </field>    
+    </field>
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image mobile</label>
     </field>
@@ -92,7 +92,7 @@
     <field name="besoinDaide" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Besoin d'aide ?</label>
     </field>
-    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.Faq" parent="false">
+    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FaqAccueil" parent="false">
       <label xml:lang="fr">FAQ</label>
     </field>
     <field name="contactFAQ" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="true">
@@ -145,7 +145,7 @@
     </field>
     <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Toutes les communes du Département</label>
-      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département. Décocher cette case ne supprimera pas les liaisons aux communes, il faudra les effacer manuellement.</description>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département.</description>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>

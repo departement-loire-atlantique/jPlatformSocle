@@ -36,11 +36,11 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getSoustheme(loggedMember)) %>">
                                             <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) %>"><br/></jalios:if>
-                                            <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember),  "<br/>") %>
+                                            <%= SocleUtils.formatCategories(obj.getSoustheme(loggedMember)) %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
                                             <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) %>"><br/></jalios:if>
-                                            <%= SocleUtils.formatCategories(obj.getParcoursEducationNationale(loggedMember),  "<br/>") %>
+                                            <%= SocleUtils.formatCategories(obj.getParcoursEducationNationale(loggedMember)) %>
                                         </jalios:if>
                                     </div>
                                     </jalios:if>
@@ -86,7 +86,10 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                             <br/><%= obj.getDirection() %>
                                         </jalios:if>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getService()) %>">
-                                            <br/><%= obj.getService() %><br/>
+                                            <br/><%= obj.getService() %>
+                                        </jalios:if>
+                                        <jalios:if predicate="<%= Util.notEmpty(obj.getDirection()) || Util.notEmpty(obj.getService()) %>">
+                                            <br/>
                                         </jalios:if>
                                         <%= SocleUtils.formatAddress(null, null, null, obj.getNdeVoie(), obj.getLibelleDeVoie(), null, obj.getCs(), obj.getCodePostal(), obj.getCommune().getTitle(), obj.getCedex()) %>
                                     </div>

@@ -6,7 +6,7 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 String textSearch = getAlphaNumParameter("search", "");
 String query = getUntrustedStringParameter("query", "");
-String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "title"};
+String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD};
 
 QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);

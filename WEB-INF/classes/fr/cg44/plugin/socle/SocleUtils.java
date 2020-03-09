@@ -33,10 +33,15 @@ import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
+import generated.AbstractPortletFacette;
+import generated.Canton;
 import generated.City;
 import generated.Delegation;
 import generated.PortletAgendaInfolocale;
-
+import generated.PortletFacetteAdresse;
+import generated.PortletFacetteCategoriesLiees;
+import generated.PortletFacetteCommune;
+import generated.PortletFacetteCommuneAdresseLiee;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -442,18 +447,22 @@ public final class SocleUtils {
 	 * @param communes
 	 * @return
 	 */
-	public static JsonArray citiestoJsonArray(Publication... communes) {		
+	public static JsonArray citiestoJsonArray(Publication... communes) {
 		JsonArray jsonArray = new JsonArray();
-		for(Publication itPub : communes) {
-			City itCity = (City) itPub;
-		    JsonObject itJsonObject = new JsonObject();
-		    itJsonObject.addProperty("id", Integer.toString(itCity.getCityCode()));
-		    itJsonObject.addProperty("value", itCity.getTitle());		    
-		    JsonObject itJsonMetaObject = new JsonObject();
-		    itJsonMetaObject.addProperty("hasLinkedField", true);		    
-		    itJsonObject.add("metadata", itJsonMetaObject);
-		    jsonArray.add(itJsonObject);
-		}		
+		if(Util.notEmpty(communes)) {
+      for(Publication itPub : communes) {
+        City itCity = (City) itPub;
+          JsonObject itJsonObject = new JsonObject();
+          String cityCode = Integer.toString(itCity.getCityCode());
+          itJsonObject.addProperty("id", cityCode);
+          itJsonObject.addProperty("value", itCity.getTitle());		    
+          JsonObject itJsonMetaObject = new JsonObject();
+          String[] needAdress = channel.getStringArrayProperty("jcmsplugin.socle.cities.needAddress", new String[]{});
+          itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode));    
+          itJsonObject.add("metadata", itJsonMetaObject);
+          jsonArray.add(itJsonObject);
+      }		
+    }
 		return jsonArray;		
 	}
 	
@@ -487,7 +496,7 @@ public final class SocleUtils {
 	 */
 	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("id", pub.getId());
+		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
@@ -506,7 +515,7 @@ public final class SocleUtils {
 		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
 	}
-	
+		
 	
 	/**
 	 * Retourne les Publications sous forme de json
@@ -520,5 +529,83 @@ public final class SocleUtils {
 		}
 		return jsonArray;
 	}
+	
+	/**
+	 * <p>Calcule le nombre maximum de facettes dont le poids cumulé ne dépasse pas le poids maximum en entrée.</p>
+	 * <p></p>
+	 * <p>Toutes les facettes pèsent 1, sauf :</p>
+	 * <p>- <code>PortletFacetteCategoriesLiees</code> et <code>PortletFacetteCommuneAdresseLiees</code> comptent pour 2 ;</p>
+	 * <p>- <code>PortletFacetteAdresse</code> peuvent compter pour 2 s'il affiche l'option <code>rayon</code> ;</p>
+	 * <p>- <code>PortletFacetteCommune</code> peuvent compter pour 2 s'il affiche l'option <code>commune limitrophe</code> ou  <code>commune EPCI</code> ;</p>
+	 * <p></p>
+	 * <p>Par exemple pour <code>getNbrFacetteBeforeMaxWeight(4, member, { PortletFacetteCategoriesLiees, PortletFacetteTitre, PortletFacetteCommuneAdresseLiees})</code> :</p>
+	 * <p></p>
+	 * <p>PortletFacetteCategoriesLiees pèse 2 ;</p>
+	 * <p>PortletFacetteTitre pèse 1, on a un poids total de 3 ;</p>
+	 * <p>PortletFacetteCommuneAdresseLiees pèse 2, on a un poids total de 5 qui dépasse le poids max de 4 ;</p>
+	 * <p></p>
+	 * <p>Donc seules les 2 premières facettes ne dépassent pas le poids max.</p>
+	 * <p>On retourne 2.</p>
+	 * <p></p>
+	 * @param maxWeight le poids maximum cumulé des facettes affichable
+	 * @param facetteArr le tableau des facettes à afficher
+	 * @param member l'utilisateur en cours de navigation
+	 * @return le nombre de facettes du tableau qui peuvent être affichés avant d'atteindre le poids maximum
+	 */
+	public static int getNbrFacetteBeforeMaxWeight(int maxWeight, AbstractPortletFacette[] facetteArr, Member member) {
+		int weight = 0;
+		int maxFacettesPrincipales = 0;
+		
+		for(AbstractPortletFacette itFacette : facetteArr) {
+			
+			if(itFacette instanceof PortletFacetteCategoriesLiees 
+					|| itFacette instanceof PortletFacetteCommuneAdresseLiee 
+					|| (itFacette instanceof PortletFacetteCommune
+							&& Util.notEmpty(((PortletFacetteCommune)itFacette).getRechercheEtendue())
+							&& ( !((PortletFacetteCommune)itFacette).getRechercheEtendue().equalsIgnoreCase("aucune")))
+					|| (itFacette instanceof PortletFacetteAdresse
+							&& Util.notEmpty(((PortletFacetteAdresse)itFacette).getRayon(member)))) {
+				
+				weight += 2;
+				
+			} else {
+				
+				weight ++;
+			}
+			
+			if(weight > maxWeight) break;
+			
+			maxFacettesPrincipales++;
+		}
+		
+		return maxFacettesPrincipales;
+	}
 
+
+	/**
+	 * Retourne une catégorie sous forme de json
+	 * @param cat
+	 * @return
+	 */
+	public static JsonObject categoryToJsonObject(Category cat) {
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("id", cat.getId());
+		jsonObject.addProperty("value", cat.getName());
+		return jsonObject;
+	}
+	
+	
+	/**
+	 * Retourne les catégories sous forme de json
+	 * @param categories
+	 * @return
+	 */
+	public static JsonArray categoriesToJsonArray(Set<Category> categories) {
+		JsonArray jsonArray = new JsonArray();
+		for(Category itCat : categories) {
+			jsonArray.add(categoryToJsonObject(itCat));
+		}
+		return jsonArray;
+	}
+	
 }
