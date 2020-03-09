@@ -6,19 +6,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
-
-import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -30,7 +26,6 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
-import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
