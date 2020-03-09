@@ -19,7 +19,8 @@
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;div style="font-size: 15px;"&gt;Il ne peut y avoir que &lt;b&gt;4&lt;/b&gt; portlets de facettes principales !&lt;/div&gt;&#xD;
 &lt;div style="font-size: 16px;"&gt;&lt;b&gt;Attention !&lt;/b&gt;&lt;/div&gt;&#xD;
 &lt;div&gt;- Les portlets &lt;i&gt;"Portlet Facette Catégories liées"&lt;/i&gt;&amp;#xa0; et &lt;i&gt;"Portlet Facette Commune / Adresse liées" &lt;/i&gt;comptent pour &lt;b&gt;2&lt;/b&gt; !&lt;/div&gt;&#xD;
-&lt;div&gt;- Les portlets &lt;i&gt;"Portlet Facette Adresse"&lt;/i&gt; et &lt;i&gt;"Portlet Facette Commune"&lt;/i&gt; peuvent compter jusqu'à &lt;b&gt;2&lt;/b&gt; chacune si elles ont activé le champ &lt;i&gt;"Rayon"&lt;/i&gt; !&lt;/div&gt;&lt;/div&gt;</description>
+&lt;div&gt;- La portlet &lt;i&gt;"Portlet Facette Adresse"&lt;/i&gt; peut compter jusqu'à &lt;b&gt;2&lt;/b&gt; si elle a activé le champ &lt;i&gt;"Rayon"&lt;/i&gt; !&lt;/div&gt;&lt;/div&gt;&#xD;
+&lt;div&gt;- La portlet &lt;i&gt;"Portlet Facette Commune"&lt;/i&gt; peut compter jusqu'à &lt;b&gt;2&lt;/b&gt; si elle a une recherche étendue aux &lt;i&gt;"Communes limitrophes"&lt;/i&gt; ou aux &lt;i&gt;"Communes EPCI"&lt;/i&gt; !&lt;/div&gt;&lt;/div&gt;</description>
     </field>
     <field name="facettesSecondaires" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facettes secondaires</label>
