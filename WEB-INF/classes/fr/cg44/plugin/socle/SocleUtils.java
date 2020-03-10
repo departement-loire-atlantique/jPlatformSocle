@@ -16,6 +16,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
@@ -28,6 +30,7 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils;
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
@@ -40,6 +43,8 @@ import generated.PortletFacetteCommuneAdresseLiee;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
+	
+	private static final Logger LOGGER = Logger.getLogger(SocleUtils.class);
 	
 	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
 	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
@@ -172,12 +177,12 @@ public final class SocleUtils {
                 sb.append(line + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur dans convertStreamToString : " + e.getMessage());
         } finally {
             try {
                 is.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur dans convertStreamToString : " + e.getMessage());
             }
         }
         
