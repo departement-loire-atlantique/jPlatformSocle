@@ -36,12 +36,14 @@ public class RequestManager {
     
     private static String pleaseCheckConf = ". Veuillez verifier la configuration.";
     
-    private static String methodInitTokensError = "Method initTokens => code HTTP innatendu ";
-    private static String methodRegenerateTokensError = "Method regenerateTokens => code HTTP innatendu ";
+    private static String httpError = "Erreur code HTTP ";
     private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
     
     private static String success = "success";
     private static String failureReason = "failure_reason";
+    
+    private static String initToken = "initToken";
+    private static String refreshToken = "refresh_token";
     
     private RequestManager() {}
     
@@ -49,14 +51,14 @@ public class RequestManager {
      * Envoie une requête pour s'authentifier à Infolocale et générer les tokens d'authentification
      */
     public static void initTokens() {
-        sendTokenRequest("https://api.infolocale.fr/auth/signin", "initTokens");
+        sendTokenRequest("https://api.infolocale.fr/auth/signin", initToken);
     }
     
     /**
      * Regénère les tokens d'authentification. En cas de token invalide, procède à l'authentification
      */
     public static void regenerateTokens() {
-        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", "regenerateTokens");
+        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", refreshToken);
     }
     
     private static void sendTokenRequest(String url, String type) {
@@ -69,14 +71,14 @@ public class RequestManager {
         
         try {
             
-            if ("initTokens".equals(type)) {
+            if (initToken.equals(type)) {
                 String login = channel.getProperty("jcmsplugin.socle.infolocale.login");
                 String password = channel.getProperty("jcmsplugin.socle.infolocale.password");
                 
                 params.put("login", login);
                 params.put("password", password);
-            } else if ("refresh_token".equals(type)) {
-                params.put("refresh_token", tokenManager.getRefreshToken());
+            } else if (refreshToken.equals(type)) {
+                params.put(refreshToken, tokenManager.getRefreshToken());
             }
             
             CloseableHttpResponse response = createPostConnection(url, params, false);
@@ -101,14 +103,14 @@ public class RequestManager {
                     LOGGER.debug("Tokens générés");
                     break;
                 case 400:
-                    LOGGER.warn(methodRegenerateTokensError + status + ". Token non valide.");
+                    LOGGER.warn(type + " : " + httpError + status + ". Token non valide.");
                     invalidToken = true;
                     break;
                 case 401:
-                    LOGGER.warn(methodRegenerateTokensError + status + ". Authentification échouée.");
+                    LOGGER.warn(type + " : " + httpError + status + ". Authentification échouée.");
                     break;
                 default:
-                    LOGGER.warn(methodRegenerateTokensError + status + pleaseCheckConf);
+                    LOGGER.warn(type + " : " + httpError + status + pleaseCheckConf);
                     break;
             }
             
