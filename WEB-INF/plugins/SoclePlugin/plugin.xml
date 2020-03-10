@@ -118,7 +118,7 @@
         </template>
     </templates>
     <templates type="ContenuPush">
-        <template name="default" file="doContenuPushBoxDisplay.jsp" usage="box">
+        <template name="default" file="doContenuPushFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
