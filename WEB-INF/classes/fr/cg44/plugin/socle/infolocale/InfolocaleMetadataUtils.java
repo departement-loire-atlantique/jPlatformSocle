@@ -203,8 +203,11 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaAccessibilite(JSONObject jsonEvent) {
         StringBuilder accessibilite = buildAccessibiliteHtmlBlock(jsonEvent, "auditif", "mental", "visuel", "moteur");
-        if (Util.isEmpty(accessibilite)) return "";
-        return accessibilite.toString();
+        if (Util.isEmpty(accessibilite)) {
+            return ""; 
+        } else {
+            return accessibilite.toString();
+        }
     }
     
     private static StringBuilder buildAccessibiliteHtmlBlock(JSONObject jsonEvent, String... accessibilite) {
