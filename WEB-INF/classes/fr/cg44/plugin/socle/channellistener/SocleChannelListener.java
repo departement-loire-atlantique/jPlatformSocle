@@ -105,8 +105,7 @@ public class SocleChannelListener extends ChannelListener{
 			AlarmManager alarmMgr = Channel.getChannel().getCommonAlarmManager();
 		    alarmMgr.addAlarm(alarmEntry);
 		} catch (PastDateException | ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("Could not initialize TokenAlarmListener : wrong date format -> " + schedule);
 		}
 		// Effectuer la génération des tokens au démarrage
 		RequestManager.initTokens();
