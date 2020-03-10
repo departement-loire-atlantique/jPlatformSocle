@@ -266,23 +266,32 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaGroupeTheme(JSONObject jsonEvent, String id) {
         Channel channel = Channel.getChannel();
-        StringBuilder publicString = new StringBuilder();
-        String separator = ", ";
+        StringBuilder groupString = new StringBuilder();
         try {
             JSONArray thematiques = jsonEvent.getJSONArray(channel.getProperty("jcmsplugin.socle.infolocale.metadata.thematiques"));
             for (int count = 0; count < thematiques.length(); count++) {
-                try {
-                    if (! thematiques.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.parentId")).equals(id)) continue;
-                    String toAdd = "";
-                    if (Util.notEmpty(publicString.toString())) toAdd = separator;
-                    toAdd += thematiques.getJSONObject(count).getString(channel.getProperty(propertyMetadataLibelle));
-                    publicString.append(toAdd);
-                } catch (Exception e) {}
+                concatenateGroupLibelle(groupString, thematiques.getJSONObject(count), id);
             }
-            return publicString.toString();
+            return groupString.toString();
         } catch (Exception e) {
             return "";
         }
+    }
+    
+    private static StringBuilder concatenateGroupLibelle(StringBuilder groupString, JSONObject groupJson, String id) {
+        String separator = ", ";
+        Channel channel = Channel.getChannel();
+        
+        try {
+            if (! groupJson.getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.parentId")).equals(id)) return groupString;
+            String toAdd = groupJson.getString(channel.getProperty(propertyMetadataLibelle));
+            if (Util.notEmpty(groupString.toString())) toAdd = separator + toAdd;
+            groupString.append(toAdd);
+        } catch (Exception e) {
+            LOGGER.debug("Erreur dans getMetaGroupeTheme : le groupe thématique n'a pas été trouvé");
+        }
+        
+        return groupString;
     }
     
     /**

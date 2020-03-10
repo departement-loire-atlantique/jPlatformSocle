@@ -20,6 +20,8 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
+    private InfolocaleUtil() {}
+    
     /**
      * Trie une liste d'événements infolocale selon un ordre précis pour les carrousels en front-office
      * @param listEvents
@@ -27,7 +29,7 @@ public class InfolocaleUtil {
      */
     public static List<EvenementInfolocale> sortEvenementsCarrousel(List<EvenementInfolocale> listEvents) {
         List<EvenementInfolocale> sortedEvents = new ArrayList<EvenementInfolocale>();
-        List<EvenementInfolocale> listClone = new ArrayList<EvenementInfolocale>();
+        List<EvenementInfolocale> listClone = new ArrayList<EvenementInfolocale>(listEvents);
         
         // Récupérer tous les événements dont la date actuelle est égale à leur date de fin
         for (Iterator<EvenementInfolocale> iter = listClone.iterator(); iter.hasNext();) {

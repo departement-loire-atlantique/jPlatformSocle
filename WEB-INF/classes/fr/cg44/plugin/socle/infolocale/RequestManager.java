@@ -44,6 +44,9 @@ public class RequestManager {
     private static String methodExtractFluxDataError = "Method extractFluxData => code HTTP innatendu ";
     private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
     
+    private static String success = "success";
+    private static String failure_reason = "failure_reason";
+    
     private RequestManager() {}
     
     /**
@@ -169,7 +172,7 @@ public class RequestManager {
         Map<String, Object> params = new HashMap<String,Object>();        
         
         try {
-            fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
+            fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
             
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
             
@@ -184,21 +187,21 @@ public class RequestManager {
                 case 200:
                     
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
-                    fluxData.put("success", true);
+                    fluxData.put(success, true);
                     
                     break;
                 case 401:
                     LOGGER.warn(methodExtractFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
-                    fluxData.put("failure_reason", "invalid_token");
+                    fluxData.put(failure_reason, "invalid_token");
                     break;
                 case 404:
                     LOGGER.warn(methodExtractFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
-                    fluxData.put("failure_reason", "wrong_flux");
+                    fluxData.put(failure_reason, "wrong_flux");
                     break;
                 default:
                     LOGGER.warn(methodExtractFluxDataError + status + pleaseCheckConf);
-                    fluxData.put("failure_reason", "unknown_error");
+                    fluxData.put(failure_reason, "unknown_error");
                     break;
             }
             
@@ -224,7 +227,7 @@ public class RequestManager {
         boolean expiredToken = false;
         
         try {
-            fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
+            fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
             
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
             
@@ -239,21 +242,21 @@ public class RequestManager {
                 case 200:
                     
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
-                    fluxData.put("success", true);
+                    fluxData.put(success, true);
                     
                     break;
                 case 401:
                     LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
-                    fluxData.put("failure_reason", "invalid_token");
+                    fluxData.put(failure_reason, "invalid_token");
                     break;
                 case 404:
                     LOGGER.warn(methodFilterFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
-                    fluxData.put("failure_reason", "wrong_flux");
+                    fluxData.put(failure_reason, "wrong_flux");
                     break;
                 default:
                     LOGGER.warn(methodFilterFluxDataError + status + pleaseCheckConf);
-                    fluxData.put("failure_reason", "unknown_error");
+                    fluxData.put(failure_reason, "unknown_error");
                     break;
             }
             

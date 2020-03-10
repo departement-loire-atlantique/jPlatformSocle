@@ -29,6 +29,8 @@ import generated.EvenementInfolocale;
  */
 public class InfolocaleEntityUtils {
     
+    private InfolocaleEntityUtils() {}
+    
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
      */
@@ -315,25 +317,8 @@ public class InfolocaleEntityUtils {
         for (Iterator<EvenementInfolocale> iter = listEvents.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
             
-            // filtre sur la mention d'accessibilité : handicap mental
-            if (accessibiliteMental ? !itEvent.getMentionAccessibleHandicapMental() : false) {
+            if (isEventFilteredOnAccessibilityAndId(itEvent, accessibiliteMental, accessibiliteMoteur, accessibiliteVisuel, exclusion)) {
                 iter.remove();
-                continue;
-            }
-            // filtre sur la mention d'accessibilité : handicap moteur
-            if (accessibiliteMoteur ? !itEvent.getMentionAccessibleHandicapMoteur() : false) {
-                iter.remove();
-                continue;
-            }
-            // filtre sur la mention d'accessibilité : handicap visuel
-            if (accessibiliteVisuel ? !itEvent.getMentionAccessibleHandicapVisuel() : false) {
-                iter.remove();
-                continue;
-            }
-            // filtre sur l'exclusion de certains IDs d'événements
-            if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(itEvent.getEvenementId())) : false) {
-                iter.remove();
-                continue;
             }
         }
         // Tronquer la liste de résultats en fonction du nombre maximum de résultats
@@ -342,6 +327,29 @@ public class InfolocaleEntityUtils {
         }
         
         return listEvents.toArray(new EvenementInfolocale[listEvents.size()]);
+    }
+    
+    private static boolean isEventFilteredOnAccessibilityAndId(EvenementInfolocale event, boolean accessibiliteMental, boolean accessibiliteMoteur, 
+            boolean accessibiliteVisuel, String exclusion) {
+        
+        // filtre sur la mention d'accessibilité : handicap mental
+        if (accessibiliteMental ? !event.getMentionAccessibleHandicapMental() : false) {
+            return true;
+        }
+        // filtre sur la mention d'accessibilité : handicap moteur
+        if (accessibiliteMoteur ? !event.getMentionAccessibleHandicapMoteur() : false) {
+            return true;
+        }
+        // filtre sur la mention d'accessibilité : handicap visuel
+        if (accessibiliteVisuel ? !event.getMentionAccessibleHandicapVisuel() : false) {
+            return true;
+        }
+        // filtre sur l'exclusion de certains IDs d'événements
+        if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(event.getEvenementId())) : false) {
+            return true;
+        }
+        
+        return false;
     }
     
 }

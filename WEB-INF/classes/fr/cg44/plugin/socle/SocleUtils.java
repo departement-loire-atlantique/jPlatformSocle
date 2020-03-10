@@ -247,7 +247,7 @@ public final class SocleUtils {
 	        }
 	    }
 	    
-	    String sortie = Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(","));
+	    String sortie = Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(','));
 	    return sortie;
 	}
 
