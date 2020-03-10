@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -36,6 +37,15 @@ public class RequestManager {
     
     private static final Logger LOGGER = Logger.getLogger(RequestManager.class);
     
+    private static String pleaseCheckConf = ". Veuillez verifier la configuration.";
+    
+    private static String methodInitTokensError = "Method initTokens => code HTTP innatendu ";
+    private static String methodRegenerateTokensError = "Method regenerateTokens => code HTTP innatendu ";
+    private static String methodExtractFluxDataError = "Method extractFluxData => code HTTP innatendu ";
+    private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
+    
+    private RequestManager() {}
+    
     /**
      * Envoie une requête pour s'authentifier à Infolocale et générer les tokens d'authentification
      */
@@ -47,16 +57,16 @@ public class RequestManager {
         String login = channel.getProperty("jcmsplugin.socle.infolocale.login");
         String password = channel.getProperty("jcmsplugin.socle.infolocale.password");
         
-        Map<String, Object> params = new HashMap<String,Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("login", login);
         params.put("password", password);
         
         try {
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded", false);            
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, false);            
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method initTokens => pas de réponse HTTP, veuillez vérifier la configuration.");
+                LOGGER.warn("Method initTokens => pas de réponse HTTP" + pleaseCheckConf);
                 return;
             }
             
@@ -75,18 +85,18 @@ public class RequestManager {
                     LOGGER.debug("Tokens générés");
                     break;
                 case 400:
-                    LOGGER.warn("Method initTokens => code HTTP innatendu " + status + ". Il manque des paramètres.");
+                    LOGGER.warn(methodInitTokensError + status + ". Il manque des paramètres.");
                     break;
                 case 401:
-                    LOGGER.warn("Method initTokens => code HTTP innatendu " + status + ". Authentification échouée.");
+                    LOGGER.warn(methodInitTokensError + status + ". Authentification échouée.");
                     break;
                 default:
-                    LOGGER.warn("Method initTokens => code HTTP innatendu " + status + ". Veuillez verifier la configuration.");
+                    LOGGER.warn(methodInitTokensError + status + pleaseCheckConf);
                     break;
             }
             
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.warn("Exception sur initTokens : " + e.getMessage());
         }
     }
     
@@ -99,15 +109,15 @@ public class RequestManager {
         
         TokenManager tokenManager = TokenManager.getInstance();
         
-        Map<String, Object> params = new HashMap<String,Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("refresh_token", tokenManager.getRefreshToken());
         
         try {
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded", false);
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, false);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method regenerateTokens => pas de réponse HTTP, veuillez vérifier la configuration.");
+                LOGGER.warn("Method regenerateTokens => pas de réponse HTTP" + pleaseCheckConf);
                 return;
             }
             
@@ -126,19 +136,19 @@ public class RequestManager {
                     LOGGER.debug("Tokens regénérés");
                     break;
                 case 400:
-                    LOGGER.warn("Method regenerateTokens => code HTTP innatendu " + status + ". Token non valide.");
+                    LOGGER.warn(methodRegenerateTokensError + status + ". Token non valide.");
                     invalidToken = true;
                     break;
                 case 401:
-                    LOGGER.warn("Method regenerateTokens => code HTTP innatendu " + status + ". Authentification échouée.");
+                    LOGGER.warn(methodRegenerateTokensError + status + ". Authentification échouée.");
                     break;
                 default:
-                    LOGGER.warn("Method regenerateTokens => code HTTP innatendu " + status + ". Veuillez verifier la configuration.");
+                    LOGGER.warn(methodRegenerateTokensError + status + pleaseCheckConf);
                     break;
             }
             
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.warn("Exception sur regenerateTokens : " + e.getMessage());
         }
         
         if (invalidToken) {
@@ -161,10 +171,10 @@ public class RequestManager {
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method extractFluxData => pas de réponse HTTP, veuillez vérifier la configuration.");
+                LOGGER.warn("Method extractFluxData => pas de réponse HTTP" + pleaseCheckConf);
                 return fluxData;
             }
             
@@ -178,24 +188,22 @@ public class RequestManager {
                     
                     break;
                 case 401:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Token expiré.");
+                    LOGGER.warn(methodExtractFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
                     fluxData.put("failure_reason", "invalid_token");
                     break;
                 case 404:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Flux " + fluxId + " non trouvé.");
+                    LOGGER.warn(methodExtractFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
                     fluxData.put("failure_reason", "wrong_flux");
                     break;
                 default:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Veuillez verifier la configuration.");
+                    LOGGER.warn(methodExtractFluxDataError + status + pleaseCheckConf);
                     fluxData.put("failure_reason", "unknown_error");
                     break;
             }
             
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            LOGGER.warn("Exception sur regenerateTokens : " + e.getMessage());
         }
         
         if (expiredToken) {
@@ -218,10 +226,10 @@ public class RequestManager {
         try {
             fluxData.put("success", false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
+            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method extractFluxData => pas de réponse HTTP, veuillez vérifier la configuration.");
+                LOGGER.warn("Method extractFluxData => pas de réponse HTTP" + pleaseCheckConf);
                 return fluxData;
             }
             
@@ -235,24 +243,22 @@ public class RequestManager {
                     
                     break;
                 case 401:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Token expiré.");
+                    LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
                     fluxData.put("failure_reason", "invalid_token");
                     break;
                 case 404:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Flux " + fluxId + " non trouvé.");
+                    LOGGER.warn(methodFilterFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
                     fluxData.put("failure_reason", "wrong_flux");
                     break;
                 default:
-                    LOGGER.warn("Method extractFluxData => code HTTP innatendu " + status + ". Veuillez verifier la configuration.");
+                    LOGGER.warn(methodFilterFluxDataError + status + pleaseCheckConf);
                     fluxData.put("failure_reason", "unknown_error");
                     break;
             }
             
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            LOGGER.warn("Exception sur extractFluxData : " + e.getMessage());
         }
         
         if (expiredToken) {
@@ -266,7 +272,7 @@ public class RequestManager {
     /**
      * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête POST
      */
-    private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, String contentType, boolean useToken) {
+    private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, boolean useToken) {
         
         CloseableHttpClient httpClient = HttpClients.createDefault();
         
@@ -274,14 +280,14 @@ public class RequestManager {
         
         if (Util.notEmpty(params)) {
             List<BasicNameValuePair> urlParameters = new ArrayList<>();
-            for (String key : params.keySet()) {
-                urlParameters.add(new BasicNameValuePair(key, params.get(key).toString()));
+            for (Entry<String, Object> entry : params.entrySet()) {
+                urlParameters.add(new BasicNameValuePair(entry.getKey(), entry.getValue().toString()));
             }
             
             try {
                 post.setEntity(new UrlEncodedFormEntity(urlParameters));
             } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+                LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
             }
         }
         
@@ -293,32 +299,7 @@ public class RequestManager {
         try {
             response = httpClient.execute(post);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        return response;
-    }
-    
-    /**
-     * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête GET
-     */
-    private static CloseableHttpResponse createGetConnection(String url, Map<String, Object> params, boolean useToken) {
-        
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        
-        HttpGet request = new HttpGet(url + SocleUtils.buildGetParams(params));
-        
-        if (useToken) {
-            request.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
-        }
-        
-        CloseableHttpResponse response = null;
-        try {
-            response = httpClient.execute(request);
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
         }
         
         return response;

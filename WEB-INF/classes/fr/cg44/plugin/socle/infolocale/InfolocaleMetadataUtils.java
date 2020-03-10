@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle.infolocale;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +21,12 @@ import generated.EvenementInfolocale;
  *
  */
 public class InfolocaleMetadataUtils {
+    
+    private InfolocaleMetadataUtils() {}
+    
+    private static final Logger LOGGER = Logger.getLogger(InfolocaleMetadataUtils.class);
+    
+    private static String propertyMetadataLibelle = "jcmsplugin.socle.infolocale.metadata.libelle";
     
     /**
      * Récupère la ou les données Metadata demandées
@@ -141,7 +148,7 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaDuree(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.duree") ; // TODO : vérifier la nature de la durée sur l'API
+        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.duree");
     }
     
     /**
@@ -162,21 +169,30 @@ public class InfolocaleMetadataUtils {
     private static String getMetaPublic(JSONObject jsonEvent) {
         Channel channel = Channel.getChannel();
         StringBuilder publicString = new StringBuilder();
-        String separator = ", ";
         try {
             JSONArray categoriesAge = jsonEvent.getJSONArray(channel.getProperty("jcmsplugin.socle.infolocale.metadata.categoriesAge"));
             for (int count = 0; count < categoriesAge.length(); count++) {
-                try {
-                    String toAdd = "";
-                    if (Util.notEmpty(publicString.toString())) toAdd = separator;
-                    toAdd += categoriesAge.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.libelle"));
-                    publicString.append(toAdd);
-                } catch (Exception e) {}
+                publicString = concatenatePublicLibelle(publicString, categoriesAge.getJSONObject(count));
             }
             return publicString.toString();
         } catch (Exception e) {
             return "";
         }
+    }
+    
+    private static StringBuilder concatenatePublicLibelle(StringBuilder publicString, JSONObject publicJson) {
+        String separator = ", ";
+        Channel channel = Channel.getChannel();
+        
+        try {
+            String toAdd = publicJson.getString(channel.getProperty(propertyMetadataLibelle));
+            if (Util.notEmpty(publicString.toString())) toAdd = separator + toAdd;
+            publicString.append(toAdd);
+        } catch (Exception e) {
+            LOGGER.warn("Erreur dans concatenatePublicLibelle : libellé non trouvé pour le json " + publicJson.toString());
+        }
+        
+        return publicString;
     }
     
     /**
@@ -188,45 +204,57 @@ public class InfolocaleMetadataUtils {
         Channel channel = Channel.getChannel();
         StringBuilder accessibilite = new StringBuilder();
         String separator = ", ";
+        String baliseItalicStart = "<i class=\"icon ";
+        String baliseItalicEnd = "\"></i>";
+        String baliseSpanStart = "<span class=\"visibility-hidden\">";
+        String baliseSpanEnd = "</span>";
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif"))) {
-                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif") + "\"></i>");
-                accessibilite.append("<span class=\"visibility-hidden\">");
+                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif") + baliseItalicEnd);
+                accessibilite.append(baliseSpanStart);
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.auditif"));
-                accessibilite.append("</span>");
+                accessibilite.append(baliseSpanEnd);
             }
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité auditif non trouvée");
+        }
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental") + "\"></i>");
-                accessibilite.append("<span class=\"visibility-hidden\">");
+                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental") + baliseItalicEnd);
+                accessibilite.append(baliseSpanStart);
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.mental"));
-                accessibilite.append("</span>");
+                accessibilite.append(baliseSpanEnd);
             }
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité mental non trouvée");
+        }
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel") + "\"></i>");
-                accessibilite.append("<span class=\"visibility-hidden\">");
+                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel") + baliseItalicEnd);
+                accessibilite.append(baliseSpanStart);
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.visuel"));
-                accessibilite.append("</span>");
+                accessibilite.append(baliseSpanEnd);
             }
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité visuelle non trouvée");
+        }
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"))) {
                 if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append("<i class=\"icon " + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur") + "\"></i>");
-                accessibilite.append("<span class=\"visibility-hidden\">");
+                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur") + baliseItalicEnd);
+                accessibilite.append(baliseSpanStart);
                 accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.moteur"));
-                accessibilite.append("</span>");
+                accessibilite.append(baliseSpanEnd);
             }
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité moteur non trouvée");
+        }
         return accessibilite.toString();
     }
     
@@ -247,7 +275,7 @@ public class InfolocaleMetadataUtils {
                     if (! thematiques.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.parentId")).equals(id)) continue;
                     String toAdd = "";
                     if (Util.notEmpty(publicString.toString())) toAdd = separator;
-                    toAdd += thematiques.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.libelle"));
+                    toAdd += thematiques.getJSONObject(count).getString(channel.getProperty(propertyMetadataLibelle));
                     publicString.append(toAdd);
                 } catch (Exception e) {}
             }
@@ -269,7 +297,7 @@ public class InfolocaleMetadataUtils {
             JSONArray thematiquesArrays = jsonEvent.getJSONArray(channel.getProperty("jcmsplugin.socle.infolocale.metadata.thematiques"));
             for (int count = 0; count < thematiquesArrays.length(); count++) {
                 if (thematiquesArrays.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.thematiqueId")).equals(id)) {
-                    return thematiquesArrays.getJSONObject(count).getString(channel.getProperty("jcmsplugin.socle.infolocale.metadata.libelle"));
+                    return thematiquesArrays.getJSONObject(count).getString(channel.getProperty(propertyMetadataLibelle));
                 }
             }
         } catch (JSONException e) {
@@ -286,7 +314,6 @@ public class InfolocaleMetadataUtils {
      */
     public static String getMetadataIcon(String metadata) {
         return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.icon." + metadata.replace(":", ""));
-        
     }
 
 }
