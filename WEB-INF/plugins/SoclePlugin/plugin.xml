@@ -24,8 +24,8 @@
     <type name="Delegation"></type>
     <type name="Directory"></type>
     <type name="ElectedMember"></type>
-    <type name="EvenementInfolocale"></type>
     <type name="Equipement"></type>
+    <type name="EvenementInfolocale"></type>
     <type name="FaqAccueil"></type>
     <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
