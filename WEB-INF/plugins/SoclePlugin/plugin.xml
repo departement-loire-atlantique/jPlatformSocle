@@ -104,6 +104,9 @@
         </template>
     </templates>
     <templates type="FicheLieu">
+        <template name="embed" file="doFicheLieuEmbedDisplay.jsp" usage="embed">
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
         <template name="default" file="doFicheLieuFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
