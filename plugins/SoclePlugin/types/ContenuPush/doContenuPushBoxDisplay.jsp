@@ -17,7 +17,7 @@
     <td class='field-label'><%= channel.getTypeFieldLabel(ContenuPush.class, "soustitre", userLang) %><jalios:edit pub='<%= obj %>' fields='soustitre'/></td>
     <td class='field-data' <%= gfla(obj, "soustitre") %>>
             <% if (Util.notEmpty(obj.getSoustitre())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='soustitre'><%= obj.getSoustitre() %></jalios:wysiwyg>            
+            <jalios:wysiwyg data='<%= obj %>' field='soustitre'><%= obj.getSoustitre() %></jalios:wysiwyg>
             <% } %>
     </td>
   </tr>

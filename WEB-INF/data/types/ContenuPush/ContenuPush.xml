@@ -9,18 +9,20 @@
     <field name="soustitre" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Sous-titre</label>
     </field>
-    <field name="imagePush" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
-      <label xml:lang="fr">Image push</label>
+    <field name="imageDesktop" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image desktop</label>
     </field>
-    <field name="imageColleeAuBord" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
-      <label xml:lang="fr">Image collée au bord</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image mobile</label>
     </field>
-    <field name="affichageDuLienBouton" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Affichage du lien / bouton</label>
+    <field name="libelleDeLien" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé de lien</label>
+    </field>
+    <field name="lien" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien</label>
+    </field>
+    <field name="styleDeFond" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="ds44-bgTriangle-left|ds44-bgCircle|ds44-wave-white" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Triangle|Cercle|Vague">
+      <label xml:lang="fr">Style de fond</label>
     </field>
   </fields>
 </type>
