@@ -215,7 +215,7 @@ public class InfolocaleMetadataUtils {
         for (String itAccessibilite : accessibilite) {
             value.append(getHtmlForAccessibilite(jsonEvent, itAccessibilite, Util.notEmpty(value.toString())));
         }
-        return null;
+        return value;
     }
 
     private static String getHtmlForAccessibilite(JSONObject jsonEvent, String itAccessibilite, boolean addSeparator) {
