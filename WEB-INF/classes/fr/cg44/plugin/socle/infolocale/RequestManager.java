@@ -56,7 +56,7 @@ public class RequestManager {
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/signin", params, "application/x-www-form-urlencoded", false);            
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method initTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
+                LOGGER.warn("Method initTokens => pas de réponse HTTP, veuillez vérifier la configuration.");
                 return;
             }
             
@@ -107,7 +107,7 @@ public class RequestManager {
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/auth/refresh-token", params, "application/x-www-form-urlencoded", false);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method regenerateTokens => l'élément de connexion est vide, veuillez vérifier la configuration.");
+                LOGGER.warn("Method regenerateTokens => pas de réponse HTTP, veuillez vérifier la configuration.");
                 return;
             }
             
@@ -164,7 +164,7 @@ public class RequestManager {
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
+                LOGGER.warn("Method extractFluxData => pas de réponse HTTP, veuillez vérifier la configuration.");
                 return fluxData;
             }
             
@@ -221,7 +221,7 @@ public class RequestManager {
             CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, "application/x-www-form-urlencoded", true);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method extractFluxData => l'élément de connexion est vide, veuillez vérifier la configuration.");
+                LOGGER.warn("Method extractFluxData => pas de réponse HTTP, veuillez vérifier la configuration.");
                 return fluxData;
             }
             

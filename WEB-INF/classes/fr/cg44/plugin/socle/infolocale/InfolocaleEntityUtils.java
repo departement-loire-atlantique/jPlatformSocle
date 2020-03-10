@@ -105,15 +105,15 @@ public class InfolocaleEntityUtils {
      * Créé un tableau d'objets Langue depuis du JSON
      */
     public static Langue[] createLanguesArrayFromJsonArray(JSONArray jsonArray) {
-        Langue[] itLangues = new Langue[jsonArray.length()];
+        Langue[] langues = new Langue[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itLangues[counter] = createLangueFromJsonItem(jsonArray.getJSONObject(counter));
+                langues[counter] = createLangueFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        return itLangues;
+        return langues;
     }
 
     /**
@@ -136,15 +136,15 @@ public class InfolocaleEntityUtils {
      * Créé un tableau d'objets Photo depuis du JSON
      */
     public static Photo[] createPhotosArrayFromJsonArray(JSONArray jsonArray) {
-        Photo[] itPhotos = new Photo[jsonArray.length()];
+        Photo[] photos = new Photo[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itPhotos[counter] = createPhotoFromJsonItem(jsonArray.getJSONObject(counter));
+                photos[counter] = createPhotoFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        return itPhotos;
+        return photos;
     }
 
     /**
@@ -185,15 +185,15 @@ public class InfolocaleEntityUtils {
      * Créé un tableau d'objets Contact depuis du JSON
      */
     public static Contact[] createContactArrayFromJsonArray(JSONArray jsonArray) {
-        Contact[] itContacts = new Contact[jsonArray.length()];
+        Contact[] contacts = new Contact[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itContacts[counter] = createContactFromJsonItem(jsonArray.getJSONObject(counter));
+                contacts[counter] = createContactFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        return itContacts;
+        return contacts;
     }
 
     /**
@@ -219,15 +219,15 @@ public class InfolocaleEntityUtils {
      * Créé un tableau d'objets Date (infolocale) depuis du JSON
      */
     public static Date[] createDateArrayFromJsonArray(JSONArray jsonArray) {
-        Date[] itDates = new Date[jsonArray.length()];
+        Date[] dates = new Date[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itDates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
+                dates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        return itDates;
+        return dates;
     }
 
     /**
@@ -290,7 +290,7 @@ public class InfolocaleEntityUtils {
     }
     
     /**
-     * Effectue un tri sur un tableau d'objets EvenementInfolocale à partir de paramètres
+     * Effectue un filtre sur un tableau d'objets EvenementInfolocale à partir de paramètres
      */
     public static EvenementInfolocale[] sortEvenementInfolocaleArray(EvenementInfolocale[] arrayEvents, Map<String, Object> sortParameters) {
         
@@ -315,22 +315,22 @@ public class InfolocaleEntityUtils {
         for (Iterator<EvenementInfolocale> iter = listEvents.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
             
-            // Tri sur la mention d'accessibilité : handicap mental
+            // filtre sur la mention d'accessibilité : handicap mental
             if (accessibiliteMental ? !itEvent.getMentionAccessibleHandicapMental() : false) {
                 iter.remove();
                 continue;
             }
-            // Tri sur la mention d'accessibilité : handicap moteur
+            // filtre sur la mention d'accessibilité : handicap moteur
             if (accessibiliteMoteur ? !itEvent.getMentionAccessibleHandicapMoteur() : false) {
                 iter.remove();
                 continue;
             }
-            // Tri sur la mention d'accessibilité : handicap visuel
+            // filtre sur la mention d'accessibilité : handicap visuel
             if (accessibiliteVisuel ? !itEvent.getMentionAccessibleHandicapVisuel() : false) {
                 iter.remove();
                 continue;
             }
-            // Tri sur l'exclusion de certains IDs d'événements
+            // filtre sur l'exclusion de certains IDs d'événements
             if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(itEvent.getEvenementId())) : false) {
                 iter.remove();
                 continue;

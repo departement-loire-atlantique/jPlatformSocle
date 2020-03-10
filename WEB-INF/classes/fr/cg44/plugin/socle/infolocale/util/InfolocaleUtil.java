@@ -53,6 +53,11 @@ public class InfolocaleUtil {
         return sortedEvents;
     }
 
+    /**
+     * Détermine si un événement Infolocale commence aujourd'hui
+     * @param itEvent
+     * @return
+     */
     public static boolean eventStartsToday(EvenementInfolocale itEvent) {
         fr.cg44.plugin.socle.infolocale.entities.Date[] eventDates = itEvent.getDates();
         if (Util.isEmpty(eventDates)) return false;
@@ -66,6 +71,11 @@ public class InfolocaleUtil {
         return eventDateListContainsToday(datesFin);
     }
 
+    /**
+     * Détermine si un événement infolocale se termine aujourd'hui
+     * @param itEvent
+     * @return
+     */
     public static boolean eventEndsToday(EvenementInfolocale itEvent) {
         fr.cg44.plugin.socle.infolocale.entities.Date[] eventDates = itEvent.getDates();
         if (Util.isEmpty(eventDates)) return false;

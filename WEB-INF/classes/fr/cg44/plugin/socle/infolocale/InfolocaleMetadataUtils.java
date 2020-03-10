@@ -141,7 +141,7 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaDuree(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " jour(s)"; // TODO : vérifier la nature de la durée sur l'API
+        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.duree") ; // TODO : vérifier la nature de la durée sur l'API
     }
     
     /**

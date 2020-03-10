@@ -214,6 +214,7 @@ jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
 jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.duree: jour(s)
 # ------------------------------------------------------------
 #  Abonnement newsletter
 # ------------------------------------------------------------

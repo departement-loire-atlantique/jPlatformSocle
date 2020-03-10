@@ -185,7 +185,7 @@ public final class SocleUtils {
     }
 	
 	/**
-	 * 
+	 * Génère un string de paramètres GET à intégrer dans l'URL de requêtes
 	 * @param params
 	 * @return
 	 */
@@ -207,7 +207,7 @@ public final class SocleUtils {
 	}
 	
 	/**
-	 * Récupère une liste de codes Insee 
+	 * Récupère une liste de codes Insee sous le format insee_1,insee_2,insee_3
 	 * @param box
 	 * @param loggedMember
 	 * @return
@@ -251,6 +251,12 @@ public final class SocleUtils {
 	    return sortie;
 	}
 
+	/**
+	 * Concatène à un StringBuilder le code Insee d'une commune
+	 * @param codesInsee
+	 * @param itCommune
+	 * @return
+	 */
     public static StringBuilder appendInseeFromCommune(StringBuilder codesInsee, City itCommune) {
 
         // Le code doit être supérieur à 0 (valeur vide)
@@ -264,8 +270,8 @@ public final class SocleUtils {
         
         StringBuilder codeInseeClone = codesInsee;
         
-        codesInsee.append(itCommune.getCityCode());
-        codesInsee.append(",");
+        codeInseeClone.append(itCommune.getCityCode());
+        codeInseeClone.append(",");
         
         return codeInseeClone;
     }
