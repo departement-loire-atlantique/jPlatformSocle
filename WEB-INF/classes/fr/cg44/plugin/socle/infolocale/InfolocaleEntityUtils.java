@@ -292,7 +292,7 @@ public class InfolocaleEntityUtils {
     /**
      * Effectue un filtre sur un tableau d'objets EvenementInfolocale à partir de paramètres
      */
-    public static EvenementInfolocale[] sortEvenementInfolocaleArray(EvenementInfolocale[] arrayEvents, Map<String, Object> sortParameters) {
+    public static EvenementInfolocale[] filterEvenementInfolocaleArray(EvenementInfolocale[] arrayEvents, Map<String, Object> sortParameters) {
         
         if (Util.isEmpty(arrayEvents)) return new EvenementInfolocale[0];
         

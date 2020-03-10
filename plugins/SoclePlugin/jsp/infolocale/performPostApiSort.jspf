@@ -20,6 +20,6 @@ postApiSortingParams.put("accessibiliteMental", accessibiliteMental);
 postApiSortingParams.put("accessibiliteMoteur", accessibiliteMoteur);
 postApiSortingParams.put("accessibiliteVisuel", accessibiliteVisuel);
 
-allEvents = InfolocaleEntityUtils.sortEvenementInfolocaleArray(allEvents, postApiSortingParams);
+allEvents = InfolocaleEntityUtils.filterEvenementInfolocaleArray(allEvents, postApiSortingParams);
 
 %>
