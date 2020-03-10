@@ -154,11 +154,6 @@
         <template name="simpleTitle" file="doAbstractPortletSkinableSimpleTitleResultDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : habillage simple titre</label>
         </template>
-    </templates>    
-    <templates type="PortletAgendaInfolocale">
-        <template name="default" file="doPortletAgendaInfolocaleBoxDisplay.jsp" usage="box">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
     </templates>
     <templates type="PortletDecorator">
         <template name="dark" file="doPortletDecoratorFullDisplayDarkBackground.jsp" usage="box">
