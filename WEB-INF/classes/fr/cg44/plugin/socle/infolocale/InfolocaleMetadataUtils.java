@@ -203,6 +203,7 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaAccessibilite(JSONObject jsonEvent) {
         StringBuilder accessibilite = buildAccessibiliteHtmlBlock(jsonEvent, "auditif", "mental", "visuel", "moteur");
+        if (Util.isEmpty(accessibilite)) return "";
         return accessibilite.toString();
     }
     
@@ -222,12 +223,13 @@ public class InfolocaleMetadataUtils {
         String baliseItalicEnd = "\"></i>";
         String baliseSpanStart = "<span class=\"visibility-hidden\">";
         String baliseSpanEnd = "</span>";
+        String cssVisuel = ".visuel";
         try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata."+ itAccessibilite + ".visuel"))) {
+            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata."+ itAccessibilite + cssVisuel))) {
                 if (addSeparator) value.append(separator);
-                value.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon." + itAccessibilite + ".visuel") + baliseItalicEnd);
+                value.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon." + itAccessibilite + cssVisuel) + baliseItalicEnd);
                 value.append(baliseSpanStart);
-                value.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label." + itAccessibilite + ".visuel"));
+                value.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label." + itAccessibilite + cssVisuel));
                 value.append(baliseSpanEnd);
             }
         }
