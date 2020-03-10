@@ -8,17 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
@@ -45,7 +42,7 @@ public class RequestManager {
     private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
     
     private static String success = "success";
-    private static String failure_reason = "failure_reason";
+    private static String failureReason = "failure_reason";
     
     private RequestManager() {}
     
@@ -169,7 +166,7 @@ public class RequestManager {
         
         boolean expiredToken = false;
         
-        Map<String, Object> params = new HashMap<String,Object>();        
+        Map<String, Object> params = new HashMap<>();
         
         try {
             fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
@@ -193,15 +190,15 @@ public class RequestManager {
                 case 401:
                     LOGGER.warn(methodExtractFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
-                    fluxData.put(failure_reason, "invalid_token");
+                    fluxData.put(failureReason, "invalid_token");
                     break;
                 case 404:
                     LOGGER.warn(methodExtractFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
-                    fluxData.put(failure_reason, "wrong_flux");
+                    fluxData.put(failureReason, "wrong_flux");
                     break;
                 default:
                     LOGGER.warn(methodExtractFluxDataError + status + pleaseCheckConf);
-                    fluxData.put(failure_reason, "unknown_error");
+                    fluxData.put(failureReason, "unknown_error");
                     break;
             }
             
@@ -248,15 +245,15 @@ public class RequestManager {
                 case 401:
                     LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
                     expiredToken = true;
-                    fluxData.put(failure_reason, "invalid_token");
+                    fluxData.put(failureReason, "invalid_token");
                     break;
                 case 404:
                     LOGGER.warn(methodFilterFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
-                    fluxData.put(failure_reason, "wrong_flux");
+                    fluxData.put(failureReason, "wrong_flux");
                     break;
                 default:
                     LOGGER.warn(methodFilterFluxDataError + status + pleaseCheckConf);
-                    fluxData.put(failure_reason, "unknown_error");
+                    fluxData.put(failureReason, "unknown_error");
                     break;
             }
             

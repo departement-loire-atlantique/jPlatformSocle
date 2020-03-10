@@ -28,8 +28,8 @@ public class InfolocaleUtil {
      * @return
      */
     public static List<EvenementInfolocale> sortEvenementsCarrousel(List<EvenementInfolocale> listEvents) {
-        List<EvenementInfolocale> sortedEvents = new ArrayList<EvenementInfolocale>();
-        List<EvenementInfolocale> listClone = new ArrayList<EvenementInfolocale>(listEvents);
+        List<EvenementInfolocale> sortedEvents = new ArrayList<>();
+        List<EvenementInfolocale> listClone = new ArrayList<>(listEvents);
         
         // Récupérer tous les événements dont la date actuelle est égale à leur date de fin
         for (Iterator<EvenementInfolocale> iter = listClone.iterator(); iter.hasNext();) {
@@ -65,7 +65,7 @@ public class InfolocaleUtil {
         if (Util.isEmpty(eventDates)) return false;
         
         // récupérer toutes les dates de fin
-        List<String> datesFin = new ArrayList<String>();
+        List<String> datesFin = new ArrayList<>();
         for (fr.cg44.plugin.socle.infolocale.entities.Date itDate : eventDates) {
             datesFin.add(itDate.getFin());
         }
@@ -83,7 +83,7 @@ public class InfolocaleUtil {
         if (Util.isEmpty(eventDates)) return false;
         
         // récupérer toutes les dates de début
-        List<String> datesFin = new ArrayList<String>();
+        List<String> datesFin = new ArrayList<>();
         for (fr.cg44.plugin.socle.infolocale.entities.Date itDate : eventDates) {
             datesFin.add(itDate.getDebut());
         }

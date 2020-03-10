@@ -312,7 +312,7 @@ public class InfolocaleEntityUtils {
         accessibiliteMoteur = Util.toBoolean(sortParameters.get("accessibiliteMoteur"), false);
         accessibiliteVisuel = Util.toBoolean(sortParameters.get("accessibiliteVisuel"), false);
         
-        ArrayList<EvenementInfolocale> listEvents = new ArrayList<EvenementInfolocale>(Arrays.asList(arrayEvents));
+        ArrayList<EvenementInfolocale> listEvents = new ArrayList<>(Arrays.asList(arrayEvents));
         
         for (Iterator<EvenementInfolocale> iter = listEvents.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
@@ -323,7 +323,7 @@ public class InfolocaleEntityUtils {
         }
         // Tronquer la liste de résultats en fonction du nombre maximum de résultats
         if (resultatsMax < listEvents.size()) {
-            listEvents = new ArrayList<EvenementInfolocale>(listEvents.subList(0, resultatsMax));
+            listEvents = new ArrayList<>(listEvents.subList(0, resultatsMax));
         }
         
         return listEvents.toArray(new EvenementInfolocale[listEvents.size()]);

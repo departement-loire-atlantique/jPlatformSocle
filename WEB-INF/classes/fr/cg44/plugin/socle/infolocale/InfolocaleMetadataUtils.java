@@ -104,6 +104,7 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaGenre(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
+        
         try {
             return itEvent.getGenre().getLibelle();
         } catch (Exception e) {

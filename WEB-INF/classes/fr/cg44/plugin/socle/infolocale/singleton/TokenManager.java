@@ -15,7 +15,7 @@ public class TokenManager {
 	
 	private static class TokenManagerHolder {
 		
-		private final static TokenManager instance = new TokenManager();
+		private static final  TokenManager instance = new TokenManager();
 		
 	}
 	

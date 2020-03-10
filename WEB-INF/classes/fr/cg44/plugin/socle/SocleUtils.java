@@ -30,7 +30,6 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
-import fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils;
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
@@ -232,7 +231,7 @@ public final class SocleUtils {
 	    
 	    // récupération des Insee des communes
 	    if (Util.notEmpty(box.getCommunes())) {
-	        TreeSet<City> allCities = new TreeSet<City>(Arrays.asList(box.getCommunes()));
+	        TreeSet<City> allCities = new TreeSet<>(Arrays.asList(box.getCommunes()));
             for (City itCommune : allCities) {
 	            codesInsee = appendInseeFromCommune(codesInsee, itCommune);
 	        }
@@ -252,8 +251,7 @@ public final class SocleUtils {
 	        }
 	    }
 	    
-	    String sortie = Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(','));
-	    return sortie;
+	    return Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(','));
 	}
 
 	/**

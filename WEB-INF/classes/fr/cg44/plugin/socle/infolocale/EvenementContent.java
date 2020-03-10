@@ -24,10 +24,10 @@ public class EvenementContent extends Content {
     Photo[] photos;
     Langue[] langues;
     String titre;
-    String metadata_1;
-    String metadata_2;
-    String icon_1;
-    String icon_2;
+    String metadata1;
+    String metadata2;
+    String icon1;
+    String icon2;
     
     public EvenementContent() {}
     
@@ -89,35 +89,35 @@ public class EvenementContent extends Content {
         return this.titre;
     }
 
-    public String getMetadata_1() {
-        return metadata_1;
+    public String getMetadata1() {
+        return metadata1;
     }
 
-    public void setMetadata_1(String metadata_1) {
-        this.metadata_1 = metadata_1;
+    public void setMetadata1(String metadata1) {
+        this.metadata1 = metadata1;
     }
 
-    public String getMetadata_2() {
-        return metadata_2;
+    public String getMetadata2() {
+        return metadata2;
     }
 
-    public void setMetadata_2(String metadata_2) {
-        this.metadata_2 = metadata_2;
+    public void setMetadata2(String metadata2) {
+        this.metadata2 = metadata2;
     }
 
-    public String getIcon_1() {
-        return icon_1;
+    public String getIcon1() {
+        return icon1;
     }
 
-    public void setIcon_1(String icon_1) {
-        this.icon_1 = icon_1;
+    public void setIcon1(String icon1) {
+        this.icon1 = icon1;
     }
 
-    public String getIcon_2() {
-        return icon_2;
+    public String getIcon2() {
+        return icon2;
     }
 
-    public void setIcon_2(String icon_2) {
-        this.icon_2 = icon_2;
+    public void setIcon2(String icon2) {
+        this.icon2 = icon2;
     }
 }
