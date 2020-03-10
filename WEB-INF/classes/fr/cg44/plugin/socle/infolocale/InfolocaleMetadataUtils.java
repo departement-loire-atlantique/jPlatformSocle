@@ -202,63 +202,42 @@ public class InfolocaleMetadataUtils {
      * @return
      */
     private static String getMetaAccessibilite(JSONObject jsonEvent) {
+        StringBuilder accessibilite = buildAccessibiliteHtmlBlock(jsonEvent, "auditif", "mental", "visuel", "moteur");
+        return accessibilite.toString();
+    }
+    
+    private static StringBuilder buildAccessibiliteHtmlBlock(JSONObject jsonEvent, String... accessibilite) {
+        StringBuilder value = new StringBuilder();
+        for (String itAccessibilite : accessibilite) {
+            value.append(getHtmlForAccessibilite(jsonEvent, itAccessibilite, Util.notEmpty(value.toString())));
+        }
+        return null;
+    }
+
+    private static String getHtmlForAccessibilite(JSONObject jsonEvent, String itAccessibilite, boolean addSeparator) {
+        StringBuilder value = new StringBuilder();
         Channel channel = Channel.getChannel();
-        StringBuilder accessibilite = new StringBuilder();
         String separator = ", ";
         String baliseItalicStart = "<i class=\"icon ";
         String baliseItalicEnd = "\"></i>";
         String baliseSpanStart = "<span class=\"visibility-hidden\">";
         String baliseSpanEnd = "</span>";
         try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif"))) {
-                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif") + baliseItalicEnd);
-                accessibilite.append(baliseSpanStart);
-                accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.auditif"));
-                accessibilite.append(baliseSpanEnd);
-            }
-        }
-        catch (Exception e) {
-            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité auditif non trouvée");
-        }
-        try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"))) {
-                if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental") + baliseItalicEnd);
-                accessibilite.append(baliseSpanStart);
-                accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.mental"));
-                accessibilite.append(baliseSpanEnd);
-            }
-        }
-        catch (Exception e) {
-            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité mental non trouvée");
-        }
-        try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"))) {
-                if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel") + baliseItalicEnd);
-                accessibilite.append(baliseSpanStart);
-                accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.visuel"));
-                accessibilite.append(baliseSpanEnd);
+            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata."+ itAccessibilite + ".visuel"))) {
+                if (addSeparator) value.append(separator);
+                value.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon." + itAccessibilite + ".visuel") + baliseItalicEnd);
+                value.append(baliseSpanStart);
+                value.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label." + itAccessibilite + ".visuel"));
+                value.append(baliseSpanEnd);
             }
         }
         catch (Exception e) {
             LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité visuelle non trouvée");
         }
-        try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"))) {
-                if (Util.notEmpty(accessibilite.toString())) accessibilite.append(separator);
-                accessibilite.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur") + baliseItalicEnd);
-                accessibilite.append(baliseSpanStart);
-                accessibilite.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.moteur"));
-                accessibilite.append(baliseSpanEnd);
-            }
-        }
-        catch (Exception e) {
-            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité moteur non trouvée");
-        }
-        return accessibilite.toString();
+        
+        return value.toString();
     }
-    
+
     /**
      * Récupère les métadonnées des thèmes ayant un groupe parent précis
      * @param jsonEvent
