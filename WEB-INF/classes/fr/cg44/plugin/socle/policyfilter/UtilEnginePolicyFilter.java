@@ -76,7 +76,6 @@ public class UtilEnginePolicyFilter  {
 					doc.add(tPubField);	
 				} catch (NoSuchFieldException e) {
 					LOGGER.warn("Impossible d'indexer : " + itPub, e);
-					e.printStackTrace();
 				}									
 			}
 		}
