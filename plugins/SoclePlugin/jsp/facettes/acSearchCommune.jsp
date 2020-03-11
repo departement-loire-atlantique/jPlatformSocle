@@ -6,7 +6,8 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 response.setContentType("application/json");
 
-String textSearch = getAlphaNumParameter("q", "");
+String textSearch = getStringParameter("q", "", ".*");
+
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "zipCode", "codesPostaux", "nomDesCommunesDeleguees"};
 
 QueryHandler qh = new QueryHandler();
