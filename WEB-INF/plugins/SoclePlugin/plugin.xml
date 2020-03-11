@@ -20,6 +20,7 @@
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
     <type name="ContenuDeTest"></type>
+    <type name="ContenuPush"></type>
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
@@ -117,6 +118,11 @@
             <label xml:lang="fr">Gabarit full pour la refonte</label>
         </template>
     </templates>
+    <templates type="ContenuPush">
+        <template name="default" file="doContenuPushFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="FileDocument">
         <template name="embed" file="doFileDocumentEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
@@ -149,7 +155,7 @@
         <template name="simpleTitle" file="doAbstractPortletSkinableSimpleTitleResultDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : habillage simple titre</label>
         </template>
-    </templates>    
+    </templates>
     <templates type="PortletDecorator">
         <template name="dark" file="doPortletDecoratorFullDisplayDarkBackground.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit fond gris avec titre et description</label>
