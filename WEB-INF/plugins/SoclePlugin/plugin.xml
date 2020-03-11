@@ -48,6 +48,7 @@
     <type name="PortletFacetteDelegation"></type>
     <type name="PortletFacetteMotcle"></type>
     <type name="PortletFacetteTitre"></type>
+    <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
@@ -212,6 +213,11 @@
         <template name="footer" file="doPortletNavigateFooter.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit footer</label>
         </template>        
+    </templates>
+    <templates type="PortletPush">
+        <template name="default" file="doPortletPushBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
     </templates>
     <templates type="PortletQueryForeach">
         <template name="horizontalCard" file="doPortletQueryForeachHorizontalCard.jsp" usage='box'>
