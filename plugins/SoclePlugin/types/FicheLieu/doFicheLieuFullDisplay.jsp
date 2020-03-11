@@ -387,7 +387,7 @@
 					<h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
 
 					<jalios:if predicate='<%=Util.notEmpty(obj.getPourQui())%>'>
-						<%=obj.getPourQui()%>
+						<jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
 					</jalios:if>
 
 					<jalios:if
@@ -432,7 +432,7 @@
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
 					<h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
-					<%= obj.getModalitesDaccueil() %>
+					<jalios:wysiwyg><%= obj.getModalitesDaccueil() %></jalios:wysiwyg>
 				</div>
 			</div>
 		</section>

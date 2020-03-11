@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletPush" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Push</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="listeDeContenusPush" editor="link" required="true" compactDisplay="false" type="generated.ContenuPush[]">
+      <label xml:lang="fr">Liste de contenus push</label>
+    </field>
+    <field name="affichage" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Affichage</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+

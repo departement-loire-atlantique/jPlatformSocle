@@ -1,5 +1,5 @@
 <%@ include file="socialNetworksCommon.jspf" %> 
-<p role="heading" aria-level="2" class="h4-like mbm txtcenter" id="idTitreFooter2"><%=glp("jcmsplugin.socle.social-networks-follow.label") %></p>
+<p role="heading" aria-level="2" class="h4-like mbs txtcenter" id="idTitreFooter2"><%=glp("jcmsplugin.socle.social-networks-follow.label") %></p>
 <ul class="ds44-list ds44-flex-container ds44-flex-align-center">
 <%
 for(int i=0; i<socialNetworksLabelsList.size(); i++){%>
