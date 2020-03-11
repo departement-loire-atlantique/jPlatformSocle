@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +32,8 @@ public class InfolocaleEntityUtils {
     
     private InfolocaleEntityUtils() {}
     
+    private static final Logger LOGGER = Logger.getLogger(InfolocaleEntityUtils.class);
+    
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
      */
@@ -40,7 +43,7 @@ public class InfolocaleEntityUtils {
             try {
                 itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
             }
         }
         return itEvents;
@@ -96,7 +99,7 @@ public class InfolocaleEntityUtils {
             itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
             itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
             itEvent = new EvenementInfolocale();
         }
         
@@ -112,7 +115,7 @@ public class InfolocaleEntityUtils {
             try {
                 langues[counter] = createLangueFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur in createLanguesArrayFromJsonArray: " + e.getMessage());
             }
         }
         return langues;
@@ -128,7 +131,7 @@ public class InfolocaleEntityUtils {
             langue.setLangueId(json.getString("langueId"));
             langue.setLangueLibelle(json.getString("langueLibelle"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createLangueFromJsonItem: " + e.getMessage());
             langue = new Langue();
         }
         return langue;
@@ -143,7 +146,7 @@ public class InfolocaleEntityUtils {
             try {
                 photos[counter] = createPhotoFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur in createPhotosArrayFromJsonArray: " + e.getMessage());
             }
         }
         return photos;
@@ -160,7 +163,7 @@ public class InfolocaleEntityUtils {
             photo.setLegend(json.getString("legend"));
             photo.setCredit(json.getString("credit"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createPhotoFromJsonItem: " + e.getMessage());
             photo = new Photo();
         }
         return photo;
@@ -177,7 +180,7 @@ public class InfolocaleEntityUtils {
             genre.setCategorie(json.getString("categorie"));
             genre.setLibelle(json.getString("libelle"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createGenreFromJsonItem: " + e.getMessage());
             genre = new Genre();
         }
         return genre;
@@ -192,7 +195,7 @@ public class InfolocaleEntityUtils {
             try {
                 contacts[counter] = createContactFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur in createContactArrayFromJsonArray: " + e.getMessage());
             }
         }
         return contacts;
@@ -211,7 +214,7 @@ public class InfolocaleEntityUtils {
             contact.setUrl(json.getString("url"));
             contact.setEmail(json.getString("email"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createContactFromJsonItem: " + e.getMessage());
             contact = new Contact();
         }
         return contact;
@@ -226,7 +229,7 @@ public class InfolocaleEntityUtils {
             try {
                 dates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
             } catch (JSONException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur in createDateArrayFromJsonArray: " + e.getMessage());
             }
         }
         return dates;
@@ -243,7 +246,7 @@ public class InfolocaleEntityUtils {
             date.setFin(json.getString("fin"));
             date.setHoraire(json.getString("horaire"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new Date();
         }
         return date;
@@ -264,7 +267,7 @@ public class InfolocaleEntityUtils {
                 lieu.setCommune(createCommuneFromJsonItem(json.getJSONObject("commune")));
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createLieuFromJsonItem: " + e.getMessage());
             lieu = new Lieu();
         }
         return lieu;
@@ -285,7 +288,7 @@ public class InfolocaleEntityUtils {
             commune.setLongitude(json.getString("longitude"));
             commune.setCodePostal(json.getString("codePostal"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.error("Erreur in createCommuneFromJsonItem: " + e.getMessage());
             commune = new Commune();
         }
         return commune;
@@ -333,19 +336,19 @@ public class InfolocaleEntityUtils {
             boolean accessibiliteVisuel, String exclusion) {
         
         // filtre sur la mention d'accessibilité : handicap mental
-        if (accessibiliteMental ? !event.getMentionAccessibleHandicapMental() : false) {
+        if (accessibiliteMental && !event.getMentionAccessibleHandicapMental()) {
             return true;
         }
         // filtre sur la mention d'accessibilité : handicap moteur
-        if (accessibiliteMoteur ? !event.getMentionAccessibleHandicapMoteur() : false) {
+        if (accessibiliteMoteur && !event.getMentionAccessibleHandicapMoteur()) {
             return true;
         }
         // filtre sur la mention d'accessibilité : handicap visuel
-        if (accessibiliteVisuel ? !event.getMentionAccessibleHandicapVisuel() : false) {
+        if (accessibiliteVisuel && !event.getMentionAccessibleHandicapVisuel()) {
             return true;
         }
         // filtre sur l'exclusion de certains IDs d'événements
-        if (Util.notEmpty(exclusion) ? exclusion.contains(Integer.toString(event.getEvenementId())) : false) {
+        if (Util.notEmpty(exclusion) && exclusion.contains(Integer.toString(event.getEvenementId()))) {
             return true;
         }
         
