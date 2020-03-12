@@ -60,40 +60,7 @@ public final class SocleUtils {
 		return new TreeSet<Category>();
 		
 	}
-	
-	/**
-	 * Méthode qui retourne le nombre de seconde pour le timecode passé en paramètre
-	 * @param timecode timecode au format hh:mm:ss
-	 * @return le nombre de seconde
-	 */
-	public static int getSecondesByTimecode(String timecode){
-		int retourSecondes = 0;
-		if(Util.notEmpty(timecode)){
-			String heureStr = "";
-			String minuteStr = "";
-			String secondeStr = "";
 
-			heureStr = timecode.substring(0, 2);
-			minuteStr = timecode.substring(3, 5);
-			secondeStr = timecode.substring(6); 
-
-			int heure = 0;
-			int minute = 0;
-			int seconde = 0;
-
-			heure = Integer.parseInt(heureStr);
-			heure = heure * 3600;
-
-			minute = Integer.parseInt(minuteStr);
-			minute = minute * 60;
-
-			seconde = Integer.parseInt(secondeStr);
-
-			retourSecondes = heure + minute + seconde;
-		}
-
-		return retourSecondes;
-	}
 	
 	/**
 	 * Permet de récupérer le contenu principal d'une catégorie si celle-ci existe

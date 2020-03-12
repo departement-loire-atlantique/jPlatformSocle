@@ -78,9 +78,9 @@ public final class VideoUtils {
   }
   
   /**
-   * Méthode qui retourne le nombre de seconde pour le timecode passé en paramètre
+   * Méthode qui retourne le nombre de secondes pour le timecode passé en paramètre
    * @param timecode timecode au format hh:mm:ss
-   * @return le nombre de seconde
+   * @return le nombre de secondes
    */
   public static int getSecondesByTimecode(String timecode){
     int retourSecondes = 0;
