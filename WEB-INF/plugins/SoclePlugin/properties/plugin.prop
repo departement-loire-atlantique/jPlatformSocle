@@ -124,6 +124,10 @@ channel.topbar.site.enabled: true
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 
+# ------ Propriétés éditables SoclePlugin
+
+jcmsplugin.socle.horizontal.value: horizontal
+
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu
 # ------------------------------------------------------------

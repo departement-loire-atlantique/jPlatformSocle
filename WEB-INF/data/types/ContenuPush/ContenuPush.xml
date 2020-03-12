@@ -15,6 +15,9 @@
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
       <label xml:lang="fr">Image mobile</label>
     </field>
+    <field name="titreCompletDeLien" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre complet de lien</label>
+    </field>
     <field name="libelleDeLien" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Libellé de lien</label>
     </field>
