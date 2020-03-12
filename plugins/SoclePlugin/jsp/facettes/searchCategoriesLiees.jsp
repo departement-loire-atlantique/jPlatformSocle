@@ -6,7 +6,7 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 
 Set<Category> collection = new HashSet<Category>();
-collection.addAll(getDataListParameter("cids", Category.class));
+collection.addAll(getDataListParameter("q", Category.class));
 
 Set<Category> result = new HashSet<Category>();
 for(Category itCat : collection) {
