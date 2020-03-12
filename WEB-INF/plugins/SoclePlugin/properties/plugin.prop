@@ -111,6 +111,16 @@ extra.Category.plugin.tools.result.title:
 extra.Category.plugin.tools.blank.boolean: false
 extra.Category.plugin.tools.synonyme.facet.title:
 
+# Content Unified Insert UI
+unified-insert.items.content.jsp: plugins/SoclePlugin/jsp/insertionUnifiee/unifiedInsertContent.jsp
+unified-insert.items.content.icon: glyph: glyphicons-article
+
+# Content Media/Data template
+media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+
+# FileDocument PDF template
+media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+
 media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
 media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
 media.data-template.horizontalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementHorizontalCardDisplay.jsp
@@ -210,6 +220,53 @@ $jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
 # Accueil Annuaire / Agenda
 
 $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
+
+# ------------------------------------------------------------
+#  Configuration Infolocale
+# ------------------------------------------------------------
+
+jcmsplugin.socle.infolocale.schedule: 30 * * * * *
+jcmsplugin.socle.infolocale.login: 
+jcmsplugin.socle.infolocale.password: 
+jcmsplugin.socle.infolocale.limit: 20
+jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
+
+# Metadonnees Infolocale pour le front
+
+jcmsplugin.socle.infolocale.metadata.front.commune: commune
+jcmsplugin.socle.infolocale.metadata.front.genre: genre
+jcmsplugin.socle.infolocale.metadata.front.organisme: organisme
+jcmsplugin.socle.infolocale.metadata.front.horaires: horaires
+jcmsplugin.socle.infolocale.metadata.front.duree: duree
+jcmsplugin.socle.infolocale.metadata.front.tarif: tarif
+jcmsplugin.socle.infolocale.metadata.front.public: public
+jcmsplugin.socle.infolocale.metadata.front.accessibilite: accessibilite
+jcmsplugin.socle.infolocale.metadata.front.prefix.groupeTheme: grtheme:
+jcmsplugin.socle.infolocale.metadata.front.prefix.theme: theme:
+
+jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: mentionAccessibleHandicapAuditif
+jcmsplugin.socle.infolocale.metadata.accessibilite.mental: mentionAccessibleHandicapMental
+jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: mentionAccessibleHandicapVisuel
+jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: mentionAccessibleHandicapMoteur
+jcmsplugin.socle.infolocale.metadata.thematiques: thematiques
+jcmsplugin.socle.infolocale.metadata.thematiqueId: thematiqueId
+jcmsplugin.socle.infolocale.metadata.parentId: parentId
+jcmsplugin.socle.infolocale.metadata.libelle: libelle
+jcmsplugin.socle.infolocale.metadata.categoriesAge: categoriesAge
+
+jcmsplugin.socle.infolocale.metadata.icon.commune: icon-marker
+jcmsplugin.socle.infolocale.metadata.icon.genre: icon-tag
+jcmsplugin.socle.infolocale.metadata.icon.organisme: icon-user-group
+jcmsplugin.socle.infolocale.metadata.icon.horaires: icon-time
+jcmsplugin.socle.infolocale.metadata.icon.duree: icon-time
+jcmsplugin.socle.infolocale.metadata.icon.tarif: icon-cost
+jcmsplugin.socle.infolocale.metadata.icon.public: icon-user-group
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.auditif: icon-handicap-auditif
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.mental: icon-handicap-mental
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.visuel: icon-handicap-visuel
+jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur: icon-handicap-moteur
+jcmsplugin.socle.infolocale.metadata.icon.grtheme: icon-tag
+jcmsplugin.socle.infolocale.metadata.icon.theme: icon-tag
 
 # Fiche Action éducative
 

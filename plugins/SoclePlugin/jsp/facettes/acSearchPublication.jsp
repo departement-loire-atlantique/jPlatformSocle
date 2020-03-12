@@ -4,7 +4,9 @@
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
-String textSearch = getAlphaNumParameter("search", "");
+response.setContentType("application/json");
+
+String textSearch = getStringParameter("q", "", ".*");
 String query = getUntrustedStringParameter("query", "");
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD};
 

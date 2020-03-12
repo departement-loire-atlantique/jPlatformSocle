@@ -205,6 +205,16 @@ wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions san
 jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
 jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
 
+# -----------------------------------------------------------
+#  Infolocale
+# ------------------------------------------------------------
+jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
+jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
+jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
+jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
+jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
+jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.duree: jour(s)
 # ------------------------------------------------------------
 #  Abonnement newsletter
 # ------------------------------------------------------------
@@ -212,3 +222,10 @@ jcmsplugin.socle.newsletter.abonnement.titre:Recevez nos infos par mail
 jcmsplugin.socle.newsletter.abonnement.chapo:Pour être alerté lors de la parution des magazines ou recevoir l’actu selon mes centres d’intérêts
 jcmsplugin.socle.newsletter.abonnement.labelBouton:Je m'abonne
 jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux informations du CD44
+
+# ------------------------------------------------------------
+#  Insertion unifiée
+# ------------------------------------------------------------
+unified-insert.items.content: Contenu intégré
+unified-insert.items.content.longtitle: Un Contenu intégré
+unified-insert.items.content.subtitle: (présenter un contenu au format intégré)

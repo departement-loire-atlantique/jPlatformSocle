@@ -5,8 +5,10 @@
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 
+response.setContentType("application/json");
+
 Set<Category> collection = new HashSet<Category>();
-collection.addAll(getDataListParameter("cids", Category.class));
+collection.addAll(getDataListParameter("q", Category.class));
 
 Set<Category> result = new HashSet<Category>();
 for(Category itCat : collection) {
