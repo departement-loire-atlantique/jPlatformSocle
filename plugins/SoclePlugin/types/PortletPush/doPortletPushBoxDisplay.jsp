@@ -5,7 +5,7 @@
 if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à afficher
 %>
     <jalios:select>
-        <jalios:if predicate='<%= channel.getProperty("jcmsplugin.socle.horizontal.value").equals(box.getAffichage()) %>'>
+        <jalios:if predicate='<%= channel.getProperty("jcmsplugin.socle.horizontal.value").equals(box.getAffichage()) || box.getListeDeContenusPush().length == 1 %>'>
             <%-- Affichage horizontal sur toutes les tuiles --%>
             <jalios:foreach name="itPush" type="ContenuPush" array="<%= box.getListeDeContenusPush() %>">
                 <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushHorizontalCard.jspf" %>
@@ -14,23 +14,13 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
         </jalios:if>
         <jalios:default>
             <%-- Affichage vertical --%>
-            <% 
-            // Un seul élément : on l'affiche horizontalement et on ne va pas plus loin
-            if (box.getListeDeContenusPush().length == 1) {
-                ContenuPush itPush = box.getListeDeContenusPush()[0];
-                %>
-                <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushHorizontalCard.jspf" %>
-                <%
-                return;
-            }
-            
+            <%
             boolean lastLine = false;
-            int finalColSize = 0;
+            int finalColSize = 12 / (box.getListeDeContenusPush().length % 3) + 1;
             
             // Trois éléments ou moins : on indique qu'on atteint la dernière ligne
             if (box.getListeDeContenusPush().length <= 3) {
                 lastLine = true;
-                finalColSize = 12 / box.getListeDeContenusPush().length; // ne peut pas être à 0 de par la vérification en haut de fichier
             }
             %>
             <div class="grid-12-small-1">
@@ -54,7 +44,6 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
 	                                <jalios:default>
 		                                <%
 		                                lastLine = true;
-		                                finalColSize = 12 / (box.getListeDeContenusPush().length - (itCounter-1));
 		                                int colSize = finalColSize;
 		                                %>
 		                                <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushVerticalCard.jspf" %>
