@@ -50,6 +50,5 @@
 	    <%-- TODO : bloc Je m'abonne --%>
 	    
 	    <%-- TODO : bloc "Sur le même thème --%>
-	    <jalios:include id="lch_1218539"/>
 	</article>
 </main>
