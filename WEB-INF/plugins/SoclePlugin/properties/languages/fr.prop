@@ -60,6 +60,8 @@ jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
+jcmsplugin.socle.tout-cocher: Tout cocher
+jcmsplugin.socle.tout-decocher: Tout décocher
 
 # ------------------------------------------------------------
 #  Header
@@ -185,11 +187,13 @@ jcmsplugin.socle.facette.all-commune.label: Toutes les communes
 jcmsplugin.socle.facette.select-all-commune.label: Sélectionner toutes les communes
 jcmsplugin.socle.facette.autour-moi.label: Autour de moi
 jcmsplugin.socle.facette.select-autour-moi.label: Sélectionner les communes autour de moi
-jcmsplugin.socle.facette.category.hidden-label: Ouvrir le menu de choix : Select multiple large
 jcmsplugin.socle.facette.choisir-adresse.label: Choisir une adresse liée
-jcmsplugin.socle.facette.category-liees.label: Catégories liées
 jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
 jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
+jcmsplugin.socle.facette.cat-lie.theme-principal.label: Nom du thème
+jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
+jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
+jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
 
 # ------------------------------------------------------------
 #  Fil ariane
