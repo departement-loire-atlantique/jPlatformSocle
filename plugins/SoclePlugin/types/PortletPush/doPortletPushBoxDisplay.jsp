@@ -71,6 +71,7 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
                 </jalios:select>
                 
                 <jalios:if predicate="<%= itCounter % 3 == 0 %>">
+                    <%-- Saut de ligne pour éviter les blocs collés --%>
                     </div>
                     <br/>
                     <div class="grid-12-small-1">
