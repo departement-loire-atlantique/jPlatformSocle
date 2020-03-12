@@ -60,7 +60,6 @@ public final class SocleUtils {
 		return new TreeSet<Category>();
 		
 	}
-
 	
 	/**
 	 * Permet de récupérer le contenu principal d'une catégorie si celle-ci existe
