@@ -5,6 +5,8 @@
 %><%@page import="com.google.gson.JsonArray"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 
+response.setContentType("application/json");
+
 Set<Category> collection = new HashSet<Category>();
 collection.addAll(getDataListParameter("q", Category.class));
 

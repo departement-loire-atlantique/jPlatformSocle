@@ -61,7 +61,6 @@ public final class SocleUtils {
 		
 	}
 	
-	
 	/**
 	 * Permet de récupérer le contenu principal d'une catégorie si celle-ci existe
 	 * @param currentCat la catégorie courante

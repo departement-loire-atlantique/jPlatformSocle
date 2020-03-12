@@ -216,3 +216,10 @@ jcmsplugin.socle.newsletter.abonnement.titre:Recevez nos infos par mail
 jcmsplugin.socle.newsletter.abonnement.chapo:Pour être alerté lors de la parution des magazines ou recevoir l’actu selon mes centres d’intérêts
 jcmsplugin.socle.newsletter.abonnement.labelBouton:Je m'abonne
 jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux informations du CD44
+
+# ------------------------------------------------------------
+#  Insertion unifiée
+# ------------------------------------------------------------
+unified-insert.items.content: Contenu intégré
+unified-insert.items.content.longtitle: Un Contenu intégré
+unified-insert.items.content.subtitle: (présenter un contenu au format intégré)
