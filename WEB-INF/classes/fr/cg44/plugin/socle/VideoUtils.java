@@ -10,8 +10,6 @@ import com.jalios.jcms.Channel;
 import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 
-import fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter;
-
 public final class VideoUtils {
 	private static Channel channel = Channel.getChannel();
 	private static final Logger LOGGER = Logger.getLogger(VideoUtils.class);
@@ -36,10 +34,10 @@ public final class VideoUtils {
   public static String buildYoutubeUrl(String url)  {
     String builtUrl = "https://www.youtube.com/embed/" + getYoutubeVideoId(url);
     
-    String webappUrl = Channel.getChannel().getUrl();
+    String webappUrl = channel.getUrl();
     webappUrl = webappUrl.substring(0, webappUrl.length()-1);
     
-    Map<String, String[]> map = new HashMap<String, String[]>();
+    Map<String, String[]> map = new HashMap<>();
     map.put("enablejsapi", new String[] { "1" });
     map.put("frameborder", new String[] { "0" });
     map.put("html5", new String[] { "1" });
@@ -63,9 +61,8 @@ public final class VideoUtils {
   public static String getYoutubeVideoId(String url) {
     String idVideo="";
 
-    // Test nullité ? Pas possible en principe.
     if (url.isEmpty()) {
-      String path = Channel.getChannel().getCurrentJcmsContext().getRequest().getRequestURI();
+      String path = channel.getCurrentJcmsContext().getRequest().getRequestURI();
       LOGGER.warn("Could not determine the id of the Youtube video. Url : " + url + " (" + path + ")");
       return idVideo;
     }
@@ -76,14 +73,6 @@ public final class VideoUtils {
     if(urlParams.containsKey("v")){
       idVideo = urlParams.get("v")[0];
     }
-
-    /*
-    for (Map.Entry mapentry : urlParams.entrySet()) {
-      String key = (String) mapentry.getKey();
-      String[] values = (String[]) mapentry.getValue();
-             System.out.println("clé: "+key+ " | valeur: " + values[0]);
-          }
-     */
 
     return idVideo;
   }
