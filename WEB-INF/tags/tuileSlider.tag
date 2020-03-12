@@ -35,9 +35,15 @@
      urlImage = "s.gif";
     }
     
-    // TODO : subTitle
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
-    // TODO : location
+    try {
+        subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+    } catch(Exception e) {}
+    
+    try {
+        location = (String) itPub.getFieldValue("lieu");
+    } catch(Exception e) {}
 
 %>
 
