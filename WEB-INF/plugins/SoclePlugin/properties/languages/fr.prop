@@ -60,6 +60,8 @@ jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
+jcmsplugin.socle.carrousel.precedent: Voir le contenu précédent
+jcmsplugin.socle.carrousel.suivant: Voir le contenu suivant
 
 # ------------------------------------------------------------
 #  Header

@@ -39,4 +39,6 @@
     <jalios:include pub="<%= carouselEnCeMoment %>"/>
     
     <%-- TODO vos rendez-vous --%>
+    
+    <jalios:include pub="<%= obj.getPortletCarrouselAgenda() %>" usage="box"/>
 </main>
