@@ -84,17 +84,15 @@
 			<%= labelChamp %>
 			<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 		</p>
-		<input class="ds44-input-value" type="hidden" aria-hidden="true">
 		
 		<% 
-			String classTypeInput = obj.getTypeDeSelection() ? " ds44-js-select-checkbox" : " ds44-js-select-radio"; 
-			String classArboInput = obj.getProfondeur() ? " ds44-js-select-standard" : " ds44-js-select-multilevel"; 
+			String classTypeInput = obj.getTypeDeSelection() ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
+			classTypeInput = Util.isEmpty(dataURL) && !obj.getProfondeur() ? "ds44-js-select-multilevel" : classTypeInput; 
 		%>
-		<div id='<%= idFormElement %>' name='<%= idFormElement %>' class='<%= "ds44-selectDisplay" + classTypeInput + classArboInput %>' 
+		<div id='<%= idFormElement %>' name='<%= idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
-				data-disabled='<%= isDisabled %>'>
-		</div>
+				data-disabled='<%= isDisabled %>'></div>
 		<button class="ds44-reset" type="button">
 			<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 			<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
@@ -125,7 +123,7 @@
 			</div>
 		</jalios:if>
 		<% int nbrTotalCat = 0; %>
-		<jalios:if predicate='<%= obj.getProfondeur() %>'>
+		<jalios:if predicate='<%= Util.notEmpty(dataURL) || obj.getProfondeur() %>'>
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
 					<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
@@ -144,7 +142,7 @@
 				</ul>
 			</div>
 		</jalios:if>
-		<jalios:if predicate='<%= !obj.getProfondeur() %>'>
+		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !obj.getProfondeur() %>'>
 			<ul class="ds44-collapser ds44-listSelect">
 				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
 					<jalios:foreach name="itCat" type="Category" collection='<%= itRootCat.getChildrenSet() %>'>

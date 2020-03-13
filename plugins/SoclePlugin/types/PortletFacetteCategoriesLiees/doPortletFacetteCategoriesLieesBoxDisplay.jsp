@@ -21,7 +21,7 @@
 					<%= labelChamp %>
 					<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 				</p>
-				<div id='<%= idFormElement %>' name='<%= idFormElement %>' class="ds44-selectDisplay" 
+				<div id='<%= idFormElement %>' name='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
 						<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 				</div>
 				<button class="ds44-reset" type="button">
