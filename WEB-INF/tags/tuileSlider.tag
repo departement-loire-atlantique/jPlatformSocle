@@ -1,6 +1,6 @@
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
 <%@ attribute name="pub" required="true" fragment="false"
     rtexprvalue="true" type="Publication"
     description="La publication a afficher"%>
@@ -38,11 +38,11 @@
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     try {
-        subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+        subTitle = sdf.format((Date) pub.getFieldValue("dateActu"));
     } catch(Exception e) {}
     
     try {
-        location = (String) itPub.getFieldValue("lieu");
+        location = (String) pub.getFieldValue("lieu");
     } catch(Exception e) {}
 
 %>
