@@ -182,7 +182,7 @@ public class InfolocaleUtil {
      * @return
      */
     public static boolean infolocaleDateIsSingleDay(DateInfolocale date) {
-        if (Util.isEmpty(date)) return false;
+        if (Util.isEmpty(date)) return true;
         return date.getDebut().equals(date.getFin());
     }
     
