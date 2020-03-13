@@ -120,7 +120,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	
 
 	/**
-	 * Retourne le résultat du service de sectorisation
+	 * Retourne le résultat du service de sectorisation suivant l'url demandée
+	 * @param urlString
 	 * @return
 	 */
 	public List<SectorResult> getSectorisation(String urlString) {
