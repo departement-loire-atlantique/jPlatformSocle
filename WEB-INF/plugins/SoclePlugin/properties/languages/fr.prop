@@ -10,6 +10,7 @@ extra.Category.plugin.tools.result.title.help: Titre qui sera affecté au result
 extra.Category.plugin.tools.blank : Ouverture dans un nouvel onglet ?
 extra.Category.plugin.tools.blank.help : Le lien sur cette catégorie (menu...) doit-il s'ouvrir dans un nouvel onglet ?
 extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de la catégorie
+extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
 
 # ------------------------------------------------------------
 #  Propriétés éditables
@@ -62,6 +63,8 @@ jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
 jcmsplugin.socle.tout-cocher: Tout cocher
 jcmsplugin.socle.tout-decocher: Tout décocher
+jcmsplugin.socle.tooltip: Aide : {0}
+jcmsplugin.socle.deplier: Déplier
 
 # ------------------------------------------------------------
 #  Header

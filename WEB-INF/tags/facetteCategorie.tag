@@ -73,7 +73,9 @@
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
-	String labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : obj.getCategoriesRacines(loggedMember).first().getName();
+	String labelChamp = obj.getCategoriesRacines(loggedMember).first().getName();
+	labelChamp = Util.notEmpty(dataURL) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.sous-theme.label") : labelChamp;
+	labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : labelChamp;
 	String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";
 %>
 <div class="ds44-form__container">
@@ -83,7 +85,12 @@
 			<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 		</p>
 		<input class="ds44-input-value" type="hidden" aria-hidden="true">
-		<div id='<%= idFormElement %>' name='<%= idFormElement %>' class="ds44-selectDisplay" 
+		
+		<% 
+			String classTypeInput = obj.getTypeDeSelection() ? " ds44-js-select-checkbox" : " ds44-js-select-radio"; 
+			String classArboInput = obj.getProfondeur() ? " ds44-js-select-standard" : " ds44-js-select-multilevel"; 
+		%>
+		<div id='<%= idFormElement %>' name='<%= idFormElement %>' class='<%= "ds44-selectDisplay" + classTypeInput + classArboInput %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
 				data-disabled='<%= isDisabled %>'>
@@ -117,63 +124,65 @@
 				</button>
 			</div>
 		</jalios:if>
-		<div class="ds44-listSelect">
-			<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
-				<%
-					String nameType = obj.getTypeDeSelection() ? "name-check-" : "name-radio-";
-					StringBuffer sbfNameCheck = new StringBuffer();
-					sbfNameCheck.append(nameType)
-						.append(idFormElement);
-					
-					StringBuffer sbfNameCheckLabel = new StringBuffer();
-					sbfNameCheckLabel.append(nameType)
-						.append("label-")
-						.append(idFormElement);
-					
-					int nbrTotalCat = 0;
-				%>
-				<jalios:foreach name="itRootCat" type="Category" collection="<%= listeCategory %>">
-					<jalios:foreach name="itCat" type="Category" collection="<%= itRootCat.getChildrenSet() %>">
-						<%
-							nbrTotalCat++;
-							StringBuffer sbfNameCheckCat = new StringBuffer();
-							sbfNameCheckCat.append(sbfNameCheck.toString())
-								.append("-")
-								.append(nbrTotalCat);
-							
-							StringBuffer sbfNameCheckLabelCat = new StringBuffer();
-							sbfNameCheckLabelCat.append(sbfNameCheckLabel.toString())
-								.append("-")
-								.append(nbrTotalCat);
-						%>
-						<li class="ds44-select-list_elem">
-							<%
-								String typeInput = obj.getTypeDeSelection() ? "checkbox" : "radio";
-								StringBuffer sbfClassInput = new StringBuffer();
-								sbfClassInput.append("ds44-")
-									.append(typeInput);
+		<% int nbrTotalCat = 0; %>
+		<jalios:if predicate='<%= obj.getProfondeur() %>'>
+			<div class="ds44-listSelect">
+				<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
+					<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
+						<jalios:foreach name="itCat" type="Category" collection='<%= itRootCat.getChildrenSet() %>'>
+							<% nbrTotalCat++; %>
+							<li class="ds44-select-list_elem">
 								
-								String labelInput = obj.getTypeDeSelection() ? "box" : "radio";
-								StringBuffer sbfClassLabelInput = new StringBuffer();
-								sbfClassLabelInput.append("ds44-")
-									.append(labelInput)
-									.append("Label");
-							%>
-							<div class="ds44-form__container ds44-checkBox-radio_list ">
-								<input value='<%= itCat.getId() %>' id='<%= sbfNameCheckCat.toString() %>' class='<%= sbfClassInput.toString() %>' 
-										name='<%= sbfNameCheckCat.toString() %>'
-										type='<%= typeInput %>' 
-										<%= obj.getTypeDeSelection() ? "" : "name='" + idFormElement + "'" %>/>
-								<label for='<%= sbfNameCheckCat.toString() %>' class='<%= sbfClassLabelInput %>' 
-										id='<%= sbfNameCheckLabelCat.toString() %>'>
-									<%= itCat.getName() %>
-								</label>
+								<ds:facetteCategorieListElem cat='<%= itCat %>' 
+									userLang='<%= userLang %>' 
+									idFormElement='<%= idFormElement %>' 
+									typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+									numCat='<%= nbrTotalCat %>'/>
+							</li>
+						</jalios:foreach>
+					</jalios:foreach>
+				</ul>
+			</div>
+		</jalios:if>
+		<jalios:if predicate='<%= !obj.getProfondeur() %>'>
+			<ul class="ds44-collapser ds44-listSelect">
+				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
+					<jalios:foreach name="itCat" type="Category" collection='<%= itRootCat.getChildrenSet() %>'>
+						<% nbrTotalCat++; %>
+						<li class="ds44-collapser_element ds44-collapser--select">
+							<div class="ds44-select__categ">
+								<ds:facetteCategorieListElem cat='<%= itCat %>' 
+										userLang='<%= userLang %>' 
+										idFormElement='<%= idFormElement %>' 
+										typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+										numCat='<%= nbrTotalCat %>'/>
+
 							</div>
+							<jalios:if predicate='<%= Util.notEmpty(itCat.getChildrenSet()) %>'>
+								<button type="button" class="ds44-collapser_button ds44-collapser_button--select" 
+										aria-describedby='<%= "name-check-label-" + idFormElement + "-" + nbrTotalCat %>'>
+									<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.deplier") %></span>
+									<i class="icon icon-down ds44-noLineH" aria-hidden="true"></i>
+								</button>
+								<div class="ds44-collapser_content">
+									<ul class="ds44-list ds44-collapser_content--level2">
+										<jalios:foreach name="itSubCat" type="Category" collection='<%= itCat.getChildrenSet() %>' counter="itSubCatCounter">
+											<li class="ds44-select-list_elem">
+												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
+														userLang='<%= userLang %>' 
+														idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
+														typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+														numCat='<%= itSubCatCounter %>'/>
+											</li>
+										</jalios:foreach>
+									</ul>
+								</div>
+							</jalios:if>
 						</li>
 					</jalios:foreach>
 				</jalios:foreach>
 			</ul>
-		</div>
+		</jalios:if>
 		<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" aria-describedby='<%= "button-message-" + idFormElement %>'
 				title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelChamp) %>'>
 			<span class="ds44-btnInnerText" aria-hidden="true"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.valider") %></span>
