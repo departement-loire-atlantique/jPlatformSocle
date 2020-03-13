@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -42,9 +41,9 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 	private static final Logger LOGGER = Logger.getLogger(SectorisationQueryFilter.class);
 
-	private static String SECTORISATION_URL_COMMUNE = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?";
-	private static String SECTORISATION_URL_POINT = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?";
-	private static String SECTORISATION_URL_RECTANGLE = "https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?";
+	private static String SECTORISATION_URL_COMMUNE_PROP = "jcmsplugin.socle.sectorisation.commune.url";
+	private static String SECTORISATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.point.url";
+	private static String SECTORISATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.rectangle.url";
 	
 	private static int TIMEOUT = Integer.parseInt(getChannel().getProperty("jcmsplugin.socle.rest.timeout", "2000"));
 
@@ -57,58 +56,68 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
-		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");
-		String lng = HttpUtil.getAlphaNumParameter(request, "long", "");
-		String lat = HttpUtil.getAlphaNumParameter(request, "lat", "");
-		String lng_1 = HttpUtil.getAlphaNumParameter(request, "long_1", "");
-		String lat_1 = HttpUtil.getAlphaNumParameter(request, "lat_1", "");
-		String lng_2 = HttpUtil.getAlphaNumParameter(request, "long_2", "");
-		String lat_2 = HttpUtil.getAlphaNumParameter(request, "lat_2", "");
+		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
+		String lng = HttpUtil.getStringParameter(request, "long", "", ".*");
+		String lat = HttpUtil.getStringParameter(request, "lat", "", ".*");
+		String lng_1 = HttpUtil.getStringParameter(request, "long_1", "", ".*");
+		String lat_1 = HttpUtil.getStringParameter(request, "lat_1", "", ".*");
+		String lng_2 = HttpUtil.getStringParameter(request, "long_2", "", ".*");
+		String lat_2 = HttpUtil.getStringParameter(request, "lat_2", "", ".*");
 		String sectorisation = HttpUtil.getAlphaNumParameter(request, "sectorisation", "");
 		
-		if(Util.notEmpty(sectorisation)) {
-			Set<Publication> removeSolis = new HashSet<>();
-			List<String> sectorResultMatriculeSet = new ArrayList<>();			
-			String url = "";
-						
+		if(Util.notEmpty(sectorisation)) {				
+			String url = "";						
 			if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
 				// Sectorisation par zone
-				url = SECTORISATION_URL_RECTANGLE;
+				url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "?p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
 			}else if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
 				// Sectorisation par adresse
-				url = SECTORISATION_URL_POINT + "p_lat=" + lat + "&p_lon" + lng;
+				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
 			}else if(Util.notEmpty(commune)) {
 				// Sectorisation par commune
-				url = SECTORISATION_URL_COMMUNE + "p_commune=" + commune;						
+				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + "p_commune=" + commune;						
 			}
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
 			if(Util.notEmpty(url)) {
-				sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());				
-				if(sectorResultMatriculeSet != null) {
-					for(Publication itPub : set) {
-						String idRef = "";
-						if(itPub instanceof FicheLieu) {
-							FicheLieu itFiche = (FicheLieu) itPub;
-							idRef = itFiche.getIdReferentiel();						
-						}else if(itPub instanceof Canton) {
-							Canton canton = (Canton) itPub;
-							idRef = String.valueOf(canton.getCantonCode());							
-						}else if(itPub instanceof City) {
-							City city = (City) itPub;
-							idRef = String.valueOf(city.getCityCode());
-						}
-						if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef)){
-							removeSolis.add(itPub);
-						}
-					}
-					set.removeAll(removeSolis);
-				}
+				set.removeAll(getNotInSctorisationPublication(set, url));
 			}
-		}		
+		}
 		return set;
 	}
 
+	
+	/**
+	 * Retourne les publications qui ont une reférence mais qui ne sont pas dans la sectorisation
+	 * Il s'agit donc d'une liste de publications a à exclure des résultats
+	 * @param set
+	 * @param url
+	 * @return
+	 */
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {			
+		List<String> sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());			
+		List<Publication> notInSectorisation = new ArrayList<>(); 
+		if(sectorResultMatriculeSet != null) {
+			for(Publication itPub : set) {
+				String idRef = "";
+				if(itPub instanceof FicheLieu) {
+					FicheLieu itFiche = (FicheLieu) itPub;
+					idRef = itFiche.getIdReferentiel();						
+				}else if(itPub instanceof Canton) {
+					Canton canton = (Canton) itPub;
+					idRef = String.valueOf(canton.getCantonCode());							
+				}else if(itPub instanceof City) {
+					City city = (City) itPub;
+					idRef = String.valueOf(city.getCityCode());
+				}
+				if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef)){
+					notInSectorisation.add(itPub);
+				}
+			}			
+		}
+		return notInSectorisation;
+	}
+	
 
 	/**
 	 * Retourne le résultat du service de sectorisation
