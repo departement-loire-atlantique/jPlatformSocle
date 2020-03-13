@@ -125,6 +125,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 * @return
 	 */
 	public List<SectorResult> getSectorisation(String urlString) {
+		List<SectorResult> sectorResult = null;
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection urlConnection = IOUtil.openConnection(url, true, true, "GET");
@@ -142,13 +143,13 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				}
 				in.close();
 				ObjectMapper mapper = new ObjectMapper();
-				List<SectorResult> sectorResult = Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
-				return sectorResult;
+				sectorResult = Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
 			}
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche sur la sectorisation avec le référentiel externe", e);
+			return null;
 		}
-		return null;
+		return sectorResult;
 	}
 
 
