@@ -24,6 +24,13 @@ jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
 
+# ------------------------------------------------------------
+#  Sectorisation
+# ------------------------------------------------------------
+jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation par commune
+jcmsplugin.socle.sectorisation.point.url: Url de la sectorisation par point
+jcmsplugin.socle.sectorisation.rectangle.url: Url de la sectorisation par rectangle
+
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
 jcmsplugin.socle.socialnetworks.labels.help:Attention : la liste doit commencer par un "@" (ex : @|Facebook|Twitter). Le nom du picto utilisé pour l'affichage correspond au label en minuscule et sans espaces.

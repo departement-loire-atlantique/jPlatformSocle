@@ -11,6 +11,13 @@ jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 jcmsplugin.socle.contact-faq.default-mail: 
 
 # ------------------------------------------------------------
+#  Sectorisation
+# ------------------------------------------------------------
+jcmsplugin.socle.sectorisation.commune.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?
+jcmsplugin.socle.sectorisation.point.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?
+jcmsplugin.socle.sectorisation.rectangle.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?
+
+# ------------------------------------------------------------
 #  Propriété spécifiques à un site
 # ------------------------------------------------------------
 jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
