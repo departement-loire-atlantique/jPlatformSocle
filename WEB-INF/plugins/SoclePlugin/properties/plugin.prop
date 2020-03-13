@@ -126,6 +126,8 @@ media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templ
 media.data-template.horizontalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementHorizontalCardDisplay.jsp
 media.data-template.verticalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementVerticalCardDisplay.jsp
 
+media.data-template.tuileHorizontaleGrey.Content: /plugin/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
 channel.topbar.enabled: true

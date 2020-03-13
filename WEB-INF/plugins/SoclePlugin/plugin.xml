@@ -218,6 +218,9 @@
         <template name="default" file="doPortletMiseEnAvantDeContenusBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
+        <template name="tuiles1col" file="doPortletMiseEnAvantDeContenusBoxOneColumn.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
+        </template>
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
