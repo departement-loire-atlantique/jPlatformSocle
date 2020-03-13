@@ -1,0 +1,31 @@
+<div class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
+    <div class="ds44-flex-container ds44-flex-container--colMed ds44-flex-container--colMed--colRev">
+        <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>"
+            <picture class="ds44-boxPushPic ds44-boxPushPic--horizontal">
+                <jalios:if predicate="<%= Util.notEmpty(itPush.getImageMobile()) %>">
+                    <source media="(max-width: 36em)" srcset="<%=itPush.getImageMobile()%>">
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) %>">
+                    <source media="(min-width: 36em)" srcset="<%=itPush.getImageDesktop()%>">
+                    <img src="<%= itPush.getImageDesktop() %>" alt="<%= itPush.getTitle() %>">
+                </jalios:if>
+            </picture>
+        </jalios:if>
+        <div class="ds44-boxPushContent ds44-boxPushContent--fluid">
+            <div class="ds44-titlePushH"><p class="ds44-pushTitle" role="heading" aria-level="2"><%= itPush.getTitle() %></p></div>
+            <jalios:if predicate="<%= Util.notEmpty(itPush.getSoustitre()) %>">
+                <div class="ds44-contentPushH"><div class="txtcenter"><jalios:wysiwyg><%= itPush.getSoustitre() %></jalios:wysiwyg></div></div>
+            </jalios:if>
+            <jalios:if predicate="<%= Util.notEmpty(itPush.getLien()) %>">
+                <div class="ds44-contentPushH">
+                    <p>
+                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= itPush.getLien() %>">
+                            <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
+                            <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </p>
+                </div>
+            </jalios:if>
+        </div>
+    </div>
+</div>
