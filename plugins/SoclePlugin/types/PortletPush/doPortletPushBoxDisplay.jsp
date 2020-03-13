@@ -16,7 +16,7 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
             <%-- Affichage vertical --%>
             <%
             boolean lastLine = false;
-            int finalColSize = 12 / (box.getListeDeContenusPush().length % 3) + 1;
+            int finalColSize = (box.getListeDeContenusPush().length % 3 == 0) ? 4 : (12 / (box.getListeDeContenusPush().length % 3));
             
             // Trois éléments ou moins : on indique qu'on atteint la dernière ligne
             if (box.getListeDeContenusPush().length <= 3) {

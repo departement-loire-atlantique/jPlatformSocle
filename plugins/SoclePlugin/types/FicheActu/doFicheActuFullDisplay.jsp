@@ -15,40 +15,43 @@
 
 %>
 <main id="content" role="main">
-	<article class="ds44-container-large">
-	    <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-		    title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-		    copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
-		    userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
-	    <section class="ds44-contenuArticle">
-	       <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
-	       <div class="ds44-inner-container ds44-mtb3">
-	            <div class="ds44-grid12-offset-2">
+    <article class="ds44-container-large">
+        <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
+            title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
+            copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
+            userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
+        <section class="ds44-contenuArticle">
+           <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+           <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-2">
                     <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                 </div>
            </div>
            </jalios:if>
-	    </section>
-	    <%-- Boucler sur les paragraphes --%>
-	    <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
-	       <jalios:if predicate="<%= itCounter <= obj.getContenuParagraphe().length && Util.notEmpty(obj.getContenuParagraphe()[itCounter-1]) %>">
-	       <section id="section<%= itCounter %>" class="ds44-contenuArticle">
-		       <div class="ds44-inner-container ds44-mtb3">
-	               <div class="ds44-grid12-offset-2">
-				       <jalios:if predicate="<%= Util.notEmpty(itTitle) %>">
-				           <h2 id="titreParagraphe<%= itCounter %>"><%= itTitle %></h2>
-				       </jalios:if>
-				       <jalios:wysiwyg><%= obj.getContenuParagraphe()[itCounter-1] %></jalios:wysiwyg>
-			       </div>
-		       </div>
-	       </section>
-	       </jalios:if>
-	    </jalios:foreach>
-	    
-	    <%-- TODO : bloc des réseaux sociaux --%>
-	    
-	    <%-- TODO : bloc Je m'abonne --%>
-	    
-	    <%-- TODO : bloc "Sur le même thème --%>
-	</article>
+        </section>
+        <%-- Boucler sur les paragraphes --%>
+        <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
+           <jalios:if predicate="<%= itCounter <= obj.getContenuParagraphe().length && Util.notEmpty(obj.getContenuParagraphe()[itCounter-1]) %>">
+           <section id="section<%= itCounter %>" class="ds44-contenuArticle">
+               <div class="ds44-inner-container ds44-mtb3">
+                   <div class="ds44-grid12-offset-2">
+                       <jalios:if predicate="<%= Util.notEmpty(itTitle) %>">
+                           <h2 id="titreParagraphe<%= itCounter %>"><%= itTitle %></h2>
+                       </jalios:if>
+                       <jalios:wysiwyg><%= obj.getContenuParagraphe()[itCounter-1] %></jalios:wysiwyg>
+                   </div>
+               </div>
+           </section>
+           </jalios:if>
+        </jalios:foreach>
+        
+        <%-- TODO : bloc des réseaux sociaux --%>
+        
+        <%-- TODO : bloc Je m'abonne --%>
+        <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id")) %>'>
+           <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id") %>'/>
+        </jalios:if>
+        
+        <%-- TODO : bloc "Sur le même thème --%>
+    </article>
 </main>
