@@ -119,14 +119,15 @@ unified-insert.items.content.icon: glyph: glyphicons-article
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 
 # FileDocument PDF template
-media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+# media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 
 media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
 media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
 media.data-template.horizontalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementHorizontalCardDisplay.jsp
 media.data-template.verticalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementVerticalCardDisplay.jsp
 
-media.data-template.tuileHorizontaleGrey.Content: /plugin/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false

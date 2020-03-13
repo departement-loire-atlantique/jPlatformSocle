@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
-%><% PortletMiseEnAvantDeContenus obj = (PortletMiseEnAvantDeContenus)portlet; %><%
+%><% PortletMiseEnAvantDeContenus box = (PortletMiseEnAvantDeContenus)portlet; %><%
 List<Content> allContents = new ArrayList<>();
-if (Util.notEmpty(obj.getFirstPublications())) {
-    allContents.addAll(Arrays.asList(obj.getFirstPublications()));
+if (Util.notEmpty(box.getFirstPublications())) {
+    allContents.addAll(Arrays.asList(box.getFirstPublications()));
 }
 %>
 
@@ -17,9 +17,9 @@ if (Util.notEmpty(collection)) {
 }
 %>
 
-<section id="services1clic_<%= obj.getId() %>">
-    <h2 class="h3-like"><%= obj.getTitreVisuel() %></h2>
+<section id="services1clic_<%= box.getId() %>">
+    <h2 class="h3-like"><%= box.getTitreVisuel() %></h2>
     <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
-        <jalios:include pub="<%= (Publication) itContent %>" resource="tuileHorizontaleGrey"/>
+        <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
     </jalios:foreach>
 </section>
