@@ -1,7 +1,7 @@
 <div class="col-<%= colSize %> colPush">
     <section class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
         <div class="ds44-flex-container ds44-box--push">
-            <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>"
+            <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>">
                 <picture class="ds44-boxPushPic ds44-boxPushPic--horizontalds44-boxPushPic">
                     <jalios:if predicate="<%= Util.notEmpty(itPush.getImageMobile()) %>">
                         <source media="(max-width: 36em)" srcset="<%=itPush.getImageMobile()%>">
