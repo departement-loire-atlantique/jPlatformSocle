@@ -1,6 +1,6 @@
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Publication, java.util.Locale"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat"%>
 <%@ attribute name="pub" required="true" fragment="false"
     rtexprvalue="true" type="Publication"
     description="La publication a afficher"%>
