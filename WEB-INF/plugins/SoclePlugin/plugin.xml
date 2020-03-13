@@ -50,6 +50,7 @@
     <type name="PortletFacetteDelegation"></type>
     <type name="PortletFacetteMotcle"></type>
     <type name="PortletFacetteTitre"></type>
+    <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
     <type name="ResultatDeRecherche"></type>
@@ -210,6 +211,11 @@
     </templates>
     <templates type="PortletFacetteTitre">
         <template name="default" file="doPortletFacetteTitreBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletMiseEnAvantDeContenus">
+        <template name="default" file="doPortletMiseEnAvantDeContenusBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
