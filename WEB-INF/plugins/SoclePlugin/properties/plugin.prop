@@ -123,11 +123,17 @@ extra.Category.plugin.tools.synonyme.facet.title:
 unified-insert.items.content.jsp: plugins/SoclePlugin/jsp/insertionUnifiee/unifiedInsertContent.jsp
 unified-insert.items.content.icon: glyph: glyphicons-article
 
-# Content Media/Data template
+# Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
 media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
+media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
+media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
+media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
+
+# Media template
+media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 
 
 jcms.resource.tt-card-enabled:false
