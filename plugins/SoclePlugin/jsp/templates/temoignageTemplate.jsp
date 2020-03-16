@@ -22,16 +22,20 @@ try {
 try {
   sousTitre = (String) obj.getFieldValue("soustitreTemoignage");
 } catch(Exception e) {}
+
+// On récupère l'image dispo et on génère une vignette à la bonne taille.
 try {
   urlImage = (String) obj.getFieldValue("imageMobile");
 } catch(Exception e) {}
 if(Util.isEmpty(urlImage)){
-	try {
-	  urlImage = (String) obj.getFieldValue("imagePrincipale");
-	  urlImage = ThumbnailTag.buildThumbnail(urlImage, 300, 260, urlImage);
-	} catch(Exception e) {}
+  try {
+    urlImage = (String) obj.getFieldValue("imagePrincipale");
+    } catch(Exception e) {}
 }
-if (Util.isEmpty(urlImage)) {
+if (Util.notEmpty(urlImage)) {
+  urlImage = ThumbnailTag.buildThumbnail(urlImage, 373, 221, urlImage);
+}
+else{
   urlImage = "s.gif";
 }
 if (Util.isEmpty(titre)) {
