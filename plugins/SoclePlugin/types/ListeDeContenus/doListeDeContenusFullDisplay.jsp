@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
-<!-- 
+<%-- 
     Affiche une liste de contenus selon différents gabarits, via l'usage correspondant.
     Si on a saisi des documents, gabarit "liste de documents"
     Si on a saisi des fiches lieu, gabarit "contacts fiches lieu"
@@ -9,7 +9,7 @@
     
     Attention : on ne gère pas les listes mixtes. Le test sur le type s'effectue sur le 1er
     élément de la liste de contenus.
- -->
+ --%>
 <%
 ListeDeContenus obj = (ListeDeContenus)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 String usage = "";
