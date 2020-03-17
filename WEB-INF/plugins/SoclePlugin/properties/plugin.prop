@@ -154,6 +154,7 @@ jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitte
 # ------ Propriétés éditables SoclePlugin
 
 jcmsplugin.socle.horizontal.value: horizontal
+jcmsplugin.socle.portletPush.ficheactu.id: 
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu

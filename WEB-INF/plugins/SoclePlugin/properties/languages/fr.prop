@@ -23,6 +23,7 @@ jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
+jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 
 # ------------------------------------------------------------
 #  Sectorisation
