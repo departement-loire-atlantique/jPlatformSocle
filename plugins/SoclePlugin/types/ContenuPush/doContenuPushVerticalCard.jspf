@@ -1,3 +1,12 @@
+<%
+String url = "";
+if (Util.notEmpty(itPush.getLienSurContenu())) {
+  url = itPush.getLienSurContenu().getDisplayUrl(userLocale);
+} else if (Util.notEmpty(itPush.getLien())) {
+  url = itPush.getLien();
+}
+%>
+
 <div class="col-<%= colSize %> colPush">
     <section class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
         <div class="ds44-flex-container ds44-box--push">
@@ -17,9 +26,9 @@
                 <jalios:if predicate="<%= Util.notEmpty(itPush.getSoustitre()) %>">
                     <jalios:wysiwyg><%= itPush.getSoustitre() %></jalios:wysiwyg>
                 </jalios:if>
-                <jalios:if predicate="<%= Util.notEmpty(itPush.getLien()) %>">
+                <jalios:if predicate="<%= Util.notEmpty(url) %>">
                     <p class="mtm">
-                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= itPush.getLien() %>">
+                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>">
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>

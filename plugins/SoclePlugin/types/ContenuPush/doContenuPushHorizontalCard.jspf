@@ -1,3 +1,12 @@
+<%
+String url = "";
+if (Util.notEmpty(itPush.getLienSurContenu())) {
+  url = itPush.getLienSurContenu().getDisplayUrl(userLocale);
+} else if (Util.notEmpty(itPush.getLien())) {
+  url = itPush.getLien();
+}
+%>
+
 <div class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
     <div class="ds44-flex-container ds44-flex-container--colMed ds44-flex-container--colMed--colRev">
         <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>">
@@ -16,10 +25,10 @@
             <jalios:if predicate="<%= Util.notEmpty(itPush.getSoustitre()) %>">
                 <div class="ds44-contentPushH"><div class="txtcenter"><jalios:wysiwyg><%= itPush.getSoustitre() %></jalios:wysiwyg></div></div>
             </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(itPush.getLien()) %>">
+            <jalios:if predicate="<%= Util.notEmpty(url) %>">
                 <div class="ds44-contentPushH">
                     <p>
-                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= itPush.getLien() %>">
+                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>">
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>
