@@ -6,9 +6,10 @@
 <%@page import="org.json.JSONObject"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jsp'%>
+<%@ include file="/jcore/portal/doPortletParams.jspf" %>
 
 <%
-PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication("$jcmsplugin.socle.temp.portletagendatest.id");
+PortletAgendaInfolocale box = (PortletAgendaInfolocale) portlet;
 
 if (Util.isEmpty(box)) return;
 
