@@ -8,19 +8,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.io.IOUtil;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.Publication;
@@ -29,6 +27,7 @@ import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.bean.SectorResult;
+import generated.Canton;
 import generated.City;
 import generated.FicheLieu;
 
@@ -40,6 +39,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 	private static final Logger LOGGER = Logger.getLogger(SectorisationQueryFilter.class);
 
+	private static String SECTORISATION_URL_COMMUNE_PROP = "jcmsplugin.socle.sectorisation.commune.url";
+	private static String SECTORISATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.point.url";
+	private static String SECTORISATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.rectangle.url";
+	
 	private static int TIMEOUT = Integer.parseInt(getChannel().getProperty("jcmsplugin.socle.rest.timeout", "2000"));
 
 
@@ -50,34 +53,78 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 
 	@Override
-	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {
-		City cityData = HttpUtil.getDataParameter(request, "commune", City.class);
-		if(Util.notEmpty(cityData)) {
-			List<String> sectorResultId = getSectorisation().stream().map(SectorResult::getMatricule).collect(Collectors.toList());		// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest
-			Set<Publication> removeSolis = new HashSet<Publication>();
+	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
+		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
+		String lng = HttpUtil.getStringParameter(request, "long", "", ".*");
+		String lat = HttpUtil.getStringParameter(request, "lat", "", ".*");
+		String lng_1 = HttpUtil.getStringParameter(request, "long_1", "", ".*");
+		String lat_1 = HttpUtil.getStringParameter(request, "lat_1", "", ".*");
+		String lng_2 = HttpUtil.getStringParameter(request, "long_2", "", ".*");
+		String lat_2 = HttpUtil.getStringParameter(request, "lat_2", "", ".*");
+		String sectorisation = HttpUtil.getAlphaNumParameter(request, "sectorisation", "");
+		
+		if(Util.notEmpty(sectorisation)) {				
+			String url = "";						
+			if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
+				// Sectorisation par zone
+				url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "?p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
+			}else if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
+				// Sectorisation par adresse
+				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
+			}else if(Util.notEmpty(commune)) {
+				// Sectorisation par commune
+				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + "p_commune=" + commune;						
+			}
+			
+			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
+			if(Util.notEmpty(url)) {
+				set.removeAll(getNotInSctorisationPublication(set, url));
+			}
+		}
+		return set;
+	}
+
+	
+	/**
+	 * Retourne les publications qui ont une reférence mais qui ne sont pas dans la sectorisation
+	 * Il s'agit donc d'une liste de publications a à exclure des résultats
+	 * @param set
+	 * @param url
+	 * @return
+	 */
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {			
+		List<String> sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());			
+		List<Publication> notInSectorisation = new ArrayList<>(); 
+		if(sectorResultMatriculeSet != null) {
 			for(Publication itPub : set) {
+				String idRef = "";
 				if(itPub instanceof FicheLieu) {
 					FicheLieu itFiche = (FicheLieu) itPub;
-					String idRef = itFiche.getIdReferentiel();
-					if(Util.notEmpty(idRef) && !sectorResultId.contains(idRef)){
-						removeSolis.add(itPub);
-					}
+					idRef = itFiche.getIdReferentiel();						
+				}else if(itPub instanceof Canton) {
+					Canton canton = (Canton) itPub;
+					idRef = String.valueOf(canton.getCantonCode());							
+				}else if(itPub instanceof City) {
+					City city = (City) itPub;
+					idRef = String.valueOf(city.getCityCode());
 				}
-			}
-			set.removeAll(removeSolis);
-		}		
-		return set;
+				if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef)){
+					notInSectorisation.add(itPub);
+				}
+			}			
+		}
+		return notInSectorisation;
 	}
 	
 
 	/**
-	 * Retourne le résulatat du service de sectorisation
+	 * Retourne le résultat du service de sectorisation suivant l'url demandée
+	 * @param urlString
 	 * @return
 	 */
-	public List<SectorResult> getSectorisation() {
+	public List<SectorResult> getSectorisation(String urlString) {
 		try {
-			// TODO url en static à dynamiser suivant les paramètres de rechercher
-			URL url = new URL("https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_sectorisations_geojson?p_geojson=%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B-1.77286755433447%2C47.5803362635946%5D%2C%22crs%22%3A%7B%22type%22%3A%22name%22%2C%22properties%22%3A%7B%22name%22%3A%22EPSG%3A4326%22%7D%7D%7D&sectorisation=in.%28EDS,Canton,Commune%29&select=sectorisation%2Cmatricule%2Clibelle");
+			URL url = new URL(urlString);
 			HttpURLConnection urlConnection = IOUtil.openConnection(url, true, true, "GET");
 			urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf8");
 			urlConnection.setReadTimeout(TIMEOUT);
@@ -93,13 +140,14 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				}
 				in.close();
 				ObjectMapper mapper = new ObjectMapper();
-				List<SectorResult> sectorResult = Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
-				return sectorResult;
+				// Retoune la liste de SectorResult trouvé par le service rest
+				return Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
 			}
 		} catch (IOException e) {
-			LOGGER.warn("Erreur sur l'appel de la recherche avec le référentiel externe", e);
+			LOGGER.warn("Erreur sur l'appel de la recherche sur la sectorisation avec le référentiel externe", e);
 		}
-		return (List<SectorResult>) Collections.EMPTY_SET ;
+		return null;
 	}
+
 
 }

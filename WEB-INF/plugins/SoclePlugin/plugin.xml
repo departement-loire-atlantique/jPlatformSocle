@@ -35,6 +35,7 @@
     <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
+    <type name="ListeDeContenus"></type>
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
     <type name="News"></type>
@@ -153,7 +154,18 @@
         <template name="default" file="doPageCarrefourFullDisplay.jsp" usage='full'>
             <label xml:lang="fr">DS44 : gabarit Spécifique</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="ListeDeContenus">
+        <template name="default" file="doListeDeContenusFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">Gabarit full</label>
+        </template>
+        <template name="default" file="doListeDeContenusDocuments.jsp" usage="listeDocs">
+            <label xml:lang="fr">Gabarit de liste de documents</label>
+        </template>
+        <template name="default" file="doListeDeContenusContacts.jsp" usage="listeContacts">
+            <label xml:lang="fr">Gabarit de liste de contacts (fiche lieu)</label>
+        </template>
+    </templates>        
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
