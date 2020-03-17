@@ -19,8 +19,8 @@
 	          </jalios:if>
 	          <div class="ds44--m-padding">
 	            <p role="heading" aria-level="3"><a href="<%= itVideo.getDisplayUrl(userLocale) %>"><%= itVideo.getTitle() %></a></p>
-	            <jalios:if predicate="<%= Util.notEmpty(itVideo.getSummary()) %>">
-	               <p><%= itVideo.getSummary() %></p>
+	            <jalios:if predicate="<%= Util.notEmpty(itVideo.getChapo()) %>">
+	               <p><%= itVideo.getChapo() %></p>
 	            </jalios:if>
 	          </div>
 	        </div>
