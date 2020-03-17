@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.JcmsUtil;
@@ -40,8 +41,8 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	    // Si un titre et un target blank alors ajout d'un libellé pour l'ouverture dans un nouvelle fenetre
 	    if (matcherTitle.find()) {		  
 	      String title = matcherTitle.group(2);
-	      if(!title.endsWith(suffixe)) {				 
-	        text = text.replaceFirst(url, url.replaceFirst(title, title + suffixe));
+	      if(!title.endsWith(suffixe)) {	
+	        text = text.replaceFirst(Pattern.quote(url), url.replaceFirst(title, title + suffixe));
 	        LOGGER.debug("Ajout libellé nouvelle fenetre sur le lien : " + url);
 	      }			
 	    }
