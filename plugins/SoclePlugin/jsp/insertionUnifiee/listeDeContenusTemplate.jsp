@@ -1,6 +1,6 @@
 <%--
   On inclut le gabarit avec usage "full" pour le type "ListeDeContenu"
-  C'est dans ce gabarit full qu'on g-re le bon gabarit d'affichage. 
+  C'est dans ce gabarit full qu'on gère le bon gabarit d'affichage. 
 --%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
