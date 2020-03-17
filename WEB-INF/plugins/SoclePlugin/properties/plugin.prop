@@ -125,12 +125,19 @@ unified-insert.items.content.icon: glyph: glyphicons-article
 
 # Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+
+# FileDocument PDF template
+# media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
 media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
+
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 
 # Media template
 media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
