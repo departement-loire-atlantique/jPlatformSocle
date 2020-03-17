@@ -5,17 +5,17 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="imageBandeau" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageBandeau" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image bandeau</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;1240x460px - ratio 62:23&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 1240x460px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image carrée</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;138x138px - ratio 1:1&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 138x138px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image mobile</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;300x260px - ratio 15:13&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x260px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Copyright</label>
