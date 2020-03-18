@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="sun.awt.image.URLImageSource"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
@@ -33,7 +34,7 @@ if(Util.isEmpty(urlImage)){
     } catch(Exception e) {}
 }
 if (Util.notEmpty(urlImage)) {
-  urlImage = ThumbnailTag.buildThumbnail(urlImage, 373, 221, urlImage);
+  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
 }
 else{
   urlImage = "s.gif";

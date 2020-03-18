@@ -28,6 +28,7 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
@@ -577,5 +578,53 @@ public final class SocleUtils {
 		}
 		return jsonArray;
 	}
+	
+	/**
+	 * Génère une image principale formattée et renvoie son path
+	 * @param imagePath
+	 * @return
+	 */
+	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
+    if (Util.notEmpty(imagePath)) {
+      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0), imagePath); 
+    }
+    return "";
+  }
+	
+	/**
+   * Génère une image bandeau formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageBandeau(String imagePath) {
+    if (Util.notEmpty(imagePath)) {
+      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0), imagePath); 
+    }
+    return "";
+  }
+  
+  /**
+   * Génère une image mobile formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMobile(String imagePath) {
+    if (Util.notEmpty(imagePath)) {
+      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0), imagePath); 
+    }
+    return "";
+  }
+  
+  /**
+   * Génère une image carrée formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCarree(String imagePath) {
+    if (Util.notEmpty(imagePath)) {
+      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carree.height", 0), imagePath); 
+    }
+    return "";
+  }
 	
 }

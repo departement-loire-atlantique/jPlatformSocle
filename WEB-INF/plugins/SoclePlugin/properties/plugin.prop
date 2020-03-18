@@ -42,6 +42,18 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
 
+# ------------------------------------------------------------
+#  Formats d'images
+# ------------------------------------------------------------
+
+jcmsplugin.socle.image.principale.width: 930
+jcmsplugin.socle.image.principale.height: 620
+jcmsplugin.socle.image.bandeau.width: 1240
+jcmsplugin.socle.image.bandeau.height: 460
+jcmsplugin.socle.image.mobile.width: 300
+jcmsplugin.socle.image.mobile.height: 260
+jcmsplugin.socle.image.carree.width: 138
+jcmsplugin.socle.image.carree.height: 138
 
 # ------------------------------------------------------------
 #  Wysiwyg

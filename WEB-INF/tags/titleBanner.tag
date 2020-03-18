@@ -1,3 +1,4 @@
+<%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag 
     pageEncoding="UTF-8"
@@ -51,6 +52,12 @@
 <%
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+
+String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
+String formattedMobilePath = "";
+if (Util.notEmpty(mobileImagePath)) {
+  formattedMobilePath = getUrlOfFormattedImageMobile(mobileImagePath);
+}
 %>
 
 <div class="ds44-pageHeaderContainer">
@@ -58,13 +65,13 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
         <figure role="figure" class="ds44-pageHeaderContainer__pictureContainer">
     </jalios:if>
     
-    <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
+    <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
         <picture class="ds44-pageHeaderContainer__pictureContainer">
-            <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
-                <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+            <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
+                <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
             </jalios:if>
-            <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-            <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+            <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+            <img src="<%=formattedImagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
         </picture>
     </jalios:if>
     
