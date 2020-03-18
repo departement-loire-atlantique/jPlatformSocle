@@ -175,7 +175,9 @@ public class InfolocaleUtil {
                 }
                
             } catch (ParseException e) {
-                LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
+               LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
+            } catch (NullPointerException e) {
+              LOGGER.warn("NPE in getClosestDate : " + e.getMessage());
             }
         }
         
