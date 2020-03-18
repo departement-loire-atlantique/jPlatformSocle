@@ -165,16 +165,15 @@ public class InfolocaleUtil {
                     continue;
                 }
                 
-                if (Util.isEmpty(value)) {
-                  continue;
+                if (Util.notEmpty(value)) {
+                  // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
+                  Date currentFoundJavaDate = sdf.parse(value.getDebut());
+                  Instant currentFoundInstant = currentFoundJavaDate.toInstant();
+                  if (instantNow.equals(itInstant) || currentFoundInstant.isAfter(itInstant)) {
+                      value = itDate;
+                  }
                 }
-                
-                // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
-                Date currentFoundJavaDate = sdf.parse(value.getDebut());
-                Instant currentFoundInstant = currentFoundJavaDate.toInstant();
-                if (instantNow.equals(itInstant) || currentFoundInstant.isAfter(itInstant)) {
-                    value = itDate;
-                }
+               
             } catch (ParseException e) {
                 LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
             }
