@@ -200,6 +200,8 @@ jcmsplugin.socle.facette.category-liees.label: Catégories liées
 jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
 jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
 
+jcmsplugin.socle.video.telecharger-transcript: Télécharger le fichier de transcription
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------

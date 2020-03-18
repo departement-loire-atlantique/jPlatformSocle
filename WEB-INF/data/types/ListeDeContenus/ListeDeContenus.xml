@@ -13,7 +13,7 @@
       <label xml:lang="fr">Contenus</label>
       <description xml:lang="fr">Choisir des contenus de même type (ex : que des documents ou que des fiches lieu)</description>
     </field>
-    <field name="styleDeFond" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="none|ds44-borderContainer|ds44-bgGray|ds44-theme" ml="false" descriptionType="tooltip" labelList="Aucun|Encadré|Gris|Vert" searchable="false" html="false" checkHtml="true">
+    <field name="styleDeFond" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="none|ds44-bgGray|ds44-theme" ml="false" descriptionType="tooltip" labelList="Aucun|Gris|Vert" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Style de fond</label>
     </field>
   </fields>
