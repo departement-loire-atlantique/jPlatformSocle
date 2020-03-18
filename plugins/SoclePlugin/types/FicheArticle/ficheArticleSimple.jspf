@@ -1,12 +1,17 @@
 <%
+// Récupération des infos de vidéo, dans la cas d'une fiche article
 String urlVideo = "";
+String fichierTranscriptVideo = "";
 if(Util.notEmpty(obj.getVideoPrincipale())){
   urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
+  if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
+    fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();
+  }
 }
 %>
 
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-    urlVideo="<%= urlVideo %>" title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
+    urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
     copyright="<%= obj.getCopyright() %>" 
     userLang="<%= userLang %>" breadcrumb="true"></ds:titleSimple>
 

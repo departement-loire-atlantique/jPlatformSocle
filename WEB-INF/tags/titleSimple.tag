@@ -35,6 +35,13 @@
     type="String"
     description="Le chemin du fichier image mobile"
 %>
+<%@ attribute name="fichierTranscript"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le chemin du fichier de transcription"
+%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
@@ -113,6 +120,9 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	            <div class="ds44-grid12-offset-1">
 	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
 	                <%-- TODO : affichage du fichier de transcript de la vidéo --%>
+	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
+	                   <a href="<%=fichierTranscript%>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
+	                </jalios:if>
 	            </div>
 	        </div>
 	    </div>
