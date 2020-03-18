@@ -33,7 +33,7 @@ parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.default
 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 parameters.put("dateDebut", sdf.format(Calendar.getInstance().getTime()));
 Calendar calInAYear = Calendar.getInstance();
-calInAYear.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR) + 1);
+calInAYear.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
 parameters.put("dateFin", sdf.format(calInAYear.getTime()));
 
 String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
@@ -47,7 +47,8 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
     <jalios:if predicate="<%= fluxSuccess %>">
         <%
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
-        List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(evenements);
+        List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
+        List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         int maxTuiles = evenements.length <= 3 ? evenements.length : 3;
         %>
         <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= maxTuiles %>">
@@ -76,7 +77,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                                     </jalios:select>
                                     <div class="ds44-card__section--horizontal">
                                         <p role="heading" aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
-                                        <p class="visually-hidden">Du 8 avril 2019 au 5 septembre 2019</p> <%-- TODO : générer ce String --%>
+                                        <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p> <%-- TODO : générer ce String --%>
                                         <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
                                         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span></p>
                                         </jalios:if>

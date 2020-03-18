@@ -217,6 +217,8 @@ jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
+jcmsplugin.socle.infolocale.label.date: Le {0} {1} {2}
+jcmsplugin.socle.infolocale.label.periode: Du {0} {1} {2} au {3} {4} {5}
 # ------------------------------------------------------------
 #  Abonnement newsletter
 # ------------------------------------------------------------

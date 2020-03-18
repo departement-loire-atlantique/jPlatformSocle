@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
@@ -238,5 +240,73 @@ public class InfolocaleUtil {
             LOGGER.warn("Error in getMonthLabel parsing date " + dateStr);
             return "";
         }
+    }
+    
+    private static String getYearLabel(String dateStr) {
+      if (Util.isEmpty(dateStr)) return "";
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+      try {
+          Calendar cal = Calendar.getInstance();
+          cal.setTime(sdf.parse(dateStr));
+          return Integer.toString(cal.get(Calendar.YEAR));
+      } catch (ParseException e) {
+          LOGGER.warn("Error in getDayLabel parsing date " + dateStr);
+          return "";
+      }
+    }
+    
+    /**
+     * Retourne un string du format "du 8 avril 2019 au 5 septembre 2019" ou "le 8 avril 2019" selon une date d'événement
+     * @param dateEvent
+     * @return
+     */
+    public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
+      if (infolocaleDateIsSingleDay(dateEvent)) {
+        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.date", Channel.getChannel().getCurrentUserLang(), 
+            getDayLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
+      } else {
+        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.periode", Channel.getChannel().getCurrentUserLang(), 
+            getDayLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
+            getDayLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
+      }
+    }
+    
+    /**
+     * Génère une liste d'événements infolocale à partir d'un tableau original, en générant des événements supplémentaires
+     * selon leur champ "Dates"
+     * @param startingArray
+     * @return
+     */
+    public static List<EvenementInfolocale> splitEventListFromDateFields(EvenementInfolocale[] startingArray) {
+      return splitEventListFromDateFields(new ArrayList<EvenementInfolocale>(Arrays.asList(startingArray)));
+    }
+    
+    /**
+     * Génère une liste d'événements infolocale à partir d'une liste originale, en générant des événements supplémentaires
+     * selon leur champ "Dates"
+     * @param startingList
+     * @return
+     */
+    public static List<EvenementInfolocale> splitEventListFromDateFields(List<EvenementInfolocale> startingList) {
+      List<EvenementInfolocale> finalList = new ArrayList<>();
+      for (Iterator<EvenementInfolocale> iter = startingList.iterator(); iter.hasNext();) {
+        EvenementInfolocale itEvent = iter.next();
+        if (Util.notEmpty(itEvent.getDates()) && itEvent.getDates().length > 1) {
+          finalList.addAll(splitEventIntoEventListFromDates(itEvent));
+        } else {
+          finalList.add(itEvent);
+        }
+      }
+      return finalList;
+    }
+
+    private static List<EvenementInfolocale> splitEventIntoEventListFromDates(EvenementInfolocale event) {
+      List<EvenementInfolocale> splittedList = new ArrayList<>();
+      for (DateInfolocale itDate : event.getDates()) {
+        EvenementInfolocale eventClone = (EvenementInfolocale) event.clone();
+        eventClone.setDates(new DateInfolocale[]{itDate});
+        splittedList.add(eventClone);
+      }
+      return splittedList;
     }
 }
