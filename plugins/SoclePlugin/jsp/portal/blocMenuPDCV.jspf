@@ -43,7 +43,7 @@
                     aria-hidden="true">
                     <div class="ds44-form__container" data-bkp-aria-hidden=""
                         data-bkp-tabindex="" aria-hidden="true">
-                        <label for="name" class="ds44-formLabel" data-bkp-aria-hidden=""
+                        <label for="commune-name" class="ds44-formLabel" data-bkp-aria-hidden=""
                             data-bkp-tabindex="" aria-hidden="true"><span
                             class="ds44-labelTypePlaceholderLarge" data-bkp-aria-hidden=""
                             data-bkp-tabindex="" aria-hidden="true"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span> <input

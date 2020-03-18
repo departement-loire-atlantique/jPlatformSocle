@@ -11,6 +11,13 @@ jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 jcmsplugin.socle.contact-faq.default-mail: 
 
 # ------------------------------------------------------------
+#  Sectorisation
+# ------------------------------------------------------------
+jcmsplugin.socle.sectorisation.commune.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?
+jcmsplugin.socle.sectorisation.point.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?
+jcmsplugin.socle.sectorisation.rectangle.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?
+
+# ------------------------------------------------------------
 #  Propriété spécifiques à un site
 # ------------------------------------------------------------
 jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
@@ -73,6 +80,7 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   hr,\
   i[class|style|aria-hidden],\
   img[class|style|align|alt|height|src|title|width],\
+  input[id|type|name|required|class|placeholder|style],\
   li[class|style|id],\
   ol[class|style|id|start|type],\
   p[class|style|id|title|lang|dir|role|aria-level],\
@@ -115,16 +123,25 @@ extra.Category.plugin.tools.synonyme.facet.title:
 unified-insert.items.content.jsp: plugins/SoclePlugin/jsp/insertionUnifiee/unifiedInsertContent.jsp
 unified-insert.items.content.icon: glyph: glyphicons-article
 
-# Content Media/Data template
+# Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 
 # FileDocument PDF template
-media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
+# media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 
+media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
 media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
-media.data-template.horizontalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementHorizontalCardDisplay.jsp
-media.data-template.verticalCard.CarouselElement: /plugins/SoclePlugin/types/CarouselElement/doCarouselElementVerticalCardDisplay.jsp
+media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
+media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
+media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
+
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+
+# Media template
+media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
+
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
@@ -133,6 +150,11 @@ channel.topbar.site.enabled: true
 
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+
+# ------ Propriétés éditables SoclePlugin
+
+jcmsplugin.socle.horizontal.value: horizontal
+jcmsplugin.socle.portletPush.ficheactu.id: 
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu

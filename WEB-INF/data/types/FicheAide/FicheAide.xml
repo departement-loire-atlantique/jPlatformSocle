@@ -6,14 +6,17 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageBandeau" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image bandeau</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 1240x460px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image carrée</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 138x138px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image mobile</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x260px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Copyright</label>
@@ -29,12 +32,11 @@
     </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
-    </field> 
-    
+    </field>
     <!-- Détails -->
     <field name="intro" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro</label>
-    </field>    
+    </field>
     <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Éligibilité</label>
     </field>
@@ -47,7 +49,6 @@
     <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Quels documents fournir ?</label>
     </field>
-
     <!-- Encadrés -->
     <field name="titreEncartBonASavoir" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre encart "Bon à savoir"</label>
@@ -64,7 +65,6 @@
     <field name="portletEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlet encadrés</label>
     </field>
-
     <!-- Contact -->
     <field name="instructionDelegation" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Instruction délégation</label>
@@ -82,7 +82,7 @@
     </field>
     <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
       <label xml:lang="fr">Qui contacter ?</label>
-    </field>    
+    </field>
     <field name="introContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro contact</label>
     </field>
@@ -98,7 +98,6 @@
     <field name="contactFAQ" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="true">
       <label xml:lang="fr">Contact FAQ</label>
     </field>
-    
     <!-- Demande -->
     <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Documents utiles</label>
@@ -121,11 +120,10 @@
     <field name="introFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Intro faire une demande</label>
     </field>
-
     <!-- Navigation et classement -->
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
-    </field>    
+    </field>
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mise en avant</label>
     </field>
@@ -138,7 +136,6 @@
     <field name="annuaires" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheaide.annuaires.root">
       <label xml:lang="fr">Annuaires</label>
     </field>
-
     <!-- Territoire -->
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
       <label xml:lang="fr">Communes concernées</label>
