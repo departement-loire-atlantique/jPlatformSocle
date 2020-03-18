@@ -194,30 +194,12 @@ public class InfolocaleUtil {
         return date.getDebut().equals(date.getFin());
     }
     
-
     /**
-     * Renvoie un libellé unique depuis une date infolocale, soit le numéro du jour, soit son mois, potentiellement abbrégé
-     * @param date
-     * @param wantsDay
-     * @param wantsMonth
-     * @param abbreviated
-     * @param useDebut
+     * Renvoie la valeur numérique "jour du mois" depuis un string de date infolocale
+     * @param dateStr
      * @return
      */
-    public static String getSingleLabelOfDate(DateInfolocale date, boolean wantsDay, boolean wantsMonth, boolean abbreviated, boolean useDebut) {
-        if (Util.isEmpty(date)) return "";
-        
-        if (wantsDay) {
-            return getDayLabel(useDebut ? date.getDebut() : date.getFin());
-        }
-        if (wantsMonth) {
-            return getMonthLabel(useDebut ? date.getDebut() : date.getFin(), abbreviated);
-        }
-        
-        return "";
-    }
-    
-    private static String getDayLabel(String dateStr) {
+    public static String getDayOfMonthLabel(String dateStr) {
         if (Util.isEmpty(dateStr)) return "";
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         try {
@@ -230,7 +212,13 @@ public class InfolocaleUtil {
         }
     }
     
-    private static String getMonthLabel(String dateStr, boolean abbreviated) {
+    /**
+     * Renvoie le label d'un mois à partir d'un string de date infolocale
+     * @param dateStr
+     * @param abbreviated
+     * @return
+     */
+    public static String getMonthLabel(String dateStr, boolean abbreviated) {
         if (Util.isEmpty(dateStr)) return "";
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         try {
@@ -248,7 +236,12 @@ public class InfolocaleUtil {
         }
     }
     
-    private static String getYearLabel(String dateStr) {
+    /**
+     * Renvoie la valeur numérique de l'année d'un string de date infolocale
+     * @param dateStr
+     * @return
+     */
+    public static String getYearLabel(String dateStr) {
       if (Util.isEmpty(dateStr)) return "";
       SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
       try {
@@ -268,12 +261,12 @@ public class InfolocaleUtil {
      */
     public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
       if (infolocaleDateIsSingleDay(dateEvent)) {
-        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.date", Channel.getChannel().getCurrentUserLang(), 
-            getDayLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
+        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.carrousel.tuile.date", Channel.getChannel().getCurrentUserLang(), 
+            getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
       } else {
-        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.periode", Channel.getChannel().getCurrentUserLang(), 
-            getDayLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
-            getDayLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
+        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.carrousel.tuile.periode", Channel.getChannel().getCurrentUserLang(), 
+            getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
+            getDayOfMonthLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
       }
     }
     
