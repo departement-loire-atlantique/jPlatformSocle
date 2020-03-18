@@ -15,7 +15,7 @@
         <jalios:foreach name="itVideo" type="Video" collection="<%= Arrays.asList(obj.getVideo()) %>">
 	        <div class="ds44-bgGray">
 	          <jalios:if predicate="<%= Util.notEmpty(itVideo.getImagePrincipale()) %>">
-	              <picture><img src="<%= itVideo.getImagePrincipale() %>" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
+	              <picture><img src="<%= SocleUtils.getUrlOfFormattedImagePrincipale(itVideo.getImagePrincipale()) %>" alt="" class="ds44-card__img" /><span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span></picture>
 	          </jalios:if>
 	          <div class="ds44--m-padding">
 	            <p role="heading" aria-level="3"><a href="<%= itVideo.getDisplayUrl(userLocale) %>"><%= itVideo.getTitle() %></a></p>
