@@ -28,7 +28,7 @@ if (Util.notEmpty(itPush.getLienSurContenu())) {
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(url) %>">
                     <p class="mtm">
-                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>">
+                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>" <%= Util.notEmpty(itPush.getLienSurContenu()) ? "target=\"_blank\"" : "" %>>
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>
