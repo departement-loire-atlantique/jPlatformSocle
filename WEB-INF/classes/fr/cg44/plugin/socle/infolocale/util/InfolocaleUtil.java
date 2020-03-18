@@ -165,7 +165,7 @@ public class InfolocaleUtil {
                     continue;
                 }
                 
-                if (value != null && Util.notEmpty(value)) {
+                if (value != null && Util.notEmpty(value) && Util.notEmpty(value.getDebut())) {
                   // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
                   Date currentFoundJavaDate = sdf.parse(value.getDebut());
                   Instant currentFoundInstant = currentFoundJavaDate.toInstant();
