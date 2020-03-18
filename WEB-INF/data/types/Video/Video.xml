@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="Video" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+<type name="Video" superclass="generated.Temoignage" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
   <title ml="false">
     <label xml:lang="fr">Titre</label>
   </title>
