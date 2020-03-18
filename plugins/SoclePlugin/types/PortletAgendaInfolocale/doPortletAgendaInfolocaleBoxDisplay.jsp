@@ -105,7 +105,8 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                                         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i>
                                         <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span></p>
                                         </jalios:if>
-                                        <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
+                                        <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
+                                        <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
                                     </div>
                                 </div>
                             </section>
