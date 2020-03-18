@@ -10,7 +10,7 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
 %>
 
 <jalios:if predicate="<%=Util.notEmpty(obj.getContenus())%>">
-	<section class="ds44-box mts <%=styleFond%>">
+	<section class="ds44-box mtm <%=styleFond%>">
 	  <div class="ds44-innerBoxContainer">
 	    <jalios:if predicate="<%=Util.notEmpty(obj.getLibelleTitre(userLang)) %>">
 	        <p role="heading" aria-level="2" class="ds44-box-heading"><%=obj.getLibelleTitre(userLang) %></p>
