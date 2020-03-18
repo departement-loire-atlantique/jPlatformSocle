@@ -121,7 +121,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
 	                <%-- TODO : affichage du fichier de transcript de la vidéo --%>
 	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-	                   <a href="<%=fichierTranscript%>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
+                        <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
 	                </jalios:if>
 	            </div>
 	        </div>
