@@ -33,7 +33,7 @@
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="Le chemin du fichier image mobile"
+    description="L'URL de la vidéo"
 %>
 <%@ attribute name="fichierTranscript"
     required="false"
@@ -47,7 +47,7 @@
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="L'URL de la vidéo"
+    description="Texte alternatif de l'image"
 %>
 <%@ attribute name="legend"
     required="false"
