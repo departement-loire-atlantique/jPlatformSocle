@@ -8,7 +8,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +24,8 @@ import generated.EvenementInfolocale;
 public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
+    
+    private static String dateInfolocalePattern = "yyyy-MM-dd";
     
     private InfolocaleUtil() {}
     
@@ -112,7 +113,7 @@ public class InfolocaleUtil {
         // Utilisation de la classe Instant ajoutée dans Java 8
         Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         
         for (String itDateString : datesString) {
             try {
@@ -147,7 +148,7 @@ public class InfolocaleUtil {
         Calendar cal = Calendar.getInstance();
         Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         
         for (DateInfolocale itDate : allDates) {
             try {
@@ -162,6 +163,10 @@ public class InfolocaleUtil {
                 if (Util.isEmpty(value) && (instantNow.equals(itInstant) || instantNow.isBefore(itInstant))) {
                     value = itDate;
                     continue;
+                }
+                
+                if (Util.isEmpty(value)) {
+                  continue;
                 }
                 
                 // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
@@ -213,7 +218,7 @@ public class InfolocaleUtil {
     
     private static String getDayLabel(String dateStr) {
         if (Util.isEmpty(dateStr)) return "";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         try {
             Calendar cal = Calendar.getInstance();
             cal.setTime(sdf.parse(dateStr));
@@ -226,7 +231,7 @@ public class InfolocaleUtil {
     
     private static String getMonthLabel(String dateStr, boolean abbreviated) {
         if (Util.isEmpty(dateStr)) return "";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
         try {
             Calendar cal = Calendar.getInstance();
             cal.setTime(sdf.parse(dateStr));
@@ -244,7 +249,7 @@ public class InfolocaleUtil {
     
     private static String getYearLabel(String dateStr) {
       if (Util.isEmpty(dateStr)) return "";
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+      SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
       try {
           Calendar cal = Calendar.getInstance();
           cal.setTime(sdf.parse(dateStr));
