@@ -1,4 +1,4 @@
- <!-- Bon � savoir -->
+ <!-- Bon à savoir -->
 <jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartBonASavoir()) && Util.notEmpty(obj.getBonASavoir()) %>">
     <section class="ds44-box ds44-theme ds44-mb3">
         <div class="ds44-innerBoxContainer">
@@ -8,7 +8,7 @@
     </section>
 </jalios:if>              
 
-<!-- T�moignages -->
+<!-- Témoignages -->
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
     <p class="h4-like"><%=glp("jcmsplugin.socle.titre.temoignage") %></p>
     <jalios:foreach name="itVideo" type="generated.Temoignage" array="<%= obj.getVideo() %>">
@@ -18,7 +18,7 @@
 
 
 
-<!-- Potlet encadrés -->
+<!-- Potlet encadrÃ©s -->
 <jalios:if predicate="<%= Util.notEmpty(obj.getPortletEncadres()) %>">
 	<jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
 	    <jalios:include pub="<%= itPortlet %>" />

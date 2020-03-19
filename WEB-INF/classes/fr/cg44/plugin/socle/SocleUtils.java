@@ -28,6 +28,7 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
@@ -577,5 +578,62 @@ public final class SocleUtils {
 		}
 		return jsonArray;
 	}
+	
+	/**
+	 * Génère une image principale formattée et renvoie son path
+	 * @param imagePath
+	 * @return
+	 */
+	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0)); 
+  }
+	
+	/**
+   * Génère une image bandeau formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageBandeau(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0)); 
+  }
+  
+  /**
+   * Génère une image mobile formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMobile(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0)); 
+  }
+  
+  /**
+   * Génère une image carrée formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCarree(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carree.height", 0)); 
+  }
+  
+  /**
+   * Génère une image push formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImagePush(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.push.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.push.height", 0)); 
+  }
+  
+  /**
+   * Génère une image formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String generateVignette(String imagePath, int width, int height) {
+    if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
+      ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
+    }
+    return "";
+  }
 	
 }
