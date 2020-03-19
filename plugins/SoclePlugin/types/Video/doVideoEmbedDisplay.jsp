@@ -13,9 +13,15 @@
 <%
 String uniqueIDiframe = UUID.randomUUID().toString();
 String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
+String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFichierTranscript().getDownloadUrl() : "";
 
 %>
-<iframe id="<%=uniqueIDiframe%>" width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+<div class="ds44-negativeOffset-2 ds44-mtb3">
+    <iframe id="<%=uniqueIDiframe%>" width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
+        <a href="<%=fichierTranscript%>" target="blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript") %></a>
+    </jalios:if>
+</div>
 
 <jalios:if predicate="<%=Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
     <%

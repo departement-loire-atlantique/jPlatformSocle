@@ -77,6 +77,11 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
+String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
+String formattedMobilePath = "";
+if (Util.notEmpty(mobileImagePath)) {
+  formattedMobilePath = getUrlOfFormattedImageMobile(mobileImagePath);
+}
 %>
 
 <section class="ds44-container-large">
@@ -84,11 +89,11 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
     <div class="ds44-pageHeaderContainer ds44-pageHeaderContainer--deuxCol">
         <div class="ds44-pageHeaderContainer__left">
             <picture class="ds44-pageHeaderContainer__pictureContainer">
-                <jalios:if predicate="<%= Util.notEmpty(imagePath) %>">
-                    <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
+                <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
+                    <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
                 </jalios:if>
-                <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-                <img src="<%=imagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+                <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+                <img src="<%=formattedImagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
             </picture>
             <jalios:if predicate="<%= hasFigcaption%>">
                 <figcaption class="ds44-imgCaption">

@@ -1,9 +1,11 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file="/jcore/doInitPage.jspf" %>
 <%@ include file="/jcore/portal/doPortletParams.jspf" %>
 <% PortletPush box = (PortletPush) portlet; %>
 <%
 if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à afficher
 %>
+<div class="ds44-container-large">
     <jalios:select>
         <jalios:if predicate='<%= channel.getProperty("jcmsplugin.socle.horizontal.value").equals(box.getAffichage()) || box.getListeDeContenusPush().length == 1 %>'>
             <%-- Affichage horizontal sur toutes les tuiles --%>
@@ -69,3 +71,4 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
             </div>
         </jalios:default>
     </jalios:select>
+</div>
