@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="EvenementInfolocale" superclass="fr.cg44.plugin.socle.infolocale.EvenementContent" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Evenement Infolocale</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="evenementId" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">ID événement</label>
+    </field>
+    <field name="organismeId" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">ID organisme</label>
+    </field>
+    <field name="organismeNom" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom organisme</label>
+    </field>
+    <field name="titreSlug" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SLUG</label>
+    </field>
+    <field name="description" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="dateCreation" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date de création</label>
+    </field>
+    <field name="dateModification" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date de modification</label>
+    </field>
+    <field name="tarif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Tarif</label>
+    </field>
+    <field name="dateString" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé des dates</label>
+    </field>
+    <field name="reservation" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Réservation</label>
+    </field>
+    <field name="provider" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Provider</label>
+    </field>
+    <field name="ageMinimum" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Age minimum</label>
+    </field>
+    <field name="ageMaximum" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Age maximum</label>
+    </field>
+    <field name="duree" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Durée</label>
+    </field>
+    <field name="mentionEvenementComplet" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention événement complet</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="mentionAccessibleHandicapAuditif" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention Accessible Handicap Auditif</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="mentionAccessibleHandicapVisuel" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention Accessible Handicap Visuel</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="mentionAccessibleHandicapMental" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention Accessible Handicap Mental</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="mentionAccessibleHandicapMoteur" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention Accessible Handicap Moteur</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="urlAnnonce" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">URL annonce</label>
+    </field>
+    <field name="urlOrganisme" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">URL organisme</label>
+    </field>
+  </fields>
+</type>
+

@@ -24,6 +24,14 @@ jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
+jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
+
+# ------------------------------------------------------------
+#  Sectorisation
+# ------------------------------------------------------------
+jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation par commune
+jcmsplugin.socle.sectorisation.point.url: Url de la sectorisation par point
+jcmsplugin.socle.sectorisation.rectangle.url: Url de la sectorisation par rectangle
 
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
@@ -61,6 +69,7 @@ jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
+jcmsplugin.socle.pageVideo: Page comportant de la vidéo
 jcmsplugin.socle.tout-cocher: Tout cocher
 jcmsplugin.socle.tout-decocher: Tout décocher
 jcmsplugin.socle.tooltip: Aide : {0}
@@ -198,6 +207,8 @@ jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
 jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
 jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
 
+jcmsplugin.socle.video.telecharger-transcript: Télécharger le fichier de transcription
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
@@ -212,6 +223,16 @@ wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions san
 jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
 jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
 
+# -----------------------------------------------------------
+#  Infolocale
+# ------------------------------------------------------------
+jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
+jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
+jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
+jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
+jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
+jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.duree: jour(s)
 # ------------------------------------------------------------
 #  Abonnement newsletter
 # ------------------------------------------------------------

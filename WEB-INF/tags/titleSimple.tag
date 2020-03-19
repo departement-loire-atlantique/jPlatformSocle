@@ -1,3 +1,4 @@
+<%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
 %><%@ tag 
@@ -27,6 +28,20 @@
     rtexprvalue="true"
     type="String"
     description="Le chemin du fichier image mobile"
+%>
+<%@ attribute name="urlVideo"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="L'URL de la vidéo"
+%>
+<%@ attribute name="fichierTranscript"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le chemin du fichier de transcription"
 %>
 <%@ attribute name="alt"
     required="false"
@@ -99,31 +114,54 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	    </div>
     </div>
 </div>
-<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-<% if (Util.isEmpty(mobileImagePath)) { mobileImagePath = ThumbnailTag.buildThumbnail(imagePath, 480, 480, imagePath); } %>
-    <div class="ds44-img50">
-        <div class="ds44-inner-container">
-            <div class="ds44-grid12-offset-1">
-                <jalios:if predicate="<%= hasFigcaption%>">
-                    <figure role="figure">
-                </jalios:if>
-	            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
-			        <source media="(max-width: 36em)" srcset="<%=mobileImagePath%>">
-			        <source media="(min-width: 36em)" srcset="<%=imagePath%>">
-			        <img src="<%=imagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
-                </picture>
-                <jalios:if predicate="<%= hasFigcaption%>">
-                    <figcaption class="ds44-imgCaption">
-                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-                            <%=legend%>
-                        </jalios:if>
-                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-                            © <%=copyright%>
-                        </jalios:if>
-                    </figcaption>
-                  </figure>
-                </jalios:if>
-			</div>
-        </div>
-    </div>
-</jalios:if>
+<jalios:select>
+	<jalios:if predicate="<%=Util.notEmpty(urlVideo)%>">
+	    <div class="ds44-img50">
+	        <div class="ds44-inner-container">
+	            <div class="ds44-grid12-offset-1">
+	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+	                <%-- TODO : affichage du fichier de transcript de la vidéo --%>
+	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
+                        <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
+	                </jalios:if>
+	            </div>
+	        </div>
+	    </div>
+	</jalios:if>
+	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
+	<% 
+	String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
+	String formattedMobilePath = "";
+	if (Util.notEmpty(mobileImagePath)) {
+	  formattedMobilePath = getUrlOfFormattedImageMobile(mobileImagePath);
+	}
+	%>
+	    <div class="ds44-img50">
+	        <div class="ds44-inner-container">
+	            <div class="ds44-grid12-offset-1">
+	                <jalios:if predicate="<%= hasFigcaption%>">
+	                    <figure role="figure">
+	                </jalios:if>
+		            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
+				        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
+				            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
+				        </jalios:if>
+				        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+				        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
+	                </picture>
+	                <jalios:if predicate="<%= hasFigcaption%>">
+	                    <figcaption class="ds44-imgCaption">
+	                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+	                            <%=legend%>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+	                            © <%=copyright%>
+	                        </jalios:if>
+	                    </figcaption>
+	                  </figure>
+	                </jalios:if>
+				</div>
+	        </div>
+	    </div>
+	</jalios:if>
+</jalios:select>

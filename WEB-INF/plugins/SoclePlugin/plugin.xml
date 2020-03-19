@@ -26,6 +26,7 @@
     <type name="Directory"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
+    <type name="EvenementInfolocale"></type>
     <type name="FaqAccueil"></type>
     <type name="FicheActionEducative"></type>
     <type name="FicheActu"></type>
@@ -34,12 +35,14 @@
     <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
+    <type name="ListeDeContenus"></type>
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
     <type name="News"></type>
+    <type name="PageCarrefour"></type>
     <type name="Place"></type>
-    <type name="PortletCarousel"></type>
     <type name="PortletAgendaInfolocale"></type>
+    <type name="PortletCarousel"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -49,14 +52,15 @@
     <type name="PortletFacetteDelegation"></type>
     <type name="PortletFacetteMotcle"></type>
     <type name="PortletFacetteTitre"></type>
+    <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
     <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
+    <type name="Temoignage"></type>
     <type name="Video"></type>
-    <type name="PageCarrefour"></type>
     
     
     <!-- Types de contenus -->    
@@ -151,7 +155,18 @@
         <template name="default" file="doPageCarrefourFullDisplay.jsp" usage='full'>
             <label xml:lang="fr">DS44 : gabarit Spécifique</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="ListeDeContenus">
+        <template name="default" file="doListeDeContenusFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">Gabarit full</label>
+        </template>
+        <template name="default" file="doListeDeContenusDocuments.jsp" usage="listeDocs">
+            <label xml:lang="fr">Gabarit de liste de documents</label>
+        </template>
+        <template name="default" file="doListeDeContenusContacts.jsp" usage="listeContacts">
+            <label xml:lang="fr">Gabarit de liste de contacts (fiche lieu)</label>
+        </template>
+    </templates>        
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -210,6 +225,14 @@
     <templates type="PortletFacetteTitre">
         <template name="default" file="doPortletFacetteTitreBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletMiseEnAvantDeContenus">
+        <template name="default" file="doPortletMiseEnAvantDeContenusBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+        <template name="tuiles1col" file="doPortletMiseEnAvantDeContenusBoxOneColumn.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
         </template>
     </templates>
     <templates type="PortletNavigate">

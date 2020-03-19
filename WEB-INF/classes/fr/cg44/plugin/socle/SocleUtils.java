@@ -2,14 +2,21 @@ package fr.cg44.plugin.socle;
 
 import static com.jalios.jcms.Channel.getChannel;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -21,11 +28,14 @@ import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
+import generated.Delegation;
+import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
 import generated.PortletFacetteCommune;
@@ -33,6 +43,8 @@ import generated.PortletFacetteCommuneAdresseLiee;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
+	
+	private static final Logger LOGGER = Logger.getLogger(SocleUtils.class);
 	
 	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
 	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
@@ -115,6 +127,124 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
+	
+	/**
+     * G�n�re un string � partir du contenu d'un InputStream
+     * @param is
+     * @return
+     */
+    public static String convertStreamToString(InputStream is) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+        } catch (IOException e) {
+            LOGGER.error("Erreur dans convertStreamToString : " + e.getMessage());
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                LOGGER.error("Erreur dans convertStreamToString : " + e.getMessage());
+            }
+        }
+        
+        return sb.toString();
+    }
+	
+	/**
+	 * Génère un string de paramètres GET à intégrer dans l'URL de requêtes
+	 * @param params
+	 * @return
+	 */
+	public static String buildGetParams(Map<String, Object> params) {
+	    if (Util.isEmpty(params)) return "";
+	    
+	    StringBuilder urlParams = new StringBuilder();
+	    
+	    urlParams.append("?");
+	    
+	    for (Iterator<String> iter = params.keySet().iterator(); iter.hasNext();) {
+	        String key = iter.next();
+	        String value = params.get(key).toString();
+	        urlParams.append(key + "=" + value);
+	        if (iter.hasNext()) urlParams.append("&");
+	    }
+	    
+	    return urlParams.toString();
+	}
+	
+	/**
+	 * Récupère une liste de codes Insee sous le format insee_1,insee_2,insee_3
+	 * @param box
+	 * @param loggedMember
+	 * @return
+	 */
+	public static String getCodesInseeFromPortletAgenda(PortletAgendaInfolocale box, Member loggedMember) {
+	    StringBuilder codesInsee = new StringBuilder();
+	    
+	    // récupération des Insee des délégations
+	    if (Util.notEmpty(box.getDelegations())) {
+	        for (Delegation itDeleg : box.getDelegations()) {
+	            TreeSet<City> allCities = itDeleg.getLinkIndexedDataSet(City.class);
+	            for (City itCommune : allCities) {
+	                codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	            }
+	        }
+	    }
+	    
+	    // récupération des Insee des communes
+	    if (Util.notEmpty(box.getCommunes())) {
+	        TreeSet<City> allCities = new TreeSet<>(Arrays.asList(box.getCommunes()));
+            for (City itCommune : allCities) {
+	            codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	        }
+	    }
+	    
+	    // Récupération des Insee des EPCIs
+	    if (Util.notEmpty(box.getEpci(loggedMember))) {
+	        QueryHandler qh = new QueryHandler();
+	        qh.setCids(JcmsUtil.dataListToString(box.getEpci(loggedMember), ","));
+	        qh.setLoggedMember(loggedMember);
+	        qh.setTypes("City");
+	        QueryResultSet result = qh.getResultSet();
+	        SortedSet<Publication> listPubs = result.getAsSortedSet();
+	        for (Publication itPub : listPubs) {
+	            City itCommune = (City) itPub;
+	            codesInsee = appendInseeFromCommune(codesInsee, itCommune);
+	        }
+	    }
+	    
+	    return Util.isEmpty(codesInsee.toString()) ? "" : codesInsee.toString().substring(0, codesInsee.toString().lastIndexOf(','));
+	}
+
+	/**
+	 * Concatène à un StringBuilder le code Insee d'une commune
+	 * @param codesInsee
+	 * @param itCommune
+	 * @return
+	 */
+    public static StringBuilder appendInseeFromCommune(StringBuilder codesInsee, City itCommune) {
+
+        // Le code doit être supérieur à 0 (valeur vide)
+        if (itCommune.getCityCode() <= 0) return codesInsee;
+        
+        // Il ne doit pas y avoir de doublon
+        if (codesInsee.toString().contains(Integer.toString(itCommune.getCityCode()))) return codesInsee;
+        
+        // Le code INSEE doit appartenir au département 44
+        if (!Integer.toString(itCommune.getCityCode()).startsWith("44")) return codesInsee;
+        
+        StringBuilder codeInseeClone = codesInsee;
+        
+        codeInseeClone.append(itCommune.getCityCode());
+        codeInseeClone.append(",");
+        
+        return codeInseeClone;
+    }
 
 	/**
 	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
@@ -448,5 +578,62 @@ public final class SocleUtils {
 		}
 		return jsonArray;
 	}
+	
+	/**
+	 * Génère une image principale formattée et renvoie son path
+	 * @param imagePath
+	 * @return
+	 */
+	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0)); 
+  }
+	
+	/**
+   * Génère une image bandeau formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageBandeau(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0)); 
+  }
+  
+  /**
+   * Génère une image mobile formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMobile(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0)); 
+  }
+  
+  /**
+   * Génère une image carrée formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCarree(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carree.height", 0)); 
+  }
+  
+  /**
+   * Génère une image push formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImagePush(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.push.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.push.height", 0)); 
+  }
+  
+  /**
+   * Génère une image formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String generateVignette(String imagePath, int width, int height) {
+    if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
+      ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
+    }
+    return "";
+  }
 	
 }

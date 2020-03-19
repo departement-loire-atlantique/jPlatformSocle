@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ListeDeContenus" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">ListeDeContenus</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="libelleTitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre de la liste</label>
+    </field>
+    <field name="contenus" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.Content[]" descriptionType="text">
+      <label xml:lang="fr">Contenus</label>
+      <description xml:lang="fr">Choisir des contenus de même type (ex : que des documents ou que des fiches lieu)</description>
+    </field>
+    <field name="styleDeFond" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="none|ds44-bgGray|ds44-theme" ml="false" descriptionType="tooltip" labelList="Aucun|Gris|Vert" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Style de fond</label>
+    </field>
+  </fields>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>  
+  <tabs>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>  
+</type>
+
