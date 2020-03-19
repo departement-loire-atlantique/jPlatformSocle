@@ -132,6 +132,7 @@ extra.Category.plugin.tools.sitemap.boolean: true
 extra.Category.plugin.tools.result.title:
 extra.Category.plugin.tools.blank.boolean: false
 extra.Category.plugin.tools.synonyme.facet.title:
+extra.Category.plugin.tools.tooltip.boolean: false
 
 # Content Unified Insert UI
 unified-insert.items.content.jsp: plugins/SoclePlugin/jsp/insertionUnifiee/unifiedInsertContent.jsp
