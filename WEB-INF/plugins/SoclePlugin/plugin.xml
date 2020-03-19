@@ -39,6 +39,7 @@
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
     <type name="News"></type>
+    <type name="PageCarrefour"></type>
     <type name="Place"></type>
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
@@ -58,8 +59,8 @@
     <type name="SAAD"></type>
     <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
+    <type name="Temoignage"></type>
     <type name="Video"></type>
-    <type name="PageCarrefour"></type>
     
     
     <!-- Types de contenus -->    
