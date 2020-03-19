@@ -324,6 +324,8 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
+    <file path="WEB-INF/tags/facetteCategorie.tag" />
+    <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/phone.tag" />

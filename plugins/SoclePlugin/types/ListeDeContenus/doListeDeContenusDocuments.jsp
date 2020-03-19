@@ -25,10 +25,7 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
 		                String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale,false);
 		              %>
 		                <li class="mts">
-		                    <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-		                        <a href="<%=itDoc.getDownloadUrl()%>" title='<%=title%> - <%=fileType%> - <%= fileSize%> <%=glp("jcmsplugin.socle.accessibily.newTabLabel")%>' target="_blank"><%=title%></a>
-		                        <span class="ds44-cardFile"><%=fileType%> - <%=fileSize%></span>
-		                    </p>
+		                  <jalios:include pub="<%= itDoc %>" usage="embed"/>
 		                </li>
 		            </jalios:if>
 		       </jalios:foreach>

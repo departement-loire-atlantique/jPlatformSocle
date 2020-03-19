@@ -6,6 +6,7 @@ if (Util.notEmpty(itPush.getLienSurContenu())) {
   url = itPush.getLien();
 }
 
+boolean useTarget = Util.notEmpty(itPush.getLien()) && Util.isEmpty(itPush.getLienSurContenu());
 String urlImageDesktop = SocleUtils.getUrlOfFormattedImagePush(itPush.getImageDesktop());
 String urlImageMobile = SocleUtils.getUrlOfFormattedImagePush(itPush.getImageMobile());
 %>
@@ -31,7 +32,7 @@ String urlImageMobile = SocleUtils.getUrlOfFormattedImagePush(itPush.getImageMob
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(url) %>">
                     <p class="mtm">
-                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>">
+                        <a class="ds44-btnStd" type="button" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>" <%= useTarget ? "target=\"_blank\"" : "" %>>
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>
