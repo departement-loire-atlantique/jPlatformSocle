@@ -626,5 +626,17 @@ public final class SocleUtils {
     }
     return "";
   }
+  
+  /**
+   * Génère une image push formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImagePush(String imagePath) {
+    if (Util.notEmpty(imagePath)) {
+      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.push.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.push.height", 0), imagePath); 
+    }
+    return "";
+  }
 	
 }
