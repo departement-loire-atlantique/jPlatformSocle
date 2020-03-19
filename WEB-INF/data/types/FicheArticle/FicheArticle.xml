@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="FicheArticle" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+<type name="FicheArticle" superclass="generated.Temoignage" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
   <label xml:lang="fr">Fiche article</label>
   <title ml="true">
     <label xml:lang="en">Title</label>
