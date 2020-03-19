@@ -23,17 +23,12 @@ try {
   sousTitre = (String) obj.getFieldValue("soustitreTemoignage");
 } catch(Exception e) {}
 
-// On récupère l'image dispo et on génère une vignette à la bonne taille.
 try {
-  urlImage = (String) obj.getFieldValue("imageMobile");
+  urlImage = (String) obj.getFieldValue("imagePrincipale");
 } catch(Exception e) {}
-if(Util.isEmpty(urlImage)){
-  try {
-    urlImage = (String) obj.getFieldValue("imagePrincipale");
-    } catch(Exception e) {}
-}
+
 if (Util.notEmpty(urlImage)) {
-  urlImage = ThumbnailTag.buildThumbnail(urlImage, 373, 221, urlImage);
+  urlImage = ThumbnailTag.buildThumbnail(urlImage, 460, 306, urlImage);
 }
 else{
   urlImage = "s.gif";
@@ -47,7 +42,7 @@ if(isVideo){
   titleLien += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.pageVideo");
 }
 %>
-<section class="ds44-box">
+<section class="ds44-box mtm">
     <div class="ds44-bgGray">
         <div class="ds44-posRel">
             <img src="<%=urlImage %>" alt="" class="ds44-box__img" />
