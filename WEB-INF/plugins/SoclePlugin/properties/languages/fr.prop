@@ -119,6 +119,8 @@ jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
 jcmsplugin.socle.ficheaide.nodoc.label: Aucun document disponible
 jcmsplugin.socle.ficheaide.suivre.label: Suivre une demande en cours
 jcmsplugin.socle.ficheaide.duree.label: Durée :
+jcmsplugin.socle.ficheaide.fermerboitedialogue.label: Fermer la boite de dialogue : {0}
+jcmsplugin.socle.ficheaide.adresseenvoiedossier.label: Adresse d'envoi du dossier :
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?

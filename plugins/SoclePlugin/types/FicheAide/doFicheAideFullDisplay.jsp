@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
-%><%@ include file='/jcore/doInitPage.jspf' %><%
+%><%@ include file='/jcore/doInitPage.jspf' %>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%><%
 %><% FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
 String imageFile = obj.getImageBandeau() ;
 String imageMobileFile = obj.getImageMobile();
@@ -27,6 +28,7 @@ boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
 
 boolean displayFaireDemande = Util.notEmpty(obj.getIntroFaireUneDemande())
         || Util.notEmpty(obj.getEdemarche(loggedMember))
+        || Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getDocumentsUtiles())
         || Util.notEmpty(obj.getDureeEdemarche());
 
@@ -238,68 +240,164 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 </main>
 
 <jalios:if predicate="<%= displayFaireDemande %>">
-<div class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
-    <div class="ds44-modal-box">
-        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
-        		aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.demande.faire-demande") %>' 
-        		data-js="ds44-modal-action-close">
-        	<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
-        	<span class="ds44-btnInnerText--bottom">Fermer</span>
-        </button>
+	<section class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-faire-demande">
+	    <div class="ds44-modal-box">
+	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
+	        		aria-label='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.faire-demande")) %>' 
+	        		data-js="ds44-modal-action-close">
+	        	<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
+	        	<span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+	        </button>
+	
+	        <h1 class="h2-like" id="titre-modale-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h1>
+	
+	        <div class="ds44-modal-gab">
+	
+	            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
+	
+	            <div class="ds44-mt3 grid-12-small-1">
+	                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) ? "6" : "12" %> ds44-modal-column'>
+	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
+	
+	                    <jalios:select>
+	                        <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
+	                            <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %></p>
+	                        </jalios:if>
+	                        <jalios:default>
+	                            <ul class="ds44-list">
+	                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
+	                                    <li class="mts">
+	                                        <% 
+		                                        // Récupérer l'extension du fichier
+		                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+		                                        // Récupérer la taille du fichier
+		                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+	                                        %>
+	                                        <p class="ds44-docListElem">
+	                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
+	                                        	<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
+	                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= titleModalFaireDemande %>'>
+	                                        		<%= itDoc.getTitle() %>
+	                                        	</a>
+	                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
+	                                        </p>
+	                                    </li>
+	                                </jalios:foreach>
+	                            </ul>
+	                        </jalios:default>
+	                    </jalios:select>
+	
+	                </div>
+	                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+	                    <div class="col-6 ds44-modal-column">
+	
+	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
+	
+	                        <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
+	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'
+	                        		target="_blank">
+	                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span>
+	                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
+	                        </a></p>
+	                        <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
+	                    </div>
+	                </jalios:if>
+	                <jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getQuiContacter()) %>">
+	                    <div class="col-6 ds44-modal-column">
+	                    
+							<h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
+							
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+								
+								<p class="ds44-docListElem mts">
+									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+									<strong><%= itFicheLieu.getTitle() %></strong>
+								</p>
+								
+								<%
+									String communeEcrire = Util.notEmpty(itFicheLieu.getCommune2()) ? itFicheLieu.getCommune2().getTitle() : "";
+									String adresseEcrire = SocleUtils.formatAddress(itFicheLieu.getLibelleAutreAdresse(),
+											itFicheLieu.getEtageCouloirEscalier2(), itFicheLieu.getEntreeBatimentImmeuble2(), itFicheLieu.getNdeVoie2(),
+											itFicheLieu.getLibelleDeVoie2(), itFicheLieu.getLieudit2(), itFicheLieu.getCs2(), itFicheLieu.getCodePostal2(), communeEcrire,
+											itFicheLieu.getCedex2());
+								%>
+								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
+									<p class="ds44-docListElem mts">
+										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+										<%= adresseEcrire %>
+									</p>
+								</jalios:if>
+								
+								<jalios:if predicate='<%= Util.notEmpty(itFicheLieu.getTelephone()) %>'>
+									<div class="ds44-docListElem mts">
+										<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 
-        <h1 class="h2-like" id="titre-faire-demande"><%= glp("jcmsplugin.socle.demande.faire-demande") %></h1>
+										<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
+											<% String numTel = itFicheLieu.getTelephone()[0]; %>
+											<ds:phone number="<%= numTel %>"/>
+										</jalios:if>
 
-        <div class="ds44-modal-gab">
+										<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
+											<ul class="ds44-list">
+												<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
+													<li>
+														<ds:phone number="<%= numTel %>"/>
+													</li>
+												</jalios:foreach>
+											</ul>
+										</jalios:if>
 
-            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
-
-            <div class="ds44-mt3 grid-12-small-1">
-                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) ? "6" : "12" %> ds44-modal-column'>
-                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
-
-                    <jalios:select>
-                        <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
-                            <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %>
-                        </jalios:if>
-                        <jalios:default>
-                            <ul class="ds44-list">
-                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-                                    <li class="mtm">
-                                        <% 
-                                        // Récupérer l'extension du fichier
-                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-                                        // Récupérer la taille du fichier
-                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-                                        %>
-                                        <p class="ds44-docListElem">
-                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-                                        	<a href="<%= itDoc.getDownloadUrl() %>"><%= itDoc.getTitle() %></a>
-                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
-                                        </p>
-                                    </li>
-                                </jalios:foreach>
-                            </ul>
-                        </jalios:default>
-                    </jalios:select>
-
-                </div>
-                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-                    <div class="col-6 ds44-modal-column">
-
-                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
-
-                        <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
-                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'>
-                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span>
-                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-                        </a></p>
-                        <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
-                    </div>
-                </jalios:if>
-            </div>
-        </div>
-    </div>  
-</div>
+									</div>
+								</jalios:if>
+								
+								<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getEmail())%>'>
+									<div class="ds44-docListElem mts">
+										<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+										<% 
+											StringBuffer sbfAriaLabelMail = new StringBuffer();
+											sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
+												.append(" ")
+												.append(itFicheLieu.getTitle())
+												.append(" ")
+												.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
+												.append(" : ");
+											String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
+										%>
+	
+										<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
+											<% String email = itFicheLieu.getEmail()[0]; %>
+											<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+												<%
+													StringBuffer sbfLabelMail = new StringBuffer();
+													sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
+														.append(" ")
+														.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
+												%>
+												<%=  sbfLabelMail.toString()  %>
+											</a>
+										</jalios:if>
+	
+										<jalios:if predicate='<%= itFicheLieu.getEmail().length > 1 %>'>
+											<ul class="ds44-list">
+												<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
+													<li>
+														<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+															<%= email %>
+														</a>
+													</li>
+												</jalios:foreach>
+											</ul>
+										</jalios:if>
+	
+									</div>
+								</jalios:if>
+							</jalios:foreach>
+						</div>
+	                </jalios:if>
+	            </div>
+	        </div>
+	    </div>  
+	</section>
 </jalios:if>
 
 <jalios:if predicate="<%= displaySuivreDemande %>">
