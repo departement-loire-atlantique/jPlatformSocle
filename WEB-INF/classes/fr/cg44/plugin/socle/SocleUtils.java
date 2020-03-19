@@ -585,10 +585,7 @@ public final class SocleUtils {
 	 * @return
 	 */
 	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
-    if (Util.notEmpty(imagePath)) {
-      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0), imagePath); 
-    }
-    return "";
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0)); 
   }
 	
 	/**
@@ -597,10 +594,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageBandeau(String imagePath) {
-    if (Util.notEmpty(imagePath)) {
-      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0), imagePath); 
-    }
-    return "";
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0)); 
   }
   
   /**
@@ -609,10 +603,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageMobile(String imagePath) {
-    if (Util.notEmpty(imagePath)) {
-      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0), imagePath); 
-    }
-    return "";
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0)); 
   }
   
   /**
@@ -621,10 +612,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarree(String imagePath) {
-    if (Util.notEmpty(imagePath)) {
-      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carree.height", 0), imagePath); 
-    }
-    return "";
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carree.height", 0)); 
   }
   
   /**
@@ -633,8 +621,17 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImagePush(String imagePath) {
-    if (Util.notEmpty(imagePath)) {
-      ThumbnailTag.buildThumbnail(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.push.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.push.height", 0), imagePath); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.push.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.push.height", 0)); 
+  }
+  
+  /**
+   * Génère une image formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String generateVignette(String imagePath, int width, int height) {
+    if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
+      ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
     }
     return "";
   }
