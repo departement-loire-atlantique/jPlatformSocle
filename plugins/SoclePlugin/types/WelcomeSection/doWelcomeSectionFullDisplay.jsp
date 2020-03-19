@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
@@ -12,7 +13,7 @@
         <div class="ds44-pageHeaderContainer">
             <jalios:if predicate="<%= Util.notEmpty(obj.getImage()) %>">
 	            <picture class="ds44-pageHeaderContainer__pictureContainer">
-	                <img src="<%=obj.getImage()%>" alt="" class="ds44-headerImg" />
+	                <img src="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImage())%>" alt="" class="ds44-headerImg" />
 	            </picture>
             </jalios:if>
             <div class="ds44-titleContainer">

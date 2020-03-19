@@ -1,4 +1,5 @@
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ page import="fr.cg44.plugin.socle.VideoUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
@@ -6,17 +7,27 @@
 %><%@ include file='/front/doFullDisplay.jspf' %><%
 %><% 
 
-    // Champs générés
+// Champs générés
 
-    String lblFigure = "";
-    if (Util.notEmpty(obj.getLegende())) lblFigure += obj.getLegende();
-    if (Util.notEmpty(obj.getLegende()) && Util.notEmpty(obj.getCopyright())) lblFigure += " ";
-    if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright();
-
+String lblFigure = "";
+if (Util.notEmpty(obj.getLegende())) lblFigure += obj.getLegende();
+if (Util.notEmpty(obj.getLegende()) && Util.notEmpty(obj.getCopyright())) lblFigure += " ";
+if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright();
+ 
+// Récupération des infos de vidéo pour remplacer l'image, dans le titre.
+ String urlVideo = "";
+ String fichierTranscriptVideo = "";
+ if(Util.notEmpty(obj.getVideoPrincipale())){
+   urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
+   if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
+     fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();
+   }
+ }
 %>
 <main id="content" role="main">
     <article class="ds44-container-large">
-        <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
+        <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>"
+            urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" 
             title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
             copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
             userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>

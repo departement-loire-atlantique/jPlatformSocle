@@ -1,3 +1,4 @@
+<%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
     import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
@@ -33,6 +34,8 @@
     }
     if (Util.isEmpty(urlImage)) {
      urlImage = "s.gif";
+    } else {
+      urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
     }
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

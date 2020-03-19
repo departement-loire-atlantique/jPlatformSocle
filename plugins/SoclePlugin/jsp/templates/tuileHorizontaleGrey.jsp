@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
@@ -27,6 +28,9 @@ String urlImage = "";
        try {
         urlImage = (String) pub.getFieldValue("imageBandeau");
        } catch(Exception e) {}
+   }
+   if (Util.notEmpty(urlImage)) {
+       urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
    }
    
    String urlPub = pub.getDisplayUrl(userLocale);
