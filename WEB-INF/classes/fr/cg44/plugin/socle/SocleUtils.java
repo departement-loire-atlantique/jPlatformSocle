@@ -631,7 +631,7 @@ public final class SocleUtils {
    */
   public static String generateVignette(String imagePath, int width, int height) {
     if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
-      ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
+      return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath);
     }
     return "";
   }
