@@ -43,7 +43,7 @@ if(isVideo){
   titleLien += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.pageVideo");
 }
 %>
-<section class="ds44-box mbm">
+<section class="ds44-box ds44-js-card ds44-card mbm">
     <div class="ds44-bgGray">
         <div class="ds44-posRel">
             <img src="<%=urlImage %>" alt="" class="ds44-box__img" />
