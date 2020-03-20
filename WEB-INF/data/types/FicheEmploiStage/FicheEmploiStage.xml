@@ -57,7 +57,7 @@
     <field name="categorieDemploi" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.emploiStage.emploi.root">
       <label xml:lang="fr">Catégorie d'emploi</label>
     </field>
-    <field name="grade" editor="wysiwyg" required="false" compactDisplay="false" tab="profil_souhaite" type="String[]" searchable="true" rows="10" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="grade" editor="wysiwyg" required="false" compactDisplay="false" tab="profil_souhaite" type="String" searchable="true" rows="10" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Cadre d'emploi</label>
     </field>
     <field name="reserveAgentsColleges" editor="category" required="false" compactDisplay="false" tab="profil_souhaite" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root">
