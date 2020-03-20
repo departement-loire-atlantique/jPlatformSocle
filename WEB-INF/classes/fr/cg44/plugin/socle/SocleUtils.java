@@ -625,13 +625,22 @@ public final class SocleUtils {
   }
   
   /**
+   * Génère une image témoignage formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageTemoignage(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.temoignage.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.temoignage.height", 0)); 
+  }  
+  
+  /**
    * Génère une image formattée et renvoie son path
    * @param imagePath
    * @return
    */
   public static String generateVignette(String imagePath, int width, int height) {
     if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
-      return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath);
+      return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
     }
     return "";
   }

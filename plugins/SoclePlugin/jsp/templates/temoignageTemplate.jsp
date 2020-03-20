@@ -29,7 +29,7 @@ try {
 } catch(Exception e) {}
 
 if (Util.notEmpty(urlImage)) {
-  urlImage = SocleUtils.getUrlOfFormattedImagePrincipale(urlImage);
+  urlImage = SocleUtils.getUrlOfFormattedImageTemoignage(urlImage);
 }
 else{
   urlImage = "s.gif";
