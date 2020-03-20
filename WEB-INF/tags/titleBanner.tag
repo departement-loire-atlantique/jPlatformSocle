@@ -53,7 +53,7 @@
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
-String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
+String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
 String formattedMobilePath = "";
 if (Util.notEmpty(mobileImagePath)) {
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);
