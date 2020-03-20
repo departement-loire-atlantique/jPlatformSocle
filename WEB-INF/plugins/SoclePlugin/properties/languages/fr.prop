@@ -247,3 +247,26 @@ jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux info
 unified-insert.items.content: Contenu intégré
 unified-insert.items.content.longtitle: Un Contenu intégré
 unified-insert.items.content.subtitle: (présenter un contenu au format intégré)
+
+# ------------------------------------------------------------
+#  Fiche emploi / stage
+# ------------------------------------------------------------
+
+jcmsplugin.socle.ficheemploi.label.vosmissions: Vos missions
+jcmsplugin.socle.ficheemploi.label.activites: Activités
+jcmsplugin.socle.ficheemploi.label.competencesattendues: Compétences attendues
+jcmsplugin.socle.ficheemploi.label.conditions: Conditions à remplir
+jcmsplugin.socle.ficheemploi.label.specificites: Spécificités du poste
+jcmsplugin.socle.ficheemploi.label.modalites: Modalités de candidature
+jcmsplugin.socle.ficheemploi.label.reference: Référence : {0}
+jcmsplugin.socle.ficheemploi.label.informations: Informations sur l'offre :
+jcmsplugin.socle.ficheemploi.label.profil: Profil souhaité :
+jcmsplugin.socle.ficheemploi.label.filiere: Filière {0}
+jcmsplugin.socle.ficheemploi.label.grade: Cadre d'emploi : 
+jcmsplugin.socle.ficheemploi.label.reserveagents: Réservé aux agents des collèges
+jcmsplugin.socle.ficheemploi.label.catemploi: Catégorie {0}
+jcmsplugin.socle.ficheemploi.label.repondre: Répondre à cette offre :
+jcmsplugin.socle.ficheemploi.label.datelimite: Date limite : {0}
+jcmsplugin.socle.ficheemploi.label.envoicandidature: Envoyer votre candidature
+jcmsplugin.socle.ficheemploi.label.contacts: Vos contacts
+jcmsplugin.socle.ficheemploi.label.docsutiles: Documents utiles :

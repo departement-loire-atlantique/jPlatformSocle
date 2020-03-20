@@ -8,7 +8,7 @@
     <field name="summary" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="true" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="true" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true">
       <label xml:lang="fr">Illustration principale</label>
     </field>
     <field name="mainIllustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
