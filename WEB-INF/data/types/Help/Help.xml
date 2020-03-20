@@ -5,10 +5,10 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true">
       <label xml:lang="fr">Image principale</label>
     </field>
-    <field name="phoneIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="false" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="phoneIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="false" html="false" checkHtml="true">
       <label xml:lang="fr">Image mobile</label>
     </field>    
     <field name="mainIllustrationCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
