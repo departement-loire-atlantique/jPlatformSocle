@@ -79,7 +79,7 @@
     <field name="managerName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Nom responsable</label>
     </field>
-    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true">
       <label xml:lang="fr">Visuel établissement</label>
     </field>
     <field name="mainIllustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">

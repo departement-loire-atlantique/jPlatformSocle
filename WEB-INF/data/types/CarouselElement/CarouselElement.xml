@@ -9,7 +9,7 @@
       <label xml:lang="en">Abstract</label>
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" dataimage="true">
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" dataimage="true">
       <label xml:lang="fr">Image</label>
     </field>
     <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
