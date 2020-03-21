@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Lien" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Lien</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>  
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Image principale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Image carrée</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 138x138px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="picto" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
+      <label xml:lang="fr">Picto</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Nom de la classe CSS du picto&lt;/p&gt;&lt;/div&gt;</description>
+    </field>      
+    <field name="lienSurContenu" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Lien sur contenu</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Sera prioritaire sur l'autre lien&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false" tab="contenu">
+      <label xml:lang="fr">Lien externe</label>
+    </field>  
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>    
+  </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>  
+</type>
+
