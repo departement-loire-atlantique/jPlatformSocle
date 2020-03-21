@@ -83,6 +83,7 @@ jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.retour: Retour au menu de navigation
+jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
 jcmsplugin.socle.menu.principal1: Menu principal niveau 1
 jcmsplugin.socle.menu.principal2: Menu principal niveau 2
 jcmsplugin.socle.menu.navigation: Menu de navigation
