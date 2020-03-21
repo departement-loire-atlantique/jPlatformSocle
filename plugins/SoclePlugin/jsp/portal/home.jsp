@@ -14,7 +14,15 @@
   String selection = getPortlet(bufferMap,"selection");
 %>
 <%= getPortlet(bufferMap,"header") %>
+
+<main role="main" id="content">
+    
 <%= getPortlet(bufferMap,"selection") %>
+<%= getPortlet(bufferMap,"section") %>
+        
+</main>
+
+
 
 <footer role="contentinfo">
     <%= getPortlet(bufferMap,"footer") %>
