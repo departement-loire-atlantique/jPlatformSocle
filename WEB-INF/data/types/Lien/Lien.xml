@@ -6,8 +6,8 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="lienSurContenu" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="contenu">
-      <label xml:lang="fr">Lien sur contenu</label>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Lien interne</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Sera prioritaire sur l'autre lien&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false" tab="contenu">

@@ -22,17 +22,17 @@ String titleAttr = "";
 */
 if (isLien) {
   Lien itLien = (Lien) pub;
-  if (Util.notEmpty(itLien.getLienSurContenu())) {
-    if (itLien.getLienSurContenu() instanceof FileDocument) {
+  if (Util.notEmpty(itLien.getLienInterne())) {
+    if (itLien.getLienInterne() instanceof FileDocument) {
 		isDoc = true;
-		FileDocument itDoc = (FileDocument) itLien.getLienSurContenu();
+		FileDocument itDoc = (FileDocument) itLien.getLienInterne();
 		fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
 		fileSize = Util.formatFileSize(itDoc.getSize());
 		fileInfos = " - " + fileSize + " - " + fileType;
 		urlPub = itDoc.getDownloadUrl();
 		targetBlank = true;
       }else{
-        urlPub = itLien.getLienSurContenu().getDisplayUrl(userLocale);
+        urlPub = itLien.getLienInterne().getDisplayUrl(userLocale);
       }
   }else if (Util.notEmpty(itLien.getLienExterne())) {
     urlPub = itLien.getLienExterne();
