@@ -85,15 +85,9 @@
     type="Boolean"
     description="Indique si le fil d'ariane doit être affiché"
 %>
-<%@ attribute name="userLang"
-    required="true"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="La valeur de userLang pour la bonne traduction du label"
-%>
 
 <%
+String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 %>

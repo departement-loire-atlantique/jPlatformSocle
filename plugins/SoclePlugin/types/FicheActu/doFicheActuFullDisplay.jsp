@@ -30,7 +30,7 @@ if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol
             urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" 
             title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
             copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
-            userLang="<%= userLang %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
+            alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
         <section class="ds44-contenuArticle">
            <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
            <div class="ds44-inner-container ds44-mtb3">

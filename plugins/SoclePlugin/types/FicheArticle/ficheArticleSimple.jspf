@@ -13,7 +13,7 @@ if(Util.notEmpty(obj.getVideoPrincipale())){
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
     urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
     copyright="<%= obj.getCopyright() %>" 
-    userLang="<%= userLang %>" breadcrumb="true"></ds:titleSimple>
+    breadcrumb="true"></ds:titleSimple>
 
 <section class="ds44-contenuArticle">
 	<jalios:if predicate="<%=Util.notEmpty(obj.getChapo())%>">
