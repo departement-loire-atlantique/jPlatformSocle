@@ -69,6 +69,12 @@
         <template name="default" file="doAccueilAnnuaireAgendaFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
+        <template name="agenda" file="doAccueilAnnuaireAgenda_Agenda.jsp" usage="agenda">
+            <label xml:lang="fr">DS44 : gabarit agenda</label>
+        </template>
+        <template name="annuaire" file="doAccueilAnnuaireAgenda_Annuaire.jsp" usage="annuaire">
+            <label xml:lang="fr">DS44 : gabarit annuaire</label>
+        </template>
     </templates>
     <templates type="AccueilDelegation">
         <template name="default" file="doAccueilDelegationFullDisplay.jsp" usage="full">
