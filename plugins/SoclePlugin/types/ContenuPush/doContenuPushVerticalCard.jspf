@@ -7,21 +7,19 @@ if (Util.notEmpty(itPush.getLienSurContenu())) {
 }
 
 boolean useTarget = Util.notEmpty(itPush.getLien()) && Util.isEmpty(itPush.getLienSurContenu());
-String urlImageDesktop = SocleUtils.getUrlOfFormattedImagePush(itPush.getImageDesktop());
-String urlImageMobile = SocleUtils.getUrlOfFormattedImagePush(itPush.getImageMobile());
 %>
 
 <div class="col-<%= colSize %> colPush">
     <section class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
         <div class="ds44-flex-container ds44-box--push">
-            <jalios:if predicate="<%= Util.notEmpty(urlImageDesktop) || Util.notEmpty(urlImageMobile) %>">
+            <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>">
                 <picture class="ds44-boxPushPic ds44-boxPushPic--horizontalds44-boxPushPic">
-                    <jalios:if predicate="<%= Util.notEmpty(urlImageMobile) %>">
-                        <source media="(max-width: 36em)" srcset="<%=urlImageMobile%>">
+                    <jalios:if predicate="<%= Util.notEmpty(itPush.getImageMobile()) %>">
+                        <source media="(max-width: 36em)" srcset="<%=itPush.getImageMobile()%>">
                     </jalios:if>
-                    <jalios:if predicate="<%= Util.notEmpty(urlImageDesktop) %>">
-                        <source media="(min-width: 36em)" srcset="<%=urlImageDesktop%>">
-                        <img src="<%= urlImageDesktop %>" alt="<%= itPush.getTitle() %>">
+                    <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) %>">
+                        <source media="(min-width: 36em)" srcset="<%=itPush.getImageDesktop()%>">
+                        <img src="<%= itPush.getImageDesktop() %>" alt="<%= itPush.getTitle() %>">
                     </jalios:if>
                 </picture>
             </jalios:if>
