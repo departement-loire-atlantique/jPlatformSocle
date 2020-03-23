@@ -130,9 +130,9 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	</jalios:if>
 	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
 	<% 
-	String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
-	String formattedMobilePath = "";
-	if (Util.notEmpty(mobileImagePath)) {
+	String formattedImagePath = imagePath;
+	String formattedMobilePath = mobileImagePath;
+	if (Util.notEmpty(formattedMobilePath)) {
 	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);
 	}
 	%>
