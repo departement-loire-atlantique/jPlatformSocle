@@ -2,11 +2,6 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%
 ListeDeContenus obj = (ListeDeContenus)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
-String styleFond="";
-
-if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none")) {
-	styleFond = obj.getStyleDeFond();
-}
 %>
 
 <jalios:if predicate="<%=Util.notEmpty(obj.getContenus())%>">

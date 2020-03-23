@@ -1,4 +1,5 @@
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
     import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
@@ -8,6 +9,9 @@
 <%@ attribute name="isUnique" required="true" fragment="false"
     rtexprvalue="true" type="String"
     description="Indique si la tuile est unique"%>
+<%@ attribute name="positionTitre" required="false" fragment="false"
+    rtexprvalue="true" type="String"
+    description="Position du bloc titre par dessus l'image"%>    
 
 <%
 
@@ -59,18 +63,20 @@
     <a href="<%= itPub.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true">
         <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     </a>
-    <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute ds44-blockAbsolute--bl">
-    <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
-    <% if (Util.notEmpty(subTitle)) { %>
-    <p><%= subTitle %></p>
-    <% } %>
-    <% if (Util.notEmpty(location)) { %>
-    <p class="ds44-cardLocalisation">
-        <i class="icon icon-marker" aria-hidden="true"></i>
-        <span class="ds44-iconInnerText"><%= location %></span>
-    </p>
-    <% } %>
-    </div>
+    <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
+	    <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
+		    <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+		    <% if (Util.notEmpty(subTitle)) { %>
+		    <p><%= subTitle %></p>
+		    <% } %>
+		    <% if (Util.notEmpty(location)) { %>
+		    <p class="ds44-cardLocalisation">
+		        <i class="icon icon-marker" aria-hidden="true"></i>
+		        <span class="ds44-iconInnerText"><%= location %></span>
+		    </p>
+		    <% } %>
+	    </div>
+    </jalios:if>
 </div>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
 </div>

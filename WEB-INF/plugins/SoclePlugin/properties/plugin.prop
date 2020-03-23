@@ -52,10 +52,12 @@ jcmsplugin.socle.image.bandeau.width: 1240
 jcmsplugin.socle.image.bandeau.height: 460
 jcmsplugin.socle.image.mobile.width: 300
 jcmsplugin.socle.image.mobile.height: 260
-jcmsplugin.socle.image.carree.width: 138
-jcmsplugin.socle.image.carree.height: 138
+jcmsplugin.socle.image.carree.width: 207
+jcmsplugin.socle.image.carree.height: 207
 jcmsplugin.socle.image.push.width: 200
 jcmsplugin.socle.image.push.height: 300
+jcmsplugin.socle.image.temoignage.width: 460
+jcmsplugin.socle.image.temoignage.height: 307
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -150,13 +152,14 @@ media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templ
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
-
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
-media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
+media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
 # Media template
 media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
-
+media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
