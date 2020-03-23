@@ -5,9 +5,9 @@
 	FaqAccueil obj = (FaqAccueil) request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
 %>
 
-<section class="ds44-container-fluid ds44--xxl-padding-tb">
+<section class="ds44--xxl-padding-b">
 	<header class="txtcenter ds44--xxl-padding-b">
-		<h2 class="h2-like"><%= glp("jcmsplugin.socle.faq.vous-avez-question") %></h2>
+		<h2 class="h2-like center"><%= glp("jcmsplugin.socle.faq.vous-avez-question") %></h2>
 	</header>
 	<div class="ds44-inner-container ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44--xl-padding-lr">
 		<div class="grid-12-small-1">
