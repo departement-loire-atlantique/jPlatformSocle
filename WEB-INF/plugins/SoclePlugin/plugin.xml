@@ -35,6 +35,7 @@
     <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>  
     <type name="Help"></type>
+    <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
@@ -166,7 +167,12 @@
         <template name="default" file="doListeDeContenusContacts.jsp" usage="listeContacts">
             <label xml:lang="fr">Gabarit de liste de contacts (fiche lieu)</label>
         </template>
-    </templates>        
+    </templates>
+    <templates type="Lien">
+        <template name="default" file="doLienFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>  
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -233,7 +239,16 @@
         </template>
         <template name="tuiles1col" file="doPortletMiseEnAvantDeContenusBoxOneColumn.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
+          <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="grille" file="doPortletMiseEnAvantDeContenusBoxGrid.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles en grille</label>
+          <description xml:lang="fr">(ex : "Nos sites et applis")</description>
+        </template>
+        <template name="grandsprojets" file="doPortletMiseEnAvantDeContenusBoxGrandsProjets.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit descrition à gauche / tuiles à droite</label>
+          <description xml:lang="fr">(ex : "Grands projets")</description>
+        </template>  
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
@@ -324,6 +339,8 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
+    <file path="WEB-INF/tags/facetteCategorie.tag" />
+    <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/phone.tag" />

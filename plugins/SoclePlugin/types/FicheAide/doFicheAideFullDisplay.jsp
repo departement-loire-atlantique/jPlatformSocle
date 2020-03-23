@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %>
@@ -449,4 +450,72 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
         </div>
     </div>   
 </div>
+</jalios:if>
+<%--Util.notEmpty(obj.getQuiContacter())
+        || Util.notEmpty(obj.getIntroContact())
+        || Util.notEmpty(obj.getComplementContact())
+        || Util.notEmpty(obj.getBesoinDaide()); --%>
+<jalios:if predicate="<%= displayQuiContacter %>">
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
+    <%-- Instruction délégation est à faux --%>
+    <jalios:if predicate="<%= !obj.getInstructionDelegation() %>">
+    <div class="ds44-modal-box">
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer la boite de dialogue : qui contacter" data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+        <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %> ?</h1>
+        <div class="ds44-modal-gab">
+            <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
+            <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
+            </jalios:if>
+            <div class="ds44-mt3 grid-12-small-1">
+                <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getComplementContact()) %>">
+                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
+	                    <jalios:wysiwyg><%= obj.getComplementContact() %></jalios:wysiwyg>
+	                    <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) %>">
+	                       <hr/>
+	                    </jalios:if>
+	                </jalios:if>
+                    <jalios:foreach name="itLieu" type="FicheLieu" array="<%= obj.getQuiContacter() %>" counter="lieuCounter">
+	                    <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= itLieu.getTitle() %></p>
+	                    <p class="ds44-docListElem">
+	                       <%= SocleUtils.formatAddress(null, itLieu.getEtageCouloirEscalier(), itLieu.getEntreeBatimentImmeuble(), itLieu.getNdeVoie(), itLieu.getLibelleDeVoie(), itLieu.getLieudit(), itLieu.getCs2(), itLieu.getCodePostal(), itLieu.getCommune().getTitle(), itLieu.getCedex2()) %>
+	                    </p>
+	                    <jalios:if predicate="<%= Util.notEmpty(itLieu.getTelephone()) %>">
+	                    <p class="ds44-docListElem mtm"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+	                    <jalios:foreach name="itPhone" type="String" array="<%= itLieu.getTelephone() %>" counter="itCounter">
+	                       <ds:phone number="<%= itPhone %>"/>
+	                       <jalios:if predicate="<%= itCounter < itLieu.getTelephone().length %>">
+	                        - 
+	                       </jalios:if>
+	                    </jalios:foreach>
+	                    </p>
+	                    </jalios:if>
+	                    <jalios:if predicate="<%= Util.notEmpty(itLieu.getEmail()) %>">
+		                    <p class="ds44-docListElem mtm"><i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+		                    <jalios:foreach name="itMail" type="String" array="<%= itLieu.getEmail() %>">
+	                           <a href="mailto:<%= itMail %>" aria-label="Contacter <%= itLieu.getTitle() %> par mail : <%= itMail %>" data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
+	                        </jalios:foreach>
+	                        </p>
+	                    </jalios:if>
+	                    <jalios:if predicate="<%= lieuCounter < obj.getQuiContacter().length %>">
+	                       <hr/>
+	                    </jalios:if>
+                    </jalios:foreach>
+                </div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(obj.getBesoinDaide()) %>">
+	                <div class='col-<%= Util.isEmpty(obj.getQuiContacter()) && Util.isEmpty(obj.getComplementContact()) ? "12" : "6  ds44-modal-column" %>'>
+	                    <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.modal.besoinaide") %></h2>
+	                    <jalios:wysiwyg>
+	                        <%= obj.getBesoinDaide() %>
+	                    </jalios:wysiwyg>
+	                    </p>
+	                </div>
+                </jalios:if>
+            </div>
+        </div>
+    </div>
+    </jalios:if>
+    <%-- Fin instruction délégation à faux --%>
+</section>
 </jalios:if>

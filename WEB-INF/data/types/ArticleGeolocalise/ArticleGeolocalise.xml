@@ -15,7 +15,7 @@
     <field cols="80" compactDisplay="false" editor="wysiwyg" wiki="true" name="content" required="false" rows="20" searchable="true" type="String" ml="false" descriptionType="tooltip" html="false" toolbars="basic,format,style,font,table" checkHtml="true" inline="true">
       <label xml:lang="fr">Contenu</label>
     </field>
-    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true">
       <label xml:lang="fr">Illustration principale</label>
     </field>
     <field name="illustrationCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">

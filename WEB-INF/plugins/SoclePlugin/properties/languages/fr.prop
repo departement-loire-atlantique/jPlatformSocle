@@ -10,6 +10,7 @@ extra.Category.plugin.tools.result.title.help: Titre qui sera affecté au result
 extra.Category.plugin.tools.blank : Ouverture dans un nouvel onglet ?
 extra.Category.plugin.tools.blank.help : Le lien sur cette catégorie (menu...) doit-il s'ouvrir dans un nouvel onglet ?
 extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de la catégorie
+extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
 
 # ------------------------------------------------------------
 #  Propriétés éditables
@@ -69,6 +70,10 @@ jcmsplugin.socle.label.departementPdcv: Le Département est présent près de ch
 jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
 jcmsplugin.socle.pageVideo: Page comportant de la vidéo
+jcmsplugin.socle.tout-cocher: Tout cocher
+jcmsplugin.socle.tout-decocher: Tout décocher
+jcmsplugin.socle.tooltip: Aide : {0}
+jcmsplugin.socle.deplier: Déplier
 
 # ------------------------------------------------------------
 #  Header
@@ -78,6 +83,7 @@ jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.retour: Retour au menu de navigation
+jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
 jcmsplugin.socle.menu.principal1: Menu principal niveau 1
 jcmsplugin.socle.menu.principal2: Menu principal niveau 2
 jcmsplugin.socle.menu.navigation: Menu de navigation
@@ -121,6 +127,8 @@ jcmsplugin.socle.ficheaide.suivre.label: Suivre une demande en cours
 jcmsplugin.socle.ficheaide.duree.label: Durée :
 jcmsplugin.socle.ficheaide.fermerboitedialogue.label: Fermer la boite de dialogue : {0}
 jcmsplugin.socle.ficheaide.adresseenvoiedossier.label: Adresse d'envoi du dossier :
+jcmsplugin.socle.ficheaide.modal.quicontacter: Qui contacter ?
+jcmsplugin.socle.ficheaide.modal.besoinaide: Besoin d'aide ?
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
@@ -196,11 +204,13 @@ jcmsplugin.socle.facette.all-commune.label: Toutes les communes
 jcmsplugin.socle.facette.select-all-commune.label: Sélectionner toutes les communes
 jcmsplugin.socle.facette.autour-moi.label: Autour de moi
 jcmsplugin.socle.facette.select-autour-moi.label: Sélectionner les communes autour de moi
-jcmsplugin.socle.facette.category.hidden-label: Ouvrir le menu de choix : Select multiple large
 jcmsplugin.socle.facette.choisir-adresse.label: Choisir une adresse liée
-jcmsplugin.socle.facette.category-liees.label: Catégories liées
 jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
 jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
+jcmsplugin.socle.facette.cat-lie.theme-principal.label: Nom du thème
+jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
+jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
+jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
 
 jcmsplugin.socle.video.telecharger-transcript: Télécharger le fichier de transcription
 
@@ -242,3 +252,26 @@ jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux info
 unified-insert.items.content: Contenu intégré
 unified-insert.items.content.longtitle: Un Contenu intégré
 unified-insert.items.content.subtitle: (présenter un contenu au format intégré)
+
+# ------------------------------------------------------------
+#  Fiche emploi / stage
+# ------------------------------------------------------------
+
+jcmsplugin.socle.ficheemploi.label.vosmissions: Vos missions
+jcmsplugin.socle.ficheemploi.label.activites: Activités
+jcmsplugin.socle.ficheemploi.label.competencesattendues: Compétences attendues
+jcmsplugin.socle.ficheemploi.label.conditions: Conditions à remplir
+jcmsplugin.socle.ficheemploi.label.specificites: Spécificités du poste
+jcmsplugin.socle.ficheemploi.label.modalites: Modalités de candidature
+jcmsplugin.socle.ficheemploi.label.reference: Référence : {0}
+jcmsplugin.socle.ficheemploi.label.informations: Informations sur l'offre :
+jcmsplugin.socle.ficheemploi.label.profil: Profil souhaité :
+jcmsplugin.socle.ficheemploi.label.filiere: Filière {0}
+jcmsplugin.socle.ficheemploi.label.grade: Cadre d'emploi : 
+jcmsplugin.socle.ficheemploi.label.reserveagents: Réservé aux agents des collèges
+jcmsplugin.socle.ficheemploi.label.catemploi: Catégorie {0}
+jcmsplugin.socle.ficheemploi.label.repondre: Répondre à cette offre :
+jcmsplugin.socle.ficheemploi.label.datelimite: Date limite : {0}
+jcmsplugin.socle.ficheemploi.label.envoicandidature: Envoyer votre candidature
+jcmsplugin.socle.ficheemploi.label.contacts: Vos contacts
+jcmsplugin.socle.ficheemploi.label.docsutiles: Documents utiles :

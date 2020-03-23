@@ -1,334 +1,311 @@
-<%@ page contentType="text/html; charset=UTF-8" %><%
-%><%-- This file has been automatically generated. --%><%
-%><%--
-  @Summary: FicheEmploiStage display page
-  @Category: Generated
-  @Author: JCMS Type Processor
-  @Customizable: True
-  @Requestable: True
---%><%
-%><%@ include file='/jcore/doInitPage.jspf' %><%
-%><% FicheEmploiStage obj = (FicheEmploiStage)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
-%><%@ include file='/front/doFullDisplay.jspf' %>
-<div class="fullDisplay FicheEmploiStage <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
-<%@ include file='/front/publication/doPublicationHeader.jspf' %>
-<table class="fields">
-  <tr class="field typeDoffre categoryEditor  <%= Util.isEmpty(obj.getTypeDoffre(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "typeDoffre", userLang) %><jalios:edit pub='<%= obj %>' fields='typeDoffre'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getTypeDoffre(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getTypeDoffre(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.typeOffre.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field duree textfieldEditor  <%= Util.isEmpty(obj.getDuree()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "duree", userLang) %><jalios:edit pub='<%= obj %>' fields='duree'/></td>
-    <td class='field-data' <%= gfla(obj, "duree") %>>
-            <% if (Util.notEmpty(obj.getDuree())) { %>
-            <%= obj.getDuree() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field texteentete wysiwygEditor  <%= Util.isEmpty(obj.getTexteentete()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "texteentete", userLang) %><jalios:edit pub='<%= obj %>' fields='texteentete'/></td>
-    <td class='field-data' <%= gfla(obj, "texteentete") %>>
-            <% if (Util.notEmpty(obj.getTexteentete())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='texteentete'><%= obj.getTexteentete() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field dateLimiteDeDepot dateEditor  <%= Util.isEmpty(obj.getDateLimiteDeDepot()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "dateLimiteDeDepot", userLang) %><jalios:edit pub='<%= obj %>' fields='dateLimiteDeDepot'/></td>
-    <td class='field-data' >
-            <%  if (obj.getDateLimiteDeDepot() != null) { %>
-            <jalios:date date='<%= obj.getDateLimiteDeDepot() %>' format='<%= "short" %>'/>
-            <jalios:time date='<%= obj.getDateLimiteDeDepot() %>' format='<%= "short" %>'/>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field numeroDePoste textfieldEditor  <%= Util.isEmpty(obj.getNumeroDePoste()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "numeroDePoste", userLang) %><jalios:edit pub='<%= obj %>' fields='numeroDePoste'/></td>
-    <td class='field-data' <%= gfla(obj, "numeroDePoste") %>>
-            <% if (Util.notEmpty(obj.getNumeroDePoste())) { %>
-            <%= obj.getNumeroDePoste() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field positionHierarchique textfieldEditor  <%= Util.isEmpty(obj.getPositionHierarchique()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "positionHierarchique", userLang) %><jalios:edit pub='<%= obj %>' fields='positionHierarchique'/></td>
-    <td class='field-data' <%= gfla(obj, "positionHierarchique") %>>
-            <% if (Util.notEmpty(obj.getPositionHierarchique())) { %>
-            <%= obj.getPositionHierarchique() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field directiondelegation categoryEditor  <%= Util.isEmpty(obj.getDirectiondelegation(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "directiondelegation", userLang) %><jalios:edit pub='<%= obj %>' fields='directiondelegation'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getDirectiondelegation(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getDirectiondelegation(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.directionDelegation.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field service textfieldEditor  <%= Util.isEmpty(obj.getService()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "service", userLang) %><jalios:edit pub='<%= obj %>' fields='service'/></td>
-    <td class='field-data' <%= gfla(obj, "service") %>>
-            <% if (Util.notEmpty(obj.getService())) { %>
-            <%= obj.getService() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field lieuDeTravail textfieldEditor  <%= Util.isEmpty(obj.getLieuDeTravail()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "lieuDeTravail", userLang) %><jalios:edit pub='<%= obj %>' fields='lieuDeTravail'/></td>
-    <td class='field-data' <%= gfla(obj, "lieuDeTravail") %>>
-            <% if (Util.notEmpty(obj.getLieuDeTravail())) { %>
-            <%= obj.getLieuDeTravail() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field rue textfieldEditor  <%= Util.isEmpty(obj.getRue()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "rue", userLang) %><jalios:edit pub='<%= obj %>' fields='rue'/></td>
-    <td class='field-data' <%= gfla(obj, "rue") %>>
-            <% if (Util.notEmpty(obj.getRue())) { %>
-            <%= obj.getRue() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field cp textfieldEditor  <%= Util.isEmpty(obj.getCp()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "cp", userLang) %><jalios:edit pub='<%= obj %>' fields='cp'/></td>
-    <td class='field-data' <%= gfla(obj, "cp") %>>
-            <% if (Util.notEmpty(obj.getCp())) { %>
-            <%= obj.getCp() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field commune linkEditor  <%= Util.isEmpty(obj.getCommune()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "commune", userLang) %><jalios:edit pub='<%= obj %>' fields='commune'/></td>
-    <td class='field-data' >
-            <% if (obj.getCommune() != null && obj.getCommune().canBeReadBy(loggedMember)) { %>
-            <jalios:link data='<%= obj.getCommune() %>'/>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field image imageEditor  <%= Util.isEmpty(obj.getImage()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "image", userLang) %><jalios:edit pub='<%= obj %>' fields='image'/></td>
-    <td class='field-data' <%= gfla(obj, "image") %>>
-            <% if (Util.notEmpty(obj.getImage())) { %>
-            <img src='<%= Util.encodeUrl(obj.getImage()) %>' alt='' />
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field missions wysiwygEditor  <%= Util.isEmpty(obj.getMissions()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "missions", userLang) %><jalios:edit pub='<%= obj %>' fields='missions'/></td>
-    <td class='field-data' <%= gfla(obj, "missions") %>>
-            <% if (Util.notEmpty(obj.getMissions())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='missions'><%= obj.getMissions() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field activites wysiwygEditor  <%= Util.isEmpty(obj.getActivites()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "activites", userLang) %><jalios:edit pub='<%= obj %>' fields='activites'/></td>
-    <td class='field-data' <%= gfla(obj, "activites") %>>
-            <% if (Util.notEmpty(obj.getActivites())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='activites'><%= obj.getActivites() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field filiere categoryEditor  <%= Util.isEmpty(obj.getFiliere(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "filiere", userLang) %><jalios:edit pub='<%= obj %>' fields='filiere'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getFiliere(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getFiliere(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.filiere.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field categorieDemploi categoryEditor  <%= Util.isEmpty(obj.getCategorieDemploi(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "categorieDemploi", userLang) %><jalios:edit pub='<%= obj %>' fields='categorieDemploi'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCategorieDemploi(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getCategorieDemploi(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.emploi.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field grade wysiwygEditor  <%= Util.isEmpty(obj.getGrade()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "grade", userLang) %><jalios:edit pub='<%= obj %>' fields='grade'/></td>
-    <td class='field-data' <%= gfla(obj, "grade") %>>
-        <% if (Util.notEmpty(obj.getGrade())) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getGrade() %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <jalios:wysiwyg data='<%= obj %>' field='grade'><%= itString %></jalios:wysiwyg>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
-  <tr class="field reserveAgentsColleges categoryEditor  <%= Util.isEmpty(obj.getReserveAgentsColleges(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "reserveAgentsColleges", userLang) %><jalios:edit pub='<%= obj %>' fields='reserveAgentsColleges'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getReserveAgentsColleges(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getReserveAgentsColleges(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.emploiStage.reserveAgentsColleges.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field metierEnTension booleanEditor  ">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "metierEnTension", userLang) %><jalios:edit pub='<%= obj %>' fields='metierEnTension'/></td>
-    <td class='field-data' >
-            <%= obj.getMetierEnTensionLabel(userLang) %>
-    </td>
-  </tr>
-  <tr class="field connaissancesEtExperiences wysiwygEditor  <%= Util.isEmpty(obj.getConnaissancesEtExperiences()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "connaissancesEtExperiences", userLang) %><jalios:edit pub='<%= obj %>' fields='connaissancesEtExperiences'/></td>
-    <td class='field-data' <%= gfla(obj, "connaissancesEtExperiences") %>>
-            <% if (Util.notEmpty(obj.getConnaissancesEtExperiences())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='connaissancesEtExperiences'><%= obj.getConnaissancesEtExperiences() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field conditionsARemplir wysiwygEditor  <%= Util.isEmpty(obj.getConditionsARemplir()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "conditionsARemplir", userLang) %><jalios:edit pub='<%= obj %>' fields='conditionsARemplir'/></td>
-    <td class='field-data' <%= gfla(obj, "conditionsARemplir") %>>
-            <% if (Util.notEmpty(obj.getConditionsARemplir())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='conditionsARemplir'><%= obj.getConditionsARemplir() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field specificitesDuPoste wysiwygEditor  <%= Util.isEmpty(obj.getSpecificitesDuPoste()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "specificitesDuPoste", userLang) %><jalios:edit pub='<%= obj %>' fields='specificitesDuPoste'/></td>
-    <td class='field-data' <%= gfla(obj, "specificitesDuPoste") %>>
-            <% if (Util.notEmpty(obj.getSpecificitesDuPoste())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='specificitesDuPoste'><%= obj.getSpecificitesDuPoste() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field modalitesDeCandidature wysiwygEditor  <%= Util.isEmpty(obj.getModalitesDeCandidature()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "modalitesDeCandidature", userLang) %><jalios:edit pub='<%= obj %>' fields='modalitesDeCandidature'/></td>
-    <td class='field-data' <%= gfla(obj, "modalitesDeCandidature") %>>
-            <% if (Util.notEmpty(obj.getModalitesDeCandidature())) { %>
-            <jalios:wysiwyg data='<%= obj %>' field='modalitesDeCandidature'><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>            
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field contactRH textfieldEditor  <%= Util.isEmpty(obj.getContactRH()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "contactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='contactRH'/></td>
-    <td class='field-data' <%= gfla(obj, "contactRH") %>>
-            <% if (Util.notEmpty(obj.getContactRH())) { %>
-            <%= obj.getContactRH() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field uniteOrgaContactRH textfieldEditor  <%= Util.isEmpty(obj.getUniteOrgaContactRH()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "uniteOrgaContactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='uniteOrgaContactRH'/></td>
-    <td class='field-data' <%= gfla(obj, "uniteOrgaContactRH") %>>
-            <% if (Util.notEmpty(obj.getUniteOrgaContactRH())) { %>
-            <%= obj.getUniteOrgaContactRH() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field telContactRH textfieldEditor  <%= Util.isEmpty(obj.getTelContactRH()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "telContactRH", userLang) %><jalios:edit pub='<%= obj %>' fields='telContactRH'/></td>
-    <td class='field-data' <%= gfla(obj, "telContactRH") %>>
-            <% if (Util.notEmpty(obj.getTelContactRH())) { %>
-            <%= obj.getTelContactRH() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field contactMetier textfieldEditor  <%= Util.isEmpty(obj.getContactMetier()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "contactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='contactMetier'/></td>
-    <td class='field-data' <%= gfla(obj, "contactMetier") %>>
-            <% if (Util.notEmpty(obj.getContactMetier())) { %>
-            <%= obj.getContactMetier() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field uniteOrgaContactMetier textfieldEditor  <%= Util.isEmpty(obj.getUniteOrgaContactMetier()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "uniteOrgaContactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='uniteOrgaContactMetier'/></td>
-    <td class='field-data' <%= gfla(obj, "uniteOrgaContactMetier") %>>
-            <% if (Util.notEmpty(obj.getUniteOrgaContactMetier())) { %>
-            <%= obj.getUniteOrgaContactMetier() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field telContactMetier textfieldEditor  <%= Util.isEmpty(obj.getTelContactMetier()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "telContactMetier", userLang) %><jalios:edit pub='<%= obj %>' fields='telContactMetier'/></td>
-    <td class='field-data' <%= gfla(obj, "telContactMetier") %>>
-            <% if (Util.notEmpty(obj.getTelContactMetier())) { %>
-            <%= obj.getTelContactMetier() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field titreEncartDocument textfieldEditor  <%= Util.isEmpty(obj.getTitreEncartDocument()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "titreEncartDocument", userLang) %><jalios:edit pub='<%= obj %>' fields='titreEncartDocument'/></td>
-    <td class='field-data' <%= gfla(obj, "titreEncartDocument") %>>
-        <% if (Util.notEmpty(obj.getTitreEncartDocument())) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getTitreEncartDocument() %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <%= itString %>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
-  <tr class="field documentsMultiple linkEditor  <%= Util.isEmpty(obj.getDocumentsMultiple()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "documentsMultiple", userLang) %><jalios:edit pub='<%= obj %>' fields='documentsMultiple'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getDocumentsMultiple())) { %>
-            <ol>
-              <jalios:foreach name="itData" type="com.jalios.jcms.FileDocument" array="<%= obj.getDocumentsMultiple() %>">
-              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
-              <li>
-              <jalios:link data='<%= itData %>' params='details=true' ><jalios:fileicon doc='<%= itData %>' /></jalios:link>
-              <jalios:link data='<%= itData %>'/>
-              - <jalios:filesize doc='<%= itData %>'/>
-              <jalios:pdf doc='<%= itData %>' />
-              </li>
-              <% } %>
-              </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field categoriesDeNavigation categoryEditor  <%= Util.isEmpty(obj.getCategoriesDeNavigation(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(FicheEmploiStage.class, "categoriesDeNavigation", userLang) %><jalios:edit pub='<%= obj %>' fields='categoriesDeNavigation'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCategoriesDeNavigation(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getCategoriesDeNavigation(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.categorieDeNavigation.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
- 
-</table>
-<jsp:include page="/front/doFullDisplayCommonFields.jsp" />
-</div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- ROEnJu2wKXSHJcWMwvMoKQ== --%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ include file='/jcore/doInitPage.jspf'%>
+<%
+    FicheEmploiStage obj = (FicheEmploiStage) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+%>
+<%@ include file='/front/doFullDisplay.jspf'%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<main role="main" id="content">
+    <article class="ds44-container-large">
+
+	    <div class="ds44-lightBG ds44-posRel">
+	        <%-- TODO bouton Retour a la liste --%>
+	        <%-- <a class="ds44-btnStd ds44-btnStd--retourPage" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
+	            <i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
+	            <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span>
+	        </a> --%>
+	        <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
+	            <div class="ds44-grid12-offset-2">
+	                <jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
+	                    <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
+	                </jalios:if>
+	                <h1 class="h1-like mbs mts " id="idTitre1"><%=obj.getTitle()%></h1>
+	                <jalios:if predicate='<%=Util.notEmpty(obj.getCommune())%>'>
+	                    <h2 class="h2-like" id="idTitre0"><%=obj.getCommune()%></h2>
+	                </jalios:if>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="ds44-img50 ds44--l-padding-tb">
+	       <div class="ds44-inner-container">
+	           <div class="ds44-grid12-offset-1">
+	               <section class="ds44-box ds44-theme">
+	                   <div class="ds44-innerBoxContainer">
+	                       <div class="grid-2-small-1 ds44-grid12-offset-1">
+	                           <div class="col">
+                                  <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.informations") %></p>
+                                  <p class="ds44-docListElem mts">
+                                       <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+                                       <%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getPdate())) %>
+                                       <br/>
+                                       <%= glp("jcmsplugin.socle.ficheemploi.label.reference", obj.getNumeroDePoste()) %>
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) %>">
+                                       <br/>
+                                       <%-- Type d'offre est obligatoire et monovalué, pas besoin de faire de vérification --%>
+                                       <%= obj.getTypeDoffre(loggedMember).first()%> - <%= obj.getDuree() %>
+                                       </jalios:if>
+                                   </p>
+                                   <p class="ds44-docListElem mts">
+                                       <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getLieuDeTravail()) %>">
+                                       <%= obj.getLieuDeTravail() %><br/>
+                                       </jalios:if>
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getRue()) %>">
+                                       <%= obj.getRue() %><br/>
+                                       </jalios:if>
+                                       <%= obj.getCommune() %>
+                                   </p>
+                                   <p class="ds44-docListElem mts">
+                                       <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+                                       <%= SocleUtils.formatCategories(obj.getDirectiondelegation(loggedMember)) %>
+                                       <br/>
+                                       <%= obj.getService() %>
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
+                                       <br/>
+                                       <%= obj.getPositionHierarchique() %>
+                                       </jalios:if>
+                                   </p>
+                               </div>
+	                           <div class="col ds44--xl-padding-l">
+	                               <jalios:if predicate="<%= 
+	                                   Util.notEmpty(obj.getFiliere(loggedMember))
+	                                   ||Util.notEmpty(obj.getCategorieDemploi(loggedMember))
+	                                   || Util.notEmpty(obj.getGrade())
+	                                   || Util.notEmpty(obj.getReserveAgentsColleges(loggedMember)) %>">
+	                                   <% boolean addLinebreak = false; %>
+	                                   <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.profil") %></p>
+	                                   <div class="ds44-docListElem mts">
+	                                       <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+	                                       <jalios:if predicate="<%= Util.notEmpty(obj.getFiliere(loggedMember)) %>">
+                                               <jalios:foreach name="itFiliere" type="Category">
+                                               <jalios:if predicate="<%= addLinebreak %>"><br/></jalios:if>
+                                               <%= glp("jcmsplugin.socle.ficheemploi.label.filiere", itFiliere.getName()) %>
+                                               <% addLinebreak = true; %>
+                                               </jalios:foreach>
+                                           </jalios:if>
+                                           <jalios:if predicate="<%= Util.notEmpty(obj.getCategorieDemploi(loggedMember)) %>">
+                                               <jalios:if predicate="<%= addLinebreak %>"><br/></jalios:if>
+                                               <%= glp("jcmsplugin.socle.ficheemploi.label.catemploi", obj.getCategorieDemploi(loggedMember).first()) %>
+                                               <% addLinebreak = true; %>
+                                           </jalios:if>
+                                           <jalios:if predicate="<%= Util.notEmpty(obj.getGrade()) %>">
+                                               <jalios:if predicate="<%= addLinebreak %>"><br/></jalios:if>
+                                               <jalios:wysiwyg>
+                                               <%= obj.getGrade().replaceFirst("<p>", "<p>" + glp("jcmsplugin.socle.ficheemploi.label.grade") + " ") %>
+                                               </jalios:wysiwyg>
+                                               <% addLinebreak = true; %>
+                                           </jalios:if>
+                                           <jalios:if predicate="<%= Util.notEmpty(obj.getReserveAgentsColleges(loggedMember)) %>">
+                                               <%= glp("jcmsplugin.socle.ficheemploi.label.reserveagents") %>
+                                           </jalios:if>
+                                       </div>
+	                               </jalios:if>
+	                               
+	                               <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.repondre") %></p>
+	                               <p class="ds44-docListElem mts">
+	                                   <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
+	                                   <%= glp("jcmsplugin.socle.ficheemploi.label.datelimite", SocleUtils.formatDate("dd/MM/yy", obj.getDateLimiteDeDepot())) %>
+	                               </p>
+	                               <a href="#" class="ds44-btnStd ds44-btn--invert">
+	                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+	                                   <i class="icon icon-computer" aria-hidden="true"></i>
+	                               </a>
+	                           </div>
+	                       </div>
+	                       
+	                       <%-- Répondre à cette offre --%>
+	                       
+	                       <%-- Bouton qui ouvre un formulaire --%>
+	                       <%-- TODO : uniquement le lien pour le moment. Traiter l'ouverture du formulaire plus tard --%>
+	                   </div>
+	               </section>
+	           </div>
+	       </div>
+	    </div>
+	    
+	    <%-- Texte en-tête --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) %>">
+		    <section id="chapoFiche" class="ds44-contenuArticle">
+		       <div class="ds44-inner-container ds44-mtb3">
+	                <div class="ds44-grid12-offset-2">
+	                    <div class="ds44-introduction">
+	                       <jalios:wysiwyg><%= obj.getTexteentete() %></jalios:wysiwyg>
+	                    </div>
+	                </div>
+	            </div>
+		    </section>
+	    </jalios:if>
+	    
+	    <%-- Vos missions --%>
+	    <section id="blocmissions" class="ds44-contenuArticle">
+            <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-2">
+                    <h3 id="titreblocmissions"><%= glp("jcmsplugin.socle.ficheemploi.label.vosmissions") %></h3>
+                    <jalios:wysiwyg><%= obj.getMissions() %></jalios:wysiwyg>
+                </div>
+            </div>
+        </section>
+	    
+	    <%-- Activités --%>
+	    <section id="blocactivites" class="ds44-contenuArticle">
+            <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-2">
+                    <h3 id="titreblocactivites"><%= glp("jcmsplugin.socle.ficheemploi.label.activites") %></h3>
+                    <jalios:wysiwyg><%= obj.getActivites() %></jalios:wysiwyg>
+                </div>
+            </div>
+        </section>
+	    
+	    <%-- Compétences attendues --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getConnaissancesEtExperiences()) %>">
+		    <section id="bloccompetencesattendues" class="ds44-contenuArticle">
+	            <div class="ds44-inner-container ds44-mtb3">
+	                <div class="ds44-grid12-offset-2">
+	                    <h3 id="titrebloccompetencesattendues"><%= glp("jcmsplugin.socle.ficheemploi.label.competencesattendues") %></h3>
+	                    <jalios:wysiwyg><%= obj.getConnaissancesEtExperiences() %></jalios:wysiwyg>
+	                </div>
+	            </div>
+	        </section>
+        </jalios:if>
+	    
+	    <%-- Conditions à remplir --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getConditionsARemplir()) %>">
+            <section id="blocconditions" class="ds44-contenuArticle">
+                <div class="ds44-inner-container ds44-mtb3">
+                    <div class="ds44-grid12-offset-2">
+                        <h3 id="titreblocconditions"><%= glp("jcmsplugin.socle.ficheemploi.label.conditions") %></h3>
+                        <jalios:wysiwyg><%= obj.getConditionsARemplir() %></jalios:wysiwyg>
+                    </div>
+                </div>
+            </section>
+        </jalios:if>
+	    
+	    <%-- Spécificités du poste --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getSpecificitesDuPoste()) %>">
+            <section id="blocspecificites" class="ds44-contenuArticle">
+                <div class="ds44-inner-container ds44-mtb3">
+                    <div class="ds44-grid12-offset-2">
+                        <h3 id="titreblocspecificites" class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.ficheemploi.label.specificites") %></h3>
+                        <jalios:wysiwyg><%= obj.getSpecificitesDuPoste() %></jalios:wysiwyg>
+                    </div>
+                </div>
+            </section>
+        </jalios:if>
+	    
+	    <%-- Bloc modalités --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
+		    <section id="blocmodalites" class="ds44-contenuArticle">
+		       <div class="ds44-inner-container ds44-mtb3">
+		           <div class="ds44-grid12-offset-2">
+		               <div class="ds44-wsg-encadreContour">
+		                   <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.modalites") %></p>
+		                   <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
+		               </div>
+		           </div>
+		       </div>
+		    </section>
+	    </jalios:if>
+	    
+	    <%
+	    boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) || Util.notEmpty(obj.getTelContactRH());
+	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier()) || Util.notEmpty(obj.getTelContactMetier());
+	    %>
+	    
+	    <%-- Bloc vos contacts --%>
+	    <jalios:if predicate="<%= hasContactRH || hasContactMetier %>">
+	       <section id="bloccontacts" class="ds44-contenuArticle">
+	           <div class="ds44-inner-container ds44-mtb3">
+	               <div class="ds44-grid12-offset-2">
+	                   <div class="ds44-wsg-encadreApplat">
+		                       <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.contacts") %></p>
+	                           <div class="grid-<%= hasContactRH && hasContactMetier ? '2' : '1' %>-small-1">
+	                               <jalios:if predicate="<%= hasContactRH %>">
+	                               <div class="col">
+	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
+			                               <p class="ds44-docListElem mts">
+			                                   <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+			                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) %>">
+		                                           <%= obj.getContactRH() %>
+		                                       </jalios:if>
+		                                       <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
+		                                           <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) %>">
+		                                           <br/>
+		                                           </jalios:if>
+		                                           <%= obj.getUniteOrgaContactRH() %>
+		                                       </jalios:if>
+			                               </p>
+		                               </jalios:if>
+		                               <jalios:if predicate="<%= Util.notEmpty(obj.getTelContactRH()) %>">
+		                                    <p class="ds44-docListElem mts">
+			                                    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+			                                    <%= obj.getTelContactRH() %>
+		                                    </p>
+		                               </jalios:if>
+	                               </div>
+	                               </jalios:if>
+	                               <jalios:if predicate="<%= hasContactMetier %>">
+                                   <div class="col">
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier()) %>">
+                                           <p class="ds44-docListElem mts">
+                                               <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+                                               <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) %>">
+                                                   <%= obj.getContactMetier() %>
+                                               </jalios:if>
+                                               <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactMetier()) %>">
+                                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) %>">
+                                                   <br/>
+                                                   </jalios:if>
+                                                   <%= obj.getUniteOrgaContactMetier() %>
+                                               </jalios:if>
+                                           </p>
+                                       </jalios:if>
+                                       <jalios:if predicate="<%= Util.notEmpty(obj.getTelContactMetier()) %>">
+                                            <p class="ds44-docListElem mts">
+                                                <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+                                                <%= obj.getTelContactMetier() %>
+                                            </p>
+                                       </jalios:if>
+                                   </div>
+                                   </jalios:if>
+	                           </div>
+	                       </div>
+	               </div>
+	           </div>
+	       </section>
+	    </jalios:if>
+	    
+	    
+	    <%-- Bloc documents utiles --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsMultiple()) %>">
+	    <section id="blocdocuments" class="ds44-contenuArticle">
+	        <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-2">
+                    <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.docsutiles") %></p>
+	                <ul class="ds44-list">
+	                    <jalios:foreach name="itDoc" type="FileDocument" array="<%= obj.getDocumentsMultiple() %>" counter="itCounter">
+	                        <%
+	                        String docTitle = itDoc.getFilename();
+	                        if (Util.notEmpty(obj.getTitreEncartDocument()) && itCounter <= obj.getTitreEncartDocument().length && Util.notEmpty(obj.getTitreEncartDocument()[itCounter-1])) {
+	                            docTitle = obj.getTitreEncartDocument()[itCounter-1];
+	                        }
+	                        // Récupérer l'extension du fichier
+	                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+	                        // Récupérer la taille du fichier
+	                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+	                        %>
+	                        <li class="mts">
+	                            <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+	                        </li>
+	                    </jalios:foreach>
+	                </ul>
+                </div>
+            </div>
+	    </section>
+	    </jalios:if>
+	    
+	    <%-- Bas de page --%>
+	    
+    </article>
+</main>

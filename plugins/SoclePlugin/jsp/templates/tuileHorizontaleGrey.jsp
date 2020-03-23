@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
@@ -9,7 +10,19 @@ if (data == null) {
 
 Publication pub = (Publication) data;
 
+// On ne gÃ¨re pas les fileDocument, le contributeur passera par un contenu "Lien"
+if(pub instanceof FileDocument){
+  return;
+}
 String urlImage = "";
+String urlPub = pub.getDisplayUrl(userLocale);
+boolean isLien = (pub instanceof Lien);
+boolean isDoc = false;
+String fileType = "";
+String fileSize = "";
+boolean targetBlank=false;
+String cible= "";
+String title = "";
 
    try {
     urlImage = (String) pub.getFieldValue("imageCarree");
@@ -33,13 +46,34 @@ String urlImage = "";
        urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
    }
    
-   String urlPub = pub.getDisplayUrl(userLocale);
-   boolean isFileDoc = (pub instanceof FileDocument);
-   
-   if (isFileDoc) {
-       FileDocument itDoc = (FileDocument) pub;
-       urlPub = itDoc.getDownloadUrl();
+   /* Le type de contenu "Lien" peut pointer vers une publication ou un site externe 
+      Dans le cas d'une pub, si c'est un FileDoc alors on fait le lien direct sur le fichier,
+      sinon on renvoie vers le contenu.
+   */
+   if (isLien) {
+     Lien itLien = (Lien) pub;
+     if (Util.notEmpty(itLien.getLienSurContenu())) {
+       if (itLien.getLienSurContenu() instanceof FileDocument){
+         isDoc = true;
+         FileDocument itDoc = (FileDocument) itLien.getLienSurContenu();
+         fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+         fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+         urlPub = itDoc.getDownloadUrl();
+         targetBlank = true;
+         }else{
+           urlPub = itLien.getLienSurContenu().getDisplayUrl(userLocale);
+         }
+     }else if (Util.notEmpty(itLien.getLienExterne())) {
+       urlPub = itLien.getLienExterne();
+       targetBlank = true;
+     }
    }
+   
+   // AccessibilitÃ© : on n'affiche un "title" sur le lien que s'il s'ouvre dans une nouvelle fenÃªtre
+   if(targetBlank){
+     cible="target=\"_blank\" ";
+     title = "title=\"" +  pub.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+ }
 
 %>
 
@@ -48,24 +82,17 @@ String urlImage = "";
         <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
             <div class="ds44-card__section--horizontal--img">
                 <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
-                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt='<%= glp("jcmsplugin.socle.illustration") %>'>
+                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
                 </picture>
             </div>
         </jalios:if>
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
-                <a class="ds44-card__globalLink" href="<%= urlPub %>" title="<%= pub.getTitle() %>" <%= isFileDoc ? "target=\"_blank\"" : "" %>>
+                <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=title%> <%=cible%>>
                     <%= pub.getTitle() %>
                 </a>
             </p>
-            <jalios:if predicate="<%= isFileDoc %>">
-                <%
-                FileDocument itDoc = (FileDocument) pub;
-                // Récupérer l'extension du fichier
-                String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-                // Récupérer la taille du fichier
-                String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-                %>
+            <jalios:if predicate="<%= isDoc %>">
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
