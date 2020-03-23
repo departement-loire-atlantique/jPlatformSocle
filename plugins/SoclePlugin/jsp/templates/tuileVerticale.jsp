@@ -3,11 +3,14 @@
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
+
   if (data == null) {
   return;
 }
 
 Publication pub = (Publication) data;
+
+<%@include file="tuileCommon.jsp" %>
 
 // On ne gère pas les fileDocument, le contributeur passera par un contenu "Lien"
 if(pub instanceof FileDocument){
@@ -19,9 +22,10 @@ boolean isLien = (pub instanceof Lien);
 boolean isDoc = false;
 String fileType = "";
 String fileSize = "";
+String fileInfos = "";
 boolean targetBlank=false;
-String cible= "";
-String title = "";
+String targetAttr = "";
+String titleAttr = "";
 
   try {
     urlImage = (String) pub.getFieldValue("imageMobile");
@@ -51,7 +55,8 @@ String title = "";
         isDoc = true;
         FileDocument itDoc = (FileDocument) itLien.getLienSurContenu();
         fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-        fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+        fileSize = Util.formatFileSize(itDoc.getSize());
+        fileInfos = " - " + fileSize + " - " + fileType;
         urlPub = itDoc.getDownloadUrl();
         targetBlank = true;
       } else {
@@ -64,10 +69,10 @@ String title = "";
   }
 
   // Accessibilité : on n'affiche un "title" sur le lien que s'il s'ouvre dans une nouvelle fenêtre
-  if (targetBlank) {
-    cible = "target=\"_blank\" ";
-    title = "title=\"" + pub.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel") + "\"";
-  }
+  if(targetBlank){
+    targetAttr="target=\"_blank\" ";
+    titleAttr = "title=\"" +  pub.getTitle() + fileInfos + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+    }
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-darkContext">
@@ -76,9 +81,13 @@ String title = "";
     </picture>
     <div class="ds44-card__section">
         <p role="heading" aria-level="2" class="ds44-card__title">
-            <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=title%> <%=cible%>>
+            <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                 <%= pub.getTitle() %>
             </a>
-         </p>
+        </p>
+        <jalios:if predicate="<%= isDoc %>">
+            <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
+        </jalios:if>
+        <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
 </section>

@@ -140,15 +140,17 @@ extra.Category.plugin.tools.tooltip.boolean: false
 unified-insert.items.content.jsp: plugins/SoclePlugin/jsp/insertionUnifiee/unifiedInsertContent.jsp
 unified-insert.items.content.icon: glyph: glyphicons-article
 
+# Media template
+media.template.default.application: /plugins/SoclePlugin/jsp/templates/fileDocumentEmbedTemplate.jsp
+# Note : si on ne précise pas "application/pdf", ça ne fonctionne pas.
+media.template.default.application/pdf: /plugins/SoclePlugin/jsp/templates/fileDocumentEmbedTemplate.jsp
+
+media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
+media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+
 # Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
-
-# FileDocument PDF template
-# media.template.default.application/pdf: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
-
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
-media.data-template.horizontalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/horizontalCardTemplate.jsp
-media.data-template.verticalCard.AbstractElement: /plugins/SoclePlugin/jsp/templates/verticalCardTemplate.jsp
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
@@ -157,9 +159,7 @@ media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/t
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
-# Media template
-media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
-media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
