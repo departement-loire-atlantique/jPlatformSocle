@@ -5,9 +5,7 @@
     
 <% FicheLieu obj = (FicheLieu) request.getAttribute(PortalManager.PORTAL_PUBLICATION);%>
 
-<section class="ds44-box ds44-bgGray">
-    <div class="ds44-innerBoxContainer">
-        <jalios:media data="<%=obj %>" template="contact"/>
-    </div>
+<section class="ds44-box">
+    <jalios:media data="<%=obj %>" template="contact"/>
 </section>
 

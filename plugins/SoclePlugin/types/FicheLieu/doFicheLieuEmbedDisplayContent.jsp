@@ -25,7 +25,7 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
         obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
         obj.getCedex2());
 %>
-<section class="mbl">
+<section class="mbm">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	        <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
