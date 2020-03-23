@@ -268,7 +268,20 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                            <ul class="ds44-list">
 	                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
 	                                    <li class="mts">
-	                                        <jalios:include pub="<%= itDoc %>" usage="embed"/>
+	                                        <% 
+		                                        // Récupérer l'extension du fichier
+		                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+		                                        // Récupérer la taille du fichier
+		                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+	                                        %>
+	                                        <p class="ds44-docListElem">
+	                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
+	                                        	<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
+	                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= titleModalFaireDemande %>'>
+	                                        		<%= itDoc.getTitle() %>
+	                                        	</a>
+	                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
+	                                        </p>
 	                                    </li>
 	                                </jalios:foreach>
 	                            </ul>
