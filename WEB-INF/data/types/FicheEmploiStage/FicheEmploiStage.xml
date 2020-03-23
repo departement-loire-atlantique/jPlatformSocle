@@ -42,8 +42,9 @@
     <field name="commune" editor="link" required="true" compactDisplay="false" type="generated.City" parent="false">
       <label xml:lang="fr">Commune</label>
     </field>
-    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Image</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="missions" editor="wysiwyg" required="true" compactDisplay="false" tab="mission" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Missions</label>
