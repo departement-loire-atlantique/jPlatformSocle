@@ -147,7 +147,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
         </jalios:if>
         
-        <section class="ds44-overlay ds44-overlay--navApplis ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
+        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
         
         <div class="ds44-container-menuBackLink">
             <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">
