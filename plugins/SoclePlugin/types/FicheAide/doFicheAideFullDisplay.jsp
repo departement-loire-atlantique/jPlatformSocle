@@ -363,7 +363,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
     <jalios:if predicate="<%= !obj.getInstructionDelegation() %>">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer la boite de dialogue : qui contacter" data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
-        <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %> ?</h1>
+        <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h1>
         <div class="ds44-modal-gab">
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
             <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
