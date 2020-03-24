@@ -77,10 +77,10 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
-String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
-String formattedMobilePath = "";
-if (Util.notEmpty(mobileImagePath)) {
-  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);
+String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
+String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);;
+if (Util.isEmpty(formattedMobilePath)) {
+  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
 }
 %>
 
