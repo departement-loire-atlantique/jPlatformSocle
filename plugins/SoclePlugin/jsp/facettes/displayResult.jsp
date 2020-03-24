@@ -1,6 +1,6 @@
+<%@page import="fr.cg44.plugin.socle.queryfilter.CategoryFacetUtil"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="com.jalios.io.IOUtil"%><%
-%><%@page import="fr.cg44.plugin.socle.bean.FacetSearch"%><%
 %><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%><%
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
@@ -15,6 +15,8 @@ PortletQueryForeach box = new PortletQueryForeach(boxTmp);
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
+
 %><%@ include file="/types/PortletQueryForeach/doSort.jspf" %><%
 
 JsonArray jsonArray = new JsonArray();

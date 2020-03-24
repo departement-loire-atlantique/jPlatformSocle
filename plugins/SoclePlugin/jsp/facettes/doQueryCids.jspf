@@ -1,0 +1,16 @@
+<%
+//Récupère les branches de catégories de la recherche à facettes
+String[] cidBranches = request.getParameterValues("cidBranches");
+String[] cids = request.getParameterValues("cids");
+
+if(Util.notEmpty(cidBranches) && Util.notEmpty(cids)) {
+
+    QueryHandler boxQh = Util.notEmpty(box.getQueries()) ? new QueryHandler(box.getQueries()[0]) : new QueryHandler(); 
+    QueryHandler[] cidQueries =  CategoryFacetUtil.getFacetCategoryQuery(boxQh, cidBranches, cids);
+        
+    for(QueryHandler itQuery : cidQueries) {
+      collection.retainAll(itQuery.getResultSet());
+    }
+    resultSize = collection.size();
+}
+%>
