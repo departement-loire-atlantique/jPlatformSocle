@@ -5,10 +5,10 @@
 <jalios:select>
     <jalios:if predicate="<%= obj.getTypeAnnuaire() %>">
         <%-- Affichage annuaire --%>
-        <jalios:include pub="obj" usage="annuaire"/>
+        <jalios:include pub="<%= obj %>" usage="annuaire"/>
     </jalios:if>
     <jalios:default>
         <%-- Affichage agenda --%>
-        <jalios:include pub="obj" usage="agenda"/>
+        <jalios:include pub="<%= obj %>" usage="agenda"/>
     </jalios:default>
 </jalios:select>
