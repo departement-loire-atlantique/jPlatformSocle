@@ -68,13 +68,13 @@ else{
 	                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
 					</jalios:foreach>
 				</div>
-				<%if(nbPub > 1){ %>
-	            <div class="col-4 colFocusProjets">
-	                <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" skip="<%= nbPubCol1 %>">
-	                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
-	                </jalios:foreach>
-	            </div>
-	            <%} %>
+				<jalios:if predicate='<%=nbPub > 1 %>'>
+		            <div class="col-4 colFocusProjets">
+		                <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" skip="<%= nbPubCol1 %>">
+		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
+		                </jalios:foreach>
+		            </div>
+                </jalios:if>
 	            
 	            <%-- Bouton mobile --%>
                 <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
