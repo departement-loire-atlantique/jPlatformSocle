@@ -1,8 +1,10 @@
 <%
-// Récupération des infos de vidéo, dans la cas d'une fiche article
+// Rï¿½cupï¿½ration des infos de vidï¿½o, dans la cas d'une fiche article
+String titreVideo = "";
 String urlVideo = "";
 String fichierTranscriptVideo = "";
 if(Util.notEmpty(obj.getVideoPrincipale())){
+  titreVideo = obj.getVideoPrincipale().getTitle();
   urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
   if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
     fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();

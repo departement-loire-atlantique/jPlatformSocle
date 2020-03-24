@@ -36,6 +36,13 @@
     type="String"
     description="L'URL de la vidéo"
 %>
+<%@ attribute name="titreVideo"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le titre la vidéo"
+%>
 <%@ attribute name="fichierTranscript"
     required="false"
     fragment="false"
@@ -116,7 +123,7 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
 	                <%-- TODO : affichage du fichier de transcript de la vidéo --%>
 	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-                        <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
+                        <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= titreVideo %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
 	                </jalios:if>
 	            </div>
 	        </div>
@@ -124,10 +131,10 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	</jalios:if>
 	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
 	<% 
-	String formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(imagePath);
-	String formattedMobilePath = "";
-	if (Util.notEmpty(mobileImagePath)) {
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);
+	String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
+	String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);;
+	if (Util.isEmpty(formattedMobilePath)) {
+	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
 	}
 	%>
 	    <div class="ds44-img50">
