@@ -33,8 +33,11 @@ Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLev
 	       sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%><%
 	Set<Category> level3CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel2);
 	Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCatLevel2);
+	PortletPortalRedirect itRedirect = SocleUtils.getPortalRedirect(itCategory);
             if(Util.notEmpty(itContenuPrincipal)) {%>
               <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+            <% }else if(Util.notEmpty(itRedirect)){%>
+              <jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
             <% }else if(Util.notEmpty(level3CatSet)){%>
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
