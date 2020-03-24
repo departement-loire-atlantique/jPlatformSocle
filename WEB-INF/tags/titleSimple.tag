@@ -15,6 +15,13 @@
     type="String"
     description="Le titre affiché sur l'image"
 %>
+<%@ attribute name="chapo"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le chapô de l'article"
+%>
 <%@ attribute name="imagePath"
     required="false"
     fragment="false"
@@ -108,16 +115,22 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 <div class="ds44-lightBG">
     <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
         <div class="ds44-grid12-offset-2">
-        <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
-	        <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
-        </jalios:if>
-        <h1 class="h1-like mbs mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt" id="titreActualite"><%=title%></h1>
-        <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
-        <h2 id="sousTitre" class="h2-like"><%= subtitle %></h2>
-        </jalios:if>
-        <jalios:if predicate="<%= Util.notEmpty(date) %>">
-            <p class="ds44-textLegend"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.publiele", date) %></p>
-        </jalios:if>
+	        <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+		        <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
+	        </jalios:if>
+	        <h1 class="h1-like mbs mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt" id="titreActualite"><%=title%></h1>
+	        <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
+	            <h2 id="sousTitre" class="h2-like"><%= subtitle %></h2>
+	        </jalios:if>
+	        <jalios:if predicate="<%= Util.notEmpty(date) %>">
+	            <p class="ds44-textLegend"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.publiele", date) %></p>
+	        </jalios:if>
+	        <%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
+			<jalios:if predicate='<%=Util.notEmpty(urlVideo) && Util.notEmpty(chapo) %>'>
+				<div class="ds44-introduction">
+				    <jalios:wysiwyg><%=chapo%></jalios:wysiwyg>
+				</div>
+			</jalios:if>
 	    </div>
     </div>
 </div>
@@ -127,7 +140,6 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
 	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
-	                <%-- TODO : affichage du fichier de transcript de la vidéo --%>
 	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
                         <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= titreVideo %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
 	                </jalios:if>
