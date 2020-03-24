@@ -70,6 +70,7 @@ wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
+  script[src|async|defer|type|charset],\
   abbr[class|style|id|title],\
   acronym[class|style|id|title],\
   address,\
