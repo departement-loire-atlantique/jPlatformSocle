@@ -472,6 +472,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                     <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
 	                    <jalios:wysiwyg><%= obj.getComplementContact() %></jalios:wysiwyg>
 	                </jalios:if>
+	                <div class="ds44-mt1"></div>
                     <jalios:foreach name="itLieu" type="FicheLieu" array="<%= obj.getQuiContacter() %>" counter="lieuCounter">
                         <jalios:if predicate="<%= lieuCounter > 1 %>">
                             <div class="ds44-mt3"></div>
@@ -493,7 +494,14 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                    <jalios:if predicate="<%= Util.notEmpty(itLieu.getEmail()) %>">
 		                    <p class="ds44-docListElem mtm"><i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
 		                    <jalios:foreach name="itMail" type="String" array="<%= itLieu.getEmail() %>">
-	                           <a href="mailto:<%= itMail %>" aria-label="Contacter <%= itLieu.getTitle() %> par mail : <%= itMail %>" data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
+		                       <jalios:select>
+			                       <jalios:if predicate="<%= itLieu.getEmail().length > 1 %>">
+		                           <a href="mailto:<%= itMail %>" aria-label="Contacter <%= itLieu.getTitle() %> par mail : <%= itMail %>" data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
+		                           </jalios:if>
+		                           <jalios:default>
+		                           <a href="mailto:<%= itMail %>" aria-label="Contacter <%= itLieu.getTitle() %> par mail : <%= itMail %>" data-bkp-tabindex="" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %></a>
+		                           </jalios:default>
+	                           </jalios:select>
 	                        </jalios:foreach>
 	                        </p>
 	                    </jalios:if>
