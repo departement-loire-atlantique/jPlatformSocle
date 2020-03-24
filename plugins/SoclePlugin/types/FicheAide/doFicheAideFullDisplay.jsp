@@ -466,17 +466,17 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
             <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
             </jalios:if>
-            <div class="ds44-mt3 grid-12-small-1">
+            <div class="grid-12-small-1">
                 <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getComplementContact()) %>">
                 <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>
                     <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
 	                    <jalios:wysiwyg><%= obj.getComplementContact() %></jalios:wysiwyg>
-	                    <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) %>">
-	                       <hr/>
-	                    </jalios:if>
 	                </jalios:if>
                     <jalios:foreach name="itLieu" type="FicheLieu" array="<%= obj.getQuiContacter() %>" counter="lieuCounter">
-	                    <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= itLieu.getTitle() %></p>
+                        <jalios:if predicate="<%= lieuCounter > 1 %>">
+                            <div class="ds44-mt3"></div>
+                        </jalios:if>
+   	                    <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><b><%= itLieu.getTitle() %></b></p>
 	                    <p class="ds44-docListElem">
 	                       <%= SocleUtils.formatAddress(null, itLieu.getEtageCouloirEscalier(), itLieu.getEntreeBatimentImmeuble(), itLieu.getNdeVoie(), itLieu.getLibelleDeVoie(), itLieu.getLieudit(), itLieu.getCs2(), itLieu.getCodePostal(), itLieu.getCommune().getTitle(), itLieu.getCedex2()) %>
 	                    </p>
@@ -496,9 +496,6 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                           <a href="mailto:<%= itMail %>" aria-label="Contacter <%= itLieu.getTitle() %> par mail : <%= itMail %>" data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
 	                        </jalios:foreach>
 	                        </p>
-	                    </jalios:if>
-	                    <jalios:if predicate="<%= lieuCounter < obj.getQuiContacter().length %>">
-	                       <hr/>
 	                    </jalios:if>
                     </jalios:foreach>
                 </div>
