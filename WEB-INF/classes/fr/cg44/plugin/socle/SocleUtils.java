@@ -40,6 +40,7 @@ import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
 import generated.PortletFacetteCommune;
 import generated.PortletFacetteCommuneAdresseLiee;
+import generated.PortletPortalRedirect;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -90,6 +91,27 @@ public final class SocleUtils {
 		}	
 		
 		return null;
+	}
+	
+	
+	/**
+	 * Permet de récupérer la portlet Redirection d'une catégorie si celle-ci existe
+	 * @param currentCat la catégorie courante
+	 * @return la portlet redirecton de la catégorie, sinon NULL
+	 */
+	public static PortletPortalRedirect getPortalRedirect(Category currentCat) {
+	  if(currentCat != null) {
+      Member loggedMember = channel.getCurrentLoggedMember();   
+      QueryHandler qh = new QueryHandler();
+      qh.setCids(currentCat.getId());
+      qh.setLoggedMember(loggedMember);
+      qh.setExactCat(true);
+      qh.setTypes(PortletPortalRedirect.class.getSimpleName());
+      QueryResultSet result = qh.getResultSet();
+      return (PortletPortalRedirect) Util.getFirst(result);
+    } 
+    
+    return null;
 	}
 
 	/**
