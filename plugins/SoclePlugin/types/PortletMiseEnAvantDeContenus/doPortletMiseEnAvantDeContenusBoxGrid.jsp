@@ -19,7 +19,7 @@ if (Util.notEmpty(collection)) {
 
 <section class="ds44-container-fluid ds44-theme ds44-bgCircle ds44-bg-br ds44--xxl-padding-tb">
     <header class="txtcenter ds44--xl-padding-b ds44-container-large" data-bkp-aria-hidden="">
-      <h2 class="h2-like ds44-theme"><%= box.getTitreVisuel() %></h2>
+      <h2 class="h2-like ds44-theme" id="titreMEA<%= box.getId() %>"><%= box.getTitreVisuel() %></h2>
     </header>
 
     <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="5" data-mobile-only="true">

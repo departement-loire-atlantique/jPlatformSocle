@@ -17,7 +17,7 @@ String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFi
 
 %>
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe id="<%=uniqueIDiframe%>" width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <iframe id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <a href="<%=fichierTranscript%>" target="blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript") %></a>
     </jalios:if>
