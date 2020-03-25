@@ -13,8 +13,8 @@ if(Util.notEmpty(obj.getVideoPrincipale())){
 %>
 
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-    urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-    copyright="<%= obj.getCopyright() %>" 
+    titreVideo="<%=titreVideo %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>"
+    title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
     breadcrumb="true"></ds:titleSimple>
 
 <%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
