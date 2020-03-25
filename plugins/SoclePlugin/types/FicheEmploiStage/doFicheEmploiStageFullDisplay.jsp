@@ -79,7 +79,7 @@
 	                                   <div class="ds44-docListElem mts">
 	                                       <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	                                       <jalios:if predicate="<%= Util.notEmpty(obj.getFiliere(loggedMember)) %>">
-                                               <jalios:foreach name="itFiliere" type="Category">
+                                               <jalios:foreach name="itFiliere" type="Category" collection="<%= obj.getFiliere(loggedMember) %>">
                                                <jalios:if predicate="<%= addLinebreak %>"><br/></jalios:if>
                                                <%= glp("jcmsplugin.socle.ficheemploi.label.filiere", itFiliere.getName()) %>
                                                <% addLinebreak = true; %>
