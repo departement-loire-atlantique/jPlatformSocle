@@ -1,5 +1,5 @@
 <%
-// R�cup�ration des infos de vid�o, dans la cas d'une fiche article
+// Rï¿½cupï¿½ration des infos de vidï¿½o, dans la cas d'une fiche article
 String titreVideo = "";
 String urlVideo = "";
 String fichierTranscriptVideo = "";
@@ -15,9 +15,9 @@ if(Util.notEmpty(obj.getVideoPrincipale())){
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
     titreVideo="<%=titreVideo %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>"
     title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
-    userLang="<%= userLang %>" breadcrumb="true"></ds:titleSimple>
+    breadcrumb="true"></ds:titleSimple>
 
-<%-- Si vid�o au lieu de l'image, alors le chapo apparait au-dessus de la vid�o --%>
+<%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
 <jalios:if predicate='<%=Util.isEmpty(urlVideo) && Util.notEmpty(obj.getChapo()) %>'>
 	<section class="ds44-contenuArticle">
 		<div class="ds44-inner-container ds44-mtb3">
