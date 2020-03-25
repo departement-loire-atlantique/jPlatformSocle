@@ -22,25 +22,27 @@ if (Util.notEmpty(collection)) {
       <h2 class="h2-like ds44-theme"><%= box.getTitreVisuel() %></h2>
     </header>
 
-    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="5" data-mobile-only="true">
-	    <div class="swiper-container">
-	        <ul class="swiper-wrapper ds44-list grid-5-small-1 has-gutter-l ds44-carousel-swiper">
-	            <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
-	                <li class="swiper-slide">
-	                    <jalios:media data="<%= (Publication) itContent %>" template="tuileVerticale"/>
-	                </li>
-	            </jalios:foreach>
-	          
-	        </ul>
+    <div class="ds44-mobile-extra-smt">
+	    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="5" data-mobile-only="true">
+		    <div class="swiper-container">
+		        <ul class="swiper-wrapper ds44-list grid-5-small-1 has-gutter-l ds44-carousel-swiper">
+		            <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
+		                <li class="swiper-slide">
+		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileVerticale"/>
+		                </li>
+		            </jalios:foreach>
+		          
+		        </ul>
+		    </div>
+		    <button class="swiper-button-prev swiper-button-disabled" type="button">
+		        <i class="icon icon-left" aria-hidden="true"></i>
+		        <span class="visually-hidden"></span>
+		    </button>
+		    <button class="swiper-button-next swiper-button-disabled" type="button">
+		        <i class="icon icon-right" aria-hidden="true"></i>
+		        <span class="visually-hidden"></span>
+		    </button>
 	    </div>
-	    <button class="swiper-button-prev swiper-button-disabled" type="button">
-	        <i class="icon icon-left" aria-hidden="true"></i>
-	        <span class="visually-hidden"></span>
-	    </button>
-	    <button class="swiper-button-next swiper-button-disabled" type="button">
-	        <i class="icon icon-right" aria-hidden="true"></i>
-	        <span class="visually-hidden"></span>
-	    </button>
     </div>
 
     <div class="txtcenter ds44-container-large ">
