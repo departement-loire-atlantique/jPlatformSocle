@@ -76,7 +76,14 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	    <%}
 	    else if (Util.notEmpty(itRedirect)) {%>
-	       <li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	       <jalios:select>
+               <jalios:if predicate="<%= Util.notEmpty(itRedirect.getUrl()) %>">
+	           <li><a target="_blank" href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	           </jalios:if>
+	           <jalios:default>
+	           <li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	           </jalios:default>
+	       </jalios:select>
 	    <%}
         else {%>
 	       <li>

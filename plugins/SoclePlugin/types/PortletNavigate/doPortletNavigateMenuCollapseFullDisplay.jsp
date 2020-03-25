@@ -37,7 +37,14 @@ Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLev
             if(Util.notEmpty(itContenuPrincipal)) {%>
               <jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
             <% }else if(Util.notEmpty(itRedirect)){%>
-              <jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+              <jalios:select>
+                  <jalios:if predicate="<%= Util.notEmpty(itRedirect.getUrl()) %>">
+                      <jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike" htmlAttributes="target='_blank'"><%=itCatLevel2.getName()%></jalios:link>
+                  </jalios:if>
+                  <jalios:default>
+                      <jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+                  </jalios:default>
+              </jalios:select>
             <% }else if(Util.notEmpty(level3CatSet)){%>
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
