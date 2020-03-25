@@ -57,6 +57,20 @@
     type="String"
     description="Le chemin du fichier de transcription"
 %>
+<%@ attribute name="typeFichierTranscript"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le format du fichier de transcription"
+%>
+<%@ attribute name="tailleFichierTranscript"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="La taille du fichier de transcription"
+%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
@@ -139,11 +153,11 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <iframe width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
-	                <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-                        <a href="<%=fichierTranscript%>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %> <%= titreVideo %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel") %>"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript") %></a>
-	                </jalios:if>
-	            </div>
+	                <iframe title="<%= titreVideo %>" style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
+                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
+				        <a href="<%= fichierTranscript %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+				    </jalios:if>
+                </div>
 	        </div>
 	    </div>
 	</jalios:if>
