@@ -77,7 +77,7 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 	    <%}
 	    else if (Util.notEmpty(itRedirect)) {%>
 	       <jalios:select>
-               <jalios:if predicate="<%= Util.notEmpty(itRedirect.getUrl()) %>">
+               <jalios:if predicate='<%= itRedirect.getStatus().equals("url") && Util.notEmpty(itRedirect.getUrl()) %>'>
 	           <li><a target="_blank" href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	           </jalios:if>
 	           <jalios:default>
