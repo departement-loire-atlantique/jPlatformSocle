@@ -11,7 +11,7 @@
 
 	    <div class="ds44-lightBG ds44-posRel">
 	        <%-- TODO bouton Retour a la liste --%>
-	        <%-- <a class="ds44-btnStd ds44-btnStd--retourPage" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
+	        <%-- <a class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
 	            <i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
 	            <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span>
 	        </a> --%>

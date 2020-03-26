@@ -1,4 +1,5 @@
 plugin.socle.newsPortalCategory: Catégorie du portail d'actualités
+jcmsplugin.socle.label.error.warnAdmin: Une erreur est survenue. Veuillez prévenir l'administrateur du site.
 
 # ------ 7357 ajout d'extradata sur les catégories
 extra.Category.plugin.tools.index: Catégorie à indexer
@@ -69,6 +70,8 @@ jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
 jcmsplugin.socle.hautDepage: Haut de page
+jcmsplugin.socle.carrousel.precedent: Voir le contenu précédent
+jcmsplugin.socle.carrousel.suivant: Voir le contenu suivant
 jcmsplugin.socle.pageVideo: Page comportant de la vidéo
 jcmsplugin.socle.tout-cocher: Tout cocher
 jcmsplugin.socle.tout-decocher: Tout décocher
@@ -129,6 +132,13 @@ jcmsplugin.socle.ficheaide.fermerboitedialogue.label: Fermer la boite de dialogu
 jcmsplugin.socle.ficheaide.adresseenvoiedossier.label: Adresse d'envoi du dossier :
 jcmsplugin.socle.ficheaide.modal.quicontacter: Qui contacter ?
 jcmsplugin.socle.ficheaide.modal.besoinaide: Besoin d'aide ?
+jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi: Code de suivi
+jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous: Connectez-vous
+jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi: Vous avez un code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi: Ex : XXX-XXXX-XX
+jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi: Vous n’avez pas de code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi: Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).
+jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi: Valider votre code de suivi
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
@@ -239,6 +249,10 @@ jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
+jcmsplugin.socle.infolocale.label.carrousel.tuile.date: Le {0} {1} {2}
+jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3} {4} {5}
+jcmsplugin.socle.infolocale.label.carrousel.date: Le {0} 
+jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
 # ------------------------------------------------------------
 #  Abonnement newsletter
 # ------------------------------------------------------------

@@ -70,6 +70,7 @@ wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js
 
 wysiwyg.sanitize-html.whitelist.default.tags:\
   a[class|style|id|href|title|rel|name|hreflang|target],\
+  script[src|async|defer|type|charset],\
   abbr[class|style|id|title],\
   acronym[class|style|id|title],\
   address,\
@@ -270,6 +271,7 @@ jcmsplugin.socle.infolocale.login:
 jcmsplugin.socle.infolocale.password: 
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
+jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 
 # Metadonnees Infolocale pour le front
 

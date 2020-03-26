@@ -1,3 +1,4 @@
+<%@tag import="generated.PortletPortalRedirect"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
 %><%@ tag 
@@ -70,12 +71,31 @@ String paddingClass = "ds44-list ds44-collapser_content--level2";
 		}
 		
 		Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCategory);
+		PortletPortalRedirect itRedirect = SocleUtils.getPortalRedirect(itCategory);
 	    if(Util.notEmpty(itContenuPrincipal)) {%>
 	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
 	    <%}
-	    else{%>
-	       <li><span class="ds44-collapser_content--txt"><%=libelleCat%></span>
-	           <ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/>
+	    else if (Util.notEmpty(itRedirect)) {%>
+	       <jalios:select>
+               <jalios:if predicate='<%= itRedirect.getStatus().equals("url") && Util.notEmpty(itRedirect.getUrl()) %>'>
+	           <li><a target="_blank" href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	           </jalios:if>
+	           <jalios:default>
+	           <li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
+	           </jalios:default>
+	       </jalios:select>
+	    <%}
+        else {%>
+	       <li>
+	           <jalios:select>
+		           <jalios:if predicate="<%= Util.notEmpty(itCategory.getChildrenSet()) %>">
+			           <span class="ds44-collapser_content--txt"><%=libelleCat%></span>
+		               <ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/>
+		           </jalios:if>
+		           <jalios:default>
+		               <a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a>
+		           </jalios:default>
+	           </jalios:select>
            </li><%
 	    }
 	}%>

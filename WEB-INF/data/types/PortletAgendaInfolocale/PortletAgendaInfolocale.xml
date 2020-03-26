@@ -13,11 +13,11 @@
       <label xml:lang="fr">ID de flux</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Surcharge l'ID de flux par défaut du site&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="organismeInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+    <field name="organismesInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Organisme(s) infolocale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs organismes sur Infolocale (ex. "orga_1,orga_2,orga_3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="genreInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+    <field name="genresInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Genre(s) infolocale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
@@ -60,6 +60,9 @@
     </field>
     <field name="typeDeTuileCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de tuile carrousel</label>
+    </field>
+    <field name="styleDesTuilesCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="ds44-brightContext|ds44-darkContext" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Tuiles grises|Tuiles blanches">
+      <label xml:lang="fr">Style des tuiles carrousel</label>
     </field>
     <field name="metadonneesTuileCarrousel_1" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Métadonnées tuile carrousel 1</label>

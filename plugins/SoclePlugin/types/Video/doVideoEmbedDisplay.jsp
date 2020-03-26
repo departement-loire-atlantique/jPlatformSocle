@@ -16,7 +16,7 @@ String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
 String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFichierTranscript().getDownloadUrl() : "";
 %>
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe id="<%= uniqueIDiframe %>" title="<%= obj.getTitle() %>" style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
+    <iframe id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <%
         String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();

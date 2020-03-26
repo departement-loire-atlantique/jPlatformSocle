@@ -7,7 +7,7 @@ import com.jalios.jcms.Data;
  * @author lchoquet
  *
  */
-public class Date extends Data {
+public class DateInfolocale extends Data {
     
     String debut;
     String fin;
