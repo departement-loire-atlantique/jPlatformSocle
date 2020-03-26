@@ -79,7 +79,7 @@
 	                                   <div class="ds44-docListElem mts">
 	                                       <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	                                       <jalios:if predicate="<%= Util.notEmpty(obj.getFiliere(loggedMember)) %>">
-                                               <jalios:foreach name="itFiliere" type="Category">
+                                               <jalios:foreach name="itFiliere" type="Category" collection="<%= obj.getFiliere(loggedMember) %>">
                                                <jalios:if predicate="<%= addLinebreak %>"><br/></jalios:if>
                                                <%= glp("jcmsplugin.socle.ficheemploi.label.filiere", itFiliere.getName()) %>
                                                <% addLinebreak = true; %>
@@ -195,18 +195,37 @@
         </jalios:if>
 	    
 	    <%-- Bloc modalités --%>
-	    <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
-		    <section id="blocmodalites" class="ds44-contenuArticle">
-		       <div class="ds44-inner-container ds44-mtb3">
-		           <div class="ds44-grid12-offset-2">
-		               <div class="ds44-wsg-encadreContour">
-		                   <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.modalites") %></p>
-		                   <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
-		               </div>
+		<section id="blocmodalites" class="ds44-contenuArticle">
+		    <div class="ds44-inner-container ds44-mtb3">
+		       <div class="ds44-grid12-offset-2">
+		           <div class="ds44-wsg-encadreContour">
+		               <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.modalites") %></p>
+		               <jalios:select>
+		                  <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
+		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
+		                  </jalios:if>
+		                  <jalios:default>
+		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
+		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
+		                  </jalios:default>
+		               </jalios:select>
+		               <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondresite") %></p>
+		               <%-- La partie suivante est en dur faute à des specs incomplètes sur le sujet --%>
+		               <a href="#" class="ds44-btnStd ds44-btn--invert">
+	                       <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+	                       <i class="icon icon-computer" aria-hidden="true"></i>
+                       </a>
+                       <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
+                       <p>Monsieur le président du Département de Loire-Atlantique</p>
+                       <p>Direction des Ressources Humaines,</p>
+                       <p>Service Emploi et Compétences</p>
+                       <p>3 Quai Ceirenay, CS 94109</p>
+                       <p>44041 Nantes cedex 1</p>
+                       <%-- Fin du bloc en dur --%>
 		           </div>
-		       </div>
-		    </section>
-	    </jalios:if>
+                </div>
+		    </div>
+		</section>
 	    
 	    <%
 	    boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) || Util.notEmpty(obj.getTelContactRH());

@@ -290,3 +290,7 @@ jcmsplugin.socle.ficheemploi.label.datelimite: Date limite : {0}
 jcmsplugin.socle.ficheemploi.label.envoicandidature: Envoyer votre candidature
 jcmsplugin.socle.ficheemploi.label.contacts: Vos contacts
 jcmsplugin.socle.ficheemploi.label.docsutiles: Documents utiles :
+jcmsplugin.socle.ficheemploi.label.repondresite: Répondre par ce site
+jcmsplugin.socle.ficheemploi.label.repondrecourrier: Ou par courrier, à l'attention de :
+
+jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de simulation administrative ou attestation de réussite au concours de catégorie {2}.
