@@ -401,55 +401,78 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	</section>
 </jalios:if>
 
-<jalios:if predicate="<%= displaySuivreDemande %>">
-<div class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
-    <div class="ds44-modal-box">
-        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
-        		aria-label='Fermer la boite de dialogue : <%= glp("jcmsplugin.socle.ficheaide.suivre.label") %>' 
-        		data-js="ds44-modal-action-close">
-        	<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
-        	<span class="ds44-btnInnerText--bottom">Fermer</span>
-        </button>
-
-        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h1>
-
-        <div class="ds44-modal-gab">
-            <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
-
-            <div class="ds44-mt3 grid-12-small-1">
-                <div class="col-6 ds44-modal-column">
-                    <h2 class="h3-like">Vous avez un code de suivi :</h2>
-
-                    <p>Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).</p>
-
-                    <div class="ds44-form__container">
-                        <label for="name" class="ds44-formLabel ds44-mb-std">
-                        	<span class="ds44-labelTypePlaceholder ds44-moveLabel">Code de suivi</span> 
-                        	<input type="text" id="name" class="ds44-inpStd" required />
-                        </label>
-
-                        <button class="ds44-btnStd ds44-btn--invert" type="button">
-                        	<span class="ds44-btnInnerText">Valider</span>
-                        	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-6 ds44-modal-column">
-
-                    <h2 class="h3-like">Vous n’avez pas de code de suivi :</h2>
-
-                    <p>
-                    	<button class="ds44-btnStd ds44-btn--invert" type="button">
-                    		<span class="ds44-btnInnerText">Connectez-vous</span>
-                    		<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-                    	</button>
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </div>   
-</div>
+<jalios:if predicate="<%= displaySuivreDemande && Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-modale">
+	    <div class="ds44-modal-box">
+	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
+	        		title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.ficheaide.suivre.label")) %>' 
+	        		data-js="ds44-modal-action-close">
+	        	<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
+	        	<span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+	        </button>
+	
+	        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h1>
+	
+	        <div class="ds44-modal-gab">
+	            <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
+	
+	            <div class="ds44-mt3 grid-12-small-1">
+	                <div class="col-6 ds44-modal-column">
+	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
+	
+	                    <p id="desc-pour-input-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi") %></p>
+	
+						<form action="<%= obj.getUrlSuiviEdemarche() %>">
+							<% String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element"); %>
+							<div class="ds44-form__container">
+								<label for="<%= idFormElement %>" class="ds44-formLabel">
+									<span class="ds44-labelTypePlaceholder">
+										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %>
+										<sup aria-hidden="true">*</sup>
+									</span> 
+									<span id="explanation-<%= idFormElement %>" class="ds44-labelTypeInfoComp">
+										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi") %>
+									</span> 
+									<input type="text" id="<%= idFormElement %>" 
+											name="<%= idFormElement %>" 
+											class="ds44-inpStd" 
+											title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
+											required
+											aria-required="true" 
+											aria-describedby=" explanation-<%= idFormElement %>" />
+									<button class="ds44-reset" type="button">
+										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+										<span class="visually-hidden">
+											<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %>
+										</span>
+									</button> 
+								</label>
+								<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
+							</div>
+							<button class="ds44-btnStd ds44-btn--invert" aria-label='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
+								<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
+								<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+							</button>
+						</form>
+	                </div>
+	                <div class="col-6 ds44-modal-column">
+	
+	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi") %></h2>
+	
+	                    <p class="ds44-mt-std">
+	                    	<p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
+	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'
+	                        		target="_blank">
+	                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous") %></span>
+	                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
+	                        </a></p>
+	                    </p>
+	
+	                </div>
+	            </div>
+	        </div>
+	    </div>   
+	</section>
 </jalios:if>
 <%--Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getIntroContact())

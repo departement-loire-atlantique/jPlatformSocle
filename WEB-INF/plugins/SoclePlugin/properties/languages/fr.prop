@@ -129,6 +129,13 @@ jcmsplugin.socle.ficheaide.fermerboitedialogue.label: Fermer la boite de dialogu
 jcmsplugin.socle.ficheaide.adresseenvoiedossier.label: Adresse d'envoi du dossier :
 jcmsplugin.socle.ficheaide.modal.quicontacter: Qui contacter ?
 jcmsplugin.socle.ficheaide.modal.besoinaide: Besoin d'aide ?
+jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi: Code de suivi
+jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous: Connectez-vous
+jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi: Vous avez un code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi: Ex : XXX-XXXX-XX
+jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi: Vous n’avez pas de code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi: Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).
+jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi: Valider votre code de suivi
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
