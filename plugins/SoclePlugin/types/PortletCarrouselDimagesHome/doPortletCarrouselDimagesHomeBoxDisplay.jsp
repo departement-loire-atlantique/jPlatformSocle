@@ -77,9 +77,9 @@
 		                        if (Util.notEmpty(itTuile.getImageCopyright())) {
 		                          figCaption += glp("jcmsplugin.socle.symbol.copyright") + " " + itTuile.getImageCopyright();
 		                        }
-		                        String formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(itTuile.getImageMobile());
+		                        String formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilDroite(itTuile.getImageMobile());
 		                        if (Util.isEmpty(formattedImagePath)) {
-		                          formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(itTuile.getImage());
+		                          formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilDroite(itTuile.getImage());
 		                        }
 		                        %>
 	                                <li class="swiper-slide">
