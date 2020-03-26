@@ -282,3 +282,10 @@ jcmsplugin.socle.ficheemploi.label.datelimite: Date limite : {0}
 jcmsplugin.socle.ficheemploi.label.envoicandidature: Envoyer votre candidature
 jcmsplugin.socle.ficheemploi.label.contacts: Vos contacts
 jcmsplugin.socle.ficheemploi.label.docsutiles: Documents utiles :
+
+# ------------------------------------------------------------
+#  Portlet Carrousel d'images en home
+# ------------------------------------------------------------
+
+jcmsplugin.socle.carrouselhome.error.differentSizes: Les deux listes d'éléments carrousel doivent avoir le même nombre de contenus.
+jcmsplugin.socle.carrouselhome.error.nosibling: Les deux listes d'éléments carrousel doivent avoir un élément à l'emplacement {0}.

@@ -188,7 +188,7 @@
         </template>
     </templates>
     <templates type="PortletCarrouselDimagesHome">
-        <template name="default" file="doPortletCarrouselDimagesHomeFullDisplay.jsp" usage="box">
+        <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -311,6 +311,7 @@
 
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
