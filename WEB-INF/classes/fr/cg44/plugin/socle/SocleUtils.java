@@ -674,12 +674,12 @@ public final class SocleUtils {
   }
   
   /**
-   * Génère une image carrousel droit pour le bloc accueil et renvoie son path
+   * Génère une image carrousel carrée pour le bloc accueil et renvoie son path
    * @param imagePath
    * @return
    */
-  public static String getUrlOfFormattedImageCarouselAccueilDroite(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.right.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.right.height", 0)); 
+  public static String getUrlOfFormattedImageCarouselAccueilCarree(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.carree.height", 0)); 
   }
   
   /**
