@@ -12,7 +12,7 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
-import fr.cg44.plugin.socle.infolocale.entities.Date;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import generated.EvenementInfolocale;
 
 /**
@@ -130,9 +130,9 @@ public class InfolocaleMetadataUtils {
     private static String getMetaHoraires(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
         try {
-            Date[] dates = itEvent.getDates();
+            DateInfolocale[] dates = itEvent.getDates();
             StringBuilder horaires = new StringBuilder();
-            for (Iterator<Date> iter = Arrays.asList(dates).iterator(); iter.hasNext();) {
+            for (Iterator<DateInfolocale> iter = Arrays.asList(dates).iterator(); iter.hasNext();) {
                 horaires.append(iter.next().getHoraire());
                 if (iter.hasNext()) horaires.append(", ");
             }
