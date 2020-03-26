@@ -44,6 +44,7 @@
     <type name="Place"></type>
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
+    <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -191,6 +192,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="PortletCarrouselDimagesHome">
+        <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="PortletDecorator">
         <template name="dark" file="doPortletDecoratorFullDisplayDarkBackground.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit fond gris avec titre et description</label>
@@ -310,6 +316,7 @@
 
   <plugincomponents>
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />

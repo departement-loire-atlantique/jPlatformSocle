@@ -58,6 +58,12 @@ jcmsplugin.socle.image.push.width: 200
 jcmsplugin.socle.image.push.height: 300
 jcmsplugin.socle.image.temoignage.width: 460
 jcmsplugin.socle.image.temoignage.height: 307
+jcmsplugin.socle.image.carrouselaccueil.full.width: 810
+jcmsplugin.socle.image.carrouselaccueil.full.height: 620
+jcmsplugin.socle.image.carrouselaccueil.mobile.width: 300
+jcmsplugin.socle.image.carrouselaccueil.mobile.height: 370
+jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
+jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
 
 # ------------------------------------------------------------
 #  Wysiwyg

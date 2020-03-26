@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletCarrouselDimagesHome" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Carrousel d'images home</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="elementsDiaporamaPrincipaux" editor="link" required="true" compactDisplay="false" type="generated.CarouselElement[]" ml="false" descriptionType="tooltip" tabGroup="elemDiapos" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Eléments diaporama principaux</label>
+    </field>
+    <field name="elementsDiaporamasSecondaires" editor="link" required="true" compactDisplay="false" type="generated.CarouselElement[]" ml="false" descriptionType="tooltip" tabGroup="elemDiapos" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Elements diaporamas secondaires</label>
+    </field>
+    <field name="titreAAfficher" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Titre à afficher</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+
