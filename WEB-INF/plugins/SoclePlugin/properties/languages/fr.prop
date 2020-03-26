@@ -222,7 +222,8 @@ jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
 jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
 jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
 
-jcmsplugin.socle.video.telecharger-transcript: Télécharger le fichier de transcription de la vidéo :
+jcmsplugin.socle.video.telecharger-transcript.label: Télécharger le fichier de transcription de la vidéo
+jcmsplugin.socle.video.telecharger-transcript.title: Télécharger le fichier de transcription de la vidéo : {0} - {1} - {2} - nouvelle fenêtre
 
 # ------------------------------------------------------------
 #  Fil ariane

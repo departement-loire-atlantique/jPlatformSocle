@@ -3,17 +3,24 @@
 String titreVideo = "";
 String urlVideo = "";
 String fichierTranscriptVideo = "";
-if(Util.notEmpty(obj.getVideoPrincipale())){
+String typeFichierTranscript = "";
+String tailleFichierTranscript = "";
+if(Util.notEmpty(obj.getVideoPrincipale())) {
   titreVideo = obj.getVideoPrincipale().getTitle();
   urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
+  
+  // Récupération des infos du fichier de transcription
   if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
     fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();
+    typeFichierTranscript = FileDocument.getExtension(obj.getVideoPrincipale().getFichierTranscript().getFilename()).toUpperCase();
+    tailleFichierTranscript = Util.formatFileSize(obj.getVideoPrincipale().getFichierTranscript().getSize());
   }
 }
 %>
 
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-    titreVideo="<%=titreVideo %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>"
+    titreVideo="<%= titreVideo %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%= fichierTranscriptVideo %>"
+    typeFichierTranscript="<%= typeFichierTranscript %>" tailleFichierTranscript="<%= tailleFichierTranscript %>"  
     title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
     breadcrumb="true"></ds:titleSimple>
 
