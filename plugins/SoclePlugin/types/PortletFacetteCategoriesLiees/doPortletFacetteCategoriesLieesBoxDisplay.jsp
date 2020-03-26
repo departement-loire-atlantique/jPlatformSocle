@@ -25,7 +25,7 @@
 						<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 				</div>
 				<button class="ds44-reset" type="button">
-					<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+					<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 					<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
 				</button>
 
@@ -33,7 +33,7 @@
 						aria-expanded="false" 
 						title='<%= labelChamp + " - " + glp("jcmsplugin.socle.obligatoire") %>'
 						aria-required="true">
-					<i class="icon icon-down icon--sizeL" aria-hidden="true"></i>
+					<i class='icon icon-down icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 					<span id='<%= "button-message-" + idFormElement %>' class="visually-hidden"><%= labelChamp %></span>
 				</button>
 			</div>
