@@ -44,6 +44,7 @@
     <type name="Place"></type>
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
+    <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -184,6 +185,11 @@
     <templates type="AbstractPortletSkinable">
         <template name="simpleTitle" file="doAbstractPortletSkinableSimpleTitleResultDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : habillage simple titre</label>
+        </template>
+    </templates>
+    <templates type="PortletCarrouselDimagesHome">
+        <template name="default" file="doPortletCarrouselDimagesHomeFullDisplay.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
     <templates type="PortletDecorator">
