@@ -32,7 +32,10 @@
 		<% int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); %>
 
 		<jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
-			<div class="ds44-fieldContainer ds44-fg1">
+
+			<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
+
+			<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
 				<jalios:include pub="<%= itFacette %>" usage="box"/>
 			</div>
 		</jalios:foreach>
@@ -58,7 +61,9 @@
 
 					<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
 
-						<div class="ds44-fieldContainer ds44-fg1 ds44-fieldContainer--select">
+						<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
+
+						<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
 							<jalios:include pub="<%= itFacette %>" usage="box"/>
 						</div>
 
