@@ -1,0 +1,32 @@
+<%
+
+// Permet la recherche geolocalisée
+
+String northWestLat = request.getParameter("northWestLat");
+String northWestLng = request.getParameter("northWestLng");
+
+String northEastLat = request.getParameter("northEastLat");
+String northEastLng = request.getParameter("northEastLng");
+
+String southEastLat = request.getParameter("southEastLat");
+String southEastLng = request.getParameter("southEastLng");
+
+String southWestLat = request.getParameter("southWestLat");
+String southWestLng = request.getParameter("southWestLng");
+
+if(Util.notEmpty(northWestLat) && Util.notEmpty(northWestLng) && Util.notEmpty(southEastLat) && Util.notEmpty(southEastLng)) {
+  
+  String query = request.getParameter("query");
+  String localisationSeach = "localisationInJCMS:1,northWestLat:"+ northWestLat +",northWestLng:"+ northWestLng + ",southEastLat:"+ southEastLat + ",southEastLng:"+ southEastLng;
+    
+  QueryHandler geoQh = Util.notEmpty(box.getQueries()) ? new QueryHandler(box.getQueries()[0]) : new QueryHandler();
+  geoQh.setText(localisationSeach);
+  geoQh.setAttribute("localisation", true);
+  geoQh.setDataSet(new HashSet(collection));  
+  geoQh.setSearchInPub(true);
+  Set geoResult = geoQh.getResultSet();
+  
+  collection = geoResult;
+  resultSize = collection.size(); 
+}
+%>
