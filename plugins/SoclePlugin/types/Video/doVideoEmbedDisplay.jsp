@@ -14,16 +14,19 @@
 String uniqueIDiframe = UUID.randomUUID().toString();
 String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
 String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFichierTranscript().getDownloadUrl() : "";
-
 %>
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe id="<%=uniqueIDiframe%>" width="100%" height="480" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <iframe id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-        <a href="<%=fichierTranscript%>" target="blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript") %></a>
+        <%
+        String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();
+        String fileSize = Util.formatFileSize(obj.getFichierTranscript().getSize());
+        %>
+        <a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a>
     </jalios:if>
 </div>
 
-<jalios:if predicate="<%=Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
+<jalios:if predicate="<%= Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
     <%
     List<String> chapitres = Arrays.asList(obj.getChapitre());
     String[] timecodes = obj.getTimecode();

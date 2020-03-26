@@ -142,7 +142,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                            </jalios:if>
                               <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : SocleUtils.getUrlOfFormattedImageMobile(obj.getImageMobile()) %>'>
                               <source media="(min-width: 36em)" srcset="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>">
-                              <img src="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
+                              <img src="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio"/>
                            </picture>
                            <jalios:if predicate="<%= hasFigcaption%>">
                                <figcaption class="ds44-imgCaption">
