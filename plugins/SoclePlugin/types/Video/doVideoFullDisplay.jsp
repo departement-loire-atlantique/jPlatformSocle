@@ -26,7 +26,7 @@ if(Util.notEmpty(fichierTranscriptVideo)){
         <ds:titleSimple titreVideo="<%= obj.getTitle() %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%= cheminFichierTranscriptVideo %>"
             typeFichierTranscript="<%= typeFichierTranscript %>" tailleFichierTranscript="<%= tailleFichierTranscript %>"  
             title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
-            userLang="<%= userLang %>" breadcrumb="true">
+            breadcrumb="true">
         </ds:titleSimple>
         <section class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
