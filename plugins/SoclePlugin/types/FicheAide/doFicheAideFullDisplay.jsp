@@ -315,24 +315,10 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									<strong><%= itFicheLieu.getTitle() %></strong>
 								</p>
 								
-								<%
-									String communeEcrire = Util.notEmpty(itFicheLieu.getCommune2()) ? itFicheLieu.getCommune2().getTitle() : Util.notEmpty(itFicheLieu.getCommune()) ? itFicheLieu.getCommune().getTitle() : "";
-									String etageCouloirEscalier =  Util.notEmpty(itFicheLieu.getEtageCouloirEscalier2()) ? itFicheLieu.getEtageCouloirEscalier2() : itFicheLieu.getEtageCouloirEscalier();
-									String entreeBatimentImmeuble =  Util.notEmpty(itFicheLieu.getEntreeBatimentImmeuble2()) ? itFicheLieu.getEntreeBatimentImmeuble2() : itFicheLieu.getEntreeBatimentImmeuble();
-									String ndeVoie =  Util.notEmpty(itFicheLieu.getNdeVoie2()) ? itFicheLieu.getNdeVoie2() : itFicheLieu.getNdeVoie();
-									String libelleDeVoie =  Util.notEmpty(itFicheLieu.getLibelleDeVoie2()) ? itFicheLieu.getLibelleDeVoie2() : itFicheLieu.getLibelleDeVoie();
-									String lieudit =  Util.notEmpty(itFicheLieu.getLieudit2()) ? itFicheLieu.getLieudit2() : itFicheLieu.getLieudit();
-									String codePostal =  Util.notEmpty(itFicheLieu.getCodePostal2()) ? itFicheLieu.getCodePostal2() : itFicheLieu.getCodePostal();
-									
-									String adresseEcrire = SocleUtils.formatAddress(itFicheLieu.getLibelleAutreAdresse(),
-											etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
-											libelleDeVoie, lieudit, itFicheLieu.getCs2(), codePostal, communeEcrire,
-											itFicheLieu.getCedex2());
-								%>
 								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
 									<p class="ds44-docListElem mts">
 										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-										<%= adresseEcrire %>
+										<%= SocleUtils.formatAdressEcrire(itFicheLieu) %>
 									</p>
 								</jalios:if>
 								

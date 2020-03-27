@@ -35,6 +35,7 @@ import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
 import generated.Delegation;
+import generated.FicheLieu;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
@@ -269,15 +270,15 @@ public final class SocleUtils {
     }
 
 	/**
-	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
-	 * 
-	 * [libelle]<br>
-	 * [etageCouloirEscalier]<br>
-	 * [entreBatimentImmeuble]<br>
-	 * [nDeVoie] [libelleDeVoie]<br>
-	 * [lieuDit]<br>
-	 * CS [cs]<br>
-	 * [codePostal] [commune] Cedex [cedex]
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :</p>
+	 * <p></p>
+	 * <p>[libelle]<br></p>
+	 * <p>[etageCouloirEscalier]<br></p>
+	 * <p>[entreBatimentImmeuble]<br></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br></p>
+	 * <p>[lieuDit]<br></p>
+	 * <p>CS [cs]<br></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
 	 * 
 	 * @param libelle
 	 * @param etageCouloirEscalier
@@ -344,6 +345,36 @@ public final class SocleUtils {
 
 		return sbfAddr.toString();
 
+	}
+	
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une FicheLieu sous la forme suivante :</p>
+	 * <p></p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param fichelieu
+	 * @return un String contenant l'adresse de la FicheLieu
+	 */
+	public static String formatAdressEcrire(FicheLieu fichelieu) {
+		
+		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "";
+		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : fichelieu.getEtageCouloirEscalier();
+		String entreeBatimentImmeuble =  Util.notEmpty(fichelieu.getEntreeBatimentImmeuble2()) ? fichelieu.getEntreeBatimentImmeuble2() : fichelieu.getEntreeBatimentImmeuble();
+		String ndeVoie =  Util.notEmpty(fichelieu.getNdeVoie2()) ? fichelieu.getNdeVoie2() : fichelieu.getNdeVoie();
+		String libelleDeVoie =  Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? fichelieu.getLibelleDeVoie2() : fichelieu.getLibelleDeVoie();
+		String lieudit =  Util.notEmpty(fichelieu.getLieudit2()) ? fichelieu.getLieudit2() : fichelieu.getLieudit();
+		String codePostal =  Util.notEmpty(fichelieu.getCodePostal2()) ? fichelieu.getCodePostal2() : fichelieu.getCodePostal();
+		
+		return SocleUtils.formatAddress(fichelieu.getLibelleAutreAdresse(),
+				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
+				libelleDeVoie, lieudit, fichelieu.getCs2(), codePostal, communeEcrire,
+				fichelieu.getCedex2());
 	}
 	
 	
