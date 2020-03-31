@@ -199,16 +199,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         </jalios:if>
         
         <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
-        <section id="contentVideo" class="ds44-contenuArticle">
-            <div class="ds44-inner-container ds44-mtb3">
-                <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreVideo()) %>">
-                    <h3 class="h3-like" id="titreVideo"><%= obj.getTitreVideo() %></h2>
-                    </jalios:if>
-                    <%-- TODO : INSERER LA VIDEO --%>
-                </div>
-            </div>
-        </section>
+            <ds:articleVideo video="<%= obj.getVideo() %>" title="<%= obj.getTitreVideo() %>"/>
         </jalios:if>
         
         <jalios:if predicate="<%= Util.notEmpty(obj.getComplementTransport()) %>">
