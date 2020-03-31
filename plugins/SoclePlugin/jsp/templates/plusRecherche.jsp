@@ -8,18 +8,18 @@ if (data == null) {
   return;
 }
 
-Publication pub = (Publication) data;
+Lien pub = (Lien) data;
 %>
 
 <jalios:select>
-    <jalios:if predicate="<%= (pub instanceof Lien) && Util.notEmpty( ((Lien)pub).getLienExterne() ) %>">
-        <a class="ds44-arrowLink" href="<%= ((Lien)pub).getLienExterne() %>" target="_blank" aria-label='<%= glp("jcmsplugin.socle.nouvelonglet", ((Lien)pub).getLienExterne()) %>'><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
+    <jalios:if predicate="<%= Util.notEmpty( pub.getLienExterne() ) %>">
+        <a class="ds44-arrowLink" href="<%= pub.getLienExterne() %>" target="_blank" aria-label='<%= glp("jcmsplugin.socle.nouvelonglet", pub.getLienExterne()) %>'><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
     </jalios:if>
     <jalios:default>
         <%
         String urlContent = pub.getDisplayUrl(userLocale);
-        if ((pub instanceof Lien) && Util.notEmpty(((Lien)pub).getLienInterne())) {
-          url = ((Lien)pub).getLienInterne().getDisplayUrl(userLocale);
+        if (Util.notEmpty(pub.getLienInterne())) {
+          url = pub.getLienInterne().getDisplayUrl(userLocale);
         }
         %>
         <a class="ds44-arrowLink" href="<%= urlContent %>"><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
