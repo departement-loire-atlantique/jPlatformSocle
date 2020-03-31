@@ -355,6 +355,7 @@
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
   </public-files>
   <webapp-files>
+    <file path="WEB-INF/tags/articleVideo.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
