@@ -25,29 +25,16 @@
                     </jalios:if>
                 </header>
             </jalios:if>
-            <div class="ds44-loader-text visually-hidden" tab-index="-1" aria-live="polite"></div>
-            <div class="ds44-loader hidden">
-			    <div class="ds44-loader-body">
-			        <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
-			            <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
-			        </svg>
-			    </div>
-			</div>
 			
 			<jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
-                <jalios:if predicate="<%= Util.notEmpty(obj.getIntroRecherche()) || Util.notEmpty(obj.getSoustitreRecherche()) %>">
-                    <header class="txtcenter ds44--mobile--m-padding-b">
-                        <jalios:if predicate="<%= Util.notEmpty(obj.getIntroRecherche()) %>">
-                            <h2 id="titreRecherche" class="h2-like center"><%= obj.getIntroRecherche() %></h2>
-                        </jalios:if>
-                        <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitreRecherche()) %>">
-                            <div class="ds44-component-chapo ds44-centeredBlock">
-                                <jalios:wysiwyg><%= obj.getSoustitreRecherche() %></jalios:wysiwyg>
-                            </div>
-                        </jalios:if>
-                    </header>
-                </jalios:if>
                 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
+	            <div class="ds44-loader hidden">
+	                <div class="ds44-loader-body">
+	                    <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+	                        <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+	                    </svg>
+	                </div>
+	            </div>
                 <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
             </jalios:if>
 			
