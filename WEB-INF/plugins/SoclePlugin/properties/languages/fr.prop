@@ -150,6 +150,7 @@ jcmsplugin.socle.titre.fournir-documents: Quels documents fournir ?
 jcmsplugin.socle.titre.qui-accueille: Qui vous accueille ?
 jcmsplugin.socle.titre.horaires-acces: Horaires et accès :
 jcmsplugin.socle.titre.autre-lieu-associes: Autres lieux associés :
+jcmsplugin.socle.titre.contacts: Qui contacter ?
 
 jcmsplugin.socle.titre.temoignage: Témoignages
 
@@ -306,3 +307,4 @@ jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Départemen
 
 jcmsplugin.socle.carrouselhome.error.differentSizes: Les deux listes d'éléments carrousel doivent avoir le même nombre de contenus.
 jcmsplugin.socle.carrouselhome.error.nosibling: Les deux listes d'éléments carrousel doivent avoir un élément à l'emplacement {0}.
+
