@@ -2,14 +2,28 @@
 //Récupère les branches de catégories de la recherche à facettes
 String[] cidBranches = request.getParameterValues("cidBranches");
 String[] cids = request.getParameterValues("cids");
+// Récupère le mode d'intersection des catégories
+Boolean isCatModUnion = Boolean.valueOf(request.getParameter("modCatUnion"));
+Boolean isCatModNivUnion = Boolean.valueOf(request.getParameter("modCatNivUnion"));
 
 if(Util.notEmpty(cidBranches) && Util.notEmpty(cids)) {
 
     QueryHandler boxQh = Util.notEmpty(box.getQueries()) ? new QueryHandler(box.getQueries()[0]) : new QueryHandler(); 
-    QueryHandler[] cidQueries =  CategoryFacetUtil.getFacetCategoryQuery(boxQh, cidBranches, cids);
-        
-    for(QueryHandler itQuery : cidQueries) {
-      collection.retainAll(itQuery.getResultSet());
+    QueryHandler[] cidQueries =  CategoryFacetUtil.getFacetCategoryQuery(boxQh, cidBranches, cids, isCatModNivUnion);
+    
+    // Suivant le choix du mode d'intersection des catégories (union ou intersection)
+    if(isCatModUnion) {
+        // Categories en union
+        Set<Publication> resultCatSet = new HashSet<Publication>();
+        for(QueryHandler itQuery : cidQueries) {
+          resultCatSet.addAll(itQuery.getResultSet());
+        }
+        collection.retainAll(resultCatSet);
+    }else {
+      // Categories en intersection
+      for(QueryHandler itQuery : cidQueries) {
+        collection.retainAll(itQuery.getResultSet());
+      }
     }
     resultSize = collection.size();
 }
