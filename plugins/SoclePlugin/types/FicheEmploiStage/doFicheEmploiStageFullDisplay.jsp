@@ -240,15 +240,10 @@
 	                       <i class="icon icon-computer" aria-hidden="true"></i>
                        </a>
                        <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
-                       Monsieur le président du Département de Loire-Atlantique
-                       <br/>
-                       Direction des Ressources Humaines,
-                       <br/>
-                       Service Emploi et Compétences
-                       <br/>
-                       3 Quai Ceirenay, CS 94109
-                       <br/>
-                       44041 Nantes cedex 1
+                       <jalios:wysiwyg>
+                           <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
+                       </jalios:wysiwyg>
+                       
                        <%-- Fin du bloc en dur --%>
 		           </div>
                 </div>
