@@ -6,8 +6,10 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.policy.BasicWysiwygPolicyFilter;
+import com.jalios.util.HtmlUtil;
 
 
 public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
@@ -28,7 +30,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	public String checkExternalLinks(String text, Locale userLocale) {
 
 	  String suffixe = " "+JcmsUtil.glp(userLocale.getCountry(), "jcmsplugin.socle.accessibily.newTabLabel");		
-	  Pattern patternTarget = Pattern.compile("<a(.*?) target=\"_blank\"(.*?)</a>");
+	  Pattern patternTarget = Pattern.compile("<a(.*?) target=\"_blank\"(.*?)>(.*?)</a>");
 	  Pattern patternTitle = Pattern.compile("<a(.*?)title=\"(.*?)\"(.*?)</a>");		
 	  Matcher matcherTarget = patternTarget.matcher(text);
 
@@ -38,12 +40,17 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	    String url = matcherTarget.group(0);
 	    Matcher matcherTitle = patternTitle.matcher(url);
 	    // Si un titre et un target blank alors ajout d'un libellé pour l'ouverture dans un nouvelle fenetre
-	    if (matcherTitle.find()) {		  
+	    if (matcherTitle.find()) {	  
 	      String title = matcherTitle.group(2);
 	      if(!title.endsWith(suffixe)) {	
 	        text = text.replaceFirst(Pattern.quote(url), url.replaceFirst(title, title + suffixe));
 	        LOGGER.debug("Ajout libellé nouvelle fenetre sur le lien : " + url);
 	      }			
+	    }else {
+	      // Si pas de titre, alors on le génère avec le texte du lien, en supprimant les éventuelles balises HTML.	      
+	      String texteDuLien = HtmlUtil.html2text(matcherTarget.group(3));
+        String newUrl = url.replaceFirst("blank\"", "blank\"" + " title=\"" +  HttpUtil.encodeForHTMLAttribute(texteDuLien + suffixe) + "\"");
+        text = text.replaceFirst(Pattern.quote(url), newUrl);       
 	    }
 	  }
 	  return text;				

@@ -163,6 +163,7 @@ media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/Liste
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
@@ -378,6 +379,8 @@ $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102
 $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
+$jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
+$jcmsplugin.socle.emploiStage.delegationService: c_5296
 
 # Video
 

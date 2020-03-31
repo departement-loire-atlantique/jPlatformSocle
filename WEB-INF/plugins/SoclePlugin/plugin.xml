@@ -258,6 +258,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
           <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
+          <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
+        </template>
         <template name="grille" file="doPortletMiseEnAvantDeContenusBoxGrid.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuiles en grille</label>
           <description xml:lang="fr">(ex : "Nos sites et applis")</description>
@@ -322,6 +326,7 @@
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
+    <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchGeolocEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter" />   
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
@@ -354,6 +359,7 @@
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
   </public-files>
   <webapp-files>
+    <file path="WEB-INF/tags/articleVideo.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />

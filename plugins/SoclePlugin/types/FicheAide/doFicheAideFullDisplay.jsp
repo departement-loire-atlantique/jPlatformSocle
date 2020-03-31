@@ -552,10 +552,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	    </div>   
 	</section>
 </jalios:if>
-<%--Util.notEmpty(obj.getQuiContacter())
-        || Util.notEmpty(obj.getIntroContact())
-        || Util.notEmpty(obj.getComplementContact())
-        || Util.notEmpty(obj.getBesoinDaide()); --%>
+
 <jalios:if predicate="<%= displayQuiContacter %>">
 <section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
     <%-- Instruction délégation est à faux --%>
@@ -567,6 +564,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
             <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
             </jalios:if>
+            <div class="ds44-mtb2"></div>
             <div class="grid-12-small-1">
                 <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getComplementContact()) %>">
                 <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>

@@ -26,7 +26,7 @@ public class CategoryFacetUtil {
    * @param cids
    * @return
    */
-  public static QueryHandler[] getFacetCategoryQuery(QueryHandler qh, String[] cidBranches, String[] cids) {
+  public static QueryHandler[] getFacetCategoryQuery(QueryHandler qh, String[] cidBranches, String[] cids, Boolean isCatModNivUnion) {
     // Création d'autant de query qu'il y a de branche de catégories dans la recherche à facettes plus deux
     QueryHandler[] queries = new QueryHandler[cidBranches.length];  
     // Récupère la liste cids de la query
@@ -38,7 +38,7 @@ public class CategoryFacetUtil {
 
       // Récupère la query de la recherche pour modifier son paramètre cids
       QueryHandler itQh = new QueryHandler(qh);             
-      itQh.setCatMode("or");
+      itQh.setCatMode(isCatModNivUnion ? "or" : "and");
       
       // Si un enfant d'une catégorie est sélectionné alors
       // la catégorie parente est retirée des cids            
