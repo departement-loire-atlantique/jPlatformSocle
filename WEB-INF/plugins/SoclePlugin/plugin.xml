@@ -258,6 +258,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
           <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
+          <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
+        </template>
         <template name="grille" file="doPortletMiseEnAvantDeContenusBoxGrid.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuiles en grille</label>
           <description xml:lang="fr">(ex : "Nos sites et applis")</description>
