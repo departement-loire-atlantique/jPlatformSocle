@@ -20,10 +20,7 @@ String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
         obj.getCodePostal(), commune, "");
 
 String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
-String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
-        obj.getEtageCouloirEscalier2(), obj.getEntreeBatimentImmeuble2(), obj.getNdeVoie2(),
-        obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
-        obj.getCedex2());
+String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 %>
 <section class="mbm">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">

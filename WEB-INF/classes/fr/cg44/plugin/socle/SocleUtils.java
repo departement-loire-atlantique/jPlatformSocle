@@ -338,9 +338,7 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
-			.append(" ")
-			.append(cedex);
+			sbfAddr.append(cedex);
 		}
 
 		return sbfAddr.toString();
@@ -375,6 +373,37 @@ public final class SocleUtils {
 				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
 				libelleDeVoie, lieudit, fichelieu.getCs2(), codePostal, communeEcrire,
 				fichelieu.getCedex2());
+	}
+	
+	
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Delegation sous la forme suivante :</p>
+	 * <p></p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param delegation
+	 * @return un String contenant l'adresse de la FicheLieu
+	 */
+	public static String formatAdressEcrire(Delegation delegation) {
+		
+		String communeEcrire = Util.notEmpty(delegation.getCommune2()) ? delegation.getCommune2().getTitle() : Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : "";
+		String etageCouloirEscalier =  Util.notEmpty(delegation.getEtageCouloirEscalier2()) ? delegation.getEtageCouloirEscalier2() : delegation.getEtageCouloirEscalier();
+		String entreeBatimentImmeuble =  Util.notEmpty(delegation.getEntreeBatimentImmeuble2()) ? delegation.getEntreeBatimentImmeuble2() : delegation.getEntreeBatimentImmeuble();
+		String ndeVoie =  Util.notEmpty(delegation.getNdeVoie2()) ? delegation.getNdeVoie2() : delegation.getNdeVoie();
+		String libelleDeVoie =  Util.notEmpty(delegation.getLibelleDeVoie2()) ? delegation.getLibelleDeVoie2() : delegation.getLibelleDeVoie();
+		String lieudit =  Util.notEmpty(delegation.getLieudit2()) ? delegation.getLieudit2() : delegation.getLieudit();
+		String codePostal =  Util.notEmpty(delegation.getCodePostal2()) ? delegation.getCodePostal2() : delegation.getCodePostal();
+		
+		return SocleUtils.formatAddress(delegation.getLibelleAutreAdresse(),
+				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
+				libelleDeVoie, lieudit, delegation.getCs2(), codePostal, communeEcrire,
+				delegation.getCedex2());
 	}
 	
 	

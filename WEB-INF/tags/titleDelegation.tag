@@ -122,7 +122,7 @@ if (Util.isEmpty(formattedMobilePath)) {
                     <hr>
                     <img src="<%= cartePath %>" alt="">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
-                    <% String adresse = SocleUtils.formatAddress(null, null, null, delegation.getNdeVoie(), delegation.getLibelleDeVoie(), null, null, delegation.getCodePostal(), Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : null, null); %>
+                    <% String adresse = SocleUtils.formatAdressEcrire(delegation); %>
                     <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
