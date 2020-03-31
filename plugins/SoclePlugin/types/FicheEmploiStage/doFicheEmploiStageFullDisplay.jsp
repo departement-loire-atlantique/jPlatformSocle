@@ -38,10 +38,10 @@
                                   <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.informations") %></p>
                                   <p class="ds44-docListElem mts">
                                        <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
-                                       <%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getPdate())) %>
+                                       <%= glp("jcmsplugin.socle.publieele", SocleUtils.formatDate("dd/MM/yy", obj.getPdate())) %>
                                        <br/>
                                        <%= glp("jcmsplugin.socle.ficheemploi.label.reference", obj.getNumeroDePoste()) %>
-                                       <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) %>">
+                                       <jalios:if predicate='<%= Util.notEmpty(obj.getDuree()) && !obj.getTypeDoffre(loggedMember).first().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.emploiPermanent")) %>'>
                                        <br/>
                                        <%-- Type d'offre est obligatoire et monovalué, pas besoin de faire de vérification --%>
                                        <%= obj.getTypeDoffre(loggedMember).first()%> - <%= obj.getDuree() %>
@@ -59,9 +59,19 @@
                                    </p>
                                    <p class="ds44-docListElem mts">
                                        <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
-                                       <%= SocleUtils.formatCategories(obj.getDirectiondelegation(loggedMember)) %>
-                                       <br/>
+                                       <jalios:if predicate='<%= !obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+                                           <%= SocleUtils.formatCategories(obj.getDirectiondelegation(loggedMember)) %>
+                                           <br/>                                
+                                       </jalios:if>
                                        <%= obj.getService() %>
+                                       <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+                                           <br/>
+                                           <%
+                                           SortedSet<Category> catsWithoutServices = obj.getDirectiondelegation(loggedMember);
+                                           catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
+                                           %>
+                                           <%= SocleUtils.formatCategories(catsWithoutServices) %>
+                                       </jalios:if>
                                        <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
                                        <br/>
                                        <%= obj.getPositionHierarchique() %>
@@ -103,7 +113,7 @@
                                        </div>
 	                               </jalios:if>
 	                               
-	                               <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.repondre") %></p>
+	                               <p class="ds44-box-heading ds44-mtb1" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.repondre") %></p>
 	                               <p class="ds44-docListElem mts">
 	                                   <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
 	                                   <%= glp("jcmsplugin.socle.ficheemploi.label.datelimite", SocleUtils.formatDate("dd/MM/yy", obj.getDateLimiteDeDepot())) %>
@@ -126,13 +136,27 @@
 	    </div>
 	    
 	    <%-- Texte en-tête --%>
-	    <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) %>">
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) || Util.notEmpty(obj.getImage()) %>">
 		    <section id="chapoFiche" class="ds44-contenuArticle">
 		       <div class="ds44-inner-container ds44-mtb3">
-	                <div class="ds44-grid12-offset-2">
-	                    <div class="ds44-introduction">
-	                       <jalios:wysiwyg><%= obj.getTexteentete() %></jalios:wysiwyg>
-	                    </div>
+	                <div class="ds44-grid12-offset-1">
+	                   <div class="grid-<%= Util.notEmpty(obj.getImage()) ? "2" : "1" %>-small-1">
+	                       <jalios:if predicate='<%=Util.notEmpty(obj.getImage())%>'>
+		                        <div class="col mrl mbs">
+		                            <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= obj.getTitle() %>'>
+		                                <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImage()) %>' alt="" class="ds44-w100 ds44-imgRatio">
+		                            </figure>
+		                        </div>
+		                    </jalios:if>
+		                    
+		                    <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) %>">
+	                           <div class='col <%= Util.notEmpty(obj.getImage()) ? "mll" : "" %> mbs'>
+	                               <div class="ds44-introduction">
+	                                   <jalios:wysiwyg><%= obj.getTexteentete() %></jalios:wysiwyg>
+	                                </div>
+	                           </div>
+	                       </jalios:if>
+	                   </div>
 	                </div>
 	            </div>
 		    </section>
@@ -187,7 +211,7 @@
             <section id="blocspecificites" class="ds44-contenuArticle">
                 <div class="ds44-inner-container ds44-mtb3">
                     <div class="ds44-grid12-offset-2">
-                        <h3 id="titreblocspecificites" class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.ficheemploi.label.specificites") %></h3>
+                        <h3 id="titreblocspecificites" class="h4-like ds44-wsg-exergue"><%= glp("jcmsplugin.socle.ficheemploi.label.specificites") %></h3>
                         <jalios:wysiwyg><%= obj.getSpecificitesDuPoste() %></jalios:wysiwyg>
                     </div>
                 </div>
@@ -216,11 +240,10 @@
 	                       <i class="icon icon-computer" aria-hidden="true"></i>
                        </a>
                        <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
-                       <p>Monsieur le président du Département de Loire-Atlantique</p>
-                       <p>Direction des Ressources Humaines,</p>
-                       <p>Service Emploi et Compétences</p>
-                       <p>3 Quai Ceirenay, CS 94109</p>
-                       <p>44041 Nantes cedex 1</p>
+                       <jalios:wysiwyg>
+                           <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
+                       </jalios:wysiwyg>
+                       
                        <%-- Fin du bloc en dur --%>
 		           </div>
                 </div>
@@ -301,24 +324,28 @@
 	    <section id="blocdocuments" class="ds44-contenuArticle">
 	        <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.docsutiles") %></p>
-	                <ul class="ds44-list">
-	                    <jalios:foreach name="itDoc" type="FileDocument" array="<%= obj.getDocumentsMultiple() %>" counter="itCounter">
-	                        <%
-	                        String docTitle = itDoc.getFilename();
-	                        if (Util.notEmpty(obj.getTitreEncartDocument()) && itCounter <= obj.getTitreEncartDocument().length && Util.notEmpty(obj.getTitreEncartDocument()[itCounter-1])) {
-	                            docTitle = obj.getTitreEncartDocument()[itCounter-1];
-	                        }
-	                        // Récupérer l'extension du fichier
-	                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-	                        // Récupérer la taille du fichier
-	                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-	                        %>
-	                        <li class="mts">
-	                            <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
-	                        </li>
-	                    </jalios:foreach>
-	                </ul>
+                    <div class="ds44-bgGray">
+                        <div class="ds44-innerBoxContainer">
+                        <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.docsutiles") %></p>
+			                <ul class="ds44-list">
+			                    <jalios:foreach name="itDoc" type="FileDocument" array="<%= obj.getDocumentsMultiple() %>" counter="itCounter">
+			                        <%
+			                        String docTitle = itDoc.getFilename();
+			                        if (Util.notEmpty(obj.getTitreEncartDocument()) && itCounter <= obj.getTitreEncartDocument().length && Util.notEmpty(obj.getTitreEncartDocument()[itCounter-1])) {
+			                            docTitle = obj.getTitreEncartDocument()[itCounter-1];
+			                        }
+			                        // Récupérer l'extension du fichier
+			                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+			                        // Récupérer la taille du fichier
+			                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+			                        %>
+			                        <li class="mts">
+			                            <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+			                        </li>
+			                    </jalios:foreach>
+			                </ul>
+		                </div>
+	                </div>
                 </div>
             </div>
 	    </section>
