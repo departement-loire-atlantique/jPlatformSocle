@@ -166,6 +166,8 @@ media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/t
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
+# Content template - cards
+media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
 
 
 jcms.resource.tt-card-enabled:false
