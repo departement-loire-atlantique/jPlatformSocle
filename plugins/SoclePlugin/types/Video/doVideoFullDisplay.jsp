@@ -32,55 +32,47 @@ if(Util.notEmpty(fichierTranscriptVideo)){
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) %>">
-	                    <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg></div>
+                        <div><jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg></div>
                     </jalios:if>
                     
                     <%-- Chapitres --%>
                     <%-- TODO : en attente maquette et implémentation du JS pour piloter la vidéo. --%>
-			        <jalios:if predicate="<%= obj.getHasChapters() && Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
-			            <%
-			            List<String> chapitres = Arrays.asList(obj.getChapitre());
-			            String[] timecodes = obj.getTimecode();
-			            String[] libellestimecodes = obj.getLibelleTimecode();
-			            String tmpChapitre = "";
-			            %>
+                    <jalios:if predicate="<%= obj.getHasChapters() && Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
+                        <%
+                        List<String> chapitres = Arrays.asList(obj.getChapitre());
+                        String[] timecodes = obj.getTimecode();
+                        String[] libellestimecodes = obj.getLibelleTimecode();
+                        String tmpChapitre = "";
+                        %>
                         <%-- Si plusieurs chapitres du même nom, on n'affiche le nom du chapitre qu'une fois. On classe les timecodes par chapitre. --%>
-			            <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre()%>">
-			                <jalios:if predicate="<%=Util.notEmpty(itChapitre) && !itChapitre.equals(tmpChapitre) %>">
-			                    <% tmpChapitre = itChapitre; %>
-			                    <p><strong><%=itChapitre %></strong></p>
-			                </jalios:if>
-			                <%
-			                String uniqueID = UUID.randomUUID().toString();
-			                String timecode = "";
-			                String libelletimecode = "";
-			                try {
-			                    if (Util.notEmpty(timecodes[itCounter-1]) && Util.notEmpty(libellestimecodes[itCounter-1])) {
-			                        timecode = timecodes[itCounter-1];
-			                        libelletimecode = libellestimecodes[itCounter-1]; %>
-			                        <p><a id="#video<%=uniqueID%>" class="lienChapitre" href="#" data-videoId="#video<%=uniqueID%>" data-videoTime="<%=VideoUtils.getSecondesByTimecode(timecode)%>" title="Aller à <%=timecode %>, chapitre concernant : <%=itChapitre %>"><p class=\"paragrapheChapitre\"><%=libelletimecode%></a> / <%= timecode %> / <%=VideoUtils.getSecondesByTimecode(timecode) %></p>
-			                        <%
-			                        }
-			                    } catch (IndexOutOfBoundsException e) {
-			                        timecode = "";
-			                        libelletimecode = "";
-			                        }
-			               
-			              %>
-			            </jalios:foreach>
-			        </jalios:if>                   
+                        <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre()%>">
+                            <jalios:if predicate="<%=Util.notEmpty(itChapitre) && !itChapitre.equals(tmpChapitre) %>">
+                                <% tmpChapitre = itChapitre; %>
+                                <p><strong><%=itChapitre %></strong></p>
+                            </jalios:if>
+                            <%
+                            String uniqueID = UUID.randomUUID().toString();
+                            String timecode = "";
+                            String libelletimecode = "";
+                            try {
+                                if (Util.notEmpty(timecodes[itCounter-1]) && Util.notEmpty(libellestimecodes[itCounter-1])) {
+                                    timecode = timecodes[itCounter-1];
+                                    libelletimecode = libellestimecodes[itCounter-1]; %>
+                                    <p><a id="#video<%=uniqueID%>" class="lienChapitre" href="#" data-videoId="#video<%=uniqueID%>" data-videoTime="<%=VideoUtils.getSecondesByTimecode(timecode)%>" title="Aller à <%=timecode %>, chapitre concernant : <%=itChapitre %>"><p class=\"paragrapheChapitre\"><%=libelletimecode%></a> / <%= timecode %> / <%=VideoUtils.getSecondesByTimecode(timecode) %></p>
+                                    <%
+                                    }
+                                } catch (IndexOutOfBoundsException e) {
+                                    timecode = "";
+                                    libelletimecode = "";
+                                    }
+                           
+                          %>
+                        </jalios:foreach>
+                    </jalios:if>                   
                     
                 </div>
             </div>
         </section>
 
-
-
-        
-        <%-- TODO : bloc des réseaux sociaux --%>
-        
-        <%-- TODO : bloc Je m'abonne --%>
-        
-        <%-- TODO : bloc "Sur le même thème --%>
     </article>
 </main>
