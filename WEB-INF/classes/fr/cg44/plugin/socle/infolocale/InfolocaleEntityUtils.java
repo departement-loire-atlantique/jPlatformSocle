@@ -15,7 +15,7 @@ import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
-import fr.cg44.plugin.socle.infolocale.entities.Date;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
@@ -223,8 +223,8 @@ public class InfolocaleEntityUtils {
     /**
      * Créé un tableau d'objets Date (infolocale) depuis du JSON
      */
-    public static Date[] createDateArrayFromJsonArray(JSONArray jsonArray) {
-        Date[] dates = new Date[jsonArray.length()];
+    public static DateInfolocale[] createDateArrayFromJsonArray(JSONArray jsonArray) {
+        DateInfolocale[] dates = new DateInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
                 dates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
@@ -238,16 +238,16 @@ public class InfolocaleEntityUtils {
     /**
      * Créé un objet Date (infolocale) depuis du JSON
      */
-    public static Date createDateFromJsonItem(JSONObject json) {
+    public static DateInfolocale createDateFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
-        Date date = new Date();
+        DateInfolocale date = new DateInfolocale();
         try {
             date.setDebut(json.getString("debut"));
             date.setFin(json.getString("fin"));
             date.setHoraire(json.getString("horaire"));
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
-            date = new Date();
+            date = new DateInfolocale();
         }
         return date;
     }

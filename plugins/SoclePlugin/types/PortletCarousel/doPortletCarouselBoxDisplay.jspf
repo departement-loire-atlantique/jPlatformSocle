@@ -9,7 +9,7 @@
 
 <section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeSombre) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
     <div class="ds44-inner-container ds44--mobile--m-padding-b">
-        <header class="txtcenter">
+        <header class="txtcenter <%=Util.isEmpty(sousTitreBloc) ? "ds44-mb2" : ""%>">
             <h2 class="h2-like center"><%= titreBloc %></h2>
             
             <jalios:if predicate="<%= Util.notEmpty(sousTitreBloc) %>">

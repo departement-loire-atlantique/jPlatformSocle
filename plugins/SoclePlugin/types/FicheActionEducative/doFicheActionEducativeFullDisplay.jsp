@@ -142,7 +142,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                            </jalios:if>
                               <source media="(max-width: 36em)" srcset='<%=Util.isEmpty(obj.getImageMobile()) ? "s.gif" : SocleUtils.getUrlOfFormattedImageMobile(obj.getImageMobile()) %>'>
                               <source media="(min-width: 36em)" srcset="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>">
-                              <img src="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
+                              <img src="<%=SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale())%>" alt='<%= Util.isEmpty(obj.getTexteAlternatif()) ? HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration")) : HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif()) %>' class="ds44-w100 ds44-imgRatio"/>
                            </picture>
                            <jalios:if predicate="<%= hasFigcaption%>">
                                <figcaption class="ds44-imgCaption">
@@ -199,16 +199,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         </jalios:if>
         
         <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
-        <section id="contentVideo" class="ds44-contenuArticle">
-            <div class="ds44-inner-container ds44-mtb3">
-                <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreVideo()) %>">
-                    <h3 class="h3-like" id="titreVideo"><%= obj.getTitreVideo() %></h2>
-                    </jalios:if>
-                    <%-- TODO : INSERER LA VIDEO --%>
-                </div>
-            </div>
-        </section>
+            <ds:articleVideo video="<%= obj.getVideo() %>" title="<%= obj.getTitreVideo() %>"/>
         </jalios:if>
         
         <jalios:if predicate="<%= Util.notEmpty(obj.getComplementTransport()) %>">

@@ -4,7 +4,7 @@ import com.jalios.jcms.Content;
 import com.jalios.jcms.Publication;
 
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
-import fr.cg44.plugin.socle.infolocale.entities.Date;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
@@ -19,7 +19,7 @@ public class EvenementContent extends Content {
     
     Lieu lieu;
     Contact[] contacts;
-    Date[] dates;
+    DateInfolocale[] dates;
     Genre genre;
     Photo[] photos;
     Langue[] langues;
@@ -55,10 +55,10 @@ public class EvenementContent extends Content {
     public void setContacts(Contact[] contacts) {
         this.contacts = contacts;
     }
-    public Date[] getDates() {
+    public DateInfolocale[] getDates() {
         return dates;
     }
-    public void setDates(Date[] dates) {
+    public void setDates(DateInfolocale[] dates) {
         this.dates = dates;
     }
     public Genre getGenre() {

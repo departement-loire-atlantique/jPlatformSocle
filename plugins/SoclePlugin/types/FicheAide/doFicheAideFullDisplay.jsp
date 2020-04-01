@@ -316,10 +316,17 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 								</p>
 								
 								<%
-									String communeEcrire = Util.notEmpty(itFicheLieu.getCommune2()) ? itFicheLieu.getCommune2().getTitle() : "";
+									String communeEcrire = Util.notEmpty(itFicheLieu.getCommune2()) ? itFicheLieu.getCommune2().getTitle() : Util.notEmpty(itFicheLieu.getCommune()) ? itFicheLieu.getCommune().getTitle() : "";
+									String etageCouloirEscalier =  Util.notEmpty(itFicheLieu.getEtageCouloirEscalier2()) ? itFicheLieu.getEtageCouloirEscalier2() : itFicheLieu.getEtageCouloirEscalier();
+									String entreeBatimentImmeuble =  Util.notEmpty(itFicheLieu.getEntreeBatimentImmeuble2()) ? itFicheLieu.getEntreeBatimentImmeuble2() : itFicheLieu.getEntreeBatimentImmeuble();
+									String ndeVoie =  Util.notEmpty(itFicheLieu.getNdeVoie2()) ? itFicheLieu.getNdeVoie2() : itFicheLieu.getNdeVoie();
+									String libelleDeVoie =  Util.notEmpty(itFicheLieu.getLibelleDeVoie2()) ? itFicheLieu.getLibelleDeVoie2() : itFicheLieu.getLibelleDeVoie();
+									String lieudit =  Util.notEmpty(itFicheLieu.getLieudit2()) ? itFicheLieu.getLieudit2() : itFicheLieu.getLieudit();
+									String codePostal =  Util.notEmpty(itFicheLieu.getCodePostal2()) ? itFicheLieu.getCodePostal2() : itFicheLieu.getCodePostal();
+									
 									String adresseEcrire = SocleUtils.formatAddress(itFicheLieu.getLibelleAutreAdresse(),
-											itFicheLieu.getEtageCouloirEscalier2(), itFicheLieu.getEntreeBatimentImmeuble2(), itFicheLieu.getNdeVoie2(),
-											itFicheLieu.getLibelleDeVoie2(), itFicheLieu.getLieudit2(), itFicheLieu.getCs2(), itFicheLieu.getCodePostal2(), communeEcrire,
+											etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
+											libelleDeVoie, lieudit, itFicheLieu.getCs2(), codePostal, communeEcrire,
 											itFicheLieu.getCedex2());
 								%>
 								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
@@ -474,10 +481,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	    </div>   
 	</section>
 </jalios:if>
-<%--Util.notEmpty(obj.getQuiContacter())
-        || Util.notEmpty(obj.getIntroContact())
-        || Util.notEmpty(obj.getComplementContact())
-        || Util.notEmpty(obj.getBesoinDaide()); --%>
+
 <jalios:if predicate="<%= displayQuiContacter %>">
 <section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
     <%-- Instruction délégation est à faux --%>
@@ -489,6 +493,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
             <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
             </jalios:if>
+            <div class="ds44-mtb2"></div>
             <div class="grid-12-small-1">
                 <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getComplementContact()) %>">
                 <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>

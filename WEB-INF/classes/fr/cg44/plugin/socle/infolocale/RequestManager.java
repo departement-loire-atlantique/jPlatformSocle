@@ -110,7 +110,7 @@ public class RequestManager {
                     LOGGER.warn(type + " : " + httpError + status + ". Authentification échouée.");
                     break;
                 default:
-                    LOGGER.warn(type + " : " + httpError + status + pleaseCheckConf);
+                    LOGGER.warn(type + " : " + httpError + status + pleaseCheckConf + response.getStatusLine().getReasonPhrase());
                     break;
             }
             
@@ -163,7 +163,7 @@ public class RequestManager {
                     fluxData.put(failureReason, "wrong_flux");
                     break;
                 default:
-                    LOGGER.warn(methodFilterFluxDataError + status + pleaseCheckConf);
+                    LOGGER.warn(methodFilterFluxDataError + status + pleaseCheckConf + response.getStatusLine().getReasonPhrase());
                     fluxData.put(failureReason, "unknown_error");
                     break;
             }

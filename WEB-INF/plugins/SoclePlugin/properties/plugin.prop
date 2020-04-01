@@ -30,17 +30,17 @@ $jcmsplugin.socle.cat.root: j_3
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.site.src.logo: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
-jcmsplugin.socle.site.src.carte.pdcv: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
-jcmsplugin.socle.site.src.carte.pdcv.mobile: //design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
+jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
+jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
 jcmsplugin.socle.site.applimenu.cat.root: j_5
 $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
-jcmsplugin.socle.css-urls://design.loire-atlantique.fr/css/cd44.css //design.loire-atlantique.fr/css/icons.css
-jcmsplugin.socle.js-urls://design.loire-atlantique.fr/js/cd44.js
+jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
+jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
 # ------------------------------------------------------------
 #  Formats d'images
@@ -58,6 +58,12 @@ jcmsplugin.socle.image.push.width: 200
 jcmsplugin.socle.image.push.height: 300
 jcmsplugin.socle.image.temoignage.width: 460
 jcmsplugin.socle.image.temoignage.height: 307
+jcmsplugin.socle.image.carrouselaccueil.full.width: 810
+jcmsplugin.socle.image.carrouselaccueil.full.height: 620
+jcmsplugin.socle.image.carrouselaccueil.mobile.width: 300
+jcmsplugin.socle.image.carrouselaccueil.mobile.height: 370
+jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
+jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -157,6 +163,7 @@ media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/Liste
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
@@ -271,6 +278,7 @@ jcmsplugin.socle.infolocale.login:
 jcmsplugin.socle.infolocale.password: 
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
+jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 
 # Metadonnees Infolocale pour le front
 
@@ -371,6 +379,8 @@ $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102
 $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
+$jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
+$jcmsplugin.socle.emploiStage.delegationService: c_5296
 
 # Video
 

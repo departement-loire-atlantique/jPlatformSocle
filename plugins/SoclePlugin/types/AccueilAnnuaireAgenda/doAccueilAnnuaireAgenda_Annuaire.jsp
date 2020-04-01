@@ -13,19 +13,14 @@
     <section class="ds44-container-large">
         <div class="ds44-mtb3 ds44--xl-padding-tb">
             <jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
-		        <jalios:if predicate="<%= Util.notEmpty(obj.getIntroRecherche()) || Util.notEmpty(obj.getSoustitreRecherche()) %>">
-	                <header class="txtcenter ds44--mobile--m-padding-b">
-	                    <jalios:if predicate="<%= Util.notEmpty(obj.getIntroRecherche()) %>">
-	                        <h2 id="titreRecherche" class="h2-like center"><%= obj.getIntroRecherche() %></h2>
-	                    </jalios:if>
-	                    <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitreRecherche()) %>">
-	                        <div class="ds44-component-chapo ds44-centeredBlock">
-	                            <jalios:wysiwyg><%= obj.getSoustitreRecherche() %></jalios:wysiwyg>
-	                        </div>
-	                    </jalios:if>
-	                </header>
-	            </jalios:if>
 		        <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
+		        <div class="ds44-loader hidden">
+                    <div class="ds44-loader-body">
+                        <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+                            <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+                        </svg>
+                    </div>
+                </div>
 		        <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
 		    </jalios:if>
 		    
@@ -38,13 +33,11 @@
 						    <section id="section<%=itCounter%>"
 						      class="ds44-contenuArticle">
 						        <div class="ds44-inner-container ds44-mtb3">
-						            <div class="ds44-grid12-offset-2">
-						                <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe())
-						                  && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
-						                    <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
-						                </jalios:if>
-						                <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
-						            </div>
+						            <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe())
+						              && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
+						                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
+						            </jalios:if>
+						            <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
 						        </div>
 						    </section>
 						</jalios:foreach>
