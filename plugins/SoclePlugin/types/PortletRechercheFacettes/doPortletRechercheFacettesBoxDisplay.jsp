@@ -99,6 +99,12 @@
 				</div>
 			</jalios:if>
 		
+		
+		    <input type="hidden" name="facetOperatorUnion" value='<%= obj.getModeDesFacettes() %>'/>
+		
+		    <input type="hidden" name="modCatBranchesUnion" value='<%= obj.getModeDesBranches() %>'/>
+            <input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>'/>
+		
 			<input type="hidden" name="boxId" value='<%= obj.getId() %>'/>
 		
 		</form>

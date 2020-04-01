@@ -59,8 +59,8 @@ public abstract class LuceneQueryFilter extends QueryFilter {
      */
     public QueryHandler addFacetQuery(QueryHandler qh, HttpServletRequest request, String query) {
     	// Opérateur de la requete entre les facettes
-    	boolean isfacetAndOperator = HttpUtil.getBooleanParameter(request, "facetOperator", true);
-    	String operator = isfacetAndOperator ? " AND " : " OR ";
+    	boolean isfacetOrOperator = HttpUtil.getBooleanParameter(request, "facetOperatorUnion", false);
+    	String operator = isfacetOrOperator ? " OR " : " AND ";
     	// Requêtes pour incrémenter la recherche des communes avec les précédants query des autres facettes	
     	String prevSearchText = "";
     	if(Util.notEmpty(qh.getText())) {

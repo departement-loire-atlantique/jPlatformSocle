@@ -25,21 +25,21 @@
     <field name="facettesSecondaires" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facettes secondaires</label>
     </field>
-    <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Mode des catégories</label>
+    <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Mode des catégories dans une même branche</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Intersection</offLabel>
     </field>
-    <field name="modeDesBranches" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Mode des facettes catégories</label>
+    <field name="modeDesBranches" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Mode des facettes entre branches de catégories</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Intersection</offLabel>
     </field>
-    <field name="modeDesFacettes" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="modeDesFacettes" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Mode des facettes</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
