@@ -443,33 +443,30 @@
 						<p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getHorairesEtAcces()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="3">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="3">
 								<i class="icon icon-time ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getHorairesEtAcces().substring(24, obj.getHorairesEtAcces().length()-10) %>
-							</p>
+								<jalios:wysiwyg><%= obj.getHorairesEtAcces() %></jalios:wysiwyg>
+							</div>
 						</jalios:if>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getTransportsEnCommun()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin">
 								<i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getTransportsEnCommun().substring(24, obj.getTransportsEnCommun().length()-10) %>
+								<jalios:wysiwyg><%= obj.getTransportsEnCommun() %></jalios:wysiwyg>
 								<%-- Lien Destineo congele - manque adresse depart
 								<br> 
 								<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 									<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") %> 
 								</a> 
 								--%>
-							</p>
+							</div>
 						</jalios:if>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getParkings()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin">
 								<i class="icon icon-parking ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getParkings().substring(24, obj.getParkings().length()-10) %>
-							</p>
+								<jalios:wysiwyg><%= obj.getParkings() %></jalios:wysiwyg>
+							</div>
 						</jalios:if>
 
 						<%-- TODO accessibilite --%>
