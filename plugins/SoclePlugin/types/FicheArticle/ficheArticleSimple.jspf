@@ -1,41 +1,7 @@
-<%
-// Rï¿½cupï¿½ration des infos de vidï¿½o, dans la cas d'une fiche article
-String titreVideo = "";
-String urlVideo = "";
-String fichierTranscriptVideo = "";
-String typeFichierTranscript = "";
-String tailleFichierTranscript = "";
-if(Util.notEmpty(obj.getVideoPrincipale())) {
-  titreVideo = obj.getVideoPrincipale().getTitle();
-  urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
-  
-  // R�cup�ration des infos du fichier de transcription
-  if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
-    fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();
-    typeFichierTranscript = FileDocument.getExtension(obj.getVideoPrincipale().getFichierTranscript().getFilename()).toUpperCase();
-    tailleFichierTranscript = Util.formatFileSize(obj.getVideoPrincipale().getFichierTranscript().getSize());
-  }
-}
-%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
-<ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" 
-    titreVideo="<%= titreVideo %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%= fichierTranscriptVideo %>"
-    typeFichierTranscript="<%= typeFichierTranscript %>" tailleFichierTranscript="<%= tailleFichierTranscript %>"  
-    title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
-    breadcrumb="true"></ds:titleSimple>
+<%@ include file='commonTitreArticleActu.jspf' %>
 
-<%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
-<jalios:if predicate='<%=Util.isEmpty(urlVideo) && Util.notEmpty(obj.getChapo()) %>'>
-	<section class="ds44-contenuArticle">
-		<div class="ds44-inner-container ds44-mtb3">
-		    <div class="ds44-grid12-offset-2">
-				<div class="ds44-introduction">
-					<jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
-				</div>
-			</div>
-		</div>
-	</section>
-</jalios:if>
 <%-- Boucler sur les paragraphes --%>
 <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
 	array="<%=obj.getContenuParagraphe()%>">

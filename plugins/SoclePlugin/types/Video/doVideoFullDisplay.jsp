@@ -6,27 +6,10 @@
 <% Video obj = (Video)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
 <%@ include file='/front/doFullDisplay.jspf' %>
 
-<%
-String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
-FileDocument fichierTranscriptVideo = obj.getFichierTranscript();
-String cheminFichierTranscriptVideo = "";
-String typeFichierTranscript = "";
-String tailleFichierTranscript = "";
-
-// Récupération des infos du fichier de transcription
-if(Util.notEmpty(fichierTranscriptVideo)){
-  cheminFichierTranscriptVideo = fichierTranscriptVideo.getDownloadUrl();
-  typeFichierTranscript = FileDocument.getExtension(fichierTranscriptVideo.getFilename()).toUpperCase();
-  tailleFichierTranscript = Util.formatFileSize(fichierTranscriptVideo.getSize());
-}
-%>
-
 <main id="content" role="main">
     <article class="ds44-container-large">
-        <ds:titleSimple titreVideo="<%= obj.getTitle() %>" urlVideo="<%= urlVideo %>" fichierTranscript="<%= cheminFichierTranscriptVideo %>"
-            typeFichierTranscript="<%= typeFichierTranscript %>" tailleFichierTranscript="<%= tailleFichierTranscript %>"  
-            title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
-            breadcrumb="true">
+        <ds:titleSimple video="<%= obj%>" title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>"
+            legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true">
         </ds:titleSimple>
         <section class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">

@@ -1,4 +1,5 @@
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@tag import="fr.cg44.plugin.socle.VideoUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
@@ -7,7 +8,7 @@
     description="Titre du header simple" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat"
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument"
 %>
 <%@ attribute name="title"
     required="true"
@@ -37,40 +38,12 @@
     type="String"
     description="Le chemin du fichier image mobile"
 %>
-<%@ attribute name="urlVideo"
-    required="false"
+<%@ attribute name="video"
+    required="true"
     fragment="false"
     rtexprvalue="true"
-    type="String"
-    description="L'URL de la vidéo"
-%>
-<%@ attribute name="titreVideo"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le titre la vidéo"
-%>
-<%@ attribute name="fichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le chemin du fichier de transcription"
-%>
-<%@ attribute name="typeFichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le format du fichier de transcription"
-%>
-<%@ attribute name="tailleFichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="La taille du fichier de transcription"
+    type="generated.Video"
+    description="Video"
 %>
 <%@ attribute name="alt"
     required="false"
@@ -118,6 +91,27 @@
 <%
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+
+boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+
+//Récupération des infos de vidéo, dans la cas d'une fiche article ou actu
+String titreVideo = "";
+String urlVideo = "";
+String fichierTranscriptVideo = "";
+String typeFichierTranscript = "";
+String tailleFichierTranscript = "";
+if(Util.notEmpty(video)) {
+	titreVideo = video.getTitle();
+	urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(video.getUrlVideo()));
+	
+	// Récupération des infos du fichier de transcription
+	if(Util.notEmpty(video.getFichierTranscript())){
+		fichierTranscriptVideo = video.getFichierTranscript().getDownloadUrl();
+		typeFichierTranscript = FileDocument.getExtension(video.getFichierTranscript().getFilename()).toUpperCase();
+		tailleFichierTranscript = Util.formatFileSize(video.getFichierTranscript().getSize());
+	}
+}
+
 %>
 
 <div class="ds44-lightBG">
@@ -148,8 +142,8 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
 	                <iframe title="<%= titreVideo %>" style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
-                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-				        <a href="<%= fichierTranscript %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
+				        <a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a>
 				    </jalios:if>
                 </div>
 	        </div>
