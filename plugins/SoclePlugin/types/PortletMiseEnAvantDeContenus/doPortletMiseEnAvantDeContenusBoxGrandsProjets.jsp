@@ -44,13 +44,13 @@ else{
 
 %>
 
-<section class="ds44-container-fluid ds44--xxl-padding-tb <%=Util.isEmpty(box.getSoustitre()) ? "ds44-mb2" : ""%>">
+<section class="ds44-container-fluid ds44--xxl-padding-t ds44--p35b <%=Util.isEmpty(box.getSoustitre()) ? "ds44-mb2" : ""%>">
 	<section class="ds44-container-large">
 	    <div class="ds44-inner-container">
 	        <div class="grid-12-small-1 ds44-flex-valign-center">
 	        
 	            <%-- Présentation de gauche --%>
-				<div class="col-4 colFocusProjets">
+				<div class="col-4 colFocusProjets mbm">
 	                <jalios:if predicate='<%=Util.notEmpty(box.getTitreVisuel()) %>'>
 	                    <h2 class="h2-like" id="idTitre2"><%= box.getTitreVisuel() %></h2>
 				    </jalios:if>
