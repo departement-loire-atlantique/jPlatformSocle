@@ -15,18 +15,21 @@
 	request.setAttribute("showFiltres", showFiltres);
 %>
 
-<div class="ds44-inner-container ds44--mobile--m-padding-b">
-	<header class="txtcenter">
-		<h2 class="h2-like center"><%= Util.notEmpty(obj.getTitre(userLang)) ? obj.getTitre(userLang) : obj.getTitle(userLang) %></h2>
-		<jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre(userLang)) %>'>
-			<p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getSoustitre(userLang) %></p>
-		</jalios:if>
-	</header>
-</div>
+<jalios:if predicate='<%= !isInRechercheFacette %>'>
+	<div class="ds44-inner-container ds44--mobile--m-padding-b">
+		<header class="txtcenter">
+			<h2 class="h2-like center"><%= Util.notEmpty(obj.getTitre(userLang)) ? obj.getTitre(userLang) : obj.getTitle(userLang) %></h2>
+			<jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre(userLang)) %>'>
+				<p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getSoustitre(userLang) %></p>
+			</jalios:if>
+		</header>
+	</div>
+</jalios:if>
 
-<form data-is-ajax="true">
-
-	<p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+    <jalios:if predicate='<%= !isInRechercheFacette %>'>
+	   <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+	</jalios:if>
 	<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-small-flex-col">
 
 		<% int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); %>

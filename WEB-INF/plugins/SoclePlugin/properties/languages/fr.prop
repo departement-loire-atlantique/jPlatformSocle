@@ -28,6 +28,11 @@ jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les 
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 
 # ------------------------------------------------------------
+#  Recherche à facettes
+# ------------------------------------------------------------
+$jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
+
+# ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
 jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation par commune
