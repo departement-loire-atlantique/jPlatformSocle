@@ -1,6 +1,7 @@
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% PortletCarrouselDimagesHome obj = (PortletCarrouselDimagesHome)portlet; %><%
 %>
@@ -19,39 +20,12 @@
 			    <div class="swiper-container ds44-titleContainer ds44-titleContainer--home swiper-container-fade swiper-container-horizontal">
 			        <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
 			            <jalios:foreach name="itTuile" type="CarouselElement" array="<%= obj.getElementsDiaporamaPrincipaux() %>">
-			            <%
-			            String figCaption = "";
-			            if (Util.notEmpty(itTuile.getImageLegend())) {
-			              figCaption += itTuile.getImageLegend();
-			            }
-			            if (Util.notEmpty(itTuile.getImageLegend()) && Util.notEmpty(itTuile.getImageCopyright())) {
-			              figCaption += " ";
-			            }
-			            if (Util.notEmpty(itTuile.getImageCopyright())) {
-	                      figCaption += glp("jcmsplugin.socle.symbol.copyright") + " " + itTuile.getImageCopyright();
-	                    }
-			            String formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(itTuile.getImage());
-			            String formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(itTuile.getImageMobile());
-			            if (Util.isEmpty(formattedMobilePath)) {
-			              formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(itTuile.getImage());
-			            }
-			            %>
 			            <li class="swiper-slide">
 			                <div class="ds44-titleContainer ds44-titleContainer--home">
 							    <div class="ds44-alphaGradient ds44-alphaGradient--header"></div>
-							    <jalios:if predicate="<%= Util.notEmpty(figCaption) %>">
-			                        <figure role="figure">
-			                    </jalios:if>
-							    <picture class="ds44-pageHeaderContainer__pictureContainer" role="figure" aria-label='<%= Util.isEmpty(figCaption) ? itTuile.getTitle() : figCaption %>'>
-							        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
-			                            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
-			                        </jalios:if>
-			                        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-							        <img src="<%= formattedImagePath %>" alt='<%= itTuile.getTitle() %>' class="ds44-headerImg"/>
-							    </picture>
-							    <jalios:if predicate="<%= Util.notEmpty(figCaption) %>">
-							        <figcaption class="ds44-imgCaption"><%= figCaption %></figcaption>
-							    </jalios:if>
+							    <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
+	                             image="<%= itTuile.getImage() %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
+	                             copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
 							</div>
 			            </li>
 			            </jalios:foreach>
@@ -66,33 +40,10 @@
                         <div class="swiper-container swiper-container-fade swiper-container-horizontal">
                             <ul class="swiper-wrapper ds44-list has-gutter-l ds44-carousel-swiper">
 	                            <jalios:foreach name="itTuile" type="CarouselElement" array="<%= obj.getElementsDiaporamasSecondaires() %>">
-		                        <%
-		                        String figCaption = "";
-		                        if (Util.notEmpty(itTuile.getImageLegend())) {
-		                          figCaption += itTuile.getImageLegend();
-		                        }
-		                        if (Util.notEmpty(itTuile.getImageLegend()) && Util.notEmpty(itTuile.getImageCopyright())) {
-		                          figCaption += " ";
-		                        }
-		                        if (Util.notEmpty(itTuile.getImageCopyright())) {
-		                          figCaption += glp("jcmsplugin.socle.symbol.copyright") + " " + itTuile.getImageCopyright();
-		                        }
-		                        String formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(itTuile.getImageCarree());
-		                        if (Util.isEmpty(formattedImagePath)) {
-		                          formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(itTuile.getImage());
-		                        }
-		                        %>
 	                                <li class="swiper-slide">
-						              <jalios:if predicate="<%= Util.notEmpty(figCaption) %>">
-		                                  <figure role="figure">
-		                              </jalios:if>
-		                              <picture class="ds44-pageHeaderContainer__pictureContainer" role="figure" aria-label='<%= Util.isEmpty(figCaption) ? itTuile.getTitle() : figCaption %>'>
-		                                  <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-		                                  <img src="<%= formattedImagePath %>" alt='<%= itTuile.getTitle() %>' class="ds44-headerImg"/>
-		                              </picture>
-		                              <jalios:if predicate="<%= Util.notEmpty(figCaption) %>">
-		                                  <figcaption class="ds44-imgCaption"><%= figCaption %></figcaption>
-		                              </jalios:if>
+	                                  <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselCarree"
+		                                 image="<%= itTuile.getImageCarree() %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
+		                                 copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
 						            </li>
 					            </jalios:foreach>
                             </ul>

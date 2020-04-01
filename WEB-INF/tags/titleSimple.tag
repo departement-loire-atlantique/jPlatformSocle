@@ -2,6 +2,7 @@
 <%@tag import="fr.cg44.plugin.socle.VideoUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ tag 
     pageEncoding="UTF-8"
     description="Titre du header simple" 
@@ -90,6 +91,7 @@
 <%
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
 //Récupération des infos de vidéo, dans la cas d'une fiche article ou actu
@@ -148,37 +150,11 @@ if(Util.notEmpty(video)) {
 	    </div>
 	</jalios:if>
 	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-	<% 
-	String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
-	String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);;
-	if (Util.isEmpty(formattedMobilePath)) {
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
-	}
-	%>
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <jalios:if predicate="<%= hasFigcaption%>">
-	                    <figure role="figure">
-	                </jalios:if>
-		            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
-				        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
-				            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
-				        </jalios:if>
-				        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-				        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
-	                </picture>
-	                <jalios:if predicate="<%= hasFigcaption%>">
-	                    <figcaption class="ds44-imgCaption">
-	                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                            <%=legend%>
-	                        </jalios:if>
-	                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                            © <%=copyright%>
-	                        </jalios:if>
-	                    </figcaption>
-	                  </figure>
-	                </jalios:if>
+	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="bandeau" 
+	                   image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
 				</div>
 	        </div>
 	    </div>
