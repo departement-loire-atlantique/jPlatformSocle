@@ -85,72 +85,56 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 String formattedImagePath = "";
 String formattedMobilePath = "";
 
+if (format.equals("principale") || format.equals("bandeau") ||format.equals("carree") ||format.equals("mobile")) {
+  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
+
+  if (Util.isEmpty(formattedMobilePath)) {
+    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
+  }
+} else if (format.equals("carouselFull") ||format.equals("carouselMobile") ||format.equals("carouselCarree")) {
+  formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(imageMobile);
+
+  if (Util.isEmpty(formattedMobilePath)) {
+    formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
+  }
+} else {
+  // défaut 
+  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
+
+  if (Util.isEmpty(formattedMobilePath)) {
+    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
+  }
+}
+
 switch(format) {
 
 	case "principale" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
-
-	  if (Util.isEmpty(formattedMobilePath)) {
-	    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
-	  }
 	  break;
 	  
 	case "bandeau" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(image);
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
-
-	  if (Util.isEmpty(formattedMobilePath)) {
-	    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
-	  }
 	  break;
 	  
 	case "carree" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
-
-	  if (Util.isEmpty(formattedMobilePath)) {
-	    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
 	  }
 	  break;
 	  
 	case "mobile" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageMobile(image);
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
-
-	  if (Util.isEmpty(formattedMobilePath)) {
-	    formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
-	  }
 	  break;
 	  
 	case "carouselFull" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(image);
-	  // Spécifique : l'image mobile doit être en carrousel mobile
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(imageMobile);
-
-	  if (Util.isEmpty(formattedMobilePath)) {
-	    formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-	  }
 	  break;
     
 	case "carouselMobile" :
       formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-      // Spécifique : l'image mobile doit être en carrousel mobile
-      formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(imageMobile);
-
-      if (Util.isEmpty(formattedMobilePath)) {
-        formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-      }
       break;
     
 	case "carouselCarree" :
       formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
-      // Spécifique : l'image mobile doit être en carrousel mobile
-      formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(imageMobile);
-
-      if (Util.isEmpty(formattedMobilePath)) {
-        formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-      }
       break;
 	  
 	default :
