@@ -31,9 +31,9 @@ FicheEmploiStage pub = (FicheEmploiStage) data;
 						</button>
 					</jalios:if>
 				</p>
-			</jalios:if>
-			<jalios:if predicate="<%= Util.notEmpty(pub.getCategorieDemploi(loggedMember)) && Util.notEmpty(pub.getCategorieDemploi(loggedMember).first().getDescription()) %>">
-			  <p id="tooltip-case_<%= pub.getId() %>" class="hidden"><%= pub.getCategorieDemploi(loggedMember).first().getDescription() %></p>
+				<jalios:if predicate="<%= Util.notEmpty(pub.getCategorieDemploi(loggedMember).first().getDescription()) %>">
+	              <p id="tooltip-case_<%= pub.getId() %>" class="hidden"><%= pub.getCategorieDemploi(loggedMember).first().getDescription() %></p>
+	            </jalios:if>
 			</jalios:if>
 			<jalios:if predicate="<%= Util.notEmpty(pub.getDuree()) %>">
 				<p class="ds44-docListElem ds44-mt-std"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i>
