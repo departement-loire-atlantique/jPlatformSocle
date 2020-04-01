@@ -4,42 +4,13 @@
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheActu obj = (FicheActu)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
-%><%@ include file='/front/doFullDisplay.jspf' %><%
-%><% 
+%><%@ include file='/front/doFullDisplay.jspf' %>
 
-// Champs générés
-
-String lblFigure = "";
-if (Util.notEmpty(obj.getLegende())) lblFigure += obj.getLegende();
-if (Util.notEmpty(obj.getLegende()) && Util.notEmpty(obj.getCopyright())) lblFigure += " ";
-if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright();
- 
-// Récupération des infos de vidéo pour remplacer l'image, dans le titre.
- String urlVideo = "";
- String fichierTranscriptVideo = "";
- if(Util.notEmpty(obj.getVideoPrincipale())){
-   urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getVideoPrincipale().getUrlVideo()));
-   if(Util.notEmpty(obj.getVideoPrincipale().getFichierTranscript())){
-     fichierTranscriptVideo = obj.getVideoPrincipale().getFichierTranscript().getDownloadUrl();
-   }
- }
-%>
 <main id="content" role="main">
     <article class="ds44-container-large">
-        <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>"
-            urlVideo="<%= urlVideo %>" fichierTranscript="<%=fichierTranscriptVideo %>" 
-            title="<%= obj.getTitle() %>" legend="<%= obj.getLegende() %>" 
-            copyright="<%= obj.getCopyright() %>" date='<%= SocleUtils.formatDate("dd/MM/yy", obj.getDateActu()) %>' 
-            alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true"></ds:titleSimple>
-        <section class="ds44-contenuArticle">
-           <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
-           <div class="ds44-inner-container ds44-mtb3">
-                <div class="ds44-grid12-offset-2">
-                    <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
-                </div>
-           </div>
-           </jalios:if>
-        </section>
+    
+    <%@ include file='../FicheArticle/commonTitreArticleActu.jspf' %>
+			
         <%-- Boucler sur les paragraphes --%>
         <jalios:foreach name="itTitle" type="String" counter="itCounter" array="<%= obj.getTitreParagraphe() %>">
            <jalios:if predicate="<%= itCounter <= obj.getContenuParagraphe().length && Util.notEmpty(obj.getContenuParagraphe()[itCounter-1]) %>">

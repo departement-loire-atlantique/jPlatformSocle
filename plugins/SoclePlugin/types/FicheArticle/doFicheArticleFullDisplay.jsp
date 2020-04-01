@@ -4,16 +4,8 @@
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% FicheArticle obj = (FicheArticle)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
-%><%@ include file='/front/doFullDisplay.jspf' %><%
-%><% 
+%><%@ include file='/front/doFullDisplay.jspf' %>
 
-    // Champs générés
-
-    String lblFigure = "";
-    if (Util.notEmpty(obj.getLegende())) lblFigure += obj.getLegende();
-    if (Util.notEmpty(obj.getLegende()) && Util.notEmpty(obj.getCopyright())) lblFigure += " ";
-    if (Util.notEmpty(obj.getCopyright())) lblFigure += glp("jcmsplugin.socle.symbol.copyright") + " " + obj.getCopyright();
-%>
 <main id="content" role="main">
     <article class="ds44-container-large">
         <%-- Sélection qui dépend de l'image principale et du champ "Type d'article --%>
