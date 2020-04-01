@@ -315,7 +315,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									<strong><%= itFicheLieu.getTitle() %></strong>
 								</p>
 								
-								<% String adresseEcrire = SocleUtils.formatAdressEcrire(itFicheLieu); %>
+								<% String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu); %>
 								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
 									<p class="ds44-docListElem mts">
 										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
@@ -460,7 +460,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									<strong><%= itFicheLieu.getTitle() %></strong>
 								</p>
 								
-								<% String adresseEcrire = SocleUtils.formatAdressEcrire(itFicheLieu); %>
+								<% String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu); %>
 								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
 									<p class="ds44-docListElem mts">
 										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
@@ -578,7 +578,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                         </jalios:if>
                         <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><b><%= itLieu.getTitle() %></b></p>
                         <p class="ds44-docListElem">
-                           <%= SocleUtils.formatAdressEcrire(itLieu) %>
+                           <%= SocleUtils.formatAdresseEcrire(itLieu) %>
                         </p>
                         <jalios:if predicate="<%= Util.notEmpty(itLieu.getTelephone()) %>">
                         <p class="ds44-docListElem mtm"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>

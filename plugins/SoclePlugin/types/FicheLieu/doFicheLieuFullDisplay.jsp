@@ -41,7 +41,7 @@
 							obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
 							obj.getCodePostal(), commune, "");
 
-					String adresseEcrire = SocleUtils.formatAdressEcrire(obj);
+					String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 				%>
 				<jalios:if
 					predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)
@@ -526,7 +526,7 @@
 										<%= ficheLieu.getTitle() %>
 									</a>
 									<p>
-										<%= SocleUtils.formatAdressEcrire(ficheLieu) %>
+										<%= SocleUtils.formatAdresseEcrire(ficheLieu) %>
 									</p>
 								</li>
 							</jalios:foreach>

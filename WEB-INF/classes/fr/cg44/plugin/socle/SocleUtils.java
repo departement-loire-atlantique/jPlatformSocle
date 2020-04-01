@@ -359,7 +359,7 @@ public final class SocleUtils {
 	 * @param fichelieu
 	 * @return un String contenant l'adresse de la FicheLieu
 	 */
-	public static String formatAdressEcrire(FicheLieu fichelieu) {
+	public static String formatAdresseEcrire(FicheLieu fichelieu) {
 		
 		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "";
 		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : fichelieu.getEtageCouloirEscalier();
@@ -390,7 +390,7 @@ public final class SocleUtils {
 	 * @param delegation
 	 * @return un String contenant l'adresse de la FicheLieu
 	 */
-	public static String formatAdressEcrire(Delegation delegation) {
+	public static String formatAdresseEcrire(Delegation delegation) {
 		
 		String communeEcrire = Util.notEmpty(delegation.getCommune2()) ? delegation.getCommune2().getTitle() : Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : "";
 		String etageCouloirEscalier =  Util.notEmpty(delegation.getEtageCouloirEscalier2()) ? delegation.getEtageCouloirEscalier2() : delegation.getEtageCouloirEscalier();
