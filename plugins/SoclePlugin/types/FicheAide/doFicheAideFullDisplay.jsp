@@ -315,20 +315,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									<strong><%= itFicheLieu.getTitle() %></strong>
 								</p>
 								
-								<%
-									String communeEcrire = Util.notEmpty(itFicheLieu.getCommune2()) ? itFicheLieu.getCommune2().getTitle() : Util.notEmpty(itFicheLieu.getCommune()) ? itFicheLieu.getCommune().getTitle() : "";
-									String etageCouloirEscalier =  Util.notEmpty(itFicheLieu.getEtageCouloirEscalier2()) ? itFicheLieu.getEtageCouloirEscalier2() : itFicheLieu.getEtageCouloirEscalier();
-									String entreeBatimentImmeuble =  Util.notEmpty(itFicheLieu.getEntreeBatimentImmeuble2()) ? itFicheLieu.getEntreeBatimentImmeuble2() : itFicheLieu.getEntreeBatimentImmeuble();
-									String ndeVoie =  Util.notEmpty(itFicheLieu.getNdeVoie2()) ? itFicheLieu.getNdeVoie2() : itFicheLieu.getNdeVoie();
-									String libelleDeVoie =  Util.notEmpty(itFicheLieu.getLibelleDeVoie2()) ? itFicheLieu.getLibelleDeVoie2() : itFicheLieu.getLibelleDeVoie();
-									String lieudit =  Util.notEmpty(itFicheLieu.getLieudit2()) ? itFicheLieu.getLieudit2() : itFicheLieu.getLieudit();
-									String codePostal =  Util.notEmpty(itFicheLieu.getCodePostal2()) ? itFicheLieu.getCodePostal2() : itFicheLieu.getCodePostal();
-									
-									String adresseEcrire = SocleUtils.formatAddress(itFicheLieu.getLibelleAutreAdresse(),
-											etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
-											libelleDeVoie, lieudit, itFicheLieu.getCs2(), codePostal, communeEcrire,
-											itFicheLieu.getCedex2());
-								%>
+								<% String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu); %>
 								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
 									<p class="ds44-docListElem mts">
 										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
@@ -341,8 +328,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 										<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 
 										<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
-											<% String numTel = itFicheLieu.getTelephone()[0]; %>
-											<ds:phone number="<%= numTel %>"/>
+											<ds:phone number="<%= itFicheLieu.getTelephone()[0] %>"/>
 										</jalios:if>
 
 										<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
@@ -408,8 +394,8 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	</section>
 </jalios:if>
 
-<jalios:if predicate="<%= displaySuivreDemande && Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-modale">
+<jalios:if predicate="<%= displaySuivreDemande %>">
+	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-suivre-demande">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.ficheaide.suivre.label")) %>' 
@@ -424,44 +410,129 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	            <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
 	
 	            <div class="ds44-mt3 grid-12-small-1">
-	                <div class="col-6 ds44-modal-column">
-	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
+	                
+	                <jalios:if predicate='<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>'>
+		                <div class="col-6 ds44-modal-column">
+		                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
+		
+		                    <p id="desc-pour-input-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi") %></p>
+		
+							<form action="<%= obj.getUrlSuiviEdemarche() %>">
+								<% String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element"); %>
+								<div class="ds44-form__container">
+									<label for="<%= idFormElement %>" class="ds44-formLabel">
+										<span class="ds44-labelTypePlaceholder">
+											<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %>
+											<sup aria-hidden="true">*</sup>
+										</span> 
+										<span id="explanation-<%= idFormElement %>" class="ds44-labelTypeInfoComp">
+											<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi") %>
+										</span> 
+										<input type="text" id="<%= idFormElement %>" 
+												name="<%= idFormElement %>" 
+												class="ds44-inpStd" 
+												title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
+												required
+												aria-required="true" 
+												aria-describedby=" explanation-<%= idFormElement %>" />
+										<button class="ds44-reset" type="button">
+											<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+											<span class="visually-hidden">
+												<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %>
+											</span>
+										</button> 
+									</label>
+									<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
+								</div>
+								<button class="ds44-btnStd ds44-btn--invert" aria-label='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
+									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
+									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+								</button>
+							</form>
+						</div>
+					</jalios:if>
+					<jalios:if predicate='<%= Util.isEmpty(obj.getEdemarche(loggedMember)) %>'>
+						<div class="col-6 ds44-modal-column">
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+								
+								<p class="ds44-docListElem mts">
+									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+									<strong><%= itFicheLieu.getTitle() %></strong>
+								</p>
+								
+								<% String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu); %>
+								<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
+									<p class="ds44-docListElem mts">
+										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+										<%= adresseEcrire %>
+									</p>
+								</jalios:if>
+								
+								<jalios:if predicate='<%= Util.notEmpty(itFicheLieu.getTelephone()) %>'>
+									<div class="ds44-docListElem mts">
+										<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+
+										<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
+											<ds:phone number="<%= itFicheLieu.getTelephone()[0] %>"/>
+										</jalios:if>
+
+										<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
+											<ul class="ds44-list">
+												<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
+													<li>
+														<ds:phone number="<%= numTel %>"/>
+													</li>
+												</jalios:foreach>
+											</ul>
+										</jalios:if>
+
+									</div>
+								</jalios:if>
+								
+								<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getEmail())%>'>
+									<div class="ds44-docListElem mts">
+										<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+										<% 
+											StringBuffer sbfAriaLabelMail = new StringBuffer();
+											sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
+												.append(" ")
+												.append(itFicheLieu.getTitle())
+												.append(" ")
+												.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
+												.append(" : ");
+											String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
+										%>
 	
-	                    <p id="desc-pour-input-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi") %></p>
+										<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
+											<% String email = itFicheLieu.getEmail()[0]; %>
+											<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+												<%
+													StringBuffer sbfLabelMail = new StringBuffer();
+													sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
+														.append(" ")
+														.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
+												%>
+												<%=  sbfLabelMail.toString()  %>
+											</a>
+										</jalios:if>
 	
-						<form action="<%= obj.getUrlSuiviEdemarche() %>">
-							<% String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element"); %>
-							<div class="ds44-form__container">
-								<label for="<%= idFormElement %>" class="ds44-formLabel">
-									<span class="ds44-labelTypePlaceholder">
-										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %>
-										<sup aria-hidden="true">*</sup>
-									</span> 
-									<span id="explanation-<%= idFormElement %>" class="ds44-labelTypeInfoComp">
-										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi") %>
-									</span> 
-									<input type="text" id="<%= idFormElement %>" 
-											name="<%= idFormElement %>" 
-											class="ds44-inpStd" 
-											title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
-											required
-											aria-required="true" 
-											aria-describedby=" explanation-<%= idFormElement %>" />
-									<button class="ds44-reset" type="button">
-										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
-										<span class="visually-hidden">
-											<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %>
-										</span>
-									</button> 
-								</label>
-								<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
-							</div>
-							<button class="ds44-btnStd ds44-btn--invert" aria-label='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
-								<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
-								<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-							</button>
-						</form>
-	                </div>
+										<jalios:if predicate='<%= itFicheLieu.getEmail().length > 1 %>'>
+											<ul class="ds44-list">
+												<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
+													<li>
+														<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+															<%= email %>
+														</a>
+													</li>
+												</jalios:foreach>
+											</ul>
+										</jalios:if>
+	
+									</div>
+								</jalios:if>
+							</jalios:foreach>
+						</div>
+					</jalios:if>
 	                <div class="col-6 ds44-modal-column">
 	
 	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi") %></h2>
@@ -507,7 +578,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                         </jalios:if>
                         <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><b><%= itLieu.getTitle() %></b></p>
                         <p class="ds44-docListElem">
-                           <%= SocleUtils.formatAddress(null, itLieu.getEtageCouloirEscalier(), itLieu.getEntreeBatimentImmeuble(), itLieu.getNdeVoie(), itLieu.getLibelleDeVoie(), itLieu.getLieudit(), itLieu.getCs2(), itLieu.getCodePostal(), itLieu.getCommune().getTitle(), itLieu.getCedex2()) %>
+                           <%= SocleUtils.formatAdresseEcrire(itLieu) %>
                         </p>
                         <jalios:if predicate="<%= Util.notEmpty(itLieu.getTelephone()) %>">
                         <p class="ds44-docListElem mtm"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>

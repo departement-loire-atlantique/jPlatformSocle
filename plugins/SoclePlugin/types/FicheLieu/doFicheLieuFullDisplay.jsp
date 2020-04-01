@@ -41,11 +41,7 @@
 							obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
 							obj.getCodePostal(), commune, "");
 
-					String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
-					String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
-							obj.getEtageCouloirEscalier2(), obj.getEntreeBatimentImmeuble2(), obj.getNdeVoie2(),
-							obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
-							obj.getCedex2());
+					String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 				%>
 				<jalios:if
 					predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)
@@ -516,14 +512,8 @@
 									<a href='<%= ficheLieu.getDisplayUrl(userLocale) %>'> 
 										<%= ficheLieu.getTitle() %>
 									</a>
-									<%
-										String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
-										String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
-												ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
-												ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche, "");
-									%>
 									<p>
-										<%= addresseFiche %>
+										<%= SocleUtils.formatAdresseEcrire(ficheLieu) %>
 									</p>
 								</li>
 							</jalios:foreach>
