@@ -118,7 +118,6 @@ switch(format) {
 	  
 	case "carree" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
-	  }
 	  break;
 	  
 	case "mobile" :
