@@ -1,5 +1,6 @@
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ tag 
     pageEncoding="UTF-8"
     description="Titre du header avec image" 
@@ -54,38 +55,15 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 
 String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
-String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);;
+String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);
 if (Util.isEmpty(formattedMobilePath)) {
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
 }
 %>
 
 <div class="ds44-pageHeaderContainer">
-    <jalios:if predicate="<%= hasFigcaption%>">
-        <figure role="figure" class="ds44-pageHeaderContainer__pictureContainer">
-    </jalios:if>
-    
-    <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
-        <picture class="ds44-pageHeaderContainer__pictureContainer">
-            <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
-                <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
-            </jalios:if>
-            <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-            <img src="<%=formattedImagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
-        </picture>
-    </jalios:if>
-    
-    <jalios:if predicate="<%= hasFigcaption%>">
-	    <figcaption class="ds44-imgCaption">
-	        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	            <%=legend%>
-	        </jalios:if>
-	        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	            © <%=copyright%>
-	        </jalios:if>
-	    </figcaption>
-        </figure>
-    </jalios:if>
+    <ds:figurePicture figureCss="ds44-pageHeaderContainer__pictureContainer" pictureCss="ds44-pageHeaderContainer__pictureContainer" imgCss="ds44-headerImg"
+        legend="<%= legend %>" copyright="<%= copyright %>" alt="<%= title %>" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" format="bandeau" />
     
     <div class="ds44-titleContainer">
         <div class="ds44-alphaGradient ds44-alphaGradient--header">
