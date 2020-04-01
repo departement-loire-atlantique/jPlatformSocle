@@ -142,7 +142,7 @@
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
-    <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.Video[]">
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.Video">
       <label xml:lang="fr">Vidéo</label>
     </field>
     <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="details" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">

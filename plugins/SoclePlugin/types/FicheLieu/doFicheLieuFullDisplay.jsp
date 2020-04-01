@@ -498,22 +498,9 @@
 		</section>
 	</jalios:if>
 
-	<%-- TODO : bloc video avec doc retranscription textuelle --%>
-	<%-- 
-	<section class="ds44-contenuArticle" id="section6">
-		<div class="ds44-inner-container ds44-mtb3">
-			<div class="ds44-grid12-offset-2">
-				<h3 id="idTitre6">Les consultations de la Protection maternelle et infantile</h3>
-				<a href="#"> 
-					<img src="../../assets/images/img_video_bigger-2.jpg" alt="Vidéo : Les consultations de la Protection maternelle et infantile" class="ds44-w100">
-				</a> 
-				<a href="#" aria-label="Télécharger le fichier de restranscription de la vidéo : [Les consultations de la Protection maternelle et infantile]">
-					Télécharger le fichier de restranscription de la vidéo 
-				</a>
-			</div>
-		</div>
-	</section>
-	 --%>
+	<jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
+        <ds:articleVideo video="<%= obj.getVideo() %>"/>
+    </jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getAutresLieuxAssocies()) %>'>
 		<section class="ds44-contenuArticle" id="section7">
