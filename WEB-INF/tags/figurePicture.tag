@@ -111,31 +111,31 @@ switch(format) {
 	case "principale" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
 	  break;
-	  
+	
 	case "bandeau" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(image);
 	  break;
-	  
+	
 	case "carree" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
 	  break;
-	  
+	
 	case "mobile" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageMobile(image);
 	  break;
-	  
+	
 	case "carouselFull" :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(image);
 	  break;
-    
+	
 	case "carouselMobile" :
-      formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-      break;
-    
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
+	  break;
+	
 	case "carouselCarree" :
-      formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
-      break;
-	  
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
+	  break;
+	
 	default :
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
 }
