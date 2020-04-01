@@ -1,0 +1,31 @@
+<%
+
+String urlImage = "";
+
+try {
+ urlImage = (String) pub.getFieldValue("imageMobile");
+} catch(Exception e) {}
+
+if (Util.isEmpty(urlImage)) {
+ try {
+  urlImage = (String) pub.getFieldValue("imagePrincipale");
+ } catch(Exception e) {}
+}
+
+if (Util.isEmpty(urlImage)) {
+ try {
+  urlImage = (String) pub.getFieldValue("imageBandeau");
+ } catch(Exception e) {}
+}
+
+if (Util.isEmpty(urlImage)) {
+ urlImage = "s.gif";
+} else {
+  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
+}
+
+%>
+
+<picture class="ds44-container-imgRatio">
+    <img src="<%= urlImage %>" alt="<%= pub.getTitle() %>" class="ds44-imgRatio">
+</picture>
