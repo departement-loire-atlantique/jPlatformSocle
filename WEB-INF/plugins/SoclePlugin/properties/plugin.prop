@@ -42,6 +42,12 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
+
+# ------------------------------------------------------------
+#  Recherche à facettes
+# ------------------------------------------------------------
+$jcmsplugin.socle.recherche.facettes.portal: c_1273916
+
 # ------------------------------------------------------------
 #  Formats d'images
 # ------------------------------------------------------------
