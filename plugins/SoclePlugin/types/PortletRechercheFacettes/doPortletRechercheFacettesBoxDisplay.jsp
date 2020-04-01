@@ -27,6 +27,9 @@
 		
 		<form data-is-ajax="true">
 		
+			<input type="hidden" name="modCatUnion" value='<%= obj.getModeDesBranches() %>'/>
+			<input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>'/>
+		
 			<p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
 		
