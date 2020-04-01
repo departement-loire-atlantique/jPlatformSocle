@@ -41,11 +41,7 @@
 							obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
 							obj.getCodePostal(), commune, "");
 
-					String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
-					String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
-							obj.getEtageCouloirEscalier2(), obj.getEntreeBatimentImmeuble2(), obj.getNdeVoie2(),
-							obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
-							obj.getCedex2());
+					String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 				%>
 				<jalios:if
 					predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)
@@ -447,33 +443,30 @@
 						<p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getHorairesEtAcces()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="3">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="3">
 								<i class="icon icon-time ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getHorairesEtAcces().substring(24, obj.getHorairesEtAcces().length()-10) %>
-							</p>
+								<jalios:wysiwyg><%= obj.getHorairesEtAcces() %></jalios:wysiwyg>
+							</div>
 						</jalios:if>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getTransportsEnCommun()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin">
 								<i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getTransportsEnCommun().substring(24, obj.getTransportsEnCommun().length()-10) %>
+								<jalios:wysiwyg><%= obj.getTransportsEnCommun() %></jalios:wysiwyg>
 								<%-- Lien Destineo congele - manque adresse depart
 								<br> 
 								<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 									<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") %> 
 								</a> 
 								--%>
-							</p>
+							</div>
 						</jalios:if>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getParkings()) %>'>
-							<p class="ds44-docListElem mtm ds44-m-fluid-margin">
+							<div class="ds44-docListElem mtm ds44-m-fluid-margin">
 								<i class="icon icon-parking ds44-docListIco" aria-hidden="true"></i>
-								<%-- vire les balises <div class="wyziwyg"> et <p> qui englobent le texte pour que le style fonctionne --%>
-								<%= obj.getParkings().substring(24, obj.getParkings().length()-10) %>
-							</p>
+								<jalios:wysiwyg><%= obj.getParkings() %></jalios:wysiwyg>
+							</div>
 						</jalios:if>
 
 						<%-- TODO accessibilite --%>
@@ -516,14 +509,8 @@
 									<a href='<%= ficheLieu.getDisplayUrl(userLocale) %>'> 
 										<%= ficheLieu.getTitle() %>
 									</a>
-									<%
-										String communeFiche = Util.notEmpty(ficheLieu.getCommune()) ? ficheLieu.getCommune().getTitle() : "";
-										String addresseFiche = SocleUtils.formatAddress("", ficheLieu.getEtageCouloirEscalier(), 
-												ficheLieu.getEntreeBatimentImmeuble(), ficheLieu.getNdeVoie(), ficheLieu.getLibelleDeVoie(), 
-												ficheLieu.getLieudit(), "", ficheLieu.getCodePostal(), communeFiche, "");
-									%>
 									<p>
-										<%= addresseFiche %>
+										<%= SocleUtils.formatAdresseEcrire(ficheLieu) %>
 									</p>
 								</li>
 							</jalios:foreach>

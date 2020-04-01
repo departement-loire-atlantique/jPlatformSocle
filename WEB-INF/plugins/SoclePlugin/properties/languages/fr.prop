@@ -197,6 +197,7 @@ jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe: Ce lieu accueille uniqu
 jcmsplugin.socle.ficheaide.important: Important !
 jcmsplugin.socle.ficheaide.faire-trajet-destineo: Faire mon trajet avec Destineo
 jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l’accessibilité du lieu
+jcmsplugin.socle.ficheaide.bonASavoir.label: Bon à savoir
 
 jcmsplugin.socle.faq.votre-question: Votre question
 jcmsplugin.socle.faq.votre-email: Votre email
@@ -207,7 +208,7 @@ jcmsplugin.socle.faq.poser-question: Posez une question :
 jcmsplugin.socle.faq.ex-email: Ex : votrenom@email.com
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
-jcmsplugin.socle.facette.filtrer-par: Filter par
+jcmsplugin.socle.facette.filtrer-par: Filtrer par
 jcmsplugin.socle.facette.form-element: form-element
 jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
 jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
