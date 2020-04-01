@@ -44,7 +44,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 %>
 
 <jalios:select>
-    <jalios:if predicate="<%= fluxSuccess %>">
+    <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() > 0 %>'>
         <%
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
@@ -123,6 +123,9 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                 <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrousel.suivant") %></span>
             </button>
         </div>
+    </jalios:if>
+    <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() == 0 %>'>
+        <%-- Flux OK mais aucun résultat : ne rien afficher --%>
     </jalios:if>
     <jalios:default>
         <%= glp("jcmsplugin.socle.label.error.warnAdmin") %>
