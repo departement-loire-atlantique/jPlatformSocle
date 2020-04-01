@@ -3,7 +3,7 @@
 String urlImage = "";
 
 try {
- urlImage = (String) pub.getFieldValue("imageBandeau");
+ urlImage = (String) pub.getFieldValue("imageMobile");
 } catch(Exception e) {}
 
 if (Util.isEmpty(urlImage)) {
@@ -14,14 +14,14 @@ if (Util.isEmpty(urlImage)) {
 
 if (Util.isEmpty(urlImage)) {
  try {
-  urlImage = (String) pub.getFieldValue("imageMobile");
+  urlImage = (String) pub.getFieldValue("imageBandeau");
  } catch(Exception e) {}
 }
 
 if (Util.isEmpty(urlImage)) {
  urlImage = "s.gif";
 } else {
-  urlImage = SocleUtils.getUrlOfFormattedImageBandeau(urlImage);
+  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
 }
 
 %>
