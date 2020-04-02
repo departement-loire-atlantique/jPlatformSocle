@@ -29,12 +29,14 @@ SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
             <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
             <%= pub.getAddress() %>
           </div>
+          <jalios:if predicate="<%= Util.notEmpty(pub.getPhones) %>">
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
             <jalios:foreach name="itPhone" type="String" array="<%= pub.getPhones() %>">
                 <ds:phone number="<%= itPhone %>"></ds:phone>
             </jalios:foreach>
           </p>
+          </jalios:if>
       </div>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
