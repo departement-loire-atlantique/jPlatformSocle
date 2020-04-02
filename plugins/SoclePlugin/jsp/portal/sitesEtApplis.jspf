@@ -1,0 +1,25 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%
+String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
+Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
+Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
+%>
+
+<nav role="navigation">
+    <div class="ds44-inner-container">
+        <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
+            <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
+            <li>
+                <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
+                <ul class="ds44-list">
+                    <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
+                    <ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
+                    </jalios:foreach>
+                </ul>
+            </li>
+            </jalios:foreach>
+        </ul>
+    </div>
+</nav>

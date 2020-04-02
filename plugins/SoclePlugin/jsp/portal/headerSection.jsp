@@ -17,10 +17,6 @@ String subMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.submenu.cat
 Category subMenuRootCat = channel.getCategory(subMenuRootCatId);
 Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(subMenuRootCat) : new HashSet<Category>();
 
-String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
-Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
-Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
-
 boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.header.show.rechercher", true);
 %>
 
@@ -158,22 +154,9 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         
         <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
         
-        <nav role="navigation">
-            <div class="ds44-inner-container">
-                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
-                    <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
-                    <li>
-                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
-                        <ul class="ds44-list">
-                            <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-                            <ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
-                            </jalios:foreach>
-                        </ul>
-                    </li>
-                    </jalios:foreach>
-                </ul>
-            </div>
-        </nav>
+        <%-- Inclusion liste des sites et applis --%>
+        <%@include file="sitesEtApplis.jspf" %>
+
                             
         </section>        
         
