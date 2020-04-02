@@ -308,7 +308,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                    
 							<h2 class="h4-like" id="titre_envoie_dossier"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
 							
-							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
 								
 								<p class="ds44-docListElem mts">
 									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
@@ -384,6 +384,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 										</jalios:if>
 	
 									</div>
+								</jalios:if>
+								<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+									<hr class="mtm mbm" />
 								</jalios:if>
 							</jalios:foreach>
 						</div>
@@ -453,7 +456,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 					</jalios:if>
 					<jalios:if predicate='<%= Util.isEmpty(obj.getEdemarche(loggedMember)) %>'>
 						<div class="col-6 ds44-modal-column">
-							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
 								
 								<p class="ds44-docListElem mts">
 									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
@@ -529,6 +532,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 										</jalios:if>
 	
 									</div>
+								</jalios:if>
+								<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+									<hr class="mtm mbm" />
 								</jalios:if>
 							</jalios:foreach>
 						</div>
@@ -604,6 +610,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                             </jalios:foreach>
                             </p>
                         </jalios:if>
+						<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+							<hr class="mtm mbm" />
+						</jalios:if>
                     </jalios:foreach>
                 </div>
                 </jalios:if>
