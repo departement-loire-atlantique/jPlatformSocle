@@ -175,7 +175,8 @@ media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/L
 
 # Content template - cards
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
-
+media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
+media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
