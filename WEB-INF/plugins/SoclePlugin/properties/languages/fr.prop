@@ -59,6 +59,7 @@ jcmsplugin.socle.recherche.trop.resultats: Il y a un trop grand nombre de résul
 jcmsplugin.socle.recherche.carte.masquer: Masquer la carte
 jcmsplugin.socle.recherche.affiner: Affiner ma recherche
 jcmsplugin.socle.recherche.masquer: Masquer ma recherche
+jcmsplugin.socle.recherche.selection: Ma sélection
 jcmsplugin.socle.recherche.ma-selection: Ma sélection ({0})
 jcmsplugin.socle.recherche.export.pdf: PDF
 jcmsplugin.socle.recherche.export.csv: CSV

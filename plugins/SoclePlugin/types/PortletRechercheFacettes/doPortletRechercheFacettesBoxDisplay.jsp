@@ -100,7 +100,7 @@
 							<ul class="ds44-list">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label="Ma sélection"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
