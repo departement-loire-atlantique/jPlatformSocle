@@ -133,6 +133,7 @@ jcmsplugin.socle.demande.suivre-demande: Suivre ma demande
 jcmsplugin.socle.ficheaide.docutils.label: Documents utiles :
 jcmsplugin.socle.ficheaide.enligne.label: En ligne :
 jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
+jcmsplugin.socle.ficheaide.fairedemandelignelink.label: Connectez-vous pour faire une demande en ligne de code de suivi
 jcmsplugin.socle.ficheaide.nodoc.label: Aucun document disponible
 jcmsplugin.socle.ficheaide.suivre.label: Suivre une demande en cours
 jcmsplugin.socle.ficheaide.duree.label: Durée :
