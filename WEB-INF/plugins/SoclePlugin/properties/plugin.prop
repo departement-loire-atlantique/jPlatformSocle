@@ -175,6 +175,8 @@ media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/L
 
 # Content template - cards
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
+media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
+media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 
 
 jcms.resource.tt-card-enabled:false
