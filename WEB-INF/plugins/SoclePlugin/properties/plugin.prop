@@ -175,6 +175,8 @@ media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/L
 
 # Content template - cards
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
+media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
+media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
 
