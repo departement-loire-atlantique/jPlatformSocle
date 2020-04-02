@@ -23,8 +23,9 @@
 			            <li class="swiper-slide">
 			                <div class="ds44-titleContainer ds44-titleContainer--home">
 							    <div class="ds44-alphaGradient ds44-alphaGradient--header"></div>
-							    <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
-	                             image="<%= itTuile.getImage() %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
+							    <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer"
+							     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
+	                             pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
 	                             copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
 							</div>
 			            </li>
@@ -41,8 +42,9 @@
                             <ul class="swiper-wrapper ds44-list has-gutter-l ds44-carousel-swiper">
 	                            <jalios:foreach name="itTuile" type="CarouselElement" array="<%= obj.getElementsDiaporamasSecondaires() %>">
 	                                <li class="swiper-slide">
-	                                  <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselCarree"
-		                                 image="<%= itTuile.getImageCarree() %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
+	                                  <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" 
+	                                     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselCarree"
+		                                 pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
 		                                 copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
 						            </li>
 					            </jalios:foreach>

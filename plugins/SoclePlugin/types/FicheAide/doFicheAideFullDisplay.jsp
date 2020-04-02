@@ -136,7 +136,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                                 <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                             </jalios:if>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui()) %>">
-                                <h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+                                <h2 class="h2-like mtm" id="titre_remume_pour_qui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
                                 <jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>  
                             </jalios:if>                                      
                         </div>
@@ -172,28 +172,28 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                             </jalios:if>                         
                             <jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
                                 <section class="ds44-contenuArticle" id="section1">    
-                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+                                    <h2 class="h2-like" id="titre_detail_pour_qui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
                                     <jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
                                 </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi()) %>">
                                 <section class="ds44-contenuArticle" id="section2">
-                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+                                    <h2 class="h2-like" id="titre_detail_pour_quoi"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
                                     <jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
                                 </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande()) %>">
                                 <section class="ds44-contenuArticle" id="section3">
-                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+                                    <h2 class="h2-like" id="titre_detail_comment_demande"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
                                     <jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
                                 </section>
                             </jalios:if>
                             
                             <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir()) %>">
                                 <section class="ds44-contenuArticle" id="section4">
-                                    <h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+                                    <h2 class="h2-like" id="titre_detail_fournir_documents"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
                                     <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
                                 </section>
                             </jalios:if>
@@ -258,7 +258,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 	            <div class="ds44-mt3 grid-12-small-1">
 	                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) ? "6" : "12" %> ds44-modal-column'>
-	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
+	                    <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 	
 	                    <jalios:select>
 	                        <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
@@ -292,7 +292,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
 	                    <div class="col-6 ds44-modal-column">
 	
-	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
+	                        <h2 class="h3-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
 	
 	                        <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
 	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
@@ -306,9 +306,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                <jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getQuiContacter()) %>">
 	                    <div class="col-6 ds44-modal-column">
 	                    
-							<h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
+							<h2 class="h4-like" id="titre_envoie_dossier"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
 							
-							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
 								
 								<p class="ds44-docListElem mts">
 									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
@@ -385,6 +385,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 									</div>
 								</jalios:if>
+								<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+									<hr class="mtm mbm" />
+								</jalios:if>
 							</jalios:foreach>
 						</div>
 	                </jalios:if>
@@ -413,7 +416,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                
 	                <jalios:if predicate='<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>'>
 		                <div class="col-6 ds44-modal-column">
-		                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
+		                    <h2 class="h4-like" id="titre_a_code_suivi"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
 		
 		                    <p id="desc-pour-input-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi") %></p>
 		
@@ -453,7 +456,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 					</jalios:if>
 					<jalios:if predicate='<%= Util.isEmpty(obj.getEdemarche(loggedMember)) %>'>
 						<div class="col-6 ds44-modal-column">
-							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>'>
+							<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
 								
 								<p class="ds44-docListElem mts">
 									<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
@@ -530,12 +533,15 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 									</div>
 								</jalios:if>
+								<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+									<hr class="mtm mbm" />
+								</jalios:if>
 							</jalios:foreach>
 						</div>
 					</jalios:if>
 	                <div class="col-6 ds44-modal-column">
 	
-	                    <h2 class="h4-like"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi") %></h2>
+	                    <h2 class="h4-like" id="titre_a_pas_code_suivi"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi") %></h2>
 	
 	                    <p class="ds44-mt-std">
 	                    	<p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
@@ -604,12 +610,15 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                             </jalios:foreach>
                             </p>
                         </jalios:if>
+						<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+							<hr class="mtm mbm" />
+						</jalios:if>
                     </jalios:foreach>
                 </div>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getBesoinDaide()) %>">
                     <div class='col-<%= Util.isEmpty(obj.getQuiContacter()) && Util.isEmpty(obj.getComplementContact()) ? "12" : "6  ds44-modal-column" %>'>
-                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.modal.besoinaide") %></h2>
+                        <h2 class="h3-like" id="titre_besoin_aide"><%= glp("jcmsplugin.socle.ficheaide.modal.besoinaide") %></h2>
                         <jalios:wysiwyg>
                             <%= obj.getBesoinDaide() %>
                         </jalios:wysiwyg>
