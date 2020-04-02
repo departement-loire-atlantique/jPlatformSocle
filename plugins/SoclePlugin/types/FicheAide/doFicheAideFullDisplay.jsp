@@ -295,7 +295,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
 	
 	                        <p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
-	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'
+	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
 	                        		target="_blank">
 	                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span>
 	                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
@@ -434,7 +434,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 												title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
 												required
 												aria-required="true" 
-												aria-describedby=" explanation-<%= idFormElement %>" />
+												aria-describedby="explanation-<%= idFormElement %>" />
 										<button class="ds44-reset" type="button">
 											<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 											<span class="visually-hidden">
@@ -444,7 +444,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									</label>
 									<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 								</div>
-								<button class="ds44-btnStd ds44-btn--invert" aria-label='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
+								<button class="ds44-btnStd ds44-btn--invert" aria-title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
 									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 								</button>
@@ -539,7 +539,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 	                    <p class="ds44-mt-std">
 	                    	<p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
-	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %>'
+	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
 	                        		target="_blank">
 	                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous") %></span>
 	                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
