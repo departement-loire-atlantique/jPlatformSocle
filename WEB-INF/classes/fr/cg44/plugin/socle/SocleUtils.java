@@ -700,12 +700,6 @@ public final class SocleUtils {
     } catch (Exception e) {
       LOGGER.debug(debugNoImageMobile);
     }
-	  try {
-      image = (String) pub.getFieldValue("imageCarree");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageCarree);
-    }
 	  
 	  return "";
 	}
@@ -729,6 +723,12 @@ public final class SocleUtils {
     
     LOGGER.debug("getImageBandeau " + pub);
     try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    try {
       image = (String) pub.getFieldValue("imagePrincipale");
       if (Util.notEmpty(image)) return image;
     } catch (Exception e) {
@@ -741,22 +741,10 @@ public final class SocleUtils {
       LOGGER.debug(debugNoImagePrincipale);
     }
     try {
-      image = (String) pub.getFieldValue("imageBandeau");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageBandeau);
-    }
-    try {
       image = (String) pub.getFieldValue("imageMobile");
       if (Util.notEmpty(image)) return image;
     } catch (Exception e) {
       LOGGER.debug(debugNoImageMobile);
-    }
-    try {
-      image = (String) pub.getFieldValue("imageCarree");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageCarree);
     }
     
     return "";
@@ -781,6 +769,12 @@ public final class SocleUtils {
     
     LOGGER.debug("getImageMobile " + pub);
     try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    try {
       image = (String) pub.getFieldValue("imagePrincipale");
       if (Util.notEmpty(image)) return image;
     } catch (Exception e) {
@@ -797,18 +791,6 @@ public final class SocleUtils {
       if (Util.notEmpty(image)) return image;
     } catch (Exception e) {
       LOGGER.debug(debugNoImageBandeau);
-    }
-    try {
-      image = (String) pub.getFieldValue("imageMobile");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageMobile);
-    }
-    try {
-      image = (String) pub.getFieldValue("imageCarree");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageCarree);
     }
     
     return "";
@@ -832,6 +814,19 @@ public final class SocleUtils {
     String image = "";
     
     LOGGER.debug("getImageCarree " + pub);
+    
+    try {
+      image = (String) pub.getFieldValue("imageCarree");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageCarree);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
     try {
       image = (String) pub.getFieldValue("imagePrincipale");
       if (Util.notEmpty(image)) return image;
@@ -849,18 +844,6 @@ public final class SocleUtils {
       if (Util.notEmpty(image)) return image;
     } catch (Exception e) {
       LOGGER.debug(debugNoImageBandeau);
-    }
-    try {
-      image = (String) pub.getFieldValue("imageMobile");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageMobile);
-    }
-    try {
-      image = (String) pub.getFieldValue("imageCarree");
-      if (Util.notEmpty(image)) return image;
-    } catch (Exception e) {
-      LOGGER.debug(debugNoImageCarree);
     }
     
     return "";
