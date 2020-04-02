@@ -39,7 +39,7 @@
     description="Le chemin du fichier image mobile"
 %>
 <%@ attribute name="video"
-    required="true"
+    required="false"
     fragment="false"
     rtexprvalue="true"
     type="generated.Video"
