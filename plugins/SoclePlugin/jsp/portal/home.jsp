@@ -31,3 +31,4 @@
         <a class="ds44-icoLink ds44-icoLink--footer" href="#top"><i class="icon icon-arrow-up icon--sizeXL" aria-hidden="true"></i><span class="ds44-icoTxtWrapper"><%= glp("jcmsplugin.socle.hautDepage")%></span></a>
     </p>
 </footer>
+<%= getPortlet(bufferMap,"popin") %>
