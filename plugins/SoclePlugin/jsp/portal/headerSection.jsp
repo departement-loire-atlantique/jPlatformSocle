@@ -26,10 +26,10 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <div class="ds44-container-large">
     
             <ul class="ds44-list ds44-skiplinks">
-                <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
-                <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
-                <li><a href="#" class="ds44-skiplinks--link">Aller à la recherche</a></li>
-                <li><a href="#" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
+                <li><a href="#content" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.content") %></a></li>
+                <li><a href="#menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
+                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
+                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
             </ul>
     
             <div class="ds44-flex-container ds44-flex-valign-center">
@@ -152,7 +152,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
         </div>
         
-        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
         
         <%-- Inclusion liste des sites et applis --%>
         <%@include file="sitesEtApplis.jspf" %>

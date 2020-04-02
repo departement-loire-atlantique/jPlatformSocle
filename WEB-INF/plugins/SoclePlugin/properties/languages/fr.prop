@@ -314,3 +314,13 @@ jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Départemen
 jcmsplugin.socle.carrouselhome.error.differentSizes: Les deux listes d'éléments carrousel doivent avoir le même nombre de contenus.
 jcmsplugin.socle.carrouselhome.error.nosibling: Les deux listes d'éléments carrousel doivent avoir un élément à l'emplacement {0}.
 
+# ------------------------------------------------------------
+#  Liens d'évitement
+# ------------------------------------------------------------
+jcmsplugin.socle.skiplinks.content : Aller au contenu
+jcmsplugin.socle.skiplinks.menu : Aller au menu
+jcmsplugin.socle.skiplinks.search : Aller à la recherche
+jcmsplugin.socle.skiplinks.accessibility : Aller à la page d'accessibilité
+
+
+
