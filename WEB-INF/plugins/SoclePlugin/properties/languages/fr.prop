@@ -53,6 +53,15 @@ jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
+jcmsplugin.socle.lancer.recherche: Lancer la recherche
+jcmsplugin.socle.faire.recherche: Veuillez faire une recherche ci-dessus pour afficher des résultats.
+jcmsplugin.socle.recherche.trop.resultats: Il y a un trop grand nombre de résultats correspondant à votre recherche. Vous trouverez ci-dessous les {0} plus pertinents. N’hésitez pas à affiner vos critères de recherche.
+jcmsplugin.socle.recherche.carte.masquer: Masquer la carte
+jcmsplugin.socle.recherche.affiner: Affiner ma recherche
+jcmsplugin.socle.recherche.masquer: Masquer ma recherche
+jcmsplugin.socle.recherche.ma-selection: Ma sélection ({0})
+jcmsplugin.socle.recherche.export.pdf: PDF
+jcmsplugin.socle.recherche.export.csv: CSV
 jcmsplugin.socle.selectionner: Sélectionner
 jcmsplugin.socle.obligatoire: obligatoire
 jcmsplugin.socle.fermer: Fermer
