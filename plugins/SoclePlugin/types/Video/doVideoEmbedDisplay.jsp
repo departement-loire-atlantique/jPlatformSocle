@@ -22,7 +22,7 @@ String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFi
         String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();
         String fileSize = Util.formatFileSize(obj.getFichierTranscript().getSize());
         %>
-        <a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+        <p><a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
     </jalios:if>
 </div>
 

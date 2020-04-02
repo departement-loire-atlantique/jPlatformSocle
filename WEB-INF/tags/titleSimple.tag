@@ -143,7 +143,7 @@ if(Util.notEmpty(video)) {
 	            <div class="ds44-grid12-offset-1">
 	                <iframe title="<%= titreVideo %>" style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
                     <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
-				        <a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+				        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
 				    </jalios:if>
                 </div>
 	        </div>
