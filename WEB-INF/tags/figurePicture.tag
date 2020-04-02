@@ -4,14 +4,14 @@
     description="Génère le bloc html figure avec les images associées" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util,
-        com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils"
+        com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils, com.jalios.jcms.Publication"
 %>
-<%@ attribute name="image"
+<%@ attribute name="pub"
     required="true"
     fragment="false"
     rtexprvalue="true"
-    type="String"
-    description="L'URL de l'image à afficher"
+    type="Publication"
+    description="La publication dont on récupère l'image"
 %>
 <%@ attribute name="imageMobile"
     required="false"
@@ -82,8 +82,52 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
+String image = "";
+
 String formattedImagePath = "";
 String formattedMobilePath = "";
+
+switch(format) {
+
+	case "principale" :
+	  image = SocleUtils.getImagePrincipale(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
+	  break;
+	
+	case "bandeau" :
+	  image = SocleUtils.getImageBandeau(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(image);
+	  break;
+	
+	case "carree" :
+	  image = SocleUtils.getImageCarree(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
+	  break;
+	
+	case "mobile" :
+	  image = SocleUtils.getImageMobile(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageMobile(image);
+	  break;
+	
+	case "carouselFull" :
+	  image = SocleUtils.getImagePrincipale(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(image);
+	  break;
+	
+	case "carouselMobile" :
+	  image = SocleUtils.getImageMobile(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
+	  break;
+	
+	case "carouselCarree" :
+	  image = SocleUtils.getImageCarree(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
+	  break;
+	
+	default :
+	  image = SocleUtils.getImagePrincipale(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
+}
 
 if (format.equals("principale") || format.equals("bandeau") ||format.equals("carree") ||format.equals("mobile")) {
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);
@@ -104,40 +148,6 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   if (Util.isEmpty(formattedMobilePath)) {
     formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
   }
-}
-
-switch(format) {
-
-	case "principale" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
-	  break;
-	
-	case "bandeau" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(image);
-	  break;
-	
-	case "carree" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
-	  break;
-	
-	case "mobile" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageMobile(image);
-	  break;
-	
-	case "carouselFull" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(image);
-	  break;
-	
-	case "carouselMobile" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
-	  break;
-	
-	case "carouselCarree" :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
-	  break;
-	
-	default :
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
 }
 
 String label = ariaLabel;
