@@ -13,6 +13,13 @@
     type="Publication"
     description="La publication dont on récupère l'image"
 %>
+<%@ attribute name="image"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="L'URL de l'image à afficher"
+%>
 <%@ attribute name="imageMobile"
     required="false"
     fragment="false"
@@ -82,50 +89,48 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
-String image = "";
-
 String formattedImagePath = "";
 String formattedMobilePath = "";
 
 switch(format) {
 
 	case "principale" :
-	  image = SocleUtils.getImagePrincipale(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
 	  break;
 	
 	case "bandeau" :
-	  image = SocleUtils.getImageBandeau(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImageBandeau(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(image);
 	  break;
 	
 	case "carree" :
-	  image = SocleUtils.getImageCarree(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImageCarree(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarree(image);
 	  break;
 	
 	case "mobile" :
-	  image = SocleUtils.getImageMobile(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImageMobile(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageMobile(image);
 	  break;
 	
 	case "carouselFull" :
-	  image = SocleUtils.getImagePrincipale(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilFull(image);
 	  break;
 	
 	case "carouselMobile" :
-	  image = SocleUtils.getImageMobile(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImageMobile(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
 	  break;
 	
 	case "carouselCarree" :
-	  image = SocleUtils.getImageCarree(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImageCarree(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
 	  break;
 	
 	default :
-	  image = SocleUtils.getImagePrincipale(pub);
+	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImagePrincipale(image);
 }
 
