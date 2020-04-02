@@ -44,7 +44,7 @@ else{
 
 %>
 
-<section class="ds44-container-fluid ds44--xxl-padding-t ds44--p35b <%=Util.isEmpty(box.getSoustitre()) ? "ds44-mb2" : ""%>">
+<section class="ds44-container-fluid ds44--xxl-padding-t ds44--p35b">
 	<section class="ds44-container-large">
 	    <div class="ds44-inner-container">
 	        <div class="grid-12-small-1 ds44-flex-valign-center">
