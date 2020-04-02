@@ -50,6 +50,12 @@ public final class SocleUtils {
 	
 	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
 	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
+	
+	// Messages répétés de log de debug
+	private static final String debugNoImagePrincipale = "pas d'image principale";
+	private static final String debugNoImageBandeau = "pas d'image bandeau";
+	private static final String debugNoImageMobile = "pas d'image mobile";
+	private static final String debugNoImageCarree = "pas d'image carrée";
 
 	private SocleUtils() {
 		throw new IllegalStateException("Utility class");
@@ -662,6 +668,43 @@ public final class SocleUtils {
 	}
 	
 	/**
+	 * Retourne l'URL d'une image principale ou d'un substitut pour le contenu indiqué
+	 * @param pub
+	 * @return
+	 */
+	public static String getImagePrincipale(Publication pub) {
+	  String image = "";
+	  
+	  LOGGER.debug("getImagePrincipale " + pub);
+	  try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+	  try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+	  try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+	  try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+	  
+	  return "";
+	}
+	
+	/**
 	 * Génère une image principale formattée et renvoie son path
 	 * @param imagePath
 	 * @return
@@ -669,6 +712,43 @@ public final class SocleUtils {
 	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0)); 
   }
+	
+	/**
+   * Retourne l'URL d'une image bandeau ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+	public static String getImageBandeau(Publication pub) {
+	  String image = "";
+    
+    LOGGER.debug("getImageBandeau " + pub);
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    
+    return "";
+	}
 	
 	/**
    * Génère une image bandeau formattée et renvoie son path
@@ -680,12 +760,93 @@ public final class SocleUtils {
   }
   
   /**
+   * Retourne l'URL d'une image mobile ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+  public static String getImageMobile(Publication pub) {
+    String image = "";
+    
+    LOGGER.debug("getImageMobile " + pub);
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    
+    return "";
+  }
+  
+  /**
    * Génère une image mobile formattée et renvoie son path
    * @param imagePath
    * @return
    */
   public static String getUrlOfFormattedImageMobile(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0)); 
+  }
+  
+  /**
+   * Retourne l'URL d'une image carree ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+  public static String getImageCarree(Publication pub) {
+    String image = "";
+    
+    LOGGER.debug("getImageCarree " + pub);
+    
+    try {
+      image = (String) pub.getFieldValue("imageCarree");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageCarree);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    
+    return "";
   }
   
   /**

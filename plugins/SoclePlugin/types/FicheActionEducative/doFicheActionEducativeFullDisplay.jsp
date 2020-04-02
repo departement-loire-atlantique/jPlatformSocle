@@ -133,7 +133,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         <jalios:if predicate="<%= hasImage %>">
                         <div class='col mrl mbs<%= Util.isEmpty(obj.getImageMobile()) ? " ds44-hide-mobile" : ""%>'>
                            <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" 
-                             image="<%= obj.getImagePrincipale() %>" imageMobile="<%= obj.getImageMobile() %>" alt="<%= obj.getTexteAlternatif() %>" 
+                             pub="<%= obj %>" imageMobile="<%= obj.getImageMobile() %>" alt="<%= obj.getTexteAlternatif() %>" 
                              copyright="<%= obj.getCopyright() %>" legend="<%= obj.getLegende() %>"/>
                         </div>
                         </jalios:if>
