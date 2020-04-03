@@ -55,7 +55,7 @@ else{
 	                    <h2 class="h2-like" id="idTitre2"><%= box.getTitreVisuel() %></h2>
 				    </jalios:if>
 				    <jalios:if predicate='<%=Util.notEmpty(box.getSoustitre()) %>'>
-	                    <div class="ds44-introduction ds44-hide-tinyToLarge"><%= box.getSoustitre() %></div>
+	                    <div class="ds44-introduction ds44-hide-tiny-to-medium"><%= box.getSoustitre() %></div>
 	                </jalios:if>
                     <%-- Bouton desktop --%>
                     <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
