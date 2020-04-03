@@ -15,6 +15,24 @@
 	request.setAttribute("showFiltres", showFiltres);
 %>
 
+
+
+
+
+
+<div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
+<div class="ds44-loader hidden">
+    <div class="ds44-loader-body">
+        <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+            <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+        </svg>
+    </div>
+</div>
+
+
+
+
+
 <div class="ds44-facette">
 	<div class="ds44-facette-body">
 	
@@ -29,7 +47,7 @@
 			</div>
 		</jalios:if>
 		
-		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResult.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
 		    <jalios:if predicate='<%= !isInRechercheFacette %>'>
 			  <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			</jalios:if>
@@ -48,10 +66,10 @@
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres ? "" : "--large"; %>
-					<button class='<%= "ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
+					<button class='<%= "ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-					</button>
+					</button>					
 				</div>
 		
 			</div>
@@ -78,19 +96,19 @@
 					</jalios:if>
 		
 					<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
-						<div class="ds44-push ds44-small-fg1">
+						<div class="ds44-push ds44-small-fg1 ds44-hide-tiny-to-medium ds44-show-medium">
 							<ul class="ds44-list">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label="Ma sélection">Ma sélection (2)</a>
+									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label="PDF">PDF</a>
+									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label="CSV">CSV</a>
+									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.csv")) %>'><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
 								</li>
 							</ul>
 						</div>
@@ -109,4 +127,61 @@
 		
 		</form>
 	</div>
+	
+	
+	
+	<div class="ds44-facette-mobile-button ds44-bgDark ds44--l-padding ds44-show-tiny-to-medium ds44-hide-medium">
+        <button class="ds44-btnStd ds44-btn--contextual ds44-w100 ds44-js-toggle-search-view">
+            <span class="ds44-btnInnerText ds44-facette-mobile-button-collapse"><%= glp("jcmsplugin.socle.recherche.affiner") %></span>
+            <span class="ds44-btnInnerText ds44-facette-mobile-button-expand"><%= glp("jcmsplugin.socle.recherche.masquer") %></span>
+        </button>
+    </div>
+    
+    
+    
+     <div class="ds44-facette-mobile-export ds44-push ds44-small-fg1 ds44-show-tiny-to-medium ds44-hide-medium">
+        <ul class="ds44-list">
+            <li class="ds44-docListElem">
+                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+            </li>
+            <li class="ds44-docListElem">
+                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+            </li>
+            <li class="ds44-docListElem">
+                <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
+            </li>
+        </ul>
+    </div>
 </div>
+
+
+
+
+<jalios:if predicate='<%= isInRechercheFacette %>'>
+
+	  <div class="ds44-flex-container ds44-results ds44-results--mapVisible">
+	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
+	          <div class="ds44-js-results-container">
+	              <div class="ds44-js-results-card" data-url="/json/search-card.json" aria-hidden="true"></div>
+	              <div class="ds44-js-results-list">
+	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b"><%= glp("jcmsplugin.socle.faire.recherche") %></p>
+	                  <p class="ds44-textLegend mbs hidden"><%= glp("jcmsplugin.socle.recherche.trop.resultats", obj.getMaxResults()) %></p>
+	              </div>
+	          </div>
+	      </div>
+	      <div class="ds44-mapResults">
+	          <div class="ds44-js-map"></div>
+	      </div>
+	      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+	          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+	      </button>
+	  </div>
+	
+</jalios:if>
+
+
+
+

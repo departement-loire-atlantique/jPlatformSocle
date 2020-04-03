@@ -15,7 +15,7 @@
 		<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 			<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : "Mot clé"%><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 		</span>
-		<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
+		<input name="text" type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
 				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> />
 		
 		<button class="ds44-reset" type="button">
