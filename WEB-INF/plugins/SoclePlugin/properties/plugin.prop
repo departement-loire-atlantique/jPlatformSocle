@@ -398,3 +398,8 @@ $jcmsplugin.socle.emploiStage.delegationService: c_5296
 # Video
 
 $jcmsplugin.socle.video.types.root: c_1270060
+
+# Fiche Elu
+$jcmsplugin.socle.elu.president: c_5315
+$jcmsplugin.socle.elu.vicepresident: c_5316
+$jcmsplugin.socle.elu.conseiller: p2_136941

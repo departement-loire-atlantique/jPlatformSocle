@@ -270,6 +270,10 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
             </div>
         </section>
         </jalios:if>
+        
+        <jalios:media data='<%= channel.getPublication("p1_1140019") %>' template="card"/>
+        
+        <jalios:media data='<%= channel.getPublication("p1_1140019") %>' template="cardFull"/>
 
     </article>
 </main>

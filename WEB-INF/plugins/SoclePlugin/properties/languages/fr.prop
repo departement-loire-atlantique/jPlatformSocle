@@ -85,7 +85,6 @@ jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
-jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
 
 # ------------------------------------------------------------
 #  Header
@@ -324,5 +323,15 @@ jcmsplugin.socle.skiplinks.menu : Aller au menu
 jcmsplugin.socle.skiplinks.search : Aller à la recherche
 jcmsplugin.socle.skiplinks.accessibility : Aller à la page d'accessibilité
 
+# ------------------------------------------------------------
+#  Fiche élu
+# ------------------------------------------------------------
 
-
+jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
+jcmsplugin.socle.elu.binome: En binôme avec : {0}
+jcmsplugin.socle.elu.president.masculin: Président du Conseil Départemental
+jcmsplugin.socle.elu.president.feminin: Présidente du Conseil Départemental
+jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
+jcmsplugin.socle.elu.vicepresident.feminin: Vice Présidente
+jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
+jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale 

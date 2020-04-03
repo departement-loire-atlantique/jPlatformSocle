@@ -32,7 +32,7 @@ if (Util.notEmpty(pub.getNom())) {
       <p role="heading" aria-level="2" class="ds44-card__title">
         <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>
       </p>
-      <p><%= pub.getPoliticalParty(loggedMember) %></p>
+      <p><%= pub.getPoliticalParty(loggedMember).first() %></p>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
 </section>
