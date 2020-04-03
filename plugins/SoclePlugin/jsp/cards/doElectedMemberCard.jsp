@@ -12,17 +12,27 @@ if (data == null) {
 
 ElectedMember pub = (ElectedMember) data;
 
+String fullName = "";
+
+if (Util.notEmpty(pub.getFirstName())) fullName = pub.getFirstName();
+if (Util.notEmpty(pub.getNom())) {
+  if (Util.notEmpty(pub.getFirstName())) fullName += " ";
+  fullName += pub.getNom();
+}
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-card--verticalPicture--elu">
+    <jalios:if predicate='<%= Util.notEmpty(pub.getImageMedaillon()) %>'>
     <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil">
-      <img src="../../assets/images/medaillon-touchefeu.jpg" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
+      <img src="<%= pub.getImageMedaillon() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
     </picture>
+    </jalios:if>
     <div class="ds44-card__section">
       <p role="heading" aria-level="2" class="ds44-card__title">
-        <a href="#" class="ds44-card__globalLink" title="Fiche détaillée de Catherine Touchefeu">Catherine Touchefeu</a>
+        <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>
       </p>
-      <p>Parti Socialiste (PS)</p>
+      <p><%= pub.getPoliticalParty(loggedMember) %></p>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
 </section>
