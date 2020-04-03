@@ -26,7 +26,7 @@ boolean hasBottomInfos = financementDep > 0 || Util.notEmpty(pub.getThematique(l
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <h3 class="h4-like ds44-cardTitle" id="6"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h3>
+            <h3 class="h4-like ds44-cardTitle" id="tuileEquipement_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h3>
             <jalios:if predicate="<%= hasBottomInfos %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <jalios:if predicate="<%= Util.notEmpty(pub.getThematique(loggedMember)) %>">
