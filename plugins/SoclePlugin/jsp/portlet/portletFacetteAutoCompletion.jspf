@@ -28,11 +28,12 @@
 		<div class="ds44-fieldContainer ds44-champsLies">
 			<div class="ds44-form__container">
 
-
-				<label for='<%= idFormElement %>' class="ds44-formLabel">
-					<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-					</span> 
+	
+					<label for='<%= idFormElement %>' class="ds44-formLabel">
+						<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+							<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						</span>
+					</label>
 					<input class="ds44-input-value" type="hidden" value="">
 					<input class="ds44-input-metadata" type="hidden" aria-hidden="true" value="">
 					<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' role="combobox"
@@ -78,7 +79,7 @@
 							<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
 						</div>
 					</div> 
-				</label>
+			
 
 			</div>
 
@@ -188,10 +189,11 @@
 
 				<div class="ds44-form__container">
 
-					<label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
-						<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-							<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-						</span> 
+					   <label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
+							<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+								<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+							</span> 
+						</label>
 						<input class="ds44-input-value" type="hidden" value="">
 						<input class="ds44-input-metadata" type="hidden" value="">
 						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' 
@@ -218,8 +220,7 @@
 							<div class="ds44-autocomp-list" aria-hidden="true">
 								<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
 							</div>
-						</div>
-					</label>
+						</div>					
 				
 				</div>
 
@@ -234,9 +235,10 @@
 <jalios:if predicate='<%= Util.isEmpty(option) %>'>
 
 	<div class="ds44-form__container">
-		<label for='<%= idFormElement %>' class="ds44-formLabel">
-			<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-				<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+			<label for='<%= idFormElement %>' class="ds44-formLabel">
+				<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+					<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+			</label>
 			</span>
 			<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' role="combobox" 
 					name='<%= name %>'
@@ -256,7 +258,7 @@
 					<ul class="ds44-list" role="listbox"></ul>
 				</div>
 			</div>
-		</label>
+		
 	</div>
 
 </jalios:if>
