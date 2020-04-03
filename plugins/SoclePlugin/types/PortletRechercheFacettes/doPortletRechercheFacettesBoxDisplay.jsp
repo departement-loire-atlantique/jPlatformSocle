@@ -16,7 +16,7 @@
 %>
 
 
-<section class="ds44-container-large">
+
 
 
 
@@ -155,30 +155,32 @@
             </li>
         </ul>
     </div>
-
 </div>
-</section>
 
 
-<section class="ds44-container-large">
-  <div class="ds44-flex-container ds44-results ds44-results--mapVisible">
-      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
-          <div class="ds44-js-results-container">
-              <div class="ds44-js-results-card" data-url="/json/search-card.json" aria-hidden="true"></div>
-              <div class="ds44-js-results-list">
-                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b"><%= glp("jcmsplugin.socle.faire.recherche") %></p>
-                  <p class="ds44-textLegend mbs hidden"><%= glp("jcmsplugin.socle.recherche.trop.resultats", obj.getMaxResults()) %></p>
-              </div>
-          </div>
-      </div>
-      <div class="ds44-mapResults">
-          <div class="ds44-js-map"></div>
-      </div>
-      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
-          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
-      </button>
-  </div>
-</section>
+
+
+<jalios:if predicate='<%= isInRechercheFacette %>'>
+
+	  <div class="ds44-flex-container ds44-results ds44-results--mapVisible">
+	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
+	          <div class="ds44-js-results-container">
+	              <div class="ds44-js-results-card" data-url="/json/search-card.json" aria-hidden="true"></div>
+	              <div class="ds44-js-results-list">
+	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b"><%= glp("jcmsplugin.socle.faire.recherche") %></p>
+	                  <p class="ds44-textLegend mbs hidden"><%= glp("jcmsplugin.socle.recherche.trop.resultats", obj.getMaxResults()) %></p>
+	              </div>
+	          </div>
+	      </div>
+	      <div class="ds44-mapResults">
+	          <div class="ds44-js-map"></div>
+	      </div>
+	      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+	          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+	      </button>
+	  </div>
+	
+</jalios:if>
 
 
 

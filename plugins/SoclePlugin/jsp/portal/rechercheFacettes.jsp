@@ -14,8 +14,9 @@
 
 <main role="main" id="content">
 
+<section class="ds44-container-large">
     <jalios:include id='<%= request.getParameter("boxId") %>' />
-       
+ </section>      
 </main>
 
 
