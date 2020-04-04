@@ -102,7 +102,7 @@
 														<a href='<%= planDacces.getDownloadUrl() %>' 
 															target="_blank"
 															download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
-															aria-label='<%= strAriaLabelPlanDacces %>'> 
+															title='<%= strAriaLabelPlanDacces %>'> 
 															
 															<%= glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label") %>
 														</a>
@@ -115,7 +115,7 @@
 																	<a href='<%= planDacces.getDownloadUrl() %>' 
 																		target="_blank"
 																		download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
-																		aria-label='<%= strAriaLabelPlanDacces %>'> 
+																		title='<%= strAriaLabelPlanDacces %>'> 
 																		
 																		<%= planDacces.getDataName(userLang) %>
 																	</a>
@@ -130,7 +130,7 @@
 											<p class="ds44-docListElem mts">
 												<i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
 												<a href='<%= localisation%>' 
-													aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
+													title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
 													target="_blank"> 
 													
 													<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
@@ -196,7 +196,7 @@
 
 												<jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
 													<% String email = obj.getEmail()[0]; %>
-													<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+													<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 														<%
 															StringBuffer sbfLabelMail = new StringBuffer();
 															sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
@@ -211,7 +211,7 @@
 													<ul class="ds44-list">
 														<jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
 															<li>
-																<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+																<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 																	<%= email %>
 																</a>
 															</li>
@@ -237,7 +237,7 @@
 
 												<jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 													<% String site = obj.getSiteInternet()[0]; %>
-													<a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank">
+													<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank">
 														<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 													</a>
 												</jalios:if>
@@ -246,7 +246,7 @@
 													<ul class="ds44-list">
 														<jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 															<li>
-																<a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank"> 
+																<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank"> 
 																	<%= SocleUtils.parseUrl(site) %>
 																</a>
 															</li>
@@ -455,7 +455,7 @@
 								<jalios:wysiwyg><%= obj.getTransportsEnCommun() %></jalios:wysiwyg>
 								<%-- Lien Destineo congele - manque adresse depart
 								<br> 
-								<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
+								<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 									<%= glp("jcmsplugin.socle.ficheaide.faire-trajet-destineo") %> 
 								</a> 
 								--%>
@@ -471,7 +471,7 @@
 
 						<%-- TODO accessibilite --%>
 						<%-- <button class="ds44-btnStd ds44-btnStd--large mtm" type="button"
-							aria-label='<%=glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") + " : " + obj.getTitle()%>'>
+							title='<%=glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") + " : " + obj.getTitle()%>'>
 							<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.plus-info-accessibilite") %></span> <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 						</button> --%>
 					</div>

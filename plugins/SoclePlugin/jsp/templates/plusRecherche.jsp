@@ -13,7 +13,7 @@ Lien pub = (Lien) data;
 
 <jalios:select>
     <jalios:if predicate="<%= Util.notEmpty( pub.getLienExterne() ) %>">
-        <a class="ds44-arrowLink" href="<%= pub.getLienExterne() %>" target="_blank" aria-label='<%= glp("jcmsplugin.socle.nouvelonglet", pub.getLienExterne()) %>'><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
+        <a class="ds44-arrowLink" href="<%= pub.getLienExterne() %>" target="_blank" title='<%= glp("jcmsplugin.socle.site.nouvelonglet", pub.getTitle()) %>'><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
     </jalios:if>
     <jalios:default>
         <%
