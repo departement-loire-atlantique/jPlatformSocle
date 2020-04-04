@@ -49,7 +49,11 @@ jcmsplugin.socle.socialnetworks.title:Le Département de Loire-Atlantique sur
 # ------------------------------------------------------------
 #  Libellés communs
 # ------------------------------------------------------------
+jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
+jcmsplugin.socle.lien.site.nouvelonglet: Site web : {0} - nouvelle fenêtre
+jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
@@ -65,7 +69,6 @@ jcmsplugin.socle.symbol.copyright: ©
 jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
-jcmsplugin.socle.nouvelonglet: Ouvrir {0} dans un nouvel onglet
 jcmsplugin.socle.retourALaListe: Retour à la liste 
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
@@ -99,6 +102,7 @@ jcmsplugin.socle.menu.principal1: Menu principal niveau 1
 jcmsplugin.socle.menu.principal2: Menu principal niveau 2
 jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
+jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous

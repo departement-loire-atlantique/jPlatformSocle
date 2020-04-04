@@ -35,7 +35,7 @@ String titleAttr = "";
 // Accessibilité : on place un attribut "title" sur le lien uniquement si le lien s'ouvre dans une nouvelle fenêtre
 if(isLienExterne){
   urlBouton = box.getLienExterne();
-  targetAttr = "target=\"_blank\" ";
+  targetAttr = glp("jcmsplugin.socle.targetblank");
   titleAttr = "title=\"" +  labelBouton + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
 }
 else{
@@ -66,13 +66,13 @@ else{
 				<%-- Tuiles --%>
 				<div class="col-4 colFocusProjets">
 					<jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="<%= nbPubCol1 %>">
-	                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
+	                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleDark"/>
 					</jalios:foreach>
 				</div>
 				<jalios:if predicate='<%=nbPub > 1 %>'>
 		            <div class="col-4 colFocusProjets">
 		                <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" skip="<%= nbPubCol1 %>">
-		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
+		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleDark"/>
 		                </jalios:foreach>
 		            </div>
                 </jalios:if>
