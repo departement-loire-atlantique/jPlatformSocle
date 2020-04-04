@@ -31,12 +31,14 @@ String labelBouton = box.getLabelDuLien();
 String urlBouton = "";
 String targetAttr = "";
 String titleAttr = "";
+String titleValue = "";
 
 // Accessibilité : on place un attribut "title" sur le lien uniquement si le lien s'ouvre dans une nouvelle fenêtre
 if(isLienExterne){
   urlBouton = box.getLienExterne();
   targetAttr = glp("jcmsplugin.socle.targetblank");
-  titleAttr = "title=\"" +  labelBouton + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+  titleValue = glp("jcmsplugin.socle.lien.site.nouvelonglet", labelBouton);
+  titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(titleValue) +"\" ";
 }
 else{
   urlBouton = box.getLienInterne().getDisplayUrl(userLocale);  
