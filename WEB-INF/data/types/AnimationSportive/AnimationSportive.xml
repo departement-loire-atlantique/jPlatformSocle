@@ -46,7 +46,7 @@
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="anneeAdhesion" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$plugin.corporateidentity.animationsSportives.annee.asd.cat" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="anneeAdhesion" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.animSportive.annee" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Année adhésion</label>
     </field>
   </fields>
