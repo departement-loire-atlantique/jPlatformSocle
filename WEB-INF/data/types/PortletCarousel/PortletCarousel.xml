@@ -15,7 +15,7 @@
     <field name="contenusEnAvant" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]">
       <label xml:lang="fr">Contenus en avant</label>
     </field>
-    <field name="selectionDuTheme" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="darkContext|whiteContext" ml="false" descriptionType="tooltip" labelList="Fond gris, tuiles blanches|Fond blanc, tuiles grises" searchable="false" html="false" checkHtml="true">
+    <field name="selectionDuTheme" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="tuileVerticaleLight|tuileVerticaleDark" ml="false" descriptionType="tooltip" labelList="Fond gris, tuiles blanches|Fond blanc, tuiles grises" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sélection du thème</label>
     </field>
     <field name="positionTitre" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="listbox" valueList="none|tl|tr|bl|br" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Aucun|Haut gauche|Haut droit|Bas gauche|Bas droit">
