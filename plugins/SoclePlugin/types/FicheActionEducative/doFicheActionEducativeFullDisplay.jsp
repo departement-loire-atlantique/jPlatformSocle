@@ -107,7 +107,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                             </jalios:if>
                                             <jalios:default>
                                                 <jalios:foreach name="itMail" type="String" array="<%= obj.getMail() %>">
-                                                <a href="mailto:<%= itMail %>" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.actuedu.contactmail.label", itMail)) %>'><%= itMail %></a>
+                                                <a href="mailto:<%= itMail %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.actuedu.contactmail.label", itMail)) %>'><%= itMail %></a>
                                                 </jalios:foreach>
                                             </jalios:default>
                                         </jalios:select>
