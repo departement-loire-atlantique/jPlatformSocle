@@ -70,6 +70,8 @@ jcmsplugin.socle.image.carrouselaccueil.mobile.width: 300
 jcmsplugin.socle.image.carrouselaccueil.mobile.height: 370
 jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
 jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
+jcmsplugin.socle.image.magazine.tuile.width: 138
+jcmsplugin.socle.image.magazine.tuile.height: 193
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -168,6 +170,7 @@ media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoi
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.Magazine: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
@@ -179,6 +182,10 @@ media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
 media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
+media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
+media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
+media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
+media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
@@ -396,3 +403,8 @@ $jcmsplugin.socle.emploiStage.delegationService: c_5296
 # Video
 
 $jcmsplugin.socle.video.types.root: c_1270060
+
+# Fiche Elu
+$jcmsplugin.socle.elu.president: c_5315
+$jcmsplugin.socle.elu.vicepresident: c_5316
+$jcmsplugin.socle.elu.conseiller: p2_136941

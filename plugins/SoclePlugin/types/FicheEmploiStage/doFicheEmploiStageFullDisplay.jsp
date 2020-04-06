@@ -78,7 +78,7 @@
                                        </jalios:if>
                                    </p>
                                </div>
-	                           <div class="col ds44--xl-padding-l">
+	                           <div class="col">
 	                               <jalios:if predicate="<%= 
 	                                   Util.notEmpty(obj.getFiliere(loggedMember))
 	                                   ||Util.notEmpty(obj.getCategorieDemploi(loggedMember))
