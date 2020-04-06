@@ -100,15 +100,15 @@
 							<ul class="ds44-list">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title="Ma sélection">Ma sélection (2)</a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title="PDF">PDF</a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title="CSV">CSV</a>
+									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.csv")) %>'><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
 								</li>
 							</ul>
 						</div>
