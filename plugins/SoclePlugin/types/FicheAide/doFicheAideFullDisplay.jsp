@@ -360,7 +360,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 										<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
 											<% String email = itFicheLieu.getEmail()[0]; %>
-											<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+											<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 												<%
 													StringBuffer sbfLabelMail = new StringBuffer();
 													sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
@@ -375,7 +375,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 											<ul class="ds44-list">
 												<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
 													<li>
-														<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+														<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 															<%= email %>
 														</a>
 													</li>
@@ -447,7 +447,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									</label>
 									<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 								</div>
-								<button class="ds44-btnStd ds44-btn--invert" aria-title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
+								<button class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
 									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 								</button>
@@ -508,7 +508,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 	
 										<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
 											<% String email = itFicheLieu.getEmail()[0]; %>
-											<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+											<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 												<%
 													StringBuffer sbfLabelMail = new StringBuffer();
 													sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
@@ -523,7 +523,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 											<ul class="ds44-list">
 												<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
 													<li>
-														<a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+														<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 															<%= email %>
 														</a>
 													</li>
@@ -601,10 +601,10 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
                             <jalios:foreach name="itMail" type="String" array="<%= itLieu.getEmail() %>">
                                <jalios:select>
                                    <jalios:if predicate="<%= itLieu.getEmail().length > 1 %>">
-                                   <a href="mailto:<%= itMail %>" aria-label='<%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= itLieu.getTitle() %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %> : <%= itMail %>' data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
+                                   <a href="mailto:<%= itMail %>" title='<%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= itLieu.getTitle() %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %> : <%= itMail %>' data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
                                    </jalios:if>
                                    <jalios:default>
-                                   <a href="mailto:<%= itMail %>" aria-label='<%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= itLieu.getTitle() %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %> : <%= itMail %>' data-bkp-tabindex="" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %></a>
+                                   <a href="mailto:<%= itMail %>" title='<%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= itLieu.getTitle() %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %> : <%= itMail %>' data-bkp-tabindex="" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.contacter.label") %> <%= glp("jcmsplugin.socle.ficheaide.par-mail.label") %></a>
                                    </jalios:default>
                                </jalios:select>
                             </jalios:foreach>

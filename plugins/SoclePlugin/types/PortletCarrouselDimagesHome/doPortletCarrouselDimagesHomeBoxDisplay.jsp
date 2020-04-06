@@ -36,7 +36,7 @@
         </div>
         <div class="col-4-small-1 ds44-hide-mobile">
             <div class="ds44-flex-container ds44-flex-container--column ds44-h100">
-                <div class="ds44-fl1 ds44-imgInsta ds44-hide-tinyToLarge">
+                <div class="ds44-fl1 ds44-imgInsta ds44-hide-tiny-to-medium">
                     <div class="mod--hidden swipper-carousel-wrap swipper-carousel-wrap--homepage ds44-posRel swipper-carousel-slideshow swipper-carousel-slideshow-slave" data-nb-visible-slides="1">
                         <div class="swiper-container swiper-container-fade swiper-container-horizontal">
                             <ul class="swiper-wrapper ds44-list has-gutter-l ds44-carousel-swiper">
