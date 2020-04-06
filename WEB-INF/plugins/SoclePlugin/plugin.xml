@@ -11,6 +11,7 @@
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="AlertCG"></type>
+    <type name="AnimationSportive"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
