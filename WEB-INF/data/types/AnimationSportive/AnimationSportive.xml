@@ -10,13 +10,13 @@
     <field name="city" editor="link" required="true" compactDisplay="false" type="generated.City" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" parent="false">
       <label xml:lang="fr">Communes</label>
     </field>
-    <field name="typeDisciplines" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p2_92188" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDisciplines" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.animSportive.typeDiscipline" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type / disciplines</label>
     </field>
-    <field name="joursDeLaSemaine" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="p2_92208" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="joursDeLaSemaine" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.animSportive.joursSemaine" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Jours de la semaine</label>
     </field>
-    <field name="niveaux" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="p2_92198" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="niveaux" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.animSportive.niveaux" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Niveaux</label>
     </field>
     <field name="startHour" editor="int" required="true" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" minValue="0" maxValue="23" unit="h" unitPos="after">
