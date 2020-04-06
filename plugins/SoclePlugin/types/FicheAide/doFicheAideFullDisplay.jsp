@@ -447,7 +447,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande());
 									</label>
 									<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 								</div>
-								<button class="ds44-btnStd ds44-btn--invert" aria-title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
+								<button class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
 									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 								</button>
