@@ -173,6 +173,7 @@ media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/t
 media.data-template.tuileHorizontaleGrey.Magazine: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
+media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherchePub.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
@@ -182,6 +183,7 @@ media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
 media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
+media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 
