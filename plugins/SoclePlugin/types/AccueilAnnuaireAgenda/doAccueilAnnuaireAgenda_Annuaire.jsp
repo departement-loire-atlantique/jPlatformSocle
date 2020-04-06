@@ -44,7 +44,7 @@
 		            </div>
 		            
 		            <jalios:if predicate="<%= Util.notEmpty(obj.getContenusEncadresLibres()) || Util.notEmpty(obj.getPortletsEncadres()) %>">
-		                <div class="col-1 grid-offset ds44-hide-tinyToLarge"></div>
+		                <div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
 
 						<aside class="col-4">
 							<jalios:foreach array="<%=obj.getContenusEncadresLibres()%>" type="String"
