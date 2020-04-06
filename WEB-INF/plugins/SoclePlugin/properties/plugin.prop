@@ -409,3 +409,8 @@ $jcmsplugin.socle.video.types.root: c_1270060
 $jcmsplugin.socle.elu.president: c_5315
 $jcmsplugin.socle.elu.vicepresident: c_5316
 $jcmsplugin.socle.elu.conseiller: p2_136941
+
+# Communiqué de presse
+$jcmsplugin.socle.presscommunique.thematique: c_5026
+$jcmsplugin.socle.presscommunique.autreThematique: c_5091
+$jcmsplugin.socle.presscommunique.typeMedia: aca_7725

@@ -5,10 +5,10 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5026" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.thematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Thématique</label>
     </field>
-    <field name="autreThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_5091">
+    <field name="autreThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique">
       <label xml:lang="fr">Autre thématique</label>
     </field>
     <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wiki="true" wikiwyg="false">
@@ -23,7 +23,7 @@
     <field name="relatedNews" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Actualité liée</label>
     </field>
-    <field name="linkMediasType" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="aca_7725" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="linkMediasType" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Types de médias liés</label>
     </field>
     <field name="linkMedias" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
