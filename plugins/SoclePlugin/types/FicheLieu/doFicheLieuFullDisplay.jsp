@@ -492,7 +492,11 @@
 	</jalios:if>
 
 	<jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
-        <ds:articleVideo video="<%= obj.getVideo() %>"/>
+	    <%
+	    String titleVideo = obj.getTitreVideo();
+	    if (Util.isEmpty(titleVideo)) titleVideo = obj.getVideo().getTitle();
+	    %>
+        <ds:articleVideo video="<%= obj.getVideo() %>" title="<%= titleVideo %>" intro="<%= obj.getIntroVideo() %>"/>
     </jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getAutresLieuxAssocies()) %>'>
