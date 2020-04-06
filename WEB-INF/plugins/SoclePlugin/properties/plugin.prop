@@ -70,6 +70,8 @@ jcmsplugin.socle.image.carrouselaccueil.mobile.width: 300
 jcmsplugin.socle.image.carrouselaccueil.mobile.height: 370
 jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
 jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
+jcmsplugin.socle.image.magazine.tuile.width: 138
+jcmsplugin.socle.image.magazine.tuile.height: 193
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -168,8 +170,10 @@ media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoi
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.Magazine: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
+media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherchePub.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
@@ -180,6 +184,7 @@ media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFoc
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
 media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
+media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 

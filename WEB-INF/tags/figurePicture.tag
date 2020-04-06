@@ -27,6 +27,20 @@
     type="String"
     description="L'URL de l'image mobile"
 %>
+<%@ attribute name="width"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Integer"
+    description="La largeur de l'image"
+%>
+<%@ attribute name="height"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Integer"
+    description="La hauteur de l'image"
+%>
 <%@ attribute name="legend"
     required="false"
     fragment="false"
@@ -128,6 +142,11 @@ switch(format) {
 	  if (Util.isEmpty(image)) image = SocleUtils.getImageCarree(pub);
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
 	  break;
+	  
+	case "custom" :
+      if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
+      formattedImagePath = SocleUtils.generateVignette(image, width, height);
+      break;
 	
 	default :
 	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
@@ -168,24 +187,26 @@ else {
 }
 
 %>
-<figure role="figure" class="<%= figureCss %>">
-    <picture class="<%= pictureCss %>" alt='<%= Util.isEmpty(label) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : label %>'>
-        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
-            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
-        </jalios:if>
-        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="<%= imgCss %>" id="<%=uid%>"/>
-    </picture>
-    
-    <jalios:if predicate="<%= hasFigcaption%>">
-        <figcaption class="ds44-imgCaption">
-            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-                <%=legend%>
-            </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
-            </jalios:if>
-        </figcaption>
-        </figure>
-    </jalios:if>
-</figure>
+<jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
+	<figure role="figure" class="<%= figureCss %>">
+	    <picture class="<%= pictureCss %>" alt='<%= Util.isEmpty(label) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : label %>'>
+	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
+	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
+	        </jalios:if>
+	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+	        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="<%= imgCss %>" id="<%=uid%>"/>
+	    </picture>
+	    
+	    <jalios:if predicate="<%= hasFigcaption%>">
+	        <figcaption class="ds44-imgCaption">
+	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+	                <%=legend%>
+	            </jalios:if>
+	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
+	            </jalios:if>
+	        </figcaption>
+	        </figure>
+	    </jalios:if>
+	</figure>
+</jalios:if>
