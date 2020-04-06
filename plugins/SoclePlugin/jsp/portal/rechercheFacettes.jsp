@@ -12,7 +12,7 @@
 
 <%= getPortlet(bufferMap,"header") %>
 
-<main role="main" id="content">
+<main role="main" id="content" class="ds44-mainResults">
 
 <section class="ds44-container-large">
     <jalios:include id='<%= request.getParameter("boxId") %>' />
