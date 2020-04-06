@@ -57,6 +57,16 @@ jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
+jcmsplugin.socle.lancer.recherche: Lancer la recherche
+jcmsplugin.socle.faire.recherche: Veuillez faire une recherche ci-dessus pour afficher des résultats.
+jcmsplugin.socle.recherche.trop.resultats: Il y a un trop grand nombre de résultats correspondant à votre recherche. Vous trouverez ci-dessous les {0} plus pertinents. N’hésitez pas à affiner vos critères de recherche.
+jcmsplugin.socle.recherche.carte.masquer: Masquer la carte
+jcmsplugin.socle.recherche.affiner: Affiner ma recherche
+jcmsplugin.socle.recherche.masquer: Masquer ma recherche
+jcmsplugin.socle.recherche.selection: Ma sélection
+jcmsplugin.socle.recherche.ma-selection: Ma sélection ({0})
+jcmsplugin.socle.recherche.export.pdf: PDF
+jcmsplugin.socle.recherche.export.csv: CSV
 jcmsplugin.socle.selectionner: Sélectionner
 jcmsplugin.socle.obligatoire: obligatoire
 jcmsplugin.socle.fermer: Fermer
@@ -66,6 +76,7 @@ jcmsplugin.socle.ou: Ou
 jcmsplugin.socle.publiele: Publié le {0}
 jcmsplugin.socle.publieele: Publiée le {0}
 jcmsplugin.socle.symbol.copyright: ©
+jcmsplugin.socle.symbol.euro: €
 jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
@@ -88,6 +99,8 @@ jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
+jcmsplugin.socle.financementDep: Financement départemental
+jcmsplugin.socle.maire: Maire
 
 # ------------------------------------------------------------
 #  Header
@@ -327,5 +340,15 @@ jcmsplugin.socle.skiplinks.menu : Aller au menu
 jcmsplugin.socle.skiplinks.search : Aller à la recherche
 jcmsplugin.socle.skiplinks.accessibility : Aller à la page d'accessibilité
 
+# ------------------------------------------------------------
+#  Fiche élu
+# ------------------------------------------------------------
 
-
+jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
+jcmsplugin.socle.elu.binome: En binôme avec : {0}
+jcmsplugin.socle.elu.president.masculin: Président du Conseil Départemental
+jcmsplugin.socle.elu.president.feminin: Présidente du Conseil Départemental
+jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
+jcmsplugin.socle.elu.vicepresident.feminin: Vice Présidente
+jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
+jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale 
