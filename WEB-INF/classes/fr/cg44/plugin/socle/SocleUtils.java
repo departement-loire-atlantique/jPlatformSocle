@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -22,6 +24,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Data;
 import com.jalios.jcms.DataSelector;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
@@ -913,6 +916,23 @@ public final class SocleUtils {
       return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
     }
     return "";
+  }
+  
+  /**
+   * Trie un set de Data pour ne conserver qu'un type spécifié
+   * @param pubList
+   * @param typeName
+   * @return
+   */
+  public static SortedSet<Publication> sortListToSingleType(Set<Publication> pubSet, String typeName) {
+    if (Util.isEmpty(pubSet) || Util.isEmpty(typeName)) {
+      return null;
+    }
+    QueryHandler qh = new QueryHandler();
+    qh.setTypes(typeName);
+    qh.setDataSet(pubSet);
+    QueryResultSet result = qh.getResultSet();
+    return result.getAsSortedSet();
   }
 	
 }
