@@ -347,4 +347,21 @@ jcmsplugin.socle.elu.president.feminin: Présidente du Conseil Départemental
 jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
 jcmsplugin.socle.elu.vicepresident.feminin: Vice Présidente
 jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
-jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale 
+jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale
+
+# ------------------------------------------------------------
+#  Fiche publication
+# ------------------------------------------------------------
+jcmsplugin.socle.fichepublication.telecharger:Télécharger
+jcmsplugin.socle.fichepublication.ecouter:Écouter
+jcmsplugin.socle.fichepublication.versiondaisy:Version Daisy
+jcmsplugin.socle.fichepublication.ausommaire:Au sommaire
+jcmsplugin.socle.fichepublication.dossier:Dossier
+jcmsplugin.socle.fichepublication.portraits:Portraits
+jcmsplugin.socle.fichepublication.actualites:Actualités
+jcmsplugin.socle.fichepublication.question:La question
+jcmsplugin.socle.fichepublication.lireenligne:Lire le magazine en ligne
+jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine en ligne du Conseil départemental de Loire-Atlantique - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
+jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
