@@ -182,15 +182,16 @@ media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templat
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
 # Content template - cards
+media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
+media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
+media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
+media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
+media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
 media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
 media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
-media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
-media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
-media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
-media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
