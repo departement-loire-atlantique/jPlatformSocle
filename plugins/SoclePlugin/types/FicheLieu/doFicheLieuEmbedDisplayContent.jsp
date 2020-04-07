@@ -14,12 +14,6 @@ String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.lo
 String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
-String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
-String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
-        obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
-        obj.getCodePostal(), commune, "");
-
-String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
 String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 %>
 <section class="mbl">
@@ -29,8 +23,8 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	    </strong>
 	</p>
 	
-	<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
-	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adresse%></p>
+	<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
+	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adresseEcrire%></p>
 	</jalios:if>
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
