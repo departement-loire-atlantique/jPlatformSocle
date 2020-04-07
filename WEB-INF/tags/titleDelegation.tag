@@ -142,7 +142,7 @@ if (Util.isEmpty(formattedMobilePath)) {
                         <% for (String itMail : delegation.getEmail()) { %>
                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a
                             href="mailto:<%= itMail %>"
-                            aria-label='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'> <%= itMail %></a>
+                            title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'> <%= itMail %></a>
                         <% } %>
                     </p>
                     </jalios:if>

@@ -17,6 +17,7 @@ if(pub instanceof FileDocument){
 %>
 
 <jalios:select>
+  
     <jalios:if predicate="<%= pub instanceof ListeDeContenus %>">
         <jalios:foreach name="itContent" type="Content" array="<%= ((ListeDeContenus) pub).getContenus() %>">
             <jalios:select>
