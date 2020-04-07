@@ -11,6 +11,7 @@
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="AlertCG"></type>
+    <type name="AnimationSportive"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
@@ -57,6 +58,7 @@
     <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
+    <type name="PressCommunique"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
     <type name="Show"></type>
