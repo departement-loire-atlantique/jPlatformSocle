@@ -49,7 +49,11 @@ jcmsplugin.socle.socialnetworks.title:Le Département de Loire-Atlantique sur
 # ------------------------------------------------------------
 #  Libellés communs
 # ------------------------------------------------------------
+jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
+jcmsplugin.socle.lien.site.nouvelonglet: Site web : {0} - nouvelle fenêtre
+jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
 jcmsplugin.socle.rechercher: Rechercher
@@ -72,10 +76,10 @@ jcmsplugin.socle.ou: Ou
 jcmsplugin.socle.publiele: Publié le {0}
 jcmsplugin.socle.publieele: Publiée le {0}
 jcmsplugin.socle.symbol.copyright: ©
+jcmsplugin.socle.symbol.euro: €
 jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
-jcmsplugin.socle.nouvelonglet: Ouvrir {0} dans un nouvel onglet
 jcmsplugin.socle.retourALaListe: Retour à la liste 
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
@@ -95,6 +99,8 @@ jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
+jcmsplugin.socle.financementDep: Financement départemental
+jcmsplugin.socle.maire: Maire
 
 # ------------------------------------------------------------
 #  Header
@@ -109,6 +115,7 @@ jcmsplugin.socle.menu.principal1: Menu principal niveau 1
 jcmsplugin.socle.menu.principal2: Menu principal niveau 2
 jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
+jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous
@@ -333,5 +340,15 @@ jcmsplugin.socle.skiplinks.menu : Aller au menu
 jcmsplugin.socle.skiplinks.search : Aller à la recherche
 jcmsplugin.socle.skiplinks.accessibility : Aller à la page d'accessibilité
 
+# ------------------------------------------------------------
+#  Fiche élu
+# ------------------------------------------------------------
 
-
+jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
+jcmsplugin.socle.elu.binome: En binôme avec : {0}
+jcmsplugin.socle.elu.president.masculin: Président du Conseil Départemental
+jcmsplugin.socle.elu.president.feminin: Présidente du Conseil Départemental
+jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
+jcmsplugin.socle.elu.vicepresident.feminin: Vice Présidente
+jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
+jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale 

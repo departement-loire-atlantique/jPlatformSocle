@@ -9,6 +9,7 @@
 }
 
 Publication pub = (Publication) data;
+
 %>
 
 <%@include file="tuileCommon.jsp" %>
@@ -27,12 +28,24 @@ if (Util.isEmpty(urlImage)) {
     urlImage = (String) pub.getFieldValue("imageBandeau");
   } catch (Exception e) {}
 }
-if (Util.notEmpty(urlImage)) {
-  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
-}
+if (Util.isEmpty(urlImage)) {
+  urlImage = "s.gif";
+ } else {
+   urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
+ }
+
+SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+try {
+    subTitle = sdf.format((Date) pub.getFieldValue("dateActu"));
+} catch(Exception e) {}
+
+try {
+    location = (String) pub.getFieldValue("lieu");
+} catch(Exception e) {}
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-darkContext">
+<section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
     <picture class="ds44-container-imgRatio">
         <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
     </picture>
@@ -45,6 +58,14 @@ if (Util.notEmpty(urlImage)) {
         <jalios:if predicate="<%= isDoc %>">
             <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
         </jalios:if>
+        <jalios:if predicate="<%= Util.notEmpty(subTitle) %>">
+            <p><%= subTitle %></p>
+        </jalios:if>
+        <jalios:if predicate="<%= Util.notEmpty(location) %>">
+            <p class="ds44-cardLocalisation">
+                <i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= location %></span>
+            </p>
+        </jalios:if>        
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
 </section>

@@ -100,11 +100,11 @@
 							<ul class="ds44-list">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 								</li>
 								<li class="ds44-docListElem">
 									<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
@@ -129,32 +129,37 @@
 	</div>
 	
 	
-	
-	<div class="ds44-facette-mobile-button ds44-bgDark ds44--l-padding ds44-show-tiny-to-medium ds44-hide-medium">
-        <button class="ds44-btnStd ds44-btn--contextual ds44-w100 ds44-js-toggle-search-view">
-            <span class="ds44-btnInnerText ds44-facette-mobile-button-collapse"><%= glp("jcmsplugin.socle.recherche.affiner") %></span>
-            <span class="ds44-btnInnerText ds44-facette-mobile-button-expand"><%= glp("jcmsplugin.socle.recherche.masquer") %></span>
-        </button>
-    </div>
+	<jalios:if predicate='<%= isInRechercheFacette %>'>
+		<div class="ds44-facette-mobile-button ds44-bgDark ds44--l-padding ds44-show-tiny-to-medium ds44-hide-medium">
+	        <button class="ds44-btnStd ds44-btn--contextual ds44-w100 ds44-js-toggle-search-view">
+	            <span class="ds44-btnInnerText ds44-facette-mobile-button-collapse"><%= glp("jcmsplugin.socle.recherche.affiner") %></span>
+	            <span class="ds44-btnInnerText ds44-facette-mobile-button-expand"><%= glp("jcmsplugin.socle.recherche.masquer") %></span>
+	        </button>
+	    </div>
+	    
+	    
+	    <jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
+		     <div class="ds44-facette-mobile-export ds44-push ds44-small-fg1 ds44-show-tiny-to-medium ds44-hide-medium">
+		        <ul class="ds44-list">
+		            <li class="ds44-docListElem">
+		                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+		                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+		            </li>
+		            <li class="ds44-docListElem">
+		                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+		                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+		            </li>
+		            <li class="ds44-docListElem">
+		                <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+		                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
+		            </li>
+		        </ul>
+		    </div>
+	   </jalios:if>
+    </jalios:if>
     
     
     
-     <div class="ds44-facette-mobile-export ds44-push ds44-small-fg1 ds44-show-tiny-to-medium ds44-hide-medium">
-        <ul class="ds44-list">
-            <li class="ds44-docListElem">
-                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
-            </li>
-            <li class="ds44-docListElem">
-                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
-            </li>
-            <li class="ds44-docListElem">
-                <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
-            </li>
-        </ul>
-    </div>
 </div>
 
 

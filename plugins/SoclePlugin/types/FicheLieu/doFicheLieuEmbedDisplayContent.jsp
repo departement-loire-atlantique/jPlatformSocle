@@ -69,7 +69,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	
 	         <jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
 	             <% String email = obj.getEmail()[0]; %>
-	             <a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+	             <a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 	                 <%
 	                     StringBuffer sbfLabelMail = new StringBuffer();
 	                     sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
@@ -84,7 +84,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	             <ul class="ds44-list">
 	                 <jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
 	                     <li>
-	                         <a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+	                         <a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
 	                             <%= email %>
 	                         </a>
 	                     </li>
@@ -109,7 +109,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	
 	        <jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 	            <% String site = obj.getSiteInternet()[0]; %>
-	            <a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank">
+	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank">
 	                <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 	            </a>
 	        </jalios:if>
@@ -118,7 +118,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	            <ul class="ds44-list">
 	                <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 	                    <li>
-	                        <a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank"> 
+	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", strAriaLabelSite) %>' target="_blank"> 
 	                            <%= SocleUtils.parseUrl(site) %>
 	                        </a>
 	                    </li>
