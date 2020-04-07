@@ -21,6 +21,12 @@ SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
       <div class="ds44-innerBoxContainer">
           <h4 class="h4-like ds44-cardTitle" id="1"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
           <hr class="mbs" aria-hidden="true">
+          <jalios:if predicate="<%= Util.notEmpty(pub.getDescription()) %>">
+	          <div class="ds44-docListElem ds44-mt-std">
+	          <jalios:wysiwyg><%= pub.getDescription() %></jalios:wysiwyg>
+	          </div>
+	          <hr class="mbs" aria-hidden="true">
+          </jalios:if>
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
             <%= SocleUtils.formatCategories(pub.getStructureType(loggedMember)) %>
@@ -29,7 +35,7 @@ SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
             <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
             <%= pub.getAddress() %>
           </div>
-          <jalios:if predicate="<%= Util.notEmpty(pub.getPhones) %>">
+          <jalios:if predicate="<%= Util.notEmpty(pub.getPhones()) %>">
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
             <jalios:foreach name="itPhone" type="String" array="<%= pub.getPhones() %>">
