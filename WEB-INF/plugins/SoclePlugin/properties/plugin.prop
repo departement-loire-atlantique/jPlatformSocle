@@ -412,6 +412,12 @@ $jcmsplugin.socle.elu.president: c_5315
 $jcmsplugin.socle.elu.vicepresident: c_5316
 $jcmsplugin.socle.elu.conseiller: p2_136941
 
+# Animation Sportive
+$jcmsplugin.socle.animSportive.typeDiscipline: p2_92188
+$jcmsplugin.socle.animSportive.joursSemaine: p2_92208
+$jcmsplugin.socle.animSportive.niveaux: p2_92198
+$jcmsplugin.socle.animSportive.annee: p2_699360
+
 # Communiqué de presse
 $jcmsplugin.socle.presscommunique.thematique: c_5026
 $jcmsplugin.socle.presscommunique.autreThematique: c_5091
