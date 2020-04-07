@@ -882,7 +882,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilFull(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.full.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.height", 0)); 
   }
   
   /**
@@ -891,7 +891,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilMobile(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.mobile.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.height", 0)); 
   }
   
   /**
@@ -900,8 +900,17 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilCarree(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.carree.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.height", 0)); 
   }
+  
+  /**
+   * Génère une image formattée pour le type "Fiche publication" et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMagazine(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.magazine.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.magazine.height", 0)); 
+  }  
   
   /**
    * Génère une image formattée et renvoie son path

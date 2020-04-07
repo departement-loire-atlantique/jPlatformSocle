@@ -13,8 +13,8 @@
             <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
                 <div class="ds44-grid12-offset-2">
                     <div class="ds44-tablette-reduced-mt">
-                        <jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
-                            <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
+                        <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
+                            <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
                         </jalios:if>
                     </div>
                     <h1 class="h1-like mbs mts" id="idTitre1"><%=obj.getTitle(userLang) %></h1>
@@ -30,8 +30,9 @@
 	                        <a href="<%= obj.getUrlLiseuse() %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)))%>">
 						</jalios:if>
 						
+						<%-- On ne prévoit pas d'image mobile --%>
 					    <picture class="ds44-stl-center ds44-tablette-extra-mt">
-                            <img src="<%= Util.encodeUrl(obj.getImagePrincipale()) %>" class="tiny-w100">
+                            <img src="<%= SocleUtils.getUrlOfFormattedImageMagazine(obj.getImagePrincipale()) %>" class="tiny-w100">
 					    </picture>
 					    
 					    <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
@@ -42,7 +43,9 @@
 					<div class="col-7 ds44-mlr4 ds44--xxl-padding-t ds44-mobile-reduced-pad ds44-mobile-reduced-mar">
                         <h2 class="h2-like ds44-theme"><%= obj.getTitreUne(userLang) %></h2>
                    
-                        <p class="ds44-introduction"><%= obj.getChapo(userLang) %></p>
+                        <div class="ds44-introduction">
+                            <jalios:truncate length="250" suffix="..." advancedHtml="true"><%= obj.getChapo(userLang) %></jalios:truncate>
+                        </div>
                         
                         <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
 							<p class="ds44-mt4">
