@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FichePublication" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Image principale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 363x509px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="libelleBoutonLiseuse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Libellé bouton lire</label>
+    </field>
+    <field name="urlLiseuse" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="contenu">
+      <label xml:lang="fr">Url liseuse</label>
+    </field>
+    <field name="documentPdf" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Document pdf</label>
+    </field>
+    <field name="versionDaisy" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="contenu">
+      <label xml:lang="fr">Version Daisy</label>
+    </field>
+    <field name="codeEmbedSoundcloud" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" wikiwyg="false" html="true" checkHtml="false" tab="contenu" descriptionType="tooltip">
+      <label xml:lang="fr">Code soundcloud</label>
+    </field>
+    <field name="titreUne" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu" descriptionType="tooltip">
+      <label xml:lang="fr">Titre à la Une</label>
+    </field>
+    <field name="chapo" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="contenu">
+      <label xml:lang="fr">Chapô à la Une</label>
+    </field>
+    <field name="titreRubrique1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique1">
+      <label xml:lang="fr">Titre rubrique 1</label>
+    </field>
+    <field name="libelleLienRubrique1" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique1" tab="rubrique1">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterneRubrique1" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique1" tab="rubrique1">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterneRubrique1" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique1" html="false" checkHtml="true" tab="rubrique1">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="titreRubrique2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique2">
+      <label xml:lang="fr">Titre rubrique 2</label>
+    </field>
+    <field name="libelleLienRubrique2" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique2" tab="rubrique2">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterneRubrique2" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique2" tab="rubrique2">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterneRubrique2" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique2" html="false" checkHtml="true" tab="rubrique2">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="titreRubrique3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique3">
+      <label xml:lang="fr">Titre rubrique 3</label>
+    </field>
+    <field name="libelleLienRubrique3" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique3" tab="rubrique3">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterneRubrique3" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique3" tab="rubrique3">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterneRubrique3" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique3" html="false" checkHtml="true" tab="rubrique3">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="titreRubrique4" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique4">
+      <label xml:lang="fr">Titre rubrique 3</label>
+    </field>
+    <field name="libelleLienRubrique4" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique4" tab="rubrique4">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterneRubrique4" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique4" tab="rubrique4">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterneRubrique4" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique4" html="false" checkHtml="true" tab="rubrique4">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="titreComplement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="complement">
+      <label xml:lang="fr">Titre complément</label>
+    </field>
+    <field name="complement" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="complement">
+      <label xml:lang="fr">Complément</label>
+    </field>
+    <field name="typeMagazine" editor="category" required="true" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichepublication.typeMagazine.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="rubrique1">
+      <label xml:lang="fr">Rubrique 1</label>
+    </tab>
+    <tab id="rubrique2">
+      <label xml:lang="fr">Rubrique 2</label>
+    </tab>
+    <tab id="rubrique3">
+      <label xml:lang="fr">Rubrique 3</label>
+    </tab>
+    <tab id="rubrique4">
+      <label xml:lang="fr">Rubrique 4</label>
+    </tab>
+    <tab id="complement">
+      <label xml:lang="fr">Complément</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+  <label xml:lang="fr">Fiche Publication</label>
+</type>
+

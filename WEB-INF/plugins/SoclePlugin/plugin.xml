@@ -34,7 +34,8 @@
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
     <type name="FicheEmploiStage"></type>
-    <type name="FicheLieu"></type>  
+    <type name="FicheLieu"></type>
+    <type name="FichePublication"></type>   
     <type name="Help"></type>
     <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
@@ -179,6 +180,11 @@
     </templates>
     <templates type="Lien">
         <template name="default" file="doLienFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="FichePublication">
+        <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>  

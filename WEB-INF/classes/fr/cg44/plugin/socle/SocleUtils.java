@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -22,6 +24,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Data;
 import com.jalios.jcms.DataSelector;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
@@ -882,7 +885,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilFull(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.full.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.height", 0)); 
   }
   
   /**
@@ -891,7 +894,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilMobile(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.mobile.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.height", 0)); 
   }
   
   /**
@@ -900,8 +903,17 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilCarree(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.carree.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.height", 0)); 
   }
+  
+  /**
+   * Génère une image formattée pour le type "Fiche publication" et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMagazine(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.magazine.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.magazine.height", 0)); 
+  }  
   
   /**
    * Génère une image formattée et renvoie son path

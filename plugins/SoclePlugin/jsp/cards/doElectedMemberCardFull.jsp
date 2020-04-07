@@ -30,7 +30,7 @@ if (Util.notEmpty(pub.getFunctions(loggedMember))) {
     position = pub.getGender() ? glp("jcmsplugin.socle.elu.vicepresident.masculin") : glp("jcmsplugin.socle.elu.vicepresident.feminin");
   }
   if (pub.getFunctions(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.elu.conseiller"))) {
-    position = pub.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin");
+    conseillerLabel = pub.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin");
   }
 }
 
