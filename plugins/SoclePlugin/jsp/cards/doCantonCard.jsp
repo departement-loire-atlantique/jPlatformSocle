@@ -13,7 +13,7 @@ if (data == null) {
 Canton pub = (Canton) data;
 
 Set<Publication> referencedElus = SocleUtils.sortListToSingleType(pub.getReferrerSet(), "ElectedMember");
-SortedSet<ElectedMember> sortedElus = new TreeSet<>(ComparatorManager.getComparator(ElectedMember.class, "nom"));
+SortedSet<ElectedMember> sortedElus = new TreeSet<>(ElectedMember.getComparator("nom", true));
 for (Publication itPub : referencedElus) {
   sortedElus.add((ElectedMember) itPub);
 }
