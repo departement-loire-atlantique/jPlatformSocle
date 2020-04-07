@@ -15,6 +15,6 @@ ListeDeContenus pub = (ListeDeContenus) data;
         <h2 class="h3-like"><%=pub.getLibelleTitre(userLang)%></h2>
 	</jalios:if>
 	<jalios:foreach name="itData" type="com.jalios.jcms.Content" array="<%= pub.getContenus() %>">
-        <jalios:media data='<%=itData %>' template='tuileHorizontaleGrey' />
+        <jalios:media data='<%=itData %>' template='tuileHorizontaleDark' />
     </jalios:foreach>
 </jalios:if>

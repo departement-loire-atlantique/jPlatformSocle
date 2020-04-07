@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PressCommunique" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="c_5066">
+  <title ml="true">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.thematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Thématique</label>
+    </field>
+    <field name="autreThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique">
+      <label xml:lang="fr">Autre thématique</label>
+    </field>
+    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wiki="true" wikiwyg="false">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="pressCommuniqueDirectory" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false">
+      <label xml:lang="fr">Dossier du communiqué de presse</label>
+    </field>
+    <field name="seeTheDocument" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Visionner le document</label>
+    </field>
+    <field name="relatedNews" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Actualité liée</label>
+    </field>
+    <field name="linkMediasType" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Types de médias liés</label>
+    </field>
+    <field name="linkMedias" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Médias liés</label>
+    </field>
+    <field name="pressContactName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Contact presse nom</label>
+    </field>
+    <field name="pressContactMails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Contact presse courriel</label>
+    </field>
+    <field name="pressContactPhones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Contact presse téléphone</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Communiqué / Dossier de presse</label>
+</type>
+
