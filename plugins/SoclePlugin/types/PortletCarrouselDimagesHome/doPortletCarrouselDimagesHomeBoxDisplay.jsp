@@ -65,20 +65,15 @@
 					    for (int counter = 0; counter < socialNetworksLabels.length; counter++) {
 					      mapSocialNetworks.put(socialNetworksLabels[counter], socialNetworksUrls[counter]);
 					    }
+					    
+					    String[] socialNetworkToShow = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.carrouselImagesHome", new String[]{});
 					    %>
 					    <ul class="ds44-list ds44-flex-container ds44-fg1">
+					        <jalios:foreach name="itRs" type="String" array="<%= socialNetworkToShow %>">
 					        <li class="ds44-flex-align-center">
-					          <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork.facebook")) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur.facebook") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-facebook" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur.facebook") %></span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork.instagram")) %>' target="_blank" class="ds44-rs²ink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur.instagram") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-instagram" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur.instagram") %></span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork.twitter")) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur.twitter") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-twitter" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur.twitter") %></span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork.youtube")) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur.youtube") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-youtube" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur.youtube") %></span></a>
-					        </li>
+                              <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork." + itRs)) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-<%= itRs %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %></span></a>
+                            </li>
+					        </jalios:foreach>
 					    </ul>
 					</section>
                 </div>
