@@ -917,22 +917,5 @@ public final class SocleUtils {
     }
     return "";
   }
-  
-  /**
-   * Trie un set de Data pour ne conserver qu'un type spécifié
-   * @param pubList
-   * @param typeName
-   * @return
-   */
-  public static SortedSet<Publication> sortListToSingleType(Set<Publication> pubSet, String typeName) {
-    if (Util.isEmpty(pubSet) || Util.isEmpty(typeName)) {
-      return null;
-    }
-    QueryHandler qh = new QueryHandler();
-    qh.setTypes(typeName);
-    qh.setDataSet(pubSet);
-    QueryResultSet result = qh.getResultSet();
-    return result.getAsSortedSet();
-  }
 	
 }

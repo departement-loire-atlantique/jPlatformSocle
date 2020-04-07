@@ -12,11 +12,8 @@ if (data == null) {
 
 Canton pub = (Canton) data;
 
-Set<Publication> referencedElus = SocleUtils.sortListToSingleType(pub.getReferrerSet(), "ElectedMember");
-SortedSet<ElectedMember> sortedElus = new TreeSet<>(ElectedMember.getComparator("nom", true));
-for (Publication itPub : referencedElus) {
-  sortedElus.add((ElectedMember) itPub);
-}
+Set<Publication> referencedElus = new TreeSet<>(ElectedMember.getComparator("nom", true));
+referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 
 %>
 
@@ -24,10 +21,10 @@ for (Publication itPub : referencedElus) {
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
             <h3 class="h4-like ds44-cardTitle" id="7"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h3>
-            <jalios:if predicate="<%= Util.notEmpty(sortedElus) %>">
+            <jalios:if predicate="<%= Util.notEmpty(referencedElus) %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-	            <jalios:foreach name="itElu" type="ElectedMember" collection="<%= sortedElus %>" counter="itCounter">
+	            <jalios:foreach name="itElu" type="ElectedMember" collection="<%= referencedElus %>" counter="itCounter">
 	               <%
 	               String fullName = "";
 
@@ -46,7 +43,7 @@ for (Publication itPub : referencedElus) {
 	               %>
 	               <jalios:if predicate="<%= Util.notEmpty(fullName) && Util.notEmpty(conseillerLabel) %>">
 	                   <strong><%= conseillerLabel %></strong> : <%= fullName %>
-	                   <jalios:if predicate="<%= itCounter < sortedElus.size() %>">
+	                   <jalios:if predicate="<%= itCounter < referencedElus.size() %>">
 	                       <br/>
 	                   </jalios:if>
 	               </jalios:if>
