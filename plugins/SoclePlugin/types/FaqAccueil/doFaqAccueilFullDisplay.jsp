@@ -121,7 +121,7 @@
 						</div>
 						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
-					<button class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.faq.valider-envoie-question") %>'>
+					<button class="ds44-btnStd ds44-btn--invert" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.faq.valider-envoie-question")) %>'>
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>
