@@ -72,6 +72,8 @@ jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
 jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
 jcmsplugin.socle.image.magazine.tuile.width: 138
 jcmsplugin.socle.image.magazine.tuile.height: 193
+jcmsplugin.socle.image.magazine.width: 363
+jcmsplugin.socle.image.magazine.height: 509
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -411,6 +413,10 @@ $jcmsplugin.socle.video.types.root: c_1270060
 $jcmsplugin.socle.elu.president: c_5315
 $jcmsplugin.socle.elu.vicepresident: c_5316
 $jcmsplugin.socle.elu.conseiller: p2_136941
+
+
+# Fiche Publication
+$jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308
 
 # Animation Sportive
 $jcmsplugin.socle.animSportive.typeDiscipline: p2_92188
