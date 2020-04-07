@@ -169,11 +169,13 @@ media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionU
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
-media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
+media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
+media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
 media.data-template.tuileHorizontaleGrey.Magazine: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
-media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
-media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherchePub.jsp
+media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
@@ -410,5 +412,17 @@ $jcmsplugin.socle.elu.president: c_5315
 $jcmsplugin.socle.elu.vicepresident: c_5316
 $jcmsplugin.socle.elu.conseiller: p2_136941
 
+
 # Fiche Publication
 $jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308
+
+# Animation Sportive
+$jcmsplugin.socle.animSportive.typeDiscipline: p2_92188
+$jcmsplugin.socle.animSportive.joursSemaine: p2_92208
+$jcmsplugin.socle.animSportive.niveaux: p2_92198
+$jcmsplugin.socle.animSportive.annee: p2_699360
+
+# Communiqué de presse
+$jcmsplugin.socle.presscommunique.thematique: c_5026
+$jcmsplugin.socle.presscommunique.autreThematique: c_5091
+$jcmsplugin.socle.presscommunique.typeMedia: aca_7725
