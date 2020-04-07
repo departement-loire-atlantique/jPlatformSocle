@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="AnimationSportive" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false" hbm="true" authgroups="||||||" customformhandler="fr.cg44.plugin.corporateidentity.handler.EditAnimationSportiveCustomTitleHandler">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="animateurSportifIntervenant" editor="member" required="true" compactDisplay="false" type="com.jalios.jcms.Member" chooser="popup">
+      <label xml:lang="fr">Animateur sportif intervenant</label>
+    </field>
+    <field name="city" editor="link" required="true" compactDisplay="false" type="generated.City" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" parent="false">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="typeDisciplines" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.animSportive.typeDiscipline" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type / disciplines</label>
+    </field>
+    <field name="joursDeLaSemaine" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.animSportive.joursSemaine" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Jours de la semaine</label>
+    </field>
+    <field name="niveaux" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.animSportive.niveaux" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Niveaux</label>
+    </field>
+    <field name="startHour" editor="int" required="true" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" minValue="0" maxValue="23" unit="h" unitPos="after">
+      <label xml:lang="fr">Horaires - heure début</label>
+    </field>
+    <field name="startMinute" editor="int" required="true" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" minValue="0" maxValue="59" unit="mn" unitPos="after">
+      <label xml:lang="fr">Horaires - minutes début</label>
+    </field>
+    <field name="endHour" editor="int" required="true" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" minValue="0" maxValue="23" unit="h" unitPos="after">
+      <label xml:lang="fr">Horaires - heure fin</label>
+    </field>
+    <field name="endMinutes" editor="int" required="false" compactDisplay="false" type="int" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" minValue="0" maxValue="59" unit="mn" unitPos="after">
+      <label xml:lang="fr">Horaires - minutes fin</label>
+    </field>
+    <field name="commentaire" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Commentaire</label>
+    </field>
+    <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Lieu</label>
+      <description xml:lang="fr">activité</description>
+    </field>
+    <field name="inscriptionQuota" editor="int" required="false" compactDisplay="false" type="int" default="30" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unitPos="after">
+      <label xml:lang="fr">Quota inscription</label>
+    </field>
+    <field name="cours" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cours</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="anneeAdhesion" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.animSportive.annee" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Année adhésion</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Animation sportive</label>
+</type>
+

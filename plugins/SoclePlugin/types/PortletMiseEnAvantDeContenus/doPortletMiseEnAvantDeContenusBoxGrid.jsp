@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><% PortletMiseEnAvantDeContenus box = (PortletMiseEnAvantDeContenus)portlet; %><%
 List<Content> allContents = new ArrayList<>();
 if (Util.notEmpty(box.getFirstPublications())) {
@@ -29,7 +30,7 @@ if (Util.notEmpty(collection)) {
 		        <ul class="swiper-wrapper ds44-list grid-5-small-1 has-gutter-l ds44-carousel-swiper">
 		            <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
 		                <li class="swiper-slide">
-		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileVerticale"/>
+                            <jalios:media data="<%=itContent %>" template="tuileVerticaleLight"/>
 		                </li>
 		            </jalios:foreach>
 		          
@@ -47,7 +48,7 @@ if (Util.notEmpty(collection)) {
     </div>
 
     <div class="txtcenter ds44-container-large ">
-      <button class="ds44-btnStd ds44-btnStd--large ds44-btnFullMobile" type="button" data-target="#overlay-sites-applis" data-js="ds44-modal"><span class="ds44-btnInnerText">Tous nos sites et applis</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
+        <button class="ds44-btnStd ds44-btnStd--large ds44-btnFullMobile" type="button" data-target="#overlay-sites-applis" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.toussitesapplis") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
     </div>
 
 </section>

@@ -1,13 +1,13 @@
 <%
     PortletCarousel box = (PortletCarousel) portlet;
-    String themeSombre = "darkContext";
+    String themeClair = "tuileVerticaleLight";
     
     String titreBloc = Util.notEmpty(box.getTitreDuBloc()) ? box.getTitreDuBloc() : glp("jcmsplugin.socle.label.encemoment");
     String sousTitreBloc = box.getSoustitreDuBloc();
     String positionTitre = Util.notEmpty(box.getPositionTitre()) && !box.getPositionTitre().equals("none") ? "ds44-blockAbsolute--"+box.getPositionTitre() : "";
 %>
 
-<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeSombre) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
+<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeClair) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
     <div class="ds44-inner-container ds44--mobile--m-padding-b">
         <header class="txtcenter <%=Util.isEmpty(sousTitreBloc) ? "ds44-mb2" : ""%>">
             <h2 class="h2-like center"><%= titreBloc %></h2>
@@ -41,7 +41,9 @@
                 <%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
                 <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
                 
-                <ds:tuileSlider pub="<%= itPub %>" theme="<%= box.getSelectionDuTheme() %>"/>
+                <li class="swiper-slide">
+                    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+                </li>
                 
                 <%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
             </ul>
