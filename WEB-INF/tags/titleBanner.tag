@@ -7,6 +7,13 @@
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util"
 %>
+<%@ attribute name="pubId"
+    required="true"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="L'ID de la publication courante"
+%>
 <%@ attribute name="title"
     required="true"
     fragment="false"
@@ -63,7 +70,7 @@ if (Util.isEmpty(formattedMobilePath)) {
 
 <div class="ds44-pageHeaderContainer">
     <ds:figurePicture figureCss="ds44-pageHeaderContainer__pictureContainer" pictureCss="ds44-pageHeaderContainer__pictureContainer" imgCss="ds44-headerImg"
-        legend="<%= legend %>" copyright="<%= copyright %>" alt="<%= title %>" pub="<%= Channel.getChannel().getPublication(uid) %>" imageMobile="<%= mobileImagePath %>" format="bandeau" />
+        legend="<%= legend %>" copyright="<%= copyright %>" alt="<%= title %>" pub="<%= Channel.getChannel().getPublication(pubId) %>" imageMobile="<%= mobileImagePath %>" format="bandeau" />
     
     <div class="ds44-titleContainer">
         <div class="ds44-alphaGradient ds44-alphaGradient--header">

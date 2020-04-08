@@ -9,7 +9,7 @@
 <main id="content" role="main">
     <article class="ds44-container-large">
         <ds:titleSimple video="<%= obj%>" title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>"
-            legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true">
+            legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true" pubId='<%= obj.getId() %>'>
         </ds:titleSimple>
         <section class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
