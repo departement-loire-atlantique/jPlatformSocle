@@ -188,6 +188,7 @@ media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElected
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
+media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
 media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
 media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
