@@ -33,20 +33,20 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	 * @param cityData
 	 */
 	public void addCitySearch(QueryHandler qh, HttpServletRequest request, String... cityCode) {		
-		if(Util.notEmpty(cityCode)) {
-			// Passe la query en syntaxe avancée pour accepter les requêtes lucenes
-			qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
-			// Requête pour la recherche sur les communes (OR entre les communes)	
-			StringBuffer citySearchText = new StringBuffer();
-			for(String itCityCode : cityCode) {
-				if(Util.notEmpty(citySearchText.toString())) {
-					citySearchText.append(" OR ");
-				}
-				citySearchText.append(PublicationFacetedSearchCityEnginePolicyFilter.INDEX_FIELD_CITY + ":\"" + itCityCode + "\"");								
-			}
-			// Requêtes pour incrémenter la recherche des communes avec les précédants query des autres facettes						
-	    	addFacetQuery(qh, request, citySearchText.toString());
-		}
+	  if(Util.notEmpty(cityCode)) {
+	    // Passe la query en syntaxe avancée pour accepter les requêtes lucenes
+	    qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
+	    // Requête pour la recherche sur les communes (OR entre les communes)	
+	    StringBuffer citySearchText = new StringBuffer();
+	    for(String itCityCode : cityCode) {
+	      if(Util.notEmpty(citySearchText.toString())) {
+	        citySearchText.append(" OR ");
+	      }
+	      citySearchText.append(PublicationFacetedSearchCityEnginePolicyFilter.INDEX_FIELD_CITY + ":\"" + itCityCode + "\"");								
+	    }
+	    // Requêtes pour incrémenter la recherche des communes avec les précédants query des autres facettes						
+	    addFacetQuery(qh, request, citySearchText.toString());
+	  }
 	}
 	
 	
