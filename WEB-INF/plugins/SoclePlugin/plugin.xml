@@ -302,6 +302,9 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
+        <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
+        </template>        
     </templates>
     <templates type="PortletCarousel">
         <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
