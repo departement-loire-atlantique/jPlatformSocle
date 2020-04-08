@@ -44,7 +44,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
         <jalios:select> 
             <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) && !clientBrowser.isSmallDevice() %>">
                 <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" 
-                		title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true" pubId='<%= obj.getId() %>'></ds:titleBanner>
+                		title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
             </jalios:if>        
             <jalios:default>
                <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>

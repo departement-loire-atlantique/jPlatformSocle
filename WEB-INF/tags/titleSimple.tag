@@ -10,13 +10,6 @@
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
         com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument"
 %>
-<%@ attribute name="pubId"
-    required="true"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="L'ID du contenu à afficher"
-%>
 <%@ attribute name="title"
     required="true"
     fragment="false"
@@ -160,8 +153,7 @@ if(Util.notEmpty(video)) {
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="bandeau" 
-	                   pub="<%= Channel.getChannel().getPublication(pubId) %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
+	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="bandeau" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
 				</div>
 	        </div>
 	    </div>

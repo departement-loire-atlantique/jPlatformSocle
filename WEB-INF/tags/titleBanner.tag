@@ -7,13 +7,6 @@
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util"
 %>
-<%@ attribute name="pubId"
-    required="true"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="L'ID de la publication courante"
-%>
 <%@ attribute name="title"
     required="true"
     fragment="false"
