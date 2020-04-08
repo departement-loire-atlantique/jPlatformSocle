@@ -320,39 +320,49 @@
 									String url = "";
 									Boolean isOpenInNewTab = false;
 									StringBuffer sbfTitle = new StringBuffer();
+									
 									if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
-										sbfTitle.append(" ")
-											.append(obj.getTexteAlternatifLien(userLang));
+										
+										sbfTitle.append(obj.getTexteAlternatifLien(userLang));
+										
 									} else {
+										
 										sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
+										
+										if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
+											
+											sbfTitle.append(" ")
+											.append(glp("jcmsplugin.socle.sur"))
+											.append(" ")
+											.append(obj.getPlusDeDetailInterne().getTitle(userLang));
+											
+										} else {
+											
+											sbfTitle.append(" : ")
+											.append(obj.getTitle());
+										}
 									}
 									
 									if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
-										
-										if(Util.isEmpty(obj.getTexteAlternatifLien(userLang))) {
-											sbfTitle.append(" ")
-												.append(glp("jcmsplugin.socle.sur"))
-												.append(" ")
-												.append(obj.getPlusDeDetailInterne().getTitle(userLang));
-										}
 										
 										if(obj.getPlusDeDetailInterne() instanceof FileDocument) {
 											
 											url = ((FileDocument)obj.getPlusDeDetailInterne()).getDownloadUrl();
 											isOpenInNewTab = true;
-											sbfTitle.append(" ")
-												.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+											
 										} else {
+											
 											url = obj.getPlusDeDetailInterne().getDisplayUrl(userLocale);
 										}
-										
 									} else if(Util.notEmpty(obj.getPlusDeDetailExterne())) {
 										
 										url = SocleUtils.parseUrl(obj.getPlusDeDetailExterne());
 										isOpenInNewTab = true;
+									}
+									
+									if(isOpenInNewTab) {
 										sbfTitle.append(" ")
-											.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
-										
+										.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
 									}
 								%>
 								<a href='<%= url %>' 
