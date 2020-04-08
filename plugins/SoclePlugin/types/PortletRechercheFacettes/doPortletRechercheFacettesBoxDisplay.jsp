@@ -118,12 +118,12 @@
 			</jalios:if>
 		
 		
-            <input type="hidden" name="facetOperatorUnion" value='<%= obj.getModeDesFacettes() %>'/>
+            <input type="hidden" name="facetOperatorUnion" value='<%= obj.getModeDesFacettes() %>' data-technical-field />
 		
-            <input type="hidden" name="modCatBranchesUnion" value='<%= obj.getModeDesBranches() %>'/>
-            <input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>'/>
+            <input type="hidden" name="modCatBranchesUnion" value='<%= obj.getModeDesBranches() %>' data-technical-field />
+            <input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>' data-technical-field />
 		
-            <input type="hidden" name="boxId" value='<%= obj.getId() %>'/>
+            <input type="hidden" name="boxId" value='<%= obj.getId() %>' data-technical-field />
 		
 		</form>
 	</div>

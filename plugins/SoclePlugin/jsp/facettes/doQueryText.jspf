@@ -1,0 +1,14 @@
+<%
+//Récupère le text de recherche
+String text = request.getParameter("text");
+
+// Création de la requete avec le text recherché
+if(Util.notEmpty(text)) {
+
+    QueryHandler boxQh = Util.notEmpty(box.getQueries()) ? new QueryHandler(box.getQueries()[0]) : new QueryHandler(); 
+    boxQh.setText(text);
+  
+    collection.retainAll(boxQh.getResultSet());
+    resultSize = collection.size();
+}
+%>
