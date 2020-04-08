@@ -7,10 +7,11 @@
   </title>
   <fields>
     <field name="categoriePrincipales" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.cat.root">
-      <label xml:lang="fr">Catégorie principales</label>
+      <label xml:lang="fr">Catégories principales</label>
     </field>
-    <field name="categorieSecondaire" editor="link" required="true" compactDisplay="false" type="generated.PortletFacetteCategorie" parent="false">
-      <label xml:lang="fr">Catégorie secondaire</label>
+    <field name="facetteLiee" editor="link" required="true" compactDisplay="false" type="generated.PortletFacetteCategorie" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Facette liée</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Reprend la configuration de la facette catégorie (excepté la catégorie racine) pour l'affichage du 2ème select.&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field type="super" />
   </fields>

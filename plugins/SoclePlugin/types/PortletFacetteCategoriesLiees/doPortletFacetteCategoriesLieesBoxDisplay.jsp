@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		<ds:facetteCategorie obj='<%= obj.getCategorieSecondaire() %>' 
+		<ds:facetteCategorie obj='<%= obj.getFacetteLiee() %>' 
 				dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
 				idFormElement='<%= idFormElement+"-2" %>' 
 				isDisabled='<%= true %>' 
