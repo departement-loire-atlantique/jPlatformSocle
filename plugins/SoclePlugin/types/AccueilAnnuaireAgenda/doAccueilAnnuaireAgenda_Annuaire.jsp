@@ -7,7 +7,7 @@
 <main id="content" role="main">
     <section class="ds44-container-large">
         <ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-            legend="<%= obj.getLegende() %>" copyright="<%= obj.getLegende() %>" breadcrumb="true" pubId='<%= obj.getId() %>></ds:titleBanner>
+            legend="<%= obj.getLegende() %>" copyright="<%= obj.getLegende() %>" breadcrumb="true" pubId='<%= obj.getId() %>'></ds:titleBanner>
     </section>
     
     <section class="ds44-container-large">
