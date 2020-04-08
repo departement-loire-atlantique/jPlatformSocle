@@ -58,20 +58,22 @@
 					      <p role="heading" aria-level="2"><%= glp("jcmsplugin.socle.partagerVotreLA") %></p>
 					      <p class="hashtag"><%= glp("jcmsplugin.socle.maLA.hashtag") %></p>
 					    </div>
-					    <%-- TODO : retirer le code en dur pour les RS --%>
+					    <%-- TODO : retirer la structure en dur pour les RS --%>
+					    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksCommon.jspf" %>
+					    <%
+					    Map<String, String> mapSocialNetworks = new HashMap<>();
+					    for (int counter = 0; counter < socialNetworksLabels.length; counter++) {
+					      mapSocialNetworks.put(socialNetworksLabels[counter], socialNetworksUrls[counter]);
+					    }
+					    
+					    String[] socialNetworkToShow = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.carrouselImagesHome", new String[]{});
+					    %>
 					    <ul class="ds44-list ds44-flex-container ds44-fg1">
+					        <jalios:foreach name="itRs" type="String" array="<%= socialNetworkToShow %>">
 					        <li class="ds44-flex-align-center">
-					          <a href="#" target="_blank" class="ds44-rsLink" title="Le Département de Loire-Atlantique sur Facebook - nouvelle fenêtre"><i class="icon icon-facebook" aria-hidden="true"></i><span class="visually-hidden">Le Département de Loire-Atlantique sur Facebook</span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href="#" target="_blank" class="ds44-rsLink" title="Le Département de Loire-Atlantique sur Instagram - nouvelle fenêtre"><i class="icon icon-instagram" aria-hidden="true"></i><span class="visually-hidden">Le Département de Loire-Atlantique sur Instagram</span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href="#" target="_blank" class="ds44-rsLink" title="Le Département de Loire-Atlantique sur Twitter - nouvelle fenêtre"><i class="icon icon-twitter" aria-hidden="true"></i><span class="visually-hidden">Le Département de Loire-Atlantique sur Twitter</span></a>
-					        </li>
-					        <li class="ds44-flex-align-center">
-					          <a href="#" target="_blank" class="ds44-rsLink" title="Le Département de Loire-Atlantique sur Youtube - nouvelle fenêtre"><i class="icon icon-youtube" aria-hidden="true"></i><span class="visually-hidden">Le Département de Loire-Atlantique sur Youtube</span></a>
-					        </li>
+                              <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork." + itRs)) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-<%= itRs %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %></span></a>
+                            </li>
+					        </jalios:foreach>
 					    </ul>
 					</section>
                 </div>
