@@ -66,7 +66,7 @@
       <label xml:lang="fr">Lien externe</label>
     </field>
     <field name="titreRubrique4" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique4">
-      <label xml:lang="fr">Titre rubrique 3</label>
+      <label xml:lang="fr">Titre rubrique 4</label>
     </field>
     <field name="libelleLienRubrique4" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique4" tab="rubrique4">
       <label xml:lang="fr">Libellé lien</label>

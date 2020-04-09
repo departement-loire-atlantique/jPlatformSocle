@@ -428,6 +428,10 @@ $jcmsplugin.socle.elu.conseiller: p2_136941
 
 # Fiche Publication
 $jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308
+$jcmsplugin.socle.fichepublication.navigationMagazine.cat: p1_1012858
+$jcmsplugin.socle.fichepublication.classementMagazine.cat: c_1274309
+$jcmsplugin.socle.fichepublication.navigationSioox.cat: p1_929991
+$jcmsplugin.socle.fichepublication.classementSioox.cat: c_1274310
 
 # Animation Sportive
 $jcmsplugin.socle.animSportive.typeDiscipline: p2_92188
