@@ -337,8 +337,9 @@
 										isOpenInNewTab = true;
 									}
 									
+									StringBuffer sbfTitle = new StringBuffer();
+									
 									if(isOpenInNewTab) {
-										StringBuffer sbfTitle = new StringBuffer();
 										
 										if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
 											
