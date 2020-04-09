@@ -9,7 +9,7 @@
 
 response.setContentType("application/json");
 
-PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId"))).clone();  
+PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId[value]"))).clone();  
 PortletQueryForeach box = new PortletQueryForeach(boxTmp);
 
 %><%
@@ -33,7 +33,7 @@ jsonObject.add("result", jsonArray);
 %><%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %><%
 
     %><jalios:buffer name="itPubListGabarit"><%
-        %><jalios:include pub="<%= itPub %>" usage="list" /><%
+        %><jalios:media data="<%= itPub %>" template="card" /><%
     %></jalios:buffer><%
     
     %><jalios:buffer name="itPubMarkerGabarit"><%
