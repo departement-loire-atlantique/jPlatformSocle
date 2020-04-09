@@ -319,47 +319,57 @@
 								<%
 									String url = "";
 									Boolean isOpenInNewTab = false;
-									StringBuffer sbfTitle = new StringBuffer();
-									if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
-										sbfTitle.append(" ")
-											.append(obj.getTexteAlternatifLien(userLang));
-									} else {
-										sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
-									}
 									
 									if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
-										
-										if(Util.isEmpty(obj.getTexteAlternatifLien(userLang))) {
-											sbfTitle.append(" ")
-												.append(glp("jcmsplugin.socle.sur"))
-												.append(" ")
-												.append(obj.getPlusDeDetailInterne().getTitle(userLang));
-										}
 										
 										if(obj.getPlusDeDetailInterne() instanceof FileDocument) {
 											
 											url = ((FileDocument)obj.getPlusDeDetailInterne()).getDownloadUrl();
 											isOpenInNewTab = true;
-											sbfTitle.append(" ")
-												.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+											
 										} else {
+											
 											url = obj.getPlusDeDetailInterne().getDisplayUrl(userLocale);
 										}
-										
 									} else if(Util.notEmpty(obj.getPlusDeDetailExterne())) {
 										
 										url = SocleUtils.parseUrl(obj.getPlusDeDetailExterne());
 										isOpenInNewTab = true;
-										sbfTitle.append(" ")
-											.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+									}
+									
+									StringBuffer sbfTitle = new StringBuffer();
+									
+									if(isOpenInNewTab) {
 										
+										if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
+											
+											sbfTitle.append(obj.getTexteAlternatifLien(userLang));
+											
+										} else {
+											
+											sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
+											
+											if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
+												
+												sbfTitle.append(" ")
+												.append(glp("jcmsplugin.socle.sur"))
+												.append(" ")
+												.append(obj.getPlusDeDetailInterne().getTitle(userLang));
+												
+											} else {
+												
+												sbfTitle.append(" : ")
+												.append(obj.getTitle());
+											}
+										}
+										sbfTitle.append(" ")
+										.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
 									}
 								%>
 								<a href='<%= url %>' 
 									class="ds44-btnStd ds44-btnStd--large" 
 									type="button" 
-									title='<%= HttpUtil.encodeForHTMLAttribute(sbfTitle.toString()) %>' 
-									target='<%= isOpenInNewTab ? "_blank" : ""%>'> 
+									<%= isOpenInNewTab ? "title=\'"+HttpUtil.encodeForHTMLAttribute(sbfTitle.toString())+"\' target=\"_blank\"" : "" %>> 
 									
 									<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.plusDeDetails") %></span> 
 									<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
