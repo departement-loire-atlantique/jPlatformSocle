@@ -205,6 +205,7 @@ jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitte
 
 jcmsplugin.socle.horizontal.value: horizontal
 jcmsplugin.socle.portletPush.ficheactu.id: 
+jcmsplugin.socle.site.pdcv.portlet.id: 
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu

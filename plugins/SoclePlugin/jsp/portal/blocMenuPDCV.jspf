@@ -39,27 +39,9 @@
                 data-bkp-tabindex="">
                 <p role="heading" aria-level="2" class="h4-like"
                     data-bkp-aria-hidden="" data-bkp-tabindex="" aria-hidden="true" id="pdcv-commune-name"><%= glp("jcmsplugin.socle.pdcv.consultez") %></p>
-                <form novalidate="true" data-bkp-aria-hidden="" data-bkp-tabindex=""
-                    aria-hidden="true">
-                    <div class="ds44-form__container" data-bkp-aria-hidden=""
-                        data-bkp-tabindex="" aria-hidden="true">
-                        <label for="commune-name" class="ds44-formLabel" data-bkp-aria-hidden=""
-                            data-bkp-tabindex="" aria-hidden="true"><span
-                            class="ds44-labelTypePlaceholderLarge" data-bkp-aria-hidden=""
-                            data-bkp-tabindex="" aria-hidden="true"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span> <input
-                            type="text" id="commune-name" class="ds44-inpLarge" required=""
-                            aria-required="true" data-bkp-aria-hidden="" data-bkp-tabindex=""
-                            aria-hidden="true" tabindex="-1" aria-describedby="commune-name"></label>
-                    </div>
-                    <button class="ds44-btnStd ds44-btn--invert"
-                        aria-label="Valider votre recherche près de chez vous"
-                        data-bkp-aria-hidden="" data-bkp-tabindex="" aria-hidden="true"
-                        tabindex="-1">
-                        <span class="ds44-btnInnerText" data-bkp-aria-hidden=""
-                            data-bkp-tabindex="" aria-hidden="true"><%= glp("jcmsplugin.socle.valider") %></span><i
-                            class="icon icon-long-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </form>
+                
+                <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.site.pdcv.portlet.id") %>'/>
+                
             </div>
 
             <div class="col-2-small-1 txtcenter ds44-h100" data-bkp-aria-hidden=""
