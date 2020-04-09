@@ -9,20 +9,20 @@ if (data == null) {
   return;
 }
 
-Magazine pub = (Magazine) data;
+FichePublication pub = (FichePublication) data;
 
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--horizontal">
   <div class="ds44-flex-container ds44-flex-valign-center">
     <div class="ds44-card__section--horizontal--img">
-     <ds:figurePicture pub="<%= pub %>" image="<%= pub.getImageDeUne() %>" format="mobile" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--A4" imgCss="ds44-w100 ds44-imgRatio"
+     <ds:figurePicture pub="<%= pub %>" image="<%= pub.getImagePrincipale() %>" format="mobile" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--A4" imgCss="ds44-w100 ds44-imgRatio"
      width='<%= channel.getIntegerProperty("jcmsplugin.socle.image.magazine.tuile.width", 0) %>' height='<%= channel.getIntegerProperty("jcmsplugin.socle.image.magazine.tuile.height", 0) %>'/>
    </div>
     <div class="ds44-card__section--horizontal">
-      <p role="heading" "aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink" title="<%= pub.getTitle() %>"><%= pub.getTitle() %></a></p>
-      <jalios:if predicate="<%= Util.notEmpty(pub.getTitreDossier()) %>">
-        <p class="ds44-cardFile"><%= pub.getTitreDossier() %></p>
+      <p role="heading" "aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink" title="<%= pub.getTitle(userLang) %>"><%= pub.getTitle(userLang) %></a></p>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getTitreUne(userLang)) %>">
+        <p class="ds44-cardFile"><%= pub.getTitreUne(userLang) %></p>
       </jalios:if>
 
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
