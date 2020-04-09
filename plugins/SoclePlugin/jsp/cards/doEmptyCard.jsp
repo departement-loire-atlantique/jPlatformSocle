@@ -4,6 +4,9 @@
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
-%><%
-return;
+
+if (data != null) {
+ return;
+}
+
 %>

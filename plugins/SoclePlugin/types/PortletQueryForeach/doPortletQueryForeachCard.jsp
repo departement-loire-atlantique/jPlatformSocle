@@ -20,6 +20,7 @@
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='card' /></div>
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='cardFull' /></div>
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='cardFocus' /></div>
+<div style="max-width:370px;"><jalios:media data='<%=itPub %>' template='tuileHorizontaleGrey' /></div>
 
 <%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %>
 <%@ include file="/types/PortletQueryForeach/doPager.jspf" %>

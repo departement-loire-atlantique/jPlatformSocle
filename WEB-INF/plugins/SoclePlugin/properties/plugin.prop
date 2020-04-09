@@ -185,6 +185,9 @@ media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/L
 media.data-template.card.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
 media.data-template.cardFull.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
 media.data-template.cardFocus.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+
+
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
