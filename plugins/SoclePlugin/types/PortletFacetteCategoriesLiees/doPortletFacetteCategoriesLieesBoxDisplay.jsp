@@ -2,6 +2,7 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <% 
 	PortletFacetteCategoriesLiees obj = (PortletFacetteCategoriesLiees)portlet; 
 
@@ -43,16 +44,18 @@
 					<ul class="ds44-list" role="listbox" id='<%= "listbox-" + idFormElement %>' 
 							aria-labelledby='<%= "button-message-" + idFormElement %>' 
 							aria-required="true">
-						<jalios:foreach name="itCat" type="Category" collection="<%= obj.getCategoriePrincipales(loggedMember) %>">
-							<li class="ds44-select-list_elem" role="option" data-value='<%= itCat.getId() %>' tabindex="0">
-								<%= itCat.getName() %>
-							</li>
+						<jalios:foreach name="itRootCat" type="Category" collection='<%= obj.getCategoriePrincipales(loggedMember) %>'>
+							<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+								<li class="ds44-select-list_elem" role="option" data-value='<%= itCat.getId() %>' tabindex="0">
+									<%= itCat.getName() %>
+								</li>
+							</jalios:foreach>
 						</jalios:foreach>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<ds:facetteCategorie obj='<%= obj.getCategorieSecondaire() %>' 
+		<ds:facetteCategorie obj='<%= obj.getFacetteLiee() %>' 
 				dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
 				idFormElement='<%= idFormElement+"-2" %>' 
 				isDisabled='<%= true %>' 

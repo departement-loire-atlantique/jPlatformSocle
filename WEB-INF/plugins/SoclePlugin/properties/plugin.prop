@@ -175,23 +175,31 @@ media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/t
 media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
-media.data-template.tuileHorizontaleGrey.Magazine: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
 # Content template - cards
+media.data-template.card.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.cardFull.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.cardFocus.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+
+
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
+media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
 media.data-template.card.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCard.jsp
 media.data-template.cardFocus.SAAD: /plugins/SoclePlugin/jsp/cards/doSAADCardFocus.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
+
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
@@ -200,6 +208,8 @@ channel.topbar.site.enabled: true
 
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+
+jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
 
 # ------ Propriétés éditables SoclePlugin
 
@@ -419,6 +429,10 @@ $jcmsplugin.socle.elu.conseiller: p2_136941
 
 # Fiche Publication
 $jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308
+$jcmsplugin.socle.fichepublication.navigationMagazine.cat: p1_1012858
+$jcmsplugin.socle.fichepublication.classementMagazine.cat: c_1274309
+$jcmsplugin.socle.fichepublication.navigationSioox.cat: p1_929991
+$jcmsplugin.socle.fichepublication.classementSioox.cat: c_1274310
 
 # Animation Sportive
 $jcmsplugin.socle.animSportive.typeDiscipline: p2_92188

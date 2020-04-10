@@ -280,7 +280,11 @@
         <template name="grandsprojets" file="doPortletMiseEnAvantDeContenusBoxGrandsProjets.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit descrition à gauche / tuiles à droite</label>
           <description xml:lang="fr">(ex : "Grands projets")</description>
-        </template>  
+        </template>
+        <template name="temoignages" file="doPortletMiseEnAvantDeContenusBoxTemoignages.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit témoignages</label>
+          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo" et "Articles")</description>
+        </template> 
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
@@ -305,6 +309,9 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
+        <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
+        </template>        
     </templates>
     <templates type="PortletCarousel">
         <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
@@ -334,6 +341,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />

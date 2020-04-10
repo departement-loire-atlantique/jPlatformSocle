@@ -9,38 +9,31 @@
       <description xml:lang="fr">Collez ici le lien vers la vidéo Youtube&#xD;
     N'oubliez pas de renseigner les champs "Document transcript" et "Sous-titres" afin de rendre ce contenu plus accessible aux personnes en situation de handicap.</description>
     </field>
-    <field name="hasChapters" editor="boolean" required="false" compactDisplay="false" tab="common" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="hasChapters" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="common">
       <label xml:lang="fr">Vidéo avec chapitres ?</label>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" tab="common" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="common">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" tab="common" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true">
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" tab="common">
       <label xml:lang="fr">Image principale</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;930x620px - ratio 3:2&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;460x304px - ratio 62:41&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageMobile" editor="image" required="false" compactDisplay="false" tab="common" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true">
-      <label xml:lang="fr">Image mobile</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;300x260px - ratio 15:13&lt;/p&gt;&lt;/div&gt;</description>
-    </field>
-    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
-      <label xml:lang="fr">Titre témoignage</label>
-    </field>
-    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
-      <label xml:lang="fr">Sous-titre témoignage</label>
-    </field>    
-    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="common">
       <label xml:lang="fr">Copyright</label>
     </field>
-    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="common">
       <label xml:lang="fr">Légende</label>
-    </field>    
+    </field>
     <field name="fichierTranscript" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
       <label xml:lang="fr">Fichier de transcript</label>
     </field>
-    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="common" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="titreDescription" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="common" descriptionType="tooltip" tabGroup="descVideo">
+      <label xml:lang="fr">Titre description</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="common" type="String[]" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="descVideo">
       <label xml:lang="fr">Description</label>
     </field>
     <field name="chapitre" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chapitre" tab="chapters">
@@ -52,6 +45,12 @@
     </field>
     <field name="libelleTimecode" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="chapitre" tab="chapters">
       <label xml:lang="fr">Libellé du Timecode</label>
+    </field>
+    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
+      <label xml:lang="fr">Titre témoignage</label>
+    </field>
+    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
+      <label xml:lang="fr">Sous-titre témoignage</label>
     </field>
     <field name="categoriesDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégories de navigation</label>

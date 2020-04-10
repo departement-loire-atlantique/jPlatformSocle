@@ -7,7 +7,7 @@
         com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils, com.jalios.jcms.Publication"
 %>
 <%@ attribute name="pub"
-    required="true"
+    required="false"
     fragment="false"
     rtexprvalue="true"
     type="Publication"
@@ -99,6 +99,11 @@
 %>
 
 <%
+
+if (Util.isEmpty(pub) && Util.isEmpty(image)) {
+  return;
+}
+
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");

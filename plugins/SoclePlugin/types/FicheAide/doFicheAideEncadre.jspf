@@ -10,7 +10,7 @@
 
 <!-- Témoignages -->
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
-    <p class="h4-like"><%=glp("jcmsplugin.socle.titre.temoignage") %></p>
+    <h2 class="h4-like ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignage") %></h2>
     <jalios:foreach name="itVideo" type="generated.Temoignage" array="<%= obj.getVideo() %>">
         <jalios:media data='<%=itVideo %>' template='temoignage' />
     </jalios:foreach>

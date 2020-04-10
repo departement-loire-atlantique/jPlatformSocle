@@ -46,6 +46,15 @@ jcmsplugin.socle.socialnetworks.labels.help:Attention : la liste doit commencer 
 jcmsplugin.socle.socialnetworks.urls:URLs des réseaux sociaux (bien respecter l'ordre correspondant aux labels)
 jcmsplugin.socle.social-networks-follow.label:Suivez-nous sur les réseaux sociaux :
 jcmsplugin.socle.socialnetworks.title:Le Département de Loire-Atlantique sur 
+jcmsplugin.socle.socialnetwork.facebook: Facebook
+jcmsplugin.socle.socialnetwork.twitter: Twitter
+jcmsplugin.socle.socialnetwork.instagram: Instagram
+jcmsplugin.socle.socialnetwork.youtube: Youtube
+jcmsplugin.socle.socialnetwork.magweb: Mag Web
+jcmsplugin.socle.socialnetwork.depsur.facebook: Le Département de Loire-Atlantique sur Facebook
+jcmsplugin.socle.socialnetwork.depsur.twitter: Le Département de Loire-Atlantique sur Twitter
+jcmsplugin.socle.socialnetwork.depsur.instagram: Le Département de Loire-Atlantique sur Instagram
+jcmsplugin.socle.socialnetwork.depsur.youtube: Le Département de Loire-Atlantique sur Youtube
 
 # ------------------------------------------------------------
 #  Libellés communs
@@ -86,7 +95,7 @@ jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
 jcmsplugin.socle.label.cs: CS
 jcmsplugin.socle.label.cedex: Cedex
-jcmsplugin.socle.label.monparcourscollege: Mon parcours collège
+jcmsplugin.socle.label.monparcourscollege: Mon parcours collège, tous citoyens et toutes citoyennes
 jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
@@ -102,6 +111,7 @@ jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
+jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
 
 # ------------------------------------------------------------
 #  Header
