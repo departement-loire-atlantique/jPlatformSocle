@@ -65,15 +65,17 @@
                                        </jalios:if>
                                        <%= obj.getService() %>
                                        <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
-                                           <br/>
                                            <%
                                            SortedSet<Category> catsWithoutServices = obj.getDirectiondelegation(loggedMember);
                                            catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
                                            %>
-                                           <%= SocleUtils.formatCategories(catsWithoutServices) %>
+                                           <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
+	                                           <br/>
+	                                           <%= SocleUtils.formatCategories(catsWithoutServices) %>
+                                           </jalios:if>
                                        </jalios:if>
-                                       <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
-                                       <br/>
+	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
+	                                   <br/>
                                        <%= obj.getPositionHierarchique() %>
                                        </jalios:if>
                                    </p>

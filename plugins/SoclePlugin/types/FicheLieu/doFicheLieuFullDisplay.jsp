@@ -496,7 +496,7 @@
 	    String titleVideo = obj.getTitreVideo();
 	    if (Util.isEmpty(titleVideo)) titleVideo = obj.getVideo().getTitle();
 	    %>
-        <ds:articleVideo video="<%= obj.getVideo() %>" title="<%= titleVideo %>" intro="<%= obj.getIntroVideo() %>"/>
+        <ds:articleVideo video="<%= obj.getVideo() %>" title="<%= titleVideo %>" intro="<%= Util.notEmpty(obj.getIntroVideo()) ? obj.getIntroVideo() : obj.getVideo().getChapo() %>"/>
     </jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getAutresLieuxAssocies()) %>'>

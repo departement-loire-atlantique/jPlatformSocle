@@ -7,8 +7,12 @@
 response.setContentType("application/json");
 
 String textSearch = getStringParameter("q", "", ".*");
+String isMotCle = getStringParameter("motCle", "", ".*");
 String query = getUntrustedStringParameter("query", "");
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD};
+if(hasParameter("isMotCle")) {
+  tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.ALLFIELDS_FIELD};
+}
 
 QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);

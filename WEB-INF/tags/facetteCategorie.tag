@@ -11,7 +11,8 @@
 			javax.servlet.http.HttpServletRequest, 
 			com.jalios.jcms.Member, 
 			com.jalios.jcms.Category, 
-			java.util.Set" 
+			java.util.Set, 
+			fr.cg44.plugin.socle.SocleUtils" 
 %>
 <%@ attribute name="obj" 
 		required="true" 
@@ -127,7 +128,7 @@
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
 					<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
-						<jalios:foreach name="itCat" type="Category" collection='<%= itRootCat.getChildrenSet() %>'>
+						<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
 							<% nbrTotalCat++; %>
 							<li class="ds44-select-list_elem">
 								
@@ -145,7 +146,7 @@
 		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !obj.getProfondeur() %>'>
 			<ul class="ds44-collapser ds44-listSelect">
 				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
-					<jalios:foreach name="itCat" type="Category" collection='<%= itRootCat.getChildrenSet() %>'>
+					<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
 						<% nbrTotalCat++; %>
 						<li class="ds44-collapser_element ds44-collapser--select">
 							<div class="ds44-select__categ">
@@ -164,7 +165,7 @@
 								</button>
 								<div class="ds44-collapser_content">
 									<ul class="ds44-list ds44-collapser_content--level2">
-										<jalios:foreach name="itSubCat" type="Category" collection='<%= itCat.getChildrenSet() %>' counter="itSubCatCounter">
+										<jalios:foreach name="itSubCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itCat) %>' counter="itSubCatCounter">
 											<li class="ds44-select-list_elem">
 												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
 														userLang='<%= userLang %>' 

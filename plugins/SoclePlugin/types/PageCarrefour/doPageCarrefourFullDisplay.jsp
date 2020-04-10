@@ -42,6 +42,9 @@ String copyright = obj.getCopyright(userLang);
     		        <jalios:if predicate="<%= Util.notEmpty(obj.getSideportlets()) %>">
 			            <jalios:foreach name="itPortlet" array="<%= obj.getSideportlets() %>" type="com.jalios.jcms.Publication">
 			                <jalios:include id="<%= itPortlet.getId() %>" />
+			                <jalios:if predicate="<%= itCounter < obj.getSideportlets().length %>">
+			                    <div class="ds44-mb3"></div>
+			                </jalios:if>
 			            </jalios:foreach>
 			        </jalios:if>
                 </aside>
