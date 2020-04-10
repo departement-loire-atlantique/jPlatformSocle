@@ -9,7 +9,7 @@
 
 response.setContentType("application/json");
 
-PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId[value]"))).clone();  
+PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId"))).clone();  
 PortletQueryForeach box = new PortletQueryForeach(boxTmp);
 
 %><%
