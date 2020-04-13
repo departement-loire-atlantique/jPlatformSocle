@@ -187,7 +187,12 @@
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>  
+    </templates>
+    <templates type="Carousel">
+        <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
+        </template>
+    </templates>
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
