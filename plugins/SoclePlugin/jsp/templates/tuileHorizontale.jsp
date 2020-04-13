@@ -38,10 +38,10 @@ if (Util.isEmpty(urlImage)) {
  }
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%>">
+<section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%> <%= isSmall ? "ds44-tiny-reducedFont" : ""%>">
     <div class="ds44-flex-container ds44-flex-valign-center">
         <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
-            <div class="ds44-card__section--horizontal--img">
+            <div class="ds44-card__section--horizontal--img<%= isSmall ? "--dim110" : "" %>">
                 <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
                     <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
                 </picture>

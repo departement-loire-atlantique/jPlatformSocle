@@ -202,7 +202,10 @@
     </templates>
     <templates type="PortletCarrouselDimagesHome">
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+            <label xml:lang="fr">DS44 : gabarit à 2 blocs d'images</label>
+        </template>
+        <template name="onePicture" file="doPortletCarrouselDimagesHomeOnePictureBoxDisplay.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit à une seul bloc d'images</label>
         </template>
     </templates>
     <templates type="PortletDecorator">
@@ -266,6 +269,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
           <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="tuiles1colhome" file="doPortletMiseEnAvantDeContenusBoxOneColumnHome.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne pour page d'accueil</label>
+          <description xml:lang="fr">(ex : "En un clic")</description>
+        </template>        
         <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
           <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
