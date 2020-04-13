@@ -209,9 +209,6 @@
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit à 2 blocs d'images</label>
         </template>
-        <template name="onePicture" file="doPortletCarrouselDimagesHomeOnePictureBoxDisplay.jsp" usage="box">
-            <label xml:lang="fr">DS44 : gabarit à une seul bloc d'images</label>
-        </template>
     </templates>
     <templates type="PortletDecorator">
         <template name="dark" file="doPortletDecoratorFullDisplayDarkBackground.jsp" usage="box">
