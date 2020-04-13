@@ -382,3 +382,9 @@ jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Départe
 jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
 jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+
+# ------------------------------------------------------------
+#  Fiche canton
+# ------------------------------------------------------------
+jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
+jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
