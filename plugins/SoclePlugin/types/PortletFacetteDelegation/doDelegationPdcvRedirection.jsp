@@ -6,15 +6,16 @@
     String communeCode = request.getParameter("commune[value]");
     if (Util.notEmpty(communeCode)) {
       City selectedCommune = SocleUtils.getCommuneFromCode(communeCode);
-      if (Util.notEmpty(selectedCommune) && Util.notEmpty(selectedCommune.getDelegation())) {
-        sendRedirect(selectedCommune.getDelegation().getDisplayUrl(userLocale));
+      if (Util.notEmpty(selectedCommune) && Util.notEmpty(selectedCommune.getDelegation()) && Util.notEmpty(selectedCommune.getDelegation().getLinkIndexedDataSet(AccueilDelegation.class))) {
+        AccueilDelegation pageDeleg = selectedCommune.getDelegation().getLinkIndexedDataSet(AccueilDelegation.class).first();
+        sendRedirect(pageDeleg.getDisplayUrl(userLocale));
         return;
       } else {
-        sendRedirect(channel.getData(channel.getProperty("channel.default-portal")).getDisplayUrl(userLocale));
+        sendRedirect(channel.getData(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale));
         return;
       }
     } else {
-      sendRedirect(channel.getData(channel.getProperty("channel.default-portal")).getDisplayUrl(userLocale));
+      sendRedirect(channel.getData(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale));
       return;
     }
 %>
