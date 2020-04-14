@@ -20,7 +20,7 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
 		// Récupère la ou les communes en paramètre de recherche
-		String[] citiesCodeSearchArray = request.getParameterValues("commune[value]");
+		String[] citiesCodeSearchArray = request.getParameterValues("commune");
 		addCitySearch(qh, request, citiesCodeSearchArray);
 		return qh;
 	}

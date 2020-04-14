@@ -35,7 +35,8 @@
     <type name="FicheArticle"></type>
     <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>
-    <type name="FichePublication"></type>   
+    <type name="FichePublication"></type>
+    <type name="FicheSAAD"></type>   
     <type name="Help"></type>
     <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
@@ -187,7 +188,12 @@
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>  
+    </templates>
+    <templates type="FicheSAAD">
+        <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates> 
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -394,6 +400,7 @@
     <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/titleNoImage.tag" />
     <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
