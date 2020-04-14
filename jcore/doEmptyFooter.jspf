@@ -7,7 +7,14 @@
 --%><%@page import="com.jalios.util.Util"%><%
 %><%@page import="fr.cg44.plugin.socle.SocleConstants"%><%
 %><%@ include file='/jcore/toastr/doToastr.jspf' %><%
-%><%@ include file="/jcore/wiki/doWikiToolbar.jspf" %><jalios:include target="EMPTY_FOOTER" targetContext="htmlcomments"/><%= com.jalios.jcms.taglib.LangTag.getLangFormMenu() %><%
+%><%@ include file="/jcore/wiki/doWikiToolbar.jspf" %>
+<jalios:include target="EMPTY_FOOTER" targetContext="htmlcomments"/>
+<%
+if(isLogged){
+%>
+<%= com.jalios.jcms.taglib.LangTag.getLangFormMenu() %>
+<%} %>
+<%
 
 %><%
 {
@@ -87,7 +94,7 @@ if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConst
 
   // Ajax-Deflate
   String ajaxCtxtDeflate = (String) request.getAttribute("AjaxCtxtDeflate");
-  if (Util.notEmpty(ajaxCtxtDeflate)){ 
+  if (Util.notEmpty(ajaxCtxtDeflate) && isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP))){ 
     %><div id="AjaxCtxtDeflate" style="display:none;"><%= ajaxCtxtDeflate %></div><%
   }
   
