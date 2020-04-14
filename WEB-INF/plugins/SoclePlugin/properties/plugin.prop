@@ -27,6 +27,8 @@ lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
 jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
 $jcmsplugin.socle.cat.root: j_3
 
+jcmsplugin.socle.footer.portletcontact.id : c_1275593
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
@@ -173,9 +175,10 @@ media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/Liste
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
 media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
-media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doMagazineTuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
@@ -189,6 +192,7 @@ media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/c
 
 
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
+media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
@@ -199,7 +203,6 @@ media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheS
 media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
 media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCardFocus.jsp
-
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false

@@ -4,7 +4,7 @@
     description="Génère le bloc html figure avec les images associées" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util,
-        com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils, com.jalios.jcms.Publication"
+        com.jalios.jcms.JcmsUtil, com.jalios.jcms.HttpUtil, fr.cg44.plugin.socle.SocleUtils, com.jalios.jcms.Publication"
 %>
 <%@ attribute name="pub"
     required="false"
@@ -104,6 +104,9 @@ if (Util.isEmpty(pub) && Util.isEmpty(image)) {
   return;
 }
 
+alt = HttpUtil.encodeForHTMLAttribute(alt);
+ariaLabel = HttpUtil.encodeForHTMLAttribute(ariaLabel);
+legend = HttpUtil.encodeForHTMLAttribute(legend);
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
@@ -193,13 +196,13 @@ else {
 
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
-	<figure role="figure" class="<%= figureCss %>">
-	    <picture class="<%= pictureCss %>" alt='<%= Util.isEmpty(label) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : label %>'>
+	<figure role="figure" class="<%= figureCss %>" aria-label="<%= Util.isEmpty(label) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : label %>">
+	    <picture class="<%= pictureCss %>">
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-	        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="<%= imgCss %>" id="<%=uid%>"/>
+	        <img src="<%=formattedImagePath%>" alt="<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
 	    </picture>
 	    
 	    <jalios:if predicate="<%= hasFigcaption%>">
@@ -211,7 +214,6 @@ else {
 	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
 	            </jalios:if>
 	        </figcaption>
-	        </figure>
 	    </jalios:if>
 	</figure>
 </jalios:if>

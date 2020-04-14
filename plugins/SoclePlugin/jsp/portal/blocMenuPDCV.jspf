@@ -2,7 +2,7 @@
     class="ds44-overlay ds44-overlay--navNiv2 ds44-theme ds44-bgCircle ds44-bg-br"
     role="dialog"
     aria-label='<%=glp("jcmsplugin.socle.header.ouvrir", glp("jcmsplugin.socle.menu.pdcv"))%>'
-    aria-labbeledby="titrePDCV">
+    aria-labelledby="titrePDCV">
     <div class="ds44-container-menuBackLink" data-bkp-aria-hidden=""
         data-bkp-tabindex="" aria-hidden="true">
         <button title="Retour au menu de navigation"
@@ -46,18 +46,17 @@
 
             <div class="col-2-small-1 txtcenter ds44-h100" data-bkp-aria-hidden=""
                 data-bkp-tabindex="" aria-hidden="true">
-                <span
+                <div
                     class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container"
                     data-bkp-aria-hidden="" data-bkp-tabindex="" aria-hidden="true">
                     <p class="ds44-txtBulle" data-bkp-aria-hidden=""
                         data-bkp-tabindex="" aria-hidden="true"><%= glp("jcmsplugin.socle.ou") %></p>
-                </span>
+                </div>
             </div>
 
             <div class="col-5-small-1 ds44-stl-center" data-bkp-aria-hidden=""
                 data-bkp-tabindex="" aria-hidden="true">
-                <picture class="ds44-hide-tiny-to-medium" data-bkp-aria-hidden=""
-                    data-bkp-tabindex="" aria-hidden="true"> <img
+                <img
                     src='<%= channel.getProperty("jcmsplugin.socle.site.src.carte.pdcv") %>'
                     alt='<%= glp("jcmsplugin.socle.pdcv.carte.alt") %>'
                     class="ds44-imgMap" usemap="#CarteDesDelegations"
@@ -98,10 +97,9 @@
                         href="delegation-nantes" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.nantes") %>'
                         title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", glp("jcmsplugin.socle.pdcv.nantes")) %>' data-bkp-aria-hidden=""
                         data-bkp-tabindex="" aria-hidden="true" tabindex="-1">
-                </map> </picture>
+                </map>
 
-                <picture class="ds44-show-mobile" data-bkp-aria-hidden=""
-                    data-bkp-tabindex="" aria-hidden="true"> <img
+                <img
                     src='<%= channel.getProperty("jcmsplugin.socle.site.src.carte.pdcv.mobile") %>'
                     alt='<%= glp("jcmsplugin.socle.pdcv.carte.alt") %>'
                     class="ds44-imgMap" usemap="#CarteDesDelegationsMob"
@@ -141,7 +139,7 @@
                         href="delegation-chateaubriant" alt='<%= glp("jcmsplugin.socle.pdcv.delegation", "jcmsplugin.socle.pdcv.chateaubriant") %>'
                         title='<%= glp("jcmsplugin.socle.pdcv.select.delegation", glp("jcmsplugin.socle.pdcv.chateaubriant")) %>' data-bkp-aria-hidden=""
                         data-bkp-tabindex="" class="" aria-hidden="true" tabindex="-1">
-                </map> </picture>
+                </map>
             </div>
 
         </div>
