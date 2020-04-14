@@ -14,7 +14,7 @@ SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
 
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray ds44-cardIsFocus">
+<section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray">
     
     <div class="ds44-card__section">
       
@@ -22,7 +22,7 @@ SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
           <h4 class="h4-like ds44-cardTitle" id="1"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
           <hr class="mbs" aria-hidden="true">
           <jalios:if predicate="<%= Util.notEmpty(pub.getDescription()) %>">
-	          <div class="ds44-docListElem ds44-mt-std">
+	          <div class="ds44-mt-std">
 	          <jalios:wysiwyg><%= pub.getDescription() %></jalios:wysiwyg>
 	          </div>
 	          <hr class="mbs" aria-hidden="true">
