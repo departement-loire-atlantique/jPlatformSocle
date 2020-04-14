@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheSAAD" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Fiche SAAD</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="adresse" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+      <label xml:lang="fr">Adresse</label>
+    </field>
+    <field name="telephone" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="adresseMail" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Adresse mail</label>
+    </field>
+    <field name="siteInternet" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Site internet</label>
+    </field>
+    <field name="statutJuridique" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.statutJuridique.root" tab="contenu">
+      <label xml:lang="fr">Statut juridique</label>
+    </field>
+    <field name="modesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.modesDintervention.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="contenu">
+      <label xml:lang="fr">Modes d'intervention</label>
+    </field>
+    <field name="typeDaide" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.typeDaide.root" tab="contenu">
+      <label xml:lang="fr">Type d'aide</label>
+    </field>
+    <field name="prestations" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.prestations.root" tab="contenu">
+      <label xml:lang="fr">Prestations</label>
+    </field>
+    <field name="modalitesDePaiement" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.modalitesDePaiement.root" tab="contenu">
+      <label xml:lang="fr">Modalités de paiement</label>
+    </field>
+    <field name="plagesDintervention" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.saad.plagesDintervention.root" tab="contenu">
+      <label xml:lang="fr">Plages d'intervention</label>
+    </field>
+    <field name="typesDeService" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.typesDeService.root" tab="contenu">
+      <label xml:lang="fr">Types de service</label>
+    </field>
+    <field name="modeDeTarification" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.saad.modeDeTarification.root" tab="contenu">
+      <label xml:lang="fr">Mode de tarification</label>
+    </field>
+    <field name="descriptif" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" wikiwyg="false" html="false" checkHtml="false" descriptionType="text" tab="contenu">
+      <label xml:lang="fr">Descriptif</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>    
+    <field name="cities" editor="link" required="false" compactDisplay="false" type="generated.City[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" hidden="true" tab="territoire">
+      <label xml:lang="fr">Commune_old</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg wiki2jhtml"&gt;&lt;p&gt;Veuillez saisir uniquement la commune du siège si vous cochez l'option "Sur tout le département".&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Communes concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="delegations" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Delegation[]">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">EPCI concernées</label>
+    </field>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
+    </field>   
+  </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
+    </tab>
+  </tabs>  
+</type>
+

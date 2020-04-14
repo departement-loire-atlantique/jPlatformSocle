@@ -15,7 +15,7 @@
 <main role="main" id="content" class="ds44-mainResults">
 
 <section class="ds44-container-large">
-    <jalios:include id='<%= request.getParameter("boxId[value]") %>' />
+    <jalios:include id='<%= request.getParameter("boxId" + glp("jcmsplugin.socle.facette.form-element") + "[value]") %>' />
  </section>      
 </main>
 
