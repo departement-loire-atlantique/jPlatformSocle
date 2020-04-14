@@ -20,9 +20,9 @@
         
         <div class="ds44-form__container hidden">
             <div class="ds44-posRel">
-                <label for="adresse-<%= idFormElement %>" class="ds44-formLabel--external"><span class="ds44-labelTypePlaceholder">Ajouter une adresse<sup aria-hidden="true">*</sup></span></label>
+                <label for="adresse-<%= idFormElement %>" class="ds44-formLabel--external"><span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.menu.pdcv.ajouterAdresse") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></label>
                 
-                <input class="ds44-input-value" type="hidden" value=""><input class="ds44-input-metadata" type="hidden" value=""><input type="text" id="adresse-<%= idFormElement %>" name="adresse" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title="Ajouter une adresse - obligatoire" data-url="/json/autocomplete-address.json" data-mode="select-only" required="" placeholder="Votre adresse" aria-owns="owned_listbox_idpuhzgtecd3n"><button class="ds44-reset" type="button" style="display: none;"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden">Effacer le contenu saisi dans le champ : Ajouter une adresse</span></button>
+                <input class="ds44-input-value" type="hidden" value=""><input class="ds44-input-metadata" type="hidden" value=""><input type="text" id="adresse-<%= idFormElement %>" name="adresse" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title='<%= glp("jcmsplugin.socle.menu.pdcv.ajouterAdresse") %> - <%= gkp("jcmsplugin.socle.obligatoire") %>' data-url="/json/autocomplete-address.json" data-mode="select-only" required="" placeholder='<%= glp("jcmsplugin.socle.menu.pdcv.votreAdresse") %>' aria-owns="owned_listbox_idpuhzgtecd3n"><button class="ds44-reset" type="button" style="display: none;"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.menu.pdcv.ajouterAdresse")) %></span></button>
                 
                 <div class="ds44-autocomp-container hidden" aria-hidden="true">
                     <div class="ds44-autocomp-list">
@@ -35,8 +35,8 @@
         </div>
         
         <input type="hidden" name="redirectToDelegation" value="true"/>
-        <button class="ds44-btnStd ds44-btn--invert" type="submit" aria-label="Valider votre recherche de contact dans une commune">
-        <span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+        <button class="ds44-btnStd ds44-btn--invert" type="submit" aria-label='<%= glp("jcmsplugin.socle.menu.pdcv.valider") %>'>
+        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
         </button>
     </div>
 </form>
