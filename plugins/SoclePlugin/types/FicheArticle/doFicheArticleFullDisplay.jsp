@@ -25,5 +25,15 @@
         <%-- TODO : bloc Je m'abonne --%>
         
         <%-- TODO : bloc "Sur le même thème --%>
+        
+        <%-- TEST SGU : portlets bas --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
+	        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
+	           <section>
+	               <jalios:include id="<%= itPortlet.getId() %>" />
+                </section>
+	        </jalios:foreach>
+	    </jalios:if>
+        
     </article>
 </main>

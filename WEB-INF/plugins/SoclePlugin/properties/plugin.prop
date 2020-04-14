@@ -192,6 +192,7 @@ media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/c
 
 
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
+media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
