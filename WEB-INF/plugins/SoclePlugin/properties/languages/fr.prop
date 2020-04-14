@@ -382,3 +382,15 @@ jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Départe
 jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
 jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+
+# ------------------------------------------------------------
+#  Fiche SAAD
+# ------------------------------------------------------------
+jcmsplugin.socle.fichesaad.prestations:Prestations :
+jcmsplugin.socle.fichesaad.detail:En détail :
+jcmsplugin.socle.fichesaad.statut:Statut :
+jcmsplugin.socle.fichesaad.plageintervention:Plage d’intervention :
+jcmsplugin.socle.fichesaad.typeaide:Type d’aide :
+jcmsplugin.socle.fichesaad.modalitespaiement:Modalités de paiement :
+jcmsplugin.socle.fichesaad.modesintervention:Modes d’intervention :
+jcmsplugin.socle.fichesaad.modetarification:Mode de tarification :
