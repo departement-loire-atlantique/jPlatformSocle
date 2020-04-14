@@ -50,6 +50,7 @@ if (Util.isEmpty(titre)) {
             <jalios:if predicate="<%=Util.notEmpty(sousTitre) %>">
                 <h4 class="ds44-cardDate"><%=sousTitre%></h4>
             </jalios:if>
+            <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
         </div>
     </div>
 </section>
