@@ -923,5 +923,23 @@ public final class SocleUtils {
     }
     return "";
   }
+  
+  /**
+   * Récupère une commune à partir de son nom
+   * @param communeName
+   * @return
+   */
+  public static City getCommuneFromName(String communeName) {
+    if (Util.isEmpty(communeName)) {
+      return null;
+    }
+    Set<City> setCities = channel.getDataSet(City.class);
+    for (City itCity : setCities) {
+      if (itCity.getTitle().equals(communeName)) {
+        return itCity;
+      }
+    }
+    return null;
+  }
 	
 }
