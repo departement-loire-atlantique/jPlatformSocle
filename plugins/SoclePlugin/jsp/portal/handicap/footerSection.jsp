@@ -15,7 +15,7 @@
 	    </div>
 	    <div class="col-4-small-1 ds44-mb3">
             <%-- Inclusion de la portlet JSP de Newsletter --%>
-            <%@ include file='abonnementNewsletterFooter.jspf' %>
+            <%@ include file='../abonnementNewsletterFooter.jspf' %>
 	    </div>
     </div>
 </section>
