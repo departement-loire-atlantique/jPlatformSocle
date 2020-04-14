@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <type name="CarouselElement" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||">
+  <label xml:lang="fr">Element diaporama</label>
   <title ml="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="summary" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+    <field name="summary" editor="textarea" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" tab="commun">
       <label xml:lang="en">Abstract</label>
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" dataimage="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" dataimage="true" resize="false" resizeWidth="100" resizeHeight="75" tab="commun">
       <label xml:lang="fr">Image principale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 810x620px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" tab="commun">
       <label xml:lang="fr">Image mobile</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x370px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" tab="commun">
       <label xml:lang="fr">Image carrée</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 430x430px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commun">
       <label xml:lang="en">Image legend</label>
       <label xml:lang="fr">Légende Image</label>
     </field>
-    <field name="imageCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="imageCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commun">
       <label xml:lang="en">Image copyright</label>
       <label xml:lang="fr">Copyright image</label>
     </field>
-    <field name="linkTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+    <field name="linkTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" tab="commun">
       <label xml:lang="en">Link title</label>
       <label xml:lang="fr">Titre du lien</label>
     </field>
-    <field name="internalLink" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">
+    <field name="internalLink" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false" tab="commun">
       <label xml:lang="en">Internal link</label>
       <label xml:lang="fr">Lien interne</label>
     </field>
-    <field name="externalLink" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+    <field name="externalLink" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="commun">
       <label xml:lang="en">External link</label>
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="newTab" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+    <field name="newTab" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="commun">
       <label xml:lang="fr">Ouverture dans un nouvel onglet</label>
       <label xml:lang="en">New tab opening</label>
       <onLabel xml:lang="fr">Oui</onLabel>
@@ -49,11 +50,20 @@
       <offLabel xml:lang="fr">Non</offLabel>
       <offLabel xml:lang="en">No</offLabel>
     </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_1088868" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation">
+      <label xml:lang="fr">Rubrique concernée</label>
+    </field>    
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" tab="navigation">
       <label xml:lang="fr">Mise en avant</label>
-    </field>
+    </field>    
   </fields>
-  <label xml:lang="fr">Element diaporama</label>
-  <label xml:lang="en">Carousel element</label>
+  <tabs>
+    <tab id="commun">
+      <label xml:lang="fr">Commun</label>
+    </tab>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>  
 </type>
 

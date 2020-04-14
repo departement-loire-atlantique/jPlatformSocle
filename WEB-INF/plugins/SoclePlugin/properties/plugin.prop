@@ -27,6 +27,8 @@ lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
 jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
 $jcmsplugin.socle.cat.root: j_3
 
+jcmsplugin.socle.footer.portletcontact.id : c_1275593
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
@@ -173,6 +175,7 @@ media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/Liste
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
 media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
 media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
 media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
