@@ -381,3 +381,15 @@ jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine en ligne du
 jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
 jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+
+
+jcmsplugin.socle.fichepublication.enresume: En résumé :
+jcmsplugin.socle.fichepublication.cadredevie: Cadre de vie :
+jcmsplugin.socle.fichepublication.services: Services :
+jcmsplugin.socle.fichepublication.viesociale: Vie sociale :
+jcmsplugin.socle.fichepublication.animations: Animations :
+jcmsplugin.socle.fichepublication.tarifsconventions: Tarifs, conventions
+jcmsplugin.socle.fichepublication.remarquessupplementaires: Remarques supplémentaires
+jcmsplugin.socle.fichepublication.questionconseil: Une question, un conseil ?
+jcmsplugin.socle.fichepublication.savoirplus: En savoir +
+jcmsplugin.socle.fichepublication.savoirplussur: En savoir plus sur : {0}

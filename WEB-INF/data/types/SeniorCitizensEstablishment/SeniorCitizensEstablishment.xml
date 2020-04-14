@@ -76,11 +76,11 @@
     <field name="managerName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Nom responsable</label>
     </field>
-    <field name="clics" editor="link" required="false" compactDisplay="false" type="generated.Place[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+    <field name="clics" editor="link" required="false" compactDisplay="false" type="generated.FicheLieu[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">CLICs</label>
       <description xml:lang="fr">Si aucun CLIC n'est associé, c'est le CLIC le plus proche de l'établissement qui est affiché.</description>
     </field>
-    <field name="categorieDeNavigation" editor="category" default="t1_26758" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+    <field name="categorieDeNavigation" editor="category" default="$jcmsplugin.socle.seniorCitizensEstablishment.categorieDeNavigation.default" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
   </fields>
