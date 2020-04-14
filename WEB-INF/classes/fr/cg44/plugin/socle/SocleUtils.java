@@ -945,6 +945,7 @@ public final class SocleUtils {
       }
     }
     return null;
+  }
     
   /**
    * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
