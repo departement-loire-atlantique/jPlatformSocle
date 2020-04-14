@@ -925,17 +925,17 @@ public final class SocleUtils {
   }
   
   /**
-   * Récupère une commune à partir de son nom
+   * Récupère une commune à partir de son code ville
    * @param communeName
    * @return
    */
-  public static City getCommuneFromName(String communeName) {
-    if (Util.isEmpty(communeName)) {
+  public static City getCommuneFromCode(String communeCode) {
+    if (Util.isEmpty(communeCode)) {
       return null;
     }
     Set<City> setCities = channel.getDataSet(City.class);
     for (City itCity : setCities) {
-      if (itCity.getTitle().equals(communeName)) {
+      if (itCity.getCityCode() == Integer.parseInt(communeCode)) {
         return itCity;
       }
     }

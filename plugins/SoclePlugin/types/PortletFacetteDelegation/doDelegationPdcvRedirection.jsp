@@ -3,17 +3,18 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 
 <%
-    String communeName = request.getParameter("commune");
-    if (Util.notEmpty(communeName)) {
-      City selectedCommune = SocleUtils.getCommuneFromName(communeName);
+    String communeCode = request.getParameter("commune[value]");
+    if (Util.notEmpty(communeCode)) {
+      City selectedCommune = SocleUtils.getCommuneFromCode(communeCode);
       if (Util.notEmpty(selectedCommune) && Util.notEmpty(selectedCommune.getDelegation())) {
-        logger.info("1");
         sendRedirect(selectedCommune.getDelegation().getDisplayUrl(userLocale));
         return;
       } else {
-        logger.info("2");
         sendRedirect(channel.getData(channel.getProperty("channel.default-portal")).getDisplayUrl(userLocale));
         return;
       }
+    } else {
+      sendRedirect(channel.getData(channel.getProperty("channel.default-portal")).getDisplayUrl(userLocale));
+      return;
     }
 %>
