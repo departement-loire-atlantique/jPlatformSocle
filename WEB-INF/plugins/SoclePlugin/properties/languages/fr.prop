@@ -240,7 +240,7 @@ jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
 jcmsplugin.socle.facette.filtrer-par: Filtrer par
-jcmsplugin.socle.facette.form-element: form-element
+jcmsplugin.socle.facette.form-element: -form-element
 jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
 jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
 jcmsplugin.socle.facette.adresse.default-label: Adresse
@@ -388,3 +388,15 @@ jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la versi
 # ------------------------------------------------------------
 jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
 jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
+
+#  Fiche SAAD
+# ------------------------------------------------------------
+jcmsplugin.socle.fichesaad.prestations:Prestations :
+jcmsplugin.socle.fichesaad.detail:En détail :
+jcmsplugin.socle.fichesaad.statut:Statut :
+jcmsplugin.socle.fichesaad.plageintervention:Plage d’intervention :
+jcmsplugin.socle.fichesaad.typeaide:Type d’aide :
+jcmsplugin.socle.fichesaad.modalitespaiement:Modalités de paiement :
+jcmsplugin.socle.fichesaad.modesintervention:Modes d’intervention :
+jcmsplugin.socle.fichesaad.modetarification:Mode de tarification :
+
