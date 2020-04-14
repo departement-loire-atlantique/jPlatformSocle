@@ -54,13 +54,11 @@
 <div class="ds44-form__container ds44-checkBox-radio_list ">
 	<input value='<%= cat.getId() %>' 
 			id='<%= sbfNameCheck %>' 
-			name='<%= nameType + idFormElement %>'
 			class='<%= "ds44-"+typeInput %>' 
 			type='<%= typeInput %>' />
 
 	<label for='<%= sbfNameCheck %>' 
-			class='<%= "ds44-" + labelInput + "Label" %>' 
-			id='<%= nameType + "label-" + idFormElement + "-" + numCat %>'>
+			class='<%= "ds44-" + labelInput + "Label" %>'>
 
 		<%= cat.getName() %>
 
