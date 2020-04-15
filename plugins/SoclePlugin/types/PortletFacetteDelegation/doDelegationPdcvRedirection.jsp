@@ -10,12 +10,8 @@
         AccueilDelegation pageDeleg = selectedCommune.getDelegation().getLinkIndexedDataSet(AccueilDelegation.class).first();
         sendRedirect(pageDeleg.getDisplayUrl(userLocale));
         return;
-      } else {
-        sendRedirect(channel.getData(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale));
-        return;
-      }
-    } else {
-      sendRedirect(channel.getData(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale));
-      return;
     }
+
+	sendRedirect(channel.getData(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale));
+	return;
 %>
