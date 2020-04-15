@@ -942,7 +942,7 @@ public final class SocleUtils {
     Map<String, String[]> parametersMap = new HashMap<String, String[]>();
     while(enumParams.hasMoreElements()) {
       String nameParam = enumParams.nextElement();  
-      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element"))){     
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){     
         String itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));   
         if(parametersMap.containsKey(itNameKey)){      
           parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));

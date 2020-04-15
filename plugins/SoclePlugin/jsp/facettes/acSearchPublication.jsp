@@ -10,7 +10,7 @@ String textSearch = getStringParameter("q", "", ".*");
 String isMotCle = getStringParameter("motCle", "", ".*");
 String query = getUntrustedStringParameter("query", "");
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD};
-if(hasParameter("isMotCle")) {
+if(hasParameter("motCle")) {
   tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.ALLFIELDS_FIELD};
 }
 
