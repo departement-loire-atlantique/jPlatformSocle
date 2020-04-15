@@ -199,31 +199,31 @@
 						<div class="grid-2-small-1">
 							<jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) %>">
 								<div class="col mrs ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list1"><%= glp("jcmsplugin.socle.fichepublication.enresume") %></h2>
+									<h2 class="h3-like" id="idTitre-list1"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.enresume") %></h2>
 									<jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
 								</div>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(obj.getLifeEnvironmentText()) %>">
 								<div class="col mls ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list2"><%= glp("jcmsplugin.socle.fichepublication.cadredevie") %></h2>
+									<h2 class="h3-like" id="idTitre-list2"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.cadredevie") %></h2>
 									<jalios:wysiwyg><%= obj.getLifeEnvironmentText() %></jalios:wysiwyg>
 								</div>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(obj.getSafeServiceText()) %>">
 								<div class="col mrs ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list3"><%= glp("jcmsplugin.socle.fichepublication.services") %></h2>
+									<h2 class="h3-like" id="idTitre-list3"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.services") %></h2>
 									<jalios:wysiwyg><%= obj.getSafeServiceText() %></jalios:wysiwyg>
 								</div>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(obj.getSocialLifeText()) %>">
 								<div class="col mrs ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list4"><%= glp("jcmsplugin.socle.fichepublication.viesociale") %></h2>
+									<h2 class="h3-like" id="idTitre-list4"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.viesociale") %></h2>
 									<jalios:wysiwyg><%= obj.getSocialLifeText() %></jalios:wysiwyg>
 								</div>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(obj.getAnimationsText()) %>">
 								<div class="col mrs ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list5"><%= glp("jcmsplugin.socle.fichepublication.animations") %></h2>
+									<h2 class="h3-like" id="idTitre-list5"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.animations") %></h2>
 									<jalios:wysiwyg><%= obj.getAnimationsText() %></jalios:wysiwyg>
 								</div>
 							</jalios:if>
@@ -240,7 +240,7 @@
 					<jalios:if predicate="<%= Util.notEmpty(obj.getContractText()) || Util.notEmpty(obj.getConventionsCostText()) %>">
 						<section class="ds44-box ds44-theme">
 							<div class="ds44-innerBoxContainer">
-								<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.fichepublication.tarifsconventions") %></p>
+								<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.tarifsconventions") %></p>
 								<jalios:if predicate="<%= Util.notEmpty(obj.getContractText()) %>">
 									<jalios:wysiwyg><%= obj.getContractText() %></jalios:wysiwyg>
 								</jalios:if>
@@ -252,13 +252,13 @@
 					</jalios:if>
 	
 					<jalios:if predicate="<%= Util.notEmpty(obj.getRemarkText()) %>">
-						<h2 class="h3-like ds44-mt3 ds44-mb2" id="idTitre2"><%= glp("jcmsplugin.socle.fichepublication.remarquessupplementaires") %></h2>
+						<h2 class="h3-like ds44-mt3 ds44-mb2" id="idTitre2"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.remarquessupplementaires") %></h2>
 						<jalios:wysiwyg><%= obj.getRemarkText() %></jalios:wysiwyg>
 					</jalios:if>
 	
 					<div class="ds44-mtb3">
 						<section class="ds44-innerBoxContainer ds44-borderContainer">
-							<h2 id="idTitreBox2col-1" class="h2-like"><%= glp("jcmsplugin.socle.fichepublication.questionconseil") %></h2>
+							<h2 id="idTitreBox2col-1" class="h2-like"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.questionconseil") %></h2>
 	
 							<div class="grid-12-small-1">
 								<jalios:if predicate="<%= Util.notEmpty(obj.getClics()) %>">
@@ -338,8 +338,8 @@
 											</jalios:if>
 											<p>
 												<a class="ds44-btnStd ds44-mt3" href='<%= ficheLieu.getDisplayUrl(userLocale) %>' 
-														title="<%= glp("jcmsplugin.socle.fichepublication.savoirplussur", itFicheLieu.getTitle()) %>">
-													<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.savoirplus") %></span>
+														title="<%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplussur", itFicheLieu.getTitle()) %>">
+													<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplus") %></span>
 													<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 												</a>
 											</p>
@@ -421,8 +421,8 @@
 										</jalios:if>
 										<p>
 											<a class="ds44-btnStd ds44-mt3" href='<%= ficheLieu.getDisplayUrl(userLocale) %>' 
-													title="<%= glp("jcmsplugin.socle.fichepublication.savoirplussur", itFicheLieu.getTitle()) %>">
-												<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.savoirplus") %></span>
+													title="<%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplussur", itFicheLieu.getTitle()) %>">
+												<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplus") %></span>
 												<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 											</a>
 										</p>
