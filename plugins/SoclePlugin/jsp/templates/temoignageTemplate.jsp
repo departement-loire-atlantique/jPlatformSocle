@@ -13,7 +13,6 @@ String urlPub = obj.getDisplayUrl(userLocale);
 String urlImage = "";
 String titre = "";
 String sousTitre = "";
-String titleLien = "";
 boolean isVideo = data instanceof Video;
 
 
@@ -37,11 +36,6 @@ else{
 if (Util.isEmpty(titre)) {
   titre = obj.getTitle();
 }
-
-titleLien = titre;
-if(isVideo){
-  titleLien += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.pageVideo");
-}
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">
     <div class="ds44-bgGray">
@@ -52,10 +46,11 @@ if(isVideo){
             </jalios:if>
         </div>
         <div class="ds44--m-padding">
-            <p role="heading" aria-level="3"><a href="<%=urlPub %>" title="<%=HttpUtil.encodeForHTMLAttribute(titleLien)%>"><%=titre%></a></p>
+            <p role="heading" aria-level="3"><a href="<%=urlPub %>"><%=titre%></a></p>
             <jalios:if predicate="<%=Util.notEmpty(sousTitre) %>">
-                <p class="ds44-cardDate"><%=sousTitre%></p>
+                <h4 class="ds44-cardDate"><%=sousTitre%></h4>
             </jalios:if>
+            <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
         </div>
     </div>
 </section>

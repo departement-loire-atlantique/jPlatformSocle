@@ -3,6 +3,8 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% 
 	PortletFacetteTitre obj = (PortletFacetteTitre)portlet; 
+
+    String rechercheId = (String) request.getAttribute("rechercheId");
 	
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 	String dataMode = "free-text";
@@ -10,8 +12,9 @@
 	if(Util.notEmpty(request.getAttribute("query"))) {
 		query = (String)(request.getAttribute("query"));
 	}
-	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query="+query;
-	String name= "titre";
+	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query="+query + (obj.getEtendreLaRechercheATousLesChamps() ? "&motCle=true" : "");
+	String rechercheEtendu =  obj.getEtendreLaRechercheATousLesChamps() ? "text" : "titre";
+	String name = rechercheEtendu + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.titre.default-label");
 	String option = "";
 	TreeSet<Category> setRayons = new TreeSet<Category>();

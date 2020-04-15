@@ -35,7 +35,8 @@
     <type name="FicheArticle"></type>
     <type name="FicheEmploiStage"></type>
     <type name="FicheLieu"></type>
-    <type name="FichePublication"></type>   
+    <type name="FichePublication"></type>
+    <type name="FicheSAAD"></type>   
     <type name="Help"></type>
     <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
@@ -187,7 +188,17 @@
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>  
+    </templates>
+    <templates type="Carousel">
+        <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
+        </template>
+    </templates>
+    <templates type="FicheSAAD">
+        <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates> 
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -202,7 +213,7 @@
     </templates>
     <templates type="PortletCarrouselDimagesHome">
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+            <label xml:lang="fr">DS44 : gabarit à 2 blocs d'images</label>
         </template>
     </templates>
     <templates type="PortletDecorator">
@@ -266,6 +277,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
           <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="tuiles1colhome" file="doPortletMiseEnAvantDeContenusBoxOneColumnHome.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne pour page d'accueil</label>
+          <description xml:lang="fr">(ex : "En un clic")</description>
+        </template>        
         <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
           <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
@@ -277,7 +292,11 @@
         <template name="grandsprojets" file="doPortletMiseEnAvantDeContenusBoxGrandsProjets.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit descrition à gauche / tuiles à droite</label>
           <description xml:lang="fr">(ex : "Grands projets")</description>
-        </template>  
+        </template>
+        <template name="temoignages" file="doPortletMiseEnAvantDeContenusBoxTemoignages.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit témoignages</label>
+          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo" et "Articles")</description>
+        </template> 
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
@@ -339,6 +358,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
@@ -391,6 +411,7 @@
     <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/titleNoImage.tag" />
     <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
     <file path="jcore/doEmptyHeader.jspf" />

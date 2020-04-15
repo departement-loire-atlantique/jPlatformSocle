@@ -15,7 +15,8 @@
     description="Numéro de téléphone"
 %>
 <%
-String displayedPhone = number.replaceAll("..", "$0 ");
+// On ne garde que les chiffres puis on sépare les paires par un espace
+String displayedPhone = number.replaceAll("[^0-9-]","").replaceAll("..", "$0 ");
 String linkPhone = "+33" + number.substring(1);
 
 JcmsContext jcmsContext = Channel.getChannel().getCurrentJcmsContext();

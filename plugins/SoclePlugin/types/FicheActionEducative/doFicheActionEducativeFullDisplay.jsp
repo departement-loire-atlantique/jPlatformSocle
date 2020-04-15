@@ -26,7 +26,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         <div class="ds44-innerBoxContainer">
                             <div class="grid-12-small-1 ds44-grid12-offset-1">
                                 <div class='col col-6'>
-                                    <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
+                                    <div class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
                                     <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) || Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
@@ -78,7 +78,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     </div>
                                 </div>
                                 <div class="col col-6 ds44--xl-padding-l">
-                                    <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
+                                    <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNomEtPrenomContacts() %>
                                         <jalios:if predicate="<%= Util.notEmpty(obj.getDirection()) %>">
@@ -116,7 +116,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                     <%-- TODO : boutons s'inscrire et suivre ma demande --%>
                                     
                                     <jalios:if predicate='<%= hasParcoursCollege %>'>
-                                    <img id="imageParcoursCollege" class="ds44-mt3 large-w50 medium-w25 small-w25 tiny-w50 ds44-hide-mobile" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' title='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>'/>
+                                    <img id="imageParcoursCollege" class="ds44-mt3 large-w50 medium-w25 small-w25 tiny-w50 ds44-hide-mobile" alt='<%= glp("jcmsplugin.socle.label.monparcourscollege") %>' src='<%= channel.getCategory("$jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root").getImage() %>'/>
                                     </jalios:if>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                         </div>
                         </jalios:if>
                         <div class='col <%= hasImage ? "mll" : "" %> mbs'>
-                            <p class="ds44-wsg-exergue" title="<%= obj.getFormat(loggedMember).first().getName() %>"><%= obj.getFormat(loggedMember).first().getName() %></p>
+                            <p class="ds44-wsg-exergue"><%= obj.getFormat(loggedMember).first().getName() %></p>
                             <div class="ds44-mb-std"></div>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg></div>
                         </div>
@@ -150,7 +150,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
         <section id="enDetails" class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <h3 class="h2-like" id="titreEnDetails"><%= glp("jcmsplugin.socle.titre.endetails") %></h2>
+                    <h2 class="h2-like" id="titreEnDetails"><%= glp("jcmsplugin.socle.titre.endetails") %></h2>
                     <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
                 </div>
             </div>
@@ -234,7 +234,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 // Récupérer la taille du fichier
                                 String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
                                 %>
-                                <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> - <%= fileType %> - <%= HtmlUtil.html2text(fileSize) %>  <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
                                 </li>
                                 </jalios:foreach>
                                 <% addLineBreak = true; %>

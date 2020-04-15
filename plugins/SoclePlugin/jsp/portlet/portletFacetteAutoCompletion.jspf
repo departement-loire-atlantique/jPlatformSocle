@@ -30,9 +30,11 @@
 
 	
 					<label for='<%= idFormElement %>' class="ds44-formLabel">
-						<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-							<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-						</span>
+					    <div class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+							<span>
+								<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+							</span>
+						</div>
 					</label>
 					<input class="ds44-input-value" type="hidden" value="">
 					<input class="ds44-input-metadata" type="hidden" aria-hidden="true" value="">
@@ -190,9 +192,11 @@
 				<div class="ds44-form__container">
 
 					   <label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
-							<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-								<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-							</span> 
+							<div class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+								<span>
+									<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+								</span>
+							</div> 
 						</label>
 						<input class="ds44-input-value" type="hidden" value="">
 						<input class="ds44-input-metadata" type="hidden" value="">
@@ -236,10 +240,13 @@
 
 	<div class="ds44-form__container">
 			<label for='<%= idFormElement %>' class="ds44-formLabel">
-				<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
-					<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+		        <div class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+					<span>
+						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+					</span>
+				</div>
 			</label>
-			</span>
+			
 			<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' role="combobox" 
 					name='<%= name %>'
 					aria-autocomplete="list" 

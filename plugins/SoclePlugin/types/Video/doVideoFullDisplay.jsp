@@ -15,7 +15,16 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) %>">
-                        <div><jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg></div>
+                        <jalios:foreach name="itDesc" type="String" array='<%= obj.getDescription() %>'>
+                        <div>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreDescription()) && itCounter <= obj.getTitreDescription().length
+                                && Util.notEmpty(obj.getTitreDescription()[itCounter-1]) %>'>
+                                <h2 id="titreDesc_<%= itCounter %>"><%= obj.getTitreDescription()[itCounter-1] %></h2>
+                            </jalios:if>
+                            <jalios:wysiwyg><%= itDesc %></jalios:wysiwyg>
+                        </div>
+                        </jalios:foreach>
+                        
                     </jalios:if>
                     
                     <%-- Chapitres --%>

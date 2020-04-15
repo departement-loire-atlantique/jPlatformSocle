@@ -13,6 +13,8 @@
 	Boolean hasFonctionsAdditionnelles = false; // TODO
 	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
+	
+	request.setAttribute("rechercheId", obj.getId());
 %>
 
 
@@ -47,7 +49,7 @@
 			</div>
 		</jalios:if>
 		
-		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResult.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
 		    <jalios:if predicate='<%= !isInRechercheFacette %>'>
 			  <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			</jalios:if>
@@ -118,12 +120,12 @@
 			</jalios:if>
 		
 		
-            <input type="hidden" name="facetOperatorUnion" value='<%= obj.getModeDesFacettes() %>' data-technical-field />
+            <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
 		
-            <input type="hidden" name="modCatBranchesUnion" value='<%= obj.getModeDesBranches() %>' data-technical-field />
-            <input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>' data-technical-field />
+            <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
+            <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
 		
-            <input type="hidden" name="boxId" value='<%= obj.getId() %>' data-technical-field />
+            <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
 		
 		</form>
 	</div>
@@ -188,5 +190,6 @@
 </jalios:if>
 
 
-
-
+<% 
+request.removeAttribute("rechercheId");
+%>

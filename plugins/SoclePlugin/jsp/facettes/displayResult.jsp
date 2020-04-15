@@ -9,12 +9,13 @@
 
 response.setContentType("application/json");
 
-PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId[value]"))).clone();  
+PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId"))).clone();  
 PortletQueryForeach box = new PortletQueryForeach(boxTmp);
 
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
 

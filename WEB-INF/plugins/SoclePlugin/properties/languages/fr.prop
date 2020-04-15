@@ -94,7 +94,7 @@ jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
 jcmsplugin.socle.label.cs: CS
 jcmsplugin.socle.label.cedex: Cedex
-jcmsplugin.socle.label.monparcourscollege: Mon parcours collège
+jcmsplugin.socle.label.monparcourscollege: Mon parcours collège, tous citoyens et toutes citoyennes
 jcmsplugin.socle.label.encemoment: En ce moment
 jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
 jcmsplugin.socle.sur: sur
@@ -110,6 +110,7 @@ jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
+jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
 
 # ------------------------------------------------------------
 #  Header
@@ -239,7 +240,7 @@ jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
 jcmsplugin.socle.facette.filtrer-par: Filtrer par
-jcmsplugin.socle.facette.form-element: form-element
+jcmsplugin.socle.facette.form-element: -form-element
 jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
 jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
 jcmsplugin.socle.facette.adresse.default-label: Adresse
@@ -377,7 +378,7 @@ jcmsplugin.socle.fichepublication.portraits:Portraits
 jcmsplugin.socle.fichepublication.actualites:Actualités
 jcmsplugin.socle.fichepublication.question:La question
 jcmsplugin.socle.fichepublication.lireenligne:Lire le magazine en ligne
-jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine en ligne du Conseil départemental de Loire-Atlantique - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Département de Loire-Atlantique - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
 jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
@@ -393,3 +394,22 @@ jcmsplugin.socle.fichepublication.remarquessupplementaires: Remarques supplémen
 jcmsplugin.socle.fichepublication.questionconseil: Une question, un conseil ?
 jcmsplugin.socle.fichepublication.savoirplus: En savoir +
 jcmsplugin.socle.fichepublication.savoirplussur: En savoir plus sur : {0}
+jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+
+# ------------------------------------------------------------
+#  Fiche canton
+# ------------------------------------------------------------
+jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
+jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
+
+#  Fiche SAAD
+# ------------------------------------------------------------
+jcmsplugin.socle.fichesaad.prestations:Prestations :
+jcmsplugin.socle.fichesaad.detail:En détail :
+jcmsplugin.socle.fichesaad.statut:Statut :
+jcmsplugin.socle.fichesaad.plageintervention:Plage d’intervention :
+jcmsplugin.socle.fichesaad.typeaide:Type d’aide :
+jcmsplugin.socle.fichesaad.modalitespaiement:Modalités de paiement :
+jcmsplugin.socle.fichesaad.modesintervention:Modes d’intervention :
+jcmsplugin.socle.fichesaad.modetarification:Mode de tarification :
+

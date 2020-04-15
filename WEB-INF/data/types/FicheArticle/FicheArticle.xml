@@ -51,12 +51,22 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="pageUtile" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Affichage du bloc "page utile"</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>    
     <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Paragraphe">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
+    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
+      <label xml:lang="fr">Portlets bas</label>
+    </field>    
     <field name="titreOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
