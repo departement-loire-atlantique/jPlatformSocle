@@ -565,6 +565,9 @@ public final class SocleUtils {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
+		if(Util.notEmpty(pubFullGabarit)) {
+		  jsonObject.addProperty("content_html", pubFullGabarit);
+    }
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
@@ -575,10 +578,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(pubMarkerGabarit)) {
 			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-		}
-		if(Util.notEmpty(pubFullGabarit)) {
-			jsonMetaObject.addProperty("html_full", pubFullGabarit);
-		}
+		}		
 		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
 	}
