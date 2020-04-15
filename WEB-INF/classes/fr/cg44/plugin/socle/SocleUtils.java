@@ -7,14 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -29,7 +27,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
-import com.jalios.jcms.Data;
 import com.jalios.jcms.DataSelector;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
@@ -38,11 +35,13 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
+import com.sun.jdi.connect.Connector.SelectedArgument;
 
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
 import generated.Delegation;
+import generated.ElectedMember;
 import generated.FicheLieu;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
@@ -933,6 +932,24 @@ public final class SocleUtils {
   }
   
   /**
+   * Récupère une commune à partir de son code ville
+   * @param communeName
+   * @return
+   */
+  public static City getCommuneFromCode(String communeCode) {
+    if (Util.isEmpty(communeCode)) {
+      return null;
+    }
+    Set<City> setCities = channel.getDataSet(City.class);
+    for (City itCity : setCities) {
+      if (itCity.getCityCode() == Integer.parseInt(communeCode)) {
+        return itCity;
+      }
+    }
+    return null;
+  }
+    
+  /**
    * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
    * @param request
    * @return
@@ -952,6 +969,20 @@ public final class SocleUtils {
       }  
     }
     return parametersMap;
+  }
+  
+  public static String getElectedMemberFunction(ElectedMember pub) {
+    String position = "";
+    // Cas : est président / présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) {
+      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.feminin");
+    }
+    // Cas : est vice-président / vice-présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
+    }
+    
+    return position;
   }
 	
 }
