@@ -49,20 +49,6 @@
 		type="Boolean" 
 		description="Est-ce que le champ est désactivé par défaut" 
 %>
-<%@ attribute name="userLang" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="String" 
-		description="La langue de l'utilisateur actuel" 
-%>
-<%@ attribute name="loggedMember" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="Member" 
-		description="L'utilisateur actuel" 
-%>
 <%@ attribute name="request" 
 		required="true" 
 		fragment="false" 
@@ -71,6 +57,9 @@
 		description="La requete http actuelle" 
 %>
 <%
+	Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
+	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
+
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
@@ -132,7 +121,6 @@
 							<li class="ds44-select-list_elem">
 								
 								<ds:facetteCategorieListElem cat='<%= itCat %>' 
-									userLang='<%= userLang %>' 
 									idFormElement='<%= idFormElement %>' 
 									typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 									numCat='<%= nbrTotalCat %>'/>
@@ -150,7 +138,6 @@
 						<li class="ds44-collapser_element ds44-collapser--select">
 							<div class="ds44-select__categ">
 								<ds:facetteCategorieListElem cat='<%= itCat %>' 
-										userLang='<%= userLang %>' 
 										idFormElement='<%= idFormElement %>' 
 										typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 										numCat='<%= nbrTotalCat %>'/>
@@ -167,7 +154,6 @@
 										<jalios:foreach name="itSubCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itCat) %>' counter="itSubCatCounter">
 											<li class="ds44-select-list_elem">
 												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
-														userLang='<%= userLang %>' 
 														idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
 														typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 														numCat='<%= itSubCatCounter %>'/>
