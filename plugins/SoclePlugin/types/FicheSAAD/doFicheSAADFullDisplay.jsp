@@ -45,41 +45,21 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
             <div class="ds44-docListElem mts">
                 <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-                <% 
-                 StringBuffer sbfAriaLabelMail = new StringBuffer();
-                 sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-                     .append(" ")
-                     .append(obj.getTitle())
-                     .append(" ")
-                     .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-                     .append(" : ");
-                 String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-                 String email = obj.getAdresseMail(); %>
+                <%
+                String email = obj.getAdresseMail();
+                String emailTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle(), email));
+                %>
                  
-                <a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-                    <%
-                        StringBuffer sbfLabelMail = new StringBuffer();
-                        sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-                            .append(" ")
-                            .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-                    %>
-                    <%=  sbfLabelMail.toString()  %>
-                </a>
+                <a href='<%= "mailto:"+email %>' title='<%= emailTitle %>'><%= glp("jcmsplugin.socle.contactmail.label") %></a>
             </div>
             
             <div class="ds44-docListElem mts">
                 <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
-                <% 
-                 StringBuffer sbfAriaLabelSite = new StringBuffer();
-                 sbfAriaLabelSite.append(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label"))
-                     .append(" ")
-                     .append(obj.getTitle())
-                     .append(" ")
-                     .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
-                 String strAriaLabelSite = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelSite.toString());
-                 String site = obj.getSiteInternet(); %>
-                 
-                <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank">
+                <%
+                String site = obj.getSiteInternet();
+                String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.vistersite.nouvelonglet", obj.getTitle()));
+                %>
+                <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank">
                     <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
                 </a>
             </div>
@@ -100,10 +80,10 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                     
                         <div class="col mrs ds44-mtb3">
                             <h2 class="h3-like" id="idTitre-list1"><%= glp("jcmsplugin.socle.fichesaad.prestations") %></h2>
-							<ul class="ds44-list">
+							<ul class="ds44-uList">
 							     <%-- TODO 10/04/2020 : Gestion des infobulles : en cours de validation sur le DS--%>
                                 <jalios:foreach collection="<%= obj.getPrestations(loggedMember) %>" type="Category" name="itCategory" >
-                                    <li class="ds44-mt-std"><a class="ds44-btnStd ds44-bntALeft"><span class="ds44-btnInnerText"><%= itCategory.getName() %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a></li>
+                                    <li><%= itCategory.getName() %></a></li>
                                 </jalios:foreach>
 							</ul>
                         </div>
@@ -111,12 +91,13 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 			            <div class="col mls ds44-mtb3">
 			              <h2 class="h3-like" id="idTitre-list2"><%= glp("jcmsplugin.socle.fichesaad.detail") %></h2>
 			              <ul class="ds44-uList">
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <%= obj.getStatutJuridique(loggedMember).first().getName() %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <%= obj.getPlagesDintervention(loggedMember).first().getName() %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <%= obj.getTypeDaide(loggedMember).first().getName() %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <%= obj.getModalitesDePaiement(loggedMember).first().getName() %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modesintervention") %></strong> <span><%= obj.getModesDintervention(loggedMember).first().getName() %></span></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modetarification") %></strong> <%= obj.getModeDeTarification(loggedMember).first().getName() %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <%= SocleUtils.formatCategories(obj.getStatutJuridique(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typedeservice") %></strong> <%= SocleUtils.formatCategories(obj.getTypesDeService(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <%= SocleUtils.formatCategories(obj.getPlagesDintervention(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <%= SocleUtils.formatCategories(obj.getTypeDaide(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <%= SocleUtils.formatCategories(obj.getModalitesDePaiement(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modesintervention") %></strong> <span><%= SocleUtils.formatCategories(obj.getModesDintervention(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modetarification") %></strong> <%= SocleUtils.formatCategories(obj.getModeDeTarification(loggedMember)) %></li>
 			              </ul>
 			            </div>
 			            
