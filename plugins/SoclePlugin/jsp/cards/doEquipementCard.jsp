@@ -12,15 +12,6 @@ if (data == null) {
 
 Equipement pub = (Equipement) data;
 
-int financementDep = -1;
-
-if (Util.notEmpty(pub.getMontantDeLaSubvention()) && Util.notEmpty(pub.getPourcentageDepartement())) {
-  financementDep = Math.round( (pub.getMontantDeLaSubvention() * pub.getPourcentageDepartement()) / 100 );
-}
-
-boolean hasBottomInfos = financementDep > 0 || Util.notEmpty(pub.getThematique(loggedMember))
-|| Util.notEmpty(financementDep);
-
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
@@ -34,8 +25,8 @@ boolean hasBottomInfos = financementDep > 0 || Util.notEmpty(pub.getThematique(l
                     <%= SocleUtils.formatCategories(pub.getThematique(loggedMember)) %>
                 </p>
 	            </jalios:if>
-	            <jalios:if predicate="<%= financementDep > 0 %>">
-	            <p class="ds44-mt1"><strong><%= glp("jcmsplugin.socle.financementDep") %> :</strong> <%= financementDep %> <%= glp("jcmsplugin.socle.symbol.euro") %></p>
+	            <jalios:if predicate="<%= Util.notEmpty(pub.getMontantDeLaSubvention()) && pub.getMontantDeLaSubvention() > 0 %>">
+	            <p class="ds44-mt1"><strong><%= glp("jcmsplugin.socle.financementDep") %> :</strong> <%= pub.getMontantDeLaSubvention() %> <%= glp("jcmsplugin.socle.symbol.euro") %></p>
 	            </jalios:if>
             </jalios:if>
         </div>
