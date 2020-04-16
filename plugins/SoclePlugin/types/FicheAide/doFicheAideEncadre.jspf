@@ -1,12 +1,19 @@
  <%@ page contentType="text/html; charset=UTF-8"%>
  <%-- Bon à savoir --%>
 <jalios:if predicate="<%= Util.notEmpty(obj.getBonASavoir()) %>">
-    <section class="ds44-box ds44-theme ds44-mb3">
-        <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreEncartBonASavoir()) ? obj.getTitreEncartBonASavoir() : glp("jcmsplugin.socle.ficheaide.bonASavoir.label") %></p>
-            <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
-        </div>
-    </section>
+    <%-- On génère une section que si on a paramétré un titre, sinon on laisse le wysiwyg s'en charger --%>
+    <jalios:if predicate="<%=Util.notEmpty(obj.getTitreEncartBonASavoir())%>">
+	    <section class="ds44-box ds44-theme ds44-mb3">
+	        <div class="ds44-innerBoxContainer">
+	           <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreEncartBonASavoir()) ? obj.getTitreEncartBonASavoir() : glp("jcmsplugin.socle.ficheaide.bonASavoir.label") %></p>
+    </jalios:if>
+    
+    <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
+            
+    <jalios:if predicate="<%=Util.notEmpty(obj.getTitreEncartBonASavoir())%>">            
+            </div>
+        </section>
+     </jalios:if>
 </jalios:if>              
 
 <%-- Témoignages --%>
