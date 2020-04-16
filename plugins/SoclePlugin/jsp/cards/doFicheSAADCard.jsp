@@ -12,9 +12,11 @@ if (data == null) {
 
 FicheSAAD pub = (FicheSAAD) data;
 
+boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
+
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray">
+<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= isFocus ? " ds44-isFocus" : "" %>'>
     
     <div class="ds44-card__section">
       
