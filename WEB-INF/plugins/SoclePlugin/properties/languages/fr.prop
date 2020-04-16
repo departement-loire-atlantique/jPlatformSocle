@@ -214,9 +214,9 @@ jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
 jcmsplugin.socle.ficheaide.accessibilite-lieu.titre: Accessibilité du lieu :
 jcmsplugin.socle.ficheaide.info-accessibilite.label: Infos accessibilité
-jcmsplugin.socle.ficheaide.contacter.label: Contacter 
-jcmsplugin.socle.ficheaide.par-mail.label:  par mail 
-jcmsplugin.socle.ficheaide.visiter-site-web-de.label: Visiter le site web de  : 
+jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter {0} par mail : {1} 
+jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contacter par mail
+jcmsplugin.socle.ficheaide.visiter-site-web-de.label: Visiter le site web de : {0} {1}
 jcmsplugin.socle.ficheaide.visiter-site.label: Visiter le site
 jcmsplugin.socle.ficheaide.nousRencontrer: Nous rencontrer
 jcmsplugin.socle.ficheaide.adresse: Adresse
@@ -387,11 +387,26 @@ jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le ma
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
 
 # ------------------------------------------------------------
+#  Etablissement personnes agees
+# ------------------------------------------------------------
+jcmsplugin.socle.etablissementpersonnesagees.enresume: En résumé :
+jcmsplugin.socle.etablissementpersonnesagees.cadredevie: Cadre de vie :
+jcmsplugin.socle.etablissementpersonnesagees.services: Services :
+jcmsplugin.socle.etablissementpersonnesagees.viesociale: Vie sociale :
+jcmsplugin.socle.etablissementpersonnesagees.animations: Animations :
+jcmsplugin.socle.etablissementpersonnesagees.tarifsconventions: Tarifs, conventions
+jcmsplugin.socle.etablissementpersonnesagees.remarquessupplementaires: Remarques supplémentaires
+jcmsplugin.socle.etablissementpersonnesagees.questionconseil: Une question, un conseil ?
+jcmsplugin.socle.etablissementpersonnesagees.savoirplus: En savoir +
+jcmsplugin.socle.etablissementpersonnesagees.savoirplussur: En savoir plus sur : {0}
+
+# ------------------------------------------------------------
 #  Fiche canton
 # ------------------------------------------------------------
 jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
 jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
 
+# ------------------------------------------------------------
 #  Fiche SAAD
 # ------------------------------------------------------------
 jcmsplugin.socle.fichesaad.prestations:Prestations :

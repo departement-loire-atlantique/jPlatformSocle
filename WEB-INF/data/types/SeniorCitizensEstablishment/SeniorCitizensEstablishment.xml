@@ -26,9 +26,6 @@
     <field name="phones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Téléphones</label>
     </field>
-    <field name="fax" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
-      <label xml:lang="fr">Fax</label>
-    </field>
     <field name="mails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false">
       <label xml:lang="fr">Courriels</label>
     </field>
@@ -79,17 +76,19 @@
     <field name="managerName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Nom responsable</label>
     </field>
-    <field name="mainIllustration" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" dataimage="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Visuel établissement</label>
-    </field>
-    <field name="mainIllustrationLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Légende visuel</label>
-    </field>
-    <field name="clics" editor="link" required="false" compactDisplay="false" type="generated.Place[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+    <field name="clics" editor="link" required="false" compactDisplay="false" type="generated.FicheLieu[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">CLICs</label>
       <description xml:lang="fr">Si aucun CLIC n'est associé, c'est le CLIC le plus proche de l'établissement qui est affiché.</description>
     </field>
+    <field name="categorieDeNavigation" editor="category" default="$jcmsplugin.socle.seniorCitizensEstablishment.categorieDeNavigation.default" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
   </fields>
   <label xml:lang="fr">Etablissement personnes agées</label>
+  <tabs>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
 </type>
 

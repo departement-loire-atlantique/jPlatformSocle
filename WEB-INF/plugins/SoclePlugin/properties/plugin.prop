@@ -378,6 +378,7 @@ $jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
 # Etablissement personnes agées
 
 $jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
+$jcmsplugin.socle.seniorCitizensEstablishment.categorieDeNavigation.default: t1_26758
 
 # Equipements
 
