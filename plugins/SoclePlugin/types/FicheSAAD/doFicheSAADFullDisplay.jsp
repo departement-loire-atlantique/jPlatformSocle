@@ -92,7 +92,6 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 			              <h2 class="h3-like" id="idTitre-list2"><%= glp("jcmsplugin.socle.fichesaad.detail") %></h2>
 			              <ul class="ds44-uList">
 			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <%= SocleUtils.formatCategories(obj.getStatutJuridique(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typedeservice") %></strong> <%= SocleUtils.formatCategories(obj.getTypesDeService(loggedMember)) %></li>
 			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <%= SocleUtils.formatCategories(obj.getPlagesDintervention(loggedMember)) %></li>
 			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <%= SocleUtils.formatCategories(obj.getTypeDaide(loggedMember)) %></li>
 			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <%= SocleUtils.formatCategories(obj.getModalitesDePaiement(loggedMember)) %></li>
