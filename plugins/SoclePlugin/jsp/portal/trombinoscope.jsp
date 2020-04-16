@@ -11,14 +11,6 @@ SortedSet cantonsSet = new TreeSet(ComparatorManager.getComparator(Publication.c
 cantonsSet.addAll(tmpCantonsSet);
 
 %>
-<%--
-<main id="content" role="main">
-    <article class="ds44-container-large">
-        <ds:titleSimple title="Trombinoscope" breadcrumb="true"></ds:titleSimple>
-    </article>
-</main>
- --%>
-
 
 <section id="sectionTrombi" class="ds44-contenuArticle">
 
@@ -27,16 +19,16 @@ cantonsSet.addAll(tmpCantonsSet);
 				
 			<ul class="ds44-list ds44-list--results ds44-flex-container">
 			
-                            <jalios:foreach collection="<%= cantonsSet %>" name="itCanton" type="Canton">
-					<li id="search-result-c_1235827" data-id="c_1235827" class="ds44-fg1 ds44-js-results-item">
+                <jalios:foreach collection="<%= cantonsSet %>" name="itCanton" type="Canton">
+					<li class="ds44-fg1 ds44-js-results-item">
 					    <jalios:media data="<%= itCanton %>" template="cardFull"/>
 					</li>
-                            </jalios:foreach>
+                </jalios:foreach>
 
                </ul>
 
 	    </div>
 	</div>
 
-
 </section>
+

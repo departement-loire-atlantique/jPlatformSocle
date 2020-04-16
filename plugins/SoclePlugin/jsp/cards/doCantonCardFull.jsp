@@ -17,8 +17,8 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 
 %>
 
-<section class="ds44-box ds44-bgGray mbs">
-    <div class="ds44--l-padding">
+<section class="ds44-box ds44-bgGray">
+    <div class="ds44--l-padding ds44-box--temoignage">
          <p role="heading" aria-level="2" class="h3-like"><%= pub.getTitle() %></p>
          <div class="grid-2">
          
@@ -43,9 +43,9 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 	               <div class="col-1-small-1 ds44-mobile-reduced-mb ds44-js-card">
 	                 <section class="txtcenter">
 	                 
-	                    <jalios:if predicate='<%= Util.notEmpty(itElu.getImageMedaillon()) %>'>
+	                    <jalios:if predicate='<%= Util.notEmpty(itElu.getPicture()) %>'>
 	                        <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil ds44-centeredBlock">
-	                            <img src="<%= itElu.getImageMedaillon() %>" alt="" class="ds44-w100 ds44-imgRatio--profil">
+	                            <img src="<%= itElu.getPicture() %>" alt="" class="ds44-w100 ds44-imgRatio--profil">
 	                        </picture>
 	                    </jalios:if>
 	                    
