@@ -9,14 +9,18 @@ response.setContentType("application/json");
 String textSearch = getStringParameter("q", "", ".*");
 String isMotCle = getStringParameter("motCle", "", ".*");
 String query = getUntrustedStringParameter("query", "");
+String sort = getUntrustedStringParameter("sort", "udate");
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD};
 if(hasParameter("motCle")) {
   tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.ALLFIELDS_FIELD};
 }
+Comparator<? super Publication> comp = ComparatorManager.getComparator(Publication.class, sort);
+TreeSet collection = new TreeSet(comp);
 
 QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);
 qh.setSearchedFields(tabSearchedFields);
+collection.addAll(qh.getResultSet());
 
 %><% 
-%><%= SocleUtils.publicationToJsonArray(qh.getResultSet()) %>
+%><%= SocleUtils.publicationToJsonArray(collection) %>
