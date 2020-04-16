@@ -371,39 +371,6 @@
 					<jalios:if predicate='<%=Util.notEmpty(obj.getPourQui())%>'>
 						<jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
 					</jalios:if>
-
-					<jalios:if
-						predicate='<%=!obj.getToutesLesCommunesDuDepartement()
-								&& (Util.notEmpty(obj.getCommunes()) || Util.notEmpty(obj.getEpci(loggedMember)))%>'>
-						<%
-							String separatorCommune = ", ";
-
-							StringBuffer sbfCommunesLiees = new StringBuffer();
-							sbfCommunesLiees.append(glp("jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe"))
-								.append(" ");
-
-							if (Util.notEmpty(obj.getCommunes())) {
-
-								for (City itCommune : obj.getCommunes()) {
-									sbfCommunesLiees.append(itCommune.getTitle()).append(separatorCommune);
-								}
-
-							} else if (Util.notEmpty(obj.getEpci(loggedMember))) {
-
-								for (Category catCommune : obj.getEpci(loggedMember)) {
-									sbfCommunesLiees.append(catCommune.getName()).append(separatorCommune);
-								}
-
-							}
-							sbfCommunesLiees.delete(sbfCommunesLiees.length() - 2, sbfCommunesLiees.length() - 1);
-						%>
-						<p>
-							<strong class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.ficheaide.important") %></strong>
-						</p>
-						<p>
-							<strong><%= sbfCommunesLiees.toString() %></strong>
-						</p>
-					</jalios:if>
 				</div>
 			</div>
 		</section>
