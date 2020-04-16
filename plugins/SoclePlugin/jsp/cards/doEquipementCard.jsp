@@ -25,7 +25,7 @@ Equipement pub = (Equipement) data;
                     <%= SocleUtils.formatCategories(pub.getThematique(loggedMember)) %>
                 </p>
 	            </jalios:if>
-	            <jalios:if predicate="<%= Util.notEmpty(pub.getMontantDeLaSubvention()) %>">
+	            <jalios:if predicate="<%= Util.notEmpty(pub.getMontantDeLaSubvention()) && pub.getMontantDeLaSubvention() > 0 %>">
 	            <p class="ds44-mt1"><strong><%= glp("jcmsplugin.socle.financementDep") %> :</strong> <%= pub.getMontantDeLaSubvention() %> <%= glp("jcmsplugin.socle.symbol.euro") %></p>
 	            </jalios:if>
             </jalios:if>
