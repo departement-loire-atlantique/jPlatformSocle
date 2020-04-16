@@ -13,11 +13,11 @@
 
 <div class="ds44-form__container">
 	   <label for='<%= idFormElement %>' class="ds44-formLabel">
-	        <div class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+	        <span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 				<span>
 					<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : "Mot clé"%><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 				</span>
-			</div>
+			</span>
 		</label>
 		<input name='<%= "text" + idFormElement %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
 				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> />

@@ -62,11 +62,11 @@
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
 							<label for="form-element-10988" class="ds44-formLabel">
-                                <div class="ds44-labelTypePlaceholder">
+                                <span class="ds44-labelTypePlaceholder">
 									<span class="ds44-labelTypePlaceholder">
 										<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
 									</span>
-								</div>
+								</span>
 							</label>
 							<textarea rows="5" cols="1" id="form-element-10988" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
@@ -77,9 +77,9 @@
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
 							<label for="form-element-26867" class="ds44-formLabel">
-                                <div class="ds44-labelTypePlaceholder">
+                                <span class="ds44-labelTypePlaceholder">
 								    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
-                                </div>
+                                </span>
 							</label>
 							<input type="text" id="form-element-77221" name="commune" class="ds44-inpStd" 
 									role="combobox" 
@@ -107,11 +107,11 @@
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
 							<label for="form-element-99423" class="ds44-formLabel">
-                                <div class="ds44-labelTypePlaceholder">
+                                <span class="ds44-labelTypePlaceholder">
 									<span class="ds44-labelTypePlaceholder">
 										<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
 									</span>
-                                </div>
+                                </span>
 							</label>
 							<input type="text" id="form-element-42259" name="form-element-42259" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
