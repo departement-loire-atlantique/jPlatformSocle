@@ -7,7 +7,7 @@
 
 <main role="main" id="content">
 
-    <article class="ds44-container-large">
+    <article class="ds44-container-large pbm">
         <%-- Titre  --%>
         <div class="ds44-lightBG ds44-posRel">
             <div class="ds44-inner-container--mag ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
@@ -109,7 +109,7 @@
 	        <div class="ds44-inner-container--mag">
 	            <div class="ds44-grid12-offset-1">
 	                <h2 class="h2-like ds44-mb4"><%= glp("jcmsplugin.socle.fichepublication.ausommaire") %></h2>
-	                <div class="grid-2-small-1">
+	                <div class="grid-2-small-1 has-gutter-l">
 	                
 	                    <%-- Boucle sur les 4 onglets "Rubrique" et alternance des styles "mrs" et "mls".  --%>
 	                    
