@@ -49,20 +49,6 @@
 		type="Boolean" 
 		description="Est-ce que le champ est désactivé par défaut" 
 %>
-<%@ attribute name="userLang" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="String" 
-		description="La langue de l'utilisateur actuel" 
-%>
-<%@ attribute name="loggedMember" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="Member" 
-		description="L'utilisateur actuel" 
-%>
 <%@ attribute name="request" 
 		required="true" 
 		fragment="false" 
@@ -71,6 +57,9 @@
 		description="La requete http actuelle" 
 %>
 <%
+	Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
+	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
+
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
@@ -81,7 +70,7 @@
 %>
 <div class="ds44-form__container">
 	<div class='<%= "ds44-select__shape ds44-inp" + styleChamps + classInputDisabled %>'>
-		<p class="ds44-selectLabel"  aria-hidden="true">
+		<p class="ds44-selectLabel" aria-hidden="true">
 			<%= labelChamp %>
 			<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 		</p>
@@ -90,19 +79,18 @@
 			String classTypeInput = obj.getTypeDeSelection() ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
 			classTypeInput = Util.isEmpty(dataURL) && !obj.getProfondeur() ? "ds44-js-select-multilevel" : classTypeInput; 
 		%>
-		<div id='<%= idFormElement %>' name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
+		<div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
-				data-disabled='<%= isDisabled %>'></div>
+				<%= isDisabled ? "data-disabled=\"true\"" : "" %>></div>
 		<button class="ds44-reset" type="button">
 			<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 			<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
 		</button>
 		<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 				title='<%= labelChamp + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire") %>' 
-				aria-required="true" 
-				aria-expanded="false"
-				aria-disabled='<%= isDisabled %>'>
+				aria-expanded="false" 
+				<%= isDisabled ? "data-disabled=\"true\"" : "" %>>
 			<i class='<%= "icon icon-down icon--size" + styleChamps2 %>' aria-hidden="true"></i>
 			<span id='<%= "button-message-" + idFormElement %>' class="visually-hidden"><%= labelChamp %></span>
 		</button>
@@ -133,7 +121,6 @@
 							<li class="ds44-select-list_elem">
 								
 								<ds:facetteCategorieListElem cat='<%= itCat %>' 
-									userLang='<%= userLang %>' 
 									idFormElement='<%= idFormElement %>' 
 									typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 									numCat='<%= nbrTotalCat %>'/>
@@ -151,7 +138,6 @@
 						<li class="ds44-collapser_element ds44-collapser--select">
 							<div class="ds44-select__categ">
 								<ds:facetteCategorieListElem cat='<%= itCat %>' 
-										userLang='<%= userLang %>' 
 										idFormElement='<%= idFormElement %>' 
 										typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 										numCat='<%= nbrTotalCat %>'/>
@@ -168,7 +154,6 @@
 										<jalios:foreach name="itSubCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itCat) %>' counter="itSubCatCounter">
 											<li class="ds44-select-list_elem">
 												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
-														userLang='<%= userLang %>' 
 														idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
 														typeDeSelection='<%= obj.getTypeDeSelection() %>' 
 														numCat='<%= itSubCatCounter %>'/>
@@ -188,4 +173,5 @@
 			<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 		</button>
 	</div>
+	<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 </div>

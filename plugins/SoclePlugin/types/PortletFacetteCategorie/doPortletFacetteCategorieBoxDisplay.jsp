@@ -16,8 +16,6 @@
 		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>'
 		idFormElement='<%= idFormElement %>' 
 		isDisabled='<%= false %>' 
-		userLang='<%= userLang %>' 
-		loggedMember='<%= loggedMember %>' 
 		request='<%= request %>'/>
 		
 

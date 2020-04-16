@@ -13,54 +13,51 @@
 	
 	String labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : obj.getCategoriePrincipales(loggedMember).first().getName();
 %>
-<form>
-	<div class="ds44-fieldContainer ds44-champsLies">
-		
-		<div class="ds44-form__container">
-			<div class='<%= "ds44-select__shape ds44-inp" + styleChamps %>'>
-				<p class="ds44-selectLabel" aria-hidden="true">
-					<%= labelChamp %>
-					<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-				</p>
-				<div id='<%= idFormElement %>' name='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
-						<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
-				</div>
-				<button class="ds44-reset" type="button">
-					<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
-					<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
-				</button>
-
-				<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
-						aria-expanded="false" 
-						title='<%= labelChamp + " - " + glp("jcmsplugin.socle.obligatoire") %>'
-						aria-required="true">
-					<i class='icon icon-down icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
-					<span id='<%= "button-message-" + idFormElement %>' class="visually-hidden"><%= labelChamp %></span>
-				</button>
+<div class="ds44-fieldContainer ds44-champsLies ds44-js-linked-fields">
+	
+	<div class="ds44-form__container">
+		<div class='<%= "ds44-select__shape ds44-inp" + styleChamps %>'>
+			<p class="ds44-selectLabel" aria-hidden="true">
+				<%= labelChamp %>
+				<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+			</p>
+			<div id='<%= idFormElement %>' data-name='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
+					<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 			</div>
+			<button class="ds44-reset" type="button">
+				<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
+				<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
+			</button>
 
-			<div class="ds44-select-container hidden">
-				<div class="ds44-listSelect">
-					<ul class="ds44-list" role="listbox" id='<%= "listbox-" + idFormElement %>' 
-							aria-labelledby='<%= "button-message-" + idFormElement %>' 
-							aria-required="true">
-						<jalios:foreach name="itRootCat" type="Category" collection='<%= obj.getCategoriePrincipales(loggedMember) %>'>
-							<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
-								<li class="ds44-select-list_elem" role="option" data-value='<%= itCat.getId() %>' tabindex="0">
-									<%= itCat.getName() %>
-								</li>
-							</jalios:foreach>
+			<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+					aria-expanded="false" 
+					title='<%= labelChamp + " - " + glp("jcmsplugin.socle.obligatoire") %>'
+					aria-required="true">
+				<i class='icon icon-down icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
+				<span id='<%= "button-message-" + idFormElement %>' class="visually-hidden"><%= labelChamp %></span>
+			</button>
+		</div>
+
+		<div class="ds44-select-container hidden">
+			<div class="ds44-listSelect">
+				<ul class="ds44-list" role="listbox" id='<%= "listbox-" + idFormElement %>' 
+						aria-labelledby='<%= "button-message-" + idFormElement %>' 
+						aria-required="true">
+					<jalios:foreach name="itRootCat" type="Category" collection='<%= obj.getCategoriePrincipales(loggedMember) %>'>
+						<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+							<li class="ds44-select-list_elem" data-value='<%= itCat.getId() %>' tabindex="0">
+								<%= itCat.getName() %>
+							</li>
 						</jalios:foreach>
-					</ul>
-				</div>
+					</jalios:foreach>
+				</ul>
 			</div>
 		</div>
-		<ds:facetteCategorie obj='<%= obj.getFacetteLiee() %>' 
-				dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
-				idFormElement='<%= idFormElement+"-2" %>' 
-				isDisabled='<%= true %>' 
-				userLang='<%= userLang %>' 
-				loggedMember='<%= loggedMember %>' 
-				request='<%= request %>'/>
+		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 	</div>
-</form>
+	<ds:facetteCategorie obj='<%= obj.getFacetteLiee() %>' 
+			dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
+			idFormElement='<%= idFormElement+"-2" %>' 
+			isDisabled='<%= true %>' 
+			request='<%= request %>'/>
+</div>

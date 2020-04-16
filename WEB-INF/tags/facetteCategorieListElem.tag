@@ -4,8 +4,9 @@
 	pageEncoding="UTF-8"
 	description="Facette catégorie sans container" 
 	body-content="scriptless" 
-	import="com.jalios.util.Util,
-			com.jalios.jcms.JcmsUtil,  
+	import="com.jalios.jcms.Channel, 
+			com.jalios.util.Util,
+			com.jalios.jcms.JcmsUtil, 
 			com.jalios.jcms.Category" 
 %>
 <%@ attribute name="cat" 
@@ -36,14 +37,9 @@
 		type="String" 
 		description="id de l'input" 
 %>
-<%@ attribute name="userLang" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="String" 
-		description="Langue de l'utilisateur actuel" 
-%>
 <%
+	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
+
 	String nameType = typeDeSelection ? "name-check-" : "name-radio-";
 	String typeInput = typeDeSelection ? "checkbox" : "radio";
 	String labelInput = typeDeSelection ? "box" : "radio";
@@ -54,13 +50,11 @@
 <div class="ds44-form__container ds44-checkBox-radio_list ">
 	<input value='<%= cat.getId() %>' 
 			id='<%= sbfNameCheck %>' 
-			name='<%= nameType + idFormElement %>'
 			class='<%= "ds44-"+typeInput %>' 
 			type='<%= typeInput %>' />
 
 	<label for='<%= sbfNameCheck %>' 
-			class='<%= "ds44-" + labelInput + "Label" %>' 
-			id='<%= nameType + "label-" + idFormElement + "-" + numCat %>'>
+			class='<%= "ds44-" + labelInput + "Label" %>'>
 
 		<%= cat.getName() %>
 
