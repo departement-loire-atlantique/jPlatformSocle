@@ -50,27 +50,11 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getEmail())%>'>
 	     <div class="ds44-docListElem mtm"><i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-	         <% 
-	             StringBuffer sbfAriaLabelMail = new StringBuffer();
-	             sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-	                 .append(" ")
-	                 .append(obj.getTitle())
-	                 .append(" ")
-	                 .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-	                 .append(" : ");
-	             String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-	         %>
 	
 	         <jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
 	             <% String email = obj.getEmail()[0]; %>
-	             <a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-	                 <%
-	                     StringBuffer sbfLabelMail = new StringBuffer();
-	                     sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-	                         .append(" ")
-	                         .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-	                 %>
-	                 <%=  sbfLabelMail.toString()  %>
+	             <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+	                 <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 	             </a>
 	         </jalios:if>
 	
@@ -78,7 +62,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	             <ul class="ds44-list">
 	                 <jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
 	                     <li>
-	                         <a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
+	                         <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
 	                             <%= email %>
 	                         </a>
 	                     </li>
@@ -91,19 +75,10 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getSiteInternet())%>'>
 	    <div class="ds44-docListElem mtm"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
-	        <% 
-	            StringBuffer sbfAriaLabelSite = new StringBuffer();
-	            sbfAriaLabelSite.append(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label"))
-	                .append(" ")
-	                .append(obj.getTitle())
-	                .append(" ")
-	                .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
-	            String strAriaLabelSite = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelSite.toString());
-	        %>
 	
 	        <jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 	            <% String site = obj.getSiteInternet()[0]; %>
-	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank">
+	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank">
 	                <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 	            </a>
 	        </jalios:if>
@@ -112,7 +87,7 @@ String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 	            <ul class="ds44-list">
 	                <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 	                    <li>
-	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", strAriaLabelSite) %>' target="_blank"> 
+	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
 	                            <%= SocleUtils.parseUrl(site) %>
 	                        </a>
 	                    </li>

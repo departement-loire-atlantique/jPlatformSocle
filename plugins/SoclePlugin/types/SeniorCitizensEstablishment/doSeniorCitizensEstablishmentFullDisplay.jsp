@@ -5,194 +5,148 @@
 <%@ page import="fr.cg44.plugin.socle.SocleUtils" %>
 <% SeniorCitizensEstablishment obj = (SeniorCitizensEstablishment)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %>
 
+<jalios:buffer name="coloredSectionContent">
+	<div class="grid-2-small-1 ds44-grid12-offset-1">
+		<div class="col">
+			<%
+				String separator = ", ";
+				StringBuffer sbfTypeStruct = new StringBuffer();
+				String typeStruct = "";
+				for(Category itCat : obj.getStructureType(loggedMember)) {
+					if(Util.notEmpty(typeStruct)) {
+						sbfTypeStruct.append(separator);
+					}
+					sbfTypeStruct.append(itCat.getName());
+				}
+			%>
+			<p class="ds44-docListElem mts">
+				<i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+				<%= sbfTypeStruct.toString() %>
+			</p>
+			<%
+				StringBuffer sbfAdresse = new StringBuffer();
+				
+				sbfAdresse.append(obj.getAddress())
+					.append("<br/>");
+				
+				if(Util.notEmpty(obj.getPostalBox())) {
+					sbfAdresse.append(obj.getPostalBox())
+						.append(" ");
+				}
+				
+				sbfAdresse.append(obj.getZipCode())
+					.append(" ")
+					.append(obj.getCommune().getTitle());
+			%>
+			<p class="ds44-docListElem mts">
+				<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+				<%= sbfAdresse.toString() %>
+			</p>
+			<%
+				String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
+				String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
+				String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
+			%>
+			<jalios:if predicate='<%= Util.notEmpty(localisation) %>'>
+				<p class="ds44-docListElem mts">
+					<i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
+					<a href='<%= localisation%>' 
+						title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
+						target="_blank"> 
+						
+						<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
+					</a>
+				</p>
+			</jalios:if>
+		</div>
+		<jalios:if predicate="<%= Util.notEmpty(obj.getPhones()) || Util.notEmpty(obj.getMails()) || Util.notEmpty(obj.getWebsites()) %>">
+			<div class="col ds44--xl-padding-l">
+			
+				<jalios:if predicate='<%=Util.notEmpty(obj.getPhones())%>'>
+					<div class="ds44-docListElem mts">
+						<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+
+						<jalios:if predicate='<%= obj.getPhones().length == 1 %>'>
+							<% String numTel = obj.getPhones()[0]; %>
+							<ds:phone number="<%= numTel %>"/>
+						</jalios:if>
+
+						<jalios:if predicate='<%= obj.getPhones().length > 1 %>'>
+							<ul class="ds44-list">
+								<jalios:foreach name="numTel" type="String" array="<%= obj.getPhones() %>">
+									<li>
+										<ds:phone number="<%= numTel %>"/>
+									</li>
+								</jalios:foreach>
+							</ul>
+						</jalios:if>
+
+					</div>
+				</jalios:if>
+
+				<jalios:if predicate='<%=Util.notEmpty(obj.getMails())%>'>
+					<div class="ds44-docListElem mts">
+						<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+
+						<jalios:if predicate='<%= obj.getMails().length == 1 %>'>
+							<% String email = obj.getMails()[0]; %>
+							<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+								<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
+							</a>
+						</jalios:if>
+
+						<jalios:if predicate='<%= obj.getMails().length > 1 %>'>
+							<ul class="ds44-list">
+								<jalios:foreach name="email" type="String" array='<%= obj.getMails() %>'>
+									<li>
+										<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+											<%= email %>
+										</a>
+									</li>
+								</jalios:foreach>
+							</ul>
+						</jalios:if>
+
+					</div>
+				</jalios:if>
+
+				<jalios:if predicate='<%=Util.notEmpty(obj.getWebsites())%>'>
+					<div class="ds44-docListElem mts">
+						<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+
+						<jalios:if predicate='<%= obj.getWebsites().length == 1 %>'>
+							<% String site = obj.getWebsites()[0]; %>
+							<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank">
+								<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
+							</a>
+						</jalios:if>
+
+						<jalios:if predicate='<%= obj.getWebsites().length > 1 %>'>
+							<ul class="ds44-list">
+								<jalios:foreach name="site" type="String" array='<%= obj.getWebsites() %>'>
+									<li>
+										<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
+											<%= SocleUtils.parseUrl(site) %>
+										</a>
+									</li>
+								</jalios:foreach>
+							</ul>
+						</jalios:if>
+
+					</div>
+				</jalios:if>
+			</div>
+		</jalios:if>
+	</div>
+</jalios:buffer>
+
 <main id="content" role="main">
 	<article class="ds44-container-large">
 	
-		<div class="ds44-lightBG ds44-posRel">
-			<%-- TODO bouton Retour a la liste --%>
-			<%-- <a class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
-				<i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
-				<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span>
-			</a> --%>
-			<div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
-				<div class="ds44-grid12-offset-2">
-					<jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
-						<jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
-					</jalios:if>
-					<h1 class="h1-like mbs mts" id="idTitre1"><%=obj.getTitle()%></h1>
-				</div>
-			</div>
-		</div>
-		<div class="ds44-img50 ds44--l-padding-tb">
-			<div class="ds44-inner-container">
-				<div class="ds44-grid12-offset-1">
-					<section class="ds44-box ds44-theme">
-						<div class="ds44-innerBoxContainer">
-							<div class="grid-2-small-1 ds44-grid12-offset-1">
-								<div class="col">
-									<%
-										String separator = ", ";
-										StringBuffer sbfTypeStruct = new StringBuffer();
-										String typeStruct = "";
-										for(Category itCat : obj.getStructureType(loggedMember)) {
-											if(Util.notEmpty(typeStruct)) {
-												sbfTypeStruct.append(separator);
-											}
-											sbfTypeStruct.append(itCat.getName());
-										}
-									%>
-									<p class="ds44-docListElem mts">
-										<i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
-										<%= sbfTypeStruct.toString() %>
-									</p>
-									<%
-										StringBuffer sbfAdresse = new StringBuffer();
-										
-										sbfAdresse.append(obj.getAddress())
-											.append("<br/>");
-										
-										if(Util.notEmpty(obj.getPostalBox())) {
-											sbfAdresse.append(obj.getPostalBox())
-												.append(" ");
-										}
-										
-										sbfAdresse.append(obj.getZipCode())
-											.append(" ")
-											.append(obj.getCommune().getTitle());
-									%>
-									<p class="ds44-docListElem mts">
-										<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-										<%= sbfAdresse.toString() %>
-									</p>
-									<%
-										String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
-										String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
-										String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
-									%>
-									<jalios:if predicate='<%= Util.notEmpty(localisation) %>'>
-										<p class="ds44-docListElem mts">
-											<i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
-											<a href='<%= localisation%>' 
-												title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
-												target="_blank"> 
-												
-												<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
-											</a>
-										</p>
-									</jalios:if>
-								</div>
-								<jalios:if predicate="<%= Util.notEmpty(obj.getPhones()) || Util.notEmpty(obj.getMails()) || Util.notEmpty(obj.getWebsites()) %>">
-									<div class="col ds44--xl-padding-l">
-									
-										<jalios:if predicate='<%=Util.notEmpty(obj.getPhones())%>'>
-											<div class="ds44-docListElem mts">
-												<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-
-												<jalios:if predicate='<%= obj.getPhones().length == 1 %>'>
-													<% String numTel = obj.getPhones()[0]; %>
-													<ds:phone number="<%= numTel %>"/>
-												</jalios:if>
-
-												<jalios:if predicate='<%= obj.getPhones().length > 1 %>'>
-													<ul class="ds44-list">
-														<jalios:foreach name="numTel" type="String" array="<%= obj.getPhones() %>">
-															<li>
-																<ds:phone number="<%= numTel %>"/>
-															</li>
-														</jalios:foreach>
-													</ul>
-												</jalios:if>
-
-											</div>
-										</jalios:if>
-
-										<jalios:if predicate='<%=Util.notEmpty(obj.getMails())%>'>
-											<div class="ds44-docListElem mts">
-												<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-												<% 
-													StringBuffer sbfAriaLabelMail = new StringBuffer();
-													sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-														.append(" ")
-														.append(obj.getTitle())
-														.append(" ")
-														.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-														.append(" : ");
-													String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-												%>
-
-												<jalios:if predicate='<%= obj.getMails().length == 1 %>'>
-													<% String email = obj.getMails()[0]; %>
-													<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-														<%
-															StringBuffer sbfLabelMail = new StringBuffer();
-															sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-																.append(" ")
-																.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-														%>
-														<%=  sbfLabelMail.toString()  %>
-													</a>
-												</jalios:if>
-
-												<jalios:if predicate='<%= obj.getMails().length > 1 %>'>
-													<ul class="ds44-list">
-														<jalios:foreach name="email" type="String" array='<%= obj.getMails() %>'>
-															<li>
-																<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-																	<%= email %>
-																</a>
-															</li>
-														</jalios:foreach>
-													</ul>
-												</jalios:if>
-
-											</div>
-										</jalios:if>
-
-										<jalios:if predicate='<%=Util.notEmpty(obj.getWebsites())%>'>
-											<div class="ds44-docListElem mts">
-												<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
-												<% 
-													StringBuffer sbfAriaLabelSite = new StringBuffer();
-													sbfAriaLabelSite.append(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label"))
-														.append(" ")
-														.append(obj.getTitle())
-														.append(" ")
-														.append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
-													String strAriaLabelSite = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelSite.toString());
-												%>
-
-												<jalios:if predicate='<%= obj.getWebsites().length == 1 %>'>
-													<% String site = obj.getWebsites()[0]; %>
-													<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank">
-														<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
-													</a>
-												</jalios:if>
-
-												<jalios:if predicate='<%= obj.getWebsites().length > 1 %>'>
-													<ul class="ds44-list">
-														<jalios:foreach name="site" type="String" array='<%= obj.getWebsites() %>'>
-															<li>
-																<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= strAriaLabelSite %>' target="_blank"> 
-																	<%= SocleUtils.parseUrl(site) %>
-																</a>
-															</li>
-														</jalios:foreach>
-													</ul>
-												</jalios:if>
-
-											</div>
-										</jalios:if>
-									</div>
-								</jalios:if>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
+		<ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
 	
 		<jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) || Util.notEmpty(obj.getLifeEnvironmentText()) 
-				|| Util.notEmpty(obj.getSafeServiceText()) || Util.notEmpty(obj.getSocialLifeText()) || Util.notEmpty(obj.getAnimationsText()) ||  %>">
+				|| Util.notEmpty(obj.getSafeServiceText()) || Util.notEmpty(obj.getSocialLifeText()) || Util.notEmpty(obj.getAnimationsText()) %>">
 			<section class="ds44-contenuArticle" id="section1">
 				<div class="ds44-inner-container">
 					<div class="ds44-grid12-offset-2">
@@ -273,18 +227,18 @@
 												<%= SocleUtils.formatAdresseEcrire(itFicheLieu) %>
 											</p>
 											
-											<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getPhones())%>'>
+											<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getTelephone())%>'>
 												<div class="ds44-docListElem mts">
 													<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	
-													<jalios:if predicate='<%= itFicheLieu.getPhones().length == 1 %>'>
-														<% String numTel = itFicheLieu.getPhones()[0]; %>
+													<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
+														<% String numTel = itFicheLieu.getTelephone()[0]; %>
 														<ds:phone number="<%= numTel %>"/>
 													</jalios:if>
 	
-													<jalios:if predicate='<%= itFicheLieu.getPhones().length > 1 %>'>
+													<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
 														<ul class="ds44-list">
-															<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getPhones() %>">
+															<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
 																<li>
 																	<ds:phone number="<%= numTel %>"/>
 																</li>
@@ -295,38 +249,22 @@
 												</div>
 											</jalios:if>
 	
-											<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getMails())%>'>
+											<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getEmail())%>'>
 												<div class="ds44-docListElem mts">
 													<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-													<% 
-														StringBuffer sbfAriaLabelMail = new StringBuffer();
-														sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-															.append(" ")
-															.append(itFicheLieu.getTitle())
-															.append(" ")
-															.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-															.append(" : ");
-														String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-													%>
 	
-													<jalios:if predicate='<%= itFicheLieu.getMails().length == 1 %>'>
-														<% String email = itFicheLieu.getMails()[0]; %>
-														<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-															<%
-																StringBuffer sbfLabelMail = new StringBuffer();
-																sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-																	.append(" ")
-																	.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-															%>
-															<%=  sbfLabelMail.toString()  %>
+													<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
+														<% String email = itFicheLieu.getEmail()[0]; %>
+														<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
+															<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 														</a>
 													</jalios:if>
 	
-													<jalios:if predicate='<%= itFicheLieu.getMails().length > 1 %>'>
+													<jalios:if predicate='<%= itFicheLieu.getEmail().length > 1 %>'>
 														<ul class="ds44-list">
-															<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getMails() %>'>
+															<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
 																<li>
-																	<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
+																	<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
 																		<%= email %>
 																	</a>
 																</li>
@@ -337,7 +275,7 @@
 												</div>
 											</jalios:if>
 											<p>
-												<a class="ds44-btnStd ds44-mt3" href='<%= ficheLieu.getDisplayUrl(userLocale) %>' 
+												<a class="ds44-btnStd ds44-mt3" href='<%= itFicheLieu.getDisplayUrl(userLocale) %>' 
 														title="<%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplussur", itFicheLieu.getTitle()) %>">
 													<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplus") %></span>
 													<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
@@ -356,18 +294,18 @@
 											<%= SocleUtils.formatAdresseEcrire(itFicheLieu) %>
 										</p>
 										
-										<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getPhones())%>'>
+										<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getTelephone())%>'>
 											<div class="ds44-docListElem mts">
 												<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 
-												<jalios:if predicate='<%= itFicheLieu.getPhones().length == 1 %>'>
-													<% String numTel = itFicheLieu.getPhones()[0]; %>
+												<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
+													<% String numTel = itFicheLieu.getTelephone()[0]; %>
 													<ds:phone number="<%= numTel %>"/>
 												</jalios:if>
 
-												<jalios:if predicate='<%= itFicheLieu.getPhones().length > 1 %>'>
+												<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
 													<ul class="ds44-list">
-														<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getPhones() %>">
+														<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
 															<li>
 																<ds:phone number="<%= numTel %>"/>
 															</li>
@@ -378,38 +316,22 @@
 											</div>
 										</jalios:if>
 
-										<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getMails())%>'>
+										<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getEmail())%>'>
 											<div class="ds44-docListElem mts">
 												<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-												<% 
-													StringBuffer sbfAriaLabelMail = new StringBuffer();
-													sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-														.append(" ")
-														.append(itFicheLieu.getTitle())
-														.append(" ")
-														.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-														.append(" : ");
-													String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-												%>
 
-												<jalios:if predicate='<%= itFicheLieu.getMails().length == 1 %>'>
-													<% String email = itFicheLieu.getMails()[0]; %>
-													<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
-														<%
-															StringBuffer sbfLabelMail = new StringBuffer();
-															sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-																.append(" ")
-																.append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-														%>
-														<%=  sbfLabelMail.toString()  %>
+												<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
+													<% String email = itFicheLieu.getEmail()[0]; %>
+													<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
+														<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 													</a>
 												</jalios:if>
 
-												<jalios:if predicate='<%= itFicheLieu.getMails().length > 1 %>'>
+												<jalios:if predicate='<%= itFicheLieu.getEmail().length > 1 %>'>
 													<ul class="ds44-list">
-														<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getMails() %>'>
+														<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
 															<li>
-																<a href='<%= "mailto:"+email %>' title='<%= strAriaLabelMail + email %>'> 
+																<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
 																	<%= email %>
 																</a>
 															</li>
@@ -420,7 +342,7 @@
 											</div>
 										</jalios:if>
 										<p>
-											<a class="ds44-btnStd ds44-mt3" href='<%= ficheLieu.getDisplayUrl(userLocale) %>' 
+											<a class="ds44-btnStd ds44-mt3" href='<%= itFicheLieu.getDisplayUrl(userLocale) %>' 
 													title="<%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplussur", itFicheLieu.getTitle()) %>">
 												<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.savoirplus") %></span>
 												<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
