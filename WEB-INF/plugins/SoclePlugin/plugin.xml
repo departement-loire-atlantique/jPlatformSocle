@@ -258,6 +258,9 @@
         <template name="default" file="doPortletFacetteDelegationBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
+        <template name="pdcv" file="doPortletFacetteDelegationPdcv.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit recherche PDCV</label>
+        </template>
     </templates>
     <templates type="PortletFacetteMotcle">
         <template name="default" file="doPortletFacetteMotcleBoxDisplay.jsp" usage='box'>

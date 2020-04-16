@@ -26,6 +26,7 @@ jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
+jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
 
 # ------------------------------------------------------------
 #  Recherche à facettes
@@ -132,6 +133,9 @@ jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous
+jcmsplugin.socle.menu.pdcv.ajouterAdresse: Ajouter une adresse
+jcmsplugin.socle.menu.pdcv.votreAdresse: Votre adresse
+jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
 
 # ------------------------------------------------------------
 #  Près de chez vous
@@ -242,6 +246,7 @@ jcmsplugin.socle.faq.selectionner-commune: Sélectionner Commune
 jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
+jcmsplugin.socle.facette.asterisque: *
 jcmsplugin.socle.facette.filtrer-par: Filtrer par
 jcmsplugin.socle.facette.form-element: form-element
 jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
