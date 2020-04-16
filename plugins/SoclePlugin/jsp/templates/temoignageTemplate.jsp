@@ -46,9 +46,9 @@ if (Util.isEmpty(titre)) {
             </jalios:if>
         </div>
         <div class="ds44--m-padding">
-            <p role="heading" aria-level="3"><a href="<%=urlPub %>"><%=titre%></a></p>
+            <h3 class="ds44-card__title"><a href="<%=urlPub %>"><%=titre%></a></h3>
             <jalios:if predicate="<%=Util.notEmpty(sousTitre) %>">
-                <h4 class="ds44-cardDate"><%=sousTitre%></h4>
+                <h4 class="ds44-cardDate ds44-card__title"><%=sousTitre%></h4>
             </jalios:if>
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
         </div>
