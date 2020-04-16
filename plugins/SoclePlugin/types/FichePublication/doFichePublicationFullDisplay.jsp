@@ -64,7 +64,9 @@
                                 String fileSizeFichierPublication = Util.formatFileSize(fichierPublication.getSize(), userLocale,false);
                                 %>
                                 <li class="ds44-large-extra-mb ds44-mr-std">
-                                    <a href="<%= fichierPublication.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierPublication, fileSizeFichierPublication)) %>">
+                                    <a href="<%= fichierPublication.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank"
+                                        title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierPublication, fileSizeFichierPublication)) %>"
+                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Télécharger","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
                                         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.telecharger") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -72,7 +74,9 @@
 							
 							<jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud()) %>'>
                                 <li class="ds44-large-extra-mb ds44-mr-std">
-	                                <button class="ds44-btnStd ds44-bntALeft" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.ecoutermagazine.title", obj.getTitle(userLang))) %>" type="button" data-target="#overlay-ecouter" data-js="ds44-modal">
+	                                <button class="ds44-btnStd ds44-bntALeft" type="button" data-target="#overlay-ecouter" data-js="ds44-modal" 
+	                                title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.ecoutermagazine.title", obj.getTitle(userLang))) %>" 
+	                                data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Ecouter","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
 	                                    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.ecouter") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	                                </button>
                                 </li>
@@ -85,7 +89,9 @@
                                 String fileSizeFichierDaisy = Util.formatFileSize(fichierDaisy.getSize(), userLocale,false);
                                 %>
                                 <li class="ds44-large-extra-mb">
-                                    <a href="<%= fichierDaisy.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierDaisy, fileSizeFichierDaisy)) %>">
+                                    <a href="<%= fichierDaisy.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank" 
+                                        title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierDaisy, fileSizeFichierDaisy)) %>"
+                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Version Daisy","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
                                         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.versiondaisy") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -111,7 +117,7 @@
 	                    
 		                    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique)) %>'>
 		                    
-			                    <div class="col ds44-mtb1 <%= cptRubrique%2==1 ? "mls" : "mrs" %>">
+			                    <div class="col ds44-mtb1 <%= cptRubrique%2==1 ? "mrs" : "mls" %>">
 			                        <h3 id="idTitre-list<%= cptRubrique %>"><%= obj.getFieldValue("titreRubrique"+cptRubrique) %></h3>
 			                        
 	                                <%-- Boucle sur les liens --%>
