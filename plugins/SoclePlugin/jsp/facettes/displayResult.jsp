@@ -15,6 +15,7 @@ PortletQueryForeach box = new PortletQueryForeach(boxTmp);
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
 

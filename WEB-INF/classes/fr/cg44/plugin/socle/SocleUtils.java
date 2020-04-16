@@ -564,6 +564,9 @@ public final class SocleUtils {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
+		if(Util.notEmpty(pubFullGabarit)) {
+		  jsonObject.addProperty("content_html", pubFullGabarit);
+    }
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
@@ -574,10 +577,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(pubMarkerGabarit)) {
 			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-		}
-		if(Util.notEmpty(pubFullGabarit)) {
-			jsonMetaObject.addProperty("html_full", pubFullGabarit);
-		}
+		}		
 		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
 	}
@@ -959,7 +959,7 @@ public final class SocleUtils {
     Map<String, String[]> parametersMap = new HashMap<String, String[]>();
     while(enumParams.hasMoreElements()) {
       String nameParam = enumParams.nextElement();  
-      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element"))){     
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){     
         String itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));   
         if(parametersMap.containsKey(itNameKey)){      
           parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
