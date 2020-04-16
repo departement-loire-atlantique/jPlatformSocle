@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,9 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
@@ -560,6 +565,9 @@ public final class SocleUtils {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
+		if(Util.notEmpty(pubFullGabarit)) {
+		  jsonObject.addProperty("content_html", pubFullGabarit);
+    }
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
@@ -570,10 +578,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(pubMarkerGabarit)) {
 			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-		}
-		if(Util.notEmpty(pubFullGabarit)) {
-			jsonMetaObject.addProperty("html_full", pubFullGabarit);
-		}
+		}		
 		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
 	}
@@ -925,6 +930,28 @@ public final class SocleUtils {
       return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
     }
     return "";
+  }
+  
+  /**
+   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
+   * @param request
+   * @return
+   */
+  public static Map<String, String[]> getFacetsParameters(HttpServletRequest request) {
+    Enumeration<String> enumParams = request.getParameterNames();
+    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
+    while(enumParams.hasMoreElements()) {
+      String nameParam = enumParams.nextElement();  
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){     
+        String itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));   
+        if(parametersMap.containsKey(itNameKey)){      
+          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
+        }else {
+          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+        }        
+      }  
+    }
+    return parametersMap;
   }
 	
 }

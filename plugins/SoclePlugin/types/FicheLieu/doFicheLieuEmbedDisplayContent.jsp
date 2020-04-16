@@ -16,7 +16,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
 String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 %>
-<section class="mbl">
+<section class="mbs">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	        <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>

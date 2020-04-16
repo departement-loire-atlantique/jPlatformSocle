@@ -97,81 +97,83 @@
         </div>
         
     <%-- Contenu --%>
-    <section class="ds44-contenuArticle ds44-mt2" id="section1">
-        <div class="ds44-inner-container--mag">
-            <div class="ds44-grid12-offset-1">
-                <h2 class="h2-like ds44-mb4"><%= glp("jcmsplugin.socle.fichepublication.ausommaire") %></h2>
-                <div class="grid-2-small-1">
-                
-                    <%-- Boucle sur les 4 onglets "Rubrique" et alternance des styles "mrs" et "mls".  --%>
-                    
-                    <% for(int cptRubrique=1 ; cptRubrique<=4 ; cptRubrique++) { %>
-                    
-	                    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique)) %>'>
+    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique1")) || Util.notEmpty(obj.getFieldValue("titreRubrique2"))
+      || Util.notEmpty(obj.getFieldValue("titreRubrique3")) || Util.notEmpty(obj.getFieldValue("titreRubrique4")) %>'>
+	    <section class="ds44-contenuArticle ds44-mt2" id="section1">
+	        <div class="ds44-inner-container--mag">
+	            <div class="ds44-grid12-offset-1">
+	                <h2 class="h2-like ds44-mb4"><%= glp("jcmsplugin.socle.fichepublication.ausommaire") %></h2>
+	                <div class="grid-2-small-1">
+	                
+	                    <%-- Boucle sur les 4 onglets "Rubrique" et alternance des styles "mrs" et "mls".  --%>
 	                    
-		                    <div class="col ds44-mtb1 <%= cptRubrique%2==1 ? "mls" : "mrs" %>">
-		                        <h3 id="idTitre-list<%= cptRubrique %>"><%= obj.getFieldValue("titreRubrique"+cptRubrique) %></h3>
-		                        
-                                <%-- Boucle sur les liens --%>
-								<%
-								String[] libelleLien = (String[]) (obj.getFieldValue("libelleLienRubrique"+cptRubrique));
-								Publication[] lienInterne = (Publication[]) (obj.getFieldValue("lienInterneRubrique"+cptRubrique));
-								String[] lienExterne = (String[]) (obj.getFieldValue("lienExterneRubrique"+cptRubrique));
-								%>
-                                <ul class="ds44-uList">
-								
-									<jalios:foreach name="itLien" type="String" counter="itCounter" array='<%=libelleLien%>'>
-	                                    <%
-	                                    String urlLien = "";
-	                                    String targetAttr = "";
-	                                    String titleAttr = "";
-	                                    String titleValue = "";
-	                                    boolean targetBlank = false;
-	                                    
-	                                    if(Util.notEmpty(lienInterne) && Util.notEmpty(lienInterne[itCounter-1])){
-	                                    	Publication pub = lienInterne[itCounter-1];
-	                                    	urlLien = pub.getDisplayUrl(userLocale);
-									    }
-									    else if(Util.notEmpty(lienExterne) && Util.notEmpty(lienExterne[itCounter-1])){
-									    	urlLien = lienExterne[itCounter-1];
-									    	targetBlank = true;
-									    	titleValue = itLien;
-									    }
-	                                    
-	                                    // Accessibilité : on place un attribut "title" sur le lien uniquement si le lien s'ouvre dans une nouvelle fenêtre
-	                                    if(targetBlank){
-	                                      targetAttr = "target=\"_blank\" ";
-	                                      titleAttr = "title=\"" +  HttpUtil.encodeForHTMLAttribute(titleValue) + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
-	                                      }
-									    %>
-									    <li><a href="<%= urlLien %>" <%= titleAttr %> <%= targetAttr %>><%= itLien %></a></li>
-									</jalios:foreach>
-
-		                        </ul>
-		                    </div>
+	                    <% for(int cptRubrique=1 ; cptRubrique<=4 ; cptRubrique++) { %>
+	                    
+		                    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique)) %>'>
 		                    
-	                    </jalios:if>
-                    <%} %>
-					
-                </div>
-                
-                <%-- Compléments --%>
-               
-                <jalios:if predicate='<%= Util.notEmpty(obj.getComplement()) %>'>
-	                <section class="ds44-box ds44-theme ds44-mb3 mts">
-	                <div class="ds44-innerBoxContainer">
-                        <jalios:if predicate='<%= Util.notEmpty(obj.getTitreComplement()) %>'>
-                            <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreComplement() %></p>
-                        </jalios:if>
-                        <%= obj.getComplement() %>
+			                    <div class="col ds44-mtb1 <%= cptRubrique%2==1 ? "mls" : "mrs" %>">
+			                        <h3 id="idTitre-list<%= cptRubrique %>"><%= obj.getFieldValue("titreRubrique"+cptRubrique) %></h3>
+			                        
+	                                <%-- Boucle sur les liens --%>
+									<%
+									String[] libelleLien = (String[]) (obj.getFieldValue("libelleLienRubrique"+cptRubrique));
+									Publication[] lienInterne = (Publication[]) (obj.getFieldValue("lienInterneRubrique"+cptRubrique));
+									String[] lienExterne = (String[]) (obj.getFieldValue("lienExterneRubrique"+cptRubrique));
+									%>
+	                                <ul class="ds44-uList">
+									
+										<jalios:foreach name="itLien" type="String" counter="itCounter" array='<%=libelleLien%>'>
+		                                    <%
+		                                    String urlLien = "";
+		                                    String targetAttr = "";
+		                                    String titleAttr = "";
+		                                    String titleValue = "";
+		                                    boolean targetBlank = false;
+		                                    
+		                                    if(Util.notEmpty(lienInterne) && Util.notEmpty(lienInterne[itCounter-1])){
+		                                    	Publication pub = lienInterne[itCounter-1];
+		                                    	urlLien = pub.getDisplayUrl(userLocale);
+										    }
+										    else if(Util.notEmpty(lienExterne) && Util.notEmpty(lienExterne[itCounter-1])){
+										    	urlLien = lienExterne[itCounter-1];
+										    	targetBlank = true;
+										    	titleValue = itLien;
+										    }
+		                                    
+		                                    // Accessibilité : on place un attribut "title" sur le lien uniquement si le lien s'ouvre dans une nouvelle fenêtre
+		                                    if(targetBlank){
+		                                      targetAttr = "target=\"_blank\" ";
+		                                      titleAttr = "title=\"" +  HttpUtil.encodeForHTMLAttribute(titleValue) + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+		                                      }
+										    %>
+										    <li><a href="<%= urlLien %>" <%= titleAttr %> <%= targetAttr %>><%= itLien %></a></li>
+										</jalios:foreach>
+	
+			                        </ul>
+			                    </div>
+			                    
+		                    </jalios:if>
+	                    <%} %>
+						
 	                </div>
-	                </section>
-                </jalios:if>
-                
-            </div>
-        </div>
-    </section>
-    
+	                
+	                <%-- Compléments --%>
+	               
+	                <jalios:if predicate='<%= Util.notEmpty(obj.getComplement()) %>'>
+		                <section class="ds44-box ds44-theme ds44-mb3 mts">
+		                <div class="ds44-innerBoxContainer">
+	                        <jalios:if predicate='<%= Util.notEmpty(obj.getTitreComplement()) %>'>
+	                            <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreComplement() %></p>
+	                        </jalios:if>
+	                        <%= obj.getComplement() %>
+		                </div>
+		                </section>
+	                </jalios:if>
+	                
+	            </div>
+	        </div>
+	    </section>
+    </jalios:if>
     <%-- Modale code Soundcloud --%>
     <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud()) %>'>
 	    <section class="ds44-modal-container" id="overlay-ecouter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-ecouter">

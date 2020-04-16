@@ -13,6 +13,8 @@
 	Boolean hasFonctionsAdditionnelles = false; // TODO
 	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
+	
+	request.setAttribute("rechercheId", obj.getId());
 %>
 
 
@@ -47,7 +49,7 @@
 			</div>
 		</jalios:if>
 		
-		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResult.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
 		    <jalios:if predicate='<%= !isInRechercheFacette %>'>
 			  <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			</jalios:if>
@@ -66,7 +68,7 @@
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres ? "" : "--large"; %>
-					<button class='<%= "ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
+					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>					
@@ -118,12 +120,12 @@
 			</jalios:if>
 		
 		
-            <input type="hidden" name="facetOperatorUnion" value='<%= obj.getModeDesFacettes() %>' data-technical-field />
+            <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
 		
-            <input type="hidden" name="modCatBranchesUnion" value='<%= obj.getModeDesBranches() %>' data-technical-field />
-            <input type="hidden" name="modCatNivUnion" value='<%= obj.getModeDesCategories() %>' data-technical-field />
+            <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
+            <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
 		
-            <input type="hidden" name="boxId" value='<%= obj.getId() %>' data-technical-field />
+            <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
 		
 		</form>
 	</div>
@@ -164,29 +166,44 @@
 
 
 
-
 <jalios:if predicate='<%= isInRechercheFacette %>'>
 
-	  <div class="ds44-flex-container ds44-results ds44-results--mapVisible">
+	  <div class='ds44-flex-container ds44-results ds44-results<%=  obj.getAffichageDeLaCarte() ? "--mapVisible" : "" %>'>
 	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
 	          <div class="ds44-js-results-container">
-	              <div class="ds44-js-results-card" data-url="/json/search-card.json" aria-hidden="true"></div>
+	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
 	              <div class="ds44-js-results-list">
 	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b"><%= glp("jcmsplugin.socle.faire.recherche") %></p>
 	                  <p class="ds44-textLegend mbs hidden"><%= glp("jcmsplugin.socle.recherche.trop.resultats", obj.getMaxResults()) %></p>
 	              </div>
 	          </div>
 	      </div>
-	      <div class="ds44-mapResults">
-	          <div class="ds44-js-map"></div>
-	      </div>
-	      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
-	          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
-	      </button>
+	      
+	      <jalios:if predicate="<%= obj.getAffichageDeLaCarte() %>">
+		      <div class="ds44-mapResults">
+		          <div class="ds44-js-map"></div>
+		      </div>
+		      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+		          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+		      </button>
+	      </jalios:if>
+	      
+	      
 	  </div>
 	
 </jalios:if>
 
 
+<% 
+request.removeAttribute("rechercheId");
+%>
 
-
+<%-- TODO Méthode temporaire pour soumettre le formulaire à l'affiche de la recherche à facette --%> 
+<jalios:if predicate="<%= isInRechercheFacette && request.getParameterMap().size() > 5 %>">
+	<jalios:javascript>
+	   function submitForm(){
+		  jQuery(".jcms-js-submit").click();
+	   }	
+	   setTimeout(submitForm, 200);
+	</jalios:javascript>
+</jalios:if>

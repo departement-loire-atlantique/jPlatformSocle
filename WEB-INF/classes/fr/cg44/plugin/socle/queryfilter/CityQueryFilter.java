@@ -1,5 +1,6 @@
 package fr.cg44.plugin.socle.queryfilter;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
 		// Récupère la ou les communes en paramètre de recherche
-		String[] citiesCodeSearchArray = request.getParameterValues("commune[value]");
+		String[] citiesCodeSearchArray = request.getParameterValues("commune");
 		addCitySearch(qh, request, citiesCodeSearchArray);
 		return qh;
 	}
@@ -33,7 +34,7 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	 * @param cityData
 	 */
 	public void addCitySearch(QueryHandler qh, HttpServletRequest request, String... cityCode) {		
-	  if(Util.notEmpty(cityCode)) {
+	  if(Util.notEmpty(cityCode) && !Arrays.stream(cityCode).anyMatch("allCity"::equalsIgnoreCase)) {
 	    // Passe la query en syntaxe avancée pour accepter les requêtes lucenes
 	    qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
 	    // Requête pour la recherche sur les communes (OR entre les communes)	
