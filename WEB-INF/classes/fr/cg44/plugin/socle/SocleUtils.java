@@ -35,7 +35,6 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
-import com.sun.jdi.connect.Connector.SelectedArgument;
 
 import generated.AbstractPortletFacette;
 import generated.Canton;
