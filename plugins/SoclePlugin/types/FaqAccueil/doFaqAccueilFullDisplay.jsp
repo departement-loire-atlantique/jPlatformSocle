@@ -12,7 +12,7 @@
 	<div class="ds44-inner-container ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44--xl-padding-lr">
 		<div class="grid-12-small-1">
 			<div class="col-6-small-1">
-				<p class="h4-like" aria-level="2" role="heading"><%= Util.notEmpty(obj.getDescription(userLang)) ? obj.getDescription(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></p>
+				<h3 class="h4-like" aria-level="2" role="heading"><%= Util.notEmpty(obj.getSoustitre(userLang)) ? obj.getSoustitre(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></h3>
 				<ul class="ds44-collapser ds44-mb-std ">
 					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' counter='nbrQuestRep'>
 						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
