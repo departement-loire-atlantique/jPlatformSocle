@@ -375,6 +375,7 @@
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter" />   
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
   </plugincomponents>
