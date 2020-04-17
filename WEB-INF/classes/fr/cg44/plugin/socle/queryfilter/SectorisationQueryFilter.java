@@ -57,13 +57,13 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
 		String lng = HttpUtil.getStringParameter(request, "long", "", ".*");
 		String lat = HttpUtil.getStringParameter(request, "lat", "", ".*");
-		String lng_1 = HttpUtil.getStringParameter(request, "long_1", "", ".*");
-		String lat_1 = HttpUtil.getStringParameter(request, "lat_1", "", ".*");
-		String lng_2 = HttpUtil.getStringParameter(request, "long_2", "", ".*");
-		String lat_2 = HttpUtil.getStringParameter(request, "lat_2", "", ".*");
-		String sectorisation = HttpUtil.getAlphaNumParameter(request, "sectorisation", "");
+		String lng_1 = HttpUtil.getStringParameter(request, "map[nw][long]", "", ".*");
+		String lat_1 = HttpUtil.getStringParameter(request, "map[nw][lat]", "", ".*");
+		String lng_2 = HttpUtil.getStringParameter(request, "map[se][long]", "", ".*");
+		String lat_2 = HttpUtil.getStringParameter(request, "map[se][lat]", "", ".*");
+		Boolean sectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
 		
-		if(Util.notEmpty(sectorisation)) {				
+		if(sectorisation) {				
 			String url = "";						
 			if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
 				// Sectorisation par zone
