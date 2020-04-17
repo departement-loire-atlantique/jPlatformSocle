@@ -318,6 +318,13 @@ unified-insert.items.content.longtitle: Un Contenu intégré
 unified-insert.items.content.subtitle: (présenter un contenu au format intégré)
 
 # ------------------------------------------------------------
+#  Dossier
+# ------------------------------------------------------------
+jcmsplugin.socle.dossier.sommaire : Sommaire
+jcmsplugin.socle.dossier.menu-sommaire : Menu "Sommaire"
+jcmsplugin.socle.dossier.fermer-menu-sommaire : Fermer le menu Sommaire
+
+# ------------------------------------------------------------
 #  Fiche emploi / stage
 # ------------------------------------------------------------
 

@@ -25,6 +25,7 @@
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
+    <type name="Dossier"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
     <type name="EvenementInfolocale"></type>
@@ -88,6 +89,11 @@
     </templates>
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Dossier">
+        <template name="default" file="doDossierFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
