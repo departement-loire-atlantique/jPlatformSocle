@@ -200,10 +200,10 @@ request.removeAttribute("rechercheId");
 
 <%-- TODO Méthode temporaire pour soumettre le formulaire à l'affiche de la recherche à facette --%> 
 <jalios:if predicate="<%= isInRechercheFacette && request.getParameterMap().size() > 5 %>">
-	<jalios:javascript>
-	   function submitForm(){
-		  jQuery(".jcms-js-submit").click();
-	   }	
-	   setTimeout(submitForm, 200);
-	</jalios:javascript>
+	<script>
+	  function submitForm(){
+		  document.getElementsByClassName("jcms-js-submit")[0].click();
+      }    
+      setTimeout(submitForm, 200);	  
+	</script>
 </jalios:if>
