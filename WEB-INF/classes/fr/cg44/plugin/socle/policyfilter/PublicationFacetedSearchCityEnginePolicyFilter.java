@@ -7,7 +7,6 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
 
-import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.policy.BasicLuceneSearchEnginePolicyFilter;
