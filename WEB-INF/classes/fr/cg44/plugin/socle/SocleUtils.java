@@ -971,6 +971,11 @@ public final class SocleUtils {
     return parametersMap;
   }
   
+  /**
+   * Retourne la fonction d'un membre élu
+   * @param pub
+   * @return
+   */
   public static String getElectedMemberFunction(ElectedMember pub) {
     String position = "";
     // Cas : est président / présidente
@@ -981,8 +986,35 @@ public final class SocleUtils {
     if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
       position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
     }
-    
+    for (Category itCat : pub.getFunctions(channel.getCurrentLoggedMember())) {
+      if (itCat.getParent().equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+        if (Util.isEmpty(position)) {
+          position = (pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin")) + " ";
+        } else {
+          position += " ";
+        }
+        position += itCat.getName();
+        return position;
+      }
+    }
     return position;
+  }
+  
+  /**
+   * Retourne le binôme d'un membre élu
+   * @param pub
+   */
+  public static ElectedMember getElectedMemberBinome(ElectedMember elu) {
+    if (Util.isEmpty(elu) || Util.isEmpty(elu.getCanton())) {
+      return null;
+    }
+    
+    Canton mbrCanton = elu.getCanton();
+    TreeSet<ElectedMember> linkedElus = mbrCanton.getLinkIndexedDataSet(ElectedMember.class);
+    
+    linkedElus.remove(elu);
+    
+    return linkedElus.first();
   }
 	
 }
