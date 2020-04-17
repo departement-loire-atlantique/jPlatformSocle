@@ -21,9 +21,9 @@ if (Util.notEmpty(request.getAttribute("overrideVidTitle"))) {
 }
 
 String chapoVideo = obj.getChapo();
-if (Util.notEmpty(request.getAttribute("overrideVidTChapo"))) {
-  chapoVideo = request.getAttribute("overrideVidTChapo").toString();
-  request.setAttribute("overrideVidTChapo", null);
+if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
+  chapoVideo = request.getAttribute("overrideVidChapo").toString();
+  request.setAttribute("overrideVidChapo", null);
 }
 %>
 
