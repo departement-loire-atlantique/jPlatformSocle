@@ -29,11 +29,14 @@ if (Util.notEmpty(pub.getFunctions(loggedMember))) {
   }
 }
 
+String urlImage = pub.getImageMedaillon();
+if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
+
 %>
 
 <section class="ds44-card ds44-box ds44-js-card ds44-card--verticalPicture ds44-card--verticalPicture--elu ds44--m-padding-b">
     <picture class="ds44-container-imgRatio ds44-container-imgRatio--profilXL">
-        <img src="<%= pub.getImageMedaillon() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
+        <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
     </picture>
     <div class="ds44-card__section txtleft mts">
         <h4 class="h4-like ds44-cardTitle"><a href="#" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a></h4>
