@@ -20,14 +20,15 @@ if (Util.notEmpty(pub.getNom())) {
   fullName += pub.getNom();
 }
 
+String urlImage = pub.getImageMedaillon();
+if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-card--verticalPicture--elu">
-    <jalios:if predicate='<%= Util.notEmpty(pub.getImageMedaillon()) %>'>
     <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil">
-      <img src="<%= pub.getImageMedaillon() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
+      <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
     </picture>
-    </jalios:if>
     <div class="ds44-card__section">
       <p role="heading" aria-level="2" class="ds44-card__title">
         <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>

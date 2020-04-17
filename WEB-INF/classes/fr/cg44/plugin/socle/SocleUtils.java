@@ -35,11 +35,13 @@ import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
+import com.sun.jdi.connect.Connector.SelectedArgument;
 
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
 import generated.Delegation;
+import generated.ElectedMember;
 import generated.FicheLieu;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
@@ -975,6 +977,52 @@ public final class SocleUtils {
       }  
     }
     return parametersMap;
+  }
+  
+  /**
+   * Retourne la fonction d'un membre élu
+   * @param pub
+   * @return
+   */
+  public static String getElectedMemberFunction(ElectedMember pub) {
+    String position = "";
+    // Cas : est président / présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) {
+      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.feminin");
+    }
+    // Cas : est vice-président / vice-présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
+    }
+    for (Category itCat : pub.getFunctions(channel.getCurrentLoggedMember())) {
+      if (itCat.getParent().equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+        if (Util.isEmpty(position)) {
+          position = (pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin")) + " ";
+        } else {
+          position += " ";
+        }
+        position += itCat.getName();
+        return position;
+      }
+    }
+    return position;
+  }
+  
+  /**
+   * Retourne le binôme d'un membre élu
+   * @param pub
+   */
+  public static ElectedMember getElectedMemberBinome(ElectedMember elu) {
+    if (Util.isEmpty(elu) || Util.isEmpty(elu.getCanton())) {
+      return null;
+    }
+    
+    Canton mbrCanton = elu.getCanton();
+    TreeSet<ElectedMember> linkedElus = mbrCanton.getLinkIndexedDataSet(ElectedMember.class);
+    
+    linkedElus.remove(elu);
+    
+    return linkedElus.first();
   }
 	
 }
