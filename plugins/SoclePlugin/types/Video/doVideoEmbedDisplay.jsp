@@ -19,9 +19,23 @@ if (Util.notEmpty(request.getAttribute("overrideVidTitle"))) {
   titleVideo = request.getAttribute("overrideVidTitle").toString();
   request.setAttribute("overrideVidTitle", null);
 }
+
+String chapoVideo = obj.getChapo();
+if (Util.notEmpty(request.getAttribute("overrideVidTChapo"))) {
+  chapoVideo = request.getAttribute("overrideVidTChapo").toString();
+  request.setAttribute("overrideVidTChapo", null);
+}
 %>
+
+<jalios:if predicate="<%= Util.notEmpty(titleVideo) %>">
+    <h3 class="h3-like" id="titreVideo"><%= titleVideo %></h3>
+</jalios:if>
+<jalios:if predicate="<%= Util.notEmpty(chapoVideo) %>">
+    <jalios:wysiwyg><%= chapoVideo %></jalios:wysiwyg>
+</jalios:if>
+
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe title='<%= glp("jcmsplugin.socle.video.acceder", titleVideo) %>' id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <%
         String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();
