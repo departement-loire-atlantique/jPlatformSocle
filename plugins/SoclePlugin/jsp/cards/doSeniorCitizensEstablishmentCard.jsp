@@ -28,7 +28,9 @@ boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
             </jalios:if>
 		    <hr class="mbs" aria-hidden="true">
 		    <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pub.getStructureType(loggedMember)) %></p>
-		    <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= pub.getAddress() %></div>
+		    <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+            <%= SocleUtils.formatAddress(null, null, null, null, HtmlUtil.html2text(pub.getAddress()), null, pub.getPostalBox(), pub.getZipCode(), pub.getCommune().getTitle(), null) %>
+			</div>
 		    <jalios:if predicate="<%= Util.notEmpty(pub.getPhones()) %>">
 			    <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	                <jalios:foreach name="itPhone" type="String" array="<%= pub.getPhones() %>">
