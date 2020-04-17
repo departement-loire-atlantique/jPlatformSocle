@@ -2,17 +2,17 @@
 
 // Permet la recherche geolocalisée
 
-String northWestLat = request.getParameter("northWestLat");
-String northWestLng = request.getParameter("northWestLng");
+String northWestLat = request.getParameter("map[nw][lat]");
+String northWestLng = request.getParameter("map[nw][long]");
 
-String northEastLat = request.getParameter("northEastLat");
-String northEastLng = request.getParameter("northEastLng");
+String northEastLat = request.getParameter("map[ne][lat]");
+String northEastLng = request.getParameter("map[ne][long]");
 
-String southEastLat = request.getParameter("southEastLat");
-String southEastLng = request.getParameter("southEastLng");
+String southEastLat = request.getParameter("map[se][lat]");
+String southEastLng = request.getParameter("map[se][long]");
 
-String southWestLat = request.getParameter("southWestLat");
-String southWestLng = request.getParameter("southWestLng");
+String southWestLat = request.getParameter("map[sw][lat]");
+String southWestLng = request.getParameter("map[sw][long]");
 
 if(Util.notEmpty(northWestLat) && Util.notEmpty(northWestLng) && Util.notEmpty(southEastLat) && Util.notEmpty(southEastLng)) {
   
