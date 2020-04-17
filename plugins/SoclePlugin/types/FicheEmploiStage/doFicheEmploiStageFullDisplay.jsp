@@ -34,7 +34,7 @@
 	               <section class="ds44-box ds44-theme">
 	                   <div class="ds44-innerBoxContainer">
 	                       <div class="grid-2-small-1 ds44-grid12-offset-1">
-	                           <div class="col">
+	                           <div class="col ds44--xl-padding-l ds44-TtL-noPad">
                                   <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.ficheemploi.label.informations") %></p>
                                   <p class="ds44-docListElem mts">
                                        <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
                                        </jalios:if>
                                    </p>
                                </div>
-	                           <div class="col">
+	                           <div class="col ds44--xl-padding-l ds44-TtL-noPad">
 	                               <jalios:if predicate="<%= 
 	                                   Util.notEmpty(obj.getFiliere(loggedMember))
 	                                   ||Util.notEmpty(obj.getCategorieDemploi(loggedMember))
@@ -266,7 +266,7 @@
 		                       <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.contacts") %></p>
 	                           <div class="grid-<%= hasContactRH && hasContactMetier ? '2' : '1' %>-small-1">
 	                               <jalios:if predicate="<%= hasContactRH %>">
-	                               <div class="col">
+	                               <div class="col ds44--xl-padding-l ds44-TtL-noPad">
 	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
 			                               <p class="ds44-docListElem mts">
 			                                   <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
