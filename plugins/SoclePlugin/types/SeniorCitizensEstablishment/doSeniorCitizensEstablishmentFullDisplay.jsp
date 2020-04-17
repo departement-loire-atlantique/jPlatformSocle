@@ -285,8 +285,8 @@
 									</jalios:foreach>
 								</jalios:if>
 								<jalios:if predicate="<%= Util.isEmpty(obj.getClics()) %>">
-									<%-- TODO : get fiche lieu le plus proche --%>
-									<% FicheLieu itFicheLieu = null; %>
+									<%-- TODO : get fiche lieu le plus proche, decommenter quand on pourra récupérer un CLIC --%>
+									<%-- <% FicheLieu itFicheLieu = null; %>
 									<div class="col col-6 ds44-mb3">
 										<p role="heading" aria-level="3" class="h3-like"><%= itFicheLieu.getTitle() %></p>
 										<p class="ds44-docListElem mts">
@@ -348,7 +348,7 @@
 												<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 											</a>
 										</p>
-									</div>
+									</div> --%>
 								</jalios:if>
 							</div>
 	
