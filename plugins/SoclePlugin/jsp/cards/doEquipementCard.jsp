@@ -11,7 +11,7 @@ if (data == null) {
 }
 
 Equipement pub = (Equipement) data;
-
+boolean hasBottomInfos = Util.notEmpty(pub.getThematique(loggedMember)) || (Util.notEmpty(pub.getMontantDeLaSubvention()) && pub.getMontantDeLaSubvention() > 0);
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
