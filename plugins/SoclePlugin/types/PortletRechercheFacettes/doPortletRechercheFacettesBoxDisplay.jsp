@@ -121,6 +121,8 @@
 		
 		
             <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
+            
+            <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getSectorisation() %>' data-technical-field />
 		
             <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
             <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
@@ -199,7 +201,7 @@ request.removeAttribute("rechercheId");
 %>
 
 <%-- TODO Méthode temporaire pour soumettre le formulaire à l'affiche de la recherche à facette --%> 
-<jalios:if predicate="<%= isInRechercheFacette && request.getParameterMap().size() > 5 %>">
+<jalios:if predicate="<%= isInRechercheFacette && request.getParameterMap().size() > 6 %>">
 	<script>
 	  function submitForm(){
 		  document.getElementsByClassName("jcms-js-submit")[0].click();
