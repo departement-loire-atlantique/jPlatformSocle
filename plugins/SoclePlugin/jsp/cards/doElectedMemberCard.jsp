@@ -20,6 +20,9 @@ if (Util.notEmpty(pub.getNom())) {
   fullName += pub.getNom();
 }
 
+String urlImage = pub.getImageMedaillon();
+if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-card--verticalPicture--elu">
