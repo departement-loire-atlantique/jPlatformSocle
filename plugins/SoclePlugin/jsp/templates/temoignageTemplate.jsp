@@ -5,26 +5,27 @@
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
 %><%
 
-if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle))) {
+if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien))) {
   return;
 }
-Content obj = (Content) data;
-String urlPub = obj.getDisplayUrl(userLocale);
-String urlImage = "";
+Publication pub = (Publication) data;
+%>
+<%@include file="tuileCommon.jsp" %>
+<%
 String titre = "";
 String sousTitre = "";
 boolean isVideo = data instanceof Video;
 
 
 try {
-  titre = (String) obj.getFieldValue("titreTemoignage");
+  titre = (String) pub.getFieldValue("titreTemoignage");
 } catch(Exception e) {}
 try {
-  sousTitre = (String) obj.getFieldValue("soustitreTemoignage");
+  sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
 } catch(Exception e) {}
 
 try {
-  urlImage = (String) obj.getFieldValue("imagePrincipale");
+  urlImage = (String) pub.getFieldValue("imagePrincipale");
 } catch(Exception e) {}
 
 if (Util.notEmpty(urlImage)) {
@@ -34,7 +35,7 @@ else{
   urlImage = "s.gif";
 }
 if (Util.isEmpty(titre)) {
-  titre = obj.getTitle();
+  titre = pub.getTitle();
 }
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">
@@ -46,7 +47,7 @@ if (Util.isEmpty(titre)) {
             </jalios:if>
         </div>
         <div class="ds44--m-padding">
-            <h3 class="ds44-card__title"><a href="<%=urlPub %>"><%=titre%></a></h3>
+            <h3 class="ds44-card__title"><a href="<%=urlPub %>" <%=titleAttr%> <%=targetAttr%>><%=titre%></a></h3>
             <jalios:if predicate="<%=Util.notEmpty(sousTitre) %>">
                 <h4 class="ds44-cardDate ds44-card__title"><%=sousTitre%></h4>
             </jalios:if>
