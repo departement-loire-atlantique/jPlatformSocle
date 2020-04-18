@@ -13,13 +13,21 @@ FicheLieu obj = (FicheLieu) data;
 String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
 String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
-
 String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
+boolean invisiblePub = SocleUtils.isInvisible(obj);
 %>
-<section class="mbs">
+<section class="pbm">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-	        <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	       <jalios:select>
+	           <jalios:if predicate='<%= invisiblePub %>'>
+	               <%= obj.getTitle() %>
+	           </jalios:if>
+	               
+	           <jalios:default>
+	               <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	           </jalios:default>
+	        </jalios:select>
 	    </strong>
 	</p>
 	

@@ -49,6 +49,8 @@ jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 #  Recherche à facettes
 # ------------------------------------------------------------
 $jcmsplugin.socle.recherche.facettes.portal: c_1273916
+# Les contenus ayant cette catégorie de classement ne remonteront pas dans les moteurs de recherche.
+$jcmsplugin.socle.recherche.invisible.cat: c_1274159
 
 # ------------------------------------------------------------
 #  Formats d'images
@@ -189,8 +191,6 @@ media.data-template.card.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard
 media.data-template.cardFull.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
 media.data-template.cardFocus.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
-
-
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
@@ -209,9 +209,11 @@ channel.sidebar.enabled: false
 channel.topbar.enabled: true
 channel.topbar.site.enabled: true
 
+# ------------------------------------------------------------
+#  Réseaux sociaux
+# ------------------------------------------------------------
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
-
 jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
 
 # ------ Propriétés éditables SoclePlugin
@@ -229,7 +231,6 @@ $jcmsplugin.socle.miseEnAvant.root : c_1088868
 $id.plugin.socle.page-principale.cat: c_1092546
 
 # Générique des racines de catégories
-
 $jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
@@ -247,11 +248,9 @@ $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
 
 # Fiche Article
-
 $jcmsplugin.socle.fichearticle.annuaires.root: c_1155710
 
 # Fiche Lieu
-
 $jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
 $jcmsplugin.socle.fichelieu.statut.root: c_1155421
 $jcmsplugin.socle.fichelieu.typeAcces.root: c_1156285
@@ -356,7 +355,6 @@ jcmsplugin.socle.infolocale.metadata.icon.grtheme: icon-tag
 jcmsplugin.socle.infolocale.metadata.icon.theme: icon-tag
 
 # Fiche Action éducative
-
 $jcmsplugin.socle.ficheactioneducative.theme.root: c_1212395
 $jcmsplugin.socle.ficheactioneducative.sousTheme.root: c_1212418
 $jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root: c_1212436
@@ -366,7 +364,6 @@ $jcmsplugin.socle.ficheactioneducative.niveau.root: c_1212444
 $jcmsplugin.socle.ficheactioneducative.format.root: c_1212451
 
 # SAAD
-
 $jcmsplugin.socle.saad.statutJuridique.root: p2_806794
 $jcmsplugin.socle.saad.typeDaide.root: p1_707983
 $jcmsplugin.socle.saad.prestations.root: p2_806591
@@ -377,18 +374,15 @@ $jcmsplugin.socle.saad.modesDintervention.root: p1_802263
 $jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
 
 # Etablissement personnes agées
-
 $jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
 $jcmsplugin.socle.seniorCitizensEstablishment.categorieDeNavigation.default: t1_26758
 
 # Equipements
-
 $jcmsplugin.socle.equipements.thematique.root: p2_222624
 $jcmsplugin.socle.equipements.annee.root: p2_222641
 $jcmsplugin.socle.equipements.role.root: p2_222645
 
 # Fiches élu
-
 $jcmsplugin.socle.electedMember.fonctions.root: c_5314
 $jcmsplugin.socle.electedMember.commissions.root: c_5332
 $jcmsplugin.socle.electedMember.missionThematique.root: p1_283851
@@ -396,19 +390,15 @@ $jcmsplugin.socle.electedMember.partiPolitique.root: c_5298
 $jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
 
 # Spectacle aidé
-
 $jcmsplugin.socle.spectacleAide.cat.root: aca_7730
 
 # Fiche professionnel culture
-
 $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
 
 # Marché public
-
 $jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
 
 # Fiche emploi, stage
-
 $jcmsplugin.socle.emploiStage.typeOffre.root: c_5281
 $jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
 $jcmsplugin.socle.emploiStage.filiere.root: c_1216306
@@ -423,14 +413,12 @@ $jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
 $jcmsplugin.socle.emploiStage.delegationService: c_5296
 
 # Video
-
 $jcmsplugin.socle.video.types.root: c_1270060
 
 # Fiche Elu
 $jcmsplugin.socle.elu.president: c_5315
 $jcmsplugin.socle.elu.vicepresident: c_5316
 $jcmsplugin.socle.elu.conseiller: p2_136941
-
 
 # Fiche Publication
 $jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308

@@ -1023,5 +1023,17 @@ public final class SocleUtils {
     
     return linkedElus.first();
   }
+  
+  /**
+   * Indique si une publication peut être rechercheable ou pas
+   * Se base sur une catégorie de classement.
+   * Si la propriété est inexistante ou vide, renvoie false.
+   * @param pub
+   * @return <code>true</code> si la publication doit être masquée sinon <code>false</code> 
+   * 
+   */
+  public static boolean isInvisible(Publication pub) {
+  	return pub.containsCategory(channel.getCategory("$jcmsplugin.socle.recherche.invisible.cat"));
+  }  
 	
 }
