@@ -58,29 +58,26 @@
 						<aside class="col-4">
 							<jalios:foreach array="<%=obj.getContenusEncadresLibres()%>" type="String"
 							    name="itContenu" counter="itCounter">
-							    <section class="ds44-box ds44-theme mbm">
-							        <div class="ds44-innerBoxContainer">
-							            <jalios:if predicate="<%=Util.notEmpty(obj.getTitreEncadresLibres()) && obj.getTitreEncadresLibres().length > itCounter-1 && Util.notEmpty(obj.getTitreEncadresLibres()[itCounter - 1]) %>">
-							                <p class="ds44-box-heading" role="heading" aria-level="2"><%=obj.getTitreEncadresLibres()[itCounter - 1]%></p>
-							            </jalios:if>
-							            <div class="mts"><%=itContenu%></div>
-							        </div>
-							    </section>
+							    <%
+							    boolean afficheTitre = obj.getTitreEncadresLibres().length > itCounter-1 && Util.notEmpty(obj.getTitreEncadresLibres()[itCounter - 1]);
+							    %>
+							    <jalios:if predicate="<%= afficheTitre %>">
+								    <section class="ds44-box ds44-theme mbm">
+								        <div class="ds44-innerBoxContainer">
+	                                        <p class="ds44-box-heading" role="heading" aria-level="2"><%=obj.getTitreEncadresLibres()[itCounter - 1]%></p>
+                                </jalios:if>
+                                
+                                <div class="mts"><jalios:wysiwyg><%= itContenu %></jalios:wysiwyg></div>
+							            
+								<jalios:if predicate="<%= afficheTitre %>">
+								        </div>
+                                    </section>
+								</jalios:if>							            
+
 							</jalios:foreach>
 							
-							<jalios:foreach array="<%=obj.getPortletsEncadres()%>"
-							    type="PortalElement" name="itPortalElem">
-							    <jalios:if predicate="<%=itPortalElem instanceof PortletWYSIWYG%>">
-							        <%
-							            PortletWYSIWYG itWysiwyg = (PortletWYSIWYG) itPortalElem;
-							        %>
-							        <section class="ds44-box mbm <%= itWysiwyg.getCssClasses() %>">
-							            <div class="ds44-innerBoxContainer">
-							                <p class="ds44-box-heading" role="heading" aria-level="2"><%=itWysiwyg.getTitle()%></p>
-							                <div class="mts"><%=itWysiwyg.getWysiwyg()%></div>
-							            </div>
-							        </section>
-							    </jalios:if>
+							<jalios:foreach array="<%=obj.getPortletsEncadres()%>" type="PortalElement" name="itPortalElem">
+                                <jalios:include pub="<%= itPortalElem %>" />
 							</jalios:foreach>
 						</aside>
 					</jalios:if>
