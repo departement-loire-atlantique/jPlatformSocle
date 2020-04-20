@@ -127,7 +127,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 
                 <!--  En résumé -->
                 <jalios:if predicate="<%= displayEnResume %>">
-                <div id="id_first" class="js-tabcontent ds44-tabs__content" role="tabpanel" aria-labelledby="label_id_first">
+                <div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" aria-labelledby="label_id_first">
 
                     <div class="grid-12-small-1">
                         <div class="col-7">
@@ -159,7 +159,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
  
                 <!-- En détail -->
                 <jalios:if predicate="<%= displayDetails %>">
-                <div id="id_second" class="js-tabcontent ds44-tabs__content" role="tabpanel" 
+                <div id="id_second" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
                 		aria-labelledby="label_id_second" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
@@ -217,7 +217,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
  
                 <!-- FAQ -->
                 <jalios:if predicate="<%= displayFaq %>">
-                <div id="id_third" class="js-tabcontent ds44-tabs__content" role="tabpanel" 
+                <div id="id_third" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
                 		aria-labelledby="label_id_third" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
