@@ -34,7 +34,7 @@ if (Util.notEmpty(title)) {
 }
 
 if (Util.notEmpty(intro)) {
-  request.setAttribute("overrideVidIntro", titreVideo);
+  request.setAttribute("overrideVidIntro", intro);
 }
 %>
 <section id="contentVideo" class="ds44-contenuArticle">
