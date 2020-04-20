@@ -1,103 +1,64 @@
-<%@tag import="generated.PortletPortalRedirect"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
 %><%@ tag 
     pageEncoding="UTF-8"
-    description="Liste des catégories et leurs enfants sur un nobre de niveau donné" 
+    description="Affiche une liste de noms de catégories séparées par un séparateur. Possibilité d'affiher une infobulle.
+    Les catégories affichées sont passées en paramètres ou bien sont calculées à partir d'une catégorie racine." 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel,
             com.jalios.jcms.Category,
             com.jalios.jcms.Member,
             com.jalios.jcms.Publication,
-            com.jalios.jcms.DataSelector,
             com.jalios.jcms.JcmsUtil,
             com.jalios.util.ServletUtil,
             com.jalios.util.Util,
             java.util.TreeSet,
             java.util.Set,
-            java.util.Locale,
-            fr.cg44.plugin.socle.SocleUtils,
-            generated.PageCarrefour"
+            fr.cg44.plugin.socle.SocleUtils"
 %><%
 %><%@ attribute name="rootCat"
-    required="true"
+    required="false"
     fragment="false"
     rtexprvalue="true"
     type="com.jalios.jcms.Category"
     description="Catégorie racine sur laquelle itérer pour générer la liste"
 %><%
-%><%@ attribute name="maxLevels"
-    required="true"
-    fragment="false"
-    rtexprvalue="true"
-    type="Integer"
-    description="Niveau max de profondeur de l'arbre"
+%><%@ attribute name="categories"
+	required="false"
+	fragment="false"
+	rtexprvalue="true"
+	type="Set<Category>"
+	description="Catégorie racine sur laquelle itérer pour générer la liste"
 %><%
-%><%@ attribute name="currentLevel"
-required="false"
-fragment="false"
-rtexprvalue="true"
-type="Integer"
-description="Niveau courant de l'arbre"%>
+%><%@ attribute name="separator"
+	required="false"
+	fragment="false"
+	rtexprvalue="true"
+	type="String"
+	description="Le caractère de séparation entre les catégories"
+%><%
+%><%@ attribute name="tooltip"
+	required="false"
+	fragment="false"
+	rtexprvalue="true"
+	type="Boolean"
+	description="Affiche un tooltip à côté du nom de la catégorie ou pas."
+%><%
 
-<%
-Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
+String separateur = Util.notEmpty(separator) ? separator : ", ";
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
-Locale userLocale = Channel.getChannel().getCurrentJcmsContext().getUserLocale();
+
 
 // Tri des catégories filles + filtre sur catégories autorisées
-Set<Category> childrenCatSet = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
+if(Util.notEmpty(rootCat)){
+	categories = SocleUtils.getOrderedAuthorizedChildrenSet(rootCat);
+}
 
-// Calcul du niveau d'itération courant
-int itLevel = currentLevel!=null ? currentLevel : 0;
-itLevel++;
-
-// Style pour le padding des listes imbriquées (padding doublé au-delà du niveau 1)
-String paddingClass = "ds44-list ds44-collapser_content--level2";
 %>
-<jalios:if predicate="<%= !childrenCatSet.isEmpty() && itLevel <= maxLevels  %>">
-    <% if(itLevel>1) paddingClass = "ds44-list ds44-collapser_content--level3"; %>
-    <ul class="<%=paddingClass%>">
-    <%-- Si présence d'un contenu principal dans la catégorie, alors lien vers ce contenu, sinon génération des enfants. --%>
-    <%
-	for(Category itCategory : childrenCatSet){
-		String cible= "";
-		String title = "";
-		String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
-		boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
-		if(targetBlank){
-		    cible="target=\"_blank\" ";
-		    title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
-		}
-		
-		Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCategory);
-		PortletPortalRedirect itRedirect = SocleUtils.getPortalRedirect(itCategory);
-	    if(Util.notEmpty(itContenuPrincipal)) {%>
-	    	<li><a href="<%= itContenuPrincipal.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
-	    <%}
-	    else if (Util.notEmpty(itRedirect)) {%>
-	       <jalios:select>
-               <jalios:if predicate='<%= itRedirect.getStatus().equals("url") && Util.notEmpty(itRedirect.getUrl()) %>'>
-	           <li><a target="_blank" href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
-	           </jalios:if>
-	           <jalios:default>
-	           <li><a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a></li>
-	           </jalios:default>
-	       </jalios:select>
-	    <%}
-        else {%>
-	       <li>
-	           <jalios:select>
-		           <jalios:if predicate="<%= Util.notEmpty(itCategory.getChildrenSet()) %>">
-			           <span class="ds44-collapser_content--txt"><%=libelleCat%></span>
-		               <ds:categoryList rootCat='<%=itCategory %>' maxLevels="<%=maxLevels%>" currentLevel="<%=itLevel%>"/>
-		           </jalios:if>
-		           <jalios:default>
-		               <a href="<%= itCategory.getDisplayUrl(userLocale) %>" class="ds44-collapser_content--link" <%=title%> <%=cible%>><%=libelleCat%></a>
-		           </jalios:default>
-	           </jalios:select>
-           </li><%
-	    }
-	}%>
-    </ul>
-</jalios:if>
+
+<jalios:foreach name="itCat" type="Category" collection="<%= categories %>">
+    <%= itCat.getName() %>
+    <ds:tooltip cat='<%= itCat %>' help='<%= JcmsUtil.glp(userLang,"jcmsplugin.socle.tooltip", itCat.getName()) %>' />
+    <%= itCounter < categories.size() ? separateur : "" %>
+</jalios:foreach>
+        

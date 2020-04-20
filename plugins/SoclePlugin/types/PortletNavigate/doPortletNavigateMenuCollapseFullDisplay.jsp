@@ -49,7 +49,7 @@ Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLev
 		      <c:set var="itCategory" value="<%=itCatLevel2%>" scope="request"/>
 		      <c:set var="maxLevels" value="<%=maxLevels%>" scope="request"/>
 		      <ds:toggle title="<%=itCatLevel2.getName() %>">
-		          <ds:categoryList rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
+		          <ds:categoryTree rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
 		      </ds:toggle><%
 		    }else {%>
 		    	<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
