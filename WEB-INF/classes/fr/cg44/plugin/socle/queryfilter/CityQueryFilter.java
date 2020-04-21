@@ -1,15 +1,11 @@
 package fr.cg44.plugin.socle.queryfilter;
 
-import java.util.Arrays;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
-import com.jalios.util.Util;
-
-import fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter;
 
 
 /**
@@ -24,30 +20,6 @@ public class CityQueryFilter extends LuceneQueryFilter {
 		String[] citiesCodeSearchArray = request.getParameterValues("commune");
 		addCitySearch(qh, request, citiesCodeSearchArray);
 		return qh;
-	}
-	
-	
-	/**
-	 * Ajoute le filtre sur la commune
-	 * Attention la query passe en syntaxe de recherche avancée
-	 * @param qh
-	 * @param cityData
-	 */
-	public void addCitySearch(QueryHandler qh, HttpServletRequest request, String... cityCode) {		
-	  if(Util.notEmpty(cityCode) && !Arrays.stream(cityCode).anyMatch("allCity"::equalsIgnoreCase)) {
-	    // Passe la query en syntaxe avancée pour accepter les requêtes lucenes
-	    qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	  
-	    // Requête pour la recherche sur les communes (OR entre les communes)	
-	    StringBuffer citySearchText = new StringBuffer();
-	    for(String itCityCode : cityCode) {
-	      if(Util.notEmpty(citySearchText.toString())) {
-	        citySearchText.append(" OR ");
-	      }
-	      citySearchText.append(PublicationFacetedSearchCityEnginePolicyFilter.INDEX_FIELD_CITY + ":\"" + itCityCode + "\"");								
-	    }
-	    // Requêtes pour incrémenter la recherche des communes avec les précédants query des autres facettes						
-	    addFacetQuery(qh, request, citySearchText.toString());
-	  }
 	}
 	
 	
