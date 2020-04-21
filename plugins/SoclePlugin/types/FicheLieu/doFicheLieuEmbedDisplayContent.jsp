@@ -86,7 +86,7 @@ boolean invisiblePub = SocleUtils.isInvisible(obj);
 	
 	        <jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 	            <% String site = obj.getSiteInternet()[0]; %>
-	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank">
+	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank">
 	                <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 	            </a>
 	        </jalios:if>
@@ -95,7 +95,7 @@ boolean invisiblePub = SocleUtils.isInvisible(obj);
 	            <ul class="ds44-list">
 	                <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 	                    <li>
-	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
+	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"> 
 	                            <%= SocleUtils.parseUrl(site) %>
 	                        </a>
 	                    </li>
