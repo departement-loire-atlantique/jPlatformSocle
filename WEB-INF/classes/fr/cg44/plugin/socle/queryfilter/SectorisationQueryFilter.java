@@ -92,10 +92,11 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 * @param url
 	 * @return
 	 */
-	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {			
-		List<String> sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());			
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {	
+		List<SectorResult> sectorResultSet = getSectorisation(url);			
 		List<Publication> notInSectorisation = new ArrayList<>(); 
-		if(sectorResultMatriculeSet != null) {
+		if(sectorResultSet != null) {
+			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());		
 			for(Publication itPub : set) {
 				String idRef = "";
 				if(itPub instanceof FicheLieu) {
@@ -142,6 +143,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				ObjectMapper mapper = new ObjectMapper();
 				// Retoune la liste de SectorResult trouvé par le service rest
 				return Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
+			} else {
+				LOGGER.warn("Erreur sur le code retour de la recherche par sectorisation " + codeRetour);
 			}
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche sur la sectorisation avec le référentiel externe", e);
