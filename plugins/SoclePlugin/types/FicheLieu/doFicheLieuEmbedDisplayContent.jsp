@@ -14,13 +14,13 @@ String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.lo
 String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
-boolean invisiblePub = SocleUtils.isInvisible(obj);
+boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 %>
 <section class="pbm">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	       <jalios:select>
-	           <jalios:if predicate='<%= invisiblePub %>'>
+	           <jalios:if predicate='<%= pubNonRepertoriee %>'>
 	               <%= obj.getTitle() %>
 	           </jalios:if>
 	               
