@@ -388,6 +388,7 @@ $jcmsplugin.socle.electedMember.commissions.root: c_5332
 $jcmsplugin.socle.electedMember.missionThematique.root: p1_283851
 $jcmsplugin.socle.electedMember.partiPolitique.root: c_5298
 $jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
+$jcmsplugin.socle.electedMember.cat-president.id: c_5315
 
 # Spectacle aidé
 $jcmsplugin.socle.spectacleAide.cat.root: aca_7730
