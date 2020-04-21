@@ -79,7 +79,8 @@ public abstract class LuceneQueryFilter extends QueryFilter {
      * Ajoute le filtre sur la commune
      * Attention la query passe en syntaxe de recherche avancée
      * @param qh
-     * @param cityData
+     * @param request
+     * @param cityCode
      */
     public void addCitySearch(QueryHandler qh, HttpServletRequest request, String... cityCode) {    
       if(Util.notEmpty(cityCode) && !Arrays.stream(cityCode).anyMatch("allCity"::equalsIgnoreCase)) {
