@@ -12,6 +12,7 @@ if (data == null) {
 
 FicheSAAD pub = (FicheSAAD) data;
 
+String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
 
 %>
@@ -21,7 +22,7 @@ boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
     <div class="ds44-card__section">
       
       <div class="ds44-innerBoxContainer">
-          <h4 class="h4-like ds44-cardTitle" id="tuileSaad_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+          <h4 class="h4-like ds44-cardTitle" id="tuileSaad_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
           <hr class="mbs" aria-hidden="true">
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
