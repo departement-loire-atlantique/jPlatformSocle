@@ -240,7 +240,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 </main>
 
 <jalios:if predicate="<%= displayFaireDemande %>">
-	<section class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-faire-demande">
+	<section class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		aria-label='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.faire-demande")) %>' 
@@ -381,7 +381,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 </jalios:if>
 
 <jalios:if predicate="<%= displaySuivreDemande %>">
-	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog" aria-labelledby="titre-suivre-demande">
+	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.ficheaide.suivre.label")) %>' 
