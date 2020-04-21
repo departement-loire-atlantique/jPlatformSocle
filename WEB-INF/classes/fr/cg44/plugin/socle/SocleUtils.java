@@ -1035,5 +1035,29 @@ public final class SocleUtils {
   public static boolean isInvisible(Publication pub) {
   	return pub.containsCategory(channel.getCategory("$jcmsplugin.socle.recherche.invisible.cat"));
   }  
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice(String price) {
+    if (Util.isEmpty(price)) return "";
+    
+    String invertedPrice = new StringBuilder(price).reverse().toString();
+    invertedPrice = invertedPrice.replaceAll("...", "$0 ");
+    
+    return new StringBuilder(invertedPrice).reverse().toString();
+  }
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice (Integer price) {
+    if (Util.isEmpty(price)) return "";
+    return formatPrice(price.toString());
+  }
 	
 }
