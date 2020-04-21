@@ -11,7 +11,6 @@ if (data == null) {
 }
 
 SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
-String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
 
@@ -21,7 +20,7 @@ boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
     
     <div class="ds44-card__section">
 	    <div class="ds44-innerBoxContainer">
-		    <h4 class="h4-like ds44-cardTitle" id="cardSeniorCitizenTitle_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+		    <h4 class="h4-like ds44-cardTitle" id="tuileSeniorCitizenTitle_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
 		    <jalios:if predicate="<%= Util.notEmpty(pub.getDescription()) %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <div class="ds44-mt-std"><strong><jalios:wysiwyg><%= pub.getDescription() %></jalios:wysiwyg></strong></div>

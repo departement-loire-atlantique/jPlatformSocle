@@ -20,7 +20,7 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <h3 class="h4-like ds44-cardTitle" id="7"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h3>
+            <h3 class="h4-like ds44-cardTitle" id="tuileCanton_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title="<%= glp("jcmsplugin.socle.canton.lien.title", pub.getTitle()) %>"><%= pub.getTitle() %></a></h3>
             <jalios:if predicate="<%= Util.notEmpty(referencedElus) %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>

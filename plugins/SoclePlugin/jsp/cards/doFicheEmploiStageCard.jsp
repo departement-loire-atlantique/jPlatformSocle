@@ -22,7 +22,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
     
     <div class="ds44-card__section">
 		<div class="ds44-innerBoxContainer ds44-mb2">
-			<h4 class="h4-like ds44-cardTitle"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+			<h4 class="h4-like ds44-cardTitle" id="tuileEmploi_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
 			<hr class="mbs" aria-hidden="true">
 
 			<jalios:if predicate="<%= Util.notEmpty(pub.getCategorieDemploi(loggedMember)) %>">

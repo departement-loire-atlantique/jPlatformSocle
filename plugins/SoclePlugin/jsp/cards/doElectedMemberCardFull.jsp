@@ -39,7 +39,7 @@ if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
         <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
     </picture>
     <div class="ds44-card__section txtleft mts">
-        <h4 class="h4-like ds44-cardTitle"><a href="#" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a></h4>
+        <h4 class="h4-like ds44-cardTitle" id="tuileElu_<%= pub.getId() %>"><a href="#" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a></h4>
         <jalios:if predicate="<%= Util.notEmpty(position) %>">
         <p><%= position %></p>
         </jalios:if>
