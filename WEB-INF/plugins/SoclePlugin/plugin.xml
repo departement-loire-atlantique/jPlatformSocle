@@ -422,6 +422,7 @@
     <file path="WEB-INF/tags/titleNoImage.tag" />
     <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
+    <file path="WEB-INF/tags/tooltip.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  
