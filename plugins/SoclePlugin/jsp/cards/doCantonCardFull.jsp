@@ -61,6 +61,6 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
             </jalios:if>
 	            
         </div>
-        <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-btnStd ds44-fullWBtn ds44-mt-std" title="<%= glp("jcmsplugin.socle.canton.lien.title", pub.getTitle()) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.canton.voirfiche") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+        <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-btnStd ds44-fullWBtn ds44-mt-std"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.canton.voirfiche") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
     </div>
 </section>
