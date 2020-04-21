@@ -2,20 +2,24 @@
 
 String urlImage = "";
 
-try {
- urlImage = (String) pub.getFieldValue("imageMobile");
-} catch(Exception e) {}
-
-if (Util.isEmpty(urlImage)) {
- try {
-  urlImage = (String) pub.getFieldValue("imagePrincipale");
- } catch(Exception e) {}
-}
-
-if (Util.isEmpty(urlImage)) {
- try {
-  urlImage = (String) pub.getFieldValue("imageBandeau");
- } catch(Exception e) {}
+if (Util.isEmpty(request.getAttribute("forcedImgUrl"))) {
+	try {
+	 urlImage = (String) pub.getFieldValue("imageMobile");
+	} catch(Exception e) {}
+	
+	if (Util.isEmpty(urlImage)) {
+	 try {
+	  urlImage = (String) pub.getFieldValue("imagePrincipale");
+	 } catch(Exception e) {}
+	}
+	
+	if (Util.isEmpty(urlImage)) {
+	 try {
+	  urlImage = (String) pub.getFieldValue("imageBandeau");
+	 } catch(Exception e) {}
+	}
+} else {
+  urlImage = request.getAttribute("forcedImgUrl").toString();
 }
 
 if (Util.notEmpty(urlImage)) {
