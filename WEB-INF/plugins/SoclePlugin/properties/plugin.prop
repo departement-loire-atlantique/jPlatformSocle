@@ -245,6 +245,8 @@ $jcmsplugin.socle.ficheactu.types.root: c_1156291
 # Fiche aide
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
+$jcmsplugin.socle.ficheaide.typeaide.root: c_1214316
+jcmsplugin.socle.ficheaide.tuile.tag.root: 
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5

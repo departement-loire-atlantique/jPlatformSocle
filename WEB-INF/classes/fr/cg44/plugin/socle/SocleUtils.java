@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -461,12 +463,30 @@ public final class SocleUtils {
 		return formatOpenStreetMapLink(latitude, longitude, "11");
 	}
 
-	/**
+  	/**
      * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
      * @param categories
      * @return
      */
     public static String formatCategories(SortedSet<Category> categories) {
+        return formatCategories(new ArrayList<Category>(categories), ", ");
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(SortedSet<Category> categories, String separator) {
+        return formatCategories(new ArrayList<Category>(categories), separator);
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(List<Category> categories) {
         return formatCategories(categories, ", ");
     }
     
@@ -477,7 +497,7 @@ public final class SocleUtils {
      * @param separator
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories, String separator) {
+    public static String formatCategories(List<Category> categories, String separator) {
         
         if (Util.isEmpty(categories)) return "";
         

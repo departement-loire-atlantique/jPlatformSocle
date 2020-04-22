@@ -27,6 +27,7 @@ jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Prè
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
+jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuiles "Fiche Aide"
 
 # ------------------------------------------------------------
 #  Recherche à facettes
@@ -231,6 +232,8 @@ jcmsplugin.socle.ficheaide.important: Important !
 jcmsplugin.socle.ficheaide.faire-trajet-destineo: Faire mon trajet avec Destineo
 jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l’accessibilité du lieu
 jcmsplugin.socle.ficheaide.bonASavoir.label: Bon à savoir
+jcmsplugin.socle.ficheaide.tuile.besoin.label: Besoin :
+jcmsplugin.socle.ficheaide.tuile.typeAide.label: Type d'aide :
 
 jcmsplugin.socle.faq.votre-question: Votre question
 jcmsplugin.socle.faq.votre-email: Votre email
