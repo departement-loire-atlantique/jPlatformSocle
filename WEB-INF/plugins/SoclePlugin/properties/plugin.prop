@@ -33,6 +33,7 @@ jcmsplugin.socle.footer.portletcontact.id : c_1275593
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.logomobile:
 jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
 jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
