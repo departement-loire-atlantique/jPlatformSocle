@@ -68,7 +68,7 @@
 									</span>
 								</span>
 							</label>
-							<textarea rows="5" cols="1" id="form-element-10988" class="ds44-inpStd" 
+							<textarea name="question" rows="5" cols="1" id="form-element-10988" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
 									required aria-required="true"></textarea>
 						</div>
@@ -84,7 +84,7 @@
 							<input type="text" id="form-element-77221" name="commune" class="ds44-inpStd" 
 									role="combobox" 
 									aria-autocomplete="list" 
-									autocomplete="off" 
+									autocomplete="address-level2"
 									aria-expanded="false" 
 									title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
 									data-url="/json/autocomplete-city.json" 
@@ -115,9 +115,9 @@
 							</label>
 							<input type="text" id="form-element-42259" name="form-element-42259" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
-									required 
+									required autocomplete="email"
 									aria-describedby="explanation-form-element-42259" />
-							<span class="ds44-labelTypeInfoComp"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+							<span class="ds44-labelTypeInfoComp" id="explanation-form-element-42259"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 							<button class="ds44-reset" type="button">
 								<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 								<span class="visually-hidden">
