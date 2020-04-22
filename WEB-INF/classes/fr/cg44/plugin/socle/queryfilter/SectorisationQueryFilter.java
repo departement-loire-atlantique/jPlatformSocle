@@ -78,6 +78,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
 			if(Util.notEmpty(url)) {
+				LOGGER.debug("Apell du service de sectorisation : " + url);
 				set.removeAll(getNotInSctorisationPublication(set, url));
 			}
 		}
@@ -142,6 +143,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				in.close();
 				ObjectMapper mapper = new ObjectMapper();
 				// Retoune la liste de SectorResult trouvé par le service rest
+				LOGGER.debug("réponse du service de sectorisation : " + response.toString());
 				return Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
 			} else {
 				LOGGER.warn("Erreur sur le code retour de la recherche par sectorisation " + codeRetour);
