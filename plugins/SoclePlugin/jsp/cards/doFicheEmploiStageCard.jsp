@@ -10,6 +10,7 @@ if (data == null) {
 }
 
 FicheEmploiStage pub = (FicheEmploiStage) data;
+
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember)) && pub.getCategorieDemploi(loggedMember).first().getParent().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.emploi.root"));
 %>
@@ -24,7 +25,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
     
     <div class="ds44-card__section">
 		<div class="ds44-innerBoxContainer ds44-mb2">
-			<h4 class="h4-like ds44-cardTitle"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+			<h4 class="h4-like ds44-cardTitle" id="tuileEmploi_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
 			<hr class="mbs" aria-hidden="true">
 
 			<jalios:if predicate="<%= Util.notEmpty(pub.getCategorieDemploi(loggedMember)) %>">
