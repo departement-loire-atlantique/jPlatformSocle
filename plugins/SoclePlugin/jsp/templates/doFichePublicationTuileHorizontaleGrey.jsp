@@ -20,7 +20,7 @@ FichePublication pub = (FichePublication) data;
      width='<%= channel.getIntegerProperty("jcmsplugin.socle.image.magazine.tuile.width", 0) %>' height='<%= channel.getIntegerProperty("jcmsplugin.socle.image.magazine.tuile.height", 0) %>'/>
    </div>
     <div class="ds44-card__section--horizontal">
-      <p role="heading" "aria-level="2" class="ds44-card__title"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title="<%= pub.getTitle(userLang) %>"><%= pub.getTitle(userLang) %></a></p>
+      <p role="heading" "aria-level="2" class="ds44-card__title"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle(userLang) %></a></p>
       <jalios:if predicate="<%= Util.notEmpty(pub.getTitreUne(userLang)) %>">
         <p class="ds44-cardFile"><%= pub.getTitreUne(userLang) %></p>
       </jalios:if>
