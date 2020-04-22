@@ -33,6 +33,7 @@ jcmsplugin.socle.footer.portletcontact.id : c_1275593
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.logomobile:
 jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
 jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
@@ -50,7 +51,7 @@ jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 # ------------------------------------------------------------
 $jcmsplugin.socle.recherche.facettes.portal: c_1273916
 # Les contenus ayant cette catégorie de classement ne remonteront pas dans les moteurs de recherche.
-$jcmsplugin.socle.recherche.invisible.cat: c_1274159
+$jcmsplugin.socle.recherche.nonrepertoriee.cat: c_1274159
 
 # ------------------------------------------------------------
 #  Formats d'images

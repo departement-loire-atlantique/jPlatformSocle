@@ -18,7 +18,9 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray">
 
     <jalios:if predicate="<%= Util.notEmpty(pub.getImage()) %>">
+        <% request.setAttribute("forcedImgUrl", pub.getImage()); %>
         <%@ include file="cardPictureCommons.jspf" %>
+        <% request.removeAttribute("forcedImgUrl"); %>
     </jalios:if>
     
     <div class="ds44-card__section">
@@ -51,13 +53,13 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 				  <p id="tooltip-case_<%= uid %>" class="hidden"><%= pub.getCategorieDemploi(loggedMember).first().getDescription() %></p>
 				</jalios:if>
 			</jalios:if>
-			<jalios:if predicate="<%= Util.notEmpty(pub.getDuree()) %>">
+			<jalios:if predicate='<%= Util.notEmpty(pub.getDuree()) && !(channel.getCategory("$jcmsplugin.socle.emploiStage.emploiPermanent").equals(pub.getTypeDoffre(loggedMember).first())) %>'>
 				<p class="ds44-docListElem ds44-mt-std"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i>
 				    <jalios:select>
 					    <%-- Emploi --%>
 					    <jalios:if predicate='<%= pub.getTypeDoffre(loggedMember).first().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.typeEmploi.root"))
 					       || pub.getTypeDoffre(loggedMember).first().getParent().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.typeEmploi.root")) %>'>
-					        <%= pub.getTypeDoffre(loggedMember).first()%><jalios:if predicate='<%= !pub.getTypeDoffre(loggedMember).equals(channel.getCategory("$jcmsplugin.socle.emploiStage.emploiPermanent")) %>'>- <%= pub.getDuree() %></jalios:if>
+					        <%= pub.getTypeDoffre(loggedMember).first()%> - <%= pub.getDuree() %>
 					    </jalios:if>
 					    <%-- Autre que emploi --%>
 					    <jalios:default>
@@ -74,12 +76,15 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 	        SortedSet<Category> catsWithoutServices = pub.getDirectiondelegation(loggedMember);
             if (Util.notEmpty(catsWithoutServices)) {
               catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
+              Category tmpCat = new Category();
+              tmpCat.setName(pub.getService());
+              catsWithoutServices.add(tmpCat);
             }
 	        %>
 	        <p class="ds44-docListElem ds44-mt-std">
 			    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
 			    <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
-			         <%= SocleUtils.formatCategories(pub.getDirectiondelegation(loggedMember)) %> - 
+			         <%= SocleUtils.formatCategories(catsWithoutServices) %> - 
 			    </jalios:if>
 			    <%= pub.getCommune() %>
 		    </p>

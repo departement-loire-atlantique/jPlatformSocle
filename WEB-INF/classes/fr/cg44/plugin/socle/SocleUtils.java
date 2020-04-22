@@ -1032,8 +1032,32 @@ public final class SocleUtils {
    * @return <code>true</code> si la publication doit être masquée sinon <code>false</code> 
    * 
    */
-  public static boolean isInvisible(Publication pub) {
-  	return pub.containsCategory(channel.getCategory("$jcmsplugin.socle.recherche.invisible.cat"));
+  public static boolean isNonRepertoriee(Publication pub) {
+  	return pub.containsCategory(channel.getCategory("$jcmsplugin.socle.recherche.nonrepertoriee.cat"));
   }  
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice(String price) {
+    if (Util.isEmpty(price)) return "";
+    
+    String invertedPrice = new StringBuilder(price).reverse().toString();
+    invertedPrice = invertedPrice.replaceAll("...", "$0 ");
+    
+    return new StringBuilder(invertedPrice).reverse().toString();
+  }
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice (Integer price) {
+    if (Util.isEmpty(price)) return "";
+    return formatPrice(price.toString());
+  }
 	
 }

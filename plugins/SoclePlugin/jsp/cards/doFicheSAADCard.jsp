@@ -13,11 +13,11 @@ if (data == null) {
 FicheSAAD pub = (FicheSAAD) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
-boolean isFocus = Util.notEmpty(getBooleanParameter("isFocus", false));
+boolean isFocus = "true".equals(request.getParameter("isFocus"));
 
 %>
 
-<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= isFocus ? " ds44-isFocus" : "" %>'>
+<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= isFocus ? " ds44-cardIsFocus" : "" %>'>
     
     <div class="ds44-card__section">
       
