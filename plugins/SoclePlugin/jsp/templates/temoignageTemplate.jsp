@@ -14,6 +14,8 @@ Publication pub = (Publication) data;
 <%
 String titre = "";
 String sousTitre = "";
+String texteAlternatif = "";
+String altAttr = "";
 boolean isVideo = data instanceof Video;
 
 
@@ -22,6 +24,9 @@ try {
 } catch(Exception e) {}
 try {
   sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
+} catch(Exception e) {}
+try {
+  texteAlternatif = (String) pub.getFieldValue("texteAlternatif");
 } catch(Exception e) {}
 
 try {
@@ -37,11 +42,14 @@ else{
 if (Util.isEmpty(titre)) {
   titre = pub.getTitle();
 }
+if(Util.notEmpty(texteAlternatif)){
+	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(texteAlternatif) +"\" ";
+}
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">
     <div class="ds44-bgGray">
         <div class="ds44-posRel">
-            <img src="<%=urlImage %>" alt="" class="ds44-box__img" />
+            <img src="<%=urlImage %>" class="ds44-box__img" <%= altAttr %> />
             <jalios:if predicate="<%=isVideo %>">
                 <span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span>
             </jalios:if>
