@@ -5,7 +5,7 @@
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 
 
-<%logger.warn(channel.getProperty("jcmsplugin.socle.site.src.logomobile"));
+<%
 String[] headerCatListId = channel.getStringArrayProperty("jcmsplugin.socle.site.header.cat", new String[] {});
 Category[] headerCatList = JcmsUtil.stringArrayToDataArray (Category.class, headerCatListId);
 
