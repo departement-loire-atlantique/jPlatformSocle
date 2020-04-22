@@ -22,7 +22,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
     
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <h4 class="h4-like ds44-cardTitle"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+            <h4 class="h4-like ds44-cardTitle" id="titreTuileFicheAide_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
             <hr class="mbs" aria-hidden="true">
             <%
             Category pubMainCatRoot = channel.getCategory("jcmsplugin.socle.ficheaide.tuile.tag.root");
