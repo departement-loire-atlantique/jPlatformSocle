@@ -468,7 +468,7 @@ public final class SocleUtils {
      * @param categories
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories) {
+    public static String formatCategories(Set<Category> categories) {
         return formatCategories(new ArrayList<Category>(categories), ", ");
     }
     
@@ -477,7 +477,7 @@ public final class SocleUtils {
      * @param categories
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories, String separator) {
+    public static String formatCategories(Set<Category> categories, String separator) {
         return formatCategories(new ArrayList<Category>(categories), separator);
     }
     
