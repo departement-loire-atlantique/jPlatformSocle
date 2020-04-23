@@ -12,13 +12,7 @@ if (data == null) {
 
 ElectedMember pub = (ElectedMember) data;
 
-String fullName = "";
-
-if (Util.notEmpty(pub.getFirstName())) fullName = pub.getFirstName();
-if (Util.notEmpty(pub.getNom())) {
-  if (Util.notEmpty(pub.getFirstName())) fullName += " ";
-  fullName += pub.getNom();
-}
+String fullName = SocleUtils.getElectedMemberFullName(pub);
 
 String position = "";
 String conseillerLabel = "";
@@ -52,16 +46,7 @@ if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
         <p class="ds44-mt-std"><%= pub.getPoliticalParty(loggedMember).first() %></p>
         <% ElectedMember binome = SocleUtils.getElectedMemberBinome(pub); %>
         <jalios:if predicate="<%= Util.notEmpty(binome) %>">
-        <% 
-        fullName = "";
-
-        if (Util.notEmpty(binome.getFirstName())) fullName = binome.getFirstName();
-        if (Util.notEmpty(binome.getNom())) {
-          if (Util.notEmpty(binome.getFirstName())) fullName += " ";
-          fullName += binome.getNom();
-        }
-        %>
-        <p class="ds44-mt-std"><%= glp("jcmsplugin.socle.elu.binome", fullName) %></p>
+        <p class="ds44-mt-std"><%= glp("jcmsplugin.socle.elu.binome", SocleUtils.getElectedMemberFullName(binome)) %></p>
         </jalios:if>    
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
