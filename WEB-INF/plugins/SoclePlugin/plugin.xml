@@ -380,6 +380,7 @@
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter" />   
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
   </plugincomponents>
@@ -411,6 +412,7 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
+    <file path="WEB-INF/tags/categoryTree.tag" />
     <file path="WEB-INF/tags/facetteCategorie.tag" />
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
     <file path="WEB-INF/tags/figurePicture.tag" />
@@ -426,6 +428,7 @@
     <file path="WEB-INF/tags/titleNoImage.tag" />
     <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
+    <file path="WEB-INF/tags/tooltip.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  

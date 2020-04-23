@@ -57,7 +57,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
                 <%
                 String site = obj.getSiteInternet();
-                String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.vistersite.nouvelonglet", obj.getTitle()));
+                String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()));
                 %>
                 <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank">
                     <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
@@ -91,12 +91,12 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 			            <div class="col mls ds44-mtb3">
 			              <h2 class="h3-like" id="idTitre-list2"><%= glp("jcmsplugin.socle.fichesaad.detail") %></h2>
 			              <ul class="ds44-uList">
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <%= SocleUtils.formatCategories(obj.getStatutJuridique(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <%= SocleUtils.formatCategories(obj.getPlagesDintervention(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <%= SocleUtils.formatCategories(obj.getTypeDaide(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <%= SocleUtils.formatCategories(obj.getModalitesDePaiement(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modesintervention") %></strong> <span><%= SocleUtils.formatCategories(obj.getModesDintervention(loggedMember)) %></li>
-			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modetarification") %></strong> <%= SocleUtils.formatCategories(obj.getModeDeTarification(loggedMember)) %></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <ds:categoryList categories="<%= obj.getStatutJuridique(loggedMember) %>" tooltip="true" /></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <ds:categoryList categories="<%= obj.getPlagesDintervention(loggedMember) %>" tooltip="true" /></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <ds:categoryList categories="<%= obj.getTypeDaide(loggedMember) %>" tooltip="true" /></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <ds:categoryList categories="<%= obj.getModalitesDePaiement(loggedMember) %>" tooltip="true" /></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modesintervention") %></strong> <ds:categoryList categories="<%= obj.getModesDintervention(loggedMember) %>" tooltip="true" /></li>
+			                <li><strong><%= glp("jcmsplugin.socle.fichesaad.modetarification") %></strong> <ds:categoryList categories="<%= obj.getModeDeTarification(loggedMember) %>" tooltip="true" /></li>
 			              </ul>
 			            </div>
 			            

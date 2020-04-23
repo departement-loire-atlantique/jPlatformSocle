@@ -77,7 +77,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                         <strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
                                     </div>
                                 </div>
-                                <div class="col col-6 ds44--xl-padding-l">
+                                <div class="col col-6">
                                     <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
                                     <div class="ds44-docListElem mts">
                                         <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNomEtPrenomContacts() %>

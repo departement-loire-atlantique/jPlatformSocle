@@ -76,7 +76,7 @@
     	}%>
     	
     	
-    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
+    	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
     	   <a name="onglet-<%= ongletCpt %>" id="onglet-<%= ongletCpt %>"></a>
     	   <h2 class="visually-hidden">Onglet <%= ongletCpt %></h2>
     	   <div class="grid-12-small-1">

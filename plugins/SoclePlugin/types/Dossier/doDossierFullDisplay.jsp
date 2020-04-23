@@ -19,7 +19,7 @@
 			<div class="ds44-inner-container">
 				<div class="grid-12-medium-1 grid-12-small-1">
 
-					<aside class="col-4 ds44-hide-tinyToLarge ds44-js-aside-summary">
+					<aside class="col-4 ds44-hide-tiny-to-medium ds44-js-aside-summary">
 						<section class="ds44-box ds44-theme">
 							<div class="ds44-innerBoxContainer">
 								<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>

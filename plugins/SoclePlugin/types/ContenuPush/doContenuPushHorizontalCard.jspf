@@ -1,13 +1,6 @@
-<%
-String url = "";
-if (Util.notEmpty(itPush.getLienSurContenu())) {
-  url = itPush.getLienSurContenu().getDisplayUrl(userLocale);
-} else if (Util.notEmpty(itPush.getLien())) {
-  url = itPush.getLien();
-}
+<%@page contentType="text/html; charset=UTF-8" %>
 
-boolean useTarget = Util.notEmpty(itPush.getLien()) && Util.isEmpty(itPush.getLienSurContenu());
-%>
+<%@include file="doContenuPushCommon.jspf" %>
 
 <div class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
     <div class="ds44-flex-container ds44-flex-container--colMed ds44-flex-container--colMed--colRev">
@@ -30,7 +23,7 @@ boolean useTarget = Util.notEmpty(itPush.getLien()) && Util.isEmpty(itPush.getLi
             <jalios:if predicate="<%= Util.notEmpty(url) %>">
                 <div class="ds44-contentPushH">
                     <p>
-                        <a class="ds44-btnStd" title="<%= Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien() %>" href="<%= url %>" <%= useTarget ? "target=\"_blank\"" : "" %>>
+                        <a class="ds44-btnStd" href="<%= url %>" <%= targetAttr %> <%= titleAttr %>>
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>

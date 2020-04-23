@@ -78,6 +78,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
 			if(Util.notEmpty(url)) {
+				LOGGER.debug("Apell du service de sectorisation : " + url);
 				set.removeAll(getNotInSctorisationPublication(set, url));
 			}
 		}
@@ -92,10 +93,11 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 * @param url
 	 * @return
 	 */
-	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {			
-		List<String> sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());			
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {	
+		List<SectorResult> sectorResultSet = getSectorisation(url);			
 		List<Publication> notInSectorisation = new ArrayList<>(); 
-		if(sectorResultMatriculeSet != null) {
+		if(sectorResultSet != null) {
+			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());		
 			for(Publication itPub : set) {
 				String idRef = "";
 				if(itPub instanceof FicheLieu) {
@@ -141,7 +143,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				in.close();
 				ObjectMapper mapper = new ObjectMapper();
 				// Retoune la liste de SectorResult trouvé par le service rest
+				LOGGER.debug("réponse du service de sectorisation : " + response.toString());
 				return Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
+			} else {
+				LOGGER.warn("Erreur sur le code retour de la recherche par sectorisation " + codeRetour);
 			}
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche sur la sectorisation avec le référentiel externe", e);
