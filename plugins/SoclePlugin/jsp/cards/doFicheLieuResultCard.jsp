@@ -25,7 +25,7 @@ boolean isFocus = "true".equals(request.getParameter("isFocus"));
         <div class="ds44-innerBoxContainer">
             <h4 class="h4-like ds44-cardTitle" id="titleTuileLieuCard_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
             <hr class="mbs" aria-hidden="true">
-            <jalios:if predicate="<%= pub.getComplementTypeDacces() %>">
+            <jalios:if predicate="<%= Util.notEmpty(pub.getComplementTypeDacces()) %>">
                 <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-attention ds44-docListIco" aria-hidden="true"></i><%= pub.getComplementTypeDacces() %></p>
             </jalios:if>
             <jalios:if predicate="<%= Util.notEmpty(pub.getBesoins(loggedMember)) %>">

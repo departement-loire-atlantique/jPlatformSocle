@@ -19,7 +19,7 @@ boolean noPic = "true".equals(request.getParameter("noPic"));
 <section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= !pub.getServiceDuDepartement() ? " ds44-cardIsPartner" : "" %><%= isFocus ? " ds44-cardIsFocus" : "" %>'>
     
     <jalios:if predicate="<%= !noPic %>">
-        <jalios:include file="cardPictureCommons.jspf"/>
+        <%@ include file="cardPictureCommons.jspf" %>
     </jalios:if>
     
     <div class="ds44-card__section">
@@ -40,14 +40,15 @@ boolean noPic = "true".equals(request.getParameter("noPic"));
           <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>Entretien du logement</p>
           
           <%
-          String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
-              obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
-              obj.getCodePostal(), commune, "");
+          String titreCommune = Util.notEmpty(pub.getCommune()) ? pub.getCommune().getTitle() : "";
+          String adresse = SocleUtils.formatAddress("", pub.getEtageCouloirEscalier(),
+              pub.getEntreeBatimentImmeuble(), pub.getNdeVoie(), pub.getLibelleDeVoie(), pub.getLieudit(), "",
+              pub.getCodePostal(), titreCommune, "");
           %>
           <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
               <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= adresse %></p>
           </jalios:if>
-          <jalios:if predicate="<%= Util.notEmpty(obj.getTelephone()) %>">
+          <jalios:if predicate="<%= Util.notEmpty(pub.getTelephone()) %>">
 	          <div class="ds44-docListElem ds44-mt-std">
 			    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 			    <jalios:if predicate='<%= pub.getTelephone().length == 1 %>'>
