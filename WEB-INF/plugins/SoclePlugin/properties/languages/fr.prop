@@ -62,7 +62,6 @@ jcmsplugin.socle.socialnetwork.depsur.youtube: Le Département de Loire-Atlantiq
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.socle.lien.site.nouvelonglet: Site web : {0} - nouvelle fenêtre
-jcmsplugin.socle.lien.vistersite.nouvelonglet: Visiter le site web de : {0} - nouvelle fenêtre
 jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
 jcmsplugin.socle.contactmail: Contacter {0} par mail : {1}
@@ -221,7 +220,6 @@ jcmsplugin.socle.ficheaide.accessibilite-lieu.titre: Accessibilité du lieu :
 jcmsplugin.socle.ficheaide.info-accessibilite.label: Infos accessibilité
 jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter {0} par mail : {1} 
 jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contacter par mail
-jcmsplugin.socle.ficheaide.visiter-site-web-de.label: Visiter le site web de : {0} {1}
 jcmsplugin.socle.ficheaide.visiter-site.label: Visiter le site
 jcmsplugin.socle.ficheaide.nousRencontrer: Nous rencontrer
 jcmsplugin.socle.ficheaide.adresse: Adresse

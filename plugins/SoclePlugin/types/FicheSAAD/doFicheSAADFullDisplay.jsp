@@ -57,7 +57,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
                 <%
                 String site = obj.getSiteInternet();
-                String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.vistersite.nouvelonglet", obj.getTitle()));
+                String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()));
                 %>
                 <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank">
                     <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>

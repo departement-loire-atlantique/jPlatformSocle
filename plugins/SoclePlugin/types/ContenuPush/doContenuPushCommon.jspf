@@ -1,0 +1,24 @@
+<%
+String url = "";
+boolean targetBlank = false;
+String targetAttr = "";
+String titleAttr = ""; // code HTML de l'attribut "title"
+String titleValue = ""; // valeur de l'attribut "title"
+
+if (Util.notEmpty(itPush.getLienSurContenu())) {
+  url = itPush.getLienSurContenu().getDisplayUrl(userLocale);
+} else if (Util.notEmpty(itPush.getLien())) {
+  url = itPush.getLien();
+  targetBlank = true;
+  titleValue = glp("jcmsplugin.socle.lien.nouvelonglet", Util.notEmpty(itPush.getTitreCompletDeLien()) ? itPush.getTitreCompletDeLien() : itPush.getLibelleDeLien());
+}
+
+/*  Accessibilité : on place un attribut "title" sur le lien uniquement si il s'ouvre dans une nouvelle fenêtre
+Si lien externe : "Site web  : [Nom du lieu/établissement/entité/site web...] - nouvelle fenêtre"
+Si doc : "[Titre du contenu] + poids + format - nouvelle fenêtre" 
+*/
+if(targetBlank){
+targetAttr = glp("jcmsplugin.socle.targetblank");
+titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(titleValue) +"\" ";
+}
+%>
