@@ -73,6 +73,9 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="typeDeLieu" editor="enumerate" required="false" compactDisplay="false" tab="contact" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat" ml="false" descriptionType="tooltip" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de lieu</label>
+    </field>
     <field name="contactServiceParEmail" editor="boolean" required="false" compactDisplay="false" tab="contact" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Contact service par email</label>
       <onLabel xml:lang="en">Yes</onLabel>
@@ -98,7 +101,7 @@
     <field name="contactFAQ" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="true">
       <label xml:lang="fr">Contact FAQ</label>
     </field>
-    <!-- Demande -->
+    <!-- Demande -->    
     <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Documents utiles</label>
     </field>

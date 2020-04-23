@@ -9,7 +9,9 @@ response.setContentType("application/json");
 
 Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
-String url = URLUtils.buildUrl("plugins/SoclePlugin/jsp/facettes/displayResult.jsp", parametersMap);
+String redirectUrl = Util.notEmpty(request.getParameter("redirectUrl[value]")) ? request.getParameter("redirectUrl[value]") : "plugins/SoclePlugin/jsp/facettes/displayResult.jsp";
+
+String url = URLUtils.buildUrl(redirectUrl, parametersMap);
 sendRedirect(url);
 
 %>
