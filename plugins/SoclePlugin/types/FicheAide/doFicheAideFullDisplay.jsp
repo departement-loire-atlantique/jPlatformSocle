@@ -127,7 +127,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 
                 <!--  En résumé -->
                 <jalios:if predicate="<%= displayEnResume %>">
-                <div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" aria-labelledby="label_id_first">
+                <div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel">
 
                     <div class="grid-12-small-1">
                         <div class="col-7">
@@ -160,7 +160,6 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 <!-- En détail -->
                 <jalios:if predicate="<%= displayDetails %>">
                 <div id="id_second" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
-                		aria-labelledby="label_id_second" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
                 
@@ -218,7 +217,6 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 <!-- FAQ -->
                 <jalios:if predicate="<%= displayFaq %>">
                 <div id="id_third" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
-                		aria-labelledby="label_id_third" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
 					<jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
@@ -456,7 +454,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 </jalios:if>
 
 <jalios:if predicate="<%= displayQuiContacter %>">
-<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" data-bkp-aria-hidden="true">
     <%-- Instruction délégation est à faux --%>
     <jalios:if predicate="<%= !obj.getInstructionDelegation() %>">
     <div class="ds44-modal-box">
