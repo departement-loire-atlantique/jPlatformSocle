@@ -308,6 +308,8 @@ $jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
 $jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
 $jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
 
+$jcmsplugin.socle.fichelieu.contactPrivilegie.root: c_1281408
+
 # Accueil Annuaire / Agenda
 
 $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
