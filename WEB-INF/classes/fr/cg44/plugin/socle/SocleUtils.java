@@ -1017,7 +1017,7 @@ public final class SocleUtils {
     }
     
     Canton mbrCanton = elu.getCanton();
-    TreeSet<ElectedMember> linkedElus = mbrCanton.getLinkIndexedDataSet(ElectedMember.class);
+    TreeSet<ElectedMember> linkedElus = (TreeSet<ElectedMember>) mbrCanton.getLinkIndexedDataSet(ElectedMember.class).clone();
     
     linkedElus.remove(elu);
     
