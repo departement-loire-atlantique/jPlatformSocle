@@ -198,6 +198,7 @@ media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
+media.data-template.card.FicheAide: /plugins/SoclePlugin/jsp/cards/doFicheAideCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
 media.data-template.card.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp
 media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp?isFocus=true
@@ -245,6 +246,8 @@ $jcmsplugin.socle.ficheactu.types.root: c_1156291
 # Fiche aide
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
+$jcmsplugin.socle.ficheaide.typeaide.root: c_1214316
+jcmsplugin.socle.ficheaide.tuile.tag.root: 
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
