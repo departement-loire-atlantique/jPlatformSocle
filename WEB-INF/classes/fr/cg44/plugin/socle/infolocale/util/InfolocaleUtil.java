@@ -156,6 +156,9 @@ public class InfolocaleUtil {
                 Instant itInstant = itJavaDate.toInstant();
                 
                 if (instantNow.isAfter(itInstant)) {
+                    if (Util.isEmpty(value)) { 
+                      value = itDate; 
+                    }
                     continue;
                 }
                 
@@ -260,6 +263,7 @@ public class InfolocaleUtil {
      * @return
      */
     public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
+      if (Util.isEmpty(dateEvent)) return "";
       if (infolocaleDateIsSingleDay(dateEvent)) {
         return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.carrousel.tuile.date", Channel.getChannel().getCurrentUserLang(), 
             getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
