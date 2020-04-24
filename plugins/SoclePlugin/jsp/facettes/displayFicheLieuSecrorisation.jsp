@@ -26,7 +26,7 @@ StringBuffer contentHtml = new StringBuffer();
 %>
 <jalios:foreach collection="<%= qh.getResultSet() %>" name="itPub" type="Publication"><%
     %><jalios:buffer name="fichesLieuxHTML"><%
-        %>salut toi<%
+        %><%--TODO utiliser lorsque le js sera développé - Utiliser doFicheLieuEmbedDisplayContent.jsp ? --%><%
     %></jalios:buffer><%   
     contentHtml.append(fichesLieuxHTML);
 %></jalios:foreach><%
