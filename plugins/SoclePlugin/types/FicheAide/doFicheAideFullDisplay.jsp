@@ -127,7 +127,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 
                 <!--  En résumé -->
                 <jalios:if predicate="<%= displayEnResume %>">
-                <div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" aria-labelledby="label_id_first">
+                <div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel">
 
                     <div class="grid-12-small-1">
                         <div class="col-7">
@@ -160,7 +160,6 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 <!-- En détail -->
                 <jalios:if predicate="<%= displayDetails %>">
                 <div id="id_second" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
-                		aria-labelledby="label_id_second" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
                 
@@ -218,11 +217,12 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                 <!-- FAQ -->
                 <jalios:if predicate="<%= displayFaq %>">
                 <div id="id_third" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" role="tabpanel" 
-                		aria-labelledby="label_id_third" 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
 					<jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-						<jalios:include pub="<%= obj.getFaq() %>" usage="full"/>
+					   <% ServletUtil.backupAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
+					   <jalios:include pub="<%= obj.getFaq() %>" usage="full"/>
+                       <% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
 					</jalios:if>
                 </div>
                 </jalios:if>
@@ -456,8 +456,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 </jalios:if>
 
 <jalios:if predicate="<%= displayQuiContacter %>">
-<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
-    
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" data-bkp-aria-hidden="true">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1">
             <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>

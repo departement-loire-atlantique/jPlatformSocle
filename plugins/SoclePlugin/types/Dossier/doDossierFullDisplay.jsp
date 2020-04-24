@@ -34,12 +34,14 @@
 
 					<div class="col-1 grid-offset ds44-hide-tinyToLarge"></div>
 
-					<article class="col-7">
+					<article class="col-7 ds44-contenuDossier">
 						<jalios:if predicate="<%= Util.notEmpty(obj.getDate()) %>">
-							<p class="ds44-textLegend"><%= glp("jcmsplugin.socle.publieele", SocleUtils.formatDate("dd/MM/yy", obj.getDate())) %></p>
+							<p class="ds44-textLegend"><%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getDate())) %></p>
 						</jalios:if>
 						<jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
-							<p class="ds44-introduction"><%= obj.getChapo() %></p>
+							<div class="ds44-introduction">
+								<jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg>
+							</div>
 						</jalios:if>
 						
 						<jalios:foreach type="String" name="itParagrapheRubrique" array="<%= obj.getParagrapheRubrique() %>">

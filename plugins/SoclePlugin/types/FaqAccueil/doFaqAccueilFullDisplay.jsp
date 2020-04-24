@@ -59,32 +59,36 @@
 					}
 				%>
 				<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
+				
+				    <% String idFormElement1 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
-							<label for="form-element-10988" class="ds44-formLabel">
+							<label for="<%= idFormElement1 %>" class="ds44-formLabel">
                                 <span class="ds44-labelTypePlaceholder">
 									<span class="ds44-labelTypePlaceholder">
 										<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
 									</span>
 								</span>
 							</label>
-							<textarea rows="5" cols="1" id="form-element-10988" class="ds44-inpStd" 
+							<textarea name="question" rows="5" cols="1" id="<%= idFormElement1 %>" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
 									required aria-required="true"></textarea>
 						</div>
 						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
+					
+					<% String idFormElement2 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
-							<label for="form-element-26867" class="ds44-formLabel">
+							<label for="<%= idFormElement2 %>" class="ds44-formLabel">
                                 <span class="ds44-labelTypePlaceholder">
 								    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
                                 </span>
 							</label>
-							<input type="text" id="form-element-77221" name="commune" class="ds44-inpStd" 
+							<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
 									role="combobox" 
 									aria-autocomplete="list" 
-									autocomplete="off" 
+									autocomplete="address-level2"
 									aria-expanded="false" 
 									title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
 									data-url="/json/autocomplete-city.json" 
@@ -104,20 +108,22 @@
 						</div>
 						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
+					
+					<% String idFormElement3 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
 						<div class="ds44-posRel">
-							<label for="form-element-99423" class="ds44-formLabel">
+							<label for="<%= idFormElement3 %>" class="ds44-formLabel">
                                 <span class="ds44-labelTypePlaceholder">
 									<span class="ds44-labelTypePlaceholder">
 										<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
 									</span>
                                 </span>
 							</label>
-							<input type="text" id="form-element-42259" name="form-element-42259" class="ds44-inpStd" 
+							<input type="text" id="<%= idFormElement3 %>" name="<%= idFormElement3 %>" class="ds44-inpStd" 
 									title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
-									required 
-									aria-describedby="explanation-form-element-42259" />
-							<span class="ds44-labelTypeInfoComp"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+									required autocomplete="email"
+									aria-describedby="explanation-<%= idFormElement3 %>" />
+							<span class="ds44-labelTypeInfoComp" id="explanation-<%= idFormElement3 %>"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 							<button class="ds44-reset" type="button">
 								<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 								<span class="visually-hidden">

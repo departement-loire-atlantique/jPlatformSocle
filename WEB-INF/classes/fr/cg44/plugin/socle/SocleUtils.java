@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -461,12 +463,30 @@ public final class SocleUtils {
 		return formatOpenStreetMapLink(latitude, longitude, "11");
 	}
 
-	/**
+  	/**
      * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
      * @param categories
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories) {
+    public static String formatCategories(Set<Category> categories) {
+        return formatCategories(new ArrayList<Category>(categories), ", ");
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(Set<Category> categories, String separator) {
+        return formatCategories(new ArrayList<Category>(categories), separator);
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(List<Category> categories) {
         return formatCategories(categories, ", ");
     }
     
@@ -477,7 +497,7 @@ public final class SocleUtils {
      * @param separator
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories, String separator) {
+    public static String formatCategories(List<Category> categories, String separator) {
         
         if (Util.isEmpty(categories)) return "";
         
@@ -1017,11 +1037,119 @@ public final class SocleUtils {
     }
     
     Canton mbrCanton = elu.getCanton();
-    TreeSet<ElectedMember> linkedElus = mbrCanton.getLinkIndexedDataSet(ElectedMember.class);
+    TreeSet<ElectedMember> linkedElus = (TreeSet<ElectedMember>) mbrCanton.getLinkIndexedDataSet(ElectedMember.class).clone();
     
     linkedElus.remove(elu);
     
     return linkedElus.first();
+  }
+  
+  /**
+   * Retourne le nom complet de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullName(ElectedMember elu) {
+    String fullName = "";
+    if(Util.notEmpty(elu.getFirstName())) {
+    	fullName = elu.getFirstName()+" ";
+    }
+    if(Util.notEmpty(elu.getFirstName()) && Util.notEmpty(elu.getNom())) {
+    	fullName += " ";
+    }
+    if(Util.notEmpty(elu.getNom())) {
+    	fullName += elu.getNom();
+    }
+    return fullName;
+  }
+  
+  /**
+   * Retourne l'intitulé de mission de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberMissionString(ElectedMember elu) {
+		
+		if(Util.isEmpty(elu.getMissionThematique(channel.getCurrentLoggedMember()))) return "";
+		
+		StringBuffer sbfMission = new StringBuffer();
+		sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.mission-thematique")).
+			append(" ");
+		for(Category itCat : elu.getMissionThematique(channel.getCurrentLoggedMember())) {
+			sbfMission.append(itCat.getName())
+				.append(" ");
+		}
+		ElectedMember linkedElu = elu.getVicepresidentLie();
+		if(Util.notEmpty(linkedElu)) {
+			sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.en-lien-avec"))
+				.append(" ");
+			if(Util.notEmpty(linkedElu.getNom())) {
+				sbfMission.append(linkedElu.getNom())
+					.append(" ");
+			}
+			if(Util.notEmpty(linkedElu.getFirstName())) {
+				sbfMission.append(linkedElu.getFirstName())
+					.append(" ");
+			}
+			if(Util.notEmpty(linkedElu.getNom()) || Util.notEmpty(linkedElu.getFirstName())) {
+				sbfMission.append(", ");
+			}
+			String roleLinkedElu = SocleUtils.getElectedMemberFunction(linkedElu);
+			if(Util.notEmpty(roleLinkedElu)) {
+				sbfMission.append(roleLinkedElu);
+			}
+		}
+		return sbfMission.toString();
+  }
+  
+  /**
+   * Retourne la fonction complète de vice-president de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullFunctionVicePresident(ElectedMember elu) {
+		if(Util.notEmpty(elu.getFunctions(channel.getCurrentLoggedMember()))) {
+			Category catVicePresident = null;
+			for(Category itCat : elu.getFunctions(channel.getCurrentLoggedMember())) {
+				Category itParent = itCat.getParent();
+				if (itParent.equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+					catVicePresident = itCat;
+					break;
+				}
+			}
+			if (Util.notEmpty(catVicePresident)) {
+				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
+				return fullRole + catVicePresident.getName();
+			}
+		}
+		return "";
+  }
+  
+  /**
+   * Retourne le label de l'année d'éléction de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberElectionYear(ElectedMember elu) {
+		int anneeElection = elu.getFirstElectionYear();
+		if(Util.notEmpty(anneeElection) && anneeElection > 0) {
+			String labelAnneeElection = "";
+			if(elu.getNouvelEluOuReelu()) {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elue-en", anneeElection);
+				}
+			} else {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelue-en", anneeElection);
+				}
+			}
+			return labelAnneeElection;
+		}
+		return "";
   }
   
   /**

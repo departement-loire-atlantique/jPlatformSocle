@@ -97,6 +97,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="ElectedMember">
+        <template name="default" file="doElectedMemberFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="FaqAccueil">
         <template name="default" file="doFaqAccueilFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
