@@ -382,6 +382,25 @@ jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
 jcmsplugin.socle.elu.vicepresident.feminin: Vice-Présidente
 jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
 jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale
+jcmsplugin.socle.elu.president: président
+jcmsplugin.socle.elu.membre: membre
+jcmsplugin.socle.elu.president-commission.masculin: Président de la commission {0}
+jcmsplugin.socle.elu.president-commission.feminin: Présidente de la commission {0}
+jcmsplugin.socle.elu.membre-commission: Membre de la commission {0}
+jcmsplugin.socle.elu.permanente: permanente
+jcmsplugin.socle.elu.mission-thematique: Mission thématique : 
+jcmsplugin.socle.elu.en-lien-avec: en lien avec
+jcmsplugin.socle.elu.en-binome-avec: En binôme avec : 
+jcmsplugin.socle.elu.remplacant: Remplaçant(e) : 
+jcmsplugin.socle.elu.elu-en: Élu en {0}
+jcmsplugin.socle.elu.elue-en: Élue en {0}
+jcmsplugin.socle.elu.reelu-en: Réélu en {0}
+jcmsplugin.socle.elu.reelue-en: Réélue en {0}
+jcmsplugin.socle.elu.nom-binome.default: Voir la fiche de l'élu
+jcmsplugin.socle.elu.canton: - canton 
+jcmsplugin.socle.elu.fonctions-actuelles.titre: Fonctions actuelles au sein du conseil départemental
+jcmsplugin.socle.elu.historique-fonctions.titre: Historique des fonctions au conseil départemental
+jcmsplugin.socle.elu.autres-fonctions.titre: Autres mandats locaux
 
 # ------------------------------------------------------------
 #  Fiche publication

@@ -1037,11 +1037,119 @@ public final class SocleUtils {
     }
     
     Canton mbrCanton = elu.getCanton();
-    TreeSet<ElectedMember> linkedElus = mbrCanton.getLinkIndexedDataSet(ElectedMember.class);
+    TreeSet<ElectedMember> linkedElus = (TreeSet<ElectedMember>) mbrCanton.getLinkIndexedDataSet(ElectedMember.class).clone();
     
     linkedElus.remove(elu);
     
     return linkedElus.first();
+  }
+  
+  /**
+   * Retourne le nom complet de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullName(ElectedMember elu) {
+    String fullName = "";
+    if(Util.notEmpty(elu.getFirstName())) {
+    	fullName = elu.getFirstName()+" ";
+    }
+    if(Util.notEmpty(elu.getFirstName()) && Util.notEmpty(elu.getNom())) {
+    	fullName += " ";
+    }
+    if(Util.notEmpty(elu.getNom())) {
+    	fullName += elu.getNom();
+    }
+    return fullName;
+  }
+  
+  /**
+   * Retourne l'intitulé de mission de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberMissionString(ElectedMember elu) {
+		
+		if(Util.isEmpty(elu.getMissionThematique(channel.getCurrentLoggedMember()))) return "";
+		
+		StringBuffer sbfMission = new StringBuffer();
+		sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.mission-thematique")).
+			append(" ");
+		for(Category itCat : elu.getMissionThematique(channel.getCurrentLoggedMember())) {
+			sbfMission.append(itCat.getName())
+				.append(" ");
+		}
+		ElectedMember linkedElu = elu.getVicepresidentLie();
+		if(Util.notEmpty(linkedElu)) {
+			sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.en-lien-avec"))
+				.append(" ");
+			if(Util.notEmpty(linkedElu.getNom())) {
+				sbfMission.append(linkedElu.getNom())
+					.append(" ");
+			}
+			if(Util.notEmpty(linkedElu.getFirstName())) {
+				sbfMission.append(linkedElu.getFirstName())
+					.append(" ");
+			}
+			if(Util.notEmpty(linkedElu.getNom()) || Util.notEmpty(linkedElu.getFirstName())) {
+				sbfMission.append(", ");
+			}
+			String roleLinkedElu = SocleUtils.getElectedMemberFunction(linkedElu);
+			if(Util.notEmpty(roleLinkedElu)) {
+				sbfMission.append(roleLinkedElu);
+			}
+		}
+		return sbfMission.toString();
+  }
+  
+  /**
+   * Retourne la fonction complète de vice-president de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullFunctionVicePresident(ElectedMember elu) {
+		if(Util.notEmpty(elu.getFunctions(channel.getCurrentLoggedMember()))) {
+			Category catVicePresident = null;
+			for(Category itCat : elu.getFunctions(channel.getCurrentLoggedMember())) {
+				Category itParent = itCat.getParent();
+				if (itParent.equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+					catVicePresident = itCat;
+					break;
+				}
+			}
+			if (Util.notEmpty(catVicePresident)) {
+				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
+				return fullRole + catVicePresident.getName();
+			}
+		}
+		return "";
+  }
+  
+  /**
+   * Retourne le label de l'année d'éléction de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberElectionYear(ElectedMember elu) {
+		int anneeElection = elu.getFirstElectionYear();
+		if(Util.notEmpty(anneeElection) && anneeElection > 0) {
+			String labelAnneeElection = "";
+			if(elu.getNouvelEluOuReelu()) {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elue-en", anneeElection);
+				}
+			} else {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelue-en", anneeElection);
+				}
+			}
+			return labelAnneeElection;
+		}
+		return "";
   }
   
   /**
