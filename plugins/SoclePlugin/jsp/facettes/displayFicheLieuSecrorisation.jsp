@@ -26,7 +26,6 @@ StringBuffer contentHtml = new StringBuffer();
 %>
 <jalios:foreach collection="<%= qh.getResultSet() %>" name="itPub" type="Publication"><%
     %><jalios:buffer name="fichesLieuxHTML"><%
-        System.out.println(itPub);
         %>salut toi<%
     %></jalios:buffer><%   
     contentHtml.append(fichesLieuxHTML);

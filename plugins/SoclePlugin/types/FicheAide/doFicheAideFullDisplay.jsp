@@ -459,8 +459,8 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 <section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-qui-contacter" data-bkp-aria-hidden="true">
     
     <div class="ds44-modal-box">
-        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer la boite de dialogue : qui contacter" data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1">
-            <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span>
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1">
+            <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
         </button>
         <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h1>
         <div class="ds44-modal-gab">
@@ -476,32 +476,27 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	                <jalios:if predicate="<%= obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu()) %>">
 	                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>    
 	                    <div id="step1">
-	                        <h2 class="h4-like" id="modal-contact-title">Trouvez le bon contact près de chez vous :</h2>
-	                        <form>                      
+	                        <h2 class="h4-like" id="modal-contact-title"><%= glp("jcmsplugin.socle.contact.trouver-contact") %></h2>
+	                        <form data-is-ajax='true' action='plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp' />   
+	                              
+	                              
+	                            <%-- TODO voir pour inclure directement une PortletFacetteAutoCompletion.jspf ou un portlet commune adresse lié, Sinon ajouter la recherche par adresse --%>	                          
 	                            <div class="ds44-form__container">                                                    
-	                                <div class="ds44-posRel">
-	                                
-	                                
-	                                
-	                                    <label for="form-element-56145" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span>Votre adresse<sup aria-hidden="true">*</sup></span></span></label>
-	                                    <input type="text" id="form-element-56145" name="commune" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title="Votre adresse - obligatoire" data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" data-mode="select-only" required   aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden">Effacer le contenu saisi dans le champ : Votre adresse</span></button>
+	                                <div class="ds44-posRel">	                                
+	                                    <label for="form-element-56145" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.menu.pdcv.votreAdresse") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
+	                                    <input type="text" id="form-element-56145" name="commune" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.menu.pdcv.votreAdresse") + " - " + glp("jcmsplugin.socle.obligatoire")) %>' data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" data-mode="select-only" required   aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.menu.pdcv.votreAdresse")) %></span></button>
 	                                    <div class="ds44-autocomp-container hidden">
 	                                        <div class="ds44-autocomp-list">
 	                                            <ul class="ds44-list" role="listbox"></ul>
 	                                        </div>
-	                                    </div>   
-	                                    
-	                                    
-	                                      
-	                                </div>
-	                                
-	                                
+	                                    </div>                                         
+	                                </div>                                	                                
 	                                <div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 	                            </div>
-	
+	                           
 	                    
-	                            <button class="ds44-btnStd ds44-btn--invert" title="Valider votre adresse">
-	                                <span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+	                            <button class="ds44-btnStd ds44-btn--invert" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.adresse.valider-adresse")) %>'>
+	                                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	                            </button>  
 	                            
 	                            <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
@@ -597,8 +592,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                     </div>
                 </jalios:if>
             </div>
-            </jalios:if>
-            <%-- Fin instruction délégation à faux --%>
+            </jalios:if>           
             
             
         </div>
