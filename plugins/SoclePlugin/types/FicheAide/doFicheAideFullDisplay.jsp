@@ -501,7 +501,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	                            <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
 	                               <input type="hidden" name="cid" value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" />
 	                            </jalios:if>	                            
-	                            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayFicheLieuSecrorisation.jsp" />
+	                            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayFicheLieuSectorisation.jsp" />
 	                                           
 	                        </form>
 	                    </div>
