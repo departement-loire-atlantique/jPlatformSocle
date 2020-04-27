@@ -26,7 +26,7 @@ boolean hasBottomInfos = Util.notEmpty(pub.getThematique(loggedMember)) || (Util
                 </p>
 	            </jalios:if>
 	            <jalios:if predicate="<%= Util.notEmpty(pub.getMontantDeLaSubvention()) && pub.getMontantDeLaSubvention() > 0 %>">
-	            <p class="ds44-mt1"><strong><%= glp("jcmsplugin.socle.financementDep") %> :</strong> <%= SocleUtils.formatPrice(pub.getMontantDeLaSubvention()) %> <%= glp("jcmsplugin.socle.symbol.euro") %></p>
+	            <p class="ds44-mt1"><strong><%= glp("jcmsplugin.socle.financementDep") %> :</strong><br/><%= SocleUtils.formatPrice(pub.getMontantDeLaSubvention()) %> <%= glp("jcmsplugin.socle.symbol.euro") %></p>
 	            </jalios:if>
             </jalios:if>
         </div>
