@@ -60,6 +60,9 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="typeDeCarte" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="departement_contour|commune_actif|epci_actif|epci_contour|canton_actif|canton_contour|delegation_actif|delegation_contour" ml="false" descriptionType="tooltip" labelList="Périmètre départemental|Communes actives|EPCI actifs|EPCI contours|Cantons actifs|Cantons contours|Délégations actives|Délégations contours" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de carte</label>
+    </field>
     <field name="modeDaffichageDuContenu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Mode d'affichage du contenu</label>
       <onLabel xml:lang="en">Yes</onLabel>
