@@ -37,6 +37,9 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
+    <field name="infobulleAnnuaire" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="4" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+      <label xml:lang="fr">Infobulle annuaire</label>
+    </field>      
     <field name="typeSimple" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type</label>
       <onLabel xml:lang="en">Yes</onLabel>
@@ -64,9 +67,6 @@
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
-    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
-      <label xml:lang="fr">Portlets bas</label>
-    </field>    
     <field name="titreOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
@@ -178,6 +178,15 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
+    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
+      <label xml:lang="fr">Portlets bas</label>
+    </field>
+    <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
+      <label xml:lang="fr">Portlets encadrés (article simple uniquement)</label>
+    </field>     
+    <field name="idAncienContenu" editor="textfield" required="false" compactDisplay="false" type="String" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true">
+      <label xml:lang="fr">ID ancien contenu (si cet article a fait l'objet d'une reprise)</label>
+    </field>     
   </fields>
   <tabs>
     <tab id="contenu">
