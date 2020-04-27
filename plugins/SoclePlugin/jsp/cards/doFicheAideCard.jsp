@@ -14,6 +14,8 @@ FicheAide pub = (FicheAide) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
+Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray ">
@@ -24,22 +26,23 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
         <div class="ds44-innerBoxContainer">
             <h4 class="h4-like ds44-cardTitle" id="titreTuileFicheAide_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
             <hr class="mbs" aria-hidden="true">
-            <%
-            Category pubMainCatRoot = channel.getCategory("jcmsplugin.socle.ficheaide.tuile.tag.root");
-            %>
-            <jalios:if predicate="<%= Util.notEmpty(pubMainCatRoot) %>">
-	            <%
-	            List<Category> pubMainCats = new ArrayList<>();
-	            for (Category itCat : pub.getCategories(loggedMember)) {
-	              if (itCat.getParent().equals(pubMainCatRoot)) {
-	                pubMainCats.add(itCat);
+            
+            <jalios:if predicate=<%= Util.notEmpty(tagRootCat) %>>
+	            <% 
+	              List<Category> allTagChildren = new ArrayList<>();
+	              for (Category itCat : pub.getCategorySet()) {
+	                if (!itCat.isRoot() && itCat.getParent().equals(tagRootCat)) {
+	                  allTagChildren.add(itCat);
+	                }
 	              }
-	            }
 	            %>
-	            <jalios:if predicate="<%= Util.notEmpty(pubMainCats) %>">
-	               <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pubMainCats) %></p>
+	            <jalios:if predicate="<%= Util.notEmpty(allTagChildren) %>">
+	                <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+	                    <%= SocleUtils.formatCategories(allTagChildren) %>
+	                </p>
 	            </jalios:if>
             </jalios:if>
+
             <jalios:if predicate="<%= Util.notEmpty(pub.getPublics(loggedMember)) %>">
                 <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pub.getPublics(loggedMember)) %></p>
             </jalios:if>
