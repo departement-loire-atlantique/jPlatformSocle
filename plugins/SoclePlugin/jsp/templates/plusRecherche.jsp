@@ -38,6 +38,6 @@ if(pub instanceof FileDocument){
 	</jalios:if>
 	
 	<jalios:default>
-	    <a class="ds44-arrowLink" title="<%= pub.getTitle() %>" href="<%= pub.getDisplayUrl(userLocale) %>"><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
+	    <a class="ds44-arrowLink" href="<%= pub.getDisplayUrl(userLocale) %>"><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
 	</jalios:default>
 </jalios:select>

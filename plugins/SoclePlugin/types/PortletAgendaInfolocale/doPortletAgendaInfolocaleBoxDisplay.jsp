@@ -27,13 +27,18 @@ if (Util.notEmpty(listCodesInsee)) {
     parameters.put("codeInsee", listCodesInsee);
 }
 
-parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+if (Util.notEmpty(box.getNombreDeResultats())) {
+  parameters.put("limit", box.getNombreDeResultats());
+} else {
+  parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+}
+
 parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
 
 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 parameters.put("dateDebut", sdf.format(Calendar.getInstance().getTime()));
 Calendar calInAMonth = Calendar.getInstance();
-calInAMonth.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
+calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
 parameters.put("dateFin", sdf.format(calInAMonth.getTime()));
 
 String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();

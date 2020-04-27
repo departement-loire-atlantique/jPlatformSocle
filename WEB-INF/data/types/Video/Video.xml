@@ -27,6 +27,9 @@
     <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="common">
       <label xml:lang="fr">Légende</label>
     </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="common">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>    
     <field name="fichierTranscript" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="common">
       <label xml:lang="fr">Fichier de transcript</label>
     </field>

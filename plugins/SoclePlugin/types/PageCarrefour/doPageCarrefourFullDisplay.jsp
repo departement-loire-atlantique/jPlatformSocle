@@ -40,11 +40,22 @@ String copyright = obj.getCopyright(userLang);
                 <div class="col-1 grid-offset"></div>
                 <aside class="col-4">
     		        <jalios:if predicate="<%= Util.notEmpty(obj.getSideportlets()) %>">
-			            <jalios:foreach name="itPortlet" array="<%= obj.getSideportlets() %>" type="com.jalios.jcms.Publication">
-			                <jalios:include id="<%= itPortlet.getId() %>" />
+			            <jalios:foreach name="itPub" array="<%= obj.getSideportlets() %>" type="com.jalios.jcms.Publication">
+			            
+			                 <jalios:select>
+				                 <jalios:if predicate='<%= itPub instanceof PortalElement %>'>
+				                     <jalios:include id="<%= itPub.getId() %>"/>
+				                 </jalios:if>
+				                 
+				                 <jalios:if predicate='<%= itPub instanceof Publication %>'>
+	                                 <jalios:media data="<%= itPub %>"/>
+	                             </jalios:if>
+			                </jalios:select>
+			                 
 			                <jalios:if predicate="<%= itCounter < obj.getSideportlets().length %>">
 			                    <div class="ds44-mb3"></div>
 			                </jalios:if>
+			                
 			            </jalios:foreach>
 			        </jalios:if>
                 </aside>
