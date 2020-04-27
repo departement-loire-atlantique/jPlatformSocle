@@ -74,19 +74,22 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 			<jalios:if predicate="<%= Util.notEmpty(pub.getDirectiondelegation(loggedMember)) %>">
             <%
 	        SortedSet<Category> catsWithoutServices = pub.getDirectiondelegation(loggedMember);
+            Category catService =  null;
             if (Util.notEmpty(catsWithoutServices)) {
               catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
-              Category tmpCat = new Category();
-              tmpCat.setName(pub.getService());
-              catsWithoutServices.add(tmpCat);
+              catService = new Category();
+              catService.setName(pub.getService());
             }
 	        %>
 	        <p class="ds44-docListElem ds44-mt-std">
 			    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+			    <jalios:if predicate="<%= Util.notEmpty(catService) %>">
+			         <%= catService %><br/>
+			    </jalios:if>
 			    <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
 			         <%= SocleUtils.formatCategories(catsWithoutServices) %> - 
 			    </jalios:if>
-			    <%= pub.getCommune() %>
+                <%= pub.getCommune() %>
 		    </p>
 			</jalios:if>
 			<hr class="mbs" aria-hidden="true">
