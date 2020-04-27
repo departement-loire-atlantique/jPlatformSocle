@@ -13,10 +13,9 @@ if (data == null) {
 SeniorCitizensEstablishment pub = (SeniorCitizensEstablishment) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
-boolean isFocus = "true".equals(request.getParameter("isFocus"));
 %>
 
-<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= isFocus ? " ds44-cardIsFocus" : "" %>'>
+<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray'>
     
     <div class="ds44-card__section">
 	    <div class="ds44-innerBoxContainer">
