@@ -14,6 +14,8 @@ FicheLieu pub = (FicheLieu) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isFocus = "true".equals(request.getParameter("isFocus"));
 boolean noPic = "true".equals(request.getParameter("noPic"));
+
+Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
 %>
 
 <section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= !pub.getServiceDuDepartement() ? " ds44-cardIsPartner" : "" %><%= isFocus ? " ds44-cardIsFocus" : "" %>'>
@@ -36,8 +38,21 @@ boolean noPic = "true".equals(request.getParameter("noPic"));
           <hr class="mbs" aria-hidden="true">
           </jalios:if>
           
-          <%-- TODO : comprendre la demande sur la catégorie racine TAG --%>
-          <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>Entretien du logement</p>
+          <jalios:if predicate=<%= Util.notEmpty(tagRootCat) %>>
+            <% 
+              List<Category> allTagChildren = new ArrayList<>();
+              for (Category itCat : pub.getCategorySet()) {
+                if (!itCat.isRoot() && itCat.getParent().equals(tagRootCat)) {
+                  allTagChildren.add(itCat);
+                }
+              }
+            %>
+            <jalios:if predicate="<%= Util.notEmpty(allTagChildren) %>">
+	            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+	                <%= SocleUtils.formatCategories(allTagChildren) %>
+	            </p>
+            </jalios:if>
+          </jalios:if>
           
           <%
           String titreCommune = Util.notEmpty(pub.getCommune()) ? pub.getCommune().getTitle() : "";
