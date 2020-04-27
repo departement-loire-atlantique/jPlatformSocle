@@ -178,19 +178,21 @@
 											<ul class="ds44-list ds44-flex-container ds44-flex-align-left">
 												<jalios:if predicate="<%= Util.notEmpty(obj.getFacebook()) %>">
 													<li>
-														<a href="<%= obj.getFacebook() %>" target="_blank" class="ds44-rsLink" title="Partager cette page sur Facebook - nouvelle fenêtre" 
+														<a href="<%= obj.getFacebook() %>" target="_blank" class="ds44-rsLink" 
+																title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.elu.page-facebook", SocleUtils.getElectedMemberFullName(obj))) %>' 
 																data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Facebook&quot;}">
 															<i class="icon icon-facebook icon--sizeL" aria-hidden="true"></i>
-															<span class="visually-hidden">Partager cette page sur Facebook</span>
+															<span class="visually-hidden"><%= glp("jcmsplugin.socle.elu.page-facebook", SocleUtils.getElectedMemberFullName(obj)) %></span>
 														</a>
 													</li>
 												</jalios:if>
 												<jalios:if predicate="<%= Util.notEmpty(obj.getTwitter()) %>">
 													<li>
-														<a href="<%= obj.getTwitter() %>" target="_blank" class="ds44-rsLink" title="Partager cette page sur Twitter - nouvelle fenêtre" 
+														<a href="<%= obj.getTwitter() %>" target="_blank" class="ds44-rsLink" 
+																title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.elu.page-twitter", SocleUtils.getElectedMemberFullName(obj))) %>' 
 																data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Twitter&quot;}">
 															<i class="icon icon-twitter icon--sizeL" aria-hidden="true"></i>
-															<span class="visually-hidden">Partager cette page sur Twitter</span>
+															<span class="visually-hidden"><%= glp("jcmsplugin.socle.elu.page-twitter", SocleUtils.getElectedMemberFullName(obj)) %></span>
 														</a>
 													</li>
 												</jalios:if>
@@ -219,10 +221,10 @@
 	</jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getHistoricalCGMandates(userLang)) %>'>
-		<section class="ds44-contenuArticle" id="section3">
+		<section class="ds44-contenuArticle" id="section4">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
-					<h3 id="idTitre3"><%= glp("jcmsplugin.socle.elu.historique-fonctions.titre") %></h3>
+					<h3 id="idTitre4"><%= glp("jcmsplugin.socle.elu.historique-fonctions.titre") %></h3>
 					<jalios:wysiwyg><%= obj.getHistoricalCGMandates(userLang) %></jalios:wysiwyg>
 				</div>
 			</div>
@@ -230,11 +232,11 @@
 	</jalios:if>
 
 	<jalios:if predicate='<%= Util.notEmpty(obj.getOtherLocalNationalMandates(userLang)) %>'>
-		<section class="ds44-contenuArticle" id="section3">
+		<section class="ds44-contenuArticle" id="section5">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
 					<div class="ds44-wsg-encadreContour">
-						<h3 id="idTitre3"><%= glp("jcmsplugin.socle.elu.autres-fonctions.titre") %></h3>
+						<h3 id="idTitre5"><%= glp("jcmsplugin.socle.elu.autres-fonctions.titre") %></h3>
 						<jalios:wysiwyg><%= obj.getOtherLocalNationalMandates(userLang) %></jalios:wysiwyg>
 					</div>
 				</div>
