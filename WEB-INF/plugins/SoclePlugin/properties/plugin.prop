@@ -17,6 +17,23 @@ jcmsplugin.socle.sectorisation.commune.url: https://rec-oreco.loire-atlantique.f
 jcmsplugin.socle.sectorisation.point.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?
 jcmsplugin.socle.sectorisation.rectangle.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?
 
+
+$jcmsplugin.socle.type.sectorisation.paph.cat: t1_16281
+$jcmsplugin.socle.type.sectorisation.delegations.cat: p1_44835
+$jcmsplugin.socle.type.sectorisation.amenagement.cat: p1_44837
+$jcmsplugin.socle.type.sectorisation.developpement-local.cat: p1_44838
+$jcmsplugin.socle.type.sectorisation.ressources.cat: p1_44839
+$jcmsplugin.socle.type.sectorisation.solidarites.cat: p1_44840
+$jcmsplugin.socle.type.sectorisation.eds.cat: t1_10554
+$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat: t1_10557
+$jcmsplugin.socle.type.sectorisation.unites-emplois.cat: t1_10567
+$jcmsplugin.socle.type.sectorisation.cli.cat: c_1274182
+$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat: c_1211499
+$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat: c_1274200
+$jcmsplugin.socle.type.sectorisation.missions-locales.cat: t1_10564
+$jcmsplugin.socle.type.sectorisation.clic.cat: t1_16280
+$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat: t1_28189
+
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
 # ------------------------------------------------------------

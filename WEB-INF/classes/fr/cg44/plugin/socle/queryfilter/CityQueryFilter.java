@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.handler.QueryHandler;
 
@@ -17,8 +18,11 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
 		// Récupère la ou les communes en paramètre de recherche
-		String[] citiesCodeSearchArray = request.getParameterValues("commune");
-		addCitySearch(qh, request, citiesCodeSearchArray);
+		Boolean isSectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
+		if(!isSectorisation) {
+			String[] citiesCodeSearchArray = request.getParameterValues("commune");
+			addCitySearch(qh, request, citiesCodeSearchArray);
+		}
 		return qh;
 	}
 	
