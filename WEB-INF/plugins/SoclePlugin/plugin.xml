@@ -270,7 +270,10 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
         <template name="pdcv" file="doPortletFacetteDelegationPdcv.jsp" usage='box'>
-          <label xml:lang="fr">DS44 : gabarit recherche PDCV</label>
+          <label xml:lang="fr">DS44 : gabarit recherche PDCV en header</label>
+        </template>
+        <template name="pdcvsearch" file="doPortletSearchPdcv.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche PDCV en tuile</label>
         </template>
     </templates>
     <templates type="PortletFacetteMotcle">
@@ -418,6 +421,7 @@
     <file path="WEB-INF/tags/figurePicture.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
+    <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleDelegation.tag" />
