@@ -8,9 +8,7 @@
         array="<%=obj.getContenuParagraphe()%>">
         <section id="section<%=itCounter%>" class="ds44-contenuArticle">
 
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) ? 
-                            (itCounter <= obj.getTitreParagraphe().length ? Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) : false)
-                            : false %>">
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
                         <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
                     </jalios:if>
                     <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
@@ -32,7 +30,7 @@
 		
 		    <jalios:foreach name="itPortlet" array="<%=obj.getSideportlets()%>" type="com.jalios.jcms.portlet.PortalElement">
 	            <section>
-		            <jalios:include id="<%=itPortlet.getId()%>" />
+    				<jalios:include id="<%=itPortlet.getId()%>" />
 	            </section>
 	        </jalios:foreach>
 		
