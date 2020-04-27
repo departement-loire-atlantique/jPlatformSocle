@@ -31,7 +31,7 @@ Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
       </jalios:if>
       
       <div class="ds44-innerBoxContainer">
-          <h4 class="h4-like ds44-cardTitle" id="titleTuileLieuCard_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink">Confort service</a></h4>
+          <h4 class="h4-like ds44-cardTitle" id="titleTuileLieuCard_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
           <hr class="mbs" aria-hidden="true">
           <jalios:if predicate='<%= pub.getCategorieDeNavigation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.fichelieu.contactPrivilegie.root")) %>'>
           <p class="ds44-mt-std"><strong><%= pub.getChapo() %></strong></p>
