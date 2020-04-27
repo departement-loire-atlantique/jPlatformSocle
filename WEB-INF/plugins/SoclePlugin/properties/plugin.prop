@@ -222,7 +222,6 @@ media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheS
 media.data-template.card.Member: /plugins/SoclePlugin/jsp/cards/doMemberCard.jsp
 media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
-media.data-template.cardFocus.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp?isFocus=true
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
