@@ -2,29 +2,24 @@
 
 <ds:titleNoBanner title="<%= obj.getTitle(userLang) %>" breadcrumb="true"></ds:titleNoBanner>
 
-<jalios:buffer name="paragraphes">
-    <%-- Boucler sur les paragraphes --%>
-    <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
-        array="<%=obj.getContenuParagraphe()%>">
-        <section id="section<%=itCounter%>" class="ds44-contenuArticle">
-
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
-                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
-                    </jalios:if>
-                    <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
-
-        </section>
-    </jalios:foreach>
-</jalios:buffer>
-
-
-
-
 <div class="ds44-inner-container ds44-mt4">
 	<div class="grid-12-small-1">
-	     <div class="col-7">
-	         <%=paragraphes%>
-	</div>
+        <div class="col-7">
+
+	    <%-- Boucler sur les paragraphes --%>
+	    <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
+	        array="<%=obj.getContenuParagraphe()%>">
+	        <section id="section<%=itCounter%>" class="ds44-contenuArticle">
+	
+	                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
+	                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
+	                    </jalios:if>
+	                    <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
+	
+	        </section>
+	    </jalios:foreach>
+	         
+	   </div>
 	<div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
 		<section class="col-4">
 		
