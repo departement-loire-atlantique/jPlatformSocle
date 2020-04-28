@@ -20,6 +20,7 @@
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
+    <type name="Contact"></type>
     <type name="ContenuDeTest"></type>
     <type name="ContenuPush"></type>
     <type name="CultureProfessionalCard"></type>
@@ -89,6 +90,11 @@
     </templates>
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Contact">
+        <template name="default" file="doContactFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
