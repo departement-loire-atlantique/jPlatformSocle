@@ -55,8 +55,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
 		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
-		String lng = HttpUtil.getStringParameter(request, "long", "", ".*");
-		String lat = HttpUtil.getStringParameter(request, "lat", "", ".*");
+		String lng = HttpUtil.getStringParameter(request, "longitude", "", ".*");
+		String lat = HttpUtil.getStringParameter(request, "latitude", "", ".*");
 		String lng_1 = HttpUtil.getStringParameter(request, "map[nw][long]", "", ".*");
 		String lat_1 = HttpUtil.getStringParameter(request, "map[nw][lat]", "", ".*");
 		String lng_2 = HttpUtil.getStringParameter(request, "map[se][long]", "", ".*");

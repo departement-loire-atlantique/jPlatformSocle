@@ -476,14 +476,16 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>    
 	                    <div id="step1">
 	                        <h2 class="h4-like" id="modal-contact-title"><%= glp("jcmsplugin.socle.contact.trouver-contact") %></h2>
-	                        <form data-is-ajax='true' action='plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp' />   
+	                        <form action='plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp' data-is-ajax='true' data-is-inline="true" data-result-destination="#aideContactResult" />   
 	                              
 	                              
 	                            <%-- TODO voir pour inclure directement une PortletFacetteAutoCompletion.jspf ou un portlet commune adresse lié, Sinon ajouter la recherche par adresse --%>	                          
 	                            <div class="ds44-form__container">                                                    
 	                                <div class="ds44-posRel">	                                
 	                                    <label for="form-element-56145" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.menu.pdcv.votreAdresse") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
-	                                    <input type="text" id="form-element-56145" name="commune" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.menu.pdcv.votreAdresse") + " - " + glp("jcmsplugin.socle.obligatoire")) %>' data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" data-mode="select-only" required   aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.menu.pdcv.votreAdresse")) %></span></button>
+
+                                        <input type="text" id="form-element-54120" name='<%= "adresse" + glp("jcmsplugin.socle.facette.form-element") %>' class="ds44-inpStd ds44-js-field-address" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" data-url="https://api-adresse.data.gouv.fr/search/?lon=-1.8157647&lat=47.2780468" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.menu.pdcv.votreAdresse") + " - " + glp("jcmsplugin.socle.obligatoire")) %>' data-mode="select-only" required   aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.menu.pdcv.votreAdresse")) %></span></button>
+                                    
 	                                    <div class="ds44-autocomp-container hidden">
 	                                        <div class="ds44-autocomp-list">
 	                                            <ul class="ds44-list" role="listbox"></ul>
@@ -499,27 +501,16 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	                            </button>  
 	                            
 	                            <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
-	                               <input type="hidden" name="cid" value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" />
-	                            </jalios:if>	                            
-	                            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayFicheLieuSectorisation.jsp" />
+	                               <input type="hidden" name='<%= "cid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" data-technical-field />
+	                            </jalios:if>
+	                            	  
+	                            <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value="true" data-technical-field />	                                                      
+	                            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayFicheLieuSectorisation.jsp" data-technical-field />
 	                                           
 	                        </form>
 	                    </div>
 	                     
-	                        
-	                    <%-- 
-	                    <div id="step2">
-	                        <p class="ds44-docListElem ds44-mt-std">
-	                            <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>Service Habitat<br />3 quai Ceineray<br /> CS 94109 44041 Nantes
-	                        </p>
-	                        <p class="ds44-docListElem ds44-mt-std">
-	                            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>02 40 99 12 82 - 02 40 99 19 10
-	                        </p>
-	                        <p class="ds44-docListElem ds44-mt-std">
-	                            <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a href="mailto:contact@loire-atlantique.fr" title="Contacter par mail : contact@loire-atlantique.fr">contact@loire-atlantique.fr</a>
-	                        </p>
-	                    </div>   
-	                    --%> 
+	                    <div id="aideContactResult"></div>
 	                                    
                     </div>  
 	                
