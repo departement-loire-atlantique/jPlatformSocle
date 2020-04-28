@@ -404,6 +404,8 @@ jcmsplugin.socle.elu.canton: - canton
 jcmsplugin.socle.elu.fonctions-actuelles.titre: Fonctions actuelles au sein du conseil départemental
 jcmsplugin.socle.elu.historique-fonctions.titre: Historique des fonctions au conseil départemental
 jcmsplugin.socle.elu.autres-fonctions.titre: Autres mandats locaux
+jcmsplugin.socle.elu.page-twitter: Le compte Twitter de {0}
+jcmsplugin.socle.elu.page-facebook: La page Facebook de {0}
 
 # ------------------------------------------------------------
 #  Fiche publication
