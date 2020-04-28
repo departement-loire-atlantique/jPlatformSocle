@@ -60,6 +60,21 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="typeDeCarte" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="https://cartes.loire-atlantique.fr/geojson/LA2018.geojso|https://cartes.loire-atlantique.fr/geojson/communes2019.geojson|https://cartes.loire-atlantique.fr/geojson/epci.geojson|https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson|https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson" ml="false" descriptionType="tooltip" labelList="Périmètre départemental|Commune|EPCI|Cantons|Délégations" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de carte</label>
+    </field>
+    <field name="natureDeLaCarte" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nature de la carte</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;&lt;span style="color: #d1d2d3; font-size: 15px; font-style: normal; font-weight: 400; text-align: left; text-indent: 0px; background-color: #1a1d21; float: none;"&gt;Une carte "coutour" est pour de l'illustration ; une carte "active" permet d'accéder à un contenu en cliquant sur une des zones.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Carte contour</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Carte active</offLabel>
+    </field>
+    <field name="typeDeTuileFicheLieu" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="contact_simple|partenaire|contact_mis_en_avant|avec_image" ml="false" descriptionType="tooltip" labelList="Tuile contact simple|Tuile partenaire|Tuile contact mis en avant|Tuile avec image" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile fiche lieu</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, seul l'apparence des résultats de type fiche lieu sont impacté par ce paramètre&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field type="super" />
   </fields>
   <label xml:lang="fr">Portlet Recherche Facettes</label>
