@@ -222,6 +222,12 @@ media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheS
 media.data-template.card.Member: /plugins/SoclePlugin/jsp/cards/doMemberCard.jsp
 media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
 media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
+media.data-template.card.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp
+media.data-template.cardFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?isFocus=true
+media.data-template.cardNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?noPic=true
+media.data-template.cardFocusNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?isFocus=true&noPic=true
+media.data-template.cardResult.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp
+media.data-template.cardResultFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp?isFocus=true
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
@@ -322,6 +328,8 @@ $jcmsplugin.socle.fichelieu.boucleInductionMagnetiqueReunion.root: c_1156241
 $jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
 $jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
 $jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
+
+$jcmsplugin.socle.fichelieu.contactPrivilegie.root: c_1281408
 
 # Accueil Annuaire / Agenda
 

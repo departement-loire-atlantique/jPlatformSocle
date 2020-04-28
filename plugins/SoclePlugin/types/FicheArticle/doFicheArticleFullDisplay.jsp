@@ -10,6 +10,10 @@
     <article class="ds44-container-large">
         <%-- Sélection qui dépend de l'image principale et du champ "Type d'article --%>
         <jalios:select>
+            <jalios:if predicate="<%=Util.notEmpty(obj.getSideportlets())%>">
+                <%-- Include du gabarit technique (formulaire contact par ex) --%>
+                <%@ include file="ficheArticleTechnique.jspf" %>
+            </jalios:if>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImagePrincipale()) || obj.getTypeSimple() %>">
                 <%-- Include du gabarit simple --%>
                 <%@ include file="ficheArticleSimple.jspf" %>
@@ -26,7 +30,7 @@
         
         <%-- TODO : bloc "Sur le même thème --%>
         
-        <%-- TEST SGU : portlets bas --%>
+        <%-- Portlets bas --%>
 	    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
 	        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
 	           <section>

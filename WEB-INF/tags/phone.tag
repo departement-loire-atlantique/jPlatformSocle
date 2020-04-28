@@ -26,7 +26,7 @@
 <%
 String statAttr = "";
 if(Util.notEmpty("pubTitle")){
-	statAttr = "data-statistic='{\"name\": \"declenche-evenement\",\"category\": \"Contacts\",\"action\": \"Mail_to\",\"label\": \"" + pubTitle + "\"}'";
+	statAttr = "data-statistic='{\"name\": \"declenche-evenement\",\"category\": \"Contacts\",\"action\": \"Téléphone\",\"label\": \"" + pubTitle + "\"}'";
  }
 // On ne garde que les chiffres puis on sépare les paires par un espace
 String displayedPhone = number.replaceAll("[^0-9-]","").replaceAll("..", "$0 ");
