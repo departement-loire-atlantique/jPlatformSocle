@@ -82,7 +82,9 @@
 		<div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
-				<%= isDisabled ? "data-disabled=\"true\"" : "" %>></div>
+				<%= isDisabled ? "data-disabled=\"true\"" : "" %>
+				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>></div>
+
 		<button class="ds44-reset" type="button">
 			<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 			<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
