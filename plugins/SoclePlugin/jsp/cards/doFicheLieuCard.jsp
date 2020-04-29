@@ -38,7 +38,7 @@ Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
           <hr class="mbs" aria-hidden="true">
           </jalios:if>
           
-          <jalios:if predicate=<%= Util.notEmpty(tagRootCat) %>>
+          <jalios:if predicate="<%= Util.notEmpty(tagRootCat) %>">
             <% 
               List<Category> allTagChildren = new ArrayList<>();
               for (Category itCat : pub.getCategorySet()) {
