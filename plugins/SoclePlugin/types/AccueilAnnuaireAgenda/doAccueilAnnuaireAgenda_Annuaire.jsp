@@ -36,6 +36,14 @@
             <div class="ds44-inner-container ds44-mt3 ds44--l-padding-t">
                 <div class="grid-12-small-1">
                     <div class='col-<%= Util.isEmpty(obj.getContenusEncadresLibres()) && Util.isEmpty(obj.getPortletsEncadres()) ? "12" : "7" %>'>
+                        <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+                            <section id="sectionChapo"
+                              class="ds44-contenuArticle">
+                                <div class="ds44-inner-container ds44-mtb3">
+                                    <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+                                </div>
+                            </section>
+                        </jalios:if>
                         <%-- On part du principe qu'au moins un paragraphe est rédigé --%>
                         <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
                           array="<%=obj.getContenuParagraphe()%>">
