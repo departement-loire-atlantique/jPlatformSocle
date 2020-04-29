@@ -41,6 +41,7 @@ import com.jalios.util.Util;
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
+import generated.Contact;
 import generated.Delegation;
 import generated.ElectedMember;
 import generated.FicheLieu;
@@ -1186,6 +1187,26 @@ public final class SocleUtils {
   public static String formatPrice (Integer price) {
     if (Util.isEmpty(price)) return "";
     return formatPrice(price.toString());
+  }
+  
+  /**
+   * Renvoie la fiche contact associée à un membre, si elle existe
+   * @param mbr
+   * @return
+   */
+  public static Contact getContactFromMembre(Member mbr) {
+    QueryHandler qh = new QueryHandler();
+    qh.setExactType(true);
+    qh.setTypes("Contact");
+    qh.setText(mbr.getFullName());
+    qh.setLoggedMember(Channel.getChannel().getCurrentLoggedMember());
+    QueryResultSet result = qh.getResultSet();
+    
+    if (Util.notEmpty(result)) {
+      return (Contact) result.getAsSortedSet().first();
+    }
+    
+    return null;
   }
 	
 }

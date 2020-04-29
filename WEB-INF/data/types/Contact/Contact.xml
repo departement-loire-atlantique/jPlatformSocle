@@ -12,7 +12,7 @@
     <field name="prenom" editor="textfield" required="true" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Prénom</label>
     </field>
-    <field name="civilite" editor="enumerate" required="true" compactDisplay="false" tab="contenu" type="String" chooser="checkbox" valueList="femme|homme" ml="false" descriptionType="tooltip" labelList="Femme|Homme" searchable="false" html="false" checkHtml="true">
+    <field name="civilite" editor="enumerate" required="false" compactDisplay="false" tab="contenu" type="String" chooser="checkbox" valueList="mrs|mr" ml="false" descriptionType="tooltip" labelList="Femme|Homme" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Civilité</label>
     </field>
     <field name="photoDidentite" editor="image" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="80" ml="false">
