@@ -27,7 +27,7 @@ Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
             <h4 class="h4-like ds44-cardTitle" id="titreTuileFicheAide_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
             <hr class="mbs" aria-hidden="true">
             
-            <jalios:if predicate=<%= Util.notEmpty(tagRootCat) %>>
+            <jalios:if predicate="<%= Util.notEmpty(tagRootCat) %>">
 	            <% 
 	              List<Category> allTagChildren = new ArrayList<>();
 	              for (Category itCat : pub.getCategorySet()) {
