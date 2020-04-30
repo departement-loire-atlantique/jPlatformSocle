@@ -1,0 +1,1 @@
+<%@ include file='/plugins/SoclePlugin/types/FicheLieu/doFicheLieuFullDisplay.jsp'%>
