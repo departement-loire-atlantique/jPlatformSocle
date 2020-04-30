@@ -1,5 +1,4 @@
- <%@ page contentType="text/html; charset=UTF-8"%>
- <%= idResultInLine %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <form data-auto-load="true" action='plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp' data-is-ajax='true' data-is-inline="true" data-result-destination='<%= "#" + idResultInLine %>'>   
                                   
 
