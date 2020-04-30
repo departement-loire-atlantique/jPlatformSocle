@@ -64,11 +64,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		Boolean sectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
 		
 		if(sectorisation) {				
-			String url = "";						
-			if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
-				// Sectorisation par zone
-				url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "?p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
-			}else if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
+			String url = "";									
+			if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
 				// Sectorisation par adresse
 				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
 			}else if(Util.notEmpty(commune)) {
@@ -78,8 +75,14 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
 			if(Util.notEmpty(url)) {
-				LOGGER.debug("Apell du service de sectorisation : " + url);
+				LOGGER.debug("Appel du service de sectorisation : " + url);
 				set.removeAll(getNotInSctorisationPublication(set, url));
+				
+				if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
+					// Sectorisation par zone
+					url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
+					set.removeAll(getNotInSctorisationPublication(set, url));
+				}				
 			}
 		}
 		return set;

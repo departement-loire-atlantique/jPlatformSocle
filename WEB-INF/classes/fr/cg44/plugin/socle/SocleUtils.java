@@ -985,13 +985,15 @@ public final class SocleUtils {
       } else if(nameParam.startsWith("map")){
         // Position de la carte
         itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
-      } else if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && (nameParam.contains("[latitude]") || nameParam.contains("[longitude]"))) {
+      } else if(nameParam.contains("[latitude]") || nameParam.contains("[longitude]")) {
         // Adresses de précisse (provenant de la BAN)
         if(nameParam.contains("[latitude]")) {
           itNameKey = "latitude";
         } else {
           itNameKey = "longitude";
         }
+      }else if(nameParam.contains("[value]")) {
+    	  itNameKey = nameParam.replace("[value]", "");
       }
       // Enregiste les paramètres dans une map dans un format plus classique pour le serveur
       if(Util.notEmpty(itNameKey)) { 

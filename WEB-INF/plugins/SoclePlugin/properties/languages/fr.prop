@@ -136,6 +136,7 @@ jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applicatio
 jcmsplugin.socle.menu.pdcv: Près de chez vous
 jcmsplugin.socle.menu.pdcv.ajouterAdresse: Ajouter une adresse
 jcmsplugin.socle.menu.pdcv.votreAdresse: Votre adresse
+jcmsplugin.socle.menu.pdcv.preciserVotreAdresse: Merci de préciser votre adresse
 jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
 
 # ------------------------------------------------------------

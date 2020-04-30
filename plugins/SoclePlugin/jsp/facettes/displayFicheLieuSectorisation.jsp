@@ -22,14 +22,19 @@ JsonObject jsonObject = new JsonObject();
 
 
 StringBuffer contentHtml = new StringBuffer();
-
+QueryResultSet resultSet = qh.getResultSet();
 
 %>
-<jalios:foreach collection="<%= qh.getResultSet() %>" name="itPub" type="Publication"><%
+<jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication"><%
     %><jalios:buffer name="fichesLieuxHTML"><%
         FicheLieu itFicheLieu = (FicheLieu) itPub;
         String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu);
         %>
+        
+        <p class="ds44-docListElem ds44-mt-std">
+            <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+            <strong><%= itFicheLieu.getTitle() %></strong>
+        </p>
         
         <jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
             <p class="ds44-docListElem ds44-mt-std">
@@ -82,7 +87,10 @@ StringBuffer contentHtml = new StringBuffer();
              </jalios:if>
     
         </div>
-      </jalios:if><%
+      </jalios:if>
+      <jalios:if predicate="<%= itCounter != resultSet.size() %>">
+           <hr class="mtm mbm" />
+       </jalios:if><%
    %></jalios:buffer><%   
     contentHtml.append(fichesLieuxHTML);
 %></jalios:foreach><%
