@@ -46,7 +46,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 </div>
                 <div class="ds44-colRight">            
                     <jalios:if predicate="<%= displaySearchMenu %>">
-                        <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button">
+                        <button id="open-search" class="ds44-btnIcoText--maxi ds44--xl-padding" type="button">
                            <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
                         </button>
                     </jalios:if>
@@ -175,7 +175,11 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             </div>
         </nav>
                             
-        </section>        
+        </section>
+        
+        <jalios:if predicate="<%= displaySearchMenu %>">
+            <%@ include file="blocMenuRecherche.jspf" %>
+        </jalios:if>        
         
     </div>
     
