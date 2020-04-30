@@ -977,23 +977,23 @@ public final class SocleUtils {
     Enumeration<String> enumParams = request.getParameterNames();
     Map<String, String[]> parametersMap = new HashMap<String, String[]>();
     while(enumParams.hasMoreElements()) {
-      String nameParam = enumParams.nextElement();  
+      String nameParam = enumParams.nextElement();
       String itNameKey = null;
-      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){     
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
         // paramètre classique de la recherche à facettes
-        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));   
+        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
       } else if(nameParam.startsWith("map")){
         // Position de la carte
         itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
       }
-      // Enregiste les paramètres dans une map dans un format plus classique pour le serveur
-      if(Util.notEmpty(itNameKey)) { 
-        if(parametersMap.containsKey(itNameKey)){      
+      // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
+      if(Util.notEmpty(itNameKey)) {
+        if(parametersMap.containsKey(itNameKey)){
           parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
         }else {
           parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
-        } 
-      }  
+        }
+      }
     }
     return parametersMap;
   }

@@ -70,6 +70,12 @@ $jcmsplugin.socle.recherche.facettes.portal: c_1273916
 # Les contenus ayant cette catégorie de classement ne remonteront pas dans les moteurs de recherche.
 $jcmsplugin.socle.recherche.nonrepertoriee.cat: c_1274159
 
+$jcmsplugin.socle.recherche.geojson.departement.url: https://cartes.loire-atlantique.fr/geojson/LA2018.geojson
+$jcmsplugin.socle.recherche.geojson.communes.url: https://cartes.loire-atlantique.fr/geojson/communes2019.geojson
+$jcmsplugin.socle.recherche.geojson.epci.url: https://cartes.loire-atlantique.fr/geojson/epci.geojson
+$jcmsplugin.socle.recherche.geojson.canton.url: https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson
+$jcmsplugin.socle.recherche.geojson.delegation.url: https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson
+
 # ------------------------------------------------------------
 #  Formats d'images
 # ------------------------------------------------------------
