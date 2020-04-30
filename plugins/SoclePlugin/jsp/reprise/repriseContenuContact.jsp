@@ -22,6 +22,14 @@ if(!isAdmin) {
     <input class="btn btn-danger modal confirm" type="submit" value="Lancer la génération"/>
 </form>
 
+
+<h3>Mettre à jour les Contacts depuis les Communes</h3>
+
+<form>
+    <input type="hidden" name="updateContacts" value="true">
+    <input class="btn btn-danger modal confirm" type="submit" value="Lancer la mise à jour"/>
+</form>
+
 <% 
 
 if(getBooleanParameter("executeReprise", false)) {
@@ -61,7 +69,53 @@ if(getBooleanParameter("executeReprise", false)) {
     
 }
 
-%>
+if (getBooleanParameter("updateContacts", false)) {
+  
+  logger.debug("Updating Contacts START");
+  
+  Set<City> allCities = channel.getAllDataSet(City.class);
+  
+  for (City itCity : allCities) {
+    
+    logger.debug("Checking City " + itCity);
+    
+    if (Util.isEmpty(itCity.getAnimateursSportifsInterlocuteurs())) {
+      logger.debug("No animator found. Continue...");
+      continue;
+    }
+    
+    Contact itContact = SocleUtils.getContactFromMembre(itCity.getAnimateursSportifsInterlocuteurs());
+    
+    if (Util.notEmpty(itContact)) {
+      logger.debug("Found Contact. Updating...");
+      Contact contactClone = (Contact) itContact.getUpdateInstance();
+      
+      // Ajouter la commune
+      
+      List<City> contactCommunes = new ArrayList<>();
+      if (Util.notEmpty(itContact.getCommunes())) {
+        contactCommunes.addAll(Arrays.asList(itContact.getCommunes()));
+      }
+      if (contactCommunes.contains(itCity)) {
+        logger.debug("City already exists for this member. Continue...");
+        continue;
+      }
+      
+      contactCommunes.add(itCity);
+      contactClone.setCommunes(contactCommunes.toArray(new City[contactCommunes.size()]));
+      
+      contactClone.checkAndPerformUpdate(loggedMember);
+      logger.debug("Update done.");
+    } else {
+      logger.debug("No contact found.");
+    }
+    
+  }
+  
+  logger.debug("Updating Contacts END");
+  
+}
 
+%>
 
 <%@ include file='/admin/doAdminFooter.jspf' %> 
