@@ -20,7 +20,8 @@
 			</span>
 		</label>
 		<input name='<%= "text" + idFormElement %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
-				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> />
+				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> 
+				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>/>
 		
 		<button class="ds44-reset" type="button">
 			<i class="icon icon-cross icon--large" aria-hidden="true"></i>

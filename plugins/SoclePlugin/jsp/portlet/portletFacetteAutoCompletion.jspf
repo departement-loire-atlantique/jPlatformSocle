@@ -109,7 +109,8 @@
 								name='<%= name %>' 
 								data-url='<%= dataUrlOption %>' 
 								data-required="true" 
-								data-disabled="true">
+								data-disabled="true"
+								<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>>
 						</div>
 						<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 								aria-expanded="false" 

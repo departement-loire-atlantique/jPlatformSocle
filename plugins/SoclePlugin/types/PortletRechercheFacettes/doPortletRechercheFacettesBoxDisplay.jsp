@@ -55,7 +55,10 @@
 			</jalios:if>
 			<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
 		
-				<% int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); %>
+				<% 
+					int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); 
+					request.setAttribute("isFilter", false);
+				%>
 		
 				<jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
 		
@@ -65,6 +68,8 @@
 						<jalios:include pub="<%= itFacette %>" usage="box"/>
 					</div>
 				</jalios:foreach>
+
+				<% request.removeAttribute("isFiltre"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres ? "" : "--large"; %>
@@ -83,8 +88,11 @@
 						<div class="ds44-fg1 ds44-flex-container ds44-medium-flex-col">
 							<p class="ds44-heading ds44-small-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
 		
-							<% int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesSecondaires(), loggedMember); %>
-		
+							<% 
+								int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesSecondaires(), loggedMember); 
+								request.setAttribute("isFilter", true);
+							%>
+
 							<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
 		
 								<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
@@ -94,6 +102,9 @@
 								</div>
 		
 							</jalios:foreach>
+
+							<% request.removeAttribute("isFiltre"); %>
+
 						</div>
 					</jalios:if>
 		
