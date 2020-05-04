@@ -189,8 +189,9 @@
 	          <div class="ds44-js-results-container">
 	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
 	              <div class="ds44-js-results-list">
-	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b"><%= glp("jcmsplugin.socle.faire.recherche") %></p>
-	                  <p class="ds44-textLegend mbs hidden"><%= glp("jcmsplugin.socle.recherche.trop.resultats", obj.getMaxResults()) %></p>
+	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
+	                    <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
+	                  </p>            
 	              </div>
 	          </div>
 	      </div>
