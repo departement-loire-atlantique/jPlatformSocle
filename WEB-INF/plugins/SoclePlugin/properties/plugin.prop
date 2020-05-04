@@ -10,6 +10,9 @@ $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 jcmsplugin.socle.contact-faq.default-mail: 
 
+jcmsplugin.socle.group.animationSportive.id: p1_101336
+$jcmsplugin.socle.cat.animationSportive.id: p2_108385
+
 # ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------

@@ -11,7 +11,6 @@
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="AlertCG"></type>
-    <type name="AnimationSportive"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
@@ -417,6 +416,7 @@
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
+    <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
