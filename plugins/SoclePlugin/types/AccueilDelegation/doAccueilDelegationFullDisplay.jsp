@@ -34,7 +34,7 @@
     carouselEnCeMoment.setFirstPublications(obj.getCarrouselActualites());
     carouselEnCeMoment.setContenusEnAvant(obj.getAlaUne());
     carouselEnCeMoment.setTemplate("box.sliderQuatre");
-    carouselEnCeMoment.setSelectionDuTheme("darkContext");
+    carouselEnCeMoment.setSelectionDuTheme("tuileVerticaleDark");
     %>
     <jalios:include pub="<%= carouselEnCeMoment %>"/>
     
