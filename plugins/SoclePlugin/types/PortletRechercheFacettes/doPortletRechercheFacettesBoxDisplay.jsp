@@ -49,7 +49,7 @@
 			</div>
 		</jalios:if>
 		
-		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' data-auto-load='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
 		    <jalios:if predicate='<%= !isInRechercheFacette %>'>
 			  <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			</jalios:if>
@@ -183,7 +183,8 @@
 
 <jalios:if predicate='<%= isInRechercheFacette %>'>
 
-	  <div class='ds44-flex-container ds44-results ds44-results<%=  obj.getAffichageDeLaCarte() ? "--mapVisible" : "" %>'>
+    
+	  <div class='ds44-flex-container ds44-results ds44-results<%=  obj.getAffichageDeLaCarte() ? "--mapVisible" : "" %> ds44-results--empty'>
 	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
 	          <div class="ds44-js-results-container">
 	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
@@ -195,17 +196,24 @@
 	      </div>
 	      
 	      <jalios:if predicate="<%= obj.getAffichageDeLaCarte() %>">
+		      
+		      <button type="button" title="Masquer la carte" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+              </button>
+		      
 		      <div class="ds44-mapResults">
-		          <div class="ds44-js-map"></div>
-		      </div>
-		      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
-		          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
-		      </button>
+		          <div class="ds44-mapResults-container">
+				      <div class="ds44-js-map"></div>
+				      
+				      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+				      </button>
+				  </div>
 	      </jalios:if>
 	      
 	      
 	  </div>
-	
+
 </jalios:if>
 
 
@@ -213,12 +221,3 @@
 request.removeAttribute("rechercheId");
 %>
 
-<%-- TODO Méthode temporaire pour soumettre le formulaire à l'affiche de la recherche à facette --%> 
-<jalios:if predicate="<%= isInRechercheFacette && request.getParameterMap().size() > 6 %>">
-	<script>
-	  function submitForm(){
-		  document.getElementsByClassName("jcms-js-submit")[0].click();
-      }    
-      setTimeout(submitForm, 200);	  
-	</script>
-</jalios:if>
