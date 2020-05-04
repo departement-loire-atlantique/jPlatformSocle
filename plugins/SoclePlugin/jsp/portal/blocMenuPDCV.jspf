@@ -1,8 +1,7 @@
 <section id="navPdcv"
     class="ds44-overlay ds44-overlay--navNiv2 ds44-theme ds44-bgCircle ds44-bg-br"
     role="dialog"
-    aria-label='<%=glp("jcmsplugin.socle.header.ouvrir", glp("jcmsplugin.socle.menu.pdcv"))%>'
-    aria-labelledby="titrePDCV">
+    aria-label='<%=glp("jcmsplugin.socle.header.ouvrir", glp("jcmsplugin.socle.menu.pdcv"))%>'>
     <div class="ds44-container-menuBackLink" aria-hidden="true">
         <button title="Retour au menu de navigation"
             class="ds44-btn-backOverlay" aria-hidden="true" tabindex="-1">
