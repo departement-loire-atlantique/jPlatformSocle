@@ -39,7 +39,7 @@
                         <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
                             <section id="sectionChapo"
                               class="ds44-contenuArticle">
-                                <div class="ds44-inner-container ds44-mtb3">
+                                <div class="ds44-inner-container ds44-mtb3 ds44-introduction">
                                     <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                                 </div>
                             </section>
