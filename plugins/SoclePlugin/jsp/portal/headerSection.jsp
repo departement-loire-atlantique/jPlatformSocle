@@ -35,7 +35,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             <div class="ds44-flex-container ds44-flex-valign-center">
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
-                        <picture class="ds44-logo">
+                        <picture class="ds44-logo <%= channel.getProperty("jcmsplugin.socle.logo.style")%>">
                             <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
                                 <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
                                 <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
@@ -46,14 +46,14 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 </div>
                 <div class="ds44-colRight">            
                     <jalios:if predicate="<%= displaySearchMenu %>">
-                        <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button">
+                        <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button" id="open-search">
                            <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
                         </button>
                     </jalios:if>
                     <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
                         <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" title='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>' data-open-overlay="true"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
                     </jalios:foreach>
-                    <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu">
+                    <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu" id="open-menu">
                        <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.menu")%></span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
                     </button>
                 </div>
