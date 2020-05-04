@@ -60,7 +60,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                     <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
                         <jalios:if predicate="<%= displayEnResume %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
-                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_first" class="js-tablist__link ds44-tabs__link" 
+                            <a href="#id_first" class="js-tablist__link ds44-tabs__link" 
                             		id="label_id_first" aria-current="true">
                             	<%= glp("jcmsplugin.socle.onglet.resume") %>
                             </a>
@@ -68,14 +68,14 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                         </jalios:if>
                         <jalios:if predicate="<%= displayDetails %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
-                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second">
+                            <a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second">
                             	<%= glp("jcmsplugin.socle.onglet.detail") %>
                             </a>
                         </li>
                         </jalios:if>
                         <jalios:if predicate="<%= displayFaq %>">
                         <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
-                            <a href="<%= obj.getDisplayUrl(userLocale) %>#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third">
+                            <a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third">
                             	<%= glp("jcmsplugin.socle.onglet.faq") %>
                             </a>
                         </li>
