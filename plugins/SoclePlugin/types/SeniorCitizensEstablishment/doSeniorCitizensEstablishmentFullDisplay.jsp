@@ -43,8 +43,8 @@
 				<%= sbfAdresse.toString() %>
 			</p>
 			<%
-				String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
-				String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
+				String longitude = obj.getExtraData("extra.SeniorCitizensEstablishment.plugin.tools.geolocation.longitude");
+				String latitude = obj.getExtraData("extra.SeniorCitizensEstablishment.plugin.tools.geolocation.latitude");
 				String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 			%>
 			<jalios:if predicate='<%= Util.notEmpty(localisation) %>'>
@@ -152,9 +152,10 @@
 					<div class="ds44-grid12-offset-2">
 						<div class="grid-2-small-1">
 							<jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) %>">
-								<div class="col mrs ds44-mtb2">
-									<h2 class="h3-like" id="idTitre-list1"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.enresume") %></h2>
-									<jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+								<div class="col col-2 mrs ds44-mtb2">
+									<div class="ds44-introduction">
+										<jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+									</div>
 								</div>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(obj.getLifeEnvironmentText()) %>">
