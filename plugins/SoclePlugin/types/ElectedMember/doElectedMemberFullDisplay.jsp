@@ -43,9 +43,9 @@
 				<section class="ds44-box ds44-theme">
 					<div class="ds44-innerBoxContainer">
 
-						<div class="grid-2-small-1 ds44-grid12-offset-1">
+						<div class="grid-3-medium ds44-grid12-offset-1">
 
-							<div class="col ds44--xl-padding-l">
+							<div class="col col-2">
 								<p role="heading" aria-level="3" class="ds44-box-heading">
 									<%= obj.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin") %> <%= glp("jcmsplugin.socle.elu.canton") %> <%= obj.getCanton().getTitle() %>
 								</p>
@@ -57,12 +57,14 @@
 											</br>
 										</jalios:if>
 										<jalios:if predicate='<%= Util.notEmpty(obj.getCommittees(loggedMember))%>'>
+											<% Category catCommissionPermanente = channel.getCategory(channel.getProperty("$jcmsplugin.socle.electedMember.commission-permanente.root")); %>
+											<jalios:if predicate='<%= ! (Util.notEmpty(obj.getFunctions(loggedMember)) && obj.getFunctions(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.elu.president")))
+													&& obj.getCommittees(loggedMember).contains(catCommissionPermanente) %>'>
+												<%= glp("jcmsplugin.socle.elu.membre-commission", glp("jcmsplugin.socle.elu.permanente")) %>
+												</br>
+											</jalios:if>
 											<% ArrayList<Category> arrCommissionPresident = new ArrayList<Category>(); %>
 											<jalios:foreach name="itCat" type="Category" collection="<%= obj.getCommittees(loggedMember) %>">
-												<jalios:if predicate='<%= itCat.getId().equalsIgnoreCase(channel.getProperty("$jcmsplugin.socle.electedMember.commission-permanente.root")) %>'>
-													<%= glp("jcmsplugin.socle.elu.membre-commission", glp("jcmsplugin.socle.elu.permanente")) %>
-													</br>
-												</jalios:if>
 												<jalios:if predicate='<%= itCat.getName(userLang).equalsIgnoreCase(glp("jcmsplugin.socle.elu.president")) %>'>
 													<% arrCommissionPresident.add(itCat.getParent()); %>
 													<%= obj.getGender() ? glp("jcmsplugin.socle.elu.president-commission.masculin", itCat.getParent().getName(userLang)) : glp("jcmsplugin.socle.elu.president-commission.feminin", itCat.getParent().getName(userLang)) %>
@@ -113,7 +115,7 @@
 									|| Util.notEmpty(obj.getFacebook()) || Util.notEmpty(obj.getTwitter())
 									|| Util.notEmpty(obj.getPicture()) %>'>
 
-								<div class="col ds44--xl-padding-l">
+								<div class="col col1 ds44--xl-padding-l">
 
 									<jalios:if predicate="<%= Util.notEmpty(obj.getPicture()) %>">
 										<picture class="ds44-container-imgRatio ds44-container-imgRatio--profilXL">

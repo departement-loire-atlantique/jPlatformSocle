@@ -1009,11 +1009,12 @@ public final class SocleUtils {
   }
   
   /**
-   * Retourne la fonction d'un membre élu
+   * Retourne la fonction d'un membre élu, en commençant ou non par une majuscule
    * @param pub
+   * @param majuscule
    * @return
    */
-  public static String getElectedMemberFunction(ElectedMember pub) {
+  public static String getElectedMemberFunction(ElectedMember pub, Boolean majuscule) {
     String position = "";
     // Cas : est président / présidente
     if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) {
@@ -1021,12 +1022,20 @@ public final class SocleUtils {
     }
     // Cas : est vice-président / vice-présidente
     if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
-      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
+      if(majuscule) {
+        position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
+      } else {
+        position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min");
+      }
     }
     for (Category itCat : pub.getFunctions(channel.getCurrentLoggedMember())) {
       if (itCat.getParent().equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
         if (Util.isEmpty(position)) {
-          position = (pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin")) + " ";
+          if(majuscule) {
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj") + " ";
+          } else {
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min") + " ";
+          }
         } else {
           position += " ";
         }
@@ -1035,6 +1044,15 @@ public final class SocleUtils {
       }
     }
     return position;
+  }
+  
+  /**
+   * Retourne la fonction d'un membre élu
+   * @param pub
+   * @return
+   */
+  public static String getElectedMemberFunction(ElectedMember pub) {
+	  return getElectedMemberFunction(pub, true);
   }
   
   /**
@@ -1093,18 +1111,11 @@ public final class SocleUtils {
 		if(Util.notEmpty(linkedElu)) {
 			sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.en-lien-avec"))
 				.append(" ");
-			if(Util.notEmpty(linkedElu.getNom())) {
-				sbfMission.append(linkedElu.getNom())
-					.append(" ");
+			if(Util.notEmpty(getElectedMemberFullName(linkedElu))) {
+				sbfMission.append(getElectedMemberFullName(linkedElu))
+					.append(", ");
 			}
-			if(Util.notEmpty(linkedElu.getFirstName())) {
-				sbfMission.append(linkedElu.getFirstName())
-					.append(" ");
-			}
-			if(Util.notEmpty(linkedElu.getNom()) || Util.notEmpty(linkedElu.getFirstName())) {
-				sbfMission.append(", ");
-			}
-			String roleLinkedElu = SocleUtils.getElectedMemberFunction(linkedElu);
+			String roleLinkedElu = SocleUtils.getElectedMemberFunction(linkedElu, false);
 			if(Util.notEmpty(roleLinkedElu)) {
 				sbfMission.append(roleLinkedElu);
 			}
@@ -1128,8 +1139,8 @@ public final class SocleUtils {
 				}
 			}
 			if (Util.notEmpty(catVicePresident)) {
-				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin");
-				return fullRole + catVicePresident.getName();
+				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
+				return "<b>" + fullRole + " " + catVicePresident.getName() + "</b>";
 			}
 		}
 		return "";

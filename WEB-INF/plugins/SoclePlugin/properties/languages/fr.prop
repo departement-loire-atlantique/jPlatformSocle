@@ -381,10 +381,12 @@ jcmsplugin.socle.skiplinks.accessibility : Aller à la page d'accessibilité
 
 jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
 jcmsplugin.socle.elu.binome: En binôme avec : {0}
-jcmsplugin.socle.elu.president.masculin: Président du Conseil Départemental
-jcmsplugin.socle.elu.president.feminin: Présidente du Conseil Départemental
-jcmsplugin.socle.elu.vicepresident.masculin: Vice Président
-jcmsplugin.socle.elu.vicepresident.feminin: Vice-Présidente
+jcmsplugin.socle.elu.president.masculin: Président du Département
+jcmsplugin.socle.elu.president.feminin: Présidente du Département
+jcmsplugin.socle.elu.vicepresident.masculin.maj: Vice président
+jcmsplugin.socle.elu.vicepresident.feminin.maj: Vice-présidente
+jcmsplugin.socle.elu.vicepresident.masculin.min: vice président
+jcmsplugin.socle.elu.vicepresident.feminin.min: vice-présidente
 jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
 jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale
 jcmsplugin.socle.elu.president: président
@@ -396,7 +398,7 @@ jcmsplugin.socle.elu.permanente: permanente
 jcmsplugin.socle.elu.mission-thematique: Mission thématique : 
 jcmsplugin.socle.elu.en-lien-avec: en lien avec
 jcmsplugin.socle.elu.en-binome-avec: En binôme avec : 
-jcmsplugin.socle.elu.remplacant: Remplaçant(e) : 
+jcmsplugin.socle.elu.remplacant: Remplaçant·e : 
 jcmsplugin.socle.elu.elu-en: Élu en {0}
 jcmsplugin.socle.elu.elue-en: Élue en {0}
 jcmsplugin.socle.elu.reelu-en: Réélu en {0}
