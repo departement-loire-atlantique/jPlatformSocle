@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
-<%@ include file='/jcore/doInitPage.jspf' %><%
-%><%@ page import="com.jalios.jcms.taglib.card.*" %><%
-%><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ include file='/jcore/doInitPage.jspf' %>
+<%@ page import="com.jalios.jcms.taglib.card.*" %>
+<%@ include file='/jcore/media/mediaTemplateInit.jspf' %>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 
   if (data == null) {
   return;
@@ -15,25 +16,6 @@ Publication pub = (Publication) data;
 <%@include file="tuileCommon.jsp" %>
 
 <%
-try {
-  urlImage = (String) pub.getFieldValue("imageMobile");
-} catch (Exception e) {}
-if (Util.isEmpty(urlImage)) {
-  try {
-    urlImage = (String) pub.getFieldValue("imagePrincipale");
-  } catch (Exception e) {}
-}
-if (Util.isEmpty(urlImage)) {
-  try {
-    urlImage = (String) pub.getFieldValue("imageBandeau");
-  } catch (Exception e) {}
-}
-if (Util.isEmpty(urlImage)) {
-  urlImage = "s.gif";
- } else {
-   urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
- }
-
 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 try {
@@ -46,9 +28,7 @@ try {
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
-    <picture class="ds44-container-imgRatio">
-        <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
-    </picture>
+	<ds:figurePicture pub="<%= pub %>" format="mobile" pictureCss="ds44-container-imgRatio" imgCss="ds44-imgRatio"></ds:figurePicture>
     <div class="ds44-card__section">
         <p role="heading" aria-level="2" class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
