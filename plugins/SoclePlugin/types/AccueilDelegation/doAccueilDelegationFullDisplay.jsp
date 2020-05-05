@@ -12,13 +12,16 @@
     <%-- TODO --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getTitreAnnuaire()) || Util.notEmpty(obj.getIntroAnnuaire()) %>">
     <section class="ds44-container-fluid ds44-mtb3 ds44--xl-padding-tb">
-        <div class="ds44-inner-container">
-            <header class="txtcenter">
+        <div class="ds44-container-large">
+            <header class="txtcenter ds44--l-padding-b">
                 <jalios:if predicate="<%= Util.notEmpty(obj.getTitreAnnuaire()) %>">
-                <h2 class="h2-like center"><%= obj.getTitreAnnuaire() %></h2>
+                    <h2 class="h2-like center"><%= obj.getTitreAnnuaire() %></h2>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getIntroAnnuaire()) %>">
-                <div class="ds44-component-chapo ds44-centeredBlock"><jalios:wysiwyg><%= obj.getIntroAnnuaire() %></jalios:wysiwyg></h2>
+                    <div class="ds44-component-chapo ds44-centeredBlock"><jalios:wysiwyg><%= obj.getIntroAnnuaire() %></jalios:wysiwyg></h2></div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
+                    <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
                 </jalios:if>
             </header>
         </div>
@@ -34,9 +37,45 @@
     carouselEnCeMoment.setFirstPublications(obj.getCarrouselActualites());
     carouselEnCeMoment.setContenusEnAvant(obj.getAlaUne());
     carouselEnCeMoment.setTemplate("box.sliderQuatre");
-    carouselEnCeMoment.setSelectionDuTheme("tuileVerticaleDark");
+    carouselEnCeMoment.setSelectionDuTheme("tuileVerticaleLight");
+    carouselEnCeMoment.setPositionTitre("bl");
     %>
     <jalios:include pub="<%= carouselEnCeMoment %>"/>
     
-    <jalios:include pub="<%= obj.getPortletCarrouselAgenda() %>" usage="box"/>
+    <%-- Agenda --%>
+    <jalios:if predicate='<%= Util.notEmpty(obj.getTitreAgenda(userLang)) || Util.notEmpty(obj.getPortletRechercheAgenda()) || Util.notEmpty(obj.getPortletCarrouselAgenda()) %>'>
+		<section class="ds44-container-fluid ds44--l-padding-t ds44-mt3">
+	        <div class="ds44-inner-container">
+                <jalios:if predicate='<%= Util.notEmpty(obj.getTitreAgenda(userLang)) %>'>
+                    <header class="txtcenter">
+                        <h2 class="h2-like center"><%= obj.getTitreAgenda(userLang) %></h2>
+		                <jalios:if predicate='<%= Util.notEmpty(obj.getIntroAgenda(userLang)) %>'>
+		                   <p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getIntroAgenda(userLang) %></p>
+		                </jalios:if>
+                    </header>
+	            </jalios:if>
+	        </div>
+	        <jalios:if predicate='<%= Util.notEmpty(obj.getPortletRechercheAgenda()) %>'>
+	           <jalios:include pub="<%= obj.getPortletRechercheAgenda() %>"></jalios:include>
+	        </jalios:if>
+	        
+            <jalios:if predicate='<%= Util.notEmpty(obj.getPortletCarrouselAgenda()) %>'>
+               <jalios:include pub="<%= obj.getPortletCarrouselAgenda() %>" usage="box"/>
+            </jalios:if>
+	        
+        </section>   
+		        
+    </jalios:if>
+    
+       
+    
+    
+    <%-- Portlets bas --%>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
+        <jalios:foreach name="itPortlet" array="<%= obj.getPortletsBas() %>" type="com.jalios.jcms.portlet.PortalElement">
+           <section class="ds44-container-fluid ds44--l-padding">
+               <jalios:include id="<%= itPortlet.getId() %>" />
+            </section>
+        </jalios:foreach>
+    </jalios:if>
 </main>
