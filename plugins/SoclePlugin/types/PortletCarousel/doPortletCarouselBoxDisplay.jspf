@@ -34,17 +34,15 @@
         </div>
     </jalios:if>
 
-	<% ArrayList<Publication> resultatRecherche = new ArrayList<Publication>(); %>
 	<%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
 	<%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
 	<%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
-		<% resultatRecherche.add(itPub); %>
 	<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
 
-    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= resultatRecherche.size() < 4 ? resultatRecherche.size() : sliderAmounts %>">
+    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= collection.size() < 4 ? collection.size() : sliderAmounts %>">
         <div class="swiper-container">
             <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
-                <jalios:foreach name="itPub" type="Publication" collection="<%= resultatRecherche %>">
+                <jalios:foreach name="itPub" type="Publication" collection="<%= collection %>">
                 	<li class="swiper-slide">
 					    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
 					</li>
