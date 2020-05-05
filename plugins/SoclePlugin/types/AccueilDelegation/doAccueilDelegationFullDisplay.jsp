@@ -45,16 +45,16 @@
     <%-- Agenda --%>
     <jalios:if predicate='<%= Util.notEmpty(obj.getTitreAgenda(userLang)) || Util.notEmpty(obj.getPortletRechercheAgenda()) || Util.notEmpty(obj.getPortletCarrouselAgenda()) %>'>
 		<section class="ds44-container-fluid ds44--l-padding-t ds44-mt3">
-	        <div class="ds44-inner-container">
-                <jalios:if predicate='<%= Util.notEmpty(obj.getTitreAgenda(userLang)) %>'>
+            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreAgenda(userLang)) %>'>
+	           <div class="ds44-inner-container">
                     <header class="txtcenter">
                         <h2 class="h2-like center"><%= obj.getTitreAgenda(userLang) %></h2>
 		                <jalios:if predicate='<%= Util.notEmpty(obj.getIntroAgenda(userLang)) %>'>
 		                   <p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getIntroAgenda(userLang) %></p>
 		                </jalios:if>
                     </header>
-	            </jalios:if>
-	        </div>
+    	        </div>
+            </jalios:if>
 	        <jalios:if predicate='<%= Util.notEmpty(obj.getPortletRechercheAgenda()) %>'>
 	           <jalios:include pub="<%= obj.getPortletRechercheAgenda() %>"></jalios:include>
 	        </jalios:if>
