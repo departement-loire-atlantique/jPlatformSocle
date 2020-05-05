@@ -30,6 +30,7 @@ import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
+import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
@@ -353,7 +354,9 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append(cedex);
+			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
+			.append(" ")
+			.append(cedex);
 		}
 
 		return sbfAddr.toString();
@@ -362,6 +365,11 @@ public final class SocleUtils {
 	
 	/**
 	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une FicheLieu sous la forme suivante :</p>
+	 * <p>Règle de gestion : </p>
+	 * <p>- Si tous les champs de l'adresse postale sont vides on n'affiche rien. </p>
+	 * <p>- Si seuls les champs "cedex" et "CS" de l'adresse postale sont remplis on récupère les autres champs de l'adresse physique. </p>
+	 * <p>- Si le champ "libellé de voie" de l'adresse postale est renseigné alors on affiche les autres champs de l'adresse postale et</p>
+	 * <p> on n'affiche aucun champ de l'adresse physique.</p>
 	 * <p></p>
 	 * <p>[libelle]<br\></p>
 	 * <p>[etageCouloirEscalier]<br\></p>
@@ -372,18 +380,26 @@ public final class SocleUtils {
 	 * <p>[codePostal] [commune] Cedex [cedex]</p>
 	 * 
 	 * @param fichelieu
-	 * @return un String contenant l'adresse de la FicheLieu
+	 * @return un String contenant l'adresse physique de la FicheLieu ou null si le libellé, le CP et la commune sont vide.
 	 */
 	public static String formatAdresseEcrire(FicheLieu fichelieu) {
+		boolean getInfosAdressePhysique = Util.notEmpty(fichelieu.getLibelleDeVoie()) ? false : (Util.notEmpty(fichelieu.getCs2()) || Util.notEmpty(fichelieu.getCedex2()));
 		
-		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "";
-		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : fichelieu.getEtageCouloirEscalier();
-		String entreeBatimentImmeuble =  Util.notEmpty(fichelieu.getEntreeBatimentImmeuble2()) ? fichelieu.getEntreeBatimentImmeuble2() : fichelieu.getEntreeBatimentImmeuble();
-		String ndeVoie =  Util.notEmpty(fichelieu.getNdeVoie2()) ? fichelieu.getNdeVoie2() : fichelieu.getNdeVoie();
-		String libelleDeVoie =  Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? fichelieu.getLibelleDeVoie2() : fichelieu.getLibelleDeVoie();
-		String lieudit =  Util.notEmpty(fichelieu.getLieudit2()) ? fichelieu.getLieudit2() : fichelieu.getLieudit();
-		String codePostal =  Util.notEmpty(fichelieu.getCodePostal2()) ? fichelieu.getCodePostal2() : fichelieu.getCodePostal();
+		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : (Util.notEmpty(fichelieu.getCommune()) && getInfosAdressePhysique) ? fichelieu.getCommune().getTitle() : "";
+		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : (Util.notEmpty(fichelieu.getEtageCouloirEscalier()) && getInfosAdressePhysique) ? fichelieu.getEtageCouloirEscalier() : "";
+		String entreeBatimentImmeuble =  Util.notEmpty(fichelieu.getEntreeBatimentImmeuble2()) ? fichelieu.getEntreeBatimentImmeuble2() : (Util.notEmpty(fichelieu.getEntreeBatimentImmeuble()) && getInfosAdressePhysique) ? fichelieu.getEntreeBatimentImmeuble() : "";
+		String ndeVoie =  Util.notEmpty(fichelieu.getNdeVoie2()) ? fichelieu.getNdeVoie2() : (Util.notEmpty(fichelieu.getNdeVoie()) && getInfosAdressePhysique) ? fichelieu.getNdeVoie() : "";
+		String libelleDeVoie =  Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? fichelieu.getLibelleDeVoie2() : (Util.notEmpty(fichelieu.getLibelleDeVoie()) && getInfosAdressePhysique) ? fichelieu.getLibelleDeVoie() : "";
+		String lieudit =  Util.notEmpty(fichelieu.getLieudit2()) ? fichelieu.getLieudit2() : (Util.notEmpty(fichelieu.getLieudit()) && getInfosAdressePhysique) ? fichelieu.getLieudit() : "";
+		String codePostal =  Util.notEmpty(fichelieu.getCodePostal2()) ? fichelieu.getCodePostal2() : (Util.notEmpty(fichelieu.getCodePostal()) && getInfosAdressePhysique) ? fichelieu.getCodePostal() : "";
+
+		if(Util.isEmpty(etageCouloirEscalier) &&  Util.isEmpty(entreeBatimentImmeuble) && Util.isEmpty(ndeVoie) 
+				&& Util.isEmpty(libelleDeVoie)	&& Util.isEmpty(lieudit) && Util.isEmpty(codePostal) 
+				&& Util.isEmpty(communeEcrire) && Util.isEmpty(fichelieu.getCs2()) && Util.isEmpty(fichelieu.getCedex2())) {
+				return "";
+		}
 		
+
 		return SocleUtils.formatAddress(fichelieu.getLibelleAutreAdresse(),
 				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
 				libelleDeVoie, lieudit, fichelieu.getCs2(), codePostal, communeEcrire,
@@ -393,6 +409,11 @@ public final class SocleUtils {
 	
 	/**
 	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Delegation sous la forme suivante :</p>
+	 * <p>Règle de gestion : </p>
+	 * <p>- Si tous les champs de l'adresse postale sont vides on n'affiche rien. </p>
+	 * <p>- Si seuls les champs "cedex" et "CS" de l'adresse postale sont remplis on récupère les autres champs de l'adresse physique. </p>
+	 * <p>- Si le champ "libellé de voie" de l'adresse postale est renseigné alors on affiche les autres champs de l'adresse postale et</p>
+	 * <p> on n'affiche aucun champ de l'adresse physique.</p>
 	 * <p></p>
 	 * <p>[libelle]<br\></p>
 	 * <p>[etageCouloirEscalier]<br\></p>
@@ -1229,4 +1250,47 @@ public final class SocleUtils {
     return null;
   }
 	
+
+  /**
+   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
+   * @param request
+   * @return
+   */
+  public static Map<String, String[]> getFormParameters(HttpServletRequest request) {
+    Enumeration<String> enumParams = request.getParameterNames();
+    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
+    //Map<String, String[]> parametersMap = request.getParameterMap();
+    while(enumParams.hasMoreElements()) {
+      String nameParam = enumParams.nextElement();  
+      String itNameKey = null;
+      // On ajoute tous les champs commençant par "form-element-" : form-element-NOMDUCHAMP[text] et form-element-NOMDUCHAMP[value]
+      if(nameParam.contains("[text]")){  
+      	itNameKey = nameParam.replaceAll("\\[text\\]","");
+      	parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+      	parametersMap.put(HttpUtil.encodeForURL(itNameKey+"[text]"), new String[]{request.getParameter(nameParam)});
+      	parametersMap.put(HttpUtil.encodeForURL(itNameKey+"[value]"), new String[]{request.getParameter(nameParam)});
+       } 
+      
+      // On ajout les champs cachés du formulaire natif JCMS. On enlève le [value] du nom du champ.
+       else if(nameParam.contains("[value]")) {
+       	itNameKey = nameParam.replace("[value]", "");
+       	parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+       }
+      		
+      
+      
+      // Enregiste les paramètres dans une map dans un format plus classique pour le serveur
+      /*
+      if(Util.notEmpty(itNameKey)) { 
+        if(parametersMap.containsKey(itNameKey)){      
+          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
+        }else {
+          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+        } 
+      }  
+      */
+    }
+    return parametersMap;
+  }
+  
 }
