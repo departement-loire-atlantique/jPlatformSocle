@@ -9,9 +9,12 @@
 
 response.setContentType("application/json");
 
-PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId"))).clone();  
-PortletQueryForeach box = new PortletQueryForeach(boxTmp);
+PortletRechercheFacettes  boxTmp = (PortletRechercheFacettes) (channel.getPublication(request.getParameter("boxId"))).clone();  
+PortletRechercheFacettes box = new PortletRechercheFacettes(boxTmp);
 
+if(Util.notEmpty(box.getIdDeLaCategorieTag())) {
+  request.setAttribute("tagRootCatId", box.getIdDeLaCategorieTag());
+}
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
@@ -47,4 +50,5 @@ jsonObject.add("result", jsonArray);
     %><%
                                         
 %><%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %><%
+request.removeAttribute("tagRootCatId");
 %><%= jsonObject %>

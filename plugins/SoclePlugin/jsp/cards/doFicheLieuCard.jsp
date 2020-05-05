@@ -15,7 +15,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isFocus = "true".equals(request.getParameter("isFocus"));
 boolean noPic = "true".equals(request.getParameter("noPic"));
 
-Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
+Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
 
 <section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= !pub.getServiceDuDepartement() ? " ds44-cardIsPartner" : "" %><%= isFocus ? " ds44-cardIsFocus" : "" %>'>
