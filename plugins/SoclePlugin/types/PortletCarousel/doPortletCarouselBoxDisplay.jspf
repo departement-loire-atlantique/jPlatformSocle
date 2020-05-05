@@ -34,18 +34,21 @@
         </div>
     </jalios:if>
 
-    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= sliderAmounts %>">
+	<% ArrayList<Publication> resultatRecherche = new ArrayList<Publication>(); %>
+	<%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
+	<%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
+	<%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
+		<% resultatRecherche.add(itPub); %>
+	<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
+
+    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= resultatRecherche.size() < 4 ? resultatRecherche.size() : sliderAmounts %>">
         <div class="swiper-container">
             <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
-                <%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
-                <%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
-                <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
-                
-                <li class="swiper-slide">
-                    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
-                </li>
-                
-                <%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
+                <jalios:foreach name="itPub" type="Publication" collection="<%= resultatRecherche %>">
+                	<li class="swiper-slide">
+					    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+					</li>
+                </jalios:foreach>
             </ul>
         </div>
     
