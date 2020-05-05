@@ -26,6 +26,7 @@ JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();
 
 jsonObject.addProperty("nb-result", collection.size());
+jsonObject.addProperty("nb-result-per-page", box.getMaxResults());
 jsonObject.addProperty("max-result", box.getMaxResults());
 jsonObject.add("result", jsonArray);
 
