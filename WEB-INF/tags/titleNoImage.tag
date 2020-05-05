@@ -10,7 +10,14 @@
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="Le titre affiché sur l'image"
+    description="Le titre du bloc gris"
+%>
+<%@ attribute name="subtitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Le sous-titre du bloc gris"
 %>
 <%@ attribute name="coloredSection"
     required="false"
@@ -52,11 +59,16 @@
             </div>
       
             <h1 class="h1-like mbs mts" id="idTitre_<%= uid %>"><%= title %></h1>
+            
+            <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
+                <h2 id="idSousTitre_<%= uid %>" class="h2-like"><%= subtitle %></h2>
+            </jalios:if>
 
     </div>
   </div>
 </div>
 
+<jalios:if predicate="<%= Util.notEmpty(coloredSection) %>">
 <div class="ds44-img50 ds44--l-padding-tb">
   <div class="ds44-inner-container">
     <div class="ds44-grid12-offset-1">
@@ -72,3 +84,4 @@
     </div>
   </div>
 </div>
+</jalios:if>
