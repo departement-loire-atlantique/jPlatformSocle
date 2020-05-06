@@ -27,11 +27,11 @@
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
-    <field name="categorieDeClassementTypesDeCont" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.contact.typeContact.root">
-      <label xml:lang="fr">Catégorie de classement Types de contacts branche</label>
-    </field>
-    <field name="categorieDeClassementMiseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.contact.miseEnAvant.root">
-      <label xml:lang="fr">Catégorie de classement Mise en avant branche</label>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>     
+    <field name="typeDeContact" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.contact.typeContact.root">
+      <label xml:lang="fr">Type de contact</label>
     </field>
     <!-- Territoire -->
     <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
