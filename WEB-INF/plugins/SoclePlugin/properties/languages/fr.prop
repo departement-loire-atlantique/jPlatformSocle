@@ -28,6 +28,9 @@ jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les 
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
 jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuiles "Fiche Aide"
+jcmsplugin.socle.rgpd.form.text: RGPD : texte en bas des formulaires
+jcmsplugin.socle.rgpd.form.linklabel: RGPD : libellé du lien "En savoir +" en bas des formulaires
+jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
 
 # ------------------------------------------------------------
 #  Recherche à facettes
@@ -252,6 +255,7 @@ jcmsplugin.socle.faq.selectionner-commune: Sélectionner Commune
 jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
+jcmsplugin.socle.facette.champ-obligatoire.title: {0} - obligatoire
 jcmsplugin.socle.facette.asterisque: *
 jcmsplugin.socle.facette.filtrer-par: Filtrer par
 jcmsplugin.socle.facette.form-element: form-element

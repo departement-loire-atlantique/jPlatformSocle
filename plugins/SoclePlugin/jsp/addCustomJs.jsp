@@ -10,7 +10,7 @@ List<String> jsUrlAList = Arrays.asList(jsUrlArray);
 
 String packerVersion = Util.getString(PackerUtils.getPackVersion(), "");
 
-if(jcmsContext.isInFrontOffice() || "true".equals(request.getAttribute("pageErreur"))){
+if(jcmsContext.isInFrontOffice()){
 
     for(String itURL:jsUrlAList){%>
         <script src="<%=itURL%>?version=<%=packerVersion %>"></script>

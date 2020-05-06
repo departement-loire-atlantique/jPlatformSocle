@@ -13,7 +13,7 @@ List<String> cssUrlAList = Arrays.asList(cssUrlArray);
 
 String packerVersion = Util.getString(PackerUtils.getPackVersion(), "");
 
-if(jcmsContext.isInFrontOffice() || "true".equals(request.getAttribute("pageErreur"))){
+if(jcmsContext.isInFrontOffice() ){
     for(String itURL:cssUrlAList){%>
     	<link rel="stylesheet" href="<%=itURL%>?version=<%=packerVersion %>" media="all" />
     <%}

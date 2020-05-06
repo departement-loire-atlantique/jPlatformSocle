@@ -1250,47 +1250,5 @@ public final class SocleUtils {
     return null;
   }
 	
-
-  /**
-   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
-   * @param request
-   * @return
-   */
-  public static Map<String, String[]> getFormParameters(HttpServletRequest request) {
-    Enumeration<String> enumParams = request.getParameterNames();
-    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
-    //Map<String, String[]> parametersMap = request.getParameterMap();
-    while(enumParams.hasMoreElements()) {
-      String nameParam = enumParams.nextElement();  
-      String itNameKey = null;
-      // On ajoute tous les champs commençant par "form-element-" : form-element-NOMDUCHAMP[text] et form-element-NOMDUCHAMP[value]
-      if(nameParam.contains("[text]")){  
-      	itNameKey = nameParam.replaceAll("\\[text\\]","");
-      	parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
-      	parametersMap.put(HttpUtil.encodeForURL(itNameKey+"[text]"), new String[]{request.getParameter(nameParam)});
-      	parametersMap.put(HttpUtil.encodeForURL(itNameKey+"[value]"), new String[]{request.getParameter(nameParam)});
-       } 
-      
-      // On ajout les champs cachés du formulaire natif JCMS. On enlève le [value] du nom du champ.
-       else if(nameParam.contains("[value]")) {
-       	itNameKey = nameParam.replace("[value]", "");
-       	parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
-       }
-      		
-      
-      
-      // Enregiste les paramètres dans une map dans un format plus classique pour le serveur
-      /*
-      if(Util.notEmpty(itNameKey)) { 
-        if(parametersMap.containsKey(itNameKey)){      
-          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
-        }else {
-          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
-        } 
-      }  
-      */
-    }
-    return parametersMap;
-  }
   
 }
