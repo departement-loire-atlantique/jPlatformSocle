@@ -142,6 +142,8 @@
 		
 			<input type="hidden" name='<%= "typeCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeCarte() %>' data-technical-field />
 			<input type="hidden" name='<%= "natureCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getNatureDeLaCarte() ? "contour" : "actif" %>' data-technical-field />
+
+			<input type="hidden" name='<%= "displayMode" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDaffichageDuContenu() ? "inline" : "external" %>' data-technical-field />
 		</form>
 	</div>
 	
