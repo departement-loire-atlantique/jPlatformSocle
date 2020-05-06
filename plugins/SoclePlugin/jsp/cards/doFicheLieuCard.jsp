@@ -18,7 +18,7 @@ boolean noPic = "true".equals(request.getParameter("noPic"));
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
 
-<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= !pub.getServiceDuDepartement() ? " ds44-cardIsPartner" : "" %><%= isFocus ? " ds44-cardIsFocus" : "" %>'>
+<section class='ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray<%= Util.isEmpty(pub.getServiceDuDepartement(loggedMember)) ? " ds44-cardIsPartner" : "" %><%= isFocus ? " ds44-cardIsFocus" : "" %>'>
     
     <jalios:if predicate="<%= !noPic %>">
         <%@ include file="cardPictureCommons.jspf" %>
@@ -26,7 +26,7 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
     
     <div class="ds44-card__section">
       
-      <jalios:if predicate="<%= !pub.getServiceDuDepartement() %>">
+      <jalios:if predicate="<%= Util.isEmpty(pub.getServiceDuDepartement(loggedMember)) %>">
         <p class="ds44-cardPartner pal"><%= glp("jcmsplugin.socle.partenaire") %></p>
       </jalios:if>
       

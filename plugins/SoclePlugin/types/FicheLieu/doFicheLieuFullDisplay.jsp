@@ -3,6 +3,7 @@
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%
 	FicheLieu obj = (FicheLieu) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -37,9 +38,7 @@
 					String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
 					String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
-					String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
-							obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
-							obj.getCodePostal(), commune, "");
+					String adresse = SocleUtils.formatAdressePhysique(obj);
 
 					String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
 				%>
@@ -69,7 +68,7 @@
 								<div class="col">
 
 									<jalios:if predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces()) || Util.notEmpty(localisation) %>'>
-										<p role="heading" aria-level="3" class="ds44-box-heading"><%=obj.getServiceDuDepartement() ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
+										<p role="heading" aria-level="3" class="ds44-box-heading"><%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
 
 										<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
 											<p class="ds44-docListElem mts">
@@ -155,7 +154,7 @@
 									<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone()) || Util.notEmpty(obj.getEmail())
 												|| Util.notEmpty(obj.getSiteInternet())%>'>
 										<p role="heading" aria-level="3" class="ds44-box-heading">
-											<%=obj.getServiceDuDepartement() ? glp("jcmsplugin.socle.ficheaide.nousContacter")+" :" : glp("jcmsplugin.socle.ficheaide.contact")+" :"%>
+											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousContacter")+" :" : glp("jcmsplugin.socle.ficheaide.contact")+" :"%>
 										</p>
 
 										<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
@@ -236,7 +235,7 @@
 
 									<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
 										<p role="heading" aria-level="3" class="ds44-box-heading mtl">
-											<%=obj.getServiceDuDepartement() ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
+											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
 										</p>
 										<p class="ds44-docListElem mts">
 											<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>

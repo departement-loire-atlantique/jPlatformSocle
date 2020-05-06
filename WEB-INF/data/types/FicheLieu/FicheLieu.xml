@@ -164,13 +164,9 @@
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="serviceDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="navigation" type="boolean" default="on">
+    <field name="serviceDuDepartement" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_1285247">
       <label xml:lang="fr">Service du Département</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
+    </field>    
     <field name="statut" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Statut</label>
     </field>

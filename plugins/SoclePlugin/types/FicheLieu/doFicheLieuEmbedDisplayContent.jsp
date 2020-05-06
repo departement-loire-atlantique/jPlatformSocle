@@ -13,7 +13,7 @@ FicheLieu obj = (FicheLieu) data;
 String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
 String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
-String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
+String adressePhysique = SocleUtils.formatAdressePhysique(obj);
 boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 %>
 <section class="pbm">
@@ -31,8 +31,8 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	    </strong>
 	</p>
 	
-	<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
-	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adresseEcrire%></p>
+	<jalios:if predicate='<%=Util.notEmpty(adressePhysique)%>'>
+	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adressePhysique%></p>
 	</jalios:if>
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
