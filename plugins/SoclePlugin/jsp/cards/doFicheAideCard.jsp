@@ -14,14 +14,14 @@ FicheAide pub = (FicheAide) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
-Category tagRootCat = channel.getCategory(request.getParameter("tagRootCatId"));
+Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray ">
-      
-    <jalios:include file="cardPicturecommons.jspf"/>
-    
+     
+    <%@ include file="cardPictureCommons.jspf" %>
+   
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
             <h4 class="h4-like ds44-cardTitle" id="titreTuileFicheAide_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
