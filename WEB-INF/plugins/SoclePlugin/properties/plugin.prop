@@ -50,6 +50,14 @@ $jcmsplugin.socle.cat.root: j_3
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
 
 # ------------------------------------------------------------
+#  RGPD
+# ------------------------------------------------------------
+jcmsplugin.socle.rgpd.form.text: Les informations personnelles vous concernant sont collectées et traitées par le Département de Loire-Atlantique aux fins \
+d’instruction et de réponse aux demandes reçues.
+jcmsplugin.socle.rgpd.form.linklabel: En savoir plus sur la protection des données personnelles
+jcmsplugin.socle.rgpd.pub.id:
+
+# ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
@@ -65,6 +73,11 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
+# ------------------------------------------------------------
+#  Regex
+# ------------------------------------------------------------
+jcmsplugin.socle.regex.postalcode:\\d{5}
+jcmsplugin.socle.regex.phone:\\d{10}
 
 # ------------------------------------------------------------
 #  Recherche à facettes
@@ -255,6 +268,11 @@ jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter
 jcmsplugin.socle.horizontal.value: horizontal
 jcmsplugin.socle.portletPush.ficheactu.id: 
 jcmsplugin.socle.site.pdcv.portlet.id: 
+
+# ------------------------------------------------------------
+#  Formulaires
+# ------------------------------------------------------------
+$jcmsplugin.socle.form.contactform.sujet.root: aca_8167
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu
