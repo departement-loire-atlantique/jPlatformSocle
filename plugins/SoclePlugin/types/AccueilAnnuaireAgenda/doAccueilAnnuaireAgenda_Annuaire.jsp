@@ -9,11 +9,11 @@
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImageBandeau()) %>">
                 <ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getLegende() %>" breadcrumb="true"></ds:titleBanner>
+                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
             </jalios:if>
             <jalios:default>
                 <ds:titleSimple mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getLegende() %>" breadcrumb="true"></ds:titleSimple>
+                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleSimple>
             </jalios:default>
         </jalios:select>
         
@@ -39,7 +39,7 @@
                         <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
                             <section id="sectionChapo"
                               class="ds44-contenuArticle">
-                                <div class="ds44-inner-container ds44-mtb3">
+                                <div class="ds44-inner-container ds44-mtb3 ds44-introduction">
                                     <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                                 </div>
                             </section>

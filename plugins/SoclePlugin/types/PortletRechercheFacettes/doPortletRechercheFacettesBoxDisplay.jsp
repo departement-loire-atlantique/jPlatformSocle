@@ -38,10 +38,10 @@
 <div class="ds44-facette">
 	<div class="ds44-facette-body">
 	
-	    <jalios:if predicate='<%= !isInRechercheFacette %>'>
+	    <jalios:if predicate='<%= !isInRechercheFacette && Util.notEmpty(obj.getTitre(userLang)) %>'>
 			<div class="ds44-inner-container ds44--mobile--m-padding-b">
-				<header class="txtcenter">
-					<h2 class="h2-like center"><%= Util.notEmpty(obj.getTitre(userLang)) ? obj.getTitre(userLang) : obj.getTitle(userLang) %></h2>
+				<header class="txtcenter ds44--l-padding-b">
+					<h2 class="h2-like center"><%= obj.getTitre(userLang) %></h2>
 					<jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre(userLang)) %>'>
 						<p class="ds44-component-chapo ds44-centeredBlock"><%= obj.getSoustitre(userLang) %></p>
 					</jalios:if>
