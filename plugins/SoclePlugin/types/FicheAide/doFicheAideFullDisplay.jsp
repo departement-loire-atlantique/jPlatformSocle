@@ -302,7 +302,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 		                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span>
 		                        	<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
 		                        </a></p>
-		                        <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
+		                        <jalios:if predicate="<%= Util.notEmpty(obj.getDureeEdemarche()) %>">
+		                        	<p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
+		                        </jalios:if>
 		                    </div>
 		                </jalios:if>
 		                
