@@ -346,8 +346,7 @@ $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
 
 # Contact
 
-$jcmsplugin.socle.contact.typeContact.root: p2_902693
-$jcmsplugin.socle.contact.miseEnAvant.root: c_5097
+$jcmsplugin.socle.contact.typeContact.root: c_1283251
 
 # ------------------------------------------------------------
 #  Configuration Infolocale
