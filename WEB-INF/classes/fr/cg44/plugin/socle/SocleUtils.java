@@ -354,9 +354,7 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
-			.append(" ")
-			.append(cedex);
+			sbfAddr.append(cedex);
 		}
 
 		return sbfAddr.toString();
@@ -383,8 +381,8 @@ public final class SocleUtils {
 	 * @return un String contenant l'adresse physique de la FicheLieu ou null si le libellé, le CP et la commune sont vide.
 	 */
 	public static String formatAdresseEcrire(FicheLieu fichelieu) {
-		boolean getInfosAdressePhysique = Util.notEmpty(fichelieu.getLibelleDeVoie()) ? false : (Util.notEmpty(fichelieu.getCs2()) || Util.notEmpty(fichelieu.getCedex2()));
-		
+		boolean getInfosAdressePhysique = Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? false : (Util.notEmpty(fichelieu.getCs2()) || Util.notEmpty(fichelieu.getCedex2()));
+
 		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : (Util.notEmpty(fichelieu.getCommune()) && getInfosAdressePhysique) ? fichelieu.getCommune().getTitle() : "";
 		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : (Util.notEmpty(fichelieu.getEtageCouloirEscalier()) && getInfosAdressePhysique) ? fichelieu.getEtageCouloirEscalier() : "";
 		String entreeBatimentImmeuble =  Util.notEmpty(fichelieu.getEntreeBatimentImmeuble2()) ? fichelieu.getEntreeBatimentImmeuble2() : (Util.notEmpty(fichelieu.getEntreeBatimentImmeuble()) && getInfosAdressePhysique) ? fichelieu.getEntreeBatimentImmeuble() : "";
@@ -441,6 +439,27 @@ public final class SocleUtils {
 				libelleDeVoie, lieudit, delegation.getCs2(), codePostal, communeEcrire,
 				delegation.getCedex2());
 	}
+
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Delegation sous la forme suivante :</p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param fichelieu
+	 * @return un String contenant l'adresse physique de la FicheLieu
+	 */
+	public static String formatAdressePhysique(FicheLieu fichelieu) {
+	
+		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
+				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
+				"", fichelieu.getCodePostal(), fichelieu.getCommune().getTitle(), "");
+	}	
+		
 	
 	
 	/**
@@ -990,44 +1009,7 @@ public final class SocleUtils {
     return null;
   }
     
-  /**
-   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
-   * @param request
-   * @return
-   */
-  public static Map<String, String[]> getFacetsParameters(HttpServletRequest request) {
-    Enumeration<String> enumParams = request.getParameterNames();
-    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
-    while(enumParams.hasMoreElements()) {
-      String nameParam = enumParams.nextElement();
-      String itNameKey = null;
-      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
-        // paramètre classique de la recherche à facettes
-        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
-      } else if(nameParam.startsWith("map")){
-        // Position de la carte
-        itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
-      } else if(nameParam.contains("[latitude]") || nameParam.contains("[longitude]")) {
-        // Adresses de précisse (provenant de la BAN)
-        if(nameParam.contains("[latitude]")) {
-          itNameKey = "latitude";
-        } else {
-          itNameKey = "longitude";
-        }
-      }else if(nameParam.contains("[value]")) {
-    	  itNameKey = nameParam.replace("[value]", "");
-      }
-      // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
-      if(Util.notEmpty(itNameKey)) {
-        if(parametersMap.containsKey(itNameKey)){
-          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
-        }else {
-          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
-        }
-      }
-    }
-    return parametersMap;
-  }
+
   
   /**
    * Retourne la fonction d'un membre élu, en commençant ou non par une majuscule
