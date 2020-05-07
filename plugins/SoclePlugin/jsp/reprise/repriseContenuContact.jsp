@@ -34,60 +34,69 @@ if(!isAdmin) {
 
 if(getBooleanParameter("executeReprise", false)) {
   
-    logger.debug("Generating Contacts START");
+    logger.warn("Generating Contacts START");
     
     MemberQueryHandler qh = new MemberQueryHandler();
     qh.setGid(channel.getProperty("jcmsplugin.socle.group.animationSportive.id"));
     
-    logger.debug("Found results : " + qh.getResultSet().size());
+    logger.warn("Found results : " + qh.getResultSet().size());
     
     for(Member itMember : qh.getResultSet()) {
         
               Contact itContact = SocleUtils.getContactFromMembre(itMember);
               
-              logger.debug("Checking member : " + itMember);
+              logger.warn("Checking member : " + itMember);
               
               if (Util.isEmpty(itContact)) {
-                logger.debug("Creating Contact.");
+                logger.warn("Creating Contact.");
                 itContact = new Contact();
                 itContact.setTitle(itMember.getFullName());
                 itContact.setNom(itMember.getName());
                 itContact.setPrenom(itMember.getFirstName());
                 itContact.setAdresseMail(itMember.getEmail());
                 itContact.setCivilite(itMember.getSalutation());
-                itContact.setTelephone(new String[]{itMember.getPhone().replaceAll(" ", "")});
+                
+                List<String> phones = new ArrayList<>();
+                if(Util.notEmpty(itMember.getPhone())){
+                	phones.add(itMember.getPhone().replaceAll(" ", ""));
+                }
+                if(Util.notEmpty(itMember.getMobile())){
+                 phones.add(itMember.getMobile().replaceAll(" ", ""));
+                 }
+
+                itContact.setTelephone(phones.toArray(new String[phones.size()]));
                 itContact.setAuthor(loggedMember);
                 itContact.addCategory(channel.getCategory("$jcmsplugin.socle.cat.animationSportive.id"));
                 System.out.println(itContact.checkAndPerformCreate(channel.getDefaultAdmin()));
               } else {
-                logger.debug("Already created.");
+                logger.warn("Already created.");
               }
         
     }
     
-    logger.debug("Generating Contacts END");
+    logger.warn("Generating Contacts END");
     
 }
 
 if (getBooleanParameter("updateContacts", false)) {
   
-  logger.debug("Updating Contacts START");
+  logger.warn("Updating Contacts START");
   
   Set<City> allCities = channel.getAllDataSet(City.class);
   
   for (City itCity : allCities) {
     
-    logger.debug("Checking City " + itCity);
+    logger.warn("Checking City " + itCity);
     
     if (Util.isEmpty(itCity.getAnimateursSportifsInterlocuteurs())) {
-      logger.debug("No animator found. Continue...");
+      logger.warn("No animator found. Continue...");
       continue;
     }
     
     Contact itContact = SocleUtils.getContactFromMembre(itCity.getAnimateursSportifsInterlocuteurs());
     
     if (Util.notEmpty(itContact)) {
-      logger.debug("Found Contact. Updating...");
+      logger.warn("Found Contact. Updating...");
       Contact contactClone = (Contact) itContact.getUpdateInstance();
       
       // Ajouter la commune
@@ -97,7 +106,7 @@ if (getBooleanParameter("updateContacts", false)) {
         contactCommunes.addAll(Arrays.asList(itContact.getCommunes()));
       }
       if (contactCommunes.contains(itCity)) {
-        logger.debug("City already exists for this member. Continue...");
+        logger.warn("City already exists for this member. Continue...");
         continue;
       }
       
@@ -105,14 +114,14 @@ if (getBooleanParameter("updateContacts", false)) {
       contactClone.setCommunes(contactCommunes.toArray(new City[contactCommunes.size()]));
       
       contactClone.checkAndPerformUpdate(loggedMember);
-      logger.debug("Update done.");
+      logger.warn("Update done.");
     } else {
-      logger.debug("No contact found.");
+      logger.warn("No contact found.");
     }
     
   }
   
-  logger.debug("Updating Contacts END");
+  logger.warn("Updating Contacts END");
   
 }
 
