@@ -1009,7 +1009,44 @@ public final class SocleUtils {
     return null;
   }
     
-
+  /**
+   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
+   * @param request
+   * @return
+   */
+  public static Map<String, String[]> getFacetsParameters(HttpServletRequest request) {
+    Enumeration<String> enumParams = request.getParameterNames();
+    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
+    while(enumParams.hasMoreElements()) {
+      String nameParam = enumParams.nextElement();
+      String itNameKey = null;
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
+        // paramètre classique de la recherche à facettes
+        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
+      } else if(nameParam.startsWith("map")){
+        // Position de la carte
+        itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
+      } else if(nameParam.contains("[latitude]") || nameParam.contains("[longitude]")) {
+        // Adresses de précisse (provenant de la BAN)
+        if(nameParam.contains("[latitude]")) {
+          itNameKey = "latitude";
+        } else {
+          itNameKey = "longitude";
+        }
+      }else if(nameParam.contains("[value]")) {
+    	  itNameKey = nameParam.replace("[value]", "");
+      }
+      // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
+      if(Util.notEmpty(itNameKey)) {
+        if(parametersMap.containsKey(itNameKey)){
+          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
+        }else {
+          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+        }
+      }
+    }
+    return parametersMap;
+  }
   
   /**
    * Retourne la fonction d'un membre élu, en commençant ou non par une majuscule
