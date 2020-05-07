@@ -63,8 +63,7 @@ if(getBooleanParameter("executeReprise", false)) {
                 if(Util.notEmpty(itMember.getMobile())){
                  phones.add(itMember.getMobile().replaceAll(" ", ""));
                  }
-                String phonesArray[] = new String[phones.size()]; 
-                phonesArray = phones.toArray(phonesArray); 
+
                 itContact.setTelephone(phones.toArray(new String[phones.size()]));
                 itContact.setAuthor(loggedMember);
                 itContact.addCategory(channel.getCategory("$jcmsplugin.socle.cat.animationSportive.id"));
