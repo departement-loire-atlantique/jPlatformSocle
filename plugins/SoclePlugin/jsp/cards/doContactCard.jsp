@@ -31,12 +31,14 @@ Contact pub = (Contact) data;
         </span></p>
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getTelephone()) %>">
-          <p class="ds44-cardLocalisation ds44-docListElem ds44-mt-std">
+          <div class="ds44-cardLocalisation ds44-docListElem ds44-mt-std">
             <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-            <jalios:foreach name="itPhone" type="String" array="<%= pub.getTelephone() %>">
-                <ds:phone number="<%= itPhone %>"></ds:phone>
-            </jalios:foreach>
-          </p>
+            <ul class="ds44-list">
+	            <jalios:foreach name="itPhone" type="String" array="<%= pub.getTelephone() %>">
+	                <li><ds:phone number="<%= itPhone %>"></ds:phone></li>
+	            </jalios:foreach>
+            </ul>
+          </div>
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getAdresseMail()) %>">
         <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail()) %>' href="mailto:<%= pub.getAdresseMail() %>"><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
