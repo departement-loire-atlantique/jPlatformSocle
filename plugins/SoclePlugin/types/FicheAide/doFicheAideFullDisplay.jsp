@@ -256,7 +256,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
 	
 	            <div class="ds44-mt3 grid-12-small-1">
-	                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) ? "6" : "12" %> ds44-modal-column'>
+	                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) || (obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu())) ? "6 ds44-modal-column" : "12" %> '>
 	                    <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 	
 	                    <jalios:select>
@@ -276,7 +276,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	                                        <p class="ds44-docListElem">
 	                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 	                                        	<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
-	                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= titleModalFaireDemande %>'>
+	                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'>
 	                                        		<%= itDoc.getTitle() %>
 	                                        	</a>
 	                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
@@ -431,34 +431,30 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 						<form action="<%= obj.getUrlSuiviEdemarche() %>">
 							<% String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element"); %>
 							<div class="ds44-form__container">
-								<label for="<%= idFormElement %>" class="ds44-formLabel">
-									<span class="ds44-labelTypePlaceholder">
-										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %>
-										<sup aria-hidden="true">*</sup>
-									</span> 
-									<span id="explanation-<%= idFormElement %>" class="ds44-labelTypeInfoComp">
-										<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi") %>
-									</span> 
-									<input type="text" id="<%= idFormElement %>" 
-											name="<%= idFormElement %>" 
-											class="ds44-inpStd" 
-											title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
-											required
-											aria-required="true" 
-											aria-describedby="explanation-<%= idFormElement %>" />
-									<button class="ds44-reset" type="button">
-										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
-										<span class="visually-hidden">
-											<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %>
-										</span>
-									</button> 
-								</label>
-								<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
-							</div>
+							   
+							    <div class="ds44-posRel">
+							    
+							       <label for="<%= idFormElement %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
+							     
+							    
+							       <input type="text" id="<%= idFormElement %>" name="<%= idFormElement %>" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'   required   aria-describedby="explanation-<%= idFormElement %>" />
+							       <button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %></span></button>
+							    </div>
+							    
+							     <div class="ds44-field-information" aria-live="polite">
+							        <ul class="ds44-field-information-list ds44-list">
+							            <li id="explanation-<%= idFormElement %>" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi") %></li>
+							        </ul>
+							    </div>
+						          
+                            </div>
+                            											
+							
 							<button class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi") %>'>
 								<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 								<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 							</button>
+							
 						</form>
 					</div>
 	                <div class="col-6 ds44-modal-column">
