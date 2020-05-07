@@ -66,19 +66,11 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
           <jalios:if predicate="<%= Util.notEmpty(pub.getTelephone()) %>">
 	          <div class="ds44-docListElem ds44-mt-std">
 			    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-			    <jalios:if predicate='<%= pub.getTelephone().length == 1 %>'>
-			        <% String numTel = pub.getTelephone()[0]; %>
-			        <ds:phone number="<%= numTel %>" />
-			    </jalios:if>
-			
-			    <jalios:if predicate='<%= pub.getTelephone().length > 1 %>'>
-			        <ul class="ds44-list">
-			            <jalios:foreach name="numTel" type="String"
-			                array="<%= pub.getTelephone() %>">
-			                <li><ds:phone number="<%= numTel %>" /></li>
-			            </jalios:foreach>
-			        </ul>
-			    </jalios:if>
+		        <ul class="ds44-list">
+		            <jalios:foreach name="numTel" type="String" array="<%= pub.getTelephone() %>">
+		                <li><ds:phone number="<%= numTel %>" /></li>
+                    </jalios:foreach>
+                </ul>
 			  </div>
 		  </jalios:if>
       </div>
