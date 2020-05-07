@@ -9,28 +9,23 @@
 <main id="content" role="main">
     <article class="ds44-container-large">
     
-    <%@ include file='../FicheArticle/commonTitreArticleActu.jspf' %>
+        <%@ include file='../FicheArticle/commonTitreArticleActu.jspf' %>
 			
-        <%-- Boucler sur les paragraphes --%>
-        <%
-        int nbBlocs = obj.getTitreParagraphe().length > obj.getContenuParagraphe().length ? obj.getTitreParagraphe().length : obj.getContenuParagraphe().length;
-        
-        for(int itCounter=1 ; itCounter <= nbBlocs ; itCounter++) {
-        %>
-            <section id="section<%= itCounter %>" class="ds44-contenuArticle">
-               <div class="ds44-inner-container ds44-mtb3">
-                   <div class="ds44-grid12-offset-2">
-                        <jalios:if predicate="<%= itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter-1]) %>">
-                            <h2 id="titreParagraphe<%= itCounter %>"><%= obj.getTitreParagraphe()[itCounter-1] %></h2>
-                        </jalios:if>
-                        <jalios:if predicate="<%= itCounter <= obj.getContenuParagraphe().length && Util.notEmpty(obj.getContenuParagraphe()[itCounter-1]) %>">
-                            <jalios:wysiwyg><%= obj.getContenuParagraphe()[itCounter-1] %></jalios:wysiwyg>
-                        </jalios:if>
-                   </div>
-               </div>
-            </section>
-        <% } %>
-
+		<%-- Boucler sur les paragraphes --%>
+		<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuParagraphe()%>">
+		    <section id="section<%=itCounter%>" class="ds44-contenuArticle">
+		        <div class="ds44-inner-container ds44-mtb3">
+		            <div class="ds44-grid12-offset-2">
+		                <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) && Util.notEmpty(itParagraphe)%>">
+		                    <h2 id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
+		                </jalios:if>
+		                <jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
+                            <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
+		                </jalios:if>
+		            </div>
+		        </div>
+		    </section>
+		</jalios:foreach>        
         
         <%-- TODO : bloc des réseaux sociaux --%>
         
