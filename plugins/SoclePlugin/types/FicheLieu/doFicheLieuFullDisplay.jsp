@@ -437,8 +437,7 @@
 		<section class="ds44-contenuArticle" id="section5">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
-					<%-- vire la balise <div class="wyziwyg"> qui englobe le texte pour que le style fonctionne --%>
-					<%= obj.getDescription().substring(21, obj.getDescription().length()-6) %>
+					<jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
 				</div>
 			</div>
 		</section>
