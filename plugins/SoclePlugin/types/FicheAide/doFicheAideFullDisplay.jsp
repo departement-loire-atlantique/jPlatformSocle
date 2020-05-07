@@ -55,7 +55,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
             <div class="js-tabs ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">
 
                 <nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' 
-                		id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-theme">
+                		id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-hiddenPrint ds44-theme ">
                     <!-- Résumé / détail / FAQ -->
                     <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
                         <jalios:if predicate="<%= displayEnResume %>">
