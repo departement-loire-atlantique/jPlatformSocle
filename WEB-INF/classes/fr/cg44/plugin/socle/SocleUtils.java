@@ -1053,9 +1053,9 @@ public final class SocleUtils {
       if (itCat.getParent().equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
         if (Util.isEmpty(position)) {
           if(majuscule) {
-            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj") + " ";
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") + " " : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj") + " ";
           } else {
-            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min") + " ";
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") + " " : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min") + " ";
           }
         } else {
           position += " ";
@@ -1136,7 +1136,7 @@ public final class SocleUtils {
 				sbfMission.append(getElectedMemberFullName(linkedElu))
 					.append(", ");
 			}
-			String roleLinkedElu = SocleUtils.getElectedMemberFunction(linkedElu, false);
+			String roleLinkedElu = getElectedMemberFunction(linkedElu, false);
 			if(Util.notEmpty(roleLinkedElu)) {
 				sbfMission.append(roleLinkedElu);
 			}
