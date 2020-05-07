@@ -30,11 +30,13 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
             <%= SocleUtils.formatAddress(null, null, null, null, HtmlUtil.html2text(pub.getAddress()), null, pub.getPostalBox(), pub.getZipCode(), pub.getCommune().getTitle(), null) %>
 			</div>
 		    <jalios:if predicate="<%= Util.notEmpty(pub.getPhones()) %>">
-			    <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-	                <jalios:foreach name="itPhone" type="String" array="<%= pub.getPhones() %>">
-	                    <ds:phone number="<%= itPhone %>"></ds:phone>
-	                </jalios:foreach>
-	            </p>
+			    <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+		            <ul class="ds44-list">
+		                <jalios:foreach name="itPhone" type="String" array="<%= pub.getPhones() %>">
+		                    <li><ds:phone number="<%= itPhone %>"></ds:phone></li>
+		                </jalios:foreach>
+		            </ul>
+	            </div>
             </jalios:if>
 	    </div>
 	    <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
