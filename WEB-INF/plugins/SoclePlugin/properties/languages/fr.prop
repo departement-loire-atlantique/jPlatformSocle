@@ -32,6 +32,11 @@ jcmsplugin.socle.rgpd.form.text: RGPD : texte en bas des formulaires
 jcmsplugin.socle.rgpd.form.linklabel: RGPD : libellé du lien "En savoir +" en bas des formulaires
 jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
 
+# Recherche
+
+jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
+jcmsplugin.socle.recherche.portletmea.id: Header recherche - ID portlet MEA
+
 # ------------------------------------------------------------
 #  Recherche à facettes
 # ------------------------------------------------------------
@@ -141,6 +146,14 @@ jcmsplugin.socle.menu.pdcv.ajouterAdresse: Ajouter une adresse
 jcmsplugin.socle.menu.pdcv.votreAdresse: Votre adresse
 jcmsplugin.socle.menu.pdcv.preciserVotreAdresse: Merci de préciser votre adresse
 jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
+
+jcmsplugin.socle.recherche.menu: Menu de recherche
+jcmsplugin.socle.recherche.menu.aria.heading: Menu "Rechercher"
+jcmsplugin.socle.recherche.menu.fermer: Fermer le menu Rechercher
+jcmsplugin.socle.recherche.motscles: Recherchez par mots-clés :
+jcmsplugin.socle.recherche.votrerecherche: Votre recherche
+jcmsplugin.socle.recherche.valider: Valider votre recherche par mots-clés
+
 
 # ------------------------------------------------------------
 #  Près de chez vous

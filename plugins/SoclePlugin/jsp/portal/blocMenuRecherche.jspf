@@ -1,39 +1,39 @@
-<section id="menuRech" class="ds44-overlay ds44-overlay--navNiv2 ds44-wave-grey ds44-bg-pdr" role="dialog" aria-label="Menu de recherche" aria-hidden="true" aria-labelledby="titreRechercher" style="opacity:1; right:0;">
-	<div class="ds44-container-menuBackLink">
-	   <p role="heading" aria-level="1" class="ds44-menuBackLink" id="titreRechercher">Rechercher</p>
-	</div>
-	<button type="button" class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" aria-label="Fermer le menu Rechercher"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
-	<p role="heading" aria-level="1" class="visually-hidden">Menu "Rechercher"</p>
-	<div class="ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44-hv100 ds44-container-large ds44-tiny-to-med-atop ds44-ttl-pt9">
-		<div class="grid-12-small-1 ds44-grid-valign-center ds44-w98">
-			<div class="col-5-small-1 txtcenter">
-				<p class="h4-like" id="inp-rech">Recherchez par mots-clés :</p>
-				<form>
-					<div class="ds44-form__container">
-						<label for="form-element-35742" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge">Votre recherche<sup aria-hidden="true">*</sup></span>
-						<input type="text" id="form-element-35742" name="form-element-35742" class="ds44-inpLarge" title="Votre recherche - obligatoire"  required   aria-describedby="inp-rech " /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i><span class="visually-hidden">Effacer le contenu saisi dans le champ : Votre recherche</span></button>
-						</label>
-						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
-					</div>
-					<button type="submit" class="ds44-btnStd ds44-btn--invert" title="Valider votre recherche par mots-clés"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
-				</form>
-			</div>
-			<div class="col-2-small-1 txtcenter ds44-h100">
-				<div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
-				    <p class="ds44-txtBulle ds44-theme">Ou</p>
-				</div>
-			</div>
-			<div class="col-5-small-1">
-				<h3 class="h4-like" id="titreContenus">Accédez aux contenus les plus recherchés :</h3>
-				<ul class="ds44-list">
-					<li><a href="#" class="ds44-arrowLink">Inscription à l’animation sportive<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-					<li><a href="#" class="ds44-arrowLink">Recherche d’assistante maternelle<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-					<li><a href="#" class="ds44-arrowLink">Demande d’aide au permis de conduire<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-					<li><a href="#" class="ds44-arrowLink">Offres d’emplois et stages<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-					<li><a href="#" class="ds44-arrowLink">Inforoutes<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-					<li><a href="#" class="ds44-arrowLink">Marchés publics<i class="icon icon-arrow-right" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<%@page import="generated.PortletMiseEnAvantDeContenus"%>
+<section id="menuRech">
+    <div class="ds44-overlay ds44-overlay--navNiv2 ds44-wave-grey ds44-bg-pdr ds44-whiteBG" role="dialog" aria-label='<%= glp("jcmsplugin.socle.recherche.menu") %>' aria-hidden="true">
+        <span class="ds44-tmpFocusHidden" tabindex="0"></span>
+        <div class="ds44-container-menuBackLink">
+            <p role="heading" aria-level="1" class="ds44-menuBackLink" id="titreRechercher"><%= glp("jcmsplugin.socle.rechercher") %></p>
+        </div>
+        <button type="button" class="ds44-btnOverlay ds44-btnOverlay--closeOverlay ds44-tmpFirstFocus" aria-label='<%= glp("jcmsplugin.socle.recherche.menu.fermer") %>' data-bkp-tabindex="">
+        <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+        </button>
+        <p role="heading" aria-level="1" class="visually-hidden"><%= glp("jcmsplugin.socle.recherche.menu.aria.heading") %></p>
+        <div class="ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44-hv100 ds44-container-large ds44-tiny-to-med-atop ds44-ttl-pt9">
+            <div class="grid-12-small-1 ds44-grid-valign-center ds44-w98">
+                <%
+                Publication portletSearch = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletsearch.id"));
+                Publication portletMea = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletmea.id"));
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(portletSearch) %>">
+	                <div class="col-<%= Util.isEmpty(portletMea) ? "12" : "5" %>-small-1 txtcenter">
+	                    <jalios:include pub="<%= portletSearch %>"/>
+	                </div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(portletSearch) && Util.notEmpty(portletMea) %>">
+	                <div class="col-2-small-1 txtcenter ds44-h100">
+	                    <div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
+	                        <p class="ds44-txtBulle ds44-theme"><%= glp("jcmsplugin.socle.ou") %></p>
+	                    </div>
+	                </div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(portletMea) %>">
+	                <div class='col-<%= Util.isEmpty(portletSearch) ? "12" : "5" %>-small-1'>
+	                    <jalios:include pub="<%= portletMea %>"/>
+	                </div>
+                </jalios:if>
+            </div>
+        </div>
+        <span class="ds44-tmpFocusHidden" tabindex="0"></span>
+    </div>
 </section>
