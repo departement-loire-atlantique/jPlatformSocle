@@ -1,12 +1,14 @@
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@tag import="fr.cg44.plugin.socle.VideoUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ tag 
     pageEncoding="UTF-8"
     description="Titre du header simple" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat"
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument"
 %>
 <%@ attribute name="title"
     required="true"
@@ -36,40 +38,12 @@
     type="String"
     description="Le chemin du fichier image mobile"
 %>
-<%@ attribute name="urlVideo"
+<%@ attribute name="video"
     required="false"
     fragment="false"
     rtexprvalue="true"
-    type="String"
-    description="L'URL de la vidéo"
-%>
-<%@ attribute name="titreVideo"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le titre la vidéo"
-%>
-<%@ attribute name="fichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le chemin du fichier de transcription"
-%>
-<%@ attribute name="typeFichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Le format du fichier de transcription"
-%>
-<%@ attribute name="tailleFichierTranscript"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="La taille du fichier de transcription"
+    type="generated.Video"
+    description="Video"
 %>
 <%@ attribute name="alt"
     required="false"
@@ -117,7 +91,27 @@
 <%
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
+
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+
+//Récupération des infos de vidéo, dans la cas d'une fiche article ou actu
+String titreVideo = "";
+String urlVideo = "";
+String fichierTranscriptVideo = "";
+String typeFichierTranscript = "";
+String tailleFichierTranscript = "";
+if(Util.notEmpty(video)) {
+	titreVideo = video.getTitle();
+	urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(video.getUrlVideo()));
+	
+	// Récupération des infos du fichier de transcription
+	if(Util.notEmpty(video.getFichierTranscript())){
+		fichierTranscriptVideo = video.getFichierTranscript().getDownloadUrl();
+		typeFichierTranscript = FileDocument.getExtension(video.getFichierTranscript().getFilename()).toUpperCase();
+		tailleFichierTranscript = Util.formatFileSize(video.getFichierTranscript().getSize());
+	}
+}
+
 %>
 
 <div class="ds44-lightBG">
@@ -147,46 +141,19 @@ boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <iframe title="<%= titreVideo %>" style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
-                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
-				        <a href="<%= fichierTranscript %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+	                <iframe title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo) %>' style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
+                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
+				        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
 				    </jalios:if>
                 </div>
 	        </div>
 	    </div>
 	</jalios:if>
 	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-	<% 
-	String formattedImagePath = SocleUtils.getUrlOfFormattedImageBandeau(imagePath);
-	String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImagePath);;
-	if (Util.isEmpty(formattedMobilePath)) {
-	  formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
-	}
-	%>
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <jalios:if predicate="<%= hasFigcaption%>">
-	                    <figure role="figure">
-	                </jalios:if>
-		            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= legend %> <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%= copyright %>'>
-				        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
-				            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
-				        </jalios:if>
-				        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-				        <img src="<%=formattedImagePath%>" alt='<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>' class="ds44-w100 ds44-imgRatio" id="<%=uid%>"/>
-	                </picture>
-	                <jalios:if predicate="<%= hasFigcaption%>">
-	                    <figcaption class="ds44-imgCaption">
-	                        <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                            <%=legend%>
-	                        </jalios:if>
-	                        <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                            © <%=copyright%>
-	                        </jalios:if>
-	                    </figcaption>
-	                  </figure>
-	                </jalios:if>
+	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="bandeau" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
 				</div>
 	        </div>
 	    </div>

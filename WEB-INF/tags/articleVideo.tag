@@ -21,17 +21,25 @@
     type="String"
     description="Titre"
 %>
+<%@ attribute name="intro"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Introduction"
+%>
+<%
+if (Util.notEmpty(title)) {
+  request.setAttribute("overrideVidTitle", title);
+}
+
+if (Util.notEmpty(intro)) {
+  request.setAttribute("overrideVidIntro", intro);
+}
+%>
 <section id="contentVideo" class="ds44-contenuArticle">
 	<div class="ds44-inner-container ds44-mtb3">
 		<div class="ds44-grid12-offset-2">
-			<jalios:select>
-				<jalios:if predicate="<%= Util.notEmpty(title) %>">
-					<h3 class="h3-like" id="titreVideo"><%= title %></h2>
-				</jalios:if>
-				<jalios:if predicate="<%= Util.notEmpty(video.getTitle()) %>">
-					<h3 class="h3-like" id="titreVideo"><%= video.getTitle() %></h3>
-				</jalios:if>
-			</jalios:select>
 			<jalios:media data='<%= video %>' />
 		</div>
 	</div>

@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.LatLonPoint;
 
-import com.jalios.jcms.Channel;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.policy.BasicLuceneSearchEnginePolicyFilter;
 import com.jalios.jcms.search.queryparser.ParseOptions;
@@ -28,8 +27,13 @@ public class PublicationFacetedSearchGeolocEnginePolicyFilter extends BasicLucen
     String pubLat = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.latitude");
     String PubLng = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.longitude");
     if(Util.notEmpty(pubLat) && Util.notEmpty(PubLng)) {
-      LatLonPoint latLong = new LatLonPoint("localisation", Float.parseFloat(pubLat), Float.parseFloat(PubLng));
-      doc.add(latLong);
+      try { 
+        LatLonPoint latLong = new LatLonPoint("localisation", Float.parseFloat(pubLat), Float.parseFloat(PubLng));
+        doc.add(latLong);
+      }
+      catch (Exception e) { 
+        LOGGER.warn("Impossible d'indéxer la localisation sur le contenu : " + publication.getId() + " de type " + publication.getClass().getSimpleName() + " latitude : " + pubLat + " longitude : " +  PubLng, e);
+      } 
     }			
   }
 

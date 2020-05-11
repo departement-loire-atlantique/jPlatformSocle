@@ -3,7 +3,7 @@
 String[] cidBranches = request.getParameterValues("cidBranches");
 String[] cids = request.getParameterValues("cids");
 // Récupère le mode d'intersection des catégories
-Boolean isCatModUnion = Boolean.valueOf(request.getParameter("modCatUnion"));
+Boolean isCatModUnion = Boolean.valueOf(request.getParameter("modCatBranchesUnion"));
 Boolean isCatModNivUnion = Boolean.valueOf(request.getParameter("modCatNivUnion"));
 
 if(Util.notEmpty(cidBranches) && Util.notEmpty(cids)) {

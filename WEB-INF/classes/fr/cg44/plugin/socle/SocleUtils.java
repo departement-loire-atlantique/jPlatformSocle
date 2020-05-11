@@ -7,15 +7,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
@@ -23,6 +30,7 @@ import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
+import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
@@ -34,7 +42,10 @@ import com.jalios.util.Util;
 import generated.AbstractPortletFacette;
 import generated.Canton;
 import generated.City;
+import generated.Contact;
 import generated.Delegation;
+import generated.ElectedMember;
+import generated.FicheLieu;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
@@ -49,6 +60,12 @@ public final class SocleUtils {
 	
 	// La catégorie technique qui désigne qu'un contenu est mis en avant si celui-ci y est catégorisé.
 	private static final String MISE_EN_AVANT_CAT_PROP = "$id.plugin.socle.page-principale.cat";
+	
+	// Messages répétés de log de debug
+	private static final String debugNoImagePrincipale = "pas d'image principale";
+	private static final String debugNoImageBandeau = "pas d'image bandeau";
+	private static final String debugNoImageMobile = "pas d'image mobile";
+	private static final String debugNoImageCarree = "pas d'image carrée";
 
 	private SocleUtils() {
 		throw new IllegalStateException("Utility class");
@@ -269,15 +286,15 @@ public final class SocleUtils {
     }
 
 	/**
-	 * Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :
-	 * 
-	 * [libelle]<br>
-	 * [etageCouloirEscalier]<br>
-	 * [entreBatimentImmeuble]<br>
-	 * [nDeVoie] [libelleDeVoie]<br>
-	 * [lieuDit]<br>
-	 * CS [cs]<br>
-	 * [codePostal] [commune] Cedex [cedex]
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String sous la forme suivante :</p>
+	 * <p></p>
+	 * <p>[libelle]<br></p>
+	 * <p>[etageCouloirEscalier]<br></p>
+	 * <p>[entreBatimentImmeuble]<br></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br></p>
+	 * <p>[lieuDit]<br></p>
+	 * <p>CS [cs]<br></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
 	 * 
 	 * @param libelle
 	 * @param etageCouloirEscalier
@@ -337,14 +354,112 @@ public final class SocleUtils {
 			}
 		}
 		if(Util.notEmpty(cedex)) {
-			sbfAddr.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.label.cedex"))
-			.append(" ")
-			.append(cedex);
+			sbfAddr.append(cedex);
 		}
 
 		return sbfAddr.toString();
 
 	}
+	
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une FicheLieu sous la forme suivante :</p>
+	 * <p>Règle de gestion : </p>
+	 * <p>- Si tous les champs de l'adresse postale sont vides on n'affiche rien. </p>
+	 * <p>- Si seuls les champs "cedex" et "CS" de l'adresse postale sont remplis on récupère les autres champs de l'adresse physique. </p>
+	 * <p>- Si le champ "libellé de voie" de l'adresse postale est renseigné alors on affiche les autres champs de l'adresse postale et</p>
+	 * <p> on n'affiche aucun champ de l'adresse physique.</p>
+	 * <p></p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param fichelieu
+	 * @return un String contenant l'adresse physique de la FicheLieu ou null si le libellé, le CP et la commune sont vide.
+	 */
+	public static String formatAdresseEcrire(FicheLieu fichelieu) {
+		boolean getInfosAdressePhysique = Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? false : (Util.notEmpty(fichelieu.getCs2()) || Util.notEmpty(fichelieu.getCedex2()));
+
+		String communeEcrire = Util.notEmpty(fichelieu.getCommune2()) ? fichelieu.getCommune2().getTitle() : (Util.notEmpty(fichelieu.getCommune()) && getInfosAdressePhysique) ? fichelieu.getCommune().getTitle() : "";
+		String etageCouloirEscalier =  Util.notEmpty(fichelieu.getEtageCouloirEscalier2()) ? fichelieu.getEtageCouloirEscalier2() : (Util.notEmpty(fichelieu.getEtageCouloirEscalier()) && getInfosAdressePhysique) ? fichelieu.getEtageCouloirEscalier() : "";
+		String entreeBatimentImmeuble =  Util.notEmpty(fichelieu.getEntreeBatimentImmeuble2()) ? fichelieu.getEntreeBatimentImmeuble2() : (Util.notEmpty(fichelieu.getEntreeBatimentImmeuble()) && getInfosAdressePhysique) ? fichelieu.getEntreeBatimentImmeuble() : "";
+		String ndeVoie =  Util.notEmpty(fichelieu.getNdeVoie2()) ? fichelieu.getNdeVoie2() : (Util.notEmpty(fichelieu.getNdeVoie()) && getInfosAdressePhysique) ? fichelieu.getNdeVoie() : "";
+		String libelleDeVoie =  Util.notEmpty(fichelieu.getLibelleDeVoie2()) ? fichelieu.getLibelleDeVoie2() : (Util.notEmpty(fichelieu.getLibelleDeVoie()) && getInfosAdressePhysique) ? fichelieu.getLibelleDeVoie() : "";
+		String lieudit =  Util.notEmpty(fichelieu.getLieudit2()) ? fichelieu.getLieudit2() : (Util.notEmpty(fichelieu.getLieudit()) && getInfosAdressePhysique) ? fichelieu.getLieudit() : "";
+		String codePostal =  Util.notEmpty(fichelieu.getCodePostal2()) ? fichelieu.getCodePostal2() : (Util.notEmpty(fichelieu.getCodePostal()) && getInfosAdressePhysique) ? fichelieu.getCodePostal() : "";
+
+		if(Util.isEmpty(etageCouloirEscalier) &&  Util.isEmpty(entreeBatimentImmeuble) && Util.isEmpty(ndeVoie) 
+				&& Util.isEmpty(libelleDeVoie)	&& Util.isEmpty(lieudit) && Util.isEmpty(codePostal) 
+				&& Util.isEmpty(communeEcrire) && Util.isEmpty(fichelieu.getCs2()) && Util.isEmpty(fichelieu.getCedex2())) {
+				return "";
+		}
+		
+
+		return SocleUtils.formatAddress(fichelieu.getLibelleAutreAdresse(),
+				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
+				libelleDeVoie, lieudit, fichelieu.getCs2(), codePostal, communeEcrire,
+				fichelieu.getCedex2());
+	}
+	
+	
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Delegation sous la forme suivante :</p>
+	 * <p>Règle de gestion : </p>
+	 * <p>- Si tous les champs de l'adresse postale sont vides on n'affiche rien. </p>
+	 * <p>- Si seuls les champs "cedex" et "CS" de l'adresse postale sont remplis on récupère les autres champs de l'adresse physique. </p>
+	 * <p>- Si le champ "libellé de voie" de l'adresse postale est renseigné alors on affiche les autres champs de l'adresse postale et</p>
+	 * <p> on n'affiche aucun champ de l'adresse physique.</p>
+	 * <p></p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param delegation
+	 * @return un String contenant l'adresse de la FicheLieu
+	 */
+	public static String formatAdresseEcrire(Delegation delegation) {
+		
+		String communeEcrire = Util.notEmpty(delegation.getCommune2()) ? delegation.getCommune2().getTitle() : Util.notEmpty(delegation.getCommune()) ? delegation.getCommune().getTitle() : "";
+		String etageCouloirEscalier =  Util.notEmpty(delegation.getEtageCouloirEscalier2()) ? delegation.getEtageCouloirEscalier2() : delegation.getEtageCouloirEscalier();
+		String entreeBatimentImmeuble =  Util.notEmpty(delegation.getEntreeBatimentImmeuble2()) ? delegation.getEntreeBatimentImmeuble2() : delegation.getEntreeBatimentImmeuble();
+		String ndeVoie =  Util.notEmpty(delegation.getNdeVoie2()) ? delegation.getNdeVoie2() : delegation.getNdeVoie();
+		String libelleDeVoie =  Util.notEmpty(delegation.getLibelleDeVoie2()) ? delegation.getLibelleDeVoie2() : delegation.getLibelleDeVoie();
+		String lieudit =  Util.notEmpty(delegation.getLieudit2()) ? delegation.getLieudit2() : delegation.getLieudit();
+		String codePostal =  Util.notEmpty(delegation.getCodePostal2()) ? delegation.getCodePostal2() : delegation.getCodePostal();
+		
+		return SocleUtils.formatAddress(delegation.getLibelleAutreAdresse(),
+				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
+				libelleDeVoie, lieudit, delegation.getCs2(), codePostal, communeEcrire,
+				delegation.getCedex2());
+	}
+
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Delegation sous la forme suivante :</p>
+	 * <p>[libelle]<br\></p>
+	 * <p>[etageCouloirEscalier]<br\></p>
+	 * <p>[entreBatimentImmeuble]<br\></p>
+	 * <p>[nDeVoie] [libelleDeVoie]<br\></p>
+	 * <p>[lieuDit]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune] Cedex [cedex]</p>
+	 * 
+	 * @param fichelieu
+	 * @return un String contenant l'adresse physique de la FicheLieu
+	 */
+	public static String formatAdressePhysique(FicheLieu fichelieu) {
+	
+		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
+				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
+				"", fichelieu.getCodePostal(), fichelieu.getCommune().getTitle(), "");
+	}	
+		
 	
 	
 	/**
@@ -389,12 +504,30 @@ public final class SocleUtils {
 		return formatOpenStreetMapLink(latitude, longitude, "11");
 	}
 
-	/**
+  	/**
      * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
      * @param categories
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories) {
+    public static String formatCategories(Set<Category> categories) {
+        return formatCategories(new ArrayList<Category>(categories), ", ");
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(Set<Category> categories, String separator) {
+        return formatCategories(new ArrayList<Category>(categories), separator);
+    }
+    
+    /**
+     * Génère un String selon une liste de catégories, de format (ici pour 3 catégories) : [nom cat1], [nom cat2], [nom cat3]
+     * @param categories
+     * @return
+     */
+    public static String formatCategories(List<Category> categories) {
         return formatCategories(categories, ", ");
     }
     
@@ -405,7 +538,7 @@ public final class SocleUtils {
      * @param separator
      * @return
      */
-    public static String formatCategories(SortedSet<Category> categories, String separator) {
+    public static String formatCategories(List<Category> categories, String separator) {
         
         if (Util.isEmpty(categories)) return "";
         
@@ -491,6 +624,9 @@ public final class SocleUtils {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
 		jsonObject.addProperty("value", pub.getTitle());
+		if(Util.notEmpty(pubFullGabarit)) {
+		  jsonObject.addProperty("content_html", pubFullGabarit);
+    }
 		JsonObject jsonMetaObject = new JsonObject();
 		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
@@ -501,10 +637,7 @@ public final class SocleUtils {
 		}
 		if(Util.notEmpty(pubMarkerGabarit)) {
 			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-		}
-		if(Util.notEmpty(pubFullGabarit)) {
-			jsonMetaObject.addProperty("html_full", pubFullGabarit);
-		}
+		}		
 		jsonObject.add("metadata", jsonMetaObject);
 		return jsonObject;
 	}
@@ -602,6 +735,43 @@ public final class SocleUtils {
 	}
 	
 	/**
+	 * Retourne l'URL d'une image principale ou d'un substitut pour le contenu indiqué
+	 * @param pub
+	 * @return
+	 */
+	public static String getImagePrincipale(Publication pub) {
+	  String image = "";
+	  
+	  LOGGER.debug("getImagePrincipale " + pub);
+	  try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+	  try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+	  try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+	  try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+	  
+	  return "";
+	}
+	
+	/**
 	 * Génère une image principale formattée et renvoie son path
 	 * @param imagePath
 	 * @return
@@ -609,6 +779,43 @@ public final class SocleUtils {
 	public static String getUrlOfFormattedImagePrincipale(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.principale.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.principale.height", 0)); 
   }
+	
+	/**
+   * Retourne l'URL d'une image bandeau ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+	public static String getImageBandeau(Publication pub) {
+	  String image = "";
+    
+    LOGGER.debug("getImageBandeau " + pub);
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    
+    return "";
+	}
 	
 	/**
    * Génère une image bandeau formattée et renvoie son path
@@ -620,12 +827,93 @@ public final class SocleUtils {
   }
   
   /**
+   * Retourne l'URL d'une image mobile ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+  public static String getImageMobile(Publication pub) {
+    String image = "";
+    
+    LOGGER.debug("getImageMobile " + pub);
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    
+    return "";
+  }
+  
+  /**
    * Génère une image mobile formattée et renvoie son path
    * @param imagePath
    * @return
    */
   public static String getUrlOfFormattedImageMobile(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.mobile.height", 0)); 
+  }
+  
+  /**
+   * Retourne l'URL d'une image carree ou d'un substitut pour le contenu indiqué
+   * @param pub
+   * @return
+   */
+  public static String getImageCarree(Publication pub) {
+    String image = "";
+    
+    LOGGER.debug("getImageCarree " + pub);
+    
+    try {
+      image = (String) pub.getFieldValue("imageCarree");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageCarree);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageMobile");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageMobile);
+    }
+    try {
+      image = (String) pub.getFieldValue("imagePrincipale");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("image");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImagePrincipale);
+    }
+    try {
+      image = (String) pub.getFieldValue("imageBandeau");
+      if (Util.notEmpty(image)) return image;
+    } catch (Exception e) {
+      LOGGER.debug(debugNoImageBandeau);
+    }
+    
+    return "";
   }
   
   /**
@@ -661,7 +949,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilFull(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.full.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.full.height", 0)); 
   }
   
   /**
@@ -670,7 +958,7 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilMobile(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.mobile.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.mobile.height", 0)); 
   }
   
   /**
@@ -679,8 +967,17 @@ public final class SocleUtils {
    * @return
    */
   public static String getUrlOfFormattedImageCarouselAccueilCarree(String imagePath) {
-    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.carrouselaccueil.carree.height", 0)); 
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrouselaccueil.carree.height", 0)); 
   }
+  
+  /**
+   * Génère une image formattée pour le type "Fiche publication" et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageMagazine(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.magazine.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.magazine.height", 0)); 
+  }  
   
   /**
    * Génère une image formattée et renvoie son path
@@ -693,5 +990,284 @@ public final class SocleUtils {
     }
     return "";
   }
+  
+  /**
+   * Récupère une commune à partir de son code ville
+   * @param communeName
+   * @return
+   */
+  public static City getCommuneFromCode(String communeCode) {
+    if (Util.isEmpty(communeCode)) {
+      return null;
+    }
+    Set<City> setCities = channel.getDataSet(City.class);
+    for (City itCity : setCities) {
+      if (itCity.getCityCode() == Integer.parseInt(communeCode)) {
+        return itCity;
+      }
+    }
+    return null;
+  }
+    
+  /**
+   * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
+   * @param request
+   * @return
+   */
+  public static Map<String, String[]> getFacetsParameters(HttpServletRequest request) {
+    Enumeration<String> enumParams = request.getParameterNames();
+    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
+    while(enumParams.hasMoreElements()) {
+      String nameParam = enumParams.nextElement();
+      String itNameKey = null;
+      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
+        // paramètre classique de la recherche à facettes
+        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
+      } else if(nameParam.startsWith("map")){
+        // Position de la carte
+        itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
+      } else if(nameParam.contains("[latitude]") || nameParam.contains("[longitude]")) {
+        // Adresses de précisse (provenant de la BAN)
+        if(nameParam.contains("[latitude]")) {
+          itNameKey = "latitude";
+        } else {
+          itNameKey = "longitude";
+        }
+      }else if(nameParam.contains("[value]")) {
+    	  itNameKey = nameParam.replace("[value]", "");
+      }
+      // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
+      if(Util.notEmpty(itNameKey)) {
+        if(parametersMap.containsKey(itNameKey)){
+          parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
+        }else {
+          parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+        }
+      }
+    }
+    return parametersMap;
+  }
+  
+  /**
+   * Retourne la fonction d'un membre élu, en commençant ou non par une majuscule
+   * @param pub
+   * @param majuscule
+   * @return
+   */
+  public static String getElectedMemberFunction(ElectedMember pub, Boolean majuscule) {
+    String position = "";
+    // Cas : est président / présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) {
+      position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.masculin") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.president.feminin");
+    }
+    // Cas : est vice-président / vice-présidente
+    if (pub.getFunctions(channel.getCurrentLoggedMember()).contains(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+      if(majuscule) {
+        position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
+      } else {
+        position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min");
+      }
+    }
+    for (Category itCat : pub.getFunctions(channel.getCurrentLoggedMember())) {
+      if (itCat.getParent().equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+        if (Util.isEmpty(position)) {
+          if(majuscule) {
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") + " " : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj") + " ";
+          } else {
+            position = pub.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.min") + " " : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.min") + " ";
+          }
+        } else {
+          position += " ";
+        }
+        position += itCat.getName();
+        return position;
+      }
+    }
+    return position;
+  }
+  
+  /**
+   * Retourne la fonction d'un membre élu
+   * @param pub
+   * @return
+   */
+  public static String getElectedMemberFunction(ElectedMember pub) {
+	  return getElectedMemberFunction(pub, true);
+  }
+  
+  /**
+   * Retourne le binôme d'un membre élu
+   * @param pub
+   */
+  public static ElectedMember getElectedMemberBinome(ElectedMember elu) {
+    if (Util.isEmpty(elu) || Util.isEmpty(elu.getCanton())) {
+      return null;
+    }
+    
+    Canton mbrCanton = elu.getCanton();
+    TreeSet<ElectedMember> linkedElus = (TreeSet<ElectedMember>) mbrCanton.getLinkIndexedDataSet(ElectedMember.class).clone();
+    
+    linkedElus.remove(elu);
+    
+    return linkedElus.first();
+  }
+  
+  /**
+   * Retourne le nom complet de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullName(ElectedMember elu) {
+    String fullName = "";
+    if(Util.notEmpty(elu.getFirstName())) {
+    	fullName = elu.getFirstName()+" ";
+    }
+    if(Util.notEmpty(elu.getFirstName()) && Util.notEmpty(elu.getNom())) {
+    	fullName += " ";
+    }
+    if(Util.notEmpty(elu.getNom())) {
+    	fullName += elu.getNom();
+    }
+    return fullName;
+  }
+  
+  /**
+   * Retourne l'intitulé de mission de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberMissionString(ElectedMember elu) {
+		
+		if(Util.isEmpty(elu.getMissionThematique(channel.getCurrentLoggedMember()))) return "";
+		
+		StringBuffer sbfMission = new StringBuffer();
+		sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.mission-thematique")).
+			append(" ");
+		for(Category itCat : elu.getMissionThematique(channel.getCurrentLoggedMember())) {
+			sbfMission.append(itCat.getName())
+				.append(" ");
+		}
+		ElectedMember linkedElu = elu.getVicepresidentLie();
+		if(Util.notEmpty(linkedElu)) {
+			sbfMission.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.en-lien-avec"))
+				.append(" ");
+			if(Util.notEmpty(getElectedMemberFullName(linkedElu))) {
+				sbfMission.append(getElectedMemberFullName(linkedElu))
+					.append(", ");
+			}
+			String roleLinkedElu = getElectedMemberFunction(linkedElu, false);
+			if(Util.notEmpty(roleLinkedElu)) {
+				sbfMission.append(roleLinkedElu);
+			}
+		}
+		return sbfMission.toString();
+  }
+  
+  /**
+   * Retourne la fonction complète de vice-president de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberFullFunctionVicePresident(ElectedMember elu) {
+		if(Util.notEmpty(elu.getFunctions(channel.getCurrentLoggedMember()))) {
+			Category catVicePresident = null;
+			for(Category itCat : elu.getFunctions(channel.getCurrentLoggedMember())) {
+				Category itParent = itCat.getParent();
+				if (itParent.equals(channel.getCategory("$jcmsplugin.socle.elu.vicepresident"))) {
+					catVicePresident = itCat;
+					break;
+				}
+			}
+			if (Util.notEmpty(catVicePresident)) {
+				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
+				return "<b>" + fullRole + " " + catVicePresident.getName() + "</b>";
+			}
+		}
+		return "";
+  }
+  
+  /**
+   * Retourne le label de l'année d'éléction de l'élu
+   * @param elu
+   * @return
+   */
+  public static String getElectedMemberElectionYear(ElectedMember elu) {
+		int anneeElection = elu.getFirstElectionYear();
+		if(Util.notEmpty(anneeElection) && anneeElection > 0) {
+			String labelAnneeElection = "";
+			if(elu.getNouvelEluOuReelu()) {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.elue-en", anneeElection);
+				}
+			} else {
+				if(elu.getGender()) {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelu-en", anneeElection);
+				} else {
+					labelAnneeElection = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.reelue-en", anneeElection);
+				}
+			}
+			return labelAnneeElection;
+		}
+		return "";
+  }
+  
+  /**
+   * Indique si une publication peut être rechercheable ou pas
+   * Se base sur une catégorie de classement.
+   * Si la propriété est inexistante ou vide, renvoie false.
+   * @param pub
+   * @return <code>true</code> si la publication doit être masquée sinon <code>false</code> 
+   * 
+   */
+  public static boolean isNonRepertoriee(Publication pub) {
+  	return pub.containsCategory(channel.getCategory("$jcmsplugin.socle.recherche.nonrepertoriee.cat"));
+  }  
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice(String price) {
+    if (Util.isEmpty(price)) return "";
+    
+    String invertedPrice = new StringBuilder(price).reverse().toString();
+    invertedPrice = invertedPrice.replaceAll("...", "$0 ");
+    
+    return new StringBuilder(invertedPrice).reverse().toString();
+  }
+  
+  /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice (Integer price) {
+    if (Util.isEmpty(price)) return "";
+    return formatPrice(price.toString());
+  }
+  
+  /**
+   * Renvoie la fiche contact associée à un membre, si elle existe
+   * @param mbr
+   * @return
+   */
+  public static Contact getContactFromMembre(Member mbr) {
+    QueryHandler qh = new QueryHandler();
+    qh.setExactType(true);
+    qh.setTypes("Contact");
+    qh.setText(mbr.getFullName());
+    qh.setLoggedMember(Channel.getChannel().getCurrentLoggedMember());
+    QueryResultSet result = qh.getResultSet();
+    
+    if (Util.notEmpty(result)) {
+      return (Contact) result.getAsSortedSet().first();
+    }
+    
+    return null;
+  }
 	
+  
 }

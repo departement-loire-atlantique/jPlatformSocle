@@ -1,0 +1,35 @@
+<jalios:select>
+	<jalios:if
+		predicate="<%= Util.notEmpty( currentLien.getLienExterne() ) %>">
+		<a class="ds44-arrowLink" href="<%= currentLien.getLienExterne() %>"
+			target="_blank"
+			title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle()) %>'
+			aria-label='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle()) %>'><%= currentLien.getTitle() %><i
+			class="icon icon-arrow-right"></i></a>
+	</jalios:if>
+	<jalios:default>
+		<%
+                String urlContent = currentLien.getDisplayUrl(userLocale);
+                boolean targetBlank = false;
+                String fileInfos = "";
+                String targetAttr = "";
+                String titleAttr = "";
+                if (Util.notEmpty(currentLien.getLienInterne())) {
+                  urlContent = currentLien.getLienInterne().getDisplayUrl(userLocale);
+                }
+                if (currentLien.getLienInterne() instanceof FileDocument) {
+                  FileDocument itDoc = (FileDocument) currentLien.getLienInterne();
+                  String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+                  String fileSize = Util.formatFileSize(itDoc.getSize());
+                  fileInfos = " - " + fileSize + " - " + fileType;
+                  urlContent = itDoc.getDownloadUrl();
+                  targetAttr = "target=\"_blank\" ";
+                  titleAttr = "title=\"" +  itDoc.getTitle() + fileInfos + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+                }
+                
+                %>
+		<a class="ds44-arrowLink" <%= titleAttr %>
+			href="<%= urlContent %>" <%= targetAttr %>><%= currentLien.getTitle() %><i
+			class="icon icon-arrow-right"></i></a>
+	</jalios:default>
+</jalios:select>

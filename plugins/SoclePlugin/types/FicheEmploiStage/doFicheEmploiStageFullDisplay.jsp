@@ -65,15 +65,17 @@
                                        </jalios:if>
                                        <%= obj.getService() %>
                                        <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
-                                           <br/>
                                            <%
                                            SortedSet<Category> catsWithoutServices = obj.getDirectiondelegation(loggedMember);
                                            catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
                                            %>
-                                           <%= SocleUtils.formatCategories(catsWithoutServices) %>
+                                           <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
+	                                           <br/>
+	                                           <%= SocleUtils.formatCategories(catsWithoutServices) %>
+                                           </jalios:if>
                                        </jalios:if>
-                                       <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
-                                       <br/>
+	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getPositionHierarchique()) %>">
+	                                   <br/>
                                        <%= obj.getPositionHierarchique() %>
                                        </jalios:if>
                                    </p>
@@ -264,7 +266,7 @@
 		                       <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.contacts") %></p>
 	                           <div class="grid-<%= hasContactRH && hasContactMetier ? '2' : '1' %>-small-1">
 	                               <jalios:if predicate="<%= hasContactRH %>">
-	                               <div class="col">
+	                               <div class="col ds44--xl-padding-l ds44-TtL-noPad">
 	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
 			                               <p class="ds44-docListElem mts">
 			                                   <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>

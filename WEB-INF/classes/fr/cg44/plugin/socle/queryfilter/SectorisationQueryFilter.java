@@ -55,20 +55,17 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
 		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
-		String lng = HttpUtil.getStringParameter(request, "long", "", ".*");
-		String lat = HttpUtil.getStringParameter(request, "lat", "", ".*");
-		String lng_1 = HttpUtil.getStringParameter(request, "long_1", "", ".*");
-		String lat_1 = HttpUtil.getStringParameter(request, "lat_1", "", ".*");
-		String lng_2 = HttpUtil.getStringParameter(request, "long_2", "", ".*");
-		String lat_2 = HttpUtil.getStringParameter(request, "lat_2", "", ".*");
-		String sectorisation = HttpUtil.getAlphaNumParameter(request, "sectorisation", "");
+		String lng = HttpUtil.getStringParameter(request, "longitude", "", ".*");
+		String lat = HttpUtil.getStringParameter(request, "latitude", "", ".*");
+		String lng_1 = HttpUtil.getStringParameter(request, "map[nw][long]", "", ".*");
+		String lat_1 = HttpUtil.getStringParameter(request, "map[nw][lat]", "", ".*");
+		String lng_2 = HttpUtil.getStringParameter(request, "map[se][long]", "", ".*");
+		String lat_2 = HttpUtil.getStringParameter(request, "map[se][lat]", "", ".*");
+		Boolean sectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
 		
-		if(Util.notEmpty(sectorisation)) {				
-			String url = "";						
-			if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
-				// Sectorisation par zone
-				url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "?p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
-			}else if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
+		if(sectorisation) {				
+			String url = "";									
+			if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
 				// Sectorisation par adresse
 				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
 			}else if(Util.notEmpty(commune)) {
@@ -78,7 +75,14 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
 			if(Util.notEmpty(url)) {
+				LOGGER.debug("Appel du service de sectorisation : " + url);
 				set.removeAll(getNotInSctorisationPublication(set, url));
+				
+				if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
+					// Sectorisation par zone
+					url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
+					set.removeAll(getNotInSctorisationPublication(set, url));
+				}				
 			}
 		}
 		return set;
@@ -92,10 +96,11 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 * @param url
 	 * @return
 	 */
-	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {			
-		List<String> sectorResultMatriculeSet = getSectorisation(url).stream().map(SectorResult::getUniqueId).collect(Collectors.toList());			
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {	
+		List<SectorResult> sectorResultSet = getSectorisation(url);			
 		List<Publication> notInSectorisation = new ArrayList<>(); 
-		if(sectorResultMatriculeSet != null) {
+		if(sectorResultSet != null) {
+			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());		
 			for(Publication itPub : set) {
 				String idRef = "";
 				if(itPub instanceof FicheLieu) {
@@ -141,7 +146,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				in.close();
 				ObjectMapper mapper = new ObjectMapper();
 				// Retoune la liste de SectorResult trouvé par le service rest
+				LOGGER.debug("réponse du service de sectorisation : " + response.toString());
 				return Arrays.asList(mapper.readValue(response.toString(), SectorResult[].class));
+			} else {
+				LOGGER.warn("Erreur sur le code retour de la recherche par sectorisation " + codeRetour);
 			}
 		} catch (IOException e) {
 			LOGGER.warn("Erreur sur l'appel de la recherche sur la sectorisation avec le référentiel externe", e);

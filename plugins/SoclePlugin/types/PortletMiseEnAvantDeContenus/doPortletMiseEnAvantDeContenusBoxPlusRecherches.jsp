@@ -17,7 +17,7 @@ if (Util.notEmpty(collection)) {
 }
 
 // Forcer l'affichage de liens uniquement
-for (Iterator iter = collection.iterator(); iter.hasNext();) {
+for (Iterator<Content> iter = collection.iterator(); iter.hasNext();) {
   Content itContent = iter.next();
   if (!(itContent instanceof Lien)) iter.remove();
 }
@@ -27,7 +27,7 @@ for (Iterator iter = collection.iterator(); iter.hasNext();) {
     <h2 class="h4-like" id="plusRechercheTitre_<%= box.getId() %>"><%= box.getTitreVisuel() %></h2>
     <ul class="ds44-list">
 	    <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="10">
-	        <li><jalios:media data="<%= (Lien) itContent %>" template="plusRecherches"/></li>
+	        <li><jalios:media data="<%= (Publication) itContent %>" template="plusRecherches"/></li>
 	    </jalios:foreach>
     </ul>
 </section>

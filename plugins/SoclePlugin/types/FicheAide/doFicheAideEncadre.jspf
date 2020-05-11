@@ -1,24 +1,30 @@
- <!-- Bon à savoir -->
-<jalios:if predicate="<%= Util.notEmpty(obj.getTitreEncartBonASavoir()) && Util.notEmpty(obj.getBonASavoir()) %>">
-    <section class="ds44-box ds44-theme ds44-mb3">
-        <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreEncartBonASavoir() %></p>
-            <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
-        </div>
-    </section>
+ <%@ page contentType="text/html; charset=UTF-8"%>
+ <%-- Bon à savoir --%>
+<jalios:if predicate="<%= Util.notEmpty(obj.getBonASavoir()) %>">
+    <%-- On génère une section que si on a paramétré un titre, sinon on laisse le wysiwyg s'en charger --%>
+    <jalios:if predicate="<%=Util.notEmpty(obj.getTitreEncartBonASavoir())%>">
+	    <section class="ds44-box ds44-theme ds44-mb3">
+	        <div class="ds44-innerBoxContainer">
+	           <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreEncartBonASavoir()) ? obj.getTitreEncartBonASavoir() : glp("jcmsplugin.socle.ficheaide.bonASavoir.label") %></p>
+    </jalios:if>
+    
+    <jalios:wysiwyg><%= obj.getBonASavoir() %></jalios:wysiwyg>
+            
+    <jalios:if predicate="<%=Util.notEmpty(obj.getTitreEncartBonASavoir())%>">            
+            </div>
+        </section>
+     </jalios:if>
 </jalios:if>              
 
-<!-- Témoignages -->
+<%-- Témoignages --%>
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
-    <p class="h4-like"><%=glp("jcmsplugin.socle.titre.temoignage") %></p>
+    <h2 class="h4-like ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignage") %></h2>
     <jalios:foreach name="itVideo" type="generated.Temoignage" array="<%= obj.getVideo() %>">
         <jalios:media data='<%=itVideo %>' template='temoignage' />
     </jalios:foreach>
 </jalios:if>
 
-
-
-<!-- Potlet encadrÃ©s -->
+<%-- Portlet encadrés --%>
 <jalios:if predicate="<%= Util.notEmpty(obj.getPortletEncadres()) %>">
 	<jalios:foreach array="<%= obj.getPortletEncadres() %>" name="itPortlet" type="Portlet">
 	    <jalios:include pub="<%= itPortlet %>" />

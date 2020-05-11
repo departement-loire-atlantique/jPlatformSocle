@@ -13,27 +13,26 @@ FicheLieu obj = (FicheLieu) data;
 String longitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude");
 String latitude = obj.getExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
-
-String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
-String adresse = SocleUtils.formatAddress("", obj.getEtageCouloirEscalier(),
-        obj.getEntreeBatimentImmeuble(), obj.getNdeVoie(), obj.getLibelleDeVoie(), obj.getLieudit(), "",
-        obj.getCodePostal(), commune, "");
-
-String communeEcrire = Util.notEmpty(obj.getCommune2()) ? obj.getCommune2().getTitle() : "";
-String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
-        obj.getEtageCouloirEscalier2(), obj.getEntreeBatimentImmeuble2(), obj.getNdeVoie2(),
-        obj.getLibelleDeVoie2(), obj.getLieudit2(), obj.getCs2(), obj.getCodePostal2(), communeEcrire,
-        obj.getCedex2());
+String adressePhysique = SocleUtils.formatAdressePhysique(obj);
+boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 %>
-<section class="mbm">
+<section class="pbm">
 	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-	        <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	       <jalios:select>
+	           <jalios:if predicate='<%= pubNonRepertoriee %>'>
+	               <%= obj.getTitle() %>
+	           </jalios:if>
+	               
+	           <jalios:default>
+	               <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	           </jalios:default>
+	        </jalios:select>
 	    </strong>
 	</p>
 	
-	<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
-	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adresse%></p>
+	<jalios:if predicate='<%=Util.notEmpty(adressePhysique)%>'>
+	    <p class="ds44-docListElem mtm"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%=adressePhysique%></p>
 	</jalios:if>
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
@@ -41,14 +40,14 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 	        <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	        <jalios:if predicate='<%= obj.getTelephone().length == 1 %>'>
 	            <% String numTel = obj.getTelephone()[0]; %>
-	            <ds:phone number="<%= numTel %>"/>
+	            <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
 	        </jalios:if>
 	
 	        <jalios:if predicate='<%= obj.getTelephone().length > 1 %>'>
 	            <ul class="ds44-list">
 	                <jalios:foreach name="numTel" type="String" array="<%= obj.getTelephone() %>">
 	                    <li>
-	                        <ds:phone number="<%= numTel %>"/>
+	                        <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
 	                    </li>
 	                </jalios:foreach>
 	            </ul>
@@ -59,27 +58,12 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getEmail())%>'>
 	     <div class="ds44-docListElem mtm"><i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-	         <% 
-	             StringBuffer sbfAriaLabelMail = new StringBuffer();
-	             sbfAriaLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-	                 .append(" ")
-	                 .append(obj.getTitle())
-	                 .append(" ")
-	                 .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"))
-	                 .append(" : ");
-	             String strAriaLabelMail = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelMail.toString());
-	         %>
 	
 	         <jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
 	             <% String email = obj.getEmail()[0]; %>
-	             <a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
-	                 <%
-	                     StringBuffer sbfLabelMail = new StringBuffer();
-	                     sbfLabelMail.append(glp("jcmsplugin.socle.ficheaide.contacter.label"))
-	                         .append(" ")
-	                         .append(glp("jcmsplugin.socle.ficheaide.par-mail.label"));
-	                 %>
-	                 <%=  sbfLabelMail.toString()  %>
+	             <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+	                   data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mail_to","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}' > 
+	                 <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 	             </a>
 	         </jalios:if>
 	
@@ -87,7 +71,8 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 	             <ul class="ds44-list">
 	                 <jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
 	                     <li>
-	                         <a href='<%= "mailto:"+email %>' aria-label='<%= strAriaLabelMail + email %>'> 
+	                         <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+	                           data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mail_to","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 	                             <%= email %>
 	                         </a>
 	                     </li>
@@ -100,19 +85,11 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getSiteInternet())%>'>
 	    <div class="ds44-docListElem mtm"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
-	        <% 
-	            StringBuffer sbfAriaLabelSite = new StringBuffer();
-	            sbfAriaLabelSite.append(glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label"))
-	                .append(" ")
-	                .append(obj.getTitle())
-	                .append(" ")
-	                .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
-	            String strAriaLabelSite = HttpUtil.encodeForHTMLAttribute(sbfAriaLabelSite.toString());
-	        %>
 	
 	        <jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 	            <% String site = obj.getSiteInternet()[0]; %>
-	            <a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank">
+	            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+    	            data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
 	                <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 	            </a>
 	        </jalios:if>
@@ -121,7 +98,8 @@ String adresseEcrire = SocleUtils.formatAddress(obj.getLibelleAutreAdresse(),
 	            <ul class="ds44-list">
 	                <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 	                    <li>
-	                        <a href='<%= SocleUtils.parseUrl(site) %>' aria-label='<%= strAriaLabelSite %>' target="_blank"> 
+	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+	                           data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 	                            <%= SocleUtils.parseUrl(site) %>
 	                        </a>
 	                    </li>

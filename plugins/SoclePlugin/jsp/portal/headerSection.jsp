@@ -17,10 +17,6 @@ String subMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.submenu.cat
 Category subMenuRootCat = channel.getCategory(subMenuRootCatId);
 Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(subMenuRootCat) : new HashSet<Category>();
 
-String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
-Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
-Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
-
 boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.header.show.rechercher", true);
 %>
 
@@ -30,30 +26,34 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <div class="ds44-container-large">
     
             <ul class="ds44-list ds44-skiplinks">
-                <li><a href="#content" class="ds44-skiplinks--link">Aller au contenu</a></li>
-                <li><a href="#menu" class="ds44-skiplinks--link">Aller au menu</a></li>
-                <li><a href="#" class="ds44-skiplinks--link">Aller à la recherche</a></li>
-                <li><a href="#" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
+                <li><a href="#content" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.content") %></a></li>
+                <li><a href="#menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
+                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
+                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
             </ul>
     
             <div class="ds44-flex-container ds44-flex-valign-center">
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
-                        <picture class="ds44-logo">
-                            <img src="<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>" alt="<%= glp("jcmsplugin.socle.retour.accueil") %> <%=channel.getName() %>" />
+                        <picture class="ds44-logo <%= channel.getProperty("jcmsplugin.socle.logo.style")%>">
+                            <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
+                                <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
+                                <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
+                            </jalios:if>
+                            <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil")) %> <%=channel.getName() %>" />
                         </picture>
                     </a>
                 </div>
                 <div class="ds44-colRight">            
                     <jalios:if predicate="<%= displaySearchMenu %>">
-                        <button id="open-search" class="ds44-btnIcoText--maxi ds44--xl-padding" type="button">
+                        <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button" id="open-search">
                            <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
                         </button>
                     </jalios:if>
                     <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
-                        <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" aria-label='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>' data-open-overlay="true"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
+                        <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding" title='<%= glp("jcmsplugin.socle.header.ouvrir", itCat.getName()) %>' data-open-overlay="true"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
                     </jalios:foreach>
-                    <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu">
+                    <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu" id="open-menu">
                        <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.menu")%></span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -82,9 +82,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                                 <jalios:select>
                                     <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
                                         <%-- Bloc près de chez vous --%>
-                                        <li>
                                          <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-expanded="true" data-bkp-aria-hidden="" data-bkp-tabindex=""><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
-                                        </li>
                                     </jalios:if>
                                     <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
                                     
@@ -156,24 +154,11 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
         </div>
         
-        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
         
-        <nav role="navigation">
-            <div class="ds44-inner-container">
-                <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
-                    <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
-                    <li>
-                        <p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%= itCat.getName() %></p>
-                        <ul class="ds44-list">
-                            <jalios:foreach collection="<%= itCat.getChildrenSet() %>" name="itSubCat" type="Category">
-                            <ds:menuLink itCategory="<%= itSubCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
-                            </jalios:foreach>
-                        </ul>
-                    </li>
-                    </jalios:foreach>
-                </ul>
-            </div>
-        </nav>
+        <%-- Inclusion liste des sites et applis --%>
+        <%@include file="sitesEtApplis.jspf" %>
+
                             
         </section>
         

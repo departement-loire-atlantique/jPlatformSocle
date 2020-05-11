@@ -13,19 +13,27 @@
 <div class="fullDisplay Lien <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
 <%@ include file='/front/publication/doPublicationHeader.jspf' %>
 <table class="fields">
-  <tr class="field soustitre textfieldEditor  <%= Util.isEmpty(obj.getSoustitre()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "soustitre", userLang) %><jalios:edit pub='<%= obj %>' fields='soustitre'/></td>
-    <td class='field-data' <%= gfla(obj, "soustitre") %>>
-            <% if (Util.notEmpty(obj.getSoustitre())) { %>
-            <%= obj.getSoustitre() %>
+  <tr class="field lienInterne linkEditor  <%= Util.isEmpty(obj.getLienInterne()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "lienInterne", userLang) %><jalios:edit pub='<%= obj %>' fields='lienInterne'/></td>
+    <td class='field-data' >
+            <% if (obj.getLienInterne() != null && obj.getLienInterne().canBeReadBy(loggedMember)) { %>
+            <jalios:link data='<%= obj.getLienInterne() %>'/>
             <% } %>
     </td>
   </tr>
-  <tr class="field imagePrincipale imageEditor  <%= Util.isEmpty(obj.getImagePrincipale(userLang)) ? "empty" : "" %>">
+  <tr class="field lienExterne urlEditor  <%= Util.isEmpty(obj.getLienExterne()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "lienExterne", userLang) %><jalios:edit pub='<%= obj %>' fields='lienExterne'/></td>
+    <td class='field-data' <%= gfla(obj, "lienExterne") %>>
+            <% if (Util.notEmpty(obj.getLienExterne())) { %>
+            <a href='<%= obj.getLienExterne() %>' ><%= obj.getLienExterne()%></a>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field imagePrincipale imageEditor  <%= Util.isEmpty(obj.getImagePrincipale()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "imagePrincipale", userLang) %><jalios:edit pub='<%= obj %>' fields='imagePrincipale'/></td>
     <td class='field-data' <%= gfla(obj, "imagePrincipale") %>>
-            <% if (Util.notEmpty(obj.getImagePrincipale(userLang))) { %>
-            <img src='<%= Util.encodeUrl(obj.getImagePrincipale(userLang)) %>' alt='' />
+            <% if (Util.notEmpty(obj.getImagePrincipale())) { %>
+            <img src='<%= Util.encodeUrl(obj.getImagePrincipale()) %>' alt='' />
             <% } %>
     </td>
   </tr>
@@ -45,19 +53,19 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field lienSurContenu linkEditor  <%= Util.isEmpty(obj.getLienSurContenu()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "lienSurContenu", userLang) %><jalios:edit pub='<%= obj %>' fields='lienSurContenu'/></td>
-    <td class='field-data' >
-            <% if (obj.getLienSurContenu() != null && obj.getLienSurContenu().canBeReadBy(loggedMember)) { %>
-            <jalios:link data='<%= obj.getLienSurContenu() %>'/>
+  <tr class="field titreTemoignage textfieldEditor  <%= Util.isEmpty(obj.getTitreTemoignage()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "titreTemoignage", userLang) %><jalios:edit pub='<%= obj %>' fields='titreTemoignage'/></td>
+    <td class='field-data' <%= gfla(obj, "titreTemoignage") %>>
+            <% if (Util.notEmpty(obj.getTitreTemoignage())) { %>
+            <%= obj.getTitreTemoignage() %>
             <% } %>
     </td>
   </tr>
-  <tr class="field lienExterne urlEditor  <%= Util.isEmpty(obj.getLienExterne()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "lienExterne", userLang) %><jalios:edit pub='<%= obj %>' fields='lienExterne'/></td>
-    <td class='field-data' <%= gfla(obj, "lienExterne") %>>
-            <% if (Util.notEmpty(obj.getLienExterne())) { %>
-            <a href='<%= obj.getLienExterne() %>' ><%= obj.getLienExterne()%></a>
+  <tr class="field soustitreTemoignage textfieldEditor  <%= Util.isEmpty(obj.getSoustitreTemoignage()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Lien.class, "soustitreTemoignage", userLang) %><jalios:edit pub='<%= obj %>' fields='soustitreTemoignage'/></td>
+    <td class='field-data' <%= gfla(obj, "soustitreTemoignage") %>>
+            <% if (Util.notEmpty(obj.getSoustitreTemoignage())) { %>
+            <%= obj.getSoustitreTemoignage() %>
             <% } %>
     </td>
   </tr>
@@ -89,4 +97,4 @@
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
 </div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- YAcpVM0WySveYNFUd3Dduw== --%>
+%><%-- TImMA0RrTtznFDFopJjw4w== --%>

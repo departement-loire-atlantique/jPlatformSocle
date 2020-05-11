@@ -18,8 +18,8 @@ if (Util.notEmpty(collection)) {
 %>
 
 <section id="services1clic_<%= box.getId() %>">
-    <h2 class="h3-like"><%= box.getTitreVisuel() %></h2>
+    <p role="heading" aria-level="2" class="ds44-box-heading"><%= box.getTitreVisuel() %></p>
     <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
-        <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleGrey"/>
+        <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleDark"/>
     </jalios:foreach>
 </section>

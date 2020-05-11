@@ -33,13 +33,13 @@ public class TitleQueryFilter extends LuceneQueryFilter {
 	 * @param titre
 	 */
 	public void addTitleSearch(QueryHandler qh, HttpServletRequest request, String titre) {		
-		if(Util.notEmpty(titre)) {
-			// Passe la query en syntaxe avancée pour accepter les requêtes lucenes
-			qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	 			
-			String searchText = LucenePublicationSearchEngine.TITLE_FIELD + ":\"" + titre + "\"";
-			// Requêtes pour incrémenter la recherche par titre avec les précédants query des autres facettes						
-	    	addFacetQuery(qh, request, searchText);
-		}						
+	  if(Util.notEmpty(titre)) {
+	    // Passe la query en syntaxe avancée pour accepter les requêtes lucenes
+	    qh.setMode(QueryHandler.TEXT_MODE_ADVANCED);	 			
+	    String searchText = LucenePublicationSearchEngine.TITLE_FIELD + ":\"" + titre + "\"";
+	    // Requêtes pour incrémenter la recherche par titre avec les précédants query des autres facettes						
+	    addFacetQuery(qh, request, searchText);
+	  }						
 	}
 	
 		

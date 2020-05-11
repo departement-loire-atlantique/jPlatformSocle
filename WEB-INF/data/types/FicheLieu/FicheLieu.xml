@@ -142,7 +142,13 @@
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
-    <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.Video[]">
+    <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre vidéo</label>
+    </field>
+    <field name="introVideo" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Intro vidéo</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="details" type="generated.Video">
       <label xml:lang="fr">Vidéo</label>
     </field>
     <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="details" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
@@ -158,13 +164,9 @@
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="serviceDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="navigation" type="boolean" default="on">
+    <field name="serviceDuDepartement" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_1285247">
       <label xml:lang="fr">Service du Département</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
+    </field>    
     <field name="statut" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Statut</label>
     </field>

@@ -5,27 +5,32 @@
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
 %><%
 
-if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle))) {
+if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien))) {
   return;
 }
-Content obj = (Content) data;
-String urlPub = obj.getDisplayUrl(userLocale);
-String urlImage = "";
+Publication pub = (Publication) data;
+%>
+<%@include file="tuileCommon.jsp" %>
+<%
 String titre = "";
 String sousTitre = "";
-String titleLien = "";
+String texteAlternatif = "";
+String altAttr = "";
 boolean isVideo = data instanceof Video;
 
 
 try {
-  titre = (String) obj.getFieldValue("titreTemoignage");
+  titre = (String) pub.getFieldValue("titreTemoignage");
 } catch(Exception e) {}
 try {
-  sousTitre = (String) obj.getFieldValue("soustitreTemoignage");
+  sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
+} catch(Exception e) {}
+try {
+  texteAlternatif = (String) pub.getFieldValue("texteAlternatif");
 } catch(Exception e) {}
 
 try {
-  urlImage = (String) obj.getFieldValue("imagePrincipale");
+  urlImage = (String) pub.getFieldValue("imagePrincipale");
 } catch(Exception e) {}
 
 if (Util.notEmpty(urlImage)) {
@@ -35,27 +40,26 @@ else{
   urlImage = "s.gif";
 }
 if (Util.isEmpty(titre)) {
-  titre = obj.getTitle();
+  titre = pub.getTitle();
 }
-
-titleLien = titre;
-if(isVideo){
-  titleLien += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.pageVideo");
+if(Util.notEmpty(texteAlternatif)){
+	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(texteAlternatif) +"\" ";
 }
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">
     <div class="ds44-bgGray">
         <div class="ds44-posRel">
-            <img src="<%=urlImage %>" alt="" class="ds44-box__img" />
+            <img src="<%=urlImage %>" class="ds44-box__img" <%= altAttr %> />
             <jalios:if predicate="<%=isVideo %>">
                 <span class="ds44-mediaIndicator"><i class="icon icon-play" aria-hidden="true"></i></span>
             </jalios:if>
         </div>
         <div class="ds44--m-padding">
-            <p role="heading" aria-level="3"><a href="<%=urlPub %>" title="<%=HttpUtil.encodeForHTMLAttribute(titleLien)%>"><%=titre%></a></p>
+            <h3 class="ds44-card__title"><a href="<%=urlPub %>" <%=titleAttr%> <%=targetAttr%>><%=titre%></a></h3>
             <jalios:if predicate="<%=Util.notEmpty(sousTitre) %>">
-                <p class="ds44-cardDate"><%=sousTitre%></p>
+                <h4 class="ds44-cardDate ds44-card__title"><%=sousTitre%></h4>
             </jalios:if>
+            <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
         </div>
     </div>
 </section>

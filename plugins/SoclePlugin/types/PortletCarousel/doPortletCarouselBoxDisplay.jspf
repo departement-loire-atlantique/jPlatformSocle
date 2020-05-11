@@ -1,19 +1,19 @@
 <%
     PortletCarousel box = (PortletCarousel) portlet;
-    String themeSombre = "darkContext";
+    String themeClair = "tuileVerticaleLight";
     
     String titreBloc = Util.notEmpty(box.getTitreDuBloc()) ? box.getTitreDuBloc() : glp("jcmsplugin.socle.label.encemoment");
     String sousTitreBloc = box.getSoustitreDuBloc();
     String positionTitre = Util.notEmpty(box.getPositionTitre()) && !box.getPositionTitre().equals("none") ? "ds44-blockAbsolute--"+box.getPositionTitre() : "";
 %>
 
-<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeSombre) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
+<section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeClair) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
     <div class="ds44-inner-container ds44--mobile--m-padding-b">
         <header class="txtcenter <%=Util.isEmpty(sousTitreBloc) ? "ds44-mb2" : ""%>">
             <h2 class="h2-like center"><%= titreBloc %></h2>
             
             <jalios:if predicate="<%= Util.notEmpty(sousTitreBloc) %>">
-                <div class="ds44-component-chapo ds44-centeredBlock">
+                <div class="ds44-component-chapo ds44-centeredBlock" role="heading" aria-level="3">
                     <jalios:wysiwyg><%= sousTitreBloc %></jalios:wysiwyg>
                 </div>
             </jalios:if>
@@ -34,16 +34,19 @@
         </div>
     </jalios:if>
 
-    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= sliderAmounts %>">
+	<%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
+	<%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
+	<%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
+	<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
+
+    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= collection.size() < 4 ? collection.size() : sliderAmounts %>">
         <div class="swiper-container">
             <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
-                <%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
-                <%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
-                <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
-                
-                <ds:tuileSlider pub="<%= itPub %>" theme="<%= box.getSelectionDuTheme() %>"/>
-                
-                <%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
+                <jalios:foreach name="itPub" type="Publication" collection="<%= collection %>">
+                	<li class="swiper-slide">
+					    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+					</li>
+                </jalios:foreach>
             </ul>
         </div>
     

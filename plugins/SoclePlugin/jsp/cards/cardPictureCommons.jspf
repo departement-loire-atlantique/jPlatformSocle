@@ -1,0 +1,34 @@
+<%
+
+String urlImage = "";
+
+if (Util.isEmpty(request.getAttribute("forcedImgUrl"))) {
+	try {
+	 urlImage = (String) pub.getFieldValue("imageMobile");
+	} catch(Exception e) {}
+	
+	if (Util.isEmpty(urlImage)) {
+	 try {
+	  urlImage = (String) pub.getFieldValue("imagePrincipale");
+	 } catch(Exception e) {}
+	}
+	
+	if (Util.isEmpty(urlImage)) {
+	 try {
+	  urlImage = (String) pub.getFieldValue("imageBandeau");
+	 } catch(Exception e) {}
+	}
+} else {
+  urlImage = request.getAttribute("forcedImgUrl").toString();
+}
+
+if (Util.notEmpty(urlImage)) {
+  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
+}
+
+%>
+<jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
+	<picture class="ds44-container-imgRatio">
+	    <img src="<%= urlImage %>" alt="<%= pub.getTitle() %>" class="ds44-imgRatio">
+	</picture>
+</jalios:if>

@@ -3,11 +3,13 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% 
 	PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet; 
+
+    String rechercheId = (String) request.getAttribute("rechercheId");
 	
 	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 	String dataMode = "select-only";
 	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query=types%3Dgenerated.Delegation";
-	String name = "delegation";
+	String name = "delegation" + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.delegation.default-label");
 	String option = "";
 	TreeSet<Category> setRayons = new TreeSet<Category>();

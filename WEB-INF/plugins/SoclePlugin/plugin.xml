@@ -19,11 +19,13 @@
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
+    <type name="Contact"></type>
     <type name="ContenuDeTest"></type>
     <type name="ContenuPush"></type>
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
+    <type name="Dossier"></type>
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
     <type name="EvenementInfolocale"></type>
@@ -33,7 +35,9 @@
     <type name="FicheAide"></type>  
     <type name="FicheArticle"></type>
     <type name="FicheEmploiStage"></type>
-    <type name="FicheLieu"></type>  
+    <type name="FicheLieu"></type>
+    <type name="FichePublication"></type>
+    <type name="FicheSAAD"></type>   
     <type name="Help"></type>
     <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
@@ -57,6 +61,7 @@
     <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
+    <type name="PressCommunique"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
     <type name="Show"></type>
@@ -84,6 +89,26 @@
     </templates>
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Contact">
+        <template name="default" file="doContactFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Dossier">
+        <template name="default" file="doDossierFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Delegation">
+        <template name="default" file="doDelegationFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="ElectedMember">
+        <template name="default" file="doElectedMemberFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -179,7 +204,22 @@
         <template name="default" file="doLienFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>  
+    </templates>
+    <templates type="FichePublication">
+        <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Carousel">
+        <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
+        </template>
+    </templates>
+    <templates type="FicheSAAD">
+        <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates> 
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -194,7 +234,7 @@
     </templates>
     <templates type="PortletCarrouselDimagesHome">
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+            <label xml:lang="fr">DS44 : gabarit à 2 blocs d'images</label>
         </template>
     </templates>
     <templates type="PortletDecorator">
@@ -239,6 +279,12 @@
         <template name="default" file="doPortletFacetteDelegationBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
+        <template name="pdcv" file="doPortletFacetteDelegationPdcv.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit recherche PDCV en header</label>
+        </template>
+        <template name="pdcvsearch" file="doPortletSearchPdcv.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche PDCV en tuile</label>
+        </template>
     </templates>
     <templates type="PortletFacetteMotcle">
         <template name="default" file="doPortletFacetteMotcleBoxDisplay.jsp" usage='box'>
@@ -258,6 +304,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne</label>
           <description xml:lang="fr">(ex : "Vos services en un clic")</description>
         </template>
+        <template name="tuiles1colhome" file="doPortletMiseEnAvantDeContenusBoxOneColumnHome.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne pour page d'accueil</label>
+          <description xml:lang="fr">(ex : "En un clic")</description>
+        </template>        
         <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
           <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
@@ -269,7 +319,11 @@
         <template name="grandsprojets" file="doPortletMiseEnAvantDeContenusBoxGrandsProjets.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit descrition à gauche / tuiles à droite</label>
           <description xml:lang="fr">(ex : "Grands projets")</description>
-        </template>  
+        </template>
+        <template name="temoignages" file="doPortletMiseEnAvantDeContenusBoxTemoignages.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit témoignages</label>
+          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo" et "Articles")</description>
+        </template> 
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
@@ -294,6 +348,9 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
+        <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
+        </template>        
     </templates>
     <templates type="PortletCarousel">
         <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
@@ -305,6 +362,11 @@
     </templates>
     <templates type="PortletRechercheFacettes">
         <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="SeniorCitizensEstablishment">
+        <template name="default" file="doSeniorCitizensEstablishmentFullDisplay.jsp" usage='full'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
@@ -323,6 +385,8 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
+    <!--<datacontroller  class="fr.cg44.plugin.socle.datacontroller.ContactFormDataController" types="ContactForm" />-->
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
@@ -330,10 +394,9 @@
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter" />   
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
-    <!--  
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
-    -->
   </plugincomponents>
     
   <private-files>
@@ -354,6 +417,7 @@
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
+    <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
@@ -363,10 +427,13 @@
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
+    <file path="WEB-INF/tags/categoryTree.tag" />
     <file path="WEB-INF/tags/facetteCategorie.tag" />
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
+    <file path="WEB-INF/tags/figurePicture.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
+    <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleDelegation.tag" />
@@ -374,8 +441,10 @@
     <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
     <file path="WEB-INF/tags/titleNoBanner.tag" />
     <file path="WEB-INF/tags/titleSimple.tag" />
+    <file path="WEB-INF/tags/titleNoImage.tag" />
     <file path="WEB-INF/tags/tuileSlider.tag" />
     <file path="WEB-INF/tags/toggle.tag" />
+    <file path="WEB-INF/tags/tooltip.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
   </webapp-files>  

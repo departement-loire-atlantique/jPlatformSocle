@@ -10,12 +10,32 @@ $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
 jcmsplugin.socle.contact-faq.default-mail: 
 
+jcmsplugin.socle.group.animationSportive.id: p1_101336
+$jcmsplugin.socle.cat.animationSportive.id: p2_108385
+
 # ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
-jcmsplugin.socle.sectorisation.commune.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?
-jcmsplugin.socle.sectorisation.point.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?
-jcmsplugin.socle.sectorisation.rectangle.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?
+jcmsplugin.socle.sectorisation.commune.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_commune?select=*,origine_matricule(*)&
+jcmsplugin.socle.sectorisation.point.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?select=*,origine_matricule(*)&
+jcmsplugin.socle.sectorisation.rectangle.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?select=*,origine_matricule(*)&
+
+
+$jcmsplugin.socle.type.sectorisation.paph.cat: t1_16281
+$jcmsplugin.socle.type.sectorisation.delegations.cat: p1_44835
+$jcmsplugin.socle.type.sectorisation.amenagement.cat: p1_44837
+$jcmsplugin.socle.type.sectorisation.developpement-local.cat: p1_44838
+$jcmsplugin.socle.type.sectorisation.ressources.cat: p1_44839
+$jcmsplugin.socle.type.sectorisation.solidarites.cat: p1_44840
+$jcmsplugin.socle.type.sectorisation.eds.cat: t1_10554
+$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat: t1_10557
+$jcmsplugin.socle.type.sectorisation.unites-emplois.cat: t1_10567
+$jcmsplugin.socle.type.sectorisation.cli.cat: c_1274182
+$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat: c_1211499
+$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat: c_1274200
+$jcmsplugin.socle.type.sectorisation.missions-locales.cat: t1_10564
+$jcmsplugin.socle.type.sectorisation.clic.cat: t1_16280
+$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat: t1_28189
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
@@ -27,10 +47,21 @@ lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
 jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
 $jcmsplugin.socle.cat.root: j_3
 
+jcmsplugin.socle.footer.portletcontact.id : c_1275593
+
+# ------------------------------------------------------------
+#  RGPD
+# ------------------------------------------------------------
+jcmsplugin.socle.rgpd.form.text: Les informations personnelles vous concernant sont collectées et traitées par le Département de Loire-Atlantique aux fins \
+d’instruction et de réponse aux demandes reçues.
+jcmsplugin.socle.rgpd.form.linklabel: En savoir plus sur la protection des données personnelles
+jcmsplugin.socle.rgpd.pub.id:
+
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
+jcmsplugin.socle.site.src.logomobile:
 jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
 jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
@@ -41,6 +72,25 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
+
+# ------------------------------------------------------------
+#  Regex
+# ------------------------------------------------------------
+jcmsplugin.socle.regex.postalcode:\\d{5}
+jcmsplugin.socle.regex.phone:\\d{10}
+
+# ------------------------------------------------------------
+#  Recherche à facettes
+# ------------------------------------------------------------
+$jcmsplugin.socle.recherche.facettes.portal: c_1273916
+# Les contenus ayant cette catégorie de classement ne remonteront pas dans les moteurs de recherche.
+$jcmsplugin.socle.recherche.nonrepertoriee.cat: c_1274159
+
+$jcmsplugin.socle.recherche.geojson.departement.url: https://cartes.loire-atlantique.fr/geojson/LA2018.geojson
+$jcmsplugin.socle.recherche.geojson.communes.url: https://cartes.loire-atlantique.fr/geojson/communes2019.geojson
+$jcmsplugin.socle.recherche.geojson.epci.url: https://cartes.loire-atlantique.fr/geojson/epci.geojson
+$jcmsplugin.socle.recherche.geojson.canton.url: https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson
+$jcmsplugin.socle.recherche.geojson.delegation.url: https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson
 
 # ------------------------------------------------------------
 #  Formats d'images
@@ -64,6 +114,10 @@ jcmsplugin.socle.image.carrouselaccueil.mobile.width: 300
 jcmsplugin.socle.image.carrouselaccueil.mobile.height: 370
 jcmsplugin.socle.image.carrouselaccueil.carree.width: 430
 jcmsplugin.socle.image.carrouselaccueil.carree.height: 430
+jcmsplugin.socle.image.magazine.tuile.width: 138
+jcmsplugin.socle.image.magazine.tuile.height: 193
+jcmsplugin.socle.image.magazine.width: 363
+jcmsplugin.socle.image.magazine.height: 509
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -161,26 +215,64 @@ media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionU
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
 media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFicheLieuEmbedDisplayContent.jsp
-media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
+media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
+media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
+media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
+media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
+media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
+media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
-media.data-template.plusRecherches.Lien: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
+media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp
 media.data-template.tuileVerticale.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticale.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileVerticale.jsp
 
-
+# Content template - cards
+media.data-template.card.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.cardFull.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.cardFocus.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
+media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
+media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
+media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
+media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
+media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
+media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
+media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
+media.data-template.card.FicheAide: /plugins/SoclePlugin/jsp/cards/doFicheAideCard.jsp
+media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
+media.data-template.card.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp
+media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp?isFocus=true
+media.data-template.card.PressCommunique: /plugins/SoclePlugin/jsp/cards/doPressCommuniqueCard.jsp
+media.data-template.card.SeniorCitizensEstablishment: /plugins/SoclePlugin/jsp/cards/doSeniorCitizensEstablishmentCard.jsp
+media.data-template.card.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp
+media.data-template.cardFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?isFocus=true
+media.data-template.cardNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?noPic=true
+media.data-template.cardFocusNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?isFocus=true&noPic=true
+media.data-template.cardResult.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp
+media.data-template.cardResultFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp?isFocus=true
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
 channel.topbar.enabled: true
 channel.topbar.site.enabled: true
 
+# ------------------------------------------------------------
+#  Réseaux sociaux
+# ------------------------------------------------------------
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
 
 # ------ Propriétés éditables SoclePlugin
 
 jcmsplugin.socle.horizontal.value: horizontal
 jcmsplugin.socle.portletPush.ficheactu.id: 
+jcmsplugin.socle.site.pdcv.portlet.id: 
+
+# ------------------------------------------------------------
+#  Formulaires
+# ------------------------------------------------------------
+$jcmsplugin.socle.form.contactform.sujet.root: aca_8167
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu
@@ -191,7 +283,6 @@ $jcmsplugin.socle.miseEnAvant.root : c_1088868
 $id.plugin.socle.page-principale.cat: c_1092546
 
 # Générique des racines de catégories
-
 $jcmsplugin.socle.category.besoins.root: c_1155164
 $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
@@ -204,16 +295,16 @@ $jcmsplugin.socle.ficheactu.types.root: c_1156291
 # Fiche aide
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
+$jcmsplugin.socle.ficheaide.typeaide.root: c_1214316
+jcmsplugin.socle.ficheaide.tuile.tag.root: 
 
 # Page carrefour
 $jcmsplugin.socle.pagecarrefour.categorieDeNavigation.root : j_5
 
 # Fiche Article
-
 $jcmsplugin.socle.fichearticle.annuaires.root: c_1155710
 
 # Fiche Lieu
-
 $jcmsplugin.socle.fichelieu.typeLieu.root: c_1155348
 $jcmsplugin.socle.fichelieu.statut.root: c_1155421
 $jcmsplugin.socle.fichelieu.typeAcces.root: c_1156285
@@ -265,9 +356,15 @@ $jcmsplugin.socle.fichelieu.ascenseur.root: c_1156245
 $jcmsplugin.socle.fichelieu.rampeFixe.root: c_1156249
 $jcmsplugin.socle.fichelieu.rampeAmovible.root: c_1156253
 
+$jcmsplugin.socle.fichelieu.contactPrivilegie.root: c_1281408
+
 # Accueil Annuaire / Agenda
 
 $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
+
+# Contact
+
+$jcmsplugin.socle.contact.typeContact.root: c_1283251
 
 # ------------------------------------------------------------
 #  Configuration Infolocale
@@ -318,7 +415,6 @@ jcmsplugin.socle.infolocale.metadata.icon.grtheme: icon-tag
 jcmsplugin.socle.infolocale.metadata.icon.theme: icon-tag
 
 # Fiche Action éducative
-
 $jcmsplugin.socle.ficheactioneducative.theme.root: c_1212395
 $jcmsplugin.socle.ficheactioneducative.sousTheme.root: c_1212418
 $jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root: c_1212436
@@ -328,7 +424,6 @@ $jcmsplugin.socle.ficheactioneducative.niveau.root: c_1212444
 $jcmsplugin.socle.ficheactioneducative.format.root: c_1212451
 
 # SAAD
-
 $jcmsplugin.socle.saad.statutJuridique.root: p2_806794
 $jcmsplugin.socle.saad.typeDaide.root: p1_707983
 $jcmsplugin.socle.saad.prestations.root: p2_806591
@@ -339,41 +434,37 @@ $jcmsplugin.socle.saad.modesDintervention.root: p1_802263
 $jcmsplugin.socle.saad.modeDeTarification.root: p2_806809
 
 # Etablissement personnes agées
-
 $jcmsplugin.socle.seniorCitizensEstablishment.structureType.root: aca_7746
+$jcmsplugin.socle.seniorCitizensEstablishment.categorieDeNavigation.default: t1_26758
 
 # Equipements
-
 $jcmsplugin.socle.equipements.thematique.root: p2_222624
 $jcmsplugin.socle.equipements.annee.root: p2_222641
 $jcmsplugin.socle.equipements.role.root: p2_222645
 
 # Fiches élu
-
 $jcmsplugin.socle.electedMember.fonctions.root: c_5314
 $jcmsplugin.socle.electedMember.commissions.root: c_5332
+$jcmsplugin.socle.electedMember.commission-permanente.root: c_5333
 $jcmsplugin.socle.electedMember.missionThematique.root: p1_283851
 $jcmsplugin.socle.electedMember.partiPolitique.root: c_5298
 $jcmsplugin.socle.electedMember.groupePolitique.root: c_5309
 
 # Spectacle aidé
-
 $jcmsplugin.socle.spectacleAide.cat.root: aca_7730
 
 # Fiche professionnel culture
-
 $jcmsplugin.socle.ficheProCulture.cat.root: aca_7728
 
 # Marché public
-
 $jcmsplugin.socle.marchePublic.typePrestation.root: p2_908215
 
 # Fiche emploi, stage
-
 $jcmsplugin.socle.emploiStage.typeOffre.root: c_5281
 $jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
 $jcmsplugin.socle.emploiStage.filiere.root: c_1216306
 $jcmsplugin.socle.emploiStage.emploi.root: c_5285
+$jcmsplugin.socle.emploiStage.typeEmploi.root: c_5282
 $jcmsplugin.socle.emploiStage.reserveAgentsColleges.root: c_1220099
 $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102
@@ -383,5 +474,27 @@ $jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
 $jcmsplugin.socle.emploiStage.delegationService: c_5296
 
 # Video
-
 $jcmsplugin.socle.video.types.root: c_1270060
+
+# Fiche Elu
+$jcmsplugin.socle.elu.president: c_5315
+$jcmsplugin.socle.elu.vicepresident: c_5316
+$jcmsplugin.socle.elu.conseiller: p2_136941
+
+# Fiche Publication
+$jcmsplugin.socle.fichepublication.typeMagazine.root: c_1274308
+$jcmsplugin.socle.fichepublication.navigationMagazine.cat: p1_1012858
+$jcmsplugin.socle.fichepublication.classementMagazine.cat: c_1274309
+$jcmsplugin.socle.fichepublication.navigationSioox.cat: p1_929991
+$jcmsplugin.socle.fichepublication.classementSioox.cat: c_1274310
+
+# Animation Sportive
+$jcmsplugin.socle.animSportive.typeDiscipline: p2_92188
+$jcmsplugin.socle.animSportive.joursSemaine: p2_92208
+$jcmsplugin.socle.animSportive.niveaux: p2_92198
+$jcmsplugin.socle.animSportive.annee: p2_699360
+
+# Communiqué de presse
+$jcmsplugin.socle.presscommunique.thematique: c_5026
+$jcmsplugin.socle.presscommunique.autreThematique: c_5091
+$jcmsplugin.socle.presscommunique.typeMedia: aca_7725

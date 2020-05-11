@@ -10,7 +10,7 @@ response.setContentType("application/json");
 Set<Category> collection = new HashSet<Category>();
 collection.addAll(getDataListParameter("q", Category.class));
 
-Set<Category> result = new HashSet<Category>();
+Set<Category> result = new TreeSet<Category>(Category.getDeepOrderComparator());
 for(Category itCat : collection) {
 	result.addAll(itCat.getChildrenSet());
 }

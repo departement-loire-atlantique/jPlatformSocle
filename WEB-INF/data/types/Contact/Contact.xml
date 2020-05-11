@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Contact" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Contact</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="nom" editor="textfield" required="true" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom</label>
+    </field>
+    <field name="prenom" editor="textfield" required="true" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Prénom</label>
+    </field>
+    <field name="civilite" editor="enumerate" required="false" compactDisplay="false" tab="contenu" type="String" chooser="checkbox" valueList="mrs|mr" ml="false" descriptionType="tooltip" labelList="Femme|Homme" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Civilité</label>
+    </field>
+    <field name="photoDidentite" editor="image" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Photo d'identité</label>
+    </field>
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="adresseMail" editor="email" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="50" ml="false">
+      <label xml:lang="fr">Adresse mail</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>     
+    <field name="typeDeContact" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.contact.typeContact.root">
+      <label xml:lang="fr">Type de contact</label>
+    </field>
+    <!-- Territoire -->
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
+      <label xml:lang="fr">Communes concernées</label>
+    </field>
+    <field name="toutesLesCommunesDuDepartement" editor="boolean" required="false" compactDisplay="false" tab="territoire" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Toutes les communes du Département</label>
+      <description xml:lang="fr">Attention, cocher cette case a pour conséquence de lier cet établissement à toutes les communes du département.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="delegations" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Delegation[]">
+      <label xml:lang="fr">Délégations concernées</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">EPCI concernés</label>
+    </field>
+    <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cantons concernés</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
+    </tab>
+  </tabs>
+</type>
+

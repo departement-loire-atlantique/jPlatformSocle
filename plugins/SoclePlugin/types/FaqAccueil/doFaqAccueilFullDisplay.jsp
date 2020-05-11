@@ -12,10 +12,10 @@
 	<div class="ds44-inner-container ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44--xl-padding-lr">
 		<div class="grid-12-small-1">
 			<div class="col-6-small-1">
-				<p class="h4-like" aria-level="3" role="heading"><%= Util.notEmpty(obj.getDescription(userLang)) ? obj.getDescription(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></p>
+				<h3 class="h4-like" aria-level="2" role="heading"><%= Util.notEmpty(obj.getSoustitre(userLang)) ? obj.getSoustitre(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></h3>
 				<ul class="ds44-collapser ds44-mb-std ">
-					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' max='<%= obj.getNombreDeQuestionsAffichees() %>'>
-						<li class="ds44-collapser_element">
+					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' counter='nbrQuestRep'>
+						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
 							<button type="button" class="ds44-collapser_button">
 								<%= itQuestRep.getTitle(userLang) %>
 								<i class="icon icon-down" aria-hidden="true"></i>
@@ -31,19 +31,19 @@
 					</jalios:foreach>
 				</ul>
 				<jalios:if predicate='<%= obj.getLinkIndexedDataSet(FaqEntry.class).size() > obj.getNombreDeQuestionsAffichees() %>'>
-					<button class="ds44-btnStd ds44-btnStd--large" type="button" title="Afficher plus de questions">
+					<button class="ds44-btnStd ds44-btnStd--large ds44-js-more-button" type="button" title='<%= glp("jcmsplugin.socle.faq.afficher-plus-questions") %>'>
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.faq.plus-questions") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>
 				</jalios:if>
 			</div>
-			<div class="col-2-small-1 txtcenter ds44-h100">
+			<div class="col-2-small-1 txtcenter">
 				<div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
 					<p class="ds44-txtBulle ds44-theme"><%= glp("jcmsplugin.socle.ou") %></p>
 				</div>
 			</div>
 			<div class="col-4-small-1">
-				<p class="h4-like" aria-level="3" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %></p>
+				<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %></p>
 				<p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 				<%
 					String mail = channel.getProperty("jcmsplugin.socle.contact-faq.default-mail");
@@ -58,45 +58,82 @@
 						mail = request.getAttribute("contactfaq").toString();
 					}
 				%>
-				<form>
+				<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
+				
+				    <% String idFormElement1 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
-						<label for="form-element-10988" class="ds44-formLabel">
-							<span class="ds44-labelTypePlaceholder">
-								<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
-							</span> 
-							<textarea rows="5" cols="1" id="form-element-10988" class="ds44-inpStd" 
-									title="Votre question - obligatoire"
+						<div class="ds44-posRel">
+							<label for="<%= idFormElement1 %>" class="ds44-formLabel">
+                                <span class="ds44-labelTypePlaceholder">
+									<span class="ds44-labelTypePlaceholder">
+										<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
+									</span>
+								</span>
+							</label>
+							<textarea name="question" rows="5" cols="1" id="<%= idFormElement1 %>" class="ds44-inpStd" 
+									title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
 									required aria-required="true"></textarea>
-						</label>
+						</div>
+						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
+					
+					<% String idFormElement2 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
-						<label for="form-element-26867" class="ds44-formLabel">
-							<span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span> 
-							<input type="text" id="form-element-26867" class="ds44-inpStd" title="Votre commune" />
+						<div class="ds44-posRel">
+							<label for="<%= idFormElement2 %>" class="ds44-formLabel">
+                                <span class="ds44-labelTypePlaceholder">
+								    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
+                                </span>
+							</label>
+							<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
+									role="combobox" 
+									aria-autocomplete="list" 
+									autocomplete="address-level2"
+									aria-expanded="false" 
+									title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
+									data-url="/json/autocomplete-city.json" 
+									data-mode="select-only" />
 							<button class="ds44-reset" type="button">
-								<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+								<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 								<span class="visually-hidden">
 									<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pdcv.votrecommune")) %>
 								</span>
 							</button> 
-						</label>
+							
+							<div class="ds44-autocomp-container hidden">
+								<div class="ds44-autocomp-list">
+									<ul class="ds44-list" role="listbox"></ul>
+								</div>
+							</div>
+						</div>
+						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
+					
+					<% String idFormElement3 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 					<div class="ds44-form__container">
-						<label for="form-element-99423" class="ds44-formLabel">
-							<span class="ds44-labelTypePlaceholder">
-								<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
-							</span>
-							<input type="text" id="form-element-99423" class="ds44-inpStd" title="Votre email - obligatoire" required aria-required="true" /> 
-							<span class="ds44-labelTypeInfoComp"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+						<div class="ds44-posRel">
+							<label for="<%= idFormElement3 %>" class="ds44-formLabel">
+                                <span class="ds44-labelTypePlaceholder">
+									<span class="ds44-labelTypePlaceholder">
+										<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
+									</span>
+                                </span>
+							</label>
+							<input type="text" id="<%= idFormElement3 %>" name="<%= idFormElement3 %>" class="ds44-inpStd" 
+									title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
+									required autocomplete="email"
+									aria-describedby="explanation-<%= idFormElement3 %>" />
+							<span class="ds44-labelTypeInfoComp" id="explanation-<%= idFormElement3 %>"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 							<button class="ds44-reset" type="button">
-								<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+								<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 								<span class="visually-hidden">
 									<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %>
 								</span>
 							</button> 
-						</label>
+						</div>
+						<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 					</div>
-					<button class="ds44-btnStd ds44-btn--invert" title="Valider l'envoi de votre question">
+					<button class="ds44-btnStd ds44-btn--invert" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.faq.valider-envoie-question")) %>'>
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>

@@ -9,12 +9,16 @@
 
 response.setContentType("application/json");
 
-PortletQueryForeach boxTmp = (PortletQueryForeach) (channel.getPublication(request.getParameter("boxId"))).clone();  
-PortletQueryForeach box = new PortletQueryForeach(boxTmp);
+PortletRechercheFacettes  boxTmp = (PortletRechercheFacettes) (channel.getPublication(request.getParameter("boxId"))).clone();  
+PortletRechercheFacettes box = new PortletRechercheFacettes(boxTmp);
 
+if(Util.notEmpty(box.getIdDeLaCategorieTag())) {
+  request.setAttribute("tagRootCatId", box.getIdDeLaCategorieTag());
+}
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
 
@@ -25,6 +29,7 @@ JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();
 
 jsonObject.addProperty("nb-result", collection.size());
+jsonObject.addProperty("nb-result-per-page", box.getMaxResults());
 jsonObject.addProperty("max-result", box.getMaxResults());
 jsonObject.add("result", jsonArray);
 
@@ -33,7 +38,7 @@ jsonObject.add("result", jsonArray);
 %><%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %><%
 
     %><jalios:buffer name="itPubListGabarit"><%
-        %><jalios:include pub="<%= itPub %>" usage="list" /><%
+        %><jalios:media data="<%= itPub %>" template="card" /><%
     %></jalios:buffer><%
     
     %><jalios:buffer name="itPubMarkerGabarit"><%
@@ -45,4 +50,5 @@ jsonObject.add("result", jsonArray);
     %><%
                                         
 %><%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %><%
+request.removeAttribute("tagRootCatId");
 %><%= jsonObject %>

@@ -14,15 +14,34 @@
 String uniqueIDiframe = UUID.randomUUID().toString();
 String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
 String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFichierTranscript().getDownloadUrl() : "";
+String titleVideo = obj.getTitle();
+if (Util.notEmpty(request.getAttribute("overrideVidTitle"))) {
+  titleVideo = request.getAttribute("overrideVidTitle").toString();
+  request.setAttribute("overrideVidTitle", null);
+}
+
+String chapoVideo = obj.getChapo();
+if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
+  chapoVideo = request.getAttribute("overrideVidChapo").toString();
+  request.setAttribute("overrideVidChapo", null);
+}
 %>
+
+<jalios:if predicate="<%= Util.notEmpty(titleVideo) %>">
+    <h3 class="h3-like" id="titreVideo"><%= titleVideo %></h3>
+</jalios:if>
+<jalios:if predicate="<%= Util.notEmpty(chapoVideo) %>">
+    <jalios:wysiwyg><%= chapoVideo %></jalios:wysiwyg>
+</jalios:if>
+
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe id="<%=uniqueIDiframe%>" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <%
         String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();
         String fileSize = Util.formatFileSize(obj.getFichierTranscript().getSize());
         %>
-        <a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a>
+        <p><a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
     </jalios:if>
 </div>
 

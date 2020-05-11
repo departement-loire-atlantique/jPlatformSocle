@@ -26,20 +26,20 @@
       <label xml:lang="fr">Facettes secondaires</label>
     </field>
     <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Mode des catégories</label>
+      <label xml:lang="fr">Mode des catégories dans une même branche</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Intersection</offLabel>
     </field>
-    <field name="modeDesBranches" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Mode des facettes catégories</label>
+    <field name="modeDesBranches" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Mode des facettes entre branches de catégories</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Intersection</offLabel>
     </field>
-    <field name="modeDesFacettes" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="modeDesFacettes" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Mode des facettes</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Union</onLabel>
@@ -60,7 +60,33 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field type="super" />
+    <field name="typeDeCarte" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="$jcmsplugin.socle.recherche.geojson.departement.url|$jcmsplugin.socle.recherche.geojson.communes.url|$jcmsplugin.socle.recherche.geojson.epci.url|$jcmsplugin.socle.recherche.geojson.canton.url|$jcmsplugin.socle.recherche.geojson.delegation.url" ml="false" descriptionType="tooltip" labelList="Périmètre départemental|Commune|EPCI|Cantons|Délégations" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de carte</label>
+    </field>
+    <field name="natureDeLaCarte" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nature de la carte</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;&lt;span style="color: #d1d2d3; font-size: 15px; font-style: normal; font-weight: 400; text-align: left; text-indent: 0px; background-color: #1a1d21; float: none;"&gt;Une carte "coutour" est pour de l'illustration ; une carte "active" permet d'accéder à un contenu en cliquant sur une des zones.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Carte contour</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Carte active</offLabel>
+    </field>
+    <field name="typeDeTuileFicheLieu" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="contact_simple|partenaire|contact_mis_en_avant|avec_image" ml="false" descriptionType="tooltip" labelList="Tuile contact simple|Tuile partenaire|Tuile contact mis en avant|Tuile avec image" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Type de tuile fiche lieu</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, seul l'apparence des résultats de type fiche lieu sont impacté par ce paramètre&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="modeDaffichageDuContenu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Mode d'affichage du contenu</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Pleine page</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Affichage latéral</offLabel>
+    </field>
+    <field name="idDeLaCategorieTag" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false" descriptionType="tooltip">
+      <label xml:lang="fr">Id de la catégorie tag</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Permet de définir la branche de catégorie associée à l'icone tag. Seulement possible pour les fiches aides et les fiches lieux.&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field type="super" />    
   </fields>
   <label xml:lang="fr">Portlet Recherche Facettes</label>
 </type>
