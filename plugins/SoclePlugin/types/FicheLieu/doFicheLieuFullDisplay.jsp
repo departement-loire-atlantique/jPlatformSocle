@@ -359,17 +359,12 @@
 		</div>
 	</section>
 
-	<jalios:if
-		predicate='<%=Util.notEmpty(obj.getPourQui()) || (!obj.getToutesLesCommunesDuDepartement()
-						&& (Util.notEmpty(obj.getCommunes()) || Util.notEmpty(obj.getEpci(loggedMember))))%>'>
+	<jalios:if predicate='<%=Util.notEmpty(obj.getPourQui())%>'>
 		<section class="ds44-contenuArticle" id="section2">
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
 					<h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
-
-					<jalios:if predicate='<%=Util.notEmpty(obj.getPourQui())%>'>
-						<jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
-					</jalios:if>
+					<jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
 				</div>
 			</div>
 		</section>
