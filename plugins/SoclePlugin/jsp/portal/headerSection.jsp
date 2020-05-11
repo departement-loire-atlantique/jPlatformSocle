@@ -160,7 +160,11 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <%@include file="sitesEtApplis.jspf" %>
 
                             
-        </section>        
+        </section>
+        
+        <jalios:if predicate="<%= displaySearchMenu %>">
+            <%@ include file="blocMenuRecherche.jspf" %>
+        </jalios:if>        
         
     </div>
     

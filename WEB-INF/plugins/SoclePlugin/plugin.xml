@@ -365,6 +365,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletSearch">
+        <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche header</label>
+        </template>
+    </templates>
     <templates type="SeniorCitizensEstablishment">
         <template name="default" file="doSeniorCitizensEstablishmentFullDisplay.jsp" usage='full'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>

@@ -1,0 +1,39 @@
+<%@page import="generated.PortletMiseEnAvantDeContenus"%>
+<section id="menuRech">
+    <div class="ds44-overlay ds44-overlay--navNiv2 ds44-wave-grey ds44-bg-pdr ds44-whiteBG" role="dialog" aria-label='<%= glp("jcmsplugin.socle.recherche.menu") %>' aria-hidden="true">
+        <span class="ds44-tmpFocusHidden" tabindex="0"></span>
+        <div class="ds44-container-menuBackLink">
+            <p role="heading" aria-level="1" class="ds44-menuBackLink" id="titreRechercher"><%= glp("jcmsplugin.socle.rechercher") %></p>
+        </div>
+        <button type="button" class="ds44-btnOverlay ds44-btnOverlay--closeOverlay ds44-tmpFirstFocus" aria-label='<%= glp("jcmsplugin.socle.recherche.menu.fermer") %>' data-bkp-tabindex="">
+        <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+        </button>
+        <p role="heading" aria-level="1" class="visually-hidden"><%= glp("jcmsplugin.socle.recherche.menu.aria.heading") %></p>
+        <div class="ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44-hv100 ds44-container-large ds44-tiny-to-med-atop ds44-ttl-pt9">
+            <div class="grid-12-small-1 ds44-grid-valign-center ds44-w98">
+                <%
+                Publication portletSearch = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletsearch.id"));
+                Publication portletMea = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletmea.id"));
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(portletSearch) %>">
+	                <div class="col-<%= Util.isEmpty(portletMea) ? "12" : "5" %>-small-1 txtcenter">
+	                    <jalios:include pub="<%= portletSearch %>"/>
+	                </div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(portletSearch) && Util.notEmpty(portletMea) %>">
+	                <div class="col-2-small-1 txtcenter ds44-h100">
+	                    <div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
+	                        <p class="ds44-txtBulle ds44-theme"><%= glp("jcmsplugin.socle.ou") %></p>
+	                    </div>
+	                </div>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(portletMea) %>">
+	                <div class='col-<%= Util.isEmpty(portletSearch) ? "12" : "5" %>-small-1'>
+	                    <jalios:include pub="<%= portletMea %>"/>
+	                </div>
+                </jalios:if>
+            </div>
+        </div>
+        <span class="ds44-tmpFocusHidden" tabindex="0"></span>
+    </div>
+</section>
