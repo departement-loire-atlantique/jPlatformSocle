@@ -436,6 +436,7 @@
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/categoryTree.tag" />
+    <file path="WEB-INF/tags/facetteAutoCompletion.tag" />
     <file path="WEB-INF/tags/facetteCategorie.tag" />
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
     <file path="WEB-INF/tags/figurePicture.tag" />
