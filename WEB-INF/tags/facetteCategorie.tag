@@ -136,16 +136,28 @@
 			<ul class="ds44-collapser ds44-listSelect">
 				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
 					<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
-						<% nbrTotalCat++; %>
-						<li class="ds44-collapser_element ds44-collapser--select">
-							<div class="ds44-select__categ">
-								<ds:facetteCategorieListElem cat='<%= itCat %>' 
-										idFormElement='<%= idFormElement %>' 
-										typeDeSelection='<%= obj.getTypeDeSelection() %>' 
-										numCat='<%= nbrTotalCat %>'/>
-
-							</div>
-							<jalios:if predicate='<%= Util.notEmpty(itCat.getChildrenSet()) %>'>
+						<% nbrTotalCat++; 
+						Set childrenSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCat);
+						%>
+						<%-- Sans enfant --%>					
+						<jalios:if predicate='<%= Util.isEmpty(childrenSet) %>'>
+							 <li class="ds44-collapser_element ds44-collapser--select ds44-select__categ ds44-select-list_elem">
+							      <ds:facetteCategorieListElem cat='<%= itCat %>' 
+                                        idFormElement='<%= idFormElement %>' 
+                                        typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+                                        numCat='<%= nbrTotalCat %>'/>
+							 </li>
+						</jalios:if>
+						<%-- avec enfants --%> 	
+						<jalios:if predicate='<%= Util.notEmpty(childrenSet) %>'>						
+							<li class="ds44-collapser_element ds44-collapser--select">							
+							    <div class="ds44-select__categ">
+	                               <ds:facetteCategorieListElem cat='<%= itCat %>' 
+	                                       idFormElement='<%= idFormElement %>' 
+	                                       typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+	                                       numCat='<%= nbrTotalCat %>'/>
+	
+	                            </div>						
 								<button type="button" class="ds44-collapser_button ds44-collapser_button--select" 
 										aria-describedby='<%= "name-check-label-" + idFormElement + "-" + nbrTotalCat %>'>
 									<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.deplier") %></span>
@@ -163,8 +175,9 @@
 										</jalios:foreach>
 									</ul>
 								</div>
-							</jalios:if>
-						</li>
+							</li>
+						</jalios:if>
+						
 					</jalios:foreach>
 				</jalios:foreach>
 			</ul>
