@@ -136,10 +136,11 @@
 			<ul class="ds44-collapser ds44-listSelect">
 				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
 					<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
-						<% nbrTotalCat++; %>
-						
+						<% nbrTotalCat++; 
+						Set childrenSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCat);
+						%>
 						<%-- Sans enfant --%>					
-						<jalios:if predicate='<%= !Util.notEmpty(itCat.getChildrenSet()) %>'>
+						<jalios:if predicate='<%= Util.isEmpty(childrenSet) %>'>
 							 <li class="ds44-collapser_element ds44-collapser--select ds44-select__categ ds44-select-list_elem">
 							      <ds:facetteCategorieListElem cat='<%= itCat %>' 
                                         idFormElement='<%= idFormElement %>' 
@@ -148,7 +149,7 @@
 							 </li>
 						</jalios:if>
 						<%-- avec enfants --%> 	
-						<jalios:if predicate='<%= Util.notEmpty(itCat.getChildrenSet()) %>'>						
+						<jalios:if predicate='<%= Util.notEmpty(childrenSet) %>'>						
 							<li class="ds44-collapser_element ds44-collapser--select">							
 							    <div class="ds44-select__categ">
 	                               <ds:facetteCategorieListElem cat='<%= itCat %>' 
