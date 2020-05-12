@@ -14,23 +14,34 @@ FicheArticle pub = (FicheArticle) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
+Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray  ">
     
-    <picture class="ds44-container-imgRatio">
-      <img src="../../assets/images/ds44-logo--sampleImg.png" alt="" class="ds44-imgRatio">
-    </picture>
+    <%@ include file="cardPictureCommons.jspf" %>
     
     <div class="ds44-card__section">
-      
-      <p class="ds44-cardSelect pa0 ma0">
-          <button class="pas" type="button" aria-describedby="9" title="Sélectionner Cale du Port de Blain"><i class="icon icon-star-empty" aria-hidden="true"></i><span class="visually-hidden">Sélection</span></button>
-      </p>
       <div class="ds44-innerBoxContainer">
-          <h4 class="h4-like ds44-cardTitle" id="9"><a href="#" class="ds44-card__globalLink">Cale du Port de Blain</a></h4>
-          <hr class="mbs" aria-hidden="true">
-          <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>Accès gratuit, faible mouillage en pied de cale</p>
+          <h4 class="h4-like ds44-cardTitle" id="titleFicheArticle_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+          <jalios:if predicate="<%= Util.notEmpty(tagRootCat) %>">
+            <% 
+              List<Category> allTagChildren = new ArrayList<>();
+              for (Category itCat : pub.getCategorySet()) {
+                if (!itCat.isRoot() && itCat.getParent().equals(tagRootCat)) {
+                  allTagChildren.add(itCat);
+                }
+              }
+            %>
+            <jalios:if predicate="<%= Util.notEmpty(allTagChildren) %>">
+                <hr class="mbs" aria-hidden="true">
+                <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+                    <%= SocleUtils.formatCategories(allTagChildren) %>
+                </p>
+            </jalios:if>
+          </jalios:if>
+          
+          
       </div>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
