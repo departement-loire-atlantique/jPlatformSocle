@@ -5,20 +5,14 @@
 <% 
 	PortletFacetteCategorie obj = (PortletFacetteCategorie)portlet; 
 
-    String rechercheId = (String) request.getAttribute("rechercheId");
-	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
-
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
-	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
+	String rechercheId = (String) request.getAttribute("rechercheId");
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
 		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>'
-		idFormElement='<%= idFormElement %>' 
+		idFormElement='<%= glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId() %>' 
 		isDisabled='<%= false %>' 
 		request='<%= request %>'/>
-		
-
 
 <jalios:foreach collection='<%= obj.getCategoriesRacines(loggedMember) %>' name="itRootCat" type="Category">
     <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itRootCat.getId() %>' data-technical-field />

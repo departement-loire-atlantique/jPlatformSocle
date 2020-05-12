@@ -73,6 +73,11 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
+# Recherche
+
+jcmsplugin.socle.recherche.portletsearch.id: 
+jcmsplugin.socle.recherche.portletmea.id: 
+
 # ------------------------------------------------------------
 #  Regex
 # ------------------------------------------------------------
@@ -91,6 +96,8 @@ $jcmsplugin.socle.recherche.geojson.communes.url: https://cartes.loire-atlantiqu
 $jcmsplugin.socle.recherche.geojson.epci.url: https://cartes.loire-atlantique.fr/geojson/epci.geojson
 $jcmsplugin.socle.recherche.geojson.canton.url: https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson
 $jcmsplugin.socle.recherche.geojson.delegation.url: https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson
+
+$jcmsplugin.socle.autocompletion.adresse.url: https://api-adresse.data.gouv.fr/search/?limit=5&citycode=$parentValue
 
 # ------------------------------------------------------------
 #  Formats d'images

@@ -27,13 +27,10 @@ boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getComplementContact())
         || Util.notEmpty(obj.getBesoinDaide());
 
-boolean displayFaireDemande = Util.notEmpty(obj.getIntroFaireUneDemande())
-        || Util.notEmpty(obj.getEdemarche(loggedMember))
-        || Util.notEmpty(obj.getQuiContacter())
-        || Util.notEmpty(obj.getDocumentsUtiles())
-        || Util.notEmpty(obj.getDureeEdemarche());
 
-boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && Util.notEmpty(obj.getEdemarche(loggedMember));
+boolean displayFaireDemande = Util.notEmpty(obj.getDocumentsUtiles()) ||  Util.notEmpty(obj.getEdemarche(loggedMember));
+
+boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 
 %>
 
@@ -333,69 +330,13 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 								<h2 class="h4-like" id="titre_envoie_dossier"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
 								
 								<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
-									
-									<p class="ds44-docListElem mts">
-										<i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-										<strong><%= itFicheLieu.getTitle() %></strong>
-									</p>
-									
-									<% String adresseEcrire = SocleUtils.formatAdresseEcrire(itFicheLieu); %>
-									<jalios:if predicate='<%= Util.notEmpty(adresseEcrire) %>'>
-										<p class="ds44-docListElem mts">
-											<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-											<%= adresseEcrire %>
-										</p>
-									</jalios:if>
-									
-									<jalios:if predicate='<%= Util.notEmpty(itFicheLieu.getTelephone()) %>'>
-										<div class="ds44-docListElem mts">
-											<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-	
-											<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
-												<ds:phone number="<%= itFicheLieu.getTelephone()[0] %>"/>
-											</jalios:if>
-	
-											<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
-												<ul class="ds44-list">
-													<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
-														<li>
-															<ds:phone number="<%= numTel %>"/>
-														</li>
-													</jalios:foreach>
-												</ul>
-											</jalios:if>
-	
-										</div>
-									</jalios:if>
-									
-									<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getEmail())%>'>
-										<div class="ds44-docListElem mts">
-											<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-		
-											<jalios:if predicate='<%= itFicheLieu.getEmail().length == 1 %>'>
-												<% String email = itFicheLieu.getEmail()[0]; %>
-												<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
-													<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
-												</a>
-											</jalios:if>
-		
-											<jalios:if predicate='<%= itFicheLieu.getEmail().length > 1 %>'>
-												<ul class="ds44-list">
-													<jalios:foreach name="email" type="String" array='<%= itFicheLieu.getEmail() %>'>
-														<li>
-															<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itFicheLieu.getTitle(), email)) %>'> 
-																<%= email %>
-															</a>
-														</li>
-													</jalios:foreach>
-												</ul>
-											</jalios:if>
-		
-										</div>
-									</jalios:if>
+																		
+									<jalios:media data="<%= itFicheLieu %>" template="contact"/>
+																
 									<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
-										<hr class="mtm mbm" />
+										<hr />
 									</jalios:if>
+									
 								</jalios:foreach>
 							</div>
 		                </jalios:if>
@@ -419,7 +360,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 	        <h1 class="h2-like" id="titre-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.suivre.label") %></h1>
 	
 	        <div class="ds44-modal-gab">
-	            <p><%= HtmlUtil.html2text(obj.getIntroSuivreUneDemande(userLang)) %></p>
+	            <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSuivreUneDemande()) %>">
+	               <jalios:wysiwyg><%= obj.getIntroSuivreUneDemande() %></jalios:wysiwyg>
+	            </jalios:if>
 	
 	            <div class="ds44-mt3 grid-12-small-1">
 	                
@@ -486,7 +429,8 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
         <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h1>
         <div class="ds44-modal-gab">
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroContact()) %>">
-            <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
+                <div><jalios:wysiwyg><%= obj.getIntroContact() %></jalios:wysiwyg></div>
+            </jalios:if>   
             
             <div class="ds44-mtb2"></div>           
             <div class="grid-12-small-1">
@@ -521,40 +465,13 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
 		                    </jalios:if>
 		                    <div class="ds44-mt1"></div>
 		                    <jalios:foreach name="itLieu" type="FicheLieu" array="<%= obj.getQuiContacter() %>" counter="lieuCounter">
-		                        <jalios:if predicate="<%= lieuCounter > 1 %>">
-		                            <div class="ds44-mt2"></div>
-		                        </jalios:if>
-		                        <p class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><b><%= itLieu.getTitle() %></b></p>
-		                        <p class="ds44-docListElem">
-		                           <%= SocleUtils.formatAdresseEcrire(itLieu) %>
-		                        </p>
-		                        <jalios:if predicate="<%= Util.notEmpty(itLieu.getTelephone()) %>">
-		                        <p class="ds44-docListElem mtm"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-		                        <jalios:foreach name="itPhone" type="String" array="<%= itLieu.getTelephone() %>" counter="itCounter">
-		                           <ds:phone number="<%= itPhone %>"/>
-		                           <jalios:if predicate="<%= itCounter < itLieu.getTelephone().length %>">
-		                            - 
-		                           </jalios:if>
-		                        </jalios:foreach>
-		                        </p>
-		                        </jalios:if>
-		                        <jalios:if predicate="<%= Util.notEmpty(itLieu.getEmail()) %>">
-		                            <p class="ds44-docListElem mtm"><i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
-		                            <jalios:foreach name="itMail" type="String" array="<%= itLieu.getEmail() %>">
-		                               <jalios:select>
-		                                   <jalios:if predicate="<%= itLieu.getEmail().length > 1 %>">
-		                                   <a href="mailto:<%= itMail %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itLieu.getTitle(), itMail)) %>' data-bkp-tabindex="" tabindex="-1"><%= itMail %></a>
-		                                   </jalios:if>
-		                                   <jalios:default>
-		                                   <a href="mailto:<%= itMail %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", itLieu.getTitle(), itMail)) %> : <%= itMail %>' data-bkp-tabindex="" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label") %></a>
-		                                   </jalios:default>
-		                               </jalios:select>
-		                            </jalios:foreach>
-		                            </p>
-		                        </jalios:if>
+		                        
+		                        <jalios:media data="<%= itLieu %>" template="contact"/>
+		                        		                        
 								<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
-									<hr class="mtm mbm" />
+									<hr />
 								</jalios:if>
+								
 		                    </jalios:foreach>
 	                    
 		                </div>
@@ -577,8 +494,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) && 
                     </div>
                 </jalios:if>
             </div>
-            </jalios:if>           
-            
+          
             
         </div>
     </div>

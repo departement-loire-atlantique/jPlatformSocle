@@ -1,4 +1,81 @@
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="jcms.tld" prefix="jalios" %>
+<%@ tag 
+	pageEncoding="UTF-8"
+	description="Facette catégorie sans container" 
+	body-content="scriptless" 
+	import="com.jalios.jcms.Channel, 
+			com.jalios.util.Util, 
+			com.jalios.jcms.JcmsUtil, 
+			com.jalios.jcms.Category, 
+			java.util.Set,
+			generated.AbstractPortletFacette" 
+%>
+<%@ attribute name="obj" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="AbstractPortletFacette" 
+		description="L'element jcms qui correspond a la facette" 
+%>
+<%@ attribute name="idFormElement" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="Id de la facette" 
+%>
+<%@ attribute name="dataMode" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="Choisir entre select-only (le champ n'est rempli qu'avec une option d'autocompletion) et free-text" 
+%>
+<%@ attribute name="dataUrl" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="URL ou on recupere les valeurs d'autocompletion" 
+%>
+<%@ attribute name="name" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="Nom de la facette" 
+%>
+<%@ attribute name="label" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="Label de la facette" 
+%>
+<%@ attribute name="option" 
+		required="false" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="String" 
+		description="Champ lie de la facette, choisir entre 'limitrophe', 'epci', 'rayon' et 'adresse'" 
+%>
+<%@ attribute name="setRayons" 
+		required="false" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Set<Category>" 
+		description="Set contenant la liste des rayons a afficher dans le champ lie rayon" 
+%>
+<%@ attribute name="request" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="HttpServletRequest" 
+		description="La requete http actuelle" 
+%>
 <% 
+	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 %>
@@ -8,21 +85,21 @@
 	<jalios:if predicate='<%= option.equalsIgnoreCase("limitrophe") || option.equalsIgnoreCase("epci") || option.equalsIgnoreCase("rayon") || option.equalsIgnoreCase("adresse") %>'>
 
 		<%
-			String title = glp("jcmsplugin.socle.selectionner") + " " + label + " - ";
+			String title = JcmsUtil.glp(userLang, "jcmsplugin.socle.selectionner") + " " + label + " - ";
 			if(option.equalsIgnoreCase("rayon")) {
-				title += glp("jcmsplugin.socle.facette.rayon.label");
+				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label");
 			} else {
-				title += glp("jcmsplugin.socle.facette.maj-sous-theme.label")+" ";
+				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.maj-sous-theme.label")+" ";
 				if(option.equalsIgnoreCase("limitrophe")) {
-					title += glp("jcmsplugin.socle.facette.commune-limitrophe.label")+" ";
+					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.commune-limitrophe.label")+" ";
 				} else if(option.equalsIgnoreCase("epci")) {
-					title += glp("jcmsplugin.socle.facette.epci.label")+" ";
+					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.epci.label")+" ";
 				} else if(option.equalsIgnoreCase("adresse")) {
-					title += glp("jcmsplugin.socle.facette.adresse.default-label")+" ";
+					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")+" ";
 				}
-				title += glp("jcmsplugin.socle.facette.tri-alphabetique.label");
+				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.tri-alphabetique.label");
 			}
-			title += " - "+glp("jcmsplugin.socle.obligatoire");
+			title += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
 		%>
 
 		<div class="ds44-fieldContainer ds44-champsLies">
@@ -51,29 +128,29 @@
 							aria-activedescendant='<%= "selected_option_" + idFormElement %>' />
 					<button class="ds44-reset" type="button" style="display: none;">
 						<i class="icon icon-cross icon--large" aria-hidden="true"></i>
-						<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
+						<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 					</button>
 
 					<div class="ds44-autocomp-container hidden" aria-hidden="true">
 						<div class="ds44-autocomp-buttons ds44-flex-container" aria-hidden="true">
 							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" 
 									data-value="allCity" 
-									data-text='<%= glp("jcmsplugin.socle.facette.all-commune.label") %>'
-									aria-label='<%= glp("jcmsplugin.socle.facette.select-all-commune.label") %>' 
+									data-text='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.all-commune.label") %>'
+									aria-label='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.select-all-commune.label") %>' 
 									aria-hidden="true" 
 									tabindex="-1">
-								<%= glp("jcmsplugin.socle.facette.all-commune.label") %>
+								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.all-commune.label") %>
 							</button>
 							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light selected_option" type="button" 
 									data-value="aroundMe"
-									data-text='<%= glp("jcmsplugin.socle.facette.autour-moi.label") %>' 
-									aria-label='<%= glp("jcmsplugin.socle.facette.select-autour-moi.label") %>' 
+									data-text='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.autour-moi.label") %>' 
+									aria-label='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.select-autour-moi.label") %>' 
 									id='<%= "selected_option_" + idFormElement %>'
 									aria-selected="true" 
 									aria-pressed="true" 
 									aria-hidden="true" 
 									tabindex="-1">
-								<span class="ds44-btnInnerText" aria-hidden="true"><%= glp("jcmsplugin.socle.facette.autour-moi.label") %></span>
+								<span class="ds44-btnInnerText" aria-hidden="true"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.autour-moi.label") %></span>
 								<i class="icon icon-position icon--sizeM" aria-hidden="true"></i>
 							</button>
 						</div>
@@ -92,10 +169,10 @@
 					String labelOption = "";
 					if(option.equalsIgnoreCase("limitrophe")) {
 						dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneLimit.jsp";
-						labelOption = glp("jcmsplugin.socle.facette.commune-limitrophe.label");
+						labelOption = JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.commune-limitrophe.label");
 					} else if(option.equalsIgnoreCase("epci")) {
 						dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneEpci.jsp";
-						labelOption = glp("jcmsplugin.socle.facette.epci.label");
+						labelOption = JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.epci.label");
 					}
 				%>
 
@@ -114,7 +191,7 @@
 						</div>
 						<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 								aria-expanded="false" 
-								title='<%= labelOption + " - " + glp("jcmsplugin.socle.obligatoire") %>'
+								title='<%= labelOption + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire") %>'
 								aria-required="true">
 							<i class="icon icon-down icon--sizeL" aria-hidden="true"></i>
 							<span id='<%= "button-message-"+idFormElement %>' class="visually-hidden"><%= labelOption %></span>
@@ -126,7 +203,7 @@
 							<ul class="ds44-list" id='<%= "listbox-"+idFormElement %>'></ul>
 						</div>
 						<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" aria-describedby='<%= "button-message-"+idFormElement %>'>
-							<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
+							<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.valider") %></span>
 							<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 						</button>
 					</div>
@@ -140,19 +217,19 @@
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
 						<p class="ds44-selectLabel" aria-hidden="true">
-							<%= glp("jcmsplugin.socle.facette.rayon.label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
 						<div id='<%= idFormElement %>' class="ds44-selectDisplay" data-values="[&quot;aroundMe&quot;]"></div>
 						<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 								aria-expanded="false" 
-								title='<%= glp("jcmsplugin.socle.facette.rayon.label") + " - " + glp("jcmsplugin.socle.obligatoire") %>'
+								title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire") %>'
 								aria-required="true" 
 								tabindex="-1" 
 								readonly="true">
 							<i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
 							<span id='<%= "button-message-"+idFormElement %>' class="visually-hidden">
-								<%= glp("jcmsplugin.socle.facette.rayon.label") %>
+								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %>
 							</span>
 						</button>
 					</div>
@@ -165,15 +242,17 @@
 									aria-required="true"
 									data-bkp-aria-hidden="" 
 									aria-hidden="true">
-								<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
-									<li class="ds44-select-list_elem" role="option" 
-											data-value='<%= itCat.getName() %>' 
-											tabindex="0" 
-											data-bkp-aria-hidden="" 
-											aria-hidden="true">
-										<%= itCat.getName() %>
-									</li>
-								</jalios:foreach>
+								<jalios:if predicate="<%= Util.notEmpty(setRayons) %>">
+									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
+										<li class="ds44-select-list_elem" role="option" 
+												data-value='<%= itCat.getName() %>' 
+												tabindex="0" 
+												data-bkp-aria-hidden="" 
+												aria-hidden="true">
+											<%= itCat.getName() %>
+										</li>
+									</jalios:foreach>
+								</jalios:if>
 							</ul>
 						</div>
 					</div>
@@ -185,9 +264,8 @@
 			<jalios:if predicate='<%= option.equalsIgnoreCase("adresse") %>'>
 
 				<%
-					String titleOption = glp("jcmsplugin.socle.selectionner") + " " + label + " - " + glp("jcmsplugin.socle.obligatoire");
-					// TODO : changer/supprimer dataUrlOption qd autocompletion js pr adresse termine
-					String dataUrlOption = "plugins/SoclePlugin/jsp/facettes/searchCommuneLimit.jsp";
+					String titleOption = JcmsUtil.glp(userLang, "jcmsplugin.socle.selectionner") + " " + label + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
+					String dataUrlOption = Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url");
 				%>
 
 				<div class="ds44-form__container">
@@ -195,7 +273,7 @@
 					   <label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
 							<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 								<span>
-									<%= glp("jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+									<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 								</span>
 							</span> 
 						</label>
@@ -217,7 +295,7 @@
 						<button class="ds44-reset" type="button" style="display: none;">
 							<i class="icon icon-cross icon--large" aria-hidden="true"></i>
 							<span class="visually-hidden">
-								<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.facette.adresse.default-label")) %>
+								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")) %>
 							</span>
 						</button>
 
@@ -258,7 +336,7 @@
 
 			<button class="ds44-reset" type="button">
 				<i class="icon icon-cross icon--large" aria-hidden="true"></i>
-				<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
+				<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 			</button>
 
 			<div class="ds44-autocomp-container hidden">

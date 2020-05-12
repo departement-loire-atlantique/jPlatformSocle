@@ -1,17 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
-<% 
-	PortletFacetteAdresse obj = (PortletFacetteAdresse)portlet; 
-	
-	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
-	String dataMode = "select-only";
-	//TODO changer/enlever data url qd autcompletion adresse js faite
-	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp";
-	String name = "adresse";
-	String label = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.adresse.default-label");
-	String option = Util.notEmpty(obj.getRayon(loggedMember)) ? "rayon" : "";
-	TreeSet<Category> setRayons = Util.notEmpty(obj.getRayon(loggedMember)) ? obj.getRayon(loggedMember) : new TreeSet<Category>();
-%>
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
+<% PortletFacetteAdresse obj = (PortletFacetteAdresse)portlet; %>
 
-<%@ include file='/plugins/SoclePlugin/jsp/portlet/portletFacetteAutoCompletion.jspf' %>
+<ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
+		name="adresse" 
+		request="<%= request %>" 
+		obj="<%= obj %>" 
+		dataMode="select-only" 
+		dataUrl='<%= Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url") %>' 
+		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.adresse.default-label") %>'
+		option='<%= Util.notEmpty(obj.getRayon(loggedMember)) ? "rayon" : "" %>'
+		setRayons="<%= Util.notEmpty(obj.getRayon(loggedMember)) ? obj.getRayon(loggedMember) : new TreeSet<Category>() %>"/>
