@@ -73,10 +73,6 @@ $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
-# Autocomplete
-
-jcmsplugin.socle.js-autocomplete-adress: https://design.loire-atlantique.fr/json/autocomplete-address.json
-
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: 

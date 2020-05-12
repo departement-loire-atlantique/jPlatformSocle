@@ -12,6 +12,6 @@
 				obj="<%= obj %>" 
 				dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
 				dataMode="select-only" 
-        <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
 				label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'/>
+        <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
     </div>
