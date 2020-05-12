@@ -7,7 +7,7 @@
 <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
 		name="adresse" 
 		request="<%= request %>" 
-		obj="<%= obj %>" 
+		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="select-only" 
 		dataUrl='<%= Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url") %>' 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.adresse.default-label") %>'
