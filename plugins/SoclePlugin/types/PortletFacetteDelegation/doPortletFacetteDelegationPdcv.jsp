@@ -15,9 +15,7 @@
     TreeSet<Category> setRayons = new TreeSet<Category>();
 %>
 
-<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Recherchez un contact","label": "$commune|text"}' action="plugins/SoclePlugin/types/PortletFacetteDelegation/doDelegationPdcvRedirection.jsp" method="GET">
-    <div class="ds44-js-linked-fields ds44-js-masked-fields">
-        <%@ include file='/plugins/SoclePlugin/jsp/portlet/portletFacetteAutoCompletion.jspf' %>
-        <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
-    </div>
-</form>
+<div class="ds44-js-linked-fields ds44-js-masked-fields">
+    <%@ include file='/plugins/SoclePlugin/jsp/portlet/portletFacetteAutoCompletion.jspf' %>
+    <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
+</div>
