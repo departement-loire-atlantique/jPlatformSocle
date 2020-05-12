@@ -13,6 +13,8 @@ jcmsplugin.socle.contact-faq.default-mail:
 jcmsplugin.socle.group.animationSportive.id: p1_101336
 $jcmsplugin.socle.cat.animationSportive.id: p2_108385
 
+channel.security.authorized-redirect.suivi-demande: ^https?://demarche.loire-atlantique.fr/.*
+
 # ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
