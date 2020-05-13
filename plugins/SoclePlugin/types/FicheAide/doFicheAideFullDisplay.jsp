@@ -386,7 +386,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 							       <label for="<%= idFormElement %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
 							     
 							    
-							       <input type="text" id="<%= idFormElement %>" name="CodeSuivi" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'   required   aria-describedby="explanation-<%= idFormElement %>" />
+							       <input type="text" id="<%= idFormElement %>" name="codeSuivi" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'   required   aria-describedby="explanation-<%= idFormElement %>" />
 							       <button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %></span></button>
 							    </div>
 							    
