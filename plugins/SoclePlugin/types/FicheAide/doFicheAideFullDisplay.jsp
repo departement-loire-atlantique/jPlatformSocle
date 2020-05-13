@@ -25,13 +25,16 @@ request.setAttribute("contactfaq", obj.getContactFAQ(userLang));
 boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getIntroContact())
         || Util.notEmpty(obj.getComplementContact())
-        || Util.notEmpty(obj.getBesoinDaide());
+        || Util.notEmpty(obj.getBesoinDaide())
+        || (Util.notEmpty(obj.getTypeDeLieu()) && obj.getInstructionDelegation());
+
 
 
 boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  ||
-                              ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ;
+                              ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ||
+                              Util.notEmpty(obj.getIntroFaireUneDemande());
 
-boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
+boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || Util.notEmpty(obj.getEdemarche(loggedMember));
 
 %>
 
@@ -365,10 +368,11 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	               <jalios:wysiwyg><%= obj.getIntroSuivreUneDemande() %></jalios:wysiwyg>
 	            </jalios:if>
 	
+		
+	            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
 	            <div class="ds44-mt3 grid-12-small-1">
 	                
-	                
-	                
+               
 	              <%-- Formulaire de suivi vers le site demarche.loire-altantique.fr --%>
 	              <jalios:if predicate="<%= Util.isEmpty(obj.getUrlSuiviEdemarche()) %>">
 
@@ -428,10 +432,11 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	                    </p>
 	
 	                </div>
-	                
-	                
-	                
+              
 	            </div>
+	            </jalios:if>
+	            
+	                        
 	        </div>
 	    </div>   
 	</section>
