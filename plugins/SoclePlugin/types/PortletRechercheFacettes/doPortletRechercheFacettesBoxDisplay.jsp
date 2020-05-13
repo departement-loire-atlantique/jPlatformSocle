@@ -142,8 +142,6 @@
 		
 			<input type="hidden" name='<%= "typeCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeCarte() %>' data-technical-field />
 			<input type="hidden" name='<%= "natureCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getNatureDeLaCarte() ? "contour" : "actif" %>' data-technical-field />
-
-			<input type="hidden" name='<%= "displayMode" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDaffichageDuContenu() ? "inline" : "external" %>' data-technical-field />
 		</form>
 	</div>
 	
@@ -190,7 +188,7 @@
 	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
 	          <div class="ds44-js-results-container">
 	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
-	              <div class="ds44-js-results-list">
+	              <div class="ds44-js-results-list" data-display-mode='<%= obj.getModeDaffichageDuContenu() ? "external" : "inline" %>'>
 	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
 	                    <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
 	                  </p>            
