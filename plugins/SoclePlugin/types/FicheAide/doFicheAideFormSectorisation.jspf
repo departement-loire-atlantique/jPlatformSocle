@@ -5,35 +5,18 @@
     <div class="ds44-js-linked-fields ds44-js-masked-fields">
                                 
         <%-- Commune --%>
-        <div class="ds44-form__container">                                                                              
-            <div class="ds44-posRel">
-                <label for="<%= idFormCommune %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pdcv.votrecommune") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
-                
-                <input type="text" id="<%= idFormCommune %>" name="commune" class="ds44-inpStd" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.pdcv.votrecommune") + " - " + glp("jcmsplugin.socle.obligatoire")) %>' data-mode="select-only" required   aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pdcv.votrecommune")) %></span></button>
-                                                    
-                <div class="ds44-autocomp-container hidden">
-                    <div class="ds44-autocomp-list">
-                        <ul class="ds44-list" role="listbox"></ul>
-                    </div>
-                </div>                                      
-            </div>                                                                                                  
-        </div>
+        <ds:facetteAutoCompletion idFormElement='<%= idFormCommune %>' 
+				name="commune" 
+				request="<%= request %>" 
+				isFacetteObligatoire="true" 
+				dataMode="select-only" 
+				dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+				label='<%= glp("jcmsplugin.socle.pdcv.votrecommune") %>'
+				isLarge="false"/>
     
 
         <%-- Adresse --%>
-        <div class="ds44-form__container hidden">                                                                                               
-            <div class="ds44-posRel">
-                <label for="<%= idFormAdresse %>" class="ds44-formLabel ds44-inputDisabled"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.menu.pdcv.preciserVotreAdresse") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
-                
-                <input type="text" id="<%= idFormAdresse %>" name="adresse" class="ds44-inpStd ds44-js-field-address" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" data-url="https://api-adresse.data.gouv.fr/search/?limit=5&citycode=$parentValue" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.menu.pdcv.preciserVotreAdresse") + " - " + glp("jcmsplugin.socle.obligatoire")) %>' data-mode="select-only" required  readonly  aria-describedby="modal-contact-title" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.menu.pdcv.preciserVotreAdresse")) %></span></button>                                   
-            
-                <div class="ds44-autocomp-container hidden">
-                    <div class="ds44-autocomp-list">
-                        <ul class="ds44-list" role="listbox"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ds:pdcvSearchFields idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>'/>
         
     </div>
 
