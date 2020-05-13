@@ -20,7 +20,7 @@
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
     <type name="Contact"></type>
-    <type name="ContenuDeTest"></type>
+    <type name="ContactForm"><file path="editFormContactForm.jsp" /></type>
     <type name="ContenuPush"></type>
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
@@ -68,6 +68,7 @@
     <type name="SeniorCitizensEstablishment"></type>
     <type name="Temoignage"></type>
     <type name="Video"></type>
+
     
     
     <!-- Types de contenus -->    
@@ -166,6 +167,9 @@
     <templates type="FileDocument">
         <template name="embed" file="doFileDocumentEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
+        <template name="default" file="doFileDocumentFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">Gabarit full pour la refonte</label>
         </template>
     </templates>
     <templates type="News">
@@ -394,7 +398,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
-    <!--<datacontroller  class="fr.cg44.plugin.socle.datacontroller.ContactFormDataController" types="ContactForm" />-->
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.ContactFormDataController" types="ContactForm" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
@@ -441,6 +445,7 @@
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
     <file path="WEB-INF/tags/figurePicture.tag" />
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
+    <file path="WEB-INF/tags/message.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
