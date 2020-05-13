@@ -147,7 +147,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
                     </div>
                     
                     <p class="ds44-keyboard-show">
-                    	<a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_first">
+                    	<a href="#label_id_first">
                     		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.resume")) %>
                     	</a>
                     </p>
@@ -204,7 +204,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
                     </div>
                     
                     <p class="ds44-keyboard-show">
-                    	<a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_second">
+                    	<a href="#label_id_second">
                     		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.detail")) %>
                     	</a>
                     </p>
@@ -222,6 +222,12 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 					   <jalios:include pub="<%= obj.getFaq() %>" usage="full"/>
                        <% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
 					</jalios:if>
+					
+					<p class="ds44-keyboard-show">
+                    	<a href="#label_id_third">
+                    		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.faq")) %>
+                    	</a>
+                    </p>
                 </div>
                 </jalios:if>
  
