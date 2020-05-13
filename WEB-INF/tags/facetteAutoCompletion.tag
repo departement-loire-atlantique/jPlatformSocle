@@ -11,12 +11,12 @@
 			java.util.Set,
 			generated.AbstractPortletFacette" 
 %>
-<%@ attribute name="obj" 
+<%@ attribute name="isFacetteObligatoire" 
 		required="true" 
 		fragment="false" 
 		rtexprvalue="true" 
-		type="AbstractPortletFacette" 
-		description="L'element jcms qui correspond a la facette" 
+		type="Boolean" 
+		description="Est-ce que la facette est obligatoire" 
 %>
 <%@ attribute name="idFormElement" 
 		required="true" 
@@ -74,10 +74,18 @@
 		type="HttpServletRequest" 
 		description="La requete http actuelle" 
 %>
+<%@ attribute name="isLarge" 
+		required="false" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Boolean" 
+		description="Est ce que le champ doit etre large" 
+%>
 <% 
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") ? "Std" : "Large"; 
+	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") || (Util.notEmpty(isLarge) && !isLarge) ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
+	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 %>
 
 <jalios:if predicate='<%= Util.notEmpty(option) %>'>
@@ -109,7 +117,7 @@
 					<label for='<%= idFormElement %>' class="ds44-formLabel">
 					    <span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 							<span>
-								<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+								<%= label %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 							</span>
 						</span>
 					</label>
@@ -122,12 +130,12 @@
 							name='<%= name %>'
 							data-url='<%= dataUrl %>'
 							data-mode='<%= dataMode %>' 
-							<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> 
+							<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> 
 							aria-owns='<%= "owned_listbox_" + idFormElement %>' 
 							aria-expanded="false" 
 							aria-activedescendant='<%= "selected_option_" + idFormElement %>' />
 					<button class="ds44-reset" type="button" style="display: none;">
-						<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+						<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 						<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 					</button>
 
@@ -180,7 +188,7 @@
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
 						<p class="ds44-selectLabel" aria-hidden="true">
-							<%= labelOption %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+							<%= labelOption %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<div id='<%= idFormElement %>' class="ds44-selectDisplay" 
 								name='<%= name %>' 
@@ -217,7 +225,7 @@
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-champsLies-child ds44-inputDisabled'>
 						<p class="ds44-selectLabel" aria-hidden="true">
-							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
 						<div id='<%= idFormElement %>' class="ds44-selectDisplay" data-values="[&quot;aroundMe&quot;]"></div>
@@ -273,7 +281,7 @@
 					   <label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
 							<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 								<span>
-									<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label") %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+									<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 								</span>
 							</span> 
 						</label>
@@ -293,7 +301,7 @@
 								aria-owns='<%= "owned_listbox_"+idFormElement %>' 
 								aria-expanded="false">
 						<button class="ds44-reset" type="button" style="display: none;">
-							<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")) %>
 							</span>
@@ -321,7 +329,7 @@
 			<label for='<%= idFormElement %>' class="ds44-formLabel">
 		        <span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 					<span>
-						<%= label %><%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						<%= label %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 					</span>
 				</span>
 			</label>
@@ -332,10 +340,10 @@
 					autocomplete="off" 
 					data-url='<%= dataUrl %>' 
 					data-mode='<%= dataMode %>' 
-					<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> />
+					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> />
 
 			<button class="ds44-reset" type="button">
-				<i class="icon icon-cross icon--large" aria-hidden="true"></i>
+				<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 				<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 			</button>
 

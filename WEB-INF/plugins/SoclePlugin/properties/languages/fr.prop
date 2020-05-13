@@ -203,6 +203,9 @@ jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi: Ex : XXX-XXXX-X
 jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi: Vous n’avez pas de code de suivi :
 jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi: Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).
 jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi: Valider votre code de suivi
+jcmsplugin.socle.ficheaide.modal.suivredemande.suivrevotredemande: Pour suivre votre demande en ligne
+jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique.fr/code/{0}/load
+jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?

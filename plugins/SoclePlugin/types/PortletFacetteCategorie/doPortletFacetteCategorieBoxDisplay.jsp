@@ -6,11 +6,13 @@
 	PortletFacetteCategorie obj = (PortletFacetteCategorie)portlet; 
 
 	String rechercheId = (String) request.getAttribute("rechercheId");
+	
+	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
 		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>'
-		idFormElement='<%= glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId() %>' 
+		idFormElement='<%= idFormElement %>' 
 		isDisabled='<%= false %>' 
 		request='<%= request %>'/>
 

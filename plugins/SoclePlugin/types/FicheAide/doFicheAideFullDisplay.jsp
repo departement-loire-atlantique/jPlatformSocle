@@ -28,7 +28,8 @@ boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getBesoinDaide());
 
 
-boolean displayFaireDemande = Util.notEmpty(obj.getDocumentsUtiles()) ||  Util.notEmpty(obj.getEdemarche(loggedMember));
+boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  ||
+                              ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ;
 
 boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 
@@ -366,12 +367,17 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	
 	            <div class="ds44-mt3 grid-12-small-1">
 	                
+	                
+	                
+	              <%-- Formulaire de suivi vers le site demarche.loire-altantique.fr --%>
+	              <jalios:if predicate="<%= Util.isEmpty(obj.getUrlSuiviEdemarche()) %>">
+
 	                <div class="col-6 ds44-modal-column">
 	                    <h2 class="h4-like" id="titre_a_code_suivi"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
 	
 	                    <p id="desc-pour-input-suivre-demande"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi") %></p>
 	
-						<form action="<%= obj.getUrlSuiviEdemarche() %>">
+						<form action='plugins/SoclePlugin/types/FicheAide/redirectDemandeCodeSuivi.jsp' target="_blank">
 							<% String idFormElement = ServletUtil.generateUniqueDOMId(request, "form-element"); %>
 							<div class="ds44-form__container">
 							   
@@ -380,7 +386,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 							       <label for="<%= idFormElement %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
 							     
 							    
-							       <input type="text" id="<%= idFormElement %>" name="<%= idFormElement %>" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'   required   aria-describedby="explanation-<%= idFormElement %>" />
+							       <input type="text" id="<%= idFormElement %>" name="codeSuivi" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'   required   aria-describedby="explanation-<%= idFormElement %>" />
 							       <button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi")) %></span></button>
 							    </div>
 							    
@@ -400,12 +406,20 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 							
 						</form>
 					</div>
-	                <div class="col-6 ds44-modal-column">
+					
+				  </jalios:if>
+				  	
+					
+	                <div class='col-<%=  Util.notEmpty(obj.getUrlSuiviEdemarche()) ? "12" : "6 ds44-modal-column" %>'>
+	                    <%
+	                    String SuivreDemandetitre = Util.notEmpty(obj.getUrlSuiviEdemarche()) ? glp("jcmsplugin.socle.ficheaide.modal.suivredemande.suivrevotredemande") : glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi");
+	                    String urlSuivreDemande = Util.notEmpty(obj.getUrlSuiviEdemarche()) ? obj.getUrlSuiviEdemarche() : glp("jcmsplugin.socle.ficheaide.demarche.login.url");
+	                    %>
 	
-	                    <h2 class="h4-like" id="titre_a_pas_code_suivi"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi") %></h2>
+	                    <h2 class="h4-like" id="titre_a_pas_code_suivi"><%= SuivreDemandetitre %></h2>
 	
 	                    <p class="ds44-mt-std">
-	                    	<p><a class="ds44-btnStd ds44-btn--invert" href="<%= obj.getUrlEdemarche(userLang)  %>" 
+	                    	<p><a class="ds44-btnStd ds44-btn--invert" href='<%= HttpUtil.encodeForHTMLAttribute(urlSuivreDemande) %>' 
 	                        		title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
 	                        		target="_blank">
 	                        	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous") %></span>
@@ -414,6 +428,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	                    </p>
 	
 	                </div>
+	                
+	                
+	                
 	            </div>
 	        </div>
 	    </div>   
