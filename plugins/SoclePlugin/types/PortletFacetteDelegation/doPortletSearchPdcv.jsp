@@ -9,7 +9,8 @@
         <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.menu.pdcv") %></p>
         <form data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Formulaire&quot;,&quot;action&quot;: &quot;Recherchez un contact&quot;,&quot;label&quot;: &quot;$commune|text&quot;}">
             <div class="ds44-js-linked-fields ds44-js-masked-fields">
-                <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
+                <% String idFormElement= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+                <ds:facetteAutoCompletion idFormElement="<%= idFormElement %>"
 						name="commune" 
 						request="<%= request %>" 
 						isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 

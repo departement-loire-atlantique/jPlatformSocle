@@ -5,7 +5,6 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet; %>
 
-<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Recherchez un contact","label": "$commune|text"}' action="plugins/SoclePlugin/types/PortletFacetteDelegation/doDelegationPdcvRedirection.jsp" method="GET">
     <div class="ds44-js-linked-fields ds44-js-masked-fields">
         <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
 				name="commune" 
@@ -13,6 +12,7 @@
 				isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 				dataMode="select-only" 
 				dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+				dataMode="select-only" 
 				label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'/>
         <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
         
@@ -21,4 +21,3 @@
         	<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
         </button>
     </div>
-</form>
