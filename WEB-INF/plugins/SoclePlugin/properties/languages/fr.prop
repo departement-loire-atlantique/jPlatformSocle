@@ -38,6 +38,21 @@ jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
 $jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
 
 # ------------------------------------------------------------
+#  Formulaires
+# ------------------------------------------------------------
+jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
+jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
+jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
+jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
+
+# ------------------------------------------------------------
+#  Mail
+# ------------------------------------------------------------
+jcmsplugin.socle.email.message.succes : Merci, votre message a été envoyé.
+jcmsplugin.socle.email.message.echec : Une erreur s'est produite lors de l'envoi de l'email.
+
+
+# ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
 jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation par commune

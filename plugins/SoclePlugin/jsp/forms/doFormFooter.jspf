@@ -1,0 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+    <p class="ds44-wsg-smallText ds44-mt3"><%= channel.getProperty("jcmsplugin.socle.rgpd.form.text") %>
+		<jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.rgpd.pub.id")) && Util.notEmpty(channel.getProperty("jcmsplugin.socle.rgpd.form.text")) %>'>
+		    <jalios:link id='<%= channel.getProperty("jcmsplugin.socle.rgpd.pub.id") %>'><%= channel.getProperty("jcmsplugin.socle.rgpd.form.text") %></jalios:link>
+		</jalios:if>
+    </p>
+  </div>
+</div>
+
+<% } %>
+
+

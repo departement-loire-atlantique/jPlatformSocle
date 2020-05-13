@@ -273,6 +273,8 @@ jcmsplugin.socle.site.pdcv.portlet.id:
 #  Formulaires
 # ------------------------------------------------------------
 $jcmsplugin.socle.form.contactform.sujet.root: aca_8167
+jcmsplugin.socle.email.emailParDefaut: contact@loire-atlantique.fr
+jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu
