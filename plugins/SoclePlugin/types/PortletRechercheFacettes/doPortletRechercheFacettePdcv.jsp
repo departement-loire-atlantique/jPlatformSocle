@@ -44,11 +44,6 @@
             <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
         
             <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
-        
-            <input type="hidden" name='<%= "typeCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeCarte() %>' data-technical-field />
-            <input type="hidden" name='<%= "natureCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getNatureDeLaCarte() ? "contour" : "actif" %>' data-technical-field />
-
-            <input type="hidden" name='<%= "displayMode" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDaffichageDuContenu() ? "inline" : "external" %>' data-technical-field />
         </form>
 
 <jalios:if predicate='<%= isInRechercheFacette %>'>
@@ -58,7 +53,7 @@
           <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
               <div class="ds44-js-results-container">
                   <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
-                  <div class="ds44-js-results-list">
+                  <div class="ds44-js-results-list" data-display-mode='<%= obj.getModeDaffichageDuContenu() ? "external" : "inline" %>'>
                       <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
                         <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
                       </p>            
@@ -74,9 +69,12 @@
               
               <div class="ds44-mapResults">
                   <div class="ds44-mapResults-container">
-                      <div class="ds44-js-map"></div>
+                      <div class="ds44-js-map" 
+                      		data-geojson-url='<%= obj.getTypeDeCarte() %>' 
+                      		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
+                      		data-geojson-refine='<%= obj.getCarteDynamique() %>'></div>
                       
-                      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+                      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
                           <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
                       </button>
                   </div>
