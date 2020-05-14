@@ -457,7 +457,7 @@ public final class SocleUtils {
 	
 		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
 				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
-				"", fichelieu.getCodePostal(), fichelieu.getCommune().getTitle(), "");
+				"", fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", "");
 	}	
 		
 	
