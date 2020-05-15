@@ -457,7 +457,7 @@ public final class SocleUtils {
 	
 		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
 				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
-				"", fichelieu.getCodePostal(), fichelieu.getCommune().getTitle(), "");
+				"", fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", "");
 	}	
 		
 	
@@ -1033,7 +1033,8 @@ public final class SocleUtils {
         } else {
           itNameKey = "longitude";
         }
-      }else if(nameParam.contains("[value]")) {
+      }
+      else if(nameParam.contains("[value]")) {
     	  itNameKey = nameParam.replace("[value]", "");
       }
       // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
@@ -1047,6 +1048,41 @@ public final class SocleUtils {
     }
     return parametersMap;
   }
+  
+  /**
+   * Renvoie les paramètres du formulaire en ajoutant les paramètres nécessaires à JCMS :
+   * Les champs visibles du formulaire sont envoyés via le JS via les paramètres NOMDUCHAMP[text] et NOMDUCHAMP[value]
+   * Les champs cachés sont envoyés avec seulement NOMDUCHAMP[value]
+   * Il faut donc rajouter les champs initiaux NOMDUCHAMP à la requete pour pouvoir être traités par JCMS.
+   * Par ailleurs pour les champs cachés, il n'est pas utile de renvoyer le paramètre NOMDUCHAMP[value]
+   * @param request
+   * @return
+   */
+  public static Map<String, String[]> getFormParameters(HttpServletRequest request) {
+    Enumeration<String> enumParams = request.getParameterNames();
+    Map<String, String[]> parametersMap = new HashMap<String, String[]>();
+    while(enumParams.hasMoreElements()) {
+      String nameParam = enumParams.nextElement();  
+      String itNameKey = null;
+      String itNameKeyText = null;
+      String itNameKeyValue = null;
+      // On ajoute les paramètres nécessaires au JS (paramètres NOMDUCHAMP[text] et NOMDUCHAMP[value])
+      if(nameParam.contains("[text]")){  
+      	itNameKey = nameParam.replaceAll("\\[text\\]","");
+      	itNameKeyText = itNameKey+"[text]";
+      	itNameKeyValue = itNameKey+"[value]";
+      	parametersMap.put(HttpUtil.encodeForURL(itNameKeyText), new String[]{request.getParameter(itNameKeyText)});
+      	parametersMap.put(HttpUtil.encodeForURL(itNameKeyValue), new String[]{request.getParameter(itNameKeyValue)});
+       } 
+      // On ajoute les autres champs du formulaire natif JCMS. On enlève le [value] du nom du champ.
+       else if(nameParam.contains("[value]")) {
+       	itNameKey = nameParam.replace("[value]", "");
+       	parametersMap.put(itNameKey, new String[]{request.getParameter(nameParam)});
+       }
+
+    }
+    return parametersMap;
+  }  
   
   /**
    * Retourne la fonction d'un membre élu, en commençant ou non par une majuscule

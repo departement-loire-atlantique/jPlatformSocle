@@ -25,13 +25,16 @@ request.setAttribute("contactfaq", obj.getContactFAQ(userLang));
 boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getIntroContact())
         || Util.notEmpty(obj.getComplementContact())
-        || Util.notEmpty(obj.getBesoinDaide());
+        || Util.notEmpty(obj.getBesoinDaide())
+        || (Util.notEmpty(obj.getTypeDeLieu()) && obj.getInstructionDelegation());
+
 
 
 boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  ||
-                              ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ;
+                              ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ||
+                              Util.notEmpty(obj.getIntroFaireUneDemande());
 
-boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
+boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || Util.notEmpty(obj.getEdemarche(loggedMember));
 
 %>
 
@@ -147,7 +150,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
                     </div>
                     
                     <p class="ds44-keyboard-show">
-                    	<a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_first">
+                    	<a href="#label_id_first">
                     		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.resume")) %>
                     	</a>
                     </p>
@@ -204,7 +207,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
                     </div>
                     
                     <p class="ds44-keyboard-show">
-                    	<a href="<%= obj.getDisplayUrl(userLocale) %>#label_id_second">
+                    	<a href="#label_id_second">
                     		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.detail")) %>
                     	</a>
                     </p>
@@ -222,6 +225,12 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 					   <jalios:include pub="<%= obj.getFaq() %>" usage="full"/>
                        <% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
 					</jalios:if>
+					
+					<p class="ds44-keyboard-show">
+                    	<a href="#label_id_third">
+                    		<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.faq")) %>
+                    	</a>
+                    </p>
                 </div>
                 </jalios:if>
  
@@ -365,10 +374,11 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	               <jalios:wysiwyg><%= obj.getIntroSuivreUneDemande() %></jalios:wysiwyg>
 	            </jalios:if>
 	
+		
+	            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
 	            <div class="ds44-mt3 grid-12-small-1">
 	                
-	                
-	                
+               
 	              <%-- Formulaire de suivi vers le site demarche.loire-altantique.fr --%>
 	              <jalios:if predicate="<%= Util.isEmpty(obj.getUrlSuiviEdemarche()) %>">
 
@@ -428,10 +438,11 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getEdemarche(loggedMember));
 	                    </p>
 	
 	                </div>
-	                
-	                
-	                
+              
 	            </div>
+	            </jalios:if>
+	            
+	                        
 	        </div>
 	    </div>   
 	</section>

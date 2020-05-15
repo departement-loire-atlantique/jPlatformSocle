@@ -1,0 +1,120 @@
+<%--
+DEP44 : Recopie et adaptation du fichier natif /jcore/doMessageBox.jspf
+pour pouvoir s'adapter aux contraintes graphiques du DS
+--%>
+<%@page import="com.jalios.util.Util"%><%
+%><%@page import="com.jalios.jcms.JcmsConstants"%><%
+%><%@page import="com.jalios.jcms.context.JcmsContext"%><%
+%><%@page import="com.jalios.jcms.context.JcmsMessage"%><%
+%><%@page import="com.jalios.jcms.context.MessageLevel"%><%
+%><%@page import="java.util.List"%><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
+{
+  String titreMessageBox = Util.getString(request.getAttribute("titreMessageBox"), "");
+	
+  String sessionErrorMsg = Util.getString(request.getSession().getAttribute(JcmsConstants.ERROR_MSG), "");
+  String sessionWarningMsg = Util.getString(request.getSession().getAttribute(JcmsConstants.WARNING_MSG), "");
+  String sessionInfoMsg = Util.getString(request.getSession().getAttribute(JcmsConstants.INFORMATION_MSG), "");
+  String sessionSuccessMsg = Util.getString(request.getSession().getAttribute(JcmsConstants.SUCCESS_MSG), "");
+
+  String requestErrorMsg = Util.getString(request.getAttribute(JcmsConstants.ERROR_MSG), "");
+  String requestWarningMsg = Util.getString(request.getAttribute(JcmsConstants.WARNING_MSG), "");
+  String requestInfoMsg = Util.getString(request.getAttribute(JcmsConstants.INFORMATION_MSG), "");
+  String requestSuccessMsg = Util.getString(request.getAttribute(JcmsConstants.SUCCESS_MSG), "");
+
+  String pageContextErrorMsg = Util.getString(pageContext.getAttribute(JcmsConstants.ERROR_MSG), "");
+  String pageContextWarningMsg = Util.getString(pageContext.getAttribute(JcmsConstants.WARNING_MSG), "");
+  String pageContextInfoMsg = Util.getString(pageContext.getAttribute(JcmsConstants.INFORMATION_MSG), "");
+  String pageContextSuccessMsg = Util.getString(pageContext.getAttribute(JcmsConstants.SUCCESS_MSG), "");
+
+  String tag = "p";
+  
+  String errorMsg = Util.surroundWithTag(glp(sessionErrorMsg), tag);
+  String warningMsg = Util.surroundWithTag(glp(sessionWarningMsg), tag);
+  String infoMsg = Util.surroundWithTag(glp(sessionInfoMsg), tag);
+  String successMsg = Util.surroundWithTag(glp(sessionSuccessMsg), tag);
+
+  errorMsg += Util.surroundWithTag(glp(requestErrorMsg), tag);
+  warningMsg += Util.surroundWithTag(glp(requestWarningMsg), tag);
+  infoMsg += Util.surroundWithTag(glp(requestInfoMsg), tag);
+  successMsg += Util.surroundWithTag(glp(requestSuccessMsg), tag);
+
+  errorMsg += Util.surroundWithTag(glp(pageContextErrorMsg), tag);
+  warningMsg += Util.surroundWithTag(glp(pageContextWarningMsg), tag);
+  infoMsg += Util.surroundWithTag(glp(pageContextInfoMsg), tag);
+  successMsg += Util.surroundWithTag(glp(pageContextSuccessMsg), tag);
+
+  List<JcmsMessage> errorsList = JcmsContext.getErrorMsgList(request);
+  List<JcmsMessage> warningList = JcmsContext.getWarningMsgList(request);
+  List<JcmsMessage> infoList = JcmsContext.getInfoMsgList(request);
+  List<JcmsMessage> successList = JcmsContext.getSuccessMsgList(request);
+
+  if (errorsList == null) {
+    errorsList = JcmsContext.getErrorMsgSessionList(request);
+  } else {     
+    List<JcmsMessage> errorSessionList = JcmsContext.getErrorMsgSessionList(request);
+    if(errorSessionList != null) {
+      errorsList.addAll(errorSessionList);
+    }
+  }
+  if (warningList == null) {
+    warningList = JcmsContext.getWarningMsgSessionList(request);
+  } else {
+    List<JcmsMessage> warningSessionList = JcmsContext.getWarningMsgSessionList(request);
+    if(warningSessionList != null) {
+      warningList.addAll(warningSessionList);
+    }
+  }
+  if (infoList == null) {
+    infoList = JcmsContext.getInfoMsgSessionList(request);
+  } else {      
+    List<JcmsMessage> infoSessionList = JcmsContext.getInfoMsgSessionList(request);
+    if(infoSessionList != null) {
+      infoList.addAll(infoSessionList);
+    }
+  }
+  if (successList == null) {
+    successList = JcmsContext.getSuccessMsgSessionList(request);
+  } else {      
+    List<JcmsMessage> successSessionList = JcmsContext.getSuccessMsgSessionList(request);
+    if(successSessionList != null) {
+      successList.addAll(successSessionList);
+    }
+  }
+  
+  if (Util.notEmpty(errorMsg)) {
+    %><ds:message msg="<%= errorMsg %>" msgList="" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+  }
+  if (Util.notEmpty(warningMsg)) {
+    %><ds:message msg="<%= warningMsg %>" msgList="" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+  }
+  if (Util.notEmpty(infoMsg)) {
+    %><ds:message msg="<%= infoMsg %>" msgList="" title="<%= titreMessageBox %>" css=""/><%
+  }
+  if (Util.notEmpty(successMsg)) {
+    %><ds:message msg="<%= successMsg %>" msgList="" title="<%= titreMessageBox %>" css=""/><%
+  }
+  
+  if (Util.notEmpty(errorsList)) {
+    %><ds:message msg="" msgList="<%= errorsList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+  } 
+  if (Util.notEmpty(warningList)) {%>
+    <ds:message msg="" msgList="<%= warningList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+  }
+  if (Util.notEmpty(infoList)) {
+    %><ds:message msg="" msgList="<%= infoList %>" title="<%= titreMessageBox %>" css=""/><%
+  }
+  if (Util.notEmpty(successList)) {
+    %><ds:message msg="" msgList="<%= successList %>" title="<%= titreMessageBox %>" css=""/><%
+  }
+  request.getSession().removeAttribute(JcmsConstants.ERROR_MSG);
+  request.getSession().removeAttribute(JcmsConstants.WARNING_MSG);
+  request.getSession().removeAttribute(JcmsConstants.INFORMATION_MSG);
+  request.getSession().removeAttribute(JcmsConstants.SUCCESS_MSG);
+    
+  JcmsContext.removeMessage(request, errorsList);
+  JcmsContext.removeMessage(request, warningList);
+  JcmsContext.removeMessage(request, infoList);
+  JcmsContext.removeMessage(request, successList);
+}
+%>
