@@ -28,6 +28,59 @@ public class InfolocaleMetadataUtils {
     
     private static String propertyMetadataLibelle = "jcmsplugin.socle.infolocale.metadata.libelle";
     
+    static String separator = ", ";
+    static String baliseItalicStart = "<i class=\"icon ";
+    static String baliseItalicEnd = "\"></i>";
+    static String baliseSpanStart = "<span class=\"visibility-hidden\"> ";
+    static String baliseSpanEnd = "</span>";
+    static String cssVisuel = ".visuel";
+    
+    /**
+     * Retourne le code HTML correspondant à une metadata
+     * @param metadata
+     * @param jsonEvent
+     * @return
+     */
+    public static String getMetadataHtml(String metadata, EvenementInfolocale event, JSONArray resultJsonArray) {
+      JSONObject jsonEvent = InfolocaleEntityUtils.getJsonObjectOfEvent(event, resultJsonArray);
+      
+      return getMetadataHtml(metadata, jsonEvent);
+    }
+    
+    /**
+     * Retourne le code HTML correspondant à une metadata
+     * @param metadata
+     * @param jsonEvent
+     * @return
+     */
+    public static String getMetadataHtml(String metadata, JSONObject jsonEvent) {
+      
+      if (Util.isEmpty(jsonEvent)) {
+        return "";
+      }
+      
+      Channel channel = Channel.getChannel();
+      
+      // Cas particuliers... Parce qu'on les aime ceux-là :)
+      String metaAccessibilite = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.accessibilite");
+      
+      if (metadata.contentEquals(metaAccessibilite)) {
+        return getMetadata(metadata, jsonEvent);
+      }
+      
+      // Cas réguliers
+      
+      StringBuilder htmlMetadata = new StringBuilder();
+      htmlMetadata.append(baliseItalicStart);
+      htmlMetadata.append(getMetadataIcon(metadata));
+      htmlMetadata.append(baliseItalicEnd + baliseSpanStart);
+      htmlMetadata.append(getMetadata(metadata, jsonEvent));
+      htmlMetadata.append(baliseSpanEnd);
+      
+      return htmlMetadata.toString();
+      
+    }
+    
     /**
      * Récupère la ou les données Metadata demandées
      * @param metadata
@@ -221,12 +274,6 @@ public class InfolocaleMetadataUtils {
     private static String getHtmlForAccessibilite(JSONObject jsonEvent, String itAccessibilite, boolean addSeparator) {
         StringBuilder value = new StringBuilder();
         Channel channel = Channel.getChannel();
-        String separator = ", ";
-        String baliseItalicStart = "<i class=\"icon ";
-        String baliseItalicEnd = "\"></i>";
-        String baliseSpanStart = "<span class=\"visibility-hidden\">";
-        String baliseSpanEnd = "</span>";
-        String cssVisuel = ".visuel";
         try {
             if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata."+ itAccessibilite + cssVisuel))) {
                 if (addSeparator) value.append(separator);
