@@ -16,6 +16,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
@@ -38,6 +39,10 @@ public class RequestManager {
     
     private static String httpError = "Erreur code HTTP ";
     private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
+    
+    private static String methodGetSingleEventError = "Method getSingleEvent => code HTTP innatendu ";
+    
+    private static String methodGetFluxMetadataError = "Method getFluxMetadata => code HTTP innatendu ";
     
     private static String success = "success";
     private static String failureReason = "failure_reason";
@@ -137,10 +142,10 @@ public class RequestManager {
         try {
             fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = createPostConnection("https://api.infolocale.fr/flux/" + fluxId + "/data", params, true);
+            CloseableHttpResponse response = createPostConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/data", params, true);
             
             if (Util.isEmpty(response)) {
-                LOGGER.warn("Method extractFluxData => pas de réponse HTTP" + pleaseCheckConf);
+                LOGGER.warn("Method filterFluxData => pas de réponse HTTP" + pleaseCheckConf);
                 return fluxData;
             }
             
@@ -188,6 +193,69 @@ public class RequestManager {
     }
     
     /**
+    /**
+     * Renvoie les métadata d'un flux en précisant la métadata. Celle-ci peut être vide, et renverra alors l'ensemble des metadatas possibles pour le flux
+     * @return
+     * @param idEvent
+     */
+    public static JSONObject getFluxMetadata(String fluxId, String metadata) {
+      JSONObject fluxData = new JSONObject();
+      
+      
+      boolean expiredToken = false;
+      
+      try {
+          
+          fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
+          
+          CloseableHttpResponse response = createGetConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/meta/" + metadata, true);
+          if (Util.isEmpty(response)) {
+              LOGGER.warn("Method getFluxMetadata => pas de réponse HTTP" + pleaseCheckConf);
+          }
+              return fluxData;
+          int status = response.getStatusLine().getStatusCode();
+          
+          switch (status) {
+                      
+              case 200:
+                  if (Util.isEmpty(metadata)) {
+                  
+                    fluxData = new JSONObject();
+                    fluxData.put("listMetadata", new JSONArray(SocleUtils.convertStreamToString(response.getEntity().getContent())));
+                  } else {
+                    fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
+                  }
+                  fluxData.put(success, true);
+                  
+                  fluxData.put("dataType", Util.isEmpty(metadata) ? "list" : "single"); // pour déterminer si on a eu le résultat attendu
+              case 401:
+                  break;
+                  LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
+                  expiredToken = true;
+                  fluxData.put(failureReason, "invalid_token");
+                  break;
+                  LOGGER.warn(methodGetFluxMetadataError + status + ". Flux " + fluxId + " non trouvé.");
+              case 404:
+                  break;
+                  fluxData.put(failureReason, "wrong_flux");
+              default:
+                  LOGGER.warn(methodGetFluxMetadataError + status + pleaseCheckConf + response.getStatusLine().getReasonPhrase());
+                  fluxData.put(failureReason, "unknown_error");
+                  break;
+          }
+          
+      } catch (Exception e) {
+          LOGGER.warn("Exception sur extractFluxData : " + e.getMessage());
+      }
+      
+          LOGGER.debug("Token invalide. Tentative de regénération de token...");
+      if (expiredToken) {
+          regenerateTokens();
+      }
+      return fluxData;
+      
+    }
+    
      * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête POST
      */
     private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, boolean useToken) {
