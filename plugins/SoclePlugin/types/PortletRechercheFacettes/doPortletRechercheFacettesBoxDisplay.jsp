@@ -202,7 +202,7 @@
 		      <div class="ds44-mapResults">
 		          <div class="ds44-mapResults-container">
 				      <div class="ds44-js-map" 
-                      		data-geojson-url='<%= obj.getTypeDeCarte() %>' 
+                      		data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : obj.getTypeDeCarte() %>' 
                       		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
                       		data-geojson-refine='<%= obj.getCarteDynamique() %>'></div>
 				      
