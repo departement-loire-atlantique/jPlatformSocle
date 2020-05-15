@@ -389,6 +389,7 @@ jcmsplugin.socle.infolocale.password:
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
+jcmsplugin.socle.infolocale.extract.url: http://api.infolocale.fr/flux/type/annonces/extract/
 
 # Metadonnees Infolocale pour le front
 

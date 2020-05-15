@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -38,6 +39,8 @@ public class RequestManager {
     
     private static String httpError = "Erreur code HTTP ";
     private static String methodFilterFluxDataError = "Method filterFluxData => code HTTP innatendu ";
+    
+    private static String methodGetSingleEventError = "Method getSingleEvent => code HTTP innatendu ";
     
     private static String success = "success";
     private static String failureReason = "failure_reason";
@@ -188,6 +191,65 @@ public class RequestManager {
     }
     
     /**
+     * Renvoie l'objet JSON associé à un unique événement selon un ID. L'objet renvoyé peut être vide
+     * @param idEvent
+     * @return
+     */
+    public static JSONObject getSingleEvent(String idEvent) {
+      
+      String extractUrl = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.extract.url") + idEvent;
+      
+      JSONObject fluxData = new JSONObject();
+      
+      boolean expiredToken = false;
+      
+      try {
+          fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
+          
+          CloseableHttpResponse response = createGetConnection(extractUrl, true);
+          
+          if (Util.isEmpty(response)) {
+              LOGGER.warn("Method extractFluxData => pas de réponse HTTP" + pleaseCheckConf);
+              return fluxData;
+          }
+          
+          int status = response.getStatusLine().getStatusCode();
+                      
+          switch (status) {
+              case 200:
+                  
+                  fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
+                  fluxData.put(success, true);
+                  
+                  break;
+              case 401:
+                  LOGGER.warn(methodGetSingleEventError + status + ". Token expiré.");
+                  expiredToken = true;
+                  fluxData.put(failureReason, "invalid_token");
+                  break;
+              case 404:
+                  LOGGER.warn(methodGetSingleEventError + status + ". Evenement " + idEvent + " non trouvé.");
+                  fluxData.put(failureReason, "wrong_flux");
+                  break;
+              default:
+                  LOGGER.warn(methodGetSingleEventError + status + pleaseCheckConf + response.getStatusLine().getReasonPhrase());
+                  fluxData.put(failureReason, "unknown_error");
+                  break;
+          }
+          
+      } catch (Exception e) {
+          LOGGER.warn("Exception sur extractFluxData : " + e.getMessage());
+      }
+      
+      if (expiredToken) {
+          LOGGER.debug("Token invalide. Tentative de regénération de token...");
+          regenerateTokens();
+      }
+      
+      return fluxData;
+    }
+    
+    /**
      * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête POST
      */
     private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, boolean useToken) {
@@ -216,6 +278,29 @@ public class RequestManager {
         CloseableHttpResponse response = null;
         try {
             response = httpClient.execute(post);
+        } catch (IOException e) {
+            LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
+        }
+        
+        return response;
+    }
+    
+    /**
+     * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête GET
+     */
+    private static CloseableHttpResponse createGetConnection(String url, boolean useToken) {
+        
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        
+        HttpGet get = new HttpGet(url);
+        
+        if (useToken) {
+          get.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
+        }
+        
+        CloseableHttpResponse response = null;
+        try {
+            response = httpClient.execute(get);
         } catch (IOException e) {
             LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
         }
