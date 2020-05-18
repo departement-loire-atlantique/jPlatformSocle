@@ -6,7 +6,6 @@
 	body-content="scriptless" 
 	import="com.jalios.jcms.Channel, 
 			com.jalios.util.Util, 
-			com.jalios.jcms.HttpUtil, 
 			com.jalios.jcms.JcmsUtil, 
 			com.jalios.jcms.Category, 
 			java.util.Set,
