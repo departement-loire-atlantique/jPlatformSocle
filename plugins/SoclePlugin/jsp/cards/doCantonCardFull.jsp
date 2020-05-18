@@ -12,7 +12,7 @@ if (data == null) {
 
 Canton pub = (Canton) data;
 
-Set<Publication> referencedElus = new TreeSet<>(ElectedMember.getComparator("nom", true));
+Set<Publication> referencedElus = new TreeSet<>(ComparatorManager.getComparator(Publication.class, "name"));
 referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 
 %>
