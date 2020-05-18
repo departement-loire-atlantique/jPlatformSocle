@@ -5,7 +5,7 @@
 <%@ tag 
     pageEncoding="UTF-8"
     description="Génère une boîte d'affichage de message." 
-    body-content="tagdependent" 
+    body-content="scriptless" 
     import="com.jalios.jcms.Channel,
             com.jalios.util.ServletUtil,
             com.jalios.jcms.JcmsUtil,
