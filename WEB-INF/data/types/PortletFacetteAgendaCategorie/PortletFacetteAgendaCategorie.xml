@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletFacetteAgendaCategorie" superclass="generated.AbstractPortletFacette" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Facette Agenda Catégorie</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="groupeDeThematiquesPersonnalisee" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="listeGroupePersonnalisees">
+      <label xml:lang="fr">Groupe de thématiques personnalisées</label>
+    </field>
+    <field name="idDeThematiquesPersonnalisees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="listeGroupePersonnalisees">
+      <label xml:lang="fr">Id de thématiques personnalisées</label>
+    </field>
+    <field name="selectionMultiple" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Séléction multiple</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+
