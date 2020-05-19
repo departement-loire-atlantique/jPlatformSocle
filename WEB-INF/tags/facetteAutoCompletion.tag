@@ -110,7 +110,7 @@
 			title += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
 		%>
 
-		<div class="ds44-fieldContainer ds44-champsLies">
+		<div class="ds44-fieldContainer ds44-champsLies ds44-js-linked-fields">
 			<div class="ds44-form__container">
 
 	
@@ -121,18 +121,16 @@
 							</span>
 						</span>
 					</label>
-					<input class="ds44-input-value" type="hidden" value="">
-					<input class="ds44-input-metadata" type="hidden" aria-hidden="true" value="">
-					<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' role="combobox"
+					<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' name='<%= idFormElement %>'
+							role="combobox"
 							aria-autocomplete="list" 
 							autocomplete="off"
-							title=<%= title %>
-							name='<%= name %>'
-							data-url='<%= dataUrl %>'
-							data-mode='<%= dataMode %>' 
-							<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> 
-							aria-owns='<%= "owned_listbox_" + idFormElement %>' 
 							aria-expanded="false" 
+							data-url='<%= dataUrl %>'
+							title='<%= title %>'
+							data-mode='<%= dataMode %>' 
+							<%= isFacetteObligatoire ? "required" : ""%> 
+							aria-owns='<%= "owned_listbox_" + idFormElement %>' 
 							aria-activedescendant='<%= "selected_option_" + idFormElement %>' />
 					<button class="ds44-reset" type="button" style="display: none;">
 						<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
@@ -277,7 +275,7 @@
 				%>
 
 				<div class="ds44-form__container">
-
+					<div class="ds44-posRel">
 					   <label for='<%= "option-" + idFormElement %>' class="ds44-formLabel ds44-inputDisabled">
 							<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 								<span>
@@ -285,21 +283,19 @@
 								</span>
 							</span> 
 						</label>
-						<input class="ds44-input-value" type="hidden" value="">
-						<input class="ds44-input-metadata" type="hidden" value="">
-						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-champsLies-child' 
+						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-js-field-address' 
+								name='<%= idFormElement %>'
 								role="combobox" 
 								aria-autocomplete="list" 
 								autocomplete="off"
-								title='<%= titleOption %>'
+								aria-expanded="false"
 								data-url='<%= dataUrlOption %>' 
+								title='<%= titleOption %>'
 								data-mode="select-only" 
 								required="" 
-								aria-required="true" 
-								readonly="true" 
-								aria-readonly="true"
 								aria-owns='<%= "owned_listbox_"+idFormElement %>' 
-								aria-expanded="false">
+								readonly="true" 
+								aria-readonly="true">
 						<button class="ds44-reset" type="button" style="display: none;">
 							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 							<span class="visually-hidden">
@@ -312,7 +308,7 @@
 								<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
 							</div>
 						</div>					
-				
+					</div>
 				</div>
 
 			</jalios:if>
