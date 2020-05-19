@@ -13,6 +13,7 @@ String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicati
 QueryHandler qh = new QueryHandler();
 qh.setText(textSearch);
 qh.setTypes("City");
+qh.setCheckPstatus(true);
 qh.setSearchedFields(tabSearchedFields);
 
 %><% 

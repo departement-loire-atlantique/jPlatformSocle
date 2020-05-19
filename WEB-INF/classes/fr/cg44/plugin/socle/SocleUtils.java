@@ -40,11 +40,13 @@ import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
+import generated.AccueilAnnuaireAgenda;
 import generated.Canton;
 import generated.City;
 import generated.Contact;
 import generated.Delegation;
 import generated.ElectedMember;
+import generated.FicheEmploiStage;
 import generated.FicheLieu;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
@@ -1305,5 +1307,40 @@ public final class SocleUtils {
     return null;
   }
 	
+  
+  /**
+   * Retourne le libellé avec des règles spécifiques pour la classe concernée (ne correspond pas au libellé en BO)
+   * @param pub
+   * @param userLang
+   * @return
+   */
+  public static String getTypeLibelle(Publication pub, String userLang) {
+    String libelle = "";
+    if(pub instanceof ElectedMember) {
+      // Pour les élus suivant le genre
+      ElectedMember elu = (ElectedMember) pub;
+      libelle = elu.getGender() ? JcmsUtil.glp (userLang, "jcmsplugin.socle.elu.conseiller.masculin") : JcmsUtil.glp(userLang, "jcmsplugin.socle.elu.conseiller.feminin");      
+    }else if(pub instanceof FicheEmploiStage) {
+      // Pour les emplois suivant le type d'emploi
+      FicheEmploiStage ficheEmploi = (FicheEmploiStage) pub;
+      Category typeRootCat = channel.getCategory("$jcmsplugin.socle.emploiStage.typeOffre.root");
+      Category typeCat = ficheEmploi.getFirstTypeDoffre(channel.getCurrentLoggedMember());
+      while(!JcmsUtil.isSameId(typeCat.getParent(), typeRootCat)) {
+        typeCat = typeCat.getParent();
+      }
+      libelle = JcmsUtil.glp(userLang, "jcmsplugin.socle.recherche.type." +  ficheEmploi.getClass().getSimpleName() + "." + typeCat.getId());
+    }else if(pub instanceof AccueilAnnuaireAgenda) {
+      // Pour l'agenda/annuaire
+      AccueilAnnuaireAgenda accueil = (AccueilAnnuaireAgenda) pub;
+      libelle = accueil.getTypeAnnuaire() ? JcmsUtil.glp (userLang, "jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.annuaire") : JcmsUtil.glp(userLang, "jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.agenda");
+    }else if( !JcmsUtil.glp(userLang, "jcmsplugin.socle.recherche.type." + pub.getClass().getSimpleName()).equals("jcmsplugin.socle.recherche.type." + pub.getClass().getSimpleName())) {
+      // Si un nom existe en proprité de langue prendre celui-ci en priorité
+      libelle = JcmsUtil.glp(userLang, "jcmsplugin.socle.recherche.type." + pub.getClass().getSimpleName());
+    }else {
+      // Prend le nom du BO
+      libelle = Util.recapitalize(channel.getTypeLabel(pub.getClass(), userLang));
+    }
+    return libelle;
+  }
   
 }

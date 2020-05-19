@@ -79,6 +79,7 @@ jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
 jcmsplugin.socle.recherche.portletsearch.id: 
 jcmsplugin.socle.recherche.portletmea.id: 
+jcmsplugin.socle.recherche.max-result: 15
 
 # ------------------------------------------------------------
 #  Regex
