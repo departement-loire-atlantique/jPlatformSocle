@@ -31,7 +31,11 @@ jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuil
 jcmsplugin.socle.rgpd.form.text: RGPD : texte en bas des formulaires
 jcmsplugin.socle.rgpd.form.linklabel: RGPD : libellé du lien "En savoir +" en bas des formulaires
 jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
-
+jcmsplugin.socle.recherche.geojson.departement.url: URL du geojson du département
+jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
+jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
+jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
+jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
