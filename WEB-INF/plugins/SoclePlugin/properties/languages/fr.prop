@@ -41,6 +41,7 @@ jcmsplugin.socle.recherche.portletmea.id: Header recherche - ID portlet MEA
 #  Recherche à facettes
 # ------------------------------------------------------------
 $jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
+jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Commune - mise à jour automatique des adresses triées par ordre alphabétique
 
 # ------------------------------------------------------------
 #  Formulaires
@@ -157,9 +158,7 @@ jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous
-jcmsplugin.socle.menu.pdcv.ajouterAdresse: Ajouter une adresse
-jcmsplugin.socle.menu.pdcv.votreAdresse: Votre adresse
-jcmsplugin.socle.menu.pdcv.preciserVotreAdresse: Merci de préciser votre adresse
+jcmsplugin.socle.menu.pdcv.adresse.label: Merci de préciser votre adresse
 jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
 
 jcmsplugin.socle.recherche.menu: Menu de recherche
