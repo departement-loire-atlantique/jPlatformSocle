@@ -7,7 +7,10 @@
 
 <form data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Formulaire&quot;,&quot;action&quot;: &quot;Recherchez un contact&quot;,&quot;label&quot;: &quot;$commune|text&quot;}">
     <div class="ds44-js-linked-fields ds44-js-masked-fields">
-        <% String idFormElement= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+        <%
+        String idFormElement= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
+        String titleAttr = glp("jcmsplugin.socle.recherche.facettes.commune.autocomplete.title");
+        %>
         <ds:facetteAutoCompletion idFormElement="<%= idFormElement %>"
 			name="commune" 
 			request="<%= request %>" 
@@ -15,6 +18,7 @@
 			dataMode="select-only" 
 			dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
 			label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
+			title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title",titleAttr) %>'
 			isLarge="false"/>
         <ds:pdcvSearchFields idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>'/>
         
