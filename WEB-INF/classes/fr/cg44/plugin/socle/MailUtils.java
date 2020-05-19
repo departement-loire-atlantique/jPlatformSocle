@@ -46,12 +46,10 @@ public final class MailUtils {
    parametersMap.put("sujet", form.getSujet(channel.getDefaultAdmin()).first());
    parametersMap.put("message", form.getMessage());
    
-   //String content = setContentHtmlFromJsp("/plugins/SoclePlugin/jsp/mail/mailContentTest.jsp", channel.getDefaultAdmin(), "fr", null, null);
-   // Envoi du mail d'activation à l'adresse mail saisie de l'utilisateur
    try {
      sendMail(objet, null, form.getMail(), emailTo, null, jsp, parametersMap);
      msgEnvoiMailContact();
-   } catch (javax.mail.MessagingException e) {
+   } catch (Exception e) {
      msgEchecEnvoiMailContact();
      LOGGER.error("Erreur lors de l'envoi du mail" + e.getMessage());
    }
