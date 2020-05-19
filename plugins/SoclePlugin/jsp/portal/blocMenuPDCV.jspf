@@ -31,8 +31,7 @@
         <div class="grid-12-small-1 ds44-grid-valign-center" aria-hidden="true">
 
             <div class="col-5-small-1 txtcenter">
-                <p role="heading" aria-level="2" class="h4-like"
-                      aria-hidden="true" id="pdcv-commune-name"><%= glp("jcmsplugin.socle.pdcv.consultez") %></p>
+                <p class="h4-like" id="pdcv-commune-name"><%= glp("jcmsplugin.socle.pdcv.consultez") %></p>
                 
                 <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.site.pdcv.portlet.id") %>'/>
                 

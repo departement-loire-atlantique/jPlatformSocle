@@ -53,6 +53,13 @@
 		type="String" 
 		description="Label de la facette" 
 %>
+<%@ attribute name="title" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="Le contenu de l'attribut title" 
+%>
 <%@ attribute name="option" 
 		required="false" 
 		fragment="false" 
@@ -100,31 +107,33 @@
 	<jalios:if predicate='<%= option.equalsIgnoreCase("limitrophe") || option.equalsIgnoreCase("epci") || option.equalsIgnoreCase("rayon") || option.equalsIgnoreCase("adresse") %>'>
 
 		<%
-			String title = JcmsUtil.glp(userLang, "jcmsplugin.socle.selectionner") + " " + label + " - ";
+			String titleAttr = JcmsUtil.glp(userLang, "jcmsplugin.socle.selectionner") + " " + label + " - ";
 			if(option.equalsIgnoreCase("rayon")) {
-				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label");
+				titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label");
 			} else {
-				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.maj-sous-theme.label")+" ";
+				titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.maj-sous-theme.label")+" ";
 				if(option.equalsIgnoreCase("limitrophe")) {
-					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.commune-limitrophe.label")+" ";
+					titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.commune-limitrophe.label")+" ";
 				} else if(option.equalsIgnoreCase("epci")) {
-					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.epci.label")+" ";
+					titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.epci.label")+" ";
 				} else if(option.equalsIgnoreCase("adresse")) {
-					title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")+" ";
+					titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")+" ";
 				}
-				title += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.tri-alphabetique.label");
+				titleAttr += JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.tri-alphabetique.label");
 			}
-			title += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
+			titleAttr += " - "+JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
 		%>
 
 		<div class="ds44-fieldContainer ds44-champsLies ds44-js-linked-fields">
 			<div class="ds44-form__container">
 
 
-				<label for='<%= idFormElement %>' class="ds44-formLabel"> <span
-					class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'> <span> <%= label %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+				<label for='<%= idFormElement %>' class="ds44-formLabel"> 
+					<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'> 
+						<span> 
+							<%= label %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
+						</span>
 					</span>
-				</span>
 				</label>
 				<% 
 					String styleCss = "ds44-inp" + styleChamps;
@@ -136,11 +145,19 @@
 					}
 				%>
 				<input type="text" id='<%= idFormElement %>' class='<%= styleCss %>' <%= name.equalsIgnoreCase("adresse") ? "type='text'" : "" %>
-					name='<%= idFormElement %>' role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" data-url='<%= dataUrl %>'
-					title='<%= title %>' data-mode='<%= dataMode %>' <%= isFacetteObligatoire ? "required" : ""%> aria-owns='<%= "owned_listbox_" + idFormElement %>'
-					<%= ! name.equalsIgnoreCase("adresse") ? "aria-activedescendant=\'selected_option_" + idFormElement + "\'" : "" %> />
+						name='<%= idFormElement %>' 
+						role="combobox" aria-autocomplete="list" 
+						autocomplete="off" 
+						aria-expanded="false" 
+						data-url='<%= dataUrl %>'
+						title='<%= titleAttr %>' 
+						data-mode='<%= dataMode %>' 
+						<%= isFacetteObligatoire ? "required" : ""%> 
+						aria-owns='<%= "owned_listbox_" + idFormElement %>'
+						<%= ! name.equalsIgnoreCase("adresse") ? "aria-activedescendant=\'selected_option_" + idFormElement + "\'" : "" %> />
 				<button class="ds44-reset" type="button" style="display: none;">
-					<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> <span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
+					<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> 
+					<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 				</button>
 
 				<jalios:if predicate='<%= name.equalsIgnoreCase("adresse") && Util.notEmpty(autourMoi) && autourMoi %>'>
@@ -369,7 +386,8 @@
 					aria-autocomplete="list" 
 					autocomplete="off" 
 					data-url='<%= dataUrl %>' 
-					data-mode='<%= dataMode %>' 
+					data-mode='<%= dataMode %>'
+					title='<%= title %>' 
 					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> />
 
 			<button class="ds44-reset" type="button">
