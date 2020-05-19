@@ -190,7 +190,6 @@
 						<p class="ds44-selectLabel" aria-hidden="true">
 							<%= labelOption %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
-						<input class="ds44-input-value" type="hidden">
 						<div id='<%= idFormElement %>' class="ds44-js-select-checkbox ds44-selectDisplay" 
 								data-name='<%= idFormElement %>'
 								data-url='<%= dataUrlOption %>' 
@@ -210,13 +209,13 @@
 						</button>
 					</div>
 
-					<div class="ds44-select-container hidden" data-bkp-aria-hidden="" aria-hidden="true">
+					<div class="ds44-select-container hidden">
 						<div class="ds44-flex-container ds44--m-padding">
 							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" 
 									aria-describedby="button-message-<%= idFormElement %>"
 									data-bkp-tabindex="" 
 									tabindex="-1">
-								<span class="ds44-btnInnerText"><%= JcmsUtil.glp("jcmsplugin.socle.tout-cocher") %></span>
+								<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.tout-cocher") %></span>
 								<i class="icon icon-check icon--medium" aria-hidden="true"></i>
 							</button>
 							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light" 
@@ -224,7 +223,7 @@
 									aria-describedby="button-message-<%= idFormElement %>" 
 									data-bkp-tabindex="" 
 									tabindex="-1">
-								<span class="ds44-btnInnerText"><%= JcmsUtil.glp("jcmsplugin.socle.tout-decocher") %></span>
+								<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.tout-decocher") %></span>
 								<i class="icon icon-cross icon--medium" aria-hidden="true"></i>
 							</button>
 						</div>
@@ -232,10 +231,10 @@
 							<ul class="ds44-list" id="listbox-<%= idFormElement %>"></ul>
 						</div>
 						<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" 
-								title='<%= JcmsUtil.glp("jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelOption) %>'
+								title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelOption) %>'
 								data-bkp-tabindex="" 
 								tabindex="-1">
-							<span class="ds44-btnInnerText"><%= JcmsUtil.glp("jcmsplugin.socle.valider") %></span>
+							<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.valider") %></span>
 							<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 						</button>
 					</div>
