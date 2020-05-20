@@ -19,6 +19,7 @@ TreeSet collection = new TreeSet(comp);
 
 QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);
+qh.setCheckPstatus(true);
 qh.setSearchedFields(tabSearchedFields);
 collection.addAll(qh.getResultSet());
 

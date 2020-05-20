@@ -41,6 +41,29 @@ jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégati
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
 jcmsplugin.socle.recherche.portletmea.id: Header recherche - ID portlet MEA
 
+jcmsplugin.socle.recherche.motcle.title: Zone de saisie de votre recherche
+
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_5282: Offre d’emploi
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_5284: Offre d’apprentissage
+jcmsplugin.socle.recherche.type.FicheEmploiStage.p2_290544: Offre de stage
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_1216290: Offre de service civique
+
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.annuaire: Annuaire 
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.agenda: Agenda
+
+jcmsplugin.socle.recherche.type.AccueilDelegation: Délégation
+jcmsplugin.socle.recherche.type.Action: Action 
+jcmsplugin.socle.recherche.type.ArticleGeolocalise: Article
+jcmsplugin.socle.recherche.type.FaqAccueil: Foire aux questions
+jcmsplugin.socle.recherche.type.FicheActionEducative: Action éducative
+jcmsplugin.socle.recherche.type.FicheActu: Actualité
+jcmsplugin.socle.recherche.type.FicheAide: Aide
+jcmsplugin.socle.recherche.type.FicheArticle: Article
+jcmsplugin.socle.recherche.type.FicheLieu: Lieu
+jcmsplugin.socle.recherche.type.PageCarrefour: Rubrique
+jcmsplugin.socle.recherche.type.FicheSAAD: Service d’aide à domicile (SAAD)
+jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
+
 # ------------------------------------------------------------
 #  Recherche à facettes
 # ------------------------------------------------------------
@@ -171,6 +194,7 @@ jcmsplugin.socle.recherche.menu.fermer: Fermer le menu Rechercher
 jcmsplugin.socle.recherche.motscles: Recherchez par mots-clés :
 jcmsplugin.socle.recherche.votrerecherche: Votre recherche
 jcmsplugin.socle.recherche.valider: Valider votre recherche par mots-clés
+jcmsplugin.socle.recherche.resultats: Résultats de votre recherche
 
 
 # ------------------------------------------------------------
