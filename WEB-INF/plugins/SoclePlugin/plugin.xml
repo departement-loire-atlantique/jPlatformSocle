@@ -409,6 +409,7 @@
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.IgnoreQueryFilter" />
   </plugincomponents>
     
   <private-files>
