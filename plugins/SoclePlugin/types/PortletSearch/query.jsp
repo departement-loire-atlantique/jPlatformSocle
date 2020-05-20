@@ -44,7 +44,7 @@ String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
 	                   </div>
  
                        <div class="ds44-fieldContainer ds44-small-fg1">
-                            <button class="ds44-btnStd ds44-theme  ds44-btnStd--large" title="Lancer la recherche"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
+                            <button class="ds44-btnStd ds44-theme  ds44-btnStd--large" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lancer.recherche")) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
 					   </div>
 					</div>
 				</form>
