@@ -44,17 +44,21 @@
 	String typeInput = typeDeSelection ? "checkbox" : "radio";
 	String labelInput = typeDeSelection ? "box" : "radio";
 	
-	String sbfNameCheck = nameType + idFormElement + "-" + numCat;
+	String nameInput = idFormElement + "-" + numCat;
+	String idInput = nameType + nameInput;
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">
-	<input value='<%= cat.getId() %>' 
-			id='<%= sbfNameCheck %>' 
+	<input type='<%= typeInput %>' 
+			id='<%= idInput %>' 
+			name="<%= nameInput %>" 
+			value='<%= cat.getId() %>' 
 			class='<%= "ds44-"+typeInput %>' 
-			type='<%= typeInput %>' />
+			aria-disabled="true"/>
 
-	<label for='<%= sbfNameCheck %>' 
-			class='<%= "ds44-" + labelInput + "Label" %>'>
+	<label for='<%= idInput %>' 
+			class='<%= "ds44-" + labelInput + "Label" %>'
+			id="<%= nameType + "-label-" + nameInput %>">
 
 		<%= cat.getName() %>
 
