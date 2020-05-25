@@ -82,7 +82,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                                 <jalios:select>
                                     <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
                                         <%-- Bloc près de chez vous --%>
-                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-expanded="true" data-bkp-aria-hidden="" data-bkp-tabindex=""><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
+                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
                                     </jalios:if>
                                     <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
                                     
