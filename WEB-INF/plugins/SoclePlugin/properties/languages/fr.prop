@@ -145,6 +145,7 @@ jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
 jcmsplugin.socle.retourALaListe: Retour à la liste 
+jcmsplugin.socle.retourALaListe.title: Retour à la liste des résultats
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
 jcmsplugin.socle.label.cs: CS
