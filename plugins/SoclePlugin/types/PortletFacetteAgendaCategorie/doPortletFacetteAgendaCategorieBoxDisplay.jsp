@@ -9,17 +9,19 @@
 	
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	
-	//TODO ajout parametre pour tag facetteCategorie : selection multiple ; categories racines ; profondeur (ici constante 1)
 	//TODO recuperer le flux sous la forme d'un JSONObject pour reutiliser 
-	//     InfolocaleMetadataUtils.getMetadata(String metadata, JSONObject jsonEvent) avec metadata = grtheme
-	//     pour récuperer ensuite la liste des thématiques enfants
+	JSONObject jsonEvent = new JSONObject();
+	
+	InfolocaleMetadataUtils.getMetadata("grtheme", jsonEvent);
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
-		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>'
+		listeCategory='<%=  %>'
 		idFormElement='<%= idFormElement %>' 
 		isDisabled='<%= false %>' 
-		request='<%= request %>'/>
+		request='<%= request %>' 
+		selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+		profondeur='true'/>
 
 <jalios:foreach collection='<%= obj.getCategoriesRacines(loggedMember) %>' name="itRootCat" type="Category">
     <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itRootCat.getId() %>' data-technical-field />

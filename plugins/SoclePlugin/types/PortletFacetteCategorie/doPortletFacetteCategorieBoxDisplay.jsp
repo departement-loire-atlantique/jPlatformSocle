@@ -11,10 +11,12 @@
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
-		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>'
+		listeCategory='<%= obj.getCategoriesRacines(loggedMember) %>' 
 		idFormElement='<%= idFormElement %>' 
 		isDisabled='<%= false %>' 
-		request='<%= request %>'/>
+		request='<%= request %>' 
+		selectionMultiple='<%= obj.getTypeDeSelection() %>' 
+		profondeur='<%= obj.getProfondeur() %>'/>
 
 <jalios:foreach collection='<%= obj.getCategoriesRacines(loggedMember) %>' name="itRootCat" type="Category">
     <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itRootCat.getId() %>' data-technical-field />
