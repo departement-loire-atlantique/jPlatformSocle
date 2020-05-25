@@ -340,6 +340,20 @@ jcmsplugin.socle.facette.cat-lie.theme-principal.label: Nom du thème
 jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
 jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
 jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
+jcmsplugin.socle.facette.date.select.title: Sélectionner une date
+jcmsplugin.socle.facette.date.select.today.label: Aujourd'hui
+jcmsplugin.socle.facette.date.select.tomorrow.label: Demain
+jcmsplugin.socle.facette.date.select.weekend.label: Le week-end prochain
+jcmsplugin.socle.facette.date.select.nextseven.label: Les 7 prochains jours
+jcmsplugin.socle.facette.date.select.example.custom: Sélectionner une période
+jcmsplugin.socle.facette.date.select.example.label: Ex : 20/05/2020
+jcmsplugin.socle.facette.date.select.du.label: Du
+jcmsplugin.socle.facette.date.select.jusquau.label: Jusqu'au
+jcmsplugin.socle.facette.date.calendrier.afficher: Afficher le calendrier pour le champ : {0}
+jcmsplugin.socle.facette.date.exemple.jour: {0} : jour (ex. 20)
+jcmsplugin.socle.facette.date.exemple.mois: {0} : mois (ex. 05)
+jcmsplugin.socle.facette.date.exemple.annee: {0} : annee (ex. 2020)
+
 
 jcmsplugin.socle.video.telecharger-transcript.label: Télécharger le fichier de transcription de la vidéo
 jcmsplugin.socle.video.telecharger-transcript.title: Télécharger le fichier de transcription de la vidéo : {0} - {1} - {2} - nouvelle fenêtre
