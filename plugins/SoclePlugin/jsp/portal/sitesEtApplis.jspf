@@ -7,7 +7,7 @@ Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
 Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
 %>
 
-<nav role="navigation">
+<nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.sitesapplis") %>'>
     <div class="ds44-inner-container">
         <ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
             <jalios:foreach collection="<%= appliMenuCatList %>" name="itCat" type="Category">
