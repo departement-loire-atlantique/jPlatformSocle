@@ -261,7 +261,6 @@ public class RequestManager {
     public static JSONObject getFluxMetadata(String fluxId, String metadata) {
       JSONObject fluxData = new JSONObject();
       
-      
       boolean expiredToken = false;
       
       try {
@@ -269,17 +268,18 @@ public class RequestManager {
           fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
           
           CloseableHttpResponse response = createGetConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/meta/" + metadata, true);
+          
           if (Util.isEmpty(response)) {
               LOGGER.warn("Method getFluxMetadata => pas de réponse HTTP" + pleaseCheckConf);
-          }
               return fluxData;
+          }
+              
           int status = response.getStatusLine().getStatusCode();
           
           switch (status) {
                       
               case 200:
                   if (Util.isEmpty(metadata)) {
-                  
                     fluxData = new JSONObject();
                     fluxData.put("listMetadata", new JSONArray(SocleUtils.convertStreamToString(response.getEntity().getContent())));
                   } else {
@@ -289,15 +289,14 @@ public class RequestManager {
                   
                   fluxData.put("dataType", Util.isEmpty(metadata) ? "list" : "single"); // pour déterminer si on a eu le résultat attendu
               case 401:
-                  break;
                   LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
                   expiredToken = true;
                   fluxData.put(failureReason, "invalid_token");
                   break;
-                  LOGGER.warn(methodGetFluxMetadataError + status + ". Flux " + fluxId + " non trouvé.");
               case 404:
-                  break;
+                  LOGGER.warn(methodGetFluxMetadataError + status + ". Flux " + fluxId + " non trouvé.");
                   fluxData.put(failureReason, "wrong_flux");
+                  break;
               default:
                   LOGGER.warn(methodGetFluxMetadataError + status + pleaseCheckConf + response.getStatusLine().getReasonPhrase());
                   fluxData.put(failureReason, "unknown_error");
@@ -316,7 +315,12 @@ public class RequestManager {
       
     }
     
+    /**
      * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête POST
+     * @param url
+     * @param params
+     * @param useToken
+     * @return
      */
     private static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, boolean useToken) {
         
