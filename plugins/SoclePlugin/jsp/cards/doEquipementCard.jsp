@@ -11,13 +11,16 @@ if (data == null) {
 }
 
 Equipement pub = (Equipement) data;
+
 boolean hasBottomInfos = Util.notEmpty(pub.getThematique(loggedMember)) || (Util.notEmpty(pub.getMontantDeLaSubvention()) && pub.getMontantDeLaSubvention() > 0);
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <h3 class="h4-like ds44-cardTitle" id="tuileEquipement_<%= pub.getId() %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h3>
+            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileEquipement_<%= pub.getId() %>">
+                <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
+            </p>
             <jalios:if predicate="<%= hasBottomInfos %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <jalios:if predicate="<%= Util.notEmpty(pub.getThematique(loggedMember)) %>">

@@ -12,6 +12,7 @@ if (data == null) {
 
 Canton pub = (Canton) data;
 
+String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 Set<Publication> referencedElus = new TreeSet<>(ComparatorManager.getComparator(Publication.class, "name"));
 referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 
@@ -19,7 +20,7 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 
 <section class="ds44-box ds44-bgGray">
     <div class="ds44--l-padding ds44-box--temoignage">
-         <p role="heading" aria-level="2" class="h3-like"><%= pub.getTitle() %></p>
+         <p role="heading" aria-level="2" class="h3-like" id="tuileCanton_<%= uid %>"><%= pub.getTitle() %></p>
          <div class="grid-2">
          
             <jalios:if predicate="<%= Util.notEmpty(referencedElus) %>">

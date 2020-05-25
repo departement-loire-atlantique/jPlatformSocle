@@ -57,8 +57,7 @@
                 <span class="ds44-labelTypePlaceholder"><span><%= mailLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="email" id="form-element-mail" name="mail" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", mailLabel) %>"
-                required="" autocomplete="email" aria-describedby="explanation-form-element-mail"
-                data-bkp-aria-describedby="explanation-form-element-mail">
+                required="" autocomplete="email" aria-describedby="explanation-form-element-mail">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", mailLabel) %></span>
             </button>
@@ -80,8 +79,7 @@
                 <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", telephoneLabel) %>"
-                autocomplete="tel" aria-describedby="explanation-form-element-telephone"
-                data-bkp-aria-describedby="explanation-form-element-telephone">
+                autocomplete="tel" aria-describedby="explanation-form-element-telephone">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", telephoneLabel) %></span>
             </button>
@@ -103,8 +101,7 @@
                 <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
-                autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal"
-                data-bkp-aria-describedby="explanation-form-element-codepostal">
+                autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
             </button>
@@ -132,19 +129,19 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 		    <button type="button" id="button-form-element-sujet" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", sujetLabel) %>"><i class="icon icon--sizeL icon-down" aria-hidden="true"></i><span id="button-message-form-element-sujet" class="visually-hidden"><%= sujetLabel %></span></button>
 		</div>
 
-	    <div class="ds44-select-container hidden" data-bkp-aria-hidden="" aria-hidden="true">
+	    <div class="ds44-select-container hidden" aria-hidden="true">
 	        <div class="ds44-listSelect">
 	            <ul class="ds44-list" id="listbox-form-element-sujet">
 	               <jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
 	                   <li class="ds44-select-list_elem selected_option">
 						<div class="ds44-form__container ds44-checkBox-radio_list ">
-						    <input type="radio" name="sujet" value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" class="ds44-radio" data-bkp-tabindex="" tabindex="-1"><label id="label-form-element-sujet-<%= itCounter %>" for="form-element-sujet-<%= itCounter %>" class="ds44-radioLabel"><%= itCat.getName() %></label>
+						    <input type="radio" name="sujet" value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" class="ds44-radio"><label id="label-form-element-sujet-<%= itCounter %>" for="form-element-sujet-<%= itCounter %>" class="ds44-radioLabel"><%= itCat.getName() %></label>
 						</div>
                         </li>
 	                </jalios:foreach>
 	            </ul>
 	        </div>
-	        <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="<%= glp("jcmsplugin.socle.facette.cat-lie.valider-selection.label", sujetLabel) %>" data-bkp-tabindex="" tabindex="-1"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
+	        <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="<%= glp("jcmsplugin.socle.facette.cat-lie.valider-selection.label", sujetLabel) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
 	    </div>
     </div>
 </div>
