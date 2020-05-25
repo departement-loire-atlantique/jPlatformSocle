@@ -5,6 +5,9 @@
 %><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%><%
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
+
+request.setAttribute("inFO", Boolean.TRUE);
+
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file="/jcore/portal/doPortletParams.jspf" %><%
 
