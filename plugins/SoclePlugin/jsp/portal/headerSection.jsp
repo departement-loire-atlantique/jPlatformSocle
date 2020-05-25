@@ -137,7 +137,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         </section>
         
         <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
-            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>'/>
         </jalios:foreach>
         
         <%-- Bloc près de chez vous --%>
@@ -145,7 +145,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
         </jalios:if>
         
-        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
+        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-label='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.menu.principal2", glp("jcmsplugin.socle.sitesapplis"))) %>' id="navApplis">
         
         <div class="ds44-container-menuBackLink">
             <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">
