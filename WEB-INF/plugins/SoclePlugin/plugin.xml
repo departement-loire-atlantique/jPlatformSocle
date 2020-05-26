@@ -51,6 +51,7 @@
     <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaAccessibilit"></type>
+    <type name="PortletFacetteAgendaDate"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
     <type name="PortletFacetteCategoriesLiees"></type>
@@ -257,6 +258,11 @@
     </templates>
     <templates type="PortletFacetteAgendaAccessibilit">
         <template name="default" file="doPortletFacetteAgendaAccessibilitBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteAgendaDate">
+        <template name="default" file="doPortletFacetteAgendaDateBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>

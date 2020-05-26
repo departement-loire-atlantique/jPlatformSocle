@@ -368,10 +368,13 @@ public class InfolocaleUtil {
       Calendar cal = Calendar.getInstance();
       SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
       
+      do {
+        cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // atteindre le prochain samedi
+      } while (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY);
+      
       String[] weekendDays = new String[2];
-      cal.set(Calendar.DAY_OF_WEEK, 6); // samedi
       weekendDays[0] = sdfInfolocale.format(cal.getTime());
-      cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // dimanche (le DAY_OF_WEEK commence à 0 sur la valeur "dimanche", il faut forcer la semaine suivante)
+      cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // dimanche
       weekendDays[1] = sdfInfolocale.format(cal.getTime());
 
       return weekendDays;
