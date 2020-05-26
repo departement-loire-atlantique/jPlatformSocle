@@ -10,19 +10,29 @@
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	
 	//TODO recuperer le flux sous la forme d'un JSONObject pour reutiliser 
-	JSONObject jsonEvent = new JSONObject();
+	JSONObject extractedFlux = new JSONObject();
 	
-	InfolocaleMetadataUtils.getMetadata("grtheme", jsonEvent);
+	boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
+	
+	if(!fluxSuccess && extractedFlux.getJSONArray("result").length() <= 0) return;
+		
+	EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+
+	Set<Genre> listeGenre = new HashSet<Genre>();
+	
+	for(EvenementInfolocale event : evenements) {
+		listeGenre.add(event.getGenre());
+	}
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
-		listeCategory='<%=  %>'
+		listeGenre='<%= listeGenre %>'
 		idFormElement='<%= idFormElement %>' 
 		isDisabled='<%= false %>' 
 		request='<%= request %>' 
 		selectionMultiple='<%= obj.getSelectionMultiple() %>' 
 		profondeur='true'/>
 
-<jalios:foreach collection='<%= obj.getCategoriesRacines(loggedMember) %>' name="itRootCat" type="Category">
-    <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itRootCat.getId() %>' data-technical-field />
+<jalios:foreach collection='<%= listeGenre %>' name="itGenre" type="Genre">
+    <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itGenre.getGenreId() %>' data-technical-field />
 </jalios:foreach>

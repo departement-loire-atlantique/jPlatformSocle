@@ -11,8 +11,8 @@
 			javax.servlet.http.HttpServletRequest, 
 			com.jalios.jcms.Member, 
 			com.jalios.jcms.Category, 
-			java.util.Set,
-			java.util.TreeSet, 
+			fr.cg44.plugin.socle.infolocale.entities.Genre, 
+			java.util.Set, 
 			fr.cg44.plugin.socle.SocleUtils" 
 %>
 <%@ attribute name="obj" 
@@ -23,11 +23,18 @@
 		description="La facette categorie" 
 %>
 <%@ attribute name="listeCategory" 
-		required="true" 
+		required="false" 
 		fragment="false" 
 		rtexprvalue="true" 
-		type="TreeSet<Category>" 
+		type="Set<Category>" 
 		description="La liste des categories selectionnables" 
+%>
+<%@ attribute name="listeGenre" 
+		required="false" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Set<Genre>" 
+		description="La liste des genres selectionnables (pour l'agenda)" 
 %>
 <%@ attribute name="dataURL" 
 		required="false" 
@@ -130,22 +137,38 @@
 		</jalios:if>
 		<% int nbrTotalCat = 0; %>
 		<jalios:if predicate='<%= Util.notEmpty(dataURL) || profondeur %>'>
+			
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
-					<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
-						<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+					<jalios:if predicate="<%= Util.notEmpty(listeCategory) %>">
+						<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
+							<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+								<% nbrTotalCat++; %>
+								<li class="ds44-select-list_elem">
+									
+									<ds:facetteCategorieListElem cat='<%= itCat %>' 
+										idFormElement='<%= idFormElement %>' 
+										typeDeSelection='<%= selectionMultiple %>' 
+										numCat='<%= nbrTotalCat %>'/>
+								</li>
+							</jalios:foreach>
+						</jalios:foreach>
+					</jalios:if>
+					<jalios:if predicate="<%= Util.notEmpty(listeGenre) %>">
+						<jalios:foreach name="itGenre" type="Genre" collection='<%= listeGenre %>'>
 							<% nbrTotalCat++; %>
 							<li class="ds44-select-list_elem">
 								
-								<ds:facetteCategorieListElem cat='<%= itCat %>' 
+								<ds:facetteAgendaCategorieListElem genre='<%= itGenre %>' 
 									idFormElement='<%= idFormElement %>' 
 									typeDeSelection='<%= selectionMultiple %>' 
-									numCat='<%= nbrTotalCat %>'/>
+									numGenre='<%= nbrTotalCat %>'/> 
 							</li>
 						</jalios:foreach>
-					</jalios:foreach>
+					</jalios:if>
 				</ul>
 			</div>
+			
 		</jalios:if>
 		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !profondeur %>'>
 			<ul class="ds44-collapser ds44-listSelect">
