@@ -5,7 +5,7 @@
 <%@ tag 
     pageEncoding="UTF-8"
     description="Génère une boîte d'affichage de message." 
-    body-content="tagdependent" 
+    body-content="scriptless" 
     import="com.jalios.jcms.Channel,
             com.jalios.util.ServletUtil,
             com.jalios.jcms.JcmsUtil,
@@ -48,7 +48,7 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
 <div class="ds44-errorMsg-container" aria-live="polite">
     <jalios:if predicate='<%= Util.notEmpty(title) %>'>
-        <p id="error-mgs" class="ds44-msgErrorText ds44-msgErrorInvalid" tabindex="-1">
+        <p id="error-mgs" class="ds44-msgErrorText ds44-msgErrorInvalid">
             <i class="icon icon-attention icon--sizeM" aria-hidden="true"></i>
             <span class="ds44-iconInnerText ds44-errorLabel"><%= title %></span>
         </p>

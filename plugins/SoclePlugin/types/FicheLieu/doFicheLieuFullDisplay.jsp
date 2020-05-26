@@ -68,7 +68,7 @@
 								<div class="col">
 
 									<jalios:if predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces()) || Util.notEmpty(localisation) %>'>
-										<p role="heading" aria-level="3" class="ds44-box-heading"><%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
+										<p role="heading" aria-level="2" class="ds44-box-heading"><%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
 
 										<jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
 											<p class="ds44-docListElem mts">
@@ -138,7 +138,7 @@
 										</jalios:if>
 
 										<%--  TODO infos accessibilite --%>
-										<%-- <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.accessibilite-lieu.titre") %></p>
+										<%-- <p role="heading" aria-level="2" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.accessibilite-lieu.titre") %></p>
 										<p class="ds44-docListElem mts">
 											<i class="icon icon-right ds44-docListIco" aria-hidden="true"></i> 
 											<a href="#" aria-label='<%= glp("jcmsplugin.socle.ficheaide.info-accessibilite.label") + " : " + obj.getTitle()%>'>
@@ -153,7 +153,7 @@
 
 									<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone()) || Util.notEmpty(obj.getEmail())
 												|| Util.notEmpty(obj.getSiteInternet())%>'>
-										<p role="heading" aria-level="3" class="ds44-box-heading">
+										<p role="heading" aria-level="2" class="ds44-box-heading">
 											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousContacter")+" :" : glp("jcmsplugin.socle.ficheaide.contact")+" :"%>
 										</p>
 
@@ -234,7 +234,7 @@
 									</jalios:if>
 
 									<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
-										<p role="heading" aria-level="3" class="ds44-box-heading mtl">
+										<p role="heading" aria-level="2" class="ds44-box-heading mtl">
 											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
 										</p>
 										<p class="ds44-docListElem mts">
@@ -387,7 +387,7 @@
 			<div class="ds44-inner-container ds44-mtb3">
 				<div class="ds44-grid12-offset-2">
 					<div class="ds44-wsg-encadreContour">
-						<p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
+						<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
 
 						<jalios:if predicate='<%= Util.notEmpty(obj.getHorairesEtAcces()) %>'>
 							<div class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="3">

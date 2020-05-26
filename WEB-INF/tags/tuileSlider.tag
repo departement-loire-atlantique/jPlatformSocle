@@ -54,7 +54,7 @@
     <section
         class="ds44-card ds44-card--verticalPicture ds44-<%= theme %>">
         <% if (Util.notEmpty(urlImage)) { %>
-            <a href="<%= pub.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true"> <picture
+            <a href="<%= pub.getDisplayUrl(userLocale) %>"><picture
                     class="ds44-container-imgRatio"> <img
                     src="<%= urlImage %>" alt="" class="ds44-imgRatio" /> </picture>
             </a>
@@ -74,8 +74,7 @@
                         class="ds44-iconInnerText"><%= location %></span>
                 </p>
             <% } %>
-            <a href="<%= pub.getDisplayUrl(userLocale) %>" tabindex="-1"
-                aria-hidden="true"> <i
+            <a href="<%= pub.getDisplayUrl(userLocale) %>"> <i
                 class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
                 <span class="visually-hidden"><%= title %></span>
             </a>

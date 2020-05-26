@@ -64,6 +64,7 @@ jcmsplugin.socle.rgpd.pub.id:
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
 jcmsplugin.socle.site.src.logomobile:
+jcmsplugin.socle.site.logo.style:
 jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
 jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
 jcmsplugin.socle.site.header.cat: 
@@ -79,6 +80,7 @@ jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
 jcmsplugin.socle.recherche.portletsearch.id: 
 jcmsplugin.socle.recherche.portletmea.id: 
+jcmsplugin.socle.recherche.max-result: 15
 
 # ------------------------------------------------------------
 #  Regex
@@ -93,11 +95,11 @@ $jcmsplugin.socle.recherche.facettes.portal: c_1273916
 # Les contenus ayant cette catégorie de classement ne remonteront pas dans les moteurs de recherche.
 $jcmsplugin.socle.recherche.nonrepertoriee.cat: c_1274159
 
-$jcmsplugin.socle.recherche.geojson.departement.url: https://cartes.loire-atlantique.fr/geojson/LA2018.geojson
-$jcmsplugin.socle.recherche.geojson.communes.url: https://cartes.loire-atlantique.fr/geojson/communes2019.geojson
-$jcmsplugin.socle.recherche.geojson.epci.url: https://cartes.loire-atlantique.fr/geojson/epci.geojson
-$jcmsplugin.socle.recherche.geojson.canton.url: https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson
-$jcmsplugin.socle.recherche.geojson.delegation.url: https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson
+jcmsplugin.socle.recherche.geojson.departement.url: https://cartes.loire-atlantique.fr/geojson/LA2018.geojson
+jcmsplugin.socle.recherche.geojson.communes.url: https://cartes.loire-atlantique.fr/geojson/communes2019.geojson
+jcmsplugin.socle.recherche.geojson.epci.url: https://cartes.loire-atlantique.fr/geojson/epci.geojson
+jcmsplugin.socle.recherche.geojson.canton.url: https://cartes.loire-atlantique.fr/geojson/cantons_2018.geojson
+jcmsplugin.socle.recherche.geojson.delegation.url: https://cartes.loire-atlantique.fr/geojson/delegations_2018.geojson
 
 $jcmsplugin.socle.autocompletion.adresse.url: https://api-adresse.data.gouv.fr/search/?limit=5&citycode=$parentValue
 
@@ -389,6 +391,8 @@ jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
+jcmsplugin.socle.infolocale.flux.url: http://api.infolocale.fr/flux/
+jcmsplugin.socle.infolocale.extract.url: http://api.infolocale.fr/flux/type/annonces/extract/
 
 # Metadonnees Infolocale pour le front
 

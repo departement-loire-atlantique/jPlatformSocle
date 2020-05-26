@@ -25,7 +25,7 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
-    private static String dateInfolocalePattern = "yyyy-MM-dd";
+    public static String dateInfolocalePattern = "yyyy-MM-dd";
     
     private InfolocaleUtil() {}
     
@@ -311,5 +311,72 @@ public class InfolocaleUtil {
         splittedList.add(eventClone);
       }
       return splittedList;
+    }
+    
+    /**
+     * Retourne le format de date lisible par infolocale yyyy-MM-dd
+     * @param date
+     * @return
+     */
+    public static String convertDateToInfolocaleFormat(Date date) {
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      return sdfInfolocale.format(date);
+    }
+    
+    /**
+     * Retourne la date d'aujourd'hui dans un format lisible par infolocale yyyy-MM-dd
+     * @return
+     */
+    public static String getDateTodayInfolocale() {
+      Calendar cal = Calendar.getInstance();
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      return sdfInfolocale.format(cal.getTime());
+    }
+    
+    /**
+     * Retourne la date de demain dans un format lisible par infolocale yyyy-MM-dd
+     * @return
+     */
+    public static String getDateTomorrowInfolocale() {
+      Calendar cal = Calendar.getInstance();
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1);
+      return sdfInfolocale.format(cal.getTime());
+    }
+    
+    /**
+     * Retourne la date des sept prochains jours dans un format lisible par infolocale yyyy-MM-dd
+     * @return
+     */
+    public static String[] getDateNextSevenDaysInfolocale() {
+      Calendar cal = Calendar.getInstance();
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      String[] nextSevenDays = new String[7];
+      for (int dateCounter = 0; dateCounter <= 6; dateCounter++) {
+        cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1);
+        nextSevenDays[dateCounter] = sdfInfolocale.format(cal.getTime());
+      }
+      return nextSevenDays;
+    }
+    
+    /**
+     * Retourne la date du weekend dans un format lisible par infolocale yyyy-MM-dd
+     * Dans le cas où le jour actuel serait samedi ou dimanche, prendre ce weekend actuel
+     * @return
+     */
+    public static String[] getDateWeekendInfolocale() {
+      Calendar cal = Calendar.getInstance();
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      
+      do {
+        cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // atteindre le prochain samedi
+      } while (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY);
+      
+      String[] weekendDays = new String[2];
+      weekendDays[0] = sdfInfolocale.format(cal.getTime());
+      cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // dimanche
+      weekendDays[1] = sdfInfolocale.format(cal.getTime());
+
+      return weekendDays;
     }
 }

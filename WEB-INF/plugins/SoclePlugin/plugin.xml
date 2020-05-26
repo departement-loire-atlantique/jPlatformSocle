@@ -51,6 +51,7 @@
     <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaCategorie"></type>
+    <type name="PortletFacetteAgendaDate"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
     <type name="PortletFacetteCategoriesLiees"></type>
@@ -260,6 +261,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletFacetteAgendaDate">
+        <template name="default" file="doPortletFacetteAgendaDateBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletFacetteCanton">
         <template name="default" file="doPortletFacetteCantonBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
@@ -415,6 +421,7 @@
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.IgnoreQueryFilter" />
   </plugincomponents>
     
   <private-files>

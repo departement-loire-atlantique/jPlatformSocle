@@ -139,9 +139,6 @@
             <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
 		
             <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
-		
-			<input type="hidden" name='<%= "typeCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeCarte() %>' data-technical-field />
-			<input type="hidden" name='<%= "natureCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getNatureDeLaCarte() ? "contour" : "actif" %>' data-technical-field />
 		</form>
 	</div>
 	
@@ -204,9 +201,12 @@
 		      
 		      <div class="ds44-mapResults">
 		          <div class="ds44-mapResults-container">
-				      <div class="ds44-js-map"></div>
+				      <div class="ds44-js-map" 
+                      		data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : channel.getProperty(obj.getTypeDeCarte()) %>' 
+                      		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
+                      		data-geojson-refine='<%= obj.getCarteDynamique() %>'></div>
 				      
-				      <button type="button" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+				      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
 				      </button>
 				  </div>

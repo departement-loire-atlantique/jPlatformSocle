@@ -355,4 +355,32 @@ public class InfolocaleEntityUtils {
         return false;
     }
     
+    /**
+     * Retourne l'objet JSON associé à un événement depuis un JSONArray
+     * @param event
+     * @return
+     */
+    public static JSONObject getJsonObjectOfEvent(EvenementInfolocale event, JSONArray jsonArray) {
+      if (Util.isEmpty(event) || Util.isEmpty(jsonArray) || Util.isEmpty(event.getId())) {
+        return null;
+      }
+      
+      Integer jsonEventId = Util.toInteger(event.getId().replace("INFOLOC-", ""), -1);
+      
+      for (int jsonArrayCounter = 0; jsonArrayCounter <= jsonArray.length(); jsonArrayCounter++) {
+        JSONObject itJsonObject;
+        try {
+          itJsonObject = jsonArray.getJSONObject(jsonArrayCounter);
+          if (jsonEventId == itJsonObject.getInt("id")) {
+            return itJsonObject;
+          }
+        } catch (JSONException e) {
+          LOGGER.warn("Exception in getJsonObjectOfEvent : " + e.getMessage());
+        }
+        
+      }
+      
+      return null;
+    }
+    
 }

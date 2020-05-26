@@ -449,9 +449,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </jalios:if>
 
 <jalios:if predicate="<%= displayQuiContacter %>">
-<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog" data-bkp-aria-hidden="true">
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog">
     <div class="ds44-modal-box">
-        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close" data-bkp-tabindex="" tabindex="-1">
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close">
             <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
         </button>
         <h1 class="h2-like" id="titre-modale-qui-contacter"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h1>

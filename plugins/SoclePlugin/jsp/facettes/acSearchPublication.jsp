@@ -3,6 +3,9 @@
 %><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%><%
 %><%@page import="com.google.gson.JsonObject"%><%
 %><%@page import="com.google.gson.JsonArray"%><%
+
+request.setAttribute("inFO", Boolean.TRUE);
+
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 response.setContentType("application/json");
 
@@ -19,6 +22,7 @@ TreeSet collection = new TreeSet(comp);
 
 QueryHandler qh = new QueryHandler(query);
 qh.setText(textSearch);
+qh.setCheckPstatus(true);
 qh.setSearchedFields(tabSearchedFields);
 collection.addAll(qh.getResultSet());
 

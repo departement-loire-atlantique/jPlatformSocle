@@ -83,29 +83,29 @@ pour pouvoir s'adapter aux contraintes graphiques du DS
   }
   
   if (Util.notEmpty(errorMsg)) {
-    %><ds:message msg="<%= errorMsg %>" msgList="" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message msg="<%= errorMsg %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
   }
   if (Util.notEmpty(warningMsg)) {
-    %><ds:message msg="<%= warningMsg %>" msgList="" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message msg="<%= warningMsg %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
   }
   if (Util.notEmpty(infoMsg)) {
-    %><ds:message msg="<%= infoMsg %>" msgList="" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msg="<%= infoMsg %>" title="<%= titreMessageBox %>" css=""/><%
   }
   if (Util.notEmpty(successMsg)) {
-    %><ds:message msg="<%= successMsg %>" msgList="" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msg="<%= successMsg %>" title="<%= titreMessageBox %>" css=""/><%
   }
   
   if (Util.notEmpty(errorsList)) {
-    %><ds:message msg="" msgList="<%= errorsList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message msgList="<%= errorsList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
   } 
-  if (Util.notEmpty(warningList)) {%>
-    <ds:message msg="" msgList="<%= warningList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+  if (Util.notEmpty(warningList)) {
+    %><ds:message msgList="<%= warningList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
   }
   if (Util.notEmpty(infoList)) {
-    %><ds:message msg="" msgList="<%= infoList %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msgList="<%= infoList %>" title="<%= titreMessageBox %>" css=""/><%
   }
   if (Util.notEmpty(successList)) {
-    %><ds:message msg="" msgList="<%= successList %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msgList="<%= successList %>" title="<%= titreMessageBox %>" css=""/><%
   }
   request.getSession().removeAttribute(JcmsConstants.ERROR_MSG);
   request.getSession().removeAttribute(JcmsConstants.WARNING_MSG);

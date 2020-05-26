@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -109,6 +110,13 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                                         <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
                                         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i>
                                         <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span></p>
+                                        </jalios:if>
+                                        <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
+                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_1()) && !box.getMetadonneesTuileCarrousel_1().equals(metaCommune) %>">
+                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_1(), itEvent, extractedFlux.getJSONArray("result")) %>
+                                        </jalios:if>
+                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_2()) && !box.getMetadonneesTuileCarrousel_2().equals(metaCommune) %>">
+                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_2(), itEvent, extractedFlux.getJSONArray("result")) %>
                                         </jalios:if>
                                         <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
                                         <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>

@@ -20,9 +20,15 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
         
         <div class="ds44-form__container hidden">
             <div class="ds44-posRel">
-                <label for="adresse-<%= idFormElement %>" class="ds44-formLabel--external"><span class="ds44-labelTypePlaceholder"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.ajouterAdresse") %><sup aria-hidden="true"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.facette.asterisque") %></sup></span></label>
+                <label for="adresse-<%= idFormElement %>" class="ds44-formLabel ds44-moveLabel">
+                    <span class="ds44-labelTypePlaceholder">
+                        <span><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.adresse.label") %>
+                            <sup aria-hidden="true"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.facette.asterisque") %></sup>
+                        </span>
+                    </span>
+                </label>
                 
-                <input class="ds44-input-value" type="hidden" value=""><input class="ds44-input-metadata" type="hidden" value=""><input type="text" id="adresse-<%= idFormElement %>" name="adresse" class="ds44-inpStd ds44-js-field-address" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title='<%= JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.ajouterAdresse") %> - <%= JcmsUtil.glp(userLang,"jcmsplugin.socle.obligatoire") %>' data-url='<%= Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url") %>' data-mode="select-only" required="" placeholder='<%= JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.votreAdresse") %>' aria-owns="owned_listbox_id<%= uid %>"><button class="ds44-reset" type="button" style="display: none;"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.ajouterAdresse")) %></span></button>
+                <input class="ds44-input-value" type="hidden" value=""><input class="ds44-input-metadata" type="hidden" value=""><input type="text" id="adresse-<%= idFormElement %>" name="adresse" class="ds44-inpStd ds44-js-field-address" role="combobox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" title='<%= JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.adresse.label") %> - <%= JcmsUtil.glp(userLang,"jcmsplugin.socle.obligatoire") %>' data-url='<%= Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url") %>' data-mode="select-only" required="" aria-owns="owned_listbox_id<%= uid %>"><button class="ds44-reset" type="button" style="display: none;"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang,"jcmsplugin.socle.menu.pdcv.adresse.label")) %></span></button>
                 
                 <div class="ds44-autocomp-container hidden" aria-hidden="true">
                     <div class="ds44-autocomp-list">

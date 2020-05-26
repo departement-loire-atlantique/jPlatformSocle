@@ -31,16 +31,44 @@ jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuil
 jcmsplugin.socle.rgpd.form.text: RGPD : texte en bas des formulaires
 jcmsplugin.socle.rgpd.form.linklabel: RGPD : libellé du lien "En savoir +" en bas des formulaires
 jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
-
+jcmsplugin.socle.recherche.geojson.departement.url: URL du geojson du département
+jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
+jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
+jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
+jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
 jcmsplugin.socle.recherche.portletmea.id: Header recherche - ID portlet MEA
 
+jcmsplugin.socle.recherche.motcle.title: Zone de saisie de votre recherche
+
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_5282: Offre d’emploi
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_5284: Offre d’apprentissage
+jcmsplugin.socle.recherche.type.FicheEmploiStage.p2_290544: Offre de stage
+jcmsplugin.socle.recherche.type.FicheEmploiStage.c_1216290: Offre de service civique
+
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.annuaire: Annuaire 
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.agenda: Agenda
+
+jcmsplugin.socle.recherche.type.AccueilDelegation: Délégation
+jcmsplugin.socle.recherche.type.Action: Action 
+jcmsplugin.socle.recherche.type.ArticleGeolocalise: Article
+jcmsplugin.socle.recherche.type.FaqAccueil: Foire aux questions
+jcmsplugin.socle.recherche.type.FicheActionEducative: Action éducative
+jcmsplugin.socle.recherche.type.FicheActu: Actualité
+jcmsplugin.socle.recherche.type.FicheAide: Aide
+jcmsplugin.socle.recherche.type.FicheArticle: Article
+jcmsplugin.socle.recherche.type.FicheLieu: Lieu
+jcmsplugin.socle.recherche.type.PageCarrefour: Rubrique
+jcmsplugin.socle.recherche.type.FicheSAAD: Service d’aide à domicile (SAAD)
+jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
+
 # ------------------------------------------------------------
 #  Recherche à facettes
 # ------------------------------------------------------------
 $jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
+jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Commune - mise à jour automatique des adresses triées par ordre alphabétique
 
 # ------------------------------------------------------------
 #  Formulaires
@@ -117,6 +145,7 @@ jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
 jcmsplugin.socle.retourALaListe: Retour à la liste 
+jcmsplugin.socle.retourALaListe.title: Retour à la liste des résultats
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
 jcmsplugin.socle.label.cs: CS
@@ -147,19 +176,17 @@ jcmsplugin.socle.retour.accueil: Retour à l’accueil du site
 jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
-jcmsplugin.socle.menu.retour: Retour au menu de navigation
+jcmsplugin.socle.menu.retour: Retour au premier niveau du menu de navigation
 jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
 jcmsplugin.socle.menu.principal1: Menu principal niveau 1
-jcmsplugin.socle.menu.principal2: Menu principal niveau 2
+jcmsplugin.socle.menu.principal2: Menu {0} : second niveau de navigation
 jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
 jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous
-jcmsplugin.socle.menu.pdcv.ajouterAdresse: Ajouter une adresse
-jcmsplugin.socle.menu.pdcv.votreAdresse: Votre adresse
-jcmsplugin.socle.menu.pdcv.preciserVotreAdresse: Merci de préciser votre adresse
+jcmsplugin.socle.menu.pdcv.adresse.label: Merci de préciser votre adresse
 jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
 
 jcmsplugin.socle.recherche.menu: Menu de recherche
@@ -168,6 +195,7 @@ jcmsplugin.socle.recherche.menu.fermer: Fermer le menu Rechercher
 jcmsplugin.socle.recherche.motscles: Recherchez par mots-clés :
 jcmsplugin.socle.recherche.votrerecherche: Votre recherche
 jcmsplugin.socle.recherche.valider: Valider votre recherche par mots-clés
+jcmsplugin.socle.recherche.resultats: Résultats de votre recherche
 
 
 # ------------------------------------------------------------
@@ -297,6 +325,8 @@ jcmsplugin.socle.facette.canton.default-label: Canton
 jcmsplugin.socle.facette.commune.default-label: Commune
 jcmsplugin.socle.facette.delegation.default-label: Délégation
 jcmsplugin.socle.facette.rayon.label: Rayon
+jcmsplugin.socle.facette.localisation.title: Autoriser la localisation automatique 'autour de moi' pour le champ : {0}
+jcmsplugin.socle.facette.localisation.label: Autoriser la localisation automatique 'autour de moi'
 jcmsplugin.socle.facette.commune-limitrophe.label: Nom de la commune limitrophe
 jcmsplugin.socle.facette.epci.label: Nom de l'epci
 jcmsplugin.socle.facette.titre.default-label: Titre
@@ -311,6 +341,20 @@ jcmsplugin.socle.facette.cat-lie.theme-principal.label: Nom du thème
 jcmsplugin.socle.facette.cat-lie.sous-theme.label: Nom du sous-thème
 jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choisir une option
 jcmsplugin.socle.facette.cat-lie.valider-selection.label: Valider la sélection de : {0}
+jcmsplugin.socle.facette.date.select.title: Sélectionner une date
+jcmsplugin.socle.facette.date.select.today.label: Aujourd'hui
+jcmsplugin.socle.facette.date.select.tomorrow.label: Demain
+jcmsplugin.socle.facette.date.select.weekend.label: Le week-end prochain
+jcmsplugin.socle.facette.date.select.nextseven.label: Les 7 prochains jours
+jcmsplugin.socle.facette.date.select.example.custom: Sélectionner une période
+jcmsplugin.socle.facette.date.select.example.label: Ex : 20/05/2020
+jcmsplugin.socle.facette.date.select.du.label: Du
+jcmsplugin.socle.facette.date.select.jusquau.label: Jusqu'au
+jcmsplugin.socle.facette.date.calendrier.afficher: Afficher le calendrier pour le champ : {0}
+jcmsplugin.socle.facette.date.exemple.jour: {0} : jour (ex. 20)
+jcmsplugin.socle.facette.date.exemple.mois: {0} : mois (ex. 05)
+jcmsplugin.socle.facette.date.exemple.annee: {0} : annee (ex. 2020)
+
 
 jcmsplugin.socle.video.telecharger-transcript.label: Télécharger le fichier de transcription de la vidéo
 jcmsplugin.socle.video.telecharger-transcript.title: Télécharger le fichier de transcription de la vidéo : {0} - {1} - {2} - nouvelle fenêtre
