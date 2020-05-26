@@ -10,13 +10,9 @@
 String uid = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); 
 LinkedHashMap<String, String> datesLabelValues = new LinkedHashMap<>();
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.today.label"), InfolocaleUtil.getDateTodayInfolocale());
-logger.info(datesLabelValues);
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.tomorrow.label"), InfolocaleUtil.getDateTomorrowInfolocale());
-logger.info(datesLabelValues);
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.weekend.label"), String.join(",", InfolocaleUtil.getDateWeekendInfolocale()));
-logger.info(datesLabelValues);
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.nextseven.label"), String.join(",", InfolocaleUtil.getDateNextSevenDaysInfolocale()));
-logger.info(datesLabelValues);
 String title = Util.getString(obj.getLabel(), glp("jcmsplugin.socle.facette.date.select.title"));
 boolean isRequired = obj.getFacetteObligatoire();
 %>
