@@ -30,7 +30,7 @@ try {
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
 	<ds:figurePicture pub="<%= pub %>" format="mobile" pictureCss="ds44-container-imgRatio" imgCss="ds44-imgRatio"></ds:figurePicture>
     <div class="ds44-card__section">
-        <p role="heading" aria-level="2" class="ds44-card__title">
+        <p role="heading" aria-level="3" class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                 <%= pub.getTitle() %>
             </a>

@@ -27,8 +27,8 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
     
             <ul class="ds44-list ds44-skiplinks">
                 <li><a href="#content" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.content") %></a></li>
-                <li><a href="#menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
-                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
+                <li><a href="#open-menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
+                <li><a href="#open-search" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
                 <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
             </ul>
     
@@ -61,7 +61,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         </div>
     </div>
     
-    <div class="ds44-blocMenu">
+    <div class="ds44-blocMenu" aria-hidden="true">
         <section class="ds44-menuBox" id="menu">
             <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" role="dialog" aria-label="<%=glp("jcmsplugin.socle.menu.principal1")%>" id="nav1">
                 <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
@@ -82,7 +82,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                                 <jalios:select>
                                     <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
                                         <%-- Bloc près de chez vous --%>
-                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-expanded="true" data-bkp-aria-hidden="" data-bkp-tabindex=""><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
+                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
                                     </jalios:if>
                                     <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
                                     
@@ -137,7 +137,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         </section>
         
         <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
-            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>' userLocale="<%= userLocale %>" userLang="<%= userLang %>"/>
+            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>'/>
         </jalios:foreach>
         
         <%-- Bloc près de chez vous --%>
@@ -145,7 +145,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
         <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
         </jalios:if>
         
-        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu")%>" id="navApplis">
+        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-label='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.menu.principal2", glp("jcmsplugin.socle.sitesapplis"))) %>' id="navApplis">
         
         <div class="ds44-container-menuBackLink">
             <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">

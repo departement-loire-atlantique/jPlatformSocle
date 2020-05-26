@@ -145,6 +145,7 @@ jcmsplugin.socle.illustration: illustration
 jcmsplugin.socle.navOnglet: Navigation des onglets
 jcmsplugin.socle.revenirOnglet: Revenir à l'onglet {0}
 jcmsplugin.socle.retourALaListe: Retour à la liste 
+jcmsplugin.socle.retourALaListe.title: Retour à la liste des résultats
 jcmsplugin.socle.retourALaListeLieux: Retour à la liste des lieux
 jcmsplugin.socle.plusDeDetails: Plus de détails
 jcmsplugin.socle.label.cs: CS
@@ -175,10 +176,10 @@ jcmsplugin.socle.retour.accueil: Retour à l’accueil du site
 jcmsplugin.socle.header.ouvrir: Ouvrir le menu de {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
-jcmsplugin.socle.menu.retour: Retour au menu de navigation
+jcmsplugin.socle.menu.retour: Retour au premier niveau du menu de navigation
 jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
 jcmsplugin.socle.menu.principal1: Menu principal niveau 1
-jcmsplugin.socle.menu.principal2: Menu principal niveau 2
+jcmsplugin.socle.menu.principal2: Menu {0} : second niveau de navigation
 jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département
 jcmsplugin.socle.toussitesapplis: Tous nos sites et applis

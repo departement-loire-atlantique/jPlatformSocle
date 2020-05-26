@@ -19,7 +19,9 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
     
     <div class="ds44-card__section">
 	    <div class="ds44-innerBoxContainer">
-		    <h4 class="h4-like ds44-cardTitle" id="tuileSeniorCitizenTitle_<%= uid %>"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h4>
+		    <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileSeniorCitizenTitle_<%= uid %>">
+		      <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
+		    </p>
 		    <jalios:if predicate="<%= Util.notEmpty(pub.getDescription()) %>">
 	            <hr class="mbs" aria-hidden="true">
 	            <div class="ds44-mt-std"><strong><jalios:wysiwyg><%= pub.getDescription() %></jalios:wysiwyg></strong></div>

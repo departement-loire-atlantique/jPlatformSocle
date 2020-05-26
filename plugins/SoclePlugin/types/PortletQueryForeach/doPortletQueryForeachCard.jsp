@@ -16,7 +16,7 @@
     
     media.data-template.card.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp    
  --%>
-
+<%=itPub.getTypeLabel(userLang) %>
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='card' /></div>
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='cardFull' /></div>
 <div style="max-width:300px;"><jalios:media data='<%=itPub %>' template='cardFocus' /></div>

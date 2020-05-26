@@ -11,6 +11,7 @@ if (data == null) {
 }
 
 Contact pub = (Contact) data;
+String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 %>
 
@@ -22,7 +23,7 @@ Contact pub = (Contact) data;
       </picture>
    </div>
     <div class="ds44-card__section--horizontal">
-      <p role="heading" "aria-level="2" class="ds44-card__title"><%= pub.getTitle() %></p>
+      <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
       <jalios:if predicate="<%= Util.notEmpty(pub.getCommunes()) %>">
         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText">
 	        <jalios:foreach name="itCommune" type="City" array="<%= pub.getCommunes() %>">
