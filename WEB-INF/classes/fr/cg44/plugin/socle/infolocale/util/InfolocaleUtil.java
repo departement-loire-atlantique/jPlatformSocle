@@ -370,7 +370,7 @@ public class InfolocaleUtil {
       
       do {
         cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1); // atteindre le prochain samedi
-      } while (cal.get(Calendar.DAY_OF_WEEK) != 7);
+      } while (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY);
       
       String[] weekendDays = new String[2];
       weekendDays[0] = sdfInfolocale.format(cal.getTime());
