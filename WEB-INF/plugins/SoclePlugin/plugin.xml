@@ -237,6 +237,9 @@
         <template name="default" file="doPortletAgendaInfolocaleBoxDisplay.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
+        <template name="facet" file="doPortletAgendaInfolocaleFacettes.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit pour facettes</label>
+        </template>
     </templates>
     <templates type="PortletCarrouselDimagesHome">
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
