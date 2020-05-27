@@ -60,71 +60,21 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
         <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= maxTuiles %>">
             <div class="swiper-container">
                 <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
-                    <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
                     <%
-                    DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
+	                    request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
+	                    request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_1());
+	                    request.setAttribute("cssCard", box.getStyleDesTuilesCarrousel());
                     %>
+                    <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
                         <li class="swiper-slide">
-                            <section class="ds44-card ds44-card--horizontal <%= box.getStyleDesTuilesCarrousel() %>">
-                                <div class="ds44-flex-container ds44-flex-valign-center">
-                                    <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
-	                                    <jalios:select>
-	                                        <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-	                                        <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center ds44-flex-valign-center" aria-hidden="true">
-	                                            <p>
-		                                            <span class="ds44-cardDateNumber">
-		                                                <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %>
-		                                            </span>
-		                                            <span class="ds44-cardDateMonth">
-		                                                <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), true) %>
-		                                            </span>
-	                                            </p>
-	                                        </div>
-	                                        </jalios:if>
-	                                        <jalios:default>
-	                                        <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center ds44-flex-valign-center ds44-two-dates" aria-hidden="true">
-	                                            <p>
-		                                            <span class="ds44-cardDateNumber">
-		                                               <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %>
-		                                            </span>
-		                                            <span class="ds44-cardDateMonth">
-		                                               <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), true) %>
-		                                            </span>
-	                                            </p>
-	                                            <i class="icon icon-down" aria-hidden="true"></i>
-	                                            <p>
-		                                            <span class="ds44-cardDateNumber">
-		                                               <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %>
-		                                            </span>
-		                                            <span class="ds44-cardDateMonth">
-		                                               <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), true) %>
-		                                            </span>
-	                                            </p>
-	                                        </div>
-	                                        </jalios:default>
-	                                    </jalios:select>
-                                    </jalios:if>
-                                    <div class="ds44-card__section--horizontal">
-                                        <p role="heading" aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
-                                        <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
-                                        <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
-                                        <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i>
-                                        <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span></p>
-                                        </jalios:if>
-                                        <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
-                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_1()) && !box.getMetadonneesTuileCarrousel_1().equals(metaCommune) %>">
-                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_1(), itEvent, extractedFlux.getJSONArray("result")) %>
-                                        </jalios:if>
-                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_2()) && !box.getMetadonneesTuileCarrousel_2().equals(metaCommune) %>">
-                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_2(), itEvent, extractedFlux.getJSONArray("result")) %>
-                                        </jalios:if>
-                                        <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-                                        <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
-                                    </div>
-                                </div>
-                            </section>
+                            <jalios:media data="<%= itEvent %>" template="card"/>
                         </li>
                     </jalios:foreach>
+                    <%
+                    request.removeAttribute("metadata1");
+                    request.removeAttribute("metadata2");
+                    request.removeAttribute("cssCard");
+                    %>
                 </ul>
             </div>
             <button class="swiper-button-prev ds44-not-edge-42" type="button" title='<%= glp("jcmsplugin.socle.carrousel.precedent") %>'>
