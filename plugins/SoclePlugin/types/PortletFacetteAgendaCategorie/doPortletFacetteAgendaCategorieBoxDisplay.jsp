@@ -9,8 +9,9 @@
 	
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	
-	//TODO recuperer le flux sous la forme d'un JSONObject pour reutiliser 
-	JSONObject extractedFlux = new JSONObject();
+	JSONObject extractedFlux = (JSONObject)request.getAttribute("extractedFlux");
+	
+	if(Util.isEmpty(extractedFlux)) return;
 	
 	boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 	
