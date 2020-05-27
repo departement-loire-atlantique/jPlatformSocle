@@ -324,6 +324,7 @@ jcmsplugin.socle.facette.adresse.default-label: Adresse
 jcmsplugin.socle.facette.canton.default-label: Canton
 jcmsplugin.socle.facette.commune.default-label: Commune
 jcmsplugin.socle.facette.delegation.default-label: Délégation
+jcmsplugin.socle.facette.mot-cle.default-label: Mot clé
 jcmsplugin.socle.facette.rayon.label: Rayon
 jcmsplugin.socle.facette.localisation.title: Autoriser la localisation automatique 'autour de moi' pour le champ : {0}
 jcmsplugin.socle.facette.localisation.label: Autoriser la localisation automatique 'autour de moi'

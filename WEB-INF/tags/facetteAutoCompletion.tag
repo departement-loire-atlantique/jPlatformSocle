@@ -146,53 +146,33 @@
 				%>
 				<input type="text" id='<%= idFormElement %>' class='<%= styleCss %>' <%= name.equalsIgnoreCase("adresse") ? "type='text'" : "" %>
 						name='<%= idFormElement %>' 
-						role="combobox" aria-autocomplete="list" 
+						role="combobox" 
+						aria-autocomplete="list" 
 						autocomplete="off" 
 						aria-expanded="false" 
 						data-url='<%= dataUrl %>'
 						title='<%= titleAttr %>' 
 						data-mode='<%= dataMode %>' 
-						<%= isFacetteObligatoire ? "required" : ""%> 
-						aria-owns='<%= "owned_listbox_" + idFormElement %>'
-						<%= ! name.equalsIgnoreCase("adresse") ? "aria-activedescendant=\'selected_option_" + idFormElement + "\'" : "" %> />
-				<button class="ds44-reset" type="button" style="display: none;">
+						<%= isFacetteObligatoire ? "required" : ""%> />
+				<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 					<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> 
 					<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 				</button>
 
 				<jalios:if predicate='<%= name.equalsIgnoreCase("adresse") && Util.notEmpty(autourMoi) && autourMoi %>'>
 
-					<button class="ds44-location" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.title", label)%>">
-						<i class="icon icon-position icon--large" aria-hidden="true"></i> <span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.label")%></span>
+					<button class="ds44-location" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.title", label)%>" 
+							aria-describedby="label-<%= idFormElement %>">
+						<i class="icon icon-position icon--large" aria-hidden="true"></i> 
+						<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.label")%></span>
 					</button>
 
 				</jalios:if>
 
-				<div class="ds44-autocomp-container hidden" aria-hidden="true">
-					<jalios:if predicate='<%= name.equalsIgnoreCase("adresse") %>'>
-						<div class="ds44-autocomp-list">
-							<ul class="ds44-list" role="listbox" id="owned_listbox_idponkzq8kog"></ul>
-						</div>
-					</jalios:if>
-					<jalios:if predicate='<%= ! name.equalsIgnoreCase("adresse") %>'>
-						<div class="ds44-autocomp-buttons ds44-flex-container" aria-hidden="true">
-							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" data-value="allCity"
-								data-text='<%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.all-commune.label")%>'
-								aria-label='<%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.select-all-commune.label")%>' aria-hidden="true" tabindex="-1">
-								<%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.all-commune.label")%>
-							</button>
-							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light selected_option" type="button" data-value="aroundMe"
-								data-text='<%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.autour-moi.label")%>'
-								aria-label='<%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.select-autour-moi.label")%>' id='<%="selected_option_" + idFormElement%>'
-								aria-selected="true" aria-pressed="true" aria-hidden="true" tabindex="-1">
-								<span class="ds44-btnInnerText" aria-hidden="true"><%=JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.autour-moi.label")%></span> <i
-									class="icon icon-position icon--sizeM" aria-hidden="true"></i>
-							</button>
-						</div>
-						<div class="ds44-autocomp-list" aria-hidden="true">
-							<ul class="ds44-list" role="listbox" id='<%="owned_listbox_" + idFormElement%>' aria-hidden="true"></ul>
-						</div>
-					</jalios:if>
+				<div class="ds44-autocomp-container hidden">
+					<div class="ds44-autocomp-list">
+						<ul class="ds44-list" role="listbox"></ul>
+					</div>
 				</div>
 			</div>
 
@@ -213,7 +193,7 @@
 				<div class="ds44-form__container">
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-inputDisabled'>
-						<p class="ds44-selectLabel" aria-hidden="true">
+						<p id="label-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 							<%= labelOption %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<div id='<%= idFormElement %>' class="ds44-js-select-checkbox ds44-selectDisplay" 
@@ -237,18 +217,15 @@
 
 					<div class="ds44-select-container hidden">
 						<div class="ds44-flex-container ds44--m-padding">
-							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" 
-									aria-describedby="button-message-<%= idFormElement %>"
-									data-bkp-tabindex="" 
-									tabindex="-1">
+							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" 
+									type="button" 
+									aria-describedby="button-message-<%= idFormElement %>">
 								<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.tout-cocher") %></span>
 								<i class="icon icon-check icon--medium" aria-hidden="true"></i>
 							</button>
 							<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light" 
 									type="button"
-									aria-describedby="button-message-<%= idFormElement %>" 
-									data-bkp-tabindex="" 
-									tabindex="-1">
+									aria-describedby="button-message-<%= idFormElement %>">
 								<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.tout-decocher") %></span>
 								<i class="icon icon-cross icon--medium" aria-hidden="true"></i>
 							</button>
@@ -257,9 +234,7 @@
 							<ul class="ds44-list" id="listbox-<%= idFormElement %>"></ul>
 						</div>
 						<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" 
-								title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelOption) %>'
-								data-bkp-tabindex="" 
-								tabindex="-1">
+								title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelOption) %>'>
 							<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.valider") %></span>
 							<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 						</button>
@@ -273,12 +248,12 @@
 				<div class="ds44-form__container">
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-inputDisabled'>
-						<p class="ds44-selectLabel" aria-hidden="true">
+						<p id="label-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
 						<div id='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="<%= idFormElement %>"></div>
-						<button class="ds44-reset" type="button" style="display: none;">
+						<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 							<i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label")) %>
@@ -295,7 +270,7 @@
 						</button>
 					</div>
 	
-					<div class="ds44-select-container hidden" data-bkp-aria-hidden="" aria-hidden="true">
+					<div class="ds44-select-container hidden">
 						<div class="ds44-listSelect">
 							<ul class="ds44-list" role="listbox" 
 									id='<%= "listbox-"+idFormElement %>' 
@@ -303,7 +278,7 @@
 									aria-required="true">
 								<jalios:if predicate="<%= Util.notEmpty(setRayons) %>">
 									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
-										<li class="ds44-select-list_elem" role="option" 
+										<li class="ds44-select-list_elem" 
 												data-value='<%= itCat.getName() %>' 
 												tabindex="0">
 											<%= itCat.getName() %>
@@ -343,22 +318,19 @@
 								data-url='<%= dataUrlOption %>' 
 								title='<%= titleOption %>'
 								data-mode="select-only" 
-								required="" 
-								aria-owns='<%= "owned_listbox_"+idFormElement %>' 
-								readonly="true" 
-								aria-readonly="true">
-						<button class="ds44-reset" type="button" style="display: none;">
+								required="">
+						<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")) %>
 							</span>
 						</button>
 
-						<div class="ds44-autocomp-container hidden" aria-hidden="true">
-							<div class="ds44-autocomp-list" aria-hidden="true">
-								<ul class="ds44-list" role="listbox" id='<%= "owned_listbox_"+idFormElement %>' aria-hidden="true"></ul>
+						<div class="ds44-autocomp-container hidden">
+							<div class="ds44-autocomp-list">
+								<ul class="ds44-list" role="listbox"></ul>
 							</div>
-						</div>					
+						</div>
 					</div>
 				</div>
 
@@ -373,8 +345,9 @@
 <jalios:if predicate='<%= Util.isEmpty(option) %>'>
 
 	<div class="ds44-form__container">
+		<div class="ds44-posRel">
 			<label for='<%= idFormElement %>' class="ds44-formLabel">
-		        <span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
+				<span class='<%= "ds44-labelTypePlaceholder ds44-labelTypePlaceholder" + styleChamps2 %>'>
 					<span>
 						<%= label %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 					</span>
@@ -385,12 +358,13 @@
 					name='<%= name %>'
 					aria-autocomplete="list" 
 					autocomplete="off" 
+					aria-expanded="false" 
 					data-url='<%= dataUrl %>' 
 					data-mode='<%= dataMode %>'
-					title='<%= title %>' 
+					<%= Util.notEmpty(title) ? "title=\""+title+"\"" : ""%> 
 					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> />
 
-			<button class="ds44-reset" type="button">
+			<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 				<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 				<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 			</button>
@@ -400,7 +374,7 @@
 					<ul class="ds44-list" role="listbox"></ul>
 				</div>
 			</div>
-		
+		</div>
 	</div>
 
 </jalios:if>

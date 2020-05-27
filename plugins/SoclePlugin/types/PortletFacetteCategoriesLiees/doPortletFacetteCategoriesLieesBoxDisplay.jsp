@@ -17,22 +17,22 @@
 	
 	<div class="ds44-form__container">
 		<div class='<%= "ds44-select__shape ds44-inp" + styleChamps %>'>
-			<p class="ds44-selectLabel" aria-hidden="true">
+			<p id="label-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 				<%= labelChamp %>
 				<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 			</p>
 			<div id='<%= idFormElement %>' data-name='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
 					<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 			</div>
-			<button class="ds44-reset" type="button">
+			<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 				<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 				<span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
 			</button>
 
-			<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+			<button type="button" id="button-<%= idFormElement %>"
+					class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 					aria-expanded="false" 
-					title='<%= labelChamp + " - " + glp("jcmsplugin.socle.obligatoire") %>'
-					aria-required="true">
+					title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) %>'>
 				<i class='icon icon-down icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 				<span id='<%= "button-message-" + idFormElement %>' class="visually-hidden"><%= labelChamp %></span>
 			</button>

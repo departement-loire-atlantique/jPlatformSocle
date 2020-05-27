@@ -60,7 +60,9 @@ public class InfolocaleEntityUtils {
         try {
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
-            itEvent.setOrganismeId(json.getInt("organismeId"));
+            if (Util.notEmpty(json.get("organismeId")) && !(json.get("organismeId").toString().equals("null"))) {
+              itEvent.setOrganismeId(json.getInt("organismeId"));
+            }
             itEvent.setTitre(json.getString("titre"));
             itEvent.setTitreSlug(json.getString("titreSlug"));
             itEvent.setDescription(json.getString("descriptif"));

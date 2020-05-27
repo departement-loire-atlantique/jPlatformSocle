@@ -92,7 +92,7 @@
 %>
 <div class="ds44-form__container">
 	<div class='<%= "ds44-select__shape ds44-inp" + styleChamps + classInputDisabled %>'>
-		<p class="ds44-selectLabel" aria-hidden="true">
+		<p id="label-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 			<%= labelChamp %>
 			<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 		</p>
@@ -101,18 +101,18 @@
 			String classTypeInput = selectionMultiple ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
 			classTypeInput = Util.isEmpty(dataURL) && !profondeur ? "ds44-js-select-multilevel" : classTypeInput; 
 		%>
-		<div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
+		<div id='<%= idFormElement %>' data-name='<%= idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
 				<%= isDisabled ? "data-disabled=\"true\"" : "" %>
 				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>></div>
 
-		<button class="ds44-reset" type="button">
+		<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 			<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
 			<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
 		</button>
-		<button type="button" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
-				title='<%= labelChamp + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire") %>' 
+		<button type="button" id="button-<%= idFormElement %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+				title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) %>' 
 				aria-expanded="false" 
 				<%= isDisabled ? "data-disabled=\"true\"" : "" %>>
 			<i class='<%= "icon icon-down icon--size" + styleChamps2 %>' aria-hidden="true"></i>
@@ -129,7 +129,7 @@
 					<i class="icon icon-check icon--medium" aria-hidden="true"></i>
 				</button>
 				<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light" type="button"
-					aria-describedby="button-message-form-element-47425">
+					aria-describedby="button-message-<%= idFormElement %>">
 					<span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.tout-decocher") %></span>
 					<i class="icon icon-cross icon--medium" aria-hidden="true"></i>
 				</button>
@@ -226,5 +226,4 @@
 			<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 		</button>
 	</div>
-	<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 </div>
