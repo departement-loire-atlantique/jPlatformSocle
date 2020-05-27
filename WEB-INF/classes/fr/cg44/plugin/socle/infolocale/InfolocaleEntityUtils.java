@@ -36,6 +36,8 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
       return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null);
@@ -43,6 +45,10 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @param metadata1
+     * @param metadata2
+     * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2) {
         EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
@@ -58,8 +64,8 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un événement infolocale depuis du JSON
-     * @param metadata2 
-     * @param metadata1 
+     * @param json
+     * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
       return createEvenementInfolocaleFromJsonItem(json, null, null);
@@ -67,8 +73,10 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un événement infolocale depuis du JSON
-     * @param metadata2 
-     * @param metadata1 
+     * @param json
+     * @param metadata1
+     * @param metadata2
+     * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2) {
         if (Util.isEmpty(json)) return null;
