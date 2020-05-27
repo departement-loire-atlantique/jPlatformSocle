@@ -61,7 +61,7 @@ org.json.JSONObject extractedFlux = RequestManager.filterFluxData(flux, paramete
 EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
 List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
 
-System.out.println(allEvents);
+
 
 
 %><%
