@@ -140,9 +140,10 @@ public class InfolocaleUtil {
      */
     public static DateInfolocale getClosestDate(EvenementInfolocale event) {
         
-        if (Util.isEmpty(event)) return null;
+        if (Util.isEmpty(event) || Util.isEmpty(event.getDates())) return null;
         
         DateInfolocale[] allDates = event.getDates();
+        
         DateInfolocale value = null;
         
         Calendar cal = Calendar.getInstance();
