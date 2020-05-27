@@ -2,8 +2,13 @@ package fr.cg44.plugin.socle.infolocale;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -20,7 +25,9 @@ import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil;
 import generated.EvenementInfolocale;
+import generated.PortletAgendaInfolocale;
 
 
 /**
@@ -70,6 +77,9 @@ public class InfolocaleEntityUtils {
             itEvent.setDateModification(json.getString("dateModification"));
             if (Util.notEmpty(json.get("lieu"))) {
                 itEvent.setLieu(createLieuFromJsonItem(json.getJSONObject("lieu")));
+                // Ajout de la longitude / latitute en extradata pour s'afficher sur les cartes comme les autres publications JCMS
+                itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
+                itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
             itEvent.setTarif(json.getString("tarif"));
             if (Util.notEmpty(json.get("dates"))) {
@@ -383,6 +393,51 @@ public class InfolocaleEntityUtils {
       }
       
       return null;
+    }
+    
+    
+    /**
+     * Retourne le résulat des evenements en fonction de la requete
+     * @param request
+     * @return
+     */
+    public static List<EvenementInfolocale> getQueryEvent(HttpServletRequest request) {
+      
+      Channel channel = Channel.getChannel();  
+      PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication(request.getParameter("boxId"));
+      
+      if(Util.isEmpty(request) || Util.isEmpty(box)) {
+        return Collections.EMPTY_LIST;
+      }
+                
+      List<EvenementInfolocale> allEvents = Collections.EMPTY_LIST;      
+      Map<String, Object> parameters = new HashMap<String, Object>();
+           
+      // Recherche sur une commune
+      String commune = request.getParameter("commune");
+      if(Util.notEmpty(commune)) {
+        parameters.put("codeInsee", commune);
+      }
+      
+      
+      // Paramétrage de la portlet Agenda
+      if (Util.notEmpty(box.getNombreDeResultats())) {
+        parameters.put("limit", box.getNombreDeResultats());
+      } else {
+        parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+      }
+
+      
+      // Récupère le flux infolocale et transformation en liste de publication JCMS
+      String flux = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.default");
+      JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
+      try {
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+        allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
+      } catch (JSONException e) {
+        LOGGER.warn("Erreur lors de la requete sur les évènements infolocale", e);
+      }           
+      return allEvents;
     }
     
 }
