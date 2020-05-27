@@ -407,10 +407,10 @@ public class InfolocaleEntityUtils {
       PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication(request.getParameter("boxId"));
       
       if(Util.isEmpty(request) || Util.isEmpty(box)) {
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
       }
                 
-      List<EvenementInfolocale> allEvents = Collections.EMPTY_LIST;      
+      List<EvenementInfolocale> allEvents = Collections.emptyList();      
       Map<String, Object> parameters = new HashMap<String, Object>();
            
       // Recherche sur une commune
