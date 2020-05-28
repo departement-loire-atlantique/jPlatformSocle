@@ -100,7 +100,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="portletsFacettesAgenda" editor="link" required="false" compactDisplay="false" tab="moteur_de_recherche" type="com.jalios.jcms.portlet.PortalElement[]">
+    <field name="portletsFacettesAgenda" editor="link" required="false" compactDisplay="false" tab="moteur_de_recherche" type="generated.AbstractPortletFacette[]">
       <label xml:lang="fr">Portlets Facettes Agenda</label>
     </field>
     <field type="super" />

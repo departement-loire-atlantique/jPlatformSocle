@@ -17,6 +17,12 @@ Boolean isInRechercheFacette = Util.isEmpty(publication);
 
 Boolean hasFonctionsAdditionnelles = false; // TODO
 Boolean showFiltres = isInRechercheFacette;
+
+request.setAttribute("rechercheId", obj.getId());
+
+String fluxId = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
+
+request.setAttribute("fluxId", fluxId);
 %>
 
 
@@ -54,7 +60,16 @@ Boolean showFiltres = isInRechercheFacette;
         
                     <div class='ds44-fieldContainer ds44-fg1'>
                     
+	                    <% request.setAttribute("isFilter", false); %>
                        <%-- TODO Liste des facettes depuis la portlet - Ajouter le jalios:foreach --%>
+                       <jalios:foreach array="<%= obj.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= 4 %>">
+
+							<% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
+
+							<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+								<jalios:include pub="<%= itFacette %>" usage="box"/>
+							</div>
+						</jalios:foreach>
                        
                        <%-- TOTO a supprimer facette de dev pour mes tests --%>
                        <input type="text" name="commune" data-technical-field />
@@ -138,7 +153,7 @@ Boolean showFiltres = isInRechercheFacette;
           
           <jalios:if predicate='<%= "listmap".equals(box.getTypeDaffichage()) %>'>
               
-              <button type="button" title="Masquer la carte" class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+              <button type="button" title='<%= glp("jcmsplugin.socle.recherche.carte.masquer") %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
                 <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
               </button>
               

@@ -9,20 +9,36 @@
 	
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	
-	JSONObject extractedFlux = (JSONObject)request.getAttribute("extractedFlux");
+	String fluxId = (String)request.getAttribute("fluxId");
 	
-	if(Util.isEmpty(extractedFlux)) return;
+	if(Util.isEmpty(fluxId)) return;
 	
-	boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
-	
-	if(!fluxSuccess && extractedFlux.getJSONArray("result").length() <= 0) return;
-		
-	EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
-
 	Set<Genre> listeGenre = new HashSet<Genre>();
 	
-	for(EvenementInfolocale event : evenements) {
-		listeGenre.add(event.getGenre());
+	JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique");
+	
+	for(int i = 2 ; i < objThematiques.length(); i++) {
+		JSONArray listeThematiques = objThematiques.getJSONArray(objThematiques.names().getString(i));
+		
+		for(JSONObject objGenre : listeThematiques) {
+			Genre genre = new Genre();
+			genre.setGenreId(objGenre.getString("id"));
+			genre.setLibelle(objGenre.getString("libelle"));
+			listeGenre.add(genre);
+		}
+	}
+	
+	JSONObject objThematiquesPersos = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
+	
+	for(int i = 2 ; i < objThematiquesPersos.length(); i++) {
+		JSONArray listeThematiquesPersos = objThematiquesPersos.getJSONArray(objThematiquesPersos.names().getString(i));
+		
+		for(JSONObject objGenre : listeThematiquesPersos) {
+			Genre genre = new Genre();
+			genre.setGenreId(objGenre.getString("id"));
+			genre.setLibelle(objGenre.getString("libelle"));
+			listeGenre.add(genre);
+		}
 	}
 %>
 
