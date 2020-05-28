@@ -145,7 +145,7 @@
 					}
 				%>
 				<input type="text" id='<%= idFormElement %>' class='<%= styleCss %>' <%= name.equalsIgnoreCase("adresse") ? "type='text'" : "" %>
-						name='<%= idFormElement %>' 
+						name='<%= name %>' 
 						role="combobox" 
 						aria-autocomplete="list" 
 						autocomplete="off" 
@@ -197,7 +197,7 @@
 							<%= labelOption %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<div id='<%= idFormElement %>' class="ds44-js-select-checkbox ds44-selectDisplay" 
-								data-name='<%= idFormElement %>'
+								data-name='<%= option %>'
 								data-url='<%= dataUrlOption %>' 
 								<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>>
 						</div>
@@ -310,7 +310,7 @@
 							</span> 
 						</label>
 						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-js-field-address' 
-								name='<%= idFormElement %>'
+								name='<%= option %>'
 								role="combobox" 
 								aria-autocomplete="list" 
 								autocomplete="off"

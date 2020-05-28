@@ -6,7 +6,8 @@
 <% 
 	PortletFacetteCategoriesLiees obj = (PortletFacetteCategoriesLiees)portlet; 
 
-	String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
+	String rechercheId = (String) request.getAttribute("rechercheId");
+	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
@@ -21,7 +22,7 @@
 				<%= labelChamp %>
 				<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 			</p>
-			<div id='<%= idFormElement %>' data-name='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
+			<div id='<%= idFormElement %>' data-name="<%= idFormElement %>" class="ds44-js-select-standard ds44-selectDisplay" 
 					<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 			</div>
 			<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
