@@ -2,8 +2,13 @@ package fr.cg44.plugin.socle.infolocale;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -20,7 +25,9 @@ import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil;
 import generated.EvenementInfolocale;
+import generated.PortletAgendaInfolocale;
 
 
 /**
@@ -36,12 +43,25 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
+      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null);
+    }
+    
+    /**
+     * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @param metadata1
+     * @param metadata2
+     * @return
+     */
+    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2) {
         EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter));
+                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2);
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
             }
@@ -51,8 +71,21 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un événement infolocale depuis du JSON
+     * @param json
+     * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
+      return createEvenementInfolocaleFromJsonItem(json, null, null);
+    }
+    
+    /**
+     * Créé un événement infolocale depuis du JSON
+     * @param json
+     * @param metadata1
+     * @param metadata2
+     * @return
+     */
+    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2) {
         if (Util.isEmpty(json)) return null;
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
@@ -70,6 +103,9 @@ public class InfolocaleEntityUtils {
             itEvent.setDateModification(json.getString("dateModification"));
             if (Util.notEmpty(json.get("lieu"))) {
                 itEvent.setLieu(createLieuFromJsonItem(json.getJSONObject("lieu")));
+                // Ajout de la longitude / latitute en extradata pour s'afficher sur les cartes comme les autres publications JCMS
+                itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
+                itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
             itEvent.setTarif(json.getString("tarif"));
             if (Util.notEmpty(json.get("dates"))) {
@@ -100,6 +136,13 @@ public class InfolocaleEntityUtils {
             }
             itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
             itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
+            
+            if (Util.notEmpty(metadata1)) {
+              itEvent.setMetadata1(InfolocaleMetadataUtils.getMetadataHtml(metadata1, json));
+            }
+            if (Util.notEmpty(metadata2)) {
+              itEvent.setMetadata2(InfolocaleMetadataUtils.getMetadataHtml(metadata2, json));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
             itEvent = new EvenementInfolocale();
@@ -383,6 +426,51 @@ public class InfolocaleEntityUtils {
       }
       
       return null;
+    }
+    
+    
+    /**
+     * Retourne le résulat des evenements en fonction de la requete
+     * @param request
+     * @return
+     */
+    public static List<EvenementInfolocale> getQueryEvent(HttpServletRequest request) {
+      
+      Channel channel = Channel.getChannel();  
+      PortletAgendaInfolocale box = (PortletAgendaInfolocale) channel.getPublication(request.getParameter("boxId"));
+      
+      if(Util.isEmpty(request) || Util.isEmpty(box)) {
+        return Collections.emptyList();
+      }
+                
+      List<EvenementInfolocale> allEvents = Collections.emptyList();      
+      Map<String, Object> parameters = new HashMap<String, Object>();
+           
+      // Recherche sur une commune
+      String commune = request.getParameter("commune");
+      if(Util.notEmpty(commune)) {
+        parameters.put("codeInsee", commune);
+      }
+      
+      
+      // Paramétrage de la portlet Agenda
+      if (Util.notEmpty(box.getNombreDeResultats())) {
+        parameters.put("limit", box.getNombreDeResultats());
+      } else {
+        parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+      }
+
+      
+      // Récupère le flux infolocale et transformation en liste de publication JCMS
+      String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
+      JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
+      try {
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+        allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
+      } catch (JSONException e) {
+        LOGGER.warn("Erreur lors de la requete sur les évènements infolocale", e);
+      }           
+      return allEvents;
     }
     
 }

@@ -75,8 +75,8 @@ request.setAttribute("fluxId", fluxId);
                        <input type="text" name="commune" data-technical-field />
                        
                        
-                       <input type="text" name="redirectUrl" value="plugins/SoclePlugin/types/PortletAgendaInfolocale/displayResultAgenda.jsp" data-technical-field />
-                       <input type="text" name="boxId" value="<%= box.getId() %>" data-technical-field />
+                       <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/types/PortletAgendaInfolocale/displayResultAgenda.jsp" data-technical-field />
+                       <input type="hidden" name="boxId" value="<%= box.getId() %>" data-technical-field />
                        
                     </div>
           
@@ -153,7 +153,7 @@ request.setAttribute("fluxId", fluxId);
           
           <jalios:if predicate='<%= "listmap".equals(box.getTypeDaffichage()) %>'>
               
-              <button type="button" title='<%= glp("jcmsplugin.socle.recherche.carte.masquer") %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+              <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
                 <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
               </button>
               

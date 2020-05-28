@@ -279,15 +279,17 @@ public class RequestManager {
           switch (status) {
                       
               case 200:
-                  if (Util.isEmpty(metadata)) {
+                  String responseContent = SocleUtils.convertStreamToString(response.getEntity().getContent());
+                  if (Util.isEmpty(metadata) || Util.notEmpty(responseContent)) {
                     fluxData = new JSONObject();
-                    fluxData.put("listMetadata", new JSONArray(SocleUtils.convertStreamToString(response.getEntity().getContent())));
+                    fluxData.put("listMetadata", new JSONArray(responseContent));
                   } else {
-                    fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
+                    fluxData = new JSONObject(responseContent);
                   }
                   fluxData.put(success, true);
                   
                   fluxData.put("dataType", Util.isEmpty(metadata) ? "list" : "single"); // pour déterminer si on a eu le résultat attendu
+                  break;
               case 401:
                   LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
                   expiredToken = true;
