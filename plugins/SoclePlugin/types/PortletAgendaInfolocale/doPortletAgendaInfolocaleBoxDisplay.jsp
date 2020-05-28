@@ -52,7 +52,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 <jalios:select>
     <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() > 0 %>'>
         <%
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         int maxTuiles = evenements.length <= 3 ? evenements.length : 3;

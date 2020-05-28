@@ -19,50 +19,7 @@ response.setContentType("application/json");
 PortletAgendaInfolocale boxTmp = (PortletAgendaInfolocale) (channel.getPublication(request.getParameter("boxId"))).clone();  
 PortletAgendaInfolocale box = new PortletAgendaInfolocale(boxTmp);
 
-
-
-
-
-Map<String, Object> parameters = new HashMap<String, Object>();
-if (Util.notEmpty(box.getOrganismesInfolocale())) {
-    parameters.put("organisme", box.getOrganismesInfolocale());
-}
-if (Util.notEmpty(box.getGenresInfolocale())) {
-    parameters.put("rubrique", box.getGenresInfolocale());
-}
-
-String listCodesInsee = SocleUtils.getCodesInseeFromPortletAgenda(box, loggedMember);
-
-if (Util.notEmpty(listCodesInsee)) {
-    parameters.put("codeInsee", listCodesInsee);
-}
-
-if (Util.notEmpty(box.getNombreDeResultats())) {
-  parameters.put("limit", box.getNombreDeResultats());
-} else {
-  parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
-}
-
-parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
-
-SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-parameters.put("dateDebut", sdf.format(Calendar.getInstance().getTime()));
-Calendar calInAMonth = Calendar.getInstance();
-calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
-parameters.put("dateFin", sdf.format(calInAMonth.getTime()));
-
-String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
-
-org.json.JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
-
-
-
-
-EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
-List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
-
-
-
+List<EvenementInfolocale> allEvents = InfolocaleEntityUtils.getQueryEvent(request);
 
 %><%
 

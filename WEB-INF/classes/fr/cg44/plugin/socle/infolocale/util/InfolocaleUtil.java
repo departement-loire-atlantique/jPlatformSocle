@@ -140,9 +140,10 @@ public class InfolocaleUtil {
      */
     public static DateInfolocale getClosestDate(EvenementInfolocale event) {
         
-        if (Util.isEmpty(event)) return null;
+        if (Util.isEmpty(event) || Util.isEmpty(event.getDates())) return null;
         
         DateInfolocale[] allDates = event.getDates();
+        
         DateInfolocale value = null;
         
         Calendar cal = Calendar.getInstance();
@@ -345,17 +346,17 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date des sept prochains jours dans un format lisible par infolocale yyyy-MM-dd
+     * Retourne un duo date début / date fin des sept prochains jours dans un format lisible par infolocale yyyy-MM-dd
      * @return
      */
     public static String[] getDateNextSevenDaysInfolocale() {
       Calendar cal = Calendar.getInstance();
       SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
-      String[] nextSevenDays = new String[7];
-      for (int dateCounter = 0; dateCounter <= 6; dateCounter++) {
-        cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 1);
-        nextSevenDays[dateCounter] = sdfInfolocale.format(cal.getTime());
-      }
+      String[] nextSevenDays = new String[2];
+      nextSevenDays[0] = sdfInfolocale.format(cal.getTime());
+      cal.set(Calendar.DAY_OF_YEAR, cal.get(Calendar.DAY_OF_YEAR) + 7);
+      nextSevenDays[1] = sdfInfolocale.format(cal.getTime());
+      
       return nextSevenDays;
     }
     
