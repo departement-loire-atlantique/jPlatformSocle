@@ -288,6 +288,10 @@ jcmsplugin.socle.site.pdcv.portlet.id:
 $jcmsplugin.socle.form.contactform.sujet.root: aca_8167
 jcmsplugin.socle.email.emailParDefaut: contact@loire-atlantique.fr
 jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
+jcmsplugin.socle.rayon.option: rayon
+
+# Catégorie racine pour les rayons agenda
+jcmsplugin.socle.rayon.agenda.root.id: c_1301887
 
 # ------------------------------------------------------------
 #  Catégories racines des types de contenu
