@@ -51,6 +51,10 @@ public class RequestManager {
     private static String initToken = "initToken";
     private static String refreshToken = "refresh_token";
     
+    private static boolean tokensOk = false;
+    
+    private static int attempsToRefresh = 0;
+    
     private RequestManager() {}
     
     /**
@@ -107,6 +111,7 @@ public class RequestManager {
                     tokenManager.setUsername(auth.getUsername());
                     
                     LOGGER.debug("Tokens générés");
+                    resetTokenRefreshCounter();
                     break;
                 case 400:
                     LOGGER.warn(type + " : " + httpError + status + ". Token non valide.");
@@ -131,6 +136,20 @@ public class RequestManager {
         }
     }
 
+    private static void resetTokenRefreshCounter() {
+      attempsToRefresh = 0;
+      tokensOk = true;
+    }
+    
+    /**
+     * Renvoie "false" si 3 essais ou plus ont été exécutés pour regénérer les tokens
+     * @return
+     */
+    private static boolean iterateTokenRefreshCounter() {
+      attempsToRefresh++;
+      return attempsToRefresh >= 3;
+    }
+
     /**
      * Extrait des données à partir d'un flux de l'API Infolocale en intégrant des paramètres de tri
      */
@@ -153,16 +172,24 @@ public class RequestManager {
             int status = response.getStatusLine().getStatusCode();
                         
             switch (status) {
+                case 401:
+                    tokensOk = false;
+                    while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                      regenerateTokens();
+                    }
+                    if (!tokensOk) {
+                      LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
+                      expiredToken = true;
+                      fluxData.put(failureReason, "invalid_token");
+                    } else {
+                      return filterFluxData(fluxId, params);
+                    }
+                    break;
                 case 200:
                     
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                     fluxData.put(success, true);
                     
-                    break;
-                case 401:
-                    LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
-                    expiredToken = true;
-                    fluxData.put(failureReason, "invalid_token");
                     break;
                 case 404:
                     LOGGER.warn(methodFilterFluxDataError + status + ". Flux " + fluxId + " non trouvé.");
@@ -219,16 +246,24 @@ public class RequestManager {
           int status = response.getStatusLine().getStatusCode();
                       
           switch (status) {
+              case 401:
+                  tokensOk = false;
+                  while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                    regenerateTokens();
+                  }
+                  if (!tokensOk) {
+                    LOGGER.warn(methodGetSingleEventError + status + ". Token expiré.");
+                    expiredToken = true;
+                    fluxData.put(failureReason, "invalid_token");
+                  } else {
+                    return getSingleEvent(idEvent);
+                  }
+                  break;
               case 200:
                   
                   fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
                   fluxData.put(success, true);
                   
-                  break;
-              case 401:
-                  LOGGER.warn(methodGetSingleEventError + status + ". Token expiré.");
-                  expiredToken = true;
-                  fluxData.put(failureReason, "invalid_token");
                   break;
               case 404:
                   LOGGER.warn(methodGetSingleEventError + status + ". Evenement " + idEvent + " non trouvé.");
@@ -278,6 +313,19 @@ public class RequestManager {
           
           switch (status) {
                       
+              case 401:
+                  tokensOk = false;
+                  while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                    regenerateTokens();
+                  }
+                  if (!tokensOk) {
+                    LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
+                    expiredToken = true;
+                    fluxData.put(failureReason, "invalid_token");
+                  } else {
+                    return getFluxMetadata(fluxId, metadata);
+                  }
+                  break;
               case 200:
                   if (Util.isEmpty(metadata)) {
                     fluxData = new JSONObject();
@@ -288,10 +336,6 @@ public class RequestManager {
                   fluxData.put(success, true);
                   
                   fluxData.put("dataType", Util.isEmpty(metadata) ? "list" : "single"); // pour déterminer si on a eu le résultat attendu
-              case 401:
-                  LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
-                  expiredToken = true;
-                  fluxData.put(failureReason, "invalid_token");
                   break;
               case 404:
                   LOGGER.warn(methodGetFluxMetadataError + status + ". Flux " + fluxId + " non trouvé.");
