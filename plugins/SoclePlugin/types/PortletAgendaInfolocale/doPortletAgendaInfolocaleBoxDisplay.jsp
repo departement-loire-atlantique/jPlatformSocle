@@ -52,7 +52,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 <jalios:select>
     <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() > 0 %>'>
         <%
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         int maxTuiles = evenements.length <= 3 ? evenements.length : 3;
@@ -112,11 +112,11 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                                         <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span></p>
                                         </jalios:if>
                                         <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
-                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_1()) && !box.getMetadonneesTuileCarrousel_1().equals(metaCommune) %>">
-                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_1(), itEvent, extractedFlux.getJSONArray("result")) %>
+                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_1()) && !box.getMetadonneesTuileCarrousel_1().equals(metaCommune) && Util.notEmpty(itEvent.getMetadata1()) %>">
+                                            <%= itEvent.getMetadata1() %>
                                         </jalios:if>
-                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_2()) && !box.getMetadonneesTuileCarrousel_2().equals(metaCommune) %>">
-                                            <%= InfolocaleMetadataUtils.getMetadataHtml(box.getMetadonneesTuileCarrousel_2(), itEvent, extractedFlux.getJSONArray("result")) %>
+                                        <jalios:if predicate="<%= Util.notEmpty(box.getMetadonneesTuileCarrousel_2()) && !box.getMetadonneesTuileCarrousel_2().equals(metaCommune) && Util.notEmpty(itEvent.getMetadata2()) %>">
+                                            <%= itEvent.getMetadata2() %>
                                         </jalios:if>
                                         <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
                                         <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
