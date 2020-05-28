@@ -429,7 +429,7 @@ public class InfolocaleEntityUtils {
 
       
       // Récupère le flux infolocale et transformation en liste de publication JCMS
-      String flux = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.default");
+      String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
       JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
       try {
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
