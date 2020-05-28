@@ -43,12 +43,25 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
+      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null);
+    }
+    
+    /**
+     * Créé un tableau d'évenements infolocale à partir de JSON
+     * @param jsonArray
+     * @param metadata1
+     * @param metadata2
+     * @return
+     */
+    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2) {
         EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter));
+                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2);
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
             }
@@ -58,8 +71,21 @@ public class InfolocaleEntityUtils {
     
     /**
      * Créé un événement infolocale depuis du JSON
+     * @param json
+     * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
+      return createEvenementInfolocaleFromJsonItem(json, null, null);
+    }
+    
+    /**
+     * Créé un événement infolocale depuis du JSON
+     * @param json
+     * @param metadata1
+     * @param metadata2
+     * @return
+     */
+    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2) {
         if (Util.isEmpty(json)) return null;
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
@@ -110,6 +136,13 @@ public class InfolocaleEntityUtils {
             }
             itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
             itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
+            
+            if (Util.notEmpty(metadata1)) {
+              itEvent.setMetadata1(InfolocaleMetadataUtils.getMetadataHtml(metadata1, json));
+            }
+            if (Util.notEmpty(metadata2)) {
+              itEvent.setMetadata2(InfolocaleMetadataUtils.getMetadataHtml(metadata2, json));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
             itEvent = new EvenementInfolocale();

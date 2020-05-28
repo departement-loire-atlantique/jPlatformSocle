@@ -327,11 +327,12 @@ public class RequestManager {
                   }
                   break;
               case 200:
-                  if (Util.isEmpty(metadata)) {
+                  String responseContent = SocleUtils.convertStreamToString(response.getEntity().getContent());
+                  if (Util.isEmpty(metadata) || Util.notEmpty(responseContent)) {
                     fluxData = new JSONObject();
-                    fluxData.put("listMetadata", new JSONArray(SocleUtils.convertStreamToString(response.getEntity().getContent())));
+                    fluxData.put("listMetadata", new JSONArray(responseContent));
                   } else {
-                    fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
+                    fluxData = new JSONObject(responseContent);
                   }
                   fluxData.put(success, true);
                   

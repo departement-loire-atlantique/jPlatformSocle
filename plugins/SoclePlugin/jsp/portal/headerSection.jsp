@@ -35,7 +35,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             <div class="ds44-flex-container ds44-flex-valign-center">
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
-                        <picture class="ds44-logo <%= channel.getProperty("jcmsplugin.socle.logo.style")%>">
+                        <picture class="ds44-logo <%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>">
                             <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
                                 <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
                                 <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
