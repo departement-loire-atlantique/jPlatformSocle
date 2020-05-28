@@ -13,6 +13,7 @@
 			com.jalios.jcms.Category, 
 			fr.cg44.plugin.socle.infolocale.entities.Genre, 
 			java.util.Set, 
+			java.util.TreeSet, 
 			fr.cg44.plugin.socle.SocleUtils" 
 %>
 <%@ attribute name="obj" 
@@ -26,7 +27,7 @@
 		required="false" 
 		fragment="false" 
 		rtexprvalue="true" 
-		type="Set<Category>" 
+		type="TreeSet<Category>" 
 		description="La liste des categories selectionnables" 
 %>
 <%@ attribute name="listeGenre" 
@@ -85,7 +86,8 @@
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
-	String labelChamp = listeCategory.first().getName();
+	String labelChamp = JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.categorie.default-label");
+	labelChamp = Util.notEmpty(listeCategory) ? listeCategory.first().getName() : labelChamp;
 	labelChamp = Util.notEmpty(dataURL) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.sous-theme.label") : labelChamp;
 	labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : labelChamp;
 	String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";

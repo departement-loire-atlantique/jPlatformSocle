@@ -322,6 +322,7 @@ jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
 jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
 jcmsplugin.socle.facette.adresse.default-label: Adresse
 jcmsplugin.socle.facette.canton.default-label: Canton
+jcmsplugin.socle.facette.categorie.default-label: Catégorie
 jcmsplugin.socle.facette.commune.default-label: Commune
 jcmsplugin.socle.facette.delegation.default-label: Délégation
 jcmsplugin.socle.facette.mot-cle.default-label: Mot clé
