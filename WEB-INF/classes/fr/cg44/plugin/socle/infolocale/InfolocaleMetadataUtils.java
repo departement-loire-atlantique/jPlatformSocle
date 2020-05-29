@@ -70,11 +70,18 @@ public class InfolocaleMetadataUtils {
       
       // Cas réguliers
       
+      String metadataIcon = getMetadataIcon(metadata);
+      String metadataValue = getMetadata(metadata, jsonEvent);
+      
+      if (Util.isEmpty(metadataValue) || metadataValue.equals("{}")) {
+        return "";
+      }
+      
       StringBuilder htmlMetadata = new StringBuilder();
       htmlMetadata.append(baliseItalicStart);
-      htmlMetadata.append(getMetadataIcon(metadata));
+      htmlMetadata.append(metadataIcon);
       htmlMetadata.append(baliseItalicEnd + baliseSpanStart);
-      htmlMetadata.append(getMetadata(metadata, jsonEvent));
+      htmlMetadata.append(metadataValue);
       htmlMetadata.append(baliseSpanEnd);
       
       return htmlMetadata.toString();
@@ -202,7 +209,10 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaDuree(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getDuree()) ? "" : itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.duree");
+        if (Util.isEmpty(itEvent.getDuree()) || itEvent.getDuree() <= 0) {
+          return "";
+        }
+        return itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.label.duree");
     }
     
     /**

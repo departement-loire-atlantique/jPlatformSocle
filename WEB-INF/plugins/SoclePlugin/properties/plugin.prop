@@ -249,6 +249,7 @@ media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.j
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.card.Equipement: /plugins/SoclePlugin/jsp/cards/doEquipementCard.jsp
+media.data-template.cardVertical.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleVerticalCard.jsp
 media.data-template.card.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleCard.jsp
 media.data-template.card.FicheActionEducative: /plugins/SoclePlugin/jsp/cards/doFicheActionEducativeCard.jsp
 media.data-template.card.FicheAide: /plugins/SoclePlugin/jsp/cards/doFicheAideCard.jsp
