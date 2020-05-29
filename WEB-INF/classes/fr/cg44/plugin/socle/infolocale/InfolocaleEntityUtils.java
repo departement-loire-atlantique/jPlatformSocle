@@ -125,6 +125,15 @@ public class InfolocaleEntityUtils {
             }
             itEvent.setAgeMinimum(json.getInt("ageMinimum"));
             itEvent.setAgeMaximum(json.getInt("ageMaximum"));
+            if (json.getJSONArray("categoriesAge").length() > 0) {
+              JSONArray jsonAgeArray = json.getJSONArray("categoriesAge");
+              String[] tmpCatAge = new String[jsonAgeArray.length()];
+              for (int countArrayAge = 0; countArrayAge < jsonAgeArray.length(); countArrayAge++) {
+                tmpCatAge[countArrayAge] = jsonAgeArray.getJSONObject(countArrayAge).getString("libelle");
+              }
+              itEvent.setCategorieDage(tmpCatAge);
+            }
+            itEvent.setNombreDeParticipants(json.getInt("nombreParticipants"))  ;
             itEvent.setDuree(json.getInt("duree"));
             itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
             itEvent.setMentionAccessibleHandicapAuditif(json.getBoolean("mentionAccessibleHandicapAuditif"));
