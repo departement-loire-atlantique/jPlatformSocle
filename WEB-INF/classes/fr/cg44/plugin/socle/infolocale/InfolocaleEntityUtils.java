@@ -107,7 +107,14 @@ public class InfolocaleEntityUtils {
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
-            itEvent.setTarif(json.getString("tarif"));
+            JSONArray tarifs = json.getJSONArray("tarifs");
+            if (tarifs.length() > 0) {
+              JSONObject tmpTarif = tarifs.getJSONObject(0);
+              itEvent.setGratuit(tmpTarif.getBoolean("gratuit"));
+              itEvent.setTarifNormal(tmpTarif.getString("tarif"));
+              itEvent.setTarifReduit(tmpTarif.getString("tarifReduit"));
+              itEvent.setTarifAutre(tmpTarif.getString("tarifReAutre"));
+            }
             if (Util.notEmpty(json.get("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
             }
@@ -262,6 +269,7 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Contact contact = new Contact();
         try {
+            contact.setTypeId(json.getInt("typeId"));
             contact.setType(json.getString("type"));
             contact.setTelephone1(json.getString("telephone1"));
             contact.setTelephone2(json.getString("telephone2"));

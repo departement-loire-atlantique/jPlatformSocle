@@ -27,8 +27,21 @@
     <field name="dateModification" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Date de modification</label>
     </field>
-    <field name="tarif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Tarif</label>
+    <field name="tarifNormal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Tarif normal</label>
+    </field>
+    <field name="tarifReduit" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Tarif réduit</label>
+    </field>
+    <field name="tarifAutre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Tarif autre</label>
+    </field>
+    <field name="gratuit" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off">
+      <label xml:lang="fr">Gratuit</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field name="dateString" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Libellé des dates</label>

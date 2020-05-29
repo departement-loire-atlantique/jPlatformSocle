@@ -1,6 +1,7 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% EvenementInfolocale obj = (EvenementInfolocale)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(obj);
@@ -89,7 +90,7 @@ labelLegendCopyright += credit;
             </div>
          </div>
       </section>
-      <section class="ds44-contenuArticle" id="section1">
+      <section class="ds44-contenuArticle" id="sectionVideo">
          <div class="ds44-inner-container ds44-mtb3">
             <div class="ds44-grid12-offset-2">
                <div class="ds44-negativeOffset-2 ds44-mtb3">
@@ -105,69 +106,120 @@ labelLegendCopyright += credit;
             </div>
          </div>
       </section>
-      <section class="ds44-contenuArticle" id="section2">
+      <section class="ds44-contenuArticle" id="sectionInformations">
          <div class="ds44-inner-container">
             <div class="ds44-grid12-offset-2">
                <div class="grid-2-small-1">
                   <div class="col">
+                     <jalios:if predicate="<%= obj.getGratuit() || Util.notEmpty(obj.getTarifNormal(userLang)) || Util.notEmpty(obj.getTarifReduit(userLang)) || Util.notEmpty(obj.getTarifAutre(userLang)) %>">
+	                     <div class="ds44-mb3">
+	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.tarifs") %></h2>
+	                        <ul class="ds44-uList">
+	                           <jalios:select>
+	                                <jalios:if predicate="<%= obj.getGratuit() %>">
+	                                <li>
+	                                    <span class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.gratuit") %></span>
+		                            </li>
+	                                </jalios:if>
+	                                <jalios:default>
+	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifNormal(userLang)) && !obj.getTarifNormal(userLang).equals("0") %>'>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %></li>
+	                                    </jalios:if>
+	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifReduit(userLang)) && !obj.getTarifReduit(userLang).equals("0") %>'>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit  ") %> <%= obj.getTarifReduit(userLang) %></li>
+	                                    </jalios:if>
+	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
+	                                        <li><%= obj.getTarifAutre(userLang) %></li>
+	                                    </jalios:if>
+	                                </jalios:default>
+	                           </jalios:select>
+	                        </ul>
+	                     </div>
+                     </jalios:if>
                      <div class="ds44-mb3">
-                        <h2 class="h3-like" id="idTitre-list2">Tarifs :</h2>
-                        <ul class="ds44-uList">
-                           <li>Normal : 8€</li>
-                           <li>Réduit : 5€</li>
-                           <li><span class="ds44-wsg-exergue">GRATUIT
-                              </span>
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="ds44-mb3">
-                        <h2 class="h3-like" id="idTitre-list4">Adresse :</h2>
+                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.adresse") %></h2>
                         <div class="ds44-ml1">
                            <p class="ds44-docListElem mtm">
-                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>Manoir de Brehet<br>route de Guérande<br>LA TURBALLE
+                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getNom() %><br><%= obj.getLieu().getAdresse() %><br><%= obj.getLieu().getCommune().getNom() %>
                            </p>
+                           <%-- TODO : lien vers openstreetmaps --%>
                            <p class="ds44-docListElem mts">
-                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="#" title="Comment se rendre à : Manoir de Brehet route de Guérande LA TURBALLE">S'y rendre ?</a>
+                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="#" title="Comment se rendre à : Manoir de Brehet route de Guérande LA TURBALLE"><%= glp("jcmsplugin.socle.syrendre") %></a>
                            </p>
                         </div>
                      </div>
-                     <div>
-                        <h2 class="h3-like" id="idTitre-list2">Public :</h2>
-                        <ul class="ds44-uList">
-                           <li>Bébés</li>
-                           <li>Enfants (à partir de 8 ans)</li>
-                           <li>Adulte</li>
-                           <li>Sénior</li>
-                           <li>Tout public</li>
-                        </ul>
-                     </div>
+                     <jalios:if predicate="<%= Util.notEmpty(obj.getCategorieDage()) || (Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0) || (Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0) %>">
+	                     <div>
+	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.public") %></h2>
+	                        <ul class="ds44-uList">
+	                           <jalios:if predicate="<%= Util.notEmpty(obj.getCategorieDage()) %>">
+	                                <li>
+			                           <jalios:foreach name="itPublic" type="String" array="<%= obj.getCategorieDage() %>">
+			                                <%= itPublic %><%= itCounter < obj.getCategorieDage().length ? ", " : "" %>
+			                           </jalios:foreach>
+			                        </li>
+	                           </jalios:if>
+	                           <jalios:select>
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0) %>">
+	                                    <li><%= glp("jcmsplugin.socle.age.apartirde", obj.getAgeMinimum()) %></li>
+	                                </jalios:if>
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
+	                                    <li><%= glp("jcmsplugin.socle.age.jusqua", obj.getAgeMaximum()) %></li>
+	                                </jalios:if>
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
+	                                    <li><%= glp("jcmsplugin.socle.age.de.a", obj.getAgeMinimum(), obj.getAgeMaximum()) %></li>
+	                                </jalios:if>
+	                           </jalios:select>
+	                        </ul>
+	                     </div>
+                     </jalios:if>
                   </div>
+                  
                   <div class="col ds44--xl-padding-l">
+                     <jalios:if predicate="<%= Util.notEmpty(obj.getContacts()) && obj.getContacts().length > 0 %>">
+                         <% fr.cg44.plugin.socle.infolocale.entities.Contact eventContact = obj.getContacts()[0]; %>
+	                     <div class="ds44-mb3">
+	                        <h2 class="h3-like"><%= eventContact.getTypeId() == 1 ? glp("jcmsplugin.socle.contact") : glp("jcmsplugin.socle.contactreservations") %></h2>
+	                        <div class="ds44-ml1">
+	                           <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) || Util.notEmpty(eventContact.getTelephone2()) %>">
+	                           <div class="ds44-docListElem mtm">
+	                              <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+	                              <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) %>">
+                                       <ds:phone number="<%= eventContact.getTelephone1() %>"/>
+                                  </jalios:if>
+                                  <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) && Util.notEmpty(eventContact.getTelephone2()) %>">
+                                   - 
+                                  </jalios:if>
+                                  <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone2()) %>">
+                                       <ds:phone number="<%= eventContact.getTelephone2() %>"/>
+                                  </jalios:if>
+	                           </div>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= Util.notEmpty(eventContact.getEmail()) %>">
+		                           <p class="ds44-docListElem mts">
+		                              <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a href="#mailto:<%= eventContact.getEmail() %>" aria-label='<%= glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getLieu().getNom(), eventContact.getEmail()) %>'><%= glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label") %></a>
+		                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= Util.notEmpty(eventContact.getUrl()) %>">
+		                           <p class="ds44-docListElem mts">
+		                              <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="<%= eventContact.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", eventContact.getUrl()) %>' target="_blank"><%= glp("jcmsplugin.socle.siteinternet") %></a>
+		                           </p>
+	                           </jalios:if>
+	                           <%-- TODO : le reste en dessous --%>
+	                           <p class="ds44-docListElem mts">
+	                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>Date limite de réservation : 30 juillet 2019
+	                           </p>
+	                           <p class="ds44-docListElem mts">
+	                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>COMPLET
+	                           </p>
+	                           <p>
+	                              <a class="ds44-btnStd ds44-btn--invert" title="Réserver : Coquillages et crustacés"><span class="ds44-btnInnerText">Réserver</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+	                           </p>
+	                        </div>
+	                     </div>
+                     </jalios:if>
                      <div class="ds44-mb3">
-                        <h2 class="h3-like" id="idTitre-list3">Contacts et réservation :</h2>
-                        <div class="ds44-ml1">
-                           <p class="ds44-docListElem mtm">
-                              <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>02 41 39 21 13
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a href="#mailto:contact@loire-atlantique.fr" aria-label="Contacter [Nom du lieu] par mail : contact@loire-atlantique.fr">Contacter par mail</a>
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="https://www.loire-atlantique.fr" title="Site internet :  – nouvelle fenêtre" target="_blank">Site internet</a>
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>Date limite de réservation : 30 juillet 2019
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>COMPLET
-                           </p>
-                           <p>
-                              <a class="ds44-btnStd ds44-btn--invert" title="Réserver : Coquillages et crustacés"><span class="ds44-btnInnerText">Réserver</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
-                           </p>
-                        </div>
-                     </div>
-                     <div class="ds44-mb3">
-                        <h2 class="h3-like" id="idTitre-list3">Accessibilité :</h2>
+                        <h2 class="h3-like">Accessibilité :</h2>
                         <div class="ds44-ml1">
                            <p class="ds44-docListElem mtm">
                               <i class="icon icon-handicap-visuel ds44-docListIco" aria-hidden="true"></i>Handicap visuel
@@ -184,7 +236,7 @@ labelLegendCopyright += credit;
                         </div>
                      </div>
                      <div>
-                        <h2 class="h3-like" id="idTitre-list2">Langues :</h2>
+                        <h2 class="h3-like">Langues :</h2>
                         <ul class="ds44-uList">
                            <li>Anglais</li>
                            <li>Espagnol</li>
