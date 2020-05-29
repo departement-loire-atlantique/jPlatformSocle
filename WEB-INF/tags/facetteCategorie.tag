@@ -79,7 +79,7 @@
 			String classTypeInput = obj.getTypeDeSelection() ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
 			classTypeInput = Util.isEmpty(dataURL) && !obj.getProfondeur() ? "ds44-js-select-multilevel" : classTypeInput; 
 		%>
-		<div id='<%= idFormElement %>' data-name='<%= idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
+		<div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
 				<%= isDisabled ? "data-disabled=\"true\"" : "" %>
