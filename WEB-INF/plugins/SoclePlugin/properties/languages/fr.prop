@@ -168,6 +168,7 @@ jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
 jcmsplugin.socle.partenaire: Partenaire
+jcmsplugin.socle.participants: participants
 
 # ------------------------------------------------------------
 #  Header

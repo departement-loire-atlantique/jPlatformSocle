@@ -289,17 +289,32 @@ public class InfolocaleEntityUtils {
         try {
             date.setDebut(json.getString("debut"));
             date.setFin(json.getString("fin"));
-            if (json.getJSONArray("horaire").length() > 0) {
-              JSONArray horaires = json.getJSONArray("horaire");
-              StringBuilder horairesBuilder = new StringBuilder();
-              for (int counterHoraires = 0; counterHoraires < horaires.length(); counterHoraires++) {
-                horairesBuilder.append(horaires.getString(counterHoraires).replace(":", "h").replace(",", "-"));
-                if (counterHoraires+1 < horaires.length()) {
-                  horairesBuilder.append(", ");
+            String tmpHoraireString = json.getString("horaire");
+            StringBuilder horaireBuilder = new StringBuilder();
+            boolean isReadingHoraire = false;
+            if (Util.notEmpty(tmpHoraireString)) {
+              for (Character itChar : tmpHoraireString.toCharArray()) {
+                if (itChar.equals('{')) { // début d'un horaire
+                  isReadingHoraire = true;
+                  continue;
                 }
+                if (itChar.equals('}')) { // fin d'un horaire
+                  isReadingHoraire = false;
+                  continue;
+                }
+                if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
+                  horaireBuilder.append(" - ");
+                  continue;
+                }
+                if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
+                  horaireBuilder.append(", ");
+                  continue;
+                }
+                // Dans tous les autres cas, on concatène normalement
+                horaireBuilder.append(itChar);
               }
-              date.setHoraire(horairesBuilder.toString());
             }
+            date.setHoraire(horaireBuilder.toString().replace(":", "h"));
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new DateInfolocale();

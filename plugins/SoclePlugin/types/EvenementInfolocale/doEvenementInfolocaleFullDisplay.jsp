@@ -3,16 +3,16 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% EvenementInfolocale obj = (EvenementInfolocale)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
-DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
+DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(obj);
 
 String urlPhoto = "";
 String legend = "";
 String credit = "";
 
-if (Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().length > 0) {
-  urlPhoto = itEvent.getPhotos()[0].getPath();
-  legend = itEvent.getPhotos()[0].getLegend();
-  credit = itEvent.getPhotos()[0].getCredit();
+if (Util.notEmpty(obj.getPhotos()) && obj.getPhotos().length > 0) {
+  urlPhoto = obj.getPhotos()[0].getPath();
+  legend = obj.getPhotos()[0].getLegend();
+  credit = obj.getPhotos()[0].getCredit();
 }
 
 String labelLegendCopyright = legend;
@@ -60,6 +60,12 @@ labelLegendCopyright += credit;
                   </jalios:if>
                   <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
                   <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= currentDisplayedDate.getHoraire() %></span>
+                  </jalios:if>
+                  <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
+                    <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
+                  </jalios:if>
+                  <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
+                    <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
                   </jalios:if>
                </div>
             </div>
