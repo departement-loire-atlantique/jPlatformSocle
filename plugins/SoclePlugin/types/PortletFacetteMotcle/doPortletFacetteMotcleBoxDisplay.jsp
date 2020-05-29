@@ -23,7 +23,7 @@
 				</span>
 			</span>
 		</label>
-		<input name='<%= idFormElement %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
+		<input name='<%= "text" + idFormElement %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
 				title='<%= obj.getFacetteObligatoire() ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) : labelChamp %>'
 				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> 
 				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>/>

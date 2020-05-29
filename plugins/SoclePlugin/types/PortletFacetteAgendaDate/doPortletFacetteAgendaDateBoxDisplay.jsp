@@ -22,7 +22,7 @@ boolean isRequired = obj.getFacetteObligatoire();
 <div class="ds44-form__container">
    <div class="ds44-select__shape ds44-inpStd">
       <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= title %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></p>
-      <div id="<%= uid %>" data-name="<%= uid %>" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
+      <div id="<%= uid %>" data-name="agenda-date" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
       <button class="ds44-reset" type="button" aria-describedby="label-<%= uid %>"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
       <button type="button" id="button-<%= uid %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", title) : title %>'><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-<%= uid %>" class="visually-hidden"><%= title %></span></button>
    </div>

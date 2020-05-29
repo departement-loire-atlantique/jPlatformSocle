@@ -52,6 +52,7 @@
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaCategorie"></type>
     <type name="PortletFacetteAgendaAccessibilit"></type>
+    <type name="PortletFacetteAgendaCommune"></type>
     <type name="PortletFacetteAgendaDate"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
@@ -270,6 +271,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletFacetteAgendaCommune">
+        <template name="default" file="doPortletFacetteAgendaCommuneBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletFacetteAgendaDate">
         <template name="default" file="doPortletFacetteAgendaDateBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
@@ -425,6 +431,7 @@
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchGeolocEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.WysiwygPolicyFilter" />   
+    <policyfilter    class="fr.cg44.plugin.socle.policyfilter.InfoLocaleChannelPolicyFilter" />  
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CityQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.DelegationQueryFilter" />

@@ -22,7 +22,7 @@ boolean isRequired = obj.getFacetteObligatoire();
       <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= glp("jcmsplugin.socle.infolocale.label.accessibilite") %>
         <jalios:if predicate="<%= isRequired %>"><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></jalios:if>
       </p>
-      <div id="<%= uid %>" data-name="<%= uid %>" class="ds44-js-select-checkbox ds44-selectDisplay" data-required="<%= isRequired %>"></div>
+      <div id="<%= uid %>" data-name="accessibilite" class="ds44-js-select-checkbox ds44-selectDisplay" data-required="<%= isRequired %>"></div>
       <button class="ds44-reset" type="button" aria-describedby="label-<%= uid %>"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
       <button type="button" id="button-<%= uid %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", title) : title %>'  ><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-<%= uid %>" class="visually-hidden"><%= title %></span></button>
    </div>
@@ -37,7 +37,7 @@ boolean isRequired = obj.getFacetteObligatoire();
                 <% String uidFormElem = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));  %>
 	            <li class="ds44-select-list_elem">
 	               <div class="ds44-form__container ds44-checkBox-radio_list ">
-	                  <input type="checkbox" id="name-check-<%= uidFormElem %>-<%= itCounter %>" name="<%= uidFormElem %>" value="<%= itAccessibiliteValue %>" class="ds44-checkbox" />
+	                  <input type="checkbox" id="name-check-<%= uidFormElem %>-<%= itCounter %>" name="accessibilite-<%= itCounter %>" value="<%= itAccessibiliteValue %>" class="ds44-checkbox" />
 	                  <label for="name-check-<%= uidFormElem %>-<%= itCounter %>" class="ds44-boxLabel" id="name-check-label-<%= uidFormElem %>-<%= itCounter %>"><%= accessibiliteValues.get(itAccessibiliteValue) %></label>
 	               </div>
 	            </li>
