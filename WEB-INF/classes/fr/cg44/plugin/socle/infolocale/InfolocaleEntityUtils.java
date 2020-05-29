@@ -289,7 +289,17 @@ public class InfolocaleEntityUtils {
         try {
             date.setDebut(json.getString("debut"));
             date.setFin(json.getString("fin"));
-            date.setHoraire(json.getString("horaire"));
+            if (json.getJSONArray("horaire").length() > 0) {
+              JSONArray horaires = json.getJSONArray("horaire");
+              StringBuilder horairesBuilder = new StringBuilder();
+              for (int counterHoraires = 0; counterHoraires < horaires.length(); counterHoraires++) {
+                horairesBuilder.append(horaires.getString(counterHoraires).replace(":", "h").replace(",", "-"));
+                if (counterHoraires+1 < horaires.length()) {
+                  horairesBuilder.append(", ");
+                }
+              }
+              date.setHoraire(horairesBuilder.toString());
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new DateInfolocale();
