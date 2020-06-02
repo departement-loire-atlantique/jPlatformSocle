@@ -18,7 +18,7 @@ Boolean isInRechercheFacette = Util.isEmpty(publication);
 Boolean hasFonctionsAdditionnelles = false; // TODO
 Boolean showFiltres = isInRechercheFacette;
 
-request.setAttribute("rechercheId", obj.getId());
+request.setAttribute("rechercheId", box.getId());
 
 String fluxId = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
 
@@ -62,7 +62,7 @@ request.setAttribute("fluxId", fluxId);
                     
 	                    <% request.setAttribute("isFilter", false); %>
                        <%-- TODO Liste des facettes depuis la portlet - Ajouter le jalios:foreach --%>
-                       <jalios:foreach array="<%= obj.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= 4 %>">
+                       <jalios:foreach array="<%= box.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= 4 %>">
 
 							<% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
 

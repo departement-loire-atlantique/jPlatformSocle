@@ -1,4 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
+<%@ page import="fr.cg44.plugin.socle.infolocale.entities.Genre"%>
+<%@ page import="org.json.JSONObject"%>
+<%@ page import="org.json.JSONArray"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
@@ -20,9 +24,10 @@
 	for(int i = 2 ; i < objThematiques.length(); i++) {
 		JSONArray listeThematiques = objThematiques.getJSONArray(objThematiques.names().getString(i));
 		
-		for(JSONObject objGenre : listeThematiques) {
+		for (int j = 0; j < listeThematiques.length(); j++) {
+			JSONObject objGenre = listeThematiques.getJSONObject(j);
 			Genre genre = new Genre();
-			genre.setGenreId(objGenre.getString("id"));
+			genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
 			genre.setLibelle(objGenre.getString("libelle"));
 			listeGenre.add(genre);
 		}
@@ -33,9 +38,10 @@
 	for(int i = 2 ; i < objThematiquesPersos.length(); i++) {
 		JSONArray listeThematiquesPersos = objThematiquesPersos.getJSONArray(objThematiquesPersos.names().getString(i));
 		
-		for(JSONObject objGenre : listeThematiquesPersos) {
+		for (int j = 0; j < listeThematiquesPersos.length(); j++) {
+			JSONObject objGenre = listeThematiquesPersos.getJSONObject(j);
 			Genre genre = new Genre();
-			genre.setGenreId(objGenre.getString("id"));
+			genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
 			genre.setLibelle(objGenre.getString("libelle"));
 			listeGenre.add(genre);
 		}
