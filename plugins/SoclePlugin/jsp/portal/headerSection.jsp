@@ -35,12 +35,12 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
             <div class="ds44-flex-container ds44-flex-valign-center">
                 <div class="ds44-colLeft">
                     <a href="index.jsp" class="ds44-logoContainer">
-                        <picture class="ds44-logo <%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>">
+                        <picture class="ds44-logo">
                             <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
                                 <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
                                 <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
                             </jalios:if>
-                            <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil")) %> <%=channel.getName() %>" />
+                            <img class='<%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>' src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil")) %> <%=channel.getName() %>" />
                         </picture>
                     </a>
                 </div>
