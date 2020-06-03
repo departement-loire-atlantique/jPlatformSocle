@@ -25,7 +25,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                     <i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
                     <a href='<%= localisation%>' 
                         title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle(userLang) + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
-                        target="_blank"> 
+                        target="_blank"
+                        data-statistic='{"name": "declenche-evenement","category": "BlocContact","action": "Localiser","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
                         
                         <%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
                     </a>
