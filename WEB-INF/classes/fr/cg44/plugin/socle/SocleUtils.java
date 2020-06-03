@@ -1160,9 +1160,6 @@ public final class SocleUtils {
     if(Util.notEmpty(elu.getFirstName())) {
     	fullName = elu.getFirstName()+" ";
     }
-    if(Util.notEmpty(elu.getFirstName()) && Util.notEmpty(elu.getNom())) {
-    	fullName += " ";
-    }
     if(Util.notEmpty(elu.getNom())) {
     	fullName += elu.getNom();
     }
