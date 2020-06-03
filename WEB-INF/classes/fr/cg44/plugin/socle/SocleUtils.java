@@ -1158,7 +1158,10 @@ public final class SocleUtils {
   public static String getElectedMemberFullName(ElectedMember elu) {
     String fullName = "";
     if(Util.notEmpty(elu.getFirstName())) {
-    	fullName = elu.getFirstName()+" ";
+    	fullName = elu.getFirstName();
+    }
+    if(Util.notEmpty(elu.getFirstName()) && Util.notEmpty(elu.getNom())) {
+    	fullName += " ";
     }
     if(Util.notEmpty(elu.getNom())) {
     	fullName += elu.getNom();
