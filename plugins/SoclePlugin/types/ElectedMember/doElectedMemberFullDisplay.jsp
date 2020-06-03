@@ -129,7 +129,8 @@
 
 											<jalios:if predicate='<%= obj.getMails().length == 1 %>'>
 												<% String email = obj.getMails()[0]; %>
-												<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+												<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+												   data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'> 
 													<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 												</a>
 											</jalios:if>
@@ -138,7 +139,8 @@
 												<ul class="ds44-list">
 													<jalios:foreach name="email" type="String" array='<%= obj.getMails() %>'>
 														<li>
-															<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+															<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+															   data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'>
 																<%= email %>
 															</a>
 														</li>
@@ -155,7 +157,8 @@
 
 											<jalios:if predicate='<%= obj.getWebSites().length == 1 %>'>
 												<% String site = obj.getWebSites()[0]; %>
-												<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank">
+												<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>'
+												   target="_blank" data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Site web : <%= site %>","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'>
 													<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 												</a>
 											</jalios:if>
@@ -164,7 +167,8 @@
 												<ul class="ds44-list">
 													<jalios:foreach name="site" type="String" array='<%= obj.getWebSites() %>'>
 														<li>
-															<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.ficheaide.visiter-site-web-de.label", obj.getTitle(), glp("jcmsplugin.socle.accessibily.newTabLabel")) %>' target="_blank"> 
+															<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>'
+															   target="_blank" data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Site web : <%= site %>","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'> 
 																<%= SocleUtils.parseUrl(site) %>
 															</a>
 														</li>
@@ -181,8 +185,8 @@
 												<jalios:if predicate="<%= Util.notEmpty(obj.getFacebook()) %>">
 													<li>
 														<a href="<%= obj.getFacebook() %>" target="_blank" class="ds44-rsLink" 
-																title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.elu.page-facebook", SocleUtils.getElectedMemberFullName(obj))) %>' 
-																data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Facebook&quot;}">
+																title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.elu.page-facebook", SocleUtils.getElectedMemberFullName(obj))) %>'
+																data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Facebook","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'>
 															<i class="icon icon-facebook icon--sizeL" aria-hidden="true"></i>
 															<span class="visually-hidden"><%= glp("jcmsplugin.socle.elu.page-facebook", SocleUtils.getElectedMemberFullName(obj)) %></span>
 														</a>
@@ -192,7 +196,7 @@
 													<li>
 														<a href="<%= obj.getTwitter() %>" target="_blank" class="ds44-rsLink" 
 																title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.elu.page-twitter", SocleUtils.getElectedMemberFullName(obj))) %>' 
-																data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Twitter&quot;}">
+																data-statistic='{"name": "declenche-evenement","category": "BlocContacterElu","action": "Twitter","label": "<%= HttpUtil.encodeForHTMLAttribute(fullName) %>"}'>
 															<i class="icon icon-twitter icon--sizeL" aria-hidden="true"></i>
 															<span class="visually-hidden"><%= glp("jcmsplugin.socle.elu.page-twitter", SocleUtils.getElectedMemberFullName(obj)) %></span>
 														</a>
