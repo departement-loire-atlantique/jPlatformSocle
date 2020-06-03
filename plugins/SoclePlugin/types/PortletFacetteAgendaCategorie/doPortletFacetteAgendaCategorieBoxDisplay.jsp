@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
+<%@ page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
 <%@ page import="fr.cg44.plugin.socle.infolocale.entities.Genre"%>
 <%@ page import="org.json.JSONObject"%>
 <%@ page import="org.json.JSONArray"%>
@@ -17,34 +18,20 @@
 	
 	if(Util.isEmpty(fluxId)) return;
 	
+	JSONObject extractedFlux = RequestManager.filterFluxData(fluxId);
+	
+	if(Util.isEmpty(extractedFlux)) return;
+	
+	boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
+	
+	if(!fluxSuccess && extractedFlux.getJSONArray("result").length() <= 0) return;
+		
+	EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+
 	Set<Genre> listeGenre = new HashSet<Genre>();
 	
-	JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique");
-	
-	for(int i = 2 ; i < objThematiques.length(); i++) {
-		JSONArray listeThematiques = objThematiques.getJSONArray(objThematiques.names().getString(i));
-		
-		for (int j = 0; j < listeThematiques.length(); j++) {
-			JSONObject objGenre = listeThematiques.getJSONObject(j);
-			Genre genre = new Genre();
-			genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
-			genre.setLibelle(objGenre.getString("libelle"));
-			listeGenre.add(genre);
-		}
-	}
-	
-	JSONObject objThematiquesPersos = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
-	
-	for(int i = 2 ; i < objThematiquesPersos.length(); i++) {
-		JSONArray listeThematiquesPersos = objThematiquesPersos.getJSONArray(objThematiquesPersos.names().getString(i));
-		
-		for (int j = 0; j < listeThematiquesPersos.length(); j++) {
-			JSONObject objGenre = listeThematiquesPersos.getJSONObject(j);
-			Genre genre = new Genre();
-			genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
-			genre.setLibelle(objGenre.getString("libelle"));
-			listeGenre.add(genre);
-		}
+	for(EvenementInfolocale event : evenements) {
+		listeGenre.add(event.getGenre());
 	}
 %>
 
