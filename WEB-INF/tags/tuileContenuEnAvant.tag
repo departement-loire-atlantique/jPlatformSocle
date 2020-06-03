@@ -65,7 +65,7 @@
     </a>
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
 	    <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
-		    <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+		    <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
 		    <% if (Util.notEmpty(subTitle)) { %>
 		    <p><%= subTitle %></p>
 		    <% } %>
