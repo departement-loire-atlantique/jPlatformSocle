@@ -263,43 +263,36 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 	            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
 	
 	            <div class="ds44-mt3 grid-12-small-1">
-	                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) || (obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu())) ? "6 ds44-modal-column" : "12" %> '>
-	                    <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
-	
-	                    <jalios:select>
-	                        <jalios:if predicate="<%= Util.isEmpty(obj.getDocumentsUtiles()) %>">
-	                            <p><%= glp("jcmsplugin.socle.ficheaide.nodoc.label") %></p>
-	                        </jalios:if>
-	                        <jalios:default>
-	                            <ul class="ds44-list">
-	                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-	                                    <li class="mts">
-	                                        <% 
-		                                        // Récupérer l'extension du fichier
-		                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-		                                        // Récupérer la taille du fichier
-		                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
-	                                        %>
-	                                        <p class="ds44-docListElem">
-	                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-	                                        	<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
-	                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'>
-	                                        		<%= itDoc.getTitle() %>
-	                                        	</a>
-	                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
-	                                        </p>
-	                                    </li>
-	                                </jalios:foreach>
-	                            </ul>
-	                        </jalios:default>
-	                    </jalios:select>
-	
-	                </div>
+	                <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsUtiles()) %>">
+		                <div class='col-<%= Util.notEmpty(obj.getEdemarche(loggedMember)) || Util.notEmpty(obj.getQuiContacter()) || (obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu())) ? "6 ds44-modal-column" : "12" %> '>
+		                    <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>				                 	                 
+                            <ul class="ds44-list">
+                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
+                                    <li class="mts">
+                                        <% 
+	                                        // Récupérer l'extension du fichier
+	                                        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+	                                        // Récupérer la taille du fichier
+	                                        String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+                                        %>
+                                        <p class="ds44-docListElem">
+                                        	<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
+                                        	<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
+                                        	<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'>
+                                        		<%= itDoc.getTitle() %>
+                                        	</a>
+                                        	<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
+                                        </p>
+                                    </li>
+                                </jalios:foreach>
+                            </ul>		                   		
+		                </div>
+	                </jalios:if>
 	                
 	                <jalios:select>
 	                
 		                <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
-		                    <div class="col-6 ds44-modal-column">
+		                    <div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
 		
 		                        <h2 class="h3-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
 		
@@ -317,7 +310,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 		                
 		                <%-- Faire une demande recherche par sectorisation --%>
 		                <jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu()) %>">
-		                    <div class="col-6 ds44-modal-column">
+		                    <div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
 		                                                 		                                                         
 		                         <div id="rechercheDemande">
 		                            <h2 class="h4-like" id="titre_envoie_dossier"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>       
@@ -335,9 +328,18 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 		                
 		                
 		                <jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getQuiContacter()) %>">
-		                    <div class="col-6 ds44-modal-column">
+		                    <div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
 		                    
-								<h2 class="h4-like" id="titre_envoie_dossier"><%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %></h2>
+								<h2 class="h4-like" id="titre_envoie_dossier">
+								    <jalios:select>
+									    <jalios:if predicate='<%= Util.isEmpty(obj.getDocumentsUtiles()) %>'>								        
+									        <%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %>
+									    </jalios:if>
+									    <jalios:default>
+									        <%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %>
+									    </jalios:default>
+								    </jalios:select>
+								</h2>
 								
 								<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
 																		
