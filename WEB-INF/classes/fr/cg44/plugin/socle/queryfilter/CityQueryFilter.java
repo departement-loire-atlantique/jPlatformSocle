@@ -18,11 +18,8 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	@Override
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
 		// Récupère la ou les communes en paramètre de recherche
-		Boolean isSectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
-		if(!isSectorisation) {
-			String[] citiesCodeSearchArray = request.getParameterValues("commune");
-			addCitySearch(qh, request, citiesCodeSearchArray);
-		}
+		String[] citiesCodeSearchArray = request.getParameterValues("commune");
+		addCitySearch(qh, request, citiesCodeSearchArray);	
 		return qh;
 	}
 	

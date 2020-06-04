@@ -1048,6 +1048,14 @@ public final class SocleUtils {
         }
       }
     }
+    // Action spéciale pour la facette délégation
+    // Transforme la commune en délégation
+    if(parametersMap.containsKey("delegationSearch") && parametersMap.containsKey("commune")) {
+      String codeCommune = Util.getFirst(parametersMap.get("commune"));
+      City commune = SocleUtils.getCommuneFromCode(codeCommune);
+      parametersMap.put("delegation", new String[] {commune.getDelegation().getId()});
+      parametersMap.remove("commune");      
+    }
     return parametersMap;
   }
   
