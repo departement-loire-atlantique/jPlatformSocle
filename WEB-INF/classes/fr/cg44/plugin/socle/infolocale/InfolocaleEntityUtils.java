@@ -452,6 +452,16 @@ public class InfolocaleEntityUtils {
         parameters.put("codeInsee", commune);
       }
       
+      // Recherche sur un genre
+      String[] genres = request.getParameterValues("cids");
+      if(Util.notEmpty(genres)) {
+    	String strGenres = genres[0];
+    	for(int i = 1 ; i < genres.length; i++) {
+    		strGenres += "," + genres[i]; 
+    	}
+        parameters.put("rubrique", strGenres);
+      }
+      
       
       // Paramétrage de la portlet Agenda
       if (Util.notEmpty(box.getNombreDeResultats())) {
