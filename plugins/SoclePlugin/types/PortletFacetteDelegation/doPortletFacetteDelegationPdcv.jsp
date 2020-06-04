@@ -5,7 +5,7 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <% PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet; %>
 
-<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Recherchez un contact","label": "$commune|text"}' action="plugins/SoclePlugin/types/PortletFacetteDelegation/doDelegationPdcvRedirection.jsp" method="GET">
+<form data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Recherche menu","label": "$commune"}' action="plugins/SoclePlugin/types/PortletFacetteDelegation/doDelegationPdcvRedirection.jsp" method="GET">
     <div class="ds44-js-linked-fields ds44-js-masked-fields">
         <%
         String idFormElement= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));

@@ -101,7 +101,8 @@
 														<a href='<%= planDacces.getDownloadUrl() %>' 
 															target="_blank"
 															download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
-															title='<%= strAriaLabelPlanDacces %>'> 
+															title='<%= strAriaLabelPlanDacces %>'
+															data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Plan accès","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 															
 															<%= glp("jcmsplugin.socle.fichelieu.telecharger-plan-acces.label") %>
 														</a>
@@ -114,7 +115,8 @@
 																	<a href='<%= planDacces.getDownloadUrl() %>' 
 																		target="_blank"
 																		download='<%= HttpUtil.encodeForHTMLAttribute(planDacces.getDownloadName(userLang)) %>' 
-																		title='<%= strAriaLabelPlanDacces %>'> 
+																		title='<%= strAriaLabelPlanDacces %>'
+																		data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Plan accès","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 																		
 																		<%= planDacces.getDataName(userLang) %>
 																	</a>
@@ -130,7 +132,8 @@
 												<i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
 												<a href='<%= localisation%>' 
 													title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.localiser-carte.label")+" : " + obj.getTitle() + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"))%>' 
-													target="_blank"> 
+													target="_blank"
+													data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Localiser","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 													
 													<%= glp("jcmsplugin.socle.ficheaide.localiser-carte.label") %> 
 												</a>
@@ -185,7 +188,9 @@
 
 												<jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
 													<% String email = obj.getEmail()[0]; %>
-													<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+													<a href='<%= "mailto:"+email %>'
+													   title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+													   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 														<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 													</a>
 												</jalios:if>
@@ -194,7 +199,9 @@
 													<ul class="ds44-list">
 														<jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
 															<li>
-																<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+																<a href='<%= "mailto:"+email %>'
+																    title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+																    data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 																	<%= email %>
 																</a>
 															</li>
@@ -211,7 +218,9 @@
 
 												<jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
 													<% String site = obj.getSiteInternet()[0]; %>
-													<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank">
+													<a href='<%= SocleUtils.parseUrl(site) %>'
+													   title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+													   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
 														<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 													</a>
 												</jalios:if>
@@ -220,7 +229,9 @@
 													<ul class="ds44-list">
 														<jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 															<li>
-																<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"> 
+																<a href='<%= SocleUtils.parseUrl(site) %>'
+																   title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+																   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 																	<%= SocleUtils.parseUrl(site) %>
 																</a>
 															</li>
