@@ -18,21 +18,9 @@
 	
 	if(Util.isEmpty(fluxId)) return;
 	
-	JSONObject extractedFlux = RequestManager.filterFluxData(fluxId);
+	Set<Genre> listeGenre = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getGroupeDeThematiquesPersonnalisee(), obj.getIdDeThematiquesPersonnalisees(), fluxId);
 	
-	if(Util.isEmpty(extractedFlux)) return;
-	
-	boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
-	
-	if(!fluxSuccess && extractedFlux.getJSONArray("result").length() <= 0) return;
-		
-	EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
-
-	Set<Genre> listeGenre = new HashSet<Genre>();
-	
-	for(EvenementInfolocale event : evenements) {
-		listeGenre.add(event.getGenre());
-	}
+	if(Util.isEmpty(listeGenre)) return;
 %>
 
 <ds:facetteCategorie obj='<%= obj %>' 

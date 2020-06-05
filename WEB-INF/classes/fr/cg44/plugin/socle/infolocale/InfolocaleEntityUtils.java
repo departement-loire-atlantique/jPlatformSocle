@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -483,4 +485,126 @@ public class InfolocaleEntityUtils {
       return allEvents;
     }
     
+	private static Set<Genre> getAllGenreOfAThematique(JSONObject thematique, Boolean hasToSave, String[] idDeThematiquesPersonnalisees, Set<Genre> listeGenre) {
+		LOGGER.warn("getAllGenreOfAThematique("+thematique+", "+hasToSave+", "+idDeThematiquesPersonnalisees+", "+listeGenre+")");
+		if (!hasToSave && Util.notEmpty(idDeThematiquesPersonnalisees)) {
+			try {
+				int i = 0;
+				String themId = thematique.getString("code");
+				while(i < idDeThematiquesPersonnalisees.length && !hasToSave) {
+					hasToSave = themId == idDeThematiquesPersonnalisees[i];
+				}
+			} catch (JSONException e) {
+				LOGGER.warn("Exception sur getAllGenreOfAThematique"+ e.getMessage());
+			}
+		}
+		JSONArray listeSubThem = new JSONArray();
+		try {
+			listeSubThem = thematique.getJSONArray("categories");
+		} catch (JSONException e) {
+			LOGGER.warn("Exception sur getAllGenreOfAThematique : "+ e.getMessage());
+		}
+		if(Util.notEmpty(listeSubThem)) {
+			for(int i = 0; i > listeSubThem.length(); i++) {
+				try {
+					JSONObject subThem = listeSubThem.getJSONObject(i);
+					listeGenre = getAllGenreOfAThematique(subThem, hasToSave, idDeThematiquesPersonnalisees, listeGenre);
+				} catch (JSONException e) {
+					LOGGER.warn("Exception sur getAllGenreOfAThematique : "+ e.getMessage());
+				}
+			}
+		} else {
+			JSONArray listeSubGenres = new JSONArray();
+			try {
+				listeSubGenres = thematique.getJSONArray("genres");
+			} catch (JSONException e) {
+				LOGGER.warn("Exception sur getAllGenreOfAThematique : "+ e.getMessage());
+			}
+			if(Util.notEmpty(listeSubGenres)) {
+				for(int i = 0; i > listeSubGenres.length(); i++) {
+					try {
+						JSONObject subGenre = listeSubGenres.getJSONObject(i);
+						Genre genre = new Genre();
+						genre.setGenreId(Integer.parseInt(subGenre.getString("code")));
+						genre.setLibelle(subGenre.getString("libelle"));
+						
+						Boolean hasToSaveThisGenre = false;
+						if (!hasToSave && Util.notEmpty(idDeThematiquesPersonnalisees)) {
+							int j = 0;
+							while(j < idDeThematiquesPersonnalisees.length && !hasToSaveThisGenre) {
+								hasToSaveThisGenre = genre.getId() == idDeThematiquesPersonnalisees[j];
+							}
+						}
+						
+						if(hasToSave || hasToSaveThisGenre) {
+							listeGenre.add(genre);
+						}
+						
+					} catch (JSONException e) {
+						LOGGER.warn("Exception sur getAllGenreOfAThematique : "+ e.getMessage());
+					}
+				}
+			}
+		}
+		
+		return listeGenre;
+	}
+	
+	public static Set<Genre> getAllGenreOfThematiques(String fluxId, String[] idDeThematiquesPersonnalisees, Set<Genre> listeGenre){
+		JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique");
+		for(int i = 2 ; i < objThematiques.length() ; i++) {
+			try {
+				JSONArray listeThematiques = objThematiques.getJSONArray(objThematiques.names().getString(i));
+				
+				Boolean takeAllGenre = true;
+    			if(Util.notEmpty(idDeThematiquesPersonnalisees)) {
+    				takeAllGenre = false;
+    			}
+    			for (int j = 0; j < listeThematiques.length(); j++) {
+    				JSONObject objGenre = listeThematiques.getJSONObject(j);
+    				listeGenre = getAllGenreOfAThematique(objGenre, takeAllGenre, idDeThematiquesPersonnalisees, listeGenre);
+    			}
+			} catch (JSONException e) {
+				LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
+			}
+			
+		}
+		return listeGenre;
+	}
+	
+	public static Set<Genre> getAllGenreOfThematiquesPerso(String fluxId, String[] groupeDeThematiquesPersonnalisee, Set<Genre> listeGenre) {
+		JSONObject objThematiquesPersos = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
+		for(String nomGrpPerso : groupeDeThematiquesPersonnalisee) {
+			try {
+				JSONArray listeThematiquesPersos = objThematiquesPersos.getJSONArray(nomGrpPerso);
+				for (int j = 0; j < listeThematiquesPersos.length(); j++) {
+    				JSONObject objGenre = listeThematiquesPersos.getJSONObject(j);
+    				Genre genre = new Genre();
+    				genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
+    				genre.setLibelle(objGenre.getString("libelle"));
+    				listeGenre.add(genre);
+    			}
+			} catch (JSONException e) {
+				LOGGER.warn("Exception sur getAllGenreOfThematiquesPerso : "+ e.getMessage());
+			}
+			
+		}
+		return listeGenre;
+	}
+    
+    public static Set<Genre> getAllGenreOfMetadata(String[] groupeDeThematiquesPersonnalisee, String[] idDeThematiquesPersonnalisees, String fluxId) {
+    	LOGGER.warn("getAllGenreOfMetadata");
+    	Set<Genre> listeGenre = new HashSet<Genre>();
+    	
+    	if(Util.isEmpty(groupeDeThematiquesPersonnalisee)) {
+    		
+    		listeGenre = getAllGenreOfThematiques(fluxId, idDeThematiquesPersonnalisees, listeGenre);
+    		
+    	} else {
+    		
+    		listeGenre = getAllGenreOfThematiquesPerso(fluxId, groupeDeThematiquesPersonnalisee, listeGenre);
+    	}
+    	
+    	return listeGenre;
+    }
 }
