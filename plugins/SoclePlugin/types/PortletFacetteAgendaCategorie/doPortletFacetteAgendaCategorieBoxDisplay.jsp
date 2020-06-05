@@ -30,7 +30,4 @@
 		request='<%= request %>' 
 		selectionMultiple='<%= obj.getSelectionMultiple() %>' 
 		profondeur='true'/>
-
-<jalios:foreach collection='<%= listeGenre %>' name="itGenre" type="Genre">
-    <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itGenre.getGenreId() %>' data-technical-field />
-</jalios:foreach>
+		
