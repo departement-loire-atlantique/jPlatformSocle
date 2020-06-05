@@ -27,9 +27,11 @@ public class DelegationQueryFilter extends LuceneQueryFilter {
       City commune = SocleUtils.getCommuneFromCode(codeCommune);
       // Récupère les communes de la delegation pour la recherche à facettes
       // Rechercher sur la delegation revient à recherche sur toutes les communes de cette délégation
-      Delegation delegation = commune.getDelegation();
-      if(Util.notEmpty(delegation)) {     
-        addCitySearch(qh, request, delegation.getLinkIndexedDataSet(City.class, "delegation").stream().map(x -> String.valueOf(x.getCityCode())).toArray(String[]::new));
+      if(Util.notEmpty(commune)) {
+        Delegation delegation = commune.getDelegation();
+        if(Util.notEmpty(delegation)) {     
+          addCitySearch(qh, request, delegation.getLinkIndexedDataSet(City.class, "delegation").stream().map(x -> String.valueOf(x.getCityCode())).toArray(String[]::new));
+        }
       }
     }
     return qh;
