@@ -42,7 +42,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
           </div>
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getAdresseMail()) %>">
-        <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail()) %>' href="mailto:<%= pub.getAdresseMail() %>"><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
+        <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail()) %>' href="mailto:<%= pub.getAdresseMail() %>" data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(pub.getTitle()) %>"}'><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
       </jalios:if>
     </div>
   </div>
