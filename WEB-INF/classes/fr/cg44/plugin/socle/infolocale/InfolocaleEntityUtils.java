@@ -113,7 +113,19 @@ public class InfolocaleEntityUtils {
               itEvent.setGratuit(tmpTarif.getBoolean("gratuit"));
               itEvent.setTarifNormal(tmpTarif.getString("tarif"));
               itEvent.setTarifReduit(tmpTarif.getString("tarifReduit"));
-              itEvent.setTarifAutre(tmpTarif.getString("tarifReAutre"));
+              itEvent.setTarifAutre(tmpTarif.getString("tarifAutre"));
+            }
+            JSONArray billetteries = json.getJSONArray("billetteries");
+            if (billetteries.length() > 0) {
+              JSONObject billetterie = billetteries.getJSONObject(0);
+              itEvent.setUrlBilletterie(billetterie.getString("url"));
+            }
+            JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
+            if (donneesComplementaires.length() > 0) {
+              JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
+              if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
+              if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
+              if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
             }
             if (Util.notEmpty(json.get("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));

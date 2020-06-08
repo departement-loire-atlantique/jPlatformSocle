@@ -17,6 +17,10 @@ import fr.cg44.plugin.socle.infolocale.entities.Photo;
  */
 public class EvenementContent extends Content {
     
+    String titreLibre;
+    String texteCourt;
+    String texteLong;
+    String urlBilletterie;
     Lieu lieu;
     Contact[] contacts;
     DateInfolocale[] dates;
@@ -41,6 +45,38 @@ public class EvenementContent extends Content {
         this.setId("INFOLOCALE_" + Integer.toString(id));
     }
     
+    public String getTitreLibre() {
+      return titreLibre;
+    }
+
+    public void setTitreLibre(String titreLibre) {
+      this.titreLibre = titreLibre;
+    }
+
+    public String getTexteCourt() {
+      return texteCourt;
+    }
+
+    public void setTexteCourt(String texteCourt) {
+      this.texteCourt = texteCourt;
+    }
+
+    public String getTexteLong() {
+      return texteLong;
+    }
+
+    public void setTexteLong(String texteLong) {
+      this.texteLong = texteLong;
+    }
+
+    public String getUrlBilletterie() {
+      return urlBilletterie;
+    }
+
+    public void setUrlBilletterie(String urlBilletterie) {
+      this.urlBilletterie = urlBilletterie;
+    }
+
     public Lieu getLieu() {
         return lieu;
     }

@@ -1,9 +1,19 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.Langue"%>
+<%@page import="org.json.JSONObject"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% EvenementInfolocale obj = (EvenementInfolocale)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
+
+// TEST START
+JSONObject tmpObj = RequestManager.getSingleEvent("6990714");
+obj = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(tmpObj);
+// TEST END
+
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(obj);
 
 String urlPhoto = "";
@@ -21,19 +31,23 @@ if (Util.notEmpty(legend) && Util.notEmpty(credit)) {
   labelLegendCopyright += " " + glp("jcmsplugin.socle.symbol.copyright") + " ";
 }
 labelLegendCopyright += credit;
-%>
 
-<%-- TODO : le fil d'ariane, somewhere --%>
+String displayedTitle = Util.notEmpty(obj.getTitreLibre()) ? obj.getTitreLibre() : obj.getTitle();
+%>
 
 <main role="main" id="content">
    <article class="ds44-container-large">
       <div class="ds44-lightBG ds44-posRel">
-         <%-- TODO : bouton retour --%>
+         <%-- TODO : bouton retour normalement géré depuis la facette --%>
+         <%--
          <a href="#" class="ds44-btnStd ds44-btnStd--retourPage" title="Retour à la la liste des lieux"><i class="icon icon-long-arrow-left" aria-hidden="true"></i><span class="ds44-btnInnerText">Retour à la liste</span></a>
+         --%>
          <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
+            <jalios:if predicate='<%= Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+                <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
+            </jalios:if>
             <div class="ds44-grid12-offset-2">
-                <%-- TODO : titre ou titre libre (pris en prio) --%>
-               <h1 class="h1-like mbl mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt">Coquillages et crustacés</h1>
+               <h1 class="h1-like mbl mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt"><%= displayedTitle %></h1>
             </div>
          </div>
       </div>
@@ -83,8 +97,7 @@ labelLegendCopyright += credit;
                      </figure>
                   </div>
                   <div class="col mll mbs">
-                     <%-- TODO : introduction --%>
-                     <p class="ds44-introduction">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam luctus eget libero sed accumsan. Sed mi quam, tempor non orci sit amet, accumsan rhoncus dolor. Curabitur pulvinar vestibulum hendrerit accumsan rhoncus dolor. Curabitur pulvinar vestibulum hendrerit.</p>
+                     <p class="ds44-introduction"><%= Util.isEmpty(obj.getTexteCourt()) ? obj.getTexteCourt() : obj.getDescription() %></p>
                   </div>
                </div>
             </div>
@@ -205,49 +218,67 @@ labelLegendCopyright += credit;
 		                              <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="<%= eventContact.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", eventContact.getUrl()) %>' target="_blank"><%= glp("jcmsplugin.socle.siteinternet") %></a>
 		                           </p>
 	                           </jalios:if>
-	                           <%-- TODO : le reste en dessous --%>
-	                           <p class="ds44-docListElem mts">
-	                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>Date limite de réservation : 30 juillet 2019
-	                           </p>
-	                           <p class="ds44-docListElem mts">
-	                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i>COMPLET
-	                           </p>
-	                           <p>
-	                              <a class="ds44-btnStd ds44-btn--invert" title="Réserver : Coquillages et crustacés"><span class="ds44-btnInnerText">Réserver</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
-	                           </p>
+	                           <jalios:if predicate="<%= Util.notEmpty(obj.getReservation()) %>">
+		                           <p class="ds44-docListElem mts">
+		                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i><%= obj.getReservation() %>
+		                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= obj.getMentionEvenementComplet() %>">
+		                           <p class="ds44-docListElem mts">
+		                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.complet") %>
+		                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= Util.notEmpty(obj.getUrlBilletterie()) %>">
+		                           <p>
+		                              <a href="<%= obj.getUrlBilletterie() %>" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+		                           </p>
+	                           </jalios:if>
 	                        </div>
 	                     </div>
                      </jalios:if>
-                     <div class="ds44-mb3">
-                        <h2 class="h3-like">Accessibilité :</h2>
-                        <div class="ds44-ml1">
-                           <p class="ds44-docListElem mtm">
-                              <i class="icon icon-handicap-visuel ds44-docListIco" aria-hidden="true"></i>Handicap visuel
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-handicap-moteur ds44-docListIco" aria-hidden="true"></i>Handicap moteur
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-handicap-mental ds44-docListIco" aria-hidden="true"></i>Handicap intellectuel
-                           </p>
-                           <p class="ds44-docListElem mts">
-                              <i class="icon icon-handicap-auditif ds44-docListIco" aria-hidden="true"></i>Handicap auditif
-                           </p>
-                        </div>
-                     </div>
-                     <div>
-                        <h2 class="h3-like">Langues :</h2>
-                        <ul class="ds44-uList">
-                           <li>Anglais</li>
-                           <li>Espagnol</li>
-                        </ul>
-                     </div>
+                     <jalios:if predicate="<%= obj.getMentionAccessibleHandicapVisuel() || obj.getMentionAccessibleHandicapMoteur() || obj.getMentionAccessibleHandicapMental() || obj.getMentionAccessibleHandicapAuditif() %>">
+	                     <div class="ds44-mb3">
+	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.accessibilite") %></h2>
+	                        <div class="ds44-ml1">
+	                           <jalios:if predicate="<%= obj.getMentionAccessibleHandicapVisuel() %>">
+	                           <p class="ds44-docListElem mtm">
+	                              <i class="icon icon-handicap-visuel ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel") %>
+	                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= obj.getMentionAccessibleHandicapMoteur() %>">
+	                           <p class="ds44-docListElem mtm">
+	                              <i class="icon icon-handicap-moteur ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur") %>
+	                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= obj.getMentionAccessibleHandicapMental() %>">
+	                           <p class="ds44-docListElem mtm">
+	                              <i class="icon icon-handicap-mental ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapmental") %>
+	                           </p>
+	                           </jalios:if>
+	                           <jalios:if predicate="<%= obj.getMentionAccessibleHandicapAuditif() %>">
+	                           <p class="ds44-docListElem mtm">
+	                              <i class="icon icon-handicap-auditif ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif") %>
+	                           </p>
+	                           </jalios:if>
+	                        </div>
+	                     </div>
+                     </jalios:if>
+                     <jalios:if predicate="<%= Util.notEmpty(obj.getLangues()) %>">
+	                     <div>
+	                        <h2 class="h3-like"><%= glp("Langues :") %></h2>
+	                        <ul class="ds44-uList">
+	                           <jalios:foreach name="itLangue" type="Langue" array="<%= obj.getLangues() %>">
+	                               <li><%= itLangue.getLangueLibelle() %></li>
+	                           </jalios:foreach>
+	                        </ul>
+	                     </div>
+                     </jalios:if>
                   </div>
                </div>
             </div>
          </div>
       </section>
-      <section class="ds44-contenuArticle" id="section3">
+      <section class="ds44-contenuArticle" id="evenementAllerPlusLoin">
          <div class="ds44-inner-container ds44-mtb3">
             <div class="ds44-grid12-offset-2">
                <div class="ds44-wsg-encadreContour">
@@ -269,6 +300,10 @@ labelLegendCopyright += credit;
             <li><a href="#" target="_blank" class="ds44-rsLink" title="Contacter le Département de Loire-Atlantique - nouvelle fenêtre" data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Loire-Atlantique&quot;}"><i class="icon icon-mail icon--sizeL" aria-hidden="true"></i><span class="visually-hidden">Contacter Le Département de Loire-Atlantique</span></a></li>
          </ul>
       </section>
+      
+      <div>
+      <%= tmpObj %>
+      </div>
    </article>
 </main>
 

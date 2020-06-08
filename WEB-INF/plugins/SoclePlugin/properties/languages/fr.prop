@@ -182,6 +182,11 @@ jcmsplugin.socle.age.de.a: De {0} à {1} ans
 jcmsplugin.socle.contactreservations: Contact et réservation :
 jcmsplugin.socle.contact: Contact :
 jcmsplugin.socle.siteinternet: Site internet
+jcmsplugin.socle.complet: COMPLET
+jcmsplugin.socle.reserver: Réserver
+jcmsplugin.socle.reserverlien: Réserver : {0}
+jcmsplugin.socle.accessibilite: Accessibilité :
+jcmsplugin.socle.langues: Langues :
 
 # ------------------------------------------------------------
 #  Header
@@ -398,6 +403,10 @@ jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
 jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
 jcmsplugin.socle.infolocale.label.carrousel.tuile.date: Le {0} {1} {2}
 jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3} {4} {5}
