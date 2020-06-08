@@ -59,14 +59,22 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	        <div class="ds44-docListElem mts">
 	            <i class="icon icon-bus ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
 	        </div>
-	        <div class="ds44-docListElem mts">
-	            <i class="icon icon-time ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getDuree() %></jalios:wysiwyg>
-	        </div>
-	        <div class="ds44-docListElem mts">
-	            <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
-	            <jalios:wysiwyg><%= obj.getDepotDuDossier().replace("<div class=\"wysiwyg\"><p>", "<div class=\"wysiwyg\"><p>" + "<strong>" + glp("jcmsplugin.socle.actuedu.depotdossier.label") + "</strong> ") %></jalios:wysiwyg>
-	            <strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
-	        </div>
+	        <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) %>">
+		        <div class="ds44-docListElem mts">
+		            <i class="icon icon-time ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getDuree() %></jalios:wysiwyg>
+		        </div>
+	        </jalios:if>
+	        <jalios:if predicate="<%= Util.notEmpty(obj.getDepotDuDossier()) || Util.notEmpty(obj.getRealisationDeLaction()) %>">
+		        <div class="ds44-docListElem mts">
+		            <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
+		            <jalios:if predicate="<%= Util.notEmpty(obj.getDepotDuDossier()) %>">
+		            	<jalios:wysiwyg><%= obj.getDepotDuDossier().replace("<div class=\"wysiwyg\"><p>", "<div class=\"wysiwyg\"><p>" + "<strong>" + glp("jcmsplugin.socle.actuedu.depotdossier.label") + "</strong> ") %></jalios:wysiwyg>
+		            </jalios:if>
+		            <jalios:if predicate="<%= Util.notEmpty(obj.getRealisationDeLaction()) %>">
+		            	<strong><%= glp("jcmsplugin.socle.actuedu.realisationaction.label") %></strong> <jalios:wysiwyg><%= obj.getRealisationDeLaction() %></jalios:wysiwyg>
+					</jalios:if>
+		        </div>
+	        </jalios:if>
 	    </div>
 	    <div class="col ds44--xl-padding-l">
 	        <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
