@@ -13,12 +13,12 @@
             com.jalios.jcms.context.JcmsMessage,
             java.util.List"
 %>
-<%@ attribute name="msg"
+<%@ attribute name="title"
     required="false"
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="Le message à afficher"
+    description="Le titre de la boîte"
 %>
 <%@ attribute name="msgList"
     required="false"
@@ -27,44 +27,37 @@
     type="List<JcmsMessage>"
     description="La liste des messages à afficher"
 %>
-<%@ attribute name="title"
-    required="false"
+<%@ attribute name="type"
+    required="true"
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="Le titre de la boîte"
-%>
-<%@ attribute name="css"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Les styles à appliquer"
+    description="Le type de message : success ou error"
 %>
 <%
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
-%>
+String styleIcon = "icon-attention";
 
-<div class="ds44-errorMsg-container" aria-live="polite">
+if("success".equals(type)){
+	styleIcon = "icon-check";
+}
+
+%>
+<div class="ds44-msg-container <%= type %>" aria-live="polite">
     <jalios:if predicate='<%= Util.notEmpty(title) %>'>
-        <p id="error-mgs" class="ds44-msgErrorText ds44-msgErrorInvalid">
-            <i class="icon icon-attention icon--sizeM" aria-hidden="true"></i>
-            <span class="ds44-iconInnerText ds44-errorLabel"><%= title %></span>
+        <p id="formMsg_<%= uid %>" class="ds44-message-text">
+            <i class="icon <%= styleIcon %> icon--sizeM" aria-hidden="true"></i>
+            <span class="ds44-iconInnerText"><%= title %></span>
         </p>
     </jalios:if>
         
-	<jalios:select>
-		<jalios:if predicate='<%= Util.notEmpty(msg) %>'>
-		  <%= msg %>
-		</jalios:if>
-		<jalios:if predicate='<%= Util.notEmpty(msgList) %>'>
-			<ul class="ds44-errorList">
-                <jalios:foreach name="itMessage" type="JcmsMessage" collection="<%= msgList %>">
-                    <li><%= JcmsUtil.glp(userLang,itMessage.getMessage()) %></li>
-			     </jalios:foreach>
-			</ul>
-		</jalios:if>
-	</jalios:select>
+	<jalios:if predicate='<%= Util.notEmpty(msgList) %>'>
+		<ul class="ds44-errorList">
+               <jalios:foreach name="itMessage" type="JcmsMessage" collection="<%= msgList %>">
+                   <li><%= JcmsUtil.glp(userLang,itMessage.getMessage()) %></li>
+		     </jalios:foreach>
+		</ul>
+	</jalios:if>
         
 </div>
