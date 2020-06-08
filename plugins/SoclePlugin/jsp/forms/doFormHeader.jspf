@@ -3,8 +3,8 @@
 
 <div class="ds44-box ds44-theme mbm">
     <div class="ds44-innerBoxContainer">
-        <p class="ds44-box-heading ds44-mb-std" role="heading" aria-level="2">Formulaire de contact</p>
-        <p>Les champs suivis d’un * sont obligatoires.</p>
+        <p class="ds44-box-heading ds44-mb-std" role="heading" aria-level="2"><%= request.getAttribute("titreFormulaire") %></p>
+        <p><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 
 
 
