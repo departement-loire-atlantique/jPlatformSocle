@@ -60,22 +60,22 @@
 <div class="col col-6">
 <% } %>
 <div class="ds44-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
-    <a href="<%= itPub.getDisplayUrl(userLocale) %>">
-        <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
-    </a>
+
+    <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
-	    <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
-		    <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
-		    <% if (Util.notEmpty(subTitle)) { %>
-		    <p><%= subTitle %></p>
-		    <% } %>
-		    <% if (Util.notEmpty(location)) { %>
-		    <p class="ds44-cardLocalisation">
-		        <i class="icon icon-marker" aria-hidden="true"></i>
-		        <span class="ds44-iconInnerText"><%= location %></span>
-		    </p>
-		    <% } %>
-	    </div>
+        <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
+            <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+            <% if (Util.notEmpty(subTitle)) { %>
+            <p><%= subTitle %></p>
+            <% } %>
+            <% if (Util.notEmpty(location)) { %>
+            <p class="ds44-cardLocalisation">
+                <i class="icon icon-marker" aria-hidden="true"></i>
+                <span class="ds44-iconInnerText"><%= location %></span>
+            </p>
+            <% } %>
+        </div>
     </jalios:if>
 </div>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
