@@ -22,7 +22,7 @@
 
 <%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
 
-
+<% request.setAttribute("titreFormulaire", glp("jcmsplugin.socle.form.contact.titre")); %>
 <%@ include file='/plugins/SoclePlugin/jsp/forms/doFormHeader.jspf' %>
 
     <%-- -- FORM -------------------------------------------- --%>
