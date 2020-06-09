@@ -18,9 +18,11 @@ import org.json.JSONObject;
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
@@ -126,6 +128,28 @@ public class InfolocaleEntityUtils {
               if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
               if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
               if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
+            }
+            JSONArray ressources = json.getJSONArray("ressources");
+            if (ressources.length() > 0) {
+              List<String> urlVideos = new ArrayList<>();
+              List<DossierPresse> listDossiers = new ArrayList<>();
+              for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
+                JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
+                switch (itRessource.getString("type")) {
+                  case "video" :
+                    urlVideos.add(itRessource.getString("url"));
+                    break;
+                  case "dossier_presse" :
+                    DossierPresse itDossier = new DossierPresse();
+                    itDossier.setUrl(itRessource.getString("url"));
+                    itDossier.setFilename(SocleUtils.getFilenameFromUrl(itRessource.getString("url")));
+                    itDossier.setFormat(SocleUtils.getFileExpensionFromUrl(itRessource.getString("url")));
+                    listDossiers.add(itDossier);
+                    break;
+                }
+              }
+              itEvent.setUrlVideos(urlVideos);
+              itEvent.setDossiersDePresse(listDossiers);
             }
             if (Util.notEmpty(json.get("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));

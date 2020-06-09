@@ -187,6 +187,8 @@ jcmsplugin.socle.reserver: Réserver
 jcmsplugin.socle.reserverlien: Réserver : {0}
 jcmsplugin.socle.accessibilite: Accessibilité :
 jcmsplugin.socle.langues: Langues :
+jcmsplugin.socle.serendrea: Comment se rendre à : {0}
+jcmsplugin.socle.allerplusloin: Pour aller plus loin
 
 # ------------------------------------------------------------
 #  Header

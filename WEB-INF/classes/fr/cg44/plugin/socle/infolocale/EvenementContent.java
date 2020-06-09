@@ -1,10 +1,13 @@
 package fr.cg44.plugin.socle.infolocale;
 
+import java.util.List;
+
 import com.jalios.jcms.Content;
 import com.jalios.jcms.Publication;
 
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
@@ -27,6 +30,8 @@ public class EvenementContent extends Content {
     Genre genre;
     Photo[] photos;
     Langue[] langues;
+    List<String> urlVideos;
+    List<DossierPresse> dossiersDePresse;
     String titre;
     String metadata1;
     String metadata2;
@@ -114,6 +119,22 @@ public class EvenementContent extends Content {
         this.langues = langues;
     }
     
+    public List<String> getUrlVideos() {
+      return urlVideos;
+    }
+
+    public void setUrlVideos(List<String> urlVideos) {
+      this.urlVideos = urlVideos;
+    }
+
+    public List<DossierPresse> getDossiersDePresse() {
+      return dossiersDePresse;
+    }
+
+    public void setDossiersDePresse(List<DossierPresse> dossiersDePresse) {
+      this.dossiersDePresse = dossiersDePresse;
+    }
+
     public void setTitre(String titre) {
         this.setTitle(titre);
         this.titre = titre;
