@@ -222,7 +222,7 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaTarif(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getTarif()) ? "" : itEvent.getTarif();
+        return Util.isEmpty(itEvent.getTarifNormal()) ? "" : itEvent.getTarifNormal();
     }
     
     /**
