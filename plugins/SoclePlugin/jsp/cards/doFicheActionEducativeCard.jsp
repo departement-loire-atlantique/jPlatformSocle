@@ -15,12 +15,9 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 %>
 
 
-<section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray  ">
-    <jalios:if predicate="<%= Util.notEmpty(pub.getImageMobile()) %>">
-        <% request.setAttribute("forcedImgUrl", pub.getImageMobile()); %>
-        <%@ include file="cardPictureCommons.jspf" %>
-        <% request.removeAttribute("forcedImgUrl"); %>
-    </jalios:if>
+<section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray">
+
+	<%@ include file="cardPictureCommons.jspf" %>
     
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">

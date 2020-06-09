@@ -73,10 +73,14 @@ jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Co
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
+jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature
+jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
 jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
+jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
+jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
 
 # ------------------------------------------------------------
 #  Mail
