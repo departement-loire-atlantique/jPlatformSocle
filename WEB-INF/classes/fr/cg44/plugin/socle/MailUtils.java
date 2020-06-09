@@ -1,8 +1,8 @@
 package fr.cg44.plugin.socle;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +15,7 @@ import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.mail.MailMessage;
 import com.jalios.util.Util;
 
-import generated.City;
+import generated.CandidatureSpontaneeForm;
 import generated.ContactForm;
 
 public final class MailUtils {
@@ -55,6 +55,15 @@ public final class MailUtils {
    }
 
  }
+
+ /**
+  * Envoi d'un email de contact.
+  */
+ public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, HashMap<File, String> fichiers) {
+ 	LOGGER.warn("ENVOI MAIL CANDIDATURE !");
+
+ }
+ 
 
  /**
   * Envoi de mail avec le pied de mail du CG44.
