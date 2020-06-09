@@ -83,7 +83,7 @@
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
 				<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
 				<%= isDisabled ? "data-disabled=\"true\"" : "" %>
-				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>></div>
+				<%= Util.notEmpty(request.getAttribute("isFilter")) && (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>></div>
 
 		<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 			<i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>

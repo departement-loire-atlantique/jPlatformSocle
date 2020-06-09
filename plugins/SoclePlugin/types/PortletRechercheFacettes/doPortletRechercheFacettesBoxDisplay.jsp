@@ -69,7 +69,7 @@
 					</div>
 				</jalios:foreach>
 
-				<% request.removeAttribute("isFiltre"); %>
+				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres ? "" : "--large"; %>
@@ -103,7 +103,7 @@
 		
 							</jalios:foreach>
 
-							<% request.removeAttribute("isFiltre"); %>
+							<% request.removeAttribute("isFilter"); %>
 
 						</div>
 					</jalios:if>
