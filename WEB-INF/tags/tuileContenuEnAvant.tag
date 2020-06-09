@@ -59,7 +59,7 @@
 <% if (!Boolean.parseBoolean(isUnique)) { %>
 <div class="col col-6">
 <% } %>
-<div class="ds44-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
+<div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
     <a href="<%= itPub.getDisplayUrl(userLocale) %>">
         <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     </a>
