@@ -61,7 +61,6 @@ request.setAttribute("fluxId", fluxId);
                     <div class='ds44-fieldContainer ds44-fg1'>
                     
 	                    <% request.setAttribute("isFilter", false); %>
-                       <%-- TODO Liste des facettes depuis la portlet - Ajouter le jalios:foreach --%>
                        <jalios:foreach array="<%= box.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= 4 %>">
 
 							<% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
@@ -70,9 +69,6 @@ request.setAttribute("fluxId", fluxId);
 								<jalios:include pub="<%= itFacette %>" usage="box"/>
 							</div>
 						</jalios:foreach>
-                       
-                       <%-- TOTO a supprimer facette de dev pour mes tests --%>
-                       <input type="text" name="commune" data-technical-field />
                        
                        
                        <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/types/PortletAgendaInfolocale/displayResultAgenda.jsp" data-technical-field />
