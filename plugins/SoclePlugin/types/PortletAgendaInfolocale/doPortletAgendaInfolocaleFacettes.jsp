@@ -17,6 +17,12 @@ Boolean isInRechercheFacette = Util.isEmpty(publication);
 
 Boolean hasFonctionsAdditionnelles = false; // TODO
 Boolean showFiltres = isInRechercheFacette;
+
+request.setAttribute("rechercheId", box.getId());
+
+String fluxId = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
+
+request.setAttribute("fluxId", fluxId);
 %>
 
 
@@ -54,10 +60,15 @@ Boolean showFiltres = isInRechercheFacette;
         
                     <div class='ds44-fieldContainer ds44-fg1'>
                     
-                       <%-- TODO Liste des facettes depuis la portlet - Ajouter le jalios:foreach --%>
-                       
-                       <%-- TOTO a supprimer facette de dev pour mes tests --%>
-                       <input type="text" name="commune" data-technical-field />
+	                    <% request.setAttribute("isFilter", false); %>
+                       <jalios:foreach array="<%= box.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= 4 %>">
+
+							<% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
+
+							<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+								<jalios:include pub="<%= itFacette %>" usage="box"/>
+							</div>
+						</jalios:foreach>
                        
                        
                        <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/types/PortletAgendaInfolocale/displayResultAgenda.jsp" data-technical-field />

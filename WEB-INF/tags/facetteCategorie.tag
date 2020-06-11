@@ -7,26 +7,35 @@
 	import="com.jalios.jcms.Channel, 
 			com.jalios.util.Util,
 			com.jalios.jcms.JcmsUtil, 
-			generated.PortletFacetteCategorie, 
+			generated.AbstractPortletFacette, 
 			javax.servlet.http.HttpServletRequest, 
 			com.jalios.jcms.Member, 
 			com.jalios.jcms.Category, 
+			fr.cg44.plugin.socle.infolocale.entities.Genre, 
 			java.util.Set, 
+			java.util.TreeSet, 
 			fr.cg44.plugin.socle.SocleUtils" 
 %>
 <%@ attribute name="obj" 
 		required="true" 
 		fragment="false" 
 		rtexprvalue="true" 
-		type="PortletFacetteCategorie" 
+		type="AbstractPortletFacette" 
 		description="La facette categorie" 
 %>
 <%@ attribute name="listeCategory" 
 		required="false" 
 		fragment="false" 
 		rtexprvalue="true" 
-		type="Set<Category>" 
+		type="TreeSet<Category>" 
 		description="La liste des categories selectionnables" 
+%>
+<%@ attribute name="listeGenre" 
+		required="false" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Set<Genre>" 
+		description="La liste des genres selectionnables (pour l'agenda)" 
 %>
 <%@ attribute name="dataURL" 
 		required="false" 
@@ -56,6 +65,20 @@
 		type="HttpServletRequest" 
 		description="La requete http actuelle" 
 %>
+<%@ attribute name="selectionMultiple" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Boolean" 
+		description="Est ce que la facette propose une séléction multiple" 
+%>
+<%@ attribute name="profondeur" 
+		required="true" 
+		fragment="false" 
+		rtexprvalue="true" 
+		type="Boolean" 
+		description="La profondeur est elle a 1 (sinon 2)" 
+%>
 <%
 	Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
@@ -63,7 +86,8 @@
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
-	String labelChamp = obj.getCategoriesRacines(loggedMember).first().getName();
+	String labelChamp = JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.categorie.default-label");
+	labelChamp = Util.notEmpty(listeCategory) ? listeCategory.first().getName() : labelChamp;
 	labelChamp = Util.notEmpty(dataURL) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.sous-theme.label") : labelChamp;
 	labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : labelChamp;
 	String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";
@@ -76,8 +100,8 @@
 		</p>
 		
 		<% 
-			String classTypeInput = obj.getTypeDeSelection() ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
-			classTypeInput = Util.isEmpty(dataURL) && !obj.getProfondeur() ? "ds44-js-select-multilevel" : classTypeInput; 
+			String classTypeInput = selectionMultiple ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
+			classTypeInput = Util.isEmpty(dataURL) && !profondeur ? "ds44-js-select-multilevel" : classTypeInput; 
 		%>
 		<div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
 				<%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
@@ -99,7 +123,7 @@
 	</div>
 
 	<div class="ds44-select-container hidden">
-		<jalios:if predicate='<%= obj.getTypeDeSelection() %>'>
+		<jalios:if predicate='<%= selectionMultiple %>'>
 			<div class="ds44-flex-container ds44--m-padding">
 				<button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1" type="button" 
 						aria-describedby='<%= "button-message-" + idFormElement %>'>
@@ -114,25 +138,41 @@
 			</div>
 		</jalios:if>
 		<% int nbrTotalCat = 0; %>
-		<jalios:if predicate='<%= Util.notEmpty(dataURL) || obj.getProfondeur() %>'>
+		<jalios:if predicate='<%= Util.notEmpty(dataURL) || profondeur %>'>
+			
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
-					<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
-						<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+					<jalios:if predicate="<%= Util.notEmpty(listeCategory) %>">
+						<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
+							<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+								<% nbrTotalCat++; %>
+								<li class="ds44-select-list_elem">
+									
+									<ds:facetteCategorieListElem cat='<%= itCat %>' 
+										idFormElement='<%= idFormElement %>' 
+										typeDeSelection='<%= selectionMultiple %>' 
+										numCat='<%= nbrTotalCat %>'/>
+								</li>
+							</jalios:foreach>
+						</jalios:foreach>
+					</jalios:if>
+					<jalios:if predicate="<%= Util.notEmpty(listeGenre) %>">
+						<jalios:foreach name="itGenre" type="Genre" collection='<%= listeGenre %>'>
 							<% nbrTotalCat++; %>
 							<li class="ds44-select-list_elem">
 								
-								<ds:facetteCategorieListElem cat='<%= itCat %>' 
+								<ds:facetteAgendaCategorieListElem genre='<%= itGenre %>' 
 									idFormElement='<%= idFormElement %>' 
-									typeDeSelection='<%= obj.getTypeDeSelection() %>' 
-									numCat='<%= nbrTotalCat %>'/>
+									typeDeSelection='<%= selectionMultiple %>' 
+									numGenre='<%= nbrTotalCat %>'/> 
 							</li>
 						</jalios:foreach>
-					</jalios:foreach>
+					</jalios:if>
 				</ul>
 			</div>
+			
 		</jalios:if>
-		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !obj.getProfondeur() %>'>
+		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !profondeur %>'>
 			<ul class="ds44-collapser ds44-listSelect">
 				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
 					<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
@@ -144,7 +184,7 @@
 							 <li class="ds44-collapser_element ds44-collapser--select ds44-select__categ ds44-select-list_elem">
 							      <ds:facetteCategorieListElem cat='<%= itCat %>' 
                                         idFormElement='<%= idFormElement %>' 
-                                        typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+                                        typeDeSelection='<%= selectionMultiple %>' 
                                         numCat='<%= nbrTotalCat %>'/>
 							 </li>
 						</jalios:if>
@@ -154,7 +194,7 @@
 							    <div class="ds44-select__categ">
 	                               <ds:facetteCategorieListElem cat='<%= itCat %>' 
 	                                       idFormElement='<%= idFormElement %>' 
-	                                       typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+	                                       typeDeSelection='<%= selectionMultiple %>' 
 	                                       numCat='<%= nbrTotalCat %>'/>
 	
 	                            </div>						
@@ -169,7 +209,7 @@
 											<li class="ds44-select-list_elem">
 												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
 														idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
-														typeDeSelection='<%= obj.getTypeDeSelection() %>' 
+														typeDeSelection='<%= selectionMultiple %>' 
 														numCat='<%= itSubCatCounter %>'/>
 											</li>
 										</jalios:foreach>

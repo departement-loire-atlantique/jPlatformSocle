@@ -50,6 +50,7 @@
     <type name="PortletCarousel"></type>
     <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
+    <type name="PortletFacetteAgendaCategorie"></type>
     <type name="PortletFacetteAgendaAccessibilit"></type>
     <type name="PortletFacetteAgendaCommune"></type>
     <type name="PortletFacetteAgendaDate"></type>
@@ -260,6 +261,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletFacetteAgendaCategorie">
+        <template name="default" file="doPortletFacetteAgendaCategorieBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletFacetteAgendaAccessibilit">
         <template name="default" file="doPortletFacetteAgendaAccessibilitBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
@@ -464,6 +470,7 @@
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/categoryTree.tag" />
+    <file path="WEB-INF/tags/facetteAgendaCategorieListElem.tag" />
     <file path="WEB-INF/tags/facetteAutoCompletion.tag" />
     <file path="WEB-INF/tags/facetteCategorie.tag" />
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
