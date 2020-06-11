@@ -1012,6 +1012,37 @@ public final class SocleUtils {
     }
     return null;
   }
+  
+  /**
+   * Récupère une commune à partir de son code postal
+   * @param zipCode
+   * @return
+   */
+  public static String getCitynameFromZipcode(String zipCode) {
+
+   if (Util.isEmpty(zipCode)) {
+     return "?";
+   }
+
+   if (zipCode.equals("44000") || zipCode.equals("44100") || zipCode.equals("44200") || zipCode.equals("44300")) {
+     return "Nantes";
+   }
+
+   if (!zipCode.substring(0, 2).equals("44")) {
+     return "hors département";
+   }
+
+   Set<City> setCities = channel.getDataSet(City.class);
+   for (City itCity : setCities) {
+   	if (itCity.getZipCode().trim().equals(zipCode)) {
+ 				return itCity.getTitle();
+ 			}
+   }
+   
+   return "?";
+
+ }  
+ 
     
   /**
    * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap

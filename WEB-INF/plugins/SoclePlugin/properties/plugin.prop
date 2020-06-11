@@ -288,6 +288,7 @@ jcmsplugin.socle.site.pdcv.portlet.id:
 #  Formulaires
 # ------------------------------------------------------------
 $jcmsplugin.socle.form.contactform.sujet.root: aca_8167
+$jcmsplugin.socle.form.portlet-rgpd.id: 
 jcmsplugin.socle.email.emailParDefaut: contact@loire-atlantique.fr
 jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
 jcmsplugin.socle.rayon.option: rayon
