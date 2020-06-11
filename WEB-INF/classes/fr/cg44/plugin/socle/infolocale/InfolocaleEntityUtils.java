@@ -21,9 +21,11 @@ import org.json.JSONObject;
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
@@ -110,7 +112,48 @@ public class InfolocaleEntityUtils {
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
-            itEvent.setTarif(json.getString("tarif"));
+            JSONArray tarifs = json.getJSONArray("tarifs");
+            if (tarifs.length() > 0) {
+              JSONObject tmpTarif = tarifs.getJSONObject(0);
+              itEvent.setGratuit(tmpTarif.getBoolean("gratuit"));
+              itEvent.setTarifNormal(tmpTarif.getString("tarif"));
+              itEvent.setTarifReduit(tmpTarif.getString("tarifReduit"));
+              itEvent.setTarifAutre(tmpTarif.getString("tarifAutre"));
+            }
+            JSONArray billetteries = json.getJSONArray("billetteries");
+            if (billetteries.length() > 0) {
+              JSONObject billetterie = billetteries.getJSONObject(0);
+              itEvent.setUrlBilletterie(billetterie.getString("url"));
+            }
+            JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
+            if (donneesComplementaires.length() > 0) {
+              JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
+              if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
+              if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
+              if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
+            }
+            JSONArray ressources = json.getJSONArray("ressources");
+            if (ressources.length() > 0) {
+              List<String> urlVideos = new ArrayList<>();
+              List<DossierPresse> listDossiers = new ArrayList<>();
+              for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
+                JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
+                switch (itRessource.getString("type")) {
+                  case "video" :
+                    urlVideos.add(itRessource.getString("url"));
+                    break;
+                  case "dossier_presse" :
+                    DossierPresse itDossier = new DossierPresse();
+                    itDossier.setUrl(itRessource.getString("url"));
+                    itDossier.setFilename(SocleUtils.getFilenameFromUrl(itRessource.getString("url")));
+                    itDossier.setFormat(SocleUtils.getFileExpensionFromUrl(itRessource.getString("url")));
+                    listDossiers.add(itDossier);
+                    break;
+                }
+              }
+              itEvent.setUrlVideos(urlVideos);
+              itEvent.setDossiersDePresse(listDossiers);
+            }
             if (Util.notEmpty(json.get("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
             }
@@ -128,6 +171,15 @@ public class InfolocaleEntityUtils {
             }
             itEvent.setAgeMinimum(json.getInt("ageMinimum"));
             itEvent.setAgeMaximum(json.getInt("ageMaximum"));
+            if (json.getJSONArray("categoriesAge").length() > 0) {
+              JSONArray jsonAgeArray = json.getJSONArray("categoriesAge");
+              String[] tmpCatAge = new String[jsonAgeArray.length()];
+              for (int countArrayAge = 0; countArrayAge < jsonAgeArray.length(); countArrayAge++) {
+                tmpCatAge[countArrayAge] = jsonAgeArray.getJSONObject(countArrayAge).getString("libelle");
+              }
+              itEvent.setCategorieDage(tmpCatAge);
+            }
+            itEvent.setNombreDeParticipants(json.getInt("nombreParticipants"))  ;
             itEvent.setDuree(json.getInt("duree"));
             itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
             itEvent.setMentionAccessibleHandicapAuditif(json.getBoolean("mentionAccessibleHandicapAuditif"));
@@ -256,6 +308,7 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Contact contact = new Contact();
         try {
+            contact.setTypeId(json.getInt("typeId"));
             contact.setType(json.getString("type"));
             contact.setTelephone1(json.getString("telephone1"));
             contact.setTelephone2(json.getString("telephone2"));
@@ -292,7 +345,32 @@ public class InfolocaleEntityUtils {
         try {
             date.setDebut(json.getString("debut"));
             date.setFin(json.getString("fin"));
-            date.setHoraire(json.getString("horaire"));
+            String tmpHoraireString = json.getString("horaire");
+            StringBuilder horaireBuilder = new StringBuilder();
+            boolean isReadingHoraire = false;
+            if (Util.notEmpty(tmpHoraireString)) {
+              for (Character itChar : tmpHoraireString.toCharArray()) {
+                if (itChar.equals('{')) { // début d'un horaire
+                  isReadingHoraire = true;
+                  continue;
+                }
+                if (itChar.equals('}')) { // fin d'un horaire
+                  isReadingHoraire = false;
+                  continue;
+                }
+                if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
+                  horaireBuilder.append(" - ");
+                  continue;
+                }
+                if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
+                  horaireBuilder.append(", ");
+                  continue;
+                }
+                // Dans tous les autres cas, on concatène normalement
+                horaireBuilder.append(itChar);
+              }
+            }
+            date.setHoraire(horaireBuilder.toString().replace(":", "h"));
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new DateInfolocale();

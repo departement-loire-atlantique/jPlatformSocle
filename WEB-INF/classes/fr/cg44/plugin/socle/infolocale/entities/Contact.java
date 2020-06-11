@@ -9,12 +9,19 @@ import com.jalios.jcms.Data;
  */
 public class Contact extends Data {
     
+    Integer typeId;
     String type;
     String telephone1;
     String telephone2;
     String url;
     String email;
     
+    public Integer getTypeId() {
+      return typeId;
+    }
+    public void setTypeId(Integer typeId) {
+      this.typeId = typeId;
+    }
     public String getType() {
         return type;
     }

@@ -108,6 +108,10 @@ public class InfolocaleUtil {
     }
 
     private static boolean eventDateListContainsToday(List<String> datesString) {
+        if (Util.isEmpty(datesString)) {
+          return false;
+        }
+      
         Calendar cal = Calendar.getInstance();
         
         // Utilisation de la classe Instant ajoutée dans Java 8
@@ -379,5 +383,23 @@ public class InfolocaleUtil {
       weekendDays[1] = sdfInfolocale.format(cal.getTime());
 
       return weekendDays;
+    }
+    
+    /**
+     * Renvoie une durée (en minutes) dans un format heures / minutes
+     * @param duree
+     * @return
+     */
+    public static String getLabelDuree(int duree) {
+      if (Util.isEmpty(duree) || duree <= 0) return "";
+      int hours = duree/60;
+      int minutes = duree%60;
+      if (hours > 0) {
+        return Integer.toString(hours) + "h" + (minutes > 0 ? Integer.toString(minutes) + "m" : "");
+      }
+      if (minutes > 0) {
+        return Integer.toString(minutes) + "m";
+      }
+      return "";
     }
 }
