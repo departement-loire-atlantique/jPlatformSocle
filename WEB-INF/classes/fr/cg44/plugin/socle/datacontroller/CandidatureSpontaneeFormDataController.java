@@ -168,7 +168,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
    if (op == OP_CREATE) {
 
      // Récupération des fichiers
-     HttpServletRequest request = (HttpServletRequest) context.get("request");
+     HttpServletRequest request = channel.getCurrentServletRequest();
      
      Enumeration<String> enumParams = request.getAttributeNames();
      while(enumParams.hasMoreElements()) {
@@ -247,7 +247,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
    LOGGER.debug("datacontroller.PostulerController.getUpload(");
 
    // Retrieve FileItem from request attribute
-   Object value = request.getAttribute(field);
+   Object value = request.getSession().getAttribute(field);
 
    // Perform checks
    if (value == null) {
