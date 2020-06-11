@@ -73,6 +73,7 @@ jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Co
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
+$jcmsplugin.socle.form.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD des formulaires
 jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature
 jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
