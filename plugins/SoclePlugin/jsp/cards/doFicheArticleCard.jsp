@@ -28,9 +28,9 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
             </p>
           <jalios:if predicate="<%= Util.notEmpty(tagRootCat) %>">
             <% 
-              List<Category> allTagChildren = new ArrayList<>();
+              Set<Category> allTagChildren = new TreeSet<Category>(new Category.DeepOrderComparator());
               for (Category itCat : pub.getCategorySet()) {
-                if (!itCat.isRoot() && itCat.getParent().equals(tagRootCat)) {
+                if (itCat.hasAncestor(tagRootCat)) {
                   allTagChildren.add(itCat);
                 }
               }
