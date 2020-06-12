@@ -73,10 +73,15 @@ jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Co
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
+$jcmsplugin.socle.form.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD des formulaires
+jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature
+jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
 jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
+jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
+jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
 
 # ------------------------------------------------------------
 #  Mail
@@ -168,6 +173,27 @@ jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
 jcmsplugin.socle.partenaire: Partenaire
+jcmsplugin.socle.participants: participants
+jcmsplugin.socle.tarifs: Tarifs :
+jcmsplugin.socle.tarif.normal: Normal :
+jcmsplugin.socle.tarif.reduit: Réduit :
+jcmsplugin.socle.gratuit: GRATUIT
+jcmsplugin.socle.adresse: Adresse :
+jcmsplugin.socle.syrendre: S'y rendre ?
+jcmsplugin.socle.public: Public :
+jcmsplugin.socle.age.apartirde: A partir de {0} ans
+jcmsplugin.socle.age.jusqua: Jusqu'à {0} ans
+jcmsplugin.socle.age.de.a: De {0} à {1} ans
+jcmsplugin.socle.contactreservations: Contact et réservation :
+jcmsplugin.socle.contact: Contact :
+jcmsplugin.socle.siteinternet: Site internet
+jcmsplugin.socle.complet: COMPLET
+jcmsplugin.socle.reserver: Réserver
+jcmsplugin.socle.reserverlien: Réserver : {0}
+jcmsplugin.socle.accessibilite: Accessibilité :
+jcmsplugin.socle.langues: Langues :
+jcmsplugin.socle.serendrea: Comment se rendre à : {0}
+jcmsplugin.socle.allerplusloin: Pour aller plus loin
 
 # ------------------------------------------------------------
 #  Header
@@ -322,6 +348,7 @@ jcmsplugin.socle.facette.effacer-contenu: Effacer le contenu saisi
 jcmsplugin.socle.facette.effacer-contenu-champ: Effacer le contenu saisi dans le champ : {0}
 jcmsplugin.socle.facette.adresse.default-label: Adresse
 jcmsplugin.socle.facette.canton.default-label: Canton
+jcmsplugin.socle.facette.categorie.default-label: Catégorie
 jcmsplugin.socle.facette.commune.default-label: Commune
 jcmsplugin.socle.facette.delegation.default-label: Délégation
 jcmsplugin.socle.facette.mot-cle.default-label: Mot clé
@@ -384,6 +411,10 @@ jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
 jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
 jcmsplugin.socle.infolocale.label.carrousel.tuile.date: Le {0} {1} {2}
 jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3} {4} {5}

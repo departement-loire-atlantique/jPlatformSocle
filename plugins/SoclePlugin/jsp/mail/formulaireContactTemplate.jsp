@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Newsletter numéro #1</title>
+  <title>Formulaire de contact</title>
   <style type="text/css">
     /* Based on The MailChimp Reset INLINE: Yes. */
     /* Client-specific Styles */
@@ -297,21 +297,6 @@ MOBILE TARGETING
 
           <table class="content" style="line-height:150%;width:600px;max-width:600px;min-width:320px;font-family:Arial, Verdana, Geneva, sans-serif;color:#000000;margin:0 auto;" width="600" cellspacing="0" cellpadding="0" align="center">
             <tbody>
-                <tr>
-                  <th>
-                    <table style="margin: 15px 0 ; color: #000000;">
-                      <tbody>
-                        <tr>
-                          <td>
-                              <a href="#">
-                                  <img src="https://dev-design.loire-atlantique.fr/assets/images/newsletter/logo-loire-atlantique-information.svg" style="height=62px;" alt="image" class="" />
-                              </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </th>
-                </tr>
               <tr>
                 <td style="background: #fff; color: #000000;" class="vTop">
                   <table class="mail-body" width="100%" cellpadding="0" style="margin:30px 0;">
@@ -323,6 +308,7 @@ MOBILE TARGETING
                         <p>Email : <%=request.getAttribute("email") %></p>
                         <p>Téléphone : <%=request.getAttribute("telephone") %></p>
                         <p>Code postal : <%=request.getAttribute("codepostal") %></p>
+                        <p>Commune : <%=request.getAttribute("commune") %></p>
                         <p>Sujet : <%=request.getAttribute("sujet") %></p>
                         <p>Message : <%=request.getAttribute("message") %></p>
                         </td>

@@ -288,6 +288,7 @@ jcmsplugin.socle.site.pdcv.portlet.id:
 #  Formulaires
 # ------------------------------------------------------------
 $jcmsplugin.socle.form.contactform.sujet.root: aca_8167
+$jcmsplugin.socle.form.portlet-rgpd.id: 
 jcmsplugin.socle.email.emailParDefaut: contact@loire-atlantique.fr
 jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
 jcmsplugin.socle.rayon.option: rayon
@@ -399,6 +400,7 @@ jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/flux/type/annonces/extract/
+jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
 
 # Metadonnees Infolocale pour le front
 

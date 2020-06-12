@@ -23,11 +23,11 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
 %>
 
 <section class='ds44-card ds44-card--horizontal <%= cssCard %>'>
-   <div class="ds44-flex-container ds44-flex-valign-center">
+   <div class="ds44-flex-container">
       <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
          <jalios:select>
             <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-               <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center ds44-flex-valign-center" aria-hidden="true">
+               <div class="ds44-card__dateContainer ds44-flex-container" aria-hidden="true">
                   <p>
                      <span class="ds44-cardDateNumber">
                      <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %>
@@ -39,7 +39,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
                </div>
             </jalios:if>
             <jalios:default>
-               <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center ds44-flex-valign-center ds44-two-dates" aria-hidden="true">
+               <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center ds44-two-dates" aria-hidden="true">
                   <p>
                      <span class="ds44-cardDateNumber">
                      <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %>
@@ -62,7 +62,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          </jalios:select>
       </jalios:if>
       <div class="ds44-card__section--horizontal">
-         <p role="heading" aria-level="3" class="ds44-card__title"><a href="#" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
+         <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
          <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
          <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
             <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i>

@@ -27,7 +27,7 @@ pour pouvoir s'adapter aux contraintes graphiques du DS
   String pageContextInfoMsg = Util.getString(pageContext.getAttribute(JcmsConstants.INFORMATION_MSG), "");
   String pageContextSuccessMsg = Util.getString(pageContext.getAttribute(JcmsConstants.SUCCESS_MSG), "");
 
-  String tag = "p";
+  String tag = "span";
   
   String errorMsg = Util.surroundWithTag(glp(sessionErrorMsg), tag);
   String warningMsg = Util.surroundWithTag(glp(sessionWarningMsg), tag);
@@ -83,29 +83,29 @@ pour pouvoir s'adapter aux contraintes graphiques du DS
   }
   
   if (Util.notEmpty(errorMsg)) {
-    %><ds:message msg="<%= errorMsg %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message title="<%= errorMsg %>" type="error"/><%
   }
   if (Util.notEmpty(warningMsg)) {
-    %><ds:message msg="<%= warningMsg %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message title="<%= warningMsg %>" type="error"/><%
   }
   if (Util.notEmpty(infoMsg)) {
-    %><ds:message msg="<%= infoMsg %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message title="<%= infoMsg %>" type="success"/><%
   }
   if (Util.notEmpty(successMsg)) {
-    %><ds:message msg="<%= successMsg %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message title="<%= successMsg %>" type="success"/><%
   }
   
   if (Util.notEmpty(errorsList)) {
-    %><ds:message msgList="<%= errorsList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message msgList="<%= errorsList %>" title="<%= titreMessageBox %>" type="error"/><%
   } 
   if (Util.notEmpty(warningList)) {
-    %><ds:message msgList="<%= warningList %>" title="<%= titreMessageBox %>" css="ds44-errorMsg-container"/><%
+    %><ds:message msgList="<%= warningList %>" title="<%= titreMessageBox %>" type="error"/><%
   }
   if (Util.notEmpty(infoList)) {
-    %><ds:message msgList="<%= infoList %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msgList="<%= infoList %>" title="<%= titreMessageBox %>" type="success"/><%
   }
   if (Util.notEmpty(successList)) {
-    %><ds:message msgList="<%= successList %>" title="<%= titreMessageBox %>" css=""/><%
+    %><ds:message msgList="<%= successList %>" title="<%= titreMessageBox %>" type="success"/><%
   }
   request.getSession().removeAttribute(JcmsConstants.ERROR_MSG);
   request.getSession().removeAttribute(JcmsConstants.WARNING_MSG);

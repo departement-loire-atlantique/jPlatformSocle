@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -1010,6 +1012,37 @@ public final class SocleUtils {
     }
     return null;
   }
+  
+  /**
+   * Récupère une commune à partir de son code postal
+   * @param zipCode
+   * @return
+   */
+  public static String getCitynameFromZipcode(String zipCode) {
+
+   if (Util.isEmpty(zipCode)) {
+     return "?";
+   }
+
+   if (zipCode.equals("44000") || zipCode.equals("44100") || zipCode.equals("44200") || zipCode.equals("44300")) {
+     return "Nantes";
+   }
+
+   if (!zipCode.substring(0, 2).equals("44")) {
+     return "hors département";
+   }
+
+   Set<City> setCities = channel.getDataSet(City.class);
+   for (City itCity : setCities) {
+   	if (itCity.getZipCode().trim().equals(zipCode)) {
+ 				return itCity.getTitle();
+ 			}
+   }
+   
+   return "?";
+
+ }  
+ 
     
   /**
    * Renvoie les paramètres de la recherche à facette dans un format standard dans une hashMap
@@ -1341,6 +1374,53 @@ public final class SocleUtils {
       libelle = Util.recapitalize(channel.getTypeLabel(pub.getClass(), userLang));
     }
     return libelle;
+  }
+  
+  /**
+   * Renvoie le nom d'un fichier sans son extension depuis une URL
+   * Exemple : http://www.site.fr/docs/filename.docx retournera filename
+   * @param url
+   * @return
+   */
+  public static String getFilenameFromUrl(String url) {
+    if (Util.isEmpty(url) || !url.contains("/") || url.charAt(url.length()-1) == '/') {
+      return "";
+    }
+    return url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."));
+  }
+  
+  /**
+   * Renvoie l'extension d'un fichier sans son nom depuis une URL
+   * Exemple : http://www.site.fr/docs/filename.docx retournera docx
+   * @param url
+   * @return
+   */
+  public static String getFileExpensionFromUrl(String url) {
+    if (Util.isEmpty(url) || !url.contains(".") || url.charAt(url.length()-1) == '.') {
+      return "";
+    }
+    return url.substring(url.lastIndexOf(".") + 1);
+  }
+  
+  
+  /**
+   * Récupère l'ID d'une vidéo dans un URL youtube
+   * @param url
+   * @return
+   */
+  public static String getIdOfYoutubeUrl(String url) {
+    if (Util.isEmpty(url)) return "";
+    String pattern = "(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|\\/e\\/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*";
+    Pattern compiledPattern = Pattern.compile(pattern);
+    Matcher matcher = compiledPattern.matcher(url);
+    String ytId = "";
+    if (matcher.find()) {
+      ytId = matcher.group();
+    }
+    if (Util.notEmpty(ytId)) {
+      return ytId;
+    }
+    return "";
   }
   
 }

@@ -76,10 +76,9 @@
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label for="form-element-telephone" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %></span></span>
             </label>
-            <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", telephoneLabel) %>"
-                autocomplete="tel" aria-describedby="explanation-form-element-telephone">
+            <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" autocomplete="tel-national" aria-describedby="explanation-form-element-telephone">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", telephoneLabel) %></span>
             </button>
@@ -101,7 +100,7 @@
                 <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
-                autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
+                required="" autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
             </button>

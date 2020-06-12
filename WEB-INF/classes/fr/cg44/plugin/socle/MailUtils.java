@@ -41,8 +41,9 @@ public final class MailUtils {
    parametersMap.put("nom", form.getNom());
    parametersMap.put("prenom", form.getPrenom());
    parametersMap.put("email", form.getMail());
-   parametersMap.put("telephone", form.getTelephone());
+   parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
    parametersMap.put("codepostal", form.getCodePostal());
+   parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
    parametersMap.put("sujet", form.getSujet(channel.getDefaultAdmin()).first());
    parametersMap.put("message", form.getMessage());
    

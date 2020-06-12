@@ -56,9 +56,13 @@
 		</div>
 		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 	</div>
-	<ds:facetteCategorie obj='<%= obj.getFacetteLiee() %>' 
+	<% PortletFacetteCategorie facetteLie = obj.getFacetteLiee(); %>
+	<ds:facetteCategorie obj='<%= facetteLie %>' 
+			listeCategory='<%= facetteLie.getCategoriesRacines(loggedMember) %>' 
 			dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
 			idFormElement='<%= idFormElement+"-2" %>' 
 			isDisabled='<%= true %>' 
-			request='<%= request %>'/>
+			request='<%= request %>' 
+			selectionMultiple='<%= facetteLie.getTypeDeSelection() %>' 
+			profondeur='<%= facetteLie.getProfondeur() %>'/>
 </div>

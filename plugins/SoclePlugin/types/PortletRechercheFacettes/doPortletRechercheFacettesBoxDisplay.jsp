@@ -69,7 +69,7 @@
 					</div>
 				</jalios:foreach>
 
-				<% request.removeAttribute("isFiltre"); %>
+				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres ? "" : "--large"; %>
@@ -103,7 +103,7 @@
 		
 							</jalios:foreach>
 
-							<% request.removeAttribute("isFiltre"); %>
+							<% request.removeAttribute("isFilter"); %>
 
 						</div>
 					</jalios:if>
@@ -137,6 +137,10 @@
 		
             <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
             <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
+            
+            <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
+		       <input type="hidden" name='<%= "cidTypeLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" data-technical-field />
+		    </jalios:if>
 		
             <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
 		</form>

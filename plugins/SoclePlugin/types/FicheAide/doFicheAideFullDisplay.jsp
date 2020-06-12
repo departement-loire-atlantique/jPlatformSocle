@@ -28,7 +28,7 @@ boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
         || Util.notEmpty(obj.getBesoinDaide())
         || (Util.notEmpty(obj.getTypeDeLieu()) && obj.getInstructionDelegation());
 
-
+boolean hasContactCol = false;
 
 boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  ||
                               ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ||
@@ -469,6 +469,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
                 <jalios:select>
                     <%-- Contact faire une recherche par sectorisation --%>
 	                <jalios:if predicate="<%= obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu()) %>">
+	                <% hasContactCol = true; %>
 	                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>    
 	                    <div id="rechercheContact">
 	                        <h2 class="h4-like" id="modal-contact-title"><%= glp("jcmsplugin.socle.contact.trouver-contact") %></h2>
@@ -488,6 +489,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 	                <jalios:default>
 	            
 		                <jalios:if predicate="<%= Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getComplementContact()) %>">
+		                <% hasContactCol = true; %>
 		                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6  ds44-modal-column" %>'>		                    	                    
 		                    
 		                    <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
@@ -515,7 +517,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
                 
                 
                 <jalios:if predicate="<%= Util.notEmpty(obj.getBesoinDaide()) %>">
-                    <div class='col-<%= Util.isEmpty(obj.getQuiContacter()) && Util.isEmpty(obj.getComplementContact()) ? "12" : "6  ds44-modal-column" %>'>
+                    <div class='col-<%= !hasContactCol ? "12" : "6  ds44-modal-column" %>'>
                         <h2 class="h3-like" id="titre_besoin_aide"><%= glp("jcmsplugin.socle.ficheaide.modal.besoinaide") %></h2>
                         <jalios:wysiwyg>
                             <%= obj.getBesoinDaide() %>

@@ -17,7 +17,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
@@ -330,7 +329,7 @@ public class RequestManager {
                   String responseContent = SocleUtils.convertStreamToString(response.getEntity().getContent());
                   if (Util.isEmpty(metadata) || Util.notEmpty(responseContent)) {
                     fluxData = new JSONObject();
-                    fluxData.put("listMetadata", new JSONArray(responseContent));
+                    fluxData.put("listMetadata", new JSONObject(responseContent));
                   } else {
                     fluxData = new JSONObject(responseContent);
                   }

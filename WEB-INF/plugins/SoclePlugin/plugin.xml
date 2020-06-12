@@ -50,6 +50,7 @@
     <type name="PortletCarousel"></type>
     <type name="PortletCarrouselDimagesHome"></type>
     <type name="PortletFacetteAdresse"></type>
+    <type name="PortletFacetteAgendaCategorie"></type>
     <type name="PortletFacetteAgendaAccessibilit"></type>
     <type name="PortletFacetteAgendaCommune"></type>
     <type name="PortletFacetteAgendaDate"></type>
@@ -113,6 +114,11 @@
     </templates>
     <templates type="ElectedMember">
         <template name="default" file="doElectedMemberFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="EvenementInfolocale">
+        <template name="default" file="doEvenementInfolocaleFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -257,6 +263,11 @@
     </templates>
     <templates type="PortletFacetteAdresse">
         <template name="default" file="doPortletFacetteAdresseBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteAgendaCategorie">
+        <template name="default" file="doPortletFacetteAgendaCategorieBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
@@ -433,6 +444,7 @@
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.TitleQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.IgnoreQueryFilter" />
+    <queryfilter     class="fr.cg44.plugin.socle.queryfilter.CidQueryFilter" />
   </plugincomponents>
     
   <private-files>
@@ -464,6 +476,7 @@
     <file path="WEB-INF/tags/carrousel.tag" />
     <file path="WEB-INF/tags/categoryList.tag" />
     <file path="WEB-INF/tags/categoryTree.tag" />
+    <file path="WEB-INF/tags/facetteAgendaCategorieListElem.tag" />
     <file path="WEB-INF/tags/facetteAutoCompletion.tag" />
     <file path="WEB-INF/tags/facetteCategorie.tag" />
     <file path="WEB-INF/tags/facetteCategorieListElem.tag" />
