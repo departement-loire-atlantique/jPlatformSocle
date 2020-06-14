@@ -1,11 +1,11 @@
 package fr.cg44.plugin.socle.datacontroller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -39,12 +39,11 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
  private static final String REQUEST_PC1 = "pieceComplementaire1";
  private static final String REQUEST_PC2 = "pieceComplementaire2";
  private static final String REQUEST_PC3 = "pieceComplementaire3";
- private static final String FILE_TYPE_CV = "Curriculum";
- private static final String FILE_TYPE_LM = "Motivations";
- private static final String FILE_TYPE_PC = "pieceComplementaire";
  private static final String FILE_NAME_CV = "cv";
  private static final String FILE_NAME_LM = "lettre_motivation";
- private static final String FILE_NAME_PC = "complement";		
+ private static final String FILE_NAME_PC1 = "complement1";
+ private static final String FILE_NAME_PC2 = "complement1";
+ private static final String FILE_NAME_PC3 = "complement1";
  
  /**
   * On modifie le nom du formulaire, et on place la date d'archivage à J + 1 mois
@@ -175,7 +174,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
        String nameParam = enumParams.nextElement(); 
        LOGGER.warn(nameParam);
      } 
-     HashMap<File, String> fichiers = new HashMap<File, String>();
+     ArrayList<File> fichiers = new ArrayList<File>();
      File cv = null;
      File lettreMotivation = null;
      File pieceComplementaire1 = null;
@@ -189,19 +188,19 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
        pieceComplementaire2 = getUpload(request, REQUEST_PC2);
        pieceComplementaire3 = getUpload(request, REQUEST_PC3);
        if (Util.notEmpty(cv)) {
-       	fichiers.put(cv, FILE_TYPE_CV);
+       	fichiers.add(cv);
        }
        if (Util.notEmpty(lettreMotivation)) {
-       	fichiers.put(lettreMotivation, FILE_TYPE_LM);
+       	fichiers.add(lettreMotivation);
        }
        if (Util.notEmpty(pieceComplementaire1)) {
-       	fichiers.put(pieceComplementaire1, FILE_TYPE_PC);
+       	fichiers.add(pieceComplementaire1);
        }
        if (Util.notEmpty(pieceComplementaire2)) {
-       	fichiers.put(pieceComplementaire2, FILE_TYPE_PC);
+       	fichiers.add(pieceComplementaire2);
        }
        if (Util.notEmpty(pieceComplementaire3)) {
-       	fichiers.put(pieceComplementaire3, FILE_TYPE_PC);
+       	fichiers.add(pieceComplementaire3);
        }
        
      } catch (Exception e) {
@@ -224,7 +223,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
      }
 
      // Suppression des fichiers
-     for (File fichier : fichiers.keySet()) {
+     for (File fichier : fichiers) {
        if (!fichier.delete()) {
        	LOGGER.warn("Le fichier " + fichier.getName() + " n'a pas pu être supprimé.");
        }
@@ -262,8 +261,12 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
    	  filename += FILE_NAME_CV + extension;
      }else if(field.equals(REQUEST_LM)){
    	  filename += FILE_NAME_LM + extension;
-     }else if( field.equals(REQUEST_PC1) || field.equals(REQUEST_PC2) || field.equals(REQUEST_PC3) ){
-   	  filename += FILE_NAME_PC + extension;
+     }else if( field.equals(REQUEST_PC1)){
+   	  filename += FILE_NAME_PC1 + extension;
+     }else if( field.equals(REQUEST_PC2)){
+   	  filename += FILE_NAME_PC2 + extension;
+     }else if( field.equals(REQUEST_PC3)){
+   	  filename += FILE_NAME_PC3 + extension;
      }
      File fichier = new File(getPath(request), filename);
      item.write(fichier);

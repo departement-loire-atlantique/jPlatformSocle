@@ -82,6 +82,7 @@ jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
+jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 
 # ------------------------------------------------------------
 #  Mail

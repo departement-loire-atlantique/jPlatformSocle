@@ -119,7 +119,7 @@ public class ContactFormDataController extends BasicDataController implements Pl
      // sinon prendre l'email défini dans le module
      @SuppressWarnings("unchecked")
      Category sujet = ((TreeSet<Category>) form.getSujet(channel.getDefaultAdmin())).first();
-     String contactMail = Util.notEmpty(sujet.getDescription()) ? sujet.getDescription() : channel.getProperty("jcmsplugin.socle.email.emailParDefaut");
+     String contactMail = Util.notEmpty(sujet.getDescription()) ? sujet.getDescription() : channel.getProperty("jcmsplugin.socle.form.contact.mailTo");
 
      if (Util.notEmpty(contactMail)) {
      	contactMail = contactMail.trim();
@@ -127,12 +127,12 @@ public class ContactFormDataController extends BasicDataController implements Pl
          LOGGER.debug("Envoi du mail de contact à l'adresse : " + contactMail);
          MailUtils.envoiMailContact(form, contactMail);
        } else {
-         LOGGER.error("L'adresse e-mail du destinataire des mails de contact (\"jcmsplugin.socle.email.emailParDefaut\") ne respecte pas le Pattern : "
+         LOGGER.error("L'adresse e-mail du destinataire des mails de contact (\"jcmsplugin.socle.form.contact.mailTo\") ne respecte pas le Pattern : "
              + EMAIL_REGEXP);
          MailUtils.msgEchecEnvoiMailContact();
        }
      } else {
-       LOGGER.error("L'adresse e-mail du destinataire des mails de contact (\"jcmsplugin.socle.email.emailParDefaut\") est vide");
+       LOGGER.error("L'adresse e-mail du destinataire des mails de contact (\"jcmsplugin.socle.form.contact.mailTo\") est vide");
        MailUtils.msgEchecEnvoiMailContact();
      }
    }

@@ -60,9 +60,37 @@ public final class MailUtils {
  /**
   * Envoi d'un email de contact.
   */
- public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, HashMap<File, String> fichiers) {
- 	LOGGER.warn("ENVOI MAIL CANDIDATURE !");
+ public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, ArrayList<File> fichiers) {
+		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureTemplate.jsp";
+ 	
+  // Objet
+  String objet = channel.getProperty("jcmsplugin.socle.email.sujet.prefix") + " - " + channel.getProperty("jcmsplugin.socle.email.candidature-spontanee.titre");
 
+  // Contenu
+  HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+  parametersMap.put("nom", form.getNom());
+  parametersMap.put("prenom", form.getPrenom());
+  parametersMap.put("email", form.getMail());
+  parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
+  parametersMap.put("codepostal", form.getCodePostal());
+  parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
+  parametersMap.put("nature", form.getNatureRecherche(channel.getDefaultAdmin()).first());
+
+		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
+
+		if (Util.notEmpty(emailTo)) {
+			try {
+				sendMail(objet, null, form.getMail(), emailTo, fichiers, jsp, parametersMap);
+    msgEnvoiMailContact();
+    } catch (Exception e) {
+    	msgEchecEnvoiMailContact();
+    	LOGGER.error("Erreur lors de l'envoi du mail de candidature spontanée" + e.getMessage());
+    }
+
+		} else {
+			msgEchecEnvoiMailContact();
+			LOGGER.error("Le mail de candidature spontanée n'a pas pu être envoyé car l'email par destination n'est pas défini.");
+		}
  }
  
 
@@ -77,12 +105,8 @@ public final class MailUtils {
   * @param jsp La JSP du template de mail à envoyer
   * @param parametersMap La map contenant les données à placer dans le template JSP
   */
- public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<FileDocument> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
+ public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
      throws javax.mail.MessagingException {
-
-   LOGGER.debug("Envoi du message " + subject);
-   LOGGER.debug("emailFrom = " + emailFrom);
-   LOGGER.debug("emailTo = " + emailTo);
 
    MailMessage mail = new MailMessage("Département de Loire Atlantique");
    mail.setFrom(emailFrom);
@@ -96,8 +120,8 @@ public final class MailUtils {
    }
 
    if (Util.notEmpty(listePieceJointe)) {
-     for (FileDocument f : listePieceJointe) {
-       mail.addAttachements(f);
+     for (File f : listePieceJointe) {
+       mail.addFile(f);
      }
    }
    // Envoi du mail
