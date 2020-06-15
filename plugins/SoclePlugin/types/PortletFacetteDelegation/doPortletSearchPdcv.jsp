@@ -14,6 +14,7 @@ Boolean isInRechercheFacette = Util.isEmpty(publication);
 		<section class="ds44-box ds44-theme ds44-mb3">
 		    <div class="ds44-innerBoxContainer">
 		        <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.menu.pdcv") %></p>
+		        <p class="ds44-textLegend ds44-textLegend--mentions "><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 		            <div class="ds44-js-linked-fields ds44-js-masked-fields">
 		                <%
 		                String idFormElement= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
