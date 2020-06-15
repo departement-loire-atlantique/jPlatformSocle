@@ -23,7 +23,7 @@
 							<div class="ds44-collapser_content">
 								<ul class="ds44-list ds44-collapser_content--level2">
 									<li>
-										<%= itQuestRep.getAnswer(userLang) %>
+										<jalios:wysiwyg><%= itQuestRep.getAnswer(userLang) %></jalios:wysiwyg>
 									</li>
 								</ul>
 							</div>
