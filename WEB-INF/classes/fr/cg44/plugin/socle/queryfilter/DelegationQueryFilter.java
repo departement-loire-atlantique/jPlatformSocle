@@ -33,6 +33,15 @@ public class DelegationQueryFilter extends LuceneQueryFilter {
           addCitySearch(qh, request, delegation.getLinkIndexedDataSet(City.class, "delegation").stream().map(x -> String.valueOf(x.getCityCode())).toArray(String[]::new));
         }
       }
+    }else if(Util.notEmpty(request.getParameter("delegation"))) {
+      // Récupère la délégation en paramètre de recherche
+      String delegationCodeSearch = request.getParameter("delegation");
+      // Récupère les communes de la delegation pour la recherche à facettes
+      // Rechercher sur la delegation revient à recherche sur toutes les communes de cette délégation
+      Delegation delegation = (Delegation) Channel.getChannel().getPublication(delegationCodeSearch);
+      if(Util.notEmpty(delegation)) {     
+        addCitySearch(qh, request, delegation.getLinkIndexedDataSet(City.class, "delegation").stream().map(x -> String.valueOf(x.getCityCode())).toArray(String[]::new));
+      }
     }
     return qh;
   }

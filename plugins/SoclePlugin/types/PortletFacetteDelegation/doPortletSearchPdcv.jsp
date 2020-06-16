@@ -6,11 +6,12 @@
 PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet; 
 Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 Boolean isInRechercheFacette = Util.isEmpty(publication);
+Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"));
 %>
 
 <jalios:select>
 
-	<jalios:if predicate="<%= !isInRechercheFacette %>">	
+	<jalios:if predicate="<%= !isInRechercheFacette && !isSimpleGabarit %>">	
 		<section class="ds44-box ds44-theme ds44-mb3">
 		    <div class="ds44-innerBoxContainer">
 		        <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.menu.pdcv") %></p>
