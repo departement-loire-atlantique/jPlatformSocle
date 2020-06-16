@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="CandidatureSpontaneeForm" superclass="com.jalios.jcms.Form" formOneSubmit="false" formNotify="false" formAuthor="j_2" formRedirectMode="currentCategory" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" debatable="false" unitFieldEdition="true" audienced="false" database="true">
+  <label xml:lang="fr">Candidature spontanée</label>
+  <title ml="false">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="natureRecherche" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.emploiStage.typeOffre.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Nature de votre recherche</label>
+    </field>
+    <field name="nom" editor="textfield" required="false" type="String" searchable="true" size="80" compactDisplay="false" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Nom</label>
+      <label xml:lang="en">Name</label>
+    </field>
+    <field name="prenom" editor="textfield" required="false" type="String" searchable="true" size="80" compactDisplay="false" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Prénom</label>
+    </field>
+    <field name="mail" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Courriel</label>
+    </field>
+    <field name="codePostal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="5" ml="false" html="false" checkHtml="false" descriptionType="text" maxlength="5">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="curriculumVitae" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Curriculum vitae</label>
+    </field>
+    <field name="lettreMotivation" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Lettre de motivation</label>
+    </field>
+    <field name="pieceComplementaire1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Pièce complémentaire 1</label>
+    </field>
+    <field name="pieceComplementaire2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Pièce complémentaire 2</label>
+    </field>
+    <field name="pieceComplementaire3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Pièce complémentaire 3</label>
+    </field>  
+  </fields>
+
+</type>
+
