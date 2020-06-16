@@ -49,7 +49,7 @@ else{
 <section class="ds44-container-fluid ds44--xxl-padding-t ds44--p35b">
 	<section class="ds44-container-large">
 	    <div class="ds44-inner-container">
-	        <div class="grid-12-small-1 ds44-flex-valign-center">
+	        <div class="grid-12-small-1 grid-12-medium-1 ds44-flex-valign-center">
 	        
 	            <%-- Présentation de gauche --%>
 				<div class="col-4 colFocusProjets mbm">
