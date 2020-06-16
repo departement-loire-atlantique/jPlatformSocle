@@ -36,9 +36,6 @@
 		</div>
 		        
 		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Recherchez un contact","label": "$commune|text"}' data-auto-load='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
-		     <jalios:if predicate='<%= !isInRechercheFacette %>'>
-		       <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
-		     </jalios:if>
 		     
 		     <jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="1">
 		         <jalios:include pub="<%= itFacette %>" usage="box"/>
