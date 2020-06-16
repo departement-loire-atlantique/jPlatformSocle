@@ -19,6 +19,9 @@ PortletRechercheFacettes box = new PortletRechercheFacettes(boxTmp);
 if(Util.notEmpty(box.getIdDeLaCategorieTag())) {
   request.setAttribute("tagRootCatId", box.getIdDeLaCategorieTag());
 }
+
+String typeDeTuileFicheLieu = request.getParameter("typeDeTuileFicheLieu");
+
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
@@ -41,8 +44,16 @@ jsonObject.add("result", jsonArray);
 
 %><%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %><%
 
-    %><jalios:buffer name="itPubListGabarit"><%
-        %><jalios:media data="<%= itPub %>" template="card" /><%
+    %><jalios:buffer name="itPubListGabarit"><%       
+	    %><jalios:select><%	        
+	        %><jalios:if predicate="<%= itPub instanceof FicheLieu %>"><%
+	           %><jalios:media data="<%= itPub %>" template='<%= Util.notEmpty(typeDeTuileFicheLieu) ? typeDeTuileFicheLieu : "cardNoPic" %>' /><%
+	        %></jalios:if><%
+	        
+	        %><jalios:default><%
+	           %><jalios:media data="<%= itPub %>" template="card" /><%
+	        %></jalios:default><%
+	    %></jalios:select><%    
     %></jalios:buffer><%
     
     %><jalios:buffer name="itPubMarkerGabarit"><%
