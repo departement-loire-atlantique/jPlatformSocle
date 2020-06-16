@@ -57,6 +57,18 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         int maxTuiles = evenements.length <= 3 ? evenements.length : 3;
         %>
+        
+        <jalios:if predicate='<%= Util.notEmpty(box.getTitre(userLang)) %>'>
+            <div class="ds44-inner-container ds44--mobile--m-padding-b">
+                <header class="txtcenter ds44--l-padding-b">
+                    <h2 class="h2-like center"><%= box.getTitre(userLang) %></h2>
+                    <jalios:if predicate='<%= Util.notEmpty(box.getSoustitre(userLang)) %>'>
+                        <p class="ds44-component-chapo ds44-centeredBlock"><%= box.getSoustitre(userLang) %></p>
+                    </jalios:if>
+                </header>
+            </div>
+        </jalios:if>
+        
         <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= maxTuiles %>">
             <div class="swiper-container">
                 <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">

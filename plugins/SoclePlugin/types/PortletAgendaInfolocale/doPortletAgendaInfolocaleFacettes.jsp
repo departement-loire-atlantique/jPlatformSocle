@@ -39,10 +39,13 @@ request.setAttribute("fluxId", fluxId);
 <div class="ds44-facette">
     <div class="ds44-facette-body">
     
-        <jalios:if predicate='<%= !isInRechercheFacette && Util.notEmpty(box.getTitreSEO(userLang)) %>'>
+        <jalios:if predicate='<%= !isInRechercheFacette && Util.notEmpty(box.getTitre(userLang)) %>'>
             <div class="ds44-inner-container ds44--mobile--m-padding-b">
                 <header class="txtcenter ds44--l-padding-b">
-                    <h2 class="h2-like center"><%= box.getTitreSEO(userLang) %></h2>                 
+                    <h2 class="h2-like center"><%= box.getTitre(userLang) %></h2>
+                    <jalios:if predicate='<%= Util.notEmpty(box.getSoustitre(userLang)) %>'>
+                        <p class="ds44-component-chapo ds44-centeredBlock"><%= box.getSoustitre(userLang) %></p>
+                    </jalios:if>
                 </header>
             </div>
         </jalios:if>

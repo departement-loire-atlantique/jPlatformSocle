@@ -6,8 +6,14 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
+    <field name="titre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre</label>
+    </field>
     <field name="titreSEO" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre SEO</label>
+    </field>
+    <field name="soustitre" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Sous-titre</label>
     </field>
     <field name="idDeFlux" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">ID de flux</label>
