@@ -50,4 +50,5 @@ String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
 
 </form>
 
+<% request.setAttribute("idPortletBas", channel.getProperty("jcmsplugin.socle.form.candidature.portlet-rgpd.id")); %>
 <%@ include file='/plugins/SoclePlugin/jsp/forms/doFormFooter.jspf' %>
