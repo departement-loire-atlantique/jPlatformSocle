@@ -73,8 +73,11 @@ jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Co
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
-$jcmsplugin.socle.form.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD des formulaires
-jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature
+jcmsplugin.socle.form.contact.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire contact
+jcmsplugin.socle.form.candidature.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire candidature
+$jcmsplugin.socle.form.candidature.idArticle: ID de l'article incluant le formulaire de candidature (réponse à une offre)
+jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature spontanée
+jcmsplugin.socle.form.candidature.titre: Formulaire de candidature
 jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
@@ -83,6 +86,7 @@ jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
 jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
+jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
 
 # ------------------------------------------------------------
 #  Mail

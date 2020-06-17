@@ -295,7 +295,9 @@ jcmsplugin.socle.form.candidature.mailTo: AdmimailRecette.DSN-SIN@loire-atlantiq
 jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
 jcmsplugin.socle.email.candidature-spontanee.titre: Candidature spontanée
 jcmsplugin.socle.rayon.option: rayon
-$jcmsplugin.socle.form.portlet-rgpd.id: 
+jcmsplugin.socle.form.contact.portlet-rgpd.id: c_1304194
+jcmsplugin.socle.form.candidature.portlet-rgpd.id: c_1305481
+$jcmsplugin.socle.form.candidature.idArticle: c_1305593
 
 # Catégorie racine pour les rayons agenda
 jcmsplugin.socle.rayon.agenda.root.id: c_1301887

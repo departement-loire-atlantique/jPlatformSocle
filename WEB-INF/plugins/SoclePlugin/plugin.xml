@@ -12,6 +12,7 @@
     <type name="AccueilDelegation"></type>
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
+    <type name="CandidatureForm"><file path="editFormCandidatureForm.jsp" /></type>
     <type name="CandidatureSpontaneeForm"><file path="editFormCandidatureSpontaneeForm.jsp" /></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>

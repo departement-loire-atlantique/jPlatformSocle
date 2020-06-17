@@ -2,7 +2,12 @@
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%
-    FicheEmploiStage obj = (FicheEmploiStage) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+FicheEmploiStage obj = (FicheEmploiStage) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+
+// Génération du lien vers le formulaire de réponse à l'offre (Fiche article embarquant le formulaire + titre article spécifique)
+Publication formulaireCandidature = channel.getPublication("$jcmsplugin.socle.form.candidature.idArticle");
+String titreFormulaireCandidature = glp("jcmsplugin.socle.form.candidature.titreArticle",obj.getTitle(userLang));
+String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale)+"?ref="+obj.getNumeroDePoste()+"&t="+Util.encodeBASE64(titreFormulaireCandidature);
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -120,7 +125,7 @@
 	                                   <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
 	                                   <%= glp("jcmsplugin.socle.ficheemploi.label.datelimite", SocleUtils.formatDate("dd/MM/yy", obj.getDateLimiteDeDepot())) %>
 	                               </p>
-	                               <a href="#" class="ds44-btnStd ds44-btn--invert">
+	                               <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert">
 	                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
 	                                   <i class="icon icon-computer" aria-hidden="true"></i>
 	                               </a>

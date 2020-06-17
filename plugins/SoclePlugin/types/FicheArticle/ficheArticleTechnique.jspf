@@ -1,4 +1,32 @@
+<%@page import="com.jalios.util.Util"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%
+/* Le titre de l'article peut être dynamique : cas de l'article de réponse à une offre d'emploi.
+    Si on n'a pas d'attribut spécifique pour le titre alors on prend le titre de l'article.
+    Le titre spécifique est passé via le parametre "t" et encodé en base 64.
+*/
+
+    String imageFile = obj.getImageBandeau();
+    String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
+    String title = Util.notEmpty(request.getParameter("t")) ? Util.decodeBASE64(request.getParameter("t")) : obj.getTitle(userLang);
+    String legende = obj.getLegende(userLang);
+    String copyright = obj.getCopyright(userLang);
+%>
+<jalios:select> 
+    <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
+       <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>"
+        copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+    </jalios:if>
+    <jalios:if predicate="<%=Util.notEmpty(obj.getImagePrincipale()) %>">
+       <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= imageMobileFile %>" video="<%=obj.getVideoPrincipale() %>"
+        title="<%= title %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
+        breadcrumb="true"></ds:titleSimple> 
+    </jalios:if>    
+  
+    <jalios:default>
+       <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
+    </jalios:default>
+</jalios:select>
 
 <ds:titleNoBanner title="<%= obj.getTitle(userLang) %>" breadcrumb="true"></ds:titleNoBanner>
 
