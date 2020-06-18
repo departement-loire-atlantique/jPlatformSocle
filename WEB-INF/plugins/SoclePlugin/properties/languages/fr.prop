@@ -28,9 +28,6 @@ jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les 
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
 jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuiles "Fiche Aide"
-jcmsplugin.socle.rgpd.form.text: RGPD : texte en bas des formulaires
-jcmsplugin.socle.rgpd.form.linklabel: RGPD : libellé du lien "En savoir +" en bas des formulaires
-jcmsplugin.socle.rgpd.pub.id: RGPD : ID de la page RGPD
 jcmsplugin.socle.recherche.geojson.departement.url: URL du geojson du département
 jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
 jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
@@ -73,8 +70,9 @@ jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Sélectionner Co
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
-$jcmsplugin.socle.form.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD des formulaires
-jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature
+jcmsplugin.socle.form.contact.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire contact
+jcmsplugin.socle.form.candidature.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire candidature
+jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature spontanée
 jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com

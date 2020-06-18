@@ -49,6 +49,6 @@
         <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
     
     </form>
-
+<% request.setAttribute("idPortletBas", channel.getProperty("jcmsplugin.socle.form.contact.portlet-rgpd.id")); %>
 <%@ include file='/plugins/SoclePlugin/jsp/forms/doFormFooter.jspf' %>
 

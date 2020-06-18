@@ -51,13 +51,6 @@ $jcmsplugin.socle.cat.root: j_3
 
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
 
-# ------------------------------------------------------------
-#  RGPD
-# ------------------------------------------------------------
-jcmsplugin.socle.rgpd.form.text: Les informations personnelles vous concernant sont collectées et traitées par le Département de Loire-Atlantique aux fins \
-d’instruction et de réponse aux demandes reçues.
-jcmsplugin.socle.rgpd.form.linklabel: En savoir plus sur la protection des données personnelles
-jcmsplugin.socle.rgpd.pub.id:
 
 # ------------------------------------------------------------
 #  Header
@@ -295,7 +288,8 @@ jcmsplugin.socle.form.candidature.mailTo: AdmimailRecette.DSN-SIN@loire-atlantiq
 jcmsplugin.socle.email.sujet.prefix: Loire-Atlantique.fr
 jcmsplugin.socle.email.candidature-spontanee.titre: Candidature spontanée
 jcmsplugin.socle.rayon.option: rayon
-$jcmsplugin.socle.form.portlet-rgpd.id: 
+jcmsplugin.socle.form.contact.portlet-rgpd.id: c_1304194
+jcmsplugin.socle.form.candidature.portlet-rgpd.id: c_1305481
 
 # Catégorie racine pour les rayons agenda
 jcmsplugin.socle.rayon.agenda.root.id: c_1301887
