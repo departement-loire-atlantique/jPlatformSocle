@@ -15,6 +15,7 @@ import com.jalios.util.Util;
 import generated.Canton;
 import generated.City;
 import generated.Delegation;
+import generated.ElectedMember;
 
 
 /**
@@ -36,10 +37,15 @@ public class PublicationFacetedSearchCityEnginePolicyFilter extends BasicLuceneS
 			indexCommune(doc, publication);	
 			// Récupère le champ "communes" du type de contenu pour indéxer les communes déclarées si celui-ci est présent
 			indexCommunes(doc, publication);
-			// Récupère le champ "canton" du type de contenu si celui-ci est présent pour indexer les communes référencées par ce canton
-			indexCommunesDuCanton(doc, publication);
-			// Récupère le champ "cantons" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces cantons
-			indexCommunesDesCantons(doc, publication);
+			
+			// RS-1235 : supprimer l'indexation cantons
+			if(publication instanceof ElectedMember) {
+			  // Récupère le champ "canton" du type de contenu si celui-ci est présent pour indexer les communes référencées par ce canton
+			  indexCommunesDuCanton(doc, publication);
+			  // Récupère le champ "cantons" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces cantons
+			  indexCommunesDesCantons(doc, publication);
+			}
+			
 			// Récupère le champ "delegation" du type de contenu si celui-ci est présent pour indexer les communes référencées par cette délégation
 			indexCommunesDeDelegation(doc, publication);
 			// Récupère le champ "delegations" du type de contenu si celui-ci est présent pour indexer les communes référencées par ces délégations
