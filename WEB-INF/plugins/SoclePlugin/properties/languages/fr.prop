@@ -84,6 +84,7 @@ jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription su
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
 jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
+jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
 
 # ------------------------------------------------------------
 #  Mail

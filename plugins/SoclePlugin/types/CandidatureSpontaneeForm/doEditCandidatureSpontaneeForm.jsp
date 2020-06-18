@@ -58,7 +58,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
             </label>
             <input type="text" id="form-element-nom" name="nom"
                 class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", nomLabel) %>"
-                required="" autocomplete="family-name">
+                required autocomplete="family-name">
             <button class="ds44-reset" type="button" aria-describedby="label-form-element-nom">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", nomLabel) %></span>
             </button>
@@ -75,7 +75,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
               <span class="ds44-labelTypePlaceholder"><span><%= prenomLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="text" id="form-element-prenom" name="prenom" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", prenomLabel) %>"
-                required="" autocomplete="given-name">
+                required autocomplete="given-name">
             <button class="ds44-reset" type="button" aria-describedby="label-form-element-prenom">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", prenomLabel) %></span>
             </button>
@@ -92,7 +92,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
                 <span class="ds44-labelTypePlaceholder"><span><%= mailLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="email" id="form-element-mail" name="mail" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", mailLabel) %>"
-                required="" autocomplete="email" aria-describedby="explanation-form-element-mail">
+                required autocomplete="email" aria-describedby="explanation-form-element-mail">
             <button class="ds44-reset" type="button" aria-describedby="label-form-element-mail">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", mailLabel) %></span>
             </button>
@@ -111,7 +111,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-telephone" for="form-element-telephone" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %></span></span>
             </label>
             <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", telephoneLabel) %>"
                 autocomplete="tel" aria-describedby="explanation-form-element-telephone">

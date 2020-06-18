@@ -21,6 +21,7 @@ import com.jalios.jcms.context.JcmsMessage.Level;
 import com.jalios.jcms.plugin.PluginComponent;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.SocleUtils;
 import generated.CandidatureForm;
 
 public class CandidatureFormDataController extends CandidatureSpontaneeFormDataController implements PluginComponent {
@@ -54,10 +55,10 @@ public class CandidatureFormDataController extends CandidatureSpontaneeFormDataC
   
  	boolean isOK = true;
 
-  // Référence de l'offre
-  if (Util.isEmpty(form.getReference())) {
+  // Référence de l'offre : vide ou ne correspondant pas à un numéro de poste publié
+  if (Util.isEmpty(form.getReference()) || (Util.notEmpty(form.getReference()) && Util.isEmpty(SocleUtils.getJobByReference(form.getReference())) ) ) {
   	isOK = false;
-  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(CandidatureForm.class, "reference", userLang)));
+  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.form.candidature.reference-invalide")));
   }
   
   // Nom
@@ -103,11 +104,6 @@ public class CandidatureFormDataController extends CandidatureSpontaneeFormDataC
  }  
   
   // Téléphone
- 	if(Util.isEmpty(form.getTelephone())) {
-   isOK = false;
-   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(CandidatureForm.class, "telephone", userLang)));
- 	}
- 	
   if (Util.notEmpty(form.getTelephone())) {
    String regexp = channel.getProperty("jcmsplugin.socle.regex.phone");
    boolean correspond = Pattern.matches(regexp, form.getTelephone());

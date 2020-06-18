@@ -122,11 +122,6 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
  }  
   
   // Téléphone
- 	if(Util.isEmpty(form.getTelephone())) {
-   isOK = false;
-   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "telephone", userLang)));
- 	}
- 	
   if (Util.notEmpty(form.getTelephone())) {
    String regexp = channel.getProperty("jcmsplugin.socle.regex.phone");
    boolean correspond = Pattern.matches(regexp, form.getTelephone());

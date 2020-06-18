@@ -12,9 +12,8 @@
   if (formHandler.validate()) {
     return;
   }
-
 %>
-  
+
 <jalios:if predicate='<%= formHandler.isOneSubmit() && formHandler.isSubmitted() %>'>
   <% setWarningMsg(glp("msg.edit.already-one-submit"), request); %>
 </jalios:if>
