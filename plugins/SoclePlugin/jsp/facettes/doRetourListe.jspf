@@ -1,0 +1,15 @@
+<%-- Bouton retour à la liste de recherche à facettes --%>
+<jalios:select> 
+	<jalios:if predicate='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) %>'>
+	    <button class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glpd("jcmsplugin.socle.retourALaListeLieux")) %>'> 
+	        <i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
+	        <span class="ds44-btnInnerText"><%= JcmsUtil.glpd("jcmsplugin.socle.retourALaListe") %></span>
+	    </button>
+	</jalios:if>
+	<jalios:if predicate='<%= Util.notEmpty(request.getParameter("previousPage")) %>'>
+	   <a href='<%= request.getParameter("previousPage") %>' class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glpd("jcmsplugin.socle.retourALaListeLieux")) %>'> 
+            <i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
+            <span class="ds44-btnInnerText"><%= JcmsUtil.glpd("jcmsplugin.socle.retourALaListe") %></span>
+        </a>
+	</jalios:if>
+</jalios:select> 

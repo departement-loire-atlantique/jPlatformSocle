@@ -15,11 +15,9 @@
 	<jalios:if predicate='<%= Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) || Util.notEmpty(fullName) 
 			|| (Util.notEmpty(obj.getFunctions(loggedMember)) && obj.getFunctions(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) %>'>
 		<div class="ds44-lightBG ds44-posRel">
-			<%-- TODO bouton Retour a la liste --%>
-			<%-- <a class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retourALaListeLieux")) %>'> 
-				<i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
-				<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span>
-			</a> --%>
+			<%-- bouton Retour a la liste --%>
+			<%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+			
 			<div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
 				<div class="ds44-grid12-offset-2">
 					<jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
