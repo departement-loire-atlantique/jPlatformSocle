@@ -28,7 +28,6 @@
     </jalios:default>
 </jalios:select>
 
-<ds:titleNoBanner title="<%= obj.getTitle(userLang) %>" breadcrumb="true"></ds:titleNoBanner>
 
 <div class="ds44-inner-container ds44-mt4">
 	<div class="grid-12-small-1">

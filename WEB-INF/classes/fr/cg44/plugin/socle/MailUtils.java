@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Channel;
-import com.jalios.jcms.FileDocument;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.mail.MailMessage;
 import com.jalios.util.Util;
 
+import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
 import generated.ContactForm;
 
@@ -34,7 +34,7 @@ public final class MailUtils {
  		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireContactTemplate.jsp";
  	
    // Objet
-   String objet = channel.getProperty("jcmsplugin.socle.email.sujet.prefix") + " - " + form.getSujet(channel.getDefaultAdmin()).first();
+   String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.contact.objet", form.getSujet(channel.getDefaultAdmin()).first().getName());
 
    // Contenu
    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
@@ -58,13 +58,13 @@ public final class MailUtils {
  }
 
  /**
-  * Envoi d'un email de contact.
+  * Envoi du mail de candidature spontanée.
   */
  public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, ArrayList<File> fichiers) {
-		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureTemplate.jsp";
+		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureSpontaneeTemplate.jsp";
  	
   // Objet
-  String objet = channel.getProperty("jcmsplugin.socle.email.sujet.prefix") + " - " + channel.getProperty("jcmsplugin.socle.email.candidature-spontanee.titre");
+  String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature-spontanee.objet");
 
   // Contenu
   HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
@@ -92,7 +92,41 @@ public final class MailUtils {
 			LOGGER.error("Le mail de candidature spontanée n'a pas pu être envoyé car l'email par destination n'est pas défini.");
 		}
  }
- 
+
+ /**
+  * Envoi d'un email de candidature (réponse à une offre).
+  */
+ public static void envoiMailCandidature(CandidatureForm form, ArrayList<File> fichiers) {
+		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureTemplate.jsp";
+ 	
+  // Objet
+  String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
+
+  // Contenu
+  HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+  parametersMap.put("nom", form.getNom());
+  parametersMap.put("prenom", form.getPrenom());
+  parametersMap.put("email", form.getMail());
+  parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
+  parametersMap.put("codepostal", form.getCodePostal());
+  parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
+
+		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
+
+		if (Util.notEmpty(emailTo)) {
+			try {
+				sendMail(objet, null, form.getMail(), emailTo, fichiers, jsp, parametersMap);
+    msgEnvoiMailContact();
+    } catch (Exception e) {
+    	msgEchecEnvoiMailContact();
+    	LOGGER.error("Erreur lors de l'envoi du mail de candidature spontanée" + e.getMessage());
+    }
+
+		} else {
+			msgEchecEnvoiMailContact();
+			LOGGER.error("Le mail de candidature spontanée n'a pas pu être envoyé car l'email par destination n'est pas défini.");
+		}
+ } 
 
  /**
   * Envoi de mail avec le pied de mail du CG44.

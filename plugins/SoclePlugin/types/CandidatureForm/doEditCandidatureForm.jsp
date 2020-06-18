@@ -24,7 +24,7 @@
             </label>
             <input type="text" id="form-element-reference" name="reference"
                 class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", referenceLabel) %>"
-                required disabled readonly value="<%= (String)request.getAttribute("reference") %>">
+                required disabled readonly value="<%= Util.notEmpty(request.getParameter("ref")) ? request.getParameter("ref") : "" %>">
         </div>
     </div>
 </div>
@@ -196,7 +196,7 @@
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement1" for="form-element-complement1" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel1 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel1 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">
@@ -226,7 +226,7 @@
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement1" for="form-element-complement2" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel2 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel2 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">
@@ -256,7 +256,7 @@
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement3" for="form-element-complement3" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel3 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel3 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">

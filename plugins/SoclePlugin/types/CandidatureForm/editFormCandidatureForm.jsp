@@ -19,16 +19,11 @@
   <% setWarningMsg(glp("msg.edit.already-one-submit"), request); %>
 </jalios:if>
 
-<%
-String referenceOffre = request.getParameter("ref");
-%>
-
 <%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
 
 <% request.setAttribute("titreFormulaire", glp("jcmsplugin.socle.form.candidature.titre")); %>
 <%@ include file='/plugins/SoclePlugin/jsp/forms/doFormHeader.jspf' %>
 
-<jalios:if predicate='<%= Util.notEmpty(referenceOffre) %>'>
 
 <%-- -- FORM -------------------------------------------- --%>
 <jalios:query name='__memberSet' dataset='<%= channel.getDataSet(Member.class) %>' comparator='<%= Member.getNameComparator() %>'/>
@@ -44,7 +39,6 @@ String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
     
     <%
     request.setAttribute("formHandler", formHandler);
-    request.setAttribute("reference", referenceOffre);
     %>
 
     <jsp:include page="doEditCandidatureForm.jsp" />
@@ -59,7 +53,6 @@ String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
 </form>
 
 <% request.setAttribute("idPortletBas", channel.getProperty("jcmsplugin.socle.form.candidature.portlet-rgpd.id")); %>
-</jalios:if>
 
 <%@ include file='/plugins/SoclePlugin/jsp/forms/doFormFooter.jspf' %>
 

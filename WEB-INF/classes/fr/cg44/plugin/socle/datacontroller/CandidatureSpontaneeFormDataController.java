@@ -29,6 +29,7 @@ import com.jalios.jcms.upload.DocUploadInfo;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.MailUtils;
+import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
 
 public class CandidatureSpontaneeFormDataController extends BasicDataController implements PluginComponent {
@@ -212,12 +213,9 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
      if (data instanceof CandidatureSpontaneeForm) {
        MailUtils.envoiMailCandidatureSpontanee((CandidatureSpontaneeForm) data, fichiers);
      }
-     // TODO : traitement de la candidature en réponse à une offre (CandidatureForm)
-     /*
      else if (data instanceof CandidatureForm) {
      	MailUtils.envoiMailCandidature((CandidatureForm) data, fichiers);
      }
-     */
      else {
        LOGGER.error("The application form is not an ApplicationForm or ApplicationFreeForm object.");
      }
