@@ -51,13 +51,6 @@ $jcmsplugin.socle.cat.root: j_3
 
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
 
-# ------------------------------------------------------------
-#  RGPD
-# ------------------------------------------------------------
-jcmsplugin.socle.rgpd.form.text: Les informations personnelles vous concernant sont collectées et traitées par le Département de Loire-Atlantique aux fins \
-d’instruction et de réponse aux demandes reçues.
-jcmsplugin.socle.rgpd.form.linklabel: En savoir plus sur la protection des données personnelles
-jcmsplugin.socle.rgpd.pub.id:
 
 # ------------------------------------------------------------
 #  Header

@@ -1,9 +1,11 @@
 <%@page import="generated.PortletWYSIWYG"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-    
-		<jalios:if predicate='<%= Util.notEmpty(channel.getData("$jcmsplugin.socle.form.portlet-rgpd.id")) %>'>
+<%
+String idPortletBas = (String) request.getAttribute("idPortletBas");
+%>    
+		<jalios:if predicate='<%= Util.notEmpty(channel.getData(idPortletBas)) %>'>
 		      <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
-		          <%= ((PortletWYSIWYG) channel.getData("$jcmsplugin.socle.form.portlet-rgpd.id")).getWysiwyg() %>
+		          <%= ((PortletWYSIWYG) channel.getData(idPortletBas)).getWysiwyg() %>
 		      </jalios:wysiwyg>
 		</jalios:if>
 

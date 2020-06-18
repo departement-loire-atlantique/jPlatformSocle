@@ -215,7 +215,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement1" for="form-element-complement1" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel1 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel1 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">
@@ -245,7 +245,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement1" for="form-element-complement2" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel2 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel2 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">
@@ -275,7 +275,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label id="label-form-element-complement3" for="form-element-complement3" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel3 %><sup aria-hidden="true">*</sup></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= complementLabel3 %></span></span>
             </label>
             
             <div class="ds44-file__shape ds44-inpStd">
