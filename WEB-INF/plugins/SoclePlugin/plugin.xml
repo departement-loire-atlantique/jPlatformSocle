@@ -12,6 +12,7 @@
     <type name="AccueilDelegation"></type>
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
+    <type name="CandidatureForm"><file path="editFormCandidatureForm.jsp" /></type>
     <type name="CandidatureSpontaneeForm"><file path="editFormCandidatureSpontaneeForm.jsp" /></type>
     <type name="Canton"></type>
     <type name="Carousel"></type>
@@ -435,6 +436,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.ContactFormDataController" types="ContactForm" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureFormDataController" types="CandidatureForm" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureSpontaneeFormDataController" types="CandidatureSpontaneeForm" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />

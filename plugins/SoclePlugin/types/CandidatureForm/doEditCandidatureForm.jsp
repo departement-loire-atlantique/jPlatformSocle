@@ -1,6 +1,6 @@
 <%-- This file has been automatically generated. --%>
 <%--
-  @Summary: CandidatureSpontaneeForm content editor
+  @Summary: CandidatureForm content editor
   @Category: Generated
   @Author: JCMS Type Processor 
   @Customizable: True
@@ -9,47 +9,28 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <% 
-  EditCandidatureSpontaneeFormHandler formHandler = (EditCandidatureSpontaneeFormHandler)request.getAttribute("formHandler");
+  EditCandidatureFormHandler formHandler = (EditCandidatureFormHandler)request.getAttribute("formHandler");
   ServletUtil.backupAttribute(pageContext, "classBeingProcessed");
-  request.setAttribute("classBeingProcessed", generated.CandidatureSpontaneeForm.class);
+  request.setAttribute("classBeingProcessed", generated.CandidatureForm.class);
 %>
 
-<%-- NatureRecherche ------------------------------------------------------------ --%>
-<% String natureRechercheLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "natureRecherche", userLang);%>
-<%
-TreeSet natureRechercheCatSet = new TreeSet(Category.getOrderComparator(userLang));
-natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet());
-%>
+<%-- Reference ------------------------------------------------------------ --%>
+<% String referenceLabel = channel.getTypeFieldLabel(CandidatureForm.class, "reference", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
-        <div class="ds44-select__shape ds44-inpStd">
-            <p id="label-form-element-nature" class="ds44-selectLabel" aria-hidden="true"><%= natureRechercheLabel %><sup aria-hidden="true">*</sup></p>
-            <input class="ds44-input-value" type="hidden"><div id="natureRecherche" data-name="natureRecherche" class="ds44-js-select-radio ds44-selectDisplay" data-required="true"></div>
-            <button class="ds44-reset" type="button" aria-describedby="label-form-element-nature">
-                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", natureRechercheLabel) %></span>
-            </button>
-            <button type="button" id="button-form-element-sujet" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", natureRechercheLabel) %>"><i class="icon icon--sizeL icon-down" aria-hidden="true"></i><span id="button-message-form-element-sujet" class="visually-hidden"><%= natureRechercheLabel %></span></button>
-        </div>
+        <div class="ds44-posRel">
+            <label id="label-form-element-reference" for="form-element-reference" class="ds44-formLabel"><%= referenceLabel %>
 
-        <div class="ds44-select-container hidden" aria-hidden="true">
-            <div class="ds44-listSelect">
-                <ul class="ds44-list" id="listbox-form-element-sujet">
-                   <jalios:foreach name="itCat" type="Category" collection="<%= natureRechercheCatSet %>">
-                       <li class="ds44-select-list_elem selected_option">
-                        <div class="ds44-form__container ds44-checkBox-radio_list ">
-                            <input type="radio" name="natureRecherche" value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" class="ds44-radio"><label id="label-form-element-sujet-<%= itCounter %>" for="form-element-sujet-<%= itCounter %>" class="ds44-radioLabel"><%= itCat.getName() %></label>
-                        </div>
-                        </li>
-                    </jalios:foreach>
-                </ul>
-            </div>
-            <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="<%= glp("jcmsplugin.socle.facette.cat-lie.valider-selection.label", natureRechercheLabel) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
+            </label>
+            <input type="text" id="form-element-reference" name="reference"
+                class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", referenceLabel) %>"
+                required disabled readonly value="<%= Util.notEmpty(request.getParameter("ref")) ? request.getParameter("ref") : "" %>">
         </div>
     </div>
 </div>
 
 <%-- Nom ------------------------------------------------------------ --%>
-<% String nomLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "nom", userLang);%>
+<% String nomLabel = channel.getTypeFieldLabel(CandidatureForm.class, "nom", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -67,7 +48,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- Prenom ------------------------------------------------------------ --%>
-<% String prenomLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "prenom", userLang);%>
+<% String prenomLabel = channel.getTypeFieldLabel(CandidatureForm.class, "prenom", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -84,7 +65,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- Mail ------------------------------------------------------------ --%>
-<% String mailLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "mail", userLang);%>
+<% String mailLabel = channel.getTypeFieldLabel(CandidatureForm.class, "mail", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -106,7 +87,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
 
 <%-- Telephone ------------------------------------------------------------ --%>
-<% String telephoneLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "telephone", userLang);%>
+<% String telephoneLabel = channel.getTypeFieldLabel(CandidatureForm.class, "telephone", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -128,7 +109,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- CodePostal ------------------------------------------------------------ --%>
-<% String codepostalLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "codePostal", userLang);%>
+<% String codepostalLabel = channel.getTypeFieldLabel(CandidatureForm.class, "codePostal", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -150,7 +131,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- CurriculumVitae ------------------------------------------------------------ --%>
-<% String cvLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "curriculumVitae", userLang);%>
+<% String cvLabel = channel.getTypeFieldLabel(CandidatureForm.class, "curriculumVitae", userLang);%>
 <div class="ds44-mb3">
 	<div class="ds44-form__container">
 		<div class="ds44-posRel">
@@ -180,7 +161,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- LettreMotivation ------------------------------------------------------------ --%>
-<% String lettreLabel = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "lettreMotivation", userLang);%>
+<% String lettreLabel = channel.getTypeFieldLabel(CandidatureForm.class, "lettreMotivation", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -210,7 +191,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
  
 <%-- PieceComplementaire1 ------------------------------------------------------------ --%>
-<% String complementLabel1 = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "pieceComplementaire1", userLang);%>
+<% String complementLabel1 = channel.getTypeFieldLabel(CandidatureForm.class, "pieceComplementaire1", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -240,7 +221,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
 
 <%-- PieceComplementaire2 ------------------------------------------------------------ --%>
-<% String complementLabel2 = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "pieceComplementaire2", userLang);%>
+<% String complementLabel2 = channel.getTypeFieldLabel(CandidatureForm.class, "pieceComplementaire2", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -270,7 +251,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
 </div>
 
 <%-- PieceComplementaire3 ------------------------------------------------------------ --%>
-<% String complementLabel3 = channel.getTypeFieldLabel(CandidatureSpontaneeForm.class, "pieceComplementaire3", userLang);%>
+<% String complementLabel3 = channel.getTypeFieldLabel(CandidatureForm.class, "pieceComplementaire3", userLang);%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -311,7 +292,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
   Category itRemoveCat = null;
   itRemoveCat = channel.getCategory("$jcmsplugin.socle.emploiStage.typeOffre.root");
   if (itRemoveCat != null){ removedCatSet.add(itRemoveCat);  }
-  request.setAttribute("CandidatureSpontaneeForm.removedCatSet", removedCatSet);
+  request.setAttribute("CandidatureForm.removedCatSet", removedCatSet);
 }  
 %>
 <jalios:include target="EDIT_PUB_MAINTAB" targetContext="div" />

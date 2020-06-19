@@ -1,8 +1,14 @@
+<%@page import="com.jalios.util.Util"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
+/* Le titre de l'article peut être dynamique : cas de l'article de réponse à une offre d'emploi.
+    Si on n'a pas d'attribut spécifique pour le titre alors on prend le titre de l'article.
+    Le titre spécifique est passé via le parametre "t" et encodé en base 64.
+*/
+
     String imageFile = obj.getImageBandeau();
     String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
-    String title = obj.getTitle(userLang);
+    String title = Util.notEmpty(request.getParameter("t")) ? Util.decodeBASE64(request.getParameter("t")) : obj.getTitle(userLang);
     String legende = obj.getLegende(userLang);
     String copyright = obj.getCopyright(userLang);
 %>
@@ -21,6 +27,7 @@
        <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
     </jalios:default>
 </jalios:select>
+
 
 <div class="ds44-inner-container ds44-mt4">
 	<div class="grid-12-small-1">

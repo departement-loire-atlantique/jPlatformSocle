@@ -309,6 +309,7 @@ MOBILE TARGETING
                         <p>Téléphone : <%=request.getAttribute("telephone") %></p>
                         <p>Code postal : <%=request.getAttribute("codepostal") %></p>
                         <p>Commune : <%=request.getAttribute("commune") %></p>
+                        <p>Nature : <%=request.getAttribute("nature") %></p>
                         <p>--------------------------------------------</p>
                         <p>Pieces jointes : CV, lettre de motivation et pièce complémentaire</p>
                         </td>
