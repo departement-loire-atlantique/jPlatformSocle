@@ -1,3 +1,5 @@
+<%@tag import="com.jalios.jcms.JcmsUtil"%>
+<%@tag import="com.jalios.jcms.HttpUtil"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag 
     pageEncoding="UTF-8"
@@ -44,11 +46,10 @@
 <% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
 
 <div class="ds44-lightBG ds44-posRel">
-    <%-- BOUTON RETOUR --%>
-    <%--
-    <a href="#" class="ds44-btnStd ds44-btnStd--retourPage" title="Retour à la la liste des lieux"><i class="icon icon-long-arrow-left" aria-hidden="true"></i><span class="ds44-btnInnerText">Retour à la liste</span></a>
-     --%>
-    <%-- FIN BOUTON--%>
+
+    <%-- Bouton retour à la liste de recherche à facettes --%>      
+    <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+    
     <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
         <div class="ds44-grid12-offset-2">
             <div class="ds44-tablette-reduced-mt">

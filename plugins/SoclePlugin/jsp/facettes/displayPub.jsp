@@ -12,7 +12,9 @@ JsonObject jsonObject = new JsonObject();
 %><jalios:select><%
 	%><jalios:if predicate="<%= Util.notEmpty(pub)%>"><%
 		%><jalios:buffer name="pubFullGabarit"><%
-		    %><button class="ds44-btnStd ds44-mt2 ds44-mb3" title='<%= glp("jcmsplugin.socle.retourALaListe.title") %>'><i class="icon icon-long-arrow-left" aria-hidden="true"></i><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.retourALaListe") %></span></button><jalios:include pub="<%= pub %>" usage="full" /><%
+		    request.setAttribute("isSearchFacetPanel", true);
+		    %><jalios:include pub="<%= pub %>" usage="full" /><%
+		    request.removeAttribute("isSearcheFacetPanel");
 		%></jalios:buffer><%
 		%><%	 
 		jsonObject = SocleUtils.publicationToJsonObject(pub, null, null, pubFullGabarit);
