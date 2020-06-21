@@ -22,6 +22,10 @@ if(Util.notEmpty(box.getIdDeLaCategorieTag())) {
 
 String typeDeTuileFicheLieu = request.getParameter("typeDeTuileFicheLieu");
 
+Category typeDelieuMisEnAvant_1 = channel.getCategory(box.getTypeDeLieu());
+Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
+
+
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
@@ -31,6 +35,42 @@ String typeDeTuileFicheLieu = request.getParameter("typeDeTuileFicheLieu");
 
 
 %><%@ include file="/types/PortletQueryForeach/doSort.jspf" %><%
+
+// Place les contenu mis en avant en tête de résultat
+if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2)) {
+  List<Publication> misEnAvant_1_Set = new ArrayList();
+  List<Publication> misEnAvant_2_Set = new ArrayList();
+  
+  for(Object itObj : collection) {
+    if(itObj instanceof FicheLieu) {
+      FicheLieu itFiche = (FicheLieu) itObj;
+      Set<Category> pubCatSet = itFiche.getCategorySet();
+      
+      if(Util.notEmpty(typeDelieuMisEnAvant_1) && Util.notEmpty(pubCatSet)) {
+        if(pubCatSet.contains(typeDelieuMisEnAvant_1) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_1.getDescendantSet(), pubCatSet))) {
+          misEnAvant_1_Set.add(itFiche);
+        }
+      }
+      
+      if(Util.notEmpty(typeDelieuMisEnAvant_2) && Util.notEmpty(pubCatSet)) {
+        if(pubCatSet.contains(typeDelieuMisEnAvant_2) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_2.getDescendantSet(), pubCatSet))) {
+          misEnAvant_2_Set.add(itFiche);
+        }
+      }
+      
+    }
+  }
+  // Evite des doublons en priorisant les publication misEnAvant_1
+  misEnAvant_2_Set.removeAll(misEnAvant_1_Set);
+  // Retire les élément mis en avant des résultat pour les replacer en haut de la list
+  collection.removeAll(misEnAvant_1_Set);
+  collection.removeAll(misEnAvant_2_Set);  
+  List<Publication> collectionBis = misEnAvant_1_Set;
+  collectionBis.addAll(misEnAvant_2_Set);
+  collectionBis.addAll(collection);
+  collection = collectionBis;
+}
+
 
 JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();
@@ -47,7 +87,31 @@ jsonObject.add("result", jsonArray);
     %><jalios:buffer name="itPubListGabarit"><%       
 	    %><jalios:select><%	        
 	        %><jalios:if predicate="<%= itPub instanceof FicheLieu %>"><%
-	           %><jalios:media data="<%= itPub %>" template='<%= Util.notEmpty(typeDeTuileFicheLieu) ? typeDeTuileFicheLieu : "cardNoPic" %>' /><%
+	           %><%
+	           boolean isMiseEnAvant = false;
+	           Set<Category> pubCatSet = itPub.getCategorySet();
+	           
+	           if(Util.notEmpty(typeDelieuMisEnAvant_1) && Util.notEmpty(pubCatSet)) {
+	             if(pubCatSet.contains(typeDelieuMisEnAvant_1) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_1.getDescendantSet(), pubCatSet))) {
+	               isMiseEnAvant = true;
+	             }
+	           }
+	           
+	           if(!isMiseEnAvant && Util.notEmpty(typeDelieuMisEnAvant_2) && Util.notEmpty(pubCatSet)) {
+                 if(pubCatSet.contains(typeDelieuMisEnAvant_2) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_2.getDescendantSet(), pubCatSet))) {
+                   isMiseEnAvant = true;
+                 }
+	           }
+	           %>
+	           <jalios:select>
+		           <jalios:if predicate='<%= isMiseEnAvant %>'>
+		              <jalios:media data="<%= itPub %>" template='cardFocusNoPic' />
+		           </jalios:if>
+		           <jalios:default>
+		              <jalios:media data="<%= itPub %>" template='<%= Util.notEmpty(typeDeTuileFicheLieu) ? typeDeTuileFicheLieu : "cardNoPic" %>' />
+		           </jalios:default>	           
+	           </jalios:select>
+	           <%
 	        %></jalios:if><%
 	        
 	        %><jalios:default><%

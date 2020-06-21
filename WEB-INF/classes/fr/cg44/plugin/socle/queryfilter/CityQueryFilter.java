@@ -20,7 +20,9 @@ public class CityQueryFilter extends LuceneQueryFilter {
 	public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
 		// Récupère la ou les communes en paramètre de recherche
 	  // Ignore la recherche par commune si recherche par delegation (la recherche sur delegation recherche sur une liste de communes)
-	  if(Util.isEmpty(request.getParameter("delegationSearch"))) {
+	  // Ignore la recherche par commune si recherche sur sectorisation (un résultat par secteur peut se trouver dans la commune limitrophe et pas seulement sur la commune recherché)
+	  Boolean isSectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
+	  if(!isSectorisation && Util.isEmpty(request.getParameter("delegationSearch"))) {
 	    String[] citiesCodeSearchArray = request.getParameterValues("commune");
 		  addCitySearch(qh, request, citiesCodeSearchArray);	
 	  }
