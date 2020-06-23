@@ -20,7 +20,7 @@
             </jalios:if>
             <jalios:default>
                 <%-- Include du gabarit onglet --%>
-                <%@ include file="ficheArticleOnglets.jsp" %>
+                <%@ include file="ficheArticleOnglets.jspf" %>
             </jalios:default>
         </jalios:select>
         

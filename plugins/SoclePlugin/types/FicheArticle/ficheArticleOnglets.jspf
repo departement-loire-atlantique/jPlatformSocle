@@ -86,8 +86,8 @@
                         <div class="ds44-introduction">
                             <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
                         </div>
-                        <% chapoDisplayed = true; %>
                     </jalios:if>
+                    <% chapoDisplayed = true; %>
                     
                     <%-- Boucler sur les paragraphes --%>
                     <jalios:foreach name="itContenu" type="String" counter="itCounter"
