@@ -26,8 +26,8 @@
             <%= titreBloc %>
 		    
 		    <button class="ds44-btnIco ds44-btnIco--carre ds44-bgDark" type="button">
-		        <i class="icon icon-play" aria-hidden="true"></i>
-		        <span class="visually-hidden">Lancer l'animation</span>
+		        <i class="icon icon-pause" aria-hidden="true"></i>
+		        <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrouselhome.stop") %></span>
 		    </button>
 		    
 		    <div class="swiper-container ds44-titleContainer ds44-titleContainer--home swiper-container-fade swiper-container-horizontal">
