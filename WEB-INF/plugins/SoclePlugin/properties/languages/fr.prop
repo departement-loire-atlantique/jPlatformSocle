@@ -85,6 +85,7 @@ jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 10Mo
 jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
 jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
+jcmsplugin.socle.form.faq.mailTo: Email du destinataire par défaut des FAQ
 
 # ------------------------------------------------------------
 #  Mail
@@ -213,9 +214,9 @@ jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
 jcmsplugin.socle.menu.principal1: Menu principal niveau 1
 jcmsplugin.socle.menu.principal2: Menu {0} : second niveau de navigation
 jcmsplugin.socle.menu.navigation: Menu de navigation
-jcmsplugin.socle.sitesapplis: Sites et applis du Département
+jcmsplugin.socle.sitesapplis: Sites et applis du Département de Loire-Atlantique
 jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
-jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département
+jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département de Loire-Atlantique
 jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
 jcmsplugin.socle.menu.pdcv: Près de chez vous
 jcmsplugin.socle.menu.pdcv.adresse.label: Merci de préciser votre adresse
@@ -484,6 +485,7 @@ jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Départemen
 
 jcmsplugin.socle.carrouselhome.error.differentSizes: Les deux listes d'éléments carrousel doivent avoir le même nombre de contenus.
 jcmsplugin.socle.carrouselhome.error.nosibling: Les deux listes d'éléments carrousel doivent avoir un élément à l'emplacement {0}.
+jcmsplugin.socle.carrouselhome.stop: Arrêter l'animation
 
 # ------------------------------------------------------------
 #  Liens d'évitement

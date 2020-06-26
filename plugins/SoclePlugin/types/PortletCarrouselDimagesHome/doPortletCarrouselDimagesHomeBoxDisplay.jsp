@@ -14,8 +14,8 @@
                     <jalios:wysiwyg><%= obj.getTitreAAfficher() %></jalios:wysiwyg>
 			    </div>
 			    <button class="ds44-btnIco ds44-btnIco--carre ds44-bgDark" type="button">
-			        <i class="icon icon-play" aria-hidden="true"></i>
-			        <span class="visually-hidden">Lancer l'animation</span>
+			        <i class="icon icon-pause" aria-hidden="true"></i>
+			        <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrouselhome.stop") %></span>
 			    </button>
 			    <div class="swiper-container ds44-titleContainer ds44-titleContainer--home swiper-container-fade swiper-container-horizontal">
 			        <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
