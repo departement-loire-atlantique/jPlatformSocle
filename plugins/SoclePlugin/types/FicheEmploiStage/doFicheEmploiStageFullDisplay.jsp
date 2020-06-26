@@ -14,7 +14,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 <main role="main" id="content">
     <article class="ds44-container-large">
 
-	    <div class="ds44-lightBG ds44-posRel">
+	    <div class="ds44-js-results-card">
 	        <%-- bouton Retour a la liste --%>
 	        <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
 	        
