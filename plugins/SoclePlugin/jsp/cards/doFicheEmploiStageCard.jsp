@@ -84,7 +84,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
             }
 	        %>
 	        <p class="ds44-docListElem ds44-mt-std">
-			    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+			    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
 			    
 			    <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
 			         <%= SocleUtils.formatCategories(catsWithoutServices) %><%= Util.isEmpty(catService) ? " - " : "" %>
