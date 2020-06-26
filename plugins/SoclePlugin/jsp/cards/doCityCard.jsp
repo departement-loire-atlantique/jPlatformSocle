@@ -35,7 +35,7 @@ boolean hasBottomInfos = Util.notEmpty(pub.getMayor()) || Util.notEmpty(pub.getC
 	            	adresseMairie = pub.getCouncilBuildingAddress().substring(0, pub.getCouncilBuildingAddress().replaceAll("\r\n","").lastIndexOf("</p></div>"));
 	            }
 	            %>
-		            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+		            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
 		                <jalios:wysiwyg><%= adresseMairie + "<br/>" + SocleUtils.formatAddress(null, null, null, null, null, null, pub.getPostalBox(), pub.getZipCode(), pub.getTitle(), null) + "</p></div>" %></jalios:wysiwyg>
 		            </div>
 	           </jalios:if>    

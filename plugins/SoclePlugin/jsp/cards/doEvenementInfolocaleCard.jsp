@@ -65,7 +65,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
          <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
          <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
-            <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i>
+            <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
                <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span>
             </p>
          </jalios:if>

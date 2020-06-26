@@ -25,7 +25,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
     <div class="ds44-card__section--horizontal">
       <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
       <jalios:if predicate="<%= Util.notEmpty(pub.getCommunes()) %>">
-        <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText">
+        <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span><span class="ds44-iconInnerText">
 	        <jalios:foreach name="itCommune" type="City" array="<%= pub.getCommunes() %>">
 	            <%= itCommune.getTitle() %><%= itCounter < pub.getCommunes().length ? ", " : "" %>
 	        </jalios:foreach>
@@ -33,7 +33,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getTelephone()) %>">
           <div class="ds44-cardLocalisation ds44-docListElem ds44-mt-std">
-            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.telephone") %></span>
             <ul class="ds44-list">
 	            <jalios:foreach name="itPhone" type="String" array="<%= pub.getTelephone() %>">
 	                <li><ds:phone number="<%= itPhone %>"></ds:phone></li>

@@ -64,11 +64,11 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
               pub.getCodePostal(), titreCommune, "");
           %>
           <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
-              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= adresse %></p>
+              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span><%= adresse %></p>
           </jalios:if>
           <jalios:if predicate="<%= Util.notEmpty(pub.getTelephone()) %>">
 	          <div class="ds44-docListElem ds44-mt-std">
-			    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+			    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.telephone") %></span>
 		        <ul class="ds44-list">
 		            <jalios:foreach name="numTel" type="String" array="<%= pub.getTelephone() %>">
 		                <li><ds:phone number="<%= numTel %>" /></li>

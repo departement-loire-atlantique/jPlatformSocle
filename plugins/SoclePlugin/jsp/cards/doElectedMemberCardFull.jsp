@@ -44,7 +44,7 @@ if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
         <jalios:if predicate="<%= Util.notEmpty(conseillerLabel) %>">
         <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= conseillerLabel %></p>
         </jalios:if>
-        <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= glp("jcmsplugin.socle.facette.canton.default-label") %> : <%= pub.getCanton() %></p>
+        <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span><%= glp("jcmsplugin.socle.facette.canton.default-label") %> : <%= pub.getCanton() %></p>
         <hr class="mbm mtm" aria-hidden="true">
         <p class="ds44-mt-std"><%= pub.getPoliticalParty(loggedMember).first() %></p>
         <% ElectedMember binome = SocleUtils.getElectedMemberBinome(pub); %>
