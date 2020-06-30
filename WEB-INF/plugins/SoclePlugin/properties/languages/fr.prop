@@ -100,9 +100,14 @@ jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'of
 # ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
-jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation par commune
-jcmsplugin.socle.sectorisation.point.url: Url de la sectorisation par point
-jcmsplugin.socle.sectorisation.rectangle.url: Url de la sectorisation par rectangle
+# entités
+jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation des entités par commune
+jcmsplugin.socle.sectorisation.point.url: Url de la sectorisation des entités par point
+jcmsplugin.socle.sectorisation.rectangle.url: Url de la sectorisation des entités par rectangle
+# implantations
+jcmsplugin.socle.sectorisation.implantations.commune.url: Url de la sectorisation des implantations par commune
+jcmsplugin.socle.sectorisation.implantations.point.url: Url de la sectorisation des implantations par point
+jcmsplugin.socle.sectorisation.implantations.rectangle.url: Url de la sectorisation des implantations par rectangle
 
 # Réseaux sociaux
 jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
