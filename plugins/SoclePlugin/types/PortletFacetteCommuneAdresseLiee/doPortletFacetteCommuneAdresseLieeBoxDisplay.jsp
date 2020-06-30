@@ -9,7 +9,7 @@
 %>
 
 <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
-		name='<%= "commune" + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId() %>' 
+		name='<%= "commune" %>' 
 		request="<%= request %>" 
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="select-only" 
