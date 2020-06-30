@@ -43,6 +43,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	private static String SECTORISATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.point.url";
 	private static String SECTORISATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.rectangle.url";
 	
+	private static String SECTORISATION_IMPLANTATION_URL_COMMUNE_PROP = "jcmsplugin.socle.sectorisation.implantations.commune.url";
+  private static String SECTORISATION_IMPLANTATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.implantations.point.url";
+  private static String SECTORISATION_IMPLANTATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.implantations.rectangle.url";
+	
 	private static int TIMEOUT = Integer.parseInt(getChannel().getProperty("jcmsplugin.socle.rest.timeout", "2000"));
 
 
@@ -64,24 +68,29 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		Boolean sectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
 		
 		if(sectorisation) {				
-			String url = "";									
+			String url = "";
+			String implantationsUrl = "";   
 			if(Util.notEmpty(lng) && Util.notEmpty(lat)) {
 				// Sectorisation par adresse
 				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
+				implantationsUrl= getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
 			}else if(Util.notEmpty(commune)) {
 				// Sectorisation par commune
-				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + "p_commune=" + commune;						
+				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + "p_commune=" + commune;	
+				implantationsUrl = getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_COMMUNE_PROP) + "p_commune=" + commune;          
 			}
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
-			if(Util.notEmpty(url)) {
-				LOGGER.debug("Appel du service de sectorisation : " + url);
-				set.removeAll(getNotInSctorisationPublication(set, url));
+			if(Util.notEmpty(url) && Util.notEmpty(implantationsUrl)) {
+				LOGGER.debug("Appel du service de sectorisation des entités : " + url);
+				LOGGER.debug("Appel du service de sectorisation des implantations : " + implantationsUrl);
+				set.removeAll(getNotInSctorisationPublication(set, url, implantationsUrl));
 				
 				if(Util.notEmpty(lng_1) && Util.notEmpty(lat_1) && Util.notEmpty(lng_2) && Util.notEmpty(lat_2)) {
 					// Sectorisation par zone
 					url = getChannel().getProperty(SECTORISATION_URL_RECTANGLE_PROP) + "p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
-					set.removeAll(getNotInSctorisationPublication(set, url));
+					implantationsUrl = getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_RECTANGLE_PROP) + "p_lat_1=" + lat_1 +"&p_lon_1=" + lng_1 +"&p_lat_2=" + lat_2 + "&p_lon_2=" + lng_2;
+					set.removeAll(getNotInSctorisationPublication(set, url, implantationsUrl));
 				}				
 			}
 		}
@@ -96,11 +105,13 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	 * @param url
 	 * @return
 	 */
-	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url) {	
-		List<SectorResult> sectorResultSet = getSectorisation(url);			
+	public List<Publication> getNotInSctorisationPublication(QueryResultSet set, String url, String implantationUrl) {	
+		List<SectorResult> sectorResultSet = getSectorisation(url);	
+		List<SectorResult> sectorImplantationResultSet = getSectorisation(implantationUrl);     
 		List<Publication> notInSectorisation = new ArrayList<>(); 
-		if(sectorResultSet != null) {
-			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());		
+		if(sectorResultSet != null && sectorImplantationResultSet != null) {
+			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());	
+			List<String> sectorImplantationResultMatriculeSet = sectorImplantationResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());    
 			for(Publication itPub : set) {
 				String idRef = "";
 				if(itPub instanceof FicheLieu) {
@@ -113,7 +124,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 					City city = (City) itPub;
 					idRef = String.valueOf(city.getCityCode());
 				}
-				if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef)){
+				if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef) && !sectorImplantationResultMatriculeSet.contains(idRef)){
 					notInSectorisation.add(itPub);
 				}
 			}			
