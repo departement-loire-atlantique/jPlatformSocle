@@ -111,7 +111,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		List<Publication> notInSectorisation = new ArrayList<>(); 
 		if(sectorResultSet != null && sectorImplantationResultSet != null) {
 			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());	
-			List<String> sectorImplantationResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());    
+			List<String> sectorImplantationResultMatriculeSet = sectorImplantationResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());    
 			for(Publication itPub : set) {
 				String idRef = "";
 				if(itPub instanceof FicheLieu) {

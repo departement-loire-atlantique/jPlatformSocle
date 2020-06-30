@@ -23,9 +23,9 @@ jcmsplugin.socle.sectorisation.commune.url: https://oreco.loire-atlantique.fr/en
 jcmsplugin.socle.sectorisation.point.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_point?select=*,origine_matricule(*)&
 jcmsplugin.socle.sectorisation.rectangle.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_entites_rectangle?select=*,origine_matricule(*)&
 # implantations
-jcmsplugin.socle.sectorisation.implantations.commune.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_commune?select=*,origine_matricule(*)&
-jcmsplugin.socle.sectorisation.implantations.point.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_point?select=*,origine_matricule(*)&
-jcmsplugin.socle.sectorisation.implantations.rectangle.url: https://oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_rectangle?select=*,origine_matricule(*)&
+jcmsplugin.socle.sectorisation.implantations.commune.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_commune?select=*,origine_matricule(*)&
+jcmsplugin.socle.sectorisation.implantations.point.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_point?select=*,origine_matricule(*)&
+jcmsplugin.socle.sectorisation.implantations.rectangle.url: https://rec-oreco.loire-atlantique.fr/entites/V1/rpc/get_implantations_rectangle?select=*,origine_matricule(*)&
 
 
 $jcmsplugin.socle.type.sectorisation.paph.cat: t1_16281
