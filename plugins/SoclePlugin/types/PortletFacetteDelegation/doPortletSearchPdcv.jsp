@@ -7,6 +7,12 @@ PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet;
 Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 Boolean isInRechercheFacette = Util.isEmpty(publication);
 Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"));
+
+Delegation delegation = obj.getDelegationPourPDCV();
+String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp";
+if(Util.notEmpty(delegation)){
+  dataUrl = dataUrl + "?delegationId=" + delegation.getId();
+}
 %>
 
 <jalios:select>
@@ -26,7 +32,7 @@ Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"))
 		                        request="<%= request %>" 
 		                        isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		                        dataMode="select-only" 
-		                        dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+		                        dataUrl="<%= dataUrl %>" 
 		                        label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		                        title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title",titleAttr) %>'
 		                        isLarge="false"/>
@@ -47,7 +53,7 @@ Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"))
 		        request="<%= request %>" 
 		        isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		        dataMode="select-only" 
-		        dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+		        dataUrl="<%= dataUrl %>" 
 		        label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		        option="adresse"/>		        
 	</jalios:default>
@@ -56,3 +62,6 @@ Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"))
 
 <input type="hidden" name='<%= "delegationSearch" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= true %>' data-technical-field />
 
+<jalios:if predicate='<%= Util.notEmpty(delegation) %>'>
+    <input type="hidden" name='<%= "delegation" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= delegation.getId() %>' data-technical-field />
+</jalios:if>

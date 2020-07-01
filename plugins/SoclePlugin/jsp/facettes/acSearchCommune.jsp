@@ -7,6 +7,7 @@
 response.setContentType("application/json");
 
 String textSearch = getStringParameter("q", "", ".*");
+String delegationId = getUntrustedStringParameter("delegationId", "");
 
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "zipCode", "codesPostaux", "nomDesCommunesDeleguees"};
 
@@ -16,5 +17,19 @@ qh.setTypes("City");
 qh.setCheckPstatus(true);
 qh.setSearchedFields(tabSearchedFields);
 
+// Filtre sur la delegation
+QueryResultSet result = qh.getResultSet();
+if(Util.notEmpty(delegationId)) {
+  Set remove = new HashSet();
+  Delegation delegation = (Delegation) channel.getPublication(delegationId);
+  for(Publication itPub : result) {
+    City city = (City) itPub;
+    if(!JcmsUtil.isSameId(city.getDelegation(), delegation)) {
+      remove.add(itPub);
+    }
+  }
+  result.removeAll(remove);
+}
+
 %><% 
-%><%= SocleUtils.citiestoJsonArray(qh.getResultSet()) %>
+%><%= SocleUtils.citiestoJsonArray(result) %>
