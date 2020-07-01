@@ -12,6 +12,7 @@
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 	
 	String labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.mot-cle.default-label");
+	String name = "text" + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 %>
 
 <div class="ds44-form__container">
@@ -23,7 +24,7 @@
 				</span>
 			</span>
 		</label>
-		<input name='<%= "text" + idFormElement %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
+		<input name='<%= name %>' type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %>' 
 				title='<%= obj.getFacetteObligatoire() ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) : labelChamp %>'
 				<%= obj.getFacetteObligatoire() ? "required aria-required=\"true\"" : ""%> 
 				<%= (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>/>
