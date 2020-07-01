@@ -22,7 +22,7 @@ public class DelegationQueryFilter extends LuceneQueryFilter {
 	
   @Override
   public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {
-    if(Util.notEmpty(request.getParameter("delegationSearch"))) {
+    if(Util.notEmpty(request.getParameter("delegationSearch")) && Util.notEmpty(request.getParameter("commune"))) {
       String codeCommune = request.getParameter("commune");
       City commune = SocleUtils.getCommuneFromCode(codeCommune);
       // Récupère les communes de la delegation pour la recherche à facettes
