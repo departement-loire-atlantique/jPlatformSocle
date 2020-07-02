@@ -22,7 +22,7 @@
 				<%= labelChamp %>
 				<%= obj.getFacetteObligatoire() ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 			</p>
-			<div id='<%= idFormElement %>' data-name='cidBranches<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
+			<div id='<%= idFormElement %>' data-name='cids<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" 
 					<%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>>
 			</div>
 			<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
@@ -65,4 +65,10 @@
 			request='<%= request %>' 
 			selectionMultiple='<%= facetteLie.getTypeDeSelection() %>' 
 			profondeur='<%= facetteLie.getProfondeur() %>'/>
+			
+		
+			
+	<jalios:foreach collection='<%= obj.getCategoriePrincipales(loggedMember) %>' name="itRootCat" type="Category">
+        <input type="hidden" name='<%= "cidBranches" + idFormElement + itCounter %>' value='<%= itRootCat.getId() %>' data-technical-field />
+    </jalios:foreach>
 </div>
