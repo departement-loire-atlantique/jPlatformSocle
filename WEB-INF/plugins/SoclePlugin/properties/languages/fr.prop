@@ -13,6 +13,9 @@ extra.Category.plugin.tools.blank.help : Le lien sur cette catégorie (menu...) 
 extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de la catégorie
 extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
 
+# Comparator
+comparator.pqf.servicesDepartement: Fiche lieu : Services du département
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------

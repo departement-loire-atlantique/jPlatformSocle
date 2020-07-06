@@ -56,6 +56,8 @@ $jcmsplugin.socle.cat.root: j_3
 
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
 
+# Comparator
+comparator.FicheLieu.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
 
 # ------------------------------------------------------------
 #  Header
