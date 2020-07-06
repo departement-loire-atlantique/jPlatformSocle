@@ -36,6 +36,7 @@ Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
 
 %><%@ include file="/types/PortletQueryForeach/doSort.jspf" %><%
 
+
 // Place les contenu mis en avant en tête de résultat
 if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2)) {
   List<Publication> misEnAvant_1_Set = new ArrayList();
@@ -46,12 +47,14 @@ if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2
       FicheLieu itFiche = (FicheLieu) itObj;
       Set<Category> pubCatSet = itFiche.getCategorySet();
       
+      // mise en avant principale
       if(Util.notEmpty(typeDelieuMisEnAvant_1) && Util.notEmpty(pubCatSet)) {
         if(pubCatSet.contains(typeDelieuMisEnAvant_1) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_1.getDescendantSet(), pubCatSet))) {
           misEnAvant_1_Set.add(itFiche);
         }
       }
       
+      // mise en avant secondaire
       if(Util.notEmpty(typeDelieuMisEnAvant_2) && Util.notEmpty(pubCatSet)) {
         if(pubCatSet.contains(typeDelieuMisEnAvant_2) || Util.notEmpty(Util.interSet(typeDelieuMisEnAvant_2.getDescendantSet(), pubCatSet))) {
           misEnAvant_2_Set.add(itFiche);
@@ -64,7 +67,8 @@ if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2
   misEnAvant_2_Set.removeAll(misEnAvant_1_Set);
   // Retire les élément mis en avant des résultat pour les replacer en haut de la list
   collection.removeAll(misEnAvant_1_Set);
-  collection.removeAll(misEnAvant_2_Set);  
+  collection.removeAll(misEnAvant_2_Set);
+  // Replace les listes dans l'ordre
   List<Publication> collectionBis = misEnAvant_1_Set;
   collectionBis.addAll(misEnAvant_2_Set);
   collectionBis.addAll(collection);
