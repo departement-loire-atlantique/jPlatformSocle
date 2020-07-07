@@ -543,6 +543,24 @@ public class InfolocaleEntityUtils {
         parameters.put("rubrique", strGenres);
       }
       
+      String dateDebutField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateDebut");
+      String dateFinField =  channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateFin");
+
+      // Recherche sur une date
+      String dateValue = request.getParameter("agenda-date");
+      if (Util.notEmpty(dateValue)) {
+         // date unique
+         if (!dateValue.contains(",")) {
+           parameters.put(dateDebutField, dateValue);
+           parameters.put(dateFinField, dateValue);
+         } else {
+           // date multiple (début / fin)
+           String[] arrayDateValue = dateValue.split(",");
+           parameters.put(dateDebutField, arrayDateValue[0]);
+           parameters.put(dateFinField, arrayDateValue[1]);
+         }
+      }
+      
       
       // Paramétrage de la portlet Agenda
       if (Util.notEmpty(box.getNombreDeResultats())) {

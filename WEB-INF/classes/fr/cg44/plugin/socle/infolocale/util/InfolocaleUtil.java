@@ -25,7 +25,7 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
-    public static String dateInfolocalePattern = "yyyy-MM-dd";
+    public static String dateInfolocalePattern = "dd-MM-yyyy";
     
     private InfolocaleUtil() {}
     
@@ -319,7 +319,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne le format de date lisible par infolocale yyyy-MM-dd
+     * Retourne le format de date lisible par infolocale dd-MM-yyyy
      * @param date
      * @return
      */
@@ -329,7 +329,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date d'aujourd'hui dans un format lisible par infolocale yyyy-MM-dd
+     * Retourne la date d'aujourd'hui dans un format lisible par infolocale dd-MM-yyyy
      * @return
      */
     public static String getDateTodayInfolocale() {
@@ -339,7 +339,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date de demain dans un format lisible par infolocale yyyy-MM-dd
+     * Retourne la date de demain dans un format lisible par infolocale dd-MM-yyyy
      * @return
      */
     public static String getDateTomorrowInfolocale() {
@@ -350,7 +350,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne un duo date début / date fin des sept prochains jours dans un format lisible par infolocale yyyy-MM-dd
+     * Retourne un duo date début / date fin des sept prochains jours dans un format lisible par infolocale dd-MM-yyyy
      * @return
      */
     public static String[] getDateNextSevenDaysInfolocale() {
@@ -365,7 +365,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date du weekend dans un format lisible par infolocale yyyy-MM-dd
+     * Retourne la date du weekend dans un format lisible par infolocale dd-MM-yyyy
      * Dans le cas où le jour actuel serait samedi ou dimanche, prendre ce weekend actuel
      * @return
      */
