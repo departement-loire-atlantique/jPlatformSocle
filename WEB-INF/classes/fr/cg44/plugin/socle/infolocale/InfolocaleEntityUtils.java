@@ -543,6 +543,22 @@ public class InfolocaleEntityUtils {
         parameters.put("rubrique", strGenres);
       }
       
+
+      // Recherche sur une date
+      String dateValue = request.getParameter("agenda-date");
+      if (Util.notEmpty(dateValue)) {
+         // date unique
+         if (!dateValue.contains(",")) {
+           parameters.put("dateDebut", dateValue);
+           parameters.put("dateFin", dateValue);
+         } else {
+           // date multiple (début / fin)
+           String[] arrayDateValue = dateValue.split(",");
+           parameters.put("dateDebut", arrayDateValue[0]);
+           parameters.put("dateFin", arrayDateValue[1]);
+         }
+      }
+      
       
       // Paramétrage de la portlet Agenda
       if (Util.notEmpty(box.getNombreDeResultats())) {

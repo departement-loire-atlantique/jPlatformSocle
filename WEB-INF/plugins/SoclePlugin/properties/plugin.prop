@@ -445,6 +445,25 @@ jcmsplugin.socle.infolocale.metadata.icon.accessibilite.moteur: icon-handicap-mo
 jcmsplugin.socle.infolocale.metadata.icon.grtheme: icon-tag
 jcmsplugin.socle.infolocale.metadata.icon.theme: icon-tag
 
+# Noms des champs pour la recheche Infolocale
+jcmsplugin.socle.infolocale.search.field.date: date
+jcmsplugin.socle.infolocale.search.field.dateDebut: dateDebut
+jcmsplugin.socle.infolocale.search.field.dateFin: dateFin
+jcmsplugin.socle.infolocale.search.field.organisme: organisme
+jcmsplugin.socle.infolocale.search.field.rubrique: rubrique
+jcmsplugin.socle.infolocale.search.field.codeInsee: codeInsee
+jcmsplugin.socle.infolocale.search.field.rayon: rayon
+jcmsplugin.socle.infolocale.search.field.limit: limit
+jcmsplugin.socle.infolocale.search.field.page: page
+jcmsplugin.socle.infolocale.search.field.thematiquePerso: thematiquePerso
+jcmsplugin.socle.infolocale.search.field.order: order
+jcmsplugin.socle.infolocale.search.field.recherche: recherche
+jcmsplugin.socle.infolocale.search.field.organisme: organisme
+
+# ------------------------------------------------------------
+#  IDs virtuels de contenus
+# ------------------------------------------------------------
+
 # Fiche Action éducative
 $jcmsplugin.socle.ficheactioneducative.theme.root: c_1212395
 $jcmsplugin.socle.ficheactioneducative.sousTheme.root: c_1212418
