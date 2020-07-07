@@ -543,19 +543,21 @@ public class InfolocaleEntityUtils {
         parameters.put("rubrique", strGenres);
       }
       
+      String dateDebutField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateDebut");
+      String dateFinField =  channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateFin");
 
       // Recherche sur une date
       String dateValue = request.getParameter("agenda-date");
       if (Util.notEmpty(dateValue)) {
          // date unique
          if (!dateValue.contains(",")) {
-           parameters.put("dateDebut", dateValue);
-           parameters.put("dateFin", dateValue);
+           parameters.put(dateDebutField, dateValue);
+           parameters.put(dateFinField, dateValue);
          } else {
            // date multiple (début / fin)
            String[] arrayDateValue = dateValue.split(",");
-           parameters.put("dateDebut", arrayDateValue[0]);
-           parameters.put("dateFin", arrayDateValue[1]);
+           parameters.put(dateDebutField, arrayDateValue[0]);
+           parameters.put(dateFinField, arrayDateValue[1]);
          }
       }
       
