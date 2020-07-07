@@ -533,6 +533,14 @@ public class InfolocaleEntityUtils {
         parameters.put("codeInsee", commune);
       }
       
+      String rayonField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.rayon");
+      
+      // Recherche sur un rayon
+      String rayon = request.getParameter(rayonField);
+      if(Util.notEmpty(rayon)) {
+        parameters.put(rayonField, rayon);
+      }
+      
       // Recherche sur un genre
       String[] genres = request.getParameterValues("cids");
       if(Util.notEmpty(genres)) {
