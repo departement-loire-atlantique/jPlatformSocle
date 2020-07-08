@@ -58,7 +58,7 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 
 	@Override
 	public QueryResultSet doFilterResult(QueryHandler qh, QueryResultSet set, Map context, HttpServletRequest request) {			
-		String commune = HttpUtil.getAlphaNumParameter(request, "commune", "");		
+		String[] commune = request.getParameterValues("commune");
 		String lng = HttpUtil.getStringParameter(request, "longitude", "", ".*");
 		String lat = HttpUtil.getStringParameter(request, "latitude", "", ".*");
 		String lng_1 = HttpUtil.getStringParameter(request, "map[nw][long]", "", ".*");
@@ -67,6 +67,14 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 		String lat_2 = HttpUtil.getStringParameter(request, "map[se][lat]", "", ".*");
 		Boolean sectorisation = HttpUtil.getBooleanParameter(request, "sectorisation", false);
 		
+		String communeParam = "";
+		if(Util.notEmpty(commune)) {
+		  for(String itCityCode : commune) {
+		    String itCommuneParam = (Util.notEmpty(communeParam) ? "&" : "") + "p_commune=" + itCityCode;
+		    communeParam = communeParam + itCommuneParam;
+		  }
+		}
+		
 		if(sectorisation) {				
 			String url = "";
 			String implantationsUrl = "";   
@@ -74,10 +82,10 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 				// Sectorisation par adresse
 				url = getChannel().getProperty(SECTORISATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
 				implantationsUrl= getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_POINT_PROP) + "p_lat=" + lat + "&p_lon=" + lng;
-			}else if(Util.notEmpty(commune)) {
+			}else if(Util.notEmpty(communeParam)) {
 				// Sectorisation par commune
-				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + "p_commune=" + commune;	
-				implantationsUrl = getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_COMMUNE_PROP) + "p_commune=" + commune;          
+				url = getChannel().getProperty(SECTORISATION_URL_COMMUNE_PROP) + communeParam;	
+				implantationsUrl = getChannel().getProperty(SECTORISATION_IMPLANTATION_URL_COMMUNE_PROP) + communeParam; 
 			}
 			
 			// Suppression des fiches lieu avec un identifiant solis non présent dans le retour du service rest		
