@@ -569,6 +569,28 @@ public class InfolocaleEntityUtils {
          }
       }
       
+      // Recherche sur l'accessibilité
+      String mentionAccessibiliteAuditif = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif");
+      String mentionAccessibiliteMental = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental");
+      String mentionAccessibiliteVisuel = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel");
+      String mentionAccessibiliteMoteur = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur");
+      
+      String searchAccessibilite = request.getParameter("accessibilite");
+      
+      if (Util.notEmpty(searchAccessibilite)) {
+        if (searchAccessibilite.contains(mentionAccessibiliteAuditif)) {
+          parameters.put(mentionAccessibiliteAuditif, true);
+        }
+        if (searchAccessibilite.contains(mentionAccessibiliteMental)) {
+          parameters.put(mentionAccessibiliteMental, true);
+        }
+        if (searchAccessibilite.contains(mentionAccessibiliteVisuel)) {
+          parameters.put(mentionAccessibiliteVisuel, true);
+        }
+        if (searchAccessibilite.contains(mentionAccessibiliteMoteur)) {
+          parameters.put(mentionAccessibiliteMoteur, true);
+        }
+      }
       
       // Paramétrage de la portlet Agenda
       if (Util.notEmpty(box.getNombreDeResultats())) {
