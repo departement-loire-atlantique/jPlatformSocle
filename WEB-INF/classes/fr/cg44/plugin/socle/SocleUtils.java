@@ -578,22 +578,34 @@ public final class SocleUtils {
 	 * @return
 	 */
 	public static JsonArray citiestoJsonArray(Publication... communes) {
-		JsonArray jsonArray = new JsonArray();
-		if(Util.notEmpty(communes)) {
-      for(Publication itPub : communes) {
-        City itCity = (City) itPub;
-          JsonObject itJsonObject = new JsonObject();
-          String cityCode = Integer.toString(itCity.getCityCode());
-          itJsonObject.addProperty("id", cityCode);
-          itJsonObject.addProperty("value", itCity.getTitle());		    
-          JsonObject itJsonMetaObject = new JsonObject();
-          String[] needAdress = channel.getStringArrayProperty("jcmsplugin.socle.cities.needAddress", new String[]{});
-          itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode));    
-          itJsonObject.add("metadata", itJsonMetaObject);
-          jsonArray.add(itJsonObject);
-      }		
-    }
-		return jsonArray;		
+		return 	citiestoJsonArray(false, communes);
+	}
+	
+	
+	/**
+	 * Retourne les communes sous forme de json
+	 * @param communes
+	 * @return
+	 */
+	public static JsonArray citiestoJsonArray(boolean allCommunes, Publication... communes) {
+	  JsonArray jsonArray = new JsonArray();
+	  if(Util.notEmpty(communes)) {
+	    for(Publication itPub : communes) {
+	      City itCity = (City) itPub;
+	      JsonObject itJsonObject = new JsonObject();
+	      String cityCode = Integer.toString(itCity.getCityCode());
+	      itJsonObject.addProperty("id", cityCode);
+	      itJsonObject.addProperty("value", itCity.getTitle());       
+	      JsonObject itJsonMetaObject = new JsonObject();
+	      if(!allCommunes) {
+	        String[] needAdress = channel.getStringArrayProperty("jcmsplugin.socle.cities.needAddress", new String[]{});
+	        itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode)); 
+	      }
+	      itJsonObject.add("metadata", itJsonMetaObject);
+	      jsonArray.add(itJsonObject);
+	    }   
+	  }
+	  return jsonArray;   
 	}
 	
 	
@@ -607,6 +619,15 @@ public final class SocleUtils {
 	}
 	
 	
+	 /**
+   * Retourne les communes sous forme de json
+   * @param communes
+   * @return
+   */
+  public static JsonArray citiestoJsonArray(boolean allCommunes, Collection<Publication> communes) {   
+    return citiestoJsonArray(allCommunes, communes.toArray(new City[communes.size()]));
+  }
+	
 	/**
 	 * Retourne les communes sous forme de json
 	 * @param communes
@@ -615,6 +636,15 @@ public final class SocleUtils {
 	public static JsonArray citiestoJsonArray(Set<City> communes) {		
 		return citiestoJsonArray(communes.toArray(new City[communes.size()]));
 	}
+	
+	 /**
+   * Retourne les communes sous forme de json
+   * @param communes
+   * @return
+   */
+  public static JsonArray citiestoJsonArray(boolean allCommunes, Set<City> communes) {   
+    return citiestoJsonArray(allCommunes, communes.toArray(new City[communes.size()]));
+  }
 	
 	
 	/**
@@ -1068,6 +1098,8 @@ public final class SocleUtils {
         } else {
           itNameKey = "longitude";
         }
+      }else if(nameParam.contains("[value]") && (nameParam.startsWith("limitrophe") || nameParam.startsWith("epci"))) {
+        itNameKey = "commune";
       }
       else if(nameParam.contains("[value]")) {
     	  itNameKey = nameParam.replace("[value]", "");

@@ -8,6 +8,7 @@ response.setContentType("application/json");
 
 String textSearch = getStringParameter("q", "", ".*");
 String delegationId = getUntrustedStringParameter("delegationId", "");
+String allCommunes = getUntrustedStringParameter("allCommunes", "");
 
 String[] tabSearchedFields = new String[]{com.jalios.jcms.search.LucenePublicationSearchEngine.TITLE_FIELD, "zipCode", "codesPostaux", "nomDesCommunesDeleguees"};
 
@@ -32,4 +33,4 @@ if(Util.notEmpty(delegationId)) {
 }
 
 %><% 
-%><%= SocleUtils.citiestoJsonArray(result) %>
+%><%= SocleUtils.citiestoJsonArray(Util.notEmpty(allCommunes), result) %>

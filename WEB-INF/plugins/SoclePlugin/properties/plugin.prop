@@ -51,7 +51,7 @@ jcmsplugin.socle.pagecarrefour.portlet.nav.id:c_1088673
 jcmsplugin.socle.portlet.filariane.id: c_1088465
 
 lucene.pub-indexing.map-all-pub-fields-to-lucene-fields: true
-jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184
+jcmsplugin.socle.cities.needAddress: 44143 44109 44162 44184 44114
 jcmsplugin.socle.delegation.needAddress: 44263 44616
 $jcmsplugin.socle.cat.root: j_3
 
