@@ -25,7 +25,7 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
-    public static String dateInfolocalePattern = "dd-MM-yyyy";
+    public static String dateInfolocalePattern = "yyyy-MM-dd";
     
     private InfolocaleUtil() {}
     
@@ -319,7 +319,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne le format de date lisible par infolocale dd-MM-yyyy
+     * Retourne le format de date lisible par infolocale yyyy-MM-dd
      * @param date
      * @return
      */
@@ -329,7 +329,25 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date d'aujourd'hui dans un format lisible par infolocale dd-MM-yyyy
+     * Convertit un String de date de format défini en un String de date infolocale
+     * @param dateString
+     * @param format
+     * @return
+     */
+    public static String convertStringDateToOtherFormat(String dateString, String formatOld, String formatNew) {
+      SimpleDateFormat sdfNew = new SimpleDateFormat(formatNew);
+      SimpleDateFormat sdfPrevious = new SimpleDateFormat(formatOld);
+      try {
+        Date tmpDate = sdfPrevious.parse(dateString);
+        return sdfNew.format(tmpDate);
+      } catch (ParseException e) {
+        LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date " + dateString + " or incorrect format " + formatOld + " / " + formatNew + ".");
+        return "";
+      }
+    }
+    
+    /**
+     * Retourne la date d'aujourd'hui dans un format lisible par infolocale yyyy-MM-dd
      * @return
      */
     public static String getDateTodayInfolocale() {
@@ -339,7 +357,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date de demain dans un format lisible par infolocale dd-MM-yyyy
+     * Retourne la date de demain dans un format lisible par infolocale yyyy-MM-dd
      * @return
      */
     public static String getDateTomorrowInfolocale() {
@@ -350,7 +368,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne un duo date début / date fin des sept prochains jours dans un format lisible par infolocale dd-MM-yyyy
+     * Retourne un duo date début / date fin des sept prochains jours dans un format lisible par infolocale yyyy-MM-dd
      * @return
      */
     public static String[] getDateNextSevenDaysInfolocale() {
@@ -365,7 +383,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Retourne la date du weekend dans un format lisible par infolocale dd-MM-yyyy
+     * Retourne la date du weekend dans un format lisible par infolocale yyyy-MM-dd
      * Dans le cas où le jour actuel serait samedi ou dimanche, prendre ce weekend actuel
      * @return
      */
