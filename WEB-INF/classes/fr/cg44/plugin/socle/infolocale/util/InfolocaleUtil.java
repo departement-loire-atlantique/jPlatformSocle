@@ -420,4 +420,29 @@ public class InfolocaleUtil {
       }
       return "";
     }
+    
+    
+    /**
+     * Supprime les duplications dans une liste d'événements
+     * @param source
+     * @return
+     */
+    public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList) {
+      if (Util.isEmpty(eventList)) {
+        return new ArrayList<EvenementInfolocale>();
+      }
+      
+      List<String> usedIds = new ArrayList<>();
+      
+      for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
+        EvenementInfolocale itEvent = iter.next();
+        if (usedIds.contains(itEvent.getId())) {
+          iter.remove();
+        } else {
+          usedIds.add(itEvent.getId());
+        }
+      }
+      
+      return eventList;
+    }
 }
