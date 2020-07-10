@@ -1085,7 +1085,13 @@ public final class SocleUtils {
     while(enumParams.hasMoreElements()) {
       String nameParam = enumParams.nextElement();
       String itNameKey = null;
-      if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
+      boolean skip = false;
+      if(nameParam.contains("[value]") && nameParam.startsWith("agenda-date") && nameParam.contains("[form")) {
+        itNameKey = "agenda-date";
+        if (nameParam.contains("[position]")) {
+          skip = true;
+        }
+      } else if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
         // paramètre classique de la recherche à facettes
         itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
       } else if(nameParam.startsWith("map")){
@@ -1098,14 +1104,14 @@ public final class SocleUtils {
         } else {
           itNameKey = "longitude";
         }
-      }else if(nameParam.contains("[value]") && (nameParam.startsWith("limitrophe") || nameParam.startsWith("epci"))) {
+      } else if(nameParam.contains("[value]") && (nameParam.startsWith("limitrophe") || nameParam.startsWith("epci"))) {
         itNameKey = "commune";
       }
       else if(nameParam.contains("[value]")) {
     	  itNameKey = nameParam.replace("[value]", "");
       }
       // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
-      if(Util.notEmpty(itNameKey)) {
+      if(Util.notEmpty(itNameKey) && !skip) {
         if(parametersMap.containsKey(itNameKey)){
           parametersMap.put(itNameKey, (String[])ArrayUtils.add(parametersMap.get(itNameKey), request.getParameter(nameParam)));
         }else {
