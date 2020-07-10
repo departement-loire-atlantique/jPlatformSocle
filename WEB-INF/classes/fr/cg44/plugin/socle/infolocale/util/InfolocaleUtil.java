@@ -420,4 +420,40 @@ public class InfolocaleUtil {
       }
       return "";
     }
+
+    /**
+     * S'assure qu'une date entre dans les limites infolocale (entre aujourd'hui et + 2 ans)
+     * Si cette date dépasse les bornes, elle sera modifiée en conséquence
+     * Dépasser cette limite provoque une erreur 400 sur l'API Infolocale
+     * @param dateDebut
+     * @return
+     */
+    public static String putDateInInfolocaleLimits(String dateStr) {
+      if (Util.isEmpty(dateStr)) return "";
+      
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      try {
+        Date testedDate = sdfInfolocale.parse(dateStr);
+        Date dateToday = Calendar.getInstance().getTime();
+        Calendar calFuture = Calendar.getInstance();
+        calFuture.add(Calendar.YEAR, 2);
+        Date dateTwoYears = calFuture.getTime();
+        
+        // Si la date est inférieure à aujourd'hui, on la force à aujourd'hui
+        if (testedDate.before(dateToday)) {
+          return sdfInfolocale.format(dateToday);
+        }
+        
+        // Si la date est supérieure à celle dans deux ans, on la force à cette dernière
+        if (testedDate.after(dateTwoYears)) {
+          return sdfInfolocale.format(dateTwoYears);
+        }
+      } catch (ParseException e) {
+        LOGGER.warn("Error in putDateInInfolocaleLimits : incorrect source date " + dateStr + ".");
+        return "";
+      }
+      
+      // Renvoyer la valeur d'origine : aucune modification
+      return dateStr;
+    }
 }
