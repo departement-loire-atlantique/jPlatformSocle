@@ -1087,10 +1087,13 @@ public final class SocleUtils {
       String itNameKey = null;
       boolean skip = false;
       if(nameParam.contains("[value]") && nameParam.startsWith("agenda-date") && nameParam.contains("[form")) {
+        // paramètre sur l'agenda, particulièrement sur les périodes choisies à la main
         itNameKey = "agenda-date";
         if (nameParam.contains("[position]")) {
           skip = true;
         }
+      } else if (nameParam.startsWith("accessibilite")) {
+        itNameKey = "accessibilite";
       } else if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
         // paramètre classique de la recherche à facettes
         itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
