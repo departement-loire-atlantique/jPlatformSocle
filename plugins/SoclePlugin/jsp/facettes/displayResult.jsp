@@ -148,12 +148,8 @@ jsonObject.add("result", jsonArray);
 	    %></jalios:select><%    
     %></jalios:buffer><%
     
-    %><jalios:buffer name="itPubMarkerGabarit"><%
-        %><jalios:include pub="<%= itPub %>" usage="marker" /><%
-    %></jalios:buffer>
-    <%
     %><%     
-     jsonArray.add(SocleUtils.publicationToJsonObject(itPub, itPubListGabarit, itPubMarkerGabarit, null));
+     jsonArray.add(SocleUtils.publicationToJsonObject(itPub, itPubListGabarit, itPubListGabarit, null));
     %><%
                                         
 %><%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %><%
