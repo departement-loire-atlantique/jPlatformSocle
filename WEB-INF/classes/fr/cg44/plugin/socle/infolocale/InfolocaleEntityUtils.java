@@ -538,7 +538,7 @@ public class InfolocaleEntityUtils {
       // Recherche sur un rayon
       String rayon = request.getParameter(rayonField);
       if(Util.notEmpty(rayon)) {
-        parameters.put(rayonField, rayon);
+        parameters.put(rayonField, rayon.replaceAll("[km ]", ""));
       }
       
       // Recherche sur un genre
