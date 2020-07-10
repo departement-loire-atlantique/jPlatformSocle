@@ -252,7 +252,7 @@
 							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
-						<div id='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="<%= idFormElement %>"></div>
+						<div id='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="rayon"></div>
 						<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
 							<i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i>
 							<span class="visually-hidden">
