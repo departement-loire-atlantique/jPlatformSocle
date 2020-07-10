@@ -9,7 +9,7 @@
 	request.setAttribute("query", query);
 	
 	Object publication = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-	Boolean isInRechercheFacette = Util.isEmpty(publication);
+	Boolean isInRechercheFacette = Util.isEmpty(publication) || obj.getAfficherResultatDansLannuaire();
 	Boolean hasFonctionsAdditionnelles = false; // TODO
 	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
@@ -38,7 +38,7 @@
 <div class="ds44-facette">
 	<div class="ds44-facette-body">
 	
-	    <jalios:if predicate='<%= !isInRechercheFacette && Util.notEmpty(obj.getTitre(userLang)) %>'>
+	    <jalios:if predicate='<%= obj.getAfficherResultatDansLannuaire() || (!isInRechercheFacette && Util.notEmpty(obj.getTitre(userLang))) %>'>
 			<div class="ds44-inner-container ds44--mobile--m-padding-b">
 				<header class="txtcenter ds44--l-padding-b">
 					<h2 class="h2-like center"><%= obj.getTitre(userLang) %></h2>
@@ -216,6 +216,7 @@
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
 				      </button>
 				  </div>
+			   </div>
 	      </jalios:if>
 	      
 	      
