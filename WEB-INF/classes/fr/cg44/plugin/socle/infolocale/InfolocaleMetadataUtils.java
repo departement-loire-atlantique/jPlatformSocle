@@ -225,7 +225,7 @@ public class InfolocaleMetadataUtils {
         String tarifMeta = Util.isEmpty(itEvent.getTarifNormal()) ? "" : itEvent.getTarifNormal();
         if (tarifMeta.equals("0")) {
           tarifMeta = JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit");
-        } else {
+        } else if (Util.notEmpty(tarifMeta)) {
           tarifMeta = tarifMeta + " €";
         }
         return tarifMeta;
