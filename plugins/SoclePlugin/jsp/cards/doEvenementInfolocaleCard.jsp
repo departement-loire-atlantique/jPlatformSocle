@@ -71,10 +71,10 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          </jalios:if>
          <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
          <jalios:if predicate="<%= Util.notEmpty(metadata1) && !metadata1.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata1()) %>">
-            <%= itEvent.getMetadata1() %>
+            <p><%= itEvent.getMetadata1() %></p>
          </jalios:if>
          <jalios:if predicate="<%= Util.notEmpty(metadata1) && !metadata1.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata2()) %>">
-            <%= itEvent.getMetadata2() %>
+            <p><%= itEvent.getMetadata2() %></p>
          </jalios:if>
          <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
          <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
