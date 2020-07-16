@@ -111,21 +111,17 @@ public class InfolocaleUtil {
         if (Util.isEmpty(datesString)) {
           return false;
         }
-      
-        Calendar cal = Calendar.getInstance();
-        
-        // Utilisation de la classe Instant ajoutée dans Java 8
-        Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
         
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        
+        String dateStringToday = sdf.format(Calendar.getInstance().getTime());
         
         for (String itDateString : datesString) {
             try {
                 Date itDate = sdf.parse(itDateString);
-                Instant instantDate = itDate.toInstant().truncatedTo(ChronoUnit.DAYS);
-                
+                String dateStringEvent = sdf.format(itDate);
                 // Les deux dates sont au même jour, on renvoie true
-                if (instantDate.equals(instantNow)) return true;
+                if (dateStringEvent.equals(dateStringToday)) return true;
                 
                 // autrement, on continue normalement dans la boucle
             } catch (ParseException e) {
