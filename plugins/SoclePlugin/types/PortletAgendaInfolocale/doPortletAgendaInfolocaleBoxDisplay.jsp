@@ -28,7 +28,7 @@ if (Util.notEmpty(listCodesInsee)) {
     parameters.put("codeInsee", listCodesInsee);
 }
 
-if (Util.notEmpty(box.getNombreDeResultats())) {
+if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0) {
   parameters.put("limit", box.getNombreDeResultats());
 } else {
   parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
