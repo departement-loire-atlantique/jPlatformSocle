@@ -231,7 +231,23 @@ public class InfolocaleUtil {
             DateFormatSymbols dfs = DateFormatSymbols.getInstance(Channel.getChannel().getCurrentUserLocale());
             String returnedValue = dfs.getMonths()[cal.get(Calendar.MONTH)];
             if (abbreviated) {
-                returnedValue = returnedValue.substring(0, 3) + ".";
+                // Cas spécifiques pour certains mois
+                // Janvier
+                if (cal.get(Calendar.MONTH) == 0) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // Juillet
+                else if (cal.get(Calendar.MONTH) == 6) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // septembre
+                else if (cal.get(Calendar.MONTH) == 8) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // N'est aucun des mois suivants : Mars, Mai, Juin, Août
+                else if (cal.get(Calendar.MONTH) != 2 && cal.get(Calendar.MONTH) != 4 && cal.get(Calendar.MONTH) != 5 && cal.get(Calendar.MONTH) != 7) {
+                  returnedValue = returnedValue.substring(0, 3) + ".";
+                }
             }
             return returnedValue;
         } catch (ParseException e) {
