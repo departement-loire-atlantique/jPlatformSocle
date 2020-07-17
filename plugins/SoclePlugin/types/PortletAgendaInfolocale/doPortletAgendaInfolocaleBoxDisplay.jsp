@@ -28,7 +28,7 @@ if (Util.notEmpty(listCodesInsee)) {
     parameters.put("codeInsee", listCodesInsee);
 }
 
-if (Util.notEmpty(box.getNombreDeResultats())) {
+if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0) {
   parameters.put("limit", box.getNombreDeResultats());
 } else {
   parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
@@ -69,7 +69,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
             </div>
         </jalios:if>
         
-        <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= maxTuiles %>">
+        <div class='mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large <%= box.getStyleDesTuilesCarrousel().equals("ds44-darkContext") ? "ds44-bgGray" : "" %>' data-nb-visible-slides="<%= maxTuiles %>">
             <div class="swiper-container">
                 <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
                     <%

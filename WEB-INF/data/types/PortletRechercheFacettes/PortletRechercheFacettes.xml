@@ -104,6 +104,13 @@
       <label xml:lang="fr">Id de la catégorie tag</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Permet de définir la branche de catégorie associée à l'icone tag. Seulement possible pour les fiches aides et les fiches lieux.&lt;/p&gt;&lt;/div&gt;</description>
     </field>
+    <field name="afficherResultatDansLannuaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Afficher résultat dans l'annuaire</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field type="super" />
   </fields>
   <label xml:lang="fr">Portlet Recherche Facettes</label>

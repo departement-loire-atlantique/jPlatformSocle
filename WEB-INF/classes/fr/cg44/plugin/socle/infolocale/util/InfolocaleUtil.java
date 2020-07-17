@@ -111,21 +111,17 @@ public class InfolocaleUtil {
         if (Util.isEmpty(datesString)) {
           return false;
         }
-      
-        Calendar cal = Calendar.getInstance();
-        
-        // Utilisation de la classe Instant ajoutée dans Java 8
-        Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
         
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        
+        String dateStringToday = sdf.format(Calendar.getInstance().getTime());
         
         for (String itDateString : datesString) {
             try {
                 Date itDate = sdf.parse(itDateString);
-                Instant instantDate = itDate.toInstant().truncatedTo(ChronoUnit.DAYS);
-                
+                String dateStringEvent = sdf.format(itDate);
                 // Les deux dates sont au même jour, on renvoie true
-                if (instantDate.equals(instantNow)) return true;
+                if (dateStringEvent.equals(dateStringToday)) return true;
                 
                 // autrement, on continue normalement dans la boucle
             } catch (ParseException e) {
@@ -235,7 +231,23 @@ public class InfolocaleUtil {
             DateFormatSymbols dfs = DateFormatSymbols.getInstance(Channel.getChannel().getCurrentUserLocale());
             String returnedValue = dfs.getMonths()[cal.get(Calendar.MONTH)];
             if (abbreviated) {
-                returnedValue = returnedValue.substring(0, 3) + ".";
+                // Cas spécifiques pour certains mois
+                // Janvier
+                if (cal.get(Calendar.MONTH) == 0) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // Juillet
+                else if (cal.get(Calendar.MONTH) == 6) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // septembre
+                else if (cal.get(Calendar.MONTH) == 8) {
+                  returnedValue = returnedValue.substring(0, 4) + ".";
+                }
+                // N'est aucun des mois suivants : Mars, Mai, Juin, Août
+                else if (cal.get(Calendar.MONTH) != 2 && cal.get(Calendar.MONTH) != 4 && cal.get(Calendar.MONTH) != 5 && cal.get(Calendar.MONTH) != 7) {
+                  returnedValue = returnedValue.substring(0, 3) + ".";
+                }
             }
             return returnedValue;
         } catch (ParseException e) {
@@ -444,5 +456,40 @@ public class InfolocaleUtil {
       }
       
       return eventList;
+
+    /**
+     * S'assure qu'une date entre dans les limites infolocale (entre aujourd'hui et + 2 ans)
+     * Si cette date dépasse les bornes, elle sera modifiée en conséquence
+     * Dépasser cette limite provoque une erreur 400 sur l'API Infolocale
+     * @param dateDebut
+     * @return
+     */
+    public static String putDateInInfolocaleLimits(String dateStr) {
+      if (Util.isEmpty(dateStr)) return "";
+      
+      SimpleDateFormat sdfInfolocale = new SimpleDateFormat(dateInfolocalePattern);
+      try {
+        Date testedDate = sdfInfolocale.parse(dateStr);
+        Date dateToday = Calendar.getInstance().getTime();
+        Calendar calFuture = Calendar.getInstance();
+        calFuture.add(Calendar.YEAR, 2);
+        Date dateTwoYears = calFuture.getTime();
+        
+        // Si la date est inférieure à aujourd'hui, on la force à aujourd'hui
+        if (testedDate.before(dateToday)) {
+          return sdfInfolocale.format(dateToday);
+        }
+        
+        // Si la date est supérieure à celle dans deux ans, on la force à cette dernière
+        if (testedDate.after(dateTwoYears)) {
+          return sdfInfolocale.format(dateTwoYears);
+        }
+      } catch (ParseException e) {
+        LOGGER.warn("Error in putDateInInfolocaleLimits : incorrect source date " + dateStr + ".");
+        return "";
+      }
+      
+      // Renvoyer la valeur d'origine : aucune modification
+      return dateStr;
     }
 }

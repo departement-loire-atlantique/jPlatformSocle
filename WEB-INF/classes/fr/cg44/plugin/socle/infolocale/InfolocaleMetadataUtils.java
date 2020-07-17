@@ -222,7 +222,13 @@ public class InfolocaleMetadataUtils {
      */
     private static String getMetaTarif(JSONObject jsonEvent) {
         EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getTarifNormal()) ? "" : itEvent.getTarifNormal();
+        String tarifMeta = Util.isEmpty(itEvent.getTarifNormal()) ? "" : itEvent.getTarifNormal();
+        if (tarifMeta.equals("0")) {
+          tarifMeta = JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit");
+        } else if (Util.notEmpty(tarifMeta)) {
+          tarifMeta = tarifMeta + " €";
+        }
+        return tarifMeta;
     }
     
     /**

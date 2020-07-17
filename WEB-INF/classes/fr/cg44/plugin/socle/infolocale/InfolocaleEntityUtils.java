@@ -538,7 +538,7 @@ public class InfolocaleEntityUtils {
       // Recherche sur un rayon
       String rayon = request.getParameter(rayonField);
       if(Util.notEmpty(rayon)) {
-        parameters.put(rayonField, rayon);
+        parameters.put(rayonField, rayon.replaceAll("[km ]", ""));
       }
       
       // Recherche sur un genre
@@ -557,18 +557,33 @@ public class InfolocaleEntityUtils {
       String dateFormatInfolocale = "dd-MM-yyyy";
 
       // Recherche sur une date
-      String dateValue = request.getParameter("agenda-date");
-      if (Util.notEmpty(dateValue)) {
-         // date unique
-         if (!dateValue.contains(",")) {
-           parameters.put(dateDebutField, InfolocaleUtil.convertStringDateToOtherFormat(dateValue, dateFormatForm, dateFormatInfolocale));
-           parameters.put(dateFinField,  InfolocaleUtil.convertStringDateToOtherFormat(dateValue, dateFormatForm, dateFormatInfolocale));
-         } else {
-           // date multiple (début / fin)
-           String[] arrayDateValue = dateValue.split(",");
-           parameters.put(dateDebutField, InfolocaleUtil.convertStringDateToOtherFormat(arrayDateValue[0], dateFormatForm, dateFormatInfolocale));
-           parameters.put(dateFinField, InfolocaleUtil.convertStringDateToOtherFormat(arrayDateValue[1], dateFormatForm, dateFormatInfolocale));
-         }
+      String[] dateArray = request.getParameterValues("agenda-date");
+      if (Util.notEmpty(dateArray)) {
+        String dateDebut;
+        String dateFin;
+         // période pré-définie
+        if (dateArray.length == 1) {
+          String dateValue = dateArray[0];
+          if (!dateValue.contains(",")) {
+            dateDebut = dateValue;
+            dateFin = dateValue;
+          } else {
+            dateDebut = dateValue.split(",")[0];
+            dateFin = dateValue.split(",")[1];
+          }
+        } else {
+          // période manuelle
+          dateDebut = dateArray[0];
+          dateFin = dateArray[1];
+        }
+        
+        // Vérifier si les dates de début et de fin respectent les limites infolocale
+        dateDebut = InfolocaleUtil.putDateInInfolocaleLimits(dateDebut);
+        dateFin = InfolocaleUtil.putDateInInfolocaleLimits(dateFin);
+        
+        parameters.put(dateDebutField, InfolocaleUtil.convertStringDateToOtherFormat(dateDebut, dateFormatForm, dateFormatInfolocale));
+        parameters.put(dateFinField, InfolocaleUtil.convertStringDateToOtherFormat(dateFin, dateFormatForm, dateFormatInfolocale));
+        
       }
       
       // Recherche sur l'accessibilité
@@ -595,7 +610,7 @@ public class InfolocaleEntityUtils {
       }
       
       // Paramétrage de la portlet Agenda
-      if (Util.notEmpty(box.getNombreDeResultats())) {
+      if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0) {
         parameters.put("limit", box.getNombreDeResultats());
       } else {
         parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
