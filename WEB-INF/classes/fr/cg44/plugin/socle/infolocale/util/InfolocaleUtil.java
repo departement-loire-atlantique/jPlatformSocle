@@ -8,6 +8,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -65,10 +67,41 @@ public class InfolocaleUtil {
             }
         }
         
-        // Ajouter le reste de la liste normalement déjà triée
+        // Ajouter le reste de la liste, à re-trier faute à la duplication d'événements dans les résultats
+        // ce qui va fausser l'ordre
+        sortedEvents.addAll(forceOrderEventsByDateDebut(listClone));
         sortedEvents.addAll(listClone);
         
         return sortedEvents;
+    }
+
+    /**
+     * Trie une 
+     * @param listClone
+     * @return
+     */
+    private static Collection<? extends EvenementInfolocale> forceOrderEventsByDateDebut(List<EvenementInfolocale> eventList) {
+      List<EvenementInfolocale> listClone = new ArrayList<>(eventList);
+      listClone.sort(new Comparator<EvenementInfolocale>() {
+
+        @Override
+        public int compare(EvenementInfolocale o1, EvenementInfolocale o2) {
+          if (Util.isEmpty(o1.getDates()) || Util.isEmpty(o2.getDates())
+              || Util.isEmpty(o1.getDates()[0].getDebut()) || Util.isEmpty(o2.getDates()[0].getDebut())) {
+            return 0;
+          }
+          SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+          try {
+            Date date1 = sdf.parse(o1.getDates()[0].getDebut());
+            Date date2 = sdf.parse(o2.getDates()[0].getDebut());
+            return date1.compareTo(date2);
+          } catch (ParseException e) {
+            return 0;
+          }
+        }
+        
+      });
+      return listClone;
     }
 
     /**
@@ -433,29 +466,109 @@ public class InfolocaleUtil {
       return "";
     }
     
+    /**
+     * Retourne un tableau de taille 2 contenant une date de début et une date de fin infolocale pour les requêtes et autres vérifications de dates
+     * @param dateParam
+     * @return
+     */
+    public static String[] getDatesDebutFinFromRequestParam(String[] dateArray) {
+      if (Util.notEmpty(dateArray)) {
+        String dateDebut;
+        String dateFin;
+         // période pré-définie
+        if (dateArray.length == 1) {
+          String dateValue = dateArray[0];
+          if (!dateValue.contains(",")) {
+            dateDebut = dateValue;
+            dateFin = dateValue;
+          } else {
+            dateDebut = dateValue.split(",")[0];
+            dateFin = dateValue.split(",")[1];
+          }
+        } else {
+          // période manuelle
+          dateDebut = dateArray[0];
+          dateFin = dateArray[1];
+        }
+        
+        return new String[]{dateDebut, dateFin};
+      }
+      
+      return null;
+    }
     
     /**
-     * Supprime les duplications dans une liste d'événements
+     * Supprime les duplications dans une liste d'événements qui ne rentrent pas dans les limites de dates indiquées
+     * S'il n'y a pas de limite de date, se contente de supprimer les duplications
      * @param source
      * @return
      */
-    public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList) {
+    public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList, String[] arrayDebutFin) {
       if (Util.isEmpty(eventList)) {
         return new ArrayList<EvenementInfolocale>();
       }
       
       List<String> usedIds = new ArrayList<>();
       
-      for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
-        EvenementInfolocale itEvent = iter.next();
-        if (usedIds.contains(itEvent.getId())) {
-          iter.remove();
-        } else {
-          usedIds.add(itEvent.getId());
+      if (Util.isEmpty(arrayDebutFin)) {
+        // Vérification sans dates
+        for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
+          EvenementInfolocale itEvent = iter.next();
+          if (usedIds.contains(itEvent.getId())) {
+            iter.remove();
+          } else {
+            usedIds.add(itEvent.getId());
+          }
+        }
+      } else {
+        // Vérification avec dates
+        String dateDebut = arrayDebutFin[0];
+        String dateFin = arrayDebutFin[1];
+        for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
+          EvenementInfolocale itEvent = iter.next();
+          if (usedIds.contains(itEvent.getId()) && eventIsInDateRange(itEvent, dateDebut, dateFin) ) {
+            iter.remove();
+          } else {
+            usedIds.add(itEvent.getId());
+          }
         }
       }
       
+      
+      
       return eventList;
+    }
+
+    /**
+     * Détermine si un événement est dans la portée de deux dates
+     * @param itEvent
+     * @param dateDebut
+     * @param dateFin
+     * @return
+     */
+    private static boolean eventIsInDateRange(EvenementInfolocale itEvent, String dateDebut, String dateFin) {
+      
+      if (Util.isEmpty(itEvent) || Util.isEmpty(dateDebut) || Util.isEmpty(dateFin)
+          || Util.isEmpty(itEvent.getDates()) || itEvent.getDates().length == 0) {
+        return false;
+      }
+      
+      SimpleDateFormat sdf  = new SimpleDateFormat(dateInfolocalePattern);
+      
+      try {
+        Date limitStart = sdf.parse(dateDebut);
+        Date limitEnd = sdf.parse(dateFin);
+        Date debutEvent = sdf.parse(itEvent.getDates()[0].getDebut());
+        Date finEvent = sdf.parse(itEvent.getDates()[0].getFin());
+        
+        return 
+            (limitStart.before(debutEvent) || limitStart.equals(debutEvent))
+            && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+      } catch (ParseException e) {
+        LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
+        return false;
+      }
+    }
 
     /**
      * S'assure qu'une date entre dans les limites infolocale (entre aujourd'hui et + 2 ans)

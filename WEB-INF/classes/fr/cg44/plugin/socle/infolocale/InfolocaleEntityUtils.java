@@ -526,6 +526,9 @@ public class InfolocaleEntityUtils {
                 
       List<EvenementInfolocale> allEvents = Collections.emptyList();      
       Map<String, Object> parameters = new HashMap<String, Object>();
+      
+      // Forcer l'ordre des résultats
+      parameters.put("order", "dateDebut asc");
            
       // Recherche sur une commune
       String commune = request.getParameter("commune");
@@ -557,25 +560,11 @@ public class InfolocaleEntityUtils {
       String dateFormatInfolocale = "dd-MM-yyyy";
 
       // Recherche sur une date
-      String[] dateArray = request.getParameterValues("agenda-date");
-      if (Util.notEmpty(dateArray)) {
-        String dateDebut;
-        String dateFin;
-         // période pré-définie
-        if (dateArray.length == 1) {
-          String dateValue = dateArray[0];
-          if (!dateValue.contains(",")) {
-            dateDebut = dateValue;
-            dateFin = dateValue;
-          } else {
-            dateDebut = dateValue.split(",")[0];
-            dateFin = dateValue.split(",")[1];
-          }
-        } else {
-          // période manuelle
-          dateDebut = dateArray[0];
-          dateFin = dateArray[1];
-        }
+      String[] arrayDebutFin = InfolocaleUtil.getDatesDebutFinFromRequestParam(request.getParameterValues("agenda-date"));
+      if (Util.notEmpty(arrayDebutFin)) {
+        
+        String dateDebut = arrayDebutFin[0];
+        String dateFin = arrayDebutFin[1];
         
         // Vérifier si les dates de début et de fin respectent les limites infolocale
         dateDebut = InfolocaleUtil.putDateInInfolocaleLimits(dateDebut);
