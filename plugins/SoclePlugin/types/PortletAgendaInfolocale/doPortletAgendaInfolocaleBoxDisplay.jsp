@@ -55,7 +55,13 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
-        int maxTuiles = evenements.length <= 3 ? evenements.length : 3;
+        int maxTuiles = 0;
+        if (Util.notEmpty(box.getNombreDeTuiles()) && box.getNombreDeTuiles() > 0) {
+          maxTuiles = box.getNombreDeTuiles();
+        } else {
+          maxTuiles = evenements.length <= 3 ? evenements.length : 3;
+        }
+        
         %>
         
         <jalios:if predicate='<%= Util.notEmpty(box.getTitre(userLang)) %>'>
