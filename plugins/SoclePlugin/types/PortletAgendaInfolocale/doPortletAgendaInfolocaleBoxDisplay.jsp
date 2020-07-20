@@ -57,9 +57,9 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         int maxTuiles = 0;
         if (Util.notEmpty(box.getNombreDeTuiles()) && box.getNombreDeTuiles() > 0) {
-          maxTuiles = box.getNombreDeTuiles();
+          maxTuiles = allEvents.size() <= box.getNombreDeTuiles() ? allEvents.size() : box.getNombreDeTuiles();
         } else {
-          maxTuiles = evenements.length <= 3 ? evenements.length : 3;
+          maxTuiles = allEvents.size() <= 3 ? allEvents.size() : 3;
         }
         
         %>
