@@ -54,13 +54,6 @@
     <field name="comportementMarqueur" editor="enumerate" required="true" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="full|pannel|list" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Vue détaillée|Panneau|Déplacement liste">
       <label xml:lang="fr">Comportement marqueur</label>
     </field>
-    <field name="affichageCarrousel" editor="boolean" required="false" compactDisplay="false" tab="presentation_graphique" type="boolean" default="on">
-      <label xml:lang="fr">Affichage carrousel</label>
-      <onLabel xml:lang="en">Yes</onLabel>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
     <field name="nombreDeTuiles" editor="int" required="false" compactDisplay="false" tab="presentation_graphique" type="int" default="0" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" minValue="0" unitPos="after">
       <label xml:lang="fr">Nombre de tuiles</label>
     </field>
