@@ -27,7 +27,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
       <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
          <jalios:select>
             <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-               <div class="ds44-card__dateContainer ds44-flex-container" aria-hidden="true">
+               <div class="ds44-card__dateContainer ds44-flex-container ds44-flex-align-center" aria-hidden="true">
                   <p>
                      <span class="ds44-cardDateNumber">
                      <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %>
