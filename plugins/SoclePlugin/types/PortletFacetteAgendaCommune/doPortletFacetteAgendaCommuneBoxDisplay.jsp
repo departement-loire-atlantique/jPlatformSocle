@@ -16,7 +16,7 @@
 		request="<%= request %>" 
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="select-only" 
-		dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+		dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommuneAgenda.jsp" 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		option='<%= channel.getProperty("jcmsplugin.socle.rayon.option") %>'
 		setRayons='<%= rayonRoot.getChildrenSet() %>'/>

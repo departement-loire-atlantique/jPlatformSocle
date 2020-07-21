@@ -585,9 +585,10 @@ public final class SocleUtils {
 	/**
 	 * Retourne les communes sous forme de json
 	 * @param communes
+	 * @param forceLinkedField
 	 * @return
 	 */
-	public static JsonArray citiestoJsonArray(boolean allCommunes, Publication... communes) {
+	public static JsonArray citiestoJsonArray(boolean allCommunes, boolean forceLinkedField, Publication... communes) {
 	  JsonArray jsonArray = new JsonArray();
 	  if(Util.notEmpty(communes)) {
 	    for(Publication itPub : communes) {
@@ -599,13 +600,22 @@ public final class SocleUtils {
 	      JsonObject itJsonMetaObject = new JsonObject();
 	      if(!allCommunes) {
 	        String[] needAdress = channel.getStringArrayProperty("jcmsplugin.socle.cities.needAddress", new String[]{});
-	        itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode)); 
+	        itJsonMetaObject.addProperty("hasLinkedField", Util.arrayContains(needAdress, cityCode) || forceLinkedField); 
 	      }
 	      itJsonObject.add("metadata", itJsonMetaObject);
 	      jsonArray.add(itJsonObject);
 	    }   
 	  }
 	  return jsonArray;   
+	}
+	
+	/**
+   * Retourne les communes sous forme de json
+   * @param communes
+   * @return
+   */
+	public static JsonArray citiestoJsonArray(boolean allCommunes, Publication... communes) {
+	  return citiestoJsonArray(allCommunes, false, communes);
 	}
 	
 	
@@ -619,13 +629,22 @@ public final class SocleUtils {
 	}
 	
 	
-	 /**
+	/**
    * Retourne les communes sous forme de json
    * @param communes
    * @return
    */
   public static JsonArray citiestoJsonArray(boolean allCommunes, Collection<Publication> communes) {   
-    return citiestoJsonArray(allCommunes, communes.toArray(new City[communes.size()]));
+    return citiestoJsonArray(allCommunes, false, communes.toArray(new City[communes.size()]));
+  }
+  
+  /**
+   * Retourne les communes sous forme de json
+   * @param communes
+   * @return
+   */
+  public static JsonArray citiestoJsonArray(boolean allCommunes, boolean forceLinkedField, Collection<Publication> communes) {   
+    return citiestoJsonArray(allCommunes, forceLinkedField, communes.toArray(new City[communes.size()]));
   }
 	
 	/**
