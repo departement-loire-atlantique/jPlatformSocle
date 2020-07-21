@@ -9,14 +9,14 @@ import com.jalios.jcms.Data;
  */
 public class Genre extends Data {
     
-    int genreId;
+    String genreId;
     String categorie;
     String libelle;
     
-    public int getGenreId() {
+    public String getGenreId() {
         return genreId;
     }
-    public void setGenreId(int genreId) {
+    public void setGenreId(String genreId) {
         this.genreId = genreId;
     }
     public String getCategorie() {
