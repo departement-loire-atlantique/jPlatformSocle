@@ -276,7 +276,7 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Genre genre = new Genre();
         try {
-            genre.setGenreId(json.getInt("id"));
+            genre.setGenreId(json.getString("id"));
             genre.setCategorie(json.getString("categorie"));
             genre.setLibelle(json.getString("libelle"));
         } catch (JSONException e) {
@@ -545,13 +545,20 @@ public class InfolocaleEntityUtils {
       }
       
       // Recherche sur un genre
+      String prefixeGrp = "groupe_";
       String[] genres = request.getParameterValues("cids");
       if(Util.notEmpty(genres)) {
-    	String strGenres = genres[0];
+    	String strGenres = genres[0].contains(prefixeGrp) ? "" : genres[0];
+    	String strThematiques = Util.isEmpty(strGenres) ? genres[0] : "";
     	for(int i = 1 ; i < genres.length; i++) {
-    		strGenres += "," + genres[i]; 
+    	  if (genres[i].contains(prefixeGrp)) {
+    	    strThematiques += "," + genres[i];
+    	  } else {
+    	    strGenres += "," + genres[i]; 
+    	  }
     	}
-        parameters.put("rubrique", strGenres);
+        if (Util.notEmpty(strGenres)) parameters.put("rubrique", strGenres);
+        if (Util.notEmpty(strThematiques)) parameters.put("thematiquePerso", strThematiques);
       }
       
       String dateDebutField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateDebut");
@@ -684,7 +691,7 @@ public class InfolocaleEntityUtils {
 					try {
 						JSONObject subGenre = listeSubGenres.getJSONObject(i);
 						Genre genre = new Genre();
-						genre.setGenreId(Integer.parseInt(subGenre.getString("code")));
+						genre.setGenreId(subGenre.getString("code"));
 						genre.setLibelle(newPrefixLibelle+subGenre.getString("libelle"));
 						
 						Boolean hasToSaveThisGenre = false;
@@ -757,25 +764,45 @@ public class InfolocaleEntityUtils {
 	 * @return un set des genres reliés aux thématiques personnalisées, triés par ordre alphabétique des libellés
 	 */
 	private static Set<Genre> getAllGenreOfThematiquesPerso(String fluxId, String[] groupeDeThematiquesPersonnalisee) {
-    	Set<Genre> listeGenre = new TreeSet<Genre>(new Comparator<Genre>() {
+    Set<Genre> listeGenre = new TreeSet<Genre>(new Comparator<Genre>() {
 			@Override
 			public int compare(final Genre obj1, final Genre obj2) {
 				return obj1.getLibelle().compareToIgnoreCase(obj2.getLibelle());
 			}
 		});
+    
+    String listMetadataLbl = "listMetadata";
     	
-		JSONObject objThematiquesPersos = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
+		JSONObject fluxMetadataThematiquesPerso = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
+
+		JSONObject allThematiques;
+		
+		try {
+      if (Util.isEmpty(fluxMetadataThematiquesPerso) || !fluxMetadataThematiquesPerso.getBoolean("success")
+          || fluxMetadataThematiquesPerso.isNull(listMetadataLbl)) {
+        LOGGER.warn("getAllGenreOfThematiquesPerso -> aucune thématique perso trouvée (flux " + fluxId + ")");
+      }
+      
+      allThematiques = fluxMetadataThematiquesPerso.getJSONObject(listMetadataLbl);
+    } catch (JSONException e) {
+      LOGGER.warn("Exception sur getAllGenreOfThematiquesPerso : "+ e.getMessage());
+      return null;
+    }
 		
 		// TODO ceci est un premier jet sans avoir testé avec un bouchon ou le vrai flux
 		for(String nomGrpPerso : groupeDeThematiquesPersonnalisee) {
 			try {
-				JSONArray listeThematiquesPersos = objThematiquesPersos.getJSONArray(nomGrpPerso);
+				JSONArray listeThematiquesPersos = allThematiques.getJSONArray(nomGrpPerso);
 				for (int j = 0; j < listeThematiquesPersos.length(); j++) {
-    				JSONObject objGenre = listeThematiquesPersos.getJSONObject(j);
-    				Genre genre = new Genre();
-    				genre.setGenreId(Integer.parseInt(objGenre.getString("id")));
-    				genre.setLibelle(objGenre.getString("libelle"));
-    				listeGenre.add(genre);
+				    try {
+      				JSONObject objGenre = listeThematiquesPersos.getJSONObject(j);
+      				Genre genre = new Genre();
+      				genre.setGenreId(objGenre.getString("id"));
+      				genre.setLibelle(objGenre.getString("libelle"));
+      				listeGenre.add(genre);
+				    } catch (JSONException e) {
+			        LOGGER.warn("getAllGenreOfThematiquesPerso : un id de groupe thématique perso n'existe pas -> "+ e.getMessage());
+			      }
     			}
 			} catch (JSONException e) {
 				LOGGER.warn("Exception sur getAllGenreOfThematiquesPerso : "+ e.getMessage());
