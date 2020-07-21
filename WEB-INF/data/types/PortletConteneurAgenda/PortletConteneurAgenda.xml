@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletConteneurAgenda" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Conteneur Agenda</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="titreDuBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre du bloc</label>
+    </field>
+    <field name="soustitreBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre bloc</label>
+    </field>
+    <field name="selectionDuTheme" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="tuileVerticaleLight|tuileVerticaleDark" ml="false" descriptionType="tooltip" labelList="Fond gris, tuiles blanches|Fond blanc, tuiles grises" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sélection du thème</label>
+    </field>
+    <field name="portletsAgenda" editor="link" required="true" compactDisplay="false" type="generated.PortletAgendaInfolocale[]">
+      <label xml:lang="fr">Portlets agenda</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+

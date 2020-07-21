@@ -51,6 +51,7 @@
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
     <type name="PortletCarrouselDimagesHome"></type>
+    <type name="PortletConteneurAgenda"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaCategorie"></type>
     <type name="PortletFacetteAgendaAccessibilit"></type>
@@ -253,6 +254,11 @@
     <templates type="PortletCarrouselDimagesHome">
         <template name="default" file="doPortletCarrouselDimagesHomeBoxDisplay.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit à 2 blocs d'images</label>
+        </template>
+    </templates>
+    <templates type="PortletConteneurAgenda">
+        <template name="default" file="doPortletConteneurAgendaBoxDisplay.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
     <templates type="PortletDecorator">
