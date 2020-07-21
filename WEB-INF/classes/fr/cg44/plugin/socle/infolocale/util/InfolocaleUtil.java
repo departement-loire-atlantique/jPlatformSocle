@@ -523,7 +523,7 @@ public class InfolocaleUtil {
       } else {
         // Vérification avec dates
         String dateDebut = arrayDebutFin[0];
-        String dateFin = arrayDebutFin[1];
+        String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
         for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
           EvenementInfolocale itEvent = iter.next();
           if (usedIds.contains(itEvent.getId()) && eventIsInDateRange(itEvent, dateDebut, dateFin) ) {
