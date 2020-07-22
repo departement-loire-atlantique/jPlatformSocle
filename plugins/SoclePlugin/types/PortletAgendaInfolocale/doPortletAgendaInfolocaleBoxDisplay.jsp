@@ -34,6 +34,10 @@ if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0)
   parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
 }
 
+if (Util.notEmpty(box.getGroupesDevenementsInfolocale())) {
+  parameters.put("thematiquePerso", box.getGroupesDevenementsInfolocale());
+}
+
 parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
 
 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
