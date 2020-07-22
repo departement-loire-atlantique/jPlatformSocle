@@ -14,7 +14,7 @@
 	<% String fullName = SocleUtils.getElectedMemberFullName(obj); %>
 	<jalios:if predicate='<%= Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) || Util.notEmpty(fullName) 
 			|| (Util.notEmpty(obj.getFunctions(loggedMember)) && obj.getFunctions(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.elu.president"))) %>'>
-		<div class="ds44-js-results-card">
+		<div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>
 			<%-- bouton Retour a la liste --%>
 			<%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
 			

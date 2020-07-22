@@ -11,7 +11,7 @@
 
 <article class="ds44-container-large">
 
-	<div class="ds44-js-results-card">
+	<div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>
 		<%-- bouton Retour a la liste --%>
 		<%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
 		
