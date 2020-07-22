@@ -267,6 +267,7 @@ media.data-template.cardNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheL
 media.data-template.cardFocusNoPic.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuCard.jsp?isFocus=true&noPic=true
 media.data-template.cardResult.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp
 media.data-template.cardResultFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/doFicheLieuResultCard.jsp?isFocus=true
+media.data-template.card.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 
 jcms.resource.tt-card-enabled:false
 channel.sidebar.enabled: false
