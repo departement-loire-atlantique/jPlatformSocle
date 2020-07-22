@@ -76,7 +76,7 @@ public class InfolocaleUtil {
     }
 
     /**
-     * Trie une 
+     * Trie une liste d'événement selon leur dates de début respectives
      * @param listClone
      * @return
      */
@@ -511,26 +511,23 @@ public class InfolocaleUtil {
       List<String> usedIds = new ArrayList<>();
       
       if (Util.isEmpty(arrayDebutFin)) {
-        // Vérification sans dates
-        for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
-          EvenementInfolocale itEvent = iter.next();
-          if (usedIds.contains(itEvent.getId())) {
-            iter.remove();
-          } else {
-            usedIds.add(itEvent.getId());
-          }
-        }
-      } else {
-        // Vérification avec dates
-        String dateDebut = arrayDebutFin[0];
-        String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
-        for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
-          EvenementInfolocale itEvent = iter.next();
-          if (usedIds.contains(itEvent.getId()) && eventIsInDateRange(itEvent, dateDebut, dateFin) ) {
-            iter.remove();
-          } else {
-            usedIds.add(itEvent.getId());
-          }
+        Calendar calFuture = Calendar.getInstance();
+        calFuture.add(Calendar.YEAR, 2);
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        
+        arrayDebutFin = new String[] {sdf.format(Calendar.getInstance().getTime()), sdf.format(calFuture.getTime())};
+        
+      }
+      
+      String dateDebut = arrayDebutFin[0];
+      String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
+      for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
+        EvenementInfolocale itEvent = iter.next();
+        LOGGER.info(eventIsInDateRange(itEvent, dateDebut, dateFin));
+        if (usedIds.contains(itEvent.getId()) && eventIsInDateRange(itEvent, dateDebut, dateFin) ) {
+          iter.remove();
+        } else {
+          usedIds.add(itEvent.getId());
         }
       }
       
