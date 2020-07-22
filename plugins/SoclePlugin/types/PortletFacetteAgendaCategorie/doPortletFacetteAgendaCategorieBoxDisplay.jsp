@@ -18,7 +18,7 @@
 	
 	if(Util.isEmpty(fluxId)) return;
 	
-	Set<Genre> listeGenre = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getGroupeDeThematiquesPersonnalisee(), obj.getIdDeThematiquesPersonnalisees(), fluxId);
+	Set<Genre> listeGenre = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getIdDeThematiquesPersonnalisees(), fluxId);
 	
 	if(Util.isEmpty(listeGenre)) return;
 %>
