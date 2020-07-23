@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Member;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
@@ -523,6 +524,8 @@ public class InfolocaleEntityUtils {
       if(Util.isEmpty(request) || Util.isEmpty(box)) {
         return Collections.emptyList();
       }
+      
+      Member adminMbr = Channel.getChannel().getDefaultAdmin();
                 
       List<EvenementInfolocale> allEvents = Collections.emptyList();      
       Map<String, Object> parameters = new HashMap<String, Object>();
@@ -532,8 +535,12 @@ public class InfolocaleEntityUtils {
            
       // Recherche sur une commune
       String commune = request.getParameter("commune");
+      String codesInseeBox = SocleUtils.getCodesInseeFromPortletAgenda(box, adminMbr);
+      String codeInseeLbl = channel.getProperty("jcmsplugin.socle.infolocale.search.field.codeInsee");
       if(Util.notEmpty(commune)) {
-        parameters.put("codeInsee", commune);
+        parameters.put(codeInseeLbl, commune);
+      } else if (Util.notEmpty(codesInseeBox)) {
+        parameters.put(codeInseeLbl, codesInseeBox);
       }
       
       String rayonField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.rayon");
@@ -547,18 +554,36 @@ public class InfolocaleEntityUtils {
       // Recherche sur un genre
       String prefixeGrp = "groupe_";
       String[] genres = request.getParameterValues("cids");
+      String strGenres = "";
+      String strThematiques = "";
+      String boxGenres = box.getGenresInfolocale();
+      String boxThematiques = box.getGroupesDevenementsInfolocale();
+      String rubriqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.rubrique");
+      String thematiqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.thematiquePerso");
       if(Util.notEmpty(genres)) {
-    	String strGenres = genres[0].contains(prefixeGrp) ? "" : genres[0];
-    	String strThematiques = Util.isEmpty(strGenres) ? genres[0] : "";
-    	for(int i = 1 ; i < genres.length; i++) {
-    	  if (genres[i].contains(prefixeGrp)) {
-    	    strThematiques += "," + genres[i];
-    	  } else {
-    	    strGenres += "," + genres[i]; 
-    	  }
-    	}
-        if (Util.notEmpty(strGenres)) parameters.put("rubrique", strGenres);
-        if (Util.notEmpty(strThematiques)) parameters.put("thematiquePerso", strThematiques);
+        strGenres = genres[0].contains(prefixeGrp) ? "" : genres[0];
+        strThematiques = Util.isEmpty(strGenres) ? genres[0] : "";
+      	for(int i = 1 ; i < genres.length; i++) {
+      	  if (genres[i].contains(prefixeGrp)) {
+      	    strThematiques += "," + genres[i];
+      	  } else {
+      	    strGenres += "," + genres[i]; 
+      	  }
+      	}
+    	  
+        if (Util.notEmpty(strGenres)) { 
+          parameters.put(rubriqueField, boxGenres);
+        }
+        if (Util.notEmpty(strThematiques)) { 
+          parameters.put(thematiqueField, strThematiques);
+        } 
+      }
+      
+      if (Util.isEmpty(strGenres) && Util.notEmpty(boxGenres)) {
+        parameters.put(rubriqueField, boxGenres);
+      }
+      if (Util.isEmpty(strThematiques) && Util.notEmpty(boxThematiques)) {
+        parameters.put(thematiqueField, boxThematiques);
       }
       
       String dateDebutField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.dateDebut");
