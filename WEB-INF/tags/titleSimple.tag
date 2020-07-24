@@ -153,7 +153,7 @@ if(Util.notEmpty(video)) {
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="bandeau" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
+	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
 				</div>
 	        </div>
 	    </div>
