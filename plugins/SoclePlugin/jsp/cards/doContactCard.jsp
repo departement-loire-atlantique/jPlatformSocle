@@ -15,13 +15,15 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 %>
 
-<section class="ds44-card ds44-box ds44-bgGray">
+<section class='ds44-card ds44-box ds44-bgGray <%= Util.notEmpty(request.getParameter("wysiwygEmbed")) ? "large-w50" : ""%>'>
   <div class="ds44-flex-container ds44-flex-valign-center">
-    <div class="ds44-card__section--horizontal--img">
-      <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil ds44-m-std ">
-       <img src="<%= pub.getPhotoDidentite() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
-      </picture>
-   </div>
+    <jalios:if predicate='<%= Util.notEmpty(pub.getPhotoDidentite()) %>'>
+	    <div class="ds44-card__section--horizontal--img">
+	      <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil ds44-m-std ">
+	       <img src="<%= pub.getPhotoDidentite() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
+	      </picture>
+	   </div>
+   </jalios:if>
     <div class="ds44-card__section--horizontal">
       <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
       <jalios:if predicate="<%= Util.notEmpty(pub.getCommunes()) %>">

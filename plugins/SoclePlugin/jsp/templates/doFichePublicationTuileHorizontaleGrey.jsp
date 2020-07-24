@@ -13,7 +13,7 @@ FichePublication pub = (FichePublication) data;
 
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--horizontal">
+<section class='ds44-card ds44-js-card ds44-card--horizontal <%= Util.notEmpty(request.getParameter("wysiwygEmbed")) ? "large-w50" : ""%>'>
   <div class="ds44-flex-container ds44-flex-valign-center">
     <div class="ds44-card__section--horizontal--img">
      <ds:figurePicture pub="<%= pub %>" image="<%= pub.getImagePrincipale() %>" format="mobile" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--A4" imgCss="ds44-w100 ds44-imgRatio"
