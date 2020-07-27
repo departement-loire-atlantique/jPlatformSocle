@@ -477,9 +477,10 @@ public final class SocleUtils {
 	 */
 	public static String formatAdresseCommune(City city) {
 	
-		String adresseMairie = city.getCouncilBuildingAddress();
-	    if(city.getCouncilBuildingAddress().replaceAll("\n","").replaceAll("\r","").lastIndexOf("</p></div>") != -1){
-	        adresseMairie = city.getCouncilBuildingAddress().substring(0, city.getCouncilBuildingAddress().replaceAll("\n","").replaceAll("\r","").lastIndexOf("</p></div>"));
+		String adresseMairie = city.getCouncilBuildingAddress().replaceAll("[\\r\\n]+", "");
+		
+	    if(adresseMairie.replaceAll("[\\r\\n]+", "").lastIndexOf("</p></div>") != -1){
+	        adresseMairie = adresseMairie.substring(0, adresseMairie.replaceAll("[\\r\\n]+", "").lastIndexOf("</p></div>"));
 	    }
 	    
 	    return adresseMairie + "<br/>" + SocleUtils.formatAddress(null, null, null, null, null, null, city.getPostalBox(), city.getZipCode(), city.getTitle(), null) + "</p></div>";
