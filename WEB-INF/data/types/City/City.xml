@@ -11,13 +11,7 @@
     <field name="mayor" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tab="commune">
       <label xml:lang="fr">Maire</label>
     </field>
-    <field name="population" editor="int" required="false" compactDisplay="false" type="int" default="0" tab="commune">
-      <label xml:lang="fr">Population</label>
-    </field>
-    <field name="populationSource" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commune">
-      <label xml:lang="fr">Mention et source population</label>
-    </field>
-    <field name="councilBuildingAddress" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="40" ml="true" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false" wiki="true" wikiwyg="true" tab="commune">
+    <field name="councilBuildingAddress" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="40" ml="true" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="text" html="false" wiki="false" wikiwyg="true" tab="commune">
       <label xml:lang="fr">Adresse Mairie</label>
     </field>
     <field name="postalBox" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commune">
@@ -32,9 +26,6 @@
     </field>
     <field name="phones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commune">
       <label xml:lang="fr">Téléphone</label>
-    </field>
-    <field name="fax" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="commune">
-      <label xml:lang="fr">Fax</label>
     </field>
     <field name="mails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" tab="commune">
       <label xml:lang="fr">Courriel</label>
@@ -59,29 +50,6 @@
     </field>
     <field name="cityFromTheSky" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="commune">
       <label xml:lang="fr">La commune vue du ciel</label>
-    </field>
-    <field name="imageDeLaCommune" editor="image" required="false" compactDisplay="false" tab="commune" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
-      <label xml:lang="fr">Image de la commune</label>
-    </field>
-    <field name="concerneeASD" editor="boolean" required="false" compactDisplay="false" tab="asd" type="boolean" default="on" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Concernée ASD</label>
-      <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="fr">Non</offLabel>
-    </field>
-    <field name="animateursSportifsInterlocuteurs" editor="member" required="false" compactDisplay="false" tab="asd" type="com.jalios.jcms.Member" chooser="popup" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Animateur sportif interlocuteur</label>
-    </field>
-    <field name="dateInscription" editor="date" required="false" compactDisplay="false" tab="asd" type="java.util.Date" future="true" past="true" dateOnly="true" dateFormat="short" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Date inscription</label>
-    </field>
-    <field name="horairesInscription" editor="textfield" required="false" compactDisplay="false" tab="asd" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Horaires inscription</label>
-    </field>
-    <field name="commentaireInscription" editor="textarea" required="false" compactDisplay="false" tab="asd" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Commentaire inscription</label>
-    </field>
-    <field name="lieuInscription" editor="textfield" required="false" compactDisplay="false" tab="asd" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Lieu inscription</label>
     </field>
     <field name="nomDesCommunesDeleguees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Nom des communes déléguées</label>
