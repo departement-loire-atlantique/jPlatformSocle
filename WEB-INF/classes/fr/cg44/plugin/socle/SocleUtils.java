@@ -463,8 +463,28 @@ public final class SocleUtils {
 				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
 				"", fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", "");
 	}	
-		
 	
+
+	
+	/**
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Commune sous la forme suivante :</p>
+	 * <p>[adresse mairie]<br\></p>
+	 * <p>CS [cs]<br\></p>
+	 * <p>[codePostal] [commune]</p>
+	 * 
+	 * @param commune
+	 * @return un String contenant l'adresse physique de la commune
+	 */
+	public static String formatAdresseCommune(City city) {
+	
+		String adresseMairie = city.getCouncilBuildingAddress();
+	    if(city.getCouncilBuildingAddress().replaceAll("\n","").replaceAll("\r","").lastIndexOf("</p></div>") != -1){
+	        adresseMairie = city.getCouncilBuildingAddress().substring(0, city.getCouncilBuildingAddress().replaceAll("\n","").replaceAll("\r","").lastIndexOf("</p></div>"));
+	    }
+	    
+	    return adresseMairie + "<br/>" + SocleUtils.formatAddress(null, null, null, null, null, null, city.getPostalBox(), city.getZipCode(), city.getTitle(), null) + "</p></div>";
+	}	
+    
 	
 	/**
 	 * Créé une url oppenstreetmap à partir des coordonnées et du zoom souhaité
