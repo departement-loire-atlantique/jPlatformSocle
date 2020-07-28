@@ -36,6 +36,9 @@ jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
 jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
 jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
 jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
+jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
+
+
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
@@ -210,6 +213,9 @@ jcmsplugin.socle.langues: Langues :
 jcmsplugin.socle.serendrea: Comment se rendre à : {0}
 jcmsplugin.socle.allerplusloin: Pour aller plus loin
 jcmsplugin.socle.telephone: Téléphone :
+jcmsplugin.socle.interco: Intercommunalité :
+jcmsplugin.socle.canton: Canton :
+jcmsplugin.socle.delegation: Délégation du Département
 
 # ------------------------------------------------------------
 #  Header
