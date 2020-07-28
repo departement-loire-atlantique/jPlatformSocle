@@ -95,6 +95,13 @@
 		type="Boolean" 
 		description="Est ce que le champ adresse peut-etre rempli par geolocalisation" 
 %>
+<%@ attribute name="ariaDescribedBy" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="Valeur de l'attribut 'aria-described-by'" 
+%>
 <% 
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") || (Util.notEmpty(isLarge) && !isLarge) ? "Std" : "Large"; 
@@ -358,10 +365,11 @@
 					name='<%= name %>'
 					aria-autocomplete="list" 
 					autocomplete="off" 
-					aria-expanded="false" 
+					aria-expanded="false"
+					<%= Util.notEmpty(ariaDescribedBy) ? "aria-describedby=\""+ariaDescribedBy+"\"" : ""%>  
 					data-url='<%= dataUrl %>' 
 					data-mode='<%= dataMode %>'
-					<%= Util.notEmpty(title) ? "title=\""+title+"\"" : ""%> 
+					<%= Util.notEmpty(title) ? "title=\""+title+"\"" : ""%>
 					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> />
 
 			<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
