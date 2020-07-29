@@ -25,7 +25,7 @@ String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
 		<div class="ds44-facette">
 			
             <div class="ds44-facette-body">
-                <form data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displaySearchResult.jsp">
+                <form data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displaySearchResult.jsp" data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'>
                 
                     <div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
     
