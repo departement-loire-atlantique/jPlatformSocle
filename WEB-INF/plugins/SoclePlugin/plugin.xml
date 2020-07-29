@@ -105,6 +105,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="City">
+        <template name="default" file="doCityFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>    
     <templates type="Dossier">
         <template name="default" file="doDossierFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -500,6 +505,7 @@
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
+    <file path="WEB-INF/tags/push.tag" />
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleDelegation.tag" />
     <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />
