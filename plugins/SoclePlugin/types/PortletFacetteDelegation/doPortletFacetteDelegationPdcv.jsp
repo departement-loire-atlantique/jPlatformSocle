@@ -19,7 +19,8 @@
 				dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
 				label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 				title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title",titleAttr) %>'
-				isLarge="false"/>
+				isLarge="false"
+				ariaDescribedBy="pdcv-commune-name"/>
         <ds:pdcvSearchFields idFormElement="<%= idFormElement %>"/>
         
         <input type="hidden" name="redirectToDelegation" value="true"/>

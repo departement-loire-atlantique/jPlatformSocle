@@ -510,6 +510,7 @@ public class InfolocaleUtil {
       
       List<String> usedIds = new ArrayList<>();
       
+      // Initialiser les dates début / fin à des valeurs par défaut au besoin
       if (Util.isEmpty(arrayDebutFin)) {
         Calendar calFuture = Calendar.getInstance();
         calFuture.add(Calendar.YEAR, 2);
@@ -523,9 +524,10 @@ public class InfolocaleUtil {
       String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
         EvenementInfolocale itEvent = iter.next();
-        LOGGER.info(eventIsInDateRange(itEvent, dateDebut, dateFin));
-        if (usedIds.contains(itEvent.getId()) && eventIsInDateRange(itEvent, dateDebut, dateFin) ) {
+        // si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
+        if (usedIds.contains(itEvent.getId()) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
           iter.remove();
+        // autrement, on le récupère, et on indique qu'on a ajouté cet événement
         } else {
           usedIds.add(itEvent.getId());
         }
