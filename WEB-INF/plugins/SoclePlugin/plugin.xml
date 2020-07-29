@@ -222,6 +222,9 @@
         </template>
     </templates>
     <templates type="FichePublication">
+        <template name="embed" file="doFichePublicationEmbedDisplay.jsp" usage="embed"> 
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>    
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
