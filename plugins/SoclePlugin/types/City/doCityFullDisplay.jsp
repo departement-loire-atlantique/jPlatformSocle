@@ -19,7 +19,6 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
         <div class="col">
 
             <%-- Bloc "Adresse" --%>
-
             <jalios:if predicate='<%= Util.notEmpty(obj.getCouncilBuildingAddress(userLang)) %>'>
                 <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.adresse") %></p>
                 <div class="ds44-docListElem mts">
@@ -42,11 +41,11 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
             </jalios:if>
             
             <%-- Bloc "Contact" --%>
-            
             <jalios:if predicate='<%=Util.notEmpty(obj.getPhones()) || Util.notEmpty(obj.getMails())
                         || Util.notEmpty(obj.getWebsites())%>'>
                 <p role="heading" aria-level="3" class="ds44-box-heading ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.contact") %></p>
     
+                <%-- Tel --%>
                 <jalios:if predicate='<%=Util.notEmpty(obj.getPhones())%>'>
                     <div class="ds44-docListElem mts">
                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
@@ -69,6 +68,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                     </div>
                 </jalios:if>
     
+                <%-- Mails --%>
                 <jalios:if predicate='<%=Util.notEmpty(obj.getMails())%>'>
                     <div class="ds44-docListElem mts">
                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
@@ -99,6 +99,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                     </div>
                 </jalios:if>
     
+                <%-- Sites web --%>
                 <jalios:if predicate='<%=Util.notEmpty(obj.getWebsites())%>'>
                     <div class="ds44-docListElem mts">
                         <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
@@ -136,10 +137,53 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
         <%-- Col droite --%>
         <div class="col ds44--xl-padding-l">
             
+            <%-- Maire --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getMayor()) %>'>
                 <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.maire") %></p>
                 <div class="ds44-docListElem mts"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><jalios:wysiwyg><%= obj.getMayor() %></jalios:wysiwyg></div>
             </jalios:if>
+            
+            <%-- Intercommunalité --%>
+            <jalios:if predicate='<%= Util.notEmpty(obj.getEpci(loggedMember)) %>'>
+                <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.interco") %></p>
+                <div class="mts">
+                    <jalios:select>
+	                    <jalios:if predicate='<%= Util.notEmpty(obj.getEpciWebsite())%>'>
+	                        <a href="<%= obj.getEpciWebsite() %>" target="_blank" title="<%= glp("jcmsplugin.socle.city.epci.site.nouvelonglet",obj.getTitle())%>"><%= obj.getEpci(loggedMember).first() %></a>
+	                    </jalios:if>
+	                    <jalios:default>
+	                        <%= obj.getEpci(loggedMember).first() %>
+	                    </jalios:default>
+                    </jalios:select>
+                </div>
+            </jalios:if>
+            
+            <%-- Canton --%>
+            <jalios:if predicate='<%= Util.notEmpty(obj.getCanton()) %>'>
+                <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.canton") %></p>
+                <div class="mts">
+                    <jalios:if predicate='<%= obj.getCanton().length == 1 %>'>
+                        <%= obj.getCanton()[0] %>
+                    </jalios:if>
+                    
+                    <jalios:if predicate='<%= obj.getCanton().length > 1 %>'>
+                        <ul class="ds44-list">
+		                    <jalios:foreach name="itData" type="generated.Canton" array="<%= obj.getCanton() %>">
+		                        <jalios:if predicate='<%= itData != null && itData.canBeReadBy(loggedMember)%>'>
+				                  <jalios:link data="<%= itData %>"><%= itData %></jalios:link>
+		                        </jalios:if>
+		                    </jalios:foreach>
+                        </ul>
+                    </jalios:if>
+              </div>
+            </jalios:if>
+            
+            <%-- Délégation --%>
+            <jalios:if predicate='<%= obj.getDelegation() != null %>'>
+                <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.delegation") %></p>
+                <div class="mts"><jalios:link data="<%= obj.getDelegation() %>"><%= obj.getDelegation() %></jalios:link></div>
+            </jalios:if>
+            
         
         </div>
     </div>
@@ -150,209 +194,20 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
     
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
       
-        <section class="ds44-contenuArticle" id="section1">
-            <div class="ds44-inner-container">
-                <div class="ds44-grid12-offset-2">
-                    <div class="grid-2-small-1">
-                    
+        <%-- TODO : carte dynamique dela commune --%>      
 
-                        
-                  </div>
-                </div>
-            </div>
-        </section>
-        
-        <%-- TODO : bloc des réseaux sociaux --%>
 
     </article>
+    
+    <%-- Bannière Push --%>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getCityFromTheSky()) %>">        
+	    <section class="ds44-container-large" id="sectionVuDuCiel">
+            <ds:push title='<%= glp("jcmsplugin.socle.city.vuduciel.titre",obj.getTitle()) %>' subtitle='<%= glp("jcmsplugin.socle.city.vuduciel.soustitre") %>' linkLabel="Visiter le site" linkUrl="<%= obj.getCityFromTheSky() %>" linkTitle='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet","http://vuduciel.loire-atlantique.fr") %>' newTab="true" bgstyle="triangle" />
+	    </section>
+    </jalios:if>
+        
+    <%-- TODO : bloc des réseaux sociaux --%>
+
+
 </main>
 
-
-
-
-<div class="fullDisplay City <%= obj.canBeEditedFieldByField(loggedMember) ? "unitFieldEdition" : "" %>" itemscope="itemscope">
-<%@ include file='/front/publication/doPublicationHeader.jspf' %>
-<table class="fields">
-  <tr class="field cityCode intEditor  ">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "cityCode", userLang) %><jalios:edit pub='<%= obj %>' fields='cityCode'/></td>
-    <td class='field-data' >
-            <% /* %>123456789<% */ %><%= NumberFormat.getInstance(userLocale).format(obj.getCityCode()) %>
-    </td>
-  </tr>
-  <tr class="field mayor textfieldEditor  <%= Util.isEmpty(obj.getMayor()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "mayor", userLang) %><jalios:edit pub='<%= obj %>' fields='mayor'/></td>
-    <td class='field-data' <%= gfla(obj, "mayor") %>>
-            <% if (Util.notEmpty(obj.getMayor())) { %>
-            <%= obj.getMayor() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field councilBuildingAddress textareaEditor  <%= Util.isEmpty(obj.getCouncilBuildingAddress(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "councilBuildingAddress", userLang) %><jalios:edit pub='<%= obj %>' fields='councilBuildingAddress'/></td>
-    <td class='field-data' <%= gfla(obj, "councilBuildingAddress") %>>
-            <% if (Util.notEmpty(obj.getCouncilBuildingAddress(userLang))) { %>
-            <jalios:wiki><%= obj.getCouncilBuildingAddress(userLang) %></jalios:wiki>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field postalBox textfieldEditor  <%= Util.isEmpty(obj.getPostalBox(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "postalBox", userLang) %><jalios:edit pub='<%= obj %>' fields='postalBox'/></td>
-    <td class='field-data' <%= gfla(obj, "postalBox") %>>
-            <% if (Util.notEmpty(obj.getPostalBox(userLang))) { %>
-            <%= obj.getPostalBox(userLang) %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field zipCode textfieldEditor  <%= Util.isEmpty(obj.getZipCode()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "zipCode", userLang) %><jalios:edit pub='<%= obj %>' fields='zipCode'/></td>
-    <td class='field-data' <%= gfla(obj, "zipCode") %>>
-            <% if (Util.notEmpty(obj.getZipCode())) { %>
-            <%= obj.getZipCode() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field codesPostaux textareaEditor  <%= Util.isEmpty(obj.getCodesPostaux()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "codesPostaux", userLang) %><jalios:edit pub='<%= obj %>' fields='codesPostaux'/></td>
-    <td class='field-data' <%= gfla(obj, "codesPostaux") %>>
-            <% if (Util.notEmpty(obj.getCodesPostaux())) { %>
-            <%= obj.getCodesPostaux() %>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field phones textfieldEditor  <%= Util.isEmpty(obj.getPhones(userLang)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "phones", userLang) %><jalios:edit pub='<%= obj %>' fields='phones'/></td>
-    <td class='field-data' <%= gfla(obj, "phones") %>>
-        <% if (Util.notEmpty(obj.getPhones(userLang))) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getPhones(userLang) %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <%= itString %>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
-  <tr class="field mails emailEditor  <%= Util.isEmpty(obj.getMails()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "mails", userLang) %><jalios:edit pub='<%= obj %>' fields='mails'/></td>
-    <td class='field-data' <%= gfla(obj, "mails") %>>
-        <% if (Util.notEmpty(obj.getMails())) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getMails() %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <a href='mailto:<%= itString %>'><%= itString %></a>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
-  <tr class="field websites urlEditor  <%= Util.isEmpty(obj.getWebsites()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "websites", userLang) %><jalios:edit pub='<%= obj %>' fields='websites'/></td>
-    <td class='field-data' <%= gfla(obj, "websites") %>>
-        <% if (Util.notEmpty(obj.getWebsites())) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getWebsites() %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <a href='<%= itString %>'><%= itString %></a>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
-  <tr class="field closenessCities linkEditor  <%= Util.isEmpty(obj.getClosenessCities()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "closenessCities", userLang) %><jalios:edit pub='<%= obj %>' fields='closenessCities'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getClosenessCities())) { %>
-            <ol>
-              <jalios:foreach name="itData" type="generated.City" array="<%= obj.getClosenessCities() %>">
-              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
-              <li>
-              <jalios:link data='<%= itData %>'/>
-              </li>
-              <% } %>
-              </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field epci categoryEditor  <%= Util.isEmpty(obj.getEpci(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "epci", userLang) %><jalios:edit pub='<%= obj %>' fields='epci'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getEpci(loggedMember))) { %>
-            <ol>
-            <jalios:foreach collection="<%= obj.getEpci(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.category.toutesLesCommunesEPCI.root"), " > ", true, userLang) %></a><% } %></li>
-            </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field epciWebsite urlEditor  <%= Util.isEmpty(obj.getEpciWebsite()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "epciWebsite", userLang) %><jalios:edit pub='<%= obj %>' fields='epciWebsite'/></td>
-    <td class='field-data' <%= gfla(obj, "epciWebsite") %>>
-            <% if (Util.notEmpty(obj.getEpciWebsite())) { %>
-            <a href='<%= obj.getEpciWebsite() %>' ><%= obj.getEpciWebsite()%></a>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field canton linkEditor  <%= Util.isEmpty(obj.getCanton()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "canton", userLang) %><jalios:edit pub='<%= obj %>' fields='canton'/></td>
-    <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCanton())) { %>
-            <ol>
-              <jalios:foreach name="itData" type="generated.Canton" array="<%= obj.getCanton() %>">
-              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
-              <li>
-              <jalios:link data='<%= itData %>'/>
-              </li>
-              <% } %>
-              </jalios:foreach>
-            </ol>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field delegation linkEditor  <%= Util.isEmpty(obj.getDelegation()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "delegation", userLang) %><jalios:edit pub='<%= obj %>' fields='delegation'/></td>
-    <td class='field-data' >
-            <% if (obj.getDelegation() != null && obj.getDelegation().canBeReadBy(loggedMember)) { %>
-            <jalios:link data='<%= obj.getDelegation() %>'/>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field cityFromTheSky urlEditor  <%= Util.isEmpty(obj.getCityFromTheSky()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "cityFromTheSky", userLang) %><jalios:edit pub='<%= obj %>' fields='cityFromTheSky'/></td>
-    <td class='field-data' <%= gfla(obj, "cityFromTheSky") %>>
-            <% if (Util.notEmpty(obj.getCityFromTheSky())) { %>
-            <a href='<%= obj.getCityFromTheSky() %>' ><%= obj.getCityFromTheSky()%></a>
-            <% } %>
-    </td>
-  </tr>
-  <tr class="field nomDesCommunesDeleguees textfieldEditor  <%= Util.isEmpty(obj.getNomDesCommunesDeleguees()) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(City.class, "nomDesCommunesDeleguees", userLang) %><jalios:edit pub='<%= obj %>' fields='nomDesCommunesDeleguees'/></td>
-    <td class='field-data' <%= gfla(obj, "nomDesCommunesDeleguees") %>>
-        <% if (Util.notEmpty(obj.getNomDesCommunesDeleguees())) { %>
-            <ol>
-            <jalios:foreach name="itString" type="String" array="<%= obj.getNomDesCommunesDeleguees() %>">
-            <% if (Util.notEmpty(itString)) { %>
-              <li>
-              <%= itString %>
-              </li>
-            <% } %>
-            </jalios:foreach>
-            </ol>
-        <% } %>
-    </td>
-  </tr>
- 
-</table>
-<jsp:include page="/front/doFullDisplayCommonFields.jsp" />
-</div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- MkMJr+7x2W3aeR3TnLS/pA== --%>
