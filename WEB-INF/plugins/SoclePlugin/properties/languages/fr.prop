@@ -38,6 +38,18 @@ jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
 jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
 jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
 
+jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
+jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale
+jcmsplugin.socle.rgpd.notice.logo: RGPD - Logo affiché en haut de la modale
+jcmsplugin.socle.rgpd.notice.description: RGPD - Description notice
+jcmsplugin.socle.rgpd.notice.learn-more: RGPD - libellé bouton "je paramètre"
+jcmsplugin.socle.rgpd.bouton.accept: RGPD - libellé bouton "j'accepte"
+jcmsplugin.socle.rgpd.bouton.accept-all: RGPD - libellé bouton "j'accepte tout" 
+jcmsplugin.socle.rgpd.bouton.decline: RGPD - libellé bouton "je refuse"
+jcmsplugin.socle.rgpd.bouton.decline-all: RGPD - libellé bouton "je refuse tout"
+jcmsplugin.socle.rgpd.privacyPolicy.name: RGPD - politique de confidentialité
+jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidentialité"
+jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
 
 # Recherche
 
@@ -595,5 +607,12 @@ jcmsplugin.socle.fichesaad.modalitespaiement:Modalités de paiement :
 jcmsplugin.socle.fichesaad.modesintervention:Modes d’intervention :
 jcmsplugin.socle.fichesaad.modetarification:Mode de tarification :
 jcmsplugin.socle.fichesaad.typedeservice:Type de service :
+
+# ------------------------------------------------------------
+#  Fiche commune
+# ------------------------------------------------------------
+jcmsplugin.socle.city.epci.site.nouvelonglet: Consultez le site de la mairie - {0} - nouvelle fenêtre
+jcmsplugin.socle.city.vuduciel.titre: {0} vu du ciel
+jcmsplugin.socle.city.vuduciel.soustitre: Consultez les photographies aériennes de la commune
 
 
