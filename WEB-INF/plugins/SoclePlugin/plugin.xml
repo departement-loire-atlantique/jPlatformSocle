@@ -229,7 +229,7 @@
     <templates type="FichePublication">
         <template name="embed" file="doFichePublicationEmbedDisplay.jsp" usage="embed"> 
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
-        </template>    
+        </template>
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
@@ -488,6 +488,7 @@
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
+    <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/articleVideo.tag" />
