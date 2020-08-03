@@ -70,7 +70,6 @@ public class InfolocaleUtil {
         // Ajouter le reste de la liste, à re-trier faute à la duplication d'événements dans les résultats
         // ce qui va fausser l'ordre
         sortedEvents.addAll(forceOrderEventsByDateDebut(listClone));
-        sortedEvents.addAll(listClone);
         
         return sortedEvents;
     }
