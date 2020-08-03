@@ -95,6 +95,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="Canton">
+        <template name="default" file="doCantonFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>     
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -232,7 +237,7 @@
         </template>
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
+        </template>        
     </templates>
     <templates type="Carousel">
         <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
@@ -506,7 +511,7 @@
     <file path="WEB-INF/tags/menuLink.tag" />
     <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
-    <file path="WEB-INF/tags/push.tag" />
+    <file path="WEB-INF/tags/push.tag" />    
     <file path="WEB-INF/tags/titleBanner.tag" />
     <file path="WEB-INF/tags/titleDelegation.tag" />
     <file path="WEB-INF/tags/tuileContenuEnAvant.tag" />

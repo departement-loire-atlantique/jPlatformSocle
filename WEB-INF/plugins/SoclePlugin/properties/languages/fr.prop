@@ -228,6 +228,7 @@ jcmsplugin.socle.telephone: Téléphone :
 jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
+jcmsplugin.socle.km2: km²
 
 # ------------------------------------------------------------
 #  Header
@@ -594,6 +595,12 @@ jcmsplugin.socle.etablissementpersonnesagees.savoirplussur: En savoir plus sur :
 # ------------------------------------------------------------
 jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
 jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
+jcmsplugin.socle.canton.conseillers: Conseillère et conseiller départementaux :
+jcmsplugin.socle.canton.bref: Le canton en bref :  
+jcmsplugin.socle.canton.superficie: Superficie :
+jcmsplugin.socle.canton.population: Population :
+jcmsplugin.socle.canton.habitants: habitant·es
+jcmsplugin.socle.canton.source: (populations légales des cantons en vigueur au 1er janvier 2017. Source : INSEE, Recensement de la population 2016) 
 
 # ------------------------------------------------------------
 #  Fiche SAAD

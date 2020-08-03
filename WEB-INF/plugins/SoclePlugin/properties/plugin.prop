@@ -567,3 +567,6 @@ $jcmsplugin.socle.animSportive.annee: p2_699360
 $jcmsplugin.socle.presscommunique.thematique: c_5026
 $jcmsplugin.socle.presscommunique.autreThematique: c_5091
 $jcmsplugin.socle.presscommunique.typeMedia: aca_7725
+
+# Canton
+jcmsplugin.socle.canton.source: Canton - source recensement population

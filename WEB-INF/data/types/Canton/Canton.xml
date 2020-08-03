@@ -24,12 +24,6 @@
     <field name="population" editor="int" required="false" compactDisplay="false" type="int" default="0">
       <label xml:lang="fr">Population</label>
     </field>
-    <field name="populationSource" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Mention et source population</label>
-    </field>
-    <field name="cantonFromTheSky" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
-      <label xml:lang="fr">Le canton vu du ciel</label>
-    </field>
   </fields>
   <label xml:lang="fr">Canton</label>
 </type>
