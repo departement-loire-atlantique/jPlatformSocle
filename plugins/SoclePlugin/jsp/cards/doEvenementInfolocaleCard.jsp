@@ -61,7 +61,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
             </jalios:default>
          </jalios:select>
       </jalios:if>
-      <div class="ds44-card__section--horizontal">
+      <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
          <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
          <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
          <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
