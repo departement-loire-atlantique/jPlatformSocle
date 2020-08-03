@@ -53,8 +53,14 @@ List<String> remplacants = new ArrayList<String>();
         <%-- Col droite --%>
         <div class="col ds44--xl-padding-l">
             <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.canton.bref") %></p>
-            <p class="mtl"><strong><%= glp("jcmsplugin.socle.canton.superficie") %></strong> <%= (new DecimalFormat("#,###.##")).format(obj.getSuperficie()) %> <%= glp("jcmsplugin.socle.km2") %></p>
-            <p><strong><%= glp("jcmsplugin.socle.canton.population") %></strong> <%= NumberFormat.getInstance(userLocale).format(obj.getPopulation()) %> <%= glp("jcmsplugin.socle.canton.habitants") %> <%= glp("jcmsplugin.socle.canton.source") %></p>
+            
+            <div class="ds44-docListElem mtl"><i class="icon icon-map ds44-docListIco" aria-hidden="true"></i>
+               <strong><%= glp("jcmsplugin.socle.canton.superficie") %></strong> <%= (new DecimalFormat("#,###.##")).format(obj.getSuperficie()) %> <%= glp("jcmsplugin.socle.km2") %>
+            </div>
+            
+            <div class="ds44-docListElem mts"><i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
+               <strong><%= glp("jcmsplugin.socle.canton.population") %></strong> <%= NumberFormat.getInstance(userLocale).format(obj.getPopulation()) %> <%= glp("jcmsplugin.socle.canton.habitants") %> <%= glp("jcmsplugin.socle.canton.source") %>
+            </div>
         </div>
     </div>
 </jalios:buffer>
