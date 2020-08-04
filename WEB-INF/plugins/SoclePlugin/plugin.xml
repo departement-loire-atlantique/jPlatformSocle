@@ -131,11 +131,6 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
-    <templates type="Equipement">
-        <template name="default" file="doEquipementFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates>
     <templates type="FicheEquipement">
         <template name="default" file="doFicheEquipementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
