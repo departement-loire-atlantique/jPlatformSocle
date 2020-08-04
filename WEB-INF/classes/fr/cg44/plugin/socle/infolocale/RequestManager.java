@@ -17,6 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
@@ -184,6 +185,9 @@ public class RequestManager {
                       return filterFluxData(fluxId, params);
                     }
                     break;
+                case 400:
+                    generateError400Logger(new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent())));
+                    break;
                 case 200:
                     
                     fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
@@ -258,6 +262,9 @@ public class RequestManager {
                     return getSingleEvent(idEvent);
                   }
                   break;
+              case 400:
+                  generateError400Logger(new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent())));
+                  break;
               case 200:
                   
                   fluxData = new JSONObject(SocleUtils.convertStreamToString(response.getEntity().getContent()));
@@ -286,6 +293,18 @@ public class RequestManager {
       return fluxData;
     }
     
+    /**
+     * Renvoie un simple logger en cas d'erreur 400 infolocale
+     * @param jsonObject
+     */
+    private static void generateError400Logger(JSONObject jsonObject) {
+      try {
+        LOGGER.warn("Erreur 400 : " + jsonObject.getString("message"));
+      } catch (JSONException e) {
+        LOGGER.warn("Erreur 400 : l'API Infolocale ne peut pas traiter une requête.");
+      }
+    }
+
     /**
     /**
      * Renvoie les métadata d'un flux en précisant la métadata. Celle-ci peut être vide, et renverra alors l'ensemble des metadatas possibles pour le flux

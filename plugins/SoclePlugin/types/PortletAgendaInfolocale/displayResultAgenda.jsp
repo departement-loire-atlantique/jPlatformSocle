@@ -39,7 +39,14 @@ jsonObject.add("result", jsonArray);
 %><jalios:foreach collection="<%= allEvents %>" name="itEven" type="EvenementInfolocale"> <%
 
     %><jalios:buffer name="itPubListGabarit"><%
-        %><jalios:media data="<%= itEven %>" template="card" /><%
+        %><jalios:select>
+        <jalios:if predicate='<%= box.getTypeDeTuileResultats().equals("vertical")%>'>
+            <jalios:media data="<%= itEven %>" template="cardVertical" />
+        </jalios:if>
+        <jalios:default>
+            <jalios:media data="<%= itEven %>" template="card" />
+        </jalios:default>
+        </jalios:select><%
     %></jalios:buffer><%
     
     %><jalios:buffer name="itPubMarkerGabarit"><%

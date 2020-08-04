@@ -89,7 +89,14 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
                     %>
                     <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
                         <li class="swiper-slide">
-                            <jalios:media data="<%= itEvent %>" template="card"/>
+                            <jalios:select>
+						        <jalios:if predicate='<%= box.getTypeDeTuileCarrousel().equals("vertical")%>'>
+						            <jalios:media data="<%= itEvent %>" template="cardVertical" />
+						        </jalios:if>
+						        <jalios:default>
+						            <jalios:media data="<%= itEvent %>" template="card" />
+						        </jalios:default>
+					        </jalios:select>
                         </li>
                     </jalios:foreach>
                     <%
