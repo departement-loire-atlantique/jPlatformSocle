@@ -32,16 +32,18 @@ String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().leng
           <hr class="mbs" aria-hidden="true">
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
-            <jalios:select>
-                <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-                </jalios:if>
-                <jalios:default>
-                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-                    -
-                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
-                </jalios:default>
-            </jalios:select>
+            <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
+	            <jalios:select>
+	                <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+	                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+	                </jalios:if>
+	                <jalios:default>
+	                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+	                    -
+	                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+	                </jalios:default>
+	            </jalios:select>
+            </jalios:if>
           </p>
           
 		  <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
