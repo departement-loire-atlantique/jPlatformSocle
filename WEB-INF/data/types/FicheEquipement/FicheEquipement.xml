@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheEquipement" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="contenu">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" descriptionType="text" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Image principale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>    
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Légende</label>
+    </field>    
+    <field name="montantDeLaSubvention" editor="int" required="false" compactDisplay="false" type="int" default="0" tab="contenu">
+      <label xml:lang="fr">Montant de la subvention</label>
+    </field>
+    <field name="montantTotalDesTravaux" editor="int" required="false" compactDisplay="false" type="int" default="0" tab="contenu">
+      <label xml:lang="fr">Montant total des travaux</label>
+    </field>
+    <field name="pourcentageDepartement" editor="int" required="false" compactDisplay="false" type="int" default="0" tab="contenu">
+      <label xml:lang="fr">Pourcentage Département</label>
+    </field>
+    <field name="thematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.equipements.thematique.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="details">
+      <label xml:lang="fr">Thématique</label>
+    </field>
+    <field name="annee" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.equipements.annee.root" tab="details">
+      <label xml:lang="fr">Année</label>
+    </field>
+    <field name="role" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.equipements.role.root" tab="details">
+      <label xml:lang="fr">Rôle</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="communes" editor="link" required="false" compactDisplay="false" type="generated.City[]" tab="territoire">
+      <label xml:lang="fr">Communes</label>
+    </field>
+    <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false" tab="territoire">
+      <label xml:lang="fr">Canton</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root" tab="territoire">
+      <label xml:lang="fr">EPCI</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="details">
+      <label xml:lang="fr">Détails</label>
+    </tab>
+    <tab id="navigation">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
+    </tab>
+  </tabs>
+  <label xml:lang="fr">Fiche équipement</label>
+</type>
+
