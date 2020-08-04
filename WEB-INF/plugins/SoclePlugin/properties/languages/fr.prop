@@ -228,6 +228,8 @@ jcmsplugin.socle.telephone: Téléphone :
 jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
+jcmsplugin.socle.km2: km²
+jcmsplugin.socle.enbref: En bref 
 
 # ------------------------------------------------------------
 #  Header
@@ -615,4 +617,11 @@ jcmsplugin.socle.city.epci.site.nouvelonglet: Consultez le site de la mairie - {
 jcmsplugin.socle.city.vuduciel.titre: {0} vu du ciel
 jcmsplugin.socle.city.vuduciel.soustitre: Consultez les photographies aériennes de la commune
 
+# ------------------------------------------------------------
+#  Equipement
+# ------------------------------------------------------------
+jcmsplugin.socle.equipement.date-decison: Décision votée en :
+jcmsplugin.socle.equipement.montant-travaux: Montant total des travaux :
+jcmsplugin.socle.equipement.financement-dep: Financement départemental :
+jcmsplugin.socle.equipement.pourcentage-dep: Pourcentage Département :
 
