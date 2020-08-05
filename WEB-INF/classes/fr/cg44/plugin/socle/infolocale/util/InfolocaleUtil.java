@@ -93,8 +93,8 @@ public class InfolocaleUtil {
           try {
             Date date1 = sdf.parse(o1.getDates()[0].getDebut());
             Date date2 = sdf.parse(o2.getDates()[0].getDebut());
-            if (date1.after(date2)) return -1;
-            if (date2.after(date1)) return 1;
+            if (date1.after(date2)) return 1;
+            if (date2.after(date1)) return -1;
           } catch (ParseException e) {
             LOGGER.warn("Exception while comparing events : " + e.getMessage());
           }
