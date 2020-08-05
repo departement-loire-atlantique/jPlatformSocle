@@ -46,7 +46,6 @@ String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().leng
             </jalios:if>
           </p>
           
-		  <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
 			  <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
 			     <%= itEvent.getMetadata1() %>
 			  </jalios:if>
