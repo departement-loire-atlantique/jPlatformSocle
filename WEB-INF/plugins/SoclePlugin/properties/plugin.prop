@@ -427,6 +427,9 @@ jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/flux/type/annonces/extract/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
 
+jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
+jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
+
 # Metadonnees Infolocale pour le front
 
 jcmsplugin.socle.infolocale.metadata.front.commune: commune

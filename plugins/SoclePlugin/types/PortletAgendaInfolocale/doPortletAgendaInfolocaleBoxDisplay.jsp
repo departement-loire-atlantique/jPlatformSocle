@@ -40,11 +40,13 @@ if (Util.notEmpty(box.getGroupesDevenementsInfolocale())) {
 
 parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
 
-SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-parameters.put("dateDebut", sdf.format(Calendar.getInstance().getTime()));
+SimpleDateFormat sdf = new SimpleDateFormat(channel.getProperty("jcmsplugin.socle.infolocale.date.send.format"));
+Date dateDebut = Calendar.getInstance().getTime();
+parameters.put("dateDebut", sdf.format(dateDebut));
 Calendar calInAMonth = Calendar.getInstance();
 calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
-parameters.put("dateFin", sdf.format(calInAMonth.getTime()));
+Date dateInAMonth = calInAMonth.getTime();
+parameters.put("dateFin", sdf.format(dateInAMonth));
 
 String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
 
@@ -56,9 +58,12 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 <jalios:select>
     <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() > 0 %>'>
         <%
+        SimpleDateFormat sdfSort = new SimpleDateFormat(channel.getProperty("jcmsplugin.socle.infolocale.date.receive.format"));
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
+        sortedEvents = InfolocaleUtil.purgeEventListFromDuplicates(sortedEvents, new String[]{sdfSort.format(dateDebut), sdfSort.format(dateInAMonth)});
+        
         int maxTuiles = 0;
         if (Util.notEmpty(box.getNombreDeTuiles()) && box.getNombreDeTuiles() > 0) {
           maxTuiles = allEvents.size() <= box.getNombreDeTuiles() ? allEvents.size() : box.getNombreDeTuiles();
