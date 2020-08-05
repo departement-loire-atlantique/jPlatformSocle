@@ -73,11 +73,18 @@
 		description="Est ce que la facette propose une séléction multiple" 
 %>
 <%@ attribute name="profondeur" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="Boolean" 
-		description="La profondeur est elle a 1 (sinon 2)" 
+        required="true" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="Boolean" 
+        description="La profondeur est elle a 1 (sinon 2)" 
+%>
+<%@ attribute name="forcedLabel" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="Label du champ forcé à cette valeur" 
 %>
 <%
 	Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
@@ -90,6 +97,7 @@
 	labelChamp = Util.notEmpty(listeCategory) ? listeCategory.first().getName() : labelChamp;
 	labelChamp = Util.notEmpty(dataURL) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.sous-theme.label") : labelChamp;
 	labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : labelChamp;
+	labelChamp = Util.notEmpty(forcedLabel) ? forcedLabel : labelChamp;
 	String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";
 %>
 <div class="ds44-form__container">
