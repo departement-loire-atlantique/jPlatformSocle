@@ -5,6 +5,9 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
+    <field name="delegation" editor="link" required="false" compactDisplay="false" type="generated.Delegation" parent="false">
+      <label xml:lang="fr">Délégation à restreindre</label>
+    </field>
     <field type="super" />
   </fields>
   <label xml:lang="fr">Portlet Facette Agenda Commune</label>
