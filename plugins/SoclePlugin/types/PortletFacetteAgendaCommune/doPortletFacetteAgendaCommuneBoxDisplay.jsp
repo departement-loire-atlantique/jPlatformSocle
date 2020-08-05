@@ -9,6 +9,11 @@
 	
 	Category rayonRoot = channel.getCategory(channel.getProperty("jcmsplugin.socle.rayon.agenda.root.id"));
 	if (Util.isEmpty(rayonRoot)) rayonRoot = new Category();
+	Delegation delegation = obj.getDelegation();
+	String dataUrl = "plugins/SoclePlugin/jsp/facettes/acSearchCommuneAgenda.jsp";
+	if(Util.notEmpty(delegation)){
+	  dataUrl = dataUrl + "?delegationId=" + delegation.getId();
+	}
 %>
 
 <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
@@ -16,7 +21,7 @@
 		request="<%= request %>" 
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="select-only" 
-		dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommuneAgenda.jsp" 
+		dataUrl="<%= dataUrl %>" 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		option='<%= channel.getProperty("jcmsplugin.socle.rayon.option") %>'
 		setRayons='<%= rayonRoot.getChildrenSet() %>'/>
