@@ -5,40 +5,66 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.thematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Thématique</label>
-    </field>
-    <field name="autreThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique">
-      <label xml:lang="fr">Autre thématique</label>
-    </field>
-    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wiki="true" wikiwyg="false">
+    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wiki="true" wikiwyg="false" tab="contenu">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="pressCommuniqueDirectory" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false">
+    <field name="pressCommuniqueDirectory" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.FileDocument" ml="false" parent="false" tab="contenu">
       <label xml:lang="fr">Dossier du communiqué de presse</label>
     </field>
-    <field name="seeTheDocument" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
-      <label xml:lang="fr">Visionner le document</label>
+    <field name="libelleLien" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="liens" tab="contenu">
+      <label xml:lang="fr">Libellé lien</label>
     </field>
-    <field name="relatedNews" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="liens" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="relatedNews" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tab="contenu">
       <label xml:lang="fr">Actualité liée</label>
     </field>
-    <field name="linkMediasType" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Types de médias liés</label>
+    <field name="video" editor="link" required="false" compactDisplay="false" type="generated.Video[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="contenu">
+      <label xml:lang="fr">Vidéo</label>
     </field>
-    <field name="linkMedias" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
-      <label xml:lang="fr">Médias liés</label>
-    </field>
-    <field name="pressContactName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+    <field name="pressContactName" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tab="contenu">
       <label xml:lang="fr">Contact presse nom</label>
     </field>
-    <field name="pressContactMails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true">
+    <field name="pressContactMails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true" tab="contenu">
       <label xml:lang="fr">Contact presse courriel</label>
     </field>
-    <field name="pressContactPhones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+    <field name="pressContactPhones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tab="contenu">
       <label xml:lang="fr">Contact presse téléphone</label>
     </field>
+    <field name="politiquesPubliques" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.politiquesPubliques" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
+      <label xml:lang="fr">Politiques publiques</label>
+    </field>
+    <field name="missionsThematiques" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.missionsThematiques" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
+      <label xml:lang="fr">Missions thématiques</label>
+    </field>
+    <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.thematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
+      <label xml:lang="fr">Thématique (old)</label>
+    </field>
+    <field name="autreThematique" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique" tab="rattachement">
+      <label xml:lang="fr">Autre thématique (old)</label>
+    </field>    
+    <field hidden="true" name="seeTheDocument" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Visionner le document</label>
+    </field>
+    <field hidden="true" name="linkMediasType" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.autreThematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Types de médias liés</label>
+    </field>
+    <field hidden="true" name="linkMedias" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Médias liés</label>
+    </field>
   </fields>
+  <tabs>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
   <label xml:lang="fr">Communiqué / Dossier de presse</label>
 </type>
 
