@@ -606,4 +606,90 @@ public class InfolocaleUtil {
       // Renvoyer la valeur d'origine : aucune modification
       return dateStr;
     }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param dateInfoloc
+     * @return
+     */
+    public static String getHoraireDisplay(DateInfolocale dateInfoloc) {
+      if (Util.isEmpty(dateInfoloc) || Util.isEmpty(dateInfoloc.getHoraire())) return "";
+      
+      String separatorHoraire = " - ";
+      String suffixeHoraire = ", ";
+      
+      // séparation par les virgules
+      String[] splittedHoraires = dateInfoloc.getHoraire().split(separatorHoraire);
+      StringBuilder finalHoraire = new StringBuilder();
+      
+      for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
+        
+        String itHoraire = iter.next();
+        
+        if (!itHoraire.contains(separatorHoraire)) {
+          
+          finalHoraire.append(itHoraire);
+          
+        } else {
+          
+          String[] splittedTimes = itHoraire.split(separatorHoraire);
+          
+          int counterSplit = 0;
+          
+          while (counterSplit < splittedTimes.length) {
+            String horaire_1 = splittedTimes[counterSplit];
+            counterSplit++;
+            String horaire_2 = splittedTimes[counterSplit];
+            
+            if (horaire_1.equals(horaire_2)) {
+              finalHoraire.append(horaire_1);
+            } else {
+              finalHoraire.append(itHoraire);
+            }
+            
+            counterSplit++;
+            finalHoraire.append(suffixeHoraire);
+            
+          }
+          
+          if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1])) finalHoraire.append(splittedTimes[0]);
+          
+        }
+        
+        if (iter.hasNext()) {
+          finalHoraire.append(suffixeHoraire);
+        }
+        
+      }
+      
+      return deleteDoublonsFromString(finalHoraire.toString(), suffixeHoraire);
+    }
+    
+    /**
+     * Depuis un string représentant une liste, supprime les doublons
+     * ex: "14h00, 14h00, 15h00" -> "14h00, 15h00"
+     * @param original
+     * @param splitter
+     * @return
+     */
+    private static String deleteDoublonsFromString(String original, String splitter) {
+      String[] splittedString = original.split(splitter);
+      
+      StringBuilder result = new StringBuilder();
+      
+      for (Iterator<String> iter = Arrays.asList(splittedString).iterator(); iter.hasNext();) {
+        String itSsElem = iter.next();
+        
+        if (result.toString().contains(itSsElem)) continue;
+        
+        result.append(itSsElem + splitter);
+      }
+      
+      // obligation de retirer le dernier suffixe -> ajouter un suffixe suite à un hasNext() pourrait ajouter
+      // un suffixe même si aucun élément suivant n'est unique
+      // on évite de rajouter un IF dans la boucle avec cette action
+      result.delete(result.lastIndexOf(splitter), result.length()+1);     
+      
+      return result.toString();
+    }
 }
