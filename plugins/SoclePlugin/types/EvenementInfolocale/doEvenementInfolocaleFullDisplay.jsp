@@ -319,6 +319,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       
       <%-- TODO : liens de partage --%>
       
+      <%--
       <section class="ds44-partage ds44-flex-container ds44-flex-align-center pal ds44-mb35">
          <h2 class="h4-like" id="idPartageRS"><%= glp("jcmsplugin.socle.partagerpage") %></h2>
          <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
@@ -328,6 +329,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
             <li><a href="#" target="_blank" class="ds44-rsLink" title="Contacter le Département de Loire-Atlantique - nouvelle fenêtre" data-statistic="{&quot;name&quot;: &quot;declenche-evenement&quot;,&quot;category&quot;: &quot;Partage page&quot;,&quot;action&quot;: &quot;Loire-Atlantique&quot;}"><i class="icon icon-mail icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.contacterdept") %></span></a></li>
          </ul>
       </section>
+      --%>
       
    </article>
 </main>
