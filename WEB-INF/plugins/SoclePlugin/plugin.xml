@@ -254,7 +254,12 @@
         <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates> 
+    </templates>
+    <templates type="PressCommunique">
+        <template name="default" file="doPressCommuniqueFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>     
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">

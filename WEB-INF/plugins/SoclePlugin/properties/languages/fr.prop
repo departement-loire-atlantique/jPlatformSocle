@@ -229,7 +229,11 @@ jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
 jcmsplugin.socle.km2: km²
-jcmsplugin.socle.enbref: En bref 
+jcmsplugin.socle.enbref: En bref
+jcmsplugin.socle.savoirplus: En savoir +
+jcmsplugin.socle.envideo: En vidéo
+jcmsplugin.socle.alireaussi: A lire aussi
+jcmsplugin.socle.memetheme: Sur le même thème
 
 # ------------------------------------------------------------
 #  Header
@@ -631,3 +635,11 @@ jcmsplugin.socle.equipement.montant-travaux: Montant total des travaux :
 jcmsplugin.socle.equipement.financement-dep: Financement départemental :
 jcmsplugin.socle.equipement.pourcentage-dep: Pourcentage Département :
 
+# ------------------------------------------------------------
+#  Communiqué de presse
+# ------------------------------------------------------------
+jcmsplugin.socle.presscommunique.telecharger.label: Télécharger le communiqué
+jcmsplugin.socle.presscommunique.telecharger.title: Télécharger le communiqué : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.presscommunique.contact-presse.nom.default:Service presse
+jcmsplugin.socle.presscommunique.contact-presse.email.default:service.presse@loire-atlantique.fr
+jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13 
