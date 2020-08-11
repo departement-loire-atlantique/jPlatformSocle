@@ -199,6 +199,10 @@ jcmsplugin.socle.tout-decocher: Tout décocher
 jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
+jcmsplugin.socle.partager.fb: Partager cette page sur Facebook
+jcmsplugin.socle.partager.twitter: Partager cette page sur Twitter
+jcmsplugin.socle.partager.linkedin: Partager cette page sur LinkedIn
+jcmsplugin.socle.partagerpage: Partagez cette page :
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
@@ -230,6 +234,7 @@ jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
 jcmsplugin.socle.km2: km²
+jcmsplugin.socle.contacterdept: Contacter Le Département de Loire-Atlantique
 jcmsplugin.socle.enbref: En bref
 jcmsplugin.socle.savoirplus: En savoir +
 jcmsplugin.socle.envideo: En vidéo

@@ -53,7 +53,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
         
         <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" counter="itCounter">
            <jalios:select>
-             <jalios:if predicate='<%= itCounter == 1 %>'>
+             <jalios:if predicate='<%= itCounter == 1 && Util.isEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
                 <%-- On affiche le 1er ancêtre s'il existe --%>
                 <%
                 libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
@@ -61,7 +61,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
                 %>
                 <li class="ds44-breadcrumb_item"><span><%= libelleCat %></span></li>
              </jalios:if>
-             <jalios:if predicate='<%= itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) && counter < box.getLevels()-1 %>'>
+             <jalios:if predicate='<%= (itCounter == 1 && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory))) || (itCategory.canBeReadBy(loggedMember , true, true) && Util.notEmpty(SocleUtils.getContenuPrincipal(itCategory)) && counter < box.getLevels()-1) %>'>
                 <%-- On boucle sur les autres ancêtres et on vérifie la présence d'un contenu principal --%>
                 <%
                 libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
