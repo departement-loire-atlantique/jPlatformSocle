@@ -146,6 +146,8 @@ jcmsplugin.socle.image.magazine.tuile.width: 138
 jcmsplugin.socle.image.magazine.tuile.height: 193
 jcmsplugin.socle.image.magazine.width: 363
 jcmsplugin.socle.image.magazine.height: 509
+jcmsplugin.socle.image.card.width: 431
+jcmsplugin.socle.image.card.height: 287
 
 # ------------------------------------------------------------
 #  Wysiwyg
