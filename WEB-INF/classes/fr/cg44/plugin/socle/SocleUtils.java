@@ -947,6 +947,15 @@ public final class SocleUtils {
   }
   
   /**
+   * Génère une image card formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCard(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.card.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.card.height", 0)); 
+  }
+  
+  /**
    * Retourne l'URL d'une image carree ou d'un substitut pour le contenu indiqué
    * @param pub
    * @return
