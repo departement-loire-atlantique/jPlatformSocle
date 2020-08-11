@@ -1,0 +1,123 @@
+<%@page import="fr.cg44.plugin.socle.MailUtils"%>
+<%@page import="fr.cg44.plugin.socle.formcontroller.FaqFormController"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<%
+	String mail = channel.getProperty("jcmsplugin.socle.contact-faq.default-mail");
+	
+	if(Util.notEmpty(obj.getEmailSpecifique())) {
+		mail = obj.getEmailSpecifique();
+	}
+	
+	if(Util.notEmpty(request.getAttribute("contactfaq"))) {
+		mail = request.getAttribute("contactfaq").toString();
+	}
+%>
+
+<%
+// Formulaire soumis : traitement
+if(Util.notEmpty(request.getParameter("opCreate")) && Util.isEmpty(request.getAttribute("formFaqSoumis"))){
+	
+	// contrôle des données
+	if(FaqFormController.checkIntegrity()){
+		// Envoi du mail
+		MailUtils.envoiMailFAQ(request, mail);
+	}
+}
+
+String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
+Publication currentPub = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+Publication pubParent = (Publication) request.getAttribute("pubParent");
+String redirectValue = pubParent.getDisplayUrl(userLocale);
+%>
+
+<%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
+
+<form action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
+	<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %></p>
+    <p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+    
+    <% String idFormElement1 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+	<div class="ds44-form__container">
+		<div class="ds44-posRel">
+			<label for="<%= idFormElement1 %>" class="ds44-formLabel">
+                            <span class="ds44-labelTypePlaceholder">
+					<span class="ds44-labelTypePlaceholder">
+						<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
+					</span>
+				</span>
+			</label>
+			<textarea name="question" rows="5" cols="1" id="<%= idFormElement1 %>" class="ds44-inpStd" 
+					title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
+					 aria-required="true"></textarea>
+		</div>
+		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
+	</div>
+	
+	<% String idFormElement2 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+	<div class="ds44-form__container">
+		<div class="ds44-posRel">
+			<label for="<%= idFormElement2 %>" class="ds44-formLabel">
+                            <span class="ds44-labelTypePlaceholder">
+				    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
+                            </span>
+			</label>
+			<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
+					role="combobox" 
+					aria-autocomplete="list" 
+					autocomplete="address-level2"
+					aria-expanded="false" 
+					title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
+					data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+					data-mode="select-only" />
+			<button class="ds44-reset" type="button">
+				<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+				<span class="visually-hidden">
+					<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pdcv.votrecommune")) %>
+				</span>
+			</button> 
+			
+			<div class="ds44-autocomp-container hidden">
+				<div class="ds44-autocomp-list">
+					<ul class="ds44-list" role="listbox"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
+	</div>
+	
+	<% String idFormElement3 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+	<div class="ds44-form__container">
+		<div class="ds44-posRel">
+			<label for="<%= idFormElement3 %>" class="ds44-formLabel">
+                            <span class="ds44-labelTypePlaceholder">
+					<span class="ds44-labelTypePlaceholder">
+						<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
+					</span>
+                            </span>
+			</label>
+			<input type="text" id="<%= idFormElement3 %>" name="mail" class="ds44-inpStd" 
+					title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
+					required autocomplete="email"
+					aria-describedby="explanation-<%= idFormElement3 %>" />
+			<span class="ds44-labelTypeInfoComp" id="explanation-<%= idFormElement3 %>"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+			<button class="ds44-reset" type="button">
+				<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+				<span class="visually-hidden">
+					<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %>
+				</span>
+			</button> 
+		</div>
+		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
+	</div>
+	<button class="ds44-btnStd ds44-btn--invert" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.faq.valider-envoie-question")) %>'>
+		<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span>
+			<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+	</button>
+	
+	<input type='hidden' name='redirect' value='<%= redirectValue %>' data-technical-field />
+	<input type='hidden' name='opCreate' value='<%= glp("ui.com.btn.submit") %>' data-technical-field />
+	<input type="hidden" name="noSendRedirect" value='true' data-technical-field />
+	<input type='hidden' name='id' value='<%= pubParent.getId()%>' data-technical-field />
+	<input type="hidden" name="csrftoken" value="<%= HttpUtil.getCSRFToken(request) %>" data-technical-field>
+</form>

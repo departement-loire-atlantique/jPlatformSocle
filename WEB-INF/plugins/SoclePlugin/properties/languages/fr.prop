@@ -113,6 +113,7 @@ jcmsplugin.socle.email.message.echec : Une erreur s'est produite lors de l'envoi
 jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
 jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
 jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
+jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
 
 
 # ------------------------------------------------------------
