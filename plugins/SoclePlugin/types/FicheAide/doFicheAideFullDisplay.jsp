@@ -221,7 +221,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
                 		aria-hidden="true" 
                 		style="display: none; opacity: 0;">
 					<jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-					   <% ServletUtil.backupAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
+					   <% ServletUtil.backupAttribute(pageContext, PortalManager.PORTAL_PUBLICATION);
+					   request.setAttribute("pubParent",obj);
+					   %>
 					   <jalios:include pub="<%= obj.getFaq() %>" usage="full"/>
                        <% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
 					</jalios:if>
