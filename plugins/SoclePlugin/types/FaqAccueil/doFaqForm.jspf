@@ -26,9 +26,14 @@ if(Util.notEmpty(request.getParameter("opCreate")) && Util.isEmpty(request.getAt
 }
 
 String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
-Publication currentPub = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-Publication pubParent = (Publication) request.getAttribute("pubParent");
-String redirectValue = pubParent.getDisplayUrl(userLocale);
+/* Calcul de la pub courante : 
+	si on est sur un affichage dans fiche aide, renvoie la fiche aide
+	sinon renvoie la FAQ Accueil
+*/
+Publication currentPub = null!=request.getAttribute("pubParent") ? 
+	    (Publication) request.getAttribute("pubParent") :
+	    (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+String redirectValue = currentPub.getDisplayUrl(userLocale);
 %>
 
 <%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
@@ -118,6 +123,6 @@ String redirectValue = pubParent.getDisplayUrl(userLocale);
 	<input type='hidden' name='redirect' value='<%= redirectValue %>' data-technical-field />
 	<input type='hidden' name='opCreate' value='<%= glp("ui.com.btn.submit") %>' data-technical-field />
 	<input type="hidden" name="noSendRedirect" value='true' data-technical-field />
-	<input type='hidden' name='id' value='<%= pubParent.getId()%>' data-technical-field />
+	<input type='hidden' name='id' value='<%= currentPub.getId()%>' data-technical-field />
 	<input type="hidden" name="csrftoken" value="<%= HttpUtil.getCSRFToken(request) %>" data-technical-field>
 </form>
