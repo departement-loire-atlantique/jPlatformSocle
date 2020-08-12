@@ -1060,7 +1060,34 @@ public final class SocleUtils {
    */
   public static String getUrlOfFormattedImageMagazine(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.magazine.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.magazine.height", 0)); 
-  }  
+  }
+  
+  /**
+   * Génère une image formattée pour les images desktop dans un diaporama
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageDiaporamaDesktop(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.desktop.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.desktop.height", 0)); 
+  }
+  
+  /**
+   * Génère une image formattée pour les images mobiles dans un diaporama
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageDiaporamaMobile(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.mobile.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.mobile.height", 0)); 
+  }
+  
+  /**
+   * Génère une image formattée pour les vignettes dans un diaporama
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageDiaporamaVignette(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.height", 0)); 
+  }
   
   /**
    * Génère une image formattée et renvoie son path
