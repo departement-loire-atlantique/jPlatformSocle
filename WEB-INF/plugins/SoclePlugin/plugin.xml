@@ -66,6 +66,7 @@
     <type name="PortletFacetteDelegation"></type>
     <type name="PortletFacetteMotcle"></type>
     <type name="PortletFacetteTitre"></type>
+    <type name="PortletFaq"></type>
     <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
@@ -128,6 +129,11 @@
     </templates>
     <templates type="ElectedMember">
         <template name="default" file="doElectedMemberFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Equipement">
+        <template name="default" file="doEquipementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>

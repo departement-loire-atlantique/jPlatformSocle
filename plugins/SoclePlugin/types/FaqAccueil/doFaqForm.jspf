@@ -5,6 +5,8 @@
 <%
 	String mail = channel.getProperty("jcmsplugin.socle.contact-faq.default-mail");
 	
+	//TODO ecraser mail s'il y a un mail de contact par defaut pour le service
+	
 	if(Util.notEmpty(obj.getEmailSpecifique())) {
 		mail = obj.getEmailSpecifique();
 	}
@@ -26,6 +28,7 @@ if(Util.notEmpty(request.getParameter("opCreate")) && Util.isEmpty(request.getAt
 }
 
 String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
+
 /* Calcul de la pub courante : 
 	si on est sur un affichage dans fiche aide, renvoie la fiche aide
 	sinon renvoie la FAQ Accueil
@@ -39,7 +42,7 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 <%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
 
 <form action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
-	<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %></p>
+	<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %> :</p>
     <p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
     
     <% String idFormElement1 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
