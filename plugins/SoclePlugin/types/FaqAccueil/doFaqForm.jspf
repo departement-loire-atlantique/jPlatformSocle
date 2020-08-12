@@ -5,8 +5,6 @@
 <%
 	String mail = channel.getProperty("jcmsplugin.socle.contact-faq.default-mail");
 	
-	//TODO ecraser mail s'il y a un mail de contact par defaut pour le service
-	
 	if(Util.notEmpty(obj.getEmailSpecifique())) {
 		mail = obj.getEmailSpecifique();
 	}
@@ -28,7 +26,6 @@ if(Util.notEmpty(request.getParameter("opCreate")) && Util.isEmpty(request.getAt
 }
 
 String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
-
 /* Calcul de la pub courante : 
 	si on est sur un affichage dans fiche aide, renvoie la fiche aide
 	sinon renvoie la FAQ Accueil
