@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates version="5.0">
+  <template name="default" usage="box" file="doPortletFaqFullDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="edit" file="editPortletFaq.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="full" file="doPortletFaqFullDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+  <template name="default" usage="query" file="doPortletFaqResultDisplay.jsp">
+    <label xml:lang="en">Default template</label>
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <description xml:lang="en">The default template for this publication</description>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+  </template>
+</templates>
+

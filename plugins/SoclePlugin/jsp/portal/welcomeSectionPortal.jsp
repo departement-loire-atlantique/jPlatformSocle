@@ -16,6 +16,11 @@
 <%= getPortlet(bufferMap,"header") %>
 <%= getPortlet(bufferMap,"selection") %>
 
+<jalios:if predicate='<%= channel.getBooleanProperty("jcmsplugin.socle.posezUnequestion.actif", false) %>'>
+    <jsp:include page="posezUneQuestion.jsp"/>
+</jalios:if>
+
+
 <footer role="contentinfo">
     <%= getPortlet(bufferMap,"footer") %>
     <%= getPortlet(bufferMap,"footerNavigation") %>
