@@ -2,7 +2,7 @@
 
 <%
 String date = "";
-if (obj instanceof FicheActu) {
+if (obj.getClass().getName().equals("FicheActu")) {
   try {
     SimpleDateFormat sdfDateActu = new SimpleDateFormat(glp("date-format"));
     date = sdfDateActu.format(((FicheActu)obj).getDateActu());
