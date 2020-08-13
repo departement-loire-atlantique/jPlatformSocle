@@ -649,3 +649,8 @@ jcmsplugin.socle.presscommunique.telecharger.title: Télécharger le communiqué
 jcmsplugin.socle.presscommunique.contact-presse.nom.default:Service presse
 jcmsplugin.socle.presscommunique.contact-presse.email.default:service.presse@loire-atlantique.fr
 jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13 
+
+# ------------------------------------------------------------
+#  Carousel / CarouselElement (Diaporama d'images)
+# ------------------------------------------------------------
+jcmsplugin.socle.diaporama.titre: {0} - {1}
