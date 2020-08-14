@@ -143,7 +143,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 
                         <div class="col-1 grid-offset"></div>
 
-                        <aside class="col-4">     
+                        <aside class="col-4 asideCards">     
                             <%@ include file="doFicheAideEncadre.jspf" %>                     
                         </aside>
                         
@@ -200,7 +200,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 
                         <div class="col-1 grid-offset"></div>
  
-                        <aside class="col-4">                   
+                        <aside class="col-4 asideCards">                   
                             <%@ include file="doFicheAideEncadre.jspf" %>
                         </aside>
 
