@@ -507,6 +507,7 @@
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />
+    <file path="jsp/reprise/contenusSansGeolocLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
