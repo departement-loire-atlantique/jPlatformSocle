@@ -8,8 +8,8 @@
 
 <main id="content" role="main">
     <article class="ds44-container-large">
-
-        <%@ include file='titreActu.jspf' %>
+    
+        <%@ include file='../FicheArticle/commonTitreArticleActu.jspf' %>
 			
 		<%-- Boucler sur les paragraphes --%>
 		<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuParagraphe()%>">
