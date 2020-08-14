@@ -2,14 +2,16 @@
 
 <%
 String date = "";
-if (obj.getClass().getName().equals("FicheActu")) {
-  try {
-    SimpleDateFormat sdfDateActu = new SimpleDateFormat(glp("date-format"));
-    date = sdfDateActu.format(((FicheActu)obj).getDateActu());
-  } catch (Exception e) {
-    // do nothing
-  }
+Publication pub = obj;
+if(pub instanceof FicheActu){
+	try {
+	  SimpleDateFormat sdfDateActu = new SimpleDateFormat(glp("date-format"));
+	  date = sdfDateActu.format(((FicheActu)pub).getDateActu());
+	} catch (Exception e) {
+	  // do nothing
+	}	
 }
+
 %>
 
 <ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
@@ -18,13 +20,13 @@ if (obj.getClass().getName().equals("FicheActu")) {
 
 <%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
 <jalios:if predicate='<%=Util.isEmpty(obj.getVideoPrincipale()) && Util.notEmpty(obj.getChapo()) %>'>
-	<section class="ds44-contenuArticle">
-		<div class="ds44-inner-container ds44-mtb3">
-		    <div class="ds44-grid12-offset-2">
-				<div class="ds44-introduction">
-					<jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="ds44-contenuArticle">
+        <div class="ds44-inner-container ds44-mtb3">
+            <div class="ds44-grid12-offset-2">
+                <div class="ds44-introduction">
+                    <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+                </div>
+            </div>
+        </div>
+    </section>
 </jalios:if>
