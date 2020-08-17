@@ -15,7 +15,7 @@ List<String> socialNetworksList = Arrays.asList(socialNetworks);
 %>
 <div class="ds44-inner-container">
     <section class="ds44-partage ds44-flex-container ds44-flex-align-center pal ds44-mb35">
-        <h2 class="h4-like" id="idPartageRS"><%= glp("jcmsplugin.socle.socialnetworks.share.label") %></h2>
+        <h2 class="h4-like" id="idPartageRS"><%= glp("jcmsplugin.socle.partagerpage") %></h2>
             <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
                 <jalios:foreach name="itSocialNetwork" type="String" collection="<%= socialNetworksList %>">
                     <%
