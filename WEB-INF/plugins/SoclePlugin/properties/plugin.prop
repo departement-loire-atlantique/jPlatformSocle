@@ -72,6 +72,7 @@ $jcmsplugin.socle.cat.root: j_3
 
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
 jcmsplugin.socle.posezUnequestion.actif:true
+jcmsplugin.socle.socialnetworks.share.actif: true
 
 # Comparator
 comparator.FicheLieu.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
@@ -146,8 +147,6 @@ jcmsplugin.socle.image.magazine.tuile.width: 138
 jcmsplugin.socle.image.magazine.tuile.height: 193
 jcmsplugin.socle.image.magazine.width: 363
 jcmsplugin.socle.image.magazine.height: 509
-jcmsplugin.socle.image.card.width: 431
-jcmsplugin.socle.image.card.height: 287
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -300,6 +299,7 @@ channel.topbar.site.enabled: true
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
+jcmsplugin.socle.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
 
 # ------ Propriétés éditables SoclePlugin
 
@@ -430,9 +430,6 @@ jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/flux/type/annonces/extract/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
-
-jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
-jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
 
 # Metadonnees Infolocale pour le front
 

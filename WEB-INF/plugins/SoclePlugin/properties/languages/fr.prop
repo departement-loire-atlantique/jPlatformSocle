@@ -143,6 +143,14 @@ jcmsplugin.socle.socialnetwork.depsur.facebook: Le Département de Loire-Atlanti
 jcmsplugin.socle.socialnetwork.depsur.twitter: Le Département de Loire-Atlantique sur Twitter
 jcmsplugin.socle.socialnetwork.depsur.instagram: Le Département de Loire-Atlantique sur Instagram
 jcmsplugin.socle.socialnetwork.depsur.youtube: Le Département de Loire-Atlantique sur Youtube
+jcmsplugin.socle.socialnetworks.share.label: Partagez cette page :
+jcmsplugin.socle.socialnetworks.share:Liste des réseaux sociaux (fonction de partage)
+jcmsplugin.socle.socialnetworks.share.help:Attention : la liste doit commencer par un "@" et les valeurs séparées par un "|". Les valeurs possibles sont : @|Facebook|Twitter|Pinterest|Instagram|LinkedIn|Email
+jcmsplugin.socle.socialnetwork.share.facebook: Partager cette page sur Facebook - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.twitter: Partager cette page sur Twitter - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.instagram: Partager cette page sur Instagram - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.linkedin: Partager cette page sur Linkedin - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.mail: Partager cette page par email - nouvelle fenêtre
 
 # ------------------------------------------------------------
 #  Libellés communs
@@ -199,10 +207,6 @@ jcmsplugin.socle.tout-decocher: Tout décocher
 jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
-jcmsplugin.socle.partager.fb: Partager cette page sur Facebook
-jcmsplugin.socle.partager.twitter: Partager cette page sur Twitter
-jcmsplugin.socle.partager.linkedin: Partager cette page sur LinkedIn
-jcmsplugin.socle.partagerpage: Partagez cette page :
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
@@ -234,7 +238,6 @@ jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
 jcmsplugin.socle.km2: km²
-jcmsplugin.socle.contacterdept: Contacter Le Département de Loire-Atlantique
 jcmsplugin.socle.enbref: En bref
 jcmsplugin.socle.savoirplus: En savoir +
 jcmsplugin.socle.envideo: En vidéo
