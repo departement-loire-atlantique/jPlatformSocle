@@ -36,7 +36,7 @@
                 
                 <%-- Colonne de droite (affichée systématiquement même si portlets vides) --%>
                 <div class="col-1 grid-offset"></div>
-                <aside class="col-4">                   
+                <aside class="col-4 asideCards">                   
     		        <jalios:if predicate="<%= Util.notEmpty(obj.getTopportlets()) %>">
 			            <jalios:foreach name="itPortlet" array="<%= obj.getTopportlets() %>" type="com.jalios.jcms.Publication">
 			                <jalios:include id="<%= itPortlet.getId() %>" />

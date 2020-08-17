@@ -38,7 +38,7 @@ String copyright = obj.getCopyright(userLang);
                 
                 <%-- Colonne de droite (affichée systématiquement même si portlets vides) --%>
                 <div class="col-1 grid-offset"></div>
-                <aside class="col-4">
+                <aside class="col-4 asideCards">
     		        <jalios:if predicate="<%= Util.notEmpty(obj.getSideportlets()) %>">
 			            <jalios:foreach name="itPub" array="<%= obj.getSideportlets() %>" type="com.jalios.jcms.Publication">
 			            
