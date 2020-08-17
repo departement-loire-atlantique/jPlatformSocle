@@ -22,16 +22,16 @@ public final class LiensUtils {
 	   */
 	  public static String createLink(String socialNetwork, String urlPub, Publication pubCourante) {
 		  switch (socialNetwork.toLowerCase()) {
-          case "facebook" :
-        	  return createFacebookLink(urlPub);
-		  case "twitter" :
-	    	  return createTwitterLink(urlPub);
-		  case "pinterest" :
-	    	  return createPinterestLink(urlPub);
-		  case "linkedin" :
-	    	  return createLinkedinLink(urlPub);	    	  
-		  case "mail" :
-	    	  return createEmailLink(urlPub, pubCourante.getTitle());
+	          case "facebook" :
+	        	  return createFacebookLink(urlPub);
+			  case "twitter" :
+		    	  return createTwitterLink(urlPub);
+			  case "pinterest" :
+		    	  return createPinterestLink(urlPub);
+			  case "linkedin" :
+		    	  return createLinkedinLink(urlPub);	    	  
+			  case "mail" :
+		    	  return createEmailLink(urlPub, pubCourante.getTitle());
 		  }
 		return null;  
 	    
