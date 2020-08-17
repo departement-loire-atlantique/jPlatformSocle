@@ -61,7 +61,8 @@
 		</div>
 	</section>
 
-	<%-- TODO : bloc des réseaux sociaux --%>
+	<%-- Partagez cette page --%>
+    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
 	<%-- TODO : bloc Je m'abonne --%>
 	<jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id"))%>'>
