@@ -24,12 +24,15 @@
             </jalios:default>
         </jalios:select>
         
-        <%-- TODO : bloc des réseaux sociaux --%>
+        <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
         
         <%-- TODO : bloc Je m'abonne --%>
         
         <%-- TODO : bloc "Sur le même thème --%>
-        
+        <%--
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+         --%>
         <%-- Portlets bas --%>
 	    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
 	        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">

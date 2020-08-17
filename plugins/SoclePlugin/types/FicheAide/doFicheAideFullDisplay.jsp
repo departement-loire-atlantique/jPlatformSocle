@@ -238,6 +238,9 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
  
 
             </div>
+            
+            <%-- Partagez cette page --%>
+            <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
         </section>
 
