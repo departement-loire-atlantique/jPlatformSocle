@@ -154,6 +154,12 @@
     <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="details" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Autres lieux associés</label>
     </field>
+    <field name="lienDeLaPageFacebook" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien de la page Facebook</label>
+    </field>
+    <field name="lienDeLaPageInstagram" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien de la page Instagram</label>
+    </field>
     <field name="portletBas" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Portlet bas</label>
     </field>

@@ -143,6 +143,10 @@ jcmsplugin.socle.socialnetwork.depsur.facebook: Le Département de Loire-Atlanti
 jcmsplugin.socle.socialnetwork.depsur.twitter: Le Département de Loire-Atlantique sur Twitter
 jcmsplugin.socle.socialnetwork.depsur.instagram: Le Département de Loire-Atlantique sur Instagram
 jcmsplugin.socle.socialnetwork.depsur.youtube: Le Département de Loire-Atlantique sur Youtube
+jcmsplugin.socle.socialnetwork.retrouver.facebook: Retrouver {0} sur Facebook
+jcmsplugin.socle.socialnetwork.retrouver.instagram: Retrouver {0} sur Instagram
+jcmsplugin.socle.socialnetwork.retrouver.facebook.nouvellefenetre: Retrouver sur Facebook : {0} - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.retrouver.instagram.nouvellefenetre: Retrouver sur Intagram : {0} - nouvelle fenêtre
 jcmsplugin.socle.socialnetworks.share.label: Partagez cette page :
 jcmsplugin.socle.socialnetworks.share:Liste des réseaux sociaux (fonction de partage)
 jcmsplugin.socle.socialnetworks.share.help:Attention : la liste doit commencer par un "@" et les valeurs séparées par un "|". Les valeurs possibles sont : @|Facebook|Twitter|Pinterest|Instagram|LinkedIn|Email

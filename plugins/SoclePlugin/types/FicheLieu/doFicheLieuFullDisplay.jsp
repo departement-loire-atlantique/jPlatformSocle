@@ -242,23 +242,35 @@
 
                                     </jalios:if>
 
-                                    <jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
-                                        <p role="heading" aria-level="3" class="ds44-box-heading mtl">
-                                            <%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
-                                        </p>
-                                        <p class="ds44-docListElem mts">
-                                            <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-                                            <%=adresseEcrire%>
-                                        </p>
+									<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
+										<p role="heading" aria-level="3" class="ds44-box-heading mtl">
+											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
+										</p>
+										<p class="ds44-docListElem mts">
+											<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+											<%=adresseEcrire%>
+										</p>
+									</jalios:if>
+									<jalios:if predicate="<%= Util.notEmpty(obj.getLienDeLaPageFacebook()) || Util.notEmpty(obj.getLienDeLaPageInstagram()) %>">
+										<section class="ds44-partage ds44-flex-container ds44-mt-std">
+	                                        <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
+	                                            <jalios:if predicate="<%= Util.notEmpty(obj.getLienDeLaPageFacebook()) %>">
+	                                                <li><a href="<%= obj.getLienDeLaPageFacebook() %>" target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.retrouver.facebook.nouvellefenetre", obj.getTitle()) %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "Facebook"}'><i class="icon icon-facebook icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.retrouver.facebook", obj.getTitle()) %></span></a></li>
+	                                            </jalios:if>
+	                                            <jalios:if predicate="<%= Util.notEmpty(obj.getLienDeLaPageInstagram()) %>">
+	                                               <li><a href="<%= obj.getLienDeLaPageInstagram() %>" target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.retrouver.instagram.nouvellefenetre", obj.getTitle()) %>'" data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "Instagram"}'><i class="icon icon-instagram icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.retrouver.instagram", obj.getTitle()) %></span></a></li>
+	                                            </jalios:if>
+	                                        </ul>
+                                    </section>
                                     </jalios:if>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </jalios:if>
-            </div>
-        </div>
-    </div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</jalios:if>
+			</div>
+		</div>
+	</div>
 
     <section class="ds44-contenuArticle" id="section1">
         <div class='ds44-inner-container <%= Util.notEmpty(obj.getImagePrincipale()) ? "ds44-mtb3" : "ds44-mb3"%>'>
