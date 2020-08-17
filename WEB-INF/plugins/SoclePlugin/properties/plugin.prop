@@ -147,6 +147,8 @@ jcmsplugin.socle.image.magazine.tuile.width: 138
 jcmsplugin.socle.image.magazine.tuile.height: 193
 jcmsplugin.socle.image.magazine.width: 363
 jcmsplugin.socle.image.magazine.height: 509
+jcmsplugin.socle.image.card.width: 431
+jcmsplugin.socle.image.card.height: 287
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -430,6 +432,9 @@ jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/flux/type/annonces/extract/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
+
+jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
+jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
 
 # Metadonnees Infolocale pour le front
 
