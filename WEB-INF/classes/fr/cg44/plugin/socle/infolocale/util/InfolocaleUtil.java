@@ -13,14 +13,20 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
+import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Data;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import generated.EvenementInfolocale;
 
 public class InfolocaleUtil {
@@ -522,6 +528,11 @@ public class InfolocaleUtil {
         
       }
       
+      // Possibilité d'une double date, par ex. 2020-08-12,2020-08-14
+      if (arrayDebutFin[0].contains(",")) {
+        arrayDebutFin = arrayDebutFin[0].split(",");
+      }
+      
       String dateDebut = arrayDebutFin[0];
       String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
@@ -564,7 +575,7 @@ public class InfolocaleUtil {
         
         return 
             (limitStart.before(debutEvent) || limitStart.equals(debutEvent))
-            && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+            || (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
       } catch (ParseException e) {
         LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
         return false;

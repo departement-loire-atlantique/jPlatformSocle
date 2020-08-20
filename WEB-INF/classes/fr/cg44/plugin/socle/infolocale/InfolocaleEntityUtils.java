@@ -47,6 +47,8 @@ public class InfolocaleEntityUtils {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleEntityUtils.class);
     
+    private static final String listMetadataLbl = "listMetadata";
+    
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
      * @param jsonArray
@@ -572,7 +574,7 @@ public class InfolocaleEntityUtils {
       	}
     	  
         if (Util.notEmpty(strGenres)) { 
-          parameters.put(rubriqueField, boxGenres);
+          parameters.put(rubriqueField, strGenres);
         }
         if (Util.notEmpty(strThematiques)) { 
           parameters.put(thematiqueField, strThematiques);
@@ -649,15 +651,108 @@ public class InfolocaleEntityUtils {
       }           
       return allEvents;
     }
+    
+    /**
+     * <p>Méthode recursive qui navigue dans l'arborescence des thématiques infolocales</p>
+     * @param thematique la thématique sur laquelle on navigue : on va récupérer ses thématiques enfants s'il y a ou ses genres rattachés s'il y a
+     * @param hasToSave est-ce qu'on retourne les valeurs rattachés à cette thématique par défaut
+     * @param idDeThematiquesPersonnalisees liste des thématiques dont on veut les genres reliés, si vide on considère qu'on veut tout récupérer
+     * @param listeGenre la liste qui contient tous les genres déjà récupérés
+     * @param prefixLibelle le prefix du libellés des genres qui permet de rendre compte de sa place dans l'arborescence et éviter les doublons
+     * @return listeGenre avec les genres rattachés à la thématique en entrée en plus
+     */
+  private static Set<Genre> getAllGenreOfAThematique(JSONObject thematique, Boolean hasToSave, String[] idDeThematiquesPersonnalisees, Set<Genre> listeGenre, String prefixLibelle) {
+    Boolean originalHasToSave = hasToSave;
+
+    // on vérifie s'il faut récupérer le contenu de la thématique courante
+    if (!hasToSave && Util.notEmpty(idDeThematiquesPersonnalisees)) {
+      try {
+        int i = 0;
+        String themId = thematique.getString("code");
+        while(i < idDeThematiquesPersonnalisees.length && !hasToSave) {
+          hasToSave = idDeThematiquesPersonnalisees[i].equalsIgnoreCase(themId);
+          i++;
+        }
+      } catch (JSONException e) {
+        LOGGER.warn("Exception sur themId dans getAllGenreOfAThematique"+ e.getMessage());
+      }
+    }
+    // on met à jour le prefix du libelle en fonction de si on récupére le contenu de la thématique courante
+    String newPrefixLibelle = prefixLibelle;
+    try {
+      if((originalHasToSave && idDeThematiquesPersonnalisees.length < 2) || (hasToSave && idDeThematiquesPersonnalisees.length > 1)) {
+        newPrefixLibelle = prefixLibelle+thematique.getString("libelle")+" - ";
+      }
+    } catch (JSONException e1) {
+      LOGGER.warn("Exception sur newPrefixLibelle dans getAllGenreOfAThematique"+ e1.getMessage());
+    }
+
+    // on regarde si la thématique courante a des thématiques enfants
+    JSONArray listeSubThem = null;
+    try {
+      listeSubThem = thematique.getJSONArray("categories");
+    } catch (JSONException e) {
+      if( ! e.getMessage().equalsIgnoreCase("JSONObject[\"categories\"] not found.")) {
+        LOGGER.warn("Exception sur listeSubThem dans getAllGenreOfAThematique : "+ e.getMessage());
+      }
+    }
+    // si la thématique a des thématiques enfants, alors on navigue dans ses catégories enfants récursivement
+    if(Util.notEmpty(listeSubThem)) {
+      for(int i = 0; i < listeSubThem.length(); i++) {
+        try {
+          JSONObject subThem = listeSubThem.getJSONObject(i);
+          listeGenre = getAllGenreOfAThematique(subThem, hasToSave, idDeThematiquesPersonnalisees, listeGenre, newPrefixLibelle);
+        } catch (JSONException e) {
+          LOGGER.warn("Exception sur subThem dans getAllGenreOfAThematique : "+ e.getMessage());
+        }
+      }
+    } else { // sinon, cela signifie qu'elle devrait avoir des genres rattachés
+      JSONArray listeSubGenres = null;
+      try {
+        listeSubGenres = thematique.getJSONArray("genres");
+      } catch (JSONException e) {
+        LOGGER.warn("Exception sur listeSubGenres dans getAllGenreOfAThematique : "+ e.getMessage());
+      }
+      if(Util.notEmpty(listeSubGenres)) {
+        for(int i = 0; i < listeSubGenres.length(); i++) {
+          try {
+            JSONObject subGenre = listeSubGenres.getJSONObject(i);
+            Genre genre = new Genre();
+            genre.setGenreId(subGenre.getString("code"));
+            genre.setLibelle(newPrefixLibelle+subGenre.getString("libelle"));
+
+            Boolean hasToSaveThisGenre = false;
+            // si on ne sauvegarde pas par défaut tous les genres rattachés, on vérifie qu'il fasse partie de la liste idDeThematiquesPersonnalisees
+            if (!hasToSave && Util.notEmpty(idDeThematiquesPersonnalisees)) {
+              int j = 0;
+              while(j < idDeThematiquesPersonnalisees.length && !hasToSaveThisGenre) {
+                hasToSaveThisGenre = idDeThematiquesPersonnalisees[j].equalsIgnoreCase(genre.getGenreId()+"");
+                j++;
+              }
+            }
+
+            if(hasToSave || hasToSaveThisGenre) {
+              listeGenre.add(genre);
+            }
+
+          } catch (JSONException e) {
+            LOGGER.warn("Exception sur subGenre dans getAllGenreOfAThematique : "+ e.getMessage());
+          }
+        }
+      }
+    }
+
+    return listeGenre;
+  }
   
 	/**
-	 * Retourne la liste des genres rattachés aux thématiques d'infolocale, si idDeThematiquesPersonnalisees n'est pas vide, seulement les genres rattachés aux thématiques listées dans cette propriété.
+	 * Retourne la liste des thématiques personnalisées depuis une liste d'IDs
 	 * @param fluxId
 	 * @param idDeThematiquesPersonnalisees
 	 * @param listeGenre
-	 * @return un set des genres reliés aux thématiques, triés par ordre alphabétique des libellés
+	 * @return un set des thématiques personnalisées, triés par ordre alphabétique des libellés
 	 */
-	private static Set<Genre> getAllGenreOfThematiques(String fluxId, String idDeThematiquesPersonnalisees){
+	private static Set<Genre> getAllThematiquesPersoFromIdList(String fluxId, String idDeThematiquesPersonnalisees){
     	Set<Genre> listeGenre = new TreeSet<Genre>(new Comparator<Genre>() {
 			@Override
 			public int compare(final Genre obj1, final Genre obj2) {
@@ -690,21 +785,161 @@ public class InfolocaleEntityUtils {
 		
 		return listeGenre;
 	}
+	
+	 /**
+   * Retourne la liste des genres depuis une liste d'IDs, ainsi que les genres des catégories indiquées, regroupés par labels
+   * @param fluxId
+   * @param groupeDeThematiquesPersonnalisee
+	 * @param idGenres 
+   * @param listeGenre
+   * @return un set des genres reliés aux thématiques personnalisées, triés par ordre alphabétique des libellés
+   */
+  private static Map<String, Set<Genre>> getAllGenreOfThematiquesPerso(String fluxId, String[] lblGenres, String[] idGenres) {
     
-	/**
-	 * <p>Récupère la liste genres reliés à des thématiques ou des thématiques personnalisées du flux infolocale en fonction des paramètres :</p>
-	 * <p>Si groupeDeThematiquesPersonnalisee est vide, alors on retourne la liste des genres rattachés aux thématiques (toutes les thématiques si idDeThematiquesPersonnalisees est vide</p>
-	 * <p>Sinon, on retourne les genres reliés aux thématiques personnalisées listées dans groupeDeThematiquesPersonnalisee</p>
-	 * @param groupeDeThematiquesPersonnalisee liste d'id de groupes de thematiques personnalisées à retourner
-	 * @param idDeThematiquesPersonnalisees liste d'id de thématiques à retourner (avec leurs thématiques enfants s'il y a)
-	 * @param fluxId le flux infolocale à interroger
-	 * @return un set des genres reliés aux thématiques ou aux thématiques personnalisées, triés par ordre alphabétique des libellés
-	 */
-    public static Set<Genre> getAllGenreOfMetadata(String idDeThematiquesPersonnalisees, String fluxId) {
-    	Set<Genre> listeGenre;
+    Map<String, Set<Genre>> genresWithLabels = new HashMap<>();
 
-    	listeGenre = getAllGenreOfThematiques(fluxId, idDeThematiquesPersonnalisees);
-    	
-    	return listeGenre;
+    JSONObject fluxMetadataGenres = RequestManager.getFluxMetadata(fluxId, "thematique");
+
+    JSONArray allStyles;
+
+    try {
+      if (Util.isEmpty(fluxMetadataGenres) || !fluxMetadataGenres.getBoolean("success")
+          || fluxMetadataGenres.isNull(listMetadataLbl)) {
+        LOGGER.warn("getAllGenreOfThematiquesPerso -> aucune thématique perso trouvée (flux " + fluxId + ")");
+      }
+
+      allStyles = fluxMetadataGenres.getJSONObject(listMetadataLbl).getJSONArray("styles");
+      
+      for (int counterGenres = 0; counterGenres < idGenres.length; counterGenres++) {
+        if (Util.isEmpty(lblGenres[counterGenres])) continue;
+        
+        String listIdGenres = idGenres[counterGenres];
+        Set<Genre> foundGenres = findGenresFromIdList(allStyles, new ArrayList<String>(Arrays.asList(listIdGenres.split(","))));
+        if (Util.notEmpty(foundGenres)) {
+          genresWithLabels.put(lblGenres[counterGenres], foundGenres);
+        }
+      }
+    } catch (JSONException e) {
+      LOGGER.warn("Exception sur getAllGenreOfThematiquesPerso : "+ e.getMessage());
+      return null;
     }
+
+    
+    
+    return genresWithLabels;
+  }
+    
+  /**
+   * Méthode récursive qui retourne la liste des genres trouvés dans le flux
+   * @param allStyles
+   * @param arrayList
+   * @return
+   */
+	private static Set<Genre> findGenresFromIdList(JSONArray genreArray, ArrayList<String> listIds) {
+	  Set<Genre> listeGenre = new TreeSet<Genre>(new Comparator<Genre>() {
+      @Override
+      public int compare(final Genre obj1, final Genre obj2) {
+        return obj1.getLibelle().compareToIgnoreCase(obj2.getLibelle());
+      }
+    });
+	  
+	  for (int jsonCounter = 0; jsonCounter < genreArray.length(); jsonCounter++) {
+	    JSONObject jsonGenre;
+      try {
+        jsonGenre = genreArray.getJSONObject(jsonCounter);
+        // style. On recherche immédiatement dans les catégories
+        if (!jsonGenre.isNull("categories")) {
+          listeGenre.addAll(findGenresFromIdList(jsonGenre.getJSONArray("categories"), listIds));
+        }
+        // catégorie
+        else if (!jsonGenre.isNull("genres")) {
+          // l'id de la catégorie appartient à la liste
+          if (listIds.contains(jsonGenre.getString("code"))) {
+            JSONArray genresCategorie = jsonGenre.getJSONArray("genres");
+            for (int genreCounter = 0; genreCounter < genresCategorie.length(); genreCounter++) {
+              JSONObject itJsonGenre = genresCategorie.getJSONObject(genreCounter);
+              Genre genreObj = generateGenreFromJson(itJsonGenre);
+              if (Util.notEmpty(genreObj)) listeGenre.add(genreObj);
+            }
+          } else {
+            // on recherche dans les genres de la catégorie
+            listeGenre.addAll(findGenresFromIdList(jsonGenre.getJSONArray("genres"), listIds));
+          }
+        }
+        // genre
+        else if (listIds.contains(jsonGenre.getString("code"))) {
+          Genre genreObj = generateGenreFromJson(jsonGenre);
+          if (Util.notEmpty(genreObj)) listeGenre.add(genreObj);
+        }
+      } catch (JSONException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+	  }
+	  
+    return listeGenre;
+  }
+	
+	/**
+	 * Génère un objet Genre depuis du JSON
+	 * @param jsonGenre
+	 * @return
+	 */
+	private static Genre generateGenreFromJson(JSONObject jsonGenre) {
+	  Genre genreObj = new Genre();
+	  
+    try {
+      genreObj.setLibelle(jsonGenre.getString("libelle"));
+      genreObj.setId(jsonGenre.getString("code"));
+    } catch (JSONException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    return genreObj;
+	}
+
+  /**
+	 * Retourne une liste de thématiques personnalisées selon une liste d'IDs
+	 * @param idDeThematiquesPersonnalisees la liste d'IDs de thématiques persos
+	 * @param fluxId l'ID du flux à utiliser
+	 * @return la liste de thématiques personnalisées (sous la classe 'Genre' qui partage les mêmes paramètres)
+	 */
+  public static Set<Genre> getThematiquesPersoOfMetadata(String idDeThematiquesPersonnalisees, String fluxId) {
+  	Set<Genre> listeGenre;
+
+  	listeGenre = getAllThematiquesPersoFromIdList(fluxId, idDeThematiquesPersonnalisees);
+    
+    return listeGenre;
+  }
+  
+  /**
+   * Retourne une map de genres associées à leur libellé, en fonction des IDs de genres / catégories indiqués
+   * @param lblGenres
+   * @param idGenres
+   * @param fluxId
+   * @return
+   */
+  public static Map<String, Set<Genre>> getAllGenreOfMetadata(String[] lblGenres, String[] idGenres, String fluxId) {
+    if (Util.isEmpty(idGenres)) {
+      return null;
+    }
+    
+    Map<String, Set<Genre>> mapGenre;
+    
+    // S'assurer que le tableau des labels aie la même taille que le tableau des IDs
+    if (Util.isEmpty(lblGenres) || lblGenres.length < idGenres.length) {
+      String[] lblClone = new String[idGenres.length];
+      if (Util.notEmpty(lblGenres)) {
+        for (int i = 0; i < lblGenres.length; i++) {
+          lblClone[i] = lblGenres[i];
+        }
+      }
+      mapGenre = getAllGenreOfThematiquesPerso(fluxId, lblClone, idGenres);
+    } else {
+      mapGenre = getAllGenreOfThematiquesPerso(fluxId, lblGenres, idGenres);
+    }
+    
+    return mapGenre;
+  }
 }

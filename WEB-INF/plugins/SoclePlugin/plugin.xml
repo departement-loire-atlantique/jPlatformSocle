@@ -102,6 +102,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>     
+    <templates type="Carousel">
+        <template name="default" file="doCarouselFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
@@ -116,7 +121,7 @@
         <template name="default" file="doCityFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>    
+    </templates>
     <templates type="Dossier">
         <template name="default" file="doDossierFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>

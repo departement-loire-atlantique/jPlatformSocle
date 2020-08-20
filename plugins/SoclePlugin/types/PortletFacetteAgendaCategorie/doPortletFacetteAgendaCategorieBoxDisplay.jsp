@@ -18,16 +18,47 @@
 	
 	if(Util.isEmpty(fluxId)) return;
 	
-	Set<Genre> listeGenre = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getIdDeThematiquesPersonnalisees(), fluxId);
-	
-	if(Util.isEmpty(listeGenre)) return;
-%>
+	// Cas 1 : thématiques personnalisées
+	if (Util.notEmpty(obj.getIdDeThematiquesPersonnalisees())) {
+        Set<Genre> listeGenre = InfolocaleEntityUtils.getThematiquesPersoOfMetadata(obj.getIdDeThematiquesPersonnalisees(), fluxId);
+    
+        if(Util.isEmpty(listeGenre)) return;
+        
+        %>
 
 <ds:facetteCategorie obj='<%= obj %>' 
-		listeGenre='<%= listeGenre %>'
-		idFormElement='<%= idFormElement %>' 
-		isDisabled='<%= false %>' 
-		request='<%= request %>' 
-		selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-		profondeur='true'/>
+        listeGenre='<%= listeGenre %>'
+        idFormElement='<%= idFormElement %>' 
+        isDisabled='<%= false %>' 
+        request='<%= request %>' 
+        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+        profondeur='true'/>
+	
+        <%
+        
+	}
+	
+	
+	// Cas 2 : Genres et catégories
+	
+	if (Util.notEmpty(obj.getIdsDeGenresCategories())) {
+	  
+	   Map<String, Set<Genre>> couplesLibellesGenres = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getLibellesDeGenres(), obj.getIdsDeGenresCategories(), fluxId);
+	   
+	   if (Util.isEmpty(couplesLibellesGenres)) return;
+	   
+	   %>
+	   
+	      <ds:facetteCategorie obj='<%= obj %>' 
+		      listeCouplesLibellesGenres='<%= couplesLibellesGenres %>'
+		      idFormElement='<%= idFormElement %>' 
+		      isDisabled='<%= false %>' 
+		      request='<%= request %>' 
+		      selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+		      profondeur='true' />
+	   
+	   <%
+	  
+	}
+%>
 		
