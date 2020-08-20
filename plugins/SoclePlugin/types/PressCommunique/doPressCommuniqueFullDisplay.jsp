@@ -251,7 +251,6 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
         Set<Category> thematiques = new TreeSet<Category>();
         thematiques.addAll(obj.getPolitiquesPubliques(loggedMember));
         thematiques.addAll(obj.getMissionsThematiques(loggedMember));
-        logger.debug("thematiques : "+thematiques.size());
         %>
         
         <jalios:if predicate='<%= !thematiques.isEmpty() && Util.notEmpty(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"))%>'>
@@ -262,9 +261,7 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
 	        qhEnCeMoment.setLoggedMember(loggedMember);
 	        qhEnCeMoment.setTypes("Content");
 	        QueryResultSet resultEnCeMomentSet = qhEnCeMoment.getResultSet();
-	        SortedSet<Publication> listPubsEnCeMomentSet = resultEnCeMomentSet.getAsSortedSet();
-	        logger.debug("resultEnCeMoment : "+resultEnCeMomentSet.getResultSize());
-	        logger.debug("resultEnCeMoment : "+qhEnCeMoment.getQueryString());
+	        SortedSet<Publication> listPubsEnCeMomentSet = resultEnCeMomentSet.getAsSortedSet(Publication.getPdateComparator());
 	        
 	        // Récupération des publication catégorisées dans au moins une des thématiques du communiqué courant.
 	        QueryHandler qhThemes= new QueryHandler();
@@ -274,13 +271,11 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
 	        qhThemes.setLoggedMember(loggedMember);
 	        qhThemes.setTypes("Content");
 	        QueryResultSet resultThemesSet = qhThemes.getResultSet();
-	        SortedSet<Publication> listPubsThemesSet = resultThemesSet.getAsSortedSet();
-	        logger.debug("resultThemes : "+resultThemesSet.getResultSize());
-	        logger.debug("resultThemes : "+qhThemes.getQueryString());
+	        SortedSet<Publication> listPubsThemesSet = resultThemesSet.getAsSortedSet(Publication.getPdateComparator());
 	        
 	        // Intersection des 2 sets
-	        Set<Publication> sameThemePubSet = Util.interSet(listPubsEnCeMomentSet, listPubsThemesSet);
-	        logger.debug(sameThemePubSet.size());
+	        Set<Publication> sameThemePubSet = new TreeSet<Publication>(Publication.getPdateComparator()); 
+            sameThemePubSet.addAll(Util.interSet(listPubsEnCeMomentSet, listPubsThemesSet));
 	        
 	        // Suppression de la pub courante
 	        sameThemePubSet.remove(obj);
