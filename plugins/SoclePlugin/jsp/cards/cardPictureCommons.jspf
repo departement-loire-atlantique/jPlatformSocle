@@ -23,7 +23,7 @@ if (Util.isEmpty(request.getAttribute("forcedImgUrl"))) {
 }
 
 if (Util.notEmpty(urlImage)) {
-  urlImage = SocleUtils.getUrlOfFormattedImageMobile(urlImage);
+  urlImage = SocleUtils.getUrlOfFormattedImageCard(urlImage);
 }
 
 %>

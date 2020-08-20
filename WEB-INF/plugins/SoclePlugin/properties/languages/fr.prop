@@ -113,6 +113,7 @@ jcmsplugin.socle.email.message.echec : Une erreur s'est produite lors de l'envoi
 jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
 jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
 jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
+jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
 
 
 # ------------------------------------------------------------
@@ -142,6 +143,17 @@ jcmsplugin.socle.socialnetwork.depsur.facebook: Le Département de Loire-Atlanti
 jcmsplugin.socle.socialnetwork.depsur.twitter: Le Département de Loire-Atlantique sur Twitter
 jcmsplugin.socle.socialnetwork.depsur.instagram: Le Département de Loire-Atlantique sur Instagram
 jcmsplugin.socle.socialnetwork.depsur.youtube: Le Département de Loire-Atlantique sur Youtube
+jcmsplugin.socle.socialnetwork.retrouver.facebook: Retrouver {0} sur Facebook
+jcmsplugin.socle.socialnetwork.retrouver.instagram: Retrouver {0} sur Instagram
+jcmsplugin.socle.socialnetwork.retrouver.facebook.nouvellefenetre: Retrouver sur Facebook : {0} - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.retrouver.instagram.nouvellefenetre: Retrouver sur Intagram : {0} - nouvelle fenêtre
+jcmsplugin.socle.socialnetworks.share:Liste des réseaux sociaux (fonction de partage)
+jcmsplugin.socle.socialnetworks.share.help:Attention : la liste doit commencer par un "@" et les valeurs séparées par un "|". Les valeurs possibles sont : @|Facebook|Twitter|Pinterest|Instagram|LinkedIn|Email
+jcmsplugin.socle.socialnetwork.share.facebook: Partager cette page sur Facebook - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.twitter: Partager cette page sur Twitter - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.instagram: Partager cette page sur Instagram - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.linkedin: Partager cette page sur Linkedin - nouvelle fenêtre
+jcmsplugin.socle.socialnetwork.share.mail: Partager cette page par email - nouvelle fenêtre
 
 # ------------------------------------------------------------
 #  Libellés communs
@@ -198,6 +210,10 @@ jcmsplugin.socle.tout-decocher: Tout décocher
 jcmsplugin.socle.tooltip: Aide : {0}
 jcmsplugin.socle.deplier: Déplier
 jcmsplugin.socle.partagerVotreLA: Partagez votre Loire-Atlantique
+jcmsplugin.socle.partager.fb: Partager cette page sur Facebook
+jcmsplugin.socle.partager.twitter: Partager cette page sur Twitter
+jcmsplugin.socle.partager.linkedin: Partager cette page sur LinkedIn
+jcmsplugin.socle.partagerpage: Partagez cette page :
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
@@ -229,7 +245,12 @@ jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
 jcmsplugin.socle.km2: km²
-jcmsplugin.socle.enbref: En bref 
+jcmsplugin.socle.contacterdept: Contacter Le Département de Loire-Atlantique
+jcmsplugin.socle.enbref: En bref
+jcmsplugin.socle.savoirplus: En savoir +
+jcmsplugin.socle.envideo: En vidéo
+jcmsplugin.socle.alireaussi: A lire aussi
+jcmsplugin.socle.memetheme: Sur le même thème
 
 # ------------------------------------------------------------
 #  Header
@@ -370,7 +391,7 @@ jcmsplugin.socle.faq.vous-avez-question: Vous avez une question ?
 jcmsplugin.socle.faq.consulter-question-frequente: Consultez les questions les plus fréquentes :
 jcmsplugin.socle.faq.afficher-plus-questions: Afficher plus de questions
 jcmsplugin.socle.faq.plus-questions: Plus de questions
-jcmsplugin.socle.faq.poser-question: Posez une question :
+jcmsplugin.socle.faq.poser-question: Posez une question
 jcmsplugin.socle.faq.ex-email: Ex : votrenom@email.com
 jcmsplugin.socle.faq.selectionner-commune: Sélectionner Commune
 jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
@@ -631,3 +652,11 @@ jcmsplugin.socle.equipement.montant-travaux: Montant total des travaux :
 jcmsplugin.socle.equipement.financement-dep: Financement départemental :
 jcmsplugin.socle.equipement.pourcentage-dep: Pourcentage Département :
 
+# ------------------------------------------------------------
+#  Communiqué de presse
+# ------------------------------------------------------------
+jcmsplugin.socle.presscommunique.telecharger.label: Télécharger le communiqué
+jcmsplugin.socle.presscommunique.telecharger.title: Télécharger le communiqué : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.presscommunique.contact-presse.nom.default:Service presse
+jcmsplugin.socle.presscommunique.contact-presse.email.default:service.presse@loire-atlantique.fr
+jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13 

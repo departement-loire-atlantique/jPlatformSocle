@@ -55,6 +55,7 @@ import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
 import generated.PortletFacetteCommune;
 import generated.PortletFacetteCommuneAdresseLiee;
+import generated.PortletFaq;
 import generated.PortletPortalRedirect;
 
 public final class SocleUtils {
@@ -947,6 +948,15 @@ public final class SocleUtils {
   }
   
   /**
+   * Génère une image card formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCard(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.card.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.card.height", 0)); 
+  }
+  
+  /**
    * Retourne l'URL d'une image carree ou d'un substitut pour le contenu indiqué
    * @param pub
    * @return
@@ -1402,6 +1412,16 @@ public final class SocleUtils {
   }
   
   /**
+   * Renvoie un prix formatté à un format propre. Exemple : 45000 -> 45 000
+   * @param price
+   * @return
+   */
+  public static String formatPrice (Double price) {
+    if (Util.isEmpty(price)) return "";
+    return formatPrice(price.toString());
+  }  
+  
+  /**
    * Renvoie la fiche contact associée à un membre, si elle existe
    * @param mbr
    * @return
@@ -1525,5 +1545,65 @@ public final class SocleUtils {
  		}
 
  		return null;
- 	}  
+ 	}
+  
+	/**
+	 * Permet de récupérer la "PortletFaq" d'une catégorie si celle-ci existe
+	 * et si son paramètrage s'applique à la catégorie du portail
+	 * @param currentCat la catégorie courante
+	 * @param portalCat la catégorie de navigation du portail
+	 * @return La "PortletFaq" de la catégorie, sinon NULL
+	 */
+	public static PortletFaq getPortletFaq(Category itCat, Category portalCat) {
+		Member loggedMember = channel.getCurrentLoggedMember();		
+		QueryHandler qh = new QueryHandler();
+		qh.setTypes("PortletFaq");
+		qh.setCids(itCat.getId());
+		qh.setLoggedMember(loggedMember);
+		qh.setExactCat(true);
+		QueryResultSet result = qh.getResultSet();
+		LOGGER.debug(result.size()+ " FAQ trouvée(s) dans la catégorie "+itCat.getName() + " / " + itCat.getId());
+		LOGGER.debug(qh.getQueryString()+"\r\n");
+		
+		// Si on a trouvé une portlet FAQ, on regarde si elle s'applique à la catégorie courante.
+		if(!result.isEmpty()) {
+			PortletFaq itPortletFaq = (PortletFaq) Util.getFirst(result);
+			
+			// Si mode "catégorie exacte courante" et que la catégorie de nav de la portlet = catégorie du portail 
+			if(	itPortletFaq.getRefine().equals("CurrentExact") &&
+				itPortletFaq.getCategorieDeNavigation(loggedMember).first().equals(portalCat)) {
+				return itPortletFaq;
+			}
+			// Si mode "catégorie courante" et que la catégorie de nav de la portlet est un parent de la catégorie du portail
+			if(	itPortletFaq.getRefine().equals("Current") && 
+				(portalCat.hasAncestor(itPortletFaq.getCategorieDeNavigation(loggedMember).first()) || 
+				  itPortletFaq.getCategorieDeNavigation(loggedMember).first().equals(portalCat))) {
+				return itPortletFaq;
+			}
+		}
+		return null;
+	}
+	/**
+	 * Cherche une "PortletFaq" dans la catégorie de portail courant ou dans les catégories parentes si non trouvée
+	 * @param portalCat la catégorie courante du portail
+	 * @return La "PortletFaq" trouvée, sinon NULL
+	 */
+	public static PortletFaq searchPortletFaq(Category portalCat) {
+		if(portalCat != null) {
+			List<Category> ancestors  = new ArrayList<Category>();
+			ancestors.add(portalCat);
+			ancestors.addAll(portalCat.getAncestorList(channel.getCategory(channel.getProperty("jcmsplugin.socle.site.menu.cat.root")), false));
+
+			for (Category itCat : ancestors) {
+				PortletFaq portletFaq = getPortletFaq(itCat, portalCat);
+				if(Util.notEmpty(portletFaq)){
+					LOGGER.debug("FAQ trouvée : "+portletFaq);
+					return portletFaq;
+				}
+			}
+
+		}	
+		
+		return null;
+	}	
 }

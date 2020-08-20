@@ -66,6 +66,7 @@
     <type name="PortletFacetteDelegation"></type>
     <type name="PortletFacetteMotcle"></type>
     <type name="PortletFacetteTitre"></type>
+    <type name="PortletFaq"></type>
     <type name="PortletMiseEnAvantDeContenus"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
@@ -128,6 +129,11 @@
     </templates>
     <templates type="ElectedMember">
         <template name="default" file="doElectedMemberFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Equipement">
+        <template name="default" file="doEquipementFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -254,7 +260,12 @@
         <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates> 
+    </templates>
+    <templates type="PressCommunique">
+        <template name="default" file="doPressCommuniqueFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>     
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -496,6 +507,7 @@
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />
+    <file path="jsp/reprise/contenusSansGeolocLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />

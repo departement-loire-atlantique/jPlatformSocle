@@ -8,7 +8,7 @@ display.use-front-session-portal: false
 $plugin.socle.newsPortalCategoryId:c_5555
 $id.jcmsplugin.socle.visible-topbar.group:
 jcmsplugin.socle.openstreetmap.url: https://www.openstreetmap.org/
-jcmsplugin.socle.contact-faq.default-mail: 
+jcmsplugin.socle.contact-faq.default-mail: contact@loire-atlantique.fr
 
 jcmsplugin.socle.group.animationSportive.id: p1_101336
 $jcmsplugin.socle.cat.animationSportive.id: p2_108385
@@ -71,6 +71,8 @@ jcmsplugin.socle.delegation.needAddress: 44263 44616
 $jcmsplugin.socle.cat.root: j_3
 
 jcmsplugin.socle.footer.portletcontact.id : c_1275593
+jcmsplugin.socle.posezUnequestion.actif:true
+jcmsplugin.socle.socialnetworks.share.actif: true
 
 # Comparator
 comparator.FicheLieu.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
@@ -145,6 +147,8 @@ jcmsplugin.socle.image.magazine.tuile.width: 138
 jcmsplugin.socle.image.magazine.tuile.height: 193
 jcmsplugin.socle.image.magazine.width: 363
 jcmsplugin.socle.image.magazine.height: 509
+jcmsplugin.socle.image.card.width: 431
+jcmsplugin.socle.image.card.height: 287
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -297,6 +301,7 @@ channel.topbar.site.enabled: true
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
+jcmsplugin.socle.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
 
 # ------ Propriétés éditables SoclePlugin
 
@@ -335,6 +340,7 @@ $jcmsplugin.socle.category.publicVise.root: c_5195
 $jcmsplugin.socle.category.categorieDeNavigation.root: j_5
 $jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
+$jcmsplugin.socle.category.enCeMoment.root: c_1154087
 
 # Fiche actu
 $jcmsplugin.socle.ficheactu.types.root: c_1156291
@@ -570,6 +576,8 @@ $jcmsplugin.socle.animSportive.annee: p2_699360
 $jcmsplugin.socle.presscommunique.thematique: c_5026
 $jcmsplugin.socle.presscommunique.autreThematique: c_5091
 $jcmsplugin.socle.presscommunique.typeMedia: aca_7725
+$jcmsplugin.socle.presscommunique.politiquesPubliques: c_1211793
+$jcmsplugin.socle.presscommunique.missionsThematiques: p1_284726
 
 # Canton
 jcmsplugin.socle.canton.source: Canton - source recensement population

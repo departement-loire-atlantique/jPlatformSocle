@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletFaq" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet FAQ</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="faq" required="true" editor="link" compactDisplay="false" type="generated.FaqAccueil" parent="false">
+      <label xml:lang="fr">FAQ</label>
+    </field>
+    <field name="refine" editor="enumerate" required="true" compactDisplay="false" type="String" searchable="false" ml="false" valueList="Current | CurrentExact" labelList="Catégorie courante|Catégorie exacte courante" chooser="listbox" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Profondeur d'affichage</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field type="super"/>
+  </fields>
+</type>
+

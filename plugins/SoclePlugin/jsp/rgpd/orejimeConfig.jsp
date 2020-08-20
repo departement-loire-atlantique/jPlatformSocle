@@ -27,7 +27,19 @@
                 accept: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.accept")) %>',
                 acceptAll: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
                 decline: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.decline")) %>',
-                declineAll: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.decline-all")) %>'
+                declineAll: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
+                purposes: {
+                    analytics: 'Analyse'
+                },
+                "jsessionid":{
+                    description: "Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.",
+                },
+                "google-tag-manager":{
+                    description: "description du cookie GTM...",
+                },
+                "orejime":{
+                    description: "Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.",
+                },                
             },
             en: {
                 purposes: {
@@ -53,6 +65,18 @@
                 ],
                 optOut: false,
                 purposes: ['analytics']
+            },
+            {
+                name: 'jsessionid',
+                title: 'JSESSIONID',
+                purposes: [],
+                required: true
+            },
+            {
+                name: 'orejime',
+                title: 'orejime',
+                purposes: [],
+                required: true
             }
         ],
     };
