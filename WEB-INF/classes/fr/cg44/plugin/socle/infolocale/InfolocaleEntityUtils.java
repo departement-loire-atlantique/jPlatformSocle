@@ -574,7 +574,7 @@ public class InfolocaleEntityUtils {
       	}
     	  
         if (Util.notEmpty(strGenres)) { 
-          parameters.put(rubriqueField, boxGenres);
+          parameters.put(rubriqueField, strGenres);
         }
         if (Util.notEmpty(strThematiques)) { 
           parameters.put(thematiqueField, strThematiques);
