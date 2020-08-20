@@ -149,6 +149,12 @@ jcmsplugin.socle.image.magazine.width: 363
 jcmsplugin.socle.image.magazine.height: 509
 jcmsplugin.socle.image.card.width: 431
 jcmsplugin.socle.image.card.height: 287
+jcmsplugin.socle.image.diaporama.desktop.width: 930
+jcmsplugin.socle.image.diaporama.desktop.height: 615
+jcmsplugin.socle.image.diaporama.mobile.width: 300
+jcmsplugin.socle.image.diaporama.mobile.height: 360
+jcmsplugin.socle.image.diaporama.vignette.width: 78
+jcmsplugin.socle.image.diaporama.vignette.height: 78
 
 # ------------------------------------------------------------
 #  Wysiwyg
