@@ -29,7 +29,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                 <li><a href="#content" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.content") %></a></li>
                 <li><a href="#open-menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
                 <li><a href="#open-search" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
-                <li><a href="#" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
+                <li><a href="/accessibilite" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
             </ul>
     
             <div class="ds44-flex-container ds44-flex-valign-center">
