@@ -29,6 +29,7 @@ jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
 jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
+jcmsplugin.socle.meme-theme.max: 20
 
 # ------------------------------------------------------------
 #  Sectorisation
