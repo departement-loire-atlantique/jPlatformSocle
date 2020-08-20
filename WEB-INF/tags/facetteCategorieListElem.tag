@@ -31,11 +31,18 @@
 		description="Numéro de position de la catégorie dans la liste" 
 %>
 <%@ attribute name="idFormElement" 
-		required="true" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="String" 
-		description="id de l'input" 
+        required="true" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="id de l'input" 
+%>
+<%@ attribute name="disableSelect" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="Boolean" 
+        description="Si 'true', n'affiche pas le bloc de sélection" 
 %>
 <%
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
@@ -49,15 +56,18 @@
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">
-	<input type='<%= typeInput %>' 
-			id='<%= idInput %>' 
-			name="<%= nameInput %>" 
-			value='<%= cat.getId() %>' 
-			class='<%= "ds44-"+typeInput %>' 
-			aria-disabled="true"/>
 
+    <jalios:if predicate="<%= Util.notEmpty(disableSelect) && !disableSelect %>">
+		<input type='<%= typeInput %>' 
+				id='<%= idInput %>' 
+				name="<%= nameInput %>" 
+				value='<%= cat.getId() %>' 
+				class='<%= "ds44-"+typeInput %>' 
+			aria-disabled="true"/>
+    </jalios:if>
+    
 	<label for='<%= idInput %>' 
-			class='<%= "ds44-" + labelInput + "Label" %>'
+			class='<%= Util.notEmpty(disableSelect) && !disableSelect ? "ds44-" + labelInput + "Label" : "" %>'
 			id="<%= nameType + "-label-" + nameInput %>">
 
 		<%= cat.getName() %>
