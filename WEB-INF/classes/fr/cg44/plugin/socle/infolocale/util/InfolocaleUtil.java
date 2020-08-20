@@ -522,6 +522,11 @@ public class InfolocaleUtil {
         
       }
       
+      // Possibilité d'une double date, par ex. 2020-08-12,2020-08-14
+      if (arrayDebutFin[0].contains(",")) {
+        arrayDebutFin = arrayDebutFin[0].split(",");
+      }
+      
       String dateDebut = arrayDebutFin[0];
       String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
@@ -564,7 +569,7 @@ public class InfolocaleUtil {
         
         return 
             (limitStart.before(debutEvent) || limitStart.equals(debutEvent))
-            && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+            || (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
       } catch (ParseException e) {
         LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
         return false;
