@@ -64,7 +64,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 		      </jalios:select>
 		   </span>
 		   <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre() %></span>
+		      <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
 		   </jalios:if>
 		   <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 		      <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
@@ -157,7 +157,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifReduit(userLang)) && !obj.getTarifReduit(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit  ") %> <%= obj.getTarifReduit(userLang) %></li>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
 	                                        <li><%= obj.getTarifAutre(userLang) %></li>
