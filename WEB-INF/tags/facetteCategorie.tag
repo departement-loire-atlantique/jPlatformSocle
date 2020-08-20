@@ -280,7 +280,7 @@
 		<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" aria-describedby='<%= "button-message-" + idFormElement %>'
 				title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.cat-lie.valider-selection.label", labelChamp) %>'>
 			<span class="ds44-btnInnerText" aria-hidden="true"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.valider") %></span>
-			<i class="icon icon-long-arrow-right ds44-noLineH" a²ria-hidden="true"></i>
+			<i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i>
 		</button>
 	</div>
 </div>
