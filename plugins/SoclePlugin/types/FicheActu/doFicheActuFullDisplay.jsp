@@ -76,15 +76,23 @@
             // Intersection des 2 sets
             Set<Publication> sameThemePubSet = new TreeSet<Publication>(Publication.getPdateComparator()); 
             sameThemePubSet.addAll(Util.interSet(listPubsEnCeMomentSet, listPubsThemesSet));
-            
+                        
             // Suppression de la pub courante
             sameThemePubSet.remove(obj);
+            
+            // Limiter à un nombre d'éléments max
+            int max = channel.getIntegerProperty("jcmsplugin.socle.meme-theme.max", 20);
+            List<Publication> tmpList = new ArrayList(sameThemePubSet);
+            if(tmpList.size() >= max){
+            	tmpList = tmpList.subList(0, max);	
+            }
             %>
     
             <jalios:if predicate='<%= !sameThemePubSet.isEmpty() %>'>
                 <%
                 // Transfo du set en tableau pour passer au carrousel
-                Content[] sameThemePubArray = sameThemePubSet.toArray(new Content[sameThemePubSet.size()]);
+                Content[] sameThemePubArray = tmpList.toArray(new Content[tmpList.size()]);
+                //Content[] sameThemePubArray = sameThemePubSet.toArray(new Content[sameThemePubSet.size()]);
                 
                 // Instanciation de la portlet carrousel avec les pubs de même thème
                 PortletCarousel carouselEnCeMoment = new PortletCarousel();

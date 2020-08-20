@@ -51,6 +51,8 @@ jcmsplugin.socle.rgpd.privacyPolicy.name: RGPD - politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidentialité"
 jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
 
+jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
+
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
