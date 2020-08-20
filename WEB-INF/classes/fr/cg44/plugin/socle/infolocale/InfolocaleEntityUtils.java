@@ -930,8 +930,10 @@ public class InfolocaleEntityUtils {
     // S'assurer que le tableau des labels aie la même taille que le tableau des IDs
     if (Util.isEmpty(lblGenres) || lblGenres.length < idGenres.length) {
       String[] lblClone = new String[idGenres.length];
-      for (int i = 0; i < lblGenres.length; i++) {
-        lblClone[i] = lblGenres[i];
+      if (Util.notEmpty(lblGenres)) {
+        for (int i = 0; i < lblGenres.length; i++) {
+          lblClone[i] = lblGenres[i];
+        }
       }
       mapGenre = getAllGenreOfThematiquesPerso(fluxId, lblClone, idGenres);
     } else {

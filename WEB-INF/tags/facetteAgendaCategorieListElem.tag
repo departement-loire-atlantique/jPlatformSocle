@@ -48,7 +48,7 @@
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">
-	<input value='<%= genre.getGenreId() %>' 
+	<input value='<%= genre.getId() %>' 
 			id='<%= sbfNameCheck %>' 
 			class='<%= "ds44-"+typeInput %>' 
 			type='<%= typeInput %>' />
