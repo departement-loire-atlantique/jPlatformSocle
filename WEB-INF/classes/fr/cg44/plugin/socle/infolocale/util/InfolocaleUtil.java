@@ -13,14 +13,20 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
+import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Data;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import generated.EvenementInfolocale;
 
 public class InfolocaleUtil {

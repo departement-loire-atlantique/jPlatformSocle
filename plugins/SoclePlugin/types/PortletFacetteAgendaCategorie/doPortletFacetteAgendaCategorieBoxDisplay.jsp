@@ -38,24 +38,24 @@
         
 	}
 	
+	
+	// Cas 2 : Genres et catégories
+	
 	if (Util.notEmpty(obj.getIdsDeGenresCategories())) {
 	  
-	   Map <String, Set<Genre>> couplesLibellesGenres = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getLibellesDeGenres(), obj.getIdsDeGenresCategories(), fluxId);
+	   Map<String, Set<Genre>> couplesLibellesGenres = InfolocaleEntityUtils.getAllGenreOfMetadata(obj.getLibellesDeGenres(), obj.getIdsDeGenresCategories(), fluxId);
 	   
 	   if (Util.isEmpty(couplesLibellesGenres)) return;
 	   
 	   %>
 	   
-	   <jalios:foreach name="itLibelleGenre" type="String" collection="<%= couplesLibellesGenres.keySet() %>" max="1">
-	       <ds:facetteCategorie obj='<%= obj %>' 
-		        listeGenre='<%= couplesLibellesGenres.get(itLibelleGenre) %>'
-		        idFormElement='<%= idFormElement %>' 
-		        isDisabled='<%= false %>' 
-		        request='<%= request %>' 
-		        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-		        profondeur='true'
-		        forcedLabel='<%= itLibelleGenre %>'/>
-	   </jalios:foreach>
+	      <ds:facetteCategorie obj='<%= obj %>' 
+		      listeCouplesLibellesGenres='<%= couplesLibellesGenres %>'
+		      idFormElement='<%= idFormElement %>' 
+		      isDisabled='<%= false %>' 
+		      request='<%= request %>' 
+		      selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+		      profondeur='true' />
 	   
 	   <%
 	  
