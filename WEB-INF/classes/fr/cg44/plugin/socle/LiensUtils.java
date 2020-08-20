@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.HttpUtil;
+import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Publication;
 
 public final class LiensUtils {
@@ -95,13 +96,8 @@ public final class LiensUtils {
 	 * @return le lien de partage
 	 */
 	public static String createEmailLink(String url, String titrePub) {
-		StringBuffer link = new StringBuffer("mailto:?subject=");
-		link.append(titrePub);
-		link.append(" - ");
-		link.append(Channel.getChannel().getName());
-		link.append("&body=");
-		link.append(HttpUtil.encodeForURL(url));
-		return link.toString();
+		String link = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), titrePub, HttpUtil.encodeForURL(url));
+		return link;
 	}	  	  
 
 }
