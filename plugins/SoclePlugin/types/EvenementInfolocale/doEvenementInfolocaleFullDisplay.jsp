@@ -227,7 +227,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           </jalios:if>
 	                           <jalios:if predicate="<%= Util.notEmpty(eventContact.getEmail()) %>">
 		                           <p class="ds44-docListElem mts">
-		                              <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a href="#mailto:<%= eventContact.getEmail() %>" aria-label='<%= glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getLieu().getNom(), eventContact.getEmail()) %>'><%= glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label") %></a>
+		                              <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a href="mailto:<%= eventContact.getEmail() %>" aria-label='<%= glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getLieu().getNom(), eventContact.getEmail()) %>'><%= glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label") %></a>
 		                           </p>
 	                           </jalios:if>
 	                           <jalios:if predicate="<%= Util.notEmpty(eventContact.getUrl()) %>">
