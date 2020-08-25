@@ -575,7 +575,7 @@ public class InfolocaleUtil {
         
         return 
             (limitStart.before(debutEvent) || limitStart.equals(debutEvent))
-            || (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+            && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
       } catch (ParseException e) {
         LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
         return false;
