@@ -64,8 +64,7 @@
 				id='<%= idInput %>' 
 				name="<%= nameInput %>" 
 				value='<%= cat.getId() %>' 
-				class='<%= "ds44-"+typeInput %>' 
-			    aria-disabled="true"/>
+				class='<%= "ds44-"+typeInput %>'/>
     </jalios:if>
     
 	<label for='<%= idInput %>' 
