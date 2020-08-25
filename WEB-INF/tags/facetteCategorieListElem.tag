@@ -41,7 +41,7 @@
         required="false" 
         fragment="false" 
         rtexprvalue="true" 
-        type="Boolean" 
+        type="Boolean"
         description="Si 'true', n'affiche pas le bloc de sélection" 
 %>
 <%
@@ -53,21 +53,23 @@
 	
 	String nameInput = idFormElement + "-" + numCat;
 	String idInput = nameType + nameInput;
+	
+	boolean disabled = Util.notEmpty(disableSelect) && disableSelect ? true : false;
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">
 
-    <jalios:if predicate="<%= Util.notEmpty(disableSelect) && !disableSelect %>">
+    <jalios:if predicate='<%= !disabled %>'>
 		<input type='<%= typeInput %>' 
 				id='<%= idInput %>' 
 				name="<%= nameInput %>" 
 				value='<%= cat.getId() %>' 
 				class='<%= "ds44-"+typeInput %>' 
-			aria-disabled="true"/>
+			    aria-disabled="true"/>
     </jalios:if>
     
 	<label for='<%= idInput %>' 
-			class='<%= Util.notEmpty(disableSelect) && !disableSelect ? "ds44-" + labelInput + "Label" : "" %>'
+			class='<%= !disabled ? "ds44-" + labelInput + "Label" : "" %>'
 			id="<%= nameType + "-label-" + nameInput %>">
 
 		<%= cat.getName() %>
