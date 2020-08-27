@@ -104,6 +104,9 @@ public class InfolocaleEntityUtils {
             if (Util.notEmpty(json.get("organismeId")) && !(json.get("organismeId").toString().equals("null"))) {
               itEvent.setOrganismeId(json.getInt("organismeId"));
             }
+            if (Util.notEmpty(json.get("organismeNom")) && !(json.get("organismeNom").toString().equals("null"))) {
+              itEvent.setOrganismeNom(json.getString("organismeNom"));
+            }
             itEvent.setTitre(json.getString("titre"));
             itEvent.setTitreSlug(json.getString("titreSlug"));
             itEvent.setDescription(json.getString("descriptif"));
