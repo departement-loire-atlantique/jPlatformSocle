@@ -1,0 +1,4 @@
+<%
+Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+Boolean isInRechercheFacette = Util.isEmpty(publication);
+%>

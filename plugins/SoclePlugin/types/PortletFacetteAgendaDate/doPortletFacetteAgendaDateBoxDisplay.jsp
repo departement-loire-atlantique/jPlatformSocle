@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
 <% PortletFacetteAgendaDate obj = (PortletFacetteAgendaDate)portlet; %>
 
@@ -20,7 +21,7 @@ boolean isRequired = obj.getFacetteObligatoire();
  
 
 <div class="ds44-form__container">
-   <div class="ds44-select__shape ds44-inpStd ds44-inpLarge">
+   <div class='ds44-select__shape ds44-inpStd <%= isInRechercheFacette ? "" : "ds44-inpLarge" %>'>
       <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= title %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></p>
       <div id="<%= uid %>" data-name="agenda-date" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
       <button class="ds44-reset" type="button" aria-describedby="label-<%= uid %>"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>

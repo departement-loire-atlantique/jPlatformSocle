@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
 <% PortletFacetteAgendaAccessibilit obj = (PortletFacetteAgendaAccessibilit)portlet; %>
 
@@ -18,7 +19,7 @@ boolean isRequired = obj.getFacetteObligatoire();
 %>
 
 <div class="ds44-form__container">
-   <div class="ds44-select__shape ds44-inpLarge ds44-inpStd">
+   <div class='ds44-select__shape <%= isInRechercheFacette ? "" : "ds44-inpLarge" %> ds44-inpStd'>
       <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= glp("jcmsplugin.socle.infolocale.label.accessibilite") %>
         <jalios:if predicate="<%= isRequired %>"><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></jalios:if>
       </p>

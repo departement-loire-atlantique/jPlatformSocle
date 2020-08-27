@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <% 
 	PortletFacetteAgendaCommune obj = (PortletFacetteAgendaCommune)portlet;
@@ -24,4 +25,5 @@
 		dataUrl="<%= dataUrl %>" 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		option='<%= channel.getProperty("jcmsplugin.socle.rayon.option") %>'
-		setRayons='<%= rayonRoot.getChildrenSet() %>'/>
+		setRayons='<%= rayonRoot.getChildrenSet() %>'
+		isLarge='<%= !isInRechercheFacette %>'/>
