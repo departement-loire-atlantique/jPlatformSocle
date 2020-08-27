@@ -26,6 +26,8 @@ String sousTitreBloc = box.getSoustitreBloc();
     </jalios:if>
 
     <jalios:foreach name="itPortlet" type="PortletAgendaInfolocale" array="<%= box.getPortletsAgenda() %>">
-        <jalios:include pub="<%= itPortlet %>" usage="box"/>
+        <div class="ds44-container-large ds44-mb-std">
+            <jalios:include pub="<%= itPortlet %>" usage="box"/>
+        </div>
     </jalios:foreach>
 </section>
