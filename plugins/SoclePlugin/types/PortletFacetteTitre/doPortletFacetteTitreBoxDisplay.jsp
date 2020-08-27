@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
 <% 
 	PortletFacetteTitre obj = (PortletFacetteTitre)portlet; 
@@ -20,4 +21,5 @@
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="free-text" 
 		dataUrl='<%= dataUrl %>' 
-		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.titre.default-label") %>'/>
+		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.titre.default-label") %>'
+		isLarge='<%= !isInRechercheFacette %>'/>

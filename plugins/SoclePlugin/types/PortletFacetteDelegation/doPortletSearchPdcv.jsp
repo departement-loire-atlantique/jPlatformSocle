@@ -1,5 +1,6 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 
 <% 
@@ -55,7 +56,8 @@ if(Util.notEmpty(delegation)){
 		        dataMode="select-only" 
 		        dataUrl="<%= dataUrl %>" 
 		        label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
-		        option='<%= Util.isEmpty(delegation) || (Util.notEmpty(delegation) && Util.arrayContains(channel.getStringArrayProperty("jcmsplugin.socle.delegation.needAddress", null), delegation.getCodePostal())) ? "adresse" : "" %>'/>		        
+		        option='<%= Util.isEmpty(delegation) || (Util.notEmpty(delegation) && Util.arrayContains(channel.getStringArrayProperty("jcmsplugin.socle.delegation.needAddress", null), delegation.getCodePostal())) ? "adresse" : "" %>'
+		        isLarge='<%= !isInRechercheFacette %>'/>		        
 	</jalios:default>
 	
 </jalios:select>
