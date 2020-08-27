@@ -95,6 +95,7 @@ public class InfolocaleUtil {
               || Util.isEmpty(o1.getDates()[0].getDebut()) || Util.isEmpty(o2.getDates()[0].getDebut())) {
             return 0;
           }
+          
           SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
           try {
             Date date1 = sdf.parse(o1.getDates()[0].getDebut());
@@ -573,9 +574,12 @@ public class InfolocaleUtil {
         Date debutEvent = sdf.parse(itEvent.getDates()[0].getDebut());
         Date finEvent = sdf.parse(itEvent.getDates()[0].getFin());
         
-        return 
-            (limitStart.before(debutEvent) || limitStart.equals(debutEvent))
-            || (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+        boolean beginsInLimits = (limitStart.before(debutEvent) || limitStart.equals(debutEvent)) && (limitEnd.after(debutEvent) || limitEnd.equals(debutEvent));
+        boolean endsInLimits = (limitStart.before(finEvent) || limitStart.equals(finEvent)) && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+        boolean eventContainsLimit = (limitStart.after(debutEvent) || limitStart.equals(debutEvent)) && (limitEnd.before(finEvent) || limitEnd.equals(finEvent));
+        
+        return beginsInLimits || endsInLimits || eventContainsLimit;
+        
       } catch (ParseException e) {
         LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
         return false;
