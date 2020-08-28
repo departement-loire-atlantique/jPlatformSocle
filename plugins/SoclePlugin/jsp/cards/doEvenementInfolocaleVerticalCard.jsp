@@ -16,15 +16,16 @@ EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
-String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().length > 0 ? itEvent.getPhotos()[0].getPath() : "s.gif";
+String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().length > 0 ? itEvent.getPhotos()[0].getPath() : "";
 
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray  ">
-
-	<picture class="ds44-container-imgRatio">
-	   <img src="<%= urlPhoto %>" alt="" class="ds44-imgRatio">
-	</picture>
+    <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
+		<picture class="ds44-container-imgRatio">
+		   <img src="<%= urlPhoto %>" alt="" class="ds44-imgRatio">
+		</picture>
+	</jalios:if>
     
     <div class="ds44-card__section">
       <div class="ds44-innerBoxContainer">
