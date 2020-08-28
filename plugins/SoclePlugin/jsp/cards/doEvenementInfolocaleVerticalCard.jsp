@@ -16,6 +16,8 @@ EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
+String metadata1 = Util.notEmpty(request.getAttribute("metadata1")) ? request.getAttribute("metadata1").toString() : null;
+String metadata2 = Util.notEmpty(request.getAttribute("metadata2")) ? request.getAttribute("metadata2").toString() : null;
 String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().length > 0 ? itEvent.getPhotos()[0].getPath() : "s.gif";
 
 %>
@@ -45,13 +47,18 @@ String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().leng
 	            </jalios:select>
             </jalios:if>
           </p>
-          
-			  <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
-			     <%= itEvent.getMetadata1() %>
-			  </jalios:if>
-			  <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
-                 <%= itEvent.getMetadata2() %>
-              </jalios:if>
+             <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
+	            <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
+	               <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span>
+	            </p>
+	         </jalios:if>
+             <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
+			 <jalios:if predicate="<%= Util.notEmpty(metadata1) && !metadata1.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata1()) %>">
+	            <p><%= itEvent.getMetadata1() %></p>
+	         </jalios:if>
+	         <jalios:if predicate="<%= Util.notEmpty(metadata2) && !metadata2.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata2()) %>">
+	            <p><%= itEvent.getMetadata2() %></p>
+	         </jalios:if>
       </div>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
