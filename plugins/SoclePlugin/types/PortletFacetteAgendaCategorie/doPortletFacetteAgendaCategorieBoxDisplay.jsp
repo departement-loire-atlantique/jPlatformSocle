@@ -6,6 +6,7 @@
 <%@ page import="org.json.JSONArray"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <% 
 	PortletFacetteAgendaCategorie obj = (PortletFacetteAgendaCategorie)portlet; 
@@ -15,6 +16,8 @@
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 	
 	String fluxId = (String)request.getAttribute("fluxId");
+	
+    request.setAttribute("showFiltres", isInRechercheFacette);
 	
 	if(Util.isEmpty(fluxId)) return;
 	
@@ -60,5 +63,7 @@
 	   <%
 	  
 	}
+        
+    request.removeAttribute("showFiltres");
 %>
 		
