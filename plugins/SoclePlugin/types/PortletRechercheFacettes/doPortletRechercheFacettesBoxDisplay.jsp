@@ -2,14 +2,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%@ include file='/jcore/portal/doPortletParams.jspf'%>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf'%>
 <% 
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
 	
-	Object publication = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-	Boolean isInRechercheFacette = Util.isEmpty(publication) || obj.getAfficherResultatDansLannuaire();
 	Boolean hasFonctionsAdditionnelles = false; // TODO
 	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
@@ -72,7 +71,7 @@
 				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
-					<% String styleButton = showFiltres ? "" : "--large"; %>
+					<% String styleButton = showFiltres || isInRechercheFacette ? "" : "--large"; %>
 					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
