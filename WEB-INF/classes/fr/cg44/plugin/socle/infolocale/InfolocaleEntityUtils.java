@@ -558,7 +558,7 @@ public class InfolocaleEntityUtils {
       String[] genres = request.getParameterValues("cids");
       String strGenres = "";
       String strThematiques = "";
-      String boxGenres = box.getGenresInfolocale();
+      String boxGenres = InfolocaleUtil.getAllGenresFromPortletAgendaConfig(box);
       String boxThematiques = box.getGroupesDevenementsInfolocale();
       String rubriqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.rubrique");
       String thematiqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.thematiquePerso");
