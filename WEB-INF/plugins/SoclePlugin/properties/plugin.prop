@@ -469,7 +469,7 @@ jcmsplugin.socle.infolocale.metadata.categoriesAge: categoriesAge
 
 jcmsplugin.socle.infolocale.metadata.icon.commune: icon-marker
 jcmsplugin.socle.infolocale.metadata.icon.genre: icon-tag
-jcmsplugin.socle.infolocale.metadata.icon.organisme: icon-user-group
+jcmsplugin.socle.infolocale.metadata.icon.organisme: icon-user
 jcmsplugin.socle.infolocale.metadata.icon.horaires: icon-time
 jcmsplugin.socle.infolocale.metadata.icon.duree: icon-time
 jcmsplugin.socle.infolocale.metadata.icon.tarif: icon-cost
