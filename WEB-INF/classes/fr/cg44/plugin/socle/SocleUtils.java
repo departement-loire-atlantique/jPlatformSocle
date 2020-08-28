@@ -1551,28 +1551,6 @@ public final class SocleUtils {
     return "";
   }
 
-  /**
-   * Renvoie la FicheEmploiStage correspondant à une référence d'offre
-   * @param reference	La référence du poste/stage
-   * @return 									Le contenu de type FicheEmploiStage correspondant, ou null
-   */
-  public static FicheEmploiStage getJobByReference(String reference) {
-
- 		if (Util.isEmpty(reference)) {
- 			return null;
- 		}
-
- 		Channel channel = Channel.getChannel();
- 		TreeSet<FicheEmploiStage> jobs = channel.getPublicationSet(FicheEmploiStage.class, channel.getCurrentLoggedMember());
-
- 		for (FicheEmploiStage job : jobs) {
- 			if (job.getNumeroDePoste().equals(reference)) {
- 				return job;
- 			}
- 		}
-
- 		return null;
- 	}
   
 	/**
 	 * Permet de récupérer la "PortletFaq" d'une catégorie si celle-ci existe

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@page import="fr.cg44.plugin.socle.EmploiUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
@@ -59,8 +60,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 				<p class="ds44-docListElem ds44-mt-std"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i>
 				    <jalios:select>
 					    <%-- Emploi --%>
-					    <jalios:if predicate='<%= pub.getTypeDoffre(loggedMember).first().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.typeEmploi.root"))
-					       || pub.getTypeDoffre(loggedMember).first().getParent().equals(channel.getCategory("$jcmsplugin.socle.emploiStage.typeEmploi.root")) %>'>
+					    <jalios:if predicate='<%= EmploiUtils.isEmploi(pub) %>'>
 					        <%= pub.getTypeDoffre(loggedMember).first()%> - <%= pub.getDuree() %>
 					    </jalios:if>
 					    <%-- Autre que emploi --%>
