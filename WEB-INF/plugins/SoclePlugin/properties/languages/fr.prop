@@ -435,7 +435,7 @@ jcmsplugin.socle.facette.date.select.today.label: Aujourd'hui
 jcmsplugin.socle.facette.date.select.tomorrow.label: Demain
 jcmsplugin.socle.facette.date.select.weekend.label: Le week-end prochain
 jcmsplugin.socle.facette.date.select.nextseven.label: Les 7 prochains jours
-jcmsplugin.socle.facette.date.select.example.custom: Sélectionner une période
+jcmsplugin.socle.facette.date.select.example.custom: Sélectionner une date ou une période
 jcmsplugin.socle.facette.date.select.example.label: Ex : 20/05/2020
 jcmsplugin.socle.facette.date.select.du.label: Du
 jcmsplugin.socle.facette.date.select.jusquau.label: Jusqu'au
