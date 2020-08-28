@@ -5,8 +5,6 @@
 
 <% 
 PortletFacetteDelegation obj = (PortletFacetteDelegation)portlet; 
-Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-Boolean isInRechercheFacette = Util.isEmpty(publication);
 Boolean isSimpleGabarit = Util.notEmpty(request.getAttribute("isSimpleGabarit"));
 
 Delegation delegation = obj.getDelegationPourPDCV();
