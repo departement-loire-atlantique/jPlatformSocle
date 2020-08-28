@@ -73,7 +73,7 @@ public final class MailUtils {
 
     // Contenu
     StringBuilder contenu = new StringBuilder("Expediteur : ");
-    contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a envoyé une candidature spontanée");
+    contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a envoyé une candidature spontanée").append(NEWLINE);
     contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
     contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
     contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
