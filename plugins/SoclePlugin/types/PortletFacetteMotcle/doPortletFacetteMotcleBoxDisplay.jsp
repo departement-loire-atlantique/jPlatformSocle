@@ -1,13 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <% 
 	PortletFacetteMotcle obj = (PortletFacetteMotcle)portlet; 
 
     String rechercheId = (String) request.getAttribute("rechercheId");
     String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") ? "Std" : "Large"; 
+	String styleChamps = isInRechercheFacette || (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres")) ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 	
