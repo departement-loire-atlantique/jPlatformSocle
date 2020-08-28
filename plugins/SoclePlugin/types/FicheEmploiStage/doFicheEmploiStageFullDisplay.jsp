@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.EmploiUtils"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
@@ -5,9 +6,17 @@
 FicheEmploiStage obj = (FicheEmploiStage) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 
 // Génération du lien vers le formulaire de réponse à l'offre (Fiche article embarquant le formulaire + titre article spécifique)
-Publication formulaireCandidature = channel.getPublication("$jcmsplugin.socle.form.candidature.idArticle");
+String urlFormulaireCandidature = "";
 String titreFormulaireCandidature = glp("jcmsplugin.socle.form.candidature.titreArticle",obj.getTitle(userLang));
-String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale)+"?ref="+obj.getNumeroDePoste()+"&t="+Util.encodeBASE64(titreFormulaireCandidature);
+Publication formulaireCandidature = channel.getPublication("$jcmsplugin.socle.form.candidature.idArticle");
+
+if(Util.isEmpty(formulaireCandidature)){
+  logger.error("Formulaire de candidature non trouvé. Vérifier paramétrage de la propriété $jcmsplugin.socle.form.candidature.idArticle");
+}
+else{
+  urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale)+"?ref="+obj.getNumeroDePoste()+"&t="+Util.encodeBASE64(titreFormulaireCandidature);  
+}
+
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -123,17 +132,18 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                   <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
 	                                   <%= glp("jcmsplugin.socle.ficheemploi.label.datelimite", SocleUtils.formatDate("dd/MM/yy", obj.getDateLimiteDeDepot())) %>
 	                               </p>
-	                               <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert">
-	                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
-	                                   <i class="icon icon-computer" aria-hidden="true"></i>
-	                               </a>
+	                               
+	                               <%-- Répondre à cette offre --%>
+	                               <jalios:if predicate='<%= Util.notEmpty(urlFormulaireCandidature) %>'>
+		                               <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert">
+		                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+		                                   <i class="icon icon-computer" aria-hidden="true"></i>
+		                               </a>
+	                               </jalios:if>
+	                               
 	                           </div>
 	                       </div>
-	                       
-	                       <%-- Répondre à cette offre --%>
-	                       
-	                       <%-- Bouton qui ouvre un formulaire --%>
-	                       <%-- TODO : uniquement le lien pour le moment. Traiter l'ouverture du formulaire plus tard --%>
+
 	                   </div>
 	               </section>
 	           </div>
@@ -234,8 +244,12 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
 		                  </jalios:if>
 		                  <jalios:default>
-		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
-		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
+		                      <jalios:select>
+			                      <jalios:if predicate='<%= EmploiUtils.isEmploi(obj) %>'>
+			                          <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
+			                          <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
+			                      </jalios:if>
+			                  </jalios:select> 
 		                  </jalios:default>
 		               </jalios:select>
 		               <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondresite") %></p>

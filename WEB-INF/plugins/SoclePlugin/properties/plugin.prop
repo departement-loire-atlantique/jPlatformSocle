@@ -329,7 +329,7 @@ jcmsplugin.socle.email.candidature-spontanee.titre: Candidature spontanée
 jcmsplugin.socle.rayon.option: rayon
 jcmsplugin.socle.form.contact.portlet-rgpd.id: c_1304194
 jcmsplugin.socle.form.candidature.portlet-rgpd.id: c_1305481
-$jcmsplugin.socle.form.candidature.idArticle: c_1305593
+$jcmsplugin.socle.form.candidature.idArticle: c_1306503
 
 # Catégorie racine pour les rayons agenda
 jcmsplugin.socle.rayon.agenda.root.id: c_1301887
@@ -551,6 +551,10 @@ $jcmsplugin.socle.emploiStage.directionDelegation.root: c_5289
 $jcmsplugin.socle.emploiStage.filiere.root: c_1216306
 $jcmsplugin.socle.emploiStage.emploi.root: c_5285
 $jcmsplugin.socle.emploiStage.typeEmploi.root: c_5282
+$jcmsplugin.socle.emploiStage.typeOffre.emploi: c_5282
+$jcmsplugin.socle.emploiStage.typeOffre.apprentissage: c_5284
+$jcmsplugin.socle.emploiStage.typeOffre.stage: p2_290544
+$jcmsplugin.socle.emploiStage.typeOffre.serviceCivique: c_1216290
 $jcmsplugin.socle.emploiStage.reserveAgentsColleges.root: c_1220099
 $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102

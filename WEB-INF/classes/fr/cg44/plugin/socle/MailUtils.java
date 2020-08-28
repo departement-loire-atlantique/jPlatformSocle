@@ -13,17 +13,21 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.mail.MailMessage;
+import com.jalios.util.HtmlUtil;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
+import com.jalios.util.XmlUtil;
 
 import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
 import generated.ContactForm;
+import generated.FicheEmploiStage;
 
 public final class MailUtils {
 	private static Channel channel = Channel.getChannel();
 
 	private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
+	private static final String NEWLINE = "\r\n";
 
 	private MailUtils() {
 		throw new IllegalStateException("Utility class");
@@ -61,28 +65,36 @@ public final class MailUtils {
 
 	/**
 	 * Envoi du mail de candidature spontanée.
+	 * Le mail va être reçu par notre outil "AdmiMail" qui ne supporte que le format texte et un poids total < 5Mo
 	 */
 	public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, ArrayList<File> fichiers) {
-		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureSpontaneeTemplate.jsp";
-
 		// Objet
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature-spontanee.objet");
 
-		// Contenu
-		HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
-		parametersMap.put("nom", form.getNom());
-		parametersMap.put("prenom", form.getPrenom());
-		parametersMap.put("email", form.getMail());
-		parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
-		parametersMap.put("codepostal", form.getCodePostal());
-		parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
-		parametersMap.put("nature", form.getNatureRecherche(channel.getDefaultAdmin()).first());
+    // Contenu
+    StringBuilder contenu = new StringBuilder("Expediteur : ");
+    contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a envoyé une candidature spontanée").append(NEWLINE);
+    contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
+    contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
+    contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
+    contenu.append("Telephone : ");
+    if (Util.notEmpty(form.getTelephone())) {
+      contenu.append(form.getTelephone());
+    }
+    contenu.append(NEWLINE);
+    contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
+    contenu.append("Code postal delegation : ").append(form.getCodePostal()).append(NEWLINE);
+    contenu.append("Commune : ").append(SocleUtils.getCitynameFromZipcode(form.getCodePostal())).append(NEWLINE);
+    contenu.append("Nature : ").append(form.getNatureRecherche(channel.getDefaultAdmin()).first()).append(NEWLINE);
+    contenu.append("---------------------------").append(NEWLINE);
+    contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");		
 
+    // Destinataire
 		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
 
 		if (Util.notEmpty(emailTo)) {
 			try {
-				sendMail(objet, null, form.getMail(), emailTo, fichiers, jsp, parametersMap);
+				sendMail(objet, contenu.toString(), form.getMail(), emailTo, fichiers);
 				msgEnvoiMailContact();
 			} catch (Exception e) {
 				msgEchecEnvoiMailContact();
@@ -99,25 +111,41 @@ public final class MailUtils {
 	 * Envoi d'un email de candidature (réponse à une offre).
 	 */
 	public static void envoiMailCandidature(CandidatureForm form, ArrayList<File> fichiers) {
-		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireCandidatureTemplate.jsp";
-
+	   // Récupération de l'offre d'emploi
+	  String jobTitle = "";
+	  FicheEmploiStage job = EmploiUtils.getJobByReference(form.getReference());
+    if (Util.isEmpty(job)) {
+      LOGGER.error("Formulaire de candidature : aucune FicheEmploiStage trouvée à partir de la référence " + form.getReference());
+    }else{
+      jobTitle = job.getTitle();
+    }
+    
 		// Objet
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
-		// Contenu
-		HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
-		parametersMap.put("nom", form.getNom());
-		parametersMap.put("prenom", form.getPrenom());
-		parametersMap.put("email", form.getMail());
-		parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
-		parametersMap.put("codepostal", form.getCodePostal());
-		parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
+    StringBuilder contenu = new StringBuilder("Expediteur : ");
+    contenu.append(form.getNom()).append(" ").append(form.getPrenom());
+    contenu.append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
+    contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
+    contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
+    contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
+    contenu.append("Telephone : ");
+    if (Util.notEmpty(form.getTelephone())) {
+      contenu.append(form.getTelephone());
+    }
+    contenu.append(NEWLINE);
+    contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
+    contenu.append("Code postal delegation : ").append(EmploiUtils.getCodePostalDelegationFromJob(job)).append(NEWLINE);
+    contenu.append("Nature : ").append(job.getTypeDoffre(channel.getDefaultAdmin()).first()).append(NEWLINE);
+    contenu.append("---------------------------").append(NEWLINE);
+    contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
+    // Destinataire
 		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
 
 		if (Util.notEmpty(emailTo)) {
 			try {
-				sendMail(objet, null, form.getMail(), emailTo, fichiers, jsp, parametersMap);
+				sendMail(objet, contenu.toString(), form.getMail(), emailTo, fichiers);
 				msgEnvoiMailContact();
 			} catch (Exception e) {
 				msgEchecEnvoiMailContact();
@@ -167,7 +195,7 @@ public final class MailUtils {
 	}
 
 	/**
-	 * Envoi de mail avec le pied de mail du CG44.
+	 * Envoi de mail
 	 * 
 	 * @param subject Objet du mail
 	 * @param content Contenu du mail
@@ -186,7 +214,8 @@ public final class MailUtils {
 		mail.setSubject(subject);
 
 		if(Util.notEmpty(content)) {
-			mail.setContentHtml(content);
+
+		  mail.setContentText(content);
 		}else if(Util.notEmpty(jsp)) {
 			mail.setContentHtmlFromJsp(jsp, channel.getDefaultAdmin(), "fr", parametersMap, null);
 		}
@@ -199,7 +228,35 @@ public final class MailUtils {
 		// Envoi du mail
 		mail.send();
 	}
-
+	
+  /**
+   * Envoi de mail simple
+   * 
+   * @param subject Objet du mail
+   * @param content Contenu du mail
+   * @param emailFrom Email de l'expéditeur
+   * @param emailTo Email du destinataire
+   */
+  public static void sendMail(String subject, String content, String emailFrom, String emailTo)
+      throws javax.mail.MessagingException {
+    
+    sendMail(subject, content, emailFrom, emailTo, null, null, null);
+  }
+  
+  /**
+   * Envoi de mail avec PJ
+   * 
+   * @param subject Objet du mail
+   * @param content Contenu du mail
+   * @param emailFrom Email de l'expéditeur
+   * @param emailTo Email du destinataire
+   * @param listePieceJointe Liste des pièces jointes
+   */
+  public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<File> listePieceJointe)
+      throws javax.mail.MessagingException {
+    
+    sendMail(subject, content, emailFrom, emailTo, listePieceJointe, null, null);
+  }  
 	/**
 	 * Envoi du message de confirmation de l'envoi du mail.
 	 */
@@ -227,11 +284,11 @@ public final class MailUtils {
 	 */
 	public static String addClause(String contenu) {
 		StringBuilder sb = new StringBuilder(contenu);
-		sb.append("<br />");
-		sb.append("Ce message a &eacute;t&eacute; envoy&eacute; &agrave; partir d'une adresse ne pouvant recevoir d'e-mails. Merci de ne pas y r&eacute;pondre.<br/>");
-		sb.append("<br />");
-		sb.append("---------------------------<br/>");
-		sb.append("<br />");
+		sb.append(NEWLINE);
+		sb.append("Ce message a &eacute;t&eacute; envoy&eacute; &agrave; partir d'une adresse ne pouvant recevoir d'e-mails. Merci de ne pas y r&eacute;pondre.");
+		sb.append(NEWLINE);
+		sb.append("---------------------------");
+		sb.append(NEWLINE);
 		sb.append("En application de la loi n&ordm; 78-17 du 6 janvier 1978 relative &agrave; l'informatique, aux fichiers et aux libert&eacute;s, vous disposez des droits d'opposition, d'acc&egrave;s et de rectification des donn&eacute;es vous concernant. Ainsi, vous pouvez demander une mise &agrave; jour ou une suppression des informations vous concernant si elles s'av&egrave;rent inexactes, incompl&egrave;tes, &eacute;quivoques, p&eacute;rim&eacute;es ou si leur collecte ou leur utilisation, communication ou conservation est interdite.");
 		return sb.toString();
 	} 
