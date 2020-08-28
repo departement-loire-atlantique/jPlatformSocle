@@ -23,10 +23,11 @@ String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().leng
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray  ">
-
-	<picture class="ds44-container-imgRatio">
-	   <img src="<%= urlPhoto %>" alt="" class="ds44-imgRatio">
-	</picture>
+    <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
+		<picture class="ds44-container-imgRatio">
+		   <img src="<%= urlPhoto %>" alt="" class="ds44-imgRatio">
+		</picture>
+	</jalios:if>
     
     <div class="ds44-card__section">
       <div class="ds44-innerBoxContainer">

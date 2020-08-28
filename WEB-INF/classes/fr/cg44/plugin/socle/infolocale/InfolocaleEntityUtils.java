@@ -561,7 +561,7 @@ public class InfolocaleEntityUtils {
       String[] genres = request.getParameterValues("cids");
       String strGenres = "";
       String strThematiques = "";
-      String boxGenres = box.getGenresInfolocale();
+      String boxGenres = InfolocaleUtil.getAllGenresFromPortletAgendaConfig(box);
       String boxThematiques = box.getGroupesDevenementsInfolocale();
       String rubriqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.rubrique");
       String thematiqueField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.thematiquePerso");
@@ -647,7 +647,7 @@ public class InfolocaleEntityUtils {
       String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
       JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
       try {
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"));
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileResultat_1(), box.getMetadonneesTuileResultat_2());
         allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
       } catch (JSONException e) {
         LOGGER.warn("Erreur lors de la requete sur les évènements infolocale", e);

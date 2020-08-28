@@ -12,22 +12,22 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
-import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
-import com.jalios.jcms.Data;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import generated.EvenementInfolocale;
+import generated.PortletAgendaInfolocale;
 
 public class InfolocaleUtil {
     
@@ -706,5 +706,49 @@ public class InfolocaleUtil {
       result.delete(result.lastIndexOf(splitter), result.length()+1);     
       
       return result.toString();
+    }
+    
+    /**
+     * Retourne une liste de genres générée de la concaténation des champs "genres infolocale" et "catégories infolocale" d'une portlet agenda
+     * Utilisée notamment pour les requêtes par défaut
+     * @param box
+     * @return
+     */
+    public static String getAllGenresFromPortletAgendaConfig(PortletAgendaInfolocale box) {
+      StringBuilder allGenres = new StringBuilder();
+      Set<String> setBoxGenres = new LinkedHashSet<>();
+      
+      if (Util.notEmpty(box.getGenresInfolocale())) {
+        // Liste d'IDs de genres
+        setBoxGenres.addAll(Arrays.asList(box.getGenresInfolocale().split(",")));
+      }
+      
+      if (Util.notEmpty(box.getCategoriesInfolocale())) {
+        // Liste de catégories. On doit récupérer tous les genres associés à chaque catégorie
+        String fluxId = Util.notEmpty(box.getIdDeFlux()) ? box.getIdDeFlux() : Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.default");
+        Map<String, Set<Genre>> foundGenresFromCats = InfolocaleEntityUtils.getAllGenreOfMetadata(new String[] {"tmplbl"}, new String[] {box.getCategoriesInfolocale()}, fluxId);
+        // Il faut récupérer l'ID de chaque genre trouvé pour l'ajouter dans une liste à part
+        if (Util.notEmpty(foundGenresFromCats)) {
+         List<String> listGenresFromCats = new ArrayList<>();
+         
+         for (String itKey : foundGenresFromCats.keySet()) {
+           foundGenresFromCats.get(itKey).forEach( (itGenre) -> listGenresFromCats.add(itGenre.getId()));
+         }
+         
+         // Tout ajouter au set de genres. La nature du linkedhashset va empêcher les doublons
+         setBoxGenres.addAll(listGenresFromCats);
+        }
+      }
+      
+      // Remplir le string builder
+      for (Iterator<String> iter = setBoxGenres.iterator(); iter.hasNext();) {
+        String itGenreId = iter.next();
+        allGenres.append(itGenreId);
+        if (iter.hasNext()) {
+          allGenres.append(",");
+        }
+      }
+      
+      return allGenres.toString();
     }
 }
