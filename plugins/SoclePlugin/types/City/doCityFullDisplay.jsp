@@ -149,7 +149,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 <div class="mts">
                     <jalios:select>
 	                    <jalios:if predicate='<%= Util.notEmpty(obj.getEpciWebsite())%>'>
-	                        <a href="<%= obj.getEpciWebsite() %>" target="_blank" title="<%= glp("jcmsplugin.socle.city.epci.site.nouvelonglet",obj.getTitle())%>"><%= obj.getEpci(loggedMember).first() %></a>
+	                       <% String epciLibelle = obj.getEpci(loggedMember).first().getName(); %>
+                            <a href="<%= obj.getEpciWebsite() %>" target="_blank" title="<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", epciLibelle) %>"><%= epciLibelle %></a>
 	                    </jalios:if>
 	                    <jalios:default>
 	                        <%= obj.getEpci(loggedMember).first() %>
@@ -163,14 +164,14 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.canton") %></p>
                 <div class="mts">
                     <jalios:if predicate='<%= obj.getCanton().length == 1 %>'>
-                        <%= obj.getCanton()[0] %>
+                        <jalios:link data="<%= obj.getCanton()[0] %>"><%= obj.getCanton()[0] %></jalios:link>
                     </jalios:if>
                     
                     <jalios:if predicate='<%= obj.getCanton().length > 1 %>'>
                         <ul class="ds44-list">
 		                    <jalios:foreach name="itData" type="generated.Canton" array="<%= obj.getCanton() %>">
 		                        <jalios:if predicate='<%= itData != null && itData.canBeReadBy(loggedMember)%>'>
-				                  <jalios:link data="<%= itData %>"><%= itData %></jalios:link>
+				                  <li><jalios:link data="<%= itData %>"><%= itData %></jalios:link></li>
 		                        </jalios:if>
 		                    </jalios:foreach>
                         </ul>
