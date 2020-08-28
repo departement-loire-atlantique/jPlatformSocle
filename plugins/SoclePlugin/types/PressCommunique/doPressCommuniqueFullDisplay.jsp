@@ -40,7 +40,7 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                 String fileType = FileDocument.getExtension(obj.getPressCommuniqueDirectory().getFilename()).toUpperCase();
                 String fileSize = Util.formatFileSize(obj.getPressCommuniqueDirectory().getSize());
                 %>
-                <p><a class="ds44-btnStd ds44-btn--invert" href="<%= fichier %>" target="_blank" title="<%= glp("jcmsplugin.socle.presscommunique.telecharger.title", obj.getPressCommuniqueDirectory().getTitle(),fileSize,fileType) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.presscommunique.telecharger.label") %></span><i class="icon icon-pdf" aria-hidden="true"></i></a></p>
+                <p class="mtm"><a class="ds44-btnStd ds44-btn--invert" href="<%= fichier %>" target="_blank" title="<%= glp("jcmsplugin.socle.presscommunique.telecharger.title", obj.getPressCommuniqueDirectory().getTitle(),fileSize,fileType) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.presscommunique.telecharger.label") %></span><i class="icon icon-pdf" aria-hidden="true"></i></a></p>
 
             </jalios:if>
 
