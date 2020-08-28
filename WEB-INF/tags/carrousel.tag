@@ -52,7 +52,9 @@
         %>
     
         <%-- Afficher la portlet --%>
-        <jalios:include pub="<%= carrouselPortlet %>"/>
+        <div class="ds44-container-large ds44-mb-std">
+            <jalios:include pub="<%= carrouselPortlet %>"/>
+        </div>
     </jalios:if>
     <jalios:if predicate="<%= Util.notEmpty(pubArray) && Util.notEmpty(gabarit) %>">
         <%-- Afficher la liste de données en dessous --%>
@@ -69,6 +71,8 @@
           tmpPortlet.setContenusEnAvant(promotedPubArray);
         }
         %>
-        <jalios:include pub="<%= tmpPortlet %>"/>
+        <div class="ds44-container-large ds44-mb-std">
+            <jalios:include pub="<%= tmpPortlet %>"/>
+        </div>
     </jalios:if>
 </jalios:select>
