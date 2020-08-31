@@ -190,14 +190,17 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			                        </li>
 	                           </jalios:if>
 	                           <jalios:select>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0) %>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0 || obj.getAgeMaximum() >= 100) %>">
 	                                    <li><%= glp("jcmsplugin.socle.age.apartirde", obj.getAgeMinimum()) %></li>
 	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && obj.getAgeMaximum() < 100 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
 	                                    <li><%= glp("jcmsplugin.socle.age.jusqua", obj.getAgeMaximum()) %></li>
 	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && obj.getAgeMinimum() < 100 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
 	                                    <li><%= glp("jcmsplugin.socle.age.de.a", obj.getAgeMinimum(), obj.getAgeMaximum()) %></li>
+	                                </jalios:if>
+	                                <jalios:if predicate='<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() >= 100 && Util.notEmpty(obj.getCategorieDage()) && !(Arrays.asList(obj.getCategorieDage()).contains(glp("jcmsplugin.socle.age.tous"))) %>'>
+	                                    <li><%= glp("jcmsplugin.socle.age.tous") %></li>
 	                                </jalios:if>
 	                           </jalios:select>
 	                        </ul>

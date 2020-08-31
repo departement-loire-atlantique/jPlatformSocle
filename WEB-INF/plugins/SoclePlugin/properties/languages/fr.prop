@@ -233,6 +233,7 @@ jcmsplugin.socle.public: Public :
 jcmsplugin.socle.age.apartirde: A partir de {0} ans
 jcmsplugin.socle.age.jusqua: Jusqu'à {0} ans
 jcmsplugin.socle.age.de.a: De {0} à {1} ans
+jcmsplugin.socle.age.tous: Tout public
 jcmsplugin.socle.contactreservations: Contact et réservation :
 jcmsplugin.socle.contact: Contact :
 jcmsplugin.socle.siteinternet: Site internet
