@@ -46,7 +46,7 @@
 			
 			</nav>
 			
-	</div>
+
 	<%
         String[] currentTitresParagraphes = new String[0];
         String[] currentContenusParagraphes = new String[0];
@@ -123,4 +123,8 @@
     
     %>
     
+    </div>
+    
+    <%-- Partagez cette page --%>
+    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 </section>

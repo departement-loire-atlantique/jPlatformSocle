@@ -23,9 +23,7 @@
                 <%@ include file="ficheArticleOnglets.jspf" %>
             </jalios:default>
         </jalios:select>
-        
-        <%-- Partagez cette page --%>
-        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
+
         
         <%-- TODO : bloc Je m'abonne --%>
         

@@ -16,4 +16,7 @@
             </div>
         </div>
     </section>
-</jalios:foreach> 
+</jalios:foreach>
+
+<%-- Partagez cette page --%>
+<%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %> 
