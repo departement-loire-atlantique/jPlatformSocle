@@ -55,7 +55,7 @@ public class InfolocaleEntityUtils {
      * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
-      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null);
+      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null, null);
     }
     
     /**
@@ -65,11 +65,11 @@ public class InfolocaleEntityUtils {
      * @param metadata2
      * @return
      */
-    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2) {
+    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2, List<String> idsToExclude) {
         EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2);
+                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2, idsToExclude);
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
             }
@@ -83,7 +83,7 @@ public class InfolocaleEntityUtils {
      * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
-      return createEvenementInfolocaleFromJsonItem(json, null, null);
+      return createEvenementInfolocaleFromJsonItem(json, null, null, null);
     }
     
     /**
@@ -91,14 +91,19 @@ public class InfolocaleEntityUtils {
      * @param json
      * @param metadata1
      * @param metadata2
+     * @param idsToExclude 
      * @return
      */
-    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2) {
+    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2, List<String> idsToExclude) {
         if (Util.isEmpty(json)) return null;
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
         try {
+            // ID d'événement à exclure
+            if (Util.notEmpty(idsToExclude) && idsToExclude.contains(Integer.toString(json.getInt("id")))) {
+              return new EvenementInfolocale();
+            }
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
             if (Util.notEmpty(json.get("organismeId")) && !(json.get("organismeId").toString().equals("null"))) {
@@ -641,13 +646,17 @@ public class InfolocaleEntityUtils {
       } else {
         parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
       }
-
+      
+      String[] arrayIdsAExclure = new String[]{""};
+      if (Util.notEmpty(box.getIdsAExclure()) && box.getIdsAExclure().contains(",")) {
+        arrayIdsAExclure = box.getIdsAExclure().split(",");
+      }
       
       // Récupère le flux infolocale et transformation en liste de publication JCMS
       String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
       JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
       try {
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileResultat_1(), box.getMetadonneesTuileResultat_2());
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileResultat_1(), box.getMetadonneesTuileResultat_2(), Arrays.asList(arrayIdsAExclure));
         allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
       } catch (JSONException e) {
         LOGGER.warn("Erreur lors de la requete sur les évènements infolocale", e);
