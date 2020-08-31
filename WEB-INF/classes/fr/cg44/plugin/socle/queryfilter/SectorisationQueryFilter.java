@@ -44,8 +44,8 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 	private static String SECTORISATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.rectangle.url";
 	
 	private static String SECTORISATION_IMPLANTATION_URL_COMMUNE_PROP = "jcmsplugin.socle.sectorisation.implantations.commune.url";
-  private static String SECTORISATION_IMPLANTATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.implantations.point.url";
-  private static String SECTORISATION_IMPLANTATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.implantations.rectangle.url";
+	private static String SECTORISATION_IMPLANTATION_URL_POINT_PROP = "jcmsplugin.socle.sectorisation.implantations.point.url";
+	private static String SECTORISATION_IMPLANTATION_URL_RECTANGLE_PROP = "jcmsplugin.socle.sectorisation.implantations.rectangle.url";
 	
 	private static int TIMEOUT = Integer.parseInt(getChannel().getProperty("jcmsplugin.socle.rest.timeout", "2000"));
 
@@ -121,20 +121,37 @@ public class SectorisationQueryFilter extends LuceneQueryFilter {
 			List<String> sectorResultMatriculeSet = sectorResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());	
 			List<String> sectorImplantationResultMatriculeSet = sectorImplantationResultSet.stream().map(SectorResult::getUniqueId).collect(Collectors.toList());    
 			for(Publication itPub : set) {
-				String idRef = "";
+				String idRef[] = null;
 				if(itPub instanceof FicheLieu) {
 					FicheLieu itFiche = (FicheLieu) itPub;
-					idRef = itFiche.getIdReferentiel();						
+					if(Util.notEmpty(itFiche.getIdReferentiel())) {
+						idRef = itFiche.getIdReferentiel().split(" ");
+					}
 				}else if(itPub instanceof Canton) {
 					Canton canton = (Canton) itPub;
-					idRef = String.valueOf(canton.getCantonCode());							
+					idRef = new String[] {String.valueOf(canton.getCantonCode())};							
 				}else if(itPub instanceof City) {
 					City city = (City) itPub;
-					idRef = String.valueOf(city.getCityCode());
+					idRef = new String[]{String.valueOf(city.getCityCode())};
 				}
-				if(Util.notEmpty(idRef) && !sectorResultMatriculeSet.contains(idRef) && !sectorImplantationResultMatriculeSet.contains(idRef)){
+				
+				// Cherche si au moins un des id de la publication est dans la sectorisation
+				// Si la publicaion n'a pas d'id de référentiel alors la publication n'est pas éliminée des résultats
+				boolean isSect = false;
+				if(Util.notEmpty(idRef)) {
+					for(String itIdRef : idRef) {
+						if (Util.isEmpty(itIdRef) || sectorResultMatriculeSet.contains(itIdRef) || sectorImplantationResultMatriculeSet.contains(itIdRef)) {
+							isSect = true;
+						}
+					}
+				}else {
+					isSect = true;
+				}
+				
+				// Si aucun des id de ref n'est présent dans la sectorisation alors indique cette publication comme hors résultat
+				if(!isSect) {
 					notInSectorisation.add(itPub);
-				}
+				}				
 			}			
 		}
 		return notInSectorisation;
