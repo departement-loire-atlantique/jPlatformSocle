@@ -185,7 +185,10 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                         <h2 class="h3-like"><%= glp("jcmsplugin.socle.adresse") %></h2>
                         <div class="ds44-ml1">
                            <p class="ds44-docListElem mtm">
-                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getNom() %><br><%= obj.getLieu().getAdresse() %><br><%= obj.getLieu().getCommune().getNom() %>
+                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+                              <%= obj.getLieu().getNom() %><jalios:if predicate="<%= Util.notEmpty(obj.getLieu().getNom()) && (Util.notEmpty(obj.getLieu().getAdresse()) || Util.notEmpty(obj.getLieu().getCommune())) %>"><br></jalios:if>
+                              <%= obj.getLieu().getAdresse() %><jalios:if predicate="<%= Util.notEmpty(obj.getLieu().getAdresse()) && (Util.notEmpty(obj.getLieu().getCommune())) %>"><br></jalios:if>
+                              <%= obj.getLieu().getCommune().getNom() %>
                            </p>
                            <p class="ds44-docListElem mts">
                               <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>' target="_blank"><%= glp("jcmsplugin.socle.syrendre") %></a>
