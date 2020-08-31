@@ -58,7 +58,11 @@ public class InfolocaleUtil {
         // Récupérer tous les événements dont la date actuelle est égale à leur date de fin
         for (Iterator<EvenementInfolocale> iter = listClone.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
-            if (eventEndsToday(itEvent)) {
+            // En profiter pour retirer les événements vides
+            if (Util.isEmpty(itEvent.getId())) {
+                iter.remove();
+            }
+            else if (eventEndsToday(itEvent)) {
                 sortedEvents.add(itEvent);
                 iter.remove();
             }

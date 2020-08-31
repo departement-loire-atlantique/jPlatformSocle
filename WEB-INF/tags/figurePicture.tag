@@ -151,6 +151,11 @@ switch(format) {
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
 	  break;
 	  
+	case "carrousel" :
+	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarrousel(image);
+	  break;
+	  
 	case "custom" :
       if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
       formattedImagePath = SocleUtils.generateVignette(image, width, height);

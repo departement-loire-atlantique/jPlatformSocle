@@ -59,7 +59,11 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
     <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() > 0 %>'>
         <%
         SimpleDateFormat sdfSort = new SimpleDateFormat(channel.getProperty("jcmsplugin.socle.infolocale.date.receive.format"));
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2());
+        String[] arrayIdsAExclure = new String[]{""};
+        if (Util.notEmpty(box.getIdsAExclure())) {
+          arrayIdsAExclure = box.getIdsAExclure().split(",");
+        }
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), Arrays.asList(arrayIdsAExclure));
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         sortedEvents = InfolocaleUtil.purgeEventListFromDuplicates(sortedEvents, new String[]{sdfSort.format(dateDebut), sdfSort.format(dateInAMonth)});

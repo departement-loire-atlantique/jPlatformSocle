@@ -89,10 +89,10 @@ pour pouvoir s'adapter aux contraintes graphiques du DS
     %><ds:message title="<%= warningMsg %>" type="error"/><%
   }
   if (Util.notEmpty(infoMsg)) {
-    %><ds:message title="<%= infoMsg %>" type="success"/><%
+    %><ds:message title="<%= infoMsg %>" type="information"/><%
   }
   if (Util.notEmpty(successMsg)) {
-    %><ds:message title="<%= successMsg %>" type="success"/><%
+    %><ds:message title="<%= successMsg %>" type="information"/><%
   }
   
   if (Util.notEmpty(errorsList)) {
@@ -102,10 +102,10 @@ pour pouvoir s'adapter aux contraintes graphiques du DS
     %><ds:message msgList="<%= warningList %>" title="<%= titreMessageBox %>" type="error"/><%
   }
   if (Util.notEmpty(infoList)) {
-    %><ds:message msgList="<%= infoList %>" title="<%= titreMessageBox %>" type="success"/><%
+    %><ds:message msgList="<%= infoList %>" title="<%= titreMessageBox %>" type="information"/><%
   }
   if (Util.notEmpty(successList)) {
-    %><ds:message msgList="<%= successList %>" title="<%= titreMessageBox %>" type="success"/><%
+    %><ds:message msgList="<%= successList %>" title="<%= titreMessageBox %>" type="information"/><%
   }
   request.getSession().removeAttribute(JcmsConstants.ERROR_MSG);
   request.getSession().removeAttribute(JcmsConstants.WARNING_MSG);

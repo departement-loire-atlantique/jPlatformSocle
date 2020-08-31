@@ -156,6 +156,8 @@ jcmsplugin.socle.image.diaporama.mobile.width: 300
 jcmsplugin.socle.image.diaporama.mobile.height: 360
 jcmsplugin.socle.image.diaporama.vignette.width: 78
 jcmsplugin.socle.image.diaporama.vignette.height: 78
+jcmsplugin.socle.image.carrousel.width: 363
+jcmsplugin.socle.image.carrousel.height: 240
 
 # ------------------------------------------------------------
 #  Wysiwyg
@@ -310,6 +312,7 @@ jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag 
 jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
 jcmsplugin.socle.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
+jcmsplugin.socle.socialnetwork.twitter.account:loireatlantique
 
 # ------ Propriétés éditables SoclePlugin
 

@@ -32,7 +32,7 @@
     fragment="false"
     rtexprvalue="true"
     type="String"
-    description="Le type de message : success ou error"
+    description="Le type de message : information ou error"
 %>
 <%
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
