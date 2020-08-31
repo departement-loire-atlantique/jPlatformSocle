@@ -151,9 +151,9 @@ switch(format) {
 	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilCarree(image);
 	  break;
 	  
-	case "card" :
+	case "carrousel" :
 	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
-	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCard(image);
+	  formattedImagePath = SocleUtils.getUrlOfFormattedImageCarrousel(image);
 	  break;
 	  
 	case "custom" :
