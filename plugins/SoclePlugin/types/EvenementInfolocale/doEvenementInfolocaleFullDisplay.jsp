@@ -106,18 +106,31 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                          <section class="ds44-contenuArticle" id="sectionPicture">
                              <div class="ds44-inner-container ds44-mtb5">
                                 <div class="ds44-grid12-offset-1">
-                                   <div class="grid-2-small-1">
-                                      <div class="col mrl mbs">
-                                         <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-                                            <img src="<%= urlPhoto %>" alt="" class="ds44-w100 ds44-imgRatio">
-                                            <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-                                         </figure>
-                                      </div>
-                                      <div class="col mll mbs">
-                                         <p class="ds44-introduction"><%= !texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription() %></p>
-                                      </div>
-                                   </div>
-                                </div>
+									<jalios:select>
+										<jalios:if predicate="<%=Util.notEmpty(urlPhoto)%>">
+											<div class="grid-2-small-1">
+												<div class="col mrl mbs">
+													<figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%=labelLegendCopyright%>">
+														<img src="<%=urlPhoto%>" alt=""
+															class="ds44-w100 ds44-imgRatio">
+														<figcaption class="ds44-imgCaption"><%=labelLegendCopyright%></figcaption>
+													</figure>
+												</div>
+												<div class="col mll mbs">
+													<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+												</div>
+											</div>
+										</jalios:if>
+										<jalios:default>
+											<div class="grid-1-small-1">
+												<div class="col mll mbs">
+													<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+												</div>
+											</div>
+										</jalios:default>
+									</jalios:select>
+		
+								</div>
                              </div>
                          </section>
                     </jalios:default>
