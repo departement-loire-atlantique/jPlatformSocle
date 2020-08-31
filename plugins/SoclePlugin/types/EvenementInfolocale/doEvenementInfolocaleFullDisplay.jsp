@@ -187,7 +187,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                               <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getNom() %><br><%= obj.getLieu().getAdresse() %><br><%= obj.getLieu().getCommune().getNom() %>
                            </p>
                            <p class="ds44-docListElem mts">
-                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>'><%= glp("jcmsplugin.socle.syrendre") %></a>
+                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>' target="_blank"><%= glp("jcmsplugin.socle.syrendre") %></a>
                            </p>
                         </div>
                      </div>
