@@ -165,12 +165,13 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                                    <span class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.gratuit") %></span>
 		                            </li>
 	                                </jalios:if>
+	                                <% String euro = glp("jcmsplugin.socle.symbol.euro"); %>
 	                                <jalios:default>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifNormal(userLang)) && !obj.getTarifNormal(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %></li>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %><%= obj.getTarifNormal(userLang).contains(euro) ? "" : " "+euro %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifReduit(userLang)) && !obj.getTarifReduit(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %></li>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %><%= obj.getTarifReduit(userLang).contains(euro) ? "" : " "+euro %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
 	                                        <li><%= obj.getTarifAutre(userLang) %></li>
