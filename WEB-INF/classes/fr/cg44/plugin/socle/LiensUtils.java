@@ -60,7 +60,8 @@ public final class LiensUtils {
 		StringBuffer link = new StringBuffer("https://twitter.com/intent/tweet?url=");
 		link.append(HttpUtil.encodeForURL(url));
 		link.append("&amp;tw_p=tweetbutton");
-		link.append("&amp;via=" + Channel.getChannel().getProperty("plugin.tools.twitter.account"));
+		link.append("&amp;via=@");
+		link.append(channel.getProperty("jcmsplugin.socle.socialnetwork.twitter.account"));
 
 		return link.toString();
 	}
