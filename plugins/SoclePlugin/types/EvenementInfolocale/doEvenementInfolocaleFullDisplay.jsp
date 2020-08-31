@@ -240,13 +240,10 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           <div class="ds44-docListElem mtm">
 	                              <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	                              <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) %>">
-                                       <ds:phone number="<%= eventContact.getTelephone1() %>"/>
-                                  </jalios:if>
-                                  <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) && Util.notEmpty(eventContact.getTelephone2()) %>">
-                                   - 
+                                       <p><ds:phone number="<%= eventContact.getTelephone1() %>"/></p>
                                   </jalios:if>
                                   <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone2()) %>">
-                                       <ds:phone number="<%= eventContact.getTelephone2() %>"/>
+                                       <p class="ds44-noMrg"><ds:phone number="<%= eventContact.getTelephone2() %>"/></p>
                                   </jalios:if>
 	                           </div>
 	                           </jalios:if>
