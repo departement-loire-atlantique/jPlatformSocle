@@ -38,6 +38,10 @@ if (Util.notEmpty(box.getGroupesDevenementsInfolocale())) {
   parameters.put("thematiquePerso", box.getGroupesDevenementsInfolocale());
 }
 
+if (Util.notEmpty(box.getGenresInfolocale()) || Util.notEmpty(box.getCategoriesInfolocale())) {
+  parameters.put("rubrique", InfolocaleUtil.getAllGenresFromPortletAgendaConfig(box));
+}
+
 parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
 
 SimpleDateFormat sdf = new SimpleDateFormat(channel.getProperty("jcmsplugin.socle.infolocale.date.send.format"));
