@@ -255,7 +255,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 		                              <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="<%= eventContact.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", eventContact.getUrl()) %>' target="_blank"><%= glp("jcmsplugin.socle.siteinternet") %></a>
 		                           </p>
 	                           </jalios:if>
-	                           <jalios:if predicate="<%= Util.notEmpty(obj.getReservation()) %>">
+	                           <jalios:if predicate="<%= Util.notEmpty(obj.getReservation()) && !obj.getMentionEvenementComplet() %>">
 		                           <p class="ds44-docListElem mts">
 		                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i><%= obj.getReservation() %>
 		                           </p>
