@@ -296,7 +296,8 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                        </div>
 	                     </div>
                      </jalios:if>
-                     <jalios:if predicate="<%= Util.notEmpty(obj.getLangues()) %>">
+                     <jalios:if predicate='<%= Util.notEmpty(obj.getLangues()) 
+                         && !(obj.getLangues().length == 1 && obj.getLangues()[0].getLangueLibelle().toLowerCase().equals(channel.getProperty("fr.lang").toLowerCase())) %>'>
 	                     <div>
 	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.langues") %></h2>
 	                        <ul class="ds44-uList">
