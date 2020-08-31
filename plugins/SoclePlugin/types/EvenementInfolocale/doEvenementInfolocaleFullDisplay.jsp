@@ -49,79 +49,79 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       </div>
       
       <jalios:buffer name="eventSummary">
-		<div class="ds44-theme ds44-flex-valign-center ds44-flex-container ds44-fse ds44--l-padding ">
-		   <span class="ds44-docListElem h4-like ds44-inlineBlock">
-		      <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
-		      <jalios:select>
-		         <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-		         </jalios:if>
-		         <jalios:default>
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-		            -
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
-		         </jalios:default>
-		      </jalios:select>
-		   </span>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
-		      <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
-		   </jalios:if>
-		</div>
+        <div class="ds44-img50 ds44-img50--event">
+            <div class="ds44-inner-container">
+                <div class="ds44-grid12-offset-1">
+                    <div class="ds44-theme ds44-flex-valign-center ds44-flex-container ds44-fse ds44--l-padding ">
+			           <span class="ds44-docListElem h4-like ds44-inlineBlock">
+			              <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
+			              <jalios:select>
+			                 <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+			                 </jalios:if>
+			                 <jalios:default>
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+			                    -
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+			                 </jalios:default>
+			              </jalios:select>
+			           </span>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
+			              <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
+			           </jalios:if>
+			        </div>
+                </div>
+            </div>
+        </div>
       </jalios:buffer>
       
-      <div class="ds44-img50 ds44-img50--event">
-         <div class="ds44-inner-container">
-            <div class="ds44-grid12-offset-1">
-		      <jalios:select>
-		      
-				    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
-						<div class="ds44-inner-container">
-						   <div class="ds44-grid12-offset-1">
-						      <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-						         <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
-						         <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-						      </figure>
-						      <%= eventSummary %>
-						   </div>
-						</div>
-				    </jalios:if>
-				    
-				    <jalios:default>
-				        <%= eventSummary %>
-			             <section class="ds44-contenuArticle" id="sectionPicture">
-					         <div class="ds44-inner-container ds44-mtb5">
-					            <div class="ds44-grid12-offset-1">
-					               <div class="grid-2-small-1">
-					                  <div class="col mrl mbs">
-					                     <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-					                        <img src="<%= urlPhoto %>" alt="" class="ds44-w100 ds44-imgRatio">
-					                        <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-					                     </figure>
-					                  </div>
-					                  <div class="col mll mbs">
-					                     <p class="ds44-introduction"><%= !texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription() %></p>
-					                  </div>
-					               </div>
-					            </div>
-					         </div>
-					     </section>
-				    </jalios:default>
-			  </jalios:select>
-	        </div>
-	     </div>
-	  </div>
+      <jalios:select>
+              
+                    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
+                        <div class="ds44-inner-container">
+                           <div class="ds44-grid12-offset-1">
+                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
+                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
+                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
+                              </figure>
+                              <%= eventSummary %>
+                           </div>
+                        </div>
+                    </jalios:if>
+                    
+                    <jalios:default>
+                        <%= eventSummary %>
+                         <section class="ds44-contenuArticle" id="sectionPicture">
+                             <div class="ds44-inner-container ds44-mtb5">
+                                <div class="ds44-grid12-offset-1">
+                                   <div class="grid-2-small-1">
+                                      <div class="col mrl mbs">
+                                         <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
+                                            <img src="<%= urlPhoto %>" alt="" class="ds44-w100 ds44-imgRatio">
+                                            <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
+                                         </figure>
+                                      </div>
+                                      <div class="col mll mbs">
+                                         <p class="ds44-introduction"><%= !texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription() %></p>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                         </section>
+                    </jalios:default>
+              </jalios:select>
       
       <section class="ds44-contenuArticle" id="sectionVideo">
          <div class="ds44-inner-container ds44-mtb3">
