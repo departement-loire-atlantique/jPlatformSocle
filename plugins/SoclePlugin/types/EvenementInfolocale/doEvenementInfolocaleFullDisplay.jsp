@@ -267,7 +267,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           </jalios:if>
 	                           <jalios:if predicate="<%= Util.notEmpty(obj.getUrlBilletterie()) %>">
 		                           <p>
-		                              <a href="<%= obj.getUrlBilletterie() %>" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+		                              <a href="<%= obj.getUrlBilletterie() %>" target="_blank" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
 		                           </p>
 	                           </jalios:if>
 	                        </div>
