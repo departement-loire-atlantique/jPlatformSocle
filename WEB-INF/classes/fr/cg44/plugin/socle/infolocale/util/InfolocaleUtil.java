@@ -703,9 +703,9 @@ public class InfolocaleUtil {
       // obligation de retirer le dernier suffixe -> ajouter un suffixe suite à un hasNext() pourrait ajouter
       // un suffixe même si aucun élément suivant n'est unique
       // on évite de rajouter un IF dans la boucle avec cette action
-      result.delete(result.lastIndexOf(splitter), result.length()+1);     
+      result.delete(result.lastIndexOf(splitter), result.length()+1);
       
-      return result.toString();
+      return result.toString().replaceAll("h00", "h");
     }
     
     /**
