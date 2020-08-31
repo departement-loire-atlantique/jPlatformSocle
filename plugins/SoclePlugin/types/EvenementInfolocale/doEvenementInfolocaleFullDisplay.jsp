@@ -176,6 +176,11 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
 	                                        <li><%= obj.getTarifAutre(userLang) %></li>
 	                                    </jalios:if>
+	                                    <jalios:if predicate='<%= (Util.isEmpty(obj.getTarifNormal(userLang)) || obj.getTarifNormal(userLang).equals("0"))
+	                                        && (Util.isEmpty(obj.getTarifReduit(userLang)) || obj.getTarifReduit(userLang).equals("0"))
+	                                        && (Util.isEmpty(obj.getTarifAutre()) || obj.getTarifAutre(userLang).equals("0")) %>'>
+	                                        <li><%= glp("jcmsplugin.socle.infolocale.label.payant") %></li>
+	                                    </jalios:if>
 	                                </jalios:default>
 	                           </jalios:select>
 	                        </ul>
