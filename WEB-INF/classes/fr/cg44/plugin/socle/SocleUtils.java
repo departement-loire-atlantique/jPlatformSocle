@@ -957,6 +957,15 @@ public final class SocleUtils {
   }
   
   /**
+   * Génère une image carrousel formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCarrousel(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.carrousel.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.carrousel.height", 0)); 
+  }
+  
+  /**
    * Retourne l'URL d'une image carree ou d'un substitut pour le contenu indiqué
    * @param pub
    * @return

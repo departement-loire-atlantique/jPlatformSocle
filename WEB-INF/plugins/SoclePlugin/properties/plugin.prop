@@ -156,6 +156,8 @@ jcmsplugin.socle.image.diaporama.mobile.width: 300
 jcmsplugin.socle.image.diaporama.mobile.height: 360
 jcmsplugin.socle.image.diaporama.vignette.width: 78
 jcmsplugin.socle.image.diaporama.vignette.height: 78
+jcmsplugin.socle.image.carrousel.width: 363
+jcmsplugin.socle.image.carrousel.height: 240
 
 # ------------------------------------------------------------
 #  Wysiwyg
