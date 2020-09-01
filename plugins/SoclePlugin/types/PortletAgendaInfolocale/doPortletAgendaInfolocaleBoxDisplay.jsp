@@ -88,41 +88,43 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
             </div>
         </jalios:if>
         
-        <div class='mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large' data-nb-visible-slides="<%= maxTuiles %>">
-            <div class="swiper-container">
-                <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
-                    <%
-	                    request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
-	                    request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_1());
-	                    request.setAttribute("cssCard", box.getStyleDesTuilesCarrousel());
-                    %>
-                    <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
-                        <li class="swiper-slide">
-                            <jalios:select>
-						        <jalios:if predicate='<%= box.getTypeDeTuileCarrousel().equals("vertical")%>'>
-						            <jalios:media data="<%= itEvent %>" template="cardVertical" />
-						        </jalios:if>
-						        <jalios:default>
-						            <jalios:media data="<%= itEvent %>" template="card" />
-						        </jalios:default>
-					        </jalios:select>
-                        </li>
-                    </jalios:foreach>
-                    <%
-                    request.removeAttribute("metadata1");
-                    request.removeAttribute("metadata2");
-                    request.removeAttribute("cssCard");
-                    %>
-                </ul>
-            </div>
-            <button class="swiper-button-prev ds44-not-edge-42" type="button" title='<%= glp("jcmsplugin.socle.carrousel.precedent") %>'>
-                <i class="icon icon-left" aria-hidden="true"></i>
-                <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrousel.precedent") %></span>
-            </button>
-            <button class="swiper-button-next ds44-not-edge-42" type="button" title='<%= glp("jcmsplugin.socle.carrousel.suivant") %>'>
-                <i class="icon icon-right" aria-hidden="true"></i>
-                <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrousel.suivant") %></span>
-            </button>
+        <div class="ds44-container-large">
+	        <div class='mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large' data-nb-visible-slides="<%= maxTuiles %>">
+	            <div class="swiper-container">
+	                <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
+	                    <%
+		                    request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
+		                    request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_1());
+		                    request.setAttribute("cssCard", box.getStyleDesTuilesCarrousel());
+	                    %>
+	                    <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
+	                        <li class="swiper-slide">
+	                            <jalios:select>
+							        <jalios:if predicate='<%= box.getTypeDeTuileCarrousel().equals("vertical")%>'>
+							            <jalios:media data="<%= itEvent %>" template="cardVertical" />
+							        </jalios:if>
+							        <jalios:default>
+							            <jalios:media data="<%= itEvent %>" template="card" />
+							        </jalios:default>
+						        </jalios:select>
+	                        </li>
+	                    </jalios:foreach>
+	                    <%
+	                    request.removeAttribute("metadata1");
+	                    request.removeAttribute("metadata2");
+	                    request.removeAttribute("cssCard");
+	                    %>
+	                </ul>
+	            </div>
+	            <button class="swiper-button-prev ds44-not-edge-42" type="button" title='<%= glp("jcmsplugin.socle.carrousel.precedent") %>'>
+	                <i class="icon icon-left" aria-hidden="true"></i>
+	                <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrousel.precedent") %></span>
+	            </button>
+	            <button class="swiper-button-next ds44-not-edge-42" type="button" title='<%= glp("jcmsplugin.socle.carrousel.suivant") %>'>
+	                <i class="icon icon-right" aria-hidden="true"></i>
+	                <span class="visually-hidden"><%= glp("jcmsplugin.socle.carrousel.suivant") %></span>
+	            </button>
+	        </div>
         </div>
     </jalios:if>
     <jalios:if predicate='<%= fluxSuccess && extractedFlux.getJSONArray("result").length() == 0 %>'>
