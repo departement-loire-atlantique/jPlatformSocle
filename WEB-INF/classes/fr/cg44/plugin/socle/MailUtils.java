@@ -161,37 +161,39 @@ public final class MailUtils {
 	/**
 	 * Envoi de l'email du formaulaire FAQ.
 	 */
-	public static void envoiMailFAQ(HttpServletRequest request, String emailTo) {
+	public static boolean envoiMailFAQ(HttpServletRequest request, String emailTo) {
+	  boolean result = false;
 		String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireFaqTemplate.jsp";
 		
 		// Objet
 		String objet = JcmsUtil.glpd("jcmsplugin.socle.email.faq.objet");
 
 		// Publication concernée par la FAQ
-		Publication pub = channel.getPublication(request.getParameter("id"));
+		Publication pub = channel.getPublication(request.getParameter("id[value]"));
 		// Contenu
 		HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
 		parametersMap.put("publication", pub.getTitle());
 		parametersMap.put("lien", ServletUtil.getBaseUrl(request)+pub.getDisplayUrl(channel.getLocale()));
-		parametersMap.put("question", request.getParameter("question"));
-		parametersMap.put("codepostal", Util.notEmpty(request.getParameter("commune")) ? request.getParameter("commune") : "");
+		parametersMap.put("question", request.getParameter("question[value]"));
+		parametersMap.put("codepostal", Util.notEmpty(request.getParameter("commune[value]")) ? request.getParameter("commune[value]") : "");
 		parametersMap.put("commune", Util.notEmpty(request.getParameter("commune[text]")) ? request.getParameter("commune[text]") : "");
-		parametersMap.put("email", request.getParameter("mail"));
+		parametersMap.put("email", request.getParameter("mail[value]"));
 
 		if (Util.notEmpty(emailTo)) {
 			try {
-				sendMail(objet, null, request.getParameter("mail"), emailTo, null, jsp, parametersMap);
-				msgEnvoiMailContact();
+				sendMail(objet, null, request.getParameter("mail[value]"), emailTo, null, jsp, parametersMap);
+				result = true;
 			} catch (Exception e) {
-				msgEchecEnvoiMailContact();
+				result = false;
 				LOGGER.error("Erreur lors de l'envoi du mail de FAQ" + e.getMessage());
 			}
 
 		} else {
-			msgEchecEnvoiMailContact();
+			result = false;
 			LOGGER.error("Le mail de FAQ n'a pas pu être envoyé car l'email par destination n'est pas défini.");
 		}
 
+		return result;
 	}
 
 	/**
