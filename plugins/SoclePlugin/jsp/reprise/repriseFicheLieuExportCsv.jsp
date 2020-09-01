@@ -203,10 +203,7 @@ if(getBooleanParameter("exportNew", false)) {
         
         StringBuffer video = new StringBuffer();
         if (Util.notEmpty(itLieu.getVideo())) {
-            for (int i = 0; i < itLieu.getVideo().length; i++) {
-                video.append(itLieu.getVideo()[i].getTitle());
-                if (i < itLieu.getVideo().length-1) video.append(", ");
-            }
+           video.append(itLieu.getVideo().getTitle());
         } else {
             video.append("");
         }
@@ -244,8 +241,8 @@ if(getBooleanParameter("exportNew", false)) {
         StringBuffer delegations = new StringBuffer();
         if (Util.notEmpty(itLieu.getDelegations())) {
             for (Iterator iter = Arrays.asList(itLieu.getDelegations()).iterator(); iter.hasNext();) {
-                Category itCat = (Category) iter.next();
-                delegations.append(itCat.getName());
+                Delegation itDeleg = (Delegation) iter.next();
+                delegations.append(itDeleg.getTitle());
                 if (iter.hasNext()) delegations.append(", ");
             }
         } else {
