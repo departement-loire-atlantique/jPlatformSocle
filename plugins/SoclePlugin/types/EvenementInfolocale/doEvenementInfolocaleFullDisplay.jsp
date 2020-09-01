@@ -49,79 +49,92 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       </div>
       
       <jalios:buffer name="eventSummary">
-		<div class="ds44-theme ds44-flex-valign-center ds44-flex-container ds44-fse ds44--l-padding ">
-		   <span class="ds44-docListElem h4-like ds44-inlineBlock">
-		      <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
-		      <jalios:select>
-		         <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-		         </jalios:if>
-		         <jalios:default>
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-		            -
-		            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
-		         </jalios:default>
-		      </jalios:select>
-		   </span>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
-		      <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
-		   </jalios:if>
-		   <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
-		      <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
-		   </jalios:if>
-		</div>
+        <div class="ds44-img50 ds44-img50--event">
+            <div class="ds44-inner-container">
+                <div class="ds44-grid12-offset-1">
+                    <div class="ds44-theme ds44-flex-valign-center ds44-flex-container ds44-fse ds44--l-padding ">
+			           <span class="ds44-docListElem h4-like ds44-inlineBlock">
+			              <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
+			              <jalios:select>
+			                 <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+			                 </jalios:if>
+			                 <jalios:default>
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+			                    -
+			                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+			                 </jalios:default>
+			              </jalios:select>
+			           </span>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
+			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
+			              <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
+			           </jalios:if>
+			        </div>
+                </div>
+            </div>
+        </div>
       </jalios:buffer>
       
-      <div class="ds44-img50 ds44-img50--event">
-         <div class="ds44-inner-container">
-            <div class="ds44-grid12-offset-1">
-		      <jalios:select>
-		      
-				    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
-						<div class="ds44-inner-container">
-						   <div class="ds44-grid12-offset-1">
-						      <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-						         <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
-						         <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-						      </figure>
-						      <%= eventSummary %>
-						   </div>
-						</div>
-				    </jalios:if>
-				    
-				    <jalios:default>
-				        <%= eventSummary %>
-			             <section class="ds44-contenuArticle" id="sectionPicture">
-					         <div class="ds44-inner-container ds44-mtb5">
-					            <div class="ds44-grid12-offset-1">
-					               <div class="grid-2-small-1">
-					                  <div class="col mrl mbs">
-					                     <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-					                        <img src="<%= urlPhoto %>" alt="" class="ds44-w100 ds44-imgRatio">
-					                        <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-					                     </figure>
-					                  </div>
-					                  <div class="col mll mbs">
-					                     <p class="ds44-introduction"><%= !texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription() %></p>
-					                  </div>
-					               </div>
-					            </div>
-					         </div>
-					     </section>
-				    </jalios:default>
-			  </jalios:select>
-	        </div>
-	     </div>
-	  </div>
+      <jalios:select>
+              
+                    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
+                        <div class="ds44-inner-container">
+                           <div class="ds44-grid12-offset-1">
+                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
+                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
+                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
+                              </figure>
+                              <%= eventSummary %>
+                           </div>
+                        </div>
+                    </jalios:if>
+                    
+                    <jalios:default>
+                        <%= eventSummary %>
+                         <section class="ds44-contenuArticle" id="sectionPicture">
+                             <div class="ds44-inner-container ds44-mtb5">
+                                <div class="ds44-grid12-offset-1">
+									<jalios:select>
+										<jalios:if predicate="<%=Util.notEmpty(urlPhoto)%>">
+											<div class="grid-2-small-1">
+												<div class="col mrl mbs">
+													<figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%=labelLegendCopyright%>">
+														<img src="<%=urlPhoto%>" alt=""
+															class="ds44-w100 ds44-imgRatio">
+														<figcaption class="ds44-imgCaption"><%=labelLegendCopyright%></figcaption>
+													</figure>
+												</div>
+												<div class="col mll mbs">
+													<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+												</div>
+											</div>
+										</jalios:if>
+										<jalios:default>
+											<div class="grid-1-small-1">
+												<div class="col mll mbs">
+													<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+												</div>
+											</div>
+										</jalios:default>
+									</jalios:select>
+		
+								</div>
+                             </div>
+                         </section>
+                    </jalios:default>
+              </jalios:select>
       
       <section class="ds44-contenuArticle" id="sectionVideo">
          <div class="ds44-inner-container ds44-mtb3">
@@ -152,15 +165,21 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                                    <span class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.gratuit") %></span>
 		                            </li>
 	                                </jalios:if>
+	                                <% String euro = glp("jcmsplugin.socle.symbol.euro"); %>
 	                                <jalios:default>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifNormal(userLang)) && !obj.getTarifNormal(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %></li>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %><%= obj.getTarifNormal(userLang).contains(euro) ? "" : " "+euro %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifReduit(userLang)) && !obj.getTarifReduit(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %></li>
+	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %><%= obj.getTarifReduit(userLang).contains(euro) ? "" : " "+euro %></li>
 	                                    </jalios:if>
 	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
 	                                        <li><%= obj.getTarifAutre(userLang) %></li>
+	                                    </jalios:if>
+	                                    <jalios:if predicate='<%= (Util.isEmpty(obj.getTarifNormal(userLang)) || obj.getTarifNormal(userLang).equals("0"))
+	                                        && (Util.isEmpty(obj.getTarifReduit(userLang)) || obj.getTarifReduit(userLang).equals("0"))
+	                                        && (Util.isEmpty(obj.getTarifAutre()) || obj.getTarifAutre(userLang).equals("0")) %>'>
+	                                        <li><%= glp("jcmsplugin.socle.infolocale.label.payant") %></li>
 	                                    </jalios:if>
 	                                </jalios:default>
 	                           </jalios:select>
@@ -171,10 +190,13 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                         <h2 class="h3-like"><%= glp("jcmsplugin.socle.adresse") %></h2>
                         <div class="ds44-ml1">
                            <p class="ds44-docListElem mtm">
-                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getNom() %><br><%= obj.getLieu().getAdresse() %><br><%= obj.getLieu().getCommune().getNom() %>
+                              <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+                              <%= obj.getLieu().getNom() %><jalios:if predicate="<%= Util.notEmpty(obj.getLieu().getNom()) && (Util.notEmpty(obj.getLieu().getAdresse()) || Util.notEmpty(obj.getLieu().getCommune())) %>"><br></jalios:if>
+                              <%= obj.getLieu().getAdresse() %><jalios:if predicate="<%= Util.notEmpty(obj.getLieu().getAdresse()) && (Util.notEmpty(obj.getLieu().getCommune())) %>"><br></jalios:if>
+                              <%= obj.getLieu().getCommune().getNom() %>
                            </p>
                            <p class="ds44-docListElem mts">
-                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>'><%= glp("jcmsplugin.socle.syrendre") %></a>
+                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>' target="_blank"><%= glp("jcmsplugin.socle.syrendre") %></a>
                            </p>
                         </div>
                      </div>
@@ -190,14 +212,17 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			                        </li>
 	                           </jalios:if>
 	                           <jalios:select>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0) %>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0 || obj.getAgeMaximum() >= 100) %>">
 	                                    <li><%= glp("jcmsplugin.socle.age.apartirde", obj.getAgeMinimum()) %></li>
 	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && obj.getAgeMaximum() < 100 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
 	                                    <li><%= glp("jcmsplugin.socle.age.jusqua", obj.getAgeMaximum()) %></li>
 	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && obj.getAgeMinimum() < 100 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
 	                                    <li><%= glp("jcmsplugin.socle.age.de.a", obj.getAgeMinimum(), obj.getAgeMaximum()) %></li>
+	                                </jalios:if>
+	                                <jalios:if predicate='<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() >= 100 && Util.notEmpty(obj.getCategorieDage()) && !(Arrays.asList(obj.getCategorieDage()).contains(glp("jcmsplugin.socle.age.tous"))) %>'>
+	                                    <li><%= glp("jcmsplugin.socle.age.tous") %></li>
 	                                </jalios:if>
 	                           </jalios:select>
 	                        </ul>
@@ -215,13 +240,10 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           <div class="ds44-docListElem mtm">
 	                              <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	                              <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) %>">
-                                       <ds:phone number="<%= eventContact.getTelephone1() %>"/>
-                                  </jalios:if>
-                                  <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone1()) && Util.notEmpty(eventContact.getTelephone2()) %>">
-                                   - 
+                                       <p><ds:phone number="<%= eventContact.getTelephone1() %>"/></p>
                                   </jalios:if>
                                   <jalios:if predicate="<%= Util.notEmpty(eventContact.getTelephone2()) %>">
-                                       <ds:phone number="<%= eventContact.getTelephone2() %>"/>
+                                       <p class="ds44-noMrg"><ds:phone number="<%= eventContact.getTelephone2() %>"/></p>
                                   </jalios:if>
 	                           </div>
 	                           </jalios:if>
@@ -235,7 +257,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 		                              <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a href="<%= eventContact.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", eventContact.getUrl()) %>' target="_blank"><%= glp("jcmsplugin.socle.siteinternet") %></a>
 		                           </p>
 	                           </jalios:if>
-	                           <jalios:if predicate="<%= Util.notEmpty(obj.getReservation()) %>">
+	                           <jalios:if predicate="<%= Util.notEmpty(obj.getReservation()) && !obj.getMentionEvenementComplet() %>">
 		                           <p class="ds44-docListElem mts">
 		                              <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i><%= obj.getReservation() %>
 		                           </p>
@@ -247,7 +269,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           </jalios:if>
 	                           <jalios:if predicate="<%= Util.notEmpty(obj.getUrlBilletterie()) %>">
 		                           <p>
-		                              <a href="<%= obj.getUrlBilletterie() %>" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+		                              <a href="<%= obj.getUrlBilletterie() %>" target="_blank" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
 		                           </p>
 	                           </jalios:if>
 	                        </div>
@@ -280,7 +302,8 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                        </div>
 	                     </div>
                      </jalios:if>
-                     <jalios:if predicate="<%= Util.notEmpty(obj.getLangues()) %>">
+                     <jalios:if predicate='<%= Util.notEmpty(obj.getLangues()) 
+                         && !(obj.getLangues().length == 1 && obj.getLangues()[0].getLangueLibelle().toLowerCase().equals(channel.getProperty("fr.lang").toLowerCase())) %>'>
 	                     <div>
 	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.langues") %></h2>
 	                        <ul class="ds44-uList">

@@ -471,7 +471,7 @@ public class InfolocaleUtil {
       int hours = duree/60;
       int minutes = duree%60;
       if (hours > 0) {
-        return Integer.toString(hours) + "h" + (minutes > 0 ? Integer.toString(minutes) + "m" : "");
+        return Integer.toString(hours) + "h" + (minutes > 0 ? Integer.toString(minutes) : "");
       }
       if (minutes > 0) {
         return Integer.toString(minutes) + "m";
@@ -638,7 +638,7 @@ public class InfolocaleUtil {
       String suffixeHoraire = ", ";
       
       // séparation par les virgules
-      String[] splittedHoraires = dateInfoloc.getHoraire().split(separatorHoraire);
+      String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
       StringBuilder finalHoraire = new StringBuilder();
       
       for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
@@ -663,7 +663,7 @@ public class InfolocaleUtil {
             if (horaire_1.equals(horaire_2)) {
               finalHoraire.append(horaire_1);
             } else {
-              finalHoraire.append(itHoraire);
+              finalHoraire.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
             }
             
             counterSplit++;
@@ -707,9 +707,9 @@ public class InfolocaleUtil {
       // obligation de retirer le dernier suffixe -> ajouter un suffixe suite à un hasNext() pourrait ajouter
       // un suffixe même si aucun élément suivant n'est unique
       // on évite de rajouter un IF dans la boucle avec cette action
-      result.delete(result.lastIndexOf(splitter), result.length()+1);     
+      result.delete(result.lastIndexOf(splitter), result.length()+1);
       
-      return result.toString();
+      return result.toString().replaceAll("h00", "h");
     }
     
     /**
