@@ -4,7 +4,10 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf'%>
 <%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf'%>
 <% 
+
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
+
+    isInRechercheFacette = isInRechercheFacette || obj.getAfficherResultatDansLannuaire();
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
@@ -71,7 +74,7 @@
 				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
-					<% String styleButton = showFiltres || isInRechercheFacette ? "" : "--large"; %>
+					<% String styleButton = showFiltres ? "" : "--large"; %>
 					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
