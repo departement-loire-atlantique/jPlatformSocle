@@ -9,7 +9,10 @@
 
     <article class="ds44-container-large pbm">
         <%-- Titre  --%>
-        <div class="ds44-lightBG ds44-posRel">
+        <div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>
+            <%-- bouton Retour a la liste --%>
+            <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+            
             <div class="ds44-inner-container--mag ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
                 <div class="ds44-grid12-offset-1">
                     <div class="ds44-tablette-reduced-mt">
