@@ -58,6 +58,7 @@ $jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat: c_1211499
 $jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat: c_1274200
 $jcmsplugin.socle.type.sectorisation.missions-locales.cat: t1_10564
 $jcmsplugin.socle.type.sectorisation.clic.cat: t1_16280
+$jcmsplugin.socle.type.sectorisation.ccas.cat: t1_10565
 $jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat: t1_28189
 
 # ------------------------------------------------------------
