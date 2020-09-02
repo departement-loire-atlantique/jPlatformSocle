@@ -3,13 +3,14 @@
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <% 
 	PortletFacetteCategoriesLiees obj = (PortletFacetteCategoriesLiees)portlet; 
 
 	String rechercheId = (String) request.getAttribute("rechercheId");
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
+	String styleChamps = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || isInRechercheFacette ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
 	String labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : obj.getCategoriePrincipales(loggedMember).first().getName();
@@ -64,7 +65,8 @@
 			isDisabled='<%= true %>' 
 			request='<%= request %>' 
 			selectionMultiple='<%= facetteLie.getTypeDeSelection() %>' 
-			profondeur='<%= facetteLie.getProfondeur() %>'/>
+			profondeur='<%= facetteLie.getProfondeur() %>'
+            isSizeStd='<%= isInRechercheFacette %>'/>
 			
 		
 			
