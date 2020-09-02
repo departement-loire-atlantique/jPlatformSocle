@@ -30,8 +30,19 @@ JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();
 
 jsonObject.addProperty("nb-result", allEvents.size());
-jsonObject.addProperty("nb-result-per-page", box.getNombreDeResultats());
-jsonObject.addProperty("max-result", 100);
+
+//Limiter les résultats au nombre indiqué dans la portlet agenda
+int limitResults = box.getNombreDeResultats();
+if (allEvents.size() > limitResults) {
+	List<EvenementInfolocale> limitedListEvents = new ArrayList<>();
+	while (limitedListEvents.size() < limitResults) {
+	   limitedListEvents.add(allEvents.get(limitedListEvents.size()));
+	}
+	allEvents = new ArrayList<>(limitedListEvents);
+}
+
+jsonObject.addProperty("nb-result-per-page", limitResults);
+jsonObject.addProperty("max-result", limitResults);
 jsonObject.add("result", jsonArray);
 
 %><%

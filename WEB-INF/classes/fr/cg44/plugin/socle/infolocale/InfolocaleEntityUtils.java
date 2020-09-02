@@ -657,12 +657,8 @@ public class InfolocaleEntityUtils {
         }
       }
       
-      // Paramétrage de la portlet Agenda
-      if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0) {
-        parameters.put("limit", box.getNombreDeResultats());
-      } else {
-        parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
-      }
+      parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.max.limit", 100)); 
+      // 200 est le maximum autorisé par Infolocale. Posé à 100 en défaut par sécurité...
       
       String[] arrayIdsAExclure = null;
       if (Util.notEmpty(box.getIdsAExclure())) {
