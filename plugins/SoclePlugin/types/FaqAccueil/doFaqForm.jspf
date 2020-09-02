@@ -1,33 +1,8 @@
 <%@page import="fr.cg44.plugin.socle.MailUtils"%>
-<%@page import="fr.cg44.plugin.socle.formcontroller.FaqFormController"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <%
-	String mail = channel.getProperty("jcmsplugin.socle.contact-faq.default-mail");
-	
-	//TODO ecraser mail s'il y a un mail de contact par defaut pour le service
-	
-	if(Util.notEmpty(obj.getEmailSpecifique())) {
-		mail = obj.getEmailSpecifique();
-	}
-	
-	if(Util.notEmpty(request.getAttribute("contactfaq"))) {
-		mail = request.getAttribute("contactfaq").toString();
-	}
-%>
-
-<%
-// Formulaire soumis : traitement
-if(Util.notEmpty(request.getParameter("opCreate")) && Util.isEmpty(request.getAttribute("formFaqSoumis"))){
-	
-	// contrôle des données
-	if(FaqFormController.checkIntegrity()){
-		// Envoi du mail
-		MailUtils.envoiMailFAQ(request, mail);
-	}
-}
-
-String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
+String formAction = "plugins/SoclePlugin/jsp/forms/checkFaq.jsp";
 
 /* Calcul de la pub courante : 
 	si on est sur un affichage dans fiche aide, renvoie la fiche aide
@@ -39,9 +14,16 @@ Publication currentPub = null!=request.getAttribute("pubParent") ?
 String redirectValue = currentPub.getDisplayUrl(userLocale);
 %>
 
-<%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
+<div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
+<div class="ds44-loader hidden">
+    <div class="ds44-loader-body">
+        <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+            <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+        </svg>
+    </div>
+</div>
 
-<form action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
+<form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
 	<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %> :</p>
     <p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
     
@@ -57,7 +39,7 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 			</label>
 			<textarea name="question" rows="5" cols="1" id="<%= idFormElement1 %>" class="ds44-inpStd" 
 					title='<%= glp("jcmsplugin.socle.faq.votre-question") %> - <%= glp("jcmsplugin.socle.obligatoire") %>'
-					 aria-required="true"></textarea>
+					required aria-required="true"></textarea>
 		</div>
 		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 	</div>
@@ -123,9 +105,7 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 			<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	</button>
 	
-	<input type='hidden' name='redirect' value='<%= redirectValue %>' data-technical-field />
-	<input type='hidden' name='opCreate' value='<%= glp("ui.com.btn.submit") %>' data-technical-field />
-	<input type="hidden" name="noSendRedirect" value='true' data-technical-field />
 	<input type='hidden' name='id' value='<%= currentPub.getId()%>' data-technical-field />
-	<input type="hidden" name="csrftoken" value="<%= HttpUtil.getCSRFToken(request) %>" data-technical-field>
+	<input type='hidden' name='idFaq' value='<%= obj.getId()%>' data-technical-field />
+
 </form>

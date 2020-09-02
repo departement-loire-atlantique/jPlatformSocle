@@ -97,6 +97,10 @@ jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature spo
 jcmsplugin.socle.form.candidature.titre: Formulaire de candidature
 jcmsplugin.socle.form.contact.titre: Formulaire de contact
 jcmsplugin.socle.form.invalidfields: Ces champs ne sont pas valides, merci de les vérifier :
+jcmsplugin.socle.form.champ-obligatoire: Le champ {0} est obligatoire
+jcmsplugin.socle.form.champ-invalide: Le champ {0} est invalide
+jcmsplugin.socle.form.envoi-succes: Votre demande a bien été envoyée.
+jcmsplugin.socle.form.envoi-erreur: Une erreur est survenue pendant l'envoi du mail. Merci de rééssayer + tard.
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
 jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
@@ -106,6 +110,8 @@ jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
 jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
 jcmsplugin.socle.form.faq.mailTo: Email du destinataire par défaut des FAQ
+
+
 
 # ------------------------------------------------------------
 #  Mail
@@ -156,8 +162,7 @@ jcmsplugin.socle.socialnetwork.share.twitter: Partager cette page sur Twitter - 
 jcmsplugin.socle.socialnetwork.share.instagram: Partager cette page sur Instagram - nouvelle fenêtre
 jcmsplugin.socle.socialnetwork.share.linkedin: Partager cette page sur Linkedin - nouvelle fenêtre
 jcmsplugin.socle.socialnetwork.share.mail: Partager cette page par email - nouvelle fenêtre
-jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une page pour vous sur {0} : {1}&body=Bonjour, cette page devrait vous intéresser : %0D%0A{2}
-jcmsplugin.socle.socialnetwork.twitter.account:Nom du compte twitter (pour lien de partage) 
+jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une page pour vous sur {0} : {1}&body=Bonjour, cette page devrait vous intéresser : %0D%0A{2} 
 
 # ------------------------------------------------------------
 #  Libellés communs
