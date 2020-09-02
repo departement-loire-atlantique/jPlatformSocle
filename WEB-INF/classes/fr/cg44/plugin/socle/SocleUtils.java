@@ -1098,6 +1098,20 @@ public final class SocleUtils {
   public static String getUrlOfFormattedImageDiaporamaVignette(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.height", 0)); 
   }
+
+  /**
+   * Retourne l'URL de l'image utilisée surles réseaux sociaux pour le contenu indiqué
+   * Permet d'alimenter la valeur de l'attribut "content" de la balise <meta property="og:image" content="XXX" /> 
+   * @param pub
+   * @return l'URL de l'image ou  une chaine vide
+   */
+  public static String getImageForSocialNetworks(Publication pub) {
+    String imagePath = getImagePrincipale(pub);
+    if(Util.isEmpty(imagePath)) {
+      imagePath = pub.getDataImage();
+    }
+    return imagePath;
+  }  
   
   /**
    * Génère une image formattée et renvoie son path
@@ -1576,7 +1590,7 @@ public final class SocleUtils {
 		qh.setLoggedMember(loggedMember);
 		qh.setExactCat(true);
 		QueryResultSet result = qh.getResultSet();
-		LOGGER.debug(result.size()+ " FAQ trouvée(s) dans la catégorie "+itCat.getName() + " / " + itCat.getId());
+		LOGGER.debug(result.size()+ " PortletFAQ trouvée(s) dans la catégorie "+itCat.getName() + " / " + itCat.getId());
 		LOGGER.debug(qh.getQueryString()+"\r\n");
 		
 		// Si on a trouvé une portlet FAQ, on regarde si elle s'applique à la catégorie courante.
