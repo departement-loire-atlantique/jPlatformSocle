@@ -55,7 +55,7 @@ public class InfolocaleEntityUtils {
      * @return
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray) {
-      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null, null);
+      return createEvenementInfolocaleArrayFromJsonArray(jsonArray, null, null, null, null);
     }
     
     /**
@@ -65,16 +65,19 @@ public class InfolocaleEntityUtils {
      * @param metadata2
      * @return
      */
-    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2, List<String> idsToExclude) {
-        EvenementInfolocale[] itEvents = new EvenementInfolocale[jsonArray.length()];
+    public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2, List<String> idsToExclude, List<String> idGroupes) {
+        List<EvenementInfolocale> arrayEvents = new ArrayList<>();
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
-                itEvents[counter] = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2, idsToExclude);
+                EvenementInfolocale itEvent = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2, idsToExclude, idGroupes);
+                if (Util.notEmpty(itEvent)) {
+                  arrayEvents.add(itEvent);
+                }
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
             }
         }
-        return itEvents;
+        return arrayEvents.toArray(new EvenementInfolocale[arrayEvents.size()]);
     }
     
     /**
@@ -83,7 +86,7 @@ public class InfolocaleEntityUtils {
      * @return
      */
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json) {
-      return createEvenementInfolocaleFromJsonItem(json, null, null, null);
+      return createEvenementInfolocaleFromJsonItem(json, null, null, null, null);
     }
     
     /**
@@ -94,7 +97,7 @@ public class InfolocaleEntityUtils {
      * @param idsToExclude 
      * @return
      */
-    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2, List<String> idsToExclude) {
+    public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2, List<String> idsToExclude, List<String> idGroupes) {
         if (Util.isEmpty(json)) return null;
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
@@ -102,7 +105,21 @@ public class InfolocaleEntityUtils {
         try {
             // ID d'événement à exclure
             if (Util.notEmpty(idsToExclude) && idsToExclude.contains(Integer.toString(json.getInt("id")))) {
-              return new EvenementInfolocale();
+              return null;
+            }
+            // Vérification sur des IDs de groupes d'événements
+            if (Util.notEmpty(idGroupes) && !json.isNull("groupes")) {
+              JSONArray arrayGroups = json.getJSONArray("groupes");
+              boolean hasGroup = false;
+              for (int counterGroups = 0; counterGroups < arrayGroups.length(); counterGroups++) {
+                if (idGroupes.contains(Integer.toString(arrayGroups.getJSONObject(counterGroups).getInt("id")))) {
+                  hasGroup = true;
+                  break;
+                }
+              }
+              if (!hasGroup) {
+                return null;
+              }
             }
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
@@ -211,7 +228,7 @@ public class InfolocaleEntityUtils {
             }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
-            itEvent = new EvenementInfolocale();
+            itEvent = null;
         }
         
         return itEvent;
@@ -647,16 +664,24 @@ public class InfolocaleEntityUtils {
         parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
       }
       
-      String[] arrayIdsAExclure = new String[]{""};
-      if (Util.notEmpty(box.getIdsAExclure()) && box.getIdsAExclure().contains(",")) {
+      String[] arrayIdsAExclure = null;
+      if (Util.notEmpty(box.getIdsAExclure())) {
         arrayIdsAExclure = box.getIdsAExclure().split(",");
+      }
+      
+      String[] arrayIdsGroupes = null;
+      if (Util.notEmpty(box.getGroupeDevenements())) {
+        arrayIdsGroupes = box.getGroupeDevenements().split(",");
       }
       
       // Récupère le flux infolocale et transformation en liste de publication JCMS
       String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
       JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
       try {
-        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), box.getMetadonneesTuileResultat_1(), box.getMetadonneesTuileResultat_2(), Arrays.asList(arrayIdsAExclure));
+        EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), 
+            box.getMetadonneesTuileResultat_1(), box.getMetadonneesTuileResultat_2(), 
+            Util.notEmpty(arrayIdsAExclure) ? Arrays.asList(arrayIdsAExclure) : null, 
+            Util.notEmpty(arrayIdsGroupes) ? Arrays.asList(arrayIdsGroupes) : null);
         allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
       } catch (JSONException e) {
         LOGGER.warn("Erreur lors de la requete sur les évènements infolocale", e);

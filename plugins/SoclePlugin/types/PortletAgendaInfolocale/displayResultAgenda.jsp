@@ -31,7 +31,7 @@ JsonObject jsonObject = new JsonObject();
 
 jsonObject.addProperty("nb-result", allEvents.size());
 jsonObject.addProperty("nb-result-per-page", box.getNombreDeResultats());
-jsonObject.addProperty("max-result", box.getNombreDeResultats());
+jsonObject.addProperty("max-result", 100);
 jsonObject.add("result", jsonArray);
 
 %><%
