@@ -94,11 +94,18 @@
         type="String" 
         description="Label du champ forcé à cette valeur" 
 %>
+<%@ attribute name="isSizeStd" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="Boolean" 
+        description="Si à 'true', force la taille du champ en Std" 
+%>
 <%
 	Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
-	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres") ? "Std" : "Large";
+	String styleChamps = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || (Util.notEmpty(isSizeStd) && isSizeStd) ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
 	String labelChamp = JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.categorie.default-label");

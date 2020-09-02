@@ -19,7 +19,8 @@
 		isDisabled='<%= false %>' 
 		request='<%= request %>' 
 		selectionMultiple='<%= obj.getTypeDeSelection() %>' 
-		profondeur='<%= obj.getProfondeur() %>'/>
+		profondeur='<%= obj.getProfondeur() %>'
+		isSizeStd='<%= isInRechercheFacette %>'/>
 		
 <% request.removeAttribute("showFiltres"); %>
 
