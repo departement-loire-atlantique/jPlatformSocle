@@ -143,7 +143,7 @@ jsonObject.add("result", jsonArray);
 	        %></jalios:if><%
 	        
 	        %><jalios:default><%
-	           %><jalios:media data="<%= itPub %>" template="cardNoPic" /><%
+	           %><jalios:media data="<%= itPub %>" template="card" /><%
 	        %></jalios:default><%
 	    %></jalios:select><%    
     %></jalios:buffer><%
