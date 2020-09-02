@@ -50,7 +50,7 @@ jsonObject.add("result", jsonArray);
     %></jalios:buffer><%
     
     %><jalios:buffer name="itPubMarkerGabarit"><%
-        %><jalios:include pub="<%= itEven %>" usage="marker" /><%
+        %><jalios:media data="<%= itEven %>" template="marker" /><%
     %></jalios:buffer>
     <%
     %><%     
