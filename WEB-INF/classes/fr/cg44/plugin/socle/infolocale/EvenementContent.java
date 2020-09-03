@@ -35,6 +35,8 @@ public class EvenementContent extends Content {
     String titre;
     String metadata1;
     String metadata2;
+    String metadataDefaultIcon;
+    String metadataDefaultContent;
     
     public EvenementContent() {}
     
@@ -158,5 +160,21 @@ public class EvenementContent extends Content {
 
     public void setMetadata2(String metadata2) {
         this.metadata2 = metadata2;
+    }
+
+    public String getMetadataDefaultIcon() {
+      return metadataDefaultIcon;
+    }
+
+    public void setMetadataDefaultIcon(String metadataDefaultIcon) {
+      this.metadataDefaultIcon = metadataDefaultIcon;
+    }
+
+    public String getMetadataDefaultContent() {
+      return metadataDefaultContent;
+    }
+
+    public void setMetadataDefaultContent(String metadataDefaultContent) {
+      this.metadataDefaultContent = metadataDefaultContent;
     }
 }

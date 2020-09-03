@@ -64,6 +64,10 @@
     <field name="typeDeTuileCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="vertical|horizontal" ml="false" descriptionType="tooltip" labelList="Vertical|Horizontal" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type de tuile carrousel</label>
     </field>
+    <field name="metadonneeParDefaut" editor="textfield" required="false" compactDisplay="false" tab="presentation_graphique" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Metadonnée par défaut</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Si utilisé, remplace la métadonnée par défaut du site.&lt;br&gt;Métadonnées possibles : commune, genre, organisme, horaires, duree, tarif, public, accessibilite.&lt;br&gt;Il est possible d'utiliser des ID de groupes thématiques perso et de thématique perso. Ex : grtheme:id_253,theme:id_134&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field name="styleDesTuilesCarrousel" editor="enumerate" required="false" compactDisplay="false" tab="presentation_graphique" type="String" chooser="checkbox" valueList="ds44-brightContext|ds44-darkContext" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Tuiles grises|Tuiles blanches">
       <label xml:lang="fr">Style des tuiles carrousel</label>
     </field>

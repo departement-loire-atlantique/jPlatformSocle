@@ -44,7 +44,7 @@ public class InfolocaleMetadataUtils {
     public static String getMetadataHtml(String metadata, EvenementInfolocale event, JSONArray resultJsonArray) {
       JSONObject jsonEvent = InfolocaleEntityUtils.getJsonObjectOfEvent(event, resultJsonArray);
       
-      return getMetadataHtml(metadata, jsonEvent);
+      return getMetadataHtml(metadata, jsonEvent, event);
     }
     
     /**
@@ -53,7 +53,7 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    public static String getMetadataHtml(String metadata, JSONObject jsonEvent) {
+    public static String getMetadataHtml(String metadata, JSONObject jsonEvent, EvenementInfolocale event) {
       
       if (Util.isEmpty(jsonEvent)) {
         return "";
@@ -65,13 +65,13 @@ public class InfolocaleMetadataUtils {
       String metaAccessibilite = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.accessibilite");
       
       if (metadata.contentEquals(metaAccessibilite)) {
-        return getMetadata(metadata, jsonEvent);
+        return getMetadata(metadata, jsonEvent, event);
       }
       
       // Cas réguliers
       
       String metadataIcon = getMetadataIcon(metadata);
-      String metadataValue = getMetadata(metadata, jsonEvent);
+      String metadataValue = getMetadata(metadata, jsonEvent, event);
       
       if (Util.isEmpty(metadataValue) || metadataValue.equals("{}")) {
         return "";
@@ -94,7 +94,7 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    public static String getMetadata(String metadata, JSONObject jsonEvent) {
+    public static String getMetadata(String metadata, JSONObject jsonEvent, EvenementInfolocale event) {
         
         Channel channel = Channel.getChannel();
         
@@ -110,22 +110,22 @@ public class InfolocaleMetadataUtils {
         String metaThemePrefix = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.prefix.theme");
         
         if (metadata.equals(metaCommune)) {
-            return getMetaCommune(jsonEvent);
+            return getMetaCommune(event);
         }
         if (metadata.equals(metaGenre)) {
-            return getMetaGenre(jsonEvent);
+            return getMetaGenre(event);
         }
         if (metadata.equals(metaOrganismes)) {
-            return getMetaOrganismes(jsonEvent);
+            return getMetaOrganismes(event);
         }
         if (metadata.equals(metaHoraires)) {
-            return getMetaHoraires(jsonEvent);
+            return getMetaHoraires(event);
         }
         if (metadata.equals(metaDuree)) {
-            return getMetaDuree(jsonEvent);
+            return getMetaDuree(event);
         }
         if (metadata.equals(metaTarif)) {
-            return getMetaTarif(jsonEvent);
+            return getMetaTarif(event);
         }
         if (metadata.equals(metaPublic)) {
             return getMetaPublic(jsonEvent);
@@ -148,10 +148,9 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaCommune(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
+    private static String getMetaCommune(EvenementInfolocale event) {
         try {
-            return itEvent.getLieu().getCommune().getNom();
+            return event.getLieu().getCommune().getNom();
         } catch (Exception e) {
             return "";
         }
@@ -162,11 +161,9 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaGenre(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        
+    private static String getMetaGenre(EvenementInfolocale event) {        
         try {
-            return itEvent.getGenre().getLibelle();
+            return event.getGenre().getLibelle();
         } catch (Exception e) {
             return "";
         }
@@ -177,9 +174,8 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaOrganismes(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        return Util.isEmpty(itEvent.getOrganismeNom()) ? "" : itEvent.getOrganismeNom();
+    private static String getMetaOrganismes(EvenementInfolocale event) {
+        return Util.isEmpty(event.getOrganismeNom()) ? "" : event.getOrganismeNom();
     }
     
     /**
@@ -187,10 +183,9 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaHoraires(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
+    private static String getMetaHoraires(EvenementInfolocale event) {
         try {
-            DateInfolocale[] dates = itEvent.getDates();
+            DateInfolocale[] dates = event.getDates();
             StringBuilder horaires = new StringBuilder();
             for (Iterator<DateInfolocale> iter = Arrays.asList(dates).iterator(); iter.hasNext();) {
                 horaires.append(iter.next().getHoraire());
@@ -207,12 +202,11 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaDuree(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        if (Util.isEmpty(itEvent.getDuree()) || itEvent.getDuree() <= 0) {
+    private static String getMetaDuree(EvenementInfolocale event) {
+        if (Util.isEmpty(event.getDuree()) || event.getDuree() <= 0) {
           return "";
         }
-        return itEvent.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.label.duree");
+        return event.getDuree() + " " + JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.label.duree");
     }
     
     /**
@@ -220,9 +214,8 @@ public class InfolocaleMetadataUtils {
      * @param jsonEvent
      * @return
      */
-    private static String getMetaTarif(JSONObject jsonEvent) {
-        EvenementInfolocale itEvent = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonEvent);
-        String tarifMeta = Util.isEmpty(itEvent.getTarifNormal()) ? "" : itEvent.getTarifNormal();
+    private static String getMetaTarif(EvenementInfolocale event) {
+        String tarifMeta = Util.isEmpty(event.getTarifNormal()) ? "" : event.getTarifNormal();
         if (tarifMeta.equals("0")) {
           tarifMeta = JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit");
         } else if (Util.notEmpty(tarifMeta)) {
