@@ -67,6 +67,14 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
 	                }
 	              }
               }
+              if(Util.isEmpty(allTagChildren) && Util.notEmpty(pub.getCategorySet())) {
+            	  for(String itCatId : request.getParameterValues("cids")) {
+            		  Category itCat = channel.getCategory(itCatId);
+            		  if(pub.getCategorySet().contains(itCat)){
+            			  allTagChildren.add(itCat);
+            		  }
+            	  }
+              }
             %>
             <jalios:if predicate="<%= Util.notEmpty(allTagChildren) %>">
 	            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
