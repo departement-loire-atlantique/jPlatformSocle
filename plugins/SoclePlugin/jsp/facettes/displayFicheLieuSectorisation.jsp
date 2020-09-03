@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.comparator.CategoryComparator"%>
 <%@page import="com.jalios.jcms.handler.QueryHandler"%>
 <%@page import="fr.cg44.plugin.socle.queryfilter.CategoryFacetUtil"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -13,7 +14,10 @@ response.setContentType("application/json");
 
 
 QueryHandler qh = new QueryHandler();
-qh.setCids(request.getParameter("cid"));
+qh.setCids(request.getParameter("cid"), request.getParameter("cidSecondaire"));
+
+qh.setCatMode("or");
+qh.setCheckPstatus(true);
 qh.setTypes("FicheLieu");
 
 
@@ -22,7 +26,10 @@ JsonObject jsonObject = new JsonObject();
 
 
 StringBuffer contentHtml = new StringBuffer();
-QueryResultSet resultSet = qh.getResultSet();
+TreeSet<Publication> resultSet = new TreeSet<Publication>(new CategoryComparator(request.getParameter("cid"), request.getParameter("cidSecondaire")));
+
+resultSet.addAll(qh.getResultSet());
+
 
 %>
 <jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication"><%

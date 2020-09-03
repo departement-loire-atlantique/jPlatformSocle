@@ -1,6 +1,5 @@
 package fr.cg44.plugin.socle.comparator;
 
-import java.util.List;
 import java.util.Set;
 
 import com.jalios.jcms.Channel;

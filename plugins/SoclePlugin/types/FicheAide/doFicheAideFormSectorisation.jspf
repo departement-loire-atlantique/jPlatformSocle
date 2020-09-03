@@ -28,6 +28,9 @@
     <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
        <input type="hidden" name='<%= "cid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" data-technical-field />
     </jalios:if>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieuSecondaire()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieuSecondaire())) %>">
+       <input type="hidden" name='<%= "cidSecondaire" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieuSecondaire()).getId() %>" data-technical-field />
+    </jalios:if>
           
     <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value="true" data-technical-field />                                                        
     <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayFicheLieuSectorisation.jsp" data-technical-field />
