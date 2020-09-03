@@ -34,7 +34,7 @@ public abstract class LuceneQueryFilter extends QueryFilter {
 	@Override
     public QueryHandler filterQueryHandler(QueryHandler qh, Map context) {
         HttpServletRequest request = Util.notEmpty(getChannel().getCurrentServletRequest()) ? getChannel().getCurrentServletRequest() : qh.getRequest() ;   
-        if(Util.isEmpty(request)) {
+        if(Util.isEmpty(request) || Util.notEmpty(qh.getAttribute("localisation"))) {
             return qh;
         }            
         return doFilterQuery(qh, context, request);
