@@ -41,13 +41,39 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
           <hr class="mbs" aria-hidden="true">
           </jalios:if>
           
+          <%
+          // RS-1334 Affiche en tag seulement la catégorie recherchée
+          Set<Category> allTagChildren = new TreeSet<Category>(new Category.DeepOrderComparator());           
+          boolean isNodeTag = false;
+                    
+          if(Util.notEmpty(request.getParameterValues("cids"))) {
+        	  tagRootCat = getCategoryParameter("cids");
+        	  for(String itCatId : request.getParameterValues("cids")) {
+        		  Category itCat = channel.getCategory(itCatId);
+        		  if(itCat != null && itCat.hasAncestor(tagRootCat) && Util.notEmpty(pub.getDescendantCategorySet(itCat, true))) {
+        			   allTagChildren.add(itCat);
+        			   isNodeTag = true;
+        		  }
+        	  }       	         	  
+          }
+          %>
+          
           <jalios:if predicate="<%= Util.notEmpty(tagRootCat) %>">
-            <% 
-              Set<Category> allTagChildren = new TreeSet<Category>(new Category.DeepOrderComparator());                      
-              for (Category itCat : pub.getCategorySet()) {
-                if (itCat.hasAncestor(tagRootCat)) {
-                  allTagChildren.add(itCat);
-                }
+            <%
+              if(!isNodeTag) {
+	              for (Category itCat : pub.getCategorySet()) {
+	                if (itCat.hasAncestor(tagRootCat)) {
+	                  allTagChildren.add(itCat);
+	                }
+	              }
+              }
+              if(Util.isEmpty(allTagChildren) && Util.notEmpty(pub.getCategorySet())) {
+            	  for(String itCatId : request.getParameterValues("cids")) {
+            		  Category itCat = channel.getCategory(itCatId);
+            		  if(pub.getCategorySet().contains(itCat)){
+            			  allTagChildren.add(itCat);
+            		  }
+            	  }
               }
             %>
             <jalios:if predicate="<%= Util.notEmpty(allTagChildren) %>">
