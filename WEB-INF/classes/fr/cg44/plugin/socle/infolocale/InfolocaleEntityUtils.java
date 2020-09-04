@@ -229,6 +229,7 @@ public class InfolocaleEntityUtils {
             if (Util.notEmpty(metadataDefault)) {
               itEvent.setMetadataDefaultIcon(InfolocaleMetadataUtils.getMetadataIcon(metadataDefault));
               itEvent.setMetadataDefaultContent(InfolocaleMetadataUtils.getMetadata(metadataDefault, json, itEvent));
+              itEvent.setMetadataHiddenLabel(metadataDefault);
             }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());

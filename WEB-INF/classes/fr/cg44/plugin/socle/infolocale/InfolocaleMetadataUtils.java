@@ -365,5 +365,14 @@ public class InfolocaleMetadataUtils {
     public static String getMetadataIcon(String metadata) {
         return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.icon." + metadata.replace(":", ""));
     }
+    
+    /**
+     * Récupère le label d'une métadonnée
+     * @param metadata
+     * @return
+     */
+    public static String getLabelMetadata(String metadata) {
+        return JcmsUtil.glp("jcmsplugin.socle.infolocale.metadata.label." + metadata.replace(":", ""), Channel.getChannel().getCurrentJcmsContext().getUserLang());
+    }
 
 }

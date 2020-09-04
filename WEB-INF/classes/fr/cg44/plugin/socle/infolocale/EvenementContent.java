@@ -37,6 +37,7 @@ public class EvenementContent extends Content {
     String metadata2;
     String metadataDefaultIcon;
     String metadataDefaultContent;
+    String metadataHiddenLabel;
     
     public EvenementContent() {}
     
@@ -176,5 +177,13 @@ public class EvenementContent extends Content {
 
     public void setMetadataDefaultContent(String metadataDefaultContent) {
       this.metadataDefaultContent = metadataDefaultContent;
+    }
+
+    public String getMetadataHiddenLabel() {
+      return metadataHiddenLabel;
+    }
+
+    public void setMetadataHiddenLabel(String metadataHiddenLabel) {
+      this.metadataHiddenLabel = metadataHiddenLabel;
     }
 }
