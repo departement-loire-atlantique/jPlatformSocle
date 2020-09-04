@@ -193,9 +193,29 @@
                             </li>
                         </jalios:foreach>
                     </jalios:if>
-                    <%-- Genres et catégories Infolocale --%>
+                    <%-- Genres et catégories Infolocale - niveau 1 uniquement --%>
                     <jalios:if predicate="<%= Util.notEmpty(listeCouplesLibellesGenres) %>">
                         <jalios:foreach name="itLibelle" type="String" collection='<%= listeCouplesLibellesGenres.keySet() %>'>
+	                        <jalios:foreach name="itSubGenre" type="Genre" collection='<%=listeCouplesLibellesGenres.get(itLibelle)%>' counter="itSubCatCounter">
+		                        <li class="ds44-select-list_elem">
+			                        <ds:facetteAgendaCategorieListElem genre='<%=itSubGenre%>' 
+			                           idFormElement='<%=idFormElement + "-" + nbrTotalCat%>' 
+			                           typeDeSelection='<%=selectionMultiple%>' 
+			                           numGenre='<%=itSubCatCounter%>'/>
+		                        </li>
+	                        </jalios:foreach>
+                        </jalios:foreach>
+                    </jalios:if>
+				</ul>
+			</div>
+			
+		</jalios:if>
+		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !profondeur %>'>
+			<ul class="ds44-collapser ds44-listSelect">
+			    <jalios:select>
+			         <jalios:if predicate="<%= Util.notEmpty(listeCouplesLibellesGenres) %>">
+			         <%-- Catégories et genres infolocale --%>
+			             <jalios:foreach name="itLibelle" type="String" collection='<%= listeCouplesLibellesGenres.keySet() %>'>
                             <% 
                             nbrTotalCat++; 
                             Category tmpCat = new Category();
@@ -206,8 +226,7 @@
                                    <ds:facetteCategorieListElem cat='<%= tmpCat %>' 
                                            idFormElement='<%= idFormElement %>' 
                                            typeDeSelection='<%= selectionMultiple %>' 
-                                           numCat='<%= nbrTotalCat %>'
-                                           disableSelect='<%= true %>'/>
+                                           numCat='<%= nbrTotalCat %>'/>
     
                                 </div>                      
                                 <button type="button" class="ds44-collapser_button ds44-collapser_button--select" 
@@ -229,59 +248,57 @@
                                 </div>
                             </li>
                         </jalios:foreach>
-                    </jalios:if>
-				</ul>
-			</div>
-			
-		</jalios:if>
-		<jalios:if predicate='<%= Util.isEmpty(dataURL) && !profondeur %>'>
-			<ul class="ds44-collapser ds44-listSelect">
-				<jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
-					<jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
-						<% nbrTotalCat++; 
-						Set childrenSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCat);
-						%>
-						<%-- Sans enfant --%>					
-						<jalios:if predicate='<%= Util.isEmpty(childrenSet) %>'>
-							 <li class="ds44-collapser_element ds44-collapser--select ds44-select__categ ds44-select-list_elem">
-							      <ds:facetteCategorieListElem cat='<%= itCat %>' 
-                                        idFormElement='<%= idFormElement %>' 
-                                        typeDeSelection='<%= selectionMultiple %>' 
-                                        numCat='<%= nbrTotalCat %>'/>
-							 </li>
-						</jalios:if>
-						<%-- avec enfants --%> 	
-						<jalios:if predicate='<%= Util.notEmpty(childrenSet) %>'>						
-							<li class="ds44-collapser_element ds44-collapser--select">							
-							    <div class="ds44-select__categ">
-	                               <ds:facetteCategorieListElem cat='<%= itCat %>' 
-	                                       idFormElement='<%= idFormElement %>' 
-	                                       typeDeSelection='<%= selectionMultiple %>' 
-	                                       numCat='<%= nbrTotalCat %>'/>
-	
-	                            </div>						
-								<button type="button" class="ds44-collapser_button ds44-collapser_button--select" 
-										aria-describedby='<%= "name-check-label-" + idFormElement + "-" + nbrTotalCat %>'>
-									<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.deplier") %></span>
-									<i class="icon icon-down ds44-noLineH" aria-hidden="true"></i>
-								</button>
-								<div class="ds44-collapser_content">
-									<ul class="ds44-list ds44-collapser_content--level2">
-										<jalios:foreach name="itSubCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itCat) %>' counter="itSubCatCounter">
-											<li class="ds44-select-list_elem">
-												<ds:facetteCategorieListElem cat='<%= itSubCat %>' 
-														idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
-														typeDeSelection='<%= selectionMultiple %>' 
-														numCat='<%= itSubCatCounter %>'/>
-											</li>
-										</jalios:foreach>
-									</ul>
-								</div>
-							</li>
-						</jalios:if>
-						
-					</jalios:foreach>
-				</jalios:foreach>
+			         </jalios:if>
+			         <jalios:default>
+			         <%-- Catégories classiques --%>
+			             <jalios:foreach name="itRootCat" type="Category" collection='<%= listeCategory %>'>
+		                    <jalios:foreach name="itCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itRootCat) %>'>
+		                        <% nbrTotalCat++; 
+		                        Set childrenSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCat);
+		                        %>
+		                        <%-- Sans enfant --%>                   
+		                        <jalios:if predicate='<%= Util.isEmpty(childrenSet) %>'>
+		                             <li class="ds44-collapser_element ds44-collapser--select ds44-select__categ ds44-select-list_elem">
+		                                  <ds:facetteCategorieListElem cat='<%= itCat %>' 
+		                                        idFormElement='<%= idFormElement %>' 
+		                                        typeDeSelection='<%= selectionMultiple %>' 
+		                                        numCat='<%= nbrTotalCat %>'/>
+		                             </li>
+		                        </jalios:if>
+		                        <%-- avec enfants --%>  
+		                        <jalios:if predicate='<%= Util.notEmpty(childrenSet) %>'>                       
+		                            <li class="ds44-collapser_element ds44-collapser--select">                          
+		                                <div class="ds44-select__categ">
+		                                   <ds:facetteCategorieListElem cat='<%= itCat %>' 
+		                                           idFormElement='<%= idFormElement %>' 
+		                                           typeDeSelection='<%= selectionMultiple %>' 
+		                                           numCat='<%= nbrTotalCat %>'/>
+		    
+		                                </div>                      
+		                                <button type="button" class="ds44-collapser_button ds44-collapser_button--select" 
+		                                        aria-describedby='<%= "name-check-label-" + idFormElement + "-" + nbrTotalCat %>'>
+		                                    <span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.deplier") %></span>
+		                                    <i class="icon icon-down ds44-noLineH" aria-hidden="true"></i>
+		                                </button>
+		                                <div class="ds44-collapser_content">
+		                                    <ul class="ds44-list ds44-collapser_content--level2">
+		                                        <jalios:foreach name="itSubCat" type="Category" collection='<%= SocleUtils.getOrderedAuthorizedChildrenSet(itCat) %>' counter="itSubCatCounter">
+		                                            <li class="ds44-select-list_elem">
+		                                                <ds:facetteCategorieListElem cat='<%= itSubCat %>' 
+		                                                        idFormElement='<%= idFormElement + "-" + nbrTotalCat %>' 
+		                                                        typeDeSelection='<%= selectionMultiple %>' 
+		                                                        numCat='<%= itSubCatCounter %>'/>
+		                                            </li>
+		                                        </jalios:foreach>
+		                                    </ul>
+		                                </div>
+		                            </li>
+		                        </jalios:if>
+		                        
+		                    </jalios:foreach>
+		                </jalios:foreach>
+			         </jalios:default>
+				</jalios:select>
 			</ul>
 		</jalios:if>
 		<button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" aria-describedby='<%= "button-message-" + idFormElement %>'
