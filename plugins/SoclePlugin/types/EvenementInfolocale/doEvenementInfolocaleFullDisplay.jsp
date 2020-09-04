@@ -97,12 +97,19 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                                  <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
                               </figure>
                               <%= eventSummary %>
-                           </div>
+                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
+								 <div class="grid-1-small-1">
+									<div class="col mll mbs">
+										<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+									</div>
+								 </div>
+							  </jalios:if>
+							</div>
                         </div>
                     </jalios:if>
                     
                     <jalios:default>
-                        <%= eventSummary %>
+                        <%=eventSummary%>
                          <section class="ds44-contenuArticle" id="sectionPicture">
                              <div class="ds44-inner-container ds44-mtb5">
                                 <div class="ds44-grid12-offset-1">
@@ -196,7 +203,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                               <%= obj.getLieu().getCommune().getNom() %>
                            </p>
                            <p class="ds44-docListElem mts">
-                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %>' target="_blank"><%= glp("jcmsplugin.socle.syrendre") %></a>
+                              <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i><a href="<%= SocleUtils.formatOpenStreetMapLink(obj.getLieu().getLatitude(), obj.getLieu().getLongitude()) %>" title='<%= glp("jcmsplugin.socle.serendrea", obj.getLieu().getAdresse()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>' target="_blank"><%= glp("jcmsplugin.socle.syrendre") %></a>
                            </p>
                         </div>
                      </div>
@@ -269,7 +276,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                           </jalios:if>
 	                           <jalios:if predicate="<%= Util.notEmpty(obj.getUrlBilletterie()) %>">
 		                           <p>
-		                              <a href="<%= obj.getUrlBilletterie() %>" target="_blank" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+		                              <a href="<%= obj.getUrlBilletterie() %>" target="_blank" class="ds44-btnStd ds44-btn--invert" title='<%= glp("jcmsplugin.socle.reserverlien", displayedTitle) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
 		                           </p>
 	                           </jalios:if>
 	                        </div>
