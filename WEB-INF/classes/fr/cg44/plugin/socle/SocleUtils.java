@@ -902,6 +902,15 @@ public final class SocleUtils {
   }
   
   /**
+   * Génère une image en avant formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageEnAvant(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.enavant.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.enavant.height", 0)); 
+  }
+  
+  /**
    * Retourne l'URL d'une image mobile ou d'un substitut pour le contenu indiqué
    * @param pub
    * @return
