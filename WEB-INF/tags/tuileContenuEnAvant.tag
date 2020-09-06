@@ -11,7 +11,10 @@
     description="Indique si la tuile est unique"%>
 <%@ attribute name="positionTitre" required="false" fragment="false"
     rtexprvalue="true" type="String"
-    description="Position du bloc titre par dessus l'image"%>    
+    description="Position du bloc titre par dessus l'image"%>   
+<%@ attribute name="customUrl" required="false" fragment="false"
+    rtexprvalue="true" type="String"
+    description="URL custom pour le lien"%>     
 
 <%
 
@@ -53,7 +56,11 @@
     try {
         location = (String) itPub.getFieldValue("lieu");
     } catch(Exception e) {}
-
+    
+    String linkUrl = itPub.getDisplayUrl(userLocale);
+    if (Util.notEmpty(customUrl)) {
+      linkUrl = customUrl;
+    }
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
@@ -63,10 +70,14 @@
 <div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
 
     <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+    
+    <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
+        <a href="<%= linkUrl %>">
+    </jalios:if>
 
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
         <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
-            <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+            <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= linkUrl %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
@@ -77,6 +88,10 @@
             </p>
             <% } %>
         </div>
+    </jalios:if>
+    
+    <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
+        </a>
     </jalios:if>
 </div>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
