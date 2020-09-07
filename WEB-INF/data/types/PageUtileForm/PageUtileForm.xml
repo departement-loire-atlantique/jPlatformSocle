@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PageUtileForm" superclass="com.jalios.jcms.Form" formOneSubmit="false" formNotify="false" formAuthor="j_2" formRedirectMode="home" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" database="true" revision="false" hbm="true" debatable="false" unitFieldEdition="true" audienced="false">
+  <label xml:lang="fr">Page utile</label>
+  <title ml="false">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="utile" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">utile</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="motif" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="checkbox" valueList="pasAssezComplet|tropComplique|tropLong" ml="false" descriptionType="tooltip" labelList="L’information n’est pas assez complète|L’information est trop compliquée|Il y a trop à lire" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">motif</label>
+    </field>
+    <field name="commentaire" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="false">
+      <label xml:lang="fr">commentaire</label>
+    </field>
+  </fields>
+</type>
+

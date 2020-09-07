@@ -27,10 +27,11 @@
         
         <%-- TODO : bloc Je m'abonne --%>
         
-        <%-- TODO : bloc "Sur le même thème --%>
-        <%--
-        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
-         --%>
+        <%-- Page utile --%>
+        <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+            <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+        </jalios:if>
+        
         <%-- Portlets bas --%>
 	    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
 	        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
