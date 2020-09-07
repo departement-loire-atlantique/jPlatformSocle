@@ -72,8 +72,8 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
           arrayIdsGroupes = box.getGroupeDevenements().split(",");
         }
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), 
-            box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), 
-            Util.notEmpty(arrayIdsAExclure) ? Arrays.asList(arrayIdsAExclure) : null, 
+            box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), box.getMetadonneeParDefaut(),
+            Util.notEmpty(arrayIdsAExclure) ? Arrays.asList(arrayIdsAExclure) : null,
             Util.notEmpty(arrayIdsGroupes) ? Arrays.asList(arrayIdsGroupes) : null);
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);

@@ -452,6 +452,8 @@ jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
 
 # Metadonnees Infolocale pour le front
 
+jcmsplugin.socle.infolocale.metadata.default: commune
+
 jcmsplugin.socle.infolocale.metadata.front.commune: commune
 jcmsplugin.socle.infolocale.metadata.front.genre: genre
 jcmsplugin.socle.infolocale.metadata.front.organisme: organisme
