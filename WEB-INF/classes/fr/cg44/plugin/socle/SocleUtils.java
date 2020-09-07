@@ -15,6 +15,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -32,6 +33,7 @@ import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
+import com.jalios.jcms.FileDocument;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
@@ -50,6 +52,7 @@ import generated.Delegation;
 import generated.ElectedMember;
 import generated.FicheEmploiStage;
 import generated.FicheLieu;
+import generated.Lien;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
@@ -697,13 +700,28 @@ public final class SocleUtils {
 	 */
 	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("id", pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId());
+		String id = pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId();
+		
 		jsonObject.addProperty("value", pub.getTitle());
 		if(Util.notEmpty(pubFullGabarit)) {
 		  jsonObject.addProperty("content_html", pubFullGabarit);
-    }
+		}
 		JsonObject jsonMetaObject = new JsonObject();
-		jsonMetaObject.addProperty("url", channel.getUrl() + pub.getDisplayUrl(null));
+		// Cas particulier pour les type de contenu Lien
+		String url = channel.getUrl() + pub.getDisplayUrl(null);
+		if(pub instanceof Lien) {
+			Lien lien = (Lien) pub;
+			if(Util.notEmpty(lien.getLienInterne())) {
+				url = channel.getUrl() + lien.getLienInterne().getDisplayUrl(null);
+				id =  lien.getLienInterne().getId();
+			} else {
+				url = lien.getLienExterne();
+				jsonObject.addProperty("redirectUrl", true);
+				jsonObject.addProperty("target", "_blank");
+			}			
+		}
+		jsonObject.addProperty("id", id);
+		jsonMetaObject.addProperty("url", url);
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
 		jsonMetaObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
 		jsonMetaObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
@@ -899,6 +917,15 @@ public final class SocleUtils {
    */
   public static String getUrlOfFormattedImageBandeau(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.bandeau.height", 0)); 
+  }
+  
+  /**
+   * Génère une image en avant formattée et renvoie son path
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageEnAvant(String imagePath) {
+    return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.enavant.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.enavant.height", 0)); 
   }
   
   /**
@@ -1634,4 +1661,26 @@ public final class SocleUtils {
 		
 		return null;
 	}	
+	/**
+	 * Récupérer uniquement l'URL qui doit être retournée depuis un contenu Lien
+	 * @param itLien
+	 * @return
+	 */
+	public static String getUrlPubFromLien(Lien itLien) {
+	  
+	  Locale userLocale = Channel.getChannel().getCurrentUserLocale();
+	  
+	  if (Util.notEmpty(itLien.getLienInterne())) {
+	    if (itLien.getLienInterne() instanceof FileDocument) {
+	      FileDocument itDoc = (FileDocument) itLien.getLienInterne();
+	      return itDoc.getDownloadUrl();
+	    } else {
+	      return itLien.getLienInterne().getDisplayUrl(userLocale);
+	    }
+	  } else if (Util.notEmpty(itLien.getLienExterne())) {
+	    return itLien.getLienExterne();
+	  }
+	  
+	  return "";
+	}
 }

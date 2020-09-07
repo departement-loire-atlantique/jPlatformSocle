@@ -24,6 +24,9 @@
       <label xml:lang="fr">IDs de genres / catégories</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste d'IDs de genres / catégories à récupérer (ex: 22,241,322)&lt;br&gt;Eviter de mettre les IDs des genres sous une catégorie si cette dernière est renseignée&lt;/p&gt;&lt;/div&gt;</description>
     </field>
+    <field name="profondeur" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="true|false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="1 niveau|2 niveaux">
+      <label xml:lang="fr">Profondeur</label>
+    </field>
     <field type="super" />
   </fields>
 </type>

@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%
     PortletCarousel box = (PortletCarousel) portlet;
     String themeClair = "tuileVerticaleLight";
@@ -26,7 +27,18 @@
             <div class="grid-12-small-1">
             </jalios:if>
             <jalios:foreach name="itContenuEnAvant" type="Content" array="<%= box.getContenusEnAvant() %>" max="2">
-                <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>" positionTitre="<%= positionTitre %>"/>
+                <jalios:select>
+	                <jalios:if predicate="<%= itContenuEnAvant instanceof Lien %>">
+	                   <%
+	                   Lien itLien = (Lien) itContenuEnAvant;
+	                   String customUrl = SocleUtils.getUrlPubFromLien(itLien);
+	                   %>
+	                   <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>" positionTitre="<%= positionTitre %>" customUrl="<%= customUrl %>"/>
+	                </jalios:if>
+	                <jalios:default>
+	                   <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>" positionTitre="<%= positionTitre %>"/>
+	                </jalios:default>
+                </jalios:select>
             </jalios:foreach>
             <jalios:if predicate="<%= box.getContenusEnAvant().length > 1 %>">
             </div>
@@ -40,7 +52,7 @@
 	<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
     
     <div class="ds44-container-large">
-	    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="<%= collection.size() < 4 ? collection.size() : sliderAmounts %>">
+	    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel" data-nb-visible-slides="<%= collection.size() < 4 ? collection.size() : sliderAmounts %>">
 	        <div class="swiper-container">
 	            <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
 	                <jalios:foreach name="itPub" type="Publication" collection="<%= collection %>">

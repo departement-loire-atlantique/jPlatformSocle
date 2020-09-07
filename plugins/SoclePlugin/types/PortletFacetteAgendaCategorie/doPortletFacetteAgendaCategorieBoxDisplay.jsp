@@ -35,7 +35,7 @@
         isDisabled='<%= false %>' 
         request='<%= request %>' 
         selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-        profondeur='true'/>
+        profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>'/>
 	
         <%
         
@@ -52,13 +52,13 @@
 	   
 	   %>
 	   
-	      <ds:facetteCategorie obj='<%= obj %>' 
-		      listeCouplesLibellesGenres='<%= couplesLibellesGenres %>'
-		      idFormElement='<%= idFormElement %>' 
-		      isDisabled='<%= false %>' 
-		      request='<%= request %>' 
-		      selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-		      profondeur='true' />
+	      <ds:facetteCategorie obj='<%= obj %>'
+              listeCouplesLibellesGenres='<%= couplesLibellesGenres %>'
+              idFormElement='<%= idFormElement %>' 
+              isDisabled='<%= false %>' 
+              request='<%= request %>' 
+              selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+              profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>' />
 	   
 	   <%
 	  

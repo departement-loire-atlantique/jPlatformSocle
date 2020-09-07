@@ -37,13 +37,6 @@
         type="String" 
         description="id de l'input" 
 %>
-<%@ attribute name="disableSelect" 
-        required="false" 
-        fragment="false" 
-        rtexprvalue="true" 
-        type="Boolean"
-        description="Si 'true', n'affiche pas le bloc de sélection" 
-%>
 <%
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
@@ -53,22 +46,18 @@
 	
 	String nameInput = idFormElement + "-" + numCat;
 	String idInput = nameType + nameInput;
-	
-	boolean disabled = Util.notEmpty(disableSelect) && disableSelect ? true : false;
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">
 
-    <jalios:if predicate='<%= !disabled %>'>
-		<input type='<%= typeInput %>' 
-				id='<%= idInput %>' 
-				name="<%= nameInput %>" 
-				value='<%= cat.getId() %>' 
-				class='<%= "ds44-"+typeInput %>'/>
-    </jalios:if>
+	<input type='<%= typeInput %>' 
+			id='<%= idInput %>' 
+			name="<%= nameInput %>" 
+			value='<%= cat.getId() %>' 
+			class='<%= "ds44-"+typeInput %>'/>
     
 	<label for='<%= idInput %>' 
-			class='<%= !disabled ? "ds44-" + labelInput + "Label" : "" %>'
+			class='<%= "ds44-" + labelInput + "Label"  %>'
 			id="<%= nameType + "-label-" + nameInput %>">
 
 		<%= cat.getName() %>
