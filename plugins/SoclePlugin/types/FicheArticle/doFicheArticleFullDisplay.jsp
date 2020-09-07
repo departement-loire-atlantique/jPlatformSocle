@@ -23,22 +23,20 @@
                 <%@ include file="ficheArticleOnglets.jspf" %>
             </jalios:default>
         </jalios:select>
-
-        
-        <%-- TODO : bloc Je m'abonne --%>
-        
-        <%-- TODO : bloc "Sur le même thème --%>
-        <%--
-        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
-         --%>
-        <%-- Portlets bas --%>
-	    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
-	        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
-	           <section>
-	               <jalios:include id="<%= itPortlet.getId() %>" />
-                </section>
-	        </jalios:foreach>
-	    </jalios:if>
         
     </article>
+    
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
+    
+    <%-- Portlets bas --%>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
+        <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
+           <section>
+               <jalios:include id="<%= itPortlet.getId() %>" />
+            </section>
+        </jalios:foreach>
+    </jalios:if>    
 </main>

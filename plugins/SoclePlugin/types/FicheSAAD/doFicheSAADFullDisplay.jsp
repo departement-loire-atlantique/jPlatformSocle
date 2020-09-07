@@ -106,7 +106,14 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
             </div>
         </section>
         
-        <%-- TODO : bloc des réseaux sociaux --%>
+        <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %> 
 
     </article>
+    
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
+    
 </main>

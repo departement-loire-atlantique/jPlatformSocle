@@ -67,8 +67,6 @@
 		        
     </jalios:if>
     
-       
-    
     
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
@@ -78,4 +76,13 @@
             </section>
         </jalios:foreach>
     </jalios:if>
+
+    <%-- Partagez cette page --%>
+    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
+    
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>    
+        
 </main>

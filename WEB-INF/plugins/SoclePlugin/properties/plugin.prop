@@ -16,6 +16,7 @@ $jcmsplugin.socle.cat.animationSportive.id: p2_108385
 channel.security.authorized-redirect.suivi-demande: ^https?://demarche.loire-atlantique.fr/.*
 
 jcmsplugin.socle.url-rewriting.disabled:true
+jcmsplugin.socle.page-utile.disabled:false
 
 jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies
 jcmsplugin.socle.rgpd.modale.description.area: La description RGPD
@@ -605,3 +606,6 @@ $jcmsplugin.socle.presscommunique.missionsThematiques: p1_283851
 
 # Canton
 jcmsplugin.socle.canton.source: Canton - source recensement population
+
+# Page utile
+jcmsplugin.socle.pageutile.mailto:web@loire-atlantique.fr

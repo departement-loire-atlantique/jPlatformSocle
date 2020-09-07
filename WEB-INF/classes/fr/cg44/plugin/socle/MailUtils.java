@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,10 +14,8 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.mail.MailMessage;
-import com.jalios.util.HtmlUtil;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
-import com.jalios.util.XmlUtil;
 
 import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
@@ -54,7 +53,7 @@ public final class MailUtils {
 		parametersMap.put("message", form.getMessage());
 
 		try {
-			sendMail(objet, null, form.getMail(), emailTo, null, jsp, parametersMap);
+			sendMail(objet, null, form.getMail(), emailTo, null, null, jsp, parametersMap);
 			msgEnvoiMailContact();
 		} catch (Exception e) {
 			msgEchecEnvoiMailContact();
@@ -181,7 +180,7 @@ public final class MailUtils {
 
 		if (Util.notEmpty(emailTo)) {
 			try {
-				sendMail(objet, null, request.getParameter("mail[value]"), emailTo, null, jsp, parametersMap);
+				sendMail(objet, null, request.getParameter("mail[value]"), emailTo, null, null, jsp, parametersMap);
 				result = true;
 			} catch (Exception e) {
 				result = false;
@@ -195,6 +194,61 @@ public final class MailUtils {
 
 		return result;
 	}
+	
+  /**
+   * Envoi de l'email du formulaire "Page utile"
+   * Le destinataire est le rédacteur de la publication
+   * Un autre destinaire peut être paramétré en prop du site pour en voi en CC. 
+   * 
+   */
+  public static boolean envoiMailPageUtile(boolean pageUtile, String titre, String url, String commentaire, String date, String motif, String emailRedacteur) {
+    String emailFrom = channel.getDefaultAdmin().getEmail();
+    String emailCC = channel.getProperty("jcmsplugin.socle.pageutile.mailto");
+    
+    ArrayList<String> listeEmailCC = new ArrayList<>();
+    if(Util.notEmpty(emailCC)){
+      listeEmailCC.add(emailCC);
+    }
+    
+    // Check adresses email
+    if(Util.isEmpty(emailRedacteur) || Util.isEmpty(emailCC)) {
+      return false;
+    }
+    
+    boolean result = false;
+    String jsp = "/plugins/SoclePlugin/jsp/mail/formulairePageUtileTemplate.jsp";
+    
+    // Objet
+    StringBuffer objet = new StringBuffer();
+    objet.append(channel.getName()).append(" / ");
+    objet.append(pageUtile ? JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.utile") : JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.inutile"));
+
+    // Contenu
+    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+    parametersMap.put("date", date);
+    parametersMap.put("avis", pageUtile ? JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.libelle-avis.utile") : JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.libelle-avis.inutile"));
+    parametersMap.put("titre", titre);
+    parametersMap.put("lien", url);
+    parametersMap.put("commentaire", commentaire);
+    parametersMap.put("motif", motif);
+    
+    if (Util.notEmpty(emailRedacteur)) {
+      try {
+        sendMail(objet.toString(), null, emailFrom, emailRedacteur, Util.notEmpty(listeEmailCC) ? listeEmailCC : null, null, jsp, parametersMap);
+        result = true;
+      } catch (Exception e) {
+        result = false;
+        LOGGER.error("Erreur lors de l'envoi du mail Page utile" + e.getMessage());
+      }
+
+    } else {
+      result = false;
+      LOGGER.error("Le mail de Page utile n'a pas pu être envoyé car l'email par destination n'est pas défini.");
+    }
+
+    return result;
+  }	
+	
 
 	/**
 	 * Envoi de mail
@@ -207,13 +261,20 @@ public final class MailUtils {
 	 * @param jsp La JSP du template de mail à envoyer
 	 * @param parametersMap La map contenant les données à placer dans le template JSP
 	 */
-	public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
+	public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<String> listeEmailCC, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
 			throws javax.mail.MessagingException {
 
 		MailMessage mail = new MailMessage("Département de Loire Atlantique");
 		mail.setFrom(emailFrom);
 		mail.setTo(emailTo);
+		
+		if(Util.notEmpty(listeEmailCC)) {
+		  for(String itEmailCC : listeEmailCC) {
+		    mail.addCc(itEmailCC);
+		  }
+		}
 		mail.setSubject(subject);
+		
 
 		if(Util.notEmpty(content)) {
 
@@ -242,7 +303,7 @@ public final class MailUtils {
   public static void sendMail(String subject, String content, String emailFrom, String emailTo)
       throws javax.mail.MessagingException {
     
-    sendMail(subject, content, emailFrom, emailTo, null, null, null);
+    sendMail(subject, content, emailFrom, emailTo, null, null, null, null);
   }
   
   /**
@@ -257,7 +318,7 @@ public final class MailUtils {
   public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<File> listePieceJointe)
       throws javax.mail.MessagingException {
     
-    sendMail(subject, content, emailFrom, emailTo, listePieceJointe, null, null);
+    sendMail(subject, content, emailFrom, emailTo, null, listePieceJointe, null, null);
   }  
 	/**
 	 * Envoi du message de confirmation de l'envoi du mail.

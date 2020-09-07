@@ -37,6 +37,7 @@ jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
 jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
 jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
 jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
+jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 
 jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
 jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale
@@ -122,6 +123,8 @@ jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
 jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
 jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
 jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
+jcmsplugin.socle.email.pageutile.objet.utile: UTILE
+jcmsplugin.socle.email.pageutile.objet.inutile: PAS UTILE
 
 
 # ------------------------------------------------------------
@@ -261,6 +264,9 @@ jcmsplugin.socle.savoirplus: En savoir +
 jcmsplugin.socle.envideo: En vidéo
 jcmsplugin.socle.alireaussi: A lire aussi
 jcmsplugin.socle.memetheme: Sur le même thème
+jcmsplugin.socle.oui: Oui
+jcmsplugin.socle.non: Non
+jcmsplugin.socle.envoyer: Envoyer
 
 # ------------------------------------------------------------
 #  Header
@@ -693,3 +699,26 @@ jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13
 #  Carousel / CarouselElement (Diaporama d'images)
 # ------------------------------------------------------------
 jcmsplugin.socle.diaporama.titre: {0} - {1}
+
+# ------------------------------------------------------------
+#  Page utile
+# ------------------------------------------------------------
+jcmsplugin.socle.pageutile.titre:Cette page vous a-t-elle été utile ?
+jcmsplugin.socle.pageutile.oui: Oui, cette page m'a été utile
+jcmsplugin.socle.pageutile.non: Non, cette page ne m'a pas été utile
+jcmsplugin.socle.pageutile.merci: Merci ! Si vous le souhaitez, vous pouvez nous laisser un commentaire :
+jcmsplugin.socle.pageutile.envoi-succes: Merci de votre contribution. 
+jcmsplugin.socle.pageutile.commentaire: Commentaire
+jcmsplugin.socle.pageutile.envoyer-commentaire.utile: Envoyer votre commentaire
+jcmsplugin.socle.pageutile.envoyer-commentaire.inutile: Envoyer votre commentaire pour rendre cette page plus utile
+jcmsplugin.socle.pageutile.retour-oui: Revenir au bouton Oui
+jcmsplugin.socle.pageutile.retour-non: Revenir au bouton Non
+jcmsplugin.socle.pageutile.motif-non.titre: Pourquoi cette page ne vous a pas été utile ?
+jcmsplugin.socle.pageutile.message-case: Au moins une de ces cases doit être cochée :
+jcmsplugin.socle.pageutile.pas-assez-complet: L’information n’est pas assez complète
+jcmsplugin.socle.pageutile.trop-complique: L’information est trop compliquée
+jcmsplugin.socle.pageutile.trop-a-lire: Il y a trop à lire
+jcmsplugin.socle.pageutile.aide-ameliorer: Aidez-nous à améliorer cette page en nous laissant un commentaire :
+jcmsplugin.socle.pageutile.mailto: Page utile : email de notification en CC
+jcmsplugin.socle.email.pageutile.libelle-avis.utile: AVIS POSITIF POUR LA PAGE
+jcmsplugin.socle.email.pageutile.libelle-avis.inutile: AVIS NEGATIF POUR LA PAGE
