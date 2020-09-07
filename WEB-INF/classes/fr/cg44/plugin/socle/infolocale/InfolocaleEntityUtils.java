@@ -564,6 +564,11 @@ public class InfolocaleEntityUtils {
       
       // Forcer l'ordre des résultats
       parameters.put("order", "dateDebut asc");
+      
+      // Ajouter un filtre sur les organismes
+      if (Util.notEmpty(box.getOrganismesInfolocale())) {
+        parameters.put("organisme", box.getOrganismesInfolocale());
+      }
            
       // Recherche sur une commune
       String commune = request.getParameter("commune");
