@@ -15,6 +15,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -32,6 +33,7 @@ import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.DataSelector;
+import com.jalios.jcms.FileDocument;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
@@ -50,6 +52,7 @@ import generated.Delegation;
 import generated.ElectedMember;
 import generated.FicheEmploiStage;
 import generated.FicheLieu;
+import generated.Lien;
 import generated.PortletAgendaInfolocale;
 import generated.PortletFacetteAdresse;
 import generated.PortletFacetteCategoriesLiees;
@@ -1634,4 +1637,26 @@ public final class SocleUtils {
 		
 		return null;
 	}	
+	/**
+	 * Récupérer uniquement l'URL qui doit être retournée depuis un contenu Lien
+	 * @param itLien
+	 * @return
+	 */
+	public static String getUrlPubFromLien(Lien itLien) {
+	  
+	  Locale userLocale = Channel.getChannel().getCurrentUserLocale();
+	  
+	  if (Util.notEmpty(itLien.getLienInterne())) {
+	    if (itLien.getLienInterne() instanceof FileDocument) {
+	      FileDocument itDoc = (FileDocument) itLien.getLienInterne();
+	      return itDoc.getDownloadUrl();
+	    } else {
+	      return itLien.getLienInterne().getDisplayUrl(userLocale);
+	    }
+	  } else if (Util.notEmpty(itLien.getLienExterne())) {
+	    return itLien.getLienExterne();
+	  }
+	  
+	  return "";
+	}
 }
