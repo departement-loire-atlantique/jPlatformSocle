@@ -60,6 +60,7 @@ $jcmsplugin.socle.type.sectorisation.missions-locales.cat: t1_10564
 $jcmsplugin.socle.type.sectorisation.clic.cat: t1_16280
 $jcmsplugin.socle.type.sectorisation.ccas.cat: t1_10565
 $jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat: t1_28189
+$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat:p2_206944
 
 # ------------------------------------------------------------
 #  Propriété spécifiques à un site
