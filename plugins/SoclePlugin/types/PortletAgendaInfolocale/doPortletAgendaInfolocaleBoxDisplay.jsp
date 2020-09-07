@@ -104,7 +104,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
         </jalios:if>
         
         <div class="ds44-container-large">
-	        <div class='mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large' data-nb-visible-slides="<%= maxTuiles %>">
+	        <div class='mod--hidden ds44-list swipper-carousel-wrap ds44-posRel' data-nb-visible-slides="<%= maxTuiles %>">
 	            <div class="swiper-container">
 	                <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
 	                    <%
