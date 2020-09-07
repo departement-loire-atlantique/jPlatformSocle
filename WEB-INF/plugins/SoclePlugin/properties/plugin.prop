@@ -290,6 +290,7 @@ media.data-template.marker.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/d
 media.data-template.card.FicheActionEducative: /plugins/SoclePlugin/jsp/cards/doFicheActionEducativeCard.jsp
 media.data-template.card.FicheAide: /plugins/SoclePlugin/jsp/cards/doFicheAideCard.jsp
 media.data-template.card.FicheArticle: /plugins/SoclePlugin/jsp/cards/doFicheArticleCard.jsp
+media.data-template.card.Lien: /plugins/SoclePlugin/jsp/cards/doLienCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
 media.data-template.card.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp
 media.data-template.cardFocus.FicheSAAD: /plugins/SoclePlugin/jsp/cards/doFicheSAADCard.jsp?isFocus=true
