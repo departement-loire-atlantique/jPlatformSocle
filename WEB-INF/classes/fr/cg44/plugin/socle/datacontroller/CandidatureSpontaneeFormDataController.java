@@ -43,8 +43,8 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
  private static final String FILE_NAME_CV = "cv";
  private static final String FILE_NAME_LM = "lettre_motivation";
  private static final String FILE_NAME_PC1 = "complement1";
- private static final String FILE_NAME_PC2 = "complement1";
- private static final String FILE_NAME_PC3 = "complement1";
+ private static final String FILE_NAME_PC2 = "complement2";
+ private static final String FILE_NAME_PC3 = "complement3";
  
  /**
   * On modifie le nom du formulaire, et on place la date d'archivage à J + 1 mois
@@ -165,11 +165,6 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
      // Récupération des fichiers
      HttpServletRequest request = channel.getCurrentServletRequest();
      
-     Enumeration<String> enumParams = request.getAttributeNames();
-     while(enumParams.hasMoreElements()) {
-       String nameParam = enumParams.nextElement(); 
-       LOGGER.warn(nameParam);
-     } 
      ArrayList<File> fichiers = new ArrayList<File>();
      File cv = null;
      File lettreMotivation = null;

@@ -473,6 +473,7 @@ jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
 # ------------------------------------------------------------
 jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
 jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
+jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
 jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
 jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
 jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
@@ -490,6 +491,19 @@ jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
 jcmsplugin.socle.infolocale.label.horaire.periode: de {0} à {1}
 jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du département
 jcmsplugin.socle.infolocale.label.payant: Payant
+
+# Metadonnees Infolocale pour le front
+
+jcmsplugin.socle.infolocale.metadata.label.commune: Commune
+jcmsplugin.socle.infolocale.metadata.label.genre: Genre
+jcmsplugin.socle.infolocale.metadata.label.organisme: Organisme
+jcmsplugin.socle.infolocale.metadata.label.horaires: Horaires
+jcmsplugin.socle.infolocale.metadata.label.duree: Durée
+jcmsplugin.socle.infolocale.metadata.label.tarif: Tarifs
+jcmsplugin.socle.infolocale.metadata.label.public: Public
+jcmsplugin.socle.infolocale.metadata.label.accessibilite: Accessibilité
+jcmsplugin.socle.infolocale.metadata.label.groupeTheme: Thématique
+jcmsplugin.socle.infolocale.metadata.label.theme: Thématique
 
 # ------------------------------------------------------------
 #  Abonnement newsletter

@@ -16,8 +16,6 @@ EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
-String metadata1 = Util.notEmpty(request.getAttribute("metadata1")) ? request.getAttribute("metadata1").toString() : null;
-String metadata2 = Util.notEmpty(request.getAttribute("metadata2")) ? request.getAttribute("metadata2").toString() : null;
 String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAttribute("cssCard").toString() : "";
 
 %>
@@ -64,16 +62,15 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
       <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
          <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
          <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
-         <jalios:if predicate="<%= Util.notEmpty(itEvent.getLieu()) %>">
-            <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
-               <span class="ds44-iconInnerText"><%= itEvent.getLieu().getCommune().getNom() %></span>
+         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
+            <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
+               <span class="ds44-iconInnerText"><%= itEvent.getMetadataDefaultContent() %></span>
             </p>
          </jalios:if>
-         <% String metaCommune = channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.commune"); %>
-         <jalios:if predicate="<%= Util.notEmpty(metadata1) && !metadata1.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata1()) %>">
+         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
             <p><%= itEvent.getMetadata1() %></p>
          </jalios:if>
-         <jalios:if predicate="<%= Util.notEmpty(metadata2) && !metadata2.equals(metaCommune) && Util.notEmpty(itEvent.getMetadata2()) %>">
+         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
             <p><%= itEvent.getMetadata2() %></p>
          </jalios:if>
          <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
