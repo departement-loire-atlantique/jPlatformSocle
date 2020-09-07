@@ -27,8 +27,34 @@ JsonObject jsonObject = new JsonObject();
 
 StringBuffer contentHtml = new StringBuffer();
 TreeSet<Publication> resultSet = new TreeSet<Publication>(new CategoryComparator(request.getParameter("cid"), request.getParameter("cidSecondaire")));
-
 resultSet.addAll(qh.getResultSet());
+
+//Filtre les communes non sectorisées (id ref vide) quand la sectorisation est activée
+//Car en cas de recherche avec sectorisation le filtre sur les commune est désactivé (car une commune peut avoir un lieu en dehors de cette même commune)
+if(Util.notEmpty(resultSet) && "true".equalsIgnoreCase(request.getParameter("sectorisation"))) {
+	request.setAttribute("communeHorsSectorisation", true);
+	QueryHandler qhCommune = new QueryHandler();
+	qhCommune.setCids(request.getParameter("cid"), request.getParameter("cidSecondaire"));
+	qhCommune.setCatMode("or");
+	qhCommune.setTypes("FicheLieu");
+	qhCommune.setCheckPstatus(true);
+	Set resultCommuneSet = qhCommune.getResultSet();
+	request.removeAttribute("communeHorsSectorisation");
+	List<Publication> removeList = new ArrayList();  
+	for(Object itObj : resultSet) {
+	 if(itObj instanceof FicheLieu) {
+	   FicheLieu itFiche = (FicheLieu) itObj;
+	   if(Util.isEmpty(itFiche.getIdReferentiel()) && !resultCommuneSet.contains(itFiche)) {
+	     removeList.add(itFiche);
+	   }
+	 }
+	}
+	
+	if(Util.notEmpty(removeList)) {
+		   resultSet.removeAll(removeList);
+	}  
+}
+
 
 
 %>
