@@ -48,6 +48,7 @@
     <type name="MarchePublic"></type>
     <type name="News"></type>
     <type name="PageCarrefour"></type>
+    <type name="PageUtileForm"><file path="editFormPageUtileForm.jsp" /></type>
     <type name="Place"></type>
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
