@@ -195,8 +195,10 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
     
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
       
-        <%-- TODO : carte dynamique dela commune --%>      
+        <%-- TODO : carte dynamique de la commune --%>      
 
+        <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
     </article>
     
@@ -207,8 +209,10 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 	    </section>
     </jalios:if>
         
-    <%-- TODO : bloc des réseaux sociaux --%>
-
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
 
 </main>
 

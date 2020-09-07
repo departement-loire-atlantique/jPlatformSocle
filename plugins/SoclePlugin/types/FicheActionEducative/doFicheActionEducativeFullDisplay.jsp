@@ -271,6 +271,15 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
             </div>
         </section>
         </jalios:if>
+        
+        <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
     </article>
+    
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
+    
 </main>

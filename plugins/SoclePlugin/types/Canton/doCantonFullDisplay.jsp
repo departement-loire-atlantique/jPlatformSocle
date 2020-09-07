@@ -80,13 +80,17 @@ List<String> remplacants = new ArrayList<String>();
             </section>
         </jalios:if>
         
-        <%-- TODO : carte dynamique du canton --%>      
+        <%-- TODO : carte dynamique du canton --%>  
+            
+	    <%-- Partagez cette page --%>
+	    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
     </article>
     
-    <%-- TODO : partage réseaux sociaux --%>
-    
-    <%-- TODO : page utile --%>  
+    <%-- Page utile --%>
+    <jalios:if predicate='<%= ! channel.getBooleanProperty("jcmsplugin.socle.page-utile.disabled", true) %>'>
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
 
 
 </main>
