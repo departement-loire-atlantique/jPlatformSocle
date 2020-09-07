@@ -19,6 +19,12 @@
     <field name="commentaire" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="false">
       <label xml:lang="fr">commentaire</label>
     </field>
+    <field name="idContenu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">ID du contenu</label>
+    </field>
+    <field name="url" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">URL du contenu</label>
+    </field>
   </fields>
 </type>
 
