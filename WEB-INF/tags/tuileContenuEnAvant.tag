@@ -44,7 +44,7 @@
     if (Util.isEmpty(urlImage)) {
      urlImage = "s.gif";
     } else {
-      urlImage = SocleUtils.getUrlOfFormattedImageBandeau(urlImage);
+      urlImage = SocleUtils.getUrlOfFormattedImageEnAvant(urlImage);
     }
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
