@@ -12,7 +12,6 @@
     </section>
         
     <section class="ds44-container-fluid ds44-mtb3 ds44--xl-padding-tb">
-        <div class="ds44-container-large">
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSelectionAgenda()) || Util.notEmpty(obj.getSoustitreSelectionAgenda()) %>">
                 <header class="txtcenter ds44--mobile--m-padding-b">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitreSelectionAgenda()) %>">
@@ -38,7 +37,6 @@
                 <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
             </jalios:if>
 			
-        </div>
     </section>
     
     <ds:carrousel promotedPubArray="<%= obj.getAlaUneAgenda() %>" carrouselPortlet="<%= obj.getCarrouselAgenda() %>"/>
