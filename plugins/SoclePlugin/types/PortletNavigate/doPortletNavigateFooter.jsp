@@ -1,10 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ include file='/types/PortletNavigate/doInitPortletNavigate.jspf' %>
 
 <%-- SGU : inspiré de "doPortletNavigateFullDisplay.jsp"
     On adapte la liste au design system et on gère les extradatas de catégories (libellé, target)
-    TODO : voir si on calcule l'URL du lien en amont ou si on laisse JCMS gérer.
 --%>
 
 <%
@@ -35,9 +35,19 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
                         title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
                     }
                     %>
-                    <li>
-                        <a class="ds44-footerLink" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %></a>
-                    </li>
+                    
+                    <jalios:select>
+                        <jalios:if predicate='<%= itCategory.equals(currentCategory) %>'>
+                            <li class="ds44-footerLink" aria-current="location">
+                                <%= libelleCat %>
+                            </li>        
+                        </jalios:if>
+                        <jalios:default>
+                            <li class="ds44-footerLink">
+                                <a href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %></a>
+                            </li>
+                        </jalios:default>
+                    </jalios:select>
                 </jalios:if>
             </jalios:foreach>
         </ul>
