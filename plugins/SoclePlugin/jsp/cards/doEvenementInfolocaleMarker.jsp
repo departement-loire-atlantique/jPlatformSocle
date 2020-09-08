@@ -23,9 +23,26 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
    <div class="ds44-flex-container">
       <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
          <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
-         <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
-         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
-            <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
+		<p>
+			<span class="ds44-docListElem ds44-inlineBlock"> <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
+			    <jalios:select>
+					<jalios:if
+						predicate="<%=InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate)%>">
+						<%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut())%>
+						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false)%>
+					</jalios:if>
+					<jalios:default>
+						<%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut())%>
+						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false)%>
+                                -
+                                <%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin())%>
+						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false)%>
+					</jalios:default>
+				</jalios:select>
+			</span>
+		</p>
+		<jalios:if predicate="<%=Util.notEmpty(itEvent.getMetadataDefaultContent())%>">
+            <p class="ds44-cardLocalisation"><i class="icon <%=itEvent.getMetadataDefaultIcon()%>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
                <span class="ds44-iconInnerText"><%= itEvent.getMetadataDefaultContent() %></span>
             </p>
          </jalios:if>
