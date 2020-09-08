@@ -2,7 +2,7 @@
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
 <%@ attribute name="content" required="true" fragment="false"
     rtexprvalue="true" type="Content"
     description="Le contenu a afficher"%>
@@ -14,7 +14,13 @@
     description="Position du bloc titre par dessus l'image"%>   
 <%@ attribute name="customUrl" required="false" fragment="false"
     rtexprvalue="true" type="String"
-    description="URL custom pour le lien"%>     
+    description="URL custom pour le lien"%>  
+<%@ attribute name="customAlt" required="false" fragment="false"
+    rtexprvalue="true" type="String"
+    description="Texte alternatif custom pour le lien"%>  
+<%@ attribute name="isExterne" required="false" fragment="false"
+    rtexprvalue="true" type="Boolean"
+    description="Détermine si le lien est externe"%>     
 
 <%
 
@@ -61,6 +67,10 @@
     if (Util.notEmpty(customUrl)) {
       linkUrl = customUrl;
     }
+    
+    boolean displayTargetBlank = Util.notEmpty(isExterne) && isExterne;
+    
+    String titleUrl = Util.notEmpty(customAlt) ? customAlt : "";
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
@@ -72,12 +82,13 @@
     <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
-        <a href="<%= linkUrl %>">
+        <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %>>
     </jalios:if>
 
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
         <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
-            <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= linkUrl %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></p>
+            <p role="heading" aria-level="3" class="ds44-card__title">
+                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %></a></p>
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
@@ -85,7 +96,7 @@
             <p class="ds44-cardLocalisation">
                 <i class="icon icon-marker" aria-hidden="true"></i>
                 <span class="ds44-iconInnerText"><%= location %></span>
-            </p>
+            </p> 
             <% } %>
         </div>
     </jalios:if>
