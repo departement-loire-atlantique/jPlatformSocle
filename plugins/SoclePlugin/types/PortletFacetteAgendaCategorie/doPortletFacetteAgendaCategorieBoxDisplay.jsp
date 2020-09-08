@@ -35,7 +35,7 @@
 			        isDisabled='<%= false %>' 
 			        request='<%= request %>' 
 			        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-			        profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>'/>
+			        profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>'/>
 	
         <%
         
@@ -58,7 +58,7 @@
               isDisabled='<%= false %>' 
               request='<%= request %>' 
               selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-              profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>' />
+              profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>' />
 	   
 	   <%
 	  
