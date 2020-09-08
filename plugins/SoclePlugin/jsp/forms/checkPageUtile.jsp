@@ -31,10 +31,6 @@ boolean isOK = true;
 // Réponse "Oui"
 if (request.getParameter("utile[value]").equals("true")) {
   pageUtile = true;  
-  if (Util.isEmpty(commentaire)) {
-	  isOK = false;
-	  jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", "Commentaire"));
-	}
   
 }
 //Réponse "Non"
