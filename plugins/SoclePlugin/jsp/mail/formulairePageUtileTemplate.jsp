@@ -305,10 +305,14 @@ MOBILE TARGETING
                         <td>
                         <p>Le : <%=request.getAttribute("date") %></p>
                         <p><%=request.getAttribute("avis") %> : <a href="<%=request.getAttribute("lien") %>" target="_blank"><%=request.getAttribute("titre") %></a></p>
+                        
                         <% if(null != request.getAttribute("motif")){ %>
-                        <p>Pourquoi : <%=request.getAttribute("motif") %></p>
+                            <p>Pourquoi : <%=request.getAttribute("motif") %></p>
                         <%} %>
-                        <p>COMMENTAIRE : <%=request.getAttribute("commentaire") %></p>
+                        
+                        <% if(null != request.getAttribute("commentaire")){ %>
+                            <p>COMMENTAIRE : <%=request.getAttribute("commentaire") %></p>
+                        <%} %>
                         </td>
                       </tr>
                     </tbody>
