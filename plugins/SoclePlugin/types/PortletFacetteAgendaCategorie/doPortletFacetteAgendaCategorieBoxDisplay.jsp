@@ -23,19 +23,19 @@
 	
 	// Cas 1 : thématiques personnalisées
 	if (Util.notEmpty(obj.getIdDeThematiquesPersonnalisees())) {
-        Set<Genre> listeGenre = InfolocaleEntityUtils.getThematiquesPersoOfMetadata(obj.getIdDeThematiquesPersonnalisees(), fluxId);
+	  Map<String, Set<Genre>> couplesLibellesGenres = InfolocaleEntityUtils.getThematiquesPersoOfMetadata(obj.getLibellesDeThematiquesPersonnalis(), obj.getIdDeThematiquesPersonnalisees(), fluxId);
     
-        if(Util.isEmpty(listeGenre)) return;
+        if(Util.isEmpty(couplesLibellesGenres)) return;
         
         %>
 
-<ds:facetteCategorie obj='<%= obj %>' 
-        listeGenre='<%= listeGenre %>'
-        idFormElement='<%= idFormElement %>' 
-        isDisabled='<%= false %>' 
-        request='<%= request %>' 
-        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-        profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>'/>
+			<ds:facetteCategorie obj='<%= obj %>' 
+			        listeCouplesLibellesGenres='<%= couplesLibellesGenres %>'
+			        idFormElement='<%= idFormElement %>' 
+			        isDisabled='<%= false %>' 
+			        request='<%= request %>' 
+			        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
+			        profondeur='<%= Boolean.getBoolean(obj.getProfondeur()) %>'/>
 	
         <%
         
