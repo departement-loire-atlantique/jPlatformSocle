@@ -109,7 +109,11 @@ public class InfolocaleEntityUtils {
               return null;
             }
             // Vérification sur des IDs de groupes d'événements
-            if (Util.notEmpty(idGroupes) && !json.isNull("groupes")) {
+            if (Util.notEmpty(idGroupes)) {
+              // On cherche sur un groupe, mais l'événement n'en a pas. On le retire
+              if (json.isNull("groupes") || json.getJSONArray("groupes").length() == 0) {
+                return null;
+              }
               JSONArray arrayGroups = json.getJSONArray("groupes");
               boolean hasGroup = false;
               for (int counterGroups = 0; counterGroups < arrayGroups.length(); counterGroups++) {
