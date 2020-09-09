@@ -1661,26 +1661,61 @@ public final class SocleUtils {
 		
 		return null;
 	}	
+	
 	/**
-	 * Récupérer uniquement l'URL qui doit être retournée depuis un contenu Lien
-	 * @param itLien
-	 * @return
-	 */
-	public static String getUrlPubFromLien(Lien itLien) {
-	  
-	  Locale userLocale = Channel.getChannel().getCurrentUserLocale();
-	  
-	  if (Util.notEmpty(itLien.getLienInterne())) {
-	    if (itLien.getLienInterne() instanceof FileDocument) {
-	      FileDocument itDoc = (FileDocument) itLien.getLienInterne();
-	      return itDoc.getDownloadUrl();
-	    } else {
-	      return itLien.getLienInterne().getDisplayUrl(userLocale);
-	    }
-	  } else if (Util.notEmpty(itLien.getLienExterne())) {
-	    return itLien.getLienExterne();
-	  }
-	  
-	  return "";
-	}
+   * Récupérer uniquement l'URL qui doit être retournée depuis un contenu Lien
+   * @param itLien
+   * @return
+   */
+  public static String getUrlPubFromLien(Lien itLien) {
+    
+    Locale userLocale = Channel.getChannel().getCurrentUserLocale();
+    
+    if (Util.notEmpty(itLien.getLienInterne())) {
+      if (itLien.getLienInterne() instanceof FileDocument) {
+        FileDocument itDoc = (FileDocument) itLien.getLienInterne();
+        return itDoc.getDownloadUrl();
+      } else {
+        return itLien.getLienInterne().getDisplayUrl(userLocale);
+      }
+    } else if (Util.notEmpty(itLien.getLienExterne())) {
+      return itLien.getLienExterne();
+    }
+    
+    return "";
+  }
+  
+  /**
+   * Récupérer uniquement le texte alternatif qui doit être retournée depuis un contenu Lien
+   * @param itLien
+   * @return
+   */
+  public static String getAltFromLien(Lien itLien) {
+    
+    if (Util.notEmpty(itLien.getLienInterne())) {
+      if (itLien.getLienInterne() instanceof FileDocument) {
+        FileDocument itDoc = (FileDocument) itLien.getLienInterne();
+        String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+        String fileSize = Util.formatFileSize(itDoc.getSize());
+        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.lien.document.nouvelonglet", itLien.getTitle(), fileSize, fileType);
+      }
+    } else if (Util.notEmpty(itLien.getLienExterne())) {
+      return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.lien.site.nouvelonglet", itLien.getTitle());
+    }
+    
+    return "";
+  }
+  
+  /**
+   * Déterminer si un lien doit ouvrir un nouvel onglet ou non
+   * @param itLien
+   * @return
+   */
+  public static Boolean isLienExterne(Lien itLien) {
+    if (Util.notEmpty(itLien.getLienInterne())) {
+      return (itLien.getLienInterne() instanceof FileDocument);
+    } else {
+      return Util.notEmpty(itLien.getLienExterne());
+    }
+  }
 }
