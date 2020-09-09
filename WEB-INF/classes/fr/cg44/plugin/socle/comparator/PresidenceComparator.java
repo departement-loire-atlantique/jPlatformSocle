@@ -38,12 +38,6 @@ public class PresidenceComparator extends BasicComparator<ElectedMember>{
     	return 1;
     }
        
-    // Vise président directement (sans sous catégorie)
-    if(elu_1.containsCategory(vicePresidenceCat) && !elu_2.containsCategory(vicePresidenceCat)) {
-      return -1;
-    } else if(elu_2.containsCategory(vicePresidenceCat) && !elu_1.containsCategory(vicePresidenceCat)) {
-      return 1;
-    }
    
     // Vice présidence / Conseiller départemental
     if(Util.notEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat, true)) && Util.isEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat, true))) {
@@ -53,7 +47,7 @@ public class PresidenceComparator extends BasicComparator<ElectedMember>{
     }
     
     // Ordre Enfant Vice présidence
-    if(Util.notEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat)) && Util.notEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat))) {
+    if(Util.notEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat)) || Util.notEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat))) {
       Set<Category> vpCatSet = new TreeSet<Category>(Category.getDeepOrderComparator());
       vpCatSet.addAll(vicePresidenceCat.getDescendantSet());
       for(Category itCat : vpCatSet) {
