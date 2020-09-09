@@ -722,3 +722,9 @@ jcmsplugin.socle.pageutile.aide-ameliorer: Aidez-nous à améliorer cette page e
 jcmsplugin.socle.pageutile.mailto: Page utile : email de notification en CC
 jcmsplugin.socle.email.pageutile.libelle-avis.utile: AVIS POSITIF POUR LA PAGE
 jcmsplugin.socle.email.pageutile.libelle-avis.inutile: AVIS NEGATIF POUR LA PAGE
+
+# ------------------------------------------------------------
+#  Titres de pages personnalisés
+# ------------------------------------------------------------
+jcmsplugin.socle.title.accueil: Accueil
+

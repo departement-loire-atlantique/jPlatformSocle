@@ -2,6 +2,8 @@
   PortalJspCollection box = (PortalJspCollection) portlet;
   ServletUtil.backupAttribute(pageContext , "ShowChildPortalElement");
   
+  jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.accueil"));
+  
 %>
 <%@ include file='/types/AbstractCollection/doIncludePortletCollection.jspf'%>
 <%
