@@ -82,6 +82,7 @@ jcmsplugin.socle.socialnetworks.share.actif: true
 
 # Comparator
 comparator.FicheLieu.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
+comparator.ElectedMember.presidence: fr.cg44.plugin.socle.comparator.PresidenceComparator
 
 # ------------------------------------------------------------
 #  Header

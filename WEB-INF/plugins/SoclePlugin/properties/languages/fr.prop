@@ -15,6 +15,7 @@ extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
 
 # Comparator
 comparator.pqf.servicesDepartement: Fiche lieu : Services du département
+comparator.pqf.presidence: Elu : Présidence
 
 # ------------------------------------------------------------
 #  Propriétés éditables

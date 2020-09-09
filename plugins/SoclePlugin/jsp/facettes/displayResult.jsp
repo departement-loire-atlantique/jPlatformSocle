@@ -141,7 +141,9 @@ jsonObject.add("result", jsonArray);
 	           </jalios:select>
 	           <%
 	        %></jalios:if><%
-	        
+	        %><jalios:if predicate="<%= itPub instanceof ElectedMember %>"><%
+	            %><jalios:media data="<%= itPub %>" template="cardFull" /><%
+	        %></jalios:if><%
 	        %><jalios:default><%
 	           %><jalios:media data="<%= itPub %>" template="card" /><%
 	        %></jalios:default><%
