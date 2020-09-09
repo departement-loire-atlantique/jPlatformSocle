@@ -22,19 +22,21 @@ public class PublicationFacetedSearchGeolocEnginePolicyFilter extends BasicLucen
   private static final Logger LOGGER = Logger.getLogger(PublicationFacetedSearchGeolocEnginePolicyFilter.class);
 
   @Override
-  public void filterPublicationDocument(Document doc, Publication publication, String lang) {   						
-    String className = publication.getClass().getSimpleName();
-    String pubLat = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.latitude");
-    String PubLng = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.longitude");
-    if(Util.notEmpty(pubLat) && Util.notEmpty(PubLng)) {
-      try { 
-        LatLonPoint latLong = new LatLonPoint("localisation", Float.parseFloat(pubLat), Float.parseFloat(PubLng));
-        doc.add(latLong);
-      }
-      catch (Exception e) { 
-        LOGGER.warn("Impossible d'indéxer la localisation sur le contenu : " + publication.getId() + " de type " + publication.getClass().getSimpleName() + " latitude : " + pubLat + " longitude : " +  PubLng, e);
-      } 
-    }			
+  public void filterPublicationDocument(Document doc, Publication publication, String lang) { 
+    if(publication.isStored()) {
+      String className = publication.getClass().getSimpleName();
+      String pubLat = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.latitude");
+      String PubLng = publication.getExtraData("extra."+ className +".plugin.tools.geolocation.longitude");
+      if(Util.notEmpty(pubLat) && Util.notEmpty(PubLng)) {
+        try { 
+          LatLonPoint latLong = new LatLonPoint("localisation", Float.parseFloat(pubLat), Float.parseFloat(PubLng));
+          doc.add(latLong);
+        }
+        catch (Exception e) { 
+          LOGGER.warn("Impossible d'indéxer la localisation sur le contenu : " + publication.getId() + " de type " + publication.getClass().getSimpleName() + " latitude : " + pubLat + " longitude : " +  PubLng, e);
+        } 
+      }	
+    }
   }
 
 
