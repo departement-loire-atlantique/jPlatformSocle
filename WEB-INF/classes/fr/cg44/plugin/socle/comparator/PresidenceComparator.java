@@ -1,8 +1,12 @@
 package fr.cg44.plugin.socle.comparator;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.comparator.BasicComparator;
+import com.jalios.util.Util;
 
 import generated.ElectedMember;
 
@@ -13,10 +17,10 @@ import generated.ElectedMember;
 public class PresidenceComparator extends BasicComparator<ElectedMember>{
 
   Channel channel = Channel.getChannel();
-  Category presidence = channel.getCategory("$jcmsplugin.socle.elu.president");
+  Category presidenceCat = channel.getCategory("$jcmsplugin.socle.elu.president");
+  Category vicePresidenceCat = channel.getCategory("$jcmsplugin.socle.elu.vicepresident");
   
-  public PresidenceComparator() {
-  
+  public PresidenceComparator() {  
   }
 
   public int compare(ElectedMember elu_1, ElectedMember elu_2) {
@@ -28,16 +32,40 @@ public class PresidenceComparator extends BasicComparator<ElectedMember>{
     }
     
     // Présidence
-    if(elu_1.getFunctions(channel.getDefaultAdmin()).contains(presidence)) {
+    if(elu_1.containsCategory(presidenceCat)) {
     	return -1;
-    } else if(elu_2.getFunctions(channel.getDefaultAdmin()).contains(presidence)) {
+    } else if(elu_2.containsCategory(presidenceCat)) {
     	return 1;
     }
+       
+    // Vise président directement (sans sous catégorie)
+    if(elu_1.containsCategory(vicePresidenceCat) && !elu_2.containsCategory(vicePresidenceCat)) {
+      return -1;
+    } else if(elu_2.containsCategory(vicePresidenceCat) && !elu_1.containsCategory(vicePresidenceCat)) {
+      return 1;
+    }
+   
+    // Vice présidence / Conseiller départemental
+    if(Util.notEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat, true)) && Util.isEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat, true))) {
+      return -1;
+    } else if(Util.notEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat, true)) && Util.isEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat, true))) {
+      return 1;
+    }
     
-    // Vise présidence
+    // Ordre Enfant Vice présidence
+    if(Util.notEmpty(elu_1.getDescendantCategorySet(vicePresidenceCat)) && Util.notEmpty(elu_2.getDescendantCategorySet(vicePresidenceCat))) {
+      Set<Category> vpCatSet = new TreeSet<Category>(Category.getDeepOrderComparator());
+      vpCatSet.addAll(vicePresidenceCat.getDescendantSet());
+      for(Category itCat : vpCatSet) {
+        if(elu_1.containsCategory(itCat) && !elu_2.containsCategory(itCat)) {
+          return -1;
+        }else if(elu_2.containsCategory(itCat) && !elu_1.containsCategory(itCat)){
+          return 1;
+        }
+      }
+    }
     
-    
-    return super.compare(elu_1, elu_2);
+    return elu_1.getNom().compareTo(elu_2.getNom());
   }
 
 }

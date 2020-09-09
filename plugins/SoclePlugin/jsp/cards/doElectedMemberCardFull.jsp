@@ -35,7 +35,7 @@ if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
     </picture>
     <div class="ds44-card__section txtleft mts">
         <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileElu_<%= uid %>">
-            <a href="#" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>
+            <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>
         </p>
         <jalios:if predicate="<%= Util.notEmpty(position) %>">
         <p><%= position %></p>
