@@ -49,9 +49,6 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       </div>
       
       <jalios:buffer name="eventSummary">
-        <div class="ds44-img50 ds44-img50--event">
-            <div class="ds44-inner-container">
-                <div class="ds44-grid12-offset-1">
                     <div class="ds44-theme ds44-flex-valign-center ds44-flex-container ds44-fse ds44--l-padding ">
 			           <span class="ds44-docListElem h4-like ds44-inlineBlock">
 			              <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
@@ -82,9 +79,6 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			              <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
 			           </jalios:if>
 			        </div>
-                </div>
-            </div>
-        </div>
       </jalios:buffer>
       
       <jalios:select>
@@ -111,7 +105,13 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                     </jalios:if>
                     
                     <jalios:default>
-                        <%=eventSummary%>
+                        <div class="ds44-img50 ds44-img50--event">
+	                        <div class="ds44-inner-container">
+		                        <div class="ds44-grid12-offset-1">
+		                           <%=eventSummary%>
+		                        </div>
+	                        </div>
+                        </div>
                          <section class="ds44-contenuArticle" id="sectionPicture">
                              <div class="ds44-inner-container ds44-mtb5">
                                 <div class="ds44-grid12-offset-1">
