@@ -74,12 +74,13 @@ boolean isRequired = obj.getFacetteObligatoire();
                      </div>
                   </div>
                   <%
+                  String previousUid = uidFormElemList;
                   uidFormElemList = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
                   %>
                   <div class="ds44-form__container ds44-mt2">
                      <div class="ds44-posRel">
                         <label id="label-<%= uidFormElemList %>" for="<%= uidFormElemList %>" class="ds44-formLabel ds44-datepicker"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.date.select.jusquau.label") %></span></span></label>
-                        <div data-name="<%= uidFormElemList %>" class="ds44-datepicker__shape ds44-inpStd" data-previous-date-id="<%= uidFormElemList %>">
+                        <div data-name="<%= uidFormElemList %>" class="ds44-datepicker__shape ds44-inpStd" data-previous-date-id="<%= previousUid %>">
 	                        <input id="<%= uidFormElemList %>" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.jusquau.label"))) : glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.jusquau.label")) %>' data-is-date="true"   aria-describedby="explanation-<%= uidFormElemList %> label-radio-<%= uidFormElem %>-<%= datesLabelValues.size() + 1 %> button-message-<%= uid %>">
 	                        <span>/</span>
 	                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.facette.date.exemple.mois", glp("jcmsplugin.socle.facette.date.select.jusquau.label"))) : glp("jcmsplugin.socle.facette.date.exemple.mois", glp("jcmsplugin.socle.facette.date.select.jusquau.label")) %>' data-is-date="true"   aria-describedby="explanation-<%= uidFormElemList %> label-radio-<%= uidFormElem %>-<%= datesLabelValues.size() + 1 %> button-message-<%= uid %>">
