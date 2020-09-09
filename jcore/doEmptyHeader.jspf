@@ -17,7 +17,9 @@
   // Set Title / DotType / Zone
   String titleOfThePage = jcmsContext.getPageTitle("");
   String titlePrefix    = (String) request.getAttribute("title.prefix");
-  String headTitle      = (titlePrefix == null ? (channel.getName() + " - ") : (!"".equals(titlePrefix) ? titlePrefix : "")) + titleOfThePage;
+  
+  //DEP44 : modification du titre de la page
+  String headTitle      = titleOfThePage + " - " + channel.getName();
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
   
