@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -796,7 +797,7 @@ public class InfolocaleEntityUtils {
 	 * @return
 	 */
 	private static Map<String, Set<Genre>> getAllThematiquesWithLibelles(String fluxId, String[] lblThematiques, String[] idThematiques) {
-	  Map<String, Set<Genre>> genresWithLabels = new HashMap<>();
+	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
 
 	  JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
     String idLbl = "id";
@@ -840,7 +841,7 @@ public class InfolocaleEntityUtils {
    */
   private static Map<String, Set<Genre>> getAllGenresWithLibelle(String fluxId, String[] lblGenres, String[] idGenres) {
     
-    Map<String, Set<Genre>> genresWithLabels = new HashMap<>();
+    Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
 
     JSONObject fluxMetadataGenres = RequestManager.getFluxMetadata(fluxId, "thematique");
 
