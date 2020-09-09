@@ -818,6 +818,7 @@ public class InfolocaleEntityUtils {
             }
           }
           if (Util.notEmpty(foundGenres)) {
+            foundGenres = InfolocaleUtil.orderSetGenresToMatchIdList(foundGenres, listIdGenres);
             genresWithLabels.put(lblThematiques[counterThematiques], foundGenres);
           }
         }
@@ -859,6 +860,7 @@ public class InfolocaleEntityUtils {
         String listIdGenres = idGenres[counterGenres];
         Set<Genre> foundGenres = findGenresFromIdList(allStyles, new ArrayList<String>(Arrays.asList(listIdGenres.split(","))));
         if (Util.notEmpty(foundGenres)) {
+          foundGenres = InfolocaleUtil.orderSetGenresToMatchIdList(foundGenres, listIdGenres);
           genresWithLabels.put(lblGenres[counterGenres], foundGenres);
         }
       }

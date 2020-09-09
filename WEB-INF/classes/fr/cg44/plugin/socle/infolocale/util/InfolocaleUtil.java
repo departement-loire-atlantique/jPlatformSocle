@@ -16,6 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
@@ -754,5 +755,37 @@ public class InfolocaleUtil {
       }
       
       return allGenres.toString();
+    }
+    
+    /**
+     * Ordonne les éléments d'une liste d'objets Genres selon une liste d'IDs
+     * @param listGenres
+     * @param idList
+     * @return
+     */
+    public static Set<Genre> orderSetGenresToMatchIdList(Set<Genre> listGenres, String idList) {
+      if (Util.isEmpty(listGenres) || Util.isEmpty(idList)) {
+        return listGenres;
+      }
+      
+      Set<Genre> sortedList = new TreeSet<>();
+      
+      String[] arrayIds = idList.split(",");
+      
+      for (int counterId = 0; counterId < arrayIds.length; counterId++) {
+        String itId = arrayIds[counterId];
+        for (Iterator<Genre> iter = listGenres.iterator(); iter.hasNext();) {
+          Genre itGenre = iter.next();
+          if (itGenre.getId().equals(itId)) {
+            sortedList.add(itGenre);
+            iter.remove();
+            break;
+          }
+        }
+      }
+      
+      sortedList.addAll(listGenres);
+      
+      return sortedList;
     }
 }
