@@ -31,13 +31,6 @@
 		type="TreeSet<Category>" 
 		description="La liste des categories selectionnables" 
 %>
-<%@ attribute name="listeGenre" 
-		required="false" 
-		fragment="false" 
-		rtexprvalue="true" 
-		type="Set<Genre>" 
-		description="La liste des genres selectionnables (pour l'agenda)" 
-%>
 <%@ attribute name="listeCouplesLibellesGenres" 
         required="false" 
         fragment="false" 
@@ -114,6 +107,7 @@
 	labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : labelChamp;
 	labelChamp = Util.notEmpty(forcedLabel) ? forcedLabel : labelChamp;
 	String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";
+	
 %>
 <div class="ds44-form__container">
 	<div class='<%= "ds44-select__shape ds44-inp" + styleChamps + classInputDisabled %>'>
@@ -180,20 +174,7 @@
 							</jalios:foreach>
 						</jalios:foreach>
 					</jalios:if>
-					<%-- Thématiques perso --%>
-					<jalios:if predicate="<%= Util.notEmpty(listeGenre) %>">
-                        <jalios:foreach name="itGenre" type="Genre" collection='<%= listeGenre %>'>
-                            <% nbrTotalCat++; %>
-                            <li class="ds44-select-list_elem">
-                                
-                                <ds:facetteAgendaCategorieListElem genre='<%= itGenre %>' 
-                                    idFormElement='<%= idFormElement %>' 
-                                    typeDeSelection='<%= selectionMultiple %>' 
-                                    numGenre='<%= nbrTotalCat %>'/> 
-                            </li>
-                        </jalios:foreach>
-                    </jalios:if>
-                    <%-- Genres et catégories Infolocale - niveau 1 uniquement --%>
+                    <%-- Thématiques, genres et catégories Infolocale - niveau 1 uniquement --%>
                     <jalios:if predicate="<%= Util.notEmpty(listeCouplesLibellesGenres) %>">
                         <jalios:foreach name="itLibelle" type="String" collection='<%= listeCouplesLibellesGenres.keySet() %>'>
 	                        <jalios:foreach name="itSubGenre" type="Genre" collection='<%=listeCouplesLibellesGenres.get(itLibelle)%>' counter="itSubCatCounter">
@@ -214,7 +195,7 @@
 			<ul class="ds44-collapser ds44-listSelect">
 			    <jalios:select>
 			         <jalios:if predicate="<%= Util.notEmpty(listeCouplesLibellesGenres) %>">
-			         <%-- Catégories et genres infolocale --%>
+			         <%-- Thématiques, catégories et genres infolocale --%>
 			             <jalios:foreach name="itLibelle" type="String" collection='<%= listeCouplesLibellesGenres.keySet() %>'>
                             <% 
                             nbrTotalCat++; 

@@ -6,7 +6,10 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="idDeThematiquesPersonnalisees" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="listeGroupePersonnalisees">
+    <field name="libellesDeThematiquesPersonnalis" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="idThematiques">
+      <label xml:lang="fr">Libellés de thématiques personnalisées</label>
+    </field>
+    <field name="idDeThematiquesPersonnalisees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="idThematiques">
       <label xml:lang="fr">Id de thématiques personnalisées</label>
     </field>
     <field name="selectionMultiple" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">

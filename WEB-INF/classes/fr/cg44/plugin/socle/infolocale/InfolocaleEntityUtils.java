@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -787,46 +788,47 @@ public class InfolocaleEntityUtils {
 
     return listeGenre;
   }
-  
+	
 	/**
-	 * Retourne la liste des thématiques personnalisées depuis une liste d'IDs
+	 * Renvoie une map de libellés et de thématiques perso sous la forme d'objets Genres
 	 * @param fluxId
-	 * @param idDeThematiquesPersonnalisees
-	 * @param listeGenre
-	 * @return un set des thématiques personnalisées, triés par ordre alphabétique des libellés
+	 * @param lblGenres
+	 * @param idGenres
+	 * @return
 	 */
-	private static Set<Genre> getAllThematiquesPersoFromIdList(String fluxId, String idDeThematiquesPersonnalisees){
-    	Set<Genre> listeGenre = new TreeSet<Genre>(new Comparator<Genre>() {
-			@Override
-			public int compare(final Genre obj1, final Genre obj2) {
-				return obj1.getLibelle().compareToIgnoreCase(obj2.getLibelle());
-			}
-		});
-    	
-		JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
-		String libelleLbl = "libelle";
-		String idLbl = "id";
-		
-		try {
-			JSONObject objListeThematiques = objThematiques.getJSONObject("listMetadata");
-			for(int i = 0 ; i < objListeThematiques.length() ; i++) {
-				JSONArray listeThematiques = objListeThematiques.getJSONArray(objListeThematiques.names().getString(i));
-				
-    			for (int j = 0; j < listeThematiques.length(); j++) {
-    				JSONObject objGenre = listeThematiques.getJSONObject(j);
-    				if (!objGenre.isNull(idLbl) && !objGenre.isNull(libelleLbl) && idDeThematiquesPersonnalisees.contains(objGenre.getString(idLbl))) {
-    				  Genre itGenre = new Genre();
-    				  itGenre.setId(objGenre.getString(idLbl));
-    				  itGenre.setLibelle(objGenre.getString(libelleLbl));
-    				  listeGenre.add(itGenre);
-    				}
-    			}
-			}
-		} catch (JSONException e) {
-			LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
-		}
-		
-		return listeGenre;
+	private static Map<String, Set<Genre>> getAllThematiquesWithLibelles(String fluxId, String[] lblThematiques, String[] idThematiques) {
+	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
+
+	  JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
+    String idLbl = "id";
+    
+    try {
+      JSONObject objListeThematiques = objThematiques.getJSONObject("listMetadata");
+      
+      for(int i = 0 ; i < objListeThematiques.length() ; i++) {
+        JSONArray listeThematiques = objListeThematiques.getJSONArray(objListeThematiques.names().getString(i));
+        
+        for (int counterThematiques = 0; counterThematiques < idThematiques.length; counterThematiques++) {
+          if (Util.isEmpty(lblThematiques[counterThematiques])) continue;
+          
+          String listIdGenres = idThematiques[counterThematiques];
+          Set<Genre> foundGenres = new TreeSet<>();
+          for (int counterJson = 0; counterJson < listeThematiques.length(); counterJson++) {
+            if (listIdGenres.contains(listeThematiques.getJSONObject(counterJson).getString(idLbl))) {
+              foundGenres.add(generateGenreThematiqueFromJson(listeThematiques.getJSONObject(counterJson)));
+            }
+          }
+          if (Util.notEmpty(foundGenres)) {
+            foundGenres = InfolocaleUtil.orderSetGenresToMatchIdList(foundGenres, listIdGenres);
+            genresWithLabels.put(lblThematiques[counterThematiques], foundGenres);
+          }
+        }
+      }
+    } catch (JSONException e) {
+      LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
+    }
+
+    return genresWithLabels;
 	}
 	
 	 /**
@@ -837,9 +839,9 @@ public class InfolocaleEntityUtils {
    * @param listeGenre
    * @return un set des genres reliés aux thématiques personnalisées, triés par ordre alphabétique des libellés
    */
-  private static Map<String, Set<Genre>> getAllGenreOfThematiquesPerso(String fluxId, String[] lblGenres, String[] idGenres) {
+  private static Map<String, Set<Genre>> getAllGenresWithLibelle(String fluxId, String[] lblGenres, String[] idGenres) {
     
-    Map<String, Set<Genre>> genresWithLabels = new HashMap<>();
+    Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
 
     JSONObject fluxMetadataGenres = RequestManager.getFluxMetadata(fluxId, "thematique");
 
@@ -859,6 +861,7 @@ public class InfolocaleEntityUtils {
         String listIdGenres = idGenres[counterGenres];
         Set<Genre> foundGenres = findGenresFromIdList(allStyles, new ArrayList<String>(Arrays.asList(listIdGenres.split(","))));
         if (Util.notEmpty(foundGenres)) {
+          foundGenres = InfolocaleUtil.orderSetGenresToMatchIdList(foundGenres, listIdGenres);
           genresWithLabels.put(lblGenres[counterGenres], foundGenres);
         }
       }
@@ -924,13 +927,13 @@ public class InfolocaleEntityUtils {
   }
 	
 	/**
-	 * Génère un objet Genre depuis du JSON
-	 * @param jsonGenre
-	 * @return
-	 */
-	private static Genre generateGenreFromJson(JSONObject jsonGenre) {
-	  Genre genreObj = new Genre();
-	  
+   * Génère un objet Genre depuis du JSON
+   * @param jsonGenre
+   * @return
+   */
+  private static Genre generateGenreFromJson(JSONObject jsonGenre) {
+    Genre genreObj = new Genre();
+    
     try {
       genreObj.setLibelle(jsonGenre.getString("libelle"));
       genreObj.setId(jsonGenre.getString("code"));
@@ -940,7 +943,26 @@ public class InfolocaleEntityUtils {
     }
     
     return genreObj;
-	}
+  }
+  
+  /**
+   * Génère un objet Genre (thématique) depuis du JSON
+   * @param jsonGenre
+   * @return
+   */
+  private static Genre generateGenreThematiqueFromJson(JSONObject jsonGenre) {
+    Genre genreObj = new Genre();
+    
+    try {
+      genreObj.setLibelle(jsonGenre.getString("libelle"));
+      genreObj.setId(jsonGenre.getString("id"));
+    } catch (JSONException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    return genreObj;
+  }
 
   /**
 	 * Retourne une liste de thématiques personnalisées selon une liste d'IDs
@@ -948,12 +970,27 @@ public class InfolocaleEntityUtils {
 	 * @param fluxId l'ID du flux à utiliser
 	 * @return la liste de thématiques personnalisées (sous la classe 'Genre' qui partage les mêmes paramètres)
 	 */
-  public static Set<Genre> getThematiquesPersoOfMetadata(String idDeThematiquesPersonnalisees, String fluxId) {
-  	Set<Genre> listeGenre;
-
-  	listeGenre = getAllThematiquesPersoFromIdList(fluxId, idDeThematiquesPersonnalisees);
+  public static Map<String, Set<Genre>> getThematiquesPersoOfMetadata(String[] lblThematiques, String[] idThematiques, String fluxId) {
+    if (Util.isEmpty(lblThematiques) || Util.isEmpty(idThematiques)) {
+      return null;
+    }
     
-    return listeGenre;
+    Map<String, Set<Genre>> mapGenre;
+  	
+    // S'assurer que le tableau des labels aie la même taille que le tableau des IDs
+    if (lblThematiques.length < idThematiques.length) {
+      String[] lblClone = new String[idThematiques.length];
+      if (Util.notEmpty(lblThematiques)) {
+        for (int i = 0; i < lblThematiques.length; i++) {
+          lblClone[i] = lblThematiques[i];
+        }
+      }
+      mapGenre = getAllThematiquesWithLibelles(fluxId, lblClone, idThematiques);
+    } else {
+      mapGenre = getAllThematiquesWithLibelles(fluxId, idThematiques, idThematiques);
+    }
+    
+    return mapGenre;
   }
   
   /**
@@ -978,9 +1015,9 @@ public class InfolocaleEntityUtils {
           lblClone[i] = lblGenres[i];
         }
       }
-      mapGenre = getAllGenreOfThematiquesPerso(fluxId, lblClone, idGenres);
+      mapGenre = getAllGenresWithLibelle(fluxId, lblClone, idGenres);
     } else {
-      mapGenre = getAllGenreOfThematiquesPerso(fluxId, lblGenres, idGenres);
+      mapGenre = getAllGenresWithLibelle(fluxId, lblGenres, idGenres);
     }
     
     return mapGenre;
