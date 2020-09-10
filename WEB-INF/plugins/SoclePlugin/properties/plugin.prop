@@ -615,4 +615,8 @@ jcmsplugin.socle.pageutile.mailto:web@loire-atlantique.fr
 
 # Timeline
 $jcmsplugin.socle.timeline.classement: p2_913164
- 
+
+# Actions
+$jcmsplugin.socle.action.axe.cat: p2_911667
+$jcmsplugin.socle.action.politiquePublique.cat: p2_911600
+$jcmsplugin.socle.action.etatAvancement.cat: p2_911671

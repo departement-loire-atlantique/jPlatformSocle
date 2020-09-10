@@ -10,6 +10,7 @@
     <type name="AbstractPortletFacette"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
+    <type name="Action"></type>
     <type name="AlertCG"></type>
     <type name="ArticleGeolocalise"></type>
     <type name="CandidatureForm"><file path="editFormCandidatureForm.jsp" /></type>
@@ -78,6 +79,7 @@
     <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
     <type name="SportCommittee"></type>
+    <type name="Temoignage"></type>
     <type name="Timeline"></type>
     <type name="TimelineElement"></type>
     <type name="Video"></type>
