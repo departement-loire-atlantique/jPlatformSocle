@@ -35,11 +35,11 @@
     String location = "";
     
     try {
-     urlImage = (String) itPub.getFieldValue("imageBandeau");
+     urlImage = (String) itPub.getFieldValue("imagePrincipale");
     } catch(Exception e) {}
     if (Util.isEmpty(urlImage)) {
      try {
-      urlImage = (String) itPub.getFieldValue("imagePrincipale");
+      urlImage = (String) itPub.getFieldValue("imageBandeau");
      } catch(Exception e) {}
     }
     if (Util.isEmpty(urlImage)) {
