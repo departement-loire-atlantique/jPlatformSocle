@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="SportCommittee" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" authgroups="||||||" categories="t1_12341">
+  <title ml="true" searchable="true">
+    <label xml:lang="fr">Comité</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="sport" editor="textfield" required="true" type="String" searchable="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="true" descriptionType="text" html="false" checkHtml="true" wikiwyg="false" abstract="true" truncate="400">
+      <label xml:lang="fr">Discipline</label>
+      <label xml:lang="en">Description</label>
+    </field>
+    <field name="name" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom</label>
+    </field>
+    <field name="function" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Fonction</label>
+    </field>
+    <field name="address" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Adresse</label>
+    </field>
+    <field name="postalBox" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Boîte postale</label>
+    </field>
+    <field name="zipCode" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Code postal</label>
+    </field>
+    <field name="city" editor="link" required="false" compactDisplay="false" type="generated.City" parent="false">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="phones" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Téléphones</label>
+    </field>
+    <field name="mails" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false">
+      <label xml:lang="fr">Courriels</label>
+    </field>
+    <field name="websites" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Sites Internet</label>
+    </field>
+    <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" dataimage="true">
+      <label xml:lang="fr">Illustration</label>
+    </field>
+    <field name="imageLegend" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Légende illustration</label>
+    </field>
+    <field name="imageCopyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Copyright illustration</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Comité sportif</label>
+</type>
+

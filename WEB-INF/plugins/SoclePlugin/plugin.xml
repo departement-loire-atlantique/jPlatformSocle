@@ -47,6 +47,7 @@
     <type name="Magazine"></type>
     <type name="MarchePublic"></type>
     <type name="News"></type>
+    <type name="OrganismeGestionnaire"></type>
     <type name="PageCarrefour"></type>
     <type name="PageUtileForm"><file path="editFormPageUtileForm.jsp" /></type>
     <type name="Place"></type>
@@ -76,7 +77,9 @@
     <type name="SAAD"></type>
     <type name="Show"></type>
     <type name="SeniorCitizensEstablishment"></type>
-    <type name="Temoignage"></type>
+    <type name="SportCommittee"></type>
+    <type name="Timeline"></type>
+    <type name="TimelineElement"></type>
     <type name="Video"></type>
 
     

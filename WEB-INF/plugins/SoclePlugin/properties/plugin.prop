@@ -612,3 +612,7 @@ jcmsplugin.socle.canton.source: Canton - source recensement population
 
 # Page utile
 jcmsplugin.socle.pageutile.mailto:web@loire-atlantique.fr
+
+# Timeline
+$jcmsplugin.socle.timeline.classement: p2_913164
+ 

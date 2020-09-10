@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="TimelineElement" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false" hbm="true" authgroups="||||||" categories="$timeline.racine.classement.categorieid">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="description" editor="textarea" required="true" type="String" searchable="true" abstract="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="false">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="dateDebut" editor="date" required="true" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="true" dateFormat="short" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date début</label>
+    </field>
+    <field name="dateFin" editor="date" required="false" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="true" dateFormat="short" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date fin</label>
+    </field>
+    <field name="libelleDate" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé date</label>
+    </field>
+    <field name="masquerDate" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Masquer date</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="visuel" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Visuel</label>
+    </field>
+    <field name="lienVisuelInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false">
+      <label xml:lang="fr">Lien visuel interne</label>
+    </field>
+    <field name="lienVisuelExterne" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="100" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Lien visuel externe</label>
+    </field>
+    <field name="video" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="libelleLien" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tab="liens" tabGroup="liens">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="text" tab="liens" searchable="false" html="false" checkHtml="true" tabGroup="liens">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterne" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="100" ml="false" html="false" checkHtml="true" descriptionType="text" tab="liens" tabGroup="liens">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="liens">
+      <label xml:lang="fr">Liens</label>
+    </tab>
+  </tabs>
+  <label xml:lang="fr">TimelineElement</label>
+</type>
+

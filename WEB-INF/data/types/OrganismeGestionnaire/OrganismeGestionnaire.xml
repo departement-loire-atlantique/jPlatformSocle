@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="OrganismeGestionnaire" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false" hbm="true" authgroups="||||||">
+  <title ml="false" searchable="true">
+    <label xml:lang="fr">Nom du gestionnaire</label>
+  </title>
+  <fields>
+    <field name="siteInternet" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Site internet</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Organisme gestionnaire</label>
+</type>
+
