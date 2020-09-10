@@ -35,7 +35,7 @@
                     description: "Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.",
                 },
                 "google-tag-manager":{
-                    description: "description du cookie GTM...",
+                    description: "Nous utilisons Google Analytics par l’intermédiaire de Google Tag Manager pour collecter des informations analytiques sur nos utilisateurs.",
                 },
                 "orejime":{
                     description: "Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.",
@@ -50,7 +50,7 @@
         apps: [
             {
                 name: 'google-tag-manager',
-                title: 'Google Tag Manager',
+                title: 'Google Analytics et Tag Manager',
                 cookies: [
                     '_ga',
                     '_gat',
