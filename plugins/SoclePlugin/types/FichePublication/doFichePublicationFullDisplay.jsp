@@ -14,7 +14,7 @@
             <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
             
             <div class="ds44-inner-container--mag ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
-                <div class="ds44-grid12-offset-1">
+                <div class="ds44-grid12-offset-2">
                     <div class="ds44-tablette-reduced-mt">
                         <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
                             <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />

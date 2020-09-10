@@ -516,6 +516,7 @@
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
     <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="jsp/portal/socialNetworksMeta.jsp" include="EMPTY_HEADER" />
+    <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
   </public-files>
   <webapp-files>
     <file path="WEB-INF/tags/articleVideo.tag" />
