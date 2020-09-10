@@ -22,7 +22,8 @@ qh.setCheckPstatus(true);
 qh.setText(textSearch);
 qh.setSort(foQuerySortParam);
 QueryResultSet collection = qh.getResultSet();
+SortedSet<Publication> resultSet = collection.getAsSortedSet(Publication.class, defaultfoQuerySort, false);
 
 
 %><% 
-%><%= SocleUtils.publicationToJsonArray(collection) %>
+%><%= SocleUtils.publicationToJsonArray(resultSet) %>

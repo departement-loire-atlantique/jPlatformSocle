@@ -27,9 +27,11 @@ int maxResult = channel.getIntegerProperty("jcmsplugin.socle.recherche.max-resul
 
 QueryHandler qh = new QueryHandler(portletSearch.getQuery());
 qh.setCheckPstatus(true);
+qh.setAttribute(QueryFilter.FRONTOFFICE_SEARCH, Boolean.TRUE);
 qh.setText(request.getParameter("searchtext[value]"));
 qh.setSort(foQuerySortParam);
 QueryResultSet collection = qh.getResultSet();
+SortedSet<Publication> resultSet = collection.getAsSortedSet(Publication.class, foQuerySortParam, false);
 
 
 JsonArray jsonArray = new JsonArray();
@@ -42,7 +44,7 @@ jsonObject.addProperty("nb-result", collection.getResultSize());
 jsonObject.add("result", jsonArray);
 
 
-%><jalios:foreach collection="<%= collection %>" name="itPub" type="Publication" max='<%= maxResult %>' skip='<%= (pager - 1) * maxResult  %>'><%
+%><jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication" max='<%= maxResult %>' skip='<%= (pager - 1) * maxResult  %>'><%
     %><jalios:buffer name="itPubListGabarit"><%
         %>
         <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray  ">           
