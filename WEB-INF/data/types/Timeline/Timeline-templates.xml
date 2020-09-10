@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates version="5.0">
+  <template name="default" usage="box" file="doTimelineFullDisplay.jsp">
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <label xml:lang="en">Default template</label>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+    <description xml:lang="en">The default template for this publication</description>
+  </template>
+  <template name="default" usage="edit" file="editTimeline.jsp">
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <label xml:lang="en">Default template</label>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+    <description xml:lang="en">The default template for this publication</description>
+  </template>
+  <template name="default" usage="full" file="doTimelineFullDisplay.jsp">
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <label xml:lang="en">Default template</label>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+    <description xml:lang="en">The default template for this publication</description>
+  </template>
+  <template name="default" usage="query" file="doTimelineResultDisplay.jsp">
+    <label xml:lang="fr">Gabarit par défaut</label>
+    <label xml:lang="en">Default template</label>
+    <description xml:lang="fr">Le gabarit par défaut pour cette publication</description>
+    <description xml:lang="en">The default template for this publication</description>
+  </template>
+</templates>
+

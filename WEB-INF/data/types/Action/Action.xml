@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Action" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Action</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="chapo" editor="textarea" required="true" type="String" searchable="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="false" descriptionType="text" abstract="true" truncate="400" html="false" checkHtml="true" wikiwyg="false">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="axe" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.action.axe.cat">
+      <label xml:lang="fr">Axe</label>
+    </field>
+    <field name="politiquePublique" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.action.politiquePublique.cat" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Politique publique</label>
+    </field>
+    <field name="eluReference" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Elu-e de référence</label>
+    </field>
+    <field name="eluAssocie" editor="link" required="false" compactDisplay="false" type="generated.ElectedMember[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Elu-e associé</label>
+    </field>
+    <field name="objectif" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true">
+      <label xml:lang="fr">Objectif</label>
+    </field>
+    <field name="citationElu" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Citation élu-e</label>
+    </field>
+    <field name="etatAvancement" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.action.etatAvancement.cat" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Etat d’avancement</label>
+    </field>
+    <field name="etatAvancementCommentaire" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" toolbars="basic,format" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Commentaire état d'avancement</label>
+    </field>
+    <field name="directionConcernee" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Direction concernée</label>
+    </field>
+    <field name="serviceConcerne" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Service concerné</label>
+    </field>
+    <field name="serviceConcerneTelephone" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Tél service concerné</label>
+    </field>
+    <field name="serviceConcerneEmail" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" maxlength="500" pattern="([-0-9a-zA-Z_\.']+@[-0-9a-zA-Z_\.]+)?" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Email service concerné</label>
+    </field>
+  </fields>
+</type>
+

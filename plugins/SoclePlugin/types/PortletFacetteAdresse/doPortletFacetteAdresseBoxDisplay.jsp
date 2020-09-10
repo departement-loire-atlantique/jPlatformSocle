@@ -12,7 +12,7 @@ PortletFacetteAdresse obj = (PortletFacetteAdresse)portlet;
 		request="<%= request %>" 
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		dataMode="select-only" 
-		dataUrl='<%= Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url") %>' 
+		dataUrl='<%= Channel.getChannel().getProperty("jcmsplugin.socle.autocompletion.adresse.url") %>' 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.adresse.default-label") %>'
 		option='<%= Util.notEmpty(obj.getRayon(loggedMember)) ? "rayon" : "" %>'
 		setRayons="<%= Util.notEmpty(obj.getRayon(loggedMember)) ? obj.getRayon(loggedMember) : new TreeSet<Category>() %>"

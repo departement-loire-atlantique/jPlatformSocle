@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Timeline" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Timeline</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="description" editor="textarea" required="true" type="String" searchable="true" abstract="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="false">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="visuel" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false">
+      <label xml:lang="fr">Visuel</label>
+    </field>
+    <field name="video" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="100" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Vidéo</label>
+      <description xml:lang="fr">URL de la vidéo</description>
+    </field>
+    <field name="categorieParDefaut" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.timeline.classement" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Année par défaut</label>
+      <description xml:lang="fr">Cochez la catégorie sur laquelle se positionnera la Timeline lors de son ouverture</description>
+    </field>
+    <field name="ordre" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="listbox" valueList="croissant|decroissant" ml="false" descriptionType="text" labelList="Croissant|Décroissant" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ordre</label>
+      <description xml:lang="fr">Ordre d'affichage des éléments de la Timeline</description>
+    </field>
+  </fields>
+</type>
+
