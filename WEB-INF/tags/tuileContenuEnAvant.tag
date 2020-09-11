@@ -20,7 +20,7 @@
     description="Texte alternatif custom pour le lien"%>  
 <%@ attribute name="isExterne" required="false" fragment="false"
     rtexprvalue="true" type="Boolean"
-    description="Détermine si le lien est externe"%>     
+    description="Détermine si le lien est externe"%>
 
 <%
 
@@ -34,19 +34,36 @@
     String subTitle = "";
     String location = "";
     
-    try {
-     urlImage = (String) itPub.getFieldValue("imagePrincipale");
-    } catch(Exception e) {}
-    if (Util.isEmpty(urlImage)) {
-     try {
-      urlImage = (String) itPub.getFieldValue("imageBandeau");
-     } catch(Exception e) {}
+    if (Util.notEmpty(isUnique) && isUnique.equals("true")) {
+      try {
+        urlImage = (String) itPub.getFieldValue("imageBandeau");
+       } catch(Exception e) {}
+       if (Util.isEmpty(urlImage)) {
+        try {
+         urlImage = (String) itPub.getFieldValue("imageMobile");
+        } catch(Exception e) {}
+       }
+       if (Util.isEmpty(urlImage)) {
+        try {
+         urlImage = (String) itPub.getFieldValue("imagePrincipale");
+        } catch(Exception e) {}
+       }
+    } else {
+      try {
+        urlImage = (String) itPub.getFieldValue("imagePrincipale");
+       } catch(Exception e) {}
+       if (Util.isEmpty(urlImage)) {
+        try {
+         urlImage = (String) itPub.getFieldValue("imageBandeau");
+        } catch(Exception e) {}
+       }
+       if (Util.isEmpty(urlImage)) {
+        try {
+         urlImage = (String) itPub.getFieldValue("imageMobile");
+        } catch(Exception e) {}
+       }
     }
-    if (Util.isEmpty(urlImage)) {
-     try {
-      urlImage = (String) itPub.getFieldValue("imageMobile");
-     } catch(Exception e) {}
-    }
+    
     if (Util.isEmpty(urlImage)) {
      urlImage = "s.gif";
     } else {
