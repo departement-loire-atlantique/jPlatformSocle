@@ -304,7 +304,7 @@
 
 				<%
 					String titleOption = JcmsUtil.glp(userLang, "jcmsplugin.socle.selectionner") + " " + label + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire");
-					String dataUrlOption = Channel.getChannel().getProperty("$jcmsplugin.socle.autocompletion.adresse.url");
+					String dataUrlOption = Channel.getChannel().getProperty("jcmsplugin.socle.autocompletion.adresse.url");
 				%>
 
 				<div class="ds44-form__container">
