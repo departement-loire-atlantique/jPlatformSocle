@@ -37,7 +37,8 @@ public class CategoryFacetUtil {
     for(int i = 0 ; i < cidBranches.length ; i++){
 
       // Récupère la query de la recherche pour modifier son paramètre cids
-      QueryHandler itQh = new QueryHandler(qh);             
+      QueryHandler itQh = new QueryHandler(qh);  
+      itQh.setLoggedMember(getChannel().getCurrentLoggedMember());
       itQh.setCatMode(isCatModNivUnion ? "or" : "and");
       
       // Si un enfant d'une catégorie est sélectionné alors
