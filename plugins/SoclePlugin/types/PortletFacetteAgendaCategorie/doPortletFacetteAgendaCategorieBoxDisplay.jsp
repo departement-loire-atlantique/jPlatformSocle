@@ -35,7 +35,8 @@
 			        isDisabled='<%= false %>' 
 			        request='<%= request %>' 
 			        selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-			        profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>'/>
+			        profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>'
+                    isSizeStd='<%= isInRechercheFacette %>'/>
 	
         <%
         
@@ -58,7 +59,8 @@
               isDisabled='<%= false %>' 
               request='<%= request %>' 
               selectionMultiple='<%= obj.getSelectionMultiple() %>' 
-              profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>' />
+              profondeur='<%= Boolean.valueOf(obj.getProfondeur()) %>'
+              isSizeStd='<%= isInRechercheFacette %>'/>
 	   
 	   <%
 	  
