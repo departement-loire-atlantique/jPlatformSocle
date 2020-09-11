@@ -290,6 +290,7 @@ media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElected
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.card.FicheEquipement: /plugins/SoclePlugin/jsp/cards/doFicheEquipementCard.jsp
 media.data-template.cardVertical.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleVerticalCard.jsp
+media.data-template.cardVerticalCarrousel.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleVerticalCardCarrousel.jsp
 media.data-template.card.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleCard.jsp
 media.data-template.marker.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleMarker.jsp
 media.data-template.card.FicheActionEducative: /plugins/SoclePlugin/jsp/cards/doFicheActionEducativeCard.jsp
