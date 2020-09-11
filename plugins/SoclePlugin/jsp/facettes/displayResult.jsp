@@ -108,6 +108,8 @@ jsonObject.addProperty("nb-result-per-page", box.getMaxResults());
 jsonObject.addProperty("max-result", box.getMaxResults());
 jsonObject.add("result", jsonArray);
 
+session.setAttribute("isSearchFacetLink", true);
+
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %><%
