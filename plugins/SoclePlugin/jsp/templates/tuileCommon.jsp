@@ -20,6 +20,7 @@ String styleContext= Util.notEmpty(request.getParameter("context")) ? "ds44-dark
 boolean isSmall = Util.notEmpty(request.getParameter("size")) ? true : false;
 String subTitle = "";
 String location = "";
+boolean isDossier = pub instanceof Dossier;
    
 /* Le type de contenu "Lien" peut pointer vers une publication ou un site externe 
    Dans le cas d'une pub, si c'est un FileDoc alors on fait le lien direct sur le fichier,
