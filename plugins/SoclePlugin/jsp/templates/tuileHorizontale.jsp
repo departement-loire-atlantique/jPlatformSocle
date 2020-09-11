@@ -53,6 +53,16 @@ if (Util.isEmpty(urlImage)) {
                     <%= pub.getTitle() %>
                 </a>
             </p>
+            <jalios:if predicate="<%= isDossier %>">
+	            <%
+	            Dossier tmpDossier = (Dossier) pub;
+	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(tmpDossier.getDate()) %>">
+	                <p class='ds44-cardDate'>
+	                     <i class="icon icon-date" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %></span>
+	                </p>
+	            </jalios:if>
+	        </jalios:if>
             <jalios:if predicate="<%= isDoc %>">
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>

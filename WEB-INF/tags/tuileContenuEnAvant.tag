@@ -2,7 +2,7 @@
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
     body-content="scriptless"
-    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date"%>
+    import="com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, com.jalios.jcms.Content, com.jalios.jcms.Publication, java.util.Locale, java.text.SimpleDateFormat, java.util.Date, generated.Dossier"%>
 <%@ attribute name="content" required="true" fragment="false"
     rtexprvalue="true" type="Content"
     description="Le contenu a afficher"%>
@@ -92,6 +92,16 @@
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
+            <jalios:if predicate="<%= itPub instanceof Dossier %>">
+	            <%
+	            Dossier tmpDossier = (Dossier) itPub;
+	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(tmpDossier.getDate()) %>">
+	                <p class='ds44-cardDate'>
+	                     <i class="icon icon-date" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %></span>
+	                </p>
+	            </jalios:if>
+	        </jalios:if>
             <% if (Util.notEmpty(location)) { %>
             <p class="ds44-cardLocalisation">
                 <i class="icon icon-marker" aria-hidden="true"></i>
