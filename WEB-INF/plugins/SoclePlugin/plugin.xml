@@ -381,6 +381,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletLogin">
+        <template name="espacepresse" file="doPortletLoginEspacePresse.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : Espace presse</label>
+        </template>
+    </templates>
     <templates type="PortletMiseEnAvantDeContenus">
         <template name="default" file="doPortletMiseEnAvantDeContenusBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
