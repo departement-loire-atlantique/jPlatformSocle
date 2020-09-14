@@ -264,11 +264,11 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		</section>
 	    
 	    <%
-	    boolean hasContactRH = Util.notEmpty(obj.getContactRH());
-	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier());
+	    boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH());
+	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier());
 	    
-	    int nbContactsRH = Math.max(obj.getContactRH().length,obj.getUniteOrgaContactRH().length);
-	    int nbContactsMetier = Math.max(obj.getContactMetier().length,obj.getUniteOrgaContactMetier().length);
+	    int nbContactsRH = Math.max(null != obj.getContactRH() ? obj.getContactRH().length : 0, null != obj.getUniteOrgaContactRH() ? obj.getUniteOrgaContactRH().length : 0);
+	    int nbContactsMetier = Math.max(null != obj.getContactMetier() ? obj.getContactMetier().length : 0, null != obj.getUniteOrgaContactMetier() ? obj.getUniteOrgaContactMetier().length : 0);
 
 	    
 	    %>
@@ -292,11 +292,11 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 											<div class='ds44-docListElem <%= cptContactRH == 0 ? "mts" : "mtm" %>'>
 											    <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 											    
-											    <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
+											    <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) && cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
                                                     <%= obj.getContactRH()[cptContactRH] %>
                                                 </jalios:if>
                                                 
-                                                <jalios:if predicate="<%= cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
+                                                <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactRH()) && cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
                                                     <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
                                                         <br/>
                                                     </jalios:if>
@@ -326,12 +326,12 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                            <div class='ds44-docListElem <%= cptContactMetier == 0 ? "mts" : "mtm" %>'>
 	                                                <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	                                                
-	                                                <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) && cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
 	                                                    <%= obj.getContactMetier()[cptContactMetier] %>
 	                                                </jalios:if>
 	                                                
-	                                                <jalios:if predicate="<%= cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
-	                                                    <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactMetier()) && cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
+	                                                    <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) && cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
 	                                                        <br/>
 	                                                    </jalios:if>
 	                                                    <%= obj.getUniteOrgaContactMetier()[cptContactMetier] %>
