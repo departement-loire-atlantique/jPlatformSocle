@@ -244,7 +244,8 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		                  <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
 		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
 		                  </jalios:if>
-		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+
+		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) && Util.notEmpty(obj.getCategorieDemploi(loggedMember)) %>'>
 		                      <div>
 		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
 		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
@@ -264,12 +265,11 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		</section>
 	    
 	    <%
-	    boolean hasContactRH = Util.notEmpty(obj.getContactRH());
-	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier());
+	    boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH());
+	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier());
 	    
-	    int nbContactsRH = Math.max(obj.getContactRH().length,obj.getUniteOrgaContactRH().length);
-	    int nbContactsMetier = Math.max(obj.getContactMetier().length,obj.getUniteOrgaContactMetier().length);
-
+	    int nbContactsRH = Math.max(null != obj.getContactRH() ? obj.getContactRH().length : 0, null != obj.getUniteOrgaContactRH() ? obj.getUniteOrgaContactRH().length : 0);
+	    int nbContactsMetier = Math.max(null != obj.getContactMetier() ? obj.getContactMetier().length : 0, null != obj.getUniteOrgaContactMetier() ? obj.getUniteOrgaContactMetier().length : 0);
 	    
 	    %>
 	    
@@ -285,18 +285,19 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                 <jalios:if predicate="<%= hasContactRH %>">
                                     <div class="col ds44--xl-padding-l ds44-TtL-noPad">
                                     
-                                        <%-- On boucle sur le nombre de contacts RH --%>
+
+                                        <%-- On boucle sur le nombre de contacts RH --%> 
                                         <%
                                         for(int cptContactRH = 0; cptContactRH < nbContactsRH ; cptContactRH++){
                                         %>
 											<div class='ds44-docListElem <%= cptContactRH == 0 ? "mts" : "mtm" %>'>
 											    <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 											    
-											    <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
+											    <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) && cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
                                                     <%= obj.getContactRH()[cptContactRH] %>
                                                 </jalios:if>
                                                 
-                                                <jalios:if predicate="<%= cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
+                                                <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactRH()) && cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
                                                     <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
                                                         <br/>
                                                     </jalios:if>
@@ -305,7 +306,8 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                                 
 											</div>
 
-											<jalios:if predicate='<%= cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
+
+											<jalios:if predicate='<%= Util.notEmpty(obj.getTelContactRH()) && cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
 												<div class="ds44-docListElem mts">
 												    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 												    <ds:phone number="<%= obj.getTelContactRH()[cptContactRH] %>"></ds:phone>
@@ -326,12 +328,12 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                            <div class='ds44-docListElem <%= cptContactMetier == 0 ? "mts" : "mtm" %>'>
 	                                                <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	                                                
-	                                                <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) && cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
 	                                                    <%= obj.getContactMetier()[cptContactMetier] %>
 	                                                </jalios:if>
 	                                                
-	                                                <jalios:if predicate="<%= cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
-	                                                    <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactMetier()) && cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
+	                                                    <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) && cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
 	                                                        <br/>
 	                                                    </jalios:if>
 	                                                    <%= obj.getUniteOrgaContactMetier()[cptContactMetier] %>
@@ -339,7 +341,8 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                                
 	                                            </div>
 	                                            
-                                                <jalios:if predicate='<%= cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
+
+                                                <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactMetier()) && cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
                                                     <div class="ds44-docListElem mts">
                                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                                                         <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>"></ds:phone>
