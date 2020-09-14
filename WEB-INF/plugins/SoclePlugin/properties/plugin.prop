@@ -579,6 +579,7 @@ $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
 $jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
 $jcmsplugin.socle.emploiStage.delegationService: c_5296
+$jcmsplugin.socle.emploiStage.domainesMetiers: c_1216308
 
 # Video
 $jcmsplugin.socle.video.types.root: c_1270060
