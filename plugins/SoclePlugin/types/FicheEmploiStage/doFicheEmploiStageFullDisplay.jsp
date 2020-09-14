@@ -246,19 +246,20 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		                  </jalios:if>
 
 		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) && Util.notEmpty(obj.getCategorieDemploi(loggedMember)) %>'>
+                            <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
+                            <jalios:wysiwyg>
+                               <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
+                            </jalios:wysiwyg>
+                       
+		                      <%-- TODO : à spécifier avec DCom
 		                      <div>
 		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
 		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
 		                      </div>
+		                       --%>
 		                  </jalios:if>
 		               </jalios:select>
 		               
-                       <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
-                       <jalios:wysiwyg>
-                           <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
-                       </jalios:wysiwyg>
-                       
-                       <%-- Fin du bloc en dur --%>
 		           </div>
                 </div>
 		    </div>
