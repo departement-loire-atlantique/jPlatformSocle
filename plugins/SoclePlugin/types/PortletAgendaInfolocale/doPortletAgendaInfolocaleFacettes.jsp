@@ -54,11 +54,9 @@
 	               request.setAttribute("isFilter", false);
 	               %>
 	            <jalios:foreach array="<%= box.getPortletsFacettesAgenda() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
-	               <div class='ds44-fieldContainer ds44-fg1'>
-	                  <% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
-	                  <div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
-	                     <jalios:include pub="<%= itFacette %>" usage="box"/>
-	                  </div>
+	               <% Boolean isSelect = (itFacette instanceof PortletFacetteAgendaCategorie) || (itFacette instanceof PortletFacetteAgendaAccessibilit) || (itFacette instanceof PortletFacetteAgendaDate); %>
+	               <div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+	                  <jalios:include pub="<%= itFacette %>" usage="box"/>
 	               </div>
 	            </jalios:foreach>
 	            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/types/PortletAgendaInfolocale/displayResultAgenda.jsp" data-technical-field />

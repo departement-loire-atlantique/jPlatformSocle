@@ -19,7 +19,7 @@ boolean isRequired = obj.getFacetteObligatoire();
 %>
 
 <div class="ds44-form__container">
-   <div class='ds44-select__shape <%= isInRechercheFacette ? "" : "ds44-inpLarge" %> ds44-inpStd'>
+   <div class='ds44-select__shape <%= isInRechercheFacette ? "ds44-inpStd" : "ds44-inpLarge" %>'>
       <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= glp("jcmsplugin.socle.infolocale.label.accessibilite") %>
         <jalios:if predicate="<%= isRequired %>"><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></jalios:if>
       </p>
