@@ -49,6 +49,9 @@
     <field name="missions" editor="wysiwyg" required="true" compactDisplay="false" tab="mission" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Missions</label>
     </field>
+    <field name="domainesMetiers" editor="category" required="false" compactDisplay="false" tab="mission" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.emploiStage.domainesMetiers" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Domaines métiers</label>
+    </field>
     <field name="activites" editor="wysiwyg" required="true" compactDisplay="false" tab="activites" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Activités</label>
     </field>
@@ -80,25 +83,31 @@
     <field name="specificitesDuPoste" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Spécificités du poste</label>
     </field>
+    <field name="emailSpecifique" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true">
+      <label xml:lang="fr">Email spécifique</label>
+    </field>    
+    <field name="introModalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Intro modalités de candidature</label>
+    </field>    
     <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Modalités de candidature</label>
     </field>
-    <field name="contactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="contactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactRH">
       <label xml:lang="fr">Contact RH</label>
     </field>
-    <field name="uniteOrgaContactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="uniteOrgaContactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactRH">
       <label xml:lang="fr">Unité orga contact RH</label>
     </field>
-    <field name="telContactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+    <field name="telContactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}" tabGroup="contactRH">
       <label xml:lang="fr">Tel contact RH</label>
     </field>
-    <field name="contactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="contactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactMetier">
       <label xml:lang="fr">Contact métier</label>
     </field>
-    <field name="uniteOrgaContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="uniteOrgaContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactMetier">
       <label xml:lang="fr">Unité orga contact métier</label>
     </field>
-    <field name="telContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+    <field name="telContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}" tabGroup="contactMetier">
       <label xml:lang="fr">Tel contact métier</label>
     </field>
     <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" tab="documents" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encartDocuments">

@@ -1,4 +1,3 @@
-<%@page import="fr.cg44.plugin.socle.EmploiUtils"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
@@ -6,17 +5,9 @@
 FicheEmploiStage obj = (FicheEmploiStage) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 
 // Génération du lien vers le formulaire de réponse à l'offre (Fiche article embarquant le formulaire + titre article spécifique)
-String urlFormulaireCandidature = "";
-String titreFormulaireCandidature = glp("jcmsplugin.socle.form.candidature.titreArticle",obj.getTitle(userLang));
 Publication formulaireCandidature = channel.getPublication("$jcmsplugin.socle.form.candidature.idArticle");
-
-if(Util.isEmpty(formulaireCandidature)){
-  logger.error("Formulaire de candidature non trouvé. Vérifier paramétrage de la propriété $jcmsplugin.socle.form.candidature.idArticle");
-}
-else{
-  urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale)+"?ref="+obj.getNumeroDePoste()+"&t="+Util.encodeBASE64(titreFormulaireCandidature);  
-}
-
+String titreFormulaireCandidature = glp("jcmsplugin.socle.form.candidature.titreArticle",obj.getTitle(userLang));
+String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale)+"?ref="+obj.getNumeroDePoste()+"&t="+Util.encodeBASE64(titreFormulaireCandidature);
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -132,18 +123,17 @@ else{
 	                                   <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
 	                                   <%= glp("jcmsplugin.socle.ficheemploi.label.datelimite", SocleUtils.formatDate("dd/MM/yy", obj.getDateLimiteDeDepot())) %>
 	                               </p>
-	                               
-	                               <%-- Répondre à cette offre --%>
-	                               <jalios:if predicate='<%= Util.notEmpty(urlFormulaireCandidature) %>'>
-		                               <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert">
-		                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
-		                                   <i class="icon icon-computer" aria-hidden="true"></i>
-		                               </a>
-	                               </jalios:if>
-	                               
+	                               <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert">
+	                                   <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+	                                   <i class="icon icon-computer" aria-hidden="true"></i>
+	                               </a>
 	                           </div>
 	                       </div>
-
+	                       
+	                       <%-- Répondre à cette offre --%>
+	                       
+	                       <%-- Bouton qui ouvre un formulaire --%>
+	                       <%-- TODO : uniquement le lien pour le moment. Traiter l'ouverture du formulaire plus tard --%>
 	                   </div>
 	               </section>
 	           </div>
@@ -239,25 +229,29 @@ else{
 		       <div class="ds44-grid12-offset-2">
 		           <div class="ds44-wsg-encadreContour">
 		               <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.modalites") %></p>
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getIntroModalitesDeCandidature()) %>">
+		                  <jalios:wysiwyg data='<%= obj %>' field='introModalitesDeCandidature'><%= obj.getIntroModalitesDeCandidature() %></jalios:wysiwyg>
+                       </jalios:if> 
+
+                       <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondresite") %></p>
+                       
+                       <a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert mbs">
+                           <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+                           <i class="icon icon-computer" aria-hidden="true"></i>
+                       </a>
+		               
 		               <jalios:select>
 		                  <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
 		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
 		                  </jalios:if>
-		                  <jalios:default>
-		                      <jalios:select>
-			                      <jalios:if predicate='<%= EmploiUtils.isEmploi(obj) %>'>
-			                          <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
-			                          <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
-			                      </jalios:if>
-			                  </jalios:select> 
-		                  </jalios:default>
+		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+		                      <div>
+		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
+		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
+		                      </div>
+		                  </jalios:if>
 		               </jalios:select>
-		               <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondresite") %></p>
-		               <%-- La partie suivante est en dur faute à des specs incomplètes sur le sujet --%>
-		               <a href="#" class="ds44-btnStd ds44-btn--invert">
-	                       <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
-	                       <i class="icon icon-computer" aria-hidden="true"></i>
-                       </a>
+		               
                        <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
                        <jalios:wysiwyg>
                            <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
@@ -270,8 +264,13 @@ else{
 		</section>
 	    
 	    <%
-	    boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) || Util.notEmpty(obj.getTelContactRH());
-	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier()) || Util.notEmpty(obj.getTelContactMetier());
+	    boolean hasContactRH = Util.notEmpty(obj.getContactRH());
+	    boolean hasContactMetier = Util.notEmpty(obj.getContactMetier());
+	    
+	    int nbContactsRH = Math.max(obj.getContactRH().length,obj.getUniteOrgaContactRH().length);
+	    int nbContactsMetier = Math.max(obj.getContactMetier().length,obj.getUniteOrgaContactMetier().length);
+
+	    
 	    %>
 	    
 	    <%-- Bloc vos contacts --%>
@@ -280,58 +279,79 @@ else{
 	           <div class="ds44-inner-container ds44-mtb3">
 	               <div class="ds44-grid12-offset-2">
 	                   <div class="ds44-wsg-encadreApplat">
-		                       <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.contacts") %></p>
-	                           <div class="grid-<%= hasContactRH && hasContactMetier ? '2' : '1' %>-small-1">
-	                               <jalios:if predicate="<%= hasContactRH %>">
-	                               <div class="col ds44--xl-padding-l ds44-TtL-noPad">
-	                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
-			                               <p class="ds44-docListElem mts">
-			                                   <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-			                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) %>">
-		                                           <%= obj.getContactRH() %>
-		                                       </jalios:if>
-		                                       <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactRH()) %>">
-		                                           <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) %>">
-		                                           <br/>
-		                                           </jalios:if>
-		                                           <%= obj.getUniteOrgaContactRH() %>
-		                                       </jalios:if>
-			                               </p>
-		                               </jalios:if>
-		                               <jalios:if predicate="<%= Util.notEmpty(obj.getTelContactRH()) %>">
-		                                    <p class="ds44-docListElem mts">
-			                                    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-			                                    <%= obj.getTelContactRH() %>
-		                                    </p>
-		                               </jalios:if>
-	                               </div>
-	                               </jalios:if>
-	                               <jalios:if predicate="<%= hasContactMetier %>">
-                                   <div class="col">
-                                       <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier()) %>">
-                                           <p class="ds44-docListElem mts">
-                                               <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
-                                               <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) %>">
-                                                   <%= obj.getContactMetier() %>
-                                               </jalios:if>
-                                               <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactMetier()) %>">
-                                                   <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) %>">
-                                                   <br/>
-                                                   </jalios:if>
-                                                   <%= obj.getUniteOrgaContactMetier() %>
-                                               </jalios:if>
-                                           </p>
-                                       </jalios:if>
-                                       <jalios:if predicate="<%= Util.notEmpty(obj.getTelContactMetier()) %>">
-                                            <p class="ds44-docListElem mts">
-                                                <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                                                <%= obj.getTelContactMetier() %>
-                                            </p>
-                                       </jalios:if>
-                                   </div>
-                                   </jalios:if>
-	                           </div>
-	                       </div>
+                            <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.contacts") %></p>
+                            <div class="grid-<%= hasContactRH && hasContactMetier ? '2' : '1' %>-small-1">
+
+                                <jalios:if predicate="<%= hasContactRH %>">
+                                    <div class="col ds44--xl-padding-l ds44-TtL-noPad">
+                                    
+                                        <%-- On boucle sur le nombre de contacts RH --%>
+                                        <%
+                                        for(int cptContactRH = 0; cptContactRH < nbContactsRH ; cptContactRH++){
+                                        %>
+											<div class='ds44-docListElem <%= cptContactRH == 0 ? "mts" : "mtm" %>'>
+											    <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+											    
+											    <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
+                                                    <%= obj.getContactRH()[cptContactRH] %>
+                                                </jalios:if>
+                                                
+                                                <jalios:if predicate="<%= cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
+                                                    <jalios:if predicate="<%= cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
+                                                        <br/>
+                                                    </jalios:if>
+                                                    <%= obj.getUniteOrgaContactRH()[cptContactRH] %>
+                                                </jalios:if>
+                                                
+											</div>
+
+											<jalios:if predicate='<%= cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
+												<div class="ds44-docListElem mts">
+												    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+												    <ds:phone number="<%= obj.getTelContactRH()[cptContactRH] %>"></ds:phone>
+												</div>
+											</jalios:if>
+
+
+		                               <%} %>
+                                    </div>
+                                </jalios:if>
+	                               
+                                <jalios:if predicate="<%= hasContactMetier %>">
+                                    <div class="col">
+                                        <%-- On boucle sur le nombre de contacts Métiers --%>
+                                        <%
+                                        for(int cptContactMetier = 0; cptContactMetier < nbContactsMetier ; cptContactMetier++) {
+                                        %>
+	                                            <div class='ds44-docListElem <%= cptContactMetier == 0 ? "mts" : "mtm" %>'>
+	                                                <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
+	                                                
+	                                                <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                    <%= obj.getContactMetier()[cptContactMetier] %>
+	                                                </jalios:if>
+	                                                
+	                                                <jalios:if predicate="<%= cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
+	                                                    <jalios:if predicate="<%= cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
+	                                                        <br/>
+	                                                    </jalios:if>
+	                                                    <%= obj.getUniteOrgaContactMetier()[cptContactMetier] %>
+	                                                </jalios:if>
+	                                                
+	                                            </div>
+	                                            
+                                                <jalios:if predicate='<%= cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
+                                                    <div class="ds44-docListElem mts">
+                                                        <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+                                                        <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>"></ds:phone>
+                                                    </div>
+                                                </jalios:if>
+                                        <%} %>
+                                    </div>
+                                </jalios:if>  	                               
+
+
+                            </div>
+                        </div>
 	               </div>
 	           </div>
 	       </section>
