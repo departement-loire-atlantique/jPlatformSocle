@@ -621,3 +621,6 @@ $jcmsplugin.socle.timeline.classement: p2_913164
 $jcmsplugin.socle.action.axe.cat: p2_911667
 $jcmsplugin.socle.action.politiquePublique.cat: p2_911600
 $jcmsplugin.socle.action.etatAvancement.cat: p2_911671
+
+# Login
+$jcmsplugin.socle.login.redirect.pub: c_1320077
