@@ -244,6 +244,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		                  <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
 		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
 		                  </jalios:if>
+
 		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) && Util.notEmpty(obj.getCategorieDemploi(loggedMember)) %>'>
 		                      <div>
 		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
@@ -269,7 +270,6 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	    
 	    int nbContactsRH = Math.max(null != obj.getContactRH() ? obj.getContactRH().length : 0, null != obj.getUniteOrgaContactRH() ? obj.getUniteOrgaContactRH().length : 0);
 	    int nbContactsMetier = Math.max(null != obj.getContactMetier() ? obj.getContactMetier().length : 0, null != obj.getUniteOrgaContactMetier() ? obj.getUniteOrgaContactMetier().length : 0);
-
 	    
 	    %>
 	    
@@ -285,6 +285,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                 <jalios:if predicate="<%= hasContactRH %>">
                                     <div class="col ds44--xl-padding-l ds44-TtL-noPad">
                                     
+
                                         <%-- On boucle sur le nombre de contacts RH --%> 
                                         <%
                                         for(int cptContactRH = 0; cptContactRH < nbContactsRH ; cptContactRH++){
@@ -304,6 +305,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                                 </jalios:if>
                                                 
 											</div>
+
 
 											<jalios:if predicate='<%= Util.notEmpty(obj.getTelContactRH()) && cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
 												<div class="ds44-docListElem mts">
@@ -339,6 +341,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                                
 	                                            </div>
 	                                            
+
                                                 <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactMetier()) && cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
                                                     <div class="ds44-docListElem mts">
                                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
