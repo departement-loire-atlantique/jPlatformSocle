@@ -305,7 +305,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                                 
 											</div>
 
-											<jalios:if predicate='<%= cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
+											<jalios:if predicate='<%= Util.notEmpty(obj.getTelContactRH()) && cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
 												<div class="ds44-docListElem mts">
 												    <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 												    <ds:phone number="<%= obj.getTelContactRH()[cptContactRH] %>"></ds:phone>
@@ -339,7 +339,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 	                                                
 	                                            </div>
 	                                            
-                                                <jalios:if predicate='<%= cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
+                                                <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactMetier()) && cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
                                                     <div class="ds44-docListElem mts">
                                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                                                         <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>"></ds:phone>
