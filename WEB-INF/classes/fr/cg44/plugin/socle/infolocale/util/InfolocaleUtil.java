@@ -329,10 +329,10 @@ public class InfolocaleUtil {
     public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
       if (Util.isEmpty(dateEvent)) return "";
       if (infolocaleDateIsSingleDay(dateEvent)) {
-        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.carrousel.tuile.date", Channel.getChannel().getCurrentUserLang(), 
+        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang() ,"jcmsplugin.socle.infolocale.label.carrousel.tuile.date",
             getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
       } else {
-        return JcmsUtil.glp("jcmsplugin.socle.infolocale.label.carrousel.tuile.periode", Channel.getChannel().getCurrentUserLang(), 
+        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.carrousel.tuile.periode",
             getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
             getDayOfMonthLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
       }

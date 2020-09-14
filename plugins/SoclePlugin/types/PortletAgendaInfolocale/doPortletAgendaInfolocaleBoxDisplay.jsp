@@ -116,7 +116,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
 	                        <li class="swiper-slide">
 	                            <jalios:select>
 							        <jalios:if predicate='<%= box.getTypeDeTuileCarrousel().equals("vertical")%>'>
-							            <jalios:media data="<%= itEvent %>" template="cardVertical" />
+							            <jalios:media data="<%= itEvent %>" template="cardVerticalCarrousel" />
 							        </jalios:if>
 							        <jalios:default>
 							            <jalios:media data="<%= itEvent %>" template="card" />
