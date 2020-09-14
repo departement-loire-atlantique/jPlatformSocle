@@ -244,7 +244,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
 		                  <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
 		                      <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
 		                  </jalios:if>
-		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+		                  <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) && Util.notEmpty(obj.getCategorieDemploi(loggedMember)) %>'>
 		                      <div>
 		                      <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
 		                      <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
@@ -285,7 +285,7 @@ String urlFormulaireCandidature = formulaireCandidature.getDisplayUrl(userLocale
                                 <jalios:if predicate="<%= hasContactRH %>">
                                     <div class="col ds44--xl-padding-l ds44-TtL-noPad">
                                     
-                                        <%-- On boucle sur le nombre de contacts RH --%>
+                                        <%-- On boucle sur le nombre de contacts RH --%> 
                                         <%
                                         for(int cptContactRH = 0; cptContactRH < nbContactsRH ; cptContactRH++){
                                         %>
