@@ -45,6 +45,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
  private static final String FILE_NAME_PC1 = "complement1";
  private static final String FILE_NAME_PC2 = "complement2";
  private static final String FILE_NAME_PC3 = "complement3";
+ private static final String repertoireCand = channel.getUploadPath("/")+"candidatures/";
  
  /**
   * On modifie le nom du formulaire, et on place la date d'archivage à J + 1 mois
@@ -256,7 +257,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
      }else if( field.equals(REQUEST_PC3)){
    	  filename += FILE_NAME_PC3 + extension;
      }
-     File fichier = new File(getPath(request), filename);
+     File fichier = new File(repertoireCand, filename);
      item.write(fichier);
      return fichier;
    }
