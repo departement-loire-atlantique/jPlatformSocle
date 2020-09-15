@@ -44,12 +44,14 @@ try {
             %>
             <jalios:if predicate="<%= Util.notEmpty(tmpDossier.getDate()) %>">
                 <p class='ds44-cardDate'>
-                     <i class="icon icon-date" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %></span>
+                     <%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %>
                 </p>
             </jalios:if>
         </jalios:if>
         <jalios:if predicate="<%= Util.notEmpty(subTitle) %>">
-            <p><%= subTitle %></p>
+            <p class='ds44-cardDate'>
+                <%= subTitle %>
+            </p>
         </jalios:if>
         <jalios:if predicate="<%= Util.notEmpty(location) %>">
             <p class="ds44-cardLocalisation">
