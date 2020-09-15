@@ -136,7 +136,7 @@ natureRechercheCatSet.addAll(formHandler.getNatureRechercheRoot().getChildrenSet
                 <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
             <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
-                autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
+                required autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
             <button class="ds44-reset" type="button" aria-describedby="label-form-element-codepostal">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
             </button>
