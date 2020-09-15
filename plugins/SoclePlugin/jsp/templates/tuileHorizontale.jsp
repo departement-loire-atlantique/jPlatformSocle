@@ -59,7 +59,7 @@ if (Util.isEmpty(urlImage)) {
 	            %>
 	            <jalios:if predicate="<%= Util.notEmpty(tmpDossier.getDate()) %>">
 	                <p class='ds44-cardDate'>
-	                     <i class="icon icon-date" aria-hidden="true"></i><span class="ds44-iconInnerText"><%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %></span>
+	                     <span class="ds44-iconInnerText"><%= SocleUtils.formatDate("dd/MM/yy", tmpDossier.getDate()) %></span>
 	                </p>
 	            </jalios:if>
 	        </jalios:if>
