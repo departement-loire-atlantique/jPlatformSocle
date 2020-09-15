@@ -514,6 +514,7 @@
     <directory path="jsp" />
     <directory path="types" />
     <directory path="wysiwyg" />
+    <directory path="images" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
@@ -557,6 +558,9 @@
     <file path="WEB-INF/tags/tooltip.tag" />
     <file path="jcore/doEmptyHeader.jspf" />
     <file path="jcore/doEmptyFooter.jspf" />
+    <file path="manifest.json" />
+    <file path="browserconfig.xml" />
+    <file path="custom/jcms/doCustomHeader.jsp" />
   </webapp-files>  
 </plugin>
 
