@@ -54,7 +54,7 @@ ControlSettings persistentSettings = new EnumerateSettings().checkbox().multiple
                 
                     <div class="ds44-posRel">
 					    <label for="password" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("ui.fo.login.lbl.passwd") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>					    
-					    <input type="text" id="password" name="JCMS_password" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("ui.fo.login.lbl.passwd")) %>'  required    /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("ui.fo.login.lbl.passwd")) %></span></button>										
+					    <input type="password" id="password" name="JCMS_password" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("ui.fo.login.lbl.passwd")) %>'  required    /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("ui.fo.login.lbl.passwd")) %></span></button>										
 					</div>
                 </div>
             </div>
