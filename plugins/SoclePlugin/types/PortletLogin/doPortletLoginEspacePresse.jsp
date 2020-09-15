@@ -37,7 +37,7 @@ ControlSettings persistentSettings = new EnumerateSettings().checkbox().multiple
                 <div class="ds44-form__container">
 	                <div class="ds44-posRel">
 					    <label for=login class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>				    
-					    <input type="email" id="login" name='<%= channel.getAuthMgr().getLoginParameter() %>' class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.faq.votre-email")) %>' required  autocomplete="email"  aria-describedby="explanation-form-element-login" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>								
+					    <input type="email" id="login" name='<%= channel.getAuthMgr().getLoginParameter() %>' class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.faq.votre-email")) %>' required aria-describedby="explanation-form-element-login" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>								
 					</div>
 
                     <div class="ds44-field-information" aria-live="polite">
