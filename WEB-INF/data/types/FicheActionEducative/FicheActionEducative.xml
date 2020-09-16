@@ -64,7 +64,7 @@
     <field name="duree" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Durée</label>
     </field>
-    <field name="depotDuDossier" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
+    <field name="depotDuDossier" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="pratique">
       <label xml:lang="fr">Dépôt du dossier</label>
     </field>
     <field name="realisationDeLaction" editor="wysiwyg" required="false" compactDisplay="false" tab="pratique" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" wysiwygConfigurationId="simple" inline="true" descriptionType="tooltip">
