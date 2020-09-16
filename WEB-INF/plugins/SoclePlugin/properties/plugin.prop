@@ -2,6 +2,8 @@
 # https://community.jalios.com/jcms/jc1_256839/fr/quelles-sont-les-regles-qui-determinent-le-portail-d-affichage-d-une-publication
 display.use-front-session-portal: false
 
+channel.favicon: plugins/SoclePlugin/images/favicon/favicon.ico
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
