@@ -18,17 +18,79 @@ ControlSettings persistentSettings = new EnumerateSettings().checkbox().multiple
 
 %>
 
+<jsp:useBean id="formHandler" scope="page" class="com.jalios.jcms.handler.ResetPasswordHandler">
+   <jsp:setProperty name="formHandler" property="request" value="<%= request %>"/>
+   <jsp:setProperty name="formHandler" property="response" value="<%= response %>"/>
+   <jsp:setProperty name="formHandler" property="*" />
+</jsp:useBean>
+
+
+
 
 <jalios:select>
 
+    <jalios:if predicate="<%= formHandler.isResetFormDisplayed() %>">
+    
+       <%
+       if (formHandler.validate()) {
+           sendRedirect(pubRedirect.getDisplayUrl(userLocale));
+           return;
+       }
+       %>
+    
+        <div class="ds44-box ds44-theme mbm">
+            <div class="ds44-innerBoxContainer">
+	            <form class="form-horizontal login-form" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" method="post" name="resetForm">
+	               <fieldset>
+	                    <legend class="ds44-box-heading ds44-mb-std"><%= glp("ui.fo.resetpass.reset.title") %></legend>
+	                    
+	                    <%@ include file='/plugins/SoclePlugin/jsp/doMessageBoxCustom.jspf' %>
+	                    <p><%= glp("ui.fo.resetpass.reset.txt", encodeForHTML(formHandler.getMember().getFriendlyName()), encodeForHTML(formHandler.getMember().getLogin())) %></p>
+	                    
+	                    
+	                    <div class="ds44-mb3">
+                            <div class="ds44-form__container">
+                            
+                                <div class="ds44-posRel">
+                                    <label for="password1" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("ui.fo.resetpass.reset.password1.placeholder") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>                        
+                                    <input type="password" id="password1" name="password1" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("ui.fo.login.lbl.passwd")) %>'  required    /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("ui.fo.login.lbl.passwd")) %></span></button>                                     
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ds44-mb3">
+                            <div class="ds44-form__container">
+                            
+                                <div class="ds44-posRel">
+                                    <label for="password2" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("ui.fo.resetpass.reset.password2.placeholder") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>                        
+                                    <input type="password" id="password2" name="password2" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("ui.fo.login.lbl.passwd")) %>'  required    /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("ui.fo.login.lbl.passwd")) %></span></button>                                     
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="passwordResetToken" value="<%= encodeForHTMLAttribute(formHandler.getPasswordResetToken()) %>" data-technical-field/>
+                        <input type='hidden' name="redirectUrl" value='<%= obj.getDisplayUrl(userLocale) %>' data-technical-field/>
+                        <input type='hidden' name='redirect' value='<%= obj.getDisplayUrl(userLocale) %>' data-technical-field/>
+                        <input type='hidden' name='jsp' value='<%= obj.getDisplayUrl(userLocale) %>' data-technical-field/>
+                        <input type="hidden" name="jsp" value="<%= ResourceHelper.getMailPassword() %>"  data-technical-field />
+                        <input type='hidden' name="opReset" value='true' data-technical-field/>
+                        <input type="hidden" name="csrftoken" value="<%= HttpUtil.getCSRFToken(request) %>" data-technical-field>
+                        
+                        
+                        <button type='submit' name='opReset' value='<%= glp("ui.fo.resetpass.reset.btn.reset") %>' class="ds44-btnStd ds44-btn--invert ds44-bntFullw ds44-bntALeft ds44-mtb1" title='<%= glp("ui.fo.resetpass.request.btn.request") %> '>
+                            <span class="ds44-btnInnerText"><%= glp("ui.fo.resetpass.reset.btn.reset") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+	                      
+	               </fieldset>
+	            </form>
+            </div>
+        </div>
+    
+    </jalios:if>
+
+
 
 	<jalios:if predicate='<%= Util.notEmpty(request.getParameter("forgotPass")) %>'>
-	
-	   <jsp:useBean id="formHandler" scope="page" class="com.jalios.jcms.handler.ResetPasswordHandler">
-		  <jsp:setProperty name="formHandler" property="request" value="<%= request %>"/>
-		  <jsp:setProperty name="formHandler" property="response" value="<%= response %>"/>
-		  <jsp:setProperty name="formHandler" property="*" />
-	   </jsp:useBean>
 	
 	   <%
 	   if (formHandler.validate()) {
