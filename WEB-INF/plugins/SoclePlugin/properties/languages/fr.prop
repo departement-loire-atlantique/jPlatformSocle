@@ -117,6 +117,7 @@ jcmsplugin.socle.form.login.legend: Vous avez déjà  un compte, connectez-vous
 jcmsplugin.socle.form.login.valid-compte: Valider l'accès à  votre compte
 jcmsplugin.socle.form.login.memoriser: Rester connecté
 $jcmsplugin.socle.login.redirect.pub: Contenu à viser après authentification pour l'espace presse
+jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
 
 # ------------------------------------------------------------
 #  Mail
