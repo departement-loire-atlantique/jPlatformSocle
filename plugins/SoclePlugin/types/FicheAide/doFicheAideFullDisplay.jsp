@@ -34,7 +34,10 @@ boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) &&
                               ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) ||
                               Util.notEmpty(obj.getIntroFaireUneDemande());
 
-boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || Util.notEmpty(obj.getEdemarche(loggedMember));
+Category publikCat = channel.getCategory("$jcmsplugin.socle.ficheaide.publik.root");
+
+boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || ((Util.notEmpty(obj.getUrlSuiviEdemarche()) || obj.hasCategory(publikCat)));
+
 
 %>
 
@@ -382,12 +385,12 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 	            </jalios:if>
 	
 		
-	            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
+	            <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) && (Util.notEmpty(obj.getUrlSuiviEdemarche()) || obj.hasCategory(publikCat))  %>">
 	            <div class="ds44-mt3 grid-12-small-1">
 	                
                
 	              <%-- Formulaire de suivi vers le site demarche.loire-altantique.fr --%>
-	              <jalios:if predicate="<%= Util.isEmpty(obj.getUrlSuiviEdemarche()) %>">
+	              <jalios:if predicate="<%= Util.isEmpty(obj.getUrlSuiviEdemarche()) && obj.hasCategory(publikCat) %>">
 
 	                <div class="col-6 ds44-modal-column">
 	                    <h2 class="h4-like" id="titre_a_code_suivi"><%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi") %></h2>
@@ -426,7 +429,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 					
 				  </jalios:if>
 				  	
-					
+															
 	                <div class='col-<%=  Util.notEmpty(obj.getUrlSuiviEdemarche()) ? "12" : "6 ds44-modal-column" %>'>
 	                    <%
 	                    String SuivreDemandetitre = Util.notEmpty(obj.getUrlSuiviEdemarche()) ? glp("jcmsplugin.socle.ficheaide.modal.suivredemande.suivrevotredemande") : glp("jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi");
