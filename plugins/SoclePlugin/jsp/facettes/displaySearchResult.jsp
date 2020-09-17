@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.comparator.TypesComparator"%>
 <%@page import="com.jalios.jcms.handler.QueryHandler"%>
 <%@page import="fr.cg44.plugin.socle.queryfilter.CategoryFacetUtil"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -31,8 +32,11 @@ qh.setAttribute(QueryFilter.FRONTOFFICE_SEARCH, Boolean.TRUE);
 qh.setText(request.getParameter("searchtext[value]"));
 qh.setSort(foQuerySortParam);
 QueryResultSet collection = qh.getResultSet();
-SortedSet<Publication> resultSet = collection.getAsSortedSet(Publication.class, foQuerySortParam, false);
 
+
+Comparator scoreTypeComparator = QueryResultSet.getScoreComparator(collection, new TypesComparator());
+SortedSet<Publication> resultSet = new TreeSet<Publication>(scoreTypeComparator);
+resultSet.addAll(collection);
 
 JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();

@@ -25,7 +25,7 @@ public class PresidenceComparator extends BasicComparator<ElectedMember>{
 
   public int compare(ElectedMember elu_1, ElectedMember elu_2) {
     if (elu_1 == null) {
-      return (elu_1 == null) ? 0 : -1;
+      return (elu_2 == null) ? 0 : -1;
     }
     if (elu_2 == null) {
       return 1;
