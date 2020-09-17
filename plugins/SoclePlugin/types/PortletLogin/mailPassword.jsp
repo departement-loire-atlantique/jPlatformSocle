@@ -4,7 +4,7 @@
 
 <%
 
-Publication redirectPub = channel.getPublication("c_1305010");
+Publication redirectPub = channel.getPublication("$jcmsplugin.socle.login.pub");
 String redirectUrl = redirectPub.getDisplayUrl(userLocale);
       
       
