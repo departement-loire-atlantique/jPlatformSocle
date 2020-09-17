@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.comparator.TypesComparator"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="com.jalios.jcms.handler.QueryHandler"%><%
 %><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%><%
@@ -22,7 +23,10 @@ qh.setCheckPstatus(true);
 qh.setText(textSearch);
 qh.setSort(foQuerySortParam);
 QueryResultSet collection = qh.getResultSet();
-SortedSet<Publication> resultSet = collection.getAsSortedSet(Publication.class, defaultfoQuerySort, false);
+
+Comparator scoreTypeComparator = QueryResultSet.getScoreComparator(collection, new TypesComparator());
+SortedSet<Publication> resultSet = new TreeSet<Publication>(scoreTypeComparator);
+resultSet.addAll(collection);
 
 
 %><% 
