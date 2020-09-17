@@ -34,8 +34,6 @@ String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 /* Si le texte est vide on regarde si la catégorie possède une description et une autorisation d'affichage de tooltip.
  * Si on ne trouve rien, on n'affiche rien.
 */
-System.out.println(cat.getName());
-System.out.println(help);
 String tooltipContent = text;
 if(Util.isEmpty(tooltipContent)){
 	if(Util.notEmpty(cat) && Boolean.parseBoolean(cat.getExtraData("extra.Category.plugin.tools.tooltip")) && Util.notEmpty(cat.getDescription(userLang))){
