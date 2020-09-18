@@ -87,10 +87,10 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 			    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
 			    
 			    <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
-			         <%= SocleUtils.formatCategories(catsWithoutServices) %><%= Util.isEmpty(catService) ? " - " : "" %>
+			         <%= SocleUtils.formatCategories(catsWithoutServices) %><%= Util.isEmpty(catService) ? " - " : "" %><br/>
 			    </jalios:if>
 			    <jalios:if predicate="<%= Util.notEmpty(catService) %>">
-                     <br/><%= catService %><br/>
+                     <%= catService %><br/>
                 </jalios:if>
                 <%= pub.getCommune() %>
 		    </p>
