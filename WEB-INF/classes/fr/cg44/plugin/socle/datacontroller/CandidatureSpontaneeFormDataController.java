@@ -205,7 +205,8 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
        MailUtils.envoiMailCandidatureSpontanee((CandidatureSpontaneeForm) data, fichiers);
      }
      else if (data instanceof CandidatureForm) {
-     	MailUtils.envoiMailCandidature((CandidatureForm) data, fichiers);
+    	String idFiche = request.getParameter("idFiche");
+     	MailUtils.envoiMailCandidature((CandidatureForm) data, fichiers, idFiche);
      }
      else {
        LOGGER.error("The application form is not an ApplicationForm or ApplicationFreeForm object.");

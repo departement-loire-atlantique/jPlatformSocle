@@ -1,0 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+<a href="<%=urlFormulaireCandidature %>" class="ds44-btnStd ds44-btn--invert <%= Util.notEmpty(request.getAttribute("margin")) ? "mbs" : "" %>">
+    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheemploi.label.envoicandidature") %></span>
+    <i class="icon icon-computer" aria-hidden="true"></i>
+</a>

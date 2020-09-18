@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
+%><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %>
 <% String[] formTitles = JcmsUtil.getLanguageArray(channel.getTypeEntry(CandidatureForm.class).getLabelMap()); %>
 <jsp:useBean id='formHandler' scope='page' class='generated.EditCandidatureFormHandler'>
@@ -13,7 +14,11 @@
     return;
   }
 %>
-
+<%
+  FicheEmploiStage ficheEmploi = (FicheEmploiStage)channel.getPublication(request.getParameter("idFiche"));
+  String idFicheEmploi = Util.notEmpty(ficheEmploi) ? ficheEmploi.getId() : ""; 
+%>
+  
 <jalios:if predicate='<%= formHandler.isOneSubmit() && formHandler.isSubmitted() %>'>
   <% setWarningMsg(glp("msg.edit.already-one-submit"), request); %>
 </jalios:if>
@@ -48,6 +53,7 @@ String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
     <input type="hidden" name="csrftoken" value="<%= HttpUtil.getCSRFToken(request) %>" data-technical-field>
     <input type="hidden" name="noSendRedirect" value='true' data-technical-field />
     <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
+    <input type="hidden" name="idFiche" value='<%= idFicheEmploi %>' data-technical-field />
 
 </form>
 
