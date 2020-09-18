@@ -26,7 +26,7 @@ public final class MailUtils {
 	private static Channel channel = Channel.getChannel();
 
 	private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
-	private static final String NEWLINE = "\r\n";
+	private static final String NEWLINE = "\n";
 
 	private MailUtils() {
 		throw new IllegalStateException("Utility class");
@@ -151,7 +151,8 @@ public final class MailUtils {
 		contenu.append("---------------------------").append(NEWLINE);
 		contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
-
+		System.out.println(contenu);
+		
 		if (Util.notEmpty(emailTo)) {
 			try {
 				sendMail(objet, contenu.toString(), form.getMail(), emailTo,  Util.notEmpty(listeEmailCC) ? listeEmailCC : null, fichiers, null, null);
