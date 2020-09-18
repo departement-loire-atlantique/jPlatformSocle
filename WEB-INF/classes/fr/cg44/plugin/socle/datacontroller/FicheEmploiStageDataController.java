@@ -1,5 +1,7 @@
 package fr.cg44.plugin.socle.datacontroller;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -36,9 +38,13 @@ public class FicheEmploiStageDataController extends BasicDataController implemen
 	@Override
 	/* Le choix du type d'offre se fait par bouton radio relié à des catégories de classement
 	 * En fonction du choix précédent on va automatiquement rajouter la catégorie de navigation correspondante.
+	 * 
+	 * Valorisation automatique de la date d'expiration en fonction de la date
+	 * limite de réponse à une offre (lendemain à 00h02)
 	 * */
 	public void beforeWrite(Data data, int op, Member mbr, Map context) {
 		FicheEmploiStage itFiche = (FicheEmploiStage) data;
+
 		if(		Util.isEmpty(navigationEmploiCat) || Util.isEmpty(classementEmploiCat) || 
 				Util.isEmpty(navigationApprentissageCat) || Util.isEmpty(classementApprentissageCat) ||
 				Util.isEmpty(navigationStageCat) || Util.isEmpty(classementStageCat) ||
@@ -72,8 +78,24 @@ public class FicheEmploiStageDataController extends BasicDataController implemen
 			}
 
 			itFiche.setCategorySet(AllCategoriesFicheEmploi);
-		}		
+
+			// si la date limite de réponse à l'offre est passée, on ne change pas la
+			// date d'expiration de la publication, ceci permet de changer le status de publications
+			// expirées normalement
+			Calendar cal = Calendar.getInstance();
+			
+			if (itFiche.getDateLimiteDeDepot().after(cal.getTime())) {
+				cal.setTime(itFiche.getDateLimiteDeDepot());
+				cal.add(Calendar.DATE, 1);
+				cal.set(Calendar.HOUR_OF_DAY,00);
+				cal.set(Calendar.MINUTE,02);
+				cal.set(Calendar.SECOND,0);
+				cal.set(Calendar.MILLISECOND,0);
+				itFiche.setEdate(cal.getTime());
+			}
+		}
 		
+	
 	}
 
 
