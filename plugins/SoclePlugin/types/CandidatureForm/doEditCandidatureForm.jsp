@@ -13,7 +13,13 @@
   ServletUtil.backupAttribute(pageContext, "classBeingProcessed");
   request.setAttribute("classBeingProcessed", generated.CandidatureForm.class);
 %>
-
+<%
+	FicheEmploiStage ficheEmploi = (FicheEmploiStage) channel.getPublication(request.getParameter("idFiche"));
+	if (Util.isEmpty(ficheEmploi)) {
+		return;
+	}
+	String referenceOffre = ficheEmploi.getNumeroDePoste();
+%>
 <%-- Reference ------------------------------------------------------------ --%>
 <% String referenceLabel = channel.getTypeFieldLabel(CandidatureForm.class, "reference", userLang);%>
 <div class="ds44-mb3">
@@ -24,7 +30,7 @@
             </label>
             <input type="text" id="form-element-reference" name="reference"
                 class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", referenceLabel) %>"
-                required disabled readonly value="<%= Util.notEmpty(request.getParameter("ref")) ? request.getParameter("ref") : "" %>">
+                required disabled readonly value="<%= referenceOffre %>">
         </div>
     </div>
 </div>

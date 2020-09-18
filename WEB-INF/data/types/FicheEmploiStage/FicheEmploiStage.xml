@@ -110,6 +110,20 @@
     <field name="telContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}" tabGroup="contactMetier">
       <label xml:lang="fr">Tel contact métier</label>
     </field>
+    <field name="masquerBouton" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true" tab="contacts">
+      <label xml:lang="fr">Masquer bouton ?</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="masquerMentions" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true" tab="contacts">
+      <label xml:lang="fr">Masquer mentions ?</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>        
     <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" tab="documents" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encartDocuments">
       <label xml:lang="fr">Titre encart document</label>
     </field>

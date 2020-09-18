@@ -108,43 +108,53 @@ public final class MailUtils {
 
 	/**
 	 * Envoi d'un email de candidature (réponse à une offre).
+	 * Si un email spécifique a été saisi dans la fiche emploi, alors on envoi en CC
 	 */
-	public static void envoiMailCandidature(CandidatureForm form, ArrayList<File> fichiers) {
-	   // Récupération de l'offre d'emploi
-	  String jobTitle = "";
-	  FicheEmploiStage job = EmploiUtils.getJobByReference(form.getReference());
-    if (Util.isEmpty(job)) {
-      LOGGER.error("Formulaire de candidature : aucune FicheEmploiStage trouvée à partir de la référence " + form.getReference());
-    }else{
-      jobTitle = job.getTitle();
-    }
-    
+	public static void envoiMailCandidature(CandidatureForm form, ArrayList<File> fichiers, String idFicheEmploi) {
+		// Récupération de l'offre d'emploi
+		String jobTitle = "";
+		String emailSpecifique = "";
+		FicheEmploiStage job = (FicheEmploiStage)channel.getPublication(idFicheEmploi);
+
+		if (Util.isEmpty(job)) {
+			LOGGER.error("Formulaire de candidature : aucune FicheEmploiStage trouvée à partir de la référence " + form.getReference());
+		}else{
+			jobTitle = job.getTitle();
+			emailSpecifique = job.getEmailSpecifique();
+		}
+		
+		// Destinataire
+		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
+	    
+	    ArrayList<String> listeEmailCC = new ArrayList<>();
+	    if(Util.notEmpty(emailSpecifique)){
+	      listeEmailCC.add(emailSpecifique);
+	    }
+
 		// Objet
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
-    StringBuilder contenu = new StringBuilder("Expediteur : ");
-    contenu.append(form.getNom()).append(" ").append(form.getPrenom());
-    contenu.append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
-    contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
-    contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
-    contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
-    contenu.append("Telephone : ");
-    if (Util.notEmpty(form.getTelephone())) {
-      contenu.append(form.getTelephone());
-    }
-    contenu.append(NEWLINE);
-    contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
-    contenu.append("Code postal delegation : ").append(EmploiUtils.getCodePostalDelegationFromJob(job)).append(NEWLINE);
-    contenu.append("Nature : ").append(job.getTypeDoffre(channel.getDefaultAdmin()).first()).append(NEWLINE);
-    contenu.append("---------------------------").append(NEWLINE);
-    contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
+		StringBuilder contenu = new StringBuilder("Expediteur : ");
+		contenu.append(form.getNom()).append(" ").append(form.getPrenom());
+		contenu.append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
+		contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
+		contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
+		contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
+		contenu.append("Telephone : ");
+		if (Util.notEmpty(form.getTelephone())) {
+			contenu.append(form.getTelephone());
+		}
+		contenu.append(NEWLINE);
+		contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
+		contenu.append("Code postal delegation : ").append(EmploiUtils.getCodePostalDelegationFromJob(job)).append(NEWLINE);
+		contenu.append("Nature : ").append(job.getTypeDoffre(channel.getDefaultAdmin()).first()).append(NEWLINE);
+		contenu.append("---------------------------").append(NEWLINE);
+		contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
-    // Destinataire
-		String emailTo = channel.getProperty("jcmsplugin.socle.form.candidature.mailTo");
 
 		if (Util.notEmpty(emailTo)) {
 			try {
-				sendMail(objet, contenu.toString(), form.getMail(), emailTo, fichiers);
+				sendMail(objet, contenu.toString(), form.getMail(), emailTo,  Util.notEmpty(listeEmailCC) ? listeEmailCC : null, fichiers, null, null);
 				msgEnvoiMailContact();
 			} catch (Exception e) {
 				msgEchecEnvoiMailContact();
