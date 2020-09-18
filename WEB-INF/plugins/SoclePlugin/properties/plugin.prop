@@ -575,11 +575,13 @@ $jcmsplugin.socle.emploiStage.typeOffre.emploi: c_5282
 $jcmsplugin.socle.emploiStage.typeOffre.apprentissage: c_5284
 $jcmsplugin.socle.emploiStage.typeOffre.stage: p2_290544
 $jcmsplugin.socle.emploiStage.typeOffre.serviceCivique: c_1216290
+$jcmsplugin.socle.emploiStage.typeOffre.saisonnier: c_1337247
 $jcmsplugin.socle.emploiStage.reserveAgentsColleges.root: c_1220099
 $jcmsplugin.socle.emploiStage.nav.emploi: c_5067
 $jcmsplugin.socle.emploiStage.nav.stage: c_1220102
 $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
+$jcmsplugin.socle.emploiStage.nav.saisonnier: c_1273695
 $jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
 $jcmsplugin.socle.emploiStage.delegationService: c_5296
 $jcmsplugin.socle.emploiStage.domainesMetiers: c_1216308
