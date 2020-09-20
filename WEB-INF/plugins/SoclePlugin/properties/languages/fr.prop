@@ -274,6 +274,7 @@ jcmsplugin.socle.memetheme: Sur le même thème
 jcmsplugin.socle.oui: Oui
 jcmsplugin.socle.non: Non
 jcmsplugin.socle.envoyer: Envoyer
+jcmsplugin.socle.votrecontact: Votre contact
 
 # ------------------------------------------------------------
 #  Header
@@ -735,3 +736,18 @@ jcmsplugin.socle.email.pageutile.libelle-avis.inutile: AVIS NEGATIF POUR LA PAGE
 # ------------------------------------------------------------
 jcmsplugin.socle.title.accueil: Accueil
 
+# ------------------------------------------------------------
+#  Spectacles
+# ------------------------------------------------------------
+jcmsplugin.socle.show.synopsys: Synopsys
+jcmsplugin.socle.show.date-creation: Date de création
+jcmsplugin.socle.show.compagnie: Compagnie
+jcmsplugin.socle.show.auteur: Auteur
+jcmsplugin.socle.show.mise-en-scene: Mise en scène
+jcmsplugin.socle.show.public-vise: Public visé
+jcmsplugin.socle.show.duree: Durée du spectacle
+jcmsplugin.socle.show.interpretes: Interprètes
+jcmsplugin.socle.show.cout: Coût du spectacle
+jcmsplugin.socle.show.conditions: Conditions particulières
+jcmsplugin.socle.show.liens: Liens utiles
+jcmsplugin.socle.show.infos: Informations pratiques
