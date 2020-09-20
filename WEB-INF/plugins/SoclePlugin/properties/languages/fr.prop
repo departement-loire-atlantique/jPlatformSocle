@@ -14,7 +14,7 @@ extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de l
 extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
 
 # Comparator
-comparator.pqf.servicesDepartement: Fiche lieu : Services du département
+comparator.pqf.servicesDepartement: Services du département / Commune
 comparator.pqf.presidence: Elu : Présidence
 
 # ------------------------------------------------------------

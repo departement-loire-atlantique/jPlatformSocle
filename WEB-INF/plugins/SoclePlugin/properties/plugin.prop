@@ -83,7 +83,7 @@ jcmsplugin.socle.posezUnequestion.actif:true
 jcmsplugin.socle.socialnetworks.share.actif: true
 
 # Comparator
-comparator.FicheLieu.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
+comparator.Publication.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
 comparator.ElectedMember.presidence: fr.cg44.plugin.socle.comparator.PresidenceComparator
 
 # ------------------------------------------------------------
@@ -391,6 +391,7 @@ $jcmsplugin.socle.fichelieu.handicapMoteur.root: c_1156101
 $jcmsplugin.socle.fichelieu.handicapVisuel.root: c_1156105
 $jcmsplugin.socle.fichelieu.handicapMental.root: c_1156109
 $jcmsplugin.socle.fichelieu.deficiencePsychique.root: c_1156113
+$jcmsplugin.socle.fichelieu.serviceDepartement.root: c_1285248
 
 $jcmsplugin.socle.fichelieu.batimentHandicapAuditif.root: c_1156117
 $jcmsplugin.socle.fichelieu.batimentHandicapMoteur.root: c_1156121
