@@ -468,6 +468,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="Show">
+        <template name="default" file="doShowFullDisplay.jsp" usage='full'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>    
   </types>
 
   <jars>
