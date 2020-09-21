@@ -135,8 +135,7 @@ public final class MailUtils {
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
 		StringBuilder contenu = new StringBuilder("Expediteur : ");
-		contenu.append(form.getNom()).append(" ").append(form.getPrenom());
-		contenu.append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
+		contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
 		contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
 		contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
 		contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
@@ -151,8 +150,6 @@ public final class MailUtils {
 		contenu.append("---------------------------").append(NEWLINE);
 		contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
-		System.out.println(contenu);
-		
 		if (Util.notEmpty(emailTo)) {
 			try {
 				sendMail(objet, contenu.toString(), form.getMail(), emailTo,  Util.notEmpty(listeEmailCC) ? listeEmailCC : null, fichiers, null, null);
