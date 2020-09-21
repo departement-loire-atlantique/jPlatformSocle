@@ -3,7 +3,6 @@ package fr.cg44.plugin.socle;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,7 +25,7 @@ public final class MailUtils {
 	private static Channel channel = Channel.getChannel();
 
 	private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
-	private static final String NEWLINE = "<br>";
+	private static final String NEWLINE = "<br/>";
 
 	private MailUtils() {
 		throw new IllegalStateException("Utility class");
@@ -136,18 +135,18 @@ public final class MailUtils {
 
 		StringBuilder contenu = new StringBuilder("Expediteur : ");
 		contenu.append(form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
-		contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
-		contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
-		contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
+		contenu.append("Nom : " + form.getNom() + NEWLINE);
+		contenu.append("Prenom : " + form.getPrenom() + NEWLINE);
+		contenu.append("Email expediteur : " + form.getMail() + NEWLINE);
 		contenu.append("Telephone : ");
 		if (Util.notEmpty(form.getTelephone())) {
 			contenu.append(form.getTelephone());
 		}
 		contenu.append(NEWLINE);
-		contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
-		contenu.append("Code postal delegation : ").append(EmploiUtils.getCodePostalDelegationFromJob(job)).append(NEWLINE);
-		contenu.append("Nature : ").append(job.getTypeDoffre(channel.getDefaultAdmin()).first()).append(NEWLINE);
-		contenu.append("---------------------------").append(NEWLINE);
+		contenu.append("Code postal : " + form.getCodePostal() + NEWLINE);
+		contenu.append("Code postal delegation : "+ EmploiUtils.getCodePostalDelegationFromJob(job) + NEWLINE);
+		contenu.append("Nature : " + job.getTypeDoffre(channel.getDefaultAdmin()).first() + NEWLINE);
+		contenu.append("---------------------------" + NEWLINE);
 		contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
 		if (Util.notEmpty(emailTo)) {
