@@ -39,18 +39,19 @@
              }
             %>
             
+            <%-- Compagnie --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getTroupe()) || Util.notEmpty(obj.getOtherTroupe()) %>'>
-                <p class="ds44-docListElem mts"><strong><%= glp("jcmsplugin.socle.show.compagnie") %> : </strong><%= Util.join(listeTroupe, " / ") %></p>
+                <p class="ds44-docListElem mts"><i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i><strong><%= glp("jcmsplugin.socle.show.compagnie") %> : </strong><%= Util.join(listeTroupe, " / ") %></p>
             </jalios:if>
             
             <%-- Auteur --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getAuthorOfTheShow())%>'>
-                <p class="ds44-docListElem mts"><strong><%= glp("jcmsplugin.socle.show.auteur") %> : </strong><%= obj.getAuthorOfTheShow() %></p>
+                <p class="ds44-docListElem mts"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><strong><%= glp("jcmsplugin.socle.show.auteur") %> : </strong><%= obj.getAuthorOfTheShow() %></p>
             </jalios:if>
             
             <%-- Mise en scène --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getDirector())%>'>
-                <p class="ds44-docListElem mts"><strong><%= glp("jcmsplugin.socle.show.mise-en-scene") %> : </strong><%= obj.getDirector() %></p>
+                <p class="ds44-docListElem mts"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><strong><%= glp("jcmsplugin.socle.show.mise-en-scene") %> : </strong><%= obj.getDirector() %></p>
             </jalios:if>
             
             <%-- Public visé --%>
@@ -183,7 +184,7 @@
                     <%-- Synopsys --%>
                     <jalios:if predicate='<%=Util.notEmpty(obj.getDescription())%>'>
                         <h2><%=glp("jcmsplugin.socle.show.synopsys")%></h2>
-                        <jalios:wysiwyg><%=obj.getDescription()%></jalios:wysiwyg>
+                        <jalios:wysiwyg css="mbm"><%=obj.getDescription()%></jalios:wysiwyg>
                     </jalios:if>
                     
                     <%-- Interprètes --%>
@@ -209,21 +210,63 @@
                     </jalios:if>
 
 					<%-- Liens utiles --%>
-					<jalios:if predicate='<%= Util.notEmpty(obj.getWebsites()) && obj.getWebsites().length > 1 %>'>
+					<jalios:if predicate='<%= (Util.notEmpty(obj.getWebsites()) && obj.getWebsites().length > 1) || Util.notEmpty(obj.getDailymotionUrls()) || Util.notEmpty(obj.getVimeoUrls()) %>'>
 						<div class="ds44-box ds44-bgGray">
 							<div class="ds44-innerBoxContainer">
 								<p role="heading" aria-level="2" class="ds44-box-heading"><%=glp("jcmsplugin.socle.show.liens")%></p>
-
-								<ul class="ds44-list">
-									<jalios:foreach name="site" type="String" array='<%=obj.getWebsites()%>'>
-										<li><a href='<%=SocleUtils.parseUrl(site)%>'
-											title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle())%>'
-											target="_blank"
-											data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>
-											<%=SocleUtils.parseUrl(site)%>
-										</a></li>
-									</jalios:foreach>
-								</ul>
+                                    <ul class="ds44-list">
+                                    
+                                        <%-- Site web --%>
+                                        <jalios:if predicate='<%= Util.notEmpty(obj.getWebsites()) %>'>
+											<jalios:foreach name="site" type="String" array='<%=obj.getWebsites()%>'>
+												<li>
+		                                            <div class="ds44-docListElem mts">
+		                                                <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+		                                                <a href='<%=SocleUtils.parseUrl(site)%>'
+														    title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", HttpUtil.encodeForHTMLAttribute(site))%>'
+														    target="_blank"
+														    data-statistic='{"name": "declenche-evenement","category": "BlocLiensUtiles","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(site)%>"}'>
+														    <%=SocleUtils.parseUrl(site)%>
+		                                                </a>
+		                                            </div>
+												 </li>
+											</jalios:foreach>
+                                        </jalios:if>
+                                        
+                                        <%-- URLs Vimeo --%>
+                                        <jalios:if predicate='<%= Util.notEmpty(obj.getVimeoUrls()) %>'>
+                                            <jalios:foreach name="site" type="String" array='<%=obj.getVimeoUrls()%>'>
+                                                <li>
+                                                    <div class="ds44-docListElem mts">
+                                                        <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+                                                        <a href='<%=SocleUtils.parseUrl(site)%>'
+                                                            title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", HttpUtil.encodeForHTMLAttribute(site))%>'
+                                                            target="_blank"
+                                                            data-statistic='{"name": "declenche-evenement","category": "BlocLiensUtiles","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(site)%>"}'>
+                                                            <%=SocleUtils.parseUrl(site)%>
+                                                        </a>
+                                                    </div>
+                                                 </li>
+                                            </jalios:foreach>
+                                        </jalios:if>
+                                        
+                                        <%-- URLs Dailymotion --%>
+                                        <jalios:if predicate='<%= Util.notEmpty(obj.getDailymotionUrls()) %>'>
+                                            <jalios:foreach name="site" type="String" array='<%=obj.getDailymotionUrls()%>'>
+                                                <li>
+                                                    <div class="ds44-docListElem mts">
+                                                        <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+                                                        <a href='<%=SocleUtils.parseUrl(site)%>'
+                                                            title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", HttpUtil.encodeForHTMLAttribute(site))%>'
+                                                            target="_blank"
+                                                            data-statistic='{"name": "declenche-evenement","category": "BlocLiensUtiles","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(site)%>"}'>
+                                                            <%=SocleUtils.parseUrl(site)%>
+                                                        </a>
+                                                    </div>
+                                                 </li>
+                                            </jalios:foreach>
+                                        </jalios:if>                                        
+									</ul>
 
 							</div>
 						</div>

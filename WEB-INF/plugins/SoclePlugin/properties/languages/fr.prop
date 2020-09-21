@@ -739,7 +739,7 @@ jcmsplugin.socle.title.accueil: Accueil
 # ------------------------------------------------------------
 #  Spectacles
 # ------------------------------------------------------------
-jcmsplugin.socle.show.synopsys: Synopsys
+jcmsplugin.socle.show.synopsys: Synopsis
 jcmsplugin.socle.show.date-creation: Date de création
 jcmsplugin.socle.show.compagnie: Compagnie
 jcmsplugin.socle.show.auteur: Auteur
