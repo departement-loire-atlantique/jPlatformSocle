@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <type name="FicheEmploiStage" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Fiche emploi, stage</label>
+  <label xml:lang="fr">Fiche emploi / stage</label>
   <title ml="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
@@ -49,7 +49,7 @@
     <field name="missions" editor="wysiwyg" required="true" compactDisplay="false" tab="mission" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Missions</label>
     </field>
-    <field name="domainesMetiers" editor="category" required="false" compactDisplay="false" tab="mission" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.emploiStage.domainesMetiers" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="domainesMetiers" editor="category" required="false" compactDisplay="false" tab="mission" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.emploiStage.domainesMetiers" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Domaines métiers</label>
     </field>
     <field name="activites" editor="wysiwyg" required="true" compactDisplay="false" tab="activites" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
