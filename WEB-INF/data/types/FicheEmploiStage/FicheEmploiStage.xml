@@ -130,7 +130,7 @@
     <field name="documentsMultiple" editor="link" required="false" compactDisplay="false" tab="documents" type="com.jalios.jcms.FileDocument[]" ml="false" descriptionType="tooltip" tabGroup="encartDocuments" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Documents (multiple)</label>
     </field>
-    <field name="categoriesDeNavigation" editor="category" required="true" compactDisplay="false" tab="classement_et_navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
+    <field name="categoriesDeNavigation" editor="category" required="false" compactDisplay="false" tab="classement_et_navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégories de navigation</label>
     </field>
   </fields>
