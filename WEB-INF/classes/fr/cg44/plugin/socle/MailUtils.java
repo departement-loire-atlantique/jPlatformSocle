@@ -26,7 +26,7 @@ public final class MailUtils {
 	private static Channel channel = Channel.getChannel();
 
 	private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
-	private static final String NEWLINE = "\n";
+	private static final String NEWLINE = "<br>";
 
 	private MailUtils() {
 		throw new IllegalStateException("Utility class");
@@ -272,7 +272,8 @@ public final class MailUtils {
 	 * @param jsp La JSP du template de mail à envoyer
 	 * @param parametersMap La map contenant les données à placer dans le template JSP
 	 */
-	public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<String> listeEmailCC, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
+	@SuppressWarnings("deprecation")
+  public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<String> listeEmailCC, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
 			throws javax.mail.MessagingException {
 
 		MailMessage mail = new MailMessage("Département de Loire Atlantique");
@@ -288,8 +289,7 @@ public final class MailUtils {
 		
 
 		if(Util.notEmpty(content)) {
-
-		  mail.setContentText(content);
+		  mail.setContentText(Util.html2Ascii(content));
 		}else if(Util.notEmpty(jsp)) {
 			mail.setContentHtmlFromJsp(jsp, channel.getDefaultAdmin(), "fr", parametersMap, null);
 		}
