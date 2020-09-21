@@ -72,7 +72,7 @@ public final class MailUtils {
 
     // Contenu
     StringBuilder contenu = new StringBuilder("Expediteur : ");
-    contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a envoyé une candidature spontanée").append(NEWLINE);
+    contenu.append(form.getNom() + " " + form.getPrenom() + " a envoyé une candidature spontanée" + NEWLINE);
     contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
     contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
     contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
@@ -135,7 +135,7 @@ public final class MailUtils {
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
 		StringBuilder contenu = new StringBuilder("Expediteur : ");
-		contenu.append(form.getNom()).append(" ").append(form.getPrenom()).append(" a repondu à l'annonce ").append(form.getReference()).append(" – ").append(jobTitle).append(NEWLINE);
+		contenu.append(form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
 		contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
 		contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
 		contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
