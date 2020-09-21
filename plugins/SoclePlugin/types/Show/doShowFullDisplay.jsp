@@ -18,7 +18,11 @@
             
             <%-- Thématiques --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getCategorie(loggedMember)) %>'>
-                <p class="ds44-docListElem mts"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= Util.join(obj.getCategorie(loggedMember), ", ") %></p>
+                <% 
+                Set<Category> thematiqueCats = new TreeSet<Category>(new Category.DeepOrderComparator());
+                thematiqueCats.addAll(obj.getCategorie(loggedMember));
+                %>
+                <p class="ds44-docListElem mts"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= Util.join(thematiqueCats, ", ") %></p>
             </jalios:if>
             
             <%-- Date de création --%>
