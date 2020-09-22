@@ -238,7 +238,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
                         <jalios:if predicate="<%= afficherMentions %>">
 	                        <div class="mts">
 	                            <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
-	                            <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot()), obj.getCategorieDemploi(loggedMember).first()) %>
+	                            <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot())) %>
 	                        </div>
                         </jalios:if>
                        

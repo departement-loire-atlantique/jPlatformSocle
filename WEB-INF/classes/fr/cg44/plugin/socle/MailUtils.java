@@ -135,20 +135,20 @@ public final class MailUtils {
 		String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
 		StringBuilder contenu = new StringBuilder("Expediteur : ");
-		contenu.append(form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
-		contenu.append("Nom : ").append(form.getNom()).append(NEWLINE);
-		contenu.append("Prenom : ").append(form.getPrenom()).append(NEWLINE);
-		contenu.append("Email expediteur : ").append(form.getMail()).append(NEWLINE);
-		contenu.append("Telephone : ");
+		contenu.append("  " + form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
+		contenu.append("  Nom : " + form.getNom() + NEWLINE);
+		contenu.append("  Prenom : " + form.getPrenom() + NEWLINE);
+		contenu.append("  Email expediteur : " + form.getMail() + NEWLINE);
+		contenu.append("  Telephone : ");
 		if (Util.notEmpty(form.getTelephone())) {
 			contenu.append(form.getTelephone());
 		}
 		contenu.append(NEWLINE);
-		contenu.append("Code postal : ").append(form.getCodePostal()).append(NEWLINE);
-		contenu.append("Code postal delegation : ").append(EmploiUtils.getCodePostalDelegationFromJob(job)).append(NEWLINE);
-		contenu.append("Nature : ").append(job.getTypeDoffre(channel.getDefaultAdmin()).first()).append(NEWLINE);
-		contenu.append("---------------------------").append(NEWLINE);
-		contenu.append("Pieces jointes : CV, lettre de motivation et pièce complémentaire");
+		contenu.append("  Code postal : " + form.getCodePostal() + NEWLINE);
+		contenu.append("  Code postal delegation : "+ EmploiUtils.getCodePostalDelegationFromJob(job) + NEWLINE);
+		contenu.append("  Nature : " + job.getTypeDoffre(channel.getDefaultAdmin()).first() + NEWLINE);
+		contenu.append("  ---------------------------" + NEWLINE);
+		contenu.append("  Pieces jointes : CV, lettre de motivation et pièce complémentaire");
 
 		if (Util.notEmpty(emailTo)) {
 			try {
