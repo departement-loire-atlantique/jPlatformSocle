@@ -1539,7 +1539,7 @@ public final class SocleUtils {
       while(!JcmsUtil.isSameId(typeCat.getParent(), typeRootCat)) {
         typeCat = typeCat.getParent();
       }
-      libelle = Util.notEmpty(typeCat.getSynonyms()) ? Util.getFirst(typeCat.getSynonyms()) : typeCat.getName() ;    
+      libelle = Util.notEmpty(typeCat.getExtraData("extra.Category.plugin.tools.result.title")) ? typeCat.getExtraData("extra.Category.plugin.tools.result.title") : typeCat.getName() ;    
     }else if(pub instanceof AccueilAnnuaireAgenda) {
       // Pour l'agenda/annuaire
       AccueilAnnuaireAgenda accueil = (AccueilAnnuaireAgenda) pub;
