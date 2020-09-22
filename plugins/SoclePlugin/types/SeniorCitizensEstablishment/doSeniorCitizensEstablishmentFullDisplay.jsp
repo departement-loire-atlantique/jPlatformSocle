@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.GeolocalisationUtil"%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %>
@@ -212,33 +213,64 @@
 						<jalios:wysiwyg><%= obj.getRemarkText() %></jalios:wysiwyg>
 					</jalios:if>
 	
-					<%-- Si aucun CLIC n'est associé, c'est le CLIC le plus proche de l'établissement qui est affiché --%>
+	
+	               
+	
+					
 					<%
-					// Liste des clic
-					FicheLieu[] clic = 
+					List<FicheLieu> lieuAssocie = new ArrayList<FicheLieu>();
+					
+					// Si aucun CLIC n'est associé, c'est le CLIC le plus proche de l'établissement qui est affiché
+					FicheLieu[] clicAssocie = obj.getClics();
 					Category clicRootCat = channel.getCategory("$jcmsplugin.socle.type.sectorisation.clic.cat");
 					if(Util.isEmpty(obj.getClics()) && Util.notEmpty(clicRootCat)) {
-					   
+						Set<Publication> listCLIC = clicRootCat.getPublicationSet(Publication.class, loggedMember) ;
+						FicheLieu clic = (FicheLieu) GeolocalisationUtil.getClosenessDistancePublications((Publication) obj, listCLIC);
+						clicAssocie = new FicheLieu[]{clic};
 					}
+					lieuAssocie.addAll(Arrays.asList(clicAssocie));
+					
+					// Fiche paph associé
+					Category paphRootCat = channel.getCategory("$jcmsplugin.socle.type.sectorisation.paph.cat");
+                    if(Util.notEmpty(paphRootCat)){
+                        // Recherche de la fiche lieu paph de la meme commune de délégation que la fiche d'etablissement
+                        Set<FicheLieu> listPAPH = paphRootCat.getPublicationSet(FicheLieu.class, loggedMember);
+                        if(Util.notEmpty(listPAPH)) {
+	                        FicheLieu placePAPH = null ;
+	                        for(FicheLieu place : listPAPH){                            
+	                            if(obj.getCommune() != null && obj.getCommune().getDelegation() != null && JcmsUtil.isSameId(place.getCommune(), obj.getCommune().getDelegation().getCommune())){
+	                                placePAPH = place ;
+	                                break;
+	                            }
+	                        }
+	                        lieuAssocie.add(placePAPH);
+                        }
+                    }                                  					
 					%>
 					
-					<jalios:if predicate="<%= Util.notEmpty(obj.getClics()) %>">
+					
+					<jalios:if predicate="<%= Util.notEmpty(lieuAssocie) %>">
 						<div class="ds44-mtb3">
 							<section class="ds44-innerBoxContainer ds44-borderContainer">
 								<h2 id="idTitreBox2col-1" class="h2-like"><%= glp("jcmsplugin.socle.etablissementpersonnesagees.questionconseil") %></h2>
 		
 								<div class="grid-12-small-1">
-									<jalios:if predicate="<%= Util.notEmpty(obj.getClics()) %>">
-										<jalios:foreach name="itFicheLieu" type="FicheLieu" array="<%= obj.getClics() %>">
+								
+						            
+										<jalios:foreach name="itFicheLieu" type="FicheLieu" collection="<%= Util.cleanCollection(lieuAssocie) %>">
 											<% 
 												String style = itCounter == 0 ? "ds44-mb3" : "ds44-medToXlarge-pl3";
 											%>
 											<div class="col col-6 <%= style %>">
 												<p role="heading" aria-level="3" class="h3-like"><%= itFicheLieu.getTitle() %></p>
-												<p class="ds44-docListElem mts">
-													<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
-													<%= SocleUtils.formatAdresseEcrire(itFicheLieu) %>
-												</p>
+												
+												<% String adressEcrire =  SocleUtils.formatAdresseEcrire(itFicheLieu); %>
+												<jalios:if predicate="<%= Util.notEmpty(adressEcrire) %>">
+													<p class="ds44-docListElem mts">
+														<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+														<%= adressEcrire %>
+													</p>
+												</jalios:if>
 												
 												<jalios:if predicate='<%=Util.notEmpty(itFicheLieu.getTelephone())%>'>
 													<div class="ds44-docListElem mts">
@@ -296,7 +328,10 @@
 												</p>
 											</div>
 										</jalios:foreach>
-									</jalios:if>									
+	
+								     
+								     
+								     						
 								</div>
 		
 							</section>

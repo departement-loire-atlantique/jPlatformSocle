@@ -4,8 +4,10 @@ import java.util.Comparator;
 
 import com.jalios.jcms.Publication;
 
-import fr.cg44.plugin.socle.infolocale.util.GeolocalisationUtil;
-import fr.cg44.plugin.socle.infolocale.util.Point;
+import fr.cg44.plugin.socle.GeolocalisationUtil;
+import fr.cg44.plugin.socle.Point;
+
+
 
 public class DistanceComparator implements Comparator<Publication> {
   
