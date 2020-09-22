@@ -38,9 +38,6 @@
     <field name="politiquesPubliques" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.politiquesPubliques" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
       <label xml:lang="fr">Politiques publiques</label>
     </field>
-    <field name="missionsThematiques" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.missionsThematiques" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
-      <label xml:lang="fr">Missions thématiques</label>
-    </field>
     <field name="thematics" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.presscommunique.thematique" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="rattachement">
       <label xml:lang="fr">Thématique (old)</label>
     </field>
