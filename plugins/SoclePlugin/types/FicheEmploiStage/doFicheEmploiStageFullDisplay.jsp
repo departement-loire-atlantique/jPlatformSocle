@@ -231,16 +231,19 @@ boolean afficherMentions = !obj.getMasquerMentions();
                <div class="ds44-grid12-offset-2">
                    <div class="ds44-wsg-encadreContour">
                        <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("jcmsplugin.socle.ficheemploi.label.modalites") %></p>
-                       <jalios:if predicate="<%= Util.notEmpty(obj.getIntroModalitesDeCandidature()) %>">
-                          <jalios:wysiwyg data='<%= obj %>' field='introModalitesDeCandidature'><%= obj.getIntroModalitesDeCandidature() %></jalios:wysiwyg>
-                       </jalios:if>
                        
-                        <jalios:if predicate="<%= afficherMentions %>">
-	                        <div class="mts">
-	                            <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
-	                            <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot())) %>
-	                        </div>
-                        </jalios:if>
+                       <jalios:select>
+	                       <jalios:if predicate="<%= Util.notEmpty(obj.getIntroModalitesDeCandidature()) %>">
+	                          <jalios:wysiwyg data='<%= obj %>' field='introModalitesDeCandidature'><%= obj.getIntroModalitesDeCandidature() %></jalios:wysiwyg>
+	                       </jalios:if>
+	                       
+	                        <jalios:if predicate="<%= afficherMentions %>">
+		                        <div class="mts">
+		                            <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); %>
+		                            <%= glp("jcmsplugin.socle.ficheemploi.txt.modalites", obj.getNumeroDePoste(), sdf.format(obj.getDateLimiteDeDepot())) %>
+		                        </div>
+	                        </jalios:if>
+                        </jalios:select>
                        
                        <jalios:if predicate="<%= afficherBouton %>"> 
                            <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondresite") %></p>
