@@ -26,7 +26,7 @@ public final class MailUtils {
 	private static Channel channel = Channel.getChannel();
 
 	private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
-	private static final String NEWLINE = "<br>";
+	private static final String NEWLINE = "<br/><br>";
 
 	private MailUtils() {
 		throw new IllegalStateException("Utility class");
