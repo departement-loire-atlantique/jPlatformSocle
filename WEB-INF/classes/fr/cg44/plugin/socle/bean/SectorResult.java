@@ -110,7 +110,7 @@ public class SectorResult {
 	 * Renvoie un idendifiant unique de l'entité
 	 */
 	public String getUniqueId() {
-		return "1".equals(getOrigineMatriculeId()) ? getMatricule().trim() : getOrigineMatricule().getCode().trim() +"_"+getMatricule().trim();
+		return "INSEE".equalsIgnoreCase(getOrigineMatricule().getCode().trim()) ? getMatricule().trim() : getOrigineMatricule().getCode().trim() +"_"+getMatricule().trim();
 	}
 	
 	
