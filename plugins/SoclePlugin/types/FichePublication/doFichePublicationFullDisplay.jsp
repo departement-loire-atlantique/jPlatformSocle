@@ -155,7 +155,16 @@
                                               titleAttr = "title=\"" +  HttpUtil.encodeForHTMLAttribute(titleValue) + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
                                               }
                                             %>
-                                            <li><a href="<%= urlLien %>" <%= titleAttr %> <%= targetAttr %>><%= itLien %></a></li>
+                                            <li>
+                                                <jalios:select>
+                                                    <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+                                                        <a href="<%= urlLien %>" <%= titleAttr %> <%= targetAttr %>><%= itLien %></a>
+                                                    </jalios:if>
+                                                    <jalios:default>
+                                                        <%= itLien %>
+                                                    </jalios:default>
+                                                </jalios:select>
+                                            </li>
                                         </jalios:foreach>
     
                                     </ul>
