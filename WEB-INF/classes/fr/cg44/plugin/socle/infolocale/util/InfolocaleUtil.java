@@ -202,7 +202,15 @@ public class InfolocaleUtil {
             try {
                 Date itJavaDate = sdf.parse(itDate.getDebut());
                 Instant itInstant = itJavaDate.toInstant();
+                Date itJavaDateEnd = sdf.parse(itDate.getFin());
+                Instant itInstantEnd = itJavaDateEnd.toInstant();
                 
+                // Date de début et de fin sont avant la date actuelle / la date la plus proche actuelle
+                if (itInstant.isBefore(instantNow) && itInstantEnd.isBefore(instantNow)) {
+                  continue;
+                }
+                
+                // La date actuelle est après la date testée : on remplace la date actuelle par la nouvelle
                 if (instantNow.isAfter(itInstant)) {
                     if (Util.isEmpty(value)) { 
                       value = itDate; 
