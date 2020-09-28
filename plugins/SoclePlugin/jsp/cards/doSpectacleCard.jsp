@@ -15,6 +15,24 @@ Show pub = (Show) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 String image = "";
 
+// On récupère une image de vignette
+if (Util.notEmpty(pub.getSlideShow()) && Util.notEmpty(pub.getSlideShow().getElements1())) {
+  
+  image = pub.getSlideShow().getElements1()[0].getImageMobile();
+       
+   if (Util.isEmpty(image)) {
+     image = pub.getSlideShow().getElements1()[0].getImage();
+   }
+       
+   if (Util.isEmpty(image)) {
+     image = pub.getSlideShow().getElements1()[0].getImageCarree();
+   }
+   
+   if (Util.notEmpty(image)) {
+     image = SocleUtils.getUrlOfFormattedImageCard(urlImage);
+   }
+}
+
 // Catégories thématiques
 Set<Category> thematiqueCats = new TreeSet<Category>(new Category.DeepOrderComparator());
 thematiqueCats.addAll(pub.getCategorie(loggedMember));
@@ -33,6 +51,11 @@ if(Util.notEmpty(pub.getOtherTroupe())) {
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray ">
      
+    <jalios:if predicate="<%= Util.notEmpty(image) %>">
+	    <picture class="ds44-container-imgRatio">
+	        <img src="<%= image %>" alt="<%= pub.getTitle() %>" class="ds44-imgRatio">
+	    </picture>
+	</jalios:if>
    
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
