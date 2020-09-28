@@ -297,6 +297,10 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Photo photo = new Photo();
         try {
+            // Si format inconnu, l'image n'existe pas
+            if ("inconnu".equals(json.getString("format"))) {
+              return null;
+            }
             photo.setPath(json.getString("path"));
             photo.setLegend(json.getString("legend"));
             photo.setCredit(json.getString("credit"));

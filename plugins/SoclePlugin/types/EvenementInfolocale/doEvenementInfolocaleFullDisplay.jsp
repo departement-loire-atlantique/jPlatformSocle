@@ -17,7 +17,7 @@ String urlPhoto = "";
 String legend = "";
 String credit = "";
 
-if (Util.notEmpty(obj.getPhotos()) && obj.getPhotos().length > 0) {
+if (Util.notEmpty(obj.getPhotos()) && obj.getPhotos().length > 0 && Util.notEmpty(obj.getPhotos()[0])) {
   urlPhoto = obj.getPhotos()[0].getPath();
   legend = obj.getPhotos()[0].getLegend();
   credit = obj.getPhotos()[0].getCredit();
