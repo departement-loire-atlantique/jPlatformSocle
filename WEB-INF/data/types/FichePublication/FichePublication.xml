@@ -77,6 +77,18 @@
     <field name="lienExterneRubrique4" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique4" html="false" checkHtml="true" tab="rubrique4">
       <label xml:lang="fr">Lien externe</label>
     </field>
+    <field name="titreRubrique5" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique5">
+      <label xml:lang="fr">Titre rubrique 5</label>
+    </field>
+    <field name="libelleLienRubrique5" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique5" tab="rubrique5">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienInterneRubrique5" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique5" tab="rubrique5">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterneRubrique5" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique4" html="false" checkHtml="true" tab="rubrique5">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
     <field name="titreComplement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="complement">
       <label xml:lang="fr">Titre complément</label>
     </field>
@@ -108,6 +120,9 @@
     </tab>
     <tab id="rubrique4">
       <label xml:lang="fr">Rubrique 4</label>
+    </tab>
+    <tab id="rubrique5">
+      <label xml:lang="fr">Rubrique 5</label>
     </tab>
     <tab id="complement">
       <label xml:lang="fr">Complément</label>
