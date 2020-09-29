@@ -27,6 +27,7 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
+import fr.cg44.plugin.socle.infolocale.entities.Photo;
 import generated.EvenementInfolocale;
 import generated.PortletAgendaInfolocale;
 
@@ -795,5 +796,103 @@ public class InfolocaleUtil {
       sortedList.addAll(listGenres);
       
       return sortedList;
+    }
+    
+    /**
+     * Retourne l'URL de l'image la plus grande, et dont le ratio est le plus proche de 1
+     * @param itEvent
+     * @return
+     */
+    public static String getUrlOfLargestPicture(EvenementInfolocale itEvent) {
+      /**
+       * Explication du principe
+       * 
+       * - On récupère la première photo trouvée, en conservant ses dimensions et son ratio
+       * - On inspecte la photo suivante. 
+       *      -> Si celle-ci a une largeur OU une hauteur moins élevées que l'image précédente, on l'ignore
+       *      -> Si son ratio est plus éloignée de 1 que la précédente par une marge, on l'ignore
+       *      -> Autrement, on la conserve
+       */
+      
+      if (Util.isEmpty(itEvent) || Util.isEmpty(itEvent.getPhotos())) {
+        return "";
+      }
+      
+      String urlImg = "";
+      int width = 0;
+      int height = 0;
+      double ratio = 0.0;
+      
+      double diffAllowed = 0.2; // Configuration ratio
+      
+      for (int counterPhotos = 0; counterPhotos < itEvent.getPhotos().length; counterPhotos++) {
+        Photo itPhoto = itEvent.getPhotos()[counterPhotos];
+        
+        if (Util.isEmpty(itPhoto) || "inconnu".equals(itPhoto.getFormat())) continue;
+        
+        // Initialisation
+        if (Util.isEmpty(urlImg)) {
+          urlImg = itPhoto.getPath();
+          width = itPhoto.getWidth();
+          height = itPhoto.getHeight();
+          ratio = itPhoto.getRatio();
+          continue;
+        }
+        
+        // si les dimensions sont plus petites, on passe
+        if (itPhoto.getWidth() < width || itPhoto.getHeight() < height) {
+          continue;
+        }
+        
+        // si le ratio est plus petit, avec une marge, on passe
+        // ex avec 0.2 : Le ratio actuel est de 1.2 -> si le ratio de la photo dépasse 1.4 ou 0.6, on ignore
+        double ratioTmpOne = ratio;
+        double ratioTmpTwo = ratioTmpOne;
+        boolean oneIsLarger = false;
+        
+        if (ratioTmpOne > 1.0) {
+          ratioTmpOne += diffAllowed;
+          ratioTmpTwo = 1.0 - (ratioTmpOne - 1.0);
+          oneIsLarger = true;
+        } else if (ratioTmpOne < 1.0) {
+          ratioTmpOne -= diffAllowed;
+          ratioTmpTwo = 2.0 - ratioTmpOne;
+        }
+        
+        if (oneIsLarger && (itPhoto.getRatio() <= ratioTmpTwo || itPhoto.getRatio() >= ratioTmpTwo)) {
+          continue;
+        } else if (itPhoto.getRatio() >= ratioTmpTwo || itPhoto.getRatio() <= ratioTmpTwo) {
+          continue;
+        }
+        
+        urlImg = itPhoto.getPath();
+        width = itPhoto.getWidth();
+        height = itPhoto.getHeight();
+        ratio = itPhoto.getRatio();
+      }
+      
+      return urlImg;
+    }
+    
+    /**
+     * Retourne l'objet Photo dont les dimensions sont les plus grandes, et dont le ratio est également proche de 1 au possible
+     * @param itEvent
+     * @return
+     */
+    public static Photo getLargestPicture(EvenementInfolocale itEvent) {
+      if (Util.isEmpty(itEvent) || Util.isEmpty(itEvent.getPhotos())) {
+        return null;
+      }
+      
+      String urlLargest = getUrlOfLargestPicture(itEvent);
+      
+      for (int counterPhotos = 0; counterPhotos < itEvent.getPhotos().length; counterPhotos++) {
+        Photo itPhoto = itEvent.getPhotos()[counterPhotos];
+        if (itPhoto.getPath().equals(urlLargest)) {
+          return itPhoto;
+        }
+      }
+      
+      return null;
     }
 }

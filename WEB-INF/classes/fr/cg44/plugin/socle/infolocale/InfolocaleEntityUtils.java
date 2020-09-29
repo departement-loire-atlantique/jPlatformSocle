@@ -283,6 +283,10 @@ public class InfolocaleEntityUtils {
             photo.setPath(json.getString("path"));
             photo.setLegend(json.getString("legend"));
             photo.setCredit(json.getString("credit"));
+            photo.setFormat(json.getString("format"));
+            photo.setWidth(json.getInt("largeur"));
+            photo.setHeight(json.getInt("hauteur"));
+            photo.setRatio(Double.parseDouble(json.getString("ratio")));
         } catch (JSONException e) {
             LOGGER.error("Erreur in createPhotoFromJsonItem: " + e.getMessage());
             photo = new Photo();
