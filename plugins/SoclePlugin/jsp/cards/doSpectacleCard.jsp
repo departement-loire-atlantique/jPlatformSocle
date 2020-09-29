@@ -29,7 +29,7 @@ if (Util.notEmpty(pub.getSlideShow()) && Util.notEmpty(pub.getSlideShow().getEle
    }
    
    if (Util.notEmpty(image)) {
-     image = SocleUtils.getUrlOfFormattedImageCard(urlImage);
+     image = SocleUtils.getUrlOfFormattedImageCard(image);
    }
 }
 
