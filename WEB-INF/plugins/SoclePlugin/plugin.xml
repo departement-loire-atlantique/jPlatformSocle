@@ -449,6 +449,9 @@
         <template name="sliderQuatre" file="doPortletCarouselSliderFourPanels.jsp" usage="box">
           <label xml:lang="fr">DS44 : carrousel quatre tuiles</label>
         </template>
+        <template name="sliderSix" file="doPortletCarouselSliderSixPanels.jsp" usage="box">
+          <label xml:lang="fr">DS44 : carrousel six tuiles</label>
+        </template>
     </templates>
     <templates type="PortletRechercheFacettes">
         <template name="default" file="doPortletRechercheFacettesBoxDisplay.jsp" usage='box'>
