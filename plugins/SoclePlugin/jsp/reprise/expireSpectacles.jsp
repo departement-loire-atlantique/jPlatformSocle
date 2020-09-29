@@ -39,11 +39,11 @@ if(getBooleanParameter("executeReprise", false)) {
     for(Publication itPub : result) {
         Show itShow = (Show) itPub;     
         if (!itShow.getHelpedShow()) {
-            //Publication itClone = (Publication) itPub.getUpdateInstance();
-            //itClone.setPstatus(WorkflowConstants.EXPIRED_PSTATUS);
-            //itClone.performUpdate(loggedMember);
+            Publication itClone = (Publication) itPub.getUpdateInstance();
+            itClone.setPstatus(WorkflowConstants.EXPIRED_PSTATUS);
+            itClone.performUpdate(loggedMember);
             %>
-            <jalios:edit pub="<%= itPub  %>" /> <%= itPub  %> <br/>
+              <jalios:edit pub="<%= itPub  %>" > <%= itPub  %> </jalios:edit>
             <%
         }            
     }    
