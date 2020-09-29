@@ -100,4 +100,10 @@
         </section>
     </jalios:if>
     
+    <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
+        <jalios:foreach name="itPortletBas" type="PortalElement" array="<%= obj.getPortletsBas() %>">
+            <jalios:include pub="<%= itPortletBas %>"/>
+        </jalios:foreach>    
+    </jalios:if>
+    
 </main>
