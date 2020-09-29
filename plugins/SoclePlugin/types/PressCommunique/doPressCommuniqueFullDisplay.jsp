@@ -18,16 +18,12 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                 <jalios:date format="dd/MM/yyyy" date="<%= obj.getPdate() %>"/>
             </div>
             
-            <jalios:if predicate='<%= Util.notEmpty(obj.getPolitiquesPubliques(loggedMember)) || Util.notEmpty(obj.getMissionsThematiques(loggedMember))%>'>
+            <jalios:if predicate='<%= Util.notEmpty(obj.getPolitiquesPubliques(loggedMember))%>'>
                 <div class="ds44-docListElem mts"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
                     <ul class="ds44-list">
                     
                     <jalios:foreach collection="<%= obj.getPolitiquesPubliques(loggedMember) %>" type="Category" name="itPolitiquePublique" >
                       <li><%= itPolitiquePublique %></li>
-                    </jalios:foreach>
-                    
-                    <jalios:foreach collection="<%= obj.getMissionsThematiques(loggedMember) %>" type="Category" name="itMissionThematique" >
-                      <li><%= itMissionThematique %></li>
                     </jalios:foreach>
                     
                     </ul>
@@ -161,8 +157,10 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                                 <jalios:if predicate='<%= Util.notEmpty(obj.getLienExterne()[itCounter-1]) %>'>
                                     <%
                                     String libelleLien = glp("jcmsplugin.socle.savoirplus");
+                                    String libelleTitle = itLien;
                                     if(Util.notEmpty(obj.getLibelleLien()) && itCounter <= obj.getLibelleLien().length && Util.notEmpty(obj.getLibelleLien()[itCounter-1]) ){
                                         libelleLien = obj.getLibelleLien()[itCounter-1];
+                                        libelleTitle = obj.getLibelleLien()[itCounter-1];
                                     }
                                     
                                     %>
@@ -170,7 +168,7 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                                         <p class="ds44-docListElem">
                                             <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
                                             <a href="<%= obj.getLienExterne()[itCounter-1] %>" 
-                                            title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", itLien)) %>' 
+                                            title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", libelleTitle)) %>' 
                                             target="_blank">
                                             <%= libelleLien %>
                                             </a>
@@ -250,7 +248,6 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
         // Récupération des catégories filles de "politiques publiques" et "missions thématiques"
         Set<Category> thematiques = new TreeSet<Category>();
         thematiques.addAll(obj.getPolitiquesPubliques(loggedMember));
-        thematiques.addAll(obj.getMissionsThematiques(loggedMember));
         %>
         
         <jalios:if predicate='<%= !thematiques.isEmpty() && Util.notEmpty(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"))%>'>
