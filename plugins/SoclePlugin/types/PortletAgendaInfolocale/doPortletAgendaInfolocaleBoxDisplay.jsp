@@ -52,6 +52,14 @@ calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF
 Date dateInAMonth = calInAMonth.getTime();
 parameters.put("dateFin", sdf.format(dateInAMonth));
 
+if (Util.notEmpty(box.getIdsAExclure())) {
+  parameters.put("excludeIds", box.getIdsAExclure());
+}
+
+if (Util.notEmpty(box.getGroupeDevenements())) {
+  parameters.put("groupe", box.getGroupeDevenements());
+}
+
 String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
 
 JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
@@ -72,9 +80,7 @@ boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
           arrayIdsGroupes = box.getGroupeDevenements().split(",");
         }
         EvenementInfolocale[] evenements = InfolocaleEntityUtils.createEvenementInfolocaleArrayFromJsonArray(extractedFlux.getJSONArray("result"), 
-            box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), box.getMetadonneeParDefaut(),
-            Util.notEmpty(arrayIdsAExclure) ? Arrays.asList(arrayIdsAExclure) : null,
-            Util.notEmpty(arrayIdsGroupes) ? Arrays.asList(arrayIdsGroupes) : null);
+            box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), box.getMetadonneeParDefaut());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
         sortedEvents = InfolocaleUtil.purgeEventListFromDuplicates(sortedEvents, new String[]{sdfSort.format(dateDebut), sdfSort.format(dateInAMonth)});
