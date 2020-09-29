@@ -16,7 +16,7 @@ EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
 DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
-String urlPhoto = Util.notEmpty(itEvent.getPhotos()) && itEvent.getPhotos().length > 0 ? itEvent.getPhotos()[0].getPath() : "";
+String urlPhoto = InfolocaleUtil.getUrlOfLargestPicture(itEvent);
 
 %>
 
