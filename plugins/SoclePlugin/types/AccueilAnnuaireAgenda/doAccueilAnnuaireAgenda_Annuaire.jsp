@@ -94,16 +94,16 @@
         </div>
     </section>
     
-    <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-        <section class="ds44-container-fluid ds44-lightBG ds44-wave-white ds44--xxl-padding-tb">
-            <jalios:include pub="<%= obj.getFaq() %>"/>
-        </section>
-    </jalios:if>
-    
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
         <jalios:foreach name="itPortletBas" type="PortalElement" array="<%= obj.getPortletsBas() %>">
             <jalios:include pub="<%= itPortletBas %>"/>
         </jalios:foreach>    
     </jalios:if>
     
+    <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
+        <section class="ds44-container-fluid ds44-lightBG ds44-wave-white ds44--xxl-padding-tb">
+            <jalios:include pub="<%= obj.getFaq() %>"/>
+        </section>
+    </jalios:if>
+ 
 </main>
