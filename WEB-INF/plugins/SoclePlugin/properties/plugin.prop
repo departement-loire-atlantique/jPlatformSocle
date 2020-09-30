@@ -585,8 +585,20 @@ $jcmsplugin.socle.emploiStage.nav.apprentissage: c_1220100
 $jcmsplugin.socle.emploiStage.nav.serviceCivique: c_1220101
 $jcmsplugin.socle.emploiStage.nav.saisonnier: c_1273695
 $jcmsplugin.socle.emploiStage.emploiPermanent: c_1216292
-$jcmsplugin.socle.emploiStage.delegationService: c_5296
+$jcmsplugin.socle.emploiStage.delegation.stnazaire: c_5290
+$jcmsplugin.socle.emploiStage.delegation.paysderetz: c_5291
+$jcmsplugin.socle.emploiStage.delegation.nantes: c_5292
+$jcmsplugin.socle.emploiStage.delegation.vignoble: c_5293
+$jcmsplugin.socle.emploiStage.delegation.chateaubriant: c_5294
+$jcmsplugin.socle.emploiStage.delegation.ancenis: c_5295
+$jcmsplugin.socle.emploiStage.delegation.servicescentraux: c_5296
 $jcmsplugin.socle.emploiStage.domainesMetiers: c_1216308
+$jcmsplugin.socle.emploiStage.serviceRessource.stnazaire: c_1209688
+$jcmsplugin.socle.emploiStage.serviceRessource.paysderetz: c_1209307
+$jcmsplugin.socle.emploiStage.serviceRessource.nantes: c_1210296
+$jcmsplugin.socle.emploiStage.serviceRessource.vignoble: c_1210119
+$jcmsplugin.socle.emploiStage.serviceRessource.chateaubriant: c_1209323
+$jcmsplugin.socle.emploiStage.serviceRessource.ancenis: c_1210107
 
 # Video
 $jcmsplugin.socle.video.types.root: c_1270060

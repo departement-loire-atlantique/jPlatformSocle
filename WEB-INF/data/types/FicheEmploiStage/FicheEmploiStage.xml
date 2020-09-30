@@ -101,6 +101,9 @@
     <field name="telContactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}" tabGroup="contactRH">
       <label xml:lang="fr">Tel contact RH</label>
     </field>
+    <field name="emailContactRH" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true" tabGroup="contactRH">
+      <label xml:lang="fr">Email contact RH</label>
+    </field>     
     <field name="contactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactMetier">
       <label xml:lang="fr">Contact métier</label>
     </field>
@@ -110,6 +113,9 @@
     <field name="telContactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}" tabGroup="contactMetier">
       <label xml:lang="fr">Tel contact métier</label>
     </field>
+    <field name="emailContactMetier" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true" tabGroup="contactMetier">
+      <label xml:lang="fr">Email contact métier</label>
+    </field>    
     <field name="masquerBouton" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true" tab="contacts">
       <label xml:lang="fr">Masquer bouton ?</label>
       <onLabel xml:lang="en">Yes</onLabel>

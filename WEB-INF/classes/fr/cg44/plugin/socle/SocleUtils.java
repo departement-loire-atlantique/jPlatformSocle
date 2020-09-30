@@ -1718,4 +1718,47 @@ public final class SocleUtils {
       return Util.notEmpty(itLien.getLienExterne());
     }
   }
+  
+  /**
+   * Récupère la fiche lieu du service ressource correspondant à la Délégation
+   * Se base sur le fichier plugin.prop
+   * @param cat la catégorie de la délégation concernée
+   * @return la fiche lieu associée
+   */
+  public static FicheLieu getServiceRessources(Category cat) {
+    
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.stnazaire"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.stnazaire"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.stnazaire"); 
+      }
+    }
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.nantes"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.nantes"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.nantes"); 
+      }
+    }    
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.vignoble"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.vignoble"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.vignoble"); 
+      }
+    }
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.paysderetz"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.paysderetz"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.paysderetz"); 
+      }
+    }    
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.chateaubriant"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.chateaubriant"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.chateaubriant"); 
+      }
+    }
+    if(cat.equals(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.ancenis"))){
+      if(Util.notEmpty(channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.ancenis"))) {
+        return (FicheLieu) channel.getPublication("$jcmsplugin.socle.emploiStage.serviceRessource.ancenis"); 
+      }
+    }    
+    
+    return null;
+  }
+  
 }
