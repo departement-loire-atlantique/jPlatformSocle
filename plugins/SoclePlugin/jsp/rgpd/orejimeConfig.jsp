@@ -63,7 +63,7 @@
                     '_gat_gtag_' + GTM_UA,
                     '_gat_' + GTM_UA
                 ],
-                optOut: false,
+                optOut: true,
                 purposes: ['analytics']
             },
             {
