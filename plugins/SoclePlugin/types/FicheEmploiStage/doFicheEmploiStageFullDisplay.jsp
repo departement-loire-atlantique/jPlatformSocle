@@ -67,15 +67,15 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                    </p>
                                    <p class="ds44-docListElem mts">
                                        <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
-                                       <jalios:if predicate='<%= !obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+                                       <jalios:if predicate='<%= !obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.servicescentraux")) %>'>
                                            <%= SocleUtils.formatCategories(obj.getDirectiondelegation(loggedMember)) %>
                                            <br/>                                
                                        </jalios:if>
                                        <%= obj.getService() %>
-                                       <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) %>'>
+                                       <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.servicescentraux")) %>'>
                                            <%
                                            SortedSet<Category> catsWithoutServices = obj.getDirectiondelegation(loggedMember);
-                                           catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
+                                           catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.servicescentraux"));
                                            %>
                                            <jalios:if predicate="<%= Util.notEmpty(catsWithoutServices) %>">
                                                <br/>
@@ -251,39 +251,66 @@ boolean afficherMentions = !obj.getMasquerMentions();
 	                        <%@ include file='boutonCandidature.jspf' %>
 	                        <% request.removeAttribute("margin"); %>
                        </jalios:if>
-                       
-                       <jalios:select>
-                          <!-- Cas 1 modalités remplies : on les affiche -->
-                          <jalios:if predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
-                              <jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
-                          </jalios:if>
-                          
-                          <!-- Cas 2 modalités pas remplies : on les génère, si fiche emploi rattachées au siège (services centraux) -->
-                          <jalios:if predicate='<%= obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService")) && Util.notEmpty(obj.getCategorieDemploi(loggedMember)) && afficherMentions %>'>
- 
-                            <p class="h4-like ds44-mtb1"><%= glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier") %></p>
-                            <jalios:wysiwyg>
-                               <%= glp("jcmsplugin.socle.ficheemploi.html.contact") %>
-                            </jalios:wysiwyg>
-                       
 
+						<jalios:select>
+							<!-- Cas 1 modalités remplies : on les affiche -->
+							<jalios:if
+								predicate="<%= Util.notEmpty(obj.getModalitesDeCandidature()) %>">
+								<jalios:wysiwyg><%= obj.getModalitesDeCandidature() %></jalios:wysiwyg>
+							</jalios:if>
+							
+                            <!-- Cas 2 modalités pas remplies, alors on les génère :
+                                - si fiche emploi rattachée au siège (services centraux) affichage de propriétés
+                                - si fiche emploi rattachée à une Délégation alors on affiche l'adresse du service ressource de la Délégation (via Fiche lieu)
+                            -->							
+							<jalios:default>
+								<jalios:select>
+	                               
+	                                <!-- Sièges -->
+									<jalios:if predicate='<%=obj.getDirectiondelegation(loggedMember).contains(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.servicescentraux"))
+									    && afficherMentions%>'>
+										<p class="h4-like ds44-mtb1"><%=glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier")%></p>
+										<jalios:wysiwyg>
+											<%=glp("jcmsplugin.socle.ficheemploi.html.contact")%>
+										</jalios:wysiwyg>
+									</jalios:if>
+	
+									<!-- Délégations -->
+									<jalios:default>
+										<p class="h4-like ds44-mtb1"><%=glp("jcmsplugin.socle.ficheemploi.label.repondrecourrier2")%></p>
+										<jalios:foreach name="itCatDelegation" type="Category" collection="<%= obj.getDirectiondelegation(loggedMember) %>">
+		                                    <%
+		                                    FicheLieu itServiceRessources = SocleUtils.getServiceRessources(itCatDelegation);
+		                                    %>
+		                                    <jalios:if predicate="<%= Util.notEmpty(itServiceRessources) %>">
+                                                <div class="mts">
+			                                        <%= itCatDelegation.getName() %><br>
+			                                        <%= glp("jcmsplugin.socle.ficheemploi.label.serviceRessources") %><br>
+			                                        <%= SocleUtils.formatAdressePhysique(itServiceRessources) %>
+		                                        </div>
+		                                    </jalios:if>
+										</jalios:foreach>
+									</jalios:default>
+	
+								</jalios:select>
+							</jalios:default>
 
-                          </jalios:if>
-                       </jalios:select>
-                       
-                   </div>
+						</jalios:select>
+
+					</div>
                 </div>
             </div>
         </section>
         
         <%
-        boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH());
-        boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier());
-        
-        int nbContactsRH = Math.max(null != obj.getContactRH() ? obj.getContactRH().length : 0, null != obj.getUniteOrgaContactRH() ? obj.getUniteOrgaContactRH().length : 0);
-        int nbContactsMetier = Math.max(null != obj.getContactMetier() ? obj.getContactMetier().length : 0, null != obj.getUniteOrgaContactMetier() ? obj.getUniteOrgaContactMetier().length : 0);
-        
-        %>
+                  boolean hasContactRH = Util.notEmpty(obj.getContactRH()) || Util.notEmpty(obj.getUniteOrgaContactRH());
+                  boolean hasContactMetier = Util.notEmpty(obj.getContactMetier()) || Util.notEmpty(obj.getUniteOrgaContactMetier());
+
+                  int nbContactsRH = Math.max(null != obj.getContactRH() ? obj.getContactRH().length : 0,
+                      null != obj.getUniteOrgaContactRH() ? obj.getUniteOrgaContactRH().length : 0);
+                  int nbContactsMetier = Math.max(null != obj.getContactMetier() ? obj.getContactMetier().length : 0,
+                      null != obj.getUniteOrgaContactMetier() ? obj.getUniteOrgaContactMetier().length : 0);
+                %>
         
         <%-- Bloc vos contacts --%>
         <jalios:if predicate="<%= hasContactRH || hasContactMetier %>">
@@ -301,12 +328,15 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                         <%-- On boucle sur le nombre de contacts RH --%> 
                                         <%
                                         for(int cptContactRH = 0; cptContactRH < nbContactsRH ; cptContactRH++){
+                                          String libelleContactRH = "";
+                                          String libelleEmailContactRH = "";
                                         %>
                                             <div class='ds44-docListElem <%= cptContactRH == 0 ? "mts" : "mtm" %>'>
                                                 <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
                                                 
                                                 <jalios:if predicate="<%= Util.notEmpty(obj.getContactRH()) && cptContactRH < obj.getContactRH().length && Util.notEmpty(obj.getContactRH()[cptContactRH]) %>">
-                                                    <%= obj.getContactRH()[cptContactRH] %>
+                                                    <% libelleContactRH = obj.getContactRH()[cptContactRH]; %>
+                                                    <%= libelleContactRH %>
                                                 </jalios:if>
                                                 
                                                 <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactRH()) && cptContactRH < obj.getUniteOrgaContactRH().length && Util.notEmpty(obj.getUniteOrgaContactRH()[cptContactRH]) %>">
@@ -318,7 +348,6 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                                 
                                             </div>
 
-
                                             <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactRH()) && cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
                                                 <div class="ds44-docListElem mts">
                                                     <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
@@ -326,6 +355,22 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                                 </div>
                                             </jalios:if>
 
+                                            <jalios:if predicate='<%= Util.notEmpty(obj.getEmailContactRH()) && cptContactRH < obj.getEmailContactRH().length && Util.notEmpty(obj.getEmailContactRH()[cptContactRH]) %>'>
+                                                <div class="ds44-docListElem mts">
+                                                    <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+                                                    <%
+                                                    if(Util.notEmpty(libelleContactRH)){
+                                                      libelleEmailContactRH = libelleContactRH; 
+                                                    }
+                                                    
+                                                    String email = obj.getEmailContactRH()[cptContactRH]; %>
+                                                    <a href='<%= "mailto:"+email %>'
+                                                       title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", libelleEmailContactRH, email)) %>'
+                                                       data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
+                                                        <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
+                                                    </a>
+                                                </div>
+                                            </jalios:if>
 
                                        <%} %>
                                     </div>
@@ -336,12 +381,15 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                         <%-- On boucle sur le nombre de contacts Métiers --%>
                                         <%
                                         for(int cptContactMetier = 0; cptContactMetier < nbContactsMetier ; cptContactMetier++) {
+                                          String libelleContactMetier = "";
+                                          String libelleEmailContactMetier = "";
                                         %>
                                                 <div class='ds44-docListElem <%= cptContactMetier == 0 ? "mts" : "mtm" %>'>
                                                     <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
                                                     
                                                     <jalios:if predicate="<%= Util.notEmpty(obj.getContactMetier()) && cptContactMetier < obj.getContactMetier().length && Util.notEmpty(obj.getContactMetier()[cptContactMetier]) %>">
-                                                        <%= obj.getContactMetier()[cptContactMetier] %>
+                                                        <% libelleContactMetier = obj.getContactMetier()[cptContactMetier]; %>
+                                                        <%= libelleContactMetier %>
                                                     </jalios:if>
                                                     
                                                     <jalios:if predicate="<%= Util.notEmpty(obj.getUniteOrgaContactMetier()) && cptContactMetier < obj.getUniteOrgaContactMetier().length && Util.notEmpty(obj.getUniteOrgaContactMetier()[cptContactMetier]) %>">
@@ -352,7 +400,6 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                                     </jalios:if>
                                                     
                                                 </div>
-                                                
 
                                                 <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactMetier()) && cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
                                                     <div class="ds44-docListElem mts">
@@ -360,6 +407,26 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                                         <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>"></ds:phone>
                                                     </div>
                                                 </jalios:if>
+
+	                                            <jalios:if predicate='<%= Util.notEmpty(obj.getEmailContactMetier()) && cptContactMetier < obj.getEmailContactMetier().length && Util.notEmpty(obj.getEmailContactMetier()[cptContactMetier]) %>'>
+	                                                <div class="ds44-docListElem mts">
+	                                                    <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+	                                                    <% 
+	                                                    if(Util.notEmpty(libelleContactMetier)){
+	                                                      libelleEmailContactMetier = libelleContactMetier; 
+	                                                    }
+	                                                    
+	                                                    String email = obj.getEmailContactMetier()[cptContactMetier];
+	                                                    
+	                                                    %>
+	                                                    <a href='<%= "mailto:"+email %>'
+	                                                       title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", libelleEmailContactMetier, email)) %>'
+	                                                       data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
+	                                                        <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
+	                                                    </a>
+	                                                </div>
+	                                            </jalios:if>
+                                                                                            
                                         <%} %>
                                     </div>
                                 </jalios:if>                                   

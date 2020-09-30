@@ -78,7 +78,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 	        SortedSet<Category> catsWithoutServices = pub.getDirectiondelegation(loggedMember);
             Category catService =  null;
             if (Util.notEmpty(catsWithoutServices)) {
-              catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegationService"));
+              catsWithoutServices.remove(channel.getCategory("$jcmsplugin.socle.emploiStage.delegation.servicescentraux"));
               catService = new Category();
               catService.setName(pub.getService());
             }
