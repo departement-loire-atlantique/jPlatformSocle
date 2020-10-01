@@ -262,8 +262,8 @@ boolean afficherMentions = !obj.getMasquerMentions();
                             <!-- Cas 2 modalités pas remplies, alors on les génère :
                                 - si fiche emploi rattachée au siège (services centraux) affichage de propriétés
                                 - si fiche emploi rattachée à une Délégation alors on affiche l'adresse du service ressource de la Délégation (via Fiche lieu)
-                            -->							
-							<jalios:default>
+                            -->	
+                            <jalios:if predicate="<%= afficherMentions %>">						
 								<jalios:select>
 	                               
 	                                <!-- Sièges -->
@@ -293,7 +293,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
 									</jalios:default>
 	
 								</jalios:select>
-							</jalios:default>
+							</jalios:if>
 
 						</jalios:select>
 
