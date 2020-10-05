@@ -107,16 +107,16 @@
         
     <%-- Contenu --%>
     <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique1")) || Util.notEmpty(obj.getFieldValue("titreRubrique2"))
-      || Util.notEmpty(obj.getFieldValue("titreRubrique3")) || Util.notEmpty(obj.getFieldValue("titreRubrique4")) %>'>
+      || Util.notEmpty(obj.getFieldValue("titreRubrique3")) || Util.notEmpty(obj.getFieldValue("titreRubrique4")) || Util.notEmpty(obj.getFieldValue("titreRubrique5")) %>'>
         <section class="ds44-contenuArticle ds44-mt2" id="section1">
             <div class="ds44-inner-container--mag">
                 <div class="ds44-grid12-offset-1">
                     <h2 class="h2-like ds44-mb4"><%= glp("jcmsplugin.socle.fichepublication.ausommaire") %></h2>
                     <div class="grid-2-small-1 has-gutter-l">
                     
-                        <%-- Boucle sur les 4 onglets "Rubrique" et alternance des styles "mrs" et "mls".  --%>
+                        <%-- Boucle sur les 5 onglets "Rubrique" et alternance des styles "mrs" et "mls".  --%>
                         
-                        <% for(int cptRubrique=1 ; cptRubrique<=4 ; cptRubrique++) { %>
+                        <% for(int cptRubrique=1 ; cptRubrique<=5 ; cptRubrique++) { %>
                         
                             <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique)) %>'>
                             
