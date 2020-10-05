@@ -26,9 +26,6 @@
         
     </article>
     
-    <%-- Page utile --%>
-    <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
-    
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
         <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
@@ -36,5 +33,9 @@
                <jalios:include id="<%= itPortlet.getId() %>" />
             </section>
         </jalios:foreach>
-    </jalios:if>    
+    </jalios:if>  
+    
+    <%-- Page utile --%>
+    <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    
 </main>

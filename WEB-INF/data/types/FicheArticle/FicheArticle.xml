@@ -178,7 +178,7 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
-    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
+    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Portlets bas</label>
     </field>
     <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" tab="contenu" searchable="false" html="false" checkHtml="true" hidden="true">
