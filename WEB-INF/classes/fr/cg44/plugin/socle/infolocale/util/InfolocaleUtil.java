@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle.infolocale.util;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -202,9 +203,18 @@ public class InfolocaleUtil {
         for (DateInfolocale itDate : allDates) {
             try {
                 Date itJavaDate = sdf.parse(itDate.getDebut());
-                Instant itInstant = itJavaDate.toInstant();
+                Instant itInstant = itJavaDate.toInstant().truncatedTo(ChronoUnit.DAYS);
                 Date itJavaDateEnd = sdf.parse(itDate.getFin());
-                Instant itInstantEnd = itJavaDateEnd.toInstant();
+                Instant itInstantEnd = itJavaDateEnd.toInstant().truncatedTo(ChronoUnit.DAYS);
+                
+                // Fix sur un bug natif Java où si une date a pour valeur XX/XX/XXXX 00:00:00
+                // alors l'instant généré sera à J-1
+                while (Date.from(itInstant).before(itJavaDate)) {
+                  itInstant = itInstant.plus(Duration.ofHours(24));
+                }
+                while (Date.from(itInstantEnd).before(itJavaDateEnd)) {
+                  itInstantEnd = itInstantEnd.plus(Duration.ofHours(24));
+                }
                 
                 // Date de début et de fin sont avant la date actuelle / la date la plus proche actuelle
                 if (itInstant.isBefore(instantNow) && itInstantEnd.isBefore(instantNow)) {
