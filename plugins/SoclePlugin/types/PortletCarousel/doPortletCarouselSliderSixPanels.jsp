@@ -100,7 +100,7 @@ String sliderAmounts = "1";
                    String widthColOne = "";
                    String widthColTwo = "";
                    String widthColThree = "";
-                   int maxElems = box.getMaxResults() <= collection.size() ? box.getMaxResults() : collection.size();
+                   int maxElems = box.getMaxResults() <= collection.size() && box.getMaxResults() > 0 ? box.getMaxResults() : collection.size();
 				   %>
 				   <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
 				   <%
@@ -122,8 +122,8 @@ String sliderAmounts = "1";
 		             widthColThree = "2";
 				   } else if (remainingElements >= 2) {
 				     // il reste 2 éléments ou plus : on a deux colonnes
-				     widthColOne = "8";
-		             widthColTwo = "4";
+				     widthColOne = "9";
+		             widthColTwo = "3";
 				   } else {
 				     // Il ne reste qu'un élément : on a une colonne
 				     widthColOne = "12";
@@ -137,15 +137,7 @@ String sliderAmounts = "1";
 				         <%-- Bloc une ligne --%>
 				         <jalios:if predicate="<%= counterThisPanel == 1 %>">
 					         <div class="col-<%= widthColOne %>-small-1 ds44-mb2 ">
-					            <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
-					               <picture class="ds44-container-imgRatio">
-					                  <img src="../../assets/images/ds44-logo--sampleImg.png" alt="" class="ds44-imgRatio"/>
-					               </picture>
-					               <div class="ds44-card__section">
-					                  <p role="heading" aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink">Ceci est le titre de la tuile</a> </p>
-					                  <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-					               </div>
-					            </section>
+					            <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
 					         </div>
 				         </jalios:if>
 				         <%-- Bloc deux lignes --%>
@@ -156,16 +148,12 @@ String sliderAmounts = "1";
 					           <div class="ds44-flex-container ds44-flex-container--column ds44-h100">
 					         </jalios:if>
 					               <div class="ds44-fl1 ds44-mb2">
-					                  <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
-					                     <picture class="ds44-container-imgRatio">
-					                        <img src="../../assets/images/ds44-logo--sampleImg.png" alt="" class="ds44-imgRatio"/>
-					                     </picture>
-					                     <div class="ds44-card__section">
-					                        <p role="heading" aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink">Ceci est le titre de la tuile</a> </p>
-					                        <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-					                     </div>
-					                  </section>
+					                  <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
 					               </div>
+					         <%-- Ajout d'un bloc vide si compteur = 2 et qu'on a atteint la fin --%>
+					         <jalios:if predicate="<%= counterThisPanel == 2 && itPublicationCounter == maxElems %>">
+					               <div class="ds44-fl1 ds44-mb2"></div>
+					         </jalios:if>
 					         <%-- Fermeture du sous-bloc --%>
 					         <jalios:if predicate="<%= counterThisPanel == 3 || itPublicationCounter == maxElems %>">
 					           </div>
@@ -180,16 +168,17 @@ String sliderAmounts = "1";
 					           <div class="ds44-flex-container ds44-flex-container--column ds44-h100">
 					         </jalios:if>
 					               <div class="ds44-fl1 ds44-mb2">
-					                  <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
-					                     <picture class="ds44-container-imgRatio">
-					                        <img src="../../assets/images/ds44-logo--sampleImg.png" alt="" class="ds44-imgRatio"/>
-					                     </picture>
-					                     <div class="ds44-card__section">
-					                        <p role="heading" aria-level="2" class="ds44-card__title"><a href="#" class="ds44-card__globalLink">Ceci est le titre de la tuile</a> </p>
-					                        <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-					                     </div>
-					                  </section>
+					                  <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
 					               </div>
+					         <%-- Ajout de deux blocs vides si compteur = 4 et qu'on a atteint la fin --%>
+                             <jalios:if predicate="<%= counterThisPanel == 4 && itPublicationCounter == maxElems %>">
+                                   <div class="ds44-fl1 ds44-mb2"></div>
+                                   <div class="ds44-fl1 ds44-mb2"></div>
+                             </jalios:if>
+                             <%-- Ajout d'un bloc vide si compteur = 5 et qu'on a atteint la fin --%>
+                             <jalios:if predicate="<%= counterThisPanel == 5 && itPublicationCounter == maxElems %>">
+                                   <div class="ds44-fl1 ds44-mb2"></div>
+                             </jalios:if>
 					            <%-- Fermeture du sous-bloc --%>
                              <jalios:if predicate="<%= counterThisPanel == 0 || itPublicationCounter == maxElems %>">
                                </div>
