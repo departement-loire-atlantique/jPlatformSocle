@@ -316,6 +316,11 @@ jcmsplugin.socle.pdcv.paysretz: Pays de retz
 jcmsplugin.socle.pdcv.vignoble: Vignoble
 
 # ------------------------------------------------------------
+#  Structure
+# ------------------------------------------------------------
+jcmsplugin.socle.structure.nom: Nom de la structure
+
+# ------------------------------------------------------------
 #  Contenu
 # ------------------------------------------------------------
 jcmsplugin.socle.onglet.resume: En résumé
