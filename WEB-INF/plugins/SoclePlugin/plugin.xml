@@ -438,6 +438,9 @@
         <template name="verticalCard" file="doPortletQueryForeachVerticalCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile verticale</label>
         </template>
+        <template name="contactStructure" file="doPortletQueryForeachContactStructure.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit contacts de structure</label>
+        </template>
         <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
         </template>        

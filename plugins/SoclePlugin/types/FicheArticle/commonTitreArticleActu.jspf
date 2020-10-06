@@ -30,3 +30,16 @@ if(pub instanceof FicheActu){
         </div>
     </section>
 </jalios:if>
+
+<%-- Portlets haut --%>
+<jalios:if predicate="<%= Util.notEmpty(obj.getPortletHaut()) %>">
+    <jalios:foreach name="itPortlet" array="<%= obj.getPortletHaut() %>" type="com.jalios.jcms.portlet.PortalElement">
+       <section class="ds44-contenuArticle">
+          <div class="ds44-inner-container ds44-mtb3">
+            <div class="ds44-grid12-offset-2">
+                <jalios:include id="<%= itPortlet.getId() %>" />
+            </div>
+          </div>
+        </section>
+    </jalios:foreach>
+</jalios:if>    

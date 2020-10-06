@@ -316,6 +316,15 @@ jcmsplugin.socle.pdcv.paysretz: Pays de retz
 jcmsplugin.socle.pdcv.vignoble: Vignoble
 
 # ------------------------------------------------------------
+#  Structure
+# ------------------------------------------------------------
+jcmsplugin.socle.structure.qui-contacter: Qui contacter
+jcmsplugin.socle.structure.description: Pour trouver le nom de votre interlocuteur aux Archives départementales, saisissez le nom de votre structure :
+jcmsplugin.socle.structure.nom: Nom de la structure
+jcmsplugin.socle.structure.contact.no-result.title: Pas de résultats pour <strong>"{0}"</strong>
+jcmsplugin.socle.structure.contact.no-result.description: Si vous ne trouvez pas votre interlocuteur, merci d'adresser un courriel à l'adresse suivante <a href="mailto:archives@loire-atlantique.fr">archives@loire-atlantique.fr</a>
+
+# ------------------------------------------------------------
 #  Contenu
 # ------------------------------------------------------------
 jcmsplugin.socle.onglet.resume: En résumé

@@ -37,6 +37,9 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
+    <field name="portletHaut" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" ml="false" hidden="true" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Portlet haut</label>
+    </field>
     <field name="infobulleAnnuaire" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="4" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Infobulle annuaire</label>
     </field>
