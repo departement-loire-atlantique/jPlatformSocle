@@ -438,6 +438,12 @@ boolean afficherMentions = !obj.getMasquerMentions();
                </div>
            </section>
         </jalios:if>
+               
+        
+        <%-- Bloc Portlet Push --%>
+        <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheemploi.id"))%>'>
+            <jalios:include id='<%=channel.getProperty("jcmsplugin.socle.portletPush.ficheemploi.id")%>' />
+        </jalios:if>
         
         
         <%-- Bloc documents utiles --%>
