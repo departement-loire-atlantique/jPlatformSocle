@@ -160,6 +160,9 @@ switch(format) {
       if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
       formattedImagePath = SocleUtils.generateVignette(image, width, height);
       break;
+      
+	case "unchanged" :
+	    break;
 	
 	default :
 	  if (Util.isEmpty(image)) image = SocleUtils.getImagePrincipale(pub);
