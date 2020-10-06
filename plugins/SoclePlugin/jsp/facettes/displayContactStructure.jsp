@@ -12,37 +12,41 @@
 
 response.setContentType("application/json");
 
+FicheLieu ficheLieu = (FicheLieu) getPublicationParameter("structure");
 
-QueryHandler qh = new QueryHandler();
-qh.setCids(request.getParameter("cid"), request.getParameter("cidSecondaire"));
 
-qh.setCatMode("or");
-qh.setCheckPstatus(true);
-qh.setTypes("FicheLieu");
-
+Set<Contact> resultSet = ficheLieu.getLinkIndexedDataSet(Contact.class, "contactPourLesFichesLieux");
 
 
 JsonObject jsonObject = new JsonObject();
 
 
 StringBuffer contentHtml = new StringBuffer();
-TreeSet<Publication> resultSet = new TreeSet<Publication>(new CategoryComparator(request.getParameter("cid"), request.getParameter("cidSecondaire")));
-resultSet.addAll(qh.getResultSet());
+
 
 
 %>
-<jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication"><%
-    %><jalios:buffer name="fichesLieuxHTML"><%
-        FicheLieu itFicheLieu = (FicheLieu) itPub;        
-       %>
-        
-       <jalios:media data="<%= itFicheLieu %>" template="contact"/>
-      
-       <jalios:if predicate="<%= itCounter != resultSet.size() %>">
-           <hr />
-       </jalios:if><%
+<jalios:foreach collection="<%= resultSet %>" name="itContact" type="Contact"><%
+    %><jalios:buffer name="contactHTML"><%       
+       %><jalios:media data="<%= itContact %>" template="card"/><%
    %></jalios:buffer><%   
-    contentHtml.append(fichesLieuxHTML);
-%></jalios:foreach><%
+    contentHtml.append(contactHTML);
+%></jalios:foreach>
+
+<jalios:if predicate="<%= Util.isEmpty(resultSet) %>"><%
+    %><jalios:buffer name="contactHTML">
+     <section class="class='ds44-card ds44-box ds44-bgGray">
+         <div class="ds44-flex-container ds44-flex-valign-center">
+            <div class="ds44-card__section--horizontal">
+			     <p><%= glp("jcmsplugin.socle.structure.contact.no-result.title", ficheLieu.getTitle()) %></p>
+			     <p><%= glp("jcmsplugin.socle.structure.contact.no-result.description") %></p>
+		     </div>
+		 </div>
+     </section>
+     </jalios:buffer><%
+     contentHtml.append(contactHTML);
+%></jalios:if>
+
+<%
 jsonObject.addProperty("content_html", contentHtml.toString());
 %><%= jsonObject %>

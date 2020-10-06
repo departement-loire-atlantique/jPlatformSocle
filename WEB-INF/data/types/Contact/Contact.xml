@@ -24,12 +24,15 @@
     <field name="adresseMail" editor="email" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="50" ml="false">
       <label xml:lang="fr">Adresse mail</label>
     </field>
+    <field name="contactPourLesFichesLieux" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FicheLieu[]">
+      <label xml:lang="fr">Contact pour les fiches lieux</label>
+    </field>
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mise en avant</label>
-    </field>     
+    </field>
     <field name="typeDeContact" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.contact.typeContact.root">
       <label xml:lang="fr">Type de contact</label>
     </field>
