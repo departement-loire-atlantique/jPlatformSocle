@@ -10,7 +10,33 @@
 <main id="content" role="main">
     <article class="ds44-container-large">
     
-        <%@ include file='../FicheArticle/commonTitreArticleActu.jspf' %>
+        <%
+        String date = "";
+        try {
+          SimpleDateFormat sdfDateActu = new SimpleDateFormat(glp("date-format"));
+          date = sdfDateActu.format(obj.getDateActu());
+          } catch (Exception e) {
+              // do nothing
+          }   
+
+        %>
+
+		<ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
+		    title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
+		    breadcrumb="true" date="<%= date %>"></ds:titleSimple>
+		
+		<%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
+		<jalios:if predicate='<%=Util.isEmpty(obj.getVideoPrincipale()) && Util.notEmpty(obj.getChapo()) %>'>
+		    <section class="ds44-contenuArticle">
+		        <div class="ds44-inner-container ds44-mtb3">
+		            <div class="ds44-grid12-offset-2">
+		                <div class="ds44-introduction">
+		                    <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		</jalios:if>
 			
 		<%-- Boucler sur les paragraphes --%>
 		<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuParagraphe()%>">
