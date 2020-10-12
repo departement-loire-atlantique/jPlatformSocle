@@ -20,10 +20,12 @@ public class IgnoreQueryFilter extends LuceneQueryFilter {
   @Override
   public QueryHandler doFilterQuery(QueryHandler qh, Map context, HttpServletRequest request) {	
     Channel channel = Channel.getChannel();
-    Boolean isInFrontOffice = channel.getCurrentJcmsContext().isInFrontOffice();
-    Category ignoreCat = channel.getCategory("$jcmsplugin.socle.recherche.nonrepertoriee.cat");
-    if(isInFrontOffice && Util.notEmpty(ignoreCat)) {
-      qh.setCidsOff(ignoreCat.getId());
+    if(Util.notEmpty(channel.getCurrentJcmsContext())) {
+      Boolean isInFrontOffice = channel.getCurrentJcmsContext().isInFrontOffice();
+      Category ignoreCat = channel.getCategory("$jcmsplugin.socle.recherche.nonrepertoriee.cat");
+      if(isInFrontOffice && Util.notEmpty(ignoreCat)) {
+        qh.setCidsOff(ignoreCat.getId());
+      }
     }
     return qh;
   }
