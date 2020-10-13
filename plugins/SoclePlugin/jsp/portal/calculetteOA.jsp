@@ -16,8 +16,7 @@
 			                    <div class="ds44-form__container">
 			                        <div class="ds44-posRel">
 			                            <label for="ds44-js-soa-template-field-1" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.calculetteOA.revenubrut.label") %><sup aria-hidden="true">*</sup></span></span></label>
-			                        
-			                            <input type="text" id="ds44-js-soa-template-field-1" name="ds44-js-soa-template-field-1" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.calculetteOA.revenubrut.title") %>" inputmode="numeric" pattern="[0-9]*" required   aria-describedby="explanation-ds44-js-soa-template-field-1" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.calculetteOA.revenubrut.label")) %></span></button>
+ 			                            <input type="text" id="ds44-js-soa-template-field-1" name="ds44-js-soa-template-field-1" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.calculetteOA.revenubrut.title") %>" inputmode="numeric" pattern="[0-9]*" required   aria-describedby="explanation-ds44-js-soa-template-field-1" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.calculetteOA.revenubrut.label")) %></span></button>
 			                        </div>
 			
 			                        <div class="ds44-field-information" aria-live="polite">
@@ -50,7 +49,6 @@
 					                               <%
 					                               i=i+step;
 					                            } %>
-			                                    
 			                                </ul>
 			                            </div>
 			                        </div>
@@ -68,8 +66,10 @@
 			            </div>
 			        </template>
 			
+
 			        <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.calculetteOA.titre") %></p>
 			        <p class="ds44-textLegend ds44-textLegend--mentions ds44-mb2"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+
 			        <form id="ds44-js-soa-form" data-is-ajax="true">
 			            <div id="ds44-js-soa-container"></div>
 			            <div class="ds44-blocObligeAlim ds44--l-padding-tb">
