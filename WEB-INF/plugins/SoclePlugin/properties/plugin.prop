@@ -647,3 +647,8 @@ $jcmsplugin.socle.action.etatAvancement.cat: p2_911671
 $jcmsplugin.socle.login.redirect.pub: c_1320077
 $jcmsplugin.socle.login.pub: c_1314351
 jcms.resource.mail-password: plugins/SoclePlugin/types/PortletLogin/mailPassword.jsp
+
+# Calculette Obligation alimentaire
+jcmsplugin.socle.calculetteOA.partsMax : 10
+jcmsplugin.socle.calculetteOA.seuil : 1300
+jcmsplugin.socle.calculetteOA.demi-part : 350
