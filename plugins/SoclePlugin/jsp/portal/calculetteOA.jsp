@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<section id="section4" class="ds44-contenuArticle">
+<section id="sectionCalculette" class="ds44-contenuArticle">
     <div class="ds44-inner-container ds44-mtb3">
         <div class="ds44-grid12-offset-2">
                 
