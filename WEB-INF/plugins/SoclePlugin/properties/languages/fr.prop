@@ -755,3 +755,18 @@ jcmsplugin.socle.show.cout: Coût du spectacle
 jcmsplugin.socle.show.conditions: Conditions particulières
 jcmsplugin.socle.show.liens: Liens utiles
 jcmsplugin.socle.show.infos: Informations pratiques
+
+# Calculette Obligation alimentaire
+jcmsplugin.socle.calculetteOA.titre: Evaluez le montant de l'obligation alimentaire
+jcmsplugin.socle.calculetteOA.ajouter: Ajouter un obligé alimentaire ?
+jcmsplugin.socle.calculetteOA.supprimer: Supprimer le dernier obligé alimentaire
+jcmsplugin.socle.calculetteOA.fieldset.legend: Obligé alimentaire n°
+jcmsplugin.socle.calculetteOA.revenubrut.label: Revenu brut annuel du foyer
+jcmsplugin.socle.calculetteOA.revenubrut.title: Revenu brut annuel du foyer (Obligé alimentaire n°) - obligatoire
+jcmsplugin.socle.calculetteOA.revenubrut.info: Ce montant se trouve en page 2 de votre avis d'imposition - ligne 'Revenu brut global'
+jcmsplugin.socle.calculetteOA.partsfiscales.label: Nombre de parts fiscales du foyer
+jcmsplugin.socle.calculetteOA.partsfiscales.title: Nombre de parts fiscales du foyer (Obligé alimentaire n°) - obligatoire
+jcmsplugin.socle.calculetteOA.partsfiscales.info: Cette information se trouve en page 2 de votre avis d'imposition, sous le libellé 'Nombre de parts'
+jcmsplugin.socle.calculetteOA.bouton.label: Calculer
+jcmsplugin.socle.calculetteOA.bouton.title: Calculer le montant de l'obligation alimentaire
+
