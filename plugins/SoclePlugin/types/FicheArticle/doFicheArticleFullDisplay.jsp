@@ -33,7 +33,10 @@
                <jalios:include id="<%= itPortlet.getId() %>" />
             </section>
         </jalios:foreach>
-    </jalios:if>  
+    </jalios:if>
+    
+    <%-- Partagez cette page --%>
+    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
     
     <%-- Page utile --%>
     <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
