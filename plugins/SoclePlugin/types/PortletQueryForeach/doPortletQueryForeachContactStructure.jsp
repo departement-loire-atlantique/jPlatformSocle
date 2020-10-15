@@ -6,7 +6,7 @@ PortletQueryForeach box = (PortletQueryForeach) portlet;
 String idResultInLine = "structureContactResult";
 %>
 
-<p class="ds44-box-heading"><% glp("jcmsplugin.socle.structure.qui-contacter") %></p>
+<p class="ds44-box-heading"><%= glp("jcmsplugin.socle.structure.qui-contacter") %></p>
 
 <p class="ds44-mtb2"><%= glp("jcmsplugin.socle.structure.description") %></p>
 
@@ -17,13 +17,13 @@ String idResultInLine = "structureContactResult";
 	    
 	    <div class="ds44-fieldContainer ds44-fg1">
 		    <div class="ds44-js-linked-fields ds44-js-masked-fields">                               
-		        <%-- Commune --%>
+
 		        <ds:facetteAutoCompletion idFormElement='contact-structure' 
 		                name="structure" 
 		                request="<%= request %>" 
 		                isFacetteObligatoire="true" 
 		                dataMode="select-only" 
-		                dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp" 
+		                dataUrl='<%= "plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query=" + HttpUtil.encodeForURL(box.getQueries()[0]) %>'
 		                label='<%= glp("jcmsplugin.socle.structure.nom") %>'
 		                isLarge="false"/>           
 		    </div>
