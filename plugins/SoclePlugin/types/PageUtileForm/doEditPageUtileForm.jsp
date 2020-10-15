@@ -19,8 +19,8 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
     </header>
     <div class="ds44-inner-container ds44-grid12-offset-1">
         <div class="ds44-choiceYN txtcenter ds44--m-padding-t ds44--xl-padding-b js-tabs">
-            <button class="ds44-btnStd js-tablist__link" type="button" aria-pressed="false" aria-label='<%= glp("jcmsplugin.socle.pageutile.oui") %>' data-href="#ds44-choiceY" data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Oui"}'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.oui") %></span><i class="icon icon-like icon--sizeL" aria-hidden="true"></i></button>
-            <button class="ds44-btnStd js-tablist__link" type="button" aria-pressed="false" aria-label='<%= glp("jcmsplugin.socle.pageutile.non") %>' data-href="#ds44-choiceN" data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Non"}'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.non") %></span><i class="icon icon-dislike icon--sizeL" aria-hidden="true"></i></button>
+            <button class="ds44-btnStd js-tablist__link" type="button" aria-pressed="false" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.pageutile.oui")) %>' data-href="#ds44-choiceY" data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Oui"}'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.oui") %></span><i class="icon icon-like icon--sizeL" aria-hidden="true"></i></button>
+            <button class="ds44-btnStd js-tablist__link" type="button" aria-pressed="false" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.pageutile.non")) %>' data-href="#ds44-choiceN" data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Non"}'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.non") %></span><i class="icon icon-dislike icon--sizeL" aria-hidden="true"></i></button>
         </div>
         <div id="ds44-choiceY" class="hidden">
             <form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' >
@@ -32,7 +32,14 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
 							    <label for="commentaire-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.commentaire") %></span></span></label>
 							    <textarea rows="5" cols="1" id="commentaire-oui" name="commentaire" class="ds44-inpStd"></textarea>
 							</div>
+						</div>
+						<div class="ds44-form__container">
+							<div class="ds44-posRel">
+							    <label for="email-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
+							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"></input>
+							</div>
                         </div>
+                        
                     </div>
                     <div class="txtcenter ds44-mt-std">
                         <button class="ds44-btnStd" title='<%= glp("jcmsplugin.socle.pageutile.envoyer-commentaire.utile") %>'>
@@ -78,6 +85,12 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
 							    <textarea rows="5" cols="1" id="commentaire-non" name="commentaire" class="ds44-inpStd" aria-describedby="form-bloc-utils-N"></textarea>
 							</div>
 						</div>
+						<div class="ds44-form__container">
+							<div class="ds44-posRel">
+							    <label for="email-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
+							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"></input>
+							</div>
+                        </div>
                     </div>
                 </div>
                 <div class="txtcenter ds44-mt-std">
