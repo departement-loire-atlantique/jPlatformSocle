@@ -838,7 +838,7 @@ public class InfolocaleUtil {
       for (int counterPhotos = 0; counterPhotos < itEvent.getPhotos().length; counterPhotos++) {
         Photo itPhoto = itEvent.getPhotos()[counterPhotos];
         
-        if (Util.isEmpty(itPhoto) || "inconnu".equals(itPhoto.getFormat())) continue;
+        if (Util.isEmpty(itPhoto) || Util.isEmpty(itPhoto.getPath()) || Util.isEmpty(itPhoto.getPath()) || "inconnu".equals(itPhoto.getFormat())) continue;
         
         // Initialisation
         if (Util.isEmpty(urlImg)) {
@@ -898,6 +898,9 @@ public class InfolocaleUtil {
       
       for (int counterPhotos = 0; counterPhotos < itEvent.getPhotos().length; counterPhotos++) {
         Photo itPhoto = itEvent.getPhotos()[counterPhotos];
+        if (Util.isEmpty(itPhoto.getPath())) {
+          continue;
+        }
         if (itPhoto.getPath().equals(urlLargest)) {
           return itPhoto;
         }
