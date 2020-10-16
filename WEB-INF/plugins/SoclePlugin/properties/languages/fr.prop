@@ -721,6 +721,7 @@ jcmsplugin.socle.pageutile.non: Non, cette page ne m'a pas été utile
 jcmsplugin.socle.pageutile.merci: Merci ! Si vous le souhaitez, vous pouvez nous laisser un commentaire :
 jcmsplugin.socle.pageutile.envoi-succes: Merci de votre contribution. 
 jcmsplugin.socle.pageutile.commentaire: Commentaire
+jcmsplugin.socle.pageutile.email: Email
 jcmsplugin.socle.pageutile.envoyer-commentaire.utile: Envoyer votre commentaire
 jcmsplugin.socle.pageutile.envoyer-commentaire.inutile: Envoyer votre commentaire pour rendre cette page plus utile
 jcmsplugin.socle.pageutile.retour-oui: Revenir au bouton Oui

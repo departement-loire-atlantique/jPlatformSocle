@@ -25,6 +25,9 @@
     <field name="url" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
       <label xml:lang="fr">URL du contenu</label>
     </field>
+    <field name="email" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false">
+      <label xml:lang="fr">email</label>
+    </field>
   </fields>
 </type>
 
