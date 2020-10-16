@@ -20,11 +20,11 @@ StringBuffer motif = new StringBuffer();
 String motifTexte = request.getParameter("bloc-utile-informations-questions[text]");
 String id = request.getParameter("id[value]");
 Publication pub = channel.getPublication(id);
-String emailRedacteur = request.getParameter("email[value]");
-if(Util.isEmpty(emailRedacteur)) emailRedacteur = pub.getAuthor().getEmail();
+String emailRedacteur = pub.getAuthor().getEmail();
 String titre = pub.getTitle();
 String url = request.getParameter("url[value]");
 String date = SocleUtils.formatDate("dd/MM/yy HH:mm", new Date());
+String emailReponse = request.getParameter("email[value]");
 
 // contrôle des données
 boolean isOK = true;
@@ -84,7 +84,7 @@ if(isOK){
     
     else{
       // Envoi du mail
-      if(! MailUtils.envoiMailPageUtile(pageUtile, titre, url, commentaire, date, motifTexte, emailRedacteur)){
+      if(! MailUtils.envoiMailPageUtile(pageUtile, titre, url, commentaire, date, motifTexte, emailRedacteur, emailReponse)){
         // Erreur d'envoi de mail. On ne prévient pas l'usager de cette erreur technique.
         logger.error("Page utile : impossible d'envoyer le mail depuis l'URL " + url);
       }

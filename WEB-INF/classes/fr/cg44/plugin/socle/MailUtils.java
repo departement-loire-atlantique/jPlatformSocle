@@ -209,7 +209,7 @@ public final class MailUtils {
    * Un autre destinaire peut être paramétré en prop du site pour en voi en CC. 
    * 
    */
-  public static boolean envoiMailPageUtile(boolean pageUtile, String titre, String url, String commentaire, String date, String motif, String emailRedacteur) {
+  public static boolean envoiMailPageUtile(boolean pageUtile, String titre, String url, String commentaire, String date, String motif, String emailRedacteur, String emailReponse) {
     String emailFrom = channel.getDefaultAdmin().getEmail();
     String emailCC = channel.getProperty("jcmsplugin.socle.pageutile.mailto");
     
@@ -239,6 +239,7 @@ public final class MailUtils {
     parametersMap.put("lien", url);
     parametersMap.put("commentaire", commentaire);
     parametersMap.put("motif", motif);
+    parametersMap.put("email", emailReponse);
     
     if (Util.notEmpty(emailRedacteur)) {
       try {
@@ -256,7 +257,16 @@ public final class MailUtils {
 
     return result;
   }	
-	
+
+  /**
+   * Envoi de l'email du formulaire "Page utile"
+   * Le destinataire est le rédacteur de la publication
+   * Un autre destinaire peut être paramétré en prop du site pour en voi en CC. 
+   * 
+   */
+  public static boolean envoiMailPageUtile(boolean pageUtile, String titre, String url, String commentaire, String date, String motif, String emailRedacteur) {
+	  return envoiMailPageUtile(pageUtile, titre, url, commentaire, date, motif, emailRedacteur, null);
+  }
 
 	/**
 	 * Envoi de mail

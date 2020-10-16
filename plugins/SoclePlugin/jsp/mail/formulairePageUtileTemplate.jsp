@@ -313,6 +313,10 @@ MOBILE TARGETING
                         <% if(null != request.getAttribute("commentaire")){ %>
                             <p>COMMENTAIRE : <%=request.getAttribute("commentaire") %></p>
                         <%} %>
+                        
+                        <% if(null != request.getAttribute("email")){ %>
+                            <p>En cas de réponse à l'usager, contacter l'email suivant : <%=request.getAttribute("email") %></p>
+                        <%} %>
                         </td>
                       </tr>
                     </tbody>
