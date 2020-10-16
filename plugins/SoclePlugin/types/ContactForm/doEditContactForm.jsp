@@ -120,29 +120,27 @@ TreeSet sujetCatSet = new TreeSet(Category.getOrderComparator(userLang));
 sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 %>
 <div class="ds44-mb3">
-    <div class="ds44-form__container">
+	<div class="ds44-form__container">
 		<div class="ds44-select__shape ds44-inpStd">
-		    <p class="ds44-selectLabel" aria-hidden="true"><%= sujetLabel %><sup aria-hidden="true">*</sup></p>
-		    <input class="ds44-input-value" type="hidden"><div id="sujet" data-name="sujet" class="ds44-js-select-radio ds44-selectDisplay" data-required="true"></div>
-		    <button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", sujetLabel) %></span></button>
-		    <button type="button" id="button-form-element-sujet" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", sujetLabel) %>"><i class="icon icon--sizeL icon-down" aria-hidden="true"></i><span id="button-message-form-element-sujet" class="visually-hidden"><%= sujetLabel %></span></button>
+			<p class="ds44-selectLabel" aria-hidden="true"><%= sujetLabel %><sup aria-hidden="true">*</sup></p>
+			<div id="sujet" data-name="sujet" class="ds44-js-select-standard ds44-selectDisplay"  data-required="true"></div>
+			<button type="button" id="button-form-element-sujet" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", sujetLabel) %>"  ><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-form-element-sujet" class="visually-hidden"><%= sujetLabel %></span></button>
+			<button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", sujetLabel) %></span></button>
+		
 		</div>
-
-	    <div class="ds44-select-container hidden" aria-hidden="true">
-	        <div class="ds44-listSelect">
-	            <ul class="ds44-list" id="listbox-form-element-sujet">
-	               <jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
-	                   <li class="ds44-select-list_elem selected_option">
-						<div class="ds44-form__container ds44-checkBox-radio_list ">
-						    <input type="radio" name="sujet" value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" class="ds44-radio"><label id="label-form-element-sujet-<%= itCounter %>" for="form-element-sujet-<%= itCounter %>" class="ds44-radioLabel"><%= itCat.getName() %></label>
-						</div>
-                        </li>
-	                </jalios:foreach>
-	            </ul>
-	        </div>
-	        <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="<%= glp("jcmsplugin.socle.facette.cat-lie.valider-selection.label", sujetLabel) %>"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
-	    </div>
-    </div>
+	
+		<div class="ds44-select-container hidden">
+			<div class="ds44-listSelect">
+				<ul class="ds44-list" role="listbox" id="listbox-form-element-sujet" aria-labelledby="button-message-form-element-sujet"  aria-required="true">
+					<jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
+						<li class="ds44-select-list_elem" name="sujet" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
+							<%= itCat.getName() %>
+						</li>
+					</jalios:foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
  
 <%-- Message ------------------------------------------------------------ --%>
