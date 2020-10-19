@@ -11,8 +11,6 @@
     sendForbidden(request, response);
     return;
   }
-
-String defaultTypes = "FicheSAAD FicheLieu SeniorCitizensEstablishment";
 %>
 <%@ include file='/admin/doAdminHeader.jspf'%>
 
