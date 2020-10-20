@@ -68,7 +68,7 @@
 			
 
 			        <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.calculetteOA.titre") %></p>
-			        <p class="ds44-textLegend ds44-textLegend--mentions ds44-mb2"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+			        <p class="ds44-textLegend--mentions ds44-mb2"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 
 			        <form id="ds44-js-soa-form" data-is-ajax="true">
 			            <div id="ds44-js-soa-container"></div>
