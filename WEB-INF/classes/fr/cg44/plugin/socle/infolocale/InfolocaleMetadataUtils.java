@@ -13,6 +13,7 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil;
 import generated.EvenementInfolocale;
 
 /**
@@ -215,12 +216,7 @@ public class InfolocaleMetadataUtils {
      * @return
      */
     private static String getMetaTarif(EvenementInfolocale event) {
-        String tarifMeta = Util.isEmpty(event.getTarifNormal()) ? "" : event.getTarifNormal();
-        if (tarifMeta.equals("0")) {
-          tarifMeta = JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit");
-        } else if (Util.notEmpty(tarifMeta)) {
-          tarifMeta = tarifMeta + " €";
-        }
+        String tarifMeta = Util.isEmpty(event.getTarifs()) || Util.isEmpty(event.getTarifs()[0]) ? "" : InfolocaleUtil.getPriceOfTarif(event.getTarifs()[0]);
         return tarifMeta;
     }
     

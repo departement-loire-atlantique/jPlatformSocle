@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.Tarif"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.Photo"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DossierPresse"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -169,34 +170,25 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
             <div class="ds44-grid12-offset-2">
                <div class="grid-2-small-1">
                   <div class="col">
-                     <jalios:if predicate="<%= obj.getGratuit() || Util.notEmpty(obj.getTarifNormal(userLang)) || Util.notEmpty(obj.getTarifReduit(userLang)) || Util.notEmpty(obj.getTarifAutre(userLang)) %>">
+                     <jalios:if predicate="<%= Util.notEmpty(obj.getTarifs()) %>">
 	                     <div class="ds44-mb3">
 	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.tarifs") %></h2>
 	                        <ul class="ds44-uList">
-	                           <jalios:select>
-	                                <jalios:if predicate="<%= obj.getGratuit() %>">
-	                                <li>
-	                                    <span class="ds44-wsg-exergue"><%= glp("jcmsplugin.socle.gratuit") %></span>
-		                            </li>
-	                                </jalios:if>
-	                                <% String euro = glp("jcmsplugin.socle.symbol.euro"); %>
-	                                <jalios:default>
-	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifNormal(userLang)) && !obj.getTarifNormal(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.normal") %> <%= obj.getTarifNormal(userLang) %><%= obj.getTarifNormal(userLang).contains(euro) ? "" : " "+euro %></li>
-	                                    </jalios:if>
-	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifReduit(userLang)) && !obj.getTarifReduit(userLang).equals("0") %>'>
-	                                        <li><%= glp("jcmsplugin.socle.tarif.reduit") %> <%= obj.getTarifReduit(userLang) %><%= obj.getTarifReduit(userLang).contains(euro) ? "" : " "+euro %></li>
-	                                    </jalios:if>
-	                                    <jalios:if predicate='<%= Util.notEmpty(obj.getTarifAutre(userLang)) && !obj.getTarifAutre(userLang).equals("0") %>'>
-	                                        <li><%= obj.getTarifAutre(userLang) %></li>
-	                                    </jalios:if>
-	                                    <jalios:if predicate='<%= (Util.isEmpty(obj.getTarifNormal(userLang)) || obj.getTarifNormal(userLang).equals("0"))
-	                                        && (Util.isEmpty(obj.getTarifReduit(userLang)) || obj.getTarifReduit(userLang).equals("0"))
-	                                        && (Util.isEmpty(obj.getTarifAutre()) || obj.getTarifAutre(userLang).equals("0")) %>'>
-	                                        <li><%= glp("jcmsplugin.socle.infolocale.label.payant") %></li>
-	                                    </jalios:if>
-	                                </jalios:default>
-	                           </jalios:select>
+	                           <jalios:foreach name="itTarif" type="Tarif" array="<%= obj.getTarifs() %>">
+	                               <%
+	                               String itTarifLibelle = InfolocaleUtil.getPriceOfTarif(itTarif);
+	                               %>
+		                           <jalios:select>
+		                                <jalios:if predicate='<%= !(itTarifLibelle.contains(glp("jcmsplugin.socle.symbol.euro"))) %>'>
+		                                <li>
+		                                    <span class="ds44-wsg-exergue"><%= itTarifLibelle %></span>
+			                            </li>
+		                                </jalios:if>
+		                                <jalios:default>
+		                                    <li><%= itTarifLibelle %></li>
+		                                </jalios:default>
+		                           </jalios:select>
+	                           </jalios:foreach>
 	                        </ul>
 	                     </div>
                      </jalios:if>

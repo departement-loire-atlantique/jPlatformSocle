@@ -12,6 +12,7 @@ import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import fr.cg44.plugin.socle.infolocale.entities.Tarif;
 
 /**
  * Classe utilisée pour le type de contenu EvenementInfolocale afin d'ajouter champs et getters/setters
@@ -27,6 +28,7 @@ public class EvenementContent extends Content {
     Lieu lieu;
     Contact[] contacts;
     DateInfolocale[] dates;
+    Tarif[] tarifs;
     Genre genre;
     Photo[] photos;
     Langue[] langues;
@@ -186,4 +188,13 @@ public class EvenementContent extends Content {
     public void setMetadataHiddenLabel(String metadataHiddenLabel) {
       this.metadataHiddenLabel = metadataHiddenLabel;
     }
+
+    public Tarif[] getTarifs() {
+      return tarifs;
+    }
+
+    public void setTarifs(Tarif[] tarifs) {
+      this.tarifs = tarifs;
+    }
+    
 }

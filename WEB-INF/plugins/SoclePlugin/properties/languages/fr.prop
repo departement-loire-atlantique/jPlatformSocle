@@ -238,6 +238,8 @@ jcmsplugin.socle.tarifs: Tarifs :
 jcmsplugin.socle.tarif.normal: Normal :
 jcmsplugin.socle.tarif.reduit: Réduit :
 jcmsplugin.socle.gratuit: GRATUIT
+jcmsplugin.socle.libre: LIBRE
+jcmsplugin.socle.payant: PAYANT
 jcmsplugin.socle.adresse: Adresse :
 jcmsplugin.socle.syrendre: S'y rendre ?
 jcmsplugin.socle.public: Public :
