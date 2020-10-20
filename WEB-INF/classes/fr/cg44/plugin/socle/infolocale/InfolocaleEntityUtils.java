@@ -32,6 +32,7 @@ import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import fr.cg44.plugin.socle.infolocale.entities.Tarif;
 import fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil;
 import generated.EvenementInfolocale;
 import generated.PortletAgendaInfolocale;
@@ -125,12 +126,8 @@ public class InfolocaleEntityUtils {
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
             JSONArray tarifs = json.getJSONArray("tarifs");
-            if (tarifs.length() > 0) {
-              JSONObject tmpTarif = tarifs.getJSONObject(0);
-              itEvent.setGratuit(tmpTarif.getBoolean("gratuit"));
-              itEvent.setTarifNormal(tmpTarif.getString("tarif"));
-              itEvent.setTarifReduit(tmpTarif.getString("tarifReduit"));
-              itEvent.setTarifAutre(tmpTarif.getString("tarifAutre"));
+            if (Util.notEmpty(json.get("tarifs"))) {
+              itEvent.setTarifs(createTarrifArrayFromJsonArray(json.getJSONArray("tarifs")));
             }
             JSONArray billetteries = json.getJSONArray("billetteries");
             if (billetteries.length() > 0) {
@@ -221,6 +218,45 @@ public class InfolocaleEntityUtils {
         }
         
         return itEvent;
+    }
+
+    /**
+     * Créé un tableau d'objets Tarif depuis du JSON
+     * @param jsonArray
+     * @return
+     */
+    public static Tarif[] createTarrifArrayFromJsonArray(JSONArray jsonArray) {
+      Tarif[] tarifs = new Tarif[jsonArray.length()];
+      for (int counter = 0; counter < jsonArray.length(); counter++) {
+        try {
+          tarifs[counter] = createTarifFromJsonItem(jsonArray.getJSONObject(counter));
+        } catch (JSONException e) {
+            LOGGER.error("Erreur in createTarrifArrayFromJsonArray: " + e.getMessage());
+        }
+    }
+      return tarifs;
+    }
+
+    /**
+     * Créé un objet Tarif depuis du JSON
+     * @param jsonObject
+     * @return
+     */
+    public static Tarif createTarifFromJsonItem(JSONObject json) {
+      if (Util.isEmpty(json)) return null;
+      Tarif tarif = new Tarif();
+      try {
+          tarif.setGratuit(json.getBoolean("gratuit"));
+          tarif.setLibre(json.getBoolean("libre"));
+          tarif.setPayantNonPrecise(json.getBoolean("payantNonPrecise"));
+          tarif.setPayant(json.getBoolean("payant"));
+          tarif.setPayantLibelle(json.getString("payantLibelle"));
+          tarif.setPayantMontant(json.getString("payantMontant"));
+      } catch (JSONException e) {
+          LOGGER.error("Erreur in createLangueFromJsonItem: " + e.getMessage());
+          return null;
+      }
+      return tarif;
     }
 
     /**

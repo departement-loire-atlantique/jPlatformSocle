@@ -29,6 +29,7 @@ import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
+import fr.cg44.plugin.socle.infolocale.entities.Tarif;
 import generated.EvenementInfolocale;
 import generated.PortletAgendaInfolocale;
 
@@ -907,5 +908,48 @@ public class InfolocaleUtil {
       }
       
       return null;
+    }
+
+    /**
+     * Retourne la valeur du prix d'entrée d'un événement, ou un libellé décrivant le tarif
+     * @param tarif
+     * @return
+     */
+    public static String getPriceOfTarif(Tarif tarif) {
+      if (Util.isEmpty(tarif)) return "";
+      
+      // Cas 1 : gratuit
+      
+      if (tarif.isGratuit()) {
+        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit");
+      }
+      
+      // Cas 2 : libre
+      
+      if (tarif.isLibre()) {
+        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.libre");
+      }
+      
+      // Cas 3 : payant non précisé
+      
+      if (tarif.isPayantNonPrecise() || Util.isEmpty(tarif.getPayantLibelle())) {
+        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.payant");
+      }
+      
+      // Cas 4 : payant, avec montant
+      if (tarif.isPayant()) {
+        StringBuilder txtTarif = new StringBuilder();
+        if (Util.notEmpty(tarif.getPayantLibelle())) {
+          txtTarif.append(tarif.getPayantLibelle());
+          txtTarif.append(" ");
+        }
+        txtTarif.append(tarif.getPayantMontant());
+        txtTarif.append(" ");
+        txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.symbol.euro"));
+        
+        return txtTarif.toString();
+      }
+      
+      return "";
     }
 }
