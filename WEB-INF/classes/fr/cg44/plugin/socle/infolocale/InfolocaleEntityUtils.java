@@ -312,17 +312,25 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Photo photo = new Photo();
         try {
-            // Si format inconnu, l'image n'existe pas
-            if (json.isNull("format") || "inconnu".equals(json.getString("format"))) {
+            // Si path inconnu, l'image n'existe pas
+            if (json.isNull("path")) {
               return null;
             }
-            photo.setPath(json.getString("path"));
+            if (!(json.isNull("path"))) {
+              photo.setPath(json.getString("path"));
+            }
+            if (!(json.isNull("largeur"))) {
+              photo.setWidth(json.getInt("largeur"));
+            }
+            if (!(json.isNull("hauteur"))) {
+              photo.setHeight(json.getInt("hauteur"));
+            }
+            if (!(json.isNull("ratio"))) {
+              photo.setRatio(Double.parseDouble(json.getString("ratio")));
+            }
             photo.setLegend(json.getString("legend"));
             photo.setCredit(json.getString("credit"));
             photo.setFormat(json.getString("format"));
-            photo.setWidth(json.getInt("largeur"));
-            photo.setHeight(json.getInt("hauteur"));
-            photo.setRatio(Double.parseDouble(json.getString("ratio")));
         } catch (JSONException e) {
             LOGGER.error("Erreur in createPhotoFromJsonItem: " + e.getMessage());
             photo = new Photo();
