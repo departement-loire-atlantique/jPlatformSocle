@@ -11,9 +11,17 @@
     Les arborescences peuvent être différentes selon les sites mais on aura en commun les niveaux suivants : 
     "Navigation" > "Navigation des espaces"
     On récupère les ancetres de la catégorie courante et on supprime les 2 premiers niveaux ci-dessus.
+    
+    MAJ 20/10/2020 : on n'affiche pas le fil d'ariane si on est en mode "résultat de recherche à facette" car
+    le calcul de la catégorie courante est faussé.
 --%>
-        
+
 <%
+
+if(Util.notEmpty(request.getAttribute("isSearchFacetPanel"))){
+  return;
+}
+        
 List<Category> ancestors  = currentCategory.getAncestorList();
     
 for (Iterator<Category> it = rootCategory.getAncestorList().iterator() ; it.hasNext() ;) {
