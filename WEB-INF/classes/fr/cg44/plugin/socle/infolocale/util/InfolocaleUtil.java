@@ -839,7 +839,15 @@ public class InfolocaleUtil {
       for (int counterPhotos = 0; counterPhotos < itEvent.getPhotos().length; counterPhotos++) {
         Photo itPhoto = itEvent.getPhotos()[counterPhotos];
         
-        if (Util.isEmpty(itPhoto) || Util.isEmpty(itPhoto.getPath()) || Util.isEmpty(itPhoto.getPath()) || "inconnu".equals(itPhoto.getFormat())) continue;
+        if (Util.isEmpty(itPhoto) || 
+            Util.isEmpty(itPhoto.getPath()) ||
+            Util.isEmpty(itPhoto.getFormat()) ||
+            "inconnu".equals(itPhoto.getFormat()) ||
+            Util.isEmpty(itPhoto.getWidth()) ||
+            Util.isEmpty(itPhoto.getHeight()) ||
+            Util.isEmpty(itPhoto.getRatio())) {
+          continue;
+        }
         
         // Initialisation
         if (Util.isEmpty(urlImg)) {
