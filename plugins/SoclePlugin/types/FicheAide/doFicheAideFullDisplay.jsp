@@ -268,7 +268,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 	
 	        <div class="ds44-modal-gab">
 	
-	            <p><%= HtmlUtil.html2text(obj.getIntroFaireUneDemande(userLang)) %></p>
+	            <jalios:wysiwyg><%= obj.getIntroFaireUneDemande(userLang) %></jalios:wysiwyg>
 	
 	            <div class="ds44-mt3 grid-12-small-1">
 	                <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsUtiles()) %>">
