@@ -3,6 +3,7 @@
             Otherwise the caller code continue it's execution doing default display
 --%><%@page import="com.jalios.jcms.wiki.WikiRenderer" %><%
 %><%@page import="com.jalios.util.HtmlUtil" %><%
+%><%@page import="fr.cg44.plugin.socle.SocleUtils" %><%
 {
   PortletSelection selection      = (PortletSelection) portlet;
   Publication      pub            = (Publication) request.getAttribute("publication");
@@ -52,9 +53,11 @@
       }
       request.setAttribute("metakeywords", Util.join(catNameSet, ","));
       
+      // ------ DEBUT OVERRIDE CD44 --------------------------------------------------------------------
       if(Util.notEmpty(pub) && Util.notEmpty(SocleUtils.getImageForSocialNetworks(pub))){
         request.setAttribute("metaimage", channel.getUrl() + SocleUtils.getImageForSocialNetworks(pub));
       }
+      // -------- FIN OVERRIDE CD44 --------------------------------------------------------------------
       
       String pubAbstract = publication.getAbstract(userLang);
       if (Util.notEmpty(pubAbstract)) { 

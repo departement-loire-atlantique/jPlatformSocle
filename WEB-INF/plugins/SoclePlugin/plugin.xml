@@ -539,12 +539,12 @@
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
-    <file path="types/PortletSelection/doSelection.jspf" />
     <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="jsp/portal/socialNetworksMeta.jsp" include="EMPTY_HEADER" />
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
   </public-files>
   <webapp-files>
+    <file path="types/PortletSelection/doSelection.jspf" />
     <file path="WEB-INF/tags/articleVideo.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
