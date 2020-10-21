@@ -21,6 +21,7 @@ if(jcmsContext.isInFrontOffice() ){
     <style>
        .ds44-header{top:64px!important;}
        .PortalMode .ds44-header{top:113px!important;}
+       .PortalMode .member-profile{margin-top:100px!important;}
     </style>
     <%}
 }
