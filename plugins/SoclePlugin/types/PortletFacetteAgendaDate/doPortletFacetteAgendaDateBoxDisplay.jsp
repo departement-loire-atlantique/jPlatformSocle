@@ -16,6 +16,9 @@ datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.weekend.label"), 
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.nextseven.label"), String.join(",", InfolocaleUtil.getDateNextSevenDaysInfolocale()));
 String title = Util.getString(obj.getLabel(), glp("jcmsplugin.socle.facette.date.select.title"));
 boolean isRequired = obj.getFacetteObligatoire();
+
+String styleChampsReset = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || isInRechercheFacette ? "L" : "XL";
+
 %>
 
  
@@ -25,7 +28,7 @@ boolean isRequired = obj.getFacetteObligatoire();
       <p class="ds44-selectLabel ds44-moveSelectLabel" aria-hidden="true"><%= title %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></p>
       <div id="<%= uid %>" data-name="<%= uid %>" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
       <button type="button" id="button-<%= uid %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", title) : title %>'><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-<%= uid %>" class="visually-hidden"><%= title %></span></button>
-      <button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
+      <button class="ds44-reset" type="button"><i class="icon icon-cross icon--size<%= styleChampsReset %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
    </div>
    <div class="ds44-select-container hidden">
       <div class="ds44-listSelect">
