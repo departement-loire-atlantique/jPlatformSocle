@@ -534,11 +534,11 @@
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/contenusSansGeolocLink.jsp" include="ADMIN_OPERATION" />
-    <file path="jsp/reprise/documentSansContenusLiesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/expireSpectaclesLink.jsp" include="ADMIN_OPERATION" />   
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
+    <file path="types/PortletSelection/doSelection.jspf" />
     <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="jsp/portal/socialNetworksMeta.jsp" include="EMPTY_HEADER" />
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
