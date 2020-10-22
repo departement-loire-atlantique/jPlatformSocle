@@ -16,16 +16,19 @@ datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.weekend.label"), 
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.nextseven.label"), String.join(",", InfolocaleUtil.getDateNextSevenDaysInfolocale()));
 String title = Util.getString(obj.getLabel(), glp("jcmsplugin.socle.facette.date.select.title"));
 boolean isRequired = obj.getFacetteObligatoire();
+
+String styleChampsReset = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || isInRechercheFacette ? "L" : "XL";
+
 %>
 
  
 
 <div class="ds44-form__container">
    <div class='ds44-select__shape <%= isInRechercheFacette ? "ds44-inpStd" : "ds44-inpLarge" %>'>
-      <p id="label-<%= uid %>" class="ds44-selectLabel" aria-hidden="true"><%= title %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></p>
-      <div id="<%= uid %>" data-name="agenda-date" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
-      <button class="ds44-reset" type="button" aria-describedby="label-<%= uid %>"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
+      <p class="ds44-selectLabel ds44-moveSelectLabel" aria-hidden="true"><%= title %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></p>
+      <div id="<%= uid %>" data-name="<%= uid %>" class="ds44-js-select-radio ds44-selectDisplay"  data-required="<%= isRequired %>"></div>
       <button type="button" id="button-<%= uid %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", title) : title %>'><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-<%= uid %>" class="visually-hidden"><%= title %></span></button>
+      <button class="ds44-reset" type="button"><i class="icon icon-cross icon--size<%= styleChampsReset %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", title) %></span></button>
    </div>
    <div class="ds44-select-container hidden">
       <div class="ds44-listSelect">
@@ -55,7 +58,7 @@ boolean isRequired = obj.getFacetteObligatoire();
                   %>
                   <div class="ds44-form__container">
                      <div class="ds44-posRel">
-                        <label id="label-<%= uidFormElemList %>" for="<%= uidFormElemList %>" class="ds44-formLabel ds44-datepicker"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.date.select.du.label") %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></span></span></label>
+                        <label for="<%= uidFormElemList %>" class="ds44-formLabel ds44-datepicker ds44-moveLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.date.select.du.label") %><sup aria-hidden="true"><%= isRequired ? glp("jcmsplugin.socle.facette.asterisque") : "" %></sup></span></span></label>
                         <div data-name="<%= uidFormElemList %>" class="ds44-datepicker__shape ds44-inpStd" data-next-year-dates="false" data-past-dates="false" data-required="<%= isRequired %>">
                             <input id="<%= uidFormElemList %>" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.du.label"))) : glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.du.label")) %>' data-is-date="true"  <%= isRequired ? "required" : "" %>  aria-describedby="explanation-<%= uidFormElemList %> label-radio-<%= uidFormElem %>-<%= datesLabelValues.size() + 1 %> button-message-<%= uid %>">
                             <span>/</span>
@@ -79,7 +82,7 @@ boolean isRequired = obj.getFacetteObligatoire();
                   %>
                   <div class="ds44-form__container ds44-mt2">
                      <div class="ds44-posRel">
-                        <label id="label-<%= uidFormElemList %>" for="<%= uidFormElemList %>" class="ds44-formLabel ds44-datepicker"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.date.select.jusquau.label") %></span></span></label>
+                        <label for="<%= uidFormElemList %>" class="ds44-formLabel ds44-datepicker"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.date.select.jusquau.label") %></span></span></label>
                         <div data-name="<%= uidFormElemList %>" class="ds44-datepicker__shape ds44-inpStd" data-previous-date-id="<%= previousUid %>">
 	                        <input id="<%= uidFormElemList %>" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= isRequired ? glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.jusquau.label"))) : glp("jcmsplugin.socle.facette.date.exemple.jour", glp("jcmsplugin.socle.facette.date.select.jusquau.label")) %>' data-is-date="true"   aria-describedby="explanation-<%= uidFormElemList %> label-radio-<%= uidFormElem %>-<%= datesLabelValues.size() + 1 %> button-message-<%= uid %>">
 	                        <span>/</span>
