@@ -544,6 +544,7 @@
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
   </public-files>
   <webapp-files>
+    <file path="types/PortletSelection/doSelection.jspf" />
     <file path="WEB-INF/tags/articleVideo.tag" />
     <file path="WEB-INF/tags/card.tag" />
     <file path="WEB-INF/tags/carrousel.tag" />
