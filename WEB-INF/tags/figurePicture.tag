@@ -162,6 +162,7 @@ switch(format) {
       break;
       
 	case "unchanged" :
+	    formattedImagePath = image;
 	    break;
 	
 	default :
