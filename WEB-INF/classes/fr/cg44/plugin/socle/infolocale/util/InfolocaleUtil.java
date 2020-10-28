@@ -532,12 +532,23 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Supprime les duplications dans une liste d'événements qui ne rentrent pas dans les limites de dates indiquées
-     * S'il n'y a pas de limite de date, se contente de supprimer les duplications
-     * @param source
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées, et les doublons
+     * @param eventList
+     * @param arrayDebutFin
      * @return
      */
     public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList, String[] arrayDebutFin) {
+      return purgeEventListFromDuplicates(eventList, arrayDebutFin, true);
+    }
+    
+    /**
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées et potentiellement les doublons
+     * S'il n'y a pas de limite de date, celle-ci est initialisée de J à J+2 ans
+     * S'il n'y a pas de limite, et que l'option de duplication est à "FALSE", aucun tri ne sera au final fait
+     * @param source
+     * @return
+     */
+    public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList, String[] arrayDebutFin, boolean deleteDuplicates) {
       if (Util.isEmpty(eventList)) {
         return new ArrayList<EvenementInfolocale>();
       }
@@ -546,6 +557,10 @@ public class InfolocaleUtil {
       
       // Initialiser les dates début / fin à des valeurs par défaut au besoin
       if (Util.isEmpty(arrayDebutFin)) {
+        // S'il ne faut pas supprimer les duplications, aucun changement sera fait dans la liste.
+        if (!deleteDuplicates) {
+          return eventList;
+        }
         Calendar calFuture = Calendar.getInstance();
         calFuture.add(Calendar.YEAR, 2);
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
@@ -564,7 +579,7 @@ public class InfolocaleUtil {
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
         EvenementInfolocale itEvent = iter.next();
         // si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
-        if (usedIds.contains(itEvent.getId()) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
+        if ((deleteDuplicates && usedIds.contains(itEvent.getId())) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
           iter.remove();
         // autrement, on le récupère, et on indique qu'on a ajouté cet événement
         } else {

@@ -20,7 +20,7 @@ PortletAgendaInfolocale boxTmp = (PortletAgendaInfolocale) (channel.getPublicati
 PortletAgendaInfolocale box = new PortletAgendaInfolocale(boxTmp);
 
 List<EvenementInfolocale> allEvents = InfolocaleEntityUtils.getQueryEvent(request);
-allEvents = InfolocaleUtil.purgeEventListFromDuplicates(allEvents, request.getParameterValues("agenda-date"));
+allEvents = InfolocaleUtil.purgeEventListFromDuplicates(allEvents, request.getParameterValues("agenda-date"), false);
 allEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
 %><%
 
