@@ -154,8 +154,6 @@ public class InfolocaleEntityUtils {
                   case "dossier_presse" :
                     DossierPresse itDossier = new DossierPresse();
                     itDossier.setUrl(itRessource.getString("url"));
-                    itDossier.setFilename(SocleUtils.getFilenameFromUrl(itRessource.getString("url")));
-                    itDossier.setFormat(SocleUtils.getFileExpensionFromUrl(itRessource.getString("url")));
                     listDossiers.add(itDossier);
                     break;
                 }

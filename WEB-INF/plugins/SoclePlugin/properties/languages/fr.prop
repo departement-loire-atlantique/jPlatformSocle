@@ -511,6 +511,8 @@ jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
 jcmsplugin.socle.infolocale.label.horaire.periode: de {0} à {1}
 jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du département
 jcmsplugin.socle.infolocale.label.payant: Payant
+jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
+jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
 
 # Metadonnees Infolocale pour le front
 
