@@ -325,19 +325,22 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
          </div>
       </section>
       
+      <%-- 
+      
+      COMMENTE 1459 -> en attente de retours sur l'affichage de ce bloc
+      
       <jalios:if predicate="<%= Util.notEmpty(obj.getDossiersDePresse()) %>">
 	      <section class="ds44-contenuArticle" id="evenementAllerPlusLoin">
 	         <div class="ds44-inner-container ds44-mtb3">
 	            <div class="ds44-grid12-offset-2">
 	               <div class="ds44-wsg-encadreContour">
 	                  <p role="heading" aria-level="2" class="h2-like"><%= glp("jcmsplugin.socle.allerplusloin") %></p>
-	                  <jalios:foreach name="itDossierPresse" type="DossierPresse" collection="<%= obj.getDossiersDePresse() %>">
+	                  <jalios:foreach name="itDossierPresse" type="DossierPresse" collection="<%= obj.getDossiersDePresse() %>" max="1">
 	                  <p class="ds44-docListElem">
 	                     <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-	                     <a href="<%= itDossierPresse.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", itDossierPresse.getFilename() + " - " + itDossierPresse.getFormat().toUpperCase()) %>'>
-	                       <%= itDossierPresse.getFilename() %>
+	                     <a href="<%= itDossierPresse.getUrl() %>" title='<%= glp("jcmsplugin.socle.infolocale.label.titleliendossier", obj.getTitle()) %>'>
+	                       <%= glp("jcmsplugin.socle.infolocale.label.consulterdossier") %>
 	                     </a>
-	                     <span class="ds44-cardFile"><%= itDossierPresse.getFormat().toUpperCase() %></span>
 	                  </p>
 	                  </jalios:foreach>
 	               </div>
@@ -345,6 +348,8 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	         </div>
 	      </section>
       </jalios:if>
+      
+      --%>
       
       <%-- TODO : liens de partage --%>
       
