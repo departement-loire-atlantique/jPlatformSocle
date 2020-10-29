@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <type name="PortletConteneurAgenda" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Portlet Conteneur Agenda</label>
+  <label xml:lang="fr">Portlet Conteneur</label>
   <title ml="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
@@ -15,8 +15,8 @@
     <field name="selectionDuTheme" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="tuileVerticaleLight|tuileVerticaleDark" ml="false" descriptionType="tooltip" labelList="Fond gris, tuiles blanches|Fond blanc, tuiles grises" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sélection du thème</label>
     </field>
-    <field name="portletsAgenda" editor="link" required="true" compactDisplay="false" type="generated.PortletAgendaInfolocale[]">
-      <label xml:lang="fr">Portlets agenda</label>
+    <field name="portletsAgenda" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlets</label>
     </field>
     <field type="super" />
   </fields>
