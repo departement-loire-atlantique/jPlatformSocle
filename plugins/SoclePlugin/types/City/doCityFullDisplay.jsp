@@ -193,6 +193,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 <main id="content" role="main">
     <article class="ds44-container-large">
     
+    <jalios:include target="SOCLE_ALERTE"/>
+    
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
       
         <%-- TODO : carte dynamique de la commune --%>      

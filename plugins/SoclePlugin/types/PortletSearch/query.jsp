@@ -6,6 +6,8 @@ String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
 %>
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
        
         <div class="txtcenter ds44-lightBG ds44--l-padding-b ds44--xl-padding-t ">

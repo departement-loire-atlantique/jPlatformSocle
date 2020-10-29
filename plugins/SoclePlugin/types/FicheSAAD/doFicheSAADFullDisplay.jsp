@@ -70,6 +70,9 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 </jalios:buffer>
 
 <main id="content" role="main">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
     <article class="ds44-container-large">
     
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>

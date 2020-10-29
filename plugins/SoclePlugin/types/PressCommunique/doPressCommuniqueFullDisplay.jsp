@@ -136,6 +136,9 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
 </jalios:buffer>
 
 <main id="content" role="main">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
     <article class="ds44-container-large">
     
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>

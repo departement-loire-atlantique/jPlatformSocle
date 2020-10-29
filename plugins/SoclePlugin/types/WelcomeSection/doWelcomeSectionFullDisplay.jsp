@@ -8,6 +8,8 @@
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-fluid">
 
         <div class="ds44-pageHeaderContainer">

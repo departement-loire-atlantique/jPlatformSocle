@@ -8,9 +8,14 @@
     <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="description" editor="wysiwyg" required="false" type="String" searchable="true" wiki="true" rows="5" cols="80" compactDisplay="false" ml="true" descriptionType="text" html="false" checkHtml="true" wikiwyg="false" toolbars="basic,format,style,font,table" inline="true">
-      <label xml:lang="fr">Description</label>
-      <label xml:lang="en">Description</label>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="texteAlternatifLienBouton" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif lien bouton</label>
     </field>
     <field name="navigationCategories" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie</label>

@@ -6,6 +6,8 @@
 
 <main id="content" role="main">
 
+    <jalios:include target="SOCLE_ALERTE"/>
+
     <ds:titleDelegation copyright="<%= obj.getCopyright() %>" legend="<%= obj.getLegende() %>" imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>" alt="<%= obj.getTexteAlternatif() %>" breadcrumb="true" delegation="<%= obj.getDelegation() %>" cartePath="<%= obj.getImageCarte() %>"/>
             
     <%-- Rechercher contact ou aide --%>

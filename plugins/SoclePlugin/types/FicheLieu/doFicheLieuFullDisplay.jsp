@@ -9,6 +9,8 @@
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
 <article class="ds44-container-large">
 
     <div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>
