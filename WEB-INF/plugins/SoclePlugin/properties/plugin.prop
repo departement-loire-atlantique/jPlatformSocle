@@ -323,10 +323,19 @@ channel.topbar.site.enabled: true
 #  Réseaux sociaux
 # ------------------------------------------------------------
 jcmsplugin.socle.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
-jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+jcmsplugin.socle.socialnetworks.urls:@|http://www.facebook.com/loireatlantique|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
 jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
 jcmsplugin.socle.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
 jcmsplugin.socle.socialnetwork.twitter.account:loireatlantique
+
+# ------------------------------------------------------------
+#  Réseaux sociaux archives
+# ------------------------------------------------------------
+jcmsplugin.socle.archives.socialnetworks.labels:@|Facebook|Twitter|Instagram|Youtube|Mag Web
+jcmsplugin.socle.archives.socialnetworks.urls:@|https://www.facebook.com/archives.loireatlantique|http://www.twitter.com|http://www.instagram.com|http://www.youtube.com|http://www.magwebloire-atlantique.fr
+jcmsplugin.socle.archives.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter|youtube
+jcmsplugin.socle.archives.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
+jcmsplugin.socle.archives.socialnetwork.twitter.account:loireatlantique
 
 # ------ Propriétés éditables SoclePlugin
 
