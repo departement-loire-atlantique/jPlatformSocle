@@ -44,6 +44,8 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
         <jalios:select> 
             <jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) && !clientBrowser.isSmallDevice() %>">

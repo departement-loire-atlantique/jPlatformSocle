@@ -9,6 +9,8 @@
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
 <article class="ds44-container-large">
 
 	<% String fullName = SocleUtils.getElectedMemberFullName(obj); %>

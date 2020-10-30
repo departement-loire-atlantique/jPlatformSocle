@@ -40,6 +40,9 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 %>
 
 <main role="main" id="content">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
    <article class="ds44-container-large">
       <div class="ds44-lightBG ds44-posRel">
          <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">

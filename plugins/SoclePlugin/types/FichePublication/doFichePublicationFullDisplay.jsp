@@ -7,6 +7,8 @@
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <article class="ds44-container-large pbm">
         <%-- Titre  --%>
         <div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>

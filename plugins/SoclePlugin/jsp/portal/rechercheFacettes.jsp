@@ -14,6 +14,8 @@
 
 <main role="main" id="content" class="ds44-mainResults">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
 <section class="ds44-container-large">
     <jalios:include id='<%= request.getParameter("boxId" + glp("jcmsplugin.socle.facette.form-element") + "[value]") %>' />
  </section>      

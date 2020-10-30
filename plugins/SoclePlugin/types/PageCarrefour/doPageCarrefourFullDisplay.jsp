@@ -13,6 +13,8 @@ String copyright = obj.getCopyright(userLang);
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
         
         <ds:titleBanner imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>

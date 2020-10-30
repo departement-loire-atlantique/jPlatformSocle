@@ -68,6 +68,8 @@ List<String> remplacants = new ArrayList<String>();
 <main id="content" role="main">
     <article class="ds44-container-large">
     
+        <jalios:include target="SOCLE_ALERTE"/>
+    
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
         
         <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>

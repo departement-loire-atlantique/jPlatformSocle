@@ -41,6 +41,7 @@ jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégati
 jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
 jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
+jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
 
 jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
 jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale

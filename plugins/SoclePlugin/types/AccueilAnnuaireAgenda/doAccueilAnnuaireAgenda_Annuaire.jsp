@@ -5,6 +5,9 @@
 %>
 
 <main id="content" role="main">
+    
+    <jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImageBandeau()) %>">

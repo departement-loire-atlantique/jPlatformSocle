@@ -5,6 +5,8 @@
 %>
 
 <main id="content" role="main">
+
+    <jalios:include target="SOCLE_ALERTE"/>
     
     <section class="ds44-container-large">
 	    <ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"

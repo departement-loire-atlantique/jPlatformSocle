@@ -18,6 +18,8 @@
 <%= getPortlet(bufferMap,"header") %>
 
 <main role="main" id="content">
+
+<jalios:include target="SOCLE_ALERTE"/>
     
 <%= getPortlet(bufferMap,"selection") %>
 <%= getPortlet(bufferMap,"section") %>
