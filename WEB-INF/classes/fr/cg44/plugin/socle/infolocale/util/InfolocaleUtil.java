@@ -968,11 +968,16 @@ public class InfolocaleUtil {
         StringBuilder txtTarif = new StringBuilder();
         if (Util.notEmpty(tarif.getPayantLibelle())) {
           txtTarif.append(tarif.getPayantLibelle());
-          txtTarif.append(" ");
+          txtTarif.append(" : ");
         }
-        txtTarif.append(tarif.getPayantMontant());
-        txtTarif.append(" ");
-        txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.symbol.euro"));
+        if (tarif.getPayantMontant().equals("0")) {
+          txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit"));
+          txtTarif.append(" ");
+        } else {
+          txtTarif.append(tarif.getPayantMontant());
+          txtTarif.append(" ");
+          txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.symbol.euro"));
+        }
         
         return txtTarif.toString();
       }
