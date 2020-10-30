@@ -495,6 +495,7 @@ jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
 jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
 jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
 jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
+jcmsplugin.socle.infolocale.photo.404.url: URL photo 404 pour les événements agenda
 jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
 jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
 jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental

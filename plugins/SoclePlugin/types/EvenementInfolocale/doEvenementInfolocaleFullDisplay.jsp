@@ -23,8 +23,8 @@ Photo itPhoto = InfolocaleUtil.getLargestPicture(obj);
 
 if (Util.notEmpty(itPhoto)) {
   urlPhoto = itPhoto.getPath();
-  legend = itPhoto.getLegend();
-  credit = itPhoto.getCredit();
+  legend = Util.notEmpty(itPhoto.getLegend()) ? itPhoto.getLegend() : "";
+  credit = Util.notEmpty(itPhoto.getCredit()) ? itPhoto.getCredit() : "";
 }
 
 String labelLegendCopyright = legend;
