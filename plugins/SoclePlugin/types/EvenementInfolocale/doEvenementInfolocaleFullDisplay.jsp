@@ -90,23 +90,25 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       <jalios:select>
               
                     <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
-                        <div class="ds44-inner-container">
-                           <div class="ds44-grid12-offset-1">
-                              <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
-	                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-	                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
-	                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-	                              </figure>
-                              </jalios:if>
-                              <%= eventSummary %>
-                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
-								 <div class="grid-1-small-1">
-									<div class="col mll mbs">
-										<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
-									</div>
-								 </div>
-							  </jalios:if>
-							</div>
+                        <div class="ds44-img50 ds44-img50--event">
+	                        <div class="ds44-inner-container">
+	                           <div class="ds44-grid12-offset-1">
+	                              <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
+		                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
+		                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
+		                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
+		                              </figure>
+	                              </jalios:if>
+	                              <%= eventSummary %>
+	                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
+									 <div class="grid-1-small-1">
+										<div class="col mll mbs">
+											<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+										</div>
+									 </div>
+								  </jalios:if>
+								</div>
+	                        </div>
                         </div>
                     </jalios:if>
                     
