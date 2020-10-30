@@ -9,10 +9,10 @@
 	            <img src="//design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg" alt="Loire Atlantique" class="mbm">
 	        </picture>
 	    </div>
-	    <div class="col-3-small-1 ds44-mb3">
+	    <div class="col-4-small-1 ds44-mb3">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.footer.portletcontact.id") %>'/>
 	    </div>
-	    <div class="col-4-small-1">
+	    <div class="col-3-small-1">
 	        <%-- Inclusion de la portlet réseaux sociaux --%>
 	        <%@ include file='../socialNetworksFooter.jspf' %>
 	    </div>
