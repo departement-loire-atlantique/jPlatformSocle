@@ -14,7 +14,7 @@
 	    </div>
 	    <div class="col-4-small-1">
 	        <%-- Inclusion de la portlet réseaux sociaux --%>
-	        <%@ include file='socialNetworksFooter.jspf' %>
+	        <%@ include file='../socialNetworksFooter.jspf' %>
 	    </div>
 	    <div class="col-3-small-1 ds44-mb3">
             <%-- Inclusion de la portlet JSP de Newsletter --%>

@@ -328,12 +328,6 @@ jcmsplugin.socle.socialnetworks.carrouselImagesHome:@|facebook|instagram|twitter
 jcmsplugin.socle.socialnetworks.share:@|Facebook|Twitter|LinkedIn|Mail
 jcmsplugin.socle.socialnetwork.twitter.account:loireatlantique
 
-# ------------------------------------------------------------
-#  Réseaux sociaux archives
-# ------------------------------------------------------------
-jcmsplugin.socle.archives.socialnetworks.labels:@|Facebook|SoundCloud
-jcmsplugin.socle.archives.socialnetworks.urls:@|https://www.facebook.com/archives.loireatlantique|https://soundcloud.com/loireatlantique/sets/archives-departementales-de
-
 # ------ Propriétés éditables SoclePlugin
 
 jcmsplugin.socle.horizontal.value: horizontal
