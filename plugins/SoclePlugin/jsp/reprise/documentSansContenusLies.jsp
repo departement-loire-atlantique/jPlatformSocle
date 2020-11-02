@@ -19,22 +19,22 @@
 </div>
 <% 
 	TreeSet<FileDocument> listePublication = channel.getPublicationSet(FileDocument.class, loggedMember);
-	ArrayList<String> listeTypesImage = new ArrayList<String>();
+	ArrayList<String> listeTypesContenu = new ArrayList<String>();
 %>
 <jalios:foreach name='itFileDoc' collection='<%= channel.getPublicationSet(FileDocument.class, loggedMember) %>' type='FileDocument'>
 	<jalios:if predicate='<%= Util.isEmpty(itFileDoc.getLinkIndexedDataSet(Data.class)) && Util.isEmpty(itFileDoc.getWeakReferrerSet()) %>'>
 		<% 
-			// on verifie si le file doc a un nouveau type d'image
+			// on verifie si le file doc a un nouveau type de contenu
 			Boolean hasANewType = true;
-			for (String itTypeImage : listeTypesImage) {
+			for (String itTypeContenu : listeTypesContenu) {
 				if(!hasANewType) break;
-				hasANewType = ! itFileDoc.getContentType().equalsIgnoreCase(itTypeImage);
+				hasANewType = ! itFileDoc.getContentType().equalsIgnoreCase(itTypeContenu);
 			}
 		%>
 		<jalios:if predicate='<%= hasANewType %>'>
 			<%
-				// si c'est le cas on boucle sur tous les elements de la liste qui ont ce type d'image
-				listeTypesImage.add(itFileDoc.getContentType());
+				// si c'est le cas on boucle sur tous les elements de la liste qui ont ce type de contenu
+				listeTypesContenu.add(itFileDoc.getContentType());
 				// copyListePublication est juste là pour de l'optimisation, on vire de la liste les elements déjà affichés pour un type précédent
 				TreeSet<FileDocument> copyListePublication = (TreeSet<FileDocument>)listePublication.clone();
 			%>
