@@ -557,10 +557,6 @@ public class InfolocaleUtil {
       
       // Initialiser les dates début / fin à des valeurs par défaut au besoin
       if (Util.isEmpty(arrayDebutFin)) {
-        // S'il ne faut pas supprimer les duplications, aucun changement sera fait dans la liste.
-        if (!deleteDuplicates) {
-          return eventList;
-        }
         Calendar calFuture = Calendar.getInstance();
         calFuture.add(Calendar.YEAR, 2);
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
