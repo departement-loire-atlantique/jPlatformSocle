@@ -487,6 +487,14 @@
                                     </p>
                                 </li>
                             </jalios:foreach>
+                            <jalios:foreach name="itAccueilAnnuaireAgenda" type="AccueilAnnuaireAgenda" array='<%= obj.getAutresLieuxAssociesAccueilAnnuai() %>'>
+                                <li class="ds44-docListElem mtm">
+                                    <i class="icon icon-map ds44-docListIco" aria-hidden="true"></i> 
+                                    <a href='<%= itAccueilAnnuaireAgenda.getDisplayUrl(userLocale) %>'> 
+                                        <%= itAccueilAnnuaireAgenda.getTitle() %>
+                                    </a>
+                                </li>
+                            </jalios:foreach>
                         </ul>
                     </div>
                 </div>

@@ -154,6 +154,9 @@
     <field name="autresLieuxAssocies" editor="link" required="false" compactDisplay="false" tab="details" type="generated.FicheLieu[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Autres lieux associés</label>
     </field>
+    <field name="autresLieuxAssociesAccueilAnnuai" editor="link" required="false" compactDisplay="false" tab="details" type="generated.AccueilAnnuaireAgenda[]">
+      <label xml:lang="fr">Autres lieux associés (Accueil annuaire)</label>
+    </field>
     <field name="lienDeLaPageFacebook" editor="url" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" openWindow="false">
       <label xml:lang="fr">Lien de la page Facebook</label>
     </field>
@@ -172,7 +175,7 @@
     </field>
     <field name="serviceDuDepartement" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_1285247">
       <label xml:lang="fr">Service du Département</label>
-    </field>    
+    </field>
     <field name="statut" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Statut</label>
     </field>
