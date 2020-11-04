@@ -126,8 +126,8 @@ public class InfolocaleEntityUtils {
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
             JSONArray tarifs = json.getJSONArray("tarifs");
-            if (Util.notEmpty(json.get("tarifs"))) {
-              itEvent.setTarifs(createTarrifArrayFromJsonArray(json.getJSONArray("tarifs")));
+            if (Util.notEmpty(tarifs)) {
+              itEvent.setTarifs(createTarrifArrayFromJsonArray(tarifs));
             }
             JSONArray billetteries = json.getJSONArray("billetteries");
             if (billetteries.length() > 0) {
@@ -176,8 +176,12 @@ public class InfolocaleEntityUtils {
             if (Util.notEmpty(json.get("photos"))) {
                 itEvent.setPhotos(createPhotosArrayFromJsonArray(json.getJSONArray("photos")));
             }
-            itEvent.setAgeMinimum(json.getInt("ageMinimum"));
-            itEvent.setAgeMaximum(json.getInt("ageMaximum"));
+            if (!json.isNull("ageMinimum")) {
+              itEvent.setAgeMinimum(json.getInt("ageMinimum"));
+            }
+            if (!json.isNull("ageMaximum")) {
+              itEvent.setAgeMaximum(json.getInt("ageMaximum"));
+            }
             if (json.getJSONArray("categoriesAge").length() > 0) {
               JSONArray jsonAgeArray = json.getJSONArray("categoriesAge");
               String[] tmpCatAge = new String[jsonAgeArray.length()];
@@ -186,13 +190,27 @@ public class InfolocaleEntityUtils {
               }
               itEvent.setCategorieDage(tmpCatAge);
             }
-            itEvent.setNombreDeParticipants(json.getInt("nombreParticipants"))  ;
-            itEvent.setDuree(json.getInt("duree"));
-            itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
-            itEvent.setMentionAccessibleHandicapAuditif(json.getBoolean("mentionAccessibleHandicapAuditif"));
-            itEvent.setMentionAccessibleHandicapVisuel(json.getBoolean("mentionAccessibleHandicapVisuel"));
-            itEvent.setMentionAccessibleHandicapMental(json.getBoolean("mentionAccessibleHandicapMental"));
-            itEvent.setMentionAccessibleHandicapMoteur(json.getBoolean("mentionAccessibleHandicapMoteur"));
+            if (!json.isNull("nombreParticipants")) {
+              itEvent.setNombreDeParticipants(json.getInt("nombreParticipants"));
+            }
+            if (!json.isNull("duree")) {
+              itEvent.setDuree(json.getInt("duree"));
+            }
+            if (!json.isNull("mentionEvenementComplet")) {
+              itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
+            }
+            if (!json.isNull("mentionAccessibleHandicapAuditif")) {
+              itEvent.setMentionAccessibleHandicapAuditif(json.getBoolean("mentionAccessibleHandicapAuditif"));
+            }
+            if (!json.isNull("mentionAccessibleHandicapVisuel")) {
+              itEvent.setMentionAccessibleHandicapVisuel(json.getBoolean("mentionAccessibleHandicapVisuel"));
+            }
+            if (!json.isNull("mentionAccessibleHandicapMental")) {
+              itEvent.setMentionAccessibleHandicapMental(json.getBoolean("mentionAccessibleHandicapMental"));
+            }
+            if (!json.isNull("mentionAccessibleHandicapMoteur")) {
+              itEvent.setMentionAccessibleHandicapMoteur(json.getBoolean("mentionAccessibleHandicapMoteur"));
+            }
             if (Util.notEmpty(json.get("langues"))) {
                 itEvent.setLangues(createLanguesArrayFromJsonArray(json.getJSONArray("langues")));
             }
