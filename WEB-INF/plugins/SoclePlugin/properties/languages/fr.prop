@@ -266,6 +266,7 @@ jcmsplugin.socle.km2: km²
 jcmsplugin.socle.contacterdept: Contacter Le Département de Loire-Atlantique
 jcmsplugin.socle.enbref: En bref
 jcmsplugin.socle.savoirplus: En savoir +
+jcmsplugin.socle.savoirplus.link: En savoir plus : {0}
 jcmsplugin.socle.envideo: En vidéo
 jcmsplugin.socle.alireaussi: A lire aussi
 jcmsplugin.socle.memetheme: Sur le même thème
