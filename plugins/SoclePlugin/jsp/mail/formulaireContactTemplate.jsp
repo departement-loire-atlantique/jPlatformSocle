@@ -309,11 +309,9 @@ MOBILE TARGETING
                         <p><%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %></p>
                         <p><%= glp("jcmsplugin.socle.pageutile.email") %> : <%=request.getAttribute("email") %></p>
                         <p><%= glp("jcmsplugin.socle.telephone") %> <%=request.getAttribute("telephone") %></p>
-                        <% System.out.println("adresse : "+request.getAttribute("adresse")); %>
                         <% if(Util.notEmpty(request.getAttribute("adresse"))) { %>
                           <p><%= glp("jcmsplugin.socle.adresse") %> <%=request.getAttribute("adresse") %></p>
                         <% } %>
-                        <% System.out.println("complement adresse : "+request.getAttribute("complement-adresse")); %>
                         <% if(Util.notEmpty(request.getAttribute("complement-adresse"))) { %>
                           <p><%= glp("jcmsplugin.socle.complement-adresse") %> : <%=request.getAttribute("complement-adresse") %></p>
                         <% } %>
