@@ -103,6 +103,8 @@ jcmsplugin.socle.form.envoi-succes: Votre demande a bien été envoyée.
 jcmsplugin.socle.form.envoi-erreur: Une erreur est survenue pendant l'envoi du mail. Merci de rééssayer + tard.
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
 jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
+jcmsplugin.socle.form.exemple.adresse: Exemple : 1 impasse de l'Eglise
+jcmsplugin.socle.form.exemple.complement-adresse: Exemple : Résidence Les Tilleuls
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 1Mo
@@ -116,6 +118,8 @@ jcmsplugin.socle.form.login.memoriser: Rester connecté
 $jcmsplugin.socle.login.redirect.pub: Contenu à viser après authentification pour l'espace presse
 $jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot de passe
 jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
+jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
+jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
 
 # ------------------------------------------------------------
 #  Mail
@@ -242,6 +246,7 @@ jcmsplugin.socle.gratuit: GRATUIT
 jcmsplugin.socle.libre: LIBRE
 jcmsplugin.socle.payant: PAYANT
 jcmsplugin.socle.adresse: Adresse :
+jcmsplugin.socle.complement-adresse: Complément d'adresse
 jcmsplugin.socle.syrendre: S'y rendre ?
 jcmsplugin.socle.public: Public :
 jcmsplugin.socle.age.apartirde: A partir de {0} ans
@@ -273,6 +278,11 @@ jcmsplugin.socle.oui: Oui
 jcmsplugin.socle.non: Non
 jcmsplugin.socle.envoyer: Envoyer
 jcmsplugin.socle.votrecontact: Votre contact
+jcmsplugin.socle.nom: Nom
+jcmsplugin.socle.prenom: Prénom
+jcmsplugin.socle.code-postal: Code postal
+jcmsplugin.socle.sujet: Sujet
+jcmsplugin.socle.message: Message
 
 # ------------------------------------------------------------
 #  Header

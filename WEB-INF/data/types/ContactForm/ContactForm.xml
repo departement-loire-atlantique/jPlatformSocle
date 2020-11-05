@@ -15,6 +15,12 @@
     <field name="mail" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
       <label xml:lang="fr">Courriel</label>
     </field>
+    <field name="adresse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Adresse</label>
+    </field>
+    <field name="complementDadresse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Complément d'adresse</label>
+    </field>
     <field name="codePostal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="5" ml="false" html="false" checkHtml="false" descriptionType="text" maxlength="5">
       <label xml:lang="fr">Code postal</label>
     </field>
