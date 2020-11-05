@@ -911,11 +911,8 @@ public class InfolocaleUtil {
      */
     public static Photo getLargestPicture(EvenementInfolocale itEvent) {
       
-      Photo emptyPhoto = new Photo();
-      emptyPhoto.setPath(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.photo.404.url"));
-      
       if (Util.isEmpty(itEvent) || Util.isEmpty(itEvent.getPhotos())) {
-        return emptyPhoto;
+        return null;
       }
       
       String urlLargest = getUrlOfLargestPicture(itEvent);
@@ -930,7 +927,7 @@ public class InfolocaleUtil {
         }
       }
       
-      return emptyPhoto;
+      return null;
     }
 
     /**
