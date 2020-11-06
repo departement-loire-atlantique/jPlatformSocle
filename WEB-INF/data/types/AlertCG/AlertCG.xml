@@ -5,7 +5,7 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400">
+    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wysiwygConfigurationId="simple">
       <label xml:lang="fr">Chapo</label>
     </field>
     <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">

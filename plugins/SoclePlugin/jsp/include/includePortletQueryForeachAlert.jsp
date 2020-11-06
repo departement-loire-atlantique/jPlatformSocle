@@ -13,7 +13,7 @@ Portlet itPortlet = channel.getData(Portlet.class, channel.getProperty("jcmsplug
 	    <%@ include file="/types/PortletQueryForeach/doQuery.jspf" %>
 		<%@ include file="/types/PortletQueryForeach/doSort.jspf" %>
 		<%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %>
-		<jalios:include pub='<%= itPub %>'/>
+		<jalios:include pub='<%= itPub %>' usage="full"/>
 		<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %>
 	    <%@ include file="/types/PortletQueryForeach/doPager.jspf" %>
     </div>
