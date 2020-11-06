@@ -1,10 +1,12 @@
+<%@ include file='/jcore/doInitPage.jspf' %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formulaire de contact</title>
+  <title><%= glp("jcmsplugin.socle.form.contact-mail.title") %></title>
   <style type="text/css">
     /* Based on The MailChimp Reset INLINE: Yes. */
     /* Client-specific Styles */
@@ -303,14 +305,20 @@ MOBILE TARGETING
                     <tbody>
                       <tr>
                         <td>
-                        <p>Nom : <%=request.getAttribute("nom") %></p>
-                        <p>Prénom : <%=request.getAttribute("prenom") %></p>
-                        <p>Email : <%=request.getAttribute("email") %></p>
-                        <p>Téléphone : <%=request.getAttribute("telephone") %></p>
-                        <p>Code postal : <%=request.getAttribute("codepostal") %></p>
-                        <p>Commune : <%=request.getAttribute("commune") %></p>
-                        <p>Sujet : <%=request.getAttribute("sujet") %></p>
-                        <p>Message : <%=request.getAttribute("message") %></p>
+                        <p><%= glp("jcmsplugin.socle.nom") %> : <%=request.getAttribute("nom") %></p>
+                        <p><%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %></p>
+                        <p><%= glp("jcmsplugin.socle.pageutile.email") %> : <%=request.getAttribute("email") %></p>
+                        <p><%= glp("jcmsplugin.socle.telephone") %> <%=request.getAttribute("telephone") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("adresse"))) { %>
+                          <p><%= glp("jcmsplugin.socle.adresse") %> <%=request.getAttribute("adresse") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("complement-adresse"))) { %>
+                          <p><%= glp("jcmsplugin.socle.complement-adresse") %> : <%=request.getAttribute("complement-adresse") %></p>
+                        <% } %>
+                        <p><%= glp("jcmsplugin.socle.code-postal") %> : <%=request.getAttribute("codepostal") %></p>
+                        <p><%= glp("jcmsplugin.socle.facette.commune.default-label") %> : <%=request.getAttribute("commune") %></p>
+                        <p><%= glp("jcmsplugin.socle.sujet") %> : <%=request.getAttribute("sujet") %></p>
+                        <p><%= glp("jcmsplugin.socle.message") %> : <%=request.getAttribute("message") %></p>
                         </td>
                       </tr>
                     </tbody>
