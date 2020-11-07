@@ -17,7 +17,9 @@ $jcmsplugin.socle.cat.animationSportive.id: p2_108385
 
 channel.security.authorized-redirect.suivi-demande: ^https?://demarche.loire-atlantique.fr/.*
 
+# TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
 jcmsplugin.socle.url-rewriting.disabled:true
+jcmsplugin.socle.url-rewriting: false
 jcmsplugin.socle.page-utile.disabled:false
 
 jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies

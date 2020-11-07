@@ -38,7 +38,9 @@ jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
 jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
 jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
 jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
+# TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
 jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
+jcmsplugin.socle.url-rewriting: Activer la réécriture d'URL (true | false) ?
 jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
 jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
@@ -103,6 +105,8 @@ jcmsplugin.socle.form.envoi-succes: Votre demande a bien été envoyée.
 jcmsplugin.socle.form.envoi-erreur: Une erreur est survenue pendant l'envoi du mail. Merci de rééssayer + tard.
 jcmsplugin.socle.form.exemple.email: Exemple : monadresse@mail.com
 jcmsplugin.socle.form.exemple.tel: Exemple : 0202030405
+jcmsplugin.socle.form.exemple.adresse: Exemple : 1 impasse de l'Eglise
+jcmsplugin.socle.form.exemple.complement-adresse: Exemple : Résidence Les Tilleuls
 jcmsplugin.socle.form.exemple.codepostal: Exemple : 44000
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 1Mo
@@ -116,6 +120,8 @@ jcmsplugin.socle.form.login.memoriser: Rester connecté
 $jcmsplugin.socle.login.redirect.pub: Contenu à viser après authentification pour l'espace presse
 $jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot de passe
 jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
+jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
+jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
 
 # ------------------------------------------------------------
 #  Mail
@@ -242,6 +248,7 @@ jcmsplugin.socle.gratuit: GRATUIT
 jcmsplugin.socle.libre: LIBRE
 jcmsplugin.socle.payant: PAYANT
 jcmsplugin.socle.adresse: Adresse :
+jcmsplugin.socle.complement-adresse: Complément d'adresse
 jcmsplugin.socle.syrendre: S'y rendre ?
 jcmsplugin.socle.public: Public :
 jcmsplugin.socle.age.apartirde: A partir de {0} ans
@@ -266,6 +273,7 @@ jcmsplugin.socle.km2: km²
 jcmsplugin.socle.contacterdept: Contacter Le Département de Loire-Atlantique
 jcmsplugin.socle.enbref: En bref
 jcmsplugin.socle.savoirplus: En savoir +
+jcmsplugin.socle.savoirplus.link: En savoir plus : {0}
 jcmsplugin.socle.envideo: En vidéo
 jcmsplugin.socle.alireaussi: A lire aussi
 jcmsplugin.socle.memetheme: Sur le même thème
@@ -273,6 +281,11 @@ jcmsplugin.socle.oui: Oui
 jcmsplugin.socle.non: Non
 jcmsplugin.socle.envoyer: Envoyer
 jcmsplugin.socle.votrecontact: Votre contact
+jcmsplugin.socle.nom: Nom
+jcmsplugin.socle.prenom: Prénom
+jcmsplugin.socle.code-postal: Code postal
+jcmsplugin.socle.sujet: Sujet
+jcmsplugin.socle.message: Message
 
 # ------------------------------------------------------------
 #  Header
