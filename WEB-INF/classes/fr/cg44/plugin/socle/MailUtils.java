@@ -2,7 +2,6 @@ package fr.cg44.plugin.socle;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +16,10 @@ import com.jalios.jcms.mail.MailMessage;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
 
-import generated.AutreRechercheForm;
 import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
-import generated.CommunicationForm;
 import generated.ContactForm;
 import generated.FicheEmploiStage;
-import generated.RechercheJugementForm;
 
 public class MailUtils {
   private static Channel channel = Channel.getChannel();
@@ -50,8 +46,6 @@ public class MailUtils {
     parametersMap.put("prenom", form.getPrenom());
     parametersMap.put("email", form.getMail());
     parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
-    parametersMap.put("adresse", Util.notEmpty(form.getAdresse()) ? form.getAdresse() : "");
-    parametersMap.put("complement-adresse", Util.notEmpty(form.getComplementDadresse()) ? form.getComplementDadresse() : "");
     parametersMap.put("codepostal", form.getCodePostal());
     parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
     parametersMap.put("sujet", form.getSujet(channel.getDefaultAdmin()).first());
@@ -289,7 +283,7 @@ public class MailUtils {
   public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<String> listeEmailCC, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
       throws javax.mail.MessagingException {
 
-    MailMessage mail = new MailMessage(JcmsUtil.glp("jcmsplugin.socle.form.contact-mail.origine", "fr"));
+    MailMessage mail = new MailMessage("Département de Loire Atlantique");
     mail.setFrom(emailFrom);
     mail.setTo(emailTo);
     
