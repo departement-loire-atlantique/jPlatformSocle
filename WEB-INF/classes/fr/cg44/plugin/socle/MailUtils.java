@@ -46,6 +46,8 @@ public class MailUtils {
     parametersMap.put("prenom", form.getPrenom());
     parametersMap.put("email", form.getMail());
     parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
+    parametersMap.put("adresse", Util.notEmpty(form.getAdresse()) ? form.getAdresse() : "");
+    parametersMap.put("complement-adresse", Util.notEmpty(form.getComplementDadresse()) ? form.getComplementDadresse() : "");
     parametersMap.put("codepostal", form.getCodePostal());
     parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
     parametersMap.put("sujet", form.getSujet(channel.getDefaultAdmin()).first());
@@ -283,7 +285,7 @@ public class MailUtils {
   public static void sendMail(String subject, String content, String emailFrom, String emailTo, ArrayList<String> listeEmailCC, ArrayList<File> listePieceJointe, String jsp, HashMap<Object, Object> parametersMap)
       throws javax.mail.MessagingException {
 
-    MailMessage mail = new MailMessage("Département de Loire Atlantique");
+    MailMessage mail = new MailMessage(JcmsUtil.glp("jcmsplugin.socle.form.contact-mail.origine", "fr"));
     mail.setFrom(emailFrom);
     mail.setTo(emailTo);
     
