@@ -21,7 +21,7 @@ import generated.CandidatureSpontaneeForm;
 import generated.ContactForm;
 import generated.FicheEmploiStage;
 
-public class MailUtils {
+public final class MailUtils {
   private static Channel channel = Channel.getChannel();
 
   private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
