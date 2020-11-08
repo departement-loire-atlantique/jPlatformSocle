@@ -27,7 +27,7 @@ public class MailUtils {
   private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
   private static final String NEWLINE = "<br/><br>";
 
-  private MailUtils() {
+  public MailUtils() {
     throw new IllegalStateException("Utility class");
   }
 
