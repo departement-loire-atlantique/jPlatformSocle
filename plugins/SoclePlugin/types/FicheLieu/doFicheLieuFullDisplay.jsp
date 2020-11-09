@@ -339,37 +339,37 @@
                                     
                                     StringBuffer sbfTitle = new StringBuffer();
                                     
-                                    if(isOpenInNewTab) {
+                                    if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
                                         
-                                        if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
+                                        sbfTitle.append(obj.getTexteAlternatifLien(userLang));
+                                        
+                                    } else {
+                                        
+                                        sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
+                                        
+                                        if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
                                             
-                                            sbfTitle.append(obj.getTexteAlternatifLien(userLang));
-                                            
-                                        } else {
-                                            
-                                            sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
-                                            
-                                            if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
-                                                
-                                                sbfTitle.append(" ")
+                                            sbfTitle.append(" ")
                                                 .append(glp("jcmsplugin.socle.sur"))
                                                 .append(" ")
                                                 .append(obj.getPlusDeDetailInterne().getTitle(userLang));
-                                                
-                                            } else {
-                                                
-                                                sbfTitle.append(" : ")
+                                            
+                                        } else {
+                                            
+                                            sbfTitle.append(" : ")
                                                 .append(obj.getTitle());
-                                            }
                                         }
+                                    }
+                                    if(isOpenInNewTab) {
                                         sbfTitle.append(" ")
-                                        .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+                                            .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
                                     }
                                 %>
                                 <a href='<%= url %>' 
                                     class="ds44-btnStd ds44-btnStd--large" 
                                     type="button" 
-                                    <%= isOpenInNewTab ? "title=\'"+HttpUtil.encodeForHTMLAttribute(sbfTitle.toString())+"\' target=\"_blank\"" : "" %>> 
+                                    title='<%= HttpUtil.encodeForHTMLAttribute(sbfTitle.toString())%>'
+                                    <%= isOpenInNewTab ? "target=\"_blank\"" : "" %> > 
                                     
                                     <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.plusDeDetails") %></span> 
                                     <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
@@ -388,10 +388,10 @@
         <section class="ds44-contenuArticle" id="section2">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate='<%= <%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
                         <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
                     </jalios:if>
-                    <jalios:if predicate='<%= <%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
                         <h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
@@ -404,10 +404,10 @@
         <section class="ds44-contenuArticle" id="section3">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate='<%= <%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
                         <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
                     </jalios:if>
-                    <jalios:if predicate='<%= <%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
                         <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%= obj.getModalitesDaccueil() %></jalios:wysiwyg>
