@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><%= glp("jcmsplugin.archives.email.communication.titre") %></title>
+  <title><%= glp("jcmsplugin.archives.email.jugement.titre") %></title>
   
   <jsp:include page="stylesEmail.jsp" />
 
@@ -34,7 +34,7 @@
                     <tbody>
                       <tr>
                         <td>
-                        <h1><%= glp("jcmsplugin.archives.email.communication.titre") %></h1>
+                        <h1><%= glp("jcmsplugin.archives.email.jugement.titre") %></h1>
                         
                         <p><%= glp("jcmsplugin.archives.email.communication.sous-titre") %> <%=request.getAttribute("date") %></p>
                         
@@ -42,12 +42,6 @@
                         
                         <p><%= glp("jcmsplugin.archives.form.nom") %> : <%=request.getAttribute("nom") %></p>
                         <p><%= glp("jcmsplugin.archives.form.prenom") %> : <%=request.getAttribute("prenom") %></p>
-                        <p><%= glp("jcmsplugin.archives.form.administration") %> : <%=request.getAttribute("administration") %></p>
-                        <p><%= glp("jcmsplugin.archives.form.direction") %> : <%=request.getAttribute("direction") %></p>
-                        <p><%= glp("jcmsplugin.archives.form.service") %> : <%=request.getAttribute("service") %></p>
-                        
-                        <h2><%= glp("jcmsplugin.archives.form.coordonnees") %></h2>
-                        
                         <p><%= glp("jcmsplugin.archives.form.adresse") %> : <%=request.getAttribute("adresse") %></p>
                         <% if(Util.notEmpty(request.getAttribute("complementAdresse"))) { %>
                             <p><%= glp("jcmsplugin.archives.form.complementAdresse") %> : <%=request.getAttribute("complementAdresse") %></p>
@@ -56,23 +50,37 @@
                         <p><%= glp("jcmsplugin.archives.form.ville") %> : <%=request.getAttribute("ville") %></p>
                         <p><%= glp("jcmsplugin.archives.form.telephone") %> : <%=request.getAttribute("telephone") %></p>
                         
-                        <h2><%= glp("jcmsplugin.archives.form.caracteristiquesRecherche") %></h2>
+                        <h2><%= glp("jcmsplugin.archives.form.caracteristiquesJugement") %></h2>
+
+                        <% if(Util.notEmpty(request.getAttribute("anneeJugement"))) { %>
+                            <p><%= glp("jcmsplugin.archives.form.anneeJugement") %> : <%=request.getAttribute("anneeJugement") %></p>
+                        <% }%>
+                        <% if(Util.notEmpty(request.getAttribute("dateJugement"))) { %>
+                            <p><%= glp("jcmsplugin.archives.form.dateJugement") %> : <%=request.getAttribute("dateJugement") %></p>
+                        <% }%>
+                        <p><%= glp("jcmsplugin.archives.form.lieuJugement") %> : <%=request.getAttribute("lieuJugement") %></p>
+
+                        <h2><%= glp("jcmsplugin.archives.form.concernesJugement") %></h2>
                         
-                        <% if(Util.notEmpty(request.getAttribute("versement"))) { %>
-                            <p><%= glp("jcmsplugin.archives.form.versement") %> : <%=request.getAttribute("versement") %></p>
+                        <p><%= glp("jcmsplugin.archives.form.nomPersonne1") %> : <%=request.getAttribute("nomPersonne1") %></p>
+                        <p><%= glp("jcmsplugin.archives.form.prenomPersonne1") %> : <%=request.getAttribute("prenomPersonne1") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("nomPersonne2"))) { %>
+                            <p><%= glp("jcmsplugin.archives.form.nomPersonne2") %> : <%=request.getAttribute("nomPersonne2") %></p>
                         <% }%>
-                        <% if(Util.notEmpty(request.getAttribute("dossier"))) { %>
-                            <p><%= glp("jcmsplugin.archives.form.dossier") %> : <%=request.getAttribute("dossier") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("prenomPersonne2"))) { %>
+                            <p><%= glp("jcmsplugin.archives.form.prenomPersonne2") %> : <%=request.getAttribute("prenomPersonne2") %></p>
                         <% }%>
-                        <% if(Util.notEmpty(request.getAttribute("natureRecherche"))) { %>
-                            <p><%= glp("jcmsplugin.archives.form.natureRecherche") %> : <%=request.getAttribute("natureRecherche") %></p>
+                                                
+                        <h2><%= glp("jcmsplugin.archives.form.motifJugement") %></h2>
+
+                        <p><%= glp("jcmsplugin.archives.form.motifJugement") %> : <%=request.getAttribute("motifJugement") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("autreMotifJugement"))) { %>
+                            <p><%= glp("jcmsplugin.archives.form.autreMotifJugement") %> : <%=request.getAttribute("autreMotifJugement") %></p>
                         <% }%>
-                        <% if(Util.notEmpty(request.getAttribute("dateVersement"))) { %>
-                            <p><%= glp("jcmsplugin.archives.form.dateVersement") %> : <%=request.getAttribute("dateVersement") %></p>
-                        <% }%>
-                        <% if(Util.notEmpty(request.getAttribute("dateRetour"))) { %>
-                            <p><%= glp("jcmsplugin.archives.form.dateRetour") %> : <%=request.getAttribute("dateRetour") %></p>
-                        <% }%>
+                                                
+                        <h2><%= glp("jcmsplugin.archives.form.motivationDemandeJugement") %></h2>
+                        
+                        <p><%= glp("jcmsplugin.archives.form.motivations") %> : <%=request.getAttribute("motivations") %></p>
   
                         </td>
                       </tr>

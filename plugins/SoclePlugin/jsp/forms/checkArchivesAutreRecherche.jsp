@@ -16,22 +16,13 @@ JsonArray jsonArray = new JsonArray();
 // Initialisation des variables à enregistrer
 String nom = request.getParameter("nom[value]");
 String prenom = request.getParameter("prenom[value]");
-String administration = request.getParameter("administration[value]");
-String direction = request.getParameter("direction[value]");
-String service = request.getParameter("service[value]");
 String adresse = request.getParameter("adresse[value]");
 String complementAdresse = request.getParameter("complementAdresse[value]");
 String codePostal = request.getParameter("codePostal[value]");
 String ville = request.getParameter("ville[value]");
 String telephone = request.getParameter("telephone[value]");
 String courriel = request.getParameter("courriel[value]");
-String versement = request.getParameter("versement[value]");
-String dossier = request.getParameter("dossier[value]");
-String natureRecherche = request.getParameter("natureRecherche[value]");
-String dateVersement = request.getParameter("form-element-dateVersement[value]");
-String dateRetour = request.getParameter("form-element-dateRetour[value]");
-
-
+String demande = request.getParameter("demande[value]");
 
 // contrôle des données
 boolean isOK = true;
@@ -43,18 +34,6 @@ if (Util.isEmpty(nom)) {
 if (Util.isEmpty(prenom)) {
   isOK = false;
   jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.prenom")));
-}
-if (Util.isEmpty(administration)) {
-  isOK = false;
-  jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.administration")));
-}
-if (Util.isEmpty(direction)) {
-  isOK = false;
-  jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.direction")));
-}
-if (Util.isEmpty(service)) {
-  isOK = false;
-  jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.service")));
 }
 if (Util.isEmpty(adresse)) {
   isOK = false;
@@ -76,49 +55,44 @@ if (Util.isEmpty(courriel)) {
   isOK = false;
   jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.courriel")));
 }
-
-
+if (Util.isEmpty(demande)) {
+  isOK = false;
+  jsonArray.add(glp("jcmsplugin.socle.form.champ-obligatoire", glp("jcmsplugin.archives.form.demande")));
+}
 
 // Contrôle OK
 if(isOK){
     // Enregistrement
     Member opAuthor = channel.getDefaultAdmin();
     
-    CommunicationForm form = new CommunicationForm();
+    AutreRechercheForm form = new AutreRechercheForm();
     form.setTitle(form.getTypeLabel(userLang));
     form.setNom(nom);
     form.setPrenom(prenom);
-    form.setAdministration(administration);
-    form.setDirection(direction);
-    form.setServiceUnite(service);
     form.setAdresse(adresse);
     form.setComplementDadresse(complementAdresse);
     form.setCodePostal(codePostal);
     form.setVille(ville);
     form.setTelephone(telephone);
     form.setCourriel(courriel);
-    form.setNumeroDeVersement(versement);
-    form.setNumeroDuDossier(dossier);
-    form.setNatureDeLaRecherche(natureRecherche);
-    form.setDateDeVersement(dateVersement);
-    form.setRetourDuDossierPrevuLe(dateRetour);
+    form.setDemande(demande);
+        
     form.setAuthor(opAuthor);
-    
     
     // Check and perform the update
     ControllerStatus status = form.checkAndPerformCreate(opAuthor);
     if (!status.isOK()) {
       String msg = status.getMessage(opAuthor.getLanguage());
-      logger.error("CommunicationForm - enregistrement impossible : " + msg);
+      logger.error("AutreRechercheForm - enregistrement impossible : " + msg);
       jsonObject.addProperty("status", "error");
       jsonObject.addProperty("message", glp("jcmsplugin.socle.form.envoi-erreur"));
     }
     
     else{
       // Envoi du mail
-      if(! ArchivesMailUtils.envoiMailCommunicationAdministrativeArchives(form)){
+      if(! ArchivesMailUtils.envoiMailAutreRechercheArchives(form)){
         // Erreur d'envoi de mail. On ne prévient pas l'usager de cette erreur technique.
-        logger.error("CommunicationForm : impossible d'envoyer le mail");
+        logger.error("AutreRechercheForm : impossible d'envoyer le mail");
       }
       jsonObject.addProperty("status", "information");
       jsonObject.addProperty("message", glp("jcmsplugin.socle.pageutile.envoi-succes"));  

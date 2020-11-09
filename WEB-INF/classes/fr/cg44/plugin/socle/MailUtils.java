@@ -2,7 +2,6 @@ package fr.cg44.plugin.socle;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +27,7 @@ public final class MailUtils {
   private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
   private static final String NEWLINE = "<br/><br>";
 
-  private MailUtils() {
+  public MailUtils() {
     throw new IllegalStateException("Utility class");
   }
 
@@ -270,66 +269,6 @@ public final class MailUtils {
     return envoiMailPageUtile(pageUtile, titre, url, commentaire, date, motif, emailRedacteur, null);
   }
   
-  /**
-   * Envoi de l'email du formulaire de communication administrative (site Archives)
-   */
-  public static boolean envoiMailCommunicationAdministrativeArchives(String nom, String prenom, String administration, String direction, String service, 
-      String adresse, String complementAdresse, String codePostal, String ville, String telephone, String courriel, String versement, String dossier, 
-      String natureRecherche, String dateVersement, String dateRetour) {
-    
-    boolean result = false;
-    String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireArchivesCommunicationAdministrativeTemplate.jsp";
-    String date = SocleUtils.formatDate("dd/MM/yy HH:mm", new Date());
-    
-    // Objet
-    String objet = JcmsUtil.glpd("jcmsplugin.archives.email.communication.objet");
-    
-    // Destinataire / emetteur
-    String emailTo = channel.getProperty("jcmsplugin.archives.form.mailTo");
-    String emailFrom = channel.getProperty("jcmsplugin.archives.form.from");
-    
-    // CC
-    ArrayList<String> listeEmailCC = new ArrayList<>();
-    if(Util.notEmpty(courriel)){
-      listeEmailCC.add(courriel);
-    }
-    
-    // Contenu
-    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
-    parametersMap.put("nom", nom);
-    parametersMap.put("prenom", prenom);
-    parametersMap.put("administration", administration);
-    parametersMap.put("direction", direction);
-    parametersMap.put("service", service);
-    parametersMap.put("adresse", adresse);
-    parametersMap.put("complementAdresse", complementAdresse);
-    parametersMap.put("codePostal", codePostal);
-    parametersMap.put("ville", ville);
-    parametersMap.put("telephone", telephone);
-    parametersMap.put("courriel", courriel);
-    parametersMap.put("versement", versement);
-    parametersMap.put("dossier", dossier);
-    parametersMap.put("natureRecherche", natureRecherche);
-    parametersMap.put("dateVersement", dateVersement);
-    parametersMap.put("dateRetour", dateRetour);
-    parametersMap.put("date", date);
-
-    if (Util.notEmpty(emailFrom) && Util.notEmpty(emailTo)) {
-      try {
-        sendMail(objet, null, emailFrom, emailTo, listeEmailCC, null, jsp, parametersMap);
-        result = true;
-      } catch (Exception e) {
-        result = false;
-        LOGGER.error("Formulaire de communication administrative - Erreur lors de l'envoi du mail : " + e.getMessage());
-      }
-
-    } else {
-      result = false;
-      LOGGER.error("Formulaire de communication administrative - Paramètres d'envois (emetteur / destinataire) non définis.");
-    }
-
-    return result;
-  }  
 
   /**
    * Envoi de mail
