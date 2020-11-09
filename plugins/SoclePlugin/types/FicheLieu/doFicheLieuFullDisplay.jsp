@@ -23,7 +23,9 @@
                     <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
                 </jalios:if>
                 <h1 class="h1-like mbs mts " id="idTitre1"><%=obj.getTitle()%></h1>
+                <% String ariaLevelPHeading = "2"; %>
                 <jalios:if predicate='<%=Util.notEmpty(obj.getSoustitre())%>'>
+                    <% ariaLevelPHeading = "3"; %>
                     <h2 class="h2-like" id="idTitre0"><%=obj.getSoustitre()%></h2>
                 </jalios:if>
             </div>
@@ -68,7 +70,7 @@
                                 <div class="col">
 
                                     <jalios:if predicate='<%=Util.notEmpty(adresse) || Util.notEmpty(obj.getPlanDacces()) || Util.notEmpty(localisation) %>'>
-                                        <p role="heading" aria-level="3" class="ds44-box-heading"><%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
+                                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading"><%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousRencontrer")+" :" : glp("jcmsplugin.socle.ficheaide.adresse")+" :"%></p>
 
                                         <jalios:if predicate='<%=Util.notEmpty(adresse)%>'>
                                             <p class="ds44-docListElem mts">
@@ -141,7 +143,7 @@
                                         </jalios:if>
 
                                         <%--  TODO infos accessibilite --%>
-                                        <%-- <p role="heading" aria-level="3" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.accessibilite-lieu.titre") %></p>
+                                        <%-- <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading mtl"><%= glp("jcmsplugin.socle.ficheaide.accessibilite-lieu.titre") %></p>
                                         <p class="ds44-docListElem mts">
                                             <i class="icon icon-right ds44-docListIco" aria-hidden="true"></i> 
                                             <a href="#" aria-label='<%= glp("jcmsplugin.socle.ficheaide.info-accessibilite.label") + " : " + obj.getTitle()%>'>
@@ -156,7 +158,7 @@
 
                                     <jalios:if predicate='<%=Util.notEmpty(obj.getTelephone()) || Util.notEmpty(obj.getEmail())
                                                 || Util.notEmpty(obj.getSiteInternet())%>'>
-                                        <p role="heading" aria-level="3" class="ds44-box-heading">
+                                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading">
                                             <%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousContacter")+" :" : glp("jcmsplugin.socle.ficheaide.contact")+" :"%>
                                         </p>
 
@@ -245,7 +247,7 @@
                                     </jalios:if>
 
 									<jalios:if predicate='<%=Util.notEmpty(adresseEcrire)%>'>
-										<p role="heading" aria-level="3" class="ds44-box-heading mtl">
+										<p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading mtl">
 											<%=Util.notEmpty(obj.getServiceDuDepartement(loggedMember)) ? glp("jcmsplugin.socle.ficheaide.nousEcrire") + " :" : glp("jcmsplugin.socle.ficheaide.ecrireA") + " :"%>
 										</p>
 										<p class="ds44-docListElem mts">
@@ -337,37 +339,37 @@
                                     
                                     StringBuffer sbfTitle = new StringBuffer();
                                     
-                                    if(isOpenInNewTab) {
+                                    if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
                                         
-                                        if(Util.notEmpty(obj.getTexteAlternatifLien(userLang))) {
+                                        sbfTitle.append(obj.getTexteAlternatifLien(userLang));
+                                        
+                                    } else {
+                                        
+                                        sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
+                                        
+                                        if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
                                             
-                                            sbfTitle.append(obj.getTexteAlternatifLien(userLang));
-                                            
-                                        } else {
-                                            
-                                            sbfTitle.append(glp("jcmsplugin.socle.plusDeDetails"));
-                                            
-                                            if(Util.notEmpty(obj.getPlusDeDetailInterne())) {
-                                                
-                                                sbfTitle.append(" ")
+                                            sbfTitle.append(" ")
                                                 .append(glp("jcmsplugin.socle.sur"))
                                                 .append(" ")
                                                 .append(obj.getPlusDeDetailInterne().getTitle(userLang));
-                                                
-                                            } else {
-                                                
-                                                sbfTitle.append(" : ")
+                                            
+                                        } else {
+                                            
+                                            sbfTitle.append(" : ")
                                                 .append(obj.getTitle());
-                                            }
                                         }
+                                    }
+                                    if(isOpenInNewTab) {
                                         sbfTitle.append(" ")
-                                        .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
+                                            .append(glp("jcmsplugin.socle.accessibily.newTabLabel"));
                                     }
                                 %>
                                 <a href='<%= url %>' 
                                     class="ds44-btnStd ds44-btnStd--large" 
                                     type="button" 
-                                    <%= isOpenInNewTab ? "title=\'"+HttpUtil.encodeForHTMLAttribute(sbfTitle.toString())+"\' target=\"_blank\"" : "" %>> 
+                                    title='<%= HttpUtil.encodeForHTMLAttribute(sbfTitle.toString())%>'
+                                    <%= isOpenInNewTab ? "target=\"_blank\"" : "" %> > 
                                     
                                     <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.plusDeDetails") %></span> 
                                     <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
@@ -386,7 +388,12 @@
         <section class="ds44-contenuArticle" id="section2">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+                        <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
+                    </jalios:if>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+                        <h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
+                    </jalios:if>
                     <jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
                 </div>
             </div>
@@ -397,7 +404,12 @@
         <section class="ds44-contenuArticle" id="section3">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                    </jalios:if>
+                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+                        <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                    </jalios:if>
                     <jalios:wysiwyg><%= obj.getModalitesDaccueil() %></jalios:wysiwyg>
                 </div>
             </div>
@@ -410,7 +422,7 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <div class="ds44-wsg-encadreContour">
-                        <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
+                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
 
                         <jalios:if predicate='<%= Util.notEmpty(obj.getHorairesEtAcces()) %>'>
                             <div class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="4">
@@ -473,7 +485,7 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <div class="ds44-wsg-encadreApplat">
-                        <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.autre-lieu-associes") %></p>
+                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.autre-lieu-associes") %></p>
                         
                         <ul class="ds44-list">
                             <jalios:foreach name="ficheLieu" type="FicheLieu" array='<%= obj.getAutresLieuxAssocies() %>'>
