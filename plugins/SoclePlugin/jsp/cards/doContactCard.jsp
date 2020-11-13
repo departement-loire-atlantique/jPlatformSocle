@@ -26,6 +26,16 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
    </jalios:if>
     <div class="ds44-card__section--horizontal">
       <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getLieuDeRattachement()) %>">
+        <p class="ds44-cardLocalisation">
+            <i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= pub.getLieuDeRattachement() %>' href="<%= pub.getLieuDeRattachement().getDisplayUrl(userLocale) %>"><%= pub.getLieuDeRattachement().getTitle() %></a></span>
+        </p>
+      </jalios:if>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getFonction()) %>">
+        <p class="ds44-cardLocalisation">
+            <%= pub.getFonction() %>
+        </p>
+      </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getCommunes()) %>">
         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span><span class="ds44-iconInnerText">
 	        <jalios:foreach name="itCommune" type="City" array="<%= pub.getCommunes() %>">
