@@ -104,7 +104,6 @@ if (Util.isEmpty(pub) && Util.isEmpty(image)) {
   return;
 }
 
-alt = HttpUtil.encodeForHTMLAttribute(alt);
 ariaLabel = HttpUtil.encodeForHTMLAttribute(ariaLabel);
 legend = HttpUtil.encodeForHTMLAttribute(legend);
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
@@ -190,6 +189,9 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
     formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(image);
   }
 }
+
+if(Util.isEmpty(alt)) alt = JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration");
+alt = HttpUtil.encodeForHTMLAttribute(alt);
 
 String label = ariaLabel;
 if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
