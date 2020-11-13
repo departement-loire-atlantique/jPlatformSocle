@@ -49,6 +49,10 @@ if (Util.isEmpty(urlImage)) {
         </jalios:if>
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
+                <%
+                    String altText = (String) pub.getFieldValue("texteAlternatif");
+                    titleAttr = Util.notEmpty(altText) ? " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"" : titleAttr;
+                %>
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                     <%= pub.getTitle() %>
                 </a>
