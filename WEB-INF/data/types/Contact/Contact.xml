@@ -18,6 +18,12 @@
     <field name="photoDidentite" editor="image" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="80" ml="false">
       <label xml:lang="fr">Photo d'identité</label>
     </field>
+    <field name="fonction" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Fonction</label>
+    </field>
+    <field name="lieuDeRattachement" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FicheLieu" parent="false">
+      <label xml:lang="fr">Lieu de rattachement</label>
+    </field>
     <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
     </field>
