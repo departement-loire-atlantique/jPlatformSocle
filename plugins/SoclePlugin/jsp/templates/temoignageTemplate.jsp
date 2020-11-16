@@ -5,7 +5,7 @@
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
 %><%
 
-if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien))) {
+if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien) && !(data instanceof FicheActu))) {
   return;
 }
 Publication pub = (Publication) data;
