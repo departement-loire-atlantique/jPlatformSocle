@@ -1417,7 +1417,8 @@ public final class SocleUtils {
 					break;
 				}
 			}
-			if (Util.notEmpty(catVicePresident)) {
+			// Ajout de != null pour la vérification SonarCloud
+			if (catVicePresident != null && Util.notEmpty(catVicePresident)) {
 				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
 				return "<b>" + fullRole + " " + catVicePresident.getName() + "</b>";
 			}

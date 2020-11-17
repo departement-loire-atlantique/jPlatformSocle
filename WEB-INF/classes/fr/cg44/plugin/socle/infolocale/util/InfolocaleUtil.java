@@ -37,7 +37,7 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
-    public static String dateInfolocalePattern = "yyyy-MM-dd";
+    public static final String dateInfolocalePattern = "yyyy-MM-dd";
     
     private InfolocaleUtil() {}
     
