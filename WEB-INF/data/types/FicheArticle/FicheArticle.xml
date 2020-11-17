@@ -64,7 +64,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Paragraphe">
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Paragraphe">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe">
@@ -73,7 +73,7 @@
     <field name="titreOnglet_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="titreParagraphe_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_1">
+    <field name="titreParagraphe_1" editor="textfield" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_1">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe_1" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_1" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe_1">
@@ -91,7 +91,7 @@
     <field name="titreOnglet_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="titreParagraphe_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_2">
+    <field name="titreParagraphe_2" editor="textfield" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_2">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe_2" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_2" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe_2">
@@ -109,7 +109,7 @@
     <field name="titreOnglet_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="titreParagraphe_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_3">
+    <field name="titreParagraphe_3" editor="textfield" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_3">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe_3" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_3" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe_3">
@@ -127,7 +127,7 @@
     <field name="titreOnglet_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Titre onglet</label>
     </field>
-    <field name="titreParagraphe_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_4">
+    <field name="titreParagraphe_4" editor="textfield" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" tabGroup="Paragraphe_4">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
     <field name="contenuParagraphe_4" editor="wysiwyg" required="false" compactDisplay="false" tab="onglet_4" type="String[]" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true" tabGroup="Paragraphe_4">
