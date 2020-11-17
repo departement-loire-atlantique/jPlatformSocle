@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<type name="FicheActu" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
-  <label xml:lang="fr">Fiche actu</label>
+<type name="FicheActu" superclass="generated.Temoignage" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
   <title ml="true" searchable="true">
     <label xml:lang="en">Title</label>
     <label xml:lang="fr">Titre</label>
@@ -95,20 +94,22 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
+    <field type="super" />
   </fields>
   <tabs>
-    <tab id="contenu">
-      <label xml:lang="fr">Contenu</label>
-    </tab>
-    <tab id="temoignage">
-      <label xml:lang="fr">Témoignage</label>
-    </tab>
     <tab id="classement">
       <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
     </tab>
     <tab id="territoire">
       <label xml:lang="fr">Territoire</label>
     </tab>
+    <tab id="temoignage">
+      <label xml:lang="fr">Témoignage</label>
+    </tab>
   </tabs>
+  <label xml:lang="fr">Fiche actu</label>
 </type>
 
