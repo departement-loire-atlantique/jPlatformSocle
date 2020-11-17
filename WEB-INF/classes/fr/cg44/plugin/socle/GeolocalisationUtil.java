@@ -12,7 +12,8 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.socle.comparator.DistanceComparator;
 
 public class GeolocalisationUtil {
-
+  
+  private GeolocalisationUtil() {}
 
   /**
    * Renvoi la publications à plus proche d'une publication de
@@ -26,7 +27,7 @@ public class GeolocalisationUtil {
    * @return Liste des publications à proximité de la publication de référence.
    */
   public static Publication getClosenessDistancePublications(Publication publication, Set<Publication> itPublications) {
-    List<Publication> listPublications = new ArrayList<Publication>(itPublications);
+    List<Publication> listPublications = new ArrayList<>(itPublications);
     if (isGeolocated(publication)) {
       DistanceComparator distanceComparator = new DistanceComparator(publication);     
       Collections.sort(listPublications, distanceComparator);

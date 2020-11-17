@@ -800,7 +800,8 @@ public class InfolocaleEntityUtils {
       }
     }
     // si la thématique a des thématiques enfants, alors on navigue dans ses catégories enfants récursivement
-    if(Util.notEmpty(listeSubThem)) {
+    // Ajout de != null pour la vérification SonarCloud
+    if(listeSubThem != null && Util.notEmpty(listeSubThem)) {
       for(int i = 0; i < listeSubThem.length(); i++) {
         try {
           JSONObject subThem = listeSubThem.getJSONObject(i);
@@ -816,7 +817,8 @@ public class InfolocaleEntityUtils {
       } catch (JSONException e) {
         LOGGER.warn("Exception sur listeSubGenres dans getAllGenreOfAThematique : "+ e.getMessage());
       }
-      if(Util.notEmpty(listeSubGenres)) {
+      // Ajout de != null pour la vérification SonarCloud
+      if(listeSubGenres != null && Util.notEmpty(listeSubGenres)) {
         for(int i = 0; i < listeSubGenres.length(); i++) {
           try {
             JSONObject subGenre = listeSubGenres.getJSONObject(i);

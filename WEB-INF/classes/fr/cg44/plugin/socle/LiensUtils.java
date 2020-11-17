@@ -1,7 +1,5 @@
 package fr.cg44.plugin.socle;
 
-import org.apache.log4j.Logger;
-
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
@@ -9,8 +7,7 @@ import com.jalios.jcms.Publication;
 
 public final class LiensUtils {
 	private static Channel channel = Channel.getChannel();
-	private static final Logger LOGGER = Logger.getLogger(LiensUtils.class);
-
+	
 	private LiensUtils() {
 		throw new IllegalStateException("Utility class");
 	}
@@ -33,8 +30,9 @@ public final class LiensUtils {
 				return createLinkedinLink(urlPub);	    	  
 			case "mail" :
 				return createEmailLink(urlPub, pubCourante.getTitle());
+			default:
+        return null;
 			}
-		return null;  
 
 	}
 
@@ -97,8 +95,7 @@ public final class LiensUtils {
 	 * @return le lien de partage
 	 */
 	public static String createEmailLink(String url, String titrePub) {
-		String link = JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), titrePub, HttpUtil.encodeForURL(url));
-		return link;
+	  return JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), titrePub, HttpUtil.encodeForURL(url));
 	}	  	  
 
 }
