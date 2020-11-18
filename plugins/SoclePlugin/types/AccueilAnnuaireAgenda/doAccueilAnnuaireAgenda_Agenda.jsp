@@ -4,7 +4,7 @@
 %><% AccueilAnnuaireAgenda obj = (AccueilAnnuaireAgenda)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %>
 
-<main id="content" role="main">
+<main id="content" role="main" tabindex="-1">
 
     <jalios:include target="SOCLE_ALERTE"/>
     

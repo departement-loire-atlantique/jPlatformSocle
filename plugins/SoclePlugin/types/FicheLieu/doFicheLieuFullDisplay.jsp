@@ -7,7 +7,7 @@
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

@@ -7,7 +7,7 @@
 %><% FicheActu obj = (FicheActu)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><%@ include file='/front/doFullDisplay.jspf' %>
 
-<main id="content" role="main">
+<main id="content" role="main" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

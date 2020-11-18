@@ -125,7 +125,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 </jalios:buffer>
 
 
-<main id="content" role="main">
+<main id="content" role="main" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

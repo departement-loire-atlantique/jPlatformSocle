@@ -16,7 +16,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
 %>
 <%@ include file='/front/doFullDisplay.jspf'%>
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

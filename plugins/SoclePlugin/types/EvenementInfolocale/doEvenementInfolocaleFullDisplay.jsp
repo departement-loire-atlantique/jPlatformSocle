@@ -39,7 +39,7 @@ boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
 %>
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

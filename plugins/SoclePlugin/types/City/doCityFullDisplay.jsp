@@ -190,7 +190,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
     </div>
 </jalios:buffer>
 
-<main id="content" role="main">
+<main id="content" role="main" tabindex="-1">
     <article class="ds44-container-large">
     
     <jalios:include target="SOCLE_ALERTE"/>

@@ -12,7 +12,7 @@
 
 <%= getPortlet(bufferMap,"header") %>
 
-<main role="main" id="content" class="ds44-mainResults">
+<main role="main" id="content" class="ds44-mainResults" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 

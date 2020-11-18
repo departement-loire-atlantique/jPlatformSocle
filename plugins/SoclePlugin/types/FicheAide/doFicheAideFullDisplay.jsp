@@ -42,7 +42,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 %>
 
 
-<main role="main" id="content">
+<main role="main" id="content" tabindex="-1">
 
 <jalios:include target="SOCLE_ALERTE"/>
 
