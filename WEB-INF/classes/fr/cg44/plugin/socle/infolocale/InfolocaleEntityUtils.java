@@ -651,7 +651,7 @@ public class InfolocaleEntityUtils {
       }
       
       // Recherche sur un genre
-      String prefixeGrp = "groupe_";
+      String prefixeGrp = "produit_";
       String[] genres = request.getParameterValues("cids");
       String strGenres = "";
       String strThematiques = "";
