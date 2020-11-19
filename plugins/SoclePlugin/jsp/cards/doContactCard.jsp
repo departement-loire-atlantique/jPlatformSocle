@@ -28,7 +28,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
       <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
       <jalios:if predicate="<%= Util.notEmpty(pub.getLieuDeRattachement()) %>">
         <p class="ds44-cardLocalisation">
-            <i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= HttpUtil.encodeForHTMLAttribute(pub.getLieuDeRattachement()) %>' href="<%= pub.getLieuDeRattachement().getDisplayUrl(userLocale) %>"><%= pub.getLieuDeRattachement().getTitle() %></a></span>
+            <i class="icon icon-marker" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= HttpUtil.encodeForHTMLAttribute(pub.getLieuDeRattachement().getTitle()) %>' href="<%= pub.getLieuDeRattachement().getDisplayUrl(userLocale) %>"><%= pub.getLieuDeRattachement().getTitle() %></a></span>
         </p>
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getFonction()) %>">
