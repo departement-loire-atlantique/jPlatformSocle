@@ -16,7 +16,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 // recuperation de l'url et de l'alt de l'icone pour le chiffre principal
 String urlImage = Util.notEmpty(pub.getIconePrincipale()) ? pub.getIconePrincipale() : channel.getProperty("jcmsplugin.socle.chiffresCles.icone.url");
-String altImage =  urlImage.split("/")[urlImage.split("/").length - 1];
+String altImage =  HttpUtil.encodeForHTMLAttribute(urlImage.split("/")[urlImage.split("/").length - 1]);
 
 // recuperation de l'url du libelle et de l'attribut title du lien
 String urlLien = "";
@@ -24,10 +24,10 @@ String libelleLien =  Util.notEmpty(pub.getLibelleLien()) ? pub.getLibelleLien()
 String titleLien = "";
 if(Util.notEmpty(pub.getLienExterne())) {
 	urlLien = pub.getLienExterne();
-	titleLien = glp("jcmsplugin.socle.lien.nouvelonglet", libelleLien);
+	titleLien = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", libelleLien));
 } else if(Util.notEmpty(pub.getLienInterne())) {
 	urlLien = pub.getLienInterne().getDisplayUrl(userLocale);
-	titleLien = libelleLien;
+	titleLien = HttpUtil.encodeForHTMLAttribute(libelleLien);
 }
 
 String chiffrePrincipal = pub.getChiffrePrincipal().replaceAll("[^0-9\\,]", "");
