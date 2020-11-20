@@ -298,7 +298,7 @@
                             <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
                                 <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale()) %>' class="ds44-w100 ds44-imgRatio"
-                                        <%= Util.notEmpty(obj.getTexteAlternatif(userLang)) ? "alt='"+ HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif(userLang))+"'" : "" %>>
+                                        <%= Util.notEmpty(obj.getTexteAlternatif(userLang)) ? "alt='"+ HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif(userLang))+"'" : "alt=''" %>>
                                 <jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
                                     <figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
                                 </jalios:if>

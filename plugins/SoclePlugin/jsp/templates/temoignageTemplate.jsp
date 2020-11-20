@@ -46,6 +46,8 @@ if(Util.notEmpty(texteAlternatif)){
 	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(texteAlternatif) +"\" ";
 } else if (Util.notEmpty(titre)) {
 	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(titre) +"\" ";
+} else {
+    altAttr = " alt=\"\"";
 }
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">

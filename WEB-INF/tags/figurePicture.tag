@@ -190,7 +190,9 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   }
 }
 
-if(Util.isEmpty(alt)) alt = JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration");
+if(Util.isEmpty(alt)) {
+  alt = Util.notEmpty(legend) ? legend : JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration");
+}
 alt = HttpUtil.encodeForHTMLAttribute(alt);
 
 String label = ariaLabel;
@@ -204,6 +206,8 @@ if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
 else {
   label = alt;
 }
+
+
 
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
