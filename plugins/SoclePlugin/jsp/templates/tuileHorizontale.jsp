@@ -36,6 +36,10 @@ if (Util.isEmpty(urlImage)) {
  if (Util.notEmpty(urlImage)) {
      urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
  }
+ 
+ String altImage = (String) pub.getFieldValue("texteAlternatif");
+ if(Util.isEmpty(altImage)) altImage = JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration");
+ altImage = HttpUtil.encodeForHTMLAttribute(altImage);
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%> <%= isSmall ? "ds44-tiny-reducedFont" : ""%>">
@@ -43,7 +47,7 @@ if (Util.isEmpty(urlImage)) {
         <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
             <div class="ds44-card__section--horizontal--img<%= isSmall ? "--dim110" : "" %>">
                 <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
-                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
+                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt='<%= altImage %>'>
                 </picture>
             </div>
         </jalios:if>
@@ -51,7 +55,10 @@ if (Util.isEmpty(urlImage)) {
             <p class="ds44-card__title" role="heading" aria-level="3">
                 <%
                     String altText = (String) pub.getFieldValue("texteAlternatif");
-                    titleAttr = Util.notEmpty(altText) ? " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"" : titleAttr;
+                    if(Util.notEmpty(altText)) {
+                        if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                        titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
+                    }
                 %>
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                     <%= pub.getTitle() %>
