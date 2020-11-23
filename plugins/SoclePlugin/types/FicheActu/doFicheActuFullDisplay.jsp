@@ -83,14 +83,12 @@
         %>
         
         <jalios:if predicate='<%= obj.getSurLeMemeTheme() && !navCat.isEmpty() && Util.notEmpty(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"))%>'>
-            <%
-            String[] typesRecherches = channel.getStringArrayProperty("jcmsplugin.socle.surlememetheme.ficheactu.types", new String[]{});
-            
+            <% 
             // Récupération des publications catégorisées dans "En ce moment"
             QueryHandler qhEnCeMoment = new QueryHandler();
             qhEnCeMoment.setCids(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"));
             qhEnCeMoment.setLoggedMember(loggedMember);
-            qhEnCeMoment.setTypes(typesRecherches);
+            qhEnCeMoment.setTypes("Content");
             QueryResultSet resultEnCeMomentSet = qhEnCeMoment.getResultSet();
             SortedSet<Publication> listPubsEnCeMomentSet = resultEnCeMomentSet.getAsSortedSet(Publication.getPdateComparator());
             
@@ -100,7 +98,7 @@
             qhThemes.setCatMode("or");
             qhThemes.setCids(themeCids);
             qhThemes.setLoggedMember(loggedMember);
-            qhThemes.setTypes(typesRecherches);
+            qhThemes.setTypes("Content");
             QueryResultSet resultThemesSet = qhThemes.getResultSet();
             SortedSet<Publication> listPubsThemesSet = resultThemesSet.getAsSortedSet(Publication.getPdateComparator());
             
