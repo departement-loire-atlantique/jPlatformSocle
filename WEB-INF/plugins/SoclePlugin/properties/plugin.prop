@@ -35,6 +35,7 @@ jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
 jcmsplugin.socle.meme-theme.max: 20
+jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
 jcmsplugin.socle.idpub.annuaire.elus: c_1279194
 

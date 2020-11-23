@@ -59,6 +59,7 @@ jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidenti
 jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
 
 jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
+jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
 
 # Recherche
 
