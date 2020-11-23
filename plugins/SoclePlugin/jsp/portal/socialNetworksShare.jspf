@@ -25,7 +25,7 @@ List<String> socialNetworksList = Arrays.asList(socialNetworks);
                     %>
                     <%
                     if(Util.notEmpty(itSocialNetworkTitle) && Util.notEmpty(itSocialNetworkLink)){ %>
-                        <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%=glp("jcmsplugin.socle.socialnetworks.title")%> <%=socialNetworksLabelsList.get(i)%> <%=glp("jcmsplugin.socle.accessibily.newTabLabel")%></span></a></li>
+                        <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%=glp("jcmsplugin.socle.socialnetworks.title")%> <%=itSocialNetwork%> <%=glp("jcmsplugin.socle.accessibily.newTabLabel")%></span></a></li>
                     <%}else{
                         logger.error("Partagez cette page : erreur de title ou de lien pour le réseau social " + itSocialNetwork);
                     } %>
