@@ -62,6 +62,8 @@ jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments
 
 jcmsplugin.socle.site.applimenu.cat.root: ID de la catégorie de nav pour le menu "Sites et applis"
 
+jcmsplugin.socle.surlememetheme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu
+
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
@@ -792,8 +794,4 @@ jcmsplugin.socle.calculetteOA.partsfiscales.title: Nombre de parts fiscales du f
 jcmsplugin.socle.calculetteOA.partsfiscales.info: Cette information se trouve en page 2 de votre avis d'imposition, sous le libellé 'Nombre de parts'
 jcmsplugin.socle.calculetteOA.bouton.label: Calculer
 jcmsplugin.socle.calculetteOA.bouton.title: Calculer le montant de l'obligation alimentaire
-
-# Chiffres cles
-jcmsplugin.socle.chiffrescles.titre: En chiffres
-jcmsplugin.socle.chiffrescles.lien: Toutes les données
 
