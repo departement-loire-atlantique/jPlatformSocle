@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ChiffresCles" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="iconePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Icone principale</label>
+    </field>
+    <field name="chiffrePrincipal" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Chiffre principal</label>
+    </field>
+    <field name="libelleChiffrePrincipal" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Libellé chiffre principal</label>
+    </field>
+    <field name="chiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" wiki="false">
+      <label xml:lang="fr">Chiffre secondaire</label>
+    </field>
+    <field name="libelleChiffreSecondaire" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" wiki="false" inline="true">
+      <label xml:lang="fr">Libellé chiffre secondaire</label>
+    </field>
+    <field name="libelleLien" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé lien</label>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien externe</label>
+    </field>
+    <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">
+      <label xml:lang="fr">Lien interne</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Chiffres clés</label>
+</type>
+

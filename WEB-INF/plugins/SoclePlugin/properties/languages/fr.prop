@@ -791,3 +791,7 @@ jcmsplugin.socle.calculetteOA.partsfiscales.info: Cette information se trouve en
 jcmsplugin.socle.calculetteOA.bouton.label: Calculer
 jcmsplugin.socle.calculetteOA.bouton.title: Calculer le montant de l'obligation alimentaire
 
+# Chiffres cles
+jcmsplugin.socle.chiffrescles.titre: En chiffres
+jcmsplugin.socle.chiffrescles.lien: Toutes les données
+
