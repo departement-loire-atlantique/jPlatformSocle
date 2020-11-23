@@ -50,7 +50,7 @@
 						</jalios:if>
 						
 						<jalios:foreach type="String" name="itParagrapheRubrique" array="<%= obj.getParagrapheRubrique() %>">
-							<section class="ds44-contenuArticle" id="section<%= itCounter %>">
+							<section class="ds44-contenuArticle" id="section<%= itCounter %>" tabindex="-1">
 								<jalios:if predicate="<%= obj.getTitreRubrique().length >= itCounter && Util.notEmpty(obj.getTitreRubrique()[itCounter-1])%>">
 									<h2 id="idTitre<%= itCounter+1 %>"><%= obj.getTitreRubrique()[itCounter-1] %></h2>
 								</jalios:if>
