@@ -40,7 +40,7 @@
 <%
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
-	String nameType = typeDeSelection ? "name-check-" : "name-radio-";
+	String nameType = typeDeSelection ? "name-check" : "name-radio";
 	String typeInput = typeDeSelection ? "checkbox" : "radio";
 	String labelInput = typeDeSelection ? "box" : "radio";
 	
