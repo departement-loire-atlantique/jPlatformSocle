@@ -82,6 +82,8 @@ String formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(mobileImage
 if (Util.isEmpty(formattedMobilePath)) {
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
 }
+
+String altTxt = Util.notEmpty(alt) ? alt : "";
 %>
 
 <section class="ds44-container-large">
@@ -93,7 +95,7 @@ if (Util.isEmpty(formattedMobilePath)) {
                     <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
                 </jalios:if>
                 <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-                <img src="<%=formattedImagePath%>" alt="" class="ds44-headerImg" id="<%=uid%>"/>
+                <img src="<%=formattedImagePath%>" alt="<%= altTxt %>" class="ds44-headerImg" id="<%=uid%>"/>
             </picture>
             <jalios:if predicate="<%= hasFigcaption%>">
                 <figcaption class="ds44-imgCaption">
@@ -120,7 +122,7 @@ if (Util.isEmpty(formattedMobilePath)) {
                 <div class="ds44-innerBoxContainer">
                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.label.departementPdcv") %></p>
                     <hr>
-                    <img src="<%= cartePath %>" alt="">
+                    <img src="<%= cartePath %>" alt="<%= altTxt %>">
                     <p class="mts h4-like" role="heading" aria-level="3"><%= delegation.getTitle() %></p>
                     <% String adresse = SocleUtils.formatAdresseEcrire(delegation); %>
                     <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
