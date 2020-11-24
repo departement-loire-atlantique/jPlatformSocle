@@ -1762,4 +1762,38 @@ public final class SocleUtils {
     return null;
   }
   
+  /**
+   * Renvoie le texte alternatif d'un contenu pour une illustration
+   * @param pub
+   * @return
+   */
+  public static String getAltTextFromPub(Publication pub) {
+    
+    String altText = "";
+    String legendText = "";
+    boolean hasCopyright = false;
+    try {
+      altText = (String) pub.getFieldValue("texteAlternatif");
+    } catch (Exception e) {}
+    try {
+      legendText = (String) pub.getFieldValue("legende");
+    } catch (Exception e) {}
+    try {
+      hasCopyright = Util.notEmpty((String) pub.getFieldValue("copyright"));
+    } catch (Exception e) {}
+    
+    if(Util.isEmpty(altText)) {
+      // Champ alt vide, mais légende
+      if (Util.notEmpty(legendText)) {
+        altText = legendText;
+      }
+      // Légende vide, mais copyright présent
+      else if (hasCopyright && Util.notEmpty(pub)) {
+        altText = pub.getTitle();
+      }
+    }
+    
+    return altText;
+  }
+  
 }

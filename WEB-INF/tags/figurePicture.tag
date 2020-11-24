@@ -190,21 +190,7 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   }
 }
 
-if(Util.isEmpty(alt)) {
-  // Champ alt vide, mais légende
-  if (Util.notEmpty(legend)) {
-    alt = legend;
-  }
-  // Légende vide, mais copyright présent
-  else if (Util.notEmpty(copyright)) {
-    alt = pub.getTitle();
-  }
-  // Copyright et légende vides
-  else {
-    alt = "";
-  }
-}
-alt = HttpUtil.encodeForHTMLAttribute(alt);
+String alt = HttpUtil.encodeForHTMLAttribute(SocleUtils.getAltTextFromPub(pub));
 
 String label = ariaLabel;
 if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
@@ -218,8 +204,6 @@ else {
   label = alt;
 }
 
-
-
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
 	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle() : label %>">
@@ -228,7 +212,7 @@ else {
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-	        <img src="<%=formattedImagePath%>" alt="<%= Util.isEmpty(alt) ? pub.getTitle() : alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
+	        <img src="<%=formattedImagePath%>" alt="<%= alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
 	    </picture>
 	    
 	    <jalios:if predicate="<%= hasFigcaption%>">

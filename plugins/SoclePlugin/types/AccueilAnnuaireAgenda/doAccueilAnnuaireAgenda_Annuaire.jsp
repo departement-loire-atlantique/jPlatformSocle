@@ -11,11 +11,11 @@
     <section class="ds44-container-large">
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImageBandeau()) %>">
-                <ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
+                <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
                    legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
             </jalios:if>
             <jalios:default>
-                <ds:titleSimple mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
+                <ds:titleSimple pub="<%= obj %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
                    legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleSimple>
             </jalios:default>
         </jalios:select>

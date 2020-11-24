@@ -8,7 +8,7 @@
     description="Titre du header simple" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument"
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument, com.jalios.jcms.Publication"
 %>
 <%@ attribute name="title"
     required="true"
@@ -16,6 +16,13 @@
     rtexprvalue="true"
     type="String"
     description="Le titre affiché sur l'image"
+%>
+<%@ attribute name="pub"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Publication"
+    description="La publication dont on récupère l'image"
 %>
 <%@ attribute name="chapo"
     required="false"
@@ -153,7 +160,7 @@ if(Util.notEmpty(video)) {
 	    <div class="ds44-img50">
 	        <div class="ds44-inner-container">
 	            <div class="ds44-grid12-offset-1">
-	                <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
+	                <ds:figurePicture pub="<%= pub %>" imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
 				</div>
 	        </div>
 	    </div>

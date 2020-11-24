@@ -24,7 +24,7 @@
 
         %>
 
-		<ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
+		<ds:titleSimple pub="<%= obj %>" imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
 		    title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
 		    breadcrumb="true" date="<%= date %>"></ds:titleSimple>
 		
