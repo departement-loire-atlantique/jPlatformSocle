@@ -25,9 +25,7 @@ try {
 try {
   sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
 } catch(Exception e) {}
-try {
-  texteAlternatif = (String) pub.getFieldValue("texteAlternatif");
-} catch(Exception e) {}
+texteAlternatif = SocleUtils.getAltTextFromPub(pub);
 
 try {
   urlImage = (String) pub.getFieldValue("imagePrincipale");
