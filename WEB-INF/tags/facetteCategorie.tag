@@ -131,7 +131,7 @@
             <span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
         </button>
         <button type="button" id="button-<%= idFormElement %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
-                title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) %>' 
+                title='<%= obj.getFacetteObligatoire() ? JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.champ-obligatoire.title", labelChamp) : labelChamp %>' 
                 aria-expanded="false" 
                 <%= isDisabled ? "data-disabled=\"true\"" : "" %>>
             <i class='<%= "icon icon-down icon--size" + styleChamps2 %>' aria-hidden="true"></i>
