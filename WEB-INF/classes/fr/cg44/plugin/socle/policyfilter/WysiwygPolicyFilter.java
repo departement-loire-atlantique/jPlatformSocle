@@ -19,11 +19,31 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
   
 	@Override
 	public String afterRendering(final String text, final Locale userLocale) {
-		return checkExternalLinks(text, userLocale);
+		return generateNewRenderedWysiwyg(text, userLocale);
 	}
 	
+	/**
+	 * Modifie le WYSIWYG de diverses façons avant de passer au rendu
+	 * @param text
+	 * @param userLocale
+	 * @return
+	 */
+	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
+	  String formattedText = checkExternalLinks(text, userLocale);
+	  formattedText = removeParagraphsAroundLinks(text);
+	  return formattedText;
+	}
 	
 	/**
+	 * Retire les balises <p> qui ne contiennent qu'une balise <a>
+	 * @param text
+	 * @return
+	 */
+	private String removeParagraphsAroundLinks(String text) {
+    return text.replaceAll("<p><a", "<a").replaceAll("</a></p>", "</a>");
+  }
+
+  /**
 	 * Modifie les liens externes pour qu'ils affichent la mention " - nouvelle fenêtre" dans l'attribut "title" si celui-ci n'est pas vide,
 	 * et si un "target='_blank'" a été détecté.
 	 */
