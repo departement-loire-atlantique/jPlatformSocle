@@ -26,7 +26,7 @@ try {
     location = (String) pub.getFieldValue("lieu");
 } catch(Exception e) {}
 
-String imageAlt = SocleUtils.getAltTextFromPub(pub);;
+String imageAlt = SocleUtils.getAltTextFromPub(pub);
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
