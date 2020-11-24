@@ -60,6 +60,8 @@ jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de
 
 jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
 
+jcmsplugin.socle.site.applimenu.cat.root: ID de la catégorie de nav pour le menu "Sites et applis"
+
 # Recherche
 
 jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche

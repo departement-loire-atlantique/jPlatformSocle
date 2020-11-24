@@ -101,7 +101,7 @@ jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
-jcmsplugin.socle.site.applimenu.cat.root: j_5
+$jcmsplugin.socle.site.applimenu.cat.root: j_5
 $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
