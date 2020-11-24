@@ -57,7 +57,7 @@
     <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "adresseMail", userLang) %><jalios:edit pub='<%= obj %>' fields='adresseMail'/></td>
     <td class='field-data' <%= gfla(obj, "adresseMail") %>>
             <% if (Util.notEmpty(obj.getAdresseMail())) { %>
-            <a href='mailto:<%= obj.getAdresseMail() %>'><%= obj.getAdresseMail()%></a>
+            <a href='mailto:<%= obj.getAdresseMail() %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle(), obj.getAdresseMail())) %>'><%= obj.getAdresseMail()%></a>
             <% } %>
     </td>
   </tr>

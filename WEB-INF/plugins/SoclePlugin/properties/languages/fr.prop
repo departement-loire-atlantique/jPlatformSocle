@@ -181,10 +181,10 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une page pour vo
 # ------------------------------------------------------------
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
-jcmsplugin.socle.lien.site.nouvelonglet: Site web : {0} - nouvelle fenêtre
+jcmsplugin.socle.lien.site.nouvelonglet: Visiter le site web : {0} - nouvelle fenêtre
 jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
-jcmsplugin.socle.contactmail: Contacter {0} par mail : {1}
+jcmsplugin.socle.contactmail: Contacter par mail : {0} : {1}
 jcmsplugin.socle.contactmail.label: Contacter par mail
 jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
 jcmsplugin.socle.menu: Menu
@@ -405,7 +405,7 @@ jcmsplugin.socle.actuedu.prisechargedeplacement.label: Prise en charge déplacem
 jcmsplugin.socle.actuedu.duree.label: Durée :
 jcmsplugin.socle.actuedu.depotdossier.label: Dépôt du dossier :
 jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
-jcmsplugin.socle.actuedu.nouscontacter.label: Nous contacter par mail
+jcmsplugin.socle.actuedu.nouscontacter.label: Contacter par mail
 jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
 jcmsplugin.socle.actuedu.pour-eleve.label: Pour les élèves de : {0}
 
@@ -413,7 +413,7 @@ jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
 jcmsplugin.socle.ficheaide.accessibilite-lieu.titre: Accessibilité du lieu :
 jcmsplugin.socle.ficheaide.info-accessibilite.label: Infos accessibilité
-jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter {0} par mail : {1} 
+jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter par mail : {0} : {1}
 jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contacter par mail
 jcmsplugin.socle.ficheaide.visiter-site.label: Visiter le site
 jcmsplugin.socle.ficheaide.nousRencontrer: Nous rencontrer
