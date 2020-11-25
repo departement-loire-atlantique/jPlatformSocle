@@ -1693,6 +1693,10 @@ public final class SocleUtils {
    */
   public static String getAltFromLien(Lien itLien) {
     
+	if (Util.notEmpty(itLien.getTexteAlternatif())) {
+		return itLien.getTexteAlternatif();
+	}
+	  
     if (Util.notEmpty(itLien.getLienInterne())) {
       if (itLien.getLienInterne() instanceof FileDocument) {
         FileDocument itDoc = (FileDocument) itLien.getLienInterne();
