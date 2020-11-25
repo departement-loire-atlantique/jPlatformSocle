@@ -222,7 +222,9 @@ else {
 
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
+    <jalios:if predicate="<%= hasFigcaption %>">
 	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle() : label %>">
+	</jalios:if>
 	    <picture class="<%= pictureCss %>">
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
@@ -231,7 +233,7 @@ else {
 	        <img src="<%=formattedImagePath%>" alt="<%= Util.isEmpty(alt) ? pub.getTitle() : alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
 	    </picture>
 	    
-	    <jalios:if predicate="<%= hasFigcaption%>">
+	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
 	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
 	                <%=legend%>
@@ -240,6 +242,6 @@ else {
 	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
 	            </jalios:if>
 	        </figcaption>
-	    </jalios:if>
 	</figure>
+	</jalios:if>
 </jalios:if>
