@@ -30,12 +30,12 @@ boolean isLienExterne = Util.isEmpty(box.getLienInterne());
 String labelBouton = box.getLabelDuLien();
 String urlBouton = "";
 String targetAttr = "";
-String titleAttr = Util.notEmpty(box.getTitreCompletDeLien()) ? box.getTitreCompletDeLien() : labelBouton;
+String titleValue = Util.notEmpty(box.getTitreCompletDeLien()) ? box.getTitreCompletDeLien() : labelBouton;
 
 if(isLienExterne){
   urlBouton = box.getLienExterne();
   targetAttr = glp("jcmsplugin.socle.targetblank");
-  titleAttr = glp("jcmsplugin.socle.lien.site.nouvelonglet", titleAttr);
+  titleValue = glp("jcmsplugin.socle.lien.site.nouvelonglet", titleValue);
 }
 else{
   urlBouton = box.getLienInterne().getDisplayUrl(userLocale);  
@@ -58,7 +58,7 @@ else{
 	                </jalios:if>
                     <%-- Bouton desktop --%>
                     <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
-                        <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleAttr) %>' <%= targetAttr %> 
+                        <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
                         		class="ds44-btnStd ds44-btnStd--large ds44-hide-tiny-to-medium ds44-btnFullMobile">
                         	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
                         	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
@@ -82,7 +82,7 @@ else{
 	            
 	            <%-- Bouton mobile --%>
                 <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
-                    <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleAttr) %>' <%= targetAttr %> 
+                    <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
                     		class="ds44-btnStd ds44-show-tiny-to-medium ds44-show-mobile ds44-btnFullMobile">
                     	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
                     	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
