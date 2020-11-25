@@ -58,11 +58,13 @@ else{
 	                </jalios:if>
                     <%-- Bouton desktop --%>
                     <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
-                        <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
-                        		class="ds44-btnStd ds44-btnStd--large ds44-hide-tiny-to-medium ds44-btnFullMobile">
-                        	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
-                        	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-                        </a>
+                        <p>
+	                        <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
+	                        		class="ds44-btnStd ds44-btnStd--large ds44-hide-tiny-to-medium ds44-btnFullMobile">
+	                        	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
+	                        	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+	                        </a>
+	                    </p>
                     </jalios:if>
 				</div>
 				
@@ -82,11 +84,13 @@ else{
 	            
 	            <%-- Bouton mobile --%>
                 <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
-                    <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
-                    		class="ds44-btnStd ds44-show-tiny-to-medium ds44-show-mobile ds44-btnFullMobile">
-                    	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
-                    	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-                    </a>
+					<p>
+	                    <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
+	                    		class="ds44-btnStd ds44-show-tiny-to-medium ds44-show-mobile ds44-btnFullMobile">
+	                    	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
+	                    	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+	                    </a>
+					</p>
                 </jalios:if>
 	      </div>
 	    </div>
