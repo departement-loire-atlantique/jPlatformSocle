@@ -127,7 +127,7 @@
 							<ul class="ds44-list">
 								<jalios:foreach name="site" type="String" array='<%= obj.getWebsites() %>'>
 									<li>
-										<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"> 
+										<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"> 
 											<%= SocleUtils.parseUrl(site) %>
 										</a>
 									</li>

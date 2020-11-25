@@ -98,7 +98,7 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	            <ul class="ds44-list">
 	                <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
 	                    <li>
-	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+	                        <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"
 	                           data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
 	                            <%= SocleUtils.parseUrl(site) %>
 	                        </a>
