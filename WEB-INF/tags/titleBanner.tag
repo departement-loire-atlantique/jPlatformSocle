@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"
     description="Titre du header avec image" 
     body-content="scriptless" 
-    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util"
+    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.Publication"
 %>
 <%@ attribute name="title"
     required="true"
@@ -27,6 +27,13 @@
     rtexprvalue="true"
     type="String"
     description="Le chemin du fichier image mobile"
+%>
+<%@ attribute name="pub"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Publication"
+    description="La publication dont on récupère l'image"
 %>
 <%@ attribute name="legend"
     required="false"
@@ -62,7 +69,7 @@ if (Util.isEmpty(formattedMobilePath)) {
 %>
 
 <div class="ds44-pageHeaderContainer">
-    <ds:figurePicture figureCss="ds44-pageHeaderContainer__pictureContainer" pictureCss="ds44-pageHeaderContainer__pictureContainer" imgCss="ds44-headerImg"
+    <ds:figurePicture pub="<%= pub %>" figureCss="ds44-pageHeaderContainer__pictureContainer" pictureCss="ds44-pageHeaderContainer__pictureContainer" imgCss="ds44-headerImg"
         legend="<%= legend %>" copyright="<%= copyright %>" alt="<%= title %>" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" format="bandeau" />
     
     <div class="ds44-titleContainer">
