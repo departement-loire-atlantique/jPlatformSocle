@@ -59,6 +59,9 @@ jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidenti
 jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
 
 jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
+jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
+
+jcmsplugin.socle.site.applimenu.cat.root: ID de la catégorie de nav pour le menu "Sites et applis"
 
 # Recherche
 
@@ -302,7 +305,7 @@ jcmsplugin.socle.menu.navigation: Menu de navigation
 jcmsplugin.socle.sitesapplis: Sites et applis du Département de Loire-Atlantique
 jcmsplugin.socle.toussitesapplis: Tous nos sites et applis
 jcmsplugin.socle.sitesapplis.menu: Menu des sites et applications du Département de Loire-Atlantique
-jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu des sites et applications
+jcmsplugin.socle.sitesapplis.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.pdcv: Près de chez vous
 jcmsplugin.socle.menu.pdcv.adresse.label: Merci de préciser votre adresse
 jcmsplugin.socle.menu.pdcv.valider: Valider votre recherche de contact dans une commune
