@@ -10,7 +10,7 @@
 
 <jalios:select> 
 	<jalios:if predicate="<%=Util.notEmpty(obj.getImageBandeau()) %>">
-	   <ds:titleBanner imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+	   <ds:titleBanner pub="<%= obj %>" imagePath="<%= imageFile %>" mobileImagePath="<%= imageMobileFile %>" title="<%= title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 	</jalios:if>
 	<jalios:default>
 	   <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
