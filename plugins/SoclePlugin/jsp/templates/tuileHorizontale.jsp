@@ -78,9 +78,6 @@ if (Util.isEmpty(urlImage)) {
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-            <span class="visually-hidden">
-                <%= pub.getTitle() %>
-            </span>
         </div>
     </div>
 </section>
