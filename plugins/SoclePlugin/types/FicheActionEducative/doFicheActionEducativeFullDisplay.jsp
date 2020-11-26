@@ -19,7 +19,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	    <div class='col'>
 	        <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) || Util.notEmpty(obj.getParcoursEducationNationale(loggedMember)) %>">
-	        <div class="ds44-docListElem mts">
+	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) %>">
 	                <strong role="heading" aria-level="4"> <%= SocleUtils.formatCategories(obj.getTheme(loggedMember), "<br/>") %></strong>
@@ -32,12 +32,12 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	                <jalios:if predicate="<%= Util.notEmpty(obj.getTheme(loggedMember)) || Util.notEmpty(obj.getSoustheme(loggedMember)) %>"><br/></jalios:if>
 	                <%= SocleUtils.formatCategories(obj.getParcoursEducationNationale(loggedMember)) %>
 	            </jalios:if>
-	        </div>
+	        </p>
 	        </jalios:if>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDePratique(loggedMember)) %>">
-	        <div class="ds44-docListElem mts">
+	        <p class="ds44-docListElem mts">
 	            <strong><%= glp("jcmsplugin.socle.actuedu.typepratique.label") %></strong> <%= SocleUtils.formatCategories(obj.getTypeDePratique(loggedMember)) %>
-	        </div>
+	        </p>
 	        </jalios:if>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) || Util.notEmpty(obj.getCapaciteDaccueil()) %>">
 	        <div class="ds44-docListElem mts">
@@ -56,9 +56,9 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	            <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= glp("jcmsplugin.socle.actuedu.cout.label")%> <%= obj.getCout() %></jalios:wysiwyg>
 	        </div>
 	        </jalios:if>
-	        <div class="ds44-docListElem mts">
+	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-bus ds44-docListIco" aria-hidden="true"></i> <strong><%= glp("jcmsplugin.socle.actuedu.prisechargedeplacement.label") %></strong> <%= obj.getPriseEnChargeDeplacementLabel(userLang) %>
-	        </div>
+	        </p>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) %>">
 		        <div class="ds44-docListElem mts">
 		            <i class="icon icon-time ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= obj.getDuree() %></jalios:wysiwyg>
@@ -78,7 +78,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	    </div>
 	    <div class="col ds44--xl-padding-l">
 	        <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
-	        <div class="ds44-docListElem mts">
+	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNomEtPrenomContacts() %>
 	            <jalios:if predicate="<%= Util.notEmpty(obj.getDirection()) %>">
 	                <br/><%= obj.getDirection() %>
@@ -90,14 +90,14 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	                <br/>
 	            </jalios:if>
 	            <%= SocleUtils.formatAddress(null, null, null, obj.getNdeVoie(), obj.getLibelleDeVoie(), null, obj.getCs(), obj.getCodePostal(), obj.getCommune().getTitle(), obj.getCedex()) %>
-	        </div>
-	        <div class="ds44-docListElem mts">
+	        </p>
+	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:foreach name="itPhone" type="String" array="<%= obj.getTelephone() %>">
 	                <ds:phone number="<%= itPhone %>"></ds:phone>
 	            </jalios:foreach>
-	        </div>
-	        <div class="ds44-docListElem mts">
+	        </p>
+	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:select>
 	                <jalios:if predicate="<%= obj.getMail().length == 1 %>">
@@ -113,7 +113,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	                    </jalios:foreach>
 	                </jalios:default>
 	            </jalios:select>
-	        </div>
+	        </p>
 	        
 	        <%-- TODO : boutons s'inscrire et suivre ma demande --%>
 	        
