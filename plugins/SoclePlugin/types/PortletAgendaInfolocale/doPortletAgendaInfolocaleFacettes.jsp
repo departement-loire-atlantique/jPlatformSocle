@@ -12,7 +12,7 @@
    PortletAgendaInfolocale box = (PortletAgendaInfolocale) portlet;
    
    Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-   Boolean isInRechercheFacette = Util.isEmpty(publication);
+   Boolean isInRechercheFacette = portal.equals(channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal"));
    
    Boolean hasFonctionsAdditionnelles = false; // TODO
    Boolean showFiltres = isInRechercheFacette;
