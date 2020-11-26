@@ -36,6 +36,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	  formattedText = deleteEmptyTitle(text);
 	  formattedText = deleteEmptyAriaLabelse(text);
 	  formattedText = removeDoubleBr(text);
+	  formattedText = removeUselessSpacesLink(text);
 	  return formattedText;
 	}
 	
@@ -100,6 +101,17 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
     while (txtClone.indexOf(doubleBr) >= 0) {
       txtClone = txtClone.replaceAll(doubleBr, "<br>");
     }
+    return txtClone;
+  }
+  
+  /**
+   * Retire les espaces en trop au début et à la fin des tags <a>
+   * @param text
+   * @return
+   */
+  private String removeUselessSpacesLink(String text) {
+    String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
+    txtClone = text.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", ""); // espaces au début
     return txtClone;
   }
 
