@@ -36,7 +36,14 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	</jalios:if>
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getTelephone())%>'>
-	    <div class="ds44-docListElem mtm">
+	    <jalios:select>
+		    <jalios:if predicate='<%= obj.getTelephone().length > 1 %>'>
+		        <div class="ds44-docListElem mtm">
+		    </jalios:if>
+		    <jalios:default>
+		      <p class="ds44-docListElem mtm">
+		    </jalios:default>
+	    </jalios:select>
 	        <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	        <jalios:if predicate='<%= obj.getTelephone().length == 1 %>'>
 	            <% String numTel = obj.getTelephone()[0]; %>
@@ -52,8 +59,14 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	                </jalios:foreach>
 	            </ul>
 	        </jalios:if>
-	
-	    </div>
+	    <jalios:select>
+            <jalios:if predicate='<%= obj.getTelephone().length > 1 %>'>
+                </div>
+            </jalios:if>
+            <jalios:default>
+              </p>
+            </jalios:default>
+        </jalios:select>
 	</jalios:if>
 	
 	<jalios:if predicate='<%=Util.notEmpty(obj.getEmail())%>'>
