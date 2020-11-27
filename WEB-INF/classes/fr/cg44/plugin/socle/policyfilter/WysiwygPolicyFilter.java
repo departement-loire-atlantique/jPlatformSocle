@@ -31,6 +31,12 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
 	  String formattedText = checkExternalLinks(text, userLocale);
 	  formattedText = removeParagraphsAroundLinks(text);
+	  formattedText = removeEmptyParagraphs(text);
+	  formattedText = removeDoubleSpaces(text);
+	  formattedText = deleteEmptyTitle(text);
+	  formattedText = deleteEmptyAriaLabelse(text);
+	  formattedText = removeDoubleBr(text);
+	  formattedText = removeUselessSpacesLink(text);
 	  return formattedText;
 	}
 	
@@ -41,6 +47,72 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String removeParagraphsAroundLinks(String text) {
     return text.replaceAll("<p><a", "<a").replaceAll("</a></p>", "</a>");
+  }
+	
+	/**
+	 * Retire les balises <p> vides
+	 * @param text
+	 * @return
+	 */
+	private String removeEmptyParagraphs(String text) {
+	  return text.replaceAll("<p>&nbsp;</p>", "");
+	}
+	
+	/**
+	 * Retire tous les doubles &nbsp; jusqu'à ce qu'il n'y en ait plus
+	 * @param text
+	 * @return
+	 */
+	private String removeDoubleSpaces(String text) {
+	  String doubleSpace = "&nbsp;&nbsp;";
+	  String txtClone = text;
+	  while (txtClone.indexOf(doubleSpace) >= 0) {
+	    txtClone = txtClone.replaceAll(doubleSpace, "&nbsp;");
+	  }
+	  return txtClone;
+	}
+	
+	/**
+	 * Retire les attributs title vides
+	 * @param text
+	 * @return
+	 */
+	private String deleteEmptyTitle(String text) {
+	  return text.replaceAll("title=\"\"", "");
+	}
+	
+	/**
+   * Retire les attributs aria-label vides
+   * @param text
+   * @return
+   */
+  private String deleteEmptyAriaLabelse(String text) {
+    return text.replaceAll("aria-label=\"\"", "");
+  }
+  
+  /**
+   * Retire tous les doubles <br> jusqu'à ce qu'il n'y en ait plus
+   * @param text
+   * @return
+   */
+  private String removeDoubleBr(String text) {
+    String doubleBr = "<br><br>";
+    String txtClone = text;
+    while (txtClone.indexOf(doubleBr) >= 0) {
+      txtClone = txtClone.replaceAll(doubleBr, "<br>");
+    }
+    return txtClone;
+  }
+  
+  /**
+   * Retire les espaces en trop au début et à la fin des tags <a>
+   * @param text
+   * @return
+   */
+  private String removeUselessSpacesLink(String text) {
+    String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
+    txtClone = text.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", ""); // espaces au début
+    return txtClone;
   }
 
   /**
