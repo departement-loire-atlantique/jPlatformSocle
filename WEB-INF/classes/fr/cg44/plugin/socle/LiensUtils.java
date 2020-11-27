@@ -95,7 +95,7 @@ public final class LiensUtils {
 	 * @return le lien de partage
 	 */
 	public static String createEmailLink(String url, String titrePub) {
-	  return JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), titrePub, HttpUtil.encodeForURL(url));
+	  return HttpUtil.encodeForURL(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), titrePub, HttpUtil.encodeForURL(url)));
 	}	  	  
 
 }
