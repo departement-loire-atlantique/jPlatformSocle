@@ -96,7 +96,7 @@
 
 <div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
 
-    <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+    <img src="<%= urlImage %>" alt="<%= SocleUtils.getAltTextFromPub(itPub) %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
         <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %>>
@@ -105,7 +105,7 @@
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
         <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
             <p role="heading" aria-level="3" class="ds44-card__title">
-                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %></a></p>
+                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" <% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %></a></p>
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
