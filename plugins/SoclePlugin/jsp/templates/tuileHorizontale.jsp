@@ -56,7 +56,7 @@ if (Util.isEmpty(urlImage)) {
                 <%
                     String altText = SocleUtils.getAltTextFromPub(pub);
                     if(Util.notEmpty(altText)) {
-                        if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                        if(pub instanceof Lien && Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
                         titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
                     }
                 %>
