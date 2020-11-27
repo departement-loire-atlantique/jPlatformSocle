@@ -35,9 +35,13 @@ if (Util.isEmpty(ancestors) && box.getHideWhenNoResults()) {
 
 // On supprime les 2 premiers niveaux : "Navigation" > "Navigation des espaces"
 Collections.reverse(ancestors);
-ancestors.remove(0);
-ancestors.remove(0);
-    
+if(Util.notEmpty(ancestors)) {
+	ancestors.remove(0);
+	if(Util.notEmpty(ancestors)) {
+		ancestors.remove(0);
+	}
+}
+
 String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
 int counter = 0;
 String libelleCat = "";
