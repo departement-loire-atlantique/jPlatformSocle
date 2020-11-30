@@ -56,8 +56,13 @@ if (Util.isEmpty(urlImage)) {
                 <%
                     String altText = SocleUtils.getAltTextFromPub(pub);
                     if(Util.notEmpty(altText)) {
-                        if(pub instanceof Lien && Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
-                        titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
+                      String imageAlt = "";
+
+                      try {
+                          altText = glp("jcmsplugin.socle.lien.nouvelonglet", pub.getFieldValue("lienExterne"));
+                      } catch(Exception e) {}
+
+                      titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
                     }
                 %>
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
