@@ -87,7 +87,12 @@
     
     boolean displayTargetBlank = Util.notEmpty(isExterne) && isExterne;
     
-    String titleUrl = Util.notEmpty(customAlt) ? customAlt : "";
+    String titleUrl = "";
+    
+    if(Util.notEmpty(customAlt)) {
+    	titleUrl = customAlt;
+    	if(displayTargetBlank) titleUrl = JcmsUtil.glp("jcmsplugin.socle.lien.nouvelonglet", titleUrl);
+    }
 
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
