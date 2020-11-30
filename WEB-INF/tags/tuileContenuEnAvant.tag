@@ -91,9 +91,8 @@
     
     if(Util.notEmpty(customAlt)) {
     	titleUrl = customAlt;
-    	if(displayTargetBlank) titleUrl = JcmsUtil.glp("jcmsplugin.socle.lien.nouvelonglet", titleUrl);
+    	if(displayTargetBlank) titleUrl = JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", titleUrl);
     }
-
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
 <div class="col col-6">
