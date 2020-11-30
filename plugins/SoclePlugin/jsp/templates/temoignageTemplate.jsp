@@ -41,7 +41,7 @@ if (Util.isEmpty(titre)) {
   titre = pub.getTitle();
 }
 if(Util.notEmpty(texteAlternatif)){
-	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(texteAlternatif) +"\" ";
+	altAttr = " alt=\"" + texteAlternatif +"\" ";
 } else if (Util.notEmpty(titre)) {
 	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(titre) +"\" ";
 } else {
