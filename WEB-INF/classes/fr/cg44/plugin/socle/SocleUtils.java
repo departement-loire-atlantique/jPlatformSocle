@@ -722,6 +722,11 @@ public final class SocleUtils {
 		}
 		jsonObject.addProperty("id", id);
 		jsonMetaObject.addProperty("url", url);
+	  // Cas particulier pour le type de contenu Contact
+    if (pub instanceof Contact) {
+      jsonObject.remove("id");
+      jsonObject.addProperty("id", "-1");
+    }
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
 		jsonMetaObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
 		jsonMetaObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
