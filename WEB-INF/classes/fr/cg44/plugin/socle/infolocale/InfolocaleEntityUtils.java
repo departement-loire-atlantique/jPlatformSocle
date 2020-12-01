@@ -364,6 +364,10 @@ public class InfolocaleEntityUtils {
             genre.setGenreId(json.getString("id"));
             genre.setCategorie(json.getString("categorie"));
             genre.setLibelle(json.getString("libelle"));
+            if (!json.isNull("photos")) {
+              JSONObject photo = json.getJSONObject("photos");
+              if (!photo.isNull("L")) genre.setUrlPhotoLarge(photo.getString("L"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createGenreFromJsonItem: " + e.getMessage());
             genre = new Genre();
