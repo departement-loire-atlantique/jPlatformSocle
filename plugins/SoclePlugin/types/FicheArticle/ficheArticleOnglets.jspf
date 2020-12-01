@@ -92,14 +92,14 @@
                     <%-- Boucler sur les paragraphes --%>
                     <jalios:foreach name="itContenu" type="String" counter="itCounter"
                         array="<%=currentContenusParagraphes%>">
-                        <section id="section<%=itCounter%>" class="ds44-contenuArticle">
+                        <section id="section<%=ongletCpt+"-"+itCounter%>" class="ds44-contenuArticle">
                             <jalios:if
                                 predicate="<%=Util.notEmpty(currentTitresParagraphes)
                                 ? (itCounter <= currentTitresParagraphes.length ?
                                 	Util.notEmpty(currentTitresParagraphes[itCounter - 1])
                                 	: false)
                                 : false %>">
-                                <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
+                                <h2 class="h2-like" id="titreParagraphe<%=ongletCpt+"-"+itCounter%>"><%=currentTitresParagraphes[itCounter - 1]%></h2>
                             </jalios:if>
                             <jalios:wysiwyg><%=itContenu%></jalios:wysiwyg>
                         </section>

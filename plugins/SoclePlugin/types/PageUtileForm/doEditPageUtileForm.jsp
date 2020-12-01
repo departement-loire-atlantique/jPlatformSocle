@@ -36,7 +36,7 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"></input>
+							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"/>
 							</div>
                         </div>
                         
@@ -88,7 +88,7 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"></input>
+							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"/>
 							</div>
                         </div>
                     </div>
