@@ -37,9 +37,8 @@ if (Util.isEmpty(urlImage)) {
      urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
  }
  
- String altImage = SocleUtils.getAltTextFromPub(pub);
- if(Util.isEmpty(altImage)) altImage = JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration");
- altImage = HttpUtil.encodeForHTMLAttribute(altImage);
+ String altText = SocleUtils.getAltTextFromPub(pub);
+ String altImage = (pub.getTitle().equalsIgnoreCase(altText)) ? "" : altText;
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%> <%= isSmall ? "ds44-tiny-reducedFont" : ""%>">
@@ -54,9 +53,10 @@ if (Util.isEmpty(urlImage)) {
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
                 <%
-                    String altText = SocleUtils.getAltTextFromPub(pub);
                     if(Util.notEmpty(altText)) {
-                        if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                    	try {
+                    		if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                    	} catch(Exception e) {}
                         titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
                     }
                 %>

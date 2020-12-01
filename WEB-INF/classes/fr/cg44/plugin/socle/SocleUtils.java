@@ -1797,7 +1797,7 @@ public final class SocleUtils {
       }
     }
     
-    return altText;
+    return HttpUtil.encodeForHTMLAttribute(altText);
   }
   
 }
