@@ -19,6 +19,7 @@
     <type name="Carousel"></type>
     <type name="CarouselElement"></type>
     <type name="Chapitre"></type>
+    <type name="ChiffresCles"></type>
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
