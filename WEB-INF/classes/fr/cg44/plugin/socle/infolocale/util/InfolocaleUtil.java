@@ -911,8 +911,19 @@ public class InfolocaleUtil {
      */
     public static Photo getLargestPicture(EvenementInfolocale itEvent) {
       
-      if (Util.isEmpty(itEvent) || Util.isEmpty(itEvent.getPhotos())) {
+      if (Util.isEmpty(itEvent)) {
         return null;
+      }
+      
+      if (Util.isEmpty(itEvent.getPhotos())) {
+        if (Util.notEmpty(itEvent.getGenre()) && Util.notEmpty(itEvent.getGenre().getUrlPhotoLarge())) {
+          // l'événement n'a pas de photo, MAIS a une photo sur son genre
+          Photo genrePhoto = new Photo();
+          genrePhoto.setPath(itEvent.getGenre().getUrlPhotoLarge());
+          return genrePhoto;
+        } else {
+          return null;
+        }
       }
       
       String urlLargest = getUrlOfLargestPicture(itEvent);
