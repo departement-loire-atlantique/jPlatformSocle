@@ -54,7 +54,9 @@ if (Util.isEmpty(urlImage)) {
             <p class="ds44-card__title" role="heading" aria-level="3">
                 <%
                     if(Util.notEmpty(altText)) {
-                        if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                    	try {
+                    		if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                    	} catch(Exception e) {}
                         titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
                     }
                 %>
