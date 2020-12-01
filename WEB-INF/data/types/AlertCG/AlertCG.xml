@@ -5,7 +5,10 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="summary" editor="textarea" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" abstract="true" truncate="400" wysiwygConfigurationId="simple">
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="summary" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="true" wikiwyg="false" html="false" checkHtml="true" descriptionType="text" wysiwygConfigurationId="default" abstract="true" truncate="400">
       <label xml:lang="fr">Chapo</label>
     </field>
     <field name="lienInterne" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">
