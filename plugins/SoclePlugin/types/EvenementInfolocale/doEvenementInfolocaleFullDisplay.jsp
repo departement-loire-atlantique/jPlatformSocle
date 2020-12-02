@@ -92,7 +92,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       
       <jalios:select>
               
-                    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
+                    <jalios:if predicate='<%= InfolocaleUtil.organisationIdIsInPropList(obj.getOrganismeId()) || (texteCourtEmpty && descEmpty) %>'>
                         <div class="ds44-img50 ds44-img50--event">
 	                        <div class="ds44-inner-container">
 	                           <div class="ds44-grid12-offset-1">

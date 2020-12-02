@@ -988,4 +988,27 @@ public class InfolocaleUtil {
       
       return "";
     }
+    
+    /**
+     * Détermine si un ID d'organisme appartient à la propriété jcmsplugin.socle.infolocale.organisme.dep.id.list
+     * @param idOrganisme
+     * @return
+     */
+    public static boolean organisationIdIsInPropList(int idOrganisme) {
+      if (Util.isEmpty(idOrganisme) || idOrganisme <= 0) {
+        return false;
+      }
+      
+      String idOrgaTxt = Integer.toString(idOrganisme);
+      
+      String[] allOrganismes = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").split(",");
+      
+      if (Util.notEmpty(allOrganismes)) {
+        for (String itIdList : allOrganismes) {
+          if (itIdList.contentEquals(idOrgaTxt)) return true;
+        }
+      }
+      
+      return false;
+    }
 }
