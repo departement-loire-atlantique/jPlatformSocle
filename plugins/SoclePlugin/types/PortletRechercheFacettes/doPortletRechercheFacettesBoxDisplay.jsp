@@ -8,6 +8,11 @@
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
 
     isInRechercheFacette = isInRechercheFacette || obj.getAfficherResultatDansLannuaire();
+    
+    // SEO : bloque l'indexation des pages de résultats
+    if(isInRechercheFacette){
+      request.setAttribute("noindex", true);
+    }
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
