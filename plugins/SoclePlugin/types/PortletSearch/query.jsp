@@ -3,6 +3,9 @@
 %><%@ include file='/jcore/doHeader.jspf' %>
 <%
 String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
+
+// SEO : bloque l'indexation des pages de résultats
+request.setAttribute("noindex", true);
 %>
 <main role="main" id="content">
 
