@@ -37,7 +37,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 %>
 
 <jalios:if predicate="<%= Util.isEmpty((pub.getChiffreSecondaire())) && Util.isEmpty((pub.getLibelleChiffreSecondaire())) %>">
-	<section class='ds44-box ds44-theme <%= Util.notEmpty(request.getParameter("wysiwygEmbed")) ? "large-w50" : ""%>'>
+	<section class='ds44-box ds44-theme'>
 	    <div class="ds44-innerBoxContainer ds44-flex-container ds44-flex-valign-center">
 	        <picture class="ds44-boxPic">
 	            <img src="<%= urlImage %>" alt="<%= altImage %>" />
