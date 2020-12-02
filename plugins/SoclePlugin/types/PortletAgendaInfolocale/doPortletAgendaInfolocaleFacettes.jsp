@@ -8,11 +8,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file="/jcore/portal/doPortletParams.jspf" %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%
    PortletAgendaInfolocale box = (PortletAgendaInfolocale) portlet;
-   
-   Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-   Boolean isInRechercheFacette = portal.equals(channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal"));
    
    Boolean hasFonctionsAdditionnelles = false; // TODO
    Boolean showFiltres = isInRechercheFacette;
