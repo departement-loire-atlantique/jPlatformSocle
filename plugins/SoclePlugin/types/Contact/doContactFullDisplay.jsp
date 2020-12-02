@@ -37,6 +37,22 @@
             <% } %>
     </td>
   </tr>
+  <tr class="field fonction textfieldEditor  <%= Util.isEmpty(obj.getFonction(userLang)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "fonction", userLang) %><jalios:edit pub='<%= obj %>' fields='fonction'/></td>
+    <td class='field-data' <%= gfla(obj, "fonction") %>>
+            <% if (Util.notEmpty(obj.getFonction(userLang))) { %>
+            <%= obj.getFonction(userLang) %>
+            <% } %>
+    </td>
+  </tr>
+  <tr class="field lieuDeRattachement linkEditor  <%= Util.isEmpty(obj.getLieuDeRattachement()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "lieuDeRattachement", userLang) %><jalios:edit pub='<%= obj %>' fields='lieuDeRattachement'/></td>
+    <td class='field-data' >
+            <% if (obj.getLieuDeRattachement() != null && obj.getLieuDeRattachement().canBeReadBy(loggedMember)) { %>
+            <jalios:link data='<%= obj.getLieuDeRattachement() %>'/>
+            <% } %>
+    </td>
+  </tr>
   <tr class="field telephone textfieldEditor  <%= Util.isEmpty(obj.getTelephone()) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "telephone", userLang) %><jalios:edit pub='<%= obj %>' fields='telephone'/></td>
     <td class='field-data' <%= gfla(obj, "telephone") %>>
@@ -61,6 +77,22 @@
             <% } %>
     </td>
   </tr>
+  <tr class="field contactPourLesFichesLieux linkEditor  <%= Util.isEmpty(obj.getContactPourLesFichesLieux()) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "contactPourLesFichesLieux", userLang) %><jalios:edit pub='<%= obj %>' fields='contactPourLesFichesLieux'/></td>
+    <td class='field-data' >
+            <% if (Util.notEmpty(obj.getContactPourLesFichesLieux())) { %>
+            <ol>
+              <jalios:foreach name="itData" type="generated.FicheLieu" array="<%= obj.getContactPourLesFichesLieux() %>">
+              <% if (itData != null && itData.canBeReadBy(loggedMember)) { %>
+              <li>
+              <jalios:link data='<%= itData %>'/>
+              </li>
+              <% } %>
+              </jalios:foreach>
+            </ol>
+            <% } %>
+    </td>
+  </tr>
   <tr class="field categorieDeNavigation categoryEditor  <%= Util.isEmpty(obj.getCategorieDeNavigation(loggedMember)) ? "empty" : "" %>">
     <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "categorieDeNavigation", userLang) %><jalios:edit pub='<%= obj %>' fields='categorieDeNavigation'/></td>
     <td class='field-data' >
@@ -73,25 +105,25 @@
             <% } %>
     </td>
   </tr>
-  <tr class="field categorieDeClassementTypesDeCont categoryEditor  <%= Util.isEmpty(obj.getCategorieDeClassementTypesDeCont(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "categorieDeClassementTypesDeCont", userLang) %><jalios:edit pub='<%= obj %>' fields='categorieDeClassementTypesDeCont'/></td>
+  <tr class="field miseEnAvant categoryEditor  <%= Util.isEmpty(obj.getMiseEnAvant(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "miseEnAvant", userLang) %><jalios:edit pub='<%= obj %>' fields='miseEnAvant'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCategorieDeClassementTypesDeCont(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getMiseEnAvant(loggedMember))) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getCategorieDeClassementTypesDeCont(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.contact.typeContact.root"), " > ", true, userLang) %></a><% } %></li>
+            <jalios:foreach collection="<%= obj.getMiseEnAvant(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.miseEnAvant.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
     </td>
   </tr>
-  <tr class="field categorieDeClassementMiseEnAvant categoryEditor  <%= Util.isEmpty(obj.getCategorieDeClassementMiseEnAvant(loggedMember)) ? "empty" : "" %>">
-    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "categorieDeClassementMiseEnAvant", userLang) %><jalios:edit pub='<%= obj %>' fields='categorieDeClassementMiseEnAvant'/></td>
+  <tr class="field typeDeContact categoryEditor  <%= Util.isEmpty(obj.getTypeDeContact(loggedMember)) ? "empty" : "" %>">
+    <td class='field-label'><%= channel.getTypeFieldLabel(Contact.class, "typeDeContact", userLang) %><jalios:edit pub='<%= obj %>' fields='typeDeContact'/></td>
     <td class='field-data' >
-            <% if (Util.notEmpty(obj.getCategorieDeClassementMiseEnAvant(loggedMember))) { %>
+            <% if (Util.notEmpty(obj.getTypeDeContact(loggedMember))) { %>
             <ol>
-            <jalios:foreach collection="<%= obj.getCategorieDeClassementMiseEnAvant(loggedMember) %>" type="Category" name="itCategory" >
-              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.contact.miseEnAvant.root"), " > ", true, userLang) %></a><% } %></li>
+            <jalios:foreach collection="<%= obj.getTypeDeContact(loggedMember) %>" type="Category" name="itCategory" >
+              <li><% if (itCategory != null) { %><a href="<%= ResourceHelper.getQuery() %>?cids=<%= itCategory.getId() %>"><%= itCategory.getAncestorString(channel.getCategory("$jcmsplugin.socle.contact.typeContact.root"), " > ", true, userLang) %></a><% } %></li>
             </jalios:foreach>
             </ol>
             <% } %>
@@ -166,5 +198,4 @@
  
 </table>
 <jsp:include page="/front/doFullDisplayCommonFields.jsp" />
-</div><%-- **********4A616C696F73204A434D53 *** SIGNATURE BOUNDARY * DO NOT EDIT ANYTHING BELOW THIS LINE *** --%><%
-%><%-- BusoHLMjV0KO6jyxa4Okjw== --%>
+</div>

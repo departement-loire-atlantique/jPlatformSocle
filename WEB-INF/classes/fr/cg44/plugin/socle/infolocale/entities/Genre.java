@@ -12,6 +12,7 @@ public class Genre extends Data {
     String genreId;
     String categorie;
     String libelle;
+    String urlPhotoLarge;
     
     public String getGenreId() {
         return genreId;
@@ -30,6 +31,12 @@ public class Genre extends Data {
     }
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+    public String getUrlPhotoLarge() {
+      return urlPhotoLarge;
+    }
+    public void setUrlPhotoLarge(String urlPhotoLarge) {
+      this.urlPhotoLarge = urlPhotoLarge;
     }
     
 }

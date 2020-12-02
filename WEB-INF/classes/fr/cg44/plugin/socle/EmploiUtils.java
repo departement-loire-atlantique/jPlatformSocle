@@ -14,13 +14,10 @@ import com.jalios.util.Util;
 import generated.City;
 import generated.Delegation;
 import generated.FicheEmploiStage;
-import generated.PortletFaq;
 
 public final class EmploiUtils {
 	private static Channel channel = Channel.getChannel();
-	
-	private static final Logger LOGGER = Logger.getLogger(EmploiUtils.class);
-	
+		
 	private static final String TYPE_OFFRE_CAT_PROP = "$jcmsplugin.socle.emploiStage.typeOffre.root";
 	private static final String EMPLOI_CAT_PROP = "$jcmsplugin.socle.emploiStage.typeOffre.emploi";
 	private static final String STAGE_CAT_PROP = "$jcmsplugin.socle.emploiStage.typeOffre.stage";
@@ -91,7 +88,7 @@ public final class EmploiUtils {
     Member loggedMember = channel.getCurrentLoggedMember();
     String typeOffre = "";
     Category typeOffreCat = job.getTypeDoffre(loggedMember).first() ;
-    List<Category> ancestors  = new ArrayList<Category>();
+    List<Category> ancestors  = new ArrayList<>();
     ancestors.add(typeOffreCat);
     ancestors.addAll(typeOffreCat.getAncestorList(TYPE_OFFRE_CAT, false));
     
@@ -114,11 +111,7 @@ public final class EmploiUtils {
    * @return true si le contenu est de type "Emploi"
    */
   public static boolean isEmploi(FicheEmploiStage job) {
-    if(getTypeOffre(job).equals("emploi")) {
-      return true;
-    } else {
-      return false;
-    }
+    return getTypeOffre(job).equals("emploi");
   }   
   
   

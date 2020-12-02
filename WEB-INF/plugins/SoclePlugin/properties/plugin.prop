@@ -35,6 +35,7 @@ jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
 jcmsplugin.socle.meme-theme.max: 20
+jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
 jcmsplugin.socle.idpub.annuaire.elus: c_1279194
 
@@ -101,7 +102,7 @@ jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
-jcmsplugin.socle.site.applimenu.cat.root: j_5
+$jcmsplugin.socle.site.applimenu.cat.root: j_5
 $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
@@ -143,7 +144,7 @@ jcmsplugin.socle.image.principale.height: 620
 jcmsplugin.socle.image.bandeau.width: 1240
 jcmsplugin.socle.image.bandeau.height: 460
 jcmsplugin.socle.image.mobile.width: 300
-jcmsplugin.socle.image.mobile.height: 260
+jcmsplugin.socle.image.mobile.height: 200
 jcmsplugin.socle.image.carree.width: 207
 jcmsplugin.socle.image.carree.height: 207
 jcmsplugin.socle.image.push.width: 200
@@ -266,6 +267,7 @@ media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templa
 # Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
+media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp?wysiwygEmbed=true
@@ -291,6 +293,7 @@ media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/c
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
+media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
@@ -657,3 +660,6 @@ jcms.resource.mail-password: plugins/SoclePlugin/types/PortletLogin/mailPassword
 jcmsplugin.socle.calculetteOA.partsMax : 10
 jcmsplugin.socle.calculetteOA.seuil : 1300
 jcmsplugin.socle.calculetteOA.demi-part : 350
+
+# Chiffres cles
+jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/assets/images/pictos/picto-investissement.svg

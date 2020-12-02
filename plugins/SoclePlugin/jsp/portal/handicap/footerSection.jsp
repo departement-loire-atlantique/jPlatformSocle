@@ -13,10 +13,12 @@
 	    <div class="col-5-small-1 ds44-mb3">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.footer.portletcontact.id") %>'/>
 	    </div>
+
+        <%--
 	    <div class="col-4-small-1 ds44-mb3">
-            <%-- Inclusion de la portlet JSP de Newsletter --%>
             <%@ include file='../abonnementNewsletterFooter.jspf' %>
 	    </div>
+        --%>
     </div>
 </section>
 

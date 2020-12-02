@@ -40,12 +40,12 @@
 <%
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
-	String nameType = typeDeSelection ? "name-check-" : "name-radio-";
+	String nameType = typeDeSelection ? "name-check" : "name-radio";
 	String typeInput = typeDeSelection ? "checkbox" : "radio";
 	String labelInput = typeDeSelection ? "box" : "radio";
 	
-	String nameInput = idFormElement + "-" + numCat;
-	String idInput = nameType + nameInput;
+	String nameInput = typeDeSelection ? (idFormElement + "-" + numCat) : idFormElement;
+	String idInput = nameType + idFormElement + "-" + numCat;
 %>
 
 <div class="ds44-form__container ds44-checkBox-radio_list ">

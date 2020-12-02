@@ -2,8 +2,7 @@
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%
-String appliMenuRootCatId = channel.getProperty("jcmsplugin.socle.site.applimenu.cat.root");
-Category appliMenuRootCat = channel.getCategory(appliMenuRootCatId);
+Category appliMenuRootCat = channel.getCategory("$jcmsplugin.socle.site.applimenu.cat.root");
 Set<Category> appliMenuCatList = Util.notEmpty(appliMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(appliMenuRootCat) : new HashSet<Category>();
 %>
 

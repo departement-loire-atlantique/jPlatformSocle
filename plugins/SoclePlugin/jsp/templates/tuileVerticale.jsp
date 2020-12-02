@@ -25,10 +25,16 @@ try {
 try {
     location = (String) pub.getFieldValue("lieu");
 } catch(Exception e) {}
+
+String imageAlt = "";
+
+try {
+	imageAlt = ((String) pub.getFieldValue("texteAlternatif"));
+} catch(Exception e) {}
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
-	<ds:figurePicture pub="<%= pub %>" format="carrousel" pictureCss="ds44-container-imgRatio" imgCss="ds44-imgRatio"></ds:figurePicture>
+	<ds:figurePicture pub="<%= pub %>" format="carrousel" pictureCss="ds44-container-imgRatio" imgCss="ds44-imgRatio" alt="<%= imageAlt %>"></ds:figurePicture>
     <div class="ds44-card__section">
         <p role="heading" aria-level="3" class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>

@@ -257,7 +257,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </main>
 
 <jalios:if predicate="<%= displayFaireDemande %>">
-	<section class="ds44-modal-container" id="overlay-faire-demande" aria-hidden="true" role="dialog">
+	<section class="ds44-modal-container" id="overlay-faire-demande" aria-labelledby="titre-modale-faire-demande" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		aria-label='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.faire-demande")) %>' 
@@ -370,7 +370,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </jalios:if>
 
 <jalios:if predicate="<%= displaySuivreDemande %>">
-	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-hidden="true" role="dialog">
+	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-labelledby="titre-suivre-demande" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.ficheaide.suivre.label")) %>' 
@@ -461,7 +461,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </jalios:if>
 
 <jalios:if predicate="<%= displayQuiContacter %>">
-<section class="ds44-modal-container" id="overlay-qui-contacter" aria-hidden="true" role="dialog">
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-labelledby="titre-modale-qui-contacter" aria-hidden="true" role="dialog">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close">
             <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>

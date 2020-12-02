@@ -232,7 +232,7 @@
                                                         <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
                                                             <li>
                                                                 <a href='<%= SocleUtils.parseUrl(site) %>'
-                                                                   title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+                                                                   title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"
                                                                    data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
                                                                     <%= SocleUtils.parseUrl(site) %>
                                                                 </a>
@@ -294,11 +294,11 @@
                                         .append(" ")
                                         .append(obj.getCopyright());
                                 }
+                                String altTxt = SocleUtils.getAltTextFromPub(obj);
                             %>
                             <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
-                                <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale()) %>' class="ds44-w100 ds44-imgRatio"
-                                        <%= Util.notEmpty(obj.getTexteAlternatif(userLang)) ? "alt='"+ HttpUtil.encodeForHTMLAttribute(obj.getTexteAlternatif(userLang))+"'" : "" %>>
+                                <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale()) %>' class="ds44-w100 ds44-imgRatio" alt="<%= HttpUtil.encodeForHTMLAttribute(altTxt) %>">
                                 <jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
                                     <figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
                                 </jalios:if>

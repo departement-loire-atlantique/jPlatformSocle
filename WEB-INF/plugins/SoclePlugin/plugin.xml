@@ -19,6 +19,7 @@
     <type name="Carousel"></type>
     <type name="CarouselElement"></type>
     <type name="Chapitre"></type>
+    <type name="ChiffresCles"></type>
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
@@ -417,7 +418,7 @@
         </template>
         <template name="temoignages" file="doPortletMiseEnAvantDeContenusBoxTemoignages.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit témoignages</label>
-          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo" et "Articles")</description>
+          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo", "Articles", "Lien" et "Fiche actu")</description>
         </template> 
     </templates>
     <templates type="PortletNavigate">
