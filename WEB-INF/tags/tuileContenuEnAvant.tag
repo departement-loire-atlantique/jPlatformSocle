@@ -100,7 +100,7 @@
 
 <div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
 
-    <img src="<%= urlImage %>" alt="<%= SocleUtils.getAltTextFromPub(itPub) %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+    <img src="<%= urlImage %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
         <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %>>

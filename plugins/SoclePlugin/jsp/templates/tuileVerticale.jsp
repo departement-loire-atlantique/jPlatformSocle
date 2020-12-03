@@ -26,11 +26,12 @@ try {
     location = (String) pub.getFieldValue("lieu");
 } catch(Exception e) {}
 
-String imageAlt = "";
+String imageAlt = "-1";
 
 try {
 	imageAlt = ((String) pub.getFieldValue("texteAlternatif"));
 } catch(Exception e) {}
+if (Util.isEmpty(imageAlt)) imageAlt = "-1";
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">

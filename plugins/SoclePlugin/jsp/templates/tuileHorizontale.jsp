@@ -37,7 +37,12 @@ if (Util.isEmpty(urlImage)) {
      urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
  }
  
- String altText = SocleUtils.getAltTextFromPub(pub);
+ String altText = "";
+
+ try {
+   altText = ((String) pub.getFieldValue("texteAlternatif"));
+ } catch(Exception e) {}
+ if (Util.isEmpty(altText)) altText = "";
  String altImage = (pub.getTitle().equalsIgnoreCase(altText)) ? "" : altText;
 %>
 

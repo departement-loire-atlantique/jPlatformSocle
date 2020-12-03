@@ -190,7 +190,11 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   }
 }
 
-String alt = SocleUtils.getAltTextFromPub(pub);
+if ("-1".equals(alt)) {
+  alt = SocleUtils.getAltTextFromPub(pub);
+} else if (Util.isEmpty(alt)) {
+  alt = "";
+}
 
 String label = ariaLabel;
 if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
