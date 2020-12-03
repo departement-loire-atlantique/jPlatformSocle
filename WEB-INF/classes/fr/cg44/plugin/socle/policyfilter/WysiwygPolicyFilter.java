@@ -30,13 +30,13 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
 	  String formattedText = checkExternalLinks(text, userLocale);
-	  formattedText = removeParagraphsAroundLinks(text);
-	  formattedText = removeEmptyParagraphs(text);
-	  formattedText = removeDoubleSpaces(text);
-	  formattedText = deleteEmptyTitle(text);
-	  formattedText = deleteEmptyAriaLabelse(text);
-	  formattedText = removeDoubleBr(text);
-	  formattedText = removeUselessSpacesLink(text);
+	  formattedText = removeParagraphsAroundLinks(formattedText);
+	  formattedText = removeEmptyParagraphs(formattedText);
+	  formattedText = removeDoubleSpaces(formattedText);
+	  formattedText = deleteEmptyTitle(formattedText);
+	  formattedText = deleteEmptyAriaLabelse(formattedText);
+	  formattedText = removeDoubleBr(formattedText);
+	  formattedText = removeUselessSpacesLink(formattedText);
 	  return formattedText;
 	}
 	
@@ -55,7 +55,12 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 * @return
 	 */
 	private String removeEmptyParagraphs(String text) {
-	  return text.replaceAll("<p>&nbsp;</p>", "");
+	  String txtClone = text;
+	  txtClone = txtClone.replaceAll("<p>&#xa0;</p>", "");
+	  txtClone = txtClone.replaceAll("<p></p>", "");
+	  txtClone = txtClone.replaceAll("<p>&nbsp;</p>", "");
+	  txtClone = txtClone.replaceAll("<p> </p>", "");
+	  return txtClone;
 	}
 	
 	/**
@@ -65,10 +70,14 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String removeDoubleSpaces(String text) {
 	  String doubleSpace = "&nbsp;&nbsp;";
+	  String doubleSpaceBis = "&#xa0;&#xa0;";
 	  String txtClone = text;
 	  while (txtClone.indexOf(doubleSpace) >= 0) {
-	    txtClone = txtClone.replaceAll(doubleSpace, "&nbsp;");
-	  }
+      txtClone = txtClone.replaceAll(doubleSpace, "&nbsp;");
+    }
+	  while (txtClone.indexOf(doubleSpaceBis) >= 0) {
+      txtClone = txtClone.replaceAll(doubleSpaceBis, "&#xa0;");
+    }
 	  return txtClone;
 	}
 	
@@ -110,8 +119,8 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    * @return
    */
   private String removeUselessSpacesLink(String text) {
-    String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
-    txtClone = text.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", ""); // espaces au début
+    String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>").replaceAll("(&#xa0;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
+    txtClone = text.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", "").replaceAll("(?<=(<a [^>]+>))(&#xa0;)*", ""); // espaces au début
     return txtClone;
   }
 
