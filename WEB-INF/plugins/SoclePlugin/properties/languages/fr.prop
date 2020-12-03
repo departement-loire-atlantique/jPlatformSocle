@@ -90,7 +90,7 @@ jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
 #  Recherche à facettes
 # ------------------------------------------------------------
 $jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
-jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Nom de votre commune
+jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Saisissez le nom de votre commune
 
 # ------------------------------------------------------------
 #  Formulaires
