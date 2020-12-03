@@ -296,13 +296,26 @@
                                 }
                                 String altTxt = SocleUtils.getAltTextFromPub(obj);
                             %>
+                            <jalios:select>
+                                <jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
                             <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
-                                <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale()) %>' class="ds44-w100 ds44-imgRatio" alt="<%= HttpUtil.encodeForHTMLAttribute(altTxt) %>">
-                                <jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
-                                    <figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
                                 </jalios:if>
+                                <jalios:default>
+                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
+                                    <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
+                                </jalios:default>
+                            </jalios:select>
+                                <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImagePrincipale()) %>' class="ds44-w100 ds44-imgRatio" alt="<%= HttpUtil.encodeForHTMLAttribute(altTxt) %>">
+                                <jalios:select>
+                                    <jalios:if predicate='<%= Util.notEmpty(sbfLegendeCopyright.toString()) %>'>
+                                    <figcaption class="ds44-imgCaption"><%= sbfLegendeCopyright.toString() %></figcaption>
                             </figure>
+                                    </jalios:if>
+                                    <jalios:default>
+                            </picture>
+                                    </jalios:default>
+                                </jalios:select>
                         </div>
                     </jalios:if>
 
