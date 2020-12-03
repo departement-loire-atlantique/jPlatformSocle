@@ -136,8 +136,8 @@ boolean isRequired = obj.getFacetteObligatoire();
 											titleInputToYear  = glp("jcmsplugin.socle.facette.champ-obligatoire.title", titleInputToYear);
 										}
 										String attributeDescribedByInputTo = "explanation-" + uidFormElemDateFin + " label-radio-" + uidFormElem + "-" + indexCheckbox + " button-message-" + uid;
-									%>									
-									<input id="<%= uidFormElemDateDebut %>" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= HttpUtil.encodeForHTMLAttribute(titleInputToDay) %>'
+									%>
+									<input id="<%= uidFormElemDateFin %>" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= HttpUtil.encodeForHTMLAttribute(titleInputToDay) %>'
 											data-is-date="true" required="" aria-describedby='<%= attributeDescribedByInputTo %>' data-bkp-aria-describedby='<%= attributeDescribedByInputTo %>' />
 									<span>/</span>
 									<input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" title='<%= HttpUtil.encodeForHTMLAttribute(titleInputToMonth) %>'
