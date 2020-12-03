@@ -120,7 +120,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    */
   private String removeUselessSpacesLink(String text) {
     String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>").replaceAll("(&#xa0;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
-    txtClone = text.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", "").replaceAll("(?<=(<a [^>]+>))(&#xa0;)*", ""); // espaces au début
+    txtClone = txtClone.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", "").replaceAll("(?<=(<a [^>]+>))(&#xa0;)*", ""); // espaces au début
     return txtClone;
   }
 
