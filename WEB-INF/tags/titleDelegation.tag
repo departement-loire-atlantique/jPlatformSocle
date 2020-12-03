@@ -1,12 +1,18 @@
-<%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags" %><%
 %><%@ taglib uri="jcms.tld" prefix="jalios" %><%
 %><%@ tag 
     pageEncoding="UTF-8"
     description="Titre du header accueil delegation" 
     body-content="scriptless" 
-    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Delegation"
+    import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils,
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Delegation, com.jalios.jcms.Publication"
+%>
+<%@ attribute name="pub"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Publication"
+    description="La publication dont on récupère l'image"
 %>
 <%@ attribute name="title"
     required="true"
@@ -83,7 +89,7 @@ if (Util.isEmpty(formattedMobilePath)) {
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imagePath);
 }
 
-String altTxt = Util.notEmpty(alt) ? alt : "";
+String altTxt = SocleUtils.getAltTextFromPub(pub);
 %>
 
 <section class="ds44-container-large">
