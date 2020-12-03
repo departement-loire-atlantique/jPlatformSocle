@@ -33,9 +33,14 @@
     <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false">
       <label xml:lang="fr">Canton</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
   </fields>
+  <tabs>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
 </type>
 

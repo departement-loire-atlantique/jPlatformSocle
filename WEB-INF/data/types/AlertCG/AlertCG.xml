@@ -20,14 +20,19 @@
     <field name="texteAlternatifLienBouton" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif lien bouton</label>
     </field>
-    <field name="navigationCategories" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="navigationCategories" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation_et_classement">
       <label xml:lang="fr">Catégorie</label>
     </field>
-    <field name="typeDalerte" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="dev_5151" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDalerte" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="dev_5151" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation_et_classement">
       <label xml:lang="fr">Type d'alerte</label>
-      <description xml:lang="fr">Les alertes de type "Alerte significative" sont automatiquement ajoutées au point route</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg wiki2jhtml"&gt;&lt;p&gt;Les alertes de type "Alerte significative" sont automatiquement ajoutées au point route&lt;/p&gt;&lt;/div&gt;</description>
     </field>
   </fields>
   <label xml:lang="fr">Alerte</label>
+  <tabs>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
 </type>
 

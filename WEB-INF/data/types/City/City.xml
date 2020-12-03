@@ -51,7 +51,7 @@
     <field name="cityFromTheSky" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" tab="commune">
       <label xml:lang="fr">La commune vue du ciel</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="commune" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
     <field name="nomDesCommunesDeleguees" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
@@ -65,6 +65,9 @@
     </tab>
     <tab id="commune">
       <label xml:lang="fr">Commune</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
     </tab>
   </tabs>
 </type>
