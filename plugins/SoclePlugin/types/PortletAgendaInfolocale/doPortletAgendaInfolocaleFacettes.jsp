@@ -8,11 +8,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file="/jcore/portal/doPortletParams.jspf" %>
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%
    PortletAgendaInfolocale box = (PortletAgendaInfolocale) portlet;
-   
-   Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-   Boolean isInRechercheFacette = Util.isEmpty(publication);
    
    Boolean hasFonctionsAdditionnelles = false; // TODO
    Boolean showFiltres = isInRechercheFacette;
@@ -64,7 +62,7 @@
 	            <% request.removeAttribute("isFilter"); %>
 	            <div class="ds44-fieldContainer ds44-small-fg1">
 	               <% String styleButton = showFiltres ? "" : "--large"; %>
-	               <button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
+	               <button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
 	               <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 	               <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	               </button>                   
@@ -106,7 +104,7 @@
 	      <div class="ds44-js-results-container">
 	         <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
 	         <div class="ds44-js-results-list" data-display-mode='<%= true ? "external" : "inline" %>'>
-	            <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
+	            <p aria-level="2" role="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
 	               <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
 	            </p>
 	         </div>

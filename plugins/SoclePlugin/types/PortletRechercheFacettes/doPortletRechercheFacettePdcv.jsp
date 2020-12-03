@@ -2,15 +2,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%@ include file='/jcore/portal/doPortletParams.jspf'%>
-
+<%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <% 
     PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
     
     String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
     request.setAttribute("query", query);
     
-    Object publication = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-    Boolean isInRechercheFacette = Util.isEmpty(publication);
     Boolean hasFonctionsAdditionnelles = false; // TODO
     Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
     request.setAttribute("showFiltres", showFiltres);

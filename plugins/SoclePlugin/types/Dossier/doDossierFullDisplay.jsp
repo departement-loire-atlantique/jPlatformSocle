@@ -10,8 +10,10 @@
 
 <main role="main" id="content">
 
+    <jalios:include target="SOCLE_ALERTE"/>
+
 	<section class="ds44-container-large">
-		<ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
+		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
 				legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
 	</section>
 
@@ -48,7 +50,7 @@
 						</jalios:if>
 						
 						<jalios:foreach type="String" name="itParagrapheRubrique" array="<%= obj.getParagrapheRubrique() %>">
-							<section class="ds44-contenuArticle" id="section<%= itCounter %>">
+							<section class="ds44-contenuArticle" id="section<%= itCounter %>" tabindex="-1">
 								<jalios:if predicate="<%= obj.getTitreRubrique().length >= itCounter && Util.notEmpty(obj.getTitreRubrique()[itCounter-1])%>">
 									<h2 id="idTitre<%= itCounter+1 %>"><%= obj.getTitreRubrique()[itCounter-1] %></h2>
 								</jalios:if>

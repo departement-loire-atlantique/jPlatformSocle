@@ -23,8 +23,8 @@ Photo itPhoto = InfolocaleUtil.getLargestPicture(obj);
 
 if (Util.notEmpty(itPhoto)) {
   urlPhoto = itPhoto.getPath();
-  legend = itPhoto.getLegend();
-  credit = itPhoto.getCredit();
+  legend = Util.notEmpty(itPhoto.getLegend()) ? itPhoto.getLegend() : "";
+  credit = Util.notEmpty(itPhoto.getCredit()) ? itPhoto.getCredit() : "";
 }
 
 String labelLegendCopyright = legend;
@@ -40,6 +40,9 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 %>
 
 <main role="main" id="content">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
    <article class="ds44-container-large">
       <div class="ds44-lightBG ds44-posRel">
          <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
@@ -89,24 +92,26 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       
       <jalios:select>
               
-                    <jalios:if predicate='<%= (Util.notEmpty(obj.getOrganismeId()) && channel.getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").contains(Integer.toString(obj.getOrganismeId()))) || (texteCourtEmpty && descEmpty) %>'>
-                        <div class="ds44-inner-container">
-                           <div class="ds44-grid12-offset-1">
-                              <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
-	                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
-	                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
-	                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
-	                              </figure>
-                              </jalios:if>
-                              <%= eventSummary %>
-                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
-								 <div class="grid-1-small-1">
-									<div class="col mll mbs">
-										<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
-									</div>
-								 </div>
-							  </jalios:if>
-							</div>
+                    <jalios:if predicate='<%= InfolocaleUtil.organisationIdIsInPropList(obj.getOrganismeId()) || (texteCourtEmpty && descEmpty) %>'>
+                        <div class="ds44-img50 ds44-img50--event">
+	                        <div class="ds44-inner-container">
+	                           <div class="ds44-grid12-offset-1">
+	                              <jalios:if predicate="<%= Util.notEmpty(urlPhoto) %>">
+		                              <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label="<%= labelLegendCopyright %>">
+		                                 <img src="<%= urlPhoto %>" alt="<%= labelLegendCopyright %>" class="ds44-w100 ds44-imgRatio">
+		                                 <figcaption class="ds44-imgCaption"><%= labelLegendCopyright %></figcaption>
+		                              </figure>
+	                              </jalios:if>
+	                              <%= eventSummary %>
+	                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
+									 <div class="grid-1-small-1">
+										<div class="col mll mbs">
+											<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+										</div>
+									 </div>
+								  </jalios:if>
+								</div>
+	                        </div>
                         </div>
                     </jalios:if>
                     
@@ -325,19 +330,22 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
          </div>
       </section>
       
+      <%-- 
+      
+      COMMENTE 1459 -> en attente de retours sur l'affichage de ce bloc
+      
       <jalios:if predicate="<%= Util.notEmpty(obj.getDossiersDePresse()) %>">
 	      <section class="ds44-contenuArticle" id="evenementAllerPlusLoin">
 	         <div class="ds44-inner-container ds44-mtb3">
 	            <div class="ds44-grid12-offset-2">
 	               <div class="ds44-wsg-encadreContour">
 	                  <p role="heading" aria-level="2" class="h2-like"><%= glp("jcmsplugin.socle.allerplusloin") %></p>
-	                  <jalios:foreach name="itDossierPresse" type="DossierPresse" collection="<%= obj.getDossiersDePresse() %>">
+	                  <jalios:foreach name="itDossierPresse" type="DossierPresse" collection="<%= obj.getDossiersDePresse() %>" max="1">
 	                  <p class="ds44-docListElem">
 	                     <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-	                     <a href="<%= itDossierPresse.getUrl() %>" title='<%= glp("jcmsplugin.socle.lien.nouvelonglet", itDossierPresse.getFilename() + " - " + itDossierPresse.getFormat().toUpperCase()) %>'>
-	                       <%= itDossierPresse.getFilename() %>
+	                     <a href="<%= itDossierPresse.getUrl() %>" title='<%= glp("jcmsplugin.socle.infolocale.label.titleliendossier", obj.getTitle()) %>'>
+	                       <%= glp("jcmsplugin.socle.infolocale.label.consulterdossier") %>
 	                     </a>
-	                     <span class="ds44-cardFile"><%= itDossierPresse.getFormat().toUpperCase() %></span>
 	                  </p>
 	                  </jalios:foreach>
 	               </div>
@@ -345,6 +353,8 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	         </div>
 	      </section>
       </jalios:if>
+      
+      --%>
       
       <%-- TODO : liens de partage --%>
       

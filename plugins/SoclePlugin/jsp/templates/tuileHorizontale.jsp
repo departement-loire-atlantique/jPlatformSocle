@@ -36,6 +36,9 @@ if (Util.isEmpty(urlImage)) {
  if (Util.notEmpty(urlImage)) {
      urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
  }
+ 
+ String altText = SocleUtils.getAltTextFromPub(pub);
+ String altImage = (pub.getTitle().equalsIgnoreCase(altText)) ? "" : altText;
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%> <%= isSmall ? "ds44-tiny-reducedFont" : ""%>">
@@ -43,12 +46,20 @@ if (Util.isEmpty(urlImage)) {
         <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
             <div class="ds44-card__section--horizontal--img<%= isSmall ? "--dim110" : "" %>">
                 <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
-                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
+                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt='<%= altImage %>'>
                 </picture>
             </div>
         </jalios:if>
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
+                <%
+                    if(Util.notEmpty(altText)) {
+                    	try {
+                    		if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
+                    	} catch(Exception e) {}
+                        titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
+                    }
+                %>
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                     <%= pub.getTitle() %>
                 </a>
@@ -67,9 +78,6 @@ if (Util.isEmpty(urlImage)) {
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-            <span class="visually-hidden">
-                <%= pub.getTitle() %>
-            </span>
         </div>
     </div>
 </section>

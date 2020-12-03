@@ -17,7 +17,9 @@ $jcmsplugin.socle.cat.animationSportive.id: p2_108385
 
 channel.security.authorized-redirect.suivi-demande: ^https?://demarche.loire-atlantique.fr/.*
 
+# TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
 jcmsplugin.socle.url-rewriting.disabled:true
+jcmsplugin.socle.url-rewriting: false
 jcmsplugin.socle.page-utile.disabled:false
 
 jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies
@@ -25,16 +27,19 @@ jcmsplugin.socle.rgpd.modale.description.area: La description RGPD
 jcmsplugin.socle.rgpd.notice.logo: https://design.loire-atlantique.fr/assets/images/pictos/picto-cookies.svg
 jcmsplugin.socle.rgpd.notice.description.area: Description de notice en français
 jcmsplugin.socle.rgpd.notice.learn-more: Je paramètre
-jcmsplugin.socle.rgpd.bouton.accept: J’accepte
+jcmsplugin.socle.rgpd.bouton.accept: J’accepte les cookies
 jcmsplugin.socle.rgpd.bouton.accept-all: J’accepte tout
-jcmsplugin.socle.rgpd.bouton.decline: Je refuse
+jcmsplugin.socle.rgpd.bouton.decline: Je refuse les cookies
 jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
 jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
 jcmsplugin.socle.meme-theme.max: 20
+jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
 jcmsplugin.socle.idpub.annuaire.elus: c_1279194
+
+jcmsplugin.socle.alertpri.id: 
 
 # ------------------------------------------------------------
 #  Sectorisation
@@ -97,7 +102,7 @@ jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/
 jcmsplugin.socle.site.header.cat: 
 jcmsplugin.socle.site.menu.cat.root: j_5
 jcmsplugin.socle.site.submenu.cat.root: j_5
-jcmsplugin.socle.site.applimenu.cat.root: j_5
+$jcmsplugin.socle.site.applimenu.cat.root: j_5
 $jcmsplugin.socle.site.pdcv.cat.id: c_5089
 
 jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https://design.loire-atlantique.fr/css/icons.css
@@ -139,7 +144,7 @@ jcmsplugin.socle.image.principale.height: 620
 jcmsplugin.socle.image.bandeau.width: 1240
 jcmsplugin.socle.image.bandeau.height: 460
 jcmsplugin.socle.image.mobile.width: 300
-jcmsplugin.socle.image.mobile.height: 260
+jcmsplugin.socle.image.mobile.height: 200
 jcmsplugin.socle.image.carree.width: 207
 jcmsplugin.socle.image.carree.height: 207
 jcmsplugin.socle.image.push.width: 200
@@ -262,6 +267,7 @@ media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templa
 # Content template
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
+media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp?wysiwygEmbed=true
@@ -287,6 +293,7 @@ media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/c
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
+media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
@@ -461,6 +468,7 @@ jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/annonces/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
 jcmsplugin.socle.infolocale.max.limit: 200
+jcmsplugin.socle.infolocale.photo.404.url: https://www.infolocale.fr/build/images/article/article_no_image.png
 
 jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
 jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
@@ -652,3 +660,6 @@ jcms.resource.mail-password: plugins/SoclePlugin/types/PortletLogin/mailPassword
 jcmsplugin.socle.calculetteOA.partsMax : 10
 jcmsplugin.socle.calculetteOA.seuil : 1300
 jcmsplugin.socle.calculetteOA.demi-part : 350
+
+# Chiffres cles
+jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/assets/images/pictos/picto-investissement.svg

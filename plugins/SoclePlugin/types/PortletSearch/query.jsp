@@ -3,8 +3,13 @@
 %><%@ include file='/jcore/doHeader.jspf' %>
 <%
 String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
+
+// SEO : bloque l'indexation des pages de résultats
+request.setAttribute("noindex", true);
 %>
 <main role="main" id="content">
+
+<jalios:include target="SOCLE_ALERTE"/>
 
     <section class="ds44-container-large">
        

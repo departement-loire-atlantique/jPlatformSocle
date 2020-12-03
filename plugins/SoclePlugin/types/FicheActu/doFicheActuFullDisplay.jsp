@@ -8,6 +8,9 @@
 %><%@ include file='/front/doFullDisplay.jspf' %>
 
 <main id="content" role="main">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
     <article class="ds44-container-large">
     
         <%
@@ -21,7 +24,7 @@
 
         %>
 
-		<ds:titleSimple imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
+		<ds:titleSimple pub="<%= obj %>" imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>" video="<%=obj.getVideoPrincipale() %>"
 		    title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
 		    breadcrumb="true" date="<%= date %>"></ds:titleSimple>
 		
@@ -48,11 +51,11 @@
 		                </jalios:if>
 		                <jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
                             <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
-		                </jalios:if>
-		            </div>
-		        </div>
-		    </section>
-		</jalios:foreach>        
+                        </jalios:if>
+                    </div>
+                </div>
+            </section>
+        </jalios:foreach>        
         
         <%-- Partagez cette page --%>
         <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
@@ -71,21 +74,23 @@
         Category navigationDesEspacesCat = channel.getCategory(channel.getProperty("jcmsplugin.socle.site.menu.cat.root"));
         Set<Category> navCat = new TreeSet<Category>();
         if(Util.notEmpty(obj.getCategorieDeNavigation(loggedMember))){
-	        for(Category itCat:obj.getCategorieDeNavigation(loggedMember)){
-	            if(itCat.hasAncestor(navigationDesEspacesCat)){
-	                navCat.add(itCat);
-	            }
-	        }
+            for(Category itCat:obj.getCategorieDeNavigation(loggedMember)){
+                if(itCat.hasAncestor(navigationDesEspacesCat)){
+                    navCat.add(itCat);
+                }
+            }
         }
         %>
         
         <jalios:if predicate='<%= obj.getSurLeMemeTheme() && !navCat.isEmpty() && Util.notEmpty(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"))%>'>
             <% 
+            String[] typesRecherches = channel.getStringArrayProperty("jcmsplugin.socle.meme-theme.ficheactu.types", new String[]{});
+            
             // Récupération des publications catégorisées dans "En ce moment"
             QueryHandler qhEnCeMoment = new QueryHandler();
             qhEnCeMoment.setCids(channel.getProperty("$jcmsplugin.socle.category.enCeMoment.root"));
             qhEnCeMoment.setLoggedMember(loggedMember);
-            qhEnCeMoment.setTypes("Content");
+            qhEnCeMoment.setTypes(typesRecherches);
             QueryResultSet resultEnCeMomentSet = qhEnCeMoment.getResultSet();
             SortedSet<Publication> listPubsEnCeMomentSet = resultEnCeMomentSet.getAsSortedSet(Publication.getPdateComparator());
             
@@ -95,7 +100,7 @@
             qhThemes.setCatMode("or");
             qhThemes.setCids(themeCids);
             qhThemes.setLoggedMember(loggedMember);
-            qhThemes.setTypes("Content");
+            qhThemes.setTypes(typesRecherches);
             QueryResultSet resultThemesSet = qhThemes.getResultSet();
             SortedSet<Publication> listPubsThemesSet = resultThemesSet.getAsSortedSet(Publication.getPdateComparator());
             
@@ -110,7 +115,7 @@
             int max = channel.getIntegerProperty("jcmsplugin.socle.meme-theme.max", 20);
             List<Publication> tmpList = new ArrayList(sameThemePubSet);
             if(tmpList.size() >= max){
-            	tmpList = tmpList.subList(0, max);	
+                tmpList = tmpList.subList(0, max);  
             }
             %>
     

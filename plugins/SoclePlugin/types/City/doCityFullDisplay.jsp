@@ -118,8 +118,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                                 <jalios:foreach name="site" type="String" array='<%= obj.getWebsites() %>'>
                                     <li>
                                         <a href='<%= SocleUtils.parseUrl(site) %>'
-                                           title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
-                                           data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
+                                           title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"
+                                           data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(site) %>"}'> 
                                             <%= SocleUtils.parseUrl(site) %>
                                         </a>
                                     </li>
@@ -192,6 +192,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
 <main id="content" role="main">
     <article class="ds44-container-large">
+    
+    <jalios:include target="SOCLE_ALERTE"/>
     
         <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
       

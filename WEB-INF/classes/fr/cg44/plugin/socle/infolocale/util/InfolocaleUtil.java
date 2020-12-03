@@ -37,7 +37,7 @@ public class InfolocaleUtil {
     
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
-    public static String dateInfolocalePattern = "yyyy-MM-dd";
+    public static final String dateInfolocalePattern = "yyyy-MM-dd";
     
     private InfolocaleUtil() {}
     
@@ -532,12 +532,23 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Supprime les duplications dans une liste d'événements qui ne rentrent pas dans les limites de dates indiquées
-     * S'il n'y a pas de limite de date, se contente de supprimer les duplications
-     * @param source
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées, et les doublons
+     * @param eventList
+     * @param arrayDebutFin
      * @return
      */
     public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList, String[] arrayDebutFin) {
+      return purgeEventListFromDuplicates(eventList, arrayDebutFin, true);
+    }
+    
+    /**
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées et potentiellement les doublons
+     * S'il n'y a pas de limite de date, celle-ci est initialisée de J à J+2 ans
+     * S'il n'y a pas de limite, et que l'option de duplication est à "FALSE", aucun tri ne sera au final fait
+     * @param source
+     * @return
+     */
+    public static List<EvenementInfolocale> purgeEventListFromDuplicates(List<EvenementInfolocale> eventList, String[] arrayDebutFin, boolean deleteDuplicates) {
       if (Util.isEmpty(eventList)) {
         return new ArrayList<EvenementInfolocale>();
       }
@@ -564,7 +575,7 @@ public class InfolocaleUtil {
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
         EvenementInfolocale itEvent = iter.next();
         // si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
-        if (usedIds.contains(itEvent.getId()) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
+        if ((deleteDuplicates && usedIds.contains(itEvent.getId())) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
           iter.remove();
         // autrement, on le récupère, et on indique qu'on a ajouté cet événement
         } else {
@@ -899,8 +910,20 @@ public class InfolocaleUtil {
      * @return
      */
     public static Photo getLargestPicture(EvenementInfolocale itEvent) {
-      if (Util.isEmpty(itEvent) || Util.isEmpty(itEvent.getPhotos())) {
+      
+      if (Util.isEmpty(itEvent)) {
         return null;
+      }
+      
+      if (Util.isEmpty(itEvent.getPhotos())) {
+        if (Util.notEmpty(itEvent.getGenre()) && Util.notEmpty(itEvent.getGenre().getUrlPhotoLarge())) {
+          // l'événement n'a pas de photo, MAIS a une photo sur son genre
+          Photo genrePhoto = new Photo();
+          genrePhoto.setPath(itEvent.getGenre().getUrlPhotoLarge());
+          return genrePhoto;
+        } else {
+          return null;
+        }
       }
       
       String urlLargest = getUrlOfLargestPicture(itEvent);
@@ -949,15 +972,43 @@ public class InfolocaleUtil {
         StringBuilder txtTarif = new StringBuilder();
         if (Util.notEmpty(tarif.getPayantLibelle())) {
           txtTarif.append(tarif.getPayantLibelle());
-          txtTarif.append(" ");
+          txtTarif.append(" : ");
         }
-        txtTarif.append(tarif.getPayantMontant());
-        txtTarif.append(" ");
-        txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.symbol.euro"));
+        if (tarif.getPayantMontant().equals("0")) {
+          txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.gratuit"));
+          txtTarif.append(" ");
+        } else {
+          txtTarif.append(tarif.getPayantMontant());
+          txtTarif.append(" ");
+          txtTarif.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.symbol.euro"));
+        }
         
         return txtTarif.toString();
       }
       
       return "";
+    }
+    
+    /**
+     * Détermine si un ID d'organisme appartient à la propriété jcmsplugin.socle.infolocale.organisme.dep.id.list
+     * @param idOrganisme
+     * @return
+     */
+    public static boolean organisationIdIsInPropList(int idOrganisme) {
+      if (Util.isEmpty(idOrganisme) || idOrganisme <= 0) {
+        return false;
+      }
+      
+      String idOrgaTxt = Integer.toString(idOrganisme);
+      
+      String[] allOrganismes = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.organisme.dep.id.list").split(",");
+      
+      if (Util.notEmpty(allOrganismes)) {
+        for (String itIdList : allOrganismes) {
+          if (itIdList.contentEquals(idOrgaTxt)) return true;
+        }
+      }
+      
+      return false;
     }
 }

@@ -5,7 +5,7 @@
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
 %><%
 
-if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien))) {
+if (data == null || ( !(data instanceof Video) && !(data instanceof FicheArticle) && !(data instanceof Lien) && !(data instanceof FicheActu))) {
   return;
 }
 Publication pub = (Publication) data;
@@ -25,9 +25,7 @@ try {
 try {
   sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
 } catch(Exception e) {}
-try {
-  texteAlternatif = (String) pub.getFieldValue("texteAlternatif");
-} catch(Exception e) {}
+texteAlternatif = SocleUtils.getAltTextFromPub(pub);
 
 try {
   urlImage = (String) pub.getFieldValue("imagePrincipale");
@@ -43,9 +41,11 @@ if (Util.isEmpty(titre)) {
   titre = pub.getTitle();
 }
 if(Util.notEmpty(texteAlternatif)){
-	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(texteAlternatif) +"\" ";
+	altAttr = " alt=\"" + texteAlternatif +"\" ";
 } else if (Util.notEmpty(titre)) {
 	altAttr = " alt=\"" + HttpUtil.encodeForHTMLAttribute(titre) +"\" ";
+} else {
+    altAttr = " alt=\"\"";
 }
 %>
 <section class="ds44-box ds44-js-card ds44-card mbm">

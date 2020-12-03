@@ -722,6 +722,11 @@ public final class SocleUtils {
 		}
 		jsonObject.addProperty("id", id);
 		jsonMetaObject.addProperty("url", url);
+	  // Cas particulier pour le type de contenu Contact
+    if (pub instanceof Contact) {
+      jsonObject.remove("id");
+      jsonObject.addProperty("id", "-1");
+    }
 		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
 		jsonMetaObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
 		jsonMetaObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
@@ -1417,7 +1422,8 @@ public final class SocleUtils {
 					break;
 				}
 			}
-			if (Util.notEmpty(catVicePresident)) {
+			// Ajout de != null pour la vérification SonarCloud
+			if (catVicePresident != null && Util.notEmpty(catVicePresident)) {
 				String fullRole = elu.getGender() ? JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.masculin.maj") : JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.elu.vicepresident.feminin.maj");
 				return "<b>" + fullRole + " " + catVicePresident.getName() + "</b>";
 			}
@@ -1692,6 +1698,10 @@ public final class SocleUtils {
    */
   public static String getAltFromLien(Lien itLien) {
     
+	if (Util.notEmpty(itLien.getTexteAlternatif())) {
+		return itLien.getTexteAlternatif();
+	}
+	  
     if (Util.notEmpty(itLien.getLienInterne())) {
       if (itLien.getLienInterne() instanceof FileDocument) {
         FileDocument itDoc = (FileDocument) itLien.getLienInterne();
@@ -1759,6 +1769,40 @@ public final class SocleUtils {
     }    
     
     return null;
+  }
+  
+  /**
+   * Renvoie le texte alternatif d'un contenu pour une illustration
+   * @param pub
+   * @return
+   */
+  public static String getAltTextFromPub(Publication pub) {
+    
+    String altText = "";
+    String legendText = "";
+    boolean hasCopyright = false;
+    try {
+      altText = (String) pub.getFieldValue("texteAlternatif");
+    } catch (Exception e) {}
+    try {
+      legendText = (String) pub.getFieldValue("legende");
+    } catch (Exception e) {}
+    try {
+      hasCopyright = Util.notEmpty((String) pub.getFieldValue("copyright"));
+    } catch (Exception e) {}
+    
+    if(Util.isEmpty(altText)) {
+      // Champ alt vide, mais légende
+      if (Util.notEmpty(legendText)) {
+        altText = legendText;
+      }
+      // Légende vide, mais copyright présent
+      else if (hasCopyright && Util.notEmpty(pub)) {
+        altText = pub.getTitle();
+      }
+    }
+    
+    return HttpUtil.encodeForHTMLAttribute(altText);
   }
   
 }

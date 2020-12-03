@@ -104,7 +104,6 @@ if (Util.isEmpty(pub) && Util.isEmpty(image)) {
   return;
 }
 
-alt = HttpUtil.encodeForHTMLAttribute(alt);
 ariaLabel = HttpUtil.encodeForHTMLAttribute(ariaLabel);
 legend = HttpUtil.encodeForHTMLAttribute(legend);
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
@@ -162,6 +161,7 @@ switch(format) {
       break;
       
 	case "unchanged" :
+	    formattedImagePath = image;
 	    break;
 	
 	default :
@@ -190,6 +190,8 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   }
 }
 
+String alt = SocleUtils.getAltTextFromPub(pub);
+
 String label = ariaLabel;
 if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
   label = legend;
@@ -204,16 +206,18 @@ else {
 
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
-	<figure role="figure" class="<%= figureCss %>" aria-label="<%= Util.isEmpty(label) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : label %>">
+    <jalios:if predicate="<%= hasFigcaption %>">
+	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle() : label %>">
+	</jalios:if>
 	    <picture class="<%= pictureCss %>">
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-	        <img src="<%=formattedImagePath%>" alt="<%= Util.isEmpty(alt) ? JcmsUtil.glp(userLang, "jcmsplugin.socle.illustration") : alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
+	        <img src="<%=formattedImagePath%>" alt="<%= alt %>" class="<%= imgCss %>" id="<%=uid%>"/>
 	    </picture>
 	    
-	    <jalios:if predicate="<%= hasFigcaption%>">
+	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
 	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
 	                <%=legend%>
@@ -222,6 +226,6 @@ else {
 	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
 	            </jalios:if>
 	        </figcaption>
-	    </jalios:if>
 	</figure>
+	</jalios:if>
 </jalios:if>

@@ -7,8 +7,11 @@
 <%@ include file='/front/doFullDisplay.jspf' %>
 
 <main id="content" role="main">
+
+<jalios:include target="SOCLE_ALERTE"/>
+
     <article class="ds44-container-large">
-        <ds:titleSimple video="<%= obj%>" title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>"
+        <ds:titleSimple pub="<%= obj %>" video="<%= obj%>" title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>"
             legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true">
         </ds:titleSimple>
         <section class="ds44-contenuArticle">

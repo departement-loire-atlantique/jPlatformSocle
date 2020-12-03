@@ -19,6 +19,7 @@
     <type name="Carousel"></type>
     <type name="CarouselElement"></type>
     <type name="Chapitre"></type>
+    <type name="ChiffresCles"></type>
     <type name="City"></type>   
     <type name="CollectivityArticle"></type>
     <type name="CommuneHorsDepartement"></type>
@@ -100,6 +101,11 @@
     </templates>
     <templates type="AccueilDelegation">
         <template name="default" file="doAccueilDelegationFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="AlertCG">
+        <template name="default" file="doAlertCGFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
@@ -412,7 +418,7 @@
         </template>
         <template name="temoignages" file="doPortletMiseEnAvantDeContenusBoxTemoignages.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit témoignages</label>
-          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo" et "Articles")</description>
+          <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo", "Articles", "Lien" et "Fiche actu")</description>
         </template> 
     </templates>
     <templates type="PortletNavigate">
@@ -542,6 +548,7 @@
     <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="jsp/portal/socialNetworksMeta.jsp" include="EMPTY_HEADER" />
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
+    <file path="jsp/include/includePortletQueryForeachAlert.jsp" include="SOCLE_ALERTE" />
   </public-files>
   <webapp-files>
     <file path="types/PortletSelection/doSelection.jspf" />

@@ -90,6 +90,48 @@
         </div>
     </div>
 </div>
+
+<%-- Adresse ------------------------------------------------------------ --%>
+<% String adresseLabel = channel.getTypeFieldLabel(ContactForm.class, "adresse", userLang);%>
+<div class="ds44-mb3">
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="form-element-adresse" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder"><span><%= adresseLabel %></span></span>
+            </label>
+            <input type="text" id="form-element-adresse" name="adresse" class="ds44-inpStd" aria-describedby="explanation-form-element-adresse">
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", adresseLabel) %></span>
+            </button>
+        </div>
+        <div class="ds44-field-information" aria-live="polite">
+            <ul class="ds44-field-information-list ds44-list">
+                <li id="explanation-form-element-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.adresse") %></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%-- complementDadresse ------------------------------------------------------------ --%>
+<% String complementDAdresseLabel = channel.getTypeFieldLabel(ContactForm.class, "complementDadresse", userLang);%>
+<div class="ds44-mb3">
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="form-element-complement-adresse" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder"><span><%= complementDAdresseLabel %></span></span>
+            </label>
+            <input type="text" id="form-element-complement-adresse" name="complementDadresse" class="ds44-inpStd" aria-describedby="explanation-form-element-complement-adresse">
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", complementDAdresseLabel) %></span>
+            </button>
+        </div>
+        <div class="ds44-field-information" aria-live="polite">
+            <ul class="ds44-field-information-list ds44-list">
+                <li id="explanation-form-element-complement-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.complement-adresse") %></li>
+            </ul>
+        </div>
+    </div>
+</div>
  
 <%-- CodePostal ------------------------------------------------------------ --%>
 <% String codepostalLabel = channel.getTypeFieldLabel(ContactForm.class, "codePostal", userLang);%>

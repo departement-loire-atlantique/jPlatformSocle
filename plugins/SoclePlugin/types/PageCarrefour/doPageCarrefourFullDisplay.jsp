@@ -13,9 +13,11 @@ String copyright = obj.getCopyright(userLang);
 
 <main role="main" id="content">
 
+<jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
         
-        <ds:titleBanner imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
+        <ds:titleBanner pub="<%= obj %>" imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 
         <div class="ds44-inner-container ds44-xl-margin-tb">
             <div class="grid-12-small-1">

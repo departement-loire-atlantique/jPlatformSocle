@@ -20,7 +20,7 @@
     </field>
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true">
       <label xml:lang="fr">Image mobile</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x260px&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x200px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Copyright</label>
@@ -31,23 +31,23 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
     <!-- Détails -->
-    <field name="intro" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true">
+    <field name="intro" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Intro</label>
     </field>
-    <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Éligibilité</label>
     </field>
-    <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">C’est quoi ?</label>
     </field>
-    <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Comment faire une demande ?</label>
     </field>
     <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
@@ -57,7 +57,7 @@
     <field name="titreEncartBonASavoir" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre encart "Bon à savoir"</label>
     </field>
-    <field name="bonASavoir" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="bonASavoir" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Bon à savoir</label>
     </field>
     <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">

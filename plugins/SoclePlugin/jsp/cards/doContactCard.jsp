@@ -26,6 +26,16 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
    </jalios:if>
     <div class="ds44-card__section--horizontal">
       <p role="heading" aria-level="2" class="ds44-card__title" id="tuileContact_<%= uid %>"><%= pub.getTitle() %></p>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getLieuDeRattachement()) %>">
+        <p class="ds44-cardLocalisation">
+            <i class="icon icon-tag" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= HttpUtil.encodeForHTMLAttribute(pub.getLieuDeRattachement().getTitle()) %>' href="<%= pub.getLieuDeRattachement().getDisplayUrl(userLocale) %>"><%= pub.getLieuDeRattachement().getTitle() %></a></span>
+        </p>
+      </jalios:if>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getFonction()) %>">
+        <p class="ds44-cardLocalisation">
+            <%= pub.getFonction() %>
+        </p>
+      </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getCommunes()) %>">
         <p class="ds44-cardLocalisation"><i class="icon icon-marker" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span><span class="ds44-iconInnerText">
 	        <jalios:foreach name="itCommune" type="City" array="<%= pub.getCommunes() %>">
@@ -44,7 +54,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
           </div>
       </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getAdresseMail()) %>">
-        <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail()) %>' href="mailto:<%= pub.getAdresseMail() %>" data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(pub.getTitle()) %>"}'><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
+        <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail())) %>' href="mailto:<%= pub.getAdresseMail() %>" data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(pub.getTitle()) %>"}'><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
       </jalios:if>
     </div>
   </div>

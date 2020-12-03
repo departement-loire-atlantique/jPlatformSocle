@@ -5,14 +5,17 @@
 %>
 
 <main id="content" role="main">
+    
+    <jalios:include target="SOCLE_ALERTE"/>
+
     <section class="ds44-container-large">
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImageBandeau()) %>">
-                <ds:titleBanner imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
+                <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
                    legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
             </jalios:if>
             <jalios:default>
-                <ds:titleSimple mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
+                <ds:titleSimple pub="<%= obj %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
                    legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleSimple>
             </jalios:default>
         </jalios:select>
@@ -20,7 +23,7 @@
     </section>
     
     <section class="ds44-container-large">
-        <div class="ds44-mtb3 ds44--xl-padding-tb">
+        <div class='<%= Util.notEmpty(obj.getPortletsBas()) ? "ds44-mt3" : "ds44-mtb3" %> ds44--xl-padding-tb'>
             <jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
                 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
                 <div class="ds44-loader hidden">
@@ -96,8 +99,14 @@
     
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
         <jalios:foreach name="itPortletBas" type="PortalElement" array="<%= obj.getPortletsBas() %>">
+            <jalios:if predicate="<%= itPortletBas instanceof PortletPush %>">
+            <section class="ds44-container-fluid ds44--l-padding">
+            </jalios:if>
             <jalios:include pub="<%= itPortletBas %>"/>
-        </jalios:foreach>    
+            <jalios:if predicate="<%= itPortletBas instanceof PortletPush %>">
+            </section>
+            </jalios:if>
+        </jalios:foreach>
     </jalios:if>
     
     <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">

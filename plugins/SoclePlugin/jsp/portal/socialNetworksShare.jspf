@@ -22,10 +22,11 @@ List<String> socialNetworksList = Arrays.asList(socialNetworks);
                     String itSocialNetworkValue = itSocialNetwork.toLowerCase().replaceAll("\\s","");
                     String itSocialNetworkTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.socialnetwork.share."+itSocialNetworkValue));
                     String itSocialNetworkLink = LiensUtils.createLink(itSocialNetwork, urlCourante, pubCourante);
+                    String itSocialNetworkLabel = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.socialnetwork.depsur."+itSocialNetworkValue)));
                     %>
                     <%
                     if(Util.notEmpty(itSocialNetworkTitle) && Util.notEmpty(itSocialNetworkLink)){ %>
-                        <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"><span class="visually-hidden"><%= itSocialNetwork %></span></i></a></li>
+                        <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= itSocialNetworkLabel %></span></a></li>
                     <%}else{
                         logger.error("Partagez cette page : erreur de title ou de lien pour le réseau social " + itSocialNetwork);
                     } %>

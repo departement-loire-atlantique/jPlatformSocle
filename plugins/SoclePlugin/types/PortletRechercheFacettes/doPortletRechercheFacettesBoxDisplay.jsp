@@ -8,6 +8,11 @@
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
 
     isInRechercheFacette = isInRechercheFacette || obj.getAfficherResultatDansLannuaire();
+    
+    // SEO : bloque l'indexation des pages de résultats
+    if(isInRechercheFacette){
+      request.setAttribute("noindex", true);
+    }
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
@@ -51,7 +56,7 @@
 			</div>
 		</jalios:if>
 		
-		<form data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' data-auto-load='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
+		<form data-seo-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting")%>' data-is-ajax='<%= isInRechercheFacette ? "true" : "false" %>' data-auto-load='<%= isInRechercheFacette ? "true" : "false" %>' action='<%= isInRechercheFacette ? "plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" : channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal").getDisplayUrl(userLocale) %>'>
 		    <jalios:if predicate='<%= !isInRechercheFacette %>'>
 			  <p class="ds44-textLegend ds44-textLegend--mentions txtcenter"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 			</jalios:if>
@@ -75,7 +80,7 @@
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres || (isInRechercheFacette && !obj.getAfficherResultatDansLannuaire()) ? "" : "--large"; %>
-					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title="<%= glp("jcmsplugin.socle.lancer.recherche") %>">
+					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>					
@@ -194,7 +199,7 @@
 	          <div class="ds44-js-results-container">
 	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
 	              <div class="ds44-js-results-list" data-display-mode='<%= obj.getModeDaffichageDuContenu() ? "external" : "inline" %>'>
-	                  <p aria-level="2" rôle="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
+	                  <p aria-level="2" role="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
 	                    <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
 	                  </p>            
 	              </div>
