@@ -39,16 +39,20 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	            <strong><%= glp("jcmsplugin.socle.actuedu.typepratique.label") %></strong> <%= SocleUtils.formatCategories(obj.getTypeDePratique(loggedMember)) %>
 	        </p>
 	        </jalios:if>
-	        <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) || Util.notEmpty(obj.getCapaciteDaccueil()) %>">
+	        <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) && Util.isEmpty(obj.getCapaciteDaccueil()) %>">
+	        <p class="ds44-docListElem mts">
+	            <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
+	            <%= glp("jcmsplugin.socle.actuedu.pour-eleve.label", SocleUtils.formatCategories(obj.getNiveau(loggedMember)))%>
+	        </p>
+	        </jalios:if>
+	        <jalios:if predicate="<%= Util.notEmpty(obj.getCapaciteDaccueil()) %>">
 	        <div class="ds44-docListElem mts">
 	            <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) %>">
 	                <%= glp("jcmsplugin.socle.actuedu.pour-eleve.label", SocleUtils.formatCategories(obj.getNiveau(loggedMember)))%>
+	                <br/>
 	            </jalios:if>
-	            <jalios:if predicate="<%= Util.notEmpty(obj.getCapaciteDaccueil()) %>">
-	                <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) %>"><br/></jalios:if>
-	                <jalios:wysiwyg><%= obj.getCapaciteDaccueil() %></jalios:wysiwyg>
-	            </jalios:if>
+	            <jalios:wysiwyg><%= obj.getCapaciteDaccueil() %></jalios:wysiwyg>
 	        </div>
 	        </jalios:if>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getCout()) %>">
