@@ -5,10 +5,10 @@
 <section class="ds44-container-large ds44--xl-padding-tb">
 	<div class="grid-12-small-1 has-gutter-l">
 	    <div class="col-2-small-1">
-	        <picture class="ds44-logo ds44-mb3 ds44-mobile-reduced-mt ds44-mobile-reduced-pt">
+	        <div class="ds44-logo ds44-mb3 ds44-mobile-reduced-mt ds44-mobile-reduced-pt">
 	            <img src="//design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg" alt="Loire Atlantique" class="mbm">
 	            <img src="//design.loire-atlantique.fr/assets/images/logos/logo-mdph.svg" alt="la MDPH - Maison départementale des personnes handicapées de Loire Atlantique">
-	        </picture>
+	        </div>
 	    </div>
 	    <div class="col-5-small-1 ds44-mb3">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.footer.portletcontact.id") %>'/>
