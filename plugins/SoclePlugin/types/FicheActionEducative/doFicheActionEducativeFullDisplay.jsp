@@ -57,7 +57,9 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	        </jalios:if>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getCout()) %>">
 	        <div class="ds44-docListElem mts">
-	            <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> <jalios:wysiwyg><%= glp("jcmsplugin.socle.actuedu.cout.label")%> <%= obj.getCout() %></jalios:wysiwyg>
+	            <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
+	            <p><%= glp("jcmsplugin.socle.actuedu.cout.label")%> </p> 
+	            <jalios:wysiwyg> <%= obj.getCout() %></jalios:wysiwyg>
 	        </div>
 	        </jalios:if>
 	        <p class="ds44-docListElem mts">
