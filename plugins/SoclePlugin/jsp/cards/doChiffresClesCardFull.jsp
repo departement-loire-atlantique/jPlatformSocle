@@ -68,7 +68,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 </jalios:if>
 
 <jalios:if predicate="<%= Util.notEmpty((pub.getChiffreSecondaire())) || Util.notEmpty((pub.getLibelleChiffreSecondaire())) %>">
-	<section class='ds44-innerBoxContainer ds44-borderContainer <%= Util.notEmpty(request.getParameter("wysiwygEmbed")) ? "large-w50" : ""%>'>
+	<section class='ds44-innerBoxContainer ds44-borderContainer'>
 	    <h2 id="idTitre-ChiffresCles<%= uid %>" class="h2-like"><%= glp("jcmsplugin.socle.chiffrescles.titre") %></h2>
 	    <ul class="grid-2-tiny-1 has-gutter-l ds44-list ds44-mobile-extra-smt">
 	        <li class="col-2 ds44-tiny-extra-mb">
