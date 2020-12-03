@@ -33,6 +33,9 @@
     <field name="canton" editor="link" required="false" compactDisplay="false" type="generated.Canton" parent="false">
       <label xml:lang="fr">Canton</label>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
   </fields>
 </type>
 

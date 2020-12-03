@@ -62,6 +62,9 @@
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
   </fields>
 </type>
 

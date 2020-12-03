@@ -24,6 +24,9 @@
     <field name="population" editor="int" required="false" compactDisplay="false" type="int" default="0">
       <label xml:lang="fr">Population</label>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
   </fields>
   <label xml:lang="fr">Canton</label>
 </type>

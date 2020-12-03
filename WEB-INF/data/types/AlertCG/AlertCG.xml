@@ -20,7 +20,7 @@
     <field name="texteAlternatifLienBouton" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif lien bouton</label>
     </field>
-    <field name="navigationCategories" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="navigationCategories" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie</label>
     </field>
     <field name="typeDalerte" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="dev_5151" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">

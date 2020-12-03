@@ -82,6 +82,9 @@
     <field name="twitter" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
       <label xml:lang="fr">Twitter</label>
     </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="j_5">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
   </fields>
   <label xml:lang="fr">Elu</label>
   <label xml:lang="en">Elected Member</label>
