@@ -85,10 +85,10 @@
     </field>
     <field name="emailSpecifique" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true">
       <label xml:lang="fr">Email spécifique</label>
-    </field>    
+    </field>
     <field name="introModalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Intro modalités de candidature</label>
-    </field>    
+    </field>
     <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Modalités de candidature</label>
     </field>
@@ -103,7 +103,7 @@
     </field>
     <field name="emailContactRH" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true" tabGroup="contactRH">
       <label xml:lang="fr">Email contact RH</label>
-    </field>     
+    </field>
     <field name="contactMetier" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactMetier">
       <label xml:lang="fr">Contact métier</label>
     </field>
@@ -115,7 +115,7 @@
     </field>
     <field name="emailContactMetier" editor="email" required="false" compactDisplay="false" type="String[]" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true" tabGroup="contactMetier">
       <label xml:lang="fr">Email contact métier</label>
-    </field>    
+    </field>
     <field name="masquerBouton" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true" tab="contacts">
       <label xml:lang="fr">Masquer bouton ?</label>
       <onLabel xml:lang="en">Yes</onLabel>
@@ -129,14 +129,14 @@
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
-    </field>        
+    </field>
     <field name="titreEncartDocument" editor="textfield" required="false" compactDisplay="false" tab="documents" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encartDocuments">
       <label xml:lang="fr">Titre encart document</label>
     </field>
     <field name="documentsMultiple" editor="link" required="false" compactDisplay="false" tab="documents" type="com.jalios.jcms.FileDocument[]" ml="false" descriptionType="tooltip" tabGroup="encartDocuments" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Documents (multiple)</label>
     </field>
-    <field name="categoriesDeNavigation" editor="category" required="false" compactDisplay="false" tab="classement_et_navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
+    <field name="categoriesDeNavigation" editor="category" required="true" compactDisplay="false" tab="classement_et_navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégories de navigation</label>
     </field>
   </fields>

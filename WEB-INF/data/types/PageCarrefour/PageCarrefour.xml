@@ -8,7 +8,7 @@
     <field name="titreUrl" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre URL</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Si rempli, apparaitra dans l'URL à la place du titre.&lt;/p&gt;&lt;/div&gt;</description>
-    </field>  
+    </field>
     <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true">
       <label xml:lang="fr">Image principale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
@@ -37,10 +37,10 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation_et_classement">
       <label xml:lang="fr">Rubrique concernée</label>
     </field>
-    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mise en avant</label>
     </field>
     <field name="sideportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Publication[]" ml="false" descriptionType="tooltip" tab="encadres" searchable="false" html="false" checkHtml="true">
@@ -64,6 +64,9 @@
     </tab>
     <tab id="bottomBlocks">
       <label xml:lang="fr">Blocs bas</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
     </tab>
   </tabs>
 </type>
