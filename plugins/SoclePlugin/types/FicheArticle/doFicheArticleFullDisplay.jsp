@@ -42,6 +42,8 @@
     <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
     
     <%-- Page utile --%>
-    <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    <jalios:if predicate="<%= obj.getPageUtile() %>">
+        <jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp"/>
+    </jalios:if>
     
 </main>
