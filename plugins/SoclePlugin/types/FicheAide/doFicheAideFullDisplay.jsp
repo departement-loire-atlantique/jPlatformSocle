@@ -59,77 +59,78 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
         <section class="ds44-ongletsContainer">
 
             <div class="js-tabs ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">
-
-                <nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' 
-                		id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-hiddenPrint ds44-theme ">
-                    <!-- Résumé / détail / FAQ -->
-                    <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
-                        <jalios:if predicate="<%= displayEnResume %>">
-                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
-                            <a href="#id_first" class="js-tablist__link ds44-tabs__link" 
-                            		id="label_id_first" aria-current="true">
-                            	<%= glp("jcmsplugin.socle.onglet.resume") %>
-                            </a>
-                        </li>
-                        </jalios:if>
-                        <jalios:if predicate="<%= displayDetails %>">
-                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
-                            <a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second">
-                            	<%= glp("jcmsplugin.socle.onglet.detail") %>
-                            </a>
-                        </li>
-                        </jalios:if>
-                        <jalios:if predicate="<%= displayFaq %>">
-                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
-                            <a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third">
-                            	<%= glp("jcmsplugin.socle.onglet.faq") %>
-                            </a>
-                        </li>
-                        </jalios:if>
-                    </ul>
-                    
-                    <!-- Contact / faire demande / suivre demande  -->
-                    <ul class="ds44-flex-container ds44-fse ds44--l-padding-tb ds44-flex-grow1-large ds44-blocBtnOnglets ds44-list">
-                        <jalios:if predicate="<%= displayQuiContacter %>">
-                        <li class="mrs mls ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
-                            		data-target="#overlay-qui-contacter" 
-                            		data-js="ds44-modal" 
-                            		data-open-overlay="true">
-                            	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span>
-                            	<i class="icon icon-phone icon--sizeL" aria-hidden="true"></i>
-                            </button>
-                        </li>
-                        </jalios:if>
-                        <jalios:if predicate="<%= displayFaireDemande %>">
-                        <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
-                            		data-target="#overlay-faire-demande" 
-                            		data-js="ds44-modal" 
-                            		data-open-overlay="true">
-                            	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span>
-                            	<i class="icon icon-file icon--sizeL" aria-hidden="true"></i>
-                            </button>
-
-                        </li>
-                        </jalios:if>
-                        <jalios:if predicate="<%= displaySuivreDemande %>">
-                        <li class="mrs ds44-ongletsBtnItem">
-                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
-                            		data-target="#overlay-suivre-demande" 
-                            		data-js="ds44-modal" 
-                            		data-open-overlay="true">
-                            <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span>
-                            <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-                            </button>
-
-                            
-                        </li>
-                        </jalios:if>
-                    </ul>
-
-                </nav>
-
+                <div class="ds44-theme ds44-flex-container ds44-flex-wrap-large">
+	                <nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' 
+	                		id="ligneOnglets" class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-hiddenPrint">
+	                    <!-- Résumé / détail / FAQ -->
+	                    <ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
+	                        <jalios:if predicate="<%= displayEnResume %>">
+	                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__1">
+	                            <a href="#id_first" class="js-tablist__link ds44-tabs__link" 
+	                            		id="label_id_first" aria-current="true">
+	                            	<%= glp("jcmsplugin.socle.onglet.resume") %>
+	                            </a>
+	                        </li>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= displayDetails %>">
+	                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
+	                            <a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second">
+	                            	<%= glp("jcmsplugin.socle.onglet.detail") %>
+	                            </a>
+	                        </li>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= displayFaq %>">
+	                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
+	                            <a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third">
+	                            	<%= glp("jcmsplugin.socle.onglet.faq") %>
+	                            </a>
+	                        </li>
+	                        </jalios:if>
+	                    </ul>
+	                </nav>
+	                
+	                <div class="ds44-flex-container ds44-flex-grow1-large ds44-fse">
+	                <!-- Contact / faire demande / suivre demande  -->
+	                    <ul class="ds44-flex-container ds44-fse ds44--l-padding-tb ds44-flex-grow1-large ds44-blocBtnOnglets ds44-list">
+	                        <jalios:if predicate="<%= displayQuiContacter %>">
+	                        <li class="mrs mls ds44-ongletsBtnItem">
+	                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
+	                                    data-target="#overlay-qui-contacter" 
+	                                    data-js="ds44-modal" 
+	                                    data-open-overlay="true">
+	                                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span>
+	                                <i class="icon icon-phone icon--sizeL" aria-hidden="true"></i>
+	                            </button>
+	                        </li>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= displayFaireDemande %>">
+	                        <li class="mrs ds44-ongletsBtnItem">
+	                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
+	                                    data-target="#overlay-faire-demande" 
+	                                    data-js="ds44-modal" 
+	                                    data-open-overlay="true">
+	                                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span>
+	                                <i class="icon icon-file icon--sizeL" aria-hidden="true"></i>
+	                            </button>
+	
+	                        </li>
+	                        </jalios:if>
+	                        <jalios:if predicate="<%= displaySuivreDemande %>">
+	                        <li class="mrs ds44-ongletsBtnItem">
+	                            <button class="ds44-btnStd ds44-btn--invert" type="button" 
+	                                    data-target="#overlay-suivre-demande" 
+	                                    data-js="ds44-modal" 
+	                                    data-open-overlay="true">
+	                            <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span>
+	                            <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
+	                            </button>
+	
+	                            
+	                        </li>
+	                        </jalios:if>
+	                    </ul>
+	                </div>
+                </div>
                 
                 <!--  En résumé -->
                 <jalios:if predicate="<%= displayEnResume %>">
