@@ -14,9 +14,8 @@ ChiffresCles pub = (ChiffresCles) data;
 
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
-// recuperation de l'url et de l'alt de l'icone pour le chiffre principal
+// recuperation de l'url de l'icone pour le chiffre principal
 String urlImage = Util.notEmpty(pub.getIconePrincipale()) ? pub.getIconePrincipale() : channel.getProperty("jcmsplugin.socle.chiffresCles.icone.url");
-String altImage =  HttpUtil.encodeForHTMLAttribute(urlImage.split("/")[urlImage.split("/").length - 1]);
 
 // recuperation de l'url du libelle et de l'attribut title du lien
 String urlLien = "";
@@ -40,7 +39,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 	<section class='ds44-box ds44-theme'>
 	    <div class="ds44-innerBoxContainer ds44-flex-container ds44-flex-valign-center">
 	        <picture class="ds44-boxPic">
-	            <img src="<%= urlImage %>" alt="<%= altImage %>" />
+	            <img src="<%= urlImage %>" alt="" />
 	        </picture>
 	        <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
 		        <div class="ds44-boxContent">
@@ -74,7 +73,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 	        <li class="col-2 ds44-tiny-extra-mb">
 	            <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
 	                <picture class="ds44-boxPic">
-	                    <img src="<%= urlImage %>" alt="<%= altImage %>" />
+	                    <img src="<%= urlImage %>" alt="" />
 	                </picture>
 	                <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
 	                    <span class="h1-like h1-like--bigger ds44-numberIncrement ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span> 
