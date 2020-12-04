@@ -89,10 +89,19 @@
     
     String titleUrl = "";
     
+    String alt="";
+    
     if(Util.notEmpty(customAlt)) {
     	titleUrl = customAlt;
+    	alt = customAlt;
     	if(displayTargetBlank) titleUrl = JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", titleUrl);
+    } else {
+      try {
+        alt = ((String) pub.getFieldValue("texteAlternatif"));
+        if (Util.isEmpty(alt)) alt = "";
+      } catch(Exception e) {}
     }
+    
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
 <div class="col col-6">
@@ -100,7 +109,7 @@
 
 <div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
 
-    <img src="<%= urlImage %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+    <img src="<%= urlImage %>" alt="<%= alt %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
         <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %>>
