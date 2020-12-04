@@ -69,14 +69,10 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 * @return
 	 */
 	private String removeDoubleSpaces(String text) {
-	  String doubleSpace = "&nbsp;&nbsp;";
-	  String doubleSpaceBis = "&#xa0;&#xa0;";
-	  String txtClone = text;
-	  while (txtClone.indexOf(doubleSpace) >= 0) {
-      txtClone = txtClone.replaceAll(doubleSpace, "&nbsp;");
-    }
-	  while (txtClone.indexOf(doubleSpaceBis) >= 0) {
-      txtClone = txtClone.replaceAll(doubleSpaceBis, "&#xa0;");
+	  String normalSpace = " ";
+	  String txtClone = text.replaceAll("&nbsp;", normalSpace).replaceAll("&#xa0;", normalSpace);
+	  while (txtClone.indexOf(normalSpace+normalSpace) >= 0) {
+      txtClone = txtClone.replaceAll(normalSpace+normalSpace, normalSpace);
     }
 	  return txtClone;
 	}
