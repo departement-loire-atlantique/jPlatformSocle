@@ -42,14 +42,16 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) && Util.isEmpty(obj.getCapaciteDaccueil()) %>">
 	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
-	            <%= glp("jcmsplugin.socle.actuedu.pour-eleve.label", SocleUtils.formatCategories(obj.getNiveau(loggedMember)))%>
+	            <strong><%= glp("jcmsplugin.socle.actuedu.pour-eleve.label")%> </strong>
+	            <%= SocleUtils.formatCategories(obj.getNiveau(loggedMember))%>
 	        </p>
 	        </jalios:if>
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getCapaciteDaccueil()) %>">
 	        <div class="ds44-docListElem mts">
 	            <i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:if predicate="<%= Util.notEmpty(obj.getNiveau(loggedMember)) %>">
-	                <%= glp("jcmsplugin.socle.actuedu.pour-eleve.label", SocleUtils.formatCategories(obj.getNiveau(loggedMember)))%>
+	                <strong><%= glp("jcmsplugin.socle.actuedu.pour-eleve.label")%> </strong>
+	                <%= SocleUtils.formatCategories(obj.getNiveau(loggedMember))%>
 	                <br/>
 	            </jalios:if>
 	            <jalios:wysiwyg><%= obj.getCapaciteDaccueil() %></jalios:wysiwyg>
@@ -58,8 +60,8 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	        <jalios:if predicate="<%= Util.notEmpty(obj.getCout()) %>">
 	        <div class="ds44-docListElem mts">
 	            <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	            <p><%= glp("jcmsplugin.socle.actuedu.cout.label")%> </p> 
-	            <jalios:wysiwyg> <%= obj.getCout() %></jalios:wysiwyg>
+	            <strong><%= glp("jcmsplugin.socle.actuedu.cout.label")%> </strong>
+	            <jalios:wysiwyg css="ds44-inlineBlock"> <%= obj.getCout() %></jalios:wysiwyg>
 	        </div>
 	        </jalios:if>
 	        <p class="ds44-docListElem mts">
