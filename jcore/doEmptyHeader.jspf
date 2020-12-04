@@ -25,17 +25,23 @@
   
   boolean opengraphEnabled = channel.getBooleanProperty(PortalManager.SEO_OPENGRAPH_ENABLED_PROP, true);
   
+  //DEP44 : ajout balise meta pour twiiter card
   if (opengraphEnabled) {
+    jcmsContext.addCustomHeader("<meta name=\"twitter:card\" content=\"summary\" />");
     if (Util.notEmpty(strDescription)) {
-	    jcmsContext.addCustomHeader("<meta property=\"og:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
+      jcmsContext.addCustomHeader("<meta name=\"twitter:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
+      jcmsContext.addCustomHeader("<meta property=\"og:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
     }
     if (Util.notEmpty(titleOfThePage)) {
+      jcmsContext.addCustomHeader("<meta name=\"twitter:title\" content=\""+ encodeForHTMLAttribute(titleOfThePage) + "\" />");
       jcmsContext.addCustomHeader("<meta property=\"og:title\" content=\""+ encodeForHTMLAttribute(titleOfThePage) + "\" />");
     }
     if (Util.notEmpty(pageImage)) {
+    	jcmsContext.addCustomHeader("<meta name=\"twitter:image\" content=\""+ pageImage + "\" />");
       jcmsContext.addCustomHeader("<meta property=\"og:image\" content=\""+ pageImage + "\" />");
     }
     if (Util.notEmpty(channel.getName())) {
+      jcmsContext.addCustomHeader("<meta name=\"twitter:site\" content=\""+ encodeForHTMLAttribute(channel.getName()) + "\" />");
       jcmsContext.addCustomHeader("<meta property=\"og:site_name\" content=\""+ encodeForHTMLAttribute(channel.getName()) + "\" />");
     }
 	  jcmsContext.addHttpNameHeader("twitter:card", strDescription);
