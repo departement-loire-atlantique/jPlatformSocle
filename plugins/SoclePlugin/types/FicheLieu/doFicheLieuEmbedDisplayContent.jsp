@@ -17,7 +17,7 @@ String adressePhysique = SocleUtils.formatAdressePhysique(obj);
 boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 %>
 <section class="pbm">
-	<p class="ds44-docListElem mtm" role="heading" aria-level="3">
+	<p class="ds44-docListElem mtm">
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	       <jalios:select>
 	           <jalios:if predicate='<%= pubNonRepertoriee %>'>
