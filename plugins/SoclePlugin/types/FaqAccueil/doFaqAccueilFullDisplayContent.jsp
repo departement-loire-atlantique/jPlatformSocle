@@ -8,7 +8,7 @@
 				<ul class="ds44-collapser ds44-mb-std ">
 					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' counter='nbrQuestRep'>
 						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
-							<button type="button" class="ds44-collapser_button">
+							<button type="button" class="ds44-collapser_button" role=”heading” aria-level=”3”>
 								<%= itQuestRep.getTitle(userLang) %>
 								<i class="icon icon-down" aria-hidden="true"></i>
 							</button>
