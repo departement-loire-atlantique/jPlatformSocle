@@ -47,13 +47,19 @@ if(Util.notEmpty(pub.getOtherTroupe())) {
   listeTroupe.add(pub.getOtherTroupe());
 }
 
+String altText = "";
+try {
+  altText = (String) pub.getFieldValue("texteAlternatif");
+  if (Util.isEmpty(altText)) altText = "";
+} catch (Exception e) {}
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray ">
      
     <jalios:if predicate="<%= Util.notEmpty(image) %>">
 	    <picture class="ds44-container-imgRatio">
-	        <img src="<%= image %>" alt="<%= pub.getTitle() %>" class="ds44-imgRatio">
+	        <img src="<%= image %>" alt="<%= altText %>" class="ds44-imgRatio">
 	    </picture>
 	</jalios:if>
    
