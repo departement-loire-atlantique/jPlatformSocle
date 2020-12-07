@@ -37,6 +37,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	  formattedText = deleteEmptyAriaLabelse(formattedText);
 	  formattedText = removeDoubleBr(formattedText);
 	  formattedText = removeUselessSpacesLink(formattedText);
+	  formattedText = removeParagraphsAroundDivs(formattedText);
 	  return formattedText;
 	}
 	
@@ -156,5 +157,14 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	  }
 	  return text;				
 	}
+	
+	/**
+	 * Retire les balises <p> qui englobent une balise <div>
+	 * @param text
+	 * @return
+	 */
+	private String removeParagraphsAroundDivs(String text) {
+    return text.replaceAll("<p>\\W*<div", "<div").replaceAll("</div></p>", "</div>");
+  }
  
 }
