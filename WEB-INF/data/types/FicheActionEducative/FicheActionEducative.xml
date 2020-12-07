@@ -105,6 +105,9 @@
     <field name="mail" editor="email" required="true" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="50" ml="false">
       <label xml:lang="fr">Mail</label>
     </field>
+    <field name="lieu" editor="category" required="false" compactDisplay="false" tab="contact" type="java.util.TreeSet" chooser="tree" exclusive="false" root="c_1284426" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Lieu</label>
+    </field>
     <field name="format" editor="category" required="true" compactDisplay="false" tab="description" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.format.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Format</label>
     </field>
