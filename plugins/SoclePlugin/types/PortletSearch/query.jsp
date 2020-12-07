@@ -14,7 +14,7 @@ request.setAttribute("noindex", true);
     <section class="ds44-container-large">
        
         <div class="txtcenter ds44-lightBG ds44--l-padding-b ds44--xl-padding-t ">
-            <h1 class="center" id="titre-recherche-motcle"><%= glp("jcmsplugin.socle.recherche.resultats") %></h1>
+            <h1 class="center"><%= glp("jcmsplugin.socle.recherche.resultats") %></h1>
         </div>                
         
         <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
@@ -38,7 +38,7 @@ request.setAttribute("noindex", true);
 	                        <div class="ds44-form__container">		
 								<div class="ds44-posRel">
 								    <label for="form-element-<%= formUid %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge"><span><%= glp("jcmsplugin.socle.recherche.votrerecherche") %></span></span></label>								    
-								    <input type="text" id="form-element-<%= formUid %>" name="searchtext" class="ds44-inpLarge" data-url="plugins/SoclePlugin/jsp/facettes/acSearchResult.jsp" role="combobox" aria-autocomplete="list" autocomplete="off" data-mode="free-text" title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.recherche.motcle.title")) %>'  required=""  aria-describedby="titre-recherche-motcle" /><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.recherche.votrerecherche")) %></span></button>																							
+								    <input type="text" id="form-element-<%= formUid %>" name="searchtext" class="ds44-inpLarge" data-url="plugins/SoclePlugin/jsp/facettes/acSearchResult.jsp" role="combobox" aria-autocomplete="list" autocomplete="off" data-mode="free-text" title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.recherche.motcle.title")) %>'  required=""/><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.recherche.votrerecherche")) %></span></button>																							
 								    <div class="ds44-autocomp-container hidden">
 								        <div class="ds44-autocomp-list">
 								            <ul class="ds44-list" role="listbox"></ul>
