@@ -37,7 +37,7 @@
                         
                         <%-- On ne prévoit pas d'image mobile --%>
                         <picture class="ds44-stl-center ds44-tablette-extra-mt">
-                            <img src="<%= SocleUtils.getUrlOfFormattedImageMagazine(obj.getImagePrincipale()) %>" class="tiny-w100">
+                            <img src="<%= SocleUtils.getUrlOfFormattedImageMagazine(obj.getImagePrincipale()) %>" class="tiny-w100" alt='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitle(userLang)))%>'>
                         </picture>
                         
                         <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
@@ -54,7 +54,7 @@
                         
                         <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
                             <p class="ds44-mt4">
-                                <a href="<%= obj.getUrlLiseuse() %>" class="ds44-btnStd ds44-btnStd--large ds44-btn--invert ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitle(userLang))) %>">
+                                <a href="<%= obj.getUrlLiseuse() %>" class="ds44-btnStd ds44-btnStd--large ds44-btn--invert ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang))) %>">
                                     <span class="ds44-btnInnerText"><%= Util.notEmpty(obj.getLibelleBoutonLiseuse()) ? obj.getLibelleBoutonLiseuse() : glp("jcmsplugin.socle.fichepublication.lireenligne") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </p>
