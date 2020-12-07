@@ -196,7 +196,7 @@
     </jalios:if>
     <%-- Modale code Soundcloud --%>
     <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud()) %>'>
-        <section class="ds44-modal-container" id="overlay-ecouter" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-ecouter">
+        <section class="ds44-modal-container" id="overlay-ecouter" aria-modal="true" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-ecouter">
             <div class="ds44-modal-box">
                 <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.fichepublication.ecouter")) %>" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
                 <h1 class="h2-like" id="titre-modale-ecouter"><%= glp("jcmsplugin.socle.fichepublication.ecouter") %> <%= obj.getTitle(userLang) %></h2>

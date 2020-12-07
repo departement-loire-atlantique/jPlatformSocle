@@ -74,14 +74,14 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 	                        </jalios:if>
 	                        <jalios:if predicate="<%= displayDetails %>">
 	                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__2">
-	                            <a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second">
+	                            <a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second" aria-disabled="true">
 	                            	<%= glp("jcmsplugin.socle.onglet.detail") %>
 	                            </a>
 	                        </li>
 	                        </jalios:if>
 	                        <jalios:if predicate="<%= displayFaq %>">
 	                        <li class="ds44-tabs__item ds44-fg1" role="presentation" id="tabs__3">
-	                            <a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third">
+	                            <a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third" aria-disabled="true">
 	                            	<%= glp("jcmsplugin.socle.onglet.faq") %>
 	                            </a>
 	                        </li>
@@ -258,7 +258,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </main>
 
 <jalios:if predicate="<%= displayFaireDemande %>">
-	<section class="ds44-modal-container" id="overlay-faire-demande" aria-labelledby="titre-modale-faire-demande" aria-hidden="true" role="dialog">
+	<section class="ds44-modal-container" id="overlay-faire-demande" aria-labelledby="titre-modale-faire-demande" aria-modal="true" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		aria-label='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.faire-demande")) %>' 
@@ -371,7 +371,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </jalios:if>
 
 <jalios:if predicate="<%= displaySuivreDemande %>">
-	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-labelledby="titre-suivre-demande" aria-hidden="true" role="dialog">
+	<section class="ds44-modal-container" id="overlay-suivre-demande" aria-labelledby="titre-suivre-demande" aria-modal="true" aria-hidden="true" role="dialog">
 	    <div class="ds44-modal-box">
 	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
 	        		title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.ficheaide.suivre.label")) %>' 
@@ -462,7 +462,7 @@ boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || 
 </jalios:if>
 
 <jalios:if predicate="<%= displayQuiContacter %>">
-<section class="ds44-modal-container" id="overlay-qui-contacter" aria-labelledby="titre-modale-qui-contacter" aria-hidden="true" role="dialog">
+<section class="ds44-modal-container" id="overlay-qui-contacter" aria-labelledby="titre-modale-qui-contacter" aria-modal="true" aria-hidden="true" role="dialog">
     <div class="ds44-modal-box">
         <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.demande.qui-contacter"))) %>' data-js="ds44-modal-action-close">
             <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>

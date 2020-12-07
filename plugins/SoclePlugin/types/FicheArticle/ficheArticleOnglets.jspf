@@ -35,7 +35,7 @@
 						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))%>'>
 							<li class="ds44-tabs__item ds44-fg1" id="tabs__<%= ongletCpt %>"><a
 								class="js-tablist__link ds44-tabs__link<%= !firstTabDisplayed ? " ds44-tabs__linkSelected" : "" %>" id="label_id_<%= ongletCpt %>"
-								<%= !firstTabDisplayed ? " aria-current='true'" : ""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
+								<%= !firstTabDisplayed ? " aria-current='true'" : " aria-disabled=\"true\""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
 							</li>
 							<% firstTabDisplayed = true; %>
 						</jalios:if>
@@ -78,7 +78,7 @@
     	
     	<div id="id_<%= ongletCpt %>" class='js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb' aria-labelledby="label_id_<%= ongletCpt %>"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
     	   <a name="onglet-<%= ongletCpt %>" id="onglet-<%= ongletCpt %>"></a>
-    	   <h2 class="visually-hidden">Onglet <%= ongletCpt %></h2>
+    	   <h2 class="visually-hidden" tabindex="-1">Onglet <%= ongletCpt %></h2>
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
 

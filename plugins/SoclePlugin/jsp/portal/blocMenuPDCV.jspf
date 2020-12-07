@@ -1,6 +1,6 @@
 <section id="navPdcv"
     class="ds44-overlay ds44-overlay--navNiv2 ds44-theme ds44-bgCircle ds44-bg-br"
-    role="dialog"
+    role="dialog" aria-modal="true"
     aria-label='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.menu.principal2", glp("jcmsplugin.socle.menu.pdcv"))) %>'
     aria-hidden="true">
     <div class="ds44-container-menuBackLink" aria-hidden="true">
