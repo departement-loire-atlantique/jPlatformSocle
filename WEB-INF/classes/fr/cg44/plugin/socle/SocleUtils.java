@@ -1143,7 +1143,16 @@ public final class SocleUtils {
       imagePath = pub.getDataImage();
     }
     return imagePath;
-  }  
+  }
+  
+  /**
+   * Vérifie si le lien est interne (soit qu'il référence un contenu du site), ou externe (soit une url qui pointe sur un autre site web)
+   * @param url à vérifier
+   * @return true si l'url est interne, false si l'url est externe
+   */
+  public static boolean isURLInterne(String url) {
+    return (url.charAt(0) == '/' || url.startsWith(channel.getUrl()));
+  }
   
   /**
    * Génère une image formattée et renvoie son path
