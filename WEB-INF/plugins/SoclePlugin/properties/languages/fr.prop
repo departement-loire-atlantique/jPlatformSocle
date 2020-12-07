@@ -411,7 +411,7 @@ jcmsplugin.socle.actuedu.depotdossier.label: Dépôt du dossier :
 jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
 jcmsplugin.socle.actuedu.nouscontacter.label: Contacter par mail
 jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
-jcmsplugin.socle.actuedu.pour-eleve.label: Pour les élèves de : {0}
+jcmsplugin.socle.actuedu.pour-eleve.label: Pour les élèves de : 
 
 jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d'accès
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
