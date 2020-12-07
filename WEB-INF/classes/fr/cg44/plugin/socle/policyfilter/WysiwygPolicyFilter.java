@@ -16,6 +16,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 
   private static final Logger LOGGER = Logger.getLogger(WysiwygPolicyFilter.class);
 	
+  private static String normalSpace = " ";
   
 	@Override
 	public String afterRendering(final String text, final Locale userLocale) {
@@ -30,15 +31,25 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
 	  String formattedText = checkExternalLinks(text, userLocale);
+	  formattedText = replaceAllEncodedSpacesWithWhitespace(text);
 	  formattedText = removeParagraphsAroundLinks(formattedText);
 	  formattedText = removeEmptyParagraphs(formattedText);
 	  formattedText = removeDoubleSpaces(formattedText);
 	  formattedText = deleteEmptyTitle(formattedText);
-	  formattedText = deleteEmptyAriaLabelse(formattedText);
+	  formattedText = deleteEmptyAriaLabels(formattedText);
 	  formattedText = removeDoubleBr(formattedText);
 	  formattedText = removeUselessSpacesLink(formattedText);
 	  formattedText = removeParagraphsAroundDivs(formattedText);
 	  return formattedText;
+	}
+	
+	/**
+	 * Remplace les espaces encodés par des espaces simples
+	 * @param text
+	 * @return
+	 */
+	private String replaceAllEncodedSpacesWithWhitespace(String text) {
+	  return text.replaceAll("&nbsp;", normalSpace).replaceAll("&#xa0;", normalSpace);
 	}
 	
 	/**
@@ -57,10 +68,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String removeEmptyParagraphs(String text) {
 	  String txtClone = text;
-	  txtClone = txtClone.replaceAll("<p>&#xa0;</p>", "");
-	  txtClone = txtClone.replaceAll("<p></p>", "");
-	  txtClone = txtClone.replaceAll("<p>&nbsp;</p>", "");
-	  txtClone = txtClone.replaceAll("<p> </p>", "");
+	  txtClone = txtClone.replaceAll("<p>\\s*</p>", "");
 	  return txtClone;
 	}
 	
@@ -70,16 +78,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 * @return
 	 */
 	private String removeDoubleSpaces(String text) {
-	  String doubleSpace = "&nbsp;&nbsp;";
-	  String doubleSpaceBis = "&#xa0;&#xa0;";
-	  String txtClone = text;
-	  while (txtClone.indexOf(doubleSpace) >= 0) {
-      txtClone = txtClone.replaceAll(doubleSpace, "&nbsp;");
-    }
-	  while (txtClone.indexOf(doubleSpaceBis) >= 0) {
-      txtClone = txtClone.replaceAll(doubleSpaceBis, "&#xa0;");
-    }
-	  return txtClone;
+    return text.replaceAll("\\s{2,}", normalSpace);
 	}
 	
 	/**
@@ -96,7 +95,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    * @param text
    * @return
    */
-  private String deleteEmptyAriaLabelse(String text) {
+  private String deleteEmptyAriaLabels(String text) {
     return text.replaceAll("aria-label=\"\"", "");
   }
   
@@ -106,12 +105,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    * @return
    */
   private String removeDoubleBr(String text) {
-    String doubleBr = "<br><br>";
-    String txtClone = text;
-    while (txtClone.indexOf(doubleBr) >= 0) {
-      txtClone = txtClone.replaceAll(doubleBr, "<br>");
-    }
-    return txtClone;
+    return text.replaceAll("(<br>){2,}", "<br>");
   }
   
   /**
@@ -120,8 +114,8 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    * @return
    */
   private String removeUselessSpacesLink(String text) {
-    String txtClone = text.replaceAll(" *(?=(<\\/a>))", "</a>").replaceAll("(&nbsp;)*(?=(<\\/a>))", "</a>").replaceAll("(&#xa0;)*(?=(<\\/a>))", "</a>"); // espaces à la fin
-    txtClone = txtClone.replaceAll("(?<=(<a [^>]+>)) *", "").replaceAll("(?<=(<a [^>]+>))(&nbsp;)*", "").replaceAll("(?<=(<a [^>]+>))(&#xa0;)*", ""); // espaces au début
+    String txtClone = text.replaceAll("\\s*(?=(<\\/a>))", "</a>"); // espaces à la fin
+    txtClone = txtClone.replaceAll("(?<=(<a\\s[^>]+>)) *", ""); // espaces au début
     return txtClone;
   }
 
