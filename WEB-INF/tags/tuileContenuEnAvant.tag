@@ -27,39 +27,39 @@
     String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
     Locale userLocale = Channel.getChannel().getCurrentJcmsContext().getUserLocale();
     
-    Publication itPub = (Publication) content;
+    Publication pub = (Publication) content;
 
     String urlImage = "";
-    String title = itPub.getTitle();
+    String title = pub.getTitle();
     String subTitle = "";
     String location = "";
     
     if (Util.notEmpty(isUnique) && isUnique.equals("true")) {
       try {
-        urlImage = (String) itPub.getFieldValue("imageBandeau");
+        urlImage = (String) pub.getFieldValue("imageBandeau");
        } catch(Exception e) {}
        if (Util.isEmpty(urlImage)) {
         try {
-         urlImage = (String) itPub.getFieldValue("imageMobile");
+         urlImage = (String) pub.getFieldValue("imageMobile");
         } catch(Exception e) {}
        }
        if (Util.isEmpty(urlImage)) {
         try {
-         urlImage = (String) itPub.getFieldValue("imagePrincipale");
+         urlImage = (String) pub.getFieldValue("imagePrincipale");
         } catch(Exception e) {}
        }
     } else {
       try {
-        urlImage = (String) itPub.getFieldValue("imagePrincipale");
+        urlImage = (String) pub.getFieldValue("imagePrincipale");
        } catch(Exception e) {}
        if (Util.isEmpty(urlImage)) {
         try {
-         urlImage = (String) itPub.getFieldValue("imageBandeau");
+         urlImage = (String) pub.getFieldValue("imageBandeau");
         } catch(Exception e) {}
        }
        if (Util.isEmpty(urlImage)) {
         try {
-         urlImage = (String) itPub.getFieldValue("imageMobile");
+         urlImage = (String) pub.getFieldValue("imageMobile");
         } catch(Exception e) {}
        }
     }
@@ -73,14 +73,14 @@
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     try {
-        subTitle = sdf.format((Date) itPub.getFieldValue("dateActu"));
+        subTitle = sdf.format((Date) pub.getFieldValue("dateActu"));
     } catch(Exception e) {}
     
     try {
-        location = (String) itPub.getFieldValue("lieu");
+        location = (String) pub.getFieldValue("lieu");
     } catch(Exception e) {}
     
-    String linkUrl = itPub.getDisplayUrl(userLocale);
+    String linkUrl = pub.getDisplayUrl(userLocale);
     if (Util.notEmpty(customUrl)) {
       linkUrl = customUrl;
     }
@@ -109,22 +109,22 @@
 
 <div class="ds44-card ds44-js-card ds44-legendeContainer ds44-container-imgRatio ds44-container-imgRatio--tuileMiseEnAvant">
 
-    <img src="<%= urlImage %>" alt="<%= alt %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= itPub.getId() %>">
+    <img src="<%= urlImage %>" alt="<%= alt %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= pub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
-        <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %>>
+        <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle() %>>
     </jalios:if>
 
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
         <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
             <p role="heading" aria-level="3" class="ds44-card__title">
-                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" <% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= itPub.getTitle() %></a></p>
+                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" <% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle() %></a></p>
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
-            <jalios:if predicate="<%= itPub instanceof Dossier %>">
+            <jalios:if predicate="<%= pub instanceof Dossier %>">
 	            <%
-	            Dossier tmpDossier = (Dossier) itPub;
+	            Dossier tmpDossier = (Dossier) pub;
 	            %>
 	            <jalios:if predicate="<%= Util.notEmpty(tmpDossier.getDate()) %>">
 	                <p class='ds44-cardDate'>
