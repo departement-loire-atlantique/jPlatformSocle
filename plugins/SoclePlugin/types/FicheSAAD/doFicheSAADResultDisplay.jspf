@@ -1,0 +1,60 @@
+<%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf"%>
+
+<section class="ds44-card ds44-card--fiche ">
+	<div class="ds44-card__section ds44-mb3">
+
+		<h3 class="h2-like"><%= obj.getTitle(userLang) %></h3>
+		<section class="ds44-box ds44-theme ds44-mt4">
+			<div class="ds44-innerBoxContainer">
+				<p class="ds44-docListElem">
+					<i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i>
+					<%= obj.getTypesDeService(loggedMember).first().getName() %>
+				</p>
+				<div class="ds44-docListElem mts">
+					<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+					<jalios:wysiwyg><%= obj.getAdresse() %></jalios:wysiwyg>
+				</div>
+				<p class="ds44-docListElem mts">
+					<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
+					<% String numTel = obj.getTelephone(); %>
+					<ds:phone number="<%= numTel %>" />
+				</p>
+
+				<p class="ds44-docListElem mts">
+					<i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+					<%
+						String email = obj.getAdresseMail();
+						String emailTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle(), email));
+					%>
+					<a href='<%= "mailto:"+email %>' title='<%= emailTitle %>'><%= glp("jcmsplugin.socle.contactmail.label") %></a>
+				</p>
+
+				<p class="ds44-docListElem mts">
+					<i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+					<%
+						String site = obj.getSiteInternet();
+						String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()));
+					%>
+					<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank"> <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %></a>
+				</p>
+			</div>
+		</section>
+
+		<h4 class="h3-like ds44-mt3"><%= glp("jcmsplugin.socle.fichesaad.prestations") %></h4>
+		<ul class="ds44-uList">
+			<%-- TODO 10/04/2020 : Gestion des infobulles : en cours de validation sur le DS--%>
+			<jalios:foreach collection="<%= obj.getPrestations(loggedMember) %>" type="Category" name="itCategory" >
+				<li><%= itCategory.getName() %></li>
+			</jalios:foreach>
+		</ul>
+		<h4 class="h3-like ds44-mt3"><%= glp("jcmsplugin.socle.fichesaad.detail") %></h4>
+		<ul class="ds44-uList">
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.statut") %></strong> <ds:categoryList categories="<%= obj.getStatutJuridique(loggedMember) %>" tooltip="true" /></li>
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.plageintervention") %></strong> <ds:categoryList categories="<%= obj.getPlagesDintervention(loggedMember) %>" tooltip="true" /></li>
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.typeaide") %></strong> <ds:categoryList categories="<%= obj.getTypeDaide(loggedMember) %>" tooltip="true" /></li>
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.modalitespaiement") %></strong> <ds:categoryList categories="<%= obj.getModalitesDePaiement(loggedMember) %>" tooltip="true" /></li>
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.modesintervention") %></strong> <ds:categoryList categories="<%= obj.getModesDintervention(loggedMember) %>" tooltip="true" /></li>
+			<li><strong><%= glp("jcmsplugin.socle.fichesaad.modetarification") %></strong> <ds:categoryList categories="<%= obj.getModeDeTarification(loggedMember) %>" tooltip="true" /></li>
+		</ul>
+	</div>
+</section>
