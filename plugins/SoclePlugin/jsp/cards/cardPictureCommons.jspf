@@ -26,9 +26,15 @@ if (Util.notEmpty(urlImage)) {
   urlImage = SocleUtils.getUrlOfFormattedImageCard(urlImage);
 }
 
+String altText = "";
+try {
+  altText = (String) pub.getFieldValue("texteAlternatif");
+  if (Util.isEmpty(altText)) altText = "";
+} catch (Exception e) {}
+
 %>
 <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
 	<picture class="ds44-container-imgRatio">
-	    <img src="<%= urlImage %>" alt="<%= SocleUtils.getAltTextFromPub(pub) %>" class="ds44-imgRatio">
+	    <img src="<%= urlImage %>" alt="<%= altText %>" class="ds44-imgRatio">
 	</picture>
 </jalios:if>
