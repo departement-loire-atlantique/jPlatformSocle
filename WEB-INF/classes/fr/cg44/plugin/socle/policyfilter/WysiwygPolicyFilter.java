@@ -115,7 +115,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
    */
   private String removeUselessSpacesLink(String text) {
     String txtClone = text.replaceAll("\\s*(?=(<\\/a>))", "</a>"); // espaces à la fin
-    txtClone = txtClone.replaceAll("(?<=(<a\\s[^>]+>)) *", ""); // espaces au début
+    txtClone = txtClone.replaceAll("(?<=(<a\\s[^>]{0,1000}>)) *", ""); // espaces au début
     return txtClone;
   }
 
