@@ -538,6 +538,7 @@ $jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root: c_1212436
 $jcmsplugin.socle.ficheactioneducative.monParcoursCollege.root: c_1212484
 $jcmsplugin.socle.ficheactioneducative.typeDePratique.root: aca_7735
 $jcmsplugin.socle.ficheactioneducative.niveau.root: c_1212444
+$jcmsplugin.socle.ficheactioneducative.lieu.root: c_1284426
 $jcmsplugin.socle.ficheactioneducative.format.root: c_1212451
 
 # SAAD
