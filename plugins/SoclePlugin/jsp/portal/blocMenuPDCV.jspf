@@ -27,7 +27,7 @@
 
     <div
         class="ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44-hv100 ds44-container-large ds44-tiny-to-med-atop ds44-ttl-pt9">
-        <div class="grid-12-small-1 ds44-grid-valign-center" aria-hidden="true">
+        <div class="grid-12-small-1 ds44-grid-valign-center">
 
             <div class="col-5-small-1 txtcenter">
                 <p class="h4-like" id="pdcv-commune-name"><%= glp("jcmsplugin.socle.pdcv.consultez") %></p>
@@ -52,10 +52,8 @@
 	                <img
 	                    src='<%= channel.getProperty("jcmsplugin.socle.site.src.carte.pdcv") %>'
 	                    alt='<%= glp("jcmsplugin.socle.pdcv.carte.alt") %>'
-	                    class="ds44-imgMap" usemap="#CarteDesDelegations"
-	                      aria-hidden="true">
-	                <map name="CarteDesDelegations" 
-	                     aria-hidden="true">
+	                    class="ds44-imgMap" usemap="#CarteDesDelegations">
+	                <map name="CarteDesDelegations">
 	                    <area shape="poly"
 	                        coords="133,197,93,205,93,219,97,230,94,242,87,244,79,252,92,258,108,261,122,268,128,274,135,282,148,301,155,303,158,312,167,318,177,317,178,325,186,327,197,326,200,337,204,341,210,341,217,346,223,344,243,350,257,342,248,329,252,327,253,322,245,307,245,294,257,287,249,280,242,280,242,275,248,275,243,268,249,260,244,248,240,247,226,263,216,255,202,255,198,252,204,247,193,241,193,235,183,235,180,229,172,222,168,216,154,200,134,193,126,197"
 	                        href="delegation-paysderetz" alt='<%= glp("jcmsplugin.socle.pdcv.select.delegation", glp("jcmsplugin.socle.pdcv.paysretz")) %>'
