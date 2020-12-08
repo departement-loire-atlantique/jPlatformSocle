@@ -25,7 +25,7 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	           </jalios:if>
 	               
 	           <jalios:default>
-	               <a href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	               <a class="ds44-titleLink" href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
 	           </jalios:default>
 	        </jalios:select>
 	    </strong>
