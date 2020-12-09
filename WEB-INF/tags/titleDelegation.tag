@@ -126,9 +126,7 @@ if (Util.notEmpty(copyright)) {
                     <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
                 </jalios:if>
             </figcaption>
-            </jalios:if>
-            <jalios:if predicate="<%= hasFigcaption%>">
-            </figure>    
+            </figure>
             </jalios:if>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
