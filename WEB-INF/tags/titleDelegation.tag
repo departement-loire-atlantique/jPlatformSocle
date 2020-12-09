@@ -90,12 +90,26 @@ if (Util.isEmpty(formattedMobilePath)) {
 }
 
 String altTxt = SocleUtils.getAltTextFromPub(pub);
+
+String ariaLblFigure = "";
+if (Util.notEmpty(legend)) {
+  ariaLblFigure = legend;
+  if (Util.notEmpty(copyright)) {
+    ariaLblFigure += " ";
+  }
+}
+if (Util.notEmpty(copyright)) {
+  ariaLblFigure += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+}
 %>
 
 <section class="ds44-container-large">
 
     <div class="ds44-pageHeaderContainer ds44-pageHeaderContainer--deuxCol">
         <div class="ds44-pageHeaderContainer__left">
+            <jalios:if predicate="<%= hasFigcaption%>">
+            <figure role="figure" aria-label="<%= ariaLblFigure %>">    
+            </jalios:if>
             <picture class="ds44-pageHeaderContainer__pictureContainer">
                 <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
                     <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
@@ -104,14 +118,15 @@ String altTxt = SocleUtils.getAltTextFromPub(pub);
                 <img src="<%=formattedImagePath%>" alt="<%= altTxt %>" class="ds44-headerImg" id="<%=uid%>"/>
             </picture>
             <jalios:if predicate="<%= hasFigcaption%>">
-                <figcaption class="ds44-imgCaption">
-                    <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-                        <%=legend%>
-                    </jalios:if>
-                    <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-                        © <%=copyright%>
-                    </jalios:if>
-                </figcaption>
+            <figcaption class="ds44-imgCaption">
+                <jalios:if predicate="<%= Util.notEmpty(legend)%>">
+                    <%=legend%>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
+                    <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
+                </jalios:if>
+            </figcaption>
+            </figure>
             </jalios:if>
             <div class="ds44-titleContainer">
                 <div class="ds44-alphaGradient ds44-alphaGradient--header">
