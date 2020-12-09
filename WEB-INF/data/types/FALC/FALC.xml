@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FALC" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">FALC</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="titreEncadre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre encadré</label>
+    </field>
+    <field name="contenuEncadre" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Contenu encadré</label>
+    </field>
+    <field name="styleDeFonds" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="none|ds44-bgGray|ds44-theme|ds44-borderContainer" default="none" ml="false" descriptionType="tooltip" labelList="Aucun|Gris|Vert|Contour" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Style de fonds</label>
+    </field>
+  </fields>
+</type>
+
