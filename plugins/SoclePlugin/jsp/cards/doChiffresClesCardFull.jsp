@@ -38,9 +38,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 <jalios:if predicate="<%= Util.isEmpty((pub.getChiffreSecondaire())) && Util.isEmpty((pub.getLibelleChiffreSecondaire())) %>">
 	<section class='ds44-box ds44-theme'>
 	    <div class="ds44-innerBoxContainer ds44-flex-container ds44-flex-valign-center">
-	        <picture class="ds44-boxPic">
-	            <img src="<%= urlImage %>" alt="" />
-	        </picture>
+	        <img class="ds44-boxPic" src="<%= urlImage %>" alt="" />
 	        <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
 		        <div class="ds44-boxContent">
 		    </jalios:if>
@@ -72,9 +70,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 	    <ul class="grid-2-tiny-1 has-gutter-l ds44-list ds44-mobile-extra-smt">
 	        <li class="col-2 ds44-tiny-extra-mb">
 	            <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
-	                <picture class="ds44-boxPic">
-	                    <img src="<%= urlImage %>" alt="" />
-	                </picture>
+	                <img class="ds44-boxPic" src="<%= urlImage %>" alt="" />
 	                <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
 	                    <span class="h1-like h1-like--bigger ds44-numberIncrement ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span> 
 	                    <jalios:if predicate="<% Util.notEmpty(decorationChfrPrinc) %>">
