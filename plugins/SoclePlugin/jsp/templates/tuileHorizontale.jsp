@@ -37,13 +37,6 @@ if (Util.isEmpty(urlImage)) {
      urlImage = SocleUtils.getUrlOfFormattedImageCarree(urlImage);
  }
  
- String altText = "";
-
- try {
-   altText = ((String) pub.getFieldValue("texteAlternatif"));
- } catch(Exception e) {}
- if (Util.isEmpty(altText)) altText = "";
- String altImage = (pub.getTitle().equalsIgnoreCase(altText)) ? "" : altText;
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--horizontal <%=styleContext%> <%= isSmall ? "ds44-tiny-reducedFont" : ""%>">
@@ -51,7 +44,7 @@ if (Util.isEmpty(urlImage)) {
         <jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
             <div class="ds44-card__section--horizontal--img<%= isSmall ? "--dim110" : "" %>">
                 <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
-                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt='<%= altImage %>'>
+                    <img class="ds44-imgRatio" src="<%= urlImage %>" alt=''>
                 </picture>
             </div>
         </jalios:if>

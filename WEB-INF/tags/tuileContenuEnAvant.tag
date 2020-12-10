@@ -15,9 +15,6 @@
 <%@ attribute name="customUrl" required="false" fragment="false"
     rtexprvalue="true" type="String"
     description="URL custom pour le lien"%>  
-<%@ attribute name="customAlt" required="false" fragment="false"
-    rtexprvalue="true" type="String"
-    description="Texte alternatif custom pour le lien"%>  
 <%@ attribute name="isExterne" required="false" fragment="false"
     rtexprvalue="true" type="Boolean"
     description="Détermine si le lien est externe"%>
@@ -90,17 +87,6 @@
     String titleUrl = "";
     
     String alt="";
-    
-    if(Util.notEmpty(customAlt)) {
-    	titleUrl = customAlt;
-    	alt = customAlt;
-    	if(displayTargetBlank) titleUrl = JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", titleUrl);
-    } else {
-      try {
-        alt = ((String) pub.getFieldValue("texteAlternatif"));
-        if (Util.isEmpty(alt)) alt = "";
-      } catch(Exception e) {}
-    }
     
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
