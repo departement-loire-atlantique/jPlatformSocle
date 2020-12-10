@@ -270,6 +270,7 @@ media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionU
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
+media.data-template.default.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp?wysiwygEmbed=true
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
 media.data-template.temoignage.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTemoignages.jsp
@@ -297,6 +298,7 @@ media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChif
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
+media.data-template.cardFull.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp
 media.data-template.card.FicheEquipement: /plugins/SoclePlugin/jsp/cards/doFicheEquipementCard.jsp
 media.data-template.cardVertical.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleVerticalCard.jsp
 media.data-template.cardVerticalCarrousel.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/doEvenementInfolocaleVerticalCardCarrousel.jsp
@@ -664,3 +666,6 @@ jcmsplugin.socle.calculetteOA.demi-part : 350
 
 # Chiffres cles
 jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/assets/images/pictos/picto-investissement.svg
+
+# FALC
+jcmsplugin.socle.FALC.icone.url : http://dev-design.loire-atlantique.fr/assets/images/pictos/picto-falc.svg
