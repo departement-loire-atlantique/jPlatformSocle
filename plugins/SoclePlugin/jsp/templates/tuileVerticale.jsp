@@ -26,12 +26,7 @@ try {
     location = (String) pub.getFieldValue("lieu");
 } catch(Exception e) {}
 
-String imageAlt = "-1";
-
-try {
-	imageAlt = ((String) pub.getFieldValue("texteAlternatif"));
-} catch(Exception e) {}
-if (Util.isEmpty(imageAlt)) imageAlt = "-1"; // dans figurePicture, si la valeur de "alt" est à -1 on force le champ alt vide (autrement, il ira chercher un alt dans le contenu)
+String imageAlt = "-1"; // dans figurePicture, si la valeur de "alt" est à -1 on force le champ alt vide (autrement, il ira chercher un alt dans le contenu)
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">

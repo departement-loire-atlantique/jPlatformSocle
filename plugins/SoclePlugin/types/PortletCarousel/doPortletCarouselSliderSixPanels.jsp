@@ -42,11 +42,10 @@ String sliderAmounts = "1";
                        <%
                        Lien itLien = (Lien) itContenuEnAvant;
                        String customUrl = SocleUtils.getUrlPubFromLien(itLien);
-                       String texteAlt = SocleUtils.getAltFromLien(itLien);
                        Boolean isExterne = SocleUtils.isLienExterne(itLien);
                        %>
                        <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>" 
-                           positionTitre="<%= positionTitre %>" customUrl="<%= customUrl %>" customAlt="<%= texteAlt %>" isExterne="<%= isExterne %>"/>
+                           positionTitre="<%= positionTitre %>" customUrl="<%= customUrl %>" isExterne="<%= isExterne %>"/>
                     </jalios:if>
                     <jalios:default>
                        <ds:tuileContenuEnAvant content="<%= itContenuEnAvant %>" isUnique="<%= Boolean.toString(box.getContenusEnAvant().length == 1) %>" positionTitre="<%= positionTitre %>"/>
