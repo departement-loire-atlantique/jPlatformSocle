@@ -50,14 +50,6 @@ if (Util.isEmpty(urlImage)) {
         </jalios:if>
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
-                <%
-                    if(Util.notEmpty(altText)) {
-                    	try {
-                    		if(Util.notEmpty(pub.getFieldValue("lienExterne"))) altText = glp("jcmsplugin.socle.lien.nouvelonglet", altText);
-                    	} catch(Exception e) {}
-                        titleAttr = " title=\"" + HttpUtil.encodeForHTMLAttribute(altText) + "\"";
-                    }
-                %>
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                     <%= pub.getTitle() %>
                 </a>
