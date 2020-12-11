@@ -359,6 +359,9 @@ jcmsplugin.socle.demande.suivre-demande: Suivre ma demande
 jcmsplugin.socle.contact.trouver-contact: Trouvez le bon contact près de chez vous :
 jcmsplugin.socle.adresse.valider-adresse: Valider votre adresse
 
+jcmsplugin.socle.ficheaide.premier-onglet.label: 1er onglet
+jcmsplugin.socle.ficheaide.deuxieme-onglet.label: 2e onglet
+jcmsplugin.socle.ficheaide.troisieme-onglet.label: 3e onglet
 jcmsplugin.socle.ficheaide.docutils.label: Documents utiles :
 jcmsplugin.socle.ficheaide.enligne.label: En ligne :
 jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
