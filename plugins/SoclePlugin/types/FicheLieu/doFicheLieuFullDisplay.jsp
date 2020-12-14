@@ -168,14 +168,14 @@
 
                                                 <jalios:if predicate='<%= obj.getTelephone().length == 1 %>'>
                                                     <% String numTel = obj.getTelephone()[0]; %>
-                                                    <ds:phone number="<%= numTel %>"/>
+                                                    <ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
                                                 </jalios:if>
 
                                                 <jalios:if predicate='<%= obj.getTelephone().length > 1 %>'>
                                                     <ul class="ds44-list">
                                                         <jalios:foreach name="numTel" type="String" array="<%= obj.getTelephone() %>">
                                                             <li>
-                                                                <ds:phone number="<%= numTel %>"/>
+                                                                <ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
                                                             </li>
                                                         </jalios:foreach>
                                                     </ul>

@@ -35,7 +35,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 	        <div class="ds44-docListElem mts">
 	            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                 <% String numTel = obj.getTelephone(); %>
-                <ds:phone number="<%= numTel %>"/>
+                <ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 	        </div>
 
             <div class="ds44-docListElem mts">
@@ -45,7 +45,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 String emailTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle(), email));
                 %>
                  
-                <a href='<%= "mailto:"+email %>' title='<%= emailTitle %>'><%= glp("jcmsplugin.socle.contactmail.label") %></a>
+                <a href='<%= "mailto:"+email %>' title='<%= emailTitle %>'
+                   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>><%= glp("jcmsplugin.socle.contactmail.label") %></a>
             </div>
             
             <div class="ds44-docListElem mts">
@@ -54,7 +55,8 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                 String site = obj.getSiteInternet();
                 String siteTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()));
                 %>
-                <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank">
+                <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= siteTitle %>' target="_blank"
+                   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>>
                     <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
                 </a>
             </div>
@@ -79,7 +81,6 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
                         <div class="col mrs ds44-mtb3">
                             <h2 class="h3-like" id="idTitre-list1"><%= glp("jcmsplugin.socle.fichesaad.prestations") %></h2>
 							<ul class="ds44-uList">
-							     <%-- TODO 10/04/2020 : Gestion des infobulles : en cours de validation sur le DS--%>
                                 <jalios:foreach collection="<%= obj.getPrestations(loggedMember) %>" type="Category" name="itCategory" >
                                     <li><%= itCategory.getName() %></li>
                                 </jalios:foreach>

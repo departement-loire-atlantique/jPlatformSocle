@@ -354,7 +354,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                             <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactRH()) && cptContactRH < obj.getTelContactRH().length && Util.notEmpty(obj.getTelContactRH()[cptContactRH]) %>'>
                                                 <div class="ds44-docListElem mts">
                                                     <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                                                    <ds:phone number="<%= obj.getTelContactRH()[cptContactRH] %>"></ds:phone>
+                                                    <ds:phone number="<%= obj.getTelContactRH()[cptContactRH] %>" pubTitle="<%= obj.getTitle() %>"></ds:phone>
                                                 </div>
                                             </jalios:if>
 
@@ -407,7 +407,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                                 <jalios:if predicate='<%= Util.notEmpty(obj.getTelContactMetier()) && cptContactMetier < obj.getTelContactMetier().length && Util.notEmpty(obj.getTelContactMetier()[cptContactMetier]) %>'>
                                                     <div class="ds44-docListElem mts">
                                                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                                                        <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>"></ds:phone>
+                                                        <ds:phone number="<%= obj.getTelContactMetier()[cptContactMetier] %>" pubTitle="<%= obj.getTitle() %>"></ds:phone>
                                                     </div>
                                                 </jalios:if>
 

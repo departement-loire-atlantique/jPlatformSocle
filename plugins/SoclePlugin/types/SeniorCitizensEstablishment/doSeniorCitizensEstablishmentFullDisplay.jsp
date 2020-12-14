@@ -70,14 +70,14 @@
 
 						<jalios:if predicate='<%= obj.getPhones().length == 1 %>'>
 							<% String numTel = obj.getPhones()[0]; %>
-							<ds:phone number="<%= numTel %>"/>
+							<ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 						</jalios:if>
 
 						<jalios:if predicate='<%= obj.getPhones().length > 1 %>'>
 							<ul class="ds44-list">
 								<jalios:foreach name="numTel" type="String" array="<%= obj.getPhones() %>">
 									<li>
-										<ds:phone number="<%= numTel %>"/>
+										<ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 									</li>
 								</jalios:foreach>
 							</ul>
@@ -92,8 +92,9 @@
 
 						<jalios:if predicate='<%= obj.getMails().length == 1 %>'>
 							<% String email = obj.getMails()[0]; %>
-							<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
-								<%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
+							<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+							   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'> 
+								<%= glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
 							</a>
 						</jalios:if>
 
@@ -101,7 +102,8 @@
 							<ul class="ds44-list">
 								<jalios:foreach name="email" type="String" array='<%= obj.getMails() %>'>
 									<li>
-										<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'> 
+										<a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
+										   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'> 
 											<%= email %>
 										</a>
 									</li>
@@ -118,7 +120,8 @@
 
 						<jalios:if predicate='<%= obj.getWebsites().length == 1 %>'>
 							<% String site = obj.getWebsites()[0]; %>
-							<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank">
+							<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
+							   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>
 								<%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
 							</a>
 						</jalios:if>
@@ -127,7 +130,8 @@
 							<ul class="ds44-list">
 								<jalios:foreach name="site" type="String" array='<%= obj.getWebsites() %>'>
 									<li>
-										<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"> 
+										<a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"
+										   data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'> 
 											<%= SocleUtils.parseUrl(site) %>
 										</a>
 									</li>
@@ -281,14 +285,14 @@
 		
 														<jalios:if predicate='<%= itFicheLieu.getTelephone().length == 1 %>'>
 															<% String numTel = itFicheLieu.getTelephone()[0]; %>
-															<ds:phone number="<%= numTel %>"/>
+															<ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 														</jalios:if>
 		
 														<jalios:if predicate='<%= itFicheLieu.getTelephone().length > 1 %>'>
 															<ul class="ds44-list">
 																<jalios:foreach name="numTel" type="String" array="<%= itFicheLieu.getTelephone() %>">
 																	<li>
-																		<ds:phone number="<%= numTel %>"/>
+																		<ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 																	</li>
 																</jalios:foreach>
 															</ul>
