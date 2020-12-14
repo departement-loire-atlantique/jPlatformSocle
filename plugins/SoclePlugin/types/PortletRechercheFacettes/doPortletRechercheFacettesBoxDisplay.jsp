@@ -12,6 +12,14 @@
     // SEO : bloque l'indexation des pages de résultats
     if(isInRechercheFacette){
       request.setAttribute("noindex", true);
+      
+      // Analytics : personnalisation du titre de page
+      String pubTitle = "";
+      if(Util.notEmpty(request.getParameter("pubId[value]"))){
+        Publication pub = channel.getPublication(request.getParameter("pubId[value]"));
+        pubTitle = " - " + pub.getTitle();
+      }
+      jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-facettes") + pubTitle);
     }
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
@@ -152,6 +160,7 @@
 		    </jalios:if>
 		
             <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
+            <input type="hidden" name='pubId' value='<%= Util.notEmpty(request.getAttribute("publication")) ? ((Publication)request.getAttribute("publication")).getId() : "" %>' data-technical-field />
 		</form>
 	</div>
 	
