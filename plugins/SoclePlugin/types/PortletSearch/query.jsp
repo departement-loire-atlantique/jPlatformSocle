@@ -6,6 +6,9 @@ String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 // SEO : bloque l'indexation des pages de résultats
 request.setAttribute("noindex", true);
+
+// Analytics : personnalisation du titre de page
+jcmsContext.setPageTitle("Résultats recherche générique");
 %>
 <main role="main" id="content">
 
