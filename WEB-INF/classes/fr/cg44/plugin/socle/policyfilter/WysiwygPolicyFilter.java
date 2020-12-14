@@ -32,7 +32,6 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
 	  String formattedText = checkExternalLinks(text, userLocale);
 	  formattedText = replaceAllEncodedSpacesWithWhitespace(text);
-	  formattedText = removeParagraphsAroundLinks(formattedText);
 	  formattedText = removeEmptyParagraphs(formattedText);
 	  formattedText = removeDoubleSpaces(formattedText);
 	  formattedText = deleteEmptyTitle(formattedText);
@@ -51,15 +50,6 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	private String replaceAllEncodedSpacesWithWhitespace(String text) {
 	  return text.replaceAll("&nbsp;", normalSpace).replaceAll("&#xa0;", normalSpace);
 	}
-	
-	/**
-	 * Retire les balises <p> qui ne contiennent qu'une balise <a>
-	 * @param text
-	 * @return
-	 */
-	private String removeParagraphsAroundLinks(String text) {
-    return text.replaceAll("<p><a", "<a").replaceAll("</a></p>", "</a>");
-  }
 	
 	/**
 	 * Retire les balises <p> vides
