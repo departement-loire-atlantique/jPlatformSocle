@@ -44,7 +44,9 @@
 							%>
 							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike" title="<%= linkTitle %>"><%=itCatLevel2.getName()%></jalios:link>
 						</jalios:if>
-						<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+						<jalios:if predicate="<%= ! (itContenuPrincipal instanceof FileDocument) %>"> 
+							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+						</jalios:if>
 					</jalios:if>
 					<jalios:if predicate="<%= Util.notEmpty(itRedirect) %>" breakselect="true">
 						<jalios:select>
