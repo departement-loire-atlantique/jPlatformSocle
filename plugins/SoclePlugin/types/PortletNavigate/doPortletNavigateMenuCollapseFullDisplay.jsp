@@ -40,7 +40,7 @@
 							<% 
 								String fileType = " - "+FileDocument.getExtension(((FileDocument)itContenuPrincipal).getFilename());
 								String fileSize = " - "+((FileDocument)itContenuPrincipal).getSize();
-								String linkTitle = glp("jcmsplugin.socle.fichepublication.telecharger") + " " + itCatLevel2.getName() + fileType + fileSize + glp("jcmsplugin.socle.accessibily.newTabLabel");
+								String linkTitle = glp("jcmsplugin.socle.fichepublication.telecharger") + " " + itCatLevel2.getName() + fileType + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
 							%>
 							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike" title="<%= linkTitle %>"><%=itCatLevel2.getName()%></jalios:link>
 						</jalios:if>
