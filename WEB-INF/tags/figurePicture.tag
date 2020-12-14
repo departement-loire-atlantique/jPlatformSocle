@@ -191,8 +191,12 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
 }
 
 if ("-1".equals(alt)) { // si le alt est à -1, forcer un alt vide
+  alt = "";
+} else if (Util.isEmpty(alt)){
   alt = SocleUtils.getAltTextFromPub(pub);
-} else if (Util.isEmpty(alt)) {
+}
+
+if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
   alt = "";
 }
 
