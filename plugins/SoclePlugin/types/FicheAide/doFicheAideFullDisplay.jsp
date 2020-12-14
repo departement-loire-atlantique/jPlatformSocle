@@ -280,11 +280,14 @@
 											String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
 											// Récupérer la taille du fichier
 											String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+											
+											String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
 										%>
 										<p class="ds44-docListElem">
 											<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 											<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
-											<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'> 
+											<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
+											   data-statistic='{"name": "declenche-evenement","category": "Téléchargement","action": "<%= fileUrl %>","label": "Faire une demande"}'>
 												<%= itDoc.getTitle() %>
 											</a> 
 											<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
@@ -305,6 +308,7 @@
 								<p>
 									<a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
 											title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
+											data-statistic='{"name": "declenche-evenement","category": "Demande en ligne","action": "Clic","label": "Faire une demande"}'
 											target="_blank"> 
 										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
 										<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
