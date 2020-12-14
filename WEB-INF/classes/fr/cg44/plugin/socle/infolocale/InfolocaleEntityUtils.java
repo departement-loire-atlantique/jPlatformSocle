@@ -104,7 +104,13 @@ public class InfolocaleEntityUtils {
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
+        String mentionAnnule = "mentionEvenementAnnule";
+        
         try {
+          
+            if (json.has(mentionAnnule) && !json.isNull(mentionAnnule) && json.getBoolean(mentionAnnule)) {
+              return null; // événement annulé, on ne le créée pas car il ne doit pas être affiché
+            }
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
