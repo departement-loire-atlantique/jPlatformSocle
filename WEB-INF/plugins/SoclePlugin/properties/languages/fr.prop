@@ -767,6 +767,9 @@ jcmsplugin.socle.email.pageutile.libelle-avis.inutile: AVIS NEGATIF POUR LA PAGE
 #  Titres de pages personnalisés
 # ------------------------------------------------------------
 jcmsplugin.socle.title.accueil: Accueil
+jcmsplugin.socle.title.recherche-globale: Résultats recherche
+jcmsplugin.socle.title.recherche-facettes: Résultats recherche facettes
+
 
 # ------------------------------------------------------------
 #  Spectacles

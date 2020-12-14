@@ -19,7 +19,7 @@
         Publication pub = channel.getPublication(request.getParameter("pubId[value]"));
         pubTitle = " - " + pub.getTitle();
       }
-      jcmsContext.setPageTitle("Résultats recherche facettes" + pubTitle);
+      jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-facettes") + pubTitle);
     }
 	
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";

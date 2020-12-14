@@ -8,7 +8,7 @@ String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
 request.setAttribute("noindex", true);
 
 // Analytics : personnalisation du titre de page
-jcmsContext.setPageTitle("Résultats recherche générique");
+jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-globale"));
 %>
 <main role="main" id="content">
 
