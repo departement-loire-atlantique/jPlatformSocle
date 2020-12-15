@@ -39,6 +39,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	  formattedText = removeDoubleBr(formattedText);
 	  formattedText = removeUselessSpacesLink(formattedText);
 	  formattedText = removeParagraphsAroundDivs(formattedText);
+	  formattedText = removeDoubleFinLien(formattedText);
 	  return formattedText;
 	}
 	
@@ -150,5 +151,14 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	private String removeParagraphsAroundDivs(String text) {
     return text.replaceAll("<p>\\W*<div", "<div").replaceAll("</div></p>", "</div>");
   }
+	
+	/**
+	 * Retire les fin de liens double "</a></a>"
+	 * @param text
+	 * @return
+	 */
+	private String removeDoubleFinLien(String text) {
+		return text.replaceAll("</a></a>", "</a>");
+	}
  
 }

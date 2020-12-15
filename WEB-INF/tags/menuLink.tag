@@ -7,7 +7,8 @@
     import="com.jalios.jcms.Category,
             java.util.Locale,
             com.jalios.jcms.JcmsUtil,
-            com.jalios.util.Util"
+            com.jalios.util.Util,
+            com.jalios.jcms.HttpUtil"
 %><%
 %><%@ attribute name="itCategory"
     required="true"
@@ -36,7 +37,7 @@ String libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin
 boolean targetBlank = "true".equals(itCategory.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
 if(targetBlank){
     cible="target=\"_blank\" ";
-    title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+    title = "title=\"" + HttpUtil.encodeForHTMLAttribute(libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel"))+"\"";
 }
 %>
 

@@ -3,7 +3,7 @@
 		predicate="<%= Util.notEmpty( currentLien.getLienExterne() ) %>">
 		<a class="ds44-arrowLink" href="<%= currentLien.getLienExterne() %>"
 			target="_blank"
-			title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle()) %>'><%= currentLien.getTitle() %><i
+			title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle())) %>'><%= currentLien.getTitle() %><i
 			class="icon icon-arrow-right"></i></a>
 	</jalios:if>
 	<jalios:default>
