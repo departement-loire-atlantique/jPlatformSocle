@@ -158,7 +158,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 * @return
 	 */
 	private String removeDoubleFinLien(String text) {
-		return text.replaceAll("</a></a>", "</a>");
+		return text.replaceAll("(</a>){2,}", "</a>");
 	}
  
 }
