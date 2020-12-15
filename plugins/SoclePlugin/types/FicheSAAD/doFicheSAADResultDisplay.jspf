@@ -17,7 +17,7 @@
 				<p class="ds44-docListElem mts">
 					<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 					<% String numTel = obj.getTelephone(); %>
-					<ds:phone number="<%= numTel %>" />
+					<ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
 				</p>
 
 				<p class="ds44-docListElem mts">

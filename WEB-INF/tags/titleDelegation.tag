@@ -5,7 +5,7 @@
     description="Titre du header accueil delegation" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, fr.cg44.plugin.socle.SocleUtils,
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Delegation, com.jalios.jcms.Publication"
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Delegation, com.jalios.jcms.Publication, com.jalios.jcms.HttpUtil"
 %>
 <%@ attribute name="pub"
     required="false"
@@ -156,7 +156,7 @@ if (Util.notEmpty(copyright)) {
                     <p class="ds44-docListElem mtm">
                         <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
                         <% for (String itPhone : delegation.getTelephone()) { %>
-                        <ds:phone number="<%= SocleUtils.cleanNumber(itPhone) %>"></ds:phone>
+                        <ds:phone number="<%= SocleUtils.cleanNumber(itPhone) %>" pubTitle="<%= delegation.getTitle() %>"></ds:phone>
                         <% } %>
                     </p>
                     </jalios:if>
@@ -165,7 +165,8 @@ if (Util.notEmpty(copyright)) {
                         <% for (String itMail : delegation.getEmail()) { %>
                         <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i><a
                             href="mailto:<%= itMail %>"
-                            title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'> <%= itMail %></a>
+                            title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.actuedu.contactmail.label", delegation.getTitle()) %> - <%= itMail %>'
+                            data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(delegation.getTitle()) %>"}'> <%= itMail %></a>
                         <% } %>
                     </p>
                     </jalios:if>

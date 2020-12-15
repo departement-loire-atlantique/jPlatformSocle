@@ -48,7 +48,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
             <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.telephone") %></span>
             <ul class="ds44-list">
 	            <jalios:foreach name="itPhone" type="String" array="<%= pub.getTelephone() %>">
-	                <li><ds:phone number="<%= itPhone %>"></ds:phone></li>
+	                <li><ds:phone number="<%= itPhone %>" pubTitle="<%= pub.getTitle() %>"></ds:phone></li>
 	            </jalios:foreach>
             </ul>
           </div>

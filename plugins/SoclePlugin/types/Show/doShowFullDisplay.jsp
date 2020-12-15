@@ -106,14 +106,14 @@
 						<%
 							String numTel = obj.getPhones()[0];
 						%>
-						<ds:phone number="<%=numTel%>" />
+						<ds:phone number="<%=numTel%>" pubTitle="<%= obj.getTitle() %>"/>
 					</jalios:if>
 
 					<jalios:if predicate='<%=obj.getPhones().length > 1%>'>
 						<ul class="ds44-list">
 							<jalios:foreach name="numTel" type="String"
 								array="<%=obj.getPhones()%>">
-								<li><ds:phone number="<%=numTel%>" /></li>
+								<li><ds:phone number="<%=numTel%>" pubTitle="<%= obj.getTitle() %>"/></li>
 							</jalios:foreach>
 						</ul>
 					</jalios:if>

@@ -66,7 +66,7 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                     </div>
                     
                     <div class="ds44-docListElem mts"><i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
-                        <ds:phone number='<%= glp("jcmsplugin.socle.presscommunique.contact-presse.tel.default") %>'></ds:phone>
+                        <ds:phone number='<%= glp("jcmsplugin.socle.presscommunique.contact-presse.tel.default") %>' pubTitle="<%= obj.getTitle() %>"></ds:phone>
                     </div>
                 </jalios:if>
                 
@@ -113,14 +113,14 @@ PressCommunique obj = (PressCommunique)request.getAttribute(PortalManager.PORTAL
                        
                             <jalios:if predicate='<%= obj.getPressContactPhones().length == 1 %>'>
                                 <% String numTel = obj.getPressContactPhones()[0]; %>
-                                <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
+                                <ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
                             </jalios:if>
                     
                             <jalios:if predicate='<%= obj.getPressContactPhones().length > 1 %>'>
                                 <ul class="ds44-list">
                                     <jalios:foreach name="numTel" type="String" array="<%= obj.getPressContactPhones() %>">
                                         <li>
-                                            <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
+                                            <ds:phone number="<%= numTel %>" pubTitle="<%= obj.getTitle() %>"/>
                                         </li>
                                     </jalios:foreach>
                                 </ul>

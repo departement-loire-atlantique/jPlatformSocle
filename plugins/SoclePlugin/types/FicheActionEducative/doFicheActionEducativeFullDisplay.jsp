@@ -102,7 +102,7 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	        <p class="ds44-docListElem mts">
 	            <i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i>
 	            <jalios:foreach name="itPhone" type="String" array="<%= obj.getTelephone() %>">
-	                <ds:phone number="<%= itPhone %>"></ds:phone>
+	                <ds:phone number="<%= itPhone %>" pubTitle="<%= obj.getTitle() %>"></ds:phone>
 	            </jalios:foreach>
 	        </p>
 	        <p class="ds44-docListElem mts">
@@ -111,13 +111,16 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
 	                <jalios:if predicate="<%= obj.getMail().length == 1 %>">
 	                <%-- TODO : remplacer par un formulaire de contact --%>
 	                <a href="mailto:<%= obj.getMail()[0] %>" 
-	                    title="<%= glp("jcmsplugin.socle.contactmail", obj.getTitle() + " " + obj.getSoustitre(), obj.getMail()[0]) %>">
+	                    title="<%= glp("jcmsplugin.socle.contactmail", obj.getTitle() + " " + obj.getSoustitre(), obj.getMail()[0]) %>"
+	                    data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>
 	                        <%= glp("jcmsplugin.socle.actuedu.nouscontacter.label") %>
 	                </a>
 	                </jalios:if>
 	                <jalios:default>
 	                    <jalios:foreach name="itMail" type="String" array="<%= obj.getMail() %>">
-	                    <a href="mailto:<%= itMail %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle() + " " + obj.getSoustitre(), itMail)) %>'><%= itMail %></a>
+	                    <a href="mailto:<%= itMail %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", obj.getTitle() + " " + obj.getSoustitre(), itMail)) %>'
+	                       data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(obj.getTitle())%>"}'>
+	                       <%= itMail %></a>
 	                    </jalios:foreach>
 	                </jalios:default>
 	            </jalios:select>
