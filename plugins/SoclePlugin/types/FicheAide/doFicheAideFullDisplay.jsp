@@ -171,31 +171,23 @@
 									</div>
 								</jalios:if>
 								<jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
-									<section id="section1" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-										<jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
-									</section>
+									<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+									<jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
 								</jalios:if>
 
 								<jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi()) %>">
-									<section id="section2" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
-										<jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
-									</section>
+									<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+									<jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
 								</jalios:if>
 
 								<jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande()) %>">
-									<section id="section3" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-										<jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
-									</section>
+									<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+									<jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
 								</jalios:if>
 
 								<jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir()) %>">
-									<section id="section4" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
-										<jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
-									</section>
+									<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+									<jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
 								</jalios:if>
 							</div>
 
