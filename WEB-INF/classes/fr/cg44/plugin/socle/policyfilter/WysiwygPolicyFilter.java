@@ -31,7 +31,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	private String generateNewRenderedWysiwyg(String text, Locale userLocale) {
 	  String formattedText = checkExternalLinks(text, userLocale);
-	  formattedText = replaceAllEncodedSpacesWithWhitespace(text);
+	  formattedText = replaceAllEncodedSpacesWithWhitespace(formattedText);
 	  formattedText = removeEmptyParagraphs(formattedText);
 	  formattedText = removeDoubleSpaces(formattedText);
 	  formattedText = deleteEmptyTitle(formattedText);
