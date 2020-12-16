@@ -280,6 +280,9 @@ media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/t
 media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
+# cas particulier carrousel six tuiles
+media.data-template.tuileVerticaleDarkSix.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?cssSix=true
+media.data-template.tuileVerticaleLightSix.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark&cssSix=true
 media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.plusRecherches.Publication: /plugins/SoclePlugin/jsp/templates/plusRecherche.jsp

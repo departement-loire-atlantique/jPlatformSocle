@@ -18,6 +18,7 @@ String titleAttr = ""; // code HTML de l'attribut "title"
 String titleValue = ""; // valeur de l'attribut "title"
 String styleContext= Util.notEmpty(request.getParameter("context")) ? "ds44-darkContext" : "";
 boolean isSmall = Util.notEmpty(request.getParameter("size")) ? true : false;
+boolean isInSixPanelsContext = Util.notEmpty(request.getParameter("cssSix")) ? true : false;
 String subTitle = "";
 String location = "";
 boolean isDossier = pub instanceof Dossier;
