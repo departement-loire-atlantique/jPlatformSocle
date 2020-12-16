@@ -557,7 +557,6 @@
 							<jalios:wysiwyg>
 								<%= obj.getBesoinDaide() %>
 							</jalios:wysiwyg>
-							</p>
 						</div>
 					</jalios:if>
 				</div>
