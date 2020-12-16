@@ -66,7 +66,7 @@
                                 <%
                                 FileDocument fichierPublication = obj.getDocumentPdf();
                                 String fileTypeFichierPublication = FileDocument.getExtension(fichierPublication.getFilename()).toUpperCase();
-                                String fileSizeFichierPublication = Util.formatFileSize(fichierPublication.getSize(), userLocale,false);
+                                String fileSizeFichierPublication = Util.formatFileSize(fichierPublication.getSize());
                                 %>
                                 <li class="ds44-large-extra-mb ds44-mr-std">
                                     <a href="<%= fichierPublication.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank"

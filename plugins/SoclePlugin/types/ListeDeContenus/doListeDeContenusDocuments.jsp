@@ -28,7 +28,7 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
 	               FileDocument itDoc = (FileDocument)itData;
 	                String title = HttpUtil.encodeForHTMLAttribute(itDoc.getTitle());
 	                String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
-	                String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale,false);
+	                String fileSize = Util.formatFileSize(itDoc.getSize());
 	              %>
 	                <li class="mts">
 	                  <jalios:include pub="<%= itDoc %>" usage="embed"/>

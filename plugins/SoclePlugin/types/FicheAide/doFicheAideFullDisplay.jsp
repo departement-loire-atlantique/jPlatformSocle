@@ -287,13 +287,13 @@
 											// Récupérer l'extension du fichier
 											String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
 											// Récupérer la taille du fichier
-											String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+											String fileSize = Util.formatFileSize(itDoc.getSize());
 											
 											String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
 										%>
 										<p class="ds44-docListElem">
 											<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
-											<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " - " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
+											<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
 											<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
 											   data-statistic='{"name": "declenche-evenement","category": "Téléchargement","action": "<%= fileUrl %>","label": "Faire une demande"}'>
 												<%= itDoc.getTitle() %>
