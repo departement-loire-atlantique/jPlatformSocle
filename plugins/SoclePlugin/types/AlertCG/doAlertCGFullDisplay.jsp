@@ -41,7 +41,7 @@ if (Util.notEmpty(obj.getLienInterne())) {
 	                </jalios:if>
                     <jalios:wysiwyg><%= obj.getSummary() %></jalios:wysiwyg>
                     <jalios:if predicate="<%= Util.notEmpty(urlLink) %>">
-	                   <a href="<%= urlLink %>" class="ds44-btnStd mts" title="<%= titleLink %>"<%= externe ? " target=\"_blank\"" : "" %>><span class="ds44-btnInnerText"><%= lblLink %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+	                   <p><a href="<%= urlLink %>" class="ds44-btnStd mts" title="<%= titleLink %>"<%= externe ? " target=\"_blank\"" : "" %>><span class="ds44-btnInnerText"><%= lblLink %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a></p>
 	                </jalios:if>
                 </div>
             </div>
