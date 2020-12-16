@@ -39,7 +39,7 @@
 						<jalios:if predicate="<%= itContenuPrincipal instanceof FileDocument %>"> 
 							<% 
 								String fileType = " - " + FileDocument.getExtension(((FileDocument)itContenuPrincipal).getFilename()).toUpperCase();
-								String fileSize = " - " + Util.formatFileSize(((FileDocument)itContenuPrincipal).getSize(), userLocale, false);
+								String fileSize = " - " + Util.formatFileSize(((FileDocument)itContenuPrincipal).getSize());
 								String linkTitle = glp("jcmsplugin.socle.fichepublication.telecharger") + " " + itCatLevel2.getName() + fileType + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
 							%>
 							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike" title="<%= linkTitle %>" htmlAttributes="target='_blank'"><%=itCatLevel2.getName()%></jalios:link>

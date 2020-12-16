@@ -49,7 +49,7 @@
       <% 
       String ariaLabel = encodeForHTMLAttribute(doc.getTitle(userLang)) + " - " + encodeForHTMLAttribute(doc.getTypeInfo(userLang));
       if (!doc.isRemote()) {
-        ariaLabel += " - " + encodeForHTMLAttribute(Util.formatFileSize(doc.getSize(), userLocale, false));
+        ariaLabel += " - " + encodeForHTMLAttribute(Util.formatFileSize(doc.getSize()));
       }
       %>
       <a class="btn btn-success" href="<%= doc.getDownloadUrl() %>" download="<%= encodeForHTMLAttribute(doc.getDownloadName(userLang)) %>" aria-label='<%= ariaLabel %>'><jalios:icon src="download-btn" /> <%= glp("ui.com.btn.download") %></a>

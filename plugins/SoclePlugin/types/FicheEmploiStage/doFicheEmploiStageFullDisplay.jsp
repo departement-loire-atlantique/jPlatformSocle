@@ -467,7 +467,7 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                     // Récupérer l'extension du fichier
                                     String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
                                     // Récupérer la taille du fichier
-                                    String fileSize = Util.formatFileSize(itDoc.getSize(), userLocale);
+                                    String fileSize = Util.formatFileSize(itDoc.getSize());
                                     %>
                                     <li class="mts">
                                         <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>

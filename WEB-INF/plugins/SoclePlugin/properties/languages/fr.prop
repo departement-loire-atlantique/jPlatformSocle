@@ -365,7 +365,7 @@ jcmsplugin.socle.ficheaide.troisieme-onglet.label: 3e onglet
 jcmsplugin.socle.ficheaide.docutils.label: Documents utiles :
 jcmsplugin.socle.ficheaide.enligne.label: En ligne :
 jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
-jcmsplugin.socle.ficheaide.fairedemandelignelink.label: Connectez-vous pour faire une demande en ligne de code de suivi
+jcmsplugin.socle.ficheaide.fairedemandelignelink.label: Connectez-vous pour faire une demande en ligne
 jcmsplugin.socle.ficheaide.nodoc.label: Aucun document disponible
 jcmsplugin.socle.ficheaide.suivre.label: Suivre une demande en cours
 jcmsplugin.socle.ficheaide.duree.label: Durée :

@@ -10,7 +10,7 @@ FileDocument obj = (FileDocument) data;
 
 String title = HttpUtil.encodeForHTMLAttribute(obj.getTitle());
 String fileType = FileDocument.getExtension(obj.getFilename()).toUpperCase();
-String fileSize = Util.formatFileSize(obj.getSize(), userLocale,false);
+String fileSize = Util.formatFileSize(obj.getSize());
 %>
 
 	<p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>

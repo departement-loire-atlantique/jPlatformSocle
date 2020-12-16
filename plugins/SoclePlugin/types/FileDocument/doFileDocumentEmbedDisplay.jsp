@@ -4,7 +4,7 @@
 FileDocument obj = (FileDocument)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 String title = HttpUtil.encodeForHTMLAttribute(obj.getTitle());
 String fileType = FileDocument.getExtension(obj.getFilename()).toUpperCase();
-String fileSize = Util.formatFileSize(obj.getSize(), userLocale,false);
+String fileSize = Util.formatFileSize(obj.getSize());
 %>
 
 	<div class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
