@@ -136,7 +136,7 @@ String sliderAmounts = "1";
 				         <%-- Bloc une ligne --%>
 				         <jalios:if predicate="<%= counterThisPanel == 1 %>">
 					         <div class="col-<%= widthColOne %>-small-1 ds44-mb2 ">
-					            <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+					            <jalios:media data="<%= itPub %>" template='<%= box.getSelectionDuTheme() + "Six" %>'/>
 					         </div>
 				         </jalios:if>
 				         <%-- Bloc deux lignes --%>
@@ -147,7 +147,7 @@ String sliderAmounts = "1";
 					           <div class="ds44-flex-container ds44-flex-container--column ds44-h100">
 					         </jalios:if>
 					               <div class="ds44-fl1 ds44-mb2">
-					                  <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+					                  <jalios:media data="<%= itPub %>" template='<%= box.getSelectionDuTheme() + "Six" %>'/>
 					               </div>
 					         <%-- Ajout d'un bloc vide si compteur = 2 et qu'on a atteint la fin --%>
 					         <jalios:if predicate="<%= counterThisPanel == 2 && itPublicationCounter == maxElems %>">
@@ -167,7 +167,7 @@ String sliderAmounts = "1";
 					           <div class="ds44-flex-container ds44-flex-container--column ds44-h100">
 					         </jalios:if>
 					               <div class="ds44-fl1 ds44-mb2">
-					                  <jalios:media data="<%= itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
+					                  <jalios:media data="<%= itPub %>" template='<%= box.getSelectionDuTheme() + "Six" %>'/>
 					               </div>
 					         <%-- Ajout de deux blocs vides si compteur = 4 et qu'on a atteint la fin --%>
                              <jalios:if predicate="<%= counterThisPanel == 4 && itPublicationCounter == maxElems %>">

@@ -29,8 +29,8 @@ try {
 String imageAlt = "-1"; // dans figurePicture, si la valeur de "alt" est à -1 on force le champ alt vide (autrement, il ira chercher un alt dans le contenu)
 %>
 
-<section class="ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%>">
-	<ds:figurePicture pub="<%= pub %>" format="carrousel" pictureCss="ds44-container-imgRatio" imgCss="ds44-imgRatio" alt="<%= imageAlt %>"></ds:figurePicture>
+<section class='ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%> <%= isInSixPanelsContext ? "ds44-posRel" : "" %>'>
+	<ds:figurePicture pub="<%= pub %>" format="carrousel" pictureCss="ds44-container-imgRatio" imgCss='<%= isInSixPanelsContext ? "" : "ds44-imgRatio" %>' alt="<%= imageAlt %>"></ds:figurePicture>
     <div class="ds44-card__section">
         <p role="heading" aria-level="3" class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
