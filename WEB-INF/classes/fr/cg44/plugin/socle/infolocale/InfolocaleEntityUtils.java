@@ -69,11 +69,13 @@ public class InfolocaleEntityUtils {
      */
     public static EvenementInfolocale[] createEvenementInfolocaleArrayFromJsonArray(JSONArray jsonArray, String metadata1, String metadata2, String metadataDefaut) {
         List<EvenementInfolocale> arrayEvents = new ArrayList<>();
+        List<String> listIds = new ArrayList<>();
         for (int counter = 0; counter < jsonArray.length(); counter++) {
             try {
                 EvenementInfolocale itEvent = createEvenementInfolocaleFromJsonItem(jsonArray.getJSONObject(counter), metadata1, metadata2, metadataDefaut);
-                if (Util.notEmpty(itEvent)) {
+                if (Util.notEmpty(itEvent) && !(arrayEvents.contains(itEvent)) && !(listIds.contains(itEvent.getId()))) {
                   arrayEvents.add(itEvent);
+                  listIds.add(itEvent.getId());
                 }
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createEvenementInfolocaleArrayFromJsonArray: " + e.getMessage());
