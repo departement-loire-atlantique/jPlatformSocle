@@ -20,6 +20,7 @@ channel.security.authorized-redirect.suivi-demande: ^https?://demarche.loire-atl
 # TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
 jcmsplugin.socle.url-rewriting.disabled:true
 jcmsplugin.socle.url-rewriting: false
+jcmsplugin.socle.url-rewriting.mdate.boolean: true
 jcmsplugin.socle.page-utile.disabled:false
 
 jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies

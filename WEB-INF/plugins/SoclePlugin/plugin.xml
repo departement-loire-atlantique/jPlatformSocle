@@ -519,6 +519,10 @@
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.SectorisationQueryFilter" />
     <queryfilter     class="fr.cg44.plugin.socle.queryfilter.IgnoreQueryFilter" />
   </plugincomponents>
+  
+  <hibernate>
+     <mapping resource="fr/cg44/plugin/socle/hbm/FacetSearch.hbm.xml"/>        
+  </hibernate>
     
   <private-files>
     <file path="properties/plugin.prop" />

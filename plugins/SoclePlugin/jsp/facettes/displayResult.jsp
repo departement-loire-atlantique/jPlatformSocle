@@ -108,6 +108,10 @@ jsonObject.addProperty("nb-result-per-page", box.getMaxResults());
 jsonObject.addProperty("max-result", box.getMaxResults());
 jsonObject.add("result", jsonArray);
 
+// Id unique de la recherche stocké en bdd et généré depuis la jsp displayResultDecodeParams.jsp (null si pas de ré-écriture d'url)
+jsonObject.addProperty("id", request.getParameter("searchId"));
+
+
 session.setAttribute("isSearchFacetLink", true);
 
 %><%
