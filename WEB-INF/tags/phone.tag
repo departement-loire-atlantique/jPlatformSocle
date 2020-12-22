@@ -27,7 +27,7 @@ String statAttr = "";
 if(null != pubTitle){
   statLabel = HttpUtil.encodeForHTMLAttribute(pubTitle);
 }
-statAttr = "data-statistic='{\"name\": \"declenche-evenement\",\"category\": \"Contacts\",\"action\": \"Téléphone\",\"label\": \"" + statLabel + "\"}'";
+statAttr = "data-statistic='{\"name\": \"declenche-evenement\",\"category\": \"BlocNousContacter\",\"action\": \"Téléphone\",\"label\": \"" + statLabel + "\"}'";
 
 // On ne garde que les chiffres puis on sépare les paires par un espace
 String displayedPhone = number.replaceAll("[^0-9-]","").replaceAll("..", "$0 ");
