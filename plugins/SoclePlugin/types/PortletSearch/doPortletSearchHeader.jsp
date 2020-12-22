@@ -4,7 +4,9 @@
 <%
    String formUid = ServletUtil.generateUniqueDOMId(request, "uid");
    %>
-<form role="search" novalidate method="get" name="queryForm" action="plugins/SoclePlugin/types/PortletSearch/query.jsp" data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'>
+<form role="search" novalidate method="get" name="queryForm" action="plugins/SoclePlugin/types/PortletSearch/query.jsp"
+        data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'
+        data-statistic='{"name": "declenche-evenement","category": "Recherche","action": "$searchtext|text"}'>
    <div class="ds44-form__container">
       <div class="ds44-posRel">
          <label for="form-element-<%= formUid %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge"><span><%= glp("jcmsplugin.socle.recherche.votrerecherche") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>
