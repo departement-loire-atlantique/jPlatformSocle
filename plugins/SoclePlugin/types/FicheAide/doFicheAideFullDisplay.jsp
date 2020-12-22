@@ -295,7 +295,7 @@
 											<i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 											<% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
 											<a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
-											   data-statistic='{"name": "declenche-evenement","category": "Téléchargement","action": "<%= fileUrl %>","label": "Faire une demande"}'>
+											   data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Téléchargement","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
 												<%= itDoc.getTitle() %>
 											</a> 
 											<span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
@@ -316,7 +316,7 @@
 								<p>
 									<a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
 											title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
-											data-statistic='{"name": "declenche-evenement","category": "Demande en ligne","action": "Clic","label": "Faire une demande"}'
+											data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
 											target="_blank"> 
 										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
 										<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>

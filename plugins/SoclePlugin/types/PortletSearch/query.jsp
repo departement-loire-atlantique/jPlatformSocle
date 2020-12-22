@@ -33,7 +33,9 @@ jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-globale"));
 		<div class="ds44-facette">
 			
             <div class="ds44-facette-body">
-                <form data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displaySearchResult.jsp" data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'>
+                <form data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displaySearchResult.jsp"
+                      data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'
+                      data-statistic='{"name": "declenche-evenement","category": "Recherche","action": "$searchtext|text"}'>
                 
                     <div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
     
