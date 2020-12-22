@@ -136,7 +136,7 @@ String sliderAmounts = "1";
 				         <%-- Bloc une ligne --%>
 				         <jalios:if predicate="<%= counterThisPanel == 1 %>">
 					         <div class="col-<%= widthColOne %>-small-1 ds44-mb2 ">
-					            <jalios:media data="<%= itPub %>" template='<%= box.getSelectionDuTheme() + "Six" %>'/>
+					            <jalios:media data="<%= itPub %>" template='<%= box.getSelectionDuTheme() + "SixFirst" %>'/>
 					         </div>
 				         </jalios:if>
 				         <%-- Bloc deux lignes --%>
