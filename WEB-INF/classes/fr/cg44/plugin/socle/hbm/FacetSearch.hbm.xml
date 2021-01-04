@@ -14,4 +14,4 @@
 		<property name="guid" length="1024" type="string" />
 		<property name="query" type="string" length="65536" />
 	</class>
-</hibernate-mapping> 
+</hibernate-mapping>
