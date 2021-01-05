@@ -50,11 +50,28 @@ if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("se
         removeList.add(itFiche);
       }
     }
-  }
-  
+  }  
   if(Util.notEmpty(removeList)) {
     collection.removeAll(removeList);
   }  
+}
+
+
+// Si la carte est affichée sur la recherche à facette supprime les lieux sans géolocalisation
+if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("afficheCarte" + glp("jcmsplugin.socle.facette.form-element")))){
+  List<Publication> removeList = new ArrayList();
+  for(Object itObj : collection) {
+    if(itObj instanceof Publication) {
+      Publication itPub = (Publication) itObj;
+      if(Util.isEmpty(itPub.getExtraData("extra."+ itPub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude")) ||
+          Util.isEmpty(itPub.getExtraData("extra."+ itPub.getClass().getSimpleName() +".plugin.tools.geolocation.longitude"))) {
+        removeList.add(itPub);
+      }     
+    }
+  }
+  if(Util.notEmpty(removeList)) {
+    collection.removeAll(removeList);
+  }
 }
 
 
