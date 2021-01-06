@@ -29,10 +29,10 @@
     <field name="chapo" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="contenu">
       <label xml:lang="fr">Chapô à la Une</label>
     </field>
-    <field name="titreRubrique1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique1">
+    <field name="titreRubrique1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="rubrique1">
       <label xml:lang="fr">Titre rubrique 1</label>
     </field>
-    <field name="libelleLienRubrique1" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique1" tab="rubrique1">
+    <field name="libelleLienRubrique1" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique1" tab="rubrique1">
       <label xml:lang="fr">Libellé lien</label>
     </field>
     <field name="lienInterneRubrique1" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique1" tab="rubrique1">
@@ -41,10 +41,10 @@
     <field name="lienExterneRubrique1" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique1" html="false" checkHtml="true" tab="rubrique1">
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="titreRubrique2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique2">
+    <field name="titreRubrique2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="rubrique2">
       <label xml:lang="fr">Titre rubrique 2</label>
     </field>
-    <field name="libelleLienRubrique2" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique2" tab="rubrique2">
+    <field name="libelleLienRubrique2" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique2" tab="rubrique2">
       <label xml:lang="fr">Libellé lien</label>
     </field>
     <field name="lienInterneRubrique2" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique2" tab="rubrique2">
@@ -53,10 +53,10 @@
     <field name="lienExterneRubrique2" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique2" html="false" checkHtml="true" tab="rubrique2">
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="titreRubrique3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique3">
+    <field name="titreRubrique3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="rubrique3">
       <label xml:lang="fr">Titre rubrique 3</label>
     </field>
-    <field name="libelleLienRubrique3" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique3" tab="rubrique3">
+    <field name="libelleLienRubrique3" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique3" tab="rubrique3">
       <label xml:lang="fr">Libellé lien</label>
     </field>
     <field name="lienInterneRubrique3" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique3" tab="rubrique3">
@@ -65,10 +65,10 @@
     <field name="lienExterneRubrique3" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique3" html="false" checkHtml="true" tab="rubrique3">
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="titreRubrique4" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique4">
+    <field name="titreRubrique4" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="rubrique4">
       <label xml:lang="fr">Titre rubrique 4</label>
     </field>
-    <field name="libelleLienRubrique4" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique4" tab="rubrique4">
+    <field name="libelleLienRubrique4" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique4" tab="rubrique4">
       <label xml:lang="fr">Libellé lien</label>
     </field>
     <field name="lienInterneRubrique4" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique4" tab="rubrique4">
@@ -77,10 +77,10 @@
     <field name="lienExterneRubrique4" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique4" html="false" checkHtml="true" tab="rubrique4">
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="titreRubrique5" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="rubrique5">
+    <field name="titreRubrique5" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="rubrique5">
       <label xml:lang="fr">Titre rubrique 5</label>
     </field>
-    <field name="libelleLienRubrique5" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique5" tab="rubrique5">
+    <field name="libelleLienRubrique5" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="rubrique5" tab="rubrique5">
       <label xml:lang="fr">Libellé lien</label>
     </field>
     <field name="lienInterneRubrique5" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="rubrique5" tab="rubrique5">
@@ -89,7 +89,7 @@
     <field name="lienExterneRubrique5" editor="url" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*" descriptionType="text" tabGroup="rubrique4" html="false" checkHtml="true" tab="rubrique5">
       <label xml:lang="fr">Lien externe</label>
     </field>
-    <field name="titreComplement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="complement">
+    <field name="titreComplement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" tab="complement">
       <label xml:lang="fr">Titre complément</label>
     </field>
     <field name="complement" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="complement">
