@@ -265,6 +265,7 @@ media.template.temoignage.application: /plugins/SoclePlugin/jsp/templates/temoig
 media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templates/tuileHorizontaleGrey.jsp
 
 # Content template
+media.data-template.default.Carousel: /plugins/SoclePlugin/jsp/cards/doCarouselCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
@@ -299,6 +300,7 @@ media.data-template.cardFocus.Publication: /plugins/SoclePlugin/jsp/cards/doEmpt
 media.data-template.tuileHorizontaleGrey.Publication: /plugins/SoclePlugin/jsp/cards/doEmptyCard.jsp
 media.data-template.card.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCard.jsp
 media.data-template.cardFull.Canton: /plugins/SoclePlugin/jsp/cards/doCantonCardFull.jsp
+media.data-template.cardFull.Carousel: /plugins/SoclePlugin/jsp/cards/doCarouselCardFull.jsp
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
