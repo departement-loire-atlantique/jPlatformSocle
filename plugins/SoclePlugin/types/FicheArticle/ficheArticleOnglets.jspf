@@ -3,7 +3,7 @@
 <%
 	String imageFile = obj.getImageBandeau();
 	String imageMobileFile = Util.notEmpty(obj.getImageMobile()) ? obj.getImageMobile() : "s.gif";
-	String title = obj.getTitle();
+	String title = obj.getTitle(userLang);
 	String legende = obj.getLegende(userLang);
 	String copyright = obj.getCopyright(userLang);
 %>
@@ -30,9 +30,9 @@
 					  String titreOnglet;
 					  boolean firstTabDisplayed = false;
 					  for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
-						  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt));
+						  titreOnglet =(String) (obj.getFieldValue("titreOnglet_"+ongletCpt, userLang));
 						%>
-						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))%>'>
+						<jalios:if predicate='<%=Util.notEmpty(titreOnglet) && Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt, userLang))%>'>
 							<li class="ds44-tabs__item ds44-fg1" id="tabs__<%= ongletCpt %>"><a
 								class="js-tablist__link ds44-tabs__link<%= !firstTabDisplayed ? " ds44-tabs__linkSelected" : "" %>" id="label_id_<%= ongletCpt %>"
 								<%= !firstTabDisplayed ? " aria-current='true'" : " aria-disabled=\"true\""%> href="<%= obj.getDisplayUrl(userLocale) %>#id_<%= ongletCpt %>"><%=titreOnglet%></a>
@@ -62,13 +62,13 @@
     <%
     for(int ongletCpt = 1; ongletCpt <= 4; ongletCpt++) {
     	
-    	if(Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt))) {
-    		currentTitresParagraphes = (String[]) (obj.getFieldValue("titreParagraphe_" + ongletCpt));
-            currentContenusParagraphes = (String[]) (obj.getFieldValue("contenuParagraphe_" + ongletCpt));
+    	if(Util.notEmpty(obj.getFieldValue("contenuParagraphe_" + ongletCpt, userLang))) {
+    		currentTitresParagraphes = (String[]) (obj.getFieldValue("titreParagraphe_" + ongletCpt, userLang));
+            currentContenusParagraphes = (String[]) (obj.getFieldValue("contenuParagraphe_" + ongletCpt, userLang));
     		if (obj.getEncadresCommuns() ? !encadresCommunsFound : true) {
-    			currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt));
-                currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt));
-                currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt));
+    			currentTitresEncadres = (String[]) (obj.getFieldValue("titreEncadre_" + ongletCpt, userLang));
+                currentContenusEncadres = (String[]) (obj.getFieldValue("contenuEncadre_" + ongletCpt, userLang));
+                currentContenusPortlets = (PortalElement[])  (obj.getFieldValue("portletsEncadres_" + ongletCpt, userLang));
                 if (obj.getEncadresCommuns()) encadresCommunsFound = true;
             }
     	} else {
@@ -82,9 +82,9 @@
     	   <div class="grid-12-small-1">
     	       <div class="col-7">
 
-    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo()) && !chapoDisplayed%>">
+    	           <jalios:if predicate="<%=Util.notEmpty(obj.getChapo(userLang)) && !chapoDisplayed%>">
                         <div class="ds44-introduction">
-                            <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+                            <jalios:wysiwyg><%=obj.getChapo(userLang)%></jalios:wysiwyg>
                         </div>
                     </jalios:if>
                     <% chapoDisplayed = true; %>
