@@ -5,7 +5,7 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Sous-titre</label>
     </field>
     <field type="super" />
