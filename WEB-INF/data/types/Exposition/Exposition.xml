@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Exposition" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Exposition</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
+      <label xml:lang="fr">Image principale</label>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true">
+      <label xml:lang="fr">Image mobile</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="titreIntro" editor="textfield" required="false" compactDisplay="false" tab="intro" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre intro</label>
+    </field>
+    <field name="chapo" editor="textarea" required="false" compactDisplay="false" tab="intro" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Chapo</label>
+    </field>
+    <field name="contenuIntro" editor="wysiwyg" required="false" compactDisplay="false" tab="intro" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Contenu intro</label>
+    </field>
+    <field name="titreInfosPratiques" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre infos pratiques</label>
+    </field>
+    <field name="titreHoraires" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre horaires</label>
+    </field>
+    <field name="horaires" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Horaires</label>
+    </field>
+    <field name="titreTarifs" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre tarifs</label>
+    </field>
+    <field name="tarifs" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Tarifs</label>
+    </field>
+    <field name="titreContacts" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre contacts</label>
+    </field>
+    <field name="contactsEtReservation" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Contacts et réservation</label>
+    </field>
+    <field name="urlReservation" editor="url" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">URL réservation</label>
+    </field>
+    <field name="texteAlternatifReservation" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif réservation</label>
+    </field>
+    <field name="titreInfosLibres" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre infos libres</label>
+    </field>
+    <field name="contenuInfosLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Contenu infos libres</label>
+    </field>
+    <field name="details" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Détails</label>
+    </field>
+    <field name="lienVersPortletsBas" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Lien vers portlets bas</label>
+    </field>
+    <field name="details2" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Détails 2</label>
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de navigation</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="infos_pratiques">
+      <label xml:lang="fr">Infos pratiques</label>
+    </tab>
+    <tab id="intro">
+      <label xml:lang="fr">Intro</label>
+    </tab>
+    <tab id="details">
+      <label xml:lang="fr">Détails</label>
+    </tab>
+    <tab id="rattachement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+</type>
+

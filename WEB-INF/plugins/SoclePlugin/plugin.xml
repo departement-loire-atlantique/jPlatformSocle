@@ -33,6 +33,7 @@
     <type name="ElectedMember"></type>
     <type name="Equipement"></type>
     <type name="EvenementInfolocale"></type>
+    <type name="Exposition"></type>
     <type name="FALC"></type>
     <type name="FaqAccueil"></type>
     <type name="FicheActionEducative"></type>
