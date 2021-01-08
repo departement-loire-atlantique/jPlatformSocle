@@ -19,7 +19,7 @@
     </jalios:if>
     <jalios:if predicate="<%=Util.notEmpty(obj.getImagePrincipale()) %>">
        <ds:titleSimple pub="<%= obj %>" imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= imageMobileFile %>" video="<%=obj.getVideoPrincipale() %>"
-        title="<%= title %>" chapo="<%= obj.getChapo() %>" legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" 
+        title="<%= title %>" chapo="<%= obj.getChapo(userLang) %>" legend="<%= legende %>" copyright="<%= copyright %>" 
         breadcrumb="true"></ds:titleSimple> 
     </jalios:if>    
   
@@ -35,11 +35,11 @@
 
 	    <%-- Boucler sur les paragraphes --%>
 	    <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
-	        array="<%=obj.getContenuParagraphe()%>">
+	        array="<%=obj.getContenuParagraphe(userLang)%>">
 	        <section id="section<%=itCounter%>" class="ds44-contenuArticle">
 	
-	                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe()) && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
-	                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
+	                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe(userLang)) && itCounter <= obj.getTitreParagraphe(userLang).length && Util.notEmpty(obj.getTitreParagraphe(userLang)[itCounter - 1]) %>">
+	                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe(userLang)[itCounter - 1]%></h2>
 	                    </jalios:if>
 	                    <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
 	
