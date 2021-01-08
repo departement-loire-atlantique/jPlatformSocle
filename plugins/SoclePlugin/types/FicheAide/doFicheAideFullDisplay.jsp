@@ -315,7 +315,7 @@
 
 								<p>
 									<a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
-											title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandelignelink.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
+											title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
 											data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
 											target="_blank"> 
 										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
