@@ -1,0 +1,12 @@
+# ------------------------------------------------------------
+#  Dossier
+# ------------------------------------------------------------
+jcmsplugin.socle.dossier.sommaire : Summary
+jcmsplugin.socle.dossier.menu-sommaire : Summary menu
+jcmsplugin.socle.dossier.fermer-menu-sommaire : Close the summary menu
+
+# ------------------------------------------------------------
+#  Video
+# ------------------------------------------------------------
+jcmsplugin.socle.video.telecharger-transcript.label: Download the video transcription file
+jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcription file : {0} - {1} - {2} - new tab
