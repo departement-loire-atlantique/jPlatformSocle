@@ -13,14 +13,14 @@
 <%
 String uniqueIDiframe = UUID.randomUUID().toString();
 String urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(obj.getUrlVideo()));
-String fichierTranscript = Util.notEmpty(obj.getFichierTranscript()) ? obj.getFichierTranscript().getDownloadUrl() : "";
-String titleVideo = obj.getTitle();
+String fichierTranscript = Util.notEmpty(obj.getFichierTranscript(userLang)) ? obj.getFichierTranscript().getDownloadUrl() : "";
+String titleVideo = obj.getTitle(userLang);
 if (Util.notEmpty(request.getAttribute("overrideVidTitle"))) {
   titleVideo = request.getAttribute("overrideVidTitle").toString();
   request.setAttribute("overrideVidTitle", null);
 }
 
-String chapoVideo = obj.getChapo();
+String chapoVideo = obj.getChapo(userLang);
 if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
   chapoVideo = request.getAttribute("overrideVidChapo").toString();
   request.setAttribute("overrideVidChapo", null);
@@ -38,22 +38,22 @@ if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
     <iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <%
-        String fileType = FileDocument.getExtension(obj.getFichierTranscript().getFilename()).toUpperCase();
-        String fileSize = Util.formatFileSize(obj.getFichierTranscript().getSize());
+        String fileType = FileDocument.getExtension(obj.getFichierTranscript(userLang).getFilename()).toUpperCase();
+        String fileSize = Util.formatFileSize(obj.getFichierTranscript(userLang).getSize());
         %>
-        <p><a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript().getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
+        <p><a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript(userLang).getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
     </jalios:if>
 </div>
 
-<jalios:if predicate="<%= Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
+<jalios:if predicate="<%= Util.notEmpty(obj.getChapitre(userLang)) && Util.notEmpty(obj.getTimecode(userLang)) && Util.notEmpty(obj.getLibelleTimecode(userLang)) %>">
     <%
-    List<String> chapitres = Arrays.asList(obj.getChapitre());
-    String[] timecodes = obj.getTimecode();
-    String[] libellestimecodes = obj.getLibelleTimecode();
+    List<String> chapitres = Arrays.asList(obj.getChapitre(userLang));
+    String[] timecodes = obj.getTimecode(userLang);
+    String[] libellestimecodes = obj.getLibelleTimecode(userLang);
     String tmpChapitre = "";
     %>
     
-    <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre()%>">
+    <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre(userLang)%>">
         <jalios:if predicate="<%=Util.notEmpty(itChapitre) && !itChapitre.equals(tmpChapitre) %>">
             <% tmpChapitre = itChapitre; %>
             <p><strong><%=itChapitre %></strong></p>
