@@ -11,18 +11,18 @@
 <jalios:include target="SOCLE_ALERTE"/>
 
     <article class="ds44-container-large">
-        <ds:titleSimple pub="<%= obj %>" video="<%= obj%>" title="<%= obj.getTitle() %>" chapo="<%= obj.getChapo() %>"
-            legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true">
+        <ds:titleSimple pub="<%= obj %>" video="<%= obj %>" title="<%= obj.getTitle(userLang) %>" chapo="<%= obj.getChapo(userLang) %>"
+            legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true">
         </ds:titleSimple>
         <section class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getDescription()) %>">
-                        <jalios:foreach name="itDesc" type="String" array='<%= obj.getDescription() %>'>
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
+                        <jalios:foreach name="itDesc" type="String" array='<%= obj.getDescription(userLang) %>'>
                         <div>
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreDescription()) && itCounter <= obj.getTitreDescription().length
-                                && Util.notEmpty(obj.getTitreDescription()[itCounter-1]) %>'>
-                                <h2 id="titreDesc_<%= itCounter %>"><%= obj.getTitreDescription()[itCounter-1] %></h2>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreDescription(userLang)) && itCounter <= obj.getTitreDescription(userLang).length
+                                && Util.notEmpty(obj.getTitreDescription(userLang)[itCounter-1]) %>'>
+                                <h2 id="titreDesc_<%= itCounter %>"><%= obj.getTitreDescription(userLang)[itCounter-1] %></h2>
                             </jalios:if>
                             <jalios:wysiwyg><%= itDesc %></jalios:wysiwyg>
                         </div>
@@ -32,15 +32,15 @@
                     
                     <%-- Chapitres --%>
                     <%-- TODO : en attente maquette et implémentation du JS pour piloter la vidéo. --%>
-                    <jalios:if predicate="<%= obj.getHasChapters() && Util.notEmpty(obj.getChapitre()) && Util.notEmpty(obj.getTimecode()) && Util.notEmpty(obj.getLibelleTimecode()) %>">
+                    <jalios:if predicate="<%= obj.getHasChapters() && Util.notEmpty(obj.getChapitre(userLang)) && Util.notEmpty(obj.getTimecode(userLang)) && Util.notEmpty(obj.getLibelleTimecode(userLang)) %>">
                         <%
-                        List<String> chapitres = Arrays.asList(obj.getChapitre());
-                        String[] timecodes = obj.getTimecode();
-                        String[] libellestimecodes = obj.getLibelleTimecode();
+                        List<String> chapitres = Arrays.asList(obj.getChapitre(userLang));
+                        String[] timecodes = obj.getTimecode(userLang);
+                        String[] libellestimecodes = obj.getLibelleTimecode(userLang);
                         String tmpChapitre = "";
                         %>
                         <%-- Si plusieurs chapitres du même nom, on n'affiche le nom du chapitre qu'une fois. On classe les timecodes par chapitre. --%>
-                        <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre()%>">
+                        <jalios:foreach name="itChapitre" type="String" array="<%=obj.getChapitre(userLang)%>">
                             <jalios:if predicate="<%=Util.notEmpty(itChapitre) && !itChapitre.equals(tmpChapitre) %>">
                                 <% tmpChapitre = itChapitre; %>
                                 <p><strong><%=itChapitre %></strong></p>

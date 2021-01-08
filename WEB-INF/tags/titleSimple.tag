@@ -112,8 +112,8 @@ if(Util.notEmpty(video)) {
 	urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(video.getUrlVideo()));
 	
 	// Récupération des infos du fichier de transcription
-	if(Util.notEmpty(video.getFichierTranscript())){
-		fichierTranscriptVideo = video.getFichierTranscript().getDownloadUrl();
+	if(Util.notEmpty(video.getFichierTranscript(userLang))){
+		fichierTranscriptVideo = video.getFichierTranscript(userLang).getDownloadUrl();
 		typeFichierTranscript = FileDocument.getExtension(video.getFichierTranscript().getFilename()).toUpperCase();
 		tailleFichierTranscript = Util.formatFileSize(video.getFichierTranscript().getSize());
 	}
