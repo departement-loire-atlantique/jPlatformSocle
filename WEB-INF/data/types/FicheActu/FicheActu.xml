@@ -8,7 +8,7 @@
     <field name="dateActu" editor="date" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
       <label xml:lang="fr">Date actu</label>
     </field>
-    <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu</label>
     </field>
     <field name="imagePrincipale" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="true" descriptionType="text" html="false" checkHtml="true">
@@ -35,7 +35,7 @@
     <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.Video" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Vidéo principale</label>
     </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
     <!-- Contenu -->
@@ -46,18 +46,16 @@
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <!-- Temoignage -->
-    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" tab="temoignage" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" tab="temoignage" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre témoignage</label>
     </field>
-    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" tab="temoignage" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" tab="temoignage" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Sous-titre témoignage</label>
     </field>
     <!-- Classement -->
     <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sur le même thème</label>
-      <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
