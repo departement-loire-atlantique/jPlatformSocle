@@ -22,30 +22,28 @@
       <label xml:lang="fr">Image mobile</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x200px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
       <label xml:lang="fr">Copyright</label>
     </field>
-    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="contenu">
       <label xml:lang="fr">Légende</label>
     </field>
     <field name="date" editor="date" required="false" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short" tab="contenu">
       <label xml:lang="fr">Date</label>
     </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="contenu">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="contenu">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="titreRubrique" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="listeRubrique" tab="contenu">
+    <field name="titreRubrique" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="listeRubrique" tab="contenu">
       <label xml:lang="fr">Titre rubrique</label>
     </field>
-    <field name="paragrapheRubrique" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="listeRubrique" html="false" tab="contenu">
+    <field name="paragrapheRubrique" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="listeRubrique" html="false" tab="contenu">
       <label xml:lang="fr">Paragraphe rubrique</label>
     </field>
     <!-- Classement -->
     <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sur le même thème</label>
-      <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
