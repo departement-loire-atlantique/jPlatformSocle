@@ -179,7 +179,7 @@ jcmsplugin.socle.socialnetwork.share.twitter: Partager cette page sur Twitter - 
 jcmsplugin.socle.socialnetwork.share.instagram: Partager cette page sur Instagram - nouvelle fenêtre
 jcmsplugin.socle.socialnetwork.share.linkedin: Partager cette page sur Linkedin - nouvelle fenêtre
 jcmsplugin.socle.socialnetwork.share.mail: Partager cette page par email - nouvelle fenêtre
-jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une page pour vous sur {0} : {1}&body=Bonjour, cette page devrait vous intéresser : %0D%0A{2} 
+jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une%20page%20pour%20vous%20sur%20{0}%20:%20{1}&body=Bonjour,%20cette%20page%20devrait%20vous%20intéresser%20:%20%0D%0A{2} 
 
 # ------------------------------------------------------------
 #  Libellés communs
