@@ -11,12 +11,12 @@
     <section class="ds44-container-large">
         <jalios:select>
             <jalios:if predicate="<%= Util.notEmpty(obj.getImageBandeau()) %>">
-                <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
+                <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
+                   legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
             </jalios:if>
             <jalios:default>
-                <ds:titleSimple pub="<%= obj %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-                   legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleSimple>
+                <ds:titleSimple pub="<%= obj %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
+                   legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleSimple>
             </jalios:default>
         </jalios:select>
         
@@ -37,25 +37,25 @@
             </jalios:if>
             
             <div class="ds44-inner-container ds44-mt3 ds44--l-padding-t">
-                <div class="grid-12-small-1">
+                <div class="grid-12-small-1">   
                     <div class='col-<%= Util.isEmpty(obj.getContenusEncadresLibres()) && Util.isEmpty(obj.getPortletsEncadres()) ? "12" : "7" %>'>
-                        <jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+                        <jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
                             <section id="sectionChapo"
                               class="ds44-contenuArticle">
                                 <div class="ds44-inner-container ds44-mtb3 ds44-introduction">
-                                    <jalios:wysiwyg><%=obj.getChapo()%></jalios:wysiwyg>
+                                    <jalios:wysiwyg><%=obj.getChapo(userLang)%></jalios:wysiwyg>
                                 </div>
                             </section>
                         </jalios:if>
                         <%-- On part du principe qu'au moins un paragraphe est rédigé --%>
                         <jalios:foreach name="itParagraphe" type="String" counter="itCounter"
-                          array="<%=obj.getContenuParagraphe()%>">
+                          array="<%=obj.getContenuParagraphe(userLang)%>">
                             <section id="section<%=itCounter%>"
                               class="ds44-contenuArticle">
                                 <div class="ds44-inner-container ds44-mtb3">
-                                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe())
-                                      && itCounter <= obj.getTitreParagraphe().length && Util.notEmpty(obj.getTitreParagraphe()[itCounter - 1]) %>">
-                                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe()[itCounter - 1]%></h2>
+                                    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreParagraphe(userLang))
+                                      && itCounter <= obj.getTitreParagraphe(userLang).length && Util.notEmpty(obj.getTitreParagraphe(userLang)[itCounter - 1]) %>">
+                                        <h2 class="h2-like" id="titreParagraphe<%=itCounter%>"><%=obj.getTitreParagraphe(userLang)[itCounter - 1]%></h2>
                                     </jalios:if>
                                     <jalios:wysiwyg><%=itParagraphe%></jalios:wysiwyg>
                                 </div>
@@ -67,15 +67,15 @@
                         <div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
 
                         <aside class="col-4 asideCards">
-                            <jalios:foreach array="<%=obj.getContenusEncadresLibres()%>" type="String"
+                            <jalios:foreach array="<%=obj.getContenusEncadresLibres(userLang)%>" type="String"
                                 name="itContenu" counter="itCounter">
                                 <%
-                                boolean afficheTitre = Util.notEmpty(obj.getTitreEncadresLibres()) && obj.getTitreEncadresLibres().length > itCounter-1 && Util.notEmpty(obj.getTitreEncadresLibres()[itCounter - 1]);
+                                boolean afficheTitre = Util.notEmpty(obj.getTitreEncadresLibres(userLang)) && obj.getTitreEncadresLibres(userLang).length > itCounter-1 && Util.notEmpty(obj.getTitreEncadresLibres(userLang)[itCounter - 1]);
                                 %>
                                 <jalios:if predicate="<%= afficheTitre %>">
                                     <section class="ds44-box ds44-theme mbm">
                                         <div class="ds44-innerBoxContainer">
-                                            <p class="ds44-box-heading" role="heading" aria-level="2"><%=obj.getTitreEncadresLibres()[itCounter - 1]%></p>
+                                            <p class="ds44-box-heading" role="heading" aria-level="2"><%=obj.getTitreEncadresLibres(userLang)[itCounter - 1]%></p>
                                 </jalios:if>
                                 
                                 <div class="mbm"><jalios:wysiwyg><%= itContenu %></jalios:wysiwyg></div>

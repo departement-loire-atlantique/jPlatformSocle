@@ -9,19 +9,19 @@
     <jalios:include target="SOCLE_ALERTE"/>
     
     <section class="ds44-container-large">
-	    <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-	        legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
+	    <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
+	        legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
     </section>
         
     <section class="ds44-container-fluid ds44-mtb3 ds44--xl-padding-tb">
             <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSelectionAgenda()) || Util.notEmpty(obj.getSoustitreSelectionAgenda()) %>">
                 <header class="txtcenter ds44--mobile--m-padding-b">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitreSelectionAgenda()) %>">
-                        <h2 id="titreAccueilAgenda" class="h2-like center"><%= obj.getSoustitreSelectionAgenda() %></h2>
+                        <h2 id="titreAccueilAgenda" class="h2-like center"><%= obj.getSoustitreSelectionAgenda(userLang) %></h2>
                     </jalios:if>
                     <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSelectionAgenda()) %>">
 	                    <div class="ds44-component-chapo ds44-centeredBlock">
-	                        <jalios:wysiwyg><%= obj.getIntroSelectionAgenda() %></jalios:wysiwyg>
+	                        <jalios:wysiwyg><%= obj.getIntroSelectionAgenda(userLang) %></jalios:wysiwyg>
 	                    </div>
                     </jalios:if>
                 </header>
