@@ -12,6 +12,6 @@
 		<property name="mdate" not-null="true" />
 		<property name="cpt" type="integer" />
 		<property name="guid" length="1024" type="string" />
-		<property name="query" type="string" length="65536" />
+		<property name="query" type="string" length="32672" />
 	</class>
 </hibernate-mapping>
