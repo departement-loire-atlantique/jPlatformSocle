@@ -575,7 +575,7 @@ public final class SocleUtils {
         
         for (Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
             Category itCat = (Category) iter.next();
-            String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName() : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
+            String title = Util.isEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getName(channel.getCurrentUserLang()) : itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title");
             formatted.append(title);
             if (iter.hasNext()) formatted.append(separator);
         }
