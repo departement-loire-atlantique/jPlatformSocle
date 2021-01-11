@@ -13,8 +13,8 @@
     <jalios:include target="SOCLE_ALERTE"/>
 
 	<section class="ds44-container-large">
-		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle() %>"
-				legend="<%= obj.getLegende() %>" copyright="<%= obj.getCopyright() %>" breadcrumb="true"></ds:titleBanner>
+		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
+				legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
 	</section>
 
 	<section class="ds44-container-large">
@@ -27,8 +27,8 @@
 							<div class="ds44-innerBoxContainer">
 								<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
 								<ul class="ds44-list ds44-list--puces">
-									<jalios:foreach type="String" name="itTitreRubrique" array="<%= obj.getTitreRubrique() %>">
-									   <jalios:if predicate="<%= Util.notEmpty(obj.getTitreRubrique()[itCounter-1])%>">
+									<jalios:foreach type="String" name="itTitreRubrique" array="<%= obj.getTitreRubrique(userLang) %>">
+									   <jalios:if predicate="<%= Util.notEmpty(obj.getTitreRubrique(userLang)[itCounter-1])%>">
 										  <li><a href="#section<%= itCounter %>"><%= itTitreRubrique %></a></li>
 										</jalios:if>
 									</jalios:foreach>
@@ -43,16 +43,16 @@
 						<jalios:if predicate="<%= Util.notEmpty(obj.getDate()) %>">
 							<p class="ds44-textLegend"><%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getDate())) %></p>
 						</jalios:if>
-						<jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+						<jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
 							<div class="ds44-introduction">
-								<jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg>
+								<jalios:wysiwyg><%= obj.getChapo(userLang) %></jalios:wysiwyg>
 							</div>
 						</jalios:if>
 						
-						<jalios:foreach type="String" name="itParagrapheRubrique" array="<%= obj.getParagrapheRubrique() %>">
+						<jalios:foreach type="String" name="itParagrapheRubrique" array="<%= obj.getParagrapheRubrique(userLang) %>">
 							<section class="ds44-contenuArticle" id="section<%= itCounter %>" tabindex="-1">
-								<jalios:if predicate="<%= obj.getTitreRubrique().length >= itCounter && Util.notEmpty(obj.getTitreRubrique()[itCounter-1])%>">
-									<h2 id="idTitre<%= itCounter+1 %>"><%= obj.getTitreRubrique()[itCounter-1] %></h2>
+								<jalios:if predicate="<%= obj.getTitreRubrique(userLang).length >= itCounter && Util.notEmpty(obj.getTitreRubrique(userLang)[itCounter-1])%>">
+									<h2 id="idTitre<%= itCounter+1 %>"><%= obj.getTitreRubrique(userLang)[itCounter-1] %></h2>
 								</jalios:if>
 								<jalios:wysiwyg><%= itParagrapheRubrique %></jalios:wysiwyg>
 							</section>

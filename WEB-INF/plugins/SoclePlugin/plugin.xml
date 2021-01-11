@@ -524,6 +524,7 @@
   <private-files>
     <file path="properties/plugin.prop" />
     <file path="properties/languages/fr.prop" />
+    <file path="properties/languages/en.prop" />
     <file path="c.tld" />
     <file path="wysiwyg/configuration-charteconfig.conf" />
     <file path="wysiwyg/configuration-simple.conf" />
