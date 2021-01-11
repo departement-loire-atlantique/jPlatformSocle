@@ -50,18 +50,18 @@ else{
 	        
 	            <%-- Présentation de gauche --%>
 				<div class="col-4 colFocusProjets mbm">
-	                <jalios:if predicate='<%=Util.notEmpty(box.getTitreVisuel()) %>'>
-	                    <h2 class="h2-like" id="idTitre2"><%= box.getTitreVisuel() %></h2>
+	                <jalios:if predicate='<%=Util.notEmpty(box.getTitreVisuel(userLang)) %>'>
+	                    <h2 class="h2-like" id="idTitre2"><%= box.getTitreVisuel(userLang) %></h2>
 				    </jalios:if>
 				    <jalios:if predicate='<%=Util.notEmpty(box.getSoustitre()) %>'>
-	                    <div class="ds44-introduction ds44-hide-tiny-to-medium"><%= box.getSoustitre() %></div>
+	                    <div class="ds44-introduction ds44-hide-tiny-to-medium"><%= box.getSoustitre(userLang) %></div>
 	                </jalios:if>
                     <%-- Bouton desktop --%>
-                    <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
+                    <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien(userLang)) %>'>
                         <p>
 	                        <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
 	                        		class="ds44-btnStd ds44-btnStd--large ds44-hide-tiny-to-medium ds44-btnFullMobile">
-	                        	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
+	                        	<span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span>
 	                        	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	                        </a>
 	                    </p>
@@ -83,11 +83,11 @@ else{
                 </jalios:if>
 	            
 	            <%-- Bouton mobile --%>
-                <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien()) %>'>
+                <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien(userLang)) %>'>
 					<p>
 	                    <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
 	                    		class="ds44-btnStd ds44-show-tiny-to-medium ds44-show-mobile ds44-btnFullMobile">
-	                    	<span class="ds44-btnInnerText"><%= box.getLabelDuLien() %></span>
+	                    	<span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span>
 	                    	<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 	                    </a>
 					</p>

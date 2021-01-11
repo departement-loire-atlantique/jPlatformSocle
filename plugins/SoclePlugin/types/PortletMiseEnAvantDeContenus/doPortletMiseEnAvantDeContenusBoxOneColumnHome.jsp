@@ -5,7 +5,7 @@
 %>
 
 <section id="en1clic_<%= box.getId() %>" class="ds44-mlr35 ds44-mtb2 ds44-mobile-reduced-mar">
-    <h2 class="h2-like" id="titreEn1Clic_<%= box.getId() %>"><%= box.getTitreVisuel() %></h2>
+    <h2 class="h2-like" id="titreEn1Clic_<%= box.getId() %>"><%= box.getTitreVisuel(userLang) %></h2>
 
 	<%@ include file="/types/PortletQueryForeach/doQuery.jspf" %>
 	<%@ include file="/types/PortletQueryForeach/doSort.jspf" %>

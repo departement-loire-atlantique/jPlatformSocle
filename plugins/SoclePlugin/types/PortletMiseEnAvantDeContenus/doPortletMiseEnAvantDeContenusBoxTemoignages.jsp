@@ -4,7 +4,7 @@
 %><% PortletMiseEnAvantDeContenus box = (PortletMiseEnAvantDeContenus)portlet; %>
 
 <section>
-    <h2 class="h4-like ds44-box-heading"><%= Util.notEmpty(box.getTitreVisuel()) ? box.getTitreVisuel() : channel.getProperty("jcmsplugin.socle.titre.temoignage") %></h2>
+    <h2 class="h4-like ds44-box-heading"><%= Util.notEmpty(box.getTitreVisuel()) ? box.getTitreVisuel(userLang) : channel.getProperty("jcmsplugin.socle.titre.temoignage") %></h2>
     
     <%@ include file="/types/PortletQueryForeach/doQuery.jspf" %>
     <%@ include file="/types/PortletQueryForeach/doSort.jspf" %>
