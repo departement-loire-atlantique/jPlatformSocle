@@ -18,13 +18,13 @@
       <label xml:lang="fr">Image mobile</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x200&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Copyright</label>
     </field>
-    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Légende</label>
     </field>
-    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
@@ -32,24 +32,22 @@
     </field>
     <field name="typeAnnuaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type</label>
-      <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Annuaire</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Agenda</offLabel>
     </field>
-    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire">
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire">
       <label xml:lang="fr">Titre paragraphe</label>
     </field>
-    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire" html="false">
+    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire" html="false">
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <field name="portletRecherche" editor="link" required="true" compactDisplay="false" tab="recherche" type="com.jalios.jcms.portlet.PortalElement" parent="false">
       <label xml:lang="fr">Portlet recherche</label>
     </field>
-    <field name="soustitreSelectionAgenda" editor="textfield" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+    <field name="soustitreSelectionAgenda" editor="textfield" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Sous-titre sélection agenda</label>
     </field>
-    <field name="introSelectionAgenda" editor="textarea" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+    <field name="introSelectionAgenda" editor="textarea" required="false" compactDisplay="false" tab="agenda" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Intro sélection agenda</label>
     </field>
     <field name="alaUneAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="com.jalios.jcms.Content[]">
@@ -58,10 +56,10 @@
     <field name="carrouselAgenda" editor="link" required="false" compactDisplay="false" tab="agenda" type="generated.PortletCarousel">
       <label xml:lang="fr">Carrousel agenda</label>
     </field>
-    <field name="titreEncadresLibres" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encadresAgenda">
+    <field name="titreEncadresLibres" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="encadresAgenda">
       <label xml:lang="fr">Titre encadrés libres</label>
     </field>
-    <field name="contenusEncadresLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="encadresAgenda" html="false">
+    <field name="contenusEncadresLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="encadres" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="encadresAgenda" html="false">
       <label xml:lang="fr">Contenus encadrés libres</label>
     </field>
     <field name="portletsEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">
