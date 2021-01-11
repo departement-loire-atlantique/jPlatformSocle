@@ -31,8 +31,8 @@
                 <div class="grid-12-small-1 grid-12-medium-1 ds44-theme">
                     <div class="col-5">
 
-                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
-                            <a href="<%= obj.getUrlLiseuse() %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitle(userLang)))%>">
+                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse(userLang)) %>'>
+                            <a href="<%= obj.getUrlLiseuse(userLang) %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitle(userLang)))%>">
                         </jalios:if>
                         
                         <%-- On ne prévoit pas d'image mobile --%>
@@ -40,7 +40,7 @@
                             <img src="<%= SocleUtils.getUrlOfFormattedImageMagazine(obj.getImagePrincipale()) %>" class="tiny-w100" alt='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitle(userLang)))%>'>
                         </picture>
                         
-                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
+                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse(userLang)) %>'>
                             </a>
                         </jalios:if>
                         
@@ -52,51 +52,51 @@
                             <jalios:truncate length="250" suffix="..." advancedHtml="true"><%= obj.getChapo(userLang) %></jalios:truncate>
                         </div>
                         
-                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse()) %>'>
+                        <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse(userLang)) %>'>
                             <p class="ds44-mt4">
-                                <a href="<%= obj.getUrlLiseuse() %>" class="ds44-btnStd ds44-btnStd--large ds44-btn--invert ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang))) %>">
-                                    <span class="ds44-btnInnerText"><%= Util.notEmpty(obj.getLibelleBoutonLiseuse()) ? obj.getLibelleBoutonLiseuse() : glp("jcmsplugin.socle.fichepublication.lireenligne") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+                                <a href="<%= obj.getUrlLiseuse(userLang) %>" class="ds44-btnStd ds44-btnStd--large ds44-btn--invert ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang))) %>">
+                                    <span class="ds44-btnInnerText"><%= Util.notEmpty(obj.getLibelleBoutonLiseuse(userLang)) ? obj.getLibelleBoutonLiseuse(userLang) : glp("jcmsplugin.socle.fichepublication.lireenligne") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </p>
                         </jalios:if>
                         
                         <ul class="ds44-list ds44-flex-container ds44-flex-container--colMed ds44-mt4 ds44-mb2">
                         
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getDocumentPdf()) %>'>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getDocumentPdf(userLang)) %>'>
                                 <%
-                                FileDocument fichierPublication = obj.getDocumentPdf();
+                                FileDocument fichierPublication = obj.getDocumentPdf(userLang);
                                 String fileTypeFichierPublication = FileDocument.getExtension(fichierPublication.getFilename()).toUpperCase();
                                 String fileSizeFichierPublication = Util.formatFileSize(fichierPublication.getSize());
                                 %>
                                 <li class="ds44-large-extra-mb ds44-mr-std">
                                     <a href="<%= fichierPublication.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank"
                                         title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierPublication, fileSizeFichierPublication)) %>"
-                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Télécharger","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
+                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Télécharger","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'>
                                         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.telecharger") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </jalios:if>
                             
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud()) %>'>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud(userLang)) %>'>
                                 <li class="ds44-large-extra-mb ds44-mr-std">
                                     <button class="ds44-btnStd ds44-bntALeft" type="button" data-target="#overlay-ecouter" data-js="ds44-modal" 
                                     title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.ecoutermagazine.title", obj.getTitle(userLang))) %>" 
-                                    data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Ecouter","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
+                                    data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Ecouter","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'>
                                         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.ecouter") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </li>
                             </jalios:if>
                             
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getVersionDaisy()) %>'>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getVersionDaisy(userLang)) %>'>
                                 <%
-                                FileDocument fichierDaisy = obj.getVersionDaisy();
+                                FileDocument fichierDaisy = obj.getVersionDaisy(userLang);
                                 String fileTypeFichierDaisy = FileDocument.getExtension(fichierDaisy.getFilename()).toUpperCase();
                                 String fileSizeFichierDaisy = Util.formatFileSize(fichierDaisy.getSize(), userLocale,false);
                                 %>
                                 <li class="ds44-large-extra-mb">
                                     <a href="<%= fichierDaisy.getDownloadUrl() %>" class="ds44-btnStd ds44-bntALeft" target="_blank" 
                                         title="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.fichepublication.telechargermagazine.title", obj.getTitle(userLang), fileTypeFichierDaisy, fileSizeFichierDaisy)) %>"
-                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Version Daisy","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
+                                        data-statistic='{"name": "declenche-evenement","category": "Magazine","action": "Version Daisy","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'>
                                         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.fichepublication.versiondaisy") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -108,8 +108,8 @@
         </div>
         
     <%-- Contenu --%>
-    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique1")) || Util.notEmpty(obj.getFieldValue("titreRubrique2"))
-      || Util.notEmpty(obj.getFieldValue("titreRubrique3")) || Util.notEmpty(obj.getFieldValue("titreRubrique4")) || Util.notEmpty(obj.getFieldValue("titreRubrique5")) %>'>
+    <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique1", userLang)) || Util.notEmpty(obj.getFieldValue("titreRubrique2", userLang))
+      || Util.notEmpty(obj.getFieldValue("titreRubrique3", userLang)) || Util.notEmpty(obj.getFieldValue("titreRubrique4", userLang)) || Util.notEmpty(obj.getFieldValue("titreRubrique5", userLang)) %>'>
         <section class="ds44-contenuArticle ds44-mt2" id="section1">
             <div class="ds44-inner-container--mag">
                 <div class="ds44-grid12-offset-1">
@@ -120,16 +120,16 @@
                         
                         <% for(int cptRubrique=1 ; cptRubrique<=5 ; cptRubrique++) { %>
                         
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique)) %>'>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getFieldValue("titreRubrique"+cptRubrique, userLang, false)) %>'>
                             
                                 <div class="col ds44-mtb1 <%= cptRubrique%2==1 ? "mrs" : "mls" %>">
-                                    <h3 id="idTitre-list<%= cptRubrique %>"><%= obj.getFieldValue("titreRubrique"+cptRubrique) %></h3>
+                                    <h3 id="idTitre-list<%= cptRubrique %>"><%= obj.getFieldValue("titreRubrique"+cptRubrique, userLang) %></h3>
                                     
                                     <%-- Boucle sur les liens --%>
                                     <%
-                                    String[] libelleLien = (String[]) (obj.getFieldValue("libelleLienRubrique"+cptRubrique));
-                                    Publication[] lienInterne = (Publication[]) (obj.getFieldValue("lienInterneRubrique"+cptRubrique));
-                                    String[] lienExterne = (String[]) (obj.getFieldValue("lienExterneRubrique"+cptRubrique));
+                                    String[] libelleLien = (String[]) (obj.getFieldValue("libelleLienRubrique"+cptRubrique, userLang));
+                                    Publication[] lienInterne = (Publication[]) (obj.getFieldValue("lienInterneRubrique"+cptRubrique, userLang));
+                                    String[] lienExterne = (String[]) (obj.getFieldValue("lienExterneRubrique"+cptRubrique, userLang));
                                     %>
                                     <ul class="ds44-uList">
                                     
@@ -179,13 +179,13 @@
                     
                     <%-- Compléments --%>
                    
-                    <jalios:if predicate='<%= Util.notEmpty(obj.getComplement()) %>'>
+                    <jalios:if predicate='<%= Util.notEmpty(obj.getComplement(userLang)) %>'>
                         <section class="ds44-box ds44-theme ds44-mb3 mts">
                         <div class="ds44-innerBoxContainer">
-                            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreComplement()) %>'>
-                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreComplement() %></p>
+                            <jalios:if predicate='<%= Util.notEmpty(obj.getTitreComplement(userLang)) %>'>
+                                <p role="heading" aria-level="2" class="ds44-box-heading"><%= obj.getTitreComplement(userLang) %></p>
                             </jalios:if>
-                            <%= obj.getComplement() %>
+                            <%= obj.getComplement(userLang) %>
                         </div>
                         </section>
                     </jalios:if>
@@ -195,13 +195,13 @@
         </section>
     </jalios:if>
     <%-- Modale code Soundcloud --%>
-    <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud()) %>'>
+    <jalios:if predicate='<%= Util.notEmpty(obj.getCodeEmbedSoundcloud(userLang)) %>'>
         <section class="ds44-modal-container" id="overlay-ecouter" aria-modal="true" aria-hidden="true" role="dialog" aria-labelledby="titre-modale-ecouter">
             <div class="ds44-modal-box">
-                <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.fichepublication.ecouter")) %>" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom">Fermer</span></button>
+                <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.fichepublication.ecouter")) %>" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
                 <h1 class="h2-like" id="titre-modale-ecouter"><%= glp("jcmsplugin.socle.fichepublication.ecouter") %> <%= obj.getTitle(userLang) %></h2>
                 <div class="ds44-modal-gab">
-                    <%= obj.getCodeEmbedSoundcloud() %>
+                    <%= obj.getCodeEmbedSoundcloud(userLang) %>
                 </div>
                     
             </div>
@@ -213,7 +213,7 @@
 
     </article>
 
-    <%-- TODO : Pushs --%>
+    <%-- Pushs --%>
     <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id")) %>'>
         <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id") %>'/>
     </jalios:if>
