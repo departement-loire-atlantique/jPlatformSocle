@@ -32,9 +32,7 @@
     </field>
     <field name="typeAnnuaire" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Type</label>
-      <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Annuaire</onLabel>
-      <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Agenda</offLabel>
     </field>
     <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" tab="annuaire" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="paragrapheAnnuaire">
