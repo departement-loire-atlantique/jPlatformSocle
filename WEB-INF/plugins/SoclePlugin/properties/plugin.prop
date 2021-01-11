@@ -675,3 +675,18 @@ jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/asse
 
 # FALC
 jcmsplugin.socle.FALC.icone.url : http://dev-design.loire-atlantique.fr/assets/images/pictos/picto-falc.svg
+
+# ------------------------------------------------------------
+# Limites de taille de fichier à l'upload
+# ------------------------------------------------------------
+
+# limite maximale de 100Mo quel que soit le fichier
+upload.permission.size.max: 104857600
+# 5Mo pour une image 
+upload.permission.size.image: 5242880
+# 100Mo pour une bande son 
+upload.permission.size.audio: 104857600
+# 100Mo pour une video 
+upload.permission.size.video: 104857600
+# 100Mo max pour tout autre type (non pris en compte par les confs précédentes)
+upload.permission.size.default: 104857600
