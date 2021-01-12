@@ -16,8 +16,16 @@
 
 <jalios:include target="SOCLE_ALERTE"/>
 
-<section class="ds44-container-large">
-    <jalios:include id='<%= request.getParameter("boxId" + glp("jcmsplugin.socle.facette.form-element") + "[value]") %>' />
+ <section class="ds44-container-large">
+    <jalios:select>
+        <!-- Utilisation de boxId plutot que boxId...[value] si ré-écriture d'url -->
+        <jalios:if predicate='<%= hasParameter("boxId") %>'>
+             <jalios:include id='<%= request.getParameter("boxId") %>' />
+        </jalios:if>
+        <jalios:default>
+            <jalios:include id='<%= request.getParameter("boxId" + glp("jcmsplugin.socle.facette.form-element") + "[value]") %>' />
+        </jalios:default>
+    </jalios:select>
  </section>      
 </main>
 
