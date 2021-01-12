@@ -692,3 +692,12 @@ upload.permission.size.audio: 104857600
 upload.permission.size.video: 104857600
 # 100Mo max pour tout autre type (non pris en compte par les confs précédentes)
 upload.permission.size.default: 104857600
+
+# ------------------------------------------------------------
+#  Multilingues
+# ------------------------------------------------------------
+jcmsplugin.socle.multilingue: false
+jcmsplugin.socle.multilingue.english-version.label: English
+jcmsplugin.socle.multilingue.french-version.label: French
+jcmsplugin.socle.multilingue.english-version.title: English version
+jcmsplugin.socle.multilingue.french-version.title: French version

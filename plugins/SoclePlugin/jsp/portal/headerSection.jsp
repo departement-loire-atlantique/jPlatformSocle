@@ -18,8 +18,30 @@ Category subMenuRootCat = channel.getCategory(subMenuRootCatId);
 Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrderedAuthorizedChildrenSet(subMenuRootCat) : new HashSet<Category>();
 
 boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.header.show.rechercher", true);
-%>
 
+boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
+String changeLang = "";
+String langIcon = "";
+String langLabel = "";
+String langTitle = "";
+String changeLangUrl = "";
+
+if(multilingue){
+	if(userLang.equals("fr")){
+	  changeLang = "en";
+	  langIcon = "icon-english";
+	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.english-version.label");
+	  langTitle = channel.getProperty("jcmsplugin.socle.multilingue.english-version.title");
+	}
+	else{
+	  changeLang = "fr";
+	  langIcon = "icon-french";
+	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.french-version.label");
+	  langTitle = channel.getProperty("jcmsplugin.socle.multilingue.french-version.title");
+	}
+	changeLangUrl = LangTag.getChangeUrl(request, changeLang);
+}
+%>
 
 <header role="banner" id="topPage">
     <div class="ds44-blocBandeau ds44-header">
@@ -44,7 +66,12 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
                         </picture>
                     </a>
                 </div>
-                <div class="ds44-colRight">            
+                <div class="ds44-colRight">
+                    <jalios:if predicate='<%= multilingue %>'>
+	                    <a href="<%= changeLangUrl %>" class="ds44-btnIcoText--maxi ds44--xl-padding" title="<%= langTitle %>">
+	                        <span class="ds44-btnInnerText"><%= langLabel %></span><i class="icon icon--large <%= langIcon %>" aria-hidden="true"></i>
+	                    </a>
+                    </jalios:if>
                     <jalios:if predicate="<%= displaySearchMenu %>">
                         <button class="ds44-btnIcoText--maxi ds44--xl-padding" type="button" id="open-search">
                            <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
