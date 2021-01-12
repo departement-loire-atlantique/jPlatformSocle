@@ -24,7 +24,7 @@ for (Iterator<Content> iter = collection.iterator(); iter.hasNext();) {
 %>
 
 <section id="plusRecherches_<%= box.getId() %>" class="ds44-container">
-    <h2 class="h4-like" id="plusRechercheTitre_<%= box.getId() %>"><%= box.getTitreVisuel() %></h2>
+    <h2 class="h4-like" id="plusRechercheTitre_<%= box.getId() %>"><%= box.getTitreVisuel(userLang) %></h2>
     <ul class="ds44-list">
 	    <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="10">
 	        <li><jalios:media data="<%= (Publication) itContent %>" template="plusRecherches"/></li>

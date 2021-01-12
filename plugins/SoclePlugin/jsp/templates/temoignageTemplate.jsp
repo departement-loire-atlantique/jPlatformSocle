@@ -20,10 +20,10 @@ boolean isVideo = data instanceof Video;
 
 
 try {
-  titre = (String) pub.getFieldValue("titreTemoignage");
+  titre = (String) pub.getFieldValue("titreTemoignage", userLang);
 } catch(Exception e) {}
 try {
-  sousTitre = (String) pub.getFieldValue("soustitreTemoignage");
+  sousTitre = (String) pub.getFieldValue("soustitreTemoignage", userLang);
 } catch(Exception e) {}
 texteAlternatif = SocleUtils.getAltTextFromPub(pub);
 
