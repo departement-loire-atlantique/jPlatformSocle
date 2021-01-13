@@ -31,13 +31,13 @@ if(multilingue){
 	  changeLang = "en";
 	  langIcon = "icon-english";
 	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.english-version.label");
-	  langTitle = channel.getProperty("jcmsplugin.socle.multilingue.english-version.title");
+	  langTitle = glp("jcmsplugin.socle.multilingue.english-version.title", glp("jcmsplugin.socle.nomDuSite"));
 	}
 	else{
 	  changeLang = "fr";
 	  langIcon = "icon-french";
 	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.french-version.label");
-	  langTitle = channel.getProperty("jcmsplugin.socle.multilingue.french-version.title");
+	  langTitle = glp("jcmsplugin.socle.multilingue.french-version.title", glp("jcmsplugin.socle.nomDuSite"));
 	}
 	changeLangUrl = LangTag.getChangeUrl(request, changeLang);
 }

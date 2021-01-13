@@ -807,3 +807,7 @@ jcmsplugin.socle.chiffrescles.lien: Toutes les données
 
 # FALC
 jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
+
+# Multilingue
+jcmsplugin.socle.multilingue.english-version.title: English : consultez la version anglaise du site {0}
+jcmsplugin.socle.multilingue.french-version.title: French : consultez la version française du site {0}

@@ -699,5 +699,3 @@ upload.permission.size.default: 104857600
 jcmsplugin.socle.multilingue: false
 jcmsplugin.socle.multilingue.english-version.label: English
 jcmsplugin.socle.multilingue.french-version.label: French
-jcmsplugin.socle.multilingue.english-version.title: English version
-jcmsplugin.socle.multilingue.french-version.title: French version
