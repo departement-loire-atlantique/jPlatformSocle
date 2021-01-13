@@ -10,3 +10,10 @@ jcmsplugin.socle.dossier.fermer-menu-sommaire : Close the summary menu
 # ------------------------------------------------------------
 jcmsplugin.socle.video.telecharger-transcript.label: Download the video transcription file
 jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcription file : {0} - {1} - {2} - new tab
+
+
+# ------------------------------------------------------------
+#  # Multilingue
+# ------------------------------------------------------------
+jcmsplugin.socle.multilingue.english-version.title: English : visit the english version of the site {0}
+jcmsplugin.socle.multilingue.french-version.title: French : visit the french version of the site {0}
