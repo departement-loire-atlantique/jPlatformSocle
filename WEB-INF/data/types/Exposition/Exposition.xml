@@ -24,7 +24,10 @@
     <field name="chapo" editor="textarea" required="false" compactDisplay="false" tab="intro" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Chapo</label>
     </field>
-    <field name="contenuIntro" editor="wysiwyg" required="false" compactDisplay="false" tab="intro" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="contenuIntroTitre" editor="textfield" required="false" compactDisplay="false" tab="intro" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Intro">
+      <label xml:lang="fr">Contenu intro titre</label>
+    </field>
+    <field name="contenuIntro" editor="wysiwyg" required="false" compactDisplay="false" tab="intro" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="Intro">
       <label xml:lang="fr">Contenu intro</label>
     </field>
     <field name="titreInfosPratiques" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
@@ -54,20 +57,26 @@
     <field name="texteAlternatifReservation" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Texte alternatif réservation</label>
     </field>
-    <field name="titreInfosLibres" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="titreInfosLibres" editor="textfield" required="false" compactDisplay="false" tab="infos_pratiques" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Infos">
       <label xml:lang="fr">Titre infos libres</label>
     </field>
-    <field name="contenuInfosLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="contenuInfosLibres" editor="wysiwyg" required="false" compactDisplay="false" tab="infos_pratiques" type="String[]" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="Infos">
       <label xml:lang="fr">Contenu infos libres</label>
     </field>
-    <field name="details" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Détails</label>
+    <field name="titreDetails" editor="textfield" required="false" compactDisplay="false" tab="details" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Details">
+      <label xml:lang="fr">Titre détails</label>
+    </field>
+    <field name="contenuDetails" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="Details">
+      <label xml:lang="fr">Contenu Détails</label>
     </field>
     <field name="lienVersPortletsBas" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.portlet.PortalElement[]">
       <label xml:lang="fr">Lien vers portlets bas</label>
     </field>
-    <field name="details2" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Détails 2</label>
+    <field name="titreDetails2" editor="textfield" required="false" compactDisplay="false" tab="details" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Details2">
+      <label xml:lang="fr">Titre détails 2</label>
+    </field>
+    <field name="contenuDetails2" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="Details2">
+      <label xml:lang="fr">Contenu Détails 2</label>
     </field>
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
