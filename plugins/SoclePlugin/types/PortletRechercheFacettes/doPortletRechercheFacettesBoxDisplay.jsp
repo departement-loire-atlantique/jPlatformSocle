@@ -7,6 +7,8 @@
 
 	PortletRechercheFacettes obj = (PortletRechercheFacettes)portlet;
 
+    boolean isInPortletConteneur = Util.notEmpty(request.getAttribute("isInPortletConteneur")) ? true : false;
+
     isInRechercheFacette = isInRechercheFacette || obj.getAfficherResultatDansLannuaire();
     
     // SEO : bloque l'indexation des pages de résultats
@@ -33,7 +35,9 @@
 %>
 
 
-
+<jalios:if predicate="<%= isInPortletConteneur %>">
+    <div class="ds44-container-large">
+</jalios:if>
 
 
 
@@ -241,6 +245,9 @@
 
 </jalios:if>
 
+<jalios:if predicate="<%= isInPortletConteneur %>">
+    </div>
+</jalios:if>
 
 <% 
 request.removeAttribute("rechercheId");
