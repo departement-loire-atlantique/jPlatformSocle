@@ -126,6 +126,16 @@ $jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot 
 jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
 jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
 jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
+jcmsplugin.socle.form.nom: Nom
+jcmsplugin.socle.form.prenom: Prénom
+jcmsplugin.socle.form.mail: Courriel
+jcmsplugin.socle.form.adresse: Adresse
+jcmsplugin.socle.form.complementDadresse: Complément d'adresse
+jcmsplugin.socle.form.codePostal: Code postal
+jcmsplugin.socle.form.telephone: Téléphone
+jcmsplugin.socle.form.sujet: Sujet
+jcmsplugin.socle.form.message: Votre message
+
 
 # ------------------------------------------------------------
 #  Mail
