@@ -267,7 +267,7 @@ media.template.tuileHorizontaleGrey.application: /plugins/SoclePlugin/jsp/templa
 
 # Content template
 media.data-template.default.Carousel: /plugins/SoclePlugin/jsp/cards/doCarouselCardFull.jsp?wysiwygEmbed=true
-media.data-template.default.CarouselElement: /plugins/SoclePlugin/jsp/cards/doCarouselElementCardFull.jsp?wysiwygEmbed=true
+media.data-template.default.CarouselElement: /plugins/SoclePlugin/jsp/cards/doCarouselElementCardFull.jsp
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
