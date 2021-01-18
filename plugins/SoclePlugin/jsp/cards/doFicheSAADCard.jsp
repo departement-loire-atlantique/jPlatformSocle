@@ -31,11 +31,11 @@ boolean isFocus = "true".equals(request.getParameter("isFocus"));
             <%= SocleUtils.formatCategories(pub.getModesDintervention(loggedMember)) %>
           </p>
 		  <div class="ds44-docListElem ds44-mt-std">
-			<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
+			<i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %> : </span>
 			<jalios:wysiwyg><%= pub.getAdresse() %></jalios:wysiwyg>
 		  </div>
 		  <p class="ds44-docListElem ds44-mt-std">
-			<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.telephone") %></span>
+			<i class="icon icon-phone ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.telephone") %> : </span>
 			<%= pub.getTelephone() %>
 		  </p>
       </div>
