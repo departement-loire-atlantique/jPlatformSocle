@@ -127,6 +127,7 @@ jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
 jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
 jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
 
+
 # ------------------------------------------------------------
 #  Mail
 # ------------------------------------------------------------
@@ -252,7 +253,7 @@ jcmsplugin.socle.tarif.reduit: Réduit :
 jcmsplugin.socle.gratuit: GRATUIT
 jcmsplugin.socle.libre: LIBRE
 jcmsplugin.socle.payant: PAYANT
-jcmsplugin.socle.adresse: Adresse :
+jcmsplugin.socle.adresse: Adresse
 jcmsplugin.socle.complement-adresse: Complément d'adresse
 jcmsplugin.socle.syrendre: S'y rendre ?
 jcmsplugin.socle.public: Public :
@@ -270,7 +271,7 @@ jcmsplugin.socle.accessibilite: Accessibilité :
 jcmsplugin.socle.langues: Langues :
 jcmsplugin.socle.serendrea: Comment se rendre à : {0}
 jcmsplugin.socle.allerplusloin: Pour aller plus loin
-jcmsplugin.socle.telephone: Téléphone :
+jcmsplugin.socle.telephone: Téléphone
 jcmsplugin.socle.interco: Intercommunalité :
 jcmsplugin.socle.canton: Canton :
 jcmsplugin.socle.delegation: Délégation du Département
@@ -291,6 +292,10 @@ jcmsplugin.socle.prenom: Prénom
 jcmsplugin.socle.code-postal: Code postal
 jcmsplugin.socle.sujet: Sujet
 jcmsplugin.socle.message: Message
+jcmsplugin.socle.mail: Courriel
+jcmsplugin.socle.votre-message: Votre message
+
+
 
 # ------------------------------------------------------------
 #  Header

@@ -29,7 +29,7 @@ boolean hasBottomInfos = Util.notEmpty(pub.getMayor()) || Util.notEmpty(pub.getC
 	               <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><strong><%= glp("jcmsplugin.socle.maire") %> :</strong> <%= pub.getMayor() %></p>
 	            </jalios:if>
 	            <jalios:if predicate="<%= Util.notEmpty(pub.getCouncilBuildingAddress()) %>">
-		            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %></span>
+		            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %> : </span>
 		                <jalios:wysiwyg><%= SocleUtils.formatAdresseCommune(pub) %></jalios:wysiwyg>
 		            </div>
 	           </jalios:if>    

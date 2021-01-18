@@ -308,9 +308,9 @@ MOBILE TARGETING
                         <p><%= glp("jcmsplugin.socle.nom") %> : <%=request.getAttribute("nom") %></p>
                         <p><%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %></p>
                         <p><%= glp("jcmsplugin.socle.pageutile.email") %> : <%=request.getAttribute("email") %></p>
-                        <p><%= glp("jcmsplugin.socle.telephone") %> <%=request.getAttribute("telephone") %></p>
+                        <p><%= glp("jcmsplugin.socle.telephone") %> : <%=request.getAttribute("telephone") %></p>
                         <% if(Util.notEmpty(request.getAttribute("adresse"))) { %>
-                          <p><%= glp("jcmsplugin.socle.adresse") %> <%=request.getAttribute("adresse") %></p>
+                          <p><%= glp("jcmsplugin.socle.adresse") %> : <%=request.getAttribute("adresse") %></p>
                         <% } %>
                         <% if(Util.notEmpty(request.getAttribute("complement-adresse"))) { %>
                           <p><%= glp("jcmsplugin.socle.complement-adresse") %> : <%=request.getAttribute("complement-adresse") %></p>

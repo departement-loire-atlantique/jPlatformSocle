@@ -14,7 +14,7 @@
   request.setAttribute("classBeingProcessed", generated.ContactForm.class);
 %>
 <%-- Name ------------------------------------------------------------ --%>
-<% String nomLabel = channel.getTypeFieldLabel(ContactForm.class, "nom", userLang);%>
+<% String nomLabel = glp("jcmsplugin.socle.nom"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -32,7 +32,7 @@
 </div>
  
 <%-- FirstName ------------------------------------------------------------ --%>
-<% String prenomLabel = channel.getTypeFieldLabel(ContactForm.class, "prenom", userLang);%>
+<% String prenomLabel = glp("jcmsplugin.socle.prenom"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -49,7 +49,7 @@
 </div>
  
 <%-- Mail ------------------------------------------------------------ --%>
-<% String mailLabel = channel.getTypeFieldLabel(ContactForm.class, "mail", userLang);%>
+<% String mailLabel = glp("jcmsplugin.socle.mail"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -71,7 +71,7 @@
 </div>
 
 <%-- Phone ------------------------------------------------------------ --%>
-<% String telephoneLabel = channel.getTypeFieldLabel(ContactForm.class, "telephone", userLang);%>
+<% String telephoneLabel = glp("jcmsplugin.socle.telephone"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -92,7 +92,7 @@
 </div>
 
 <%-- Adresse ------------------------------------------------------------ --%>
-<% String adresseLabel = channel.getTypeFieldLabel(ContactForm.class, "adresse", userLang);%>
+<% String adresseLabel = glp("jcmsplugin.socle.adresse"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -113,7 +113,7 @@
 </div>
 
 <%-- complementDadresse ------------------------------------------------------------ --%>
-<% String complementDAdresseLabel = channel.getTypeFieldLabel(ContactForm.class, "complementDadresse", userLang);%>
+<% String complementDAdresseLabel = glp("jcmsplugin.socle.complement-adresse"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -134,7 +134,7 @@
 </div>
  
 <%-- CodePostal ------------------------------------------------------------ --%>
-<% String codepostalLabel = channel.getTypeFieldLabel(ContactForm.class, "codePostal", userLang);%>
+<% String codepostalLabel = glp("jcmsplugin.socle.code-postal"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -156,7 +156,7 @@
 </div>
 
 <%-- Sujet ------------------------------------------------------------ --%>
-<% String sujetLabel = channel.getTypeFieldLabel(ContactForm.class, "sujet", userLang);%>
+<% String sujetLabel = glp("jcmsplugin.socle.sujet"); %>
 <%
 TreeSet sujetCatSet = new TreeSet(Category.getOrderComparator(userLang));
 sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
@@ -186,7 +186,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 </div>
  
 <%-- Message ------------------------------------------------------------ --%>
-<% String messageLabel = channel.getTypeFieldLabel(ContactForm.class, "message", userLang);%>
+<% String messageLabel = glp("jcmsplugin.socle.votre-message"); %>
 <div class="ds44-mb3">
 	<div class="ds44-form__container">
 		<div class="ds44-posRel">

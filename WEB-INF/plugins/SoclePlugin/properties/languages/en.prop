@@ -17,3 +17,16 @@ jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcri
 # ------------------------------------------------------------
 jcmsplugin.socle.multilingue.english-version.title: English : visit the english version of the site {0}
 jcmsplugin.socle.multilingue.french-version.title: French : visit the french version of the site {0}
+
+# ------------------------------------------------------------
+#  Formulaires
+# ------------------------------------------------------------
+jcmsplugin.socle.form.nom: Name
+jcmsplugin.socle.form.prenom: First name
+jcmsplugin.socle.form.mail: Email
+jcmsplugin.socle.form.adresse: Address
+jcmsplugin.socle.form.complementDadresse: Address
+jcmsplugin.socle.form.codePostal: Zip code
+jcmsplugin.socle.form.telephone: Phone number
+jcmsplugin.socle.form.sujet: Subjet
+jcmsplugin.socle.form.message: Your message
