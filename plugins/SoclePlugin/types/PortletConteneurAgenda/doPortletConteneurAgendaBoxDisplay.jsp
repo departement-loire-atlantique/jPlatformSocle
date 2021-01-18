@@ -8,6 +8,7 @@
 String themeClair = "tuileVerticaleLight";
 String titreBloc = box.getTitreDuBloc();
 String sousTitreBloc = box.getSoustitreBloc();
+request.setAttribute("isInPortletConteneur", true);
 %>
 
 <section class='ds44-container-fluid <%= box.getSelectionDuTheme().equals(themeClair) ? " ds44-lightBG ds44-wave-white" : "" %> ds44--xxl-padding-tb'>
@@ -31,3 +32,7 @@ String sousTitreBloc = box.getSoustitreBloc();
         </div>
     </jalios:foreach>
 </section>
+
+<%
+request.removeAttribute("isInPortletConteneur");
+%>
