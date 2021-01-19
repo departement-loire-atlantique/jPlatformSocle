@@ -4,6 +4,9 @@ display.use-front-session-portal: false
 
 channel.favicon: plugins/SoclePlugin/images/favicon/favicon.ico
 
+# Logo du site pour site patrimoniaux
+jcmsplugin.socle.gpla.site.logo: https://design.loire-atlantique.fr/assets/images/logos/logo-grand-patrimoine-blanc.svg
+
 # ------------------------------------------------------------
 #  Propriétés éditables
 # ------------------------------------------------------------
@@ -283,6 +286,7 @@ media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/t
 media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
+media.data-template.tuileVerticaleGpla.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=gpla
 # cas particulier carrousel six tuiles
 media.data-template.tuileVerticaleDarkSix.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?cssSix=true
 media.data-template.tuileVerticaleLightSix.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark&cssSix=true
