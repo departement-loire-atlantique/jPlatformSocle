@@ -702,3 +702,9 @@ upload.permission.size.default: 104857600
 jcmsplugin.socle.multilingue: false
 jcmsplugin.socle.multilingue.english-version.label: English
 jcmsplugin.socle.multilingue.french-version.label: French
+
+# ------------------------------------------------------------
+#  API Notes et lieux
+# ------------------------------------------------------------
+jcmsplugin.socle.api.places.google.url: https://maps.googleapis.com/maps/api/place/details/json?
+jcmsplugin.socle.api.places.google.key:
