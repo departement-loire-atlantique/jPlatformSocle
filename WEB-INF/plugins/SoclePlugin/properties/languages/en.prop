@@ -30,3 +30,7 @@ jcmsplugin.socle.form.codePostal: Zip code
 jcmsplugin.socle.form.telephone: Phone number
 jcmsplugin.socle.form.sujet: Subjet
 jcmsplugin.socle.form.message: Your message
+
+
+jcmsplugin.socle.pays: Country
+jcmsplugin.socle.faq.selectionner-pays: Select your country

@@ -174,7 +174,7 @@ public final class MailUtils {
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireFaqTemplate.jsp";
     
     // Objet
-    String objet = JcmsUtil.glpd("jcmsplugin.socle.email.faq.objet");
+    String objet = channel.getName() + " - " + JcmsUtil.glpd("jcmsplugin.socle.email.faq.objet");
 
     // Publication concernée par la FAQ
     Publication pub = channel.getPublication(request.getParameter("id[value]"));
@@ -185,6 +185,7 @@ public final class MailUtils {
     parametersMap.put("question", request.getParameter("question[value]"));
     parametersMap.put("codepostal", Util.notEmpty(request.getParameter("commune[value]")) ? request.getParameter("commune[value]") : "");
     parametersMap.put("commune", Util.notEmpty(request.getParameter("commune[text]")) ? request.getParameter("commune[text]") : "");
+    parametersMap.put("pays", Util.notEmpty(request.getParameter("pays[text]")) ? request.getParameter("pays[text]") : "");
     parametersMap.put("email", request.getParameter("mail[value]"));
 
     if (Util.notEmpty(emailTo)) {

@@ -136,7 +136,7 @@ jcmsplugin.socle.email.message.echec : Une erreur s'est produite lors de l'envoi
 jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
 jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
 jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
-jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
+jcmsplugin.socle.email.faq.objet: FAQ
 jcmsplugin.socle.email.pageutile.objet.utile: UTILE
 jcmsplugin.socle.email.pageutile.objet.inutile: PAS UTILE
 
@@ -294,6 +294,10 @@ jcmsplugin.socle.sujet: Sujet
 jcmsplugin.socle.message: Message
 jcmsplugin.socle.mail: Courriel
 jcmsplugin.socle.votre-message: Votre message
+jcmsplugin.socle.pays: Pays
+jcmsplugin.socle.question: Question
+jcmsplugin.socle.lien: Lien
+jcmsplugin.socle.page-concernee: Page concernée
 
 
 
@@ -453,6 +457,7 @@ jcmsplugin.socle.faq.poser-question: Posez une question
 jcmsplugin.socle.faq.ex-email: Ex : votrenom@email.com
 jcmsplugin.socle.faq.selectionner-commune: Sélectionner Commune
 jcmsplugin.socle.faq.valider-envoie-question: Valider l'envoi de votre question
+jcmsplugin.socle.faq.selectionner-pays: Sélectionner Pays
 
 jcmsplugin.socle.facette.champs-obligatoires: Les champs marqués d’un astérisque * sont obligatoires
 jcmsplugin.socle.facette.champ-obligatoire.title: {0} - obligatoire
