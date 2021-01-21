@@ -1,3 +1,4 @@
+<%@ include file='/jcore/doInitPage.jspf' %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -303,12 +304,19 @@ MOBILE TARGETING
                     <tbody>
                       <tr>
                         <td>
-                        <p>Question : <%=request.getAttribute("question") %></p>
-                        <p>Email : <%=request.getAttribute("email") %></p>
-                        <p>Code postal : <%=request.getAttribute("codepostal") %></p>
-                        <p>Commune : <%=request.getAttribute("commune") %></p>
-                        <p>Page concernée : <%=request.getAttribute("publication") %></p>
-                        <p>Lien : <%=request.getAttribute("lien") %></p>
+                        <p><%= glp("jcmsplugin.socle.question") %> : <%=request.getAttribute("question") %></p>
+                        <p><%= glp("jcmsplugin.socle.mail") %> : <%=request.getAttribute("email") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("codepostal"))) { %>
+                          <p><%= glp("jcmsplugin.socle.code-postal") %> : <%=request.getAttribute("codepostal") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("commune"))) { %>
+                          <p><%= glp("jcmsplugin.socle.facette.commune.default-label") %> : <%=request.getAttribute("commune") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("pays"))) { %>
+                          <p><%= glp("jcmsplugin.socle.pays") %> : <%=request.getAttribute("pays") %></p>
+                        <% } %>                        
+                        <p><%= glp("jcmsplugin.socle.page-concernee") %> : <%=request.getAttribute("publication") %></p>
+                        <p><%= glp("jcmsplugin.socle.lien") %>: <%=request.getAttribute("lien") %></p>
                         </td>
                       </tr>
                     </tbody>

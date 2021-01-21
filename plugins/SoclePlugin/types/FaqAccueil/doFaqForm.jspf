@@ -44,53 +44,77 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 	</div>
 	
-	<% String idFormElement2 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
-	<div class="ds44-form__container">
-		<div class="ds44-posRel">
-			<label for="<%= idFormElement2 %>" class="ds44-formLabel">
-                            <span class="ds44-labelTypePlaceholder">
-				    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
-                            </span>
-			</label>
-			<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
-					role="combobox" 
-					aria-autocomplete="list" 
-					autocomplete="address-level2"
-					aria-expanded="false" 
-					title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
-					data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
-					data-mode="select-only" />
-			<button class="ds44-reset" type="button">
-				<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
-				<span class="visually-hidden">
-					<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pdcv.votrecommune")) %>
-				</span>
-			</button> 
-			
-			<div class="ds44-autocomp-container hidden">
-				<div class="ds44-autocomp-list">
-					<ul class="ds44-list" role="listbox"></ul>
+	<jalios:if predicate='<%= userLang.equals("fr") %>'>
+		<% String idFormElement2 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+		<div class="ds44-form__container">
+			<div class="ds44-posRel">
+				<label for="<%= idFormElement2 %>" class="ds44-formLabel">
+	                            <span class="ds44-labelTypePlaceholder">
+					    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
+	                            </span>
+				</label>
+				<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
+						role="combobox" 
+						aria-autocomplete="list" 
+						autocomplete="address-level2"
+						aria-expanded="false" 
+						title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
+						data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+						data-mode="select-only" />
+				<button class="ds44-reset" type="button">
+					<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+					<span class="visually-hidden">
+						<%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pdcv.votrecommune")) %>
+					</span>
+				</button> 
+				
+				<div class="ds44-autocomp-container hidden">
+					<div class="ds44-autocomp-list">
+						<ul class="ds44-list" role="listbox"></ul>
+					</div>
 				</div>
 			</div>
+			<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
 		</div>
-		<div class="ds44-errorMsg-container hidden" aria-live="polite"></div>
-	</div>
+	</jalios:if>
 	
-	<% String idFormElement3 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+	<jalios:if predicate='<%= ! userLang.equals("fr") %>'>
+	    <% String idFormElement3 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
+	    <div class="ds44-form__container">
+	        <div class="ds44-posRel">
+	            <label for="<%= idFormElement3 %>" class="ds44-formLabel">
+	                            <span class="ds44-labelTypePlaceholder">
+	                    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pays") %></span>
+	                            </span>
+	            </label>
+	            <input type="text" id="<%= idFormElement3 %>" name="pays" class="ds44-inpStd" 
+	                   title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' />
+	            <button class="ds44-reset" type="button">
+	                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+	                <span class="visually-hidden">
+	                    <%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.pays")) %>
+	                </span>
+	            </button> 
+	            
+	        </div>
+	    </div>
+    </jalios:if>	
+	
+	<% String idFormElement4 = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); %>
 	<div class="ds44-form__container">
 		<div class="ds44-posRel">
-			<label for="<%= idFormElement3 %>" class="ds44-formLabel">
+			<label for="<%= idFormElement4 %>" class="ds44-formLabel">
                             <span class="ds44-labelTypePlaceholder">
 					<span class="ds44-labelTypePlaceholder">
 						<%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup>
 					</span>
                             </span>
 			</label>
-			<input type="text" id="<%= idFormElement3 %>" name="mail" class="ds44-inpStd" 
+			<input type="text" id="<%= idFormElement4 %>" name="mail" class="ds44-inpStd" 
 					title='<%= glp("jcmsplugin.socle.faq.votre-email") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
 					required autocomplete="email"
-					aria-describedby="explanation-<%= idFormElement3 %>" />
-			<span class="ds44-labelTypeInfoComp" id="explanation-<%= idFormElement3 %>"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+					aria-describedby="explanation-<%= idFormElement4 %>" />
+			<span class="ds44-labelTypeInfoComp" id="explanation-<%= idFormElement4 %>"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 			<button class="ds44-reset" type="button">
 				<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 				<span class="visually-hidden">
