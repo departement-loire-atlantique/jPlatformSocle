@@ -21,6 +21,21 @@ if (Util.notEmpty(obj.getLienInterne())) {
   externe = true;
   titleLink = glp("jcmsplugin.socle.lien.nouvelonglet", titleLink);
 }
+
+String iconId = "";
+if(Util.isEmpty(obj.getIcone(loggedMember))) {
+	//on recupere par defaut la premiere icone de la liste
+	Category rootIconeCat = channel.getCategory("$jcmsplugin.socle.alerte.icone");
+	if(Util.notEmpty(rootIconeCat)) {
+		Iterator<Category> listeIcone = rootIconeCat.getChildrenSet().iterator();
+		if(listeIcone.hasNext()) {
+			iconId = listeIcone.next().getDescription(userLang);
+		}
+	}
+} else {
+	Category iconeCat = obj.getIcone(loggedMember).first();
+	iconId = iconeCat.getDescription(userLang);
+}
 %>
 
 <section class="ds44-alertMsg-container txtcenter">
@@ -29,7 +44,7 @@ if (Util.notEmpty(obj.getLienInterne())) {
             <p role="heading" aria-level="1">
                 <button type="button" class="ds44-collapser_button">
                     <h1 class="ds44-card__title">
-                        <i class="icon icon-attention" aria-hidden="true"></i><%= obj.getTitle() %>
+                        <i class="icon <%= iconId %>" aria-hidden="true"></i><%= obj.getTitle() %>
                     </h1>
                     <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
                 </button>
