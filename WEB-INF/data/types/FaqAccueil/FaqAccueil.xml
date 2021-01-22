@@ -32,6 +32,17 @@
     <field name="servicesLies" editor="link" required="false" compactDisplay="false" tab="formulaire" type="generated.FicheLieu[]">
       <label xml:lang="fr">Services liés</label>
     </field>
+    <field name="avecFormulaireDeContact" editor="boolean" required="false" compactDisplay="false" tab="formulaire" type="boolean" default="on">
+      <label xml:lang="fr">Avec formulaire de contact</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="texteContact" editor="wysiwyg" required="false" compactDisplay="false" tab="formulaire" type="String" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+      <label xml:lang="fr">Texte contact</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Le texte n'est affiché que si le formulaire de contact est caché.&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
