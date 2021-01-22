@@ -676,7 +676,7 @@ jcmsplugin.socle.calculetteOA.seuil : 1300
 jcmsplugin.socle.calculetteOA.demi-part : 350
 
 # Chiffres cles
-jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/assets/images/pictos/picto-investissement.svg
+$jcmsplugin.socle.chiffres-cles.icone-principale.cat: cda_1341350
 
 # FALC
 jcmsplugin.socle.FALC.icone.url : http://dev-design.loire-atlantique.fr/assets/images/pictos/picto-falc.svg

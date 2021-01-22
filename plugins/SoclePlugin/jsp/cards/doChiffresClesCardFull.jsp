@@ -15,7 +15,20 @@ ChiffresCles pub = (ChiffresCles) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 // recuperation de l'url de l'icone pour le chiffre principal
-String urlImage = Util.notEmpty(pub.getIconePrincipale()) ? pub.getIconePrincipale() : channel.getProperty("jcmsplugin.socle.chiffresCles.icone.url");
+String urlImage = "";
+if(Util.isEmpty(pub.getIconePrincipale(loggedMember))) {
+	//on recupere par defaut la premiere icone de la liste
+	Category rootImageCat = channel.getCategory("$jcmsplugin.socle.chiffres-cles.icone-principale.cat");
+	if(Util.notEmpty(rootImageCat)) {
+		Iterator<Category> listeImages = rootImageCat.getChildrenSet().iterator();
+		if(listeImages.hasNext()) {
+			urlImage = listeImages.next().getDescription(userLang);
+		}
+	}
+} else {
+	Category imageCat = pub.getIconePrincipale(loggedMember).first();
+	urlImage = imageCat.getDescription(userLang);
+}
 
 // recuperation de l'url du libelle et de l'attribut title du lien
 String urlLien = "";
