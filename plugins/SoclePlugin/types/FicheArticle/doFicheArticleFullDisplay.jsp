@@ -29,6 +29,13 @@
         
     </article>
     
+    <%-- FAQ --%>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
+        <section>
+            <jalios:include id="<%= obj.getFaq().getId() %>" />
+        </section>
+    </jalios:if>
+    
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
         <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">
