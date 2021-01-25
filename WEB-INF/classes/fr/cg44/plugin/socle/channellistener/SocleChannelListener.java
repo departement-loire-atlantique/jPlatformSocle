@@ -18,7 +18,9 @@ import com.jalios.util.JProperties;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleConstants;
+import fr.cg44.plugin.socle.alarmlistener.ApiNotesAlarmListener;
 import fr.cg44.plugin.socle.alarmlistener.InfolocaleTokenAlarmListener;
+import fr.cg44.plugin.socle.api.ApiNotesCacheManager;
 import fr.cg44.plugin.socle.infolocale.RequestManager;
 
 /**
@@ -42,6 +44,9 @@ public class SocleChannelListener extends ChannelListener{
 		
 		// Initialise l'alarmlistener des tokens Infolocale
 		initInfolocaleTokenAlarmListener();
+		
+		// Initialise l'alarmlistener du cache API des notes
+		initApiNotesCacheAlarmListener();
 	}
 
 	
@@ -110,5 +115,27 @@ public class SocleChannelListener extends ChannelListener{
 		// Effectuer la génération des tokens au démarrage
 		RequestManager.initTokens();
 	}
+	
+	/**
+   * Initialise l'alarmlistener du cache API des notes, si activé
+   */
+  private void initApiNotesCacheAlarmListener() {
+    if (!Channel.getChannel().getBooleanProperty("jcmsplugin.socle.apinotes.cache.enabled", true)) {
+      return;
+    }
+    String schedule = Channel.getChannel().getProperty("jcmsplugin.socle.apinotes.cache.schedule");
+    ApiNotesAlarmListener alarmListener = new ApiNotesAlarmListener();
+    AlarmEntry alarmEntry;
+    try {
+      alarmEntry = new AlarmEntry(schedule, alarmListener);
+      AlarmManager alarmMgr = Channel.getChannel().getCommonAlarmManager();
+        alarmMgr.addAlarm(alarmEntry);
+    } catch (PastDateException | ParseException e) {
+      LOGGER.error("Could not initialize TokenAlarmListener : wrong date format -> " + schedule);
+    }
+    // Effectuer la génération du cache API au démarrage
+    ApiNotesCacheManager apiNotesCache = ApiNotesCacheManager.INSTANCE;
+    apiNotesCache.refreshBeanData();
+  }
 
 }

@@ -1,4 +1,4 @@
-package fr.cg44.plugin.socle.api.google;
+package fr.cg44.plugin.socle.api.tripadvisor;
 
 import java.io.IOException;
 
@@ -11,25 +11,26 @@ import com.jalios.jcms.Channel;
 
 import fr.cg44.plugin.socle.ApiUtil;
 import fr.cg44.plugin.socle.api.google.bean.GooglePlaceBean;
+import fr.cg44.plugin.socle.api.tripadvisor.bean.TripadvisorPlaceBean;
 
-public class GoogleApiManager {
+public class TripadvisorApiManager {
   
-  public static JSONObject getJsonFromGooglePlace(String placeId) {
+  public static JSONObject getJsonFromTripadvisorPlace(String placeId) {
     StringBuilder urlRequest = new StringBuilder();
-    urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.url"));
-    urlRequest.append("?key=" + Channel.getChannel().getProperty(""));
-    urlRequest.append("&");
-    urlRequest.append("place_id=" + placeId);
+    urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.url"));
+    urlRequest.append(placeId);
+    urlRequest.append("/?key=");
+    urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.key"));
     
     return ApiUtil.getJsonObjectFromApi(urlRequest.toString());
   }
   
-  public static GooglePlaceBean getGooglePlaceBeanFromId(String placeId) {
-    JSONObject jsonGoogleBean = getJsonFromGooglePlace(placeId);
+  public static TripadvisorPlaceBean getTripAdvisorPlaceBeanFromId(String placeId) {
+    JSONObject jsonTripAdvisorBean = getJsonFromTripadvisorPlace(placeId);
 
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      return objectMapper.readValue(jsonGoogleBean.toString(), GooglePlaceBean.class);
+      return objectMapper.readValue(jsonTripAdvisorBean.toString(), TripadvisorPlaceBean.class);
     } catch (JsonParseException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -41,7 +42,7 @@ public class GoogleApiManager {
       e.printStackTrace();
     }
     
-    return new GooglePlaceBean();
+    return new TripadvisorPlaceBean();
   }
   
 }

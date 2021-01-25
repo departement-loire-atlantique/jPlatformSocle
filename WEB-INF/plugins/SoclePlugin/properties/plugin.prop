@@ -706,5 +706,14 @@ jcmsplugin.socle.multilingue.french-version.label: French
 # ------------------------------------------------------------
 #  API Notes et lieux
 # ------------------------------------------------------------
-jcmsplugin.socle.api.places.google.url: https://maps.googleapis.com/maps/api/place/details/json?
+jcmsplugin.socle.apinotes.cache.schedule: 30 7 * * * *
+jcmsplugin.socle.apinotes.cache.enabled.boolean: false
+jcmsplugin.socle.api.places.google.url: https://maps.googleapis.com/maps/api/place/details/json
 jcmsplugin.socle.api.places.google.key:
+jcmsplugin.socle.api.places.google.id: 
+jcmsplugin.socle.api.places.tripadvisor.url: http://api.tripadvisor.com/api/partner/2.0/location/
+jcmsplugin.socle.api.places.tripadvisor.key: 
+jcmsplugin.socle.api.places.tripadvisor.id: 
+jcmsplugin.socle.api.places.facebook.url: 
+jcmsplugin.socle.api.places.facebook.key: 
+jcmsplugin.socle.api.places.facebook.id: 

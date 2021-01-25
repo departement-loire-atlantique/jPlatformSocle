@@ -812,3 +812,7 @@ jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 # Multilingue
 jcmsplugin.socle.multilingue.english-version.title: English : consultez la version anglaise du site {0}
 jcmsplugin.socle.multilingue.french-version.title: French : consultez la version française du site {0}
+
+# API Notes et lieux
+jcmsplugin.socle.apinotes.cache.schedule: Api notes : CRON pour le cache
+jcmsplugin.socle.apinotes.cache.enabled: Api notes : activé
