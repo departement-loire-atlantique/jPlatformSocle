@@ -30,14 +30,25 @@ String imageAlt = "-1"; // dans figurePicture, si la valeur de "alt" est à -1 o
 
 String formatTuile = isLargeTuile ? "principale" : "carrousel";
 
+boolean isGpla = Util.notEmpty(request.getParameter("context")) && "gpla".equalsIgnoreCase(request.getParameter("context"));
+
 %>
 
-<section class='ds44-card ds44-js-card ds44-card--verticalPicture <%=styleContext%> <%= isInSixPanelsContext ? "ds44-posRel" : "" %>'>
+<section class='ds44-card ds44-js-card ds44-card--verticalPicture <%= isGpla ? "ds44-darkContext" : "" %> <%=styleContext%> <%= isInSixPanelsContext ? "ds44-posRel" : "" %>'>
 	<ds:figurePicture pub="<%= pub %>" format="<%= formatTuile %>" pictureCss='<%= isInSixPanelsContext ? "" : "ds44-container-imgRatio" %>' imgCss='<%= isInSixPanelsContext ? "" : "ds44-imgRatio" %>' alt="<%= imageAlt %>"></ds:figurePicture>
     <div class="ds44-card__section">
         <p role="heading" aria-level="3" class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
-                <%= pub.getTitle() %>
+                <jalios:select>
+                    <jalios:if predicate="<%= isGpla && data instanceof Lien && Util.notEmpty(((Lien)data).getPicto()) %>">
+                        <% Lien lien = (Lien) data; %>
+                        <span class="visually-hidden"><%= pub.getTitle() %></span>
+                        <img src="<%= lien.getPicto() %>" alt="<%= lien.getTexteAlternatif() %>" class="ds44-logoCard"/>
+                    </jalios:if>
+                    <jalios:default>
+                        <%= pub.getTitle() %>
+                    </jalios:default>
+                </jalios:select>              
             </a>
         </p>
         <jalios:if predicate="<%= isDoc %>">
