@@ -1786,18 +1786,19 @@ public final class SocleUtils {
    * @return
    */
   public static String getAltTextFromPub(Publication pub) {
-    
+    String userLang = Channel.getChannel().getCurrentUserLang();
+
     String altText = "";
     String legendText = "";
     boolean hasCopyright = false;
     try {
-      altText = (String) pub.getFieldValue("texteAlternatif");
+      altText = (String) pub.getFieldValue("texteAlternatif", userLang, false);
     } catch (Exception e) {}
     try {
-      legendText = (String) pub.getFieldValue("legende");
+      legendText = (String) pub.getFieldValue("legende", userLang, false);
     } catch (Exception e) {}
     try {
-      hasCopyright = Util.notEmpty((String) pub.getFieldValue("copyright"));
+      hasCopyright = Util.notEmpty((String) pub.getFieldValue("copyright", userLang, false));
     } catch (Exception e) {}
     
     if(Util.isEmpty(altText)) {

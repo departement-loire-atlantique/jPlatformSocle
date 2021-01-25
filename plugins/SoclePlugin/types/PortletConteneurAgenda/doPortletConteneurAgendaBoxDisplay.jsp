@@ -6,8 +6,8 @@
 
 <%
 String themeClair = "tuileVerticaleLight";
-String titreBloc = box.getTitreDuBloc();
-String sousTitreBloc = box.getSoustitreBloc();
+String titreBloc = box.getTitreDuBloc(userLang, false);
+String sousTitreBloc = box.getSoustitreBloc(userLang, false);
 request.setAttribute("isInPortletConteneur", true);
 %>
 

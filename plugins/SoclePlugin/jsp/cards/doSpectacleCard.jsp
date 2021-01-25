@@ -49,7 +49,7 @@ if(Util.notEmpty(pub.getOtherTroupe())) {
 
 String altText = "";
 try {
-  altText = (String) pub.getFieldValue("texteAlternatif");
+  altText = (String) pub.getFieldValue("texteAlternatif", userLang, false);
   if (Util.isEmpty(altText)) altText = "";
 } catch (Exception e) {}
 

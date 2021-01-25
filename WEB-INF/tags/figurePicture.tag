@@ -215,7 +215,7 @@ else {
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
     <jalios:if predicate="<%= hasFigcaption %>">
-	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle() : label %>">
+	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle(userLang, false) : label %>">
 	</jalios:if>
 	    <picture class='<%= Util.isEmpty(pictureCss) ? "" : pictureCss %>'>
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
