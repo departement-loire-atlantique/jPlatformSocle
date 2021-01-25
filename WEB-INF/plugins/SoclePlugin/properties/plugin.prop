@@ -681,6 +681,9 @@ jcmsplugin.socle.chiffresCles.icone.url : http://design.loire-atlantique.fr/asse
 # FALC
 jcmsplugin.socle.FALC.icone.url : http://dev-design.loire-atlantique.fr/assets/images/pictos/picto-falc.svg
 
+# Alerte
+$jcmsplugin.socle.alerte.icone: cda_1341350
+
 # ------------------------------------------------------------
 # Limites de taille de fichier à l'upload
 # ------------------------------------------------------------
