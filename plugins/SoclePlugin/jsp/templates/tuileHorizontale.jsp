@@ -51,7 +51,7 @@ if (Util.isEmpty(urlImage)) {
         <div class="ds44-card__section--horizontal">
             <p class="ds44-card__title" role="heading" aria-level="3">
                 <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
-                    <%= pub.getTitle() %>
+                    <%= pub.getTitle(userLang) %>
                 </a>
             </p>
             <jalios:if predicate="<%= isDossier %>">

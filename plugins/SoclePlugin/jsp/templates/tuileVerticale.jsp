@@ -42,13 +42,13 @@ boolean isGpla = Util.notEmpty(request.getParameter("context")) && "gpla".equals
                 <jalios:select>
                     <jalios:if predicate="<%= isGpla && data instanceof Lien && Util.notEmpty(((Lien)data).getPicto()) %>">
                         <% Lien lien = (Lien) data; %>
-                        <span class="visually-hidden"><%= pub.getTitle() %></span>
+                        <span class="visually-hidden"><%= pub.getTitle(userLang) %></span>
                         <img src="<%= lien.getPicto() %>" alt="<%= lien.getTexteAlternatif() %>" class="ds44-logoCard"/>
                     </jalios:if>
                     <jalios:default>
-                        <%= pub.getTitle() %>
+                        <%= pub.getTitle(userLang) %>
                     </jalios:default>
-                </jalios:select>              
+                </jalios:select>
             </a>
         </p>
         <jalios:if predicate="<%= isDoc %>">

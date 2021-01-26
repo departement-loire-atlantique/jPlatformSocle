@@ -98,13 +98,13 @@
     <img src="<%= urlImage %>" alt="<%= alt %>" class="ds44-w100 ds44-imgRatio" id="imageEnAvant_<%= pub.getId() %>">
     
     <jalios:if predicate="<%= Util.isEmpty(positionTitre) %>">
-        <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle() %>>
+        <a href="<%= linkUrl %>"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" alt="<%= titleUrl %>"<% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle(userLang) %>>
     </jalios:if>
 
     <jalios:if predicate='<%= Util.notEmpty(positionTitre) %>'>
         <div class="ds44-theme ds44-innerBoxContainer ds44-blockAbsolute <%=positionTitre%>">
             <p role="heading" aria-level="3" class="ds44-card__title">
-                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" <% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle() %></a></p>
+                <a href="<%= linkUrl %>" class="ds44-card__globalLink"<% if (Util.notEmpty(titleUrl)) { %> title="<%= titleUrl %>" <% } if (displayTargetBlank) { %> target="_blank"<% } %>><%= pub.getTitle(userLang) %></a></p>
             <% if (Util.notEmpty(subTitle)) { %>
             <p><%= subTitle %></p>
             <% } %>
