@@ -46,6 +46,9 @@
       <label xml:lang="fr">Contenu paragraphe</label>
     </field>
     <!-- Temoignage -->
+    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FaqAccueil" parent="false">
+      <label xml:lang="fr">FAQ</label>
+    </field>
     <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" tab="temoignage" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre témoignage</label>
     </field>
