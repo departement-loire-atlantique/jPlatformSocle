@@ -12,6 +12,8 @@ Publication currentPub = null!=request.getAttribute("pubParent") ?
 	    (Publication) request.getAttribute("pubParent") :
 	    (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 String redirectValue = currentPub.getDisplayUrl(userLocale);
+
+boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
 %>
 
 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
@@ -53,14 +55,24 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 					    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pdcv.votrecommune") %></span>
 	                            </span>
 				</label>
-				<input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
-						role="combobox" 
-						aria-autocomplete="list" 
-						autocomplete="address-level2"
-						aria-expanded="false" 
-						title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
-						data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
-						data-mode="select-only" />
+				
+				<%-- Champ texte avec liste communes en autocomplete ou champ text simple (pour sites multilingues) --%>
+				<jalios:select>
+					<jalios:if predicate='<%= multilingue %>'>
+                        <input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
+                                title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' />
+	                </jalios:if>
+	                <jalios:default>
+                        <input type="text" id="<%= idFormElement2 %>" name="commune" class="ds44-inpStd" 
+                                role="combobox" 
+                                aria-autocomplete="list" 
+                                autocomplete="address-level2"
+                                aria-expanded="false" 
+                                title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' 
+                                data-url="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
+                                data-mode="select-only" />
+	                </jalios:default>
+                </jalios:select>
 				<button class="ds44-reset" type="button">
 					<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 					<span class="visually-hidden">
@@ -83,12 +95,12 @@ String redirectValue = currentPub.getDisplayUrl(userLocale);
 	    <div class="ds44-form__container">
 	        <div class="ds44-posRel">
 	            <label for="<%= idFormElement3 %>" class="ds44-formLabel">
-	                            <span class="ds44-labelTypePlaceholder">
-	                    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pays") %></span>
-	                            </span>
+                    <span class="ds44-labelTypePlaceholder">
+	                    <span class="ds44-labelTypePlaceholder"><%= glp("jcmsplugin.socle.pays") %><sup aria-hidden="true">*</sup></span>
+	                </span>
 	            </label>
-	            <input type="text" id="<%= idFormElement3 %>" name="pays" class="ds44-inpStd" 
-	                   title='<%= glp("jcmsplugin.socle.faq.selectionner-commune") %>' />
+	            <input type="text" id="<%= idFormElement3 %>" name="pays" class="ds44-inpStd" required
+	                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' />
 	            <button class="ds44-reset" type="button">
 	                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
 	                <span class="visually-hidden">
