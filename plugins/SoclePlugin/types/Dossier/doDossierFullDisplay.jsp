@@ -64,6 +64,13 @@
 		</div>
 	</section>
 
+	<%-- FAQ --%>
+	<jalios:if predicate="<%=Util.notEmpty(obj.getFaq())%>">
+		<section>
+			<jalios:include id="<%=obj.getFaq().getId()%>" />
+		</section>
+	</jalios:if>
+
 	<%-- Partagez cette page --%>
     <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 
