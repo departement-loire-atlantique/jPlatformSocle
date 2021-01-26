@@ -32,7 +32,7 @@ if(Util.notEmpty(delegation)){
 		                        isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 		                        dataMode="select-only" 
 		                        dataUrl="<%= dataUrl %>" 
-		                        label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
+		                        label='<%= Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		                        title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title",titleAttr) %>'
 		                        isLarge="false"/>
 		                <ds:pdcvSearchFields idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>'/>

@@ -14,7 +14,7 @@ datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.today.label"), In
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.tomorrow.label"), InfolocaleUtil.getDateTomorrowInfolocale());
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.weekend.label"), String.join(",", InfolocaleUtil.getDateWeekendInfolocale()));
 datesLabelValues.put(glp("jcmsplugin.socle.facette.date.select.nextseven.label"), String.join(",", InfolocaleUtil.getDateNextSevenDaysInfolocale()));
-String title = Util.getString(obj.getLabel(), glp("jcmsplugin.socle.facette.date.select.title"));
+String title = Util.getString(obj.getLabel(userLang, false), glp("jcmsplugin.socle.facette.date.select.title"));
 boolean isRequired = obj.getFacetteObligatoire();
 %>
 

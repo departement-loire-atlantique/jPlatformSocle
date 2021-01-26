@@ -14,7 +14,7 @@ accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadat
 accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"), glp("jcmsplugin.socle.infolocale.label.accessibilite.mental"));
 accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"), glp("jcmsplugin.socle.infolocale.label.accessibilite.visuel"));
 accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"), glp("jcmsplugin.socle.infolocale.label.accessibilite.moteur"));
-String title = Util.getString(obj.getLabel(), glp("jcmsplugin.socle.facette.accessibilite.title"));
+String title = Util.getString(obj.getLabel(userLang, false), glp("jcmsplugin.socle.facette.accessibilite.title"));
 boolean isRequired = obj.getFacetteObligatoire();   
 %>
 

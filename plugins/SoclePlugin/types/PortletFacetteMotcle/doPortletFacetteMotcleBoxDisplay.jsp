@@ -12,7 +12,7 @@
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 	
-	String labelChamp = Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.mot-cle.default-label");
+	String labelChamp = Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.mot-cle.default-label");
 	String name = "text" + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 %>
 
