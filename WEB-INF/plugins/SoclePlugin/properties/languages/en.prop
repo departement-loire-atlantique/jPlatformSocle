@@ -1,36 +1,822 @@
-# ------------------------------------------------------------
-#  Dossier
-# ------------------------------------------------------------
-jcmsplugin.socle.dossier.sommaire : Summary
-jcmsplugin.socle.dossier.menu-sommaire : Summary menu
-jcmsplugin.socle.dossier.fermer-menu-sommaire : Close the summary menu
+plugin.socle.newsPortalCategory: Catégorie du portail d'actualités
+jcmsplugin.socle.label.error.warnAdmin: Une erreur est survenue. Veuillez prévenir l'administrateur du site.
+
+# ------ 7357 ajout d'extradata sur les catégories
+extra.Category.plugin.tools.index: Catégorie à indexer
+extra.Category.plugin.tools.index.help: Cette catégorie doit-elle être indéxée ?
+extra.Category.plugin.tools.sitemap: Catégorie affichée dans le plan du site ?
+extra.Category.plugin.tools.sitemap.help: Indiquer "non" sur une catégorie parente pour masquer l'affichage d'une branche sur le plan du site
+extra.Category.plugin.tools.result.title: Titre du résultat de recherche
+extra.Category.plugin.tools.result.title.help: Titre qui sera affecté au resultat de recherche
+extra.Category.plugin.tools.blank : Ouverture dans un nouvel onglet ?
+extra.Category.plugin.tools.blank.help : Le lien sur cette catégorie (menu...) doit-il s'ouvrir dans un nouvel onglet ?
+extra.Category.plugin.tools.synonyme.facet.title: Synonyme / Libellé court de la catégorie
+extra.Category.plugin.tools.tooltip: Afficher la description en infobulle ?
+
+# Comparator
+comparator.pqf.servicesDepartement: Services du département / Commune
+comparator.pqf.presidence: Elu : Présidence
 
 # ------------------------------------------------------------
-#  Video
+#  Propriétés éditables
 # ------------------------------------------------------------
-jcmsplugin.socle.video.telecharger-transcript.label: Download the video transcription file
-jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcription file : {0} - {1} - {2} - new tab
+$id.jcmsplugin.socle.visible-topbar.group:ID du groupe pour la topbar
+jcmsplugin.socle.visible-topbar.group.name:Groupe pour la topbar
+jcmsplugin.socle.css-urls: URLs des fichiers css à charger dans le portail
+jcmsplugin.socle.css-urls.help: Séparer les valeurs par des espaces 
+jcmsplugin.socle.js-urls: URLs des fichiers js à charger dans le portail
+jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
+jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
+jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
+jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
+jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
+jcmsplugin.socle.portletPush.ficheemploi.id: ID Jalios de la portlet Push à afficher dans les fiches emploi
+jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
+jcmsplugin.socle.ficheaide.tuile.tag.root: ID de la catégorie tag pour les tuiles "Fiche Aide"
+jcmsplugin.socle.recherche.geojson.departement.url: URL du geojson du département
+jcmsplugin.socle.recherche.geojson.communes.url: URL du geojson des communes
+jcmsplugin.socle.recherche.geojson.epci.url: URL du geojson des epci
+jcmsplugin.socle.recherche.geojson.canton.url: URL du geojson des cantons
+jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégations
+# TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
+jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
+jcmsplugin.socle.url-rewriting: Activer la réécriture d'URL (true | false) ?
+jcmsplugin.socle.url-rewriting.mdate: Enregistrer date de dernière appel pour la réécriture d'URL
+jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
+jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
+jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
 
+jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
+jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale
+jcmsplugin.socle.rgpd.notice.logo: RGPD - Logo affiché en haut de la modale
+jcmsplugin.socle.rgpd.notice.description: RGPD - Description notice
+jcmsplugin.socle.rgpd.notice.learn-more: RGPD - libellé bouton "je paramètre"
+jcmsplugin.socle.rgpd.bouton.accept: RGPD - libellé bouton "j'accepte"
+jcmsplugin.socle.rgpd.bouton.accept-all: RGPD - libellé bouton "j'accepte tout" 
+jcmsplugin.socle.rgpd.bouton.decline: RGPD - libellé bouton "je refuse"
+jcmsplugin.socle.rgpd.bouton.decline-all: RGPD - libellé bouton "je refuse tout"
+jcmsplugin.socle.rgpd.privacyPolicy.name: RGPD - politique de confidentialité
+jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidentialité"
+jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
+
+jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
+jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
+
+$jcmsplugin.socle.site.applimenu.cat.root: ID de la catégorie de nav pour le menu "Sites et applis"
+
+# Recherche
+
+jcmsplugin.socle.recherche.portletsearch.id: Header recherche - ID portlet recherche
+jcmsplugin.socle.recherche.portletmea.id: Header recherche - ID portlet MEA
+
+jcmsplugin.socle.recherche.motcle.title: Zone de saisie de votre recherche
+
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.annuaire: Annuaire 
+jcmsplugin.socle.recherche.type.AccueilAnnuaireAgenda.agenda: Agenda
+
+jcmsplugin.socle.recherche.type.AccueilDelegation: Délégation
+jcmsplugin.socle.recherche.type.Action: Action 
+jcmsplugin.socle.recherche.type.ArticleGeolocalise: Article
+jcmsplugin.socle.recherche.type.FaqAccueil: Foire aux questions
+jcmsplugin.socle.recherche.type.FicheActionEducative: Action éducative
+jcmsplugin.socle.recherche.type.FicheActu: Actualité
+jcmsplugin.socle.recherche.type.FicheAide: Aide
+jcmsplugin.socle.recherche.type.FicheArticle: Article
+jcmsplugin.socle.recherche.type.FicheLieu: Lieu
+jcmsplugin.socle.recherche.type.PageCarrefour: Rubrique
+jcmsplugin.socle.recherche.type.FicheSAAD: Service d’aide à domicile (SAAD)
+jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
 
 # ------------------------------------------------------------
-#  # Multilingue
+#  Recherche à facettes
 # ------------------------------------------------------------
-jcmsplugin.socle.multilingue.english-version.title: English : visit the english version of the site {0}
-jcmsplugin.socle.multilingue.french-version.title: French : visit the french version of the site {0}
+$jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
+jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Enter your city name
 
 # ------------------------------------------------------------
 #  Formulaires
 # ------------------------------------------------------------
-jcmsplugin.socle.form.nom: Name
-jcmsplugin.socle.form.prenom: First name
-jcmsplugin.socle.form.mail: Email
-jcmsplugin.socle.form.adresse: Address
-jcmsplugin.socle.form.complementDadresse: Address
-jcmsplugin.socle.form.codePostal: Zip code
-jcmsplugin.socle.form.telephone: Phone number
-jcmsplugin.socle.form.sujet: Subjet
-jcmsplugin.socle.form.message: Your message
+jcmsplugin.socle.form.contact.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire contact
+jcmsplugin.socle.form.candidature.portlet-rgpd.id : ID de la portlet Wysiwyg pour les mentions RGPD du formulaire candidature
+$jcmsplugin.socle.form.candidature.idArticle: ID de l'article incluant le formulaire de candidature (réponse à une offre)
+jcmsplugin.socle.form.candidature-spontanee.titre: Formulaire de candidature spontanée
+jcmsplugin.socle.form.candidature.titre: Formulaire de candidature
+jcmsplugin.socle.form.contact.titre: Contact form
+jcmsplugin.socle.form.invalidfields: These fields are not valid, please check them :
+jcmsplugin.socle.form.champ-obligatoire: Field {0} is required
+jcmsplugin.socle.form.champ-invalide: Field {0} is invalid
+jcmsplugin.socle.form.envoi-succes: Your request has been sent.
+jcmsplugin.socle.form.envoi-erreur: An error occurred while sending the email. Please try again later.
+jcmsplugin.socle.form.exemple.email: Example : myadress@mail.com
+jcmsplugin.socle.form.exemple.tel: Example : 0202030405
+jcmsplugin.socle.form.exemple.adresse: Example : 24 Foster Street
+jcmsplugin.socle.form.exemple.complement-adresse: Example : Surry Hills
+jcmsplugin.socle.form.exemple.codepostal: Example : 2010
+jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
+jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 1Mo
+jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
+jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
+jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
+jcmsplugin.socle.form.faq.mailTo: Email du destinataire par défaut des FAQ
+jcmsplugin.socle.form.login.legend: You already have an account, log in
+jcmsplugin.socle.form.login.valid-compte: Validate access to your account
+jcmsplugin.socle.form.login.memoriser: Stay connected
+$jcmsplugin.socle.login.redirect.pub: Contenu à viser après authentification pour l'espace presse
+$jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot de passe
+jcmsplugin.socle.form.login.oublie-passe: Forgot your password ?
+jcmsplugin.socle.form.contact-mail.title: Contact form
+jcmsplugin.socle.form.contact-mail.origine: Loire Atlantique Departement
+
+# ------------------------------------------------------------
+#  Mail
+# ------------------------------------------------------------
+jcmsplugin.socle.email.message.succes : Thank you, your message was sent successfully
+jcmsplugin.socle.email.message.echec : An error occurred while sending the email.
+jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
+jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
+jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
+jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
+jcmsplugin.socle.email.pageutile.objet.utile: HELPFUL
+jcmsplugin.socle.email.pageutile.objet.inutile: NOT HELPFUL
 
 
+# ------------------------------------------------------------
+#  Sectorisation
+# ------------------------------------------------------------
+# entités
+jcmsplugin.socle.sectorisation.commune.url: Url de la sectorisation des entités par commune
+jcmsplugin.socle.sectorisation.point.url: Url de la sectorisation des entités par point
+jcmsplugin.socle.sectorisation.rectangle.url: Url de la sectorisation des entités par rectangle
+# implantations
+jcmsplugin.socle.sectorisation.implantations.commune.url: Url de la sectorisation des implantations par commune
+jcmsplugin.socle.sectorisation.implantations.point.url: Url de la sectorisation des implantations par point
+jcmsplugin.socle.sectorisation.implantations.rectangle.url: Url de la sectorisation des implantations par rectangle
+
+# Réseaux sociaux
+jcmsplugin.socle.socialnetworks.labels:Liste des réseaux sociaux (séparés par des "|")
+jcmsplugin.socle.socialnetworks.labels.help:Attention : la liste doit commencer par un "@" (ex : @|Facebook|Twitter). Le nom du picto utilisé pour l'affichage correspond au label en minuscule et sans espaces.
+jcmsplugin.socle.socialnetworks.urls:URLs des réseaux sociaux (bien respecter l'ordre correspondant aux labels)
+jcmsplugin.socle.social-networks-follow.label:Follow us on social networks:
+jcmsplugin.socle.socialnetworks.title: The Loire-Atlantique Department on 
+jcmsplugin.socle.socialnetwork.facebook: Facebook
+jcmsplugin.socle.socialnetwork.twitter: Twitter
+jcmsplugin.socle.socialnetwork.instagram: Instagram
+jcmsplugin.socle.socialnetwork.youtube: Youtube
+jcmsplugin.socle.socialnetwork.magweb: Web Mag
+jcmsplugin.socle.socialnetwork.depsur.facebook: The Loire-Atlantique Department on Facebook
+jcmsplugin.socle.socialnetwork.depsur.twitter: The Loire-Atlantique Department on Twitter
+jcmsplugin.socle.socialnetwork.depsur.instagram: The Loire-Atlantique Department on Instagram
+jcmsplugin.socle.socialnetwork.depsur.youtube: The Loire-Atlantique Department on Youtube
+jcmsplugin.socle.socialnetwork.depsur.linkedin: The Loire-Atlantique Department on Linkedin
+jcmsplugin.socle.socialnetwork.depsur.mail: The Loire-Atlantique Department by email
+jcmsplugin.socle.socialnetwork.retrouver.facebook: Find {0} on Facebook
+jcmsplugin.socle.socialnetwork.retrouver.instagram: Find {0} on Instagram
+jcmsplugin.socle.socialnetwork.retrouver.facebook.nouvellefenetre: Find on Facebook : {0} - new window
+jcmsplugin.socle.socialnetwork.retrouver.instagram.nouvellefenetre: Find on Instagram : {0} - new window
+jcmsplugin.socle.socialnetworks.share:Liste des réseaux sociaux (fonction de partage)
+jcmsplugin.socle.socialnetworks.share.help:Attention : la liste doit commencer par un "@" et les valeurs séparées par un "|". Les valeurs possibles sont : @|Facebook|Twitter|Pinterest|Instagram|LinkedIn|Email
+jcmsplugin.socle.socialnetwork.share.facebook: Share this page on Facebook - new window
+jcmsplugin.socle.socialnetwork.share.twitter: Share this page on Twitter - new window
+jcmsplugin.socle.socialnetwork.share.instagram: Share this page on Instagram -- new window
+jcmsplugin.socle.socialnetwork.share.linkedin: Share this page on Linkedin - new window
+jcmsplugin.socle.socialnetwork.share.mail: Share this page by email - new window
+jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject= a page for you on {0} : {1}&body=Hello, this page should interest you : %0D%0A{2} 
+
+# ------------------------------------------------------------
+#  Libellés communs
+# ------------------------------------------------------------
+jcmsplugin.socle.targetblank: target="_blank"
+jcmsplugin.socle.accessibily.newTabLabel: - new window
+jcmsplugin.socle.lien.site.nouvelonglet: Visit the website : {0} - new window
+jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - new window
+jcmsplugin.socle.lien.nouvelonglet: {0} - new window
+jcmsplugin.socle.contactmail: Contact by mail: {0} : {1}
+jcmsplugin.socle.contactmail.label: Contact by mail:
+jcmsplugin.charte.visible-topbar.group.name: Groupe pour la barre d'administration
+jcmsplugin.socle.menu: Menu
+jcmsplugin.socle.rechercher: Search
+jcmsplugin.socle.lancer.recherche: Start the search
+jcmsplugin.socle.faire.recherche:  Please launch another search by entering another keyword in the above search field
+jcmsplugin.socle.recherche.trop.resultats: There are too many results for your search. Below you will find the {0} most relevant results. Feel free to refine your search criteria.
+jcmsplugin.socle.recherche.carte.masquer: Hide map
+jcmsplugin.socle.recherche.affiner: Adjust my search
+jcmsplugin.socle.recherche.masquer: Hide my search
+jcmsplugin.socle.recherche.selection: My selection
+jcmsplugin.socle.recherche.ma-selection: My selection ({0})
+jcmsplugin.socle.recherche.export.pdf: PDF
+jcmsplugin.socle.recherche.export.csv: CSV
+jcmsplugin.socle.selectionner: Choose
+jcmsplugin.socle.obligatoire: Required
+jcmsplugin.socle.fermer: Close
+jcmsplugin.socle.retour: Back
+jcmsplugin.socle.valider: Confirm
+jcmsplugin.socle.ou: Or
+jcmsplugin.socle.publiele: Publish on {0}
+jcmsplugin.socle.publieele: Publish on {0}
+jcmsplugin.socle.symbol.copyright: ©
+jcmsplugin.socle.symbol.euro: €
+jcmsplugin.socle.navOnglet: Tab Navigation
+jcmsplugin.socle.revenirOnglet: Return to the tab {0}
+jcmsplugin.socle.retourALaListe: Back to the list
+jcmsplugin.socle.retourALaListe.title: Back to the list of results
+jcmsplugin.socle.retourALaListeLieux: Back to the list of places
+jcmsplugin.socle.plusDeDetails: More details
+jcmsplugin.socle.label.cs: CS
+jcmsplugin.socle.label.cedex: Cedex
+jcmsplugin.socle.label.monparcourscollege: Mon parcours collège, tous citoyens et toutes citoyennes
+jcmsplugin.socle.label.encemoment: Headlines
+jcmsplugin.socle.label.departementPdcv: Le Département est présent près de chez vous
+jcmsplugin.socle.sur: on
+jcmsplugin.socle.hautDepage: Back to top
+jcmsplugin.socle.carrousel.precedent: Previous page
+jcmsplugin.socle.carrousel.suivant: Next page
+jcmsplugin.socle.pageVideo: Page with video
+jcmsplugin.socle.tout-cocher: Check all
+jcmsplugin.socle.tout-decocher: Uncheck
+jcmsplugin.socle.tooltip: Help : {0}
+jcmsplugin.socle.deplier: Unfold
+jcmsplugin.socle.partagerVotreLA: Share your Loire-Atlantique
+jcmsplugin.socle.partager.fb: Share this page on Facebook
+jcmsplugin.socle.partager.twitter: Share this page on Twitter
+jcmsplugin.socle.partager.linkedin: Share this page on LinkedIn
+jcmsplugin.socle.partagerpage: Share this page :
+jcmsplugin.socle.maLA.hashtag: #maloireatlantique
+jcmsplugin.socle.financementDep: Financement départemental
+jcmsplugin.socle.maire: Maire
+jcmsplugin.socle.video.acceder: Access the video : {0}
+jcmsplugin.socle.partenaire: Partner
+jcmsplugin.socle.participants: number of participants
+jcmsplugin.socle.tarifs: Rates:
+jcmsplugin.socle.tarif.normal: Normal :
+jcmsplugin.socle.tarif.reduit: Reduced rate:
+jcmsplugin.socle.gratuit: FREE
+jcmsplugin.socle.libre: FREE
+jcmsplugin.socle.payant: FEE PAYING.
+jcmsplugin.socle.adresse: Address :
+jcmsplugin.socle.complement-adresse: Additional address
+jcmsplugin.socle.syrendre: How to get there ?
+jcmsplugin.socle.public: Audience :
+jcmsplugin.socle.age.apartirde: From {0} years old
+jcmsplugin.socle.age.jusqua: Up to {0} years
+jcmsplugin.socle.age.de.a: From {0} to {1} years
+jcmsplugin.socle.age.tous: All audiences
+jcmsplugin.socle.contactreservations: Contact and booking :
+jcmsplugin.socle.contact: Contact :
+jcmsplugin.socle.siteinternet: Website
+jcmsplugin.socle.complet: FULL
+jcmsplugin.socle.reserver: Book
+jcmsplugin.socle.reserverlien: Book tickets: {0}
+jcmsplugin.socle.accessibilite: Accessibility:
+jcmsplugin.socle.langues: Languages:
+jcmsplugin.socle.serendrea: How to get to : {0}
+jcmsplugin.socle.allerplusloin: To go further
+jcmsplugin.socle.telephone: Phone :
+jcmsplugin.socle.interco: Intercommunalité :
+jcmsplugin.socle.canton: Canton :
+jcmsplugin.socle.delegation: Délégation du Département
+jcmsplugin.socle.km2: km²
+jcmsplugin.socle.contacterdept: Contact us
+jcmsplugin.socle.enbref: In sum
+jcmsplugin.socle.savoirplus: More
+jcmsplugin.socle.savoirplus.link: More : {0}
+jcmsplugin.socle.envideo: Video
+jcmsplugin.socle.alireaussi: Read more
+jcmsplugin.socle.memetheme: Same topic
+jcmsplugin.socle.oui: Yes
+jcmsplugin.socle.non: No
+jcmsplugin.socle.envoyer: Send
+jcmsplugin.socle.votrecontact: Your contact
+jcmsplugin.socle.nom: Name
+jcmsplugin.socle.prenom: First name
+jcmsplugin.socle.code-postal: CP
+jcmsplugin.socle.sujet: Topic
+jcmsplugin.socle.message: Message
+jcmsplugin.socle.mail: Email
+jcmsplugin.socle.votre-message: Your message
 jcmsplugin.socle.pays: Country
-jcmsplugin.socle.faq.selectionner-pays: Select your country
+jcmsplugin.socle.question: Question
+jcmsplugin.socle.lien: Link
+jcmsplugin.socle.page-concernee: Page concerned
+
+# ------------------------------------------------------------
+#  Header
+# ------------------------------------------------------------
+jcmsplugin.socle.retour.accueil: Back to home
+jcmsplugin.socle.header.ouvrir: Open the menu of {0}
+jcmsplugin.socle.menu.ouvrir: Open the main menu
+jcmsplugin.socle.menu.fermer: Close the main menu
+jcmsplugin.socle.menu.retour: Back to the first level of the main menu
+jcmsplugin.socle.menu.fermer.pdcv: Fermer le menu Près de chez vous
+jcmsplugin.socle.menu.principal1: Main menu level 1
+jcmsplugin.socle.menu.principal2: Menu {0} : level 2
+jcmsplugin.socle.menu.navigation: Main menu
+jcmsplugin.socle.sitesapplis: Sites and apps of the Loire-Atlantique Department
+jcmsplugin.socle.toussitesapplis: All our websites and apps
+jcmsplugin.socle.sitesapplis.menu: Menu of sites and applications of the Loire-Atlantique Department
+jcmsplugin.socle.sitesapplis.menu.fermer: Close the menu
+jcmsplugin.socle.menu.pdcv: Close to you
+jcmsplugin.socle.menu.pdcv.adresse.label: Please specify your address
+jcmsplugin.socle.menu.pdcv.valider: Validate your contact search in a city
+
+jcmsplugin.socle.recherche.menu: Search menu
+jcmsplugin.socle.recherche.menu.aria.heading: "Search" menu
+jcmsplugin.socle.recherche.menu.fermer: Close Search menu
+jcmsplugin.socle.recherche.motscles: Search by keywords:
+jcmsplugin.socle.recherche.votrerecherche: Your search
+jcmsplugin.socle.recherche.valider: Validate your search by keywords
+jcmsplugin.socle.recherche.resultats: Your search results
+
+jcmsplugin.socle.gpla.site: Grand Patrimoine de Loire-Atlantique
+
+# ------------------------------------------------------------
+#  Près de chez vous
+# ------------------------------------------------------------
+
+jcmsplugin.socle.pdcv.consultez: Consultez l'actualité ou trouvez des contacts près de chez vous :
+jcmsplugin.socle.pdcv.votrecommune: Votre commune
+jcmsplugin.socle.pdcv.carte.alt: carte réactive des zones de délégations du département
+jcmsplugin.socle.pdcv.delegation: Délégation {0}
+jcmsplugin.socle.pdcv.select.delegation: Sélectionner la délégation {0}
+jcmsplugin.socle.pdcv.nantes: Nantes
+jcmsplugin.socle.pdcv.stnazaire: Saint-Nazaire
+jcmsplugin.socle.pdcv.chateaubriant: Châteaubriant
+jcmsplugin.socle.pdcv.ancenis: Ancenis
+jcmsplugin.socle.pdcv.paysretz: Pays de retz
+jcmsplugin.socle.pdcv.vignoble: Vignoble
+
+# ------------------------------------------------------------
+#  Structure
+# ------------------------------------------------------------
+jcmsplugin.socle.structure.qui-contacter: Contact
+jcmsplugin.socle.structure.description: Pour trouver le nom de votre interlocuteur aux Archives départementales, saisissez le nom de votre structure :
+jcmsplugin.socle.structure.nom: Nom de la structure
+jcmsplugin.socle.structure.contact.no-result.title: Pas de résultats pour <strong>"{0}"</strong>
+jcmsplugin.socle.structure.contact.no-result.description: Si vous ne trouvez pas votre interlocuteur, merci d'adresser un courriel à l'adresse suivante <a href="mailto:archives@loire-atlantique.fr">archives@loire-atlantique.fr</a>
+
+# ------------------------------------------------------------
+#  Contenu
+# ------------------------------------------------------------
+jcmsplugin.socle.onglet.resume: In sum
+jcmsplugin.socle.onglet.detail: In detail
+jcmsplugin.socle.onglet.faq: FAQ
+
+jcmsplugin.socle.demande.qui-contacter: Contact
+jcmsplugin.socle.demande.faire-demande: Make a request
+jcmsplugin.socle.demande.suivre-demande: Follow my request
+
+jcmsplugin.socle.contact.trouver-contact: Find the right contact :
+jcmsplugin.socle.adresse.valider-adresse: Validate your address
+
+jcmsplugin.socle.ficheaide.premier-onglet.label: 1er onglet
+jcmsplugin.socle.ficheaide.deuxieme-onglet.label: 2e onglet
+jcmsplugin.socle.ficheaide.troisieme-onglet.label: 3e onglet
+jcmsplugin.socle.ficheaide.docutils.label: Documents utiles :
+jcmsplugin.socle.ficheaide.enligne.label: En ligne :
+jcmsplugin.socle.ficheaide.fairedemandeligne.label: Faire une demande en ligne
+jcmsplugin.socle.ficheaide.fairedemandelignelink.label: Connectez-vous pour faire une demande en ligne
+jcmsplugin.socle.ficheaide.nodoc.label: Aucun document disponible
+jcmsplugin.socle.ficheaide.suivre.label: Suivre une demande en cours
+jcmsplugin.socle.ficheaide.duree.label: Durée :
+jcmsplugin.socle.ficheaide.fermerboitedialogue.label: Fermer la boite de dialogue : {0}
+jcmsplugin.socle.ficheaide.adresseenvoiedossier.label: Adresse d'envoi du dossier :
+jcmsplugin.socle.ficheaide.modal.quicontacter: Qui contacter ?
+jcmsplugin.socle.ficheaide.modal.besoinaide: Besoin d'aide ?
+jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi: Code de suivi
+jcmsplugin.socle.ficheaide.modal.suivredemande.connectezvous: Connectez-vous
+jcmsplugin.socle.ficheaide.modal.suivredemande.acodesuivi: Vous avez un code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.exemplecodesuivi: Ex : XXX-XXXX-XX
+jcmsplugin.socle.ficheaide.modal.suivredemande.apascodesuivi: Vous n’avez pas de code de suivi :
+jcmsplugin.socle.ficheaide.modal.suivredemande.saisiscodesuivi: Saisissez votre code de suivi (transmis à l’enregistrement de votre demande en ligne).
+jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi: Valider votre code de suivi
+jcmsplugin.socle.ficheaide.modal.suivredemande.suivrevotredemande: Pour suivre votre demande en ligne
+jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique.fr/code/{0}/load
+jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
+
+jcmsplugin.socle.titre.pour-qui: For who ?
+jcmsplugin.socle.titre.quoi: What is it ?
+jcmsplugin.socle.titre.comment-demande: How do I apply?
+jcmsplugin.socle.titre.fournir-documents: What documents can you provide ?
+jcmsplugin.socle.titre.qui-accueille: Who is welcoming you ?
+jcmsplugin.socle.titre.horaires-acces: Opening hours and access :
+jcmsplugin.socle.titre.autre-lieu-associes: Other associated places:
+jcmsplugin.socle.titre.contacts: Contact
+
+jcmsplugin.socle.titre.temoignage: Testimonial
+
+
+jcmsplugin.socle.titre.endetails: In detail
+jcmsplugin.socle.titre.publicvise: Ages
+jcmsplugin.socle.titre.calinscriptions: scheduling and registration
+jcmsplugin.socle.titre.complementtransports: Travel information
+jcmsplugin.socle.titre.partenairesintervenants: Partners and stakeholders
+
+jcmsplugin.socle.actuedu.infopratiques.label: Practical information :
+jcmsplugin.socle.actuedu.votrecontact.label: Your contact :
+jcmsplugin.socle.actuedu.typepratique.label: Type of Practice :
+jcmsplugin.socle.actuedu.niveau.label: Level :
+jcmsplugin.socle.actuedu.capacite.label: Capacity :
+jcmsplugin.socle.actuedu.cout.label: Cost:
+jcmsplugin.socle.actuedu.prisechargedeplacement.label: Prise en charge déplacement :
+jcmsplugin.socle.actuedu.duree.label: Durée :
+jcmsplugin.socle.actuedu.depotdossier.label: Dépôt du dossier :
+jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
+jcmsplugin.socle.actuedu.nouscontacter.label: Contacter par mail
+jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
+jcmsplugin.socle.actuedu.pour-eleve.label: Pour les élèves de : 
+
+jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d'accès
+jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
+jcmsplugin.socle.ficheaide.accessibilite-lieu.titre: Accessibilité du lieu :
+jcmsplugin.socle.ficheaide.info-accessibilite.label: Infos accessibilité
+jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter par mail : {0} : {1}
+jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contacter par mail
+jcmsplugin.socle.ficheaide.visiter-site.label: Visiter le site
+jcmsplugin.socle.ficheaide.nousRencontrer: Nous rencontrer
+jcmsplugin.socle.ficheaide.adresse: Adresse
+jcmsplugin.socle.ficheaide.nousContacter: Nous contacter
+jcmsplugin.socle.ficheaide.contact: Contact
+jcmsplugin.socle.ficheaide.nousEcrire: Nous écrire
+jcmsplugin.socle.ficheaide.ecrireA: Ecrire à
+jcmsplugin.socle.ficheaide.accueilUniquementHabitantsDe: Ce lieu accueille uniquement les habitant·es de : 
+jcmsplugin.socle.ficheaide.important: Important !
+jcmsplugin.socle.ficheaide.faire-trajet-destineo: Faire mon trajet avec Destineo
+jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l’accessibilité du lieu
+jcmsplugin.socle.ficheaide.bonASavoir.label: Bon à savoir
+jcmsplugin.socle.ficheaide.tuile.besoin.label: Besoin :
+jcmsplugin.socle.ficheaide.tuile.typeAide.label: Type d'aide :
+
+jcmsplugin.socle.faq.votre-question: Your question
+jcmsplugin.socle.faq.votre-email: Your email
+jcmsplugin.socle.faq.vous-avez-question: Do you have a question ?
+jcmsplugin.socle.faq.consulter-question-frequente: Consult the most frequently asked questions.
+jcmsplugin.socle.faq.afficher-plus-questions: See more questions
+jcmsplugin.socle.faq.plus-questions: More questions
+jcmsplugin.socle.faq.poser-question: Ask a question
+jcmsplugin.socle.faq.ex-email: Ex : yourname@email.com
+jcmsplugin.socle.faq.selectionner-commune: Your city
+jcmsplugin.socle.faq.valider-envoie-question: Send your request
+jcmsplugin.socle.faq.selectionner-pays: Select Country
+
+jcmsplugin.socle.facette.champs-obligatoires: Fields marked with * are required.
+jcmsplugin.socle.facette.champ-obligatoire.title: {0} - required
+jcmsplugin.socle.facette.asterisque: *
+jcmsplugin.socle.facette.filtrer-par: Filter by
+jcmsplugin.socle.facette.form-element: form-element
+jcmsplugin.socle.facette.effacer-contenu: Clear
+jcmsplugin.socle.facette.effacer-contenu-champ: Clear : {0}
+jcmsplugin.socle.facette.adresse.default-label: Address
+jcmsplugin.socle.facette.canton.default-label: Canton
+jcmsplugin.socle.facette.categorie.default-label: Topic
+jcmsplugin.socle.facette.commune.default-label: City
+jcmsplugin.socle.facette.delegation.default-label: Keywords
+jcmsplugin.socle.facette.mot-cle.default-label: Keyword
+jcmsplugin.socle.facette.rayon.label: Radius around
+jcmsplugin.socle.facette.localisation.title: Allow 'around me' automatic localization for the field: {0}
+jcmsplugin.socle.facette.localisation.label: Allow 'around me' automatic localization
+jcmsplugin.socle.facette.commune-limitrophe.label: Extending to neighbouring municipalities
+jcmsplugin.socle.facette.epci.label: EPCI name
+jcmsplugin.socle.facette.titre.default-label: Title
+jcmsplugin.socle.facette.all-commune.label: All cities
+jcmsplugin.socle.facette.select-all-commune.label: Select all cities
+jcmsplugin.socle.facette.autour-moi.label: Around me
+jcmsplugin.socle.facette.select-autour-moi.label: Select cities around me
+jcmsplugin.socle.facette.choisir-adresse.label: Choose an address
+jcmsplugin.socle.facette.maj-sous-theme.label: mise à jour automatique des sous-thèmes
+jcmsplugin.socle.facette.tri-alphabetique.label: triés par ordre alphabétique
+jcmsplugin.socle.facette.cat-lie.theme-principal.label: Topic
+jcmsplugin.socle.facette.cat-lie.sous-theme.label: Sub-topic
+jcmsplugin.socle.facette.cat-lie.choisir-option.label: Choose an option
+jcmsplugin.socle.facette.cat-lie.valider-selection.label: Confirm the selection of : {0}
+jcmsplugin.socle.facette.accessibilite.title: Accessibility
+jcmsplugin.socle.facette.date.select.title: Select a date
+jcmsplugin.socle.facette.date.select.today.label: Today
+jcmsplugin.socle.facette.date.select.tomorrow.label: Tomorrow
+jcmsplugin.socle.facette.date.select.weekend.label: Next weekend 
+jcmsplugin.socle.facette.date.select.nextseven.label: Next 7 days
+jcmsplugin.socle.facette.date.select.example.custom: Select a date or period
+jcmsplugin.socle.facette.date.select.example.label: Ex : 20/05/2020
+jcmsplugin.socle.facette.date.select.du.label: From
+jcmsplugin.socle.facette.date.select.jusquau.label: to
+jcmsplugin.socle.facette.date.calendrier.afficher: Display the calendar for the field : {0}
+jcmsplugin.socle.facette.date.exemple.jour: {0} : day (ex. 20)
+jcmsplugin.socle.facette.date.exemple.mois: {0} : month (ex. 05)
+jcmsplugin.socle.facette.date.exemple.annee: {0} : year (ex. 2020)
+
+jcmsplugin.socle.video.telecharger-transcript.label: Download the video transcript file
+jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcript file : {0} - {1} - {2} - new window
+
+# ------------------------------------------------------------
+#  Fil ariane
+# ------------------------------------------------------------
+jcmsplugin.socle.breadcrumb.position: Your location
+
+# ------------------------------------------------------------
+#  Wysiwyg
+# ------------------------------------------------------------
+wysiwyg.configuration.simple: Simple
+wysiwyg.configuration.simple.h: Utilisé pour les chapos et les descriptions sans mise en forme
+# Plugin DS Icons pour Tiny MCE
+jcmsplugin.socle.wysiwyg.icons: Liste d'icônes pour l'éditeur Wysiwyg
+jcmsplugin.socle.wysiwyg.icons.help:Séparer les valeurs par un espace
+
+# -----------------------------------------------------------
+#  Infolocale
+# ------------------------------------------------------------
+jcmsplugin.socle.infolocale.limit: Limite de résultats pour le flux infolocale
+jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
+jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
+jcmsplugin.socle.infolocale.photo.404.url: URL photo 404 pour les événements agenda
+jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
+jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
+jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
+jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
+jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
+jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
+jcmsplugin.socle.infolocale.label.duree: jour(s)
+jcmsplugin.socle.infolocale.label.carrousel.tuile.date: Le {0} {1} {2}
+jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3} {4} {5}
+jcmsplugin.socle.infolocale.label.carrousel.date: Le {0} 
+jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
+jcmsplugin.socle.infolocale.label.horaire.periode: de {0} à {1}
+jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du département
+jcmsplugin.socle.infolocale.label.payant: Payant
+jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
+jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
+
+# Metadonnees Infolocale pour le front
+
+jcmsplugin.socle.infolocale.metadata.label.commune: City
+jcmsplugin.socle.infolocale.metadata.label.genre: Topic
+jcmsplugin.socle.infolocale.metadata.label.organisme: Organization
+jcmsplugin.socle.infolocale.metadata.label.horaires: Hours
+jcmsplugin.socle.infolocale.metadata.label.duree: Duration
+jcmsplugin.socle.infolocale.metadata.label.tarif: Rates
+jcmsplugin.socle.infolocale.metadata.label.public: Audience
+jcmsplugin.socle.infolocale.metadata.label.accessibilite: Accessibility
+jcmsplugin.socle.infolocale.metadata.label.groupeTheme: Topic
+jcmsplugin.socle.infolocale.metadata.label.theme: Topic
+
+# ------------------------------------------------------------
+#  Abonnement newsletter
+# ------------------------------------------------------------
+jcmsplugin.socle.newsletter.abonnement.titre:Receive our information by email
+jcmsplugin.socle.newsletter.abonnement.chapo:Pour être alerté lors de la parution des magazines ou recevoir l’actu selon mes centres d’intérêts
+jcmsplugin.socle.newsletter.abonnement.labelBouton:I subscribe
+jcmsplugin.socle.newsletter.abonnement.titleBouton:I subscribe by email to the information of the CD44
+
+# ------------------------------------------------------------
+#  Insertion unifiée
+# ------------------------------------------------------------
+unified-insert.items.content: Contenu intégré
+unified-insert.items.content.longtitle: Un Contenu intégré
+unified-insert.items.content.subtitle: (présenter un contenu au format intégré)
+
+# ------------------------------------------------------------
+#  Dossier
+# ------------------------------------------------------------
+jcmsplugin.socle.dossier.sommaire : Summary
+jcmsplugin.socle.dossier.menu-sommaire : "Summary" Menu
+jcmsplugin.socle.dossier.fermer-menu-sommaire : Close the "summary" menu
+
+# ------------------------------------------------------------
+#  Fiche emploi / stage
+# ------------------------------------------------------------
+
+jcmsplugin.socle.ficheemploi.label.vosmissions: Vos missions
+jcmsplugin.socle.ficheemploi.label.activites: Activités
+jcmsplugin.socle.ficheemploi.label.competencesattendues: Compétences attendues
+jcmsplugin.socle.ficheemploi.label.conditions: Conditions à remplir
+jcmsplugin.socle.ficheemploi.label.specificites: Spécificités du poste
+jcmsplugin.socle.ficheemploi.label.modalites: Modalités de candidature
+jcmsplugin.socle.ficheemploi.label.reference: Référence : {0}
+jcmsplugin.socle.ficheemploi.label.informations: Informations sur l'offre :
+jcmsplugin.socle.ficheemploi.label.profil: Profil souhaité :
+jcmsplugin.socle.ficheemploi.label.filiere: Filière {0}
+jcmsplugin.socle.ficheemploi.label.grade: Cadre d'emploi : 
+jcmsplugin.socle.ficheemploi.label.reserveagents: Réservé aux agents des collèges
+jcmsplugin.socle.ficheemploi.label.catemploi: Catégorie {0}
+jcmsplugin.socle.ficheemploi.label.repondre: Répondre à cette offre :
+jcmsplugin.socle.ficheemploi.label.datelimite: Date limite : {0}
+jcmsplugin.socle.ficheemploi.label.envoicandidature: Envoyer votre candidature
+jcmsplugin.socle.ficheemploi.label.contacts: Vos contacts
+jcmsplugin.socle.ficheemploi.label.docsutiles: Documents utiles :
+jcmsplugin.socle.ficheemploi.label.repondresite: Répondre par ce site
+jcmsplugin.socle.ficheemploi.label.repondrecourrier: Ou par courrier, à l'attention de :
+jcmsplugin.socle.ficheemploi.label.emploi: Emploi - {0}
+jcmsplugin.socle.ficheemploi.label.repondrecourrier2: Ou envoyer votre candidature par courrier
+jcmsplugin.socle.ficheemploi.label.serviceRessources: Service ressources
+jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de situation administrative ou attestation de réussite au concours.
+jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Département de Loire-Atlantique<br/>Direction des Ressources Humaines,<br/>Service Emploi et Compétences<br/>3 Quai Ceineray, CS 94109<br/>44041 Nantes cedex 1
+
+# ------------------------------------------------------------
+#  Portlet Carrousel d'images en home
+# ------------------------------------------------------------
+
+jcmsplugin.socle.carrouselhome.error.differentSizes: Les deux listes d'éléments carrousel doivent avoir le même nombre de contenus.
+jcmsplugin.socle.carrouselhome.error.nosibling: Les deux listes d'éléments carrousel doivent avoir un élément à l'emplacement {0}.
+jcmsplugin.socle.carrouselhome.stop: Stop the animation.
+
+# ------------------------------------------------------------
+#  Liens d'évitement
+# ------------------------------------------------------------
+jcmsplugin.socle.skiplinks.content : Skip to content
+jcmsplugin.socle.skiplinks.menu : Skip to menu
+jcmsplugin.socle.skiplinks.search : Skip to search
+jcmsplugin.socle.skiplinks.accessibility : Skip to accessibility page
+
+# ------------------------------------------------------------
+#  Fiche élu
+# ------------------------------------------------------------
+
+jcmsplugin.socle.elu.ficheDetaillee: Fiche détaillée de {0}
+jcmsplugin.socle.elu.binome: En binôme avec : {0}
+jcmsplugin.socle.elu.president.masculin: Président du Département
+jcmsplugin.socle.elu.president.feminin: Présidente du Département
+jcmsplugin.socle.elu.vicepresident.masculin.maj: Vice-président
+jcmsplugin.socle.elu.vicepresident.feminin.maj: Vice-présidente
+jcmsplugin.socle.elu.vicepresident.masculin.min: vice-président
+jcmsplugin.socle.elu.vicepresident.feminin.min: vice-présidente
+jcmsplugin.socle.elu.conseiller.masculin: Conseiller départemental
+jcmsplugin.socle.elu.conseiller.feminin: Conseillère départementale
+jcmsplugin.socle.elu.president: président
+jcmsplugin.socle.elu.membre: membre
+jcmsplugin.socle.elu.president-commission.masculin: Président de la commission {0}
+jcmsplugin.socle.elu.president-commission.feminin: Présidente de la commission {0}
+jcmsplugin.socle.elu.membre-commission: Membre de la commission {0}
+jcmsplugin.socle.elu.permanente: permanente
+jcmsplugin.socle.elu.mission-thematique: Mission thématique : 
+jcmsplugin.socle.elu.en-lien-avec: en lien avec
+jcmsplugin.socle.elu.en-binome-avec: En binôme avec : 
+jcmsplugin.socle.elu.remplacant: Remplaçant·e : 
+jcmsplugin.socle.elu.elu-en: Élu en {0}
+jcmsplugin.socle.elu.elue-en: Élue en {0}
+jcmsplugin.socle.elu.reelu-en: Réélu en {0}
+jcmsplugin.socle.elu.reelue-en: Réélue en {0}
+jcmsplugin.socle.elu.nom-binome.default: Voir la fiche de l'élu
+jcmsplugin.socle.elu.canton: - canton 
+jcmsplugin.socle.elu.fonctions-actuelles.titre: Fonctions actuelles au sein du conseil départemental
+jcmsplugin.socle.elu.historique-fonctions.titre: Historique des fonctions au conseil départemental
+jcmsplugin.socle.elu.autres-fonctions.titre: Autres mandats locaux
+jcmsplugin.socle.elu.page-twitter: Le compte Twitter de {0}
+jcmsplugin.socle.elu.page-facebook: La page Facebook de {0}
+
+# ------------------------------------------------------------
+#  Fiche publication
+# ------------------------------------------------------------
+jcmsplugin.socle.fichepublication.telecharger:Download
+jcmsplugin.socle.fichepublication.ecouter:Listen
+jcmsplugin.socle.fichepublication.versiondaisy:Daisy version
+jcmsplugin.socle.fichepublication.ausommaire:Summary
+jcmsplugin.socle.fichepublication.dossier:Headline
+jcmsplugin.socle.fichepublication.portraits:Testimony
+jcmsplugin.socle.fichepublication.actualites:News
+jcmsplugin.socle.fichepublication.question:La question
+jcmsplugin.socle.fichepublication.lireenligne:Lire le magazine en ligne
+jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Département - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
+jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+
+# ------------------------------------------------------------
+#  Etablissement personnes agees
+# ------------------------------------------------------------
+jcmsplugin.socle.etablissementpersonnesagees.enresume: En résumé :
+jcmsplugin.socle.etablissementpersonnesagees.cadredevie: Cadre de vie :
+jcmsplugin.socle.etablissementpersonnesagees.services: Services :
+jcmsplugin.socle.etablissementpersonnesagees.viesociale: Vie sociale :
+jcmsplugin.socle.etablissementpersonnesagees.animations: Animations :
+jcmsplugin.socle.etablissementpersonnesagees.tarifsconventions: Tarifs, conventions
+jcmsplugin.socle.etablissementpersonnesagees.remarquessupplementaires: Remarques supplémentaires
+jcmsplugin.socle.etablissementpersonnesagees.questionconseil: Une question, un conseil ?
+jcmsplugin.socle.etablissementpersonnesagees.savoirplus: En savoir +
+jcmsplugin.socle.etablissementpersonnesagees.savoirplussur: En savoir plus sur : {0}
+
+# ------------------------------------------------------------
+#  Fiche canton
+# ------------------------------------------------------------
+jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
+jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
+jcmsplugin.socle.canton.conseillers: Conseillère et conseiller départementaux :
+jcmsplugin.socle.canton.bref: Le canton en bref :  
+jcmsplugin.socle.canton.superficie: Superficie :
+jcmsplugin.socle.canton.population: Population :
+jcmsplugin.socle.canton.habitants: habitant·es
+jcmsplugin.socle.canton.source: (populations légales des cantons en vigueur au 1er janvier 2017. Source : INSEE, Recensement de la population 2016) 
+
+# ------------------------------------------------------------
+#  Fiche SAAD
+# ------------------------------------------------------------
+jcmsplugin.socle.fichesaad.prestations:Prestations :
+jcmsplugin.socle.fichesaad.detail:En détail :
+jcmsplugin.socle.fichesaad.statut:Statut :
+jcmsplugin.socle.fichesaad.plageintervention:Plage d’intervention :
+jcmsplugin.socle.fichesaad.typeaide:Type d’aide :
+jcmsplugin.socle.fichesaad.modalitespaiement:Modalités de paiement :
+jcmsplugin.socle.fichesaad.modesintervention:Modes d’intervention :
+jcmsplugin.socle.fichesaad.modetarification:Mode de tarification :
+jcmsplugin.socle.fichesaad.typedeservice:Type de service :
+
+# ------------------------------------------------------------
+#  Fiche commune
+# ------------------------------------------------------------
+jcmsplugin.socle.city.epci.site.nouvelonglet: Consultez le site de la mairie - {0} - nouvelle fenêtre
+jcmsplugin.socle.city.vuduciel.titre: {0} vu du ciel
+jcmsplugin.socle.city.vuduciel.soustitre: Consultez les photographies aériennes de la commune
+
+# ------------------------------------------------------------
+#  Equipement
+# ------------------------------------------------------------
+jcmsplugin.socle.equipement.date-decison: Décision votée en :
+jcmsplugin.socle.equipement.montant-travaux: Montant total des travaux :
+jcmsplugin.socle.equipement.financement-dep: Financement départemental :
+jcmsplugin.socle.equipement.pourcentage-dep: Pourcentage Département :
+
+# ------------------------------------------------------------
+#  Communiqué de presse
+# ------------------------------------------------------------
+jcmsplugin.socle.presscommunique.telecharger.label: Télécharger le communiqué
+jcmsplugin.socle.presscommunique.telecharger.title: Télécharger le communiqué : {0} - {1} - {2} - nouvelle fenêtre
+jcmsplugin.socle.presscommunique.contact-presse.nom.default:Service presse
+jcmsplugin.socle.presscommunique.contact-presse.email.default:service.presse@loire-atlantique.fr
+jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13 
+
+# ------------------------------------------------------------
+#  Carousel / CarouselElement (Diaporama d'images)
+# ------------------------------------------------------------
+jcmsplugin.socle.diaporama.titre: {0} - {1}
+
+# ------------------------------------------------------------
+#  Page utile
+# ------------------------------------------------------------
+jcmsplugin.socle.pageutile.titre: Was this page helpful ?
+jcmsplugin.socle.pageutile.oui: Yes, I found this page helpful
+jcmsplugin.socle.pageutile.non: No, I didn't find this page helpful
+jcmsplugin.socle.pageutile.merci: Thank you ! You can leave us a comment:
+jcmsplugin.socle.pageutile.envoi-succes: Thank you ! 
+jcmsplugin.socle.pageutile.commentaire: Comment
+jcmsplugin.socle.pageutile.email: Email
+jcmsplugin.socle.pageutile.envoyer-commentaire.utile: Send your comment
+jcmsplugin.socle.pageutile.envoyer-commentaire.inutile: Send your comment to make this page more useful
+jcmsplugin.socle.pageutile.retour-oui: Return to Yes button
+jcmsplugin.socle.pageutile.retour-non: Return to No button
+jcmsplugin.socle.pageutile.motif-non.titre: Why was this page not useful to you ?
+jcmsplugin.socle.pageutile.message-case: At least one of these boxes must be checked :
+jcmsplugin.socle.pageutile.pas-assez-complet: The information is not complete enough
+jcmsplugin.socle.pageutile.trop-complique: The information is too complicated
+jcmsplugin.socle.pageutile.trop-a-lire: There is too much to read
+jcmsplugin.socle.pageutile.aide-ameliorer: Help us improve this page by leaving us a comment :
+jcmsplugin.socle.pageutile.mailto: Page utile : CC notification email
+jcmsplugin.socle.email.pageutile.libelle-avis.utile: POSITIVE REVIEW FOR THE PAGE
+jcmsplugin.socle.email.pageutile.libelle-avis.inutile: NEGATIVE REVIEW FOR THE PAGE
+
+# ------------------------------------------------------------
+#  Titres de pages personnalisés
+# ------------------------------------------------------------
+jcmsplugin.socle.title.accueil: Home
+jcmsplugin.socle.title.recherche-globale: Search results
+jcmsplugin.socle.title.recherche-facettes: Directory search results
+
+
+# ------------------------------------------------------------
+#  Spectacles
+# ------------------------------------------------------------
+jcmsplugin.socle.show.synopsys: Synopsis
+jcmsplugin.socle.show.date-creation: Date de création
+jcmsplugin.socle.show.compagnie: Compagnie
+jcmsplugin.socle.show.auteur: Auteur
+jcmsplugin.socle.show.mise-en-scene: Mise en scène
+jcmsplugin.socle.show.public-vise: Public visé
+jcmsplugin.socle.show.duree: Durée du spectacle
+jcmsplugin.socle.show.interpretes: Interprètes
+jcmsplugin.socle.show.cout: Coût du spectacle
+jcmsplugin.socle.show.conditions: Conditions particulières
+jcmsplugin.socle.show.liens: Liens utiles
+jcmsplugin.socle.show.infos: Informations pratiques
+
+# Calculette Obligation alimentaire
+jcmsplugin.socle.calculetteOA.titre: Evaluez le montant de l'obligation alimentaire
+jcmsplugin.socle.calculetteOA.ajouter: Ajouter un obligé alimentaire ?
+jcmsplugin.socle.calculetteOA.supprimer: Supprimer le dernier obligé alimentaire
+jcmsplugin.socle.calculetteOA.fieldset.legend: Obligé alimentaire n°
+jcmsplugin.socle.calculetteOA.revenubrut.label: Revenu brut annuel du foyer
+jcmsplugin.socle.calculetteOA.revenubrut.title: Revenu brut annuel du foyer (Obligé alimentaire n°) - obligatoire
+jcmsplugin.socle.calculetteOA.revenubrut.info: Ce montant se trouve en page 2 de votre avis d'imposition - ligne 'Revenu brut global'
+jcmsplugin.socle.calculetteOA.partsfiscales.label: Nombre de parts fiscales du foyer
+jcmsplugin.socle.calculetteOA.partsfiscales.title: Nombre de parts fiscales du foyer (Obligé alimentaire n°) - obligatoire
+jcmsplugin.socle.calculetteOA.partsfiscales.info: Cette information se trouve en page 2 de votre avis d'imposition, sous le libellé 'Nombre de parts'
+jcmsplugin.socle.calculetteOA.bouton.label: Calculer
+jcmsplugin.socle.calculetteOA.bouton.title: Calculer le montant de l'obligation alimentaire
+
+# Chiffres cles
+jcmsplugin.socle.chiffrescles.titre: By numbers
+jcmsplugin.socle.chiffrescles.lien: All data
+
+# FALC
+jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
+
+# Multilingue
+jcmsplugin.socle.multilingue.english-version.title: English : Visit the english version of the website {0}
+jcmsplugin.socle.multilingue.french-version.title: French : Visit the english version of the website {0}

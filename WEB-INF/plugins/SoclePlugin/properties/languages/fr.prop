@@ -41,7 +41,7 @@ jcmsplugin.socle.recherche.geojson.delegation.url: URL du geojson des délégati
 # TODO obsolete à remplacer dans les jsp par data-seo-url dès que le dev sera finalisé
 jcmsplugin.socle.url-rewriting.disabled: Désactive la réécriture d'URL (true | false) ?
 jcmsplugin.socle.url-rewriting: Activer la réécriture d'URL (true | false) ?
-jcmsplugin.socle.url-rewriting.mdate: Enrigistrer date de dernière appel pour la réécriture d'URL
+jcmsplugin.socle.url-rewriting.mdate: Enregistrer date de dernière appel pour la réécriture d'URL
 jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
 jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
@@ -126,7 +126,6 @@ $jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot 
 jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
 jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
 jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
-
 
 # ------------------------------------------------------------
 #  Mail
@@ -298,8 +297,6 @@ jcmsplugin.socle.pays: Pays
 jcmsplugin.socle.question: Question
 jcmsplugin.socle.lien: Lien
 jcmsplugin.socle.page-concernee: Page concernée
-
-
 
 # ------------------------------------------------------------
 #  Header
