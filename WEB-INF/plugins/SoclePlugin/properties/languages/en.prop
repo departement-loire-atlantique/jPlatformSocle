@@ -126,16 +126,16 @@ $jcmsplugin.socle.login.pub : Contenu à viser pour la réinitialisation du mot 
 jcmsplugin.socle.form.login.oublie-passe: Forgot your password ?
 jcmsplugin.socle.form.contact-mail.title: Contact form
 jcmsplugin.socle.form.contact-mail.origine: Loire Atlantique Departement
+jcmsplugin.socle.form.exemple.structure : Exemple : Association Les petits poissons
 
 # ------------------------------------------------------------
 #  Mail
 # ------------------------------------------------------------
 jcmsplugin.socle.email.message.succes : Thank you, your message was sent successfully
 jcmsplugin.socle.email.message.echec : An error occurred while sending the email.
-jcmsplugin.socle.email.contact.objet: Loire-Atlantique.fr - {0}
-jcmsplugin.socle.email.candidature-spontanee.objet: Loire-Atlantique.fr - Candidature spontanée
-jcmsplugin.socle.email.candidature.objet: Loire-Atlantique.fr - Réponse à l'offre d'emploi - {0}
-jcmsplugin.socle.email.faq.objet: Loire-Atlantique.fr - FAQ
+jcmsplugin.socle.email.candidature-spontanee.objet: Candidature spontanée
+jcmsplugin.socle.email.candidature.objet: Réponse à l'offre d'emploi - {0}
+jcmsplugin.socle.email.faq.objet: FAQ
 jcmsplugin.socle.email.pageutile.objet.utile: HELPFUL
 jcmsplugin.socle.email.pageutile.objet.inutile: NOT HELPFUL
 
@@ -297,6 +297,8 @@ jcmsplugin.socle.pays: Country
 jcmsplugin.socle.question: Question
 jcmsplugin.socle.lien: Link
 jcmsplugin.socle.page-concernee: Page concerned
+jcmsplugin.socle.structure: Structure
+jcmsplugin.socle.ville: City
 
 # ------------------------------------------------------------
 #  Header
