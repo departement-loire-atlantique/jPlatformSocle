@@ -67,7 +67,7 @@
       urlImage = SocleUtils.getUrlOfFormattedImageEnAvant(urlImage);
     }
     
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat(JcmsUtil.glp(userLang,"date-format"));
     
     try {
         subTitle = sdf.format((Date) pub.getFieldValue("dateActu"));

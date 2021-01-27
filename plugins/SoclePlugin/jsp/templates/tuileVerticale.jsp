@@ -16,7 +16,7 @@ Publication pub = (Publication) data;
 <%@include file="tuileCommon.jsp" %>
 
 <%
-SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+SimpleDateFormat sdf = new SimpleDateFormat(glp("date-format"));
 
 try {
     subTitle = sdf.format((Date) pub.getFieldValue("dateActu"));
