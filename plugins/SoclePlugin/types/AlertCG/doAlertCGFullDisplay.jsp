@@ -44,17 +44,17 @@ if(Util.isEmpty(obj.getIcone(loggedMember))) {
             <p role="heading" aria-level="1">
                 <button type="button" class="ds44-collapser_button">
                     <h1 class="ds44-card__title">
-                        <i class="icon <%= iconId %>" aria-hidden="true"></i><%= obj.getTitle() %>
+                        <i class="icon <%= iconId %>" aria-hidden="true"></i><%= obj.getTitle(userLang) %>
                     </h1>
                     <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
                 </button>
             </p>
             <div class="ds44-collapser_content">
                 <div class="ds44-collapser_content--level2">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitre()) %>">
-	                   <h2 class="h2-like"><%= obj.getSoustitre() %></h2>
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitre(userLang)) %>">
+	                   <h2 class="h2-like"><%= obj.getSoustitre(userLang) %></h2>
 	                </jalios:if>
-                    <jalios:wysiwyg><%= obj.getSummary() %></jalios:wysiwyg>
+                    <jalios:wysiwyg><%= obj.getSummary(userLang) %></jalios:wysiwyg>
                     <jalios:if predicate="<%= Util.notEmpty(urlLink) %>">
 	                   <p><a href="<%= urlLink %>" class="ds44-btnStd mts" title="<%= titleLink %>"<%= externe ? " target=\"_blank\"" : "" %>><span class="ds44-btnInnerText"><%= lblLink %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a></p>
 	                </jalios:if>
