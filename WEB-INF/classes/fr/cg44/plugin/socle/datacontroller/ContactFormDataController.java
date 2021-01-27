@@ -33,25 +33,26 @@ public class ContactFormDataController extends BasicDataController implements Pl
   ContactForm form = (ContactForm) data;
   String userLang = channel.getCurrentUserLang();
   HttpServletRequest req = channel.getCurrentServletRequest();
+  boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
   
  	boolean isOK = true;
 
   // Nom
   if (Util.isEmpty(form.getNom())) {
     isOK = false;
-    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "nom", userLang)));
+    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.nom")));
   }
 
   // Prénom
   if (Util.isEmpty(form.getPrenom())) {
    isOK = false;
-   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "prenom", userLang)));
+   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.prenom")));
   }
 
   // Mail
   if (Util.isEmpty(form.getMail())) {
    isOK = false;
-   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "email", userLang)));
+   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.mail")));
   }
   
   if (Util.notEmpty(form.getMail())) {
@@ -59,14 +60,14 @@ public class ContactFormDataController extends BasicDataController implements Pl
    boolean correspond = Pattern.matches(regexp, form.getMail());
    if (!correspond) {
     isOK = false;
-    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "email", userLang)));
+    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.mail")));
    }
   } 
 
   // Code postal
- 	if(Util.isEmpty(form.getCodePostal())) {
+ 	if(!multilingue && Util.isEmpty(form.getCodePostal())) {
    isOK = false;
-   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "codePostal", userLang)));
+   JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.code-postal")));
  	}
  	
   if (Util.notEmpty(form.getCodePostal())) {
@@ -74,7 +75,7 @@ public class ContactFormDataController extends BasicDataController implements Pl
    boolean correspond = Pattern.matches(regexp, form.getCodePostal());
    if (!correspond) {
     isOK = false;
-    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "codePostal", userLang)));
+    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.code-postal")));
    }
  }  
   
@@ -84,20 +85,26 @@ public class ContactFormDataController extends BasicDataController implements Pl
    boolean correspond = Pattern.matches(regexp, form.getTelephone());
    if (!correspond) {
     isOK = false;
-    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "telephone", userLang)));
+    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.telephone")));
    }
  }
+  
+  // Pays
+  if (multilingue && Util.isEmpty(form.getPays())) {
+    isOK = false;
+    JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.pays")));
+ }  
 
   // Sujet
   if (Util.isEmpty(form.getSujet(channel.getDefaultAdmin()))) {
   	isOK = false;
-  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "sujet", userLang)));
+  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.sujet")));
   }
 
   // Message
   if (Util.isEmpty(form.getMessage())) {
   	isOK = false;
-  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, channel.getTypeFieldLabel(ContactForm.class, "message", userLang)));
+  	JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.votre-message")));
   }
 
   // Formulaire non valide. On value le titre de la messageBox.

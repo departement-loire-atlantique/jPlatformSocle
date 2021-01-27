@@ -15,6 +15,9 @@
     <field name="mail" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
       <label xml:lang="fr">Courriel</label>
     </field>
+    <field name="structure" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Structure</label>
+    </field>    
     <field name="adresse" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
       <label xml:lang="fr">Adresse</label>
     </field>
@@ -24,9 +27,15 @@
     <field name="codePostal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="5" ml="false" html="false" checkHtml="false" descriptionType="text" maxlength="5">
       <label xml:lang="fr">Code postal</label>
     </field>
+    <field name="ville" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Ville</label>
+    </field>    
+    <field name="pays" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Pays</label>
+    </field>
     <field name="telephone" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
       <label xml:lang="fr">Téléphone</label>
-    </field>
+    </field>        
     <field name="sujet" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="listbox" exclusive="true" root="$jcmsplugin.socle.form.contactform.sujet.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Sujet</label>
     </field>
