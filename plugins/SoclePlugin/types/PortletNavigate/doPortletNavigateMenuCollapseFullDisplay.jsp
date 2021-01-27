@@ -22,7 +22,7 @@
 	int maxLevels = box.getLevels();
 %>
 <jalios:foreach collection="<%= rootSet %>" type="Category" name="itCatLevel1">
-	<h2 class="h3-like"><%=itCatLevel1%></h2>
+	<h2 class="h3-like"><%=itCatLevel1.getName(userLang)%></h2>
 	<% Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel1); %>
 	<ul class="ds44-collapser">
 		<jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2">
