@@ -6,10 +6,10 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="titreDuBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="titreDuBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre du bloc</label>
     </field>
-    <field name="soustitreDuBloc" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="soustitreDuBloc" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="simple" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Sous-titre du bloc</label>
     </field>
     <field name="contenusEnAvant" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content[]">
