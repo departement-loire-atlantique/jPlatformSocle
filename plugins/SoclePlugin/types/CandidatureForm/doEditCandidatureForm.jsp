@@ -101,7 +101,7 @@
                 <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %></span></span>
             </label>
             <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", telephoneLabel) %>"
-                autocomplete="tel" aria-describedby="explanation-form-element-telephone">
+                autocomplete="tel-national" aria-describedby="explanation-form-element-telephone">
             <button class="ds44-reset" type="button" aria-describedby="label-form-element-telephone">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", telephoneLabel) %></span>
             </button>
