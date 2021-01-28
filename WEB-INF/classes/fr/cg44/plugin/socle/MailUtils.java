@@ -352,8 +352,9 @@ public final class MailUtils {
    * Envoi du message de confirmation de l'envoi du mail.
    */
   public static void msgEnvoiMailContact() {
+    String userLang = channel.getCurrentJcmsContext().getUserLang();
     HttpServletRequest request = channel.getCurrentServletRequest();
-    JcmsContext.setInfoMsgSession(JcmsUtil.glpd("jcmsplugin.socle.email.message.succes"), request);
+    JcmsContext.setInfoMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.email.message.succes"), request);
     LOGGER.debug(JcmsUtil.glpd("jcmsplugin.socle.email.message.succes"));
   }
 
@@ -361,8 +362,9 @@ public final class MailUtils {
    * Envoi du message d'erreur d'envoi du mail.
    */
   public static void msgEchecEnvoiMailContact() {
+    String userLang = channel.getCurrentJcmsContext().getUserLang();
     HttpServletRequest request = channel.getCurrentServletRequest();
-    JcmsContext.setErrorMsgSession(JcmsUtil.glpd("jcmsplugin.socle.email.message.echec"), request);
+    JcmsContext.setErrorMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.email.message.echec"), request);
     LOGGER.warn(JcmsUtil.glpd("jcmsplugin.socle.email.message.echec"));
   }  
 
