@@ -304,7 +304,6 @@ jcmsplugin.socle.ville: City
 #  Header
 # ------------------------------------------------------------
 jcmsplugin.socle.retour.accueil: Back to home
-jcmsplugin.socle.header.ouvrir: Open the menu of {0}
 jcmsplugin.socle.menu.ouvrir: Open the main menu
 jcmsplugin.socle.menu.fermer: Close the main menu
 jcmsplugin.socle.menu.retour: Back to the first level of the main menu
