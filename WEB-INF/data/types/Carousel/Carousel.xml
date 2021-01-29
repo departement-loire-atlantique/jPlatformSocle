@@ -6,10 +6,10 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="titre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="titre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre</label>
     </field>
-    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Sous-titre</label>
     </field>      
     <field name="elements1" editor="link" required="true" compactDisplay="false" type="generated.CarouselElement[]" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
