@@ -14,6 +14,7 @@ CarouselElement pub = (CarouselElement) data;
 <ds:figurePicture pub="<%= pub %>" 
 		image="<%= pub.getImage() %>" 
 		format="principale" 
+		alt="<%= pub.getImageLegend() %>" 
 		legend="<%= pub.getImageLegend() %>" 
 		copyright="<%= pub.getImageCopyright() %>"/>
 
