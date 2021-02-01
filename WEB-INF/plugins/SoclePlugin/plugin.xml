@@ -74,6 +74,7 @@
     <type name="PortletFacetteTitre"></type>
     <type name="PortletFaq"></type>
     <type name="PortletMiseEnAvantDeContenus"></type>
+    <type name="PortletNotesAPI"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
     <type name="PressCommunique"></type>
@@ -433,6 +434,11 @@
         <template name="footer" file="doPortletNavigateFooter.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit footer</label>
         </template>        
+    </templates>
+    <templates type="PortletNotesAPI">
+        <template name="default" file="doPortletNotesAPIBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
     </templates>
     <templates type="PortletPush">
         <template name="default" file="doPortletPushBoxDisplay.jsp" usage='box'>
