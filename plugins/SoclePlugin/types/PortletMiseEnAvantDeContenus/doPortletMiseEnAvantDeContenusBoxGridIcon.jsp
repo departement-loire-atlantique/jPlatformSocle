@@ -11,7 +11,7 @@
 <%
 
 String urlLien = "";
-String libelleLien = box.getLabelDuLien(userLang);
+String libelleLien = box.getTitreCompletDeLien(userLang);
 String titleLien = "";
 if(Util.notEmpty(box.getLienExterne())) {
     urlLien = box.getLienExterne();
