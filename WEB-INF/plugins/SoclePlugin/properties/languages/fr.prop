@@ -821,3 +821,11 @@ jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 # Multilingue
 jcmsplugin.socle.multilingue.english-version.title: English : consultez la version anglaise du site {0}
 jcmsplugin.socle.multilingue.french-version.title: French : consultez la version française du site {0}
+
+# Exposition
+jcmsplugin.socle.exposition.intro.title: Présentation
+jcmsplugin.socle.info-pratique.title: Préparez votre visite
+jcmsplugin.socle.horaires.title: Horaires d'ouverture
+jcmsplugin.socle.contacts.title: Contacts et réservation
+
+
