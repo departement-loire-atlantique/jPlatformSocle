@@ -714,6 +714,6 @@ jcmsplugin.socle.api.places.google.id:
 jcmsplugin.socle.api.places.tripadvisor.url: http://api.tripadvisor.com/api/partner/2.0/location/
 jcmsplugin.socle.api.places.tripadvisor.key: 
 jcmsplugin.socle.api.places.tripadvisor.id: 
-jcmsplugin.socle.api.places.facebook.url: 
+jcmsplugin.socle.api.places.facebook.url: https://graph.facebook.com/
 jcmsplugin.socle.api.places.facebook.key: 
 jcmsplugin.socle.api.places.facebook.id: 

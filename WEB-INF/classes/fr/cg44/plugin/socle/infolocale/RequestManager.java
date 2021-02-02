@@ -82,7 +82,7 @@ public class RequestManager {
                 params.put(refreshToken, tokenManager.getRefreshToken());
             }
             
-            CloseableHttpResponse response = ApiUtil.createPostConnection(url, params, false);
+            CloseableHttpResponse response = ApiUtil.createPostConnection(url, params);
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method " + type + " => pas de réponse HTTP" + pleaseCheckConf);
@@ -153,7 +153,7 @@ public class RequestManager {
         try {
             fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
             
-            CloseableHttpResponse response = ApiUtil.createPostConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/data", params, true);
+            CloseableHttpResponse response = ApiUtil.createPostConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/data", params, TokenManager.getInstance().getAccessToken());
             
             if (Util.isEmpty(response)) {
                 LOGGER.warn("Method filterFluxData => pas de réponse HTTP" + pleaseCheckConf);
@@ -219,7 +219,7 @@ public class RequestManager {
      * @param idEvent
      * @return
      */
-    public static JSONObject getSingleEvent(String idEvent) {
+    public static JSONObject getSingleEvent(String idEvent, String token) {
       
       String extractUrl = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.extract.url") + idEvent;
       
@@ -230,7 +230,7 @@ public class RequestManager {
       try {
           fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
           
-          CloseableHttpResponse response = ApiUtil.createGetConnection(extractUrl, true);
+          CloseableHttpResponse response = ApiUtil.createGetConnection(extractUrl, token);
           
           if (Util.isEmpty(response)) {
               LOGGER.warn("Method extractFluxData => pas de réponse HTTP" + pleaseCheckConf);
@@ -250,7 +250,7 @@ public class RequestManager {
                     expiredToken = true;
                     fluxData.put(failureReason, "invalid_token");
                   } else {
-                    return getSingleEvent(idEvent);
+                    return getSingleEvent(idEvent, TokenManager.getInstance().getAccessToken());
                   }
                   break;
               case 400:
@@ -311,7 +311,7 @@ public class RequestManager {
           
           fluxData.put(success, false); // sera remplacé par "true" dans les cas de requête réussie
           
-          CloseableHttpResponse response = ApiUtil.createGetConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/meta/" + metadata, true);
+          CloseableHttpResponse response = ApiUtil.createGetConnection(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url") + fluxId + "/meta/" + metadata, TokenManager.getInstance().getAccessToken());
           
           if (Util.isEmpty(response)) {
               LOGGER.warn("Method getFluxMetadata => pas de réponse HTTP" + pleaseCheckConf);

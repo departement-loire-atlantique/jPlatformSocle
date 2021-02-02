@@ -34,7 +34,7 @@ public class ApiUtil {
    * @param useToken
    * @return
    */
-  public static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, boolean useToken) {
+  public static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, String authToken) {
       
       CloseableHttpClient httpClient = HttpClients.createDefault();
       
@@ -53,8 +53,8 @@ public class ApiUtil {
           }
       }
       
-      if (useToken) {
-          post.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
+      if (Util.notEmpty(authToken)) {
+          post.setHeader("Authorization", "Bearer " + authToken);
       }
       
       CloseableHttpResponse response = null;
@@ -67,17 +67,21 @@ public class ApiUtil {
       return response;
   }
   
+  public static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params) {
+    return createPostConnection(url, params, null); 
+  }
+  
   /**
    * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête GET
    */
-  public static CloseableHttpResponse createGetConnection(String url, boolean useToken) {
+  public static CloseableHttpResponse createGetConnection(String url, String authToken) {
       
       CloseableHttpClient httpClient = HttpClients.createDefault();
       
       HttpGet get = new HttpGet(url);
       
-      if (useToken) {
-        get.setHeader("Authorization", "Bearer " + TokenManager.getInstance().getAccessToken() );
+      if (Util.notEmpty(authToken)) {
+        get.setHeader("Authorization", "Bearer " + authToken);
       }
       
       CloseableHttpResponse response = null;
@@ -90,19 +94,23 @@ public class ApiUtil {
       return response;
   }
   
+  public static CloseableHttpResponse createGetConnection(String url) {
+    return createGetConnection(url, null);
+  }
+  
   /**
    * Génère une requête GET vers une URL et récupère une réponse en format JSON
    * @param token
    * @param url
    * @return
    */
-  public static JSONObject getJsonObjectFromApi(String url) {
+  public static JSONObject getJsonObjectFromApi(String url, String token) {
 
       JSONObject fluxData = new JSONObject();
       
       try {
         
-        CloseableHttpResponse response = ApiUtil.createGetConnection(url, true);
+        CloseableHttpResponse response = ApiUtil.createGetConnection(url, token);
         
         if (Util.isEmpty(response)) {
             LOGGER.warn("Method getJsonObjectFromApi => pas de réponse HTTP");
@@ -131,6 +139,10 @@ public class ApiUtil {
     
     return fluxData;
     
+  }
+  
+  public static JSONObject getJsonObjectFromApi(String url) {
+    return getJsonObjectFromApi(url, null);
   }
   
 }

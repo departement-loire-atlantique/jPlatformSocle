@@ -8,6 +8,7 @@ import com.jalios.jcms.policy.BasicChannelPolicyFilter;
 
 import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
 import fr.cg44.plugin.socle.infolocale.RequestManager;
+import fr.cg44.plugin.socle.infolocale.singleton.TokenManager;
 import generated.EvenementInfolocale;
 
 /**
@@ -28,7 +29,7 @@ public class InfoLocaleChannelPolicyFilter extends BasicChannelPolicyFilter {
 
     String idInfoLocale = id.replaceFirst("INFOLOC-", "");
     LOGGER.debug("Contenu infolocale : " + id);
-    JSONObject jsonObject = RequestManager.getSingleEvent(idInfoLocale);
+    JSONObject jsonObject = RequestManager.getSingleEvent(idInfoLocale, TokenManager.getInstance().getAccessToken());
     EvenementInfolocale event = InfolocaleEntityUtils.createEvenementInfolocaleFromJsonItem(jsonObject);
     return event;
   }
