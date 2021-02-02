@@ -11,14 +11,14 @@
 			alt="<%= obj.getTexteAlternatif(userLang) %>" title="<%= obj.getTitle(userLang) %>" subtitle="<%= obj.getSoustitre(userLang) %>" breadcrumb="true"
 			isCentre="true"></ds:titleBanner>
 
-		<jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) || Util.notEmpty(obj.getContenuIntro(userLang)) %>">
+		<jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) || Util.notEmpty(obj.getContenuIntro(userLang)) %>">
 			<section class="ds44-contenuArticle" id="section1">
 				<div class="ds44-inner-container ds44-mtb3">
 					<div class="ds44-grid12-offset-2">
-						<jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
+						<jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
 							<% String titreIntro = Util.notEmpty(obj.getTitreIntro(userLang)) ? obj.getTitreIntro(userLang) : glp("jcmsplugin.socle.exposition.intro.title"); %>
 							<h2 class="h2-like" id="idTitrePresentation"><%= titreIntro %></h2>
-							<p class="ds44-introduction"><%= obj.getChapo() %></p>
+							<p class="ds44-introduction"><%= obj.getChapo(userLang) %></p>
 						</jalios:if>
 						<%-- Boucler sur les paragraphes contenu intro --%>
 						<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuIntro(userLang)%>">
