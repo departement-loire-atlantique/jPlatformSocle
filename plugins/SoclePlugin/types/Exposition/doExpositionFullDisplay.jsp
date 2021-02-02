@@ -7,7 +7,7 @@
 
 	<div class="ds44-bgDark">
 
-		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImagePrincipale() %>" mobileImagePath="<%= obj.getImageMobile() %>"
+		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImagePrincipale(userLang, true) %>" mobileImagePath="<%= obj.getImageMobile(userLang, true) %>"
 			alt="<%= obj.getTexteAlternatif(userLang) %>" title="<%= obj.getTitle(userLang) %>" subtitle="<%= obj.getSoustitre(userLang) %>" breadcrumb="true"
 			isCentre="true"></ds:titleBanner>
 
