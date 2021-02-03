@@ -16,10 +16,6 @@ String urlTripadvisor = Util.isEmpty(box.getUrlPageTripadvisor()) ? "#" : box.ge
 
 ApiNotesCacheManager notesCache = ApiNotesCacheManager.INSTANCE;
 
-GooglePlaceBean googlePlace = notesCache.getGooglePlace();
-TripadvisorPlaceBean tripadvisorPlace = notesCache.getTripadvisorPlace();
-// TODO FB
-
 %>
 
 <section class="ds44-container-large ds44-mt-std ds44-partage-patrimoine">
@@ -50,47 +46,45 @@ TripadvisorPlaceBean tripadvisorPlace = notesCache.getTripadvisorPlace();
       </div>
       <div class="col-6-small-1 ds44-bgGray ds44-noteRS ">
          <ul class="ds44-list ds44-flex-container ds44-flex-valign-center">
-            <jalios:if predicate="<%= Util.notEmpty(tripadvisorPlace) %>">
-            <%
-            String ratingTripadvisor = tripadvisorPlace.getRating().replaceAll(" ", "").replaceAll(".",",");
-            %>
+            <%-- Tripadvisor --%>
+            <jalios:if predicate="<%= Util.notEmpty(notesCache.getTripadvisorNote()) %>">
             <li class="ds44-flex-align-center">
                <a href="<%= urlTripadvisor %>">
                   <i class="icon icon-tripadvisor" aria-hidden="true"></i>
                   <p>
-                     <span class="h1-like ds44-block"><%= ratingTripadvisor %>/5</span>
-                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", tripadvisorPlace.getNumReviews()) %></span>
+                     <span class="h1-like ds44-block"><%= notesCache.getTripadvisorNote() %>/5</span>
+                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", notesCache.getTripadvisorNbReviews()) %></span>
                      <span class="ds44-block"><%= glp("jcmsplugin.socle.tripadvisor") %></span>
                   </p>
                </a>
             </li>
             </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(googlePlace) && Util.notEmpty(googlePlace.getResult()) %>">
-            <%
-            String ratingGoogle = googlePlace.getResult().getRating().toString().replaceAll(" ", "").replaceAll(".",",");
-            %>
+            <%-- Google --%>
+            <jalios:if predicate="<%= Util.notEmpty(notesCache.getGoogleNote()) %>">
             <li class="ds44-flex-align-center">
                <a href="<%= urlGoogle %>">
                   <i class="icon icon-google" aria-hidden="true"></i>
                   <p>
-                     <span class="h1-like ds44-block"><%= ratingGoogle %>/5</span>
-                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", googlePlace.getResult().getReviews().size()) %></span>
+                     <span class="h1-like ds44-block"><%= notesCache.getGoogleNote() %>/5</span>
+                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", notesCache.getGoogleNbReviews()) %></span>
                      <span class="ds44-block"><%= glp("jcmsplugin.socle.google") %></span>
                   </p>
                </a>
             </li>
             </jalios:if>
-            <%-- TODO FB --%>
+            <%-- Facebook --%>
+            <jalios:if predicate="<%= Util.notEmpty(notesCache.getFacebookNote()) %>">
             <li class="ds44-flex-align-center">
                <a href="<%= urlFacebook %>">
                   <i class="icon icon-facebook" aria-hidden="true"></i>
                   <p>
-                     <span class="h1-like ds44-block">4,7/5</span>
-                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", "78") %></span>
+                     <span class="h1-like ds44-block"><%= notesCache.getFacebookNote() %>/5</span>
+                     <span class="ds44-block"><%= glp("jcmsplugin.socle.nbavis", notesCache.getFacebookNbReviews()) %></span>
                      <span class="ds44-block"><%= glp("jcmsplugin.socle.facebook") %></span>
                   </p>
                </a>
             </li>
+            </jalios:if>
          </ul>
       </div>
    </div>
