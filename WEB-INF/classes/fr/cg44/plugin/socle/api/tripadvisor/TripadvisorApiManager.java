@@ -1,24 +1,23 @@
 package fr.cg44.plugin.socle.api.tripadvisor;
 
-import java.io.IOException;
-
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.jcms.Channel;
+import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.ApiUtil;
-import fr.cg44.plugin.socle.api.google.bean.GooglePlaceBean;
 import fr.cg44.plugin.socle.api.tripadvisor.bean.TripadvisorPlaceBean;
 
 public class TripadvisorApiManager {
   
+  private static final Logger LOGGER = Logger.getLogger(TripadvisorApiManager.class);
+  
   public static JSONObject getJsonFromTripadvisorPlace(String placeId) {
     StringBuilder urlRequest = new StringBuilder();
     urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.url"));
-    urlRequest.append(placeId);
+    urlRequest.append(Util.isEmpty(placeId) ? Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.id") : placeId);
     urlRequest.append("/?key=");
     urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.key"));
     
@@ -31,15 +30,8 @@ public class TripadvisorApiManager {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
       return objectMapper.readValue(jsonTripAdvisorBean.toString(), TripadvisorPlaceBean.class);
-    } catch (JsonParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (JsonMappingException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    }  catch (Exception e) {
+      LOGGER.warn("Error in getJsonFromTripadvisorPlace : " + e.getMessage());
     }
     
     return new TripadvisorPlaceBean();
