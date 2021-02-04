@@ -20,7 +20,7 @@ String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
             <%-- Bloc "Adresse" --%>
             <jalios:if predicate='<%= Util.notEmpty(obj.getCouncilBuildingAddress(userLang)) %>'>
-                <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.adresse") %></p>
+                <p role="heading" aria-level="3" class="ds44-box-heading"><%= glp("jcmsplugin.socle.adresse") %> : </p>
                 <div class="ds44-docListElem mts">
                     <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
                     <jalios:wysiwyg><%= SocleUtils.formatAdresseCommune(obj) %></jalios:wysiwyg>

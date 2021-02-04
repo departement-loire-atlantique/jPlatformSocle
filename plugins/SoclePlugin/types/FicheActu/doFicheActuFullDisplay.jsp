@@ -57,6 +57,13 @@
             </section>
         </jalios:foreach>        
         
+        <%-- FAQ --%>
+	    <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
+	        <div class="ds44-inner-container ds44-grid12-offset-1">
+	            <jalios:include id="<%= obj.getFaq().getId() %>" />
+	        </div>
+	    </jalios:if>
+        
         <%-- Partagez cette page --%>
         <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
         

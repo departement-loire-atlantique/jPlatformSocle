@@ -3,8 +3,8 @@
     PortletCarousel box = (PortletCarousel) portlet;
     String themeClair = "tuileVerticaleLight";
     
-    String titreBloc = Util.notEmpty(box.getTitreDuBloc()) ? box.getTitreDuBloc() : glp("jcmsplugin.socle.label.encemoment");
-    String sousTitreBloc = box.getSoustitreDuBloc();
+    String titreBloc = Util.notEmpty(box.getTitreDuBloc(userLang, false)) ? box.getTitreDuBloc(userLang) : glp("jcmsplugin.socle.label.encemoment");
+    String sousTitreBloc = box.getSoustitreDuBloc(userLang, false);
     String positionTitre = Util.notEmpty(box.getPositionTitre()) && !box.getPositionTitre().equals("none") ? "ds44-blockAbsolute--"+box.getPositionTitre() : "";
 %>
 

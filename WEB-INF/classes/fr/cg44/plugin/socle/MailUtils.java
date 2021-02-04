@@ -26,6 +26,8 @@ public final class MailUtils {
 
   private static final Logger LOGGER = Logger.getLogger(MailUtils.class);
   private static final String NEWLINE = "<br/><br>";
+  private static final String prefixeObjetMail = Util.notEmpty(channel.getProperty("fr.jcmsplugin.socle.nomDuSite")) ? channel.getProperty("fr.jcmsplugin.socle.nomDuSite") : channel.getName();
+  
 
   public MailUtils() {
     throw new IllegalStateException("Utility class");
@@ -35,10 +37,11 @@ public final class MailUtils {
    * Envoi d'un email de contact.
    */
   public static void envoiMailContact(ContactForm form, String emailTo) {
+    boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireContactTemplate.jsp";
 
     // Objet
-    String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.contact.objet", form.getSujet(channel.getDefaultAdmin()).first().getName());
+    String objet = prefixeObjetMail + " - " + form.getSujet(channel.getDefaultAdmin()).first().getName();
 
     // Contenu
     HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
@@ -46,10 +49,15 @@ public final class MailUtils {
     parametersMap.put("prenom", form.getPrenom());
     parametersMap.put("email", form.getMail());
     parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
+    parametersMap.put("structure", Util.notEmpty(form.getStructure()) ? form.getStructure() : "");
     parametersMap.put("adresse", Util.notEmpty(form.getAdresse()) ? form.getAdresse() : "");
     parametersMap.put("complement-adresse", Util.notEmpty(form.getComplementDadresse()) ? form.getComplementDadresse() : "");
-    parametersMap.put("codepostal", form.getCodePostal());
-    parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
+    parametersMap.put("codepostal", Util.notEmpty(form.getCodePostal()) ? form.getCodePostal() : "");
+    if(!multilingue && Util.notEmpty(form.getCodePostal())) {
+      parametersMap.put("commune", SocleUtils.getCitynameFromZipcode(form.getCodePostal()));
+    }
+    parametersMap.put("ville", Util.notEmpty(form.getVille()) ? form.getVille() : "");
+    parametersMap.put("pays", Util.notEmpty(form.getPays()) ? form.getPays() : "");
     parametersMap.put("sujet", form.getSujet(channel.getDefaultAdmin()).first());
     parametersMap.put("message", form.getMessage());
 
@@ -69,7 +77,7 @@ public final class MailUtils {
    */
   public static void envoiMailCandidatureSpontanee(CandidatureSpontaneeForm form, ArrayList<File> fichiers) {
     // Objet
-    String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature-spontanee.objet");
+    String objet = prefixeObjetMail +" - " + JcmsUtil.glpd("jcmsplugin.socle.email.candidature-spontanee.objet");
 
     // Contenu
     StringBuilder contenu = new StringBuilder("Expediteur : ");
@@ -133,7 +141,7 @@ public final class MailUtils {
       }
 
     // Objet
-    String objet = JcmsUtil.glp(channel.getDefaultAdmin().getLanguage(), "jcmsplugin.socle.email.candidature.objet", form.getReference());
+    String objet = prefixeObjetMail +" - " + JcmsUtil.glp("jcmsplugin.socle.email.candidature.objet", form.getReference());
 
     StringBuilder contenu = new StringBuilder("Expediteur : ");
     contenu.append("  " + form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
@@ -174,7 +182,7 @@ public final class MailUtils {
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireFaqTemplate.jsp";
     
     // Objet
-    String objet = JcmsUtil.glpd("jcmsplugin.socle.email.faq.objet");
+    String objet = prefixeObjetMail +" - " + JcmsUtil.glpd("jcmsplugin.socle.email.faq.objet");
 
     // Publication concernée par la FAQ
     Publication pub = channel.getPublication(request.getParameter("id[value]"));
@@ -185,6 +193,7 @@ public final class MailUtils {
     parametersMap.put("question", request.getParameter("question[value]"));
     parametersMap.put("codepostal", Util.notEmpty(request.getParameter("commune[value]")) ? request.getParameter("commune[value]") : "");
     parametersMap.put("commune", Util.notEmpty(request.getParameter("commune[text]")) ? request.getParameter("commune[text]") : "");
+    parametersMap.put("pays", Util.notEmpty(request.getParameter("pays[text]")) ? request.getParameter("pays[text]") : "");
     parametersMap.put("email", request.getParameter("mail[value]"));
 
     if (Util.notEmpty(emailTo)) {
@@ -228,9 +237,8 @@ public final class MailUtils {
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulairePageUtileTemplate.jsp";
     
     // Objet
-    StringBuffer objet = new StringBuffer();
-    objet.append(channel.getName()).append(" / ");
-    objet.append(pageUtile ? JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.utile") : JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.inutile"));
+    String objet = prefixeObjetMail + " / ";
+    objet += pageUtile ? JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.utile") : JcmsUtil.glpd("jcmsplugin.socle.email.pageutile.objet.inutile");
 
     // Contenu
     HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
@@ -344,8 +352,9 @@ public final class MailUtils {
    * Envoi du message de confirmation de l'envoi du mail.
    */
   public static void msgEnvoiMailContact() {
+    String userLang = channel.getCurrentJcmsContext().getUserLang();
     HttpServletRequest request = channel.getCurrentServletRequest();
-    JcmsContext.setInfoMsgSession(JcmsUtil.glpd("jcmsplugin.socle.email.message.succes"), request);
+    JcmsContext.setInfoMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.email.message.succes"), request);
     LOGGER.debug(JcmsUtil.glpd("jcmsplugin.socle.email.message.succes"));
   }
 
@@ -353,8 +362,9 @@ public final class MailUtils {
    * Envoi du message d'erreur d'envoi du mail.
    */
   public static void msgEchecEnvoiMailContact() {
+    String userLang = channel.getCurrentJcmsContext().getUserLang();
     HttpServletRequest request = channel.getCurrentServletRequest();
-    JcmsContext.setErrorMsgSession(JcmsUtil.glpd("jcmsplugin.socle.email.message.echec"), request);
+    JcmsContext.setErrorMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.email.message.echec"), request);
     LOGGER.warn(JcmsUtil.glpd("jcmsplugin.socle.email.message.echec"));
   }  
 

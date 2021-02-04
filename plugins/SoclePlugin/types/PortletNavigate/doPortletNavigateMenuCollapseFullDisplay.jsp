@@ -22,7 +22,7 @@
 	int maxLevels = box.getLevels();
 %>
 <jalios:foreach collection="<%= rootSet %>" type="Category" name="itCatLevel1">
-	<h2 class="h3-like"><%=itCatLevel1%></h2>
+	<h2 class="h3-like"><%=itCatLevel1.getName(userLang)%></h2>
 	<% Set<Category> level1CatSet = SocleUtils.getOrderedAuthorizedChildrenSet(itCatLevel1); %>
 	<ul class="ds44-collapser">
 		<jalios:foreach collection="<%= level1CatSet %>" type="Category" name="itCatLevel2">
@@ -40,33 +40,33 @@
 							<% 
 								String fileType = " - " + FileDocument.getExtension(((FileDocument)itContenuPrincipal).getFilename()).toUpperCase();
 								String fileSize = " - " + Util.formatFileSize(((FileDocument)itContenuPrincipal).getSize());
-								String linkTitle = glp("jcmsplugin.socle.fichepublication.telecharger") + " " + itCatLevel2.getName() + fileType + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
+								String linkTitle = glp("jcmsplugin.socle.fichepublication.telecharger") + " " + itCatLevel2.getName(userLang) + fileType + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
 							%>
-							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike" title="<%= linkTitle %>" htmlAttributes="target='_blank'"><%=itCatLevel2.getName()%></jalios:link>
+							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike" title="<%= linkTitle %>" htmlAttributes="target='_blank'"><%=itCatLevel2.getName(userLang)%></jalios:link>
 						</jalios:if>
 						<jalios:if predicate="<%= ! (itContenuPrincipal instanceof FileDocument) %>"> 
-							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+							<jalios:link data="<%=itContenuPrincipal%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName(userLang)%></jalios:link>
 						</jalios:if>
 					</jalios:if>
 					<jalios:if predicate="<%= Util.notEmpty(itRedirect) %>" breakselect="true">
 						<jalios:select>
 							<jalios:if predicate='<%= itRedirect.getStatus().equals("url") && Util.notEmpty(itRedirect.getUrl()) %>'>
-								<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike" htmlAttributes="target='_blank'"><%=itCatLevel2.getName()%></jalios:link>
+								<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike" htmlAttributes="target='_blank'"><%=itCatLevel2.getName(userLang)%></jalios:link>
 							</jalios:if>
 							<jalios:default>
-								<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link>
+								<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName(userLang)%></jalios:link>
 							</jalios:default>
 						</jalios:select> 
 					</jalios:if>
 					<jalios:if predicate="<%= Util.notEmpty(level3CatSet) %>" breakselect="true">
 						<c:set var="itCategory" value="<%=itCatLevel2%>" scope="request" /> 
 						<c:set var="maxLevels" value="<%=maxLevels%>" scope="request" /> 
-						<ds:toggle title="<%=itCatLevel2.getName() %>">
+						<ds:toggle title="<%=itCatLevel2.getName(userLang) %>">
 							<ds:categoryTree rootCat="${itCategory}" maxLevels="${maxLevels}" currentLevel="0" />
 						</ds:toggle>
 					</jalios:if>
 					<jalios:default>
-						<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName()%></jalios:link> 
+						<jalios:link data="<%=itCatLevel2%>" css="ds44-collapser_content--buttonLike"><%=itCatLevel2.getName(userLang)%></jalios:link> 
 					</jalios:default>
 				</jalios:select>
 			</li>

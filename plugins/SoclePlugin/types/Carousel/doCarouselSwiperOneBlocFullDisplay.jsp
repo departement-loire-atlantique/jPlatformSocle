@@ -7,11 +7,11 @@
 <%-- Affiche une image fixe ou une succession d'images avec effet "swiper" --%>
 
 <jalios:buffer name="titreBloc">
-	<jalios:if predicate='<%= Util.notEmpty(obj.getTitre()) %>'>
+	<jalios:if predicate='<%= Util.notEmpty(obj.getTitre(userLang)) %>'>
 	    <p role="heading" aria-level="1" class="h1-like ds44-text--colorInvert">
-	        <%= obj.getTitre(userLang) %>
-	        <jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre()) %>'>
-	            <br><span class="ds44-ssTitreH1_home"><%= obj.getSoustitre(userLang) %></span>
+	        <%= obj.getTitre(userLang, false) %>
+	        <jalios:if predicate='<%= Util.notEmpty(obj.getSoustitre(userLang)) %>'>
+	            <br><span class="ds44-ssTitreH1_home"><%= obj.getSoustitre(userLang, false) %></span>
 	        </jalios:if>            
 	    </p>
 	</jalios:if>

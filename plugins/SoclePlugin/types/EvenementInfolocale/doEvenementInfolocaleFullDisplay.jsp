@@ -198,7 +198,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                     </div>
                      </jalios:if>
                      <div class="ds44-mb3">
-                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.adresse") %></h2>
+                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.adresse") %> : </h2>
                         <div class="ds44-ml1">
                            <p class="ds44-docListElem mtm">
                               <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>

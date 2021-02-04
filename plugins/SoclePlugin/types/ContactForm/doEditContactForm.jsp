@@ -12,9 +12,11 @@
   EditContactFormHandler formHandler = (EditContactFormHandler)request.getAttribute("formHandler");
   ServletUtil.backupAttribute(pageContext, "classBeingProcessed");
   request.setAttribute("classBeingProcessed", generated.ContactForm.class);
+  
+  boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
 %>
 <%-- Name ------------------------------------------------------------ --%>
-<% String nomLabel = channel.getTypeFieldLabel(ContactForm.class, "nom", userLang);%>
+<% String nomLabel = glp("jcmsplugin.socle.nom"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -32,7 +34,7 @@
 </div>
  
 <%-- FirstName ------------------------------------------------------------ --%>
-<% String prenomLabel = channel.getTypeFieldLabel(ContactForm.class, "prenom", userLang);%>
+<% String prenomLabel = glp("jcmsplugin.socle.prenom"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -49,7 +51,7 @@
 </div>
  
 <%-- Mail ------------------------------------------------------------ --%>
-<% String mailLabel = channel.getTypeFieldLabel(ContactForm.class, "mail", userLang);%>
+<% String mailLabel = glp("jcmsplugin.socle.mail"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -71,7 +73,8 @@
 </div>
 
 <%-- Phone ------------------------------------------------------------ --%>
-<% String telephoneLabel = channel.getTypeFieldLabel(ContactForm.class, "telephone", userLang);%>
+<jalios:if predicate='<%= userLang.equals("fr") %>'>
+<% String telephoneLabel = glp("jcmsplugin.socle.telephone"); %>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
@@ -90,73 +93,173 @@
         </div>
     </div>
 </div>
+</jalios:if>
 
 <%-- Adresse ------------------------------------------------------------ --%>
-<% String adresseLabel = channel.getTypeFieldLabel(ContactForm.class, "adresse", userLang);%>
-<div class="ds44-mb3">
-    <div class="ds44-form__container">
-        <div class="ds44-posRel">
-            <label for="form-element-adresse" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= adresseLabel %></span></span>
-            </label>
-            <input type="text" id="form-element-adresse" name="adresse" class="ds44-inpStd" aria-describedby="explanation-form-element-adresse">
-            <button class="ds44-reset" type="button">
-                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", adresseLabel) %></span>
-            </button>
-        </div>
-        <div class="ds44-field-information" aria-live="polite">
-            <ul class="ds44-field-information-list ds44-list">
-                <li id="explanation-form-element-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.adresse") %></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jalios:if predicate='<%= ! multilingue %>'>
+	<% String adresseLabel = glp("jcmsplugin.socle.adresse"); %>
+	<div class="ds44-mb3">
+	    <div class="ds44-form__container">
+	        <div class="ds44-posRel">
+	            <label for="form-element-adresse" class="ds44-formLabel">
+	                <span class="ds44-labelTypePlaceholder"><span><%= adresseLabel %></span></span>
+	            </label>
+	            <input type="text" id="form-element-adresse" name="adresse" class="ds44-inpStd" aria-describedby="explanation-form-element-adresse">
+	            <button class="ds44-reset" type="button">
+	                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", adresseLabel) %></span>
+	            </button>
+	        </div>
+	        <div class="ds44-field-information" aria-live="polite">
+	            <ul class="ds44-field-information-list ds44-list">
+	                <li id="explanation-form-element-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.adresse") %></li>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+</jalios:if>
+
 
 <%-- complementDadresse ------------------------------------------------------------ --%>
-<% String complementDAdresseLabel = channel.getTypeFieldLabel(ContactForm.class, "complementDadresse", userLang);%>
-<div class="ds44-mb3">
-    <div class="ds44-form__container">
-        <div class="ds44-posRel">
-            <label for="form-element-complement-adresse" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= complementDAdresseLabel %></span></span>
-            </label>
-            <input type="text" id="form-element-complement-adresse" name="complementDadresse" class="ds44-inpStd" aria-describedby="explanation-form-element-complement-adresse">
-            <button class="ds44-reset" type="button">
-                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", complementDAdresseLabel) %></span>
-            </button>
-        </div>
-        <div class="ds44-field-information" aria-live="polite">
-            <ul class="ds44-field-information-list ds44-list">
-                <li id="explanation-form-element-complement-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.complement-adresse") %></li>
-            </ul>
+<jalios:if predicate='<%= ! multilingue %>'>
+	<% String complementDAdresseLabel = glp("jcmsplugin.socle.complement-adresse"); %>
+	<div class="ds44-mb3">
+	    <div class="ds44-form__container">
+	        <div class="ds44-posRel">
+	            <label for="form-element-complement-adresse" class="ds44-formLabel">
+	                <span class="ds44-labelTypePlaceholder"><span><%= complementDAdresseLabel %></span></span>
+	            </label>
+	            <input type="text" id="form-element-complement-adresse" name="complementDadresse" class="ds44-inpStd" aria-describedby="explanation-form-element-complement-adresse">
+	            <button class="ds44-reset" type="button">
+	                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", complementDAdresseLabel) %></span>
+	            </button>
+	        </div>
+	        <div class="ds44-field-information" aria-live="polite">
+	            <ul class="ds44-field-information-list ds44-list">
+	                <li id="explanation-form-element-complement-adresse" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.complement-adresse") %></li>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+</jalios:if>
+
+<%-- structure ------------------------------------------------------------ --%>
+<jalios:if predicate='<%= multilingue && userLang.equals("fr") %>'>
+    <% String structureLabel = glp("jcmsplugin.socle.structure"); %>
+    <div class="ds44-mb3">
+        <div class="ds44-form__container">
+            <div class="ds44-posRel">
+                <label for="form-element-structure" class="ds44-formLabel">
+                    <span class="ds44-labelTypePlaceholder"><span><%= structureLabel %></span></span>
+                </label>
+                <input type="text" id="form-element-structure" name="structure" class="ds44-inpStd" aria-describedby="explanation-form-element-structure">
+                <button class="ds44-reset" type="button">
+                    <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", structureLabel) %></span>
+                </button>
+            </div>
+            <div class="ds44-field-information" aria-live="polite">
+                <ul class="ds44-field-information-list ds44-list">
+                    <li id="explanation-form-element-structure" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.structure") %></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
- 
+</jalios:if>
+
 <%-- CodePostal ------------------------------------------------------------ --%>
-<% String codepostalLabel = channel.getTypeFieldLabel(ContactForm.class, "codePostal", userLang);%>
-<div class="ds44-mb3">
-    <div class="ds44-form__container">
-        <div class="ds44-posRel">
-            <label for="form-element-codepostal" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %><sup aria-hidden="true">*</sup></span></span>
-            </label>
-            <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
-                required autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
-            <button class="ds44-reset" type="button">
-                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
-            </button>
-        </div>
-        <div class="ds44-field-information" aria-live="polite">
-            <ul class="ds44-field-information-list ds44-list">
-                <li id="explanation-form-element-codepostal" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.codepostal") %></li>
-            </ul>
+<jalios:if predicate='<%= ! multilingue %>'>
+	<% String codepostalLabel = glp("jcmsplugin.socle.code-postal"); %>
+	<div class="ds44-mb3">
+	    <div class="ds44-form__container">
+	        <div class="ds44-posRel">
+	            <label for="form-element-codepostal" class="ds44-formLabel">
+	                <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %><sup aria-hidden="true">*</sup></span></span>
+	            </label>
+	            <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
+	                required autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
+	            <button class="ds44-reset" type="button">
+	                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
+	            </button>
+	        </div>
+	        <div class="ds44-field-information" aria-live="polite">
+	            <ul class="ds44-field-information-list ds44-list">
+	                <li id="explanation-form-element-codepostal" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.codepostal") %></li>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+</jalios:if>
+
+<%-- CodePostal ML (non obligatoire) -------------------------------------------------------- --%>
+<jalios:if predicate='<%= multilingue && userLang.equals("fr") %>'>
+    <% String codepostalLabel = glp("jcmsplugin.socle.code-postal"); %>
+    <div class="ds44-mb3">
+        <div class="ds44-form__container">
+            <div class="ds44-posRel">
+                <label for="form-element-codepostal" class="ds44-formLabel">
+                    <span class="ds44-labelTypePlaceholder"><span><%= codepostalLabel %></span></span>
+                </label>
+                <input type="text" id="form-element-codepostal" name="codePostal" class="ds44-inpStd" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", codepostalLabel) %>"
+                    autocomplete="postal-code" aria-describedby="explanation-form-element-codepostal">
+                <button class="ds44-reset" type="button">
+                    <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", codepostalLabel) %></span>
+                </button>
+            </div>
+            <div class="ds44-field-information" aria-live="polite">
+                <ul class="ds44-field-information-list ds44-list">
+                    <li id="explanation-form-element-codepostal" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.codepostal") %></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</jalios:if>
+
+<%-- Ville ------------------------------------------------------------ --%>
+<jalios:if predicate='<%= multilingue && userLang.equals("fr") %>'>
+    <% String villeLabel = glp("jcmsplugin.socle.ville"); %>
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="form-element-ville" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder">
+                    <span class="ds44-labelTypePlaceholder"><%= villeLabel %></span>
+                </span>
+            </label>
+            <input type="text" id="form-element-ville" name="ville" class="ds44-inpStd" />
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+                <span class="visually-hidden">
+                    <%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", villeLabel) %>
+                </span>
+            </button> 
+            
+        </div>
+    </div>
+</jalios:if>
+
+<jalios:if predicate='<%= multilingue %>'>
+    <%-- Pays ------------------------------------------------------------ --%>
+    <% String paysLabel = glp("jcmsplugin.socle.pays"); %>
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="form-element-pays" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder">
+                    <span class="ds44-labelTypePlaceholder"><%= paysLabel %><sup aria-hidden="true">*</sup></span>
+                </span>
+            </label>
+            <input type="text" id="form-element-pays" name="pays" class="ds44-inpStd" required
+                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' />
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
+                <span class="visually-hidden">
+                    <%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", paysLabel) %>
+                </span>
+            </button> 
+            
+        </div>
+    </div>
+</jalios:if>
 
 <%-- Sujet ------------------------------------------------------------ --%>
-<% String sujetLabel = channel.getTypeFieldLabel(ContactForm.class, "sujet", userLang);%>
+<% String sujetLabel = glp("jcmsplugin.socle.sujet"); %>
 <%
 TreeSet sujetCatSet = new TreeSet(Category.getOrderComparator(userLang));
 sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
@@ -186,7 +289,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 </div>
  
 <%-- Message ------------------------------------------------------------ --%>
-<% String messageLabel = channel.getTypeFieldLabel(ContactForm.class, "message", userLang);%>
+<% String messageLabel = glp("jcmsplugin.socle.votre-message"); %>
 <div class="ds44-mb3">
 	<div class="ds44-form__container">
 		<div class="ds44-posRel">

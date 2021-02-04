@@ -17,7 +17,7 @@
 				isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 
 				dataMode="select-only" 
 				dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchCommune.jsp" 
-				label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
+				label='<%= Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 				title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title",titleAttr) %>'
 				isLarge="false"
 				ariaDescribedBy="pdcv-commune-name"/>

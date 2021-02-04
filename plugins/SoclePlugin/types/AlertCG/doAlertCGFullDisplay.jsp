@@ -21,6 +21,21 @@ if (Util.notEmpty(obj.getLienInterne())) {
   externe = true;
   titleLink = glp("jcmsplugin.socle.lien.nouvelonglet", titleLink);
 }
+
+String iconId = "";
+if(Util.isEmpty(obj.getIcone(loggedMember))) {
+	//on recupere par defaut la premiere icone de la liste
+	Category rootIconeCat = channel.getCategory("$jcmsplugin.socle.alerte.icone");
+	if(Util.notEmpty(rootIconeCat)) {
+		Iterator<Category> listeIcone = rootIconeCat.getChildrenSet().iterator();
+		if(listeIcone.hasNext()) {
+			iconId = listeIcone.next().getDescription(userLang);
+		}
+	}
+} else {
+	Category iconeCat = obj.getIcone(loggedMember).first();
+	iconId = iconeCat.getDescription(userLang);
+}
 %>
 
 <section class="ds44-alertMsg-container txtcenter">
@@ -29,17 +44,17 @@ if (Util.notEmpty(obj.getLienInterne())) {
             <p role="heading" aria-level="1">
                 <button type="button" class="ds44-collapser_button">
                     <h1 class="ds44-card__title">
-                        <i class="icon icon-attention" aria-hidden="true"></i><%= obj.getTitle() %>
+                        <i class="icon <%= iconId %>" aria-hidden="true"></i><%= obj.getTitle(userLang) %>
                     </h1>
                     <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
                 </button>
             </p>
             <div class="ds44-collapser_content">
                 <div class="ds44-collapser_content--level2">
-                    <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitre()) %>">
-	                   <h2 class="h2-like"><%= obj.getSoustitre() %></h2>
+                    <jalios:if predicate="<%= Util.notEmpty(obj.getSoustitre(userLang)) %>">
+	                   <h2 class="h2-like"><%= obj.getSoustitre(userLang) %></h2>
 	                </jalios:if>
-                    <jalios:wysiwyg><%= obj.getSummary() %></jalios:wysiwyg>
+                    <jalios:wysiwyg><%= obj.getSummary(userLang) %></jalios:wysiwyg>
                     <jalios:if predicate="<%= Util.notEmpty(urlLink) %>">
 	                   <p><a href="<%= urlLink %>" class="ds44-btnStd mts" title="<%= titleLink %>"<%= externe ? " target=\"_blank\"" : "" %>><span class="ds44-btnInnerText"><%= lblLink %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a></p>
 	                </jalios:if>

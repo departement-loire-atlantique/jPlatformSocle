@@ -17,7 +17,7 @@
 				legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
 	</section>
 
-	<section class="ds44-container-large">
+	<section class="ds44-container-large ds44--xxl-padding-b">
 		<div class="ds44-mt3 ds44--xl-padding-t">
 			<div class="ds44-inner-container">
 				<div class="grid-12-medium-1 grid-12-small-1">
@@ -63,6 +63,13 @@
 			</div>
 		</div>
 	</section>
+
+	<%-- FAQ --%>
+	<jalios:if predicate="<%=Util.notEmpty(obj.getFaq())%>">
+		<div>
+			<jalios:include id="<%=obj.getFaq().getId()%>" />
+		</div>
+	</jalios:if>
 
 	<%-- Partagez cette page --%>
     <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>

@@ -13,8 +13,8 @@ if (Util.isEmpty(obj.getElements1())) {
 SimpleDateFormat sdfTuiles = new SimpleDateFormat("yyyy/MM");
 %>
 
-<jalios:if predicate="<%= Util.notEmpty(obj.getTitre()) %>">
-    <p class="h4-like"><%= obj.getTitre() %></p>
+<jalios:if predicate="<%= Util.notEmpty(obj.getTitre(userLang, false)) %>">
+    <p class="h4-like"><%= obj.getTitre(userLang, false) %></p>
 </jalios:if>
 <div class="swipper-carousel-wrap swipper-carousel-slideshow" data-nb-visible-slides="1">
    <div class="swiper-container">
@@ -44,13 +44,13 @@ SimpleDateFormat sdfTuiles = new SimpleDateFormat("yyyy/MM");
                urlImage = SocleUtils.getUrlOfFormattedImageDiaporamaMobile(urlImage);
              }
              
-             String titreTuile = glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle());
+             String titreTuile = glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false));
              %>
 	         <li class="swiper-slide">
 	            <div class="ds44-diaporama-vignette">
 	               <figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
 	                  <img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %>' />
-	                  <figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><br /><%= itElement.getImageLegend() %></figcaption>
+	                  <figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></figcaption>
 	               </figure>
 	            </div>
 	         </li>

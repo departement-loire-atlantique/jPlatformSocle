@@ -307,16 +307,31 @@ MOBILE TARGETING
                         <td>
                         <p><%= glp("jcmsplugin.socle.nom") %> : <%=request.getAttribute("nom") %></p>
                         <p><%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %></p>
-                        <p><%= glp("jcmsplugin.socle.pageutile.email") %> : <%=request.getAttribute("email") %></p>
-                        <p><%= glp("jcmsplugin.socle.telephone") %> <%=request.getAttribute("telephone") %></p>
+                        <p><%= glp("jcmsplugin.socle.mail") %> : <%=request.getAttribute("email") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("telephone"))) { %>
+                          <p><%= glp("jcmsplugin.socle.telephone") %> : <%=request.getAttribute("telephone") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("structure"))) { %>
+                          <p><%= glp("jcmsplugin.socle.structure") %> : <%=request.getAttribute("structure") %></p>
+                        <% } %>
                         <% if(Util.notEmpty(request.getAttribute("adresse"))) { %>
-                          <p><%= glp("jcmsplugin.socle.adresse") %> <%=request.getAttribute("adresse") %></p>
+                          <p><%= glp("jcmsplugin.socle.adresse") %> : <%=request.getAttribute("adresse") %></p>
                         <% } %>
                         <% if(Util.notEmpty(request.getAttribute("complement-adresse"))) { %>
                           <p><%= glp("jcmsplugin.socle.complement-adresse") %> : <%=request.getAttribute("complement-adresse") %></p>
                         <% } %>
-                        <p><%= glp("jcmsplugin.socle.code-postal") %> : <%=request.getAttribute("codepostal") %></p>
-                        <p><%= glp("jcmsplugin.socle.facette.commune.default-label") %> : <%=request.getAttribute("commune") %></p>
+                        <% if(Util.notEmpty(request.getAttribute("codepostal"))) { %>
+                          <p><%= glp("jcmsplugin.socle.code-postal") %> : <%=request.getAttribute("codepostal") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("commune"))) { %>
+                          <p><%= glp("jcmsplugin.socle.facette.commune.default-label") %> : <%=request.getAttribute("commune") %></p>
+                        <% } %>
+                        <% if(Util.notEmpty(request.getAttribute("ville"))) { %>
+                          <p><%= glp("jcmsplugin.socle.ville") %> : <%=request.getAttribute("ville") %></p>
+                        <% } %>                        
+                        <% if(Util.notEmpty(request.getAttribute("pays"))) { %>
+                          <p><%= glp("jcmsplugin.socle.pays") %> : <%=request.getAttribute("pays") %></p>
+                        <% } %>
                         <p><%= glp("jcmsplugin.socle.sujet") %> : <%=request.getAttribute("sujet") %></p>
                         <p><%= glp("jcmsplugin.socle.message") %> : <%=request.getAttribute("message") %></p>
                         </td>

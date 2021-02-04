@@ -29,6 +29,13 @@
         
     </article>
     
+    <%-- FAQ --%>
+    <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
+        <div class="ds44-inner-container ds44-grid12-offset-1">
+            <jalios:include id="<%= obj.getFaq().getId() %>" />
+        </div>
+    </jalios:if>
+    
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
         <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.portlet.PortalElement">

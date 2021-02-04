@@ -41,6 +41,9 @@
       <label xml:lang="fr">Paragraphe rubrique</label>
     </field>
     <!-- Classement -->
+    <field name="faq" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FaqAccueil" parent="false">
+      <label xml:lang="fr">FAQ</label>
+    </field>
     <field name="surLeMemeTheme" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" tab="classement" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Sur le même thème</label>
       <onLabel xml:lang="fr">Oui</onLabel>

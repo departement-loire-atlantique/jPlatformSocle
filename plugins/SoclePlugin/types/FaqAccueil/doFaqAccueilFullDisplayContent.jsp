@@ -3,7 +3,11 @@
 
 	
 		<div class="grid-12-small-1">
-			<div class="col-6-small-1">
+			<% 
+				Boolean showContact = obj.getAvecFormulaireDeContact() || Util.notEmpty(obj.getTexteContact(userLang)); 
+				int largeurDiv = showContact ? 6 : 12;
+			%>
+			<div class="col-<%= largeurDiv %>-small-1">
 				<h3 class="h4-like"><%= Util.notEmpty(obj.getSoustitre(userLang)) ? obj.getSoustitre(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></h3>
 				<ul class="ds44-collapser ds44-mb-std ">
 					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' counter='nbrQuestRep'>
@@ -31,15 +35,22 @@
 					</button>
 				</jalios:if>
 			</div>
-			<div class="col-2-small-1 txtcenter">
-				<div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
-					<p class="ds44-txtBulle ds44-theme"><%= glp("jcmsplugin.socle.ou") %></p>
+			<jalios:if predicate='<%= showContact %>'>
+				<div class="col-2-small-1 txtcenter">
+					<div class="ds44-separator ds44-flex-valign-center ds44-flex-align-center ds44-flex-container">
+						<p class="ds44-txtBulle ds44-theme"><%= glp("jcmsplugin.socle.ou") %></p>
+					</div>
 				</div>
-			</div>
-			<div class="col-4-small-1">
-                <%-- Inclusion du formulaire --%>
-                <%@ include file='doFaqForm.jspf' %>
-			</div>
+				<div class="col-4-small-1">
+					<jalios:if predicate='<%= obj.getAvecFormulaireDeContact() %>'>
+						<%-- Inclusion du formulaire --%>
+						<%@ include file='doFaqForm.jspf' %>
+					</jalios:if>
+					<jalios:if predicate='<%= ! obj.getAvecFormulaireDeContact() && Util.notEmpty(obj.getTexteContact(userLang)) %>'>
+						<jalios:wysiwyg><%= obj.getTexteContact(userLang) %></jalios:wysiwyg>
+					</jalios:if>
+				</div>
+			</jalios:if>
 		</div>
 
 
