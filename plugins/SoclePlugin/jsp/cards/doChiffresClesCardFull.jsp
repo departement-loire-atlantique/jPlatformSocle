@@ -57,7 +57,7 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 		            <div>
 		                <strong>
 		                	<span class="ds44-txtExergue">
-		                		<span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= pub.getPrefixeChiffrePrincipal() %><%= chiffrePrincipal %></span>
+		                		<span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= pub.getPrefixeChiffrePrincipal() %><%= chiffrePrincipal %><%= pub.getSuffixeChiffrePrincipal() %></span>
 		                		<%= decorationChfrPrinc %>
 		                	</span>
 		                </strong>
