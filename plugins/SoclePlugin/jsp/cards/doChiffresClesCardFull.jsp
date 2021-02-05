@@ -56,11 +56,10 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 		    </jalios:if>
 		            <div>
 		                <strong>
-		                	<span class="ds44-txtExergue">
-		                		<%= pub.getPrefixeChiffrePrincipal() %>
-		                		<span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span>
-		                		<%= decorationChfrPrinc %>
-		                		<%= pub.getSuffixeChiffrePrincipal() %>
+		                	<span class="ds44-txtExergue"><%
+                                %><%= pub.getPrefixeChiffrePrincipal() %><%
+                                %><span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span><%
+                                %><%= decorationChfrPrinc %><%= pub.getSuffixeChiffrePrincipal() %>
 		                	</span>
 		                </strong>
 	                	<jalios:wysiwyg css="ds44-block"><strong><%= pub.getLibelleChiffrePrincipal() %></strong></jalios:wysiwyg>
@@ -86,14 +85,10 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 	            <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
 	                <img class="ds44-boxPic" src="<%= urlImage %>" alt="" />
 	                <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col ds44-flex-wrap">
-	                   <span class="h1-like h1-like--bigger ds44-numberIncrement">
-							<jalios:if predicate="<%= Util.notEmpty(pub.getPrefixeChiffrePrincipal()) %>">
-							  <%= pub.getPrefixeChiffrePrincipal() %>
-							</jalios:if>
-							<span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span>
-							<jalios:if predicate="<%= Util.notEmpty(pub.getSuffixeChiffrePrincipal()) %>">
-							  <%= pub.getSuffixeChiffrePrincipal() %>
-							</jalios:if>
+	                   <span class="h1-like h1-like--bigger ds44-numberIncrement"><%
+	                       %><%= pub.getPrefixeChiffrePrincipal() %><%
+	                       %><span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrPrinc %>"><%= chiffrePrincipal %></span><%
+	                       %><%= pub.getSuffixeChiffrePrincipal() %>
                         </span> 
 	                    <jalios:if predicate="<%= Util.notEmpty(decorationChfrPrinc) %>">
 		                    <span class="h1-like h1-like--bigger"><%= decorationChfrPrinc %></span>
@@ -121,14 +116,14 @@ String decorationChfrPrinc = pub.getChiffrePrincipal().replaceAll("[0-9\\,]", ""
 				            	String DataStopChfrSecon = chiffreSecondaire.replaceAll("\\,", ".");
 				            	String decorationChfrSecon = chfrSecon.replaceAll("[0-9\\,]", "");
 			            	%>
-			            	<span class="h1-like ds44-numberIncrement">
-				            	<jalios:if predicate="<%= Util.notEmpty(pub.getPrefixeChiffreSecondaire()) && itCounterArr < pub.getPrefixeChiffreSecondaire().length && Util.notEmpty(pub.getPrefixeChiffreSecondaire()[itCounterArr]) %>">
-	                                <%= pub.getPrefixeChiffreSecondaire()[itCounterArr] %>
-	                            </jalios:if>
-				                <span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrSecon %>"><%= chiffreSecondaire %></span>
-	                            <jalios:if predicate="<%= Util.notEmpty(pub.getSuffixeChiffreSecondaire()) && itCounterArr < pub.getSuffixeChiffreSecondaire().length && Util.notEmpty(pub.getSuffixeChiffreSecondaire()[itCounterArr]) %>">
-	                                <%= pub.getSuffixeChiffreSecondaire()[itCounterArr] %>
-	                            </jalios:if>
+			            	<span class="h1-like ds44-numberIncrement"><%
+			            	    %><jalios:if predicate="<%= Util.notEmpty(pub.getPrefixeChiffreSecondaire()) && itCounterArr < pub.getPrefixeChiffreSecondaire().length && Util.notEmpty(pub.getPrefixeChiffreSecondaire()[itCounterArr]) %>"><%
+			            	    %><%= pub.getPrefixeChiffreSecondaire()[itCounterArr] %><%
+			            	    %></jalios:if><%
+			            	    %><span class="ds44-js-dynamic-number" data-stop="<%= DataStopChfrSecon %>"><%= chiffreSecondaire %></span><%
+			            	    %><jalios:if predicate="<%= Util.notEmpty(pub.getSuffixeChiffreSecondaire()) && itCounterArr < pub.getSuffixeChiffreSecondaire().length && Util.notEmpty(pub.getSuffixeChiffreSecondaire()[itCounterArr]) %>"><%
+			            	    %><%= pub.getSuffixeChiffreSecondaire()[itCounterArr] %><%
+			            	    %></jalios:if>
                             </span>
 			                <jalios:if predicate="<%= Util.notEmpty(decorationChfrSecon) %>">
 				                <span class="h1-like"><%= decorationChfrSecon %></span>
