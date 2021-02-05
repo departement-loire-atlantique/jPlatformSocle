@@ -48,7 +48,7 @@ SimpleDateFormat sdf = new SimpleDateFormat(channel.getProperty("jcmsplugin.socl
 Date dateDebut = Calendar.getInstance().getTime();
 parameters.put("dateDebut", sdf.format(dateDebut));
 Calendar calInAMonth = Calendar.getInstance();
-calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + 30);
+calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + channel.getIntegerProperty("jcmsplugin.socle.infolocale.caroussel.days", 30));
 Date dateInAMonth = calInAMonth.getTime();
 parameters.put("dateFin", sdf.format(dateInAMonth));
 

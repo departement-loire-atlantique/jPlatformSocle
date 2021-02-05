@@ -486,6 +486,7 @@ jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/annonces/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
 jcmsplugin.socle.infolocale.max.limit: 200
 jcmsplugin.socle.infolocale.photo.404.url: https://www.infolocale.fr/build/images/article/article_no_image.png
+jcmsplugin.socle.infolocale.caroussel.days: 60
 
 jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
 jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
