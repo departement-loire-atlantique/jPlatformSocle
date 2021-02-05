@@ -15,7 +15,7 @@
     description="Le titre affiché sur l'image"
 %>
 <%@ attribute name="subtitle"
-    required="true"
+    required="false"
     fragment="false"
     rtexprvalue="true"
     type="String"
