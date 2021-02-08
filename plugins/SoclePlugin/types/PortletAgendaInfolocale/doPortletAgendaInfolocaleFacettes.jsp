@@ -13,7 +13,8 @@
    PortletAgendaInfolocale box = (PortletAgendaInfolocale) portlet;
    
    Boolean hasFonctionsAdditionnelles = false; // TODO
-   Boolean showFiltres = isInRechercheFacette;
+   Boolean showFiltres = isInRechercheFacette && Util.notEmpty(box.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
+   request.setAttribute("showFiltres", showFiltres);
    
    request.setAttribute("rechercheId", box.getId());
    
@@ -68,6 +69,56 @@
 	               </button>                   
 	            </div>
 	         </div>
+	         
+	         <jalios:if predicate="<%= showFiltres %>">
+                <div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col">
+        
+                    <jalios:if predicate='<%= Util.notEmpty(box.getFacettesSecondaires()) %>'>
+                        <div class="ds44-fg1 ds44-flex-container ds44-medium-flex-col">
+                            <p class="ds44-heading ds44-small-fg1"><%= glp("jcmsplugin.socle.facette.filtrer-par") %></p>
+        
+                            <% 
+                                int maxFacettesSecondaires = SocleUtils.getNbrFacetteBeforeMaxWeight(8, box.getFacettesSecondaires(), loggedMember); 
+                                request.setAttribute("isFilter", true);
+                            %>
+
+                            <jalios:foreach array="<%= box.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
+        
+                                <% Boolean isSelect = itFacette instanceof PortletFacetteAgendaCategorie; %>
+        
+                                <div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+                                    <jalios:include pub="<%= itFacette %>" usage="box"/>
+                                </div>
+        
+                            </jalios:foreach>
+
+                            <% request.removeAttribute("isFilter"); %>
+
+                        </div>
+                    </jalios:if>
+        
+                    <jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
+                        <div class="ds44-push ds44-small-fg1 ds44-hide-tiny-to-medium ds44-show-medium">
+                            <ul class="ds44-list">
+                                <li class="ds44-docListElem">
+                                    <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+                                    <a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+                                </li>
+                                <li class="ds44-docListElem">
+                                    <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+                                    <a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+                                </li>
+                                <li class="ds44-docListElem">
+                                    <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+                                    <a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.csv")) %>'><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </jalios:if>
+        
+                </div>
+            </jalios:if>
+	         
 	         <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= box.getId() %>' data-technical-field />
 	      </form>
 	   </div>

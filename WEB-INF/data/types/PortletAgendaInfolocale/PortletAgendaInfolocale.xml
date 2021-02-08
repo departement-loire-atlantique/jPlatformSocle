@@ -110,6 +110,9 @@
     <field name="portletsFacettesAgenda" editor="link" required="false" compactDisplay="false" tab="moteur_de_recherche" type="generated.AbstractPortletFacette[]">
       <label xml:lang="fr">Portlets Facettes Agenda</label>
     </field>
+    <field name="facettesSecondaires" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Facettes secondaires</label>
+    </field>
     <field type="super" />
   </fields>
   <tabs>
