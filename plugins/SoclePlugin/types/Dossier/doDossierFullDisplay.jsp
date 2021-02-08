@@ -144,7 +144,9 @@
             
         </jalios:if>
         
-
+	<%-- Page utile --%>
+	<jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp" />
+	
 </main>
 
 <button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button"
