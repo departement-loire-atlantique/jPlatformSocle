@@ -16,13 +16,30 @@ if (data == null) {
 
 FALC pub = (FALC) data;
 
+
+//recuperation de l'url de l'icone pour l'encadre
+String urlImage = "";
+if(Util.isEmpty(pub.getIcone(loggedMember))) {
+	//on recupere par defaut la premiere icone de la liste
+	Category rootImageCat = channel.getCategory("$jcmsplugin.socle.falc.icone.cat");
+	if(Util.notEmpty(rootImageCat)) {
+		Iterator<Category> listeImages = rootImageCat.getChildrenSet().iterator();
+		if(listeImages.hasNext()) {
+			urlImage = listeImages.next().getDescription(userLang);
+		}
+	}
+} else {
+	Category imageCat = pub.getIcone(loggedMember).first();
+	urlImage = imageCat.getDescription(userLang);
+}
+
 String titreEncadre = Util.notEmpty(pub.getTitreEncadre(userLang)) ? pub.getTitreEncadre(userLang) : glp("jcmsplugin.socle.falc.titre");
 %>
 
 <section class='ds44-box <%= pub.getStyleDeFonds().equalsIgnoreCase("none") ? "" : pub.getStyleDeFonds() %>'>
 	<div class="ds44-innerBoxContainer">
 		<div class="ds44-flex-container ds44-flex-valign-center">
-			<img src='<%= channel.getProperty("jcmsplugin.socle.FALC.icone.url") %>' alt="">
+			<img src='<%= urlImage %>' alt="">
 			<div class="ds44-card__section--horizontal">
 				<p role="heading" aria-level="2" class="ds44-box-heading"><%= titreEncadre %></p>
 			</div>
