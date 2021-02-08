@@ -241,6 +241,8 @@ jcmsplugin.socle.partager.twitter: Partager cette page sur Twitter
 jcmsplugin.socle.partager.linkedin: Partager cette page sur LinkedIn
 jcmsplugin.socle.partagerpage: Partagez cette page :
 jcmsplugin.socle.maLA.hashtag: #maloireatlantique
+jcmsplugin.socle.partagerVotreExperience: Partagez vos expériences
+jcmsplugin.socle.monExperience.hashtag: #chateau-clisson
 jcmsplugin.socle.financementDep: Financement départemental
 jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
@@ -291,6 +293,10 @@ jcmsplugin.socle.prenom: Prénom
 jcmsplugin.socle.code-postal: Code postal
 jcmsplugin.socle.sujet: Sujet
 jcmsplugin.socle.message: Message
+jcmsplugin.socle.google: Google
+jcmsplugin.socle.facebook: Facebook
+jcmsplugin.socle.tripadvisor: Tripadvisor
+jcmsplugin.socle.nbavis: {0} avis
 jcmsplugin.socle.mail: Courriel
 jcmsplugin.socle.votre-message: Votre message
 jcmsplugin.socle.pays: Pays
@@ -823,10 +829,12 @@ jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 jcmsplugin.socle.multilingue.english-version.title: English : consultez la version anglaise du site {0}
 jcmsplugin.socle.multilingue.french-version.title: French : consultez la version française du site {0}
 
+# API Notes et lieux
+jcmsplugin.socle.apinotes.cache.schedule: Api notes : CRON pour le cache
+jcmsplugin.socle.apinotes.cache.enabled: Api notes : activé
+
 # Exposition
 jcmsplugin.socle.exposition.intro.title: Présentation
 jcmsplugin.socle.info-pratique.title: Préparez votre visite
 jcmsplugin.socle.horaires.title: Horaires d'ouverture
 jcmsplugin.socle.contacts.title: Contacts et réservation
-
-

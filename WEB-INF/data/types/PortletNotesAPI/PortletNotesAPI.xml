@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletNotesAPI" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Notes API</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="titreAffiche" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre affiché</label>
+    </field>
+    <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Sous-titre</label>
+    </field>
+    <field name="idLieuGoogle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">ID Lieu Google</label>
+    </field>
+    <field name="urlPageGoogle" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">URL Page Google</label>
+    </field>
+    <field name="idLieuTripadvisor" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">ID Lieu Tripadvisor</label>
+    </field>
+    <field name="urlPageTripadvisor" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">URL Page Tripadvisor</label>
+    </field>
+    <field name="idLieuFacebook" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">ID Lieu Facebook</label>
+    </field>
+    <field name="urlPageFacebook" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">URL Page Facebook</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+

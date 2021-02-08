@@ -744,16 +744,6 @@ public class InfolocaleEntityUtils {
       parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.max.limit", 100)); 
       // 200 est le maximum autorisé par Infolocale. Posé à 100 en défaut par sécurité...
       
-      String[] arrayIdsAExclure = null;
-      if (Util.notEmpty(box.getIdsAExclure())) {
-        arrayIdsAExclure = box.getIdsAExclure().split(",");
-      }
-      
-      String[] arrayIdsGroupes = null;
-      if (Util.notEmpty(box.getGroupeDevenements())) {
-        arrayIdsGroupes = box.getGroupeDevenements().split(",");
-      }
-      
       // Récupère le flux infolocale et transformation en liste de publication JCMS
       String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
       JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
@@ -991,8 +981,7 @@ public class InfolocaleEntityUtils {
           if (Util.notEmpty(genreObj)) listeGenre.add(genreObj);
         }
       } catch (JSONException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOGGER.warn("Error in findGenresFromIdList : " + e.getMessage());
       }
 	  }
 	  
@@ -1011,8 +1000,7 @@ public class InfolocaleEntityUtils {
       genreObj.setLibelle(jsonGenre.getString("libelle"));
       genreObj.setId(jsonGenre.getString("code"));
     } catch (JSONException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      LOGGER.warn("Error in generateGenreFromJson : " + e.getMessage());
     }
     
     return genreObj;
@@ -1030,8 +1018,7 @@ public class InfolocaleEntityUtils {
       genreObj.setLibelle(jsonGenre.getString("libelle"));
       genreObj.setId(jsonGenre.getString("id"));
     } catch (JSONException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      LOGGER.warn("Error in generateGenreThematiqueFromJson : " + e.getMessage());
     }
     
     return genreObj;
