@@ -1814,5 +1814,44 @@ public final class SocleUtils {
     
     return HttpUtil.encodeForHTMLAttribute(altText);
   }
+
+  /**
+   * Récupère les caractères précédent un chiffre dans une chaine de caractères comprenant du texte et des chiffres
+   * Exemple : si chaine = "+ 12,40 %", renvoie "+ "
+   * @param chaine La chaine de caractères à traiter
+   * @return les caractères précédents le 1er chiffre trouvé, ou vide.
+   */
+  public static String getNumberPrefixe(String chaine) {
+    if (Util.isEmpty(chaine)) return "";
+    String pattern = "^[^0-9]*";
+    String prefixe = "";
+    Pattern compiledPattern = Pattern.compile(pattern);
+    Matcher matcher = compiledPattern.matcher(chaine);
+    
+    if (matcher.find()) {
+      prefixe = matcher.group();
+    }
+
+    return prefixe;
+  }  
   
+  /**
+   * Récupère les caractères suivant le dernier chiffre dans une chaine de caractères comprenant du texte et des chiffres
+   * Exemple : si chaine = "+ 12,40 %", renvoie " %"
+   * @param chaine La chaine de caractères à traiter
+   * @return les caractères suivant le dernier chiffre trouvé, ou vide.
+   */
+  public static String getNumberSuffixe(String chaine) {
+    if (Util.isEmpty(chaine)) return "";
+    String pattern = "[^0-9]*$";
+    String prefixe = "";
+    Pattern compiledPattern = Pattern.compile(pattern);
+    Matcher matcher = compiledPattern.matcher(chaine);
+    
+    if (matcher.find()) {
+      prefixe = matcher.group();
+    }
+
+    return prefixe;
+  }   
 }
