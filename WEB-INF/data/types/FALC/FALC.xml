@@ -5,7 +5,7 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="icone" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="j_3">
+    <field name="icone" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.falc.icone.cat">
       <label xml:lang="fr">Icône</label>
     </field>
     <field name="titreEncadre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
