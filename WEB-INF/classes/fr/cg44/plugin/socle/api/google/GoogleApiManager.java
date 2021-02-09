@@ -17,7 +17,7 @@ public class GoogleApiManager {
   public static JSONObject getJsonFromGooglePlace(String placeId) {
     StringBuilder urlRequest = new StringBuilder();
     urlRequest.append(Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.url"));
-    urlRequest.append("?key=" + Channel.getChannel().getProperty(""));
+    urlRequest.append("?key=" + Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.key"));
     urlRequest.append("&");
     urlRequest.append("place_id=" + (Util.isEmpty(placeId) ? Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.id") : placeId));
     
