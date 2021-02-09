@@ -9,27 +9,27 @@
       <label xml:lang="fr">Icône principale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Si le champ n'est pas rempli, alors on utilise l'icône de la 1ère catégorie.&lt;/p&gt;&lt;/div&gt;</description>
     </field>
-    <field name="prefixeChiffrePrincipal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+    <field name="prefixeChiffrePrincipal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" hidden="true">
       <label xml:lang="fr">Préfixe chiffre principal</label>
     </field>
     <field name="chiffrePrincipal" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Chiffre principal</label>
     </field>
-    <field name="suffixeChiffrePrincipal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+    <field name="suffixeChiffrePrincipal" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" hidden="true">
       <label xml:lang="fr">Suffixe chiffre principal</label>
-    </field>     
+    </field>
     <field name="libelleChiffrePrincipal" editor="wysiwyg" required="true" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Libellé chiffre principal</label>
     </field>
-    <field name="prefixeChiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire">
+    <field name="prefixeChiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" hidden="true">
       <label xml:lang="fr">Préfixe chiffre secondaire</label>
     </field>
     <field name="chiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" wiki="false">
       <label xml:lang="fr">Chiffre secondaire</label>
     </field>
-    <field name="suffixeChiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire">
+    <field name="suffixeChiffreSecondaire" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" hidden="true">
       <label xml:lang="fr">Suffixe chiffre secondaire</label>
-    </field>    
+    </field>
     <field name="libelleChiffreSecondaire" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="chiffreSecondaire" wiki="false" inline="true">
       <label xml:lang="fr">Libellé chiffre secondaire</label>
     </field>
