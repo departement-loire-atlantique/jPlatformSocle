@@ -684,7 +684,7 @@ jcmsplugin.socle.calculetteOA.demi-part : 350
 $jcmsplugin.socle.chiffres-cles.icone-principale.cat: c_1352687
 
 # FALC
-jcmsplugin.socle.FALC.icone.url : http://dev-design.loire-atlantique.fr/assets/images/pictos/picto-falc.svg
+$jcmsplugin.socle.falc.icone.cat: 
 
 # Alerte
 $jcmsplugin.socle.alerte.icone: cda_1341350
