@@ -1,3 +1,5 @@
+<%@page import="fr.cg44.plugin.socle.api.google.GoogleApiManager"%>
+<%@page import="fr.cg44.plugin.socle.api.google.bean.GooglePlaceBean"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %><%
@@ -67,6 +69,17 @@ if (Util.isEmpty(urlImage)) {
             <jalios:if predicate="<%= isDoc %>">
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>
+            
+            <jalios:if predicate="<%= pub instanceof Lien && Util.notEmpty(((Lien) pub).getHorraire()) %>">  
+                <%
+                Horraire horraire = ((Lien) pub).getHorraire();
+                
+                String placeId = Util.notEmpty(horraire.getIdLieu()) ? horraire.getIdLieu() : channel.getProperty("jcmsplugin.socle.api.places.google.id");
+                GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGooglePlaceBeanFromId(placeId) : null;
+                %>                              
+                <p><i class="icon icon-time ds44-mr1" aria-hidden="true"></i><span class="p-light"><%= GoogleApiManager.getDayOpening(googlePlace) %></span></p>             
+            </jalios:if>
+            
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
         </div>
     </div>

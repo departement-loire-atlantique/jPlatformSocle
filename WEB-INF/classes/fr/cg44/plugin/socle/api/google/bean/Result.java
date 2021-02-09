@@ -52,6 +52,8 @@ public class Result {
     private String internationalPhoneNumber;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("opening_hours")
+    private OpeningHours openingHours;
     @JsonProperty("place_id")
     private String placeId;
     @JsonProperty("rating")
@@ -163,6 +165,16 @@ public class Result {
         this.name = name;
     }
 
+    @JsonProperty("opening_hours")
+    public OpeningHours getOpeningHours() {
+        return openingHours;
+    }
+
+    @JsonProperty("opening_hours")
+    public void setOpeningHours(OpeningHours openingHours) {
+        this.openingHours = openingHours;
+    }
+    
     @JsonProperty("place_id")
     public String getPlaceId() {
         return placeId;
