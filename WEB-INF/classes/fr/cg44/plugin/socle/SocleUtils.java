@@ -1853,5 +1853,26 @@ public final class SocleUtils {
     }
 
     return prefixe;
-  }   
+  }
+	
+	
+	public static String getDescriptionChampCategorie(TreeSet<Category> valeurChampCat, String userLang, Category racineChampCat) {
+				
+		if(Util.notEmpty(valeurChampCat)) {
+			
+			Category iconeCat = valeurChampCat.first();
+			
+			return iconeCat.getDescription(userLang);
+			
+		//si vide, on recupere par defaut la description de la premiere categorie enfant
+		} else if(Util.notEmpty(racineChampCat)) {
+			
+			Iterator<Category> listeIcone = racineChampCat.getChildrenSet().iterator();
+			if(listeIcone.hasNext()) {
+				
+				return listeIcone.next().getDescription(userLang);
+			}
+		}
+		return "";
+	}
 }

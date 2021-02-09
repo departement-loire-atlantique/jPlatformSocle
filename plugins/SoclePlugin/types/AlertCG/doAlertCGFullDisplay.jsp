@@ -2,6 +2,7 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% AlertCG obj = (AlertCG)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><%@ include file='/front/doFullDisplay.jspf' %>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 
 <%
 String titleLink = "";
@@ -22,20 +23,7 @@ if (Util.notEmpty(obj.getLienInterne())) {
   titleLink = glp("jcmsplugin.socle.lien.nouvelonglet", titleLink);
 }
 
-String iconId = "";
-if(Util.isEmpty(obj.getIcone(loggedMember))) {
-	//on recupere par defaut la premiere icone de la liste
-	Category rootIconeCat = channel.getCategory("$jcmsplugin.socle.alerte.icone");
-	if(Util.notEmpty(rootIconeCat)) {
-		Iterator<Category> listeIcone = rootIconeCat.getChildrenSet().iterator();
-		if(listeIcone.hasNext()) {
-			iconId = listeIcone.next().getDescription(userLang);
-		}
-	}
-} else {
-	Category iconeCat = obj.getIcone(loggedMember).first();
-	iconId = iconeCat.getDescription(userLang);
-}
+String iconId = SocleUtils.getDescriptionChampCategorie(obj.getIcone(loggedMember), userLang, channel.getCategory("$jcmsplugin.socle.alerte.icone"));
 %>
 
 <section class="ds44-alertMsg-container txtcenter">
