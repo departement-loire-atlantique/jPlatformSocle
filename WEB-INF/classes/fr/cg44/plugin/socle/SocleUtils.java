@@ -1853,5 +1853,32 @@ public final class SocleUtils {
     }
 
     return prefixe;
-  }   
+  }
+	
+	/**
+	 * Récupère le champ description de la catégorie renseigné par le contributeur, récupère la description de la première catégorie si le champ n'a pas été rempli.
+	 * @param valeurChampCat la valeur du champ category, peut-être vide
+	 * @param userLang la langue de l'utilisateur actuel
+	 * @param racineChampCat la catégorie racine du champ category, permet de récupérer la valeur par défaut dans le cas où le champ serait vide
+	 * @return le champ description d'une catégorie
+	 */
+	public static String getDescriptionChampCategorie(TreeSet<Category> valeurChampCat, String userLang, Category racineChampCat) {
+				
+		if(Util.notEmpty(valeurChampCat)) {
+			
+			Category iconeCat = valeurChampCat.first();
+			
+			return iconeCat.getDescription(userLang);
+			
+		//si vide, on recupere par defaut la description de la premiere categorie enfant
+		} else if(Util.notEmpty(racineChampCat)) {
+			
+			Iterator<Category> listeIcone = racineChampCat.getChildrenSet().iterator();
+			if(listeIcone.hasNext()) {
+				
+				return listeIcone.next().getDescription(userLang);
+			}
+		}
+		return "";
+	}
 }

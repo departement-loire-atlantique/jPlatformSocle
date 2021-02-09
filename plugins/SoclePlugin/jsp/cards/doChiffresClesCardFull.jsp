@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ page import="com.jalios.jcms.taglib.card.*" %><%
@@ -15,20 +15,7 @@ ChiffresCles pub = (ChiffresCles) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 // recuperation de l'url de l'icone pour le chiffre principal
-String urlImage = "";
-if(Util.isEmpty(pub.getIconePrincipale(loggedMember))) {
-	//on recupere par defaut la premiere icone de la liste
-	Category rootImageCat = channel.getCategory("$jcmsplugin.socle.chiffres-cles.icone-principale.cat");
-	if(Util.notEmpty(rootImageCat)) {
-		Iterator<Category> listeImages = rootImageCat.getChildrenSet().iterator();
-		if(listeImages.hasNext()) {
-			urlImage = listeImages.next().getDescription(userLang);
-		}
-	}
-} else {
-	Category imageCat = pub.getIconePrincipale(loggedMember).first();
-	urlImage = imageCat.getDescription(userLang);
-}
+String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIconePrincipale(loggedMember), userLang, channel.getCategory("$jcmsplugin.socle.chiffres-cles.icone-principale.cat"));
 
 // recuperation de l'url du libelle et de l'attribut title du lien
 String urlLien = "";

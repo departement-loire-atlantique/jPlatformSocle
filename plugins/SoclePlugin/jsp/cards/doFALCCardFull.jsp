@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%
@@ -18,20 +18,7 @@ FALC pub = (FALC) data;
 
 
 //recuperation de l'url de l'icone pour l'encadre
-String urlImage = "";
-if(Util.isEmpty(pub.getIcone(loggedMember))) {
-	//on recupere par defaut la premiere icone de la liste
-	Category rootImageCat = channel.getCategory("$jcmsplugin.socle.falc.icone.cat");
-	if(Util.notEmpty(rootImageCat)) {
-		Iterator<Category> listeImages = rootImageCat.getChildrenSet().iterator();
-		if(listeImages.hasNext()) {
-			urlImage = listeImages.next().getDescription(userLang);
-		}
-	}
-} else {
-	Category imageCat = pub.getIcone(loggedMember).first();
-	urlImage = imageCat.getDescription(userLang);
-}
+String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIcone(loggedMember), userLang, channel.getCategory("$jcmsplugin.socle.falc.icone.cat"));
 
 String titreEncadre = Util.notEmpty(pub.getTitreEncadre(userLang)) ? pub.getTitreEncadre(userLang) : glp("jcmsplugin.socle.falc.titre");
 %>
