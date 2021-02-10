@@ -12,7 +12,7 @@
     </field>
     <field name="lienExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false" tab="contenu">
       <label xml:lang="fr">Lien externe</label>
-    </field> 
+    </field>
     <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" tab="contenu">
       <label xml:lang="fr">Image principale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
@@ -35,14 +35,17 @@
     </field>
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu">
       <label xml:lang="fr">Texte alternatif</label>
-    </field>    
+    </field>
+    <field name="horaire" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.Horaire" parent="false">
+      <label xml:lang="fr">Horaire</label>
+    </field>
     <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
       <label xml:lang="fr">Titre témoignage</label>
     </field>
     <field name="soustitreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
       <label xml:lang="fr">Sous-titre témoignage</label>
-    </field>         
-     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    </field>
+    <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
@@ -72,7 +75,7 @@
     </field>
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
-    </field>  
+    </field>
   </fields>
   <tabs>
     <tab id="contenu">
@@ -80,13 +83,13 @@
     </tab>
     <tab id="temoignage">
       <label xml:lang="fr">Témoignage</label>
-    </tab>    
+    </tab>
     <tab id="rattachement">
       <label xml:lang="fr">Navigation et classement</label>
     </tab>
     <tab id="territoire">
       <label xml:lang="fr">Territoire</label>
     </tab>
-  </tabs>  
+  </tabs>
 </type>
 
