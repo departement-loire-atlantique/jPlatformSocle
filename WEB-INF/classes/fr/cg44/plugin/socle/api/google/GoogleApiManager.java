@@ -55,15 +55,15 @@ public class GoogleApiManager {
    */
   public static String getOpening(GooglePlaceBean place) {
        
-    StringBuilder horraire = new StringBuilder();
+    StringBuilder horaire = new StringBuilder();
     String userLang = Channel.getChannel().getCurrentUserLang();
     
     // Récupère la donnée si le lieu est ouvert ou fermé actuellement
     boolean isOpen = place.getResult().getOpeningHours().getOpenNow();    
     if(isOpen) {
-      horraire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horraire.ouvert"));
+      horaire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.ouvert"));
     }else {
-      horraire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horraire.ferme"));
+      horaire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.ferme"));
     }
     
     Calendar cal = Calendar.getInstance();
@@ -77,7 +77,7 @@ public class GoogleApiManager {
     String minute = cal.get(Calendar.MINUTE) < 10 ?  "0" + cal.get(Calendar.MINUTE) : cal.get(Calendar.MINUTE) + "";
     int heureMinute = Integer.parseInt(heure + minute);
        
-    // Détermine l'horraire d'ouverture et de fermeture pour le jour courant
+    // Détermine l'horaire d'ouverture et de fermeture pour le jour courant
     int openingDay = currentDay;
     int cpt = 1;
     while(Util.isEmpty(ouvertureHeure) && cpt < 7) {
@@ -103,20 +103,20 @@ public class GoogleApiManager {
       cpt++;
     }
     
-    // Horraire d'ouverture ou de fermeture à afficher
+    // horaire d'ouverture ou de fermeture à afficher
     if(!isOpen && Util.notEmpty(ouvertureJour)) {
-      horraire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horraire.jour.ouvert", new String[]{ouvertureJour, ouvertureHeure.substring(0, 2) + ":" + ouvertureHeure.substring(2)}));      
+      horaire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.jour.ouvert", new String[]{ouvertureJour, ouvertureHeure.substring(0, 2) + ":" + ouvertureHeure.substring(2)}));      
     } else if(Util.notEmpty(fermetureHeure)) {
       String fermetureJour = DayOfWeek.of(currentDay).getDisplayName(TextStyle.FULL, Channel.getChannel().getCurrentUserLocale());      
-      horraire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horraire.jour.ferme", new String[]{fermetureJour, fermetureHeure.substring(0, 2) + ":" + fermetureHeure.substring(2)}));
+      horaire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.jour.ferme", new String[]{fermetureJour, fermetureHeure.substring(0, 2) + ":" + fermetureHeure.substring(2)}));
     }
     
-    return horraire.toString();
+    return horaire.toString();
   }
   
   
   /**
-   * Retourne les horraires du lieu pour le jour courant
+   * Retourne les horaires du lieu pour le jour courant
    * @param place
    * @return
    */
