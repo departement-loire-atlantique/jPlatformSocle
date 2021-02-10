@@ -70,11 +70,11 @@ if (Util.isEmpty(urlImage)) {
                 <p class="ds44-cardFile"><%= fileType %> - <%= fileSize %></p>
             </jalios:if>
             
-            <jalios:if predicate="<%= pub instanceof Lien && Util.notEmpty(((Lien) pub).getHorraire()) %>">  
+            <jalios:if predicate="<%= pub instanceof Lien && Util.notEmpty(((Lien) pub).getHoraire()) %>">  
                 <%
-                Horraire horraire = ((Lien) pub).getHorraire();
+                Horaire horaire = ((Lien) pub).getHoraire();
                 
-                String placeId = Util.notEmpty(horraire.getIdLieu()) ? horraire.getIdLieu() : channel.getProperty("jcmsplugin.socle.api.places.google.id");
+                String placeId = Util.notEmpty(horaire.getIdLieu()) ? horaire.getIdLieu() : channel.getProperty("jcmsplugin.socle.api.places.google.id");
                 GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGooglePlaceBeanFromId(placeId) : null;
                 %>                              
                 <p><i class="icon icon-time ds44-mr1" aria-hidden="true"></i><span class="p-light"><%= GoogleApiManager.getDayOpening(googlePlace) %></span></p>             

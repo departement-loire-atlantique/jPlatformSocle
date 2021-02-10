@@ -36,8 +36,8 @@
     <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" tab="contenu">
       <label xml:lang="fr">Texte alternatif</label>
     </field>
-    <field name="horraire" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.Horraire" parent="false">
-      <label xml:lang="fr">Horraire</label>
+    <field name="horaire" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.Horaire" parent="false">
+      <label xml:lang="fr">Horaire</label>
     </field>
     <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
       <label xml:lang="fr">Titre témoignage</label>
