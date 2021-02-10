@@ -15,6 +15,8 @@
 	if(Util.notEmpty(delegation)){
 	  dataUrl = dataUrl + "?delegationId=" + delegation.getId();
 	}
+	
+	boolean isFilter = Util.notEmpty(request.getAttribute("isFilter")) ? (boolean) request.getAttribute("isFilter") : false;
 %>
 
 <ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
@@ -24,6 +26,6 @@
 		dataMode="select-only" 
 		dataUrl="<%= dataUrl %>" 
 		label='<%= Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.commune.default-label") %>'
-		option='<%= channel.getProperty("jcmsplugin.socle.rayon.option") %>'
+		option='<%= !isFilter ? channel.getProperty("jcmsplugin.socle.rayon.option") : "" %>'
 		setRayons='<%= rayonRoot.getChildrenSet() %>'
 		isLarge='<%= !isInRechercheFacette %>'/>
