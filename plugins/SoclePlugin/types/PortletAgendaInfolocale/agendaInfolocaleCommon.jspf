@@ -1,0 +1,55 @@
+<%
+
+Map<String, Object> parameters = new HashMap<String, Object>();
+if (Util.notEmpty(box.getOrganismesInfolocale())) {
+    parameters.put("organisme", box.getOrganismesInfolocale());
+}
+if (Util.notEmpty(box.getGenresInfolocale())) {
+    parameters.put("rubrique", box.getGenresInfolocale());
+}
+
+String listCodesInsee = SocleUtils.getCodesInseeFromPortletAgenda(box, loggedMember);
+
+if (Util.notEmpty(listCodesInsee)) {
+    parameters.put("codeInsee", listCodesInsee);
+}
+
+if (Util.notEmpty(box.getNombreDeResultats()) && box.getNombreDeResultats() > 0) {
+  parameters.put("limit", box.getNombreDeResultats());
+} else {
+  parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.limit", 20));
+}
+
+if (Util.notEmpty(box.getGroupesDevenementsInfolocale())) {
+  parameters.put("thematiquePerso", box.getGroupesDevenementsInfolocale());
+}
+
+if (Util.notEmpty(box.getGenresInfolocale()) || Util.notEmpty(box.getCategoriesInfolocale())) {
+  parameters.put("rubrique", InfolocaleUtil.getAllGenresFromPortletAgendaConfig(box));
+}
+
+parameters.put("order", channel.getProperty("jcmsplugin.socle.infolocale.defaultOrder"));
+
+SimpleDateFormat sdf = new SimpleDateFormat(channel.getProperty("jcmsplugin.socle.infolocale.date.send.format"));
+Date dateDebut = Calendar.getInstance().getTime();
+parameters.put("dateDebut", sdf.format(dateDebut));
+Calendar calInAMonth = Calendar.getInstance();
+calInAMonth.set(Calendar.DAY_OF_YEAR, Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + channel.getIntegerProperty("jcmsplugin.socle.infolocale.caroussel.days", 30));
+Date dateInAMonth = calInAMonth.getTime();
+parameters.put("dateFin", sdf.format(dateInAMonth));
+
+if (Util.notEmpty(box.getIdsAExclure())) {
+  parameters.put("excludeIds", box.getIdsAExclure());
+}
+
+if (Util.notEmpty(box.getGroupeDevenements())) {
+  parameters.put("groupe", box.getGroupeDevenements());
+}
+
+String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.socle.infolocale.flux.default") : box.getIdDeFlux();
+
+JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
+
+boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
+
+%>
