@@ -39,7 +39,7 @@
          
          %>
       <jalios:if predicate="<%= Util.notEmpty(box.getTitre()) %>">
-         <p role="heading" aria-level="2" class="ds44-box-heading"><%= box.getTitre() %></p>
+         <p role="heading" aria-level="2" class="ds44-box-heading"><%= box.getTitre(userLang, false) %></p>
       </jalios:if>
       <%
          request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
