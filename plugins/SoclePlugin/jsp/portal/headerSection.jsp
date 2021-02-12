@@ -68,7 +68,7 @@ if(multilingue){
                 </div>
                 <div class="ds44-colRight">
                     <jalios:if predicate='<%= multilingue %>'>
-	                    <a href="<%= changeLangUrl %>" class="ds44-btnIcoText--maxi ds44--xl-padding" title="<%= langTitle %>">
+	                    <a href="<%= changeLangUrl %>" class="ds44-btnIcoText--maxi ds44--xl-padding ds44-hide-mobile" title="<%= langTitle %>">
 	                        <span class="ds44-btnInnerText"><%= langLabel %></span><i class="icon icon--large <%= langIcon %>" aria-hidden="true"></i>
 	                    </a>
                     </jalios:if>
@@ -91,7 +91,16 @@ if(multilingue){
     <div class="ds44-blocMenu" aria-hidden="true">
         <section class="ds44-menuBox" id="menu">
             <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" aria-modal="true" role="dialog" aria-label="<%=glp("jcmsplugin.socle.menu.principal1")%>" id="nav1">
-                <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
+
+				<jalios:if predicate='<%=multilingue%>'>
+					<a href="<%=changeLangUrl%>"
+						class="ds44-btnIcoText--maxi ds44-ml3 ds44-posAbs ds44-posTopCont"
+						title="<%=langTitle%>"> <span class="ds44-btnInnerText"><%=langLabel%></span><i
+						class="icon icon--large <%=langIcon%>" aria-hidden="true"></i>
+					</a>
+				</jalios:if>
+				
+				<button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
                 
                 <p role="heading" aria-level="1" class="visually-hidden"><%=glp("jcmsplugin.socle.menu")%></p>
         
