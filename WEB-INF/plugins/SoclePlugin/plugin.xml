@@ -305,6 +305,9 @@
         <template name="default" file="doPortletAgendaInfolocaleBoxDisplay.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
+        <template name="vertical" file="doPortletAgendaInfolocaleBoxVerticalDisplay.jsp" usage="box">
+            <label xml:lang="fr">DS44 : gabarit liste verticale</label>
+        </template>
         <template name="facet" file="doPortletAgendaInfolocaleFacettes.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit pour facettes</label>
         </template>
