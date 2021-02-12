@@ -39,6 +39,7 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
+import com.jalios.jcms.context.JcmsJspContext;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
@@ -46,6 +47,7 @@ import com.jalios.util.Util;
 import generated.AbstractPortletFacette;
 import generated.AccueilAnnuaireAgenda;
 import generated.Canton;
+import generated.CarouselElement;
 import generated.City;
 import generated.Contact;
 import generated.Delegation;
@@ -1131,20 +1133,72 @@ public final class SocleUtils {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.height", 0)); 
   }
 
-  /**
-   * Retourne l'URL de l'image utilisée surles réseaux sociaux pour le contenu indiqué
-   * Permet d'alimenter la valeur de l'attribut "content" de la balise <meta property="og:image" content="XXX" /> 
-   * @param pub
-   * @return l'URL de l'image ou  une chaine vide
-   */
-  public static String getImageForSocialNetworks(Publication pub) {
-    String imagePath = getImagePrincipale(pub);
-    if(Util.isEmpty(imagePath)) {
-      imagePath = pub.getDataImage();
-    }
-    return imagePath;
-  }
-  
+
+	/**
+	 * Fonction qui s'occupe de récupérer la bonne url en fonction du contexte, de la langue de l'utilisateur et de la contribution
+	 * @param obj l'element carousel qui possède l'image dont on veut l'url
+	 * @param userLang la langue de l'utilisateur
+	 * @param jcmsContext contexte de navigation
+	 * @return l'url de l'image a utiliser dans le carousel
+	 */
+	public static String getUrlImageElementCarousel(CarouselElement obj, String userLang, JcmsJspContext jcmsContext) {
+		String urlImage = "";
+		if (!jcmsContext.getBrowser().isSmallDevice()) {
+			urlImage = obj.getImage(userLang, false);
+
+			if (Util.isEmpty(urlImage)) {
+				urlImage = obj.getImageMobile(userLang, false);
+			}
+
+			urlImage = getUrlOfFormattedImageDiaporamaDesktop(urlImage);
+		} else {
+			urlImage = obj.getImageMobile(userLang, false);
+
+			if (Util.isEmpty(urlImage)) {
+				urlImage = obj.getImage(userLang, false);
+			}
+
+			urlImage = getUrlOfFormattedImageDiaporamaMobile(urlImage);
+		}
+		return urlImage;
+	}
+
+	/**
+	 * Retourne l'URL de l'image utilisée surles réseaux sociaux pour le contenu indiqué
+	 * Permet d'alimenter la valeur de l'attribut "content" de la balise <meta property="og:image" content="XXX" /> 
+	 * @param pub
+	 * @return l'URL de l'image ou  une chaine vide
+	 */
+	public static String getImageForSocialNetworks(Publication pub) {
+		String imagePath = getImagePrincipale(pub);
+		if(Util.isEmpty(imagePath)) {
+			imagePath = pub.getDataImage();
+		}
+		return imagePath;
+	}
+	
+	/**
+	 * Construit un tableau de CarouselElement a deux dimensions a partir d'un tableau simple et d'une dimension des sous tableaux.
+	 * Par exemple : initCarouselElement2DArr({a, b, c, d, e}, 2) => {{a, b}, {c, d}, {e, null}} ;
+	 *               initCarouselElement2DArr({a, b, c, d, e}, 3) => {{a, b, c}, {d, e, null}} ;
+	 * @param allElemArr le tableau contenant tous les CarouselElement
+	 * @param nbrElemDsSubArr la dimension des sous tableaux
+	 * @return un tableau de CarouselElement à deux dimensions
+	 */
+	public static CarouselElement[][] initCarouselElement2DArr(CarouselElement[] allElemArr, int nbrElemDsSubArr) {
+		int nbrTotalElem = allElemArr.length;
+		
+		int sizeArr = nbrTotalElem / nbrElemDsSubArr;
+		if(nbrTotalElem % nbrElemDsSubArr > 0) sizeArr++;
+		
+		CarouselElement[][] elemCarousel2DArr = new CarouselElement[sizeArr][nbrElemDsSubArr];
+		
+		for(int i = 0; i < nbrTotalElem; i++) {
+			elemCarousel2DArr[i/nbrElemDsSubArr][i%nbrElemDsSubArr] = allElemArr[i];
+		}
+		return elemCarousel2DArr;
+	}
+	
   /**
    * Vérifie si le lien est interne (soit qu'il référence un contenu du site), ou externe (soit une url qui pointe sur un autre site web)
    * @param url à vérifier
