@@ -31,6 +31,7 @@ qh.setCheckPstatus(true);
 qh.setAttribute(QueryFilter.FRONTOFFICE_SEARCH, Boolean.TRUE);
 qh.setText(request.getParameter("searchtext[value]"));
 qh.setSort(foQuerySortParam);
+qh.setSearchInFiles(Util.arrayContains(portletSearch.getSearchIn(), "searchInFiles"));
 QueryResultSet collection = qh.getResultSet();
 
 

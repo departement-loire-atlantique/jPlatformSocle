@@ -22,6 +22,7 @@ QueryHandler qh = new QueryHandler(portletSearch.getQuery());
 qh.setCheckPstatus(true);
 qh.setText(textSearch);
 qh.setSort(foQuerySortParam);
+qh.setSearchInFiles(Util.arrayContains(portletSearch.getSearchIn(), "searchInFiles"));
 QueryResultSet collection = qh.getResultSet();
 
 Comparator scoreTypeComparator = QueryResultSet.getScoreComparator(collection, new TypesComparator());
