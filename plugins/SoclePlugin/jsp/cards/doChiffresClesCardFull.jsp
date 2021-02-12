@@ -71,7 +71,7 @@ String suffixeChfrPrinc = SocleUtils.getNumberSuffixe(pub.getChiffrePrincipal())
 
 <jalios:if predicate="<%= Util.notEmpty((pub.getChiffreSecondaire())) || Util.notEmpty((pub.getLibelleChiffreSecondaire())) %>">
 	<section class='ds44-innerBoxContainer ds44-borderContainer'>
-	    <h2 id="idTitre-ChiffresCles<%= uid %>" class="h2-like"><%= glp("jcmsplugin.socle.chiffrescles.titre") %></h2>
+	    <h2 id="idTitre-ChiffresCles<%= uid %>" class="h2-like"><%= Util.notEmpty(pub.getTitreEncadre(userLang)) ? pub.getTitreEncadre(userLang) : glp("jcmsplugin.socle.chiffrescles.titre") %></h2>
 	    <ul class="grid-2-tiny-1 has-gutter-l ds44-list ds44-mobile-extra-smt">
 	        <li class="col-2 ds44-tiny-extra-mb">
 	            <div class="ds44-flex-container ds44-flex-valign-center ds44-small-flex-col">
