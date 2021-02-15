@@ -17,14 +17,12 @@
 	
 	String fluxId = (String)request.getAttribute("fluxId");
 	
-    request.setAttribute("showFiltres", isInRechercheFacette);
-	
 	if(Util.isEmpty(fluxId)) return;
 	
 	// Cas 1 : thématiques personnalisées
 	if (Util.notEmpty(obj.getIdDeThematiquesPersonnalisees())) {
 	  Map<String, Set<Genre>> couplesLibellesGenres = InfolocaleEntityUtils.getThematiquesPersoOfMetadata(obj.getLibellesDeThematiquesPersonnalis(), obj.getIdDeThematiquesPersonnalisees(), fluxId);
-    
+    	  
         if(Util.isEmpty(couplesLibellesGenres)) return;
         
         %>
