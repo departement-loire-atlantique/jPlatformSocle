@@ -124,7 +124,7 @@
             sameThemePubSet.remove(obj);
             %>
     
-            <jalios:if predicate='<%= !sameThemePubSet.isEmpty() && tmpList.size() >= 3  %>'>
+            <jalios:if predicate='<%= !sameThemePubSet.isEmpty() && sameThemePubSet.size() >= 3  %>'>
                 <%
                 // Transfo du set en tableau pour passer au carrousel
                 Content[] sameThemePubArray = sameThemePubSet.toArray(new Content[sameThemePubSet.size()]);
