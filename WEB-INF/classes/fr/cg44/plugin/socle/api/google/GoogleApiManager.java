@@ -53,12 +53,17 @@ public class GoogleApiManager {
    * @param place
    * @return
    */
-  public static String getOpening(GooglePlaceBean place) {
+  public static String getOpening(GooglePlaceBean place, String msg) {
        
     StringBuilder horaire = new StringBuilder();
     String userLang = Channel.getChannel().getCurrentUserLang();
     
-    // Récupère la donnée si le lieu est ouvert ou fermé actuellement
+    // Si aucune donné d'ouverture sur le lieu alors retourner une chaine vide
+    if(Util.isEmpty(place.getResult().getOpeningHours())) {
+      return msg;
+    }
+    
+    // Récupère la donnée si le lieu est ouvert ou fermé actuellement  
     boolean isOpen = place.getResult().getOpeningHours().getOpenNow();    
     if(isOpen) {
       horaire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.ouvert"));
@@ -120,7 +125,13 @@ public class GoogleApiManager {
    * @param place
    * @return
    */
-  public static String getDayOpening(GooglePlaceBean place) {
+  public static String getDayOpening(GooglePlaceBean place, String msg) {
+    
+    // Si aucune donné d'ouverture sur le lieu alors retourner une chaine vide
+    if(Util.isEmpty(place.getResult().getOpeningHours())) {
+      return msg;
+    }
+    
     Calendar cal = Calendar.getInstance();
     int currentDay = cal.get(Calendar.DAY_OF_WEEK) - 1;
     // Corespondance jour API google et Calendar java
