@@ -845,3 +845,9 @@ jcmsplugin.socle.exposition.intro.title: Présentation
 jcmsplugin.socle.info-pratique.title: Préparez votre visite
 jcmsplugin.socle.horaires.title: Horaires d'ouverture
 jcmsplugin.socle.contacts.title: Contacts et réservation
+
+# ------------------------------------------------------------
+#  Export CSV
+# ------------------------------------------------------------
+
+jcmsplugin.socle.label.exportcsv.link: Export de contenu en CSV

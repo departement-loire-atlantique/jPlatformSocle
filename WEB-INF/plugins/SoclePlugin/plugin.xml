@@ -573,6 +573,7 @@
     <file path="jsp/reprise/contenusSansGeolocLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/documentSansContenusLiesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/expireSpectaclesLink.jsp" include="ADMIN_OPERATION" />   
+    <file path="jsp/export/exportLink.jsp" include="ADMIN_OPERATION" />
     <file path="types/FicheArticle/ficheArticleSimple.jspf" />
     <file path="types/FicheArticle/ficheArticleOnglets.jspf" />
     <file path="types/FicheArticle/doFicheArticleEncadre.jspf" />
