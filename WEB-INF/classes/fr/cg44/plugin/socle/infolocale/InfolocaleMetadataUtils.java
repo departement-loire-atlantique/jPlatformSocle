@@ -185,17 +185,7 @@ public class InfolocaleMetadataUtils {
      * @return
      */
     private static String getMetaHoraires(EvenementInfolocale event) {
-        try {
-            DateInfolocale[] dates = event.getDates();
-            StringBuilder horaires = new StringBuilder();
-            for (Iterator<DateInfolocale> iter = Arrays.asList(dates).iterator(); iter.hasNext();) {
-                horaires.append(iter.next().getHoraire());
-                if (iter.hasNext()) horaires.append(", ");
-            }
-            return horaires.toString();
-        } catch (Exception e) {
-            return "";
-        }
+      return InfolocaleUtil.getHoraireDisplay(event.getDates()[0]);
     }
     
     /**
