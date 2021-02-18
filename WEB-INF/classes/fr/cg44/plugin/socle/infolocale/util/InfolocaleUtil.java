@@ -673,6 +673,8 @@ public class InfolocaleUtil {
       String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
       StringBuilder finalHoraire = new StringBuilder();
       
+      boolean hasAddedHoraire = false;
+      
       for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
         
         String itHoraire = iter.next();
@@ -692,14 +694,17 @@ public class InfolocaleUtil {
             counterSplit++;
             String horaire_2 = splittedTimes[counterSplit];
             
-            if (horaire_1.equals(horaire_2)) {
+            if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
               finalHoraire.append(horaire_1);
             } else {
               finalHoraire.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
             }
             
             counterSplit++;
-            finalHoraire.append(suffixeHoraire);
+            if (!(finalHoraire.toString().contains(suffixeHoraire))) {
+              hasAddedHoraire = true;
+              finalHoraire.append(suffixeHoraire);
+            }
             
           }
           
@@ -707,9 +712,11 @@ public class InfolocaleUtil {
           
         }
         
-        if (iter.hasNext()) {
+        if (iter.hasNext() && hasAddedHoraire) {
           finalHoraire.append(suffixeHoraire);
         }
+        
+        hasAddedHoraire = false;
         
       }
       
