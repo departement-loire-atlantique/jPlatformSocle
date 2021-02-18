@@ -21,14 +21,7 @@
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
-					<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom " data-target="#overlay-mosaique" data-js="ds44-modal">
-						<img src="<%= SocleUtils.getUrlImageElementCarousel(elemCarousel, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio">
-						<figcaption class="ds44-imgCaption">
-							<%= glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(elemCarousel.getPdate()), elemCarousel.getTitle(userLang, false)) %>
-							<br /><%= glp("jcmsplugin.socle.symbol.copyright") %> <%=elemCarousel.getImageLegend(userLang, false) %>
-						</figcaption>
-					</figure>
-
+					<ds:mozaiqueImage image="<%= elemCarousel %>"/>
 				</li>
 			</jalios:if>
 

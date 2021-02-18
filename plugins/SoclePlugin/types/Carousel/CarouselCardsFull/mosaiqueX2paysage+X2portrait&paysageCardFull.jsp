@@ -21,14 +21,7 @@
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
-					<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom " data-target="#overlay-mosaique" data-js="ds44-modal">
-						<img src="<%= SocleUtils.getUrlImageElementCarousel(elemCarousel, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio">
-						<figcaption class="ds44-imgCaption">
-							<%= glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(elemCarousel.getPdate()), elemCarousel.getTitle(userLang, false)) %>
-							<br /><%= glp("jcmsplugin.socle.symbol.copyright") %> <%=elemCarousel.getImageLegend(userLang, false) %>
-						</figcaption>
-					</figure>
-
+					<ds:mozaiqueImage image="<%= elemCarousel %>"/>
 				</li>
 			</jalios:if>
 
@@ -40,27 +33,13 @@
 	
 			<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[2]) %>">
 				<li class="col-2">
-					<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom " data-target="#overlay-mosaique" data-js="ds44-modal">
-						<img src="<%= SocleUtils.getUrlImageElementCarousel(elemCarouselArr[2], userLang, jcmsContext) %>" alt="" class="ds44-imgRatio">
-						<figcaption class="ds44-imgCaption">
-							<%= glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(elemCarouselArr[2].getPdate()), elemCarouselArr[2].getTitle(userLang, false)) %>
-							<br /><%= glp("jcmsplugin.socle.symbol.copyright") %> <%=elemCarouselArr[2].getImageLegend(userLang, false) %>
-						</figcaption>
-					</figure>
-	
+					<ds:mozaiqueImage image="<%= elemCarouselArr[2] %>"/>
 				</li>
 			</jalios:if>
 	
 			<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[3]) %>">
 				<li>
-					<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom ds44-container-imgRatio--A4" data-target="#overlay-mosaique" data-js="ds44-modal">
-						<img src="<%= SocleUtils.getUrlImageElementCarousel(elemCarouselArr[3], userLang, jcmsContext) %>" alt="" class="ds44-imgRatio">
-						<figcaption class="ds44-imgCaption">
-							<%= glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(elemCarouselArr[3].getPdate()), elemCarouselArr[3].getTitle(userLang, false)) %>
-							<br /><%= glp("jcmsplugin.socle.symbol.copyright") %> <%=elemCarouselArr[3].getImageLegend(userLang, false) %>
-						</figcaption>
-					</figure>
-	
+					<ds:mozaiqueImage image="<%= elemCarouselArr[3] %>" style="ds44-container-imgRatio--A4"/>
 				</li>
 			</jalios:if>
 		</ul>
