@@ -60,7 +60,10 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          </jalios:select>
       </jalios:if>
       <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
-         <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
+         <%
+         String dateIndexParam = Util.notEmpty(itEvent.getIndexDate()) ? "?dateIndex=" + itEvent.getIndexDate() : "";
+         %>
+         <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
          <p class="visually-hidden"><%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
          <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
             <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
@@ -73,7 +76,7 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
             <p><%= itEvent.getMetadata2() %></p>
          </jalios:if>
-         <a href="<%= itEvent.getDisplayUrl(userLocale) %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
+         <a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" tabindex="-1" aria-hidden="true" data-a11y-exclude="true"><i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
          <span class="visually-hidden"><%= itEvent.getTitre() %></span></a>
       </div>
    </div>

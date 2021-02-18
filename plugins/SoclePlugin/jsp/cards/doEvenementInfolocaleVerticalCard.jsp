@@ -29,7 +29,10 @@ String urlPhoto = InfolocaleUtil.getUrlOfLargestPicture(itEvent);
     
     <div class="ds44-card__section">
       <div class="ds44-innerBoxContainer">
-          <p role="heading" aria-level="3" class="h4-like ds44-cardTitle"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
+          <%
+          String dateIndexParam = Util.notEmpty(itEvent.getIndexDate()) ? "?dateIndex=" + itEvent.getIndexDate() : "";
+          %>
+          <p role="heading" aria-level="3" class="h4-like ds44-cardTitle"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
           <hr class="mbs" aria-hidden="true">
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
