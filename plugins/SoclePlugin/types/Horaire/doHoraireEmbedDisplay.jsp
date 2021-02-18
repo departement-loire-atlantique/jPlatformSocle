@@ -13,5 +13,5 @@ GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGoogl
 
 
 <jalios:if predicate="<%= Util.notEmpty(googlePlace) %>">
-   <%= GoogleApiManager.getOpening(googlePlace) %>
+   <%= GoogleApiManager.getOpening(googlePlace, obj.getMessageEnCasDabsenceDhoraire(userLang)) %>
 </jalios:if>

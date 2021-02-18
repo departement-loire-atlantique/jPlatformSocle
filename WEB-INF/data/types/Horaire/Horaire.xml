@@ -9,6 +9,9 @@
     <field name="idLieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Id lieu</label>
     </field>
+    <field name="messageEnCasDabsenceDhoraire" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Message en cas d'absence d'horaire</label>
+    </field>
   </fields>
 </type>
 

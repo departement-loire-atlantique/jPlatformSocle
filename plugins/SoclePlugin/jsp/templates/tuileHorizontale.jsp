@@ -77,7 +77,7 @@ if (Util.isEmpty(urlImage)) {
                 String placeId = Util.notEmpty(horaire.getIdLieu()) ? horaire.getIdLieu() : channel.getProperty("jcmsplugin.socle.api.places.google.id");
                 GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGooglePlaceBeanFromId(placeId) : null;
                 %>                              
-                <p><i class="icon icon-time ds44-mr1" aria-hidden="true"></i><span class="p-light"><%= GoogleApiManager.getDayOpening(googlePlace) %></span></p>             
+                <p><i class="icon icon-time ds44-mr1" aria-hidden="true"></i><span class="p-light"><%= GoogleApiManager.getDayOpening(googlePlace, horaire.getMessageEnCasDabsenceDhoraire(userLang)) %></span></p>             
             </jalios:if>
             
             <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
