@@ -120,6 +120,7 @@ public final class MailUtils {
    * Si un email spécifique a été saisi dans la fiche emploi, alors on envoi en CC
    */
   public static void envoiMailCandidature(CandidatureForm form, ArrayList<File> fichiers, String idFicheEmploi) {
+    String userLang = Channel.getChannel().getCurrentUserLang();
     // Récupération de l'offre d'emploi
     String jobTitle = "";
     String emailSpecifique = "";
@@ -141,7 +142,7 @@ public final class MailUtils {
       }
 
     // Objet
-    String objet = prefixeObjetMail +" - " + JcmsUtil.glp("jcmsplugin.socle.email.candidature.objet", form.getReference());
+    String objet = prefixeObjetMail +" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.email.candidature.objet", form.getReference());
 
     StringBuilder contenu = new StringBuilder("Expediteur : ");
     contenu.append("  " + form.getNom() + " "+ form.getPrenom() + " a repondu à l'annonce " + form.getReference() + " – " + jobTitle + NEWLINE);
