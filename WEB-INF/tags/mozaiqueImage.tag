@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"
     description="Image de mozaïque" 
     body-content="scriptless" 
-    import="com.jalios.jcms.Channel, com.jalios.util.Util"
+    import="java.text.SimpleDateFormat, com.jalios.jcms.Channel, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, com.jalios.jcms.context.JcmsJspContext, fr.cg44.plugin.socle.SocleUtils"
 %>
 <%@ attribute name="image"
     required="true"
@@ -23,7 +23,9 @@
 %>
 <%
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
-	JcmsContext jcmsContext = Channel.getChannel().getCurrentJcmsContext();
+	JcmsJspContext jcmsContext = (JcmsJspContext) request.getAttribute("jcmsContext");
+	
+	SimpleDateFormat sdfTuiles = new SimpleDateFormat("yyyy/MM");
 %>
 <figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom <%= style %>" data-target="#overlay-mosaique" data-js="ds44-modal">
 	<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio">

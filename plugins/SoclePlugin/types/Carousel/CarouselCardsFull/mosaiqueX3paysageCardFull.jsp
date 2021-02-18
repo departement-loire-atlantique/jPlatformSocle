@@ -9,8 +9,6 @@
 		return;
 	}
 	
-	SimpleDateFormat sdfTuiles = new SimpleDateFormat("yyyy/MM");
-	
 	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(obj.getElements1(), 3);
 %>
 
