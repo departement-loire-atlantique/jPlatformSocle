@@ -18,19 +18,23 @@ FALC pub = (FALC) data;
 
 
 //recuperation de l'url de l'icone pour l'encadre
-String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIcone(loggedMember), userLang, channel.getCategory("$jcmsplugin.socle.falc.icone.cat"));
-
-String titreEncadre = Util.notEmpty(pub.getTitreEncadre(userLang)) ? pub.getTitreEncadre(userLang) : glp("jcmsplugin.socle.falc.titre");
+String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIcone(loggedMember), userLang, "");
 %>
 
 <section class='ds44-box <%= pub.getStyleDeFonds().equalsIgnoreCase("none") ? "" : pub.getStyleDeFonds() %>'>
 	<div class="ds44-innerBoxContainer">
-		<div class="ds44-flex-container ds44-flex-valign-center">
-			<img src='<%= urlImage %>' alt="">
-			<div class="ds44-card__section--horizontal">
-				<p role="heading" aria-level="2" class="ds44-box-heading"><%= titreEncadre %></p>
+		<jalios:if predicate="<%= Util.notEmpty(urlImage) || Util.notEmpty(titreEncadre) %>">
+			<div class="ds44-flex-container ds44-flex-valign-center">
+				<jalios:if predicate="<%= Util.notEmpty(urlImage) %>">
+					<img src='<%= urlImage %>' alt="">
+				</jalios:if>
+				<jalios:if predicate="<%= Util.notEmpty(titreEncadre) %>">
+					<div class="ds44-card__section--horizontal">
+						<p role="heading" aria-level="2" class="ds44-box-heading"><%= titreEncadre %></p>
+					</div>
+				</jalios:if>
 			</div>
-		</div>
+		</jalios:if>
 		<jalios:if predicate="<%= Util.notEmpty(pub.getContenuEncadre(userLang)) %>">
 			<jalios:wysiwyg><%= pub.getContenuEncadre(userLang) %></jalios:wysiwyg>
 		</jalios:if>
