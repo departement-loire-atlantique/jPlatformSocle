@@ -43,7 +43,7 @@
     description="Déclaration du theme pour le carrousel"
 %>
 <jalios:select>
-    <jalios:if predicate="<%= Util.notEmpty(carrouselPortlet) && Util.isEmpty(pubArray) %>">
+    <jalios:if predicate="<%= Util.notEmpty(carrouselPortlet) %>">
         <%
         // Surcharger les contenus mis en avant
         if (Util.notEmpty(promotedPubArray)) {
@@ -54,6 +54,23 @@
         <%-- Afficher la portlet --%>
         <div class="ds44-container-large ds44-mb-std">
             <jalios:include pub="<%= carrouselPortlet %>"/>
+        </div>
+    </jalios:if>
+    <jalios:if predicate="<%= Util.notEmpty(promotedPubArray) %>">
+        <%
+        
+        String themeCarousel = Util.notEmpty(theme) ? theme : "darkContext";
+        
+        PortletCarousel tmpPortlet = new PortletCarousel();
+        tmpPortlet.setTemplate("box.sliderTrois");
+        tmpPortlet.setSelectionDuTheme(themeCarousel);
+        
+        if (Util.notEmpty(promotedPubArray)) {
+          tmpPortlet.setContenusEnAvant(promotedPubArray);
+        }
+        %>
+        <div class="ds44-container-large ds44-mb-std">
+            <jalios:include pub="<%= tmpPortlet %>"/>
         </div>
     </jalios:if>
     <jalios:if predicate="<%= Util.notEmpty(pubArray) && Util.notEmpty(gabarit) %>">
