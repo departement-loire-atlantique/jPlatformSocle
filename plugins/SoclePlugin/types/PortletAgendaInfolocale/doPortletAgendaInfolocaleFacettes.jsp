@@ -62,7 +62,7 @@
 	            <input type="hidden" name="boxId" value="<%= box.getId() %>" data-technical-field />
 	            <% request.removeAttribute("isFilter"); %>
 	            <div class="ds44-fieldContainer ds44-small-fg1">
-	               <% String styleButton = showFiltres ? "" : "--large"; %>
+	               <% String styleButton = isInRechercheFacette ? "" : "--large"; %>
 	               <button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
 	               <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 	               <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
