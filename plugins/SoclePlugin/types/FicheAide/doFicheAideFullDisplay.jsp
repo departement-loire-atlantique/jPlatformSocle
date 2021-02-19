@@ -276,6 +276,7 @@
 						<% 
 							boolean is6col = Util.notEmpty(obj.getEdemarche(loggedMember)) 
 											|| Util.notEmpty(obj.getQuiContacter()) 
+											|| Util.notEmpty(obj.getLieuInstructionDemande())
 											|| (obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu())); 
 						%>
 						<div class='col-<%= is6col ? "6 ds44-modal-column" : "12" %> '>
@@ -329,7 +330,7 @@
 						</jalios:if>
 
 						<%-- Faire une demande recherche par sectorisation --%>
-						<jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && obj.getInstructionDelegation() && Util.notEmpty(obj.getTypeDeLieu()) %>">
+						<jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && obj.getInstructionDelegationDemande() && (Util.notEmpty(obj.getTypeDeLieu()) || Util.notEmpty(obj.getTypeDeLieuDemande())) %>">
 							<div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
 
 								<div id="rechercheDemande">
@@ -339,6 +340,11 @@
 										String idFormAdresse = "demande-adresse";
 										String idResultInLine = "demandeResult";
 									%>
+								    <% 
+								    // Si il existe un type de lieu pour la demande alors utiliser champ lieu demande et lieu secondaire demande
+									String typeLieu = Util.notEmpty(obj.getTypeDeLieuDemande()) ? obj.getTypeDeLieuDemande() : obj.getTypeDeLieu();
+								    String typeLieuSecondaire = Util.notEmpty(obj.getTypeDeLieuDemande()) ? obj.getTypeDeLieuSecondaireDemande() : obj.getTypeDeLieuSecondaire();
+									%>
 									<%@ include file="/plugins/SoclePlugin/types/FicheAide/doFicheAideFormSectorisation.jspf"%>
 								</div>
 								<div id="<%= idResultInLine %>"></div>
@@ -347,7 +353,7 @@
 						</jalios:if>
 
 
-						<jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getQuiContacter()) %>">
+						<jalios:if predicate="<%= Util.isEmpty(obj.getEdemarche(loggedMember)) && (Util.notEmpty(obj.getQuiContacter()) || Util.notEmpty(obj.getLieuInstructionDemande())) %>">
 							<div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
 
 								<h2 class="h4-like" id="titre_envoie_dossier">
@@ -361,11 +367,14 @@
 									</jalios:select>
 								</h2>
 
-								<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= obj.getQuiContacter() %>' counter="lieuCounter">
+                                <%
+                                FicheLieu[] ficheLieuArray = Util.notEmpty(obj.getLieuInstructionDemande()) ? obj.getLieuInstructionDemande() : obj.getQuiContacter();
+                                %>
+								<jalios:foreach name="itFicheLieu" type="FicheLieu" array='<%= ficheLieuArray %>' counter="lieuCounter">
 
 									<jalios:media data="<%= itFicheLieu %>" template="contact" />
 
-									<jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+									<jalios:if predicate="<%= lieuCounter != ficheLieuArray.length %>">
 										<hr />
 									</jalios:if>
 
@@ -513,6 +522,10 @@
 										String idFormAdresse = "contact-adresse";
 										String idResultInLine = "aideContactResult";
 									%>
+									<% 
+                                    String typeLieu = obj.getTypeDeLieu();
+                                    String typeLieuSecondaire = obj.getTypeDeLieuSecondaire();
+                                    %>
 									<%@ include file="/plugins/SoclePlugin/types/FicheAide/doFicheAideFormSectorisation.jspf"%>
 								</div>
 								<div id="<%= idResultInLine %>"></div>

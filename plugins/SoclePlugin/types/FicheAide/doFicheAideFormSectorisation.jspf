@@ -26,11 +26,11 @@
         <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
     </button>  
     
-    <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
-       <input type="hidden" name='<%= "cid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" data-technical-field />
+    <jalios:if predicate="<%= Util.notEmpty(typeLieu) && Util.notEmpty(channel.getCategory(typeLieu)) %>">
+       <input type="hidden" name='<%= "cid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(typeLieu).getId() %>" data-technical-field />
     </jalios:if>
-    <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieuSecondaire()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieuSecondaire())) %>">
-       <input type="hidden" name='<%= "cidSecondaire" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieuSecondaire()).getId() %>" data-technical-field />
+    <jalios:if predicate="<%= Util.notEmpty(typeLieuSecondaire) && Util.notEmpty(channel.getCategory(typeLieuSecondaire)) %>">
+       <input type="hidden" name='<%= "cidSecondaire" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(typeLieuSecondaire).getId() %>" data-technical-field />
     </jalios:if>
           
     <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value="true" data-technical-field />                                                        
