@@ -2,6 +2,7 @@ package fr.cg44.plugin.socle.export;
 
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.SortedSet;
 
@@ -42,14 +43,23 @@ public class ExportCsvFicheArticle {
     header.append(DOUBLE_QUOTE + "Type simple" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Encadrés communs" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Page utile" + DOUBLE_QUOTE + SEPARATOR);
-    // TODO : couples titres / paragraphes
+    header.append(DOUBLE_QUOTE + "Titres paragraphes" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu paragraphes" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres paragraphes 1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu paragraphes 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres paragraphes 2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu paragraphes 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 3" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres paragraphes 3" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu paragraphes 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 4" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres paragraphes 4" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu paragraphes 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre témoignage" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Sous-titre témoignage" + DOUBLE_QUOTE + SEPARATOR);
@@ -64,8 +74,10 @@ public class ExportCsvFicheArticle {
     header.append(DOUBLE_QUOTE + "EPCI concernées" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Cantons concernés" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "FAQ" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "Portlets bas" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "Portlets encadrés" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Portlets encadrés 1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Portlets encadrés 2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Portlets encadrés 3" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Portlets encadrés 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "ID ancien contenu" + DOUBLE_QUOTE + SEPARATOR);
     
     header.append(ExportCsvUtils.getMetadataCsvHeader());
@@ -136,17 +148,112 @@ public class ExportCsvFicheArticle {
       // Type simple
       chaine.append(ExportCsvUtils.getFormattedCsvValue(Boolean.toString(itFicheArticle.getTypeSimple()), true));
       
-      // ENcadrés communs
+      // Encadrés communs
       chaine.append(ExportCsvUtils.getFormattedCsvValue(Boolean.toString(itFicheArticle.getEncadresCommuns()), true));
       
       // Page utile
       chaine.append(ExportCsvUtils.getFormattedCsvValue(Boolean.toString(itFicheArticle.getPageUtile()), true));
       
+      // Titres paragraphes
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreParagraphe(), true));
       
+      // Contenu paragraphes
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe(), true));
+      
+      // Titre onglet 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_1(), true));
+      
+      // Titres paragraphes 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreParagraphe_1(), true));
+      
+      // Contenu paragraphes 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_1(), true));
+      
+      // Titre onglet 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_2(), true));
+      
+      // Titres paragraphes 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreParagraphe_2(), true));
+      
+      // Contenu paragraphes 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_2(), true));
+      
+      // Titre onglet 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_3(), true));
+      
+      // Titres paragraphes 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreParagraphe_3(), true));
+      
+      // Contenu paragraphes 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_3(), true));
+      
+      // Titre onglet 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_4(), true));
+      
+      // Titres paragraphes 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreParagraphe_4(), true));
+      
+      // Contenu paragraphes 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_4(), true));
+      
+      // Titre témoignage
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreTemoignage(), true));
+      
+      // Sous-titre témoignage
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getSoustitreTemoignage(), true));
+      
+      // Catégorie de navigation
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getCategorieDeNavigation(itMember)), true));
+      
+      // Mise en avant
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getMiseEnAvant(itMember)), true));
+      
+      // Besoins
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getBesoins(itMember)), true));
+      
+      // Publics
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getPublics(itMember)), true));
+      
+      // Annuaires
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getAnnuaires(itMember)), true));
+      
+      // Communes concernées
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfContent(itFicheArticle.getCommunes()), true));
+      
+      // Toutes les communes du département
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(Boolean.toString(itFicheArticle.getToutesLesCommunesDuDepartement()), true));
+      
+      // Délégations concernées
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfContent(itFicheArticle.getDelegations()), true));
+      
+      // EPCI concernées
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getEpci(itMember)), true));
+      
+      // Cantons concernés
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfContent(itFicheArticle.getCantons()), true));
+      
+      // FAQ
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(Util.isEmpty(itFicheArticle.getFaq()) ? "" : itFicheArticle.getFaq().getTitle(), true));
+      
+      // Portlets encadrés 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_1()), true));
+      
+      // Portlets encadrés 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_2()), true));
+      
+      // Portlets encadrés 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_3()), true));
+      
+      // Portlets encadrés 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_4()), true));
+      
+      // ID ancien contenu
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getIdAncienContenu(), true));
       
       chaine.append(ExportCsvUtils.getMetadataCsvPublication(itPub));
     
-      localPrintWriter.println(chaine);}
-  }
+      localPrintWriter.println(chaine);
+    }
+}
   
 }

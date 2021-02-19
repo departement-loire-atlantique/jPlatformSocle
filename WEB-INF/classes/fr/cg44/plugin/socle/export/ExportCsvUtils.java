@@ -89,7 +89,7 @@ public class ExportCsvUtils {
   }
   
   /**
-   * Renvoie une valeur
+   * Renvoie une valeur CSV d'une donnée, avec séparateur ou non
    * @param value
    * @return
    */
@@ -108,6 +108,32 @@ public class ExportCsvUtils {
   
   public static String getFormattedCsvValue(String value) {
     return getFormattedCsvValue(value, false);
+  }
+  
+  /**
+   * Concatène les éléments d'un tableau de String avec un séparateur
+   * @param strArray
+   * @param separator
+   * @return
+   */
+  public static String getFormattedCsvValueStringArray(String[] strArray, boolean separator) {
+    if (Util.isEmpty(strArray)) return getFormattedCsvValue("", separator);
+    
+    StringBuilder concatenatedStr = new StringBuilder();
+    
+    String strSeparator = " / ";
+    
+    for (int counter = 0; counter < strArray.length; counter++) {
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
+      
+      if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
+    }
+    
+    return getFormattedCsvValue(concatenatedStr.toString(), separator);
+  }
+  
+  public static String getFormattedCsvValueStringArray(String[] strArray) {
+    return getFormattedCsvValueStringArray(strArray, false);
   }
   
 }

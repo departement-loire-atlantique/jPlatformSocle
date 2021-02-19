@@ -543,6 +543,7 @@ public final class SocleUtils {
      * @return
      */
     public static String formatCategories(Set<Category> categories) {
+        if (Util.isEmpty(categories)) return "";
         return formatCategories(new ArrayList<Category>(categories), ", ");
     }
     
@@ -552,6 +553,7 @@ public final class SocleUtils {
      * @return
      */
     public static String formatCategories(Set<Category> categories, String separator) {
+      if (Util.isEmpty(categories)) return "";
         return formatCategories(new ArrayList<Category>(categories), separator);
     }
     
@@ -1986,4 +1988,36 @@ public final class SocleUtils {
 	  
 	  return listNames.toString();
 	}
+	
+	 
+  /**
+   * Retourne une liste de titres d'un tableau de Content, dans le format "titre 1 / titre 2 / titre 3"
+   * Utilisé principalement pour l'export CSV
+   * @param contentList
+   * @return
+   */
+  public static String listNameOfContent(List<Content> contentList) {
+    if (Util.isEmpty(contentList) || contentList.size() <= 0) return "";
+    
+    Channel channel = Channel.getChannel();
+    String userLang = channel.getCurrentUserLang();
+    
+    StringBuilder listNames = new StringBuilder();
+    
+    String separator = " / ";
+    
+    for (Iterator<Content> iter = contentList.iterator(); iter.hasNext();) {
+      Content itContent = iter.next();
+      listNames.append(itContent.getTitle(userLang));
+      if (iter.hasNext()) listNames.append(separator);
+    }
+    
+    return listNames.toString();
+  }
+  
+  public static String listNameOfContent(Content[] contentArray) {
+    if (Util.isEmpty(contentArray) || contentArray.length <= 0) return "";
+    
+    return listNameOfContent(Arrays.asList(contentArray));
+  }
 }

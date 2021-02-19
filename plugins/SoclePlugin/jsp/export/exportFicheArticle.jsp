@@ -1,4 +1,4 @@
-<%@page import="fr.cg44.plugin.socle.export.ExportCsvUtil"%>
+<%@page import="fr.cg44.plugin.socle.export.ExportCsvFicheArticle"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
 response.setHeader("Content-Disposition", "attachment; filename=Export_FichesArticle.csv");
@@ -13,6 +13,7 @@ if (!isAdmin) {
 }
 
 out.clear();
-ExportCsvFicheArticle.generateCsv(loggedMember, userlang, out);
+
+ExportCsvFicheArticle.generateCsv(loggedMember, userLang, out);
 
 %>

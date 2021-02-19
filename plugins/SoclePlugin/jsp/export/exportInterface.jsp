@@ -18,4 +18,4 @@ if(!isAdmin) {
 <div class="page-header"><h1>Export CSV de contenu</h1></div>
 
 <b>Export Fiches Article</b><br/>
-<a href="exportFicheArticle.jsp" class="btn btn-info modal" target="_blank">Exporter en CSV</a>
+<a href="plugins/SoclePlugin/jsp/export/exportFicheArticle.jsp" class="btn btn-info modal" target="_blank">Exporter en CSV</a>
