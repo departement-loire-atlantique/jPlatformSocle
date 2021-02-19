@@ -22,7 +22,10 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
 
    <div class="ds44-flex-container">
       <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
-         <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
+         <%
+         String dateIndexParam = Util.notEmpty(itEvent.getIndexDate()) ? "?dateIndex=" + itEvent.getIndexDate() : "";
+         %>
+         <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
 		<p>
 			<span class="ds44-docListElem ds44-inlineBlock"> <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
 			    <jalios:select>

@@ -33,7 +33,7 @@ if (Util.isEmpty(box)) return;
             box.getMetadonneesTuileCarrousel_1(), box.getMetadonneesTuileCarrousel_2(), box.getMetadonneeParDefaut());
         List<EvenementInfolocale> allEvents = InfolocaleUtil.splitEventListFromDateFields(evenements);
         List<EvenementInfolocale> sortedEvents = InfolocaleUtil.sortEvenementsCarrousel(allEvents);
-        sortedEvents = InfolocaleUtil.purgeEventListFromDuplicates(sortedEvents, new String[]{sdfSort.format(dateDebut), sdfSort.format(dateInAMonth)});
+        sortedEvents = InfolocaleUtil.purgeEventListFromDuplicates(sortedEvents, new String[]{sdfSort.format(dateDebut), sdfSort.format(dateInAMonth)}, false);
         
         if (Util.isEmpty(sortedEvents)) {
           return;

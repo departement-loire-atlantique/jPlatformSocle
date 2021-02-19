@@ -13,7 +13,15 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% EvenementInfolocale obj = (EvenementInfolocale)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 
-DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(obj);
+int dateIndex = Util.notEmpty(request.getParameter("dateIndex")) ? Integer.parseInt((String) request.getParameter("dateIndex")) : 0;
+
+DateInfolocale currentDisplayedDate;
+
+if (dateIndex >= 1 && obj.getDates().length >= 2) {
+  currentDisplayedDate = obj.getDates()[dateIndex];
+} else {
+  currentDisplayedDate = InfolocaleUtil.getClosestDate(obj);  
+}
 
 String urlPhoto = "";
 String legend = "";

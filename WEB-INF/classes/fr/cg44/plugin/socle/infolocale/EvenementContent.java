@@ -40,6 +40,7 @@ public class EvenementContent extends Content {
     String metadataDefaultIcon;
     String metadataDefaultContent;
     String metadataHiddenLabel;
+    int indexDate;
     
     public EvenementContent() {}
     
@@ -195,6 +196,14 @@ public class EvenementContent extends Content {
 
     public void setTarifs(Tarif[] tarifs) {
       this.tarifs = tarifs;
+    }
+
+    public int getIndexDate() {
+      return indexDate;
+    }
+
+    public void setIndexDate(int indexDate) {
+      this.indexDate = indexDate;
     }
     
 }

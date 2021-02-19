@@ -389,10 +389,13 @@ public class InfolocaleUtil {
 
     private static List<EvenementInfolocale> splitEventIntoEventListFromDates(EvenementInfolocale event) {
       List<EvenementInfolocale> splittedList = new ArrayList<>();
+      int counter = 0;
       for (DateInfolocale itDate : event.getDates()) {
         EvenementInfolocale eventClone = (EvenementInfolocale) event.clone();
         eventClone.setDates(new DateInfolocale[]{itDate});
+        eventClone.setIndexDate(counter);
         splittedList.add(eventClone);
+        counter++;
       }
       return splittedList;
     }
