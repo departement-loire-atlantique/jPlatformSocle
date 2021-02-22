@@ -32,6 +32,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Content;
 import com.jalios.jcms.DataSelector;
 import com.jalios.jcms.FileDocument;
 import com.jalios.jcms.HttpUtil;
@@ -41,6 +42,7 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.context.JcmsJspContext;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.jcms.portlet.PortalElement;
 import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.util.Util;
 
@@ -541,6 +543,7 @@ public final class SocleUtils {
      * @return
      */
     public static String formatCategories(Set<Category> categories) {
+        if (Util.isEmpty(categories)) return "";
         return formatCategories(new ArrayList<Category>(categories), ", ");
     }
     
@@ -550,6 +553,7 @@ public final class SocleUtils {
      * @return
      */
     public static String formatCategories(Set<Category> categories, String separator) {
+      if (Util.isEmpty(categories)) return "";
         return formatCategories(new ArrayList<Category>(categories), separator);
     }
     
@@ -583,6 +587,28 @@ public final class SocleUtils {
         }
         
         return formatted.toString();
+    }
+    
+    /**
+     * Liste les IDs d'un set de catégories selon un séparateur
+     * @param treeSet
+     * @return
+     */
+    public static String listCategoriesId(Set<Category> treeSet) {
+      
+      if (Util.isEmpty(treeSet)) return "";
+      
+      String separator = ", ";
+      
+      StringBuilder formatted = new StringBuilder();
+      
+      for (Iterator<Category> iter = treeSet.iterator(); iter.hasNext();) {
+        Category itCat = (Category) iter.next();
+        formatted.append(itCat.getId());
+        if (iter.hasNext()) formatted.append(separator);
+      }
+      
+      return formatted.toString();
     }
 	
 	/**
@@ -1935,4 +1961,63 @@ public final class SocleUtils {
 		}
 		return "";
 	}
+	
+	/**
+	 * Retourne une liste de titres d'un tableau de PortalElement, dans le format "titre 1 / titre 2 / titre 3"
+	 * Utilisé principalement pour l'export CSV
+	 * @param contentList
+	 * @return
+	 */
+	public static String listNameOfPortalElements(PortalElement[] portalElements) {
+	  if (Util.isEmpty(portalElements) || portalElements.length <= 0) return "";
+	  
+	  Channel channel = Channel.getChannel();
+	  String userLang = channel.getCurrentUserLang();
+	  
+	  StringBuilder listNames = new StringBuilder();
+	  
+	  String separator = " / ";
+	  
+	  List<PortalElement> listContent = new ArrayList<>(Arrays.asList(portalElements));
+	  
+	  for (Iterator<PortalElement> iter = listContent.iterator(); iter.hasNext();) {
+	    PortalElement itPortalElement = iter.next();
+	    listNames.append(itPortalElement.getTitle(userLang));
+	    if (iter.hasNext()) listNames.append(separator);
+	  }
+	  
+	  return listNames.toString();
+	}
+	
+	 
+  /**
+   * Retourne une liste de titres d'un tableau de Content, dans le format "titre 1 / titre 2 / titre 3"
+   * Utilisé principalement pour l'export CSV
+   * @param contentList
+   * @return
+   */
+  public static String listNameOfContent(List<Content> contentList) {
+    if (Util.isEmpty(contentList) || contentList.size() <= 0) return "";
+    
+    Channel channel = Channel.getChannel();
+    String userLang = channel.getCurrentUserLang();
+    
+    StringBuilder listNames = new StringBuilder();
+    
+    String separator = " / ";
+    
+    for (Iterator<Content> iter = contentList.iterator(); iter.hasNext();) {
+      Content itContent = iter.next();
+      listNames.append(itContent.getTitle(userLang));
+      if (iter.hasNext()) listNames.append(separator);
+    }
+    
+    return listNames.toString();
+  }
+  
+  public static String listNameOfContent(Content[] contentArray) {
+    if (Util.isEmpty(contentArray) || contentArray.length <= 0) return "";
+    
+    return listNameOfContent(Arrays.asList(contentArray));
+  }
 }
