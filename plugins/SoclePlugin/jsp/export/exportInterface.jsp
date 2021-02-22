@@ -12,10 +12,23 @@ if(!isAdmin) {
     return;
 }
 
+String folderpath = channel.getProperty("jcmsplugin.socle.export.img.filepath");
+
+
+
 %>
 <%@ include file='/admin/doAdminHeader.jspf' %>
 
-<div class="page-header"><h1>Export CSV de contenu</h1></div>
+<div class="page-header"><h1>Export CSV et d'images de contenu</h1></div>
 
-<b>Export Fiches Article</b><br/>
+<h2>Dossier du fichier ZIP des images TODO : OK</h2>
+<b>Le fichier ZIP existe : TODO</b>
+
+<h3>Export Fiches Article</h3>
 <a href="plugins/SoclePlugin/jsp/export/exportFicheArticle.jsp" class="btn btn-info modal" target="_blank">Exporter en CSV</a>
+
+<h3>Export Images Fiche Article</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportImagesContenu.jsp?contentType=FicheArticle" class="btn btn-info modal" target="_blank">Générer et télécharger le ZIP</a>
+
+<hr>
+

@@ -847,7 +847,6 @@ jcmsplugin.socle.horaires.title: Horaires d'ouverture
 jcmsplugin.socle.contacts.title: Contacts et réservation
 
 # ------------------------------------------------------------
-#  Export CSV
+#  Export CSV / Images
 # ------------------------------------------------------------
-
-jcmsplugin.socle.label.exportcsv.link: Export de contenu en CSV
+jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin absolu du dossier du ZIP

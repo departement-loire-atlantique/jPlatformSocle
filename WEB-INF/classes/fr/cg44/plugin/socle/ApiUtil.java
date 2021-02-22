@@ -77,7 +77,7 @@ public class ApiUtil {
   public static CloseableHttpResponse createGetConnection(String url, String authToken) {
       
       CloseableHttpClient httpClient = HttpClients.createDefault();
-      
+      System.out.println(authToken);
       HttpGet get = new HttpGet(url);
       
       if (Util.notEmpty(authToken)) {
