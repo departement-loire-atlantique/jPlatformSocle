@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
@@ -343,7 +344,11 @@ public class RequestManager {
                   }
                   else if (Util.isEmpty(metadata) || Util.notEmpty(responseContent)) {
                     fluxData = new JSONObject();
-                    fluxData.put("listMetadata", new JSONObject(responseContent));
+                    if (responseContent.startsWith("[")) {
+                      fluxData.put("listMetadata", new JSONObject(responseContent.replaceFirst("\\[", "").replace("}]}]", "}]}")));
+                    } else {
+                      fluxData.put("listMetadata", new JSONObject(responseContent));
+                    }
                   } else {
                     fluxData = new JSONObject(responseContent);
                   }
