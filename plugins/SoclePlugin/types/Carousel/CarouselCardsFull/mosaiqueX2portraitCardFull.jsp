@@ -28,7 +28,7 @@
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
-					<ds:mozaiqueImage image="<%= elemCarousel %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMozaiqueAvecPopin() %>"/>
+					<ds:mosaiqueImage image="<%= elemCarousel %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 				</li>
 			</jalios:if>
 

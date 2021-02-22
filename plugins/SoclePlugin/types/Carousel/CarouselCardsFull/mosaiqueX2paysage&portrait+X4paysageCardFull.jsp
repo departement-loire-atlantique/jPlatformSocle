@@ -26,12 +26,12 @@
 	<ul class="grid-3-tiny-1 ds44-mosaique ds44-gutter ds44-list">
 
 		<li class="col-2">
-			<ds:mozaiqueImage image="<%= elemCarouselArr[0] %>" hasPopin="<%= carousel.getImageMozaiqueAvecPopin() %>"/>
+			<ds:mosaiqueImage image="<%= elemCarouselArr[0] %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 		</li>
 
 		<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[1]) %>">
 			<li>
-				<ds:mozaiqueImage image="<%= elemCarouselArr[1] %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMozaiqueAvecPopin() %>"/>
+				<ds:mosaiqueImage image="<%= elemCarouselArr[1] %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 			</li>
 		</jalios:if>
 	</ul>
@@ -42,7 +42,7 @@
 
 				<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 					<li>
-						<ds:mozaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMozaiqueAvecPopin() %>"/>
+						<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 					</li>
 				</jalios:if>
 
@@ -54,7 +54,7 @@
 
 					<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 						<li>
-							<ds:mozaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMozaiqueAvecPopin() %>"/>
+							<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 						</li>
 					</jalios:if>
 

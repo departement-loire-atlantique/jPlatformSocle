@@ -24,9 +24,9 @@
 
 	<section class="ds44-modal-container" id="overlay-mosaique" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
 		<div class="ds44-modal-box">
-			<h1 id="overlay-title" class="h2-like visually-hidden" aria-hidden="true"><%= glp("jcmsplugin.socle.mozaique.popin.title") %></h1>
+			<h1 id="overlay-title" class="h2-like visually-hidden" aria-hidden="true"><%= glp("jcmsplugin.socle.mosaique.popin.title") %></h1>
 			<button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
-					title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.mozaique.popin.title")) %>'
+					title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.mosaique.popin.title")) %>'
 					data-js="ds44-modal-action-close">
 				<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
 			</button>
