@@ -74,14 +74,16 @@
 
 <%-- Phone ------------------------------------------------------------ --%>
 <jalios:if predicate='<%= userLang.equals("fr") %>'>
-<% String telephoneLabel = glp("jcmsplugin.socle.telephone"); %>
+<%  String telephoneLabel = glp("jcmsplugin.socle.telephone");
+    String telAutocompleteValue = multilingue ? "tel" : "tel-national";
+%>
 <div class="ds44-mb3">
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label for="form-element-telephone" class="ds44-formLabel">
                 <span class="ds44-labelTypePlaceholder"><span><%= telephoneLabel %></span></span>
             </label>
-            <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" autocomplete="tel-national" aria-describedby="explanation-form-element-telephone">
+            <input type="text" id="form-element-telephone" name="telephone" class="ds44-inpStd" autocomplete="<%= telAutocompleteValue %>" aria-describedby="explanation-form-element-telephone">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", telephoneLabel) %></span>
             </button>
@@ -279,7 +281,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 				<ul class="ds44-list" role="listbox" id="listbox-form-element-sujet" aria-labelledby="button-message-form-element-sujet"  aria-required="true">
 					<jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
 						<li class="ds44-select-list_elem" name="sujet" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
-							<%= itCat.getName() %>
+							<%= itCat.getName(userLang) %>
 						</li>
 					</jalios:foreach>
 				</ul>

@@ -80,7 +80,7 @@ public class ContactFormDataController extends BasicDataController implements Pl
  }  
   
   // Téléphone
-  if (Util.notEmpty(form.getTelephone())) {
+  if (!multilingue && Util.notEmpty(form.getTelephone())) {
    String regexp = channel.getProperty("jcmsplugin.socle.regex.phone");
    boolean correspond = Pattern.matches(regexp, form.getTelephone());
    if (!correspond) {
