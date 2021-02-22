@@ -109,6 +109,29 @@
       <label xml:lang="fr">Contact FAQ</label>
     </field>
     <!-- Demande -->
+    <field name="instructionDelegationDemande" editor="boolean" required="false" compactDisplay="false" tab="demande" type="boolean" default="on">
+      <label xml:lang="fr">Instruction délégation</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+     <field name="typeDeLieuDemande" editor="enumerate" required="false" compactDisplay="false" tab="demande" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat|$jcmsplugin.socle.type.sectorisation.developpement-local.cat|$jcmsplugin.socle.type.sectorisation.ressources.cat|$jcmsplugin.socle.type.sectorisation.solidarites.cat|$jcmsplugin.socle.type.sectorisation.eds.cat|$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat|$jcmsplugin.socle.type.sectorisation.unites-emplois.cat|$jcmsplugin.socle.type.sectorisation.cli.cat|$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat|$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat|$jcmsplugin.socle.type.sectorisation.missions-locales.cat|$jcmsplugin.socle.type.sectorisation.clic.cat|$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat|$jcmsplugin.socle.type.sectorisation.ccas.cat|$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement|Service développement local|Service ressources|Service solidarités|Espaces départementaux des solidarités (EDS)|Unités agrément des assistant-e-s maternel-le-s|Unités emplois|CLI|Aide sociale à l'enfance|Unités accueil familial|Missions locales|Centres locaux d'information et de coordination (CLIC)|Relais assistants maternels|CCAS|Points information personnes handicapées">
+      <label xml:lang="fr">Type de lieu</label>
+    </field>
+    <field name="typeDeLieuSecondaireDemande" editor="enumerate" required="false" compactDisplay="false" tab="demande" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat|$jcmsplugin.socle.type.sectorisation.developpement-local.cat|$jcmsplugin.socle.type.sectorisation.ressources.cat|$jcmsplugin.socle.type.sectorisation.solidarites.cat|$jcmsplugin.socle.type.sectorisation.eds.cat|$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat|$jcmsplugin.socle.type.sectorisation.unites-emplois.cat|$jcmsplugin.socle.type.sectorisation.cli.cat|$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat|$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat|$jcmsplugin.socle.type.sectorisation.missions-locales.cat|$jcmsplugin.socle.type.sectorisation.clic.cat|$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat|$jcmsplugin.socle.type.sectorisation.ccas.cat|$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement|Service développement local|Service ressources|Service solidarités|Espaces départementaux des solidarités (EDS)|Unités agrément des assistant-e-s maternel-le-s|Unités emplois|CLI|Aide sociale à l'enfance|Unités accueil familial|Missions locales|Centres locaux d'information et de coordination (CLIC)|Relais assistants maternels|CCAS|Points information personnes handicapées">
+      <label xml:lang="fr">Type de lieu secondaire</label>
+    </field>
+    <field name="contactServiceParEmailDemande" editor="boolean" required="false" compactDisplay="false" tab="demande" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Contact service par email</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="lieuInstructionDemande" editor="link" required="false" compactDisplay="false" tab="demande" type="generated.FicheLieu[]">
+      <label xml:lang="fr">Lieu instruction des demandes ?</label>
+    </field>
     <field name="documentsUtiles" editor="link" required="false" compactDisplay="false" tab="demande" type="com.jalios.jcms.FileDocument[]" ml="true">
       <label xml:lang="fr">Documents utiles</label>
     </field>
