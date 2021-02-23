@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -21,7 +22,6 @@ import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.RequestManager;
-import fr.cg44.plugin.socle.infolocale.singleton.TokenManager;
 
 public class ApiUtil {
   
@@ -36,7 +36,13 @@ public class ApiUtil {
    */
   public static CloseableHttpResponse createPostConnection(String url, Map<String, Object> params, String authToken) {
       
-      CloseableHttpClient httpClient = HttpClients.createDefault();
+      int timeout = Channel.getChannel().getIntegerProperty("jcmsplugin.socle.connection.timeout", 5);
+      RequestConfig config = RequestConfig.custom()
+        .setConnectTimeout(timeout * 1000)
+        .setConnectionRequestTimeout(timeout * 1000)
+        .setSocketTimeout(timeout * 1000).build();
+    
+      CloseableHttpClient httpClient =  HttpClientBuilder.create().setDefaultRequestConfig(config).build();
       
       HttpPost post = new HttpPost(url);
       
@@ -59,9 +65,9 @@ public class ApiUtil {
       
       CloseableHttpResponse response = null;
       try {
-          response = httpClient.execute(post);
+        response = httpClient.execute(post);
       } catch (IOException e) {
-          LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
+        LOGGER.warn("Exception sur createPostConnection -> " + url + " : " + e.getMessage());
       }
       
       return response;
@@ -75,8 +81,15 @@ public class ApiUtil {
    * Créée une CloseableHttpResponse avec des paramètres dans le cadre d'une requête GET
    */
   public static CloseableHttpResponse createGetConnection(String url, String authToken) {
-      
-      CloseableHttpClient httpClient = HttpClients.createDefault();
+         
+      int timeout = Channel.getChannel().getIntegerProperty("jcmsplugin.socle.connection.timeout", 5);
+      RequestConfig config = RequestConfig.custom()
+        .setConnectTimeout(timeout * 1000)
+        .setConnectionRequestTimeout(timeout * 1000)
+        .setSocketTimeout(timeout * 1000).build();
+       
+    
+      CloseableHttpClient httpClient =  HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
       HttpGet get = new HttpGet(url);
       
@@ -88,7 +101,7 @@ public class ApiUtil {
       try {
           response = httpClient.execute(get);
       } catch (IOException e) {
-          LOGGER.warn("Exception sur createPostConnection : " + e.getMessage());
+          LOGGER.warn("Exception sur createGetConnection -> " + url + " : " + e.getMessage());
       }
       
       return response;
