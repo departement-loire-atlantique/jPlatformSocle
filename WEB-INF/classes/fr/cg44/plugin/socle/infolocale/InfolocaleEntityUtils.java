@@ -1047,7 +1047,7 @@ public class InfolocaleEntityUtils {
       }
       mapGenre = getAllThematiquesWithLibelles(fluxId, lblClone, idThematiques);
     } else {
-      mapGenre = getAllThematiquesWithLibelles(fluxId, idThematiques, idThematiques);
+      mapGenre = getAllThematiquesWithLibelles(fluxId, lblThematiques, idThematiques);
     }
     
     return mapGenre;
