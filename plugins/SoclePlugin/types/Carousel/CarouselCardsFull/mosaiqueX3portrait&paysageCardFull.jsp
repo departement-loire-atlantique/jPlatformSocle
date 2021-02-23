@@ -3,13 +3,22 @@
 <%@ include file='/jcore/doInitPage.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%
-	Carousel obj = (Carousel) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+	Object obj = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+	
+	Carousel carousel;
+	if(obj instanceof Carousel) {
+		carousel = (Carousel) obj;
+	} else {
+		%><%@ page import="com.jalios.jcms.taglib.card.*"%>
+		<%@ include file='/jcore/media/mediaTemplateInit.jspf'%><%
+		carousel = (Carousel) data;
+	}
 
-	if (Util.isEmpty(obj.getElements1())) {
+	if (Util.isEmpty(carousel.getElements1())) {
 		return;
 	}
 	
-	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(obj.getElements1(), 3);
+	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), 3);
 %>
 
 <jalios:foreach array="<%= elemCarousel2DArr %>" name="elemCarouselArr" type="CarouselElement[]">
@@ -18,7 +27,7 @@
 
 		<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[0]) %>">
 			<li class="row-2">
-				<ds:mozaiqueImage image="<%= elemCarouselArr[0] %>" style="ds44-container-imgRatio--A4"/>
+				<ds:mosaiqueImage image="<%= elemCarouselArr[0] %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 			</li>
 		</jalios:if>
 
@@ -26,7 +35,7 @@
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
-					<ds:mozaiqueImage image="<%= elemCarousel %>"/>
+					<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 				</li>
 			</jalios:if>
 

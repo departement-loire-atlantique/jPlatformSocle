@@ -596,7 +596,7 @@
     <file path="WEB-INF/tags/levelTwoMenu.tag" />
     <file path="WEB-INF/tags/message.tag" />
     <file path="WEB-INF/tags/menuLink.tag" />
-    <file path="WEB-INF/tags/mozaiqueImage.tag" />
+    <file path="WEB-INF/tags/mosaiqueImage.tag" />
     <file path="WEB-INF/tags/pdcvSearchFields.tag" />
     <file path="WEB-INF/tags/phone.tag" />
     <file path="WEB-INF/tags/push.tag" />    

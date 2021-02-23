@@ -846,6 +846,10 @@ jcmsplugin.socle.info-pratique.title: Préparez votre visite
 jcmsplugin.socle.horaires.title: Horaires d'ouverture
 jcmsplugin.socle.contacts.title: Contacts et réservation
 
+# Mosaique
+jcmsplugin.socle.mosaique.btn.label: Ouvir la boîte de dialogue : {0}
+jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
+
 # ------------------------------------------------------------
 #  Export CSV
 # ------------------------------------------------------------
