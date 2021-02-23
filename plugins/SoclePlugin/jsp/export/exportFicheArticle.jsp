@@ -3,7 +3,7 @@
 <%
 response.setHeader("Content-Disposition", "attachment; filename=Export_FichesArticle.csv");
 // inform doInitPage to set the proper content type
-request.setAttribute("ContentType", "text/csv; charset=" + channel.getProperty("csv.charset"));
+request.setAttribute("ContentType", "text/csv; charset=UTF-8");
 %><%@ include file='/jcore/doInitPage.jsp' %>
 <%
 
