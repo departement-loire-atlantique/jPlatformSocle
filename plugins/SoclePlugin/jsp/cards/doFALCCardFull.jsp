@@ -18,7 +18,8 @@ FALC pub = (FALC) data;
 
 
 //recuperation de l'url de l'icone pour l'encadre
-String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIcone(loggedMember), userLang, "");
+String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIcone(loggedMember), userLang, null);
+String titreEncadre = pub.getTitreEncadre(userLang);
 %>
 
 <section class='ds44-box <%= pub.getStyleDeFonds().equalsIgnoreCase("none") ? "" : pub.getStyleDeFonds() %>'>

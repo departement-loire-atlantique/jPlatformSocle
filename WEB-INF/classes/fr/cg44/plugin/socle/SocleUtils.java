@@ -1939,7 +1939,7 @@ public final class SocleUtils {
 	 * Récupère le champ description de la catégorie renseigné par le contributeur, récupère la description de la première catégorie si le champ n'a pas été rempli.
 	 * @param valeurChampCat la valeur du champ category, peut-être vide
 	 * @param userLang la langue de l'utilisateur actuel
-	 * @param racineChampCat la catégorie racine du champ category, permet de récupérer la valeur par défaut dans le cas où le champ serait vide
+	 * @param racineChampCat la catégorie racine du champ category, permet de récupérer la valeur par défaut dans le cas où le champ serait vide, peut-être vide
 	 * @return le champ description d'une catégorie
 	 */
 	public static String getDescriptionChampCategorie(TreeSet<Category> valeurChampCat, String userLang, Category racineChampCat) {
