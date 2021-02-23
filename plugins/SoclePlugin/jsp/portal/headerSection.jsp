@@ -94,7 +94,7 @@ if(multilingue){
 
 				<jalios:if predicate='<%=multilingue%>'>
 					<a href="<%=changeLangUrl%>"
-						class="ds44-btnIcoText--maxi ds44-posAbs ds44-posTopCont mlm ds44-center"
+						class="ds44-titleLink ds44-posAbs ds44-posTopCont mlm ds44-center"
 						title="<%=langTitle%>">
                         <i class="icon icon--large <%=langIcon%>" aria-hidden="true"></i>
                         <span class="ds44-btnInnerText--bottom"><%=langLabel%></span>
