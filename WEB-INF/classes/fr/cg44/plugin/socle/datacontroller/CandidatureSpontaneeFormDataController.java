@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -165,6 +166,7 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
 
      // Récupération des fichiers
      HttpServletRequest request = channel.getCurrentServletRequest();
+     String userLang = channel.getCurrentUserLang();
      
      ArrayList<File> fichiers = new ArrayList<File>();
      File cv = null;
@@ -195,6 +197,19 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
        	fichiers.add(pieceComplementaire3);
        }
        
+       // Vérifier la taille des fichiers upload
+       for(File itFile : fichiers) {
+         if(itFile != null && itFile.length() > channel.getIntegerProperty("jcmsplugin.socle.form.candidature.file.size.max", 1048576)) {
+           ControllerStatus fileStatus = new ControllerStatus();
+           request.setAttribute("titreMessageBox",JcmsUtil.glp(userLang, "jcmsplugin.socle.form.error.taille"));
+           // supprime les fichiers uploades du formulaire
+           deleteFiles(fichiers);
+           return fileStatus;
+         }
+       }
+       
+       
+       
      } catch (Exception e) {
        LOGGER.warn(e.getMessage());
        return new ControllerStatus("Une erreur s'est produite pendant le téléchargement de votre candidature");
@@ -213,14 +228,23 @@ public class CandidatureSpontaneeFormDataController extends BasicDataController 
      }
 
      // Suppression des fichiers
-     for (File fichier : fichiers) {
-       if (!fichier.delete()) {
-       	LOGGER.warn("Le fichier " + fichier.getName() + " n'a pas pu être supprimé.");
-       }
-     }
+     deleteFiles(fichiers);    
 
    }
    return super.checkWrite(data, op, mbr, checkIntegrity, context);
+ }
+ 
+ 
+ /**
+  * Suppression des fichiers
+  * @param files
+  */
+ public void deleteFiles(List<File> files) {
+   for (File itFile : files) {
+     if (!itFile.delete()) {
+       LOGGER.warn("Le fichier " + itFile.getName() + " n'a pas pu être supprimé.");
+     }
+   }
  }
  
 
