@@ -8,6 +8,7 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.WorkflowConstants;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.util.HtmlUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
@@ -46,13 +47,13 @@ public class ExportCsvUtils {
     
     StringBuilder chaine = new StringBuilder();
     
-    chaine.append(itPub.getVersionString());
-    chaine.append(itPub.getAuthor().getFullName());
-    chaine.append(itPub.getAuthor().getId());
-    chaine.append(SocleUtils.listCategoriesId(itPub.getCategorySet()));
-    chaine.append(sdf.format(itPub.getCdate()));
-    chaine.append(Util.isEmpty(itPub.getPdate()) ? "" : sdf.format(itPub.getPdate()));
-    chaine.append(Util.isEmpty(itPub.getMdate()) ? "" : sdf.format(itPub.getMdate()));
+    chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
+    chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
+    chaine.append(getFormattedCsvValue(itPub.getAuthor().getId(), true));
+    chaine.append(getFormattedCsvValue(SocleUtils.listCategoriesId(itPub.getCategorySet()), true));
+    chaine.append(getFormattedCsvValue(sdf.format(itPub.getCdate()), true));
+    chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getPdate()) ? "" : sdf.format(itPub.getPdate()), true));
+    chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getMdate()) ? "" : sdf.format(itPub.getMdate()), true));
     
     return chaine.toString();
     
@@ -97,7 +98,7 @@ public class ExportCsvUtils {
     StringBuilder csvValue = new StringBuilder();
     
     if (Util.isEmpty(value)) {
-      csvValue.append(DOUBLE_QUOTE + DOUBLE_QUOTE);
+      csvValue.append(DOUBLE_QUOTE + " " + DOUBLE_QUOTE);
     } else {
       csvValue.append(DOUBLE_QUOTE + escapeDoubleQuote(value) + DOUBLE_QUOTE);
     }
@@ -134,6 +135,45 @@ public class ExportCsvUtils {
   
   public static String getFormattedCsvValueStringArray(String[] strArray) {
     return getFormattedCsvValueStringArray(strArray, false);
+  }
+  
+  /**
+   * Concatène les éléments d'un tableau de String WYSIWYG, sans HTML, avec un séparateur
+   * @return
+   */
+  public static String getFormattedCsvValueStringArrayWysiwyg(String[] strArray, boolean separator) {
+    if (Util.isEmpty(strArray)) return getFormattedCsvValue("", separator);
+    
+    StringBuilder concatenatedStr = new StringBuilder();
+    
+    String strSeparator = " / ";
+    
+    for (int counter = 0; counter < strArray.length; counter++) {
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
+      
+      if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
+    }
+    
+    return getFormattedCsvValueWysiwyg(concatenatedStr.toString(), separator);
+  }
+  
+  public static String getFormattedCsvValueStringArrayWysiwyg(String[] strArray) {
+    return getFormattedCsvValueStringArrayWysiwyg(strArray, false);
+  }
+  
+  /**
+   * Renvoie une valeur CSV pour les contenus WYSIWYG afin d'en retirer le HTML
+   * @param wysiwyg
+   * @param separator
+   * @return
+   */
+  public static String getFormattedCsvValueWysiwyg(String wysiwyg, boolean separator) {
+    if (Util.isEmpty(wysiwyg)) return getFormattedCsvValue("", separator);
+    return getFormattedCsvValue(HtmlUtil.html2text(wysiwyg), separator);
+  }
+  
+  public static String getFormattedCsvValueWysiwyg(String wysiwyg) {
+    return getFormattedCsvValueWysiwyg(wysiwyg, false);
   }
   
 }

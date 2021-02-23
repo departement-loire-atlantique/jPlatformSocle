@@ -48,18 +48,26 @@ public class ExportCsvFicheArticle {
     header.append(DOUBLE_QUOTE + "Titre onglet 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titres paragraphes 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Contenu paragraphes 1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres encadrés 1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu encadrés 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titres paragraphes 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Contenu paragraphes 2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres encadrés 2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu encadrés 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 2" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titres paragraphes 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Contenu paragraphes 3" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres encadrés 3" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu encadrés 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 3" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre onglet 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titres paragraphes 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Contenu paragraphes 4" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Titres encadrés 4" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Contenu encadrés 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Portlets encadré 4" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Titre témoignage" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Sous-titre témoignage" + DOUBLE_QUOTE + SEPARATOR);
@@ -137,7 +145,7 @@ public class ExportCsvFicheArticle {
       chaine.append(ExportCsvUtils.getFormattedCsvValue(Util.notEmpty(itFicheArticle.getVideoPrincipale()) ? itFicheArticle.getVideoPrincipale().getTitle(userLang) : "", true));
       
       // Chapo
-      chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getChapo(userLang), true));
+      chaine.append(ExportCsvUtils.getFormattedCsvValueWysiwyg(itFicheArticle.getChapo(userLang), true));
       
       // Portlets haut
       chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletHaut()), true));
@@ -169,6 +177,15 @@ public class ExportCsvFicheArticle {
       // Contenu paragraphes 1
       chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_1(), true));
       
+      // Titres encadrés 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreEncadre_1(), true));
+      
+      // Contenu encadrés 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuEncadre_1(), true));
+      
+      // Portlets encadrés 1
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_1()), true));
+      
       // Titre onglet 2
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_2(), true));
       
@@ -177,6 +194,15 @@ public class ExportCsvFicheArticle {
       
       // Contenu paragraphes 2
       chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_2(), true));
+      
+      // Titres encadrés 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreEncadre_2(), true));
+      
+      // Contenu encadrés 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuEncadre_2(), true));
+      
+      // Portlets encadrés 2
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_2()), true));
       
       // Titre onglet 3
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_3(), true));
@@ -187,6 +213,15 @@ public class ExportCsvFicheArticle {
       // Contenu paragraphes 3
       chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_3(), true));
       
+      // Titres encadrés 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreEncadre_3(), true));
+      
+      // Contenu encadrés 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuEncadre_3(), true));
+      
+      // Portlets encadrés 3
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_3()), true));
+      
       // Titre onglet 4
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreOnglet_4(), true));
       
@@ -196,6 +231,15 @@ public class ExportCsvFicheArticle {
       // Contenu paragraphes 4
       chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuParagraphe_4(), true));
       
+      // Titres encadrés 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getTitreEncadre_4(), true));
+      
+      // Contenu encadrés 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValueStringArray(itFicheArticle.getContenuEncadre_4(), true));
+      
+      // Portlets encadrés 4
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.listNameOfPortalElements(itFicheArticle.getPortletsEncadres_4()), true));
+      
       // Titre témoignage
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getTitreTemoignage(), true));
       
@@ -203,7 +247,7 @@ public class ExportCsvFicheArticle {
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getSoustitreTemoignage(), true));
       
       // Catégorie de navigation
-      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getCategorieDeNavigation(itMember)), true));
+      chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getCategorieDeNavigation(itMember), " ** "), true));
       
       // Mise en avant
       chaine.append(ExportCsvUtils.getFormattedCsvValue(SocleUtils.formatCategories(itFicheArticle.getMiseEnAvant(itMember)), true));
