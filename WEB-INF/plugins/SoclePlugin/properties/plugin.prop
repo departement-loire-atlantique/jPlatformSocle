@@ -726,3 +726,8 @@ jcmsplugin.socle.api.places.tripadvisor.id:
 jcmsplugin.socle.api.places.facebook.url: https://graph.facebook.com/
 jcmsplugin.socle.api.places.facebook.key: 
 jcmsplugin.socle.api.places.facebook.id: 
+
+# ------------------------------------------------------------
+#  Export CSV / Images
+# ------------------------------------------------------------
+jcmsplugin.socle.export.img.filepath:

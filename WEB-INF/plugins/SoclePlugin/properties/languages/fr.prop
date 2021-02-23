@@ -851,7 +851,6 @@ jcmsplugin.socle.mosaique.btn.label: Ouvir la boîte de dialogue : {0}
 jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
 
 # ------------------------------------------------------------
-#  Export CSV
+#  Export CSV / Images
 # ------------------------------------------------------------
-
-jcmsplugin.socle.label.exportcsv.link: Export de contenu en CSV
+jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin relatif du dossier du ZIP
