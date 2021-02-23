@@ -371,6 +371,7 @@ jcmsplugin.socle.email.candidature-spontanee.titre: Candidature spontanée
 jcmsplugin.socle.rayon.option: rayon
 jcmsplugin.socle.form.contact.portlet-rgpd.id: c_1304194
 jcmsplugin.socle.form.candidature.portlet-rgpd.id: c_1305481
+jcmsplugin.socle.form.candidature.file.size.max: 1048576
 $jcmsplugin.socle.form.candidature.idArticle: c_1306503
 
 # Catégorie racine pour les rayons agenda

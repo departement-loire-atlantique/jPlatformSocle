@@ -115,6 +115,7 @@ jcmsplugin.socle.form.exemple.complement-adresse: Example : Surry Hills
 jcmsplugin.socle.form.exemple.codepostal: Example : 2010
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 1Mo
+jcmsplugin.socle.form.error.taille: Un ou plusieurs fichiers ne sont pas valides, merci de les vérifier. Taille maximum des fichiers : 1Mo
 jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
 jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
