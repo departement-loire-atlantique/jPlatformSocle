@@ -64,6 +64,7 @@ jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments
 jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
 
 $jcmsplugin.socle.site.applimenu.cat.root: ID de la catégorie de nav pour le menu "Sites et applis"
+jcmsplugin.socle.socialnetworks.share.actif: Activer le partage RS au sein des pages (true | false) ?
 
 # Recherche
 
