@@ -7,7 +7,7 @@
 Horaire obj = (Horaire)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 
 String placeId =  Util.notEmpty(obj.getIdLieu()) ? obj.getIdLieu() : channel.getProperty("jcmsplugin.socle.api.places.google.id");
-GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGooglePlaceBeanFromId(placeId) : null;
+GooglePlaceBean googlePlace = Util.notEmpty(placeId) ? GoogleApiManager.getGooglePlaceBeanFromId(placeId, true) : null;
 
 %>
 

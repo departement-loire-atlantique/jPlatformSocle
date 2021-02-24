@@ -4,8 +4,12 @@ import org.apache.log4j.Logger;
 
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 
@@ -19,6 +23,9 @@ import fr.cg44.plugin.socle.api.google.bean.GooglePlaceBean;
 import fr.cg44.plugin.socle.api.google.bean.Period;
 
 public class GoogleApiManager {
+  
+  // Cache pour les horaires
+  static Map<String, SimpleEntry<Date, GooglePlaceBean>> placeBeanCache = new HashMap<String, SimpleEntry<Date, GooglePlaceBean>>();
   
   private static final Logger LOGGER = Logger.getLogger(GoogleApiManager.class);
   
@@ -47,6 +54,26 @@ public class GoogleApiManager {
     return new GooglePlaceBean();
   }
   
+  /**
+   * Retoune un GooglePlaceBean avec un cache de 1 minute
+   * @param placeId
+   * @param useCache utilisation du cache
+   * @return
+   */
+  public static GooglePlaceBean getGooglePlaceBeanFromId(String placeId, Boolean useCache) {
+    // Date courante
+    Date currantDate = new Date();
+    // Si pas de cache ou temps dépasé (1 minute) alors appel le WS
+    if(!useCache || Util.isEmpty(placeBeanCache) || Util.isEmpty(placeBeanCache.get(placeId)) || (currantDate.getTime() - placeBeanCache.get(placeId).getKey().getTime() >  Channel.getChannel().getIntegerProperty("jcmsplugin.socle.horaire.cache.time", 60000))) {
+      GooglePlaceBean googlePlaceBean = getGooglePlaceBeanFromId(placeId);
+      SimpleEntry<Date, GooglePlaceBean> pair = new SimpleEntry<Date, GooglePlaceBean>(new Date(), googlePlaceBean);
+      placeBeanCache.put(placeId, pair);
+      return googlePlaceBean;
+    }
+    // Retourne la valeur en cache
+    return placeBeanCache.get(placeId).getValue();
+  }
+  
   
   /**
    * Retourne l'état et la prochaine heure de fermeture ou d'ouverture du lieu
@@ -59,7 +86,7 @@ public class GoogleApiManager {
     String userLang = Channel.getChannel().getCurrentUserLang();
     
     // Si aucune donné d'ouverture sur le lieu alors retourner une chaine vide
-    if(Util.isEmpty(place.getResult().getOpeningHours())) {
+    if(Util.isEmpty(place.getResult()) || Util.isEmpty(place.getResult().getOpeningHours())) {
       return msg;
     }
     
@@ -128,7 +155,7 @@ public class GoogleApiManager {
   public static String getDayOpening(GooglePlaceBean place, String msg) {
     
     // Si aucune donné d'ouverture sur le lieu alors retourner une chaine vide
-    if(Util.isEmpty(place.getResult().getOpeningHours())) {
+    if(Util.isEmpty(place.getResult()) || Util.isEmpty(place.getResult().getOpeningHours())) {
       return msg;
     }
     
