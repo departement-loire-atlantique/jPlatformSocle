@@ -676,15 +676,14 @@ public class InfolocaleUtil {
       String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
       StringBuilder finalHoraire = new StringBuilder();
       
-      boolean hasAddedHoraire = false;
-      
       for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
         
         String itHoraire = iter.next();
+        StringBuilder horaireToAdd = new StringBuilder();
         
         if (!itHoraire.contains(separatorHoraire)) {
           
-          finalHoraire.append(itHoraire);
+          horaireToAdd.append(itHoraire);
           
         } else {
           
@@ -698,32 +697,40 @@ public class InfolocaleUtil {
             String horaire_2 = splittedTimes[counterSplit];
             
             if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
-              finalHoraire.append(horaire_1);
+              horaireToAdd.append(horaire_1);
             } else {
-              finalHoraire.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+              horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
             }
             
             counterSplit++;
-            if (!(finalHoraire.toString().contains(suffixeHoraire))) {
-              hasAddedHoraire = true;
-              finalHoraire.append(suffixeHoraire);
-            }
             
           }
           
-          if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1])) finalHoraire.append(splittedTimes[0]);
+          if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1]) && Util.isEmpty(horaireToAdd)) horaireToAdd.append(splittedTimes[0]);
           
         }
         
-        if (iter.hasNext() && hasAddedHoraire) {
-          finalHoraire.append(suffixeHoraire);
+        if (Util.notEmpty(horaireToAdd)) {
+          finalHoraire.append(horaireToAdd.toString());
         }
         
-        hasAddedHoraire = false;
+        if (iter.hasNext() && Util.notEmpty(horaireToAdd)) {
+          finalHoraire.append(suffixeHoraire);
+        }
         
       }
       
       return deleteDoublonsFromString(finalHoraire.toString(), suffixeHoraire);
+    }
+    
+    /**
+     * Détermine si un horaire a déjà l'horaire qu'on souhaite ajouter
+     * @param horaireToTest
+     * @param currentHorairesStr
+     * @return
+     */
+    private static boolean horaireStringAlreadyContains(String horaireToTest, String currentHorairesStr) {
+      return currentHorairesStr.contains(horaireToTest);
     }
     
     /**
