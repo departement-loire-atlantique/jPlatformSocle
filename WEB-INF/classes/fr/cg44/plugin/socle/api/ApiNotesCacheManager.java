@@ -75,9 +75,9 @@ public enum ApiNotesCacheManager {
   }
 
   public void refreshBeanData() {
-    String placeIdGoogle = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.key");
-    String placeIdTripadvisor = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.key");
-    String placeIdFacebook = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.facebook.key");
+    String placeIdGoogle = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.google.id");
+    String placeIdTripadvisor = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.tripadvisor.id");
+    String placeIdFacebook = Channel.getChannel().getProperty("jcmsplugin.socle.api.places.facebook.id");
     
     // Google
     GooglePlaceBean googleBean = GoogleApiManager.getGooglePlaceBeanFromId(placeIdGoogle);
