@@ -25,7 +25,7 @@
 							<% String[] arrTitresIntro = obj.getContenuIntroTitre(userLang); %>
 							<jalios:if predicate="<%= Util.notEmpty(arrTitresIntro) && itCounter <= arrTitresIntro.length
 														&& Util.notEmpty(arrTitresIntro[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
-								<h2 id="titreIntro<%= itCounter %>"><%= arrTitresIntro[itCounter - 1] %></h2>
+								<h2 class="h2-like" id="titreIntro<%= itCounter %>"><%= arrTitresIntro[itCounter - 1] %></h2>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
 								<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
@@ -37,7 +37,8 @@
 		</jalios:if>
 
 		<jalios:if predicate="<%= Util.notEmpty(obj.getHoraires(userLang)) || Util.notEmpty(obj.getTarifs(userLang)) 
-									|| Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) %>">
+									|| Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) 
+									|| Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
 			<section class="ds44-contenuArticle" id="section2">
 				<div class="ds44-inner-container">
 					<div class="ds44-grid12-offset-2">
@@ -63,7 +64,8 @@
 								</div>
 							</jalios:if>
 	
-							<jalios:if predicate="<%= Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) %>">
+							<jalios:if predicate="<%= Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang))
+														|| Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
 								<div class="col ds44--xl-padding-l">
 									<div class="ds44-mb3">
 										<% String titreContacts = Util.notEmpty(obj.getTitreContacts(userLang)) ? obj.getTitreContacts(userLang) : glp("jcmsplugin.socle.contacts.title"); %>
@@ -84,30 +86,27 @@
 											</jalios:if>
 										</div>
 									</div>
+									<%-- Boucler sur les paragraphes contenu infos libres --%>
+									<jalios:if predicate="<%= Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
+										<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%= obj.getContenuInfosLibres(userLang) %>">
+											<div class="ds44-mb3">
+												<% String[] arrTitresInfosLibres = obj.getTitreInfosLibres(userLang); %>
+												<jalios:if predicate="<%= Util.notEmpty(arrTitresInfosLibres) && itCounter <= arrTitresInfosLibres.length
+																			&& Util.notEmpty(arrTitresInfosLibres[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
+													<h3 class="h3-like" id="titreInfosLibres<%= itCounter %>"><%= arrTitresInfosLibres[itCounter - 1] %></h3>
+												</jalios:if>
+												<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
+													<div class="ds44-ml1">
+														<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
+													</div>
+												</jalios:if>
+											</div>
+										</jalios:foreach>
+									</jalios:if>
 								</div>
 							</jalios:if>
 	
 						</div>
-					</div>
-				</div>
-			</section>
-		</jalios:if>
-
-		<jalios:if predicate="<%= Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
-			<section class="ds44-contenuArticle" id="section3">
-				<div class="ds44-inner-container ds44-mtb3">
-					<div class="ds44-grid12-offset-2">
-						<%-- Boucler sur les paragraphes contenu infos libres --%>
-						<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuInfosLibres(userLang)%>">
-							<% String[] arrTitresInfosLibres = obj.getTitreInfosLibres(userLang); %>
-							<jalios:if predicate="<%= Util.notEmpty(arrTitresInfosLibres) && itCounter <= arrTitresInfosLibres.length
-														&& Util.notEmpty(arrTitresInfosLibres[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
-								<h2 id="titreInfosLibres<%= itCounter %>"><%= arrTitresInfosLibres[itCounter - 1] %></h2>
-							</jalios:if>
-							<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
-								<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
-							</jalios:if>
-						</jalios:foreach>
 					</div>
 				</div>
 			</section>
@@ -122,7 +121,7 @@
 							<% String[] arrTitresDetails = obj.getTitreDetails(userLang); %>
 							<jalios:if predicate="<%= Util.notEmpty(arrTitresDetails) && itCounter <= arrTitresDetails.length
 														&& Util.notEmpty(arrTitresDetails[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
-								<h2 id="titreDetails<%= itCounter %>"><%= arrTitresDetails[itCounter - 1] %></h2>
+								<h2 class="h2-like" id="titreDetails<%= itCounter %>"><%= arrTitresDetails[itCounter - 1] %></h2>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
 								<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
@@ -151,7 +150,7 @@
 							<% String[] arrTitresDetails2 = obj.getTitreDetails2(userLang); %>
 							<jalios:if predicate="<%= Util.notEmpty(arrTitresDetails2) && itCounter <= arrTitresDetails2.length
 														&& Util.notEmpty(arrTitresDetails2[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
-								<h2 id="titreDetails2-<%= itCounter %>"><%= arrTitresDetails2[itCounter - 1] %></h2>
+								<h2 class="h2-like" id="titreDetails2-<%= itCounter %>"><%= arrTitresDetails2[itCounter - 1] %></h2>
 							</jalios:if>
 							<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
 								<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
