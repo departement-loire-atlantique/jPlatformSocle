@@ -37,3 +37,5 @@
 
 </jalios:foreach>
 
+<%@ include file='/plugins/SoclePlugin/types/Carousel/mosaiqueOverlay.jspf'%>
+
