@@ -53,6 +53,10 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 
    <article class="ds44-container-large">
       <div class="ds44-lightBG ds44-posRel">
+         
+         <%-- bouton Retour a la liste --%>
+         <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+      
          <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
             <jalios:if predicate='<%= Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
                 <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
