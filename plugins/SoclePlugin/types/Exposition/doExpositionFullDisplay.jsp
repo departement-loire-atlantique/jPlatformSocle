@@ -87,20 +87,22 @@
 										</div>
 									</div>
 									<%-- Boucler sur les paragraphes contenu infos libres --%>
-									<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%=obj.getContenuInfosLibres(userLang)%>">
-										<div class="ds44-mb3">
-											<% String[] arrTitresInfosLibres = obj.getTitreInfosLibres(userLang); %>
-											<jalios:if predicate="<%= Util.notEmpty(arrTitresInfosLibres) && itCounter <= arrTitresInfosLibres.length
-																		&& Util.notEmpty(arrTitresInfosLibres[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
-												<h3 class="h3-like" id="titreInfosLibres<%= itCounter %>"><%= arrTitresInfosLibres[itCounter - 1] %></h2>
-											</jalios:if>
-											<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
-												<div class="ds44-ml1">
-													<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
-												</div>
-											</jalios:if>
-										</div>
-									</jalios:foreach>
+									<jalios:if predicate="<%= Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
+										<jalios:foreach name="itParagraphe" type="String" counter="itCounter" array="<%= obj.getContenuInfosLibres(userLang) %>">
+											<div class="ds44-mb3">
+												<% String[] arrTitresInfosLibres = obj.getTitreInfosLibres(userLang); %>
+												<jalios:if predicate="<%= Util.notEmpty(arrTitresInfosLibres) && itCounter <= arrTitresInfosLibres.length
+																			&& Util.notEmpty(arrTitresInfosLibres[itCounter - 1]) && Util.notEmpty(itParagraphe) %>">
+													<h3 class="h3-like" id="titreInfosLibres<%= itCounter %>"><%= arrTitresInfosLibres[itCounter - 1] %></h3>
+												</jalios:if>
+												<jalios:if predicate="<%= Util.notEmpty(itParagraphe) %>">
+													<div class="ds44-ml1">
+														<jalios:wysiwyg><p><%= itParagraphe %></p></jalios:wysiwyg>
+													</div>
+												</jalios:if>
+											</div>
+										</jalios:foreach>
+									</jalios:if>
 								</div>
 							</jalios:if>
 	
