@@ -37,7 +37,8 @@
 		</jalios:if>
 
 		<jalios:if predicate="<%= Util.notEmpty(obj.getHoraires(userLang)) || Util.notEmpty(obj.getTarifs(userLang)) 
-									|| Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) %>">
+									|| Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) 
+									|| Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
 			<section class="ds44-contenuArticle" id="section2">
 				<div class="ds44-inner-container">
 					<div class="ds44-grid12-offset-2">
@@ -63,7 +64,8 @@
 								</div>
 							</jalios:if>
 	
-							<jalios:if predicate="<%= Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang)) %>">
+							<jalios:if predicate="<%= Util.notEmpty(obj.getContactsEtReservation(userLang)) || Util.notEmpty(obj.getUrlReservation(userLang))
+														|| Util.notEmpty(obj.getContenuInfosLibres(userLang)) %>">
 								<div class="col ds44--xl-padding-l">
 									<div class="ds44-mb3">
 										<% String titreContacts = Util.notEmpty(obj.getTitreContacts(userLang)) ? obj.getTitreContacts(userLang) : glp("jcmsplugin.socle.contacts.title"); %>
