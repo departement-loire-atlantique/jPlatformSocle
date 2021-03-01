@@ -294,7 +294,7 @@ public class ExportCsvFicheArticle {
       // ID ancien contenu
       chaine.append(ExportCsvUtils.getFormattedCsvValue(itFicheArticle.getIdAncienContenu(), true));
       
-      chaine.append(ExportCsvUtils.getMetadataCsvPublication(itPub));
+      chaine.append(ExportCsvUtils.getMetadataCsvPublication(itPub, "FicheArticle"));
     
       localPrintWriter.println(chaine);
     }

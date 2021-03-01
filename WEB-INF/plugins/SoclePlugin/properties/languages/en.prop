@@ -856,3 +856,4 @@ jcmsplugin.socle.mosaique.popin.title: Zoom on mosaic element
 #  Export CSV / Images
 # ------------------------------------------------------------
 jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin relatif du dossier du ZIP
+jcmsplugin.socle.export.csv.link: Export CSV de contenu
