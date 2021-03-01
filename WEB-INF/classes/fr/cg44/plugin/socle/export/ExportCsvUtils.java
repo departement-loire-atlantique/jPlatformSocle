@@ -32,6 +32,8 @@ public class ExportCsvUtils {
     header.append(DOUBLE_QUOTE + "Date de création" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de publication" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de modification" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Latitude" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Longitude" + DOUBLE_QUOTE + SEPARATOR);
     
     return header.toString();
   }
@@ -41,11 +43,14 @@ public class ExportCsvUtils {
    * @param itPub
    * @return
    */
-  public static String getMetadataCsvPublication(Publication itPub) {
+  public static String getMetadataCsvPublication(Publication itPub, String itType) {
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
     
     StringBuilder chaine = new StringBuilder();
+    
+    String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
+    String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
     
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
@@ -54,6 +59,8 @@ public class ExportCsvUtils {
     chaine.append(getFormattedCsvValue(sdf.format(itPub.getCdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getPdate()) ? "" : sdf.format(itPub.getPdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getMdate()) ? "" : sdf.format(itPub.getMdate()), true));
+    chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getExtraData(extraDataLat)) ? "" : itPub.getExtraData(extraDataLat), true));
+    chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getExtraData(extraDataLon)) ? "" : itPub.getExtraData(extraDataLon), true));
     
     return chaine.toString();
     
