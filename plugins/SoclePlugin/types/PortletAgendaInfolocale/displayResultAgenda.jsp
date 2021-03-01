@@ -45,6 +45,8 @@ jsonObject.addProperty("nb-result-per-page", limitResults);
 jsonObject.addProperty("max-result", limitResults);
 jsonObject.add("result", jsonArray);
 
+session.setAttribute("isSearchFacetLink", true);
+
 %><%
 
 %><jalios:foreach collection="<%= allEvents %>" name="itEven" type="EvenementInfolocale"> <%
