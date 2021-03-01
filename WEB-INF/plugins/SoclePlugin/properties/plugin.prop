@@ -225,6 +225,7 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   li[class|style|id],\
   ol[class|style|id|start|type],\
   p[class|style|id|title|lang|dir|role|aria-level],\
+  picture[class],\
   pre[class|style|id|lang|dir],\
   q[cite],\
   section[class],\
