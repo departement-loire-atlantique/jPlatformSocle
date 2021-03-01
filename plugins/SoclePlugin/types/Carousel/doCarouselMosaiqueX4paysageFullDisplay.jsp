@@ -13,17 +13,17 @@
 		<%@ include file='/jcore/media/mediaTemplateInit.jspf'%><%
 		carousel = (Carousel) data;
 	}
-
+	
 	if (Util.isEmpty(carousel.getElements1())) {
 		return;
 	}
 	
-	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), 3);
+	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), 2);
 %>
 
 <jalios:foreach array="<%= elemCarousel2DArr %>" name="elemCarouselArr" type="CarouselElement[]">
 
-	<ul class="grid-3-tiny-1 ds44-mosaique ds44-gutter ds44-list">
+	<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
 		<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement">
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
@@ -36,4 +36,8 @@
 	</ul>
 
 </jalios:foreach>
+
+<jalios:if predicate="<%= carousel.getImageMosaiqueAvecPopin() %>">
+	<%@ include file='/plugins/SoclePlugin/types/Carousel/mosaiqueOverlay.jspf'%>
+</jalios:if>
 

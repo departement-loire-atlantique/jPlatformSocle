@@ -13,7 +13,7 @@
 		<%@ include file='/jcore/media/mediaTemplateInit.jspf'%><%
 		carousel = (Carousel) data;
 	}
-	
+
 	if (Util.isEmpty(carousel.getElements1())) {
 		return;
 	}
@@ -28,7 +28,7 @@
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
-					<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
+					<ds:mosaiqueImage image="<%= elemCarousel %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 				</li>
 			</jalios:if>
 
@@ -36,4 +36,8 @@
 	</ul>
 
 </jalios:foreach>
+
+<jalios:if predicate="<%= carousel.getImageMosaiqueAvecPopin() %>">
+	<%@ include file='/plugins/SoclePlugin/types/Carousel/mosaiqueOverlay.jspf'%>
+</jalios:if>
 

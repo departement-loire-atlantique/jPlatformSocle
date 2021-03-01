@@ -40,3 +40,7 @@
 
 </jalios:foreach>
 
+<jalios:if predicate="<%= carousel.getImageMosaiqueAvecPopin() %>">
+	<%@ include file='/plugins/SoclePlugin/types/Carousel/mosaiqueOverlay.jspf'%>
+</jalios:if>
+

@@ -18,29 +18,30 @@
 		return;
 	}
 	
-	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), 3);
+	CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), 2);
 %>
 
 <jalios:foreach array="<%= elemCarousel2DArr %>" name="elemCarouselArr" type="CarouselElement[]">
 
-	<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
+	<ul class="grid-3-tiny-1 ds44-mosaique ds44-gutter ds44-list">
 
 		<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[0]) %>">
-			<li class="row-2">
-				<ds:mosaiqueImage image="<%= elemCarouselArr[0] %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
+			<li class="col-2">
+				<ds:mosaiqueImage image="<%= elemCarouselArr[0] %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
 			</li>
 		</jalios:if>
 
-		<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement" skip="1">
-
-			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
-				<li>
-					<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
-				</li>
-			</jalios:if>
-
-		</jalios:foreach>
+		<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[1]) %>">
+			<li>
+				<ds:mosaiqueImage image="<%= elemCarouselArr[1] %>" style="ds44-container-imgRatio--A4" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
+			</li>
+		</jalios:if>
 	</ul>
 
 </jalios:foreach>
+
+<jalios:if predicate="<%= carousel.getImageMosaiqueAvecPopin() %>">
+	<%@ include file='/plugins/SoclePlugin/types/Carousel/mosaiqueOverlay.jspf'%>
+</jalios:if>
+
 

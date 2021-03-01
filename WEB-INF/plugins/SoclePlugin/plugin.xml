@@ -122,6 +122,79 @@
         <template name="default" file="doCarouselFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
+        <template name="mos2papofull" file="doCarouselMosaiqueX2paysage1portraitFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage et portrait</label>
+        </template>
+        <template name="mos2papo4pafull" file="doCarouselMosaiqueX2paysage1portraitPlusX4paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage et portrait plus X4 paysage</label>
+        </template>
+        <template name="mos2pafull" file="doCarouselMosaiqueX2paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage</label>
+        </template>
+        <template name="mos2pa2papofull" file="doCarouselMosaiqueX2paysagePlusX2paysage1portraitFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage plus X2 paysage et portrait</label>
+        </template>
+        <template name="mos2pa2popafull" file="doCarouselMosaiqueX2paysagePlusX2portrait1paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage plus X2 portrait et paysage</label>
+        </template>
+        <template name="mos2popafull" file="doCarouselMosaiqueX2portrait1paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait et paysage</label>
+        </template>
+        <template name="mos2popa4pafull" file="doCarouselMosaiqueX2portrait1paysagePlusX4paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait et paysage plus X4 paysage</label>
+        </template>
+        <template name="mos2pofull" file="doCarouselMosaiqueX2portraitFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait</label>
+        </template>
+        <template name="mos3pafull" file="doCarouselMosaiqueX3paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X3 paysage</label>
+        </template>
+        <template name="mos3popafull" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
+        </template>
+        <template name="mos4pafull" file="doCarouselMosaiqueX4paysageFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X4 paysage</label>
+        </template>
+        
+        <template name="default" file="doCarouselFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+        <template name="fondu" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
+        </template>
+        <template name="mos2papo" file="doCarouselMosaiqueX2paysage1portraitFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage et portrait</label>
+        </template>
+        <template name="mos2papo4pa" file="doCarouselMosaiqueX2paysage1portraitPlusX4paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage et portrait plus X4 paysage</label>
+        </template>
+        <template name="mos2pa" file="doCarouselMosaiqueX2paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage</label>
+        </template>
+        <template name="mos2pa2papo" file="doCarouselMosaiqueX2paysagePlusX2paysage1portraitFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage plus X2 paysage et portrait</label>
+        </template>
+        <template name="mos2pa2popa" file="doCarouselMosaiqueX2paysagePlusX2portrait1paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 paysage plus X2 portrait et paysage</label>
+        </template>
+        <template name="mos2popa" file="doCarouselMosaiqueX2portrait1paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait et paysage</label>
+        </template>
+        <template name="mos2popa4pa" file="doCarouselMosaiqueX2portrait1paysagePlusX4paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait et paysage plus X4 paysage</label>
+        </template>
+        <template name="mos2po" file="doCarouselMosaiqueX2portraitFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X2 portrait</label>
+        </template>
+        <template name="mos3pa" file="doCarouselMosaiqueX3paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X3 paysage</label>
+        </template>
+        <template name="mos3popa" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
+        </template>
+        <template name="mos4pa" file="doCarouselMosaiqueX4paysageFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X4 paysage</label>
+        </template>
     </templates>
     <templates type="CarouselElement">
         <template name="default" file="doCarouselElementFullDisplay.jsp" usage="full">
@@ -278,11 +351,6 @@
         <template name="default" file="doFichePublicationFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>        
-    </templates>
-    <templates type="Carousel">
-        <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
-            <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
-        </template>
     </templates>
     <templates type="FicheSAAD">
         <template name="default" file="doFicheSAADFullDisplay.jsp" usage="full"> 
