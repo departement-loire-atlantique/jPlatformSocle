@@ -156,11 +156,11 @@
             <label xml:lang="fr">DS44 : mosaique X4 paysage</label>
         </template>
         
-        <template name="default" file="doCarouselFullDisplay.jsp" usage="query">
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-        <template name="fondu" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
+        <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
+        </template>
+        <template name="simple" file="doCarouselFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
         <template name="mos2papo" file="doCarouselMosaiqueX2paysage1portraitFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : mosaique X2 paysage et portrait</label>
