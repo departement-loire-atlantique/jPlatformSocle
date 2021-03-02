@@ -758,6 +758,7 @@ jcmsplugin.socle.presscommunique.contact-presse.tel.default:02 40 99 11 13
 #  Carousel / CarouselElement (Diaporama d'images)
 # ------------------------------------------------------------
 jcmsplugin.socle.diaporama.titre: {0} - {1}
+jcmsplugin.socle.diaporama.nav-miniature.titre: Navigation within the thumbnails - {0}
 
 # ------------------------------------------------------------
 #  Page utile
