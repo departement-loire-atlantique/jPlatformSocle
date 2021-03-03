@@ -13,7 +13,7 @@
 %>
 
 <jalios:if predicate="<%= Util.notEmpty(obj.getTitre(userLang, false)) %>">
-	<p class="h4-like"><%= obj.getTitre(userLang, false) %></p>
+	<h4 class="h4-like"><%= obj.getTitre(userLang, false) %></h4>
 </jalios:if>
 <div class="swipper-carousel-wrap swipper-carousel-slideshow" data-nb-visible-slides="1">
 	<div class="swiper-container">
@@ -29,10 +29,15 @@
 				%>
 				<li class="swiper-slide">
 					<div class="ds44-diaporama-vignette">
-						<figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
+						<jalios:if predicate="<%= Util.notEmpty(itElement.getImageLegend(userLang, false)) %>">
+							<figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
+								<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %> ' />
+								<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></figcaption>
+							</figure>
+						</jalios:if>
+						<jalios:if predicate="<%= Util.isEmpty(itElement.getImageLegend(userLang, false)) %>">
 							<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %> ' />
-							<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></figcaption>
-						</figure>
+						</jalios:if>
 					</div>
 				</li>
 			</jalios:foreach>
@@ -49,7 +54,7 @@
 	<div class="swiper-pagination"></div>
 	<div class="swiper-thumbs">
 		<div class="swiper-thumbs-container">
-			<nav class="swiper-container">
+			<nav class="swiper-container" aria-label='<%= glp("jcmsplugin.socle.diaporama.nav-miniature.titre", obj.getTitre(userLang, false)) %>'>
 				<ul class="swiper-wrapper ds44-list">
 					<jalios:foreach name="itElement" type="CarouselElement" array="<%= obj.getElements1() %>">
 						<%
