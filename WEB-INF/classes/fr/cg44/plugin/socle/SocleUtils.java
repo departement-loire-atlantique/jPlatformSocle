@@ -2008,6 +2008,8 @@ public final class SocleUtils {
     
     for (Iterator<Content> iter = contentList.iterator(); iter.hasNext();) {
       Content itContent = iter.next();
+      // La possibilité d'un contenu sans titre a été repérée
+      if (Util.isEmpty(itContent) || Util.isEmpty(itContent.getTitle())) continue;
       listNames.append(itContent.getTitle(userLang));
       if (iter.hasNext()) listNames.append(separator);
     }

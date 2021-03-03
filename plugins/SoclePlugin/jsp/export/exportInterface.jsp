@@ -45,3 +45,13 @@ if(getBooleanParameter("exportImg", false)) {
 
 <hr>
 
+<h3>Export Fiches Lieu</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportFicheLieu.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+
+<h3>Export Images Fiche Lieu</h3>
+<form>
+    <input type="hidden" name="contentType" value="FicheLieu">
+    <input type="hidden" name="exportImg" value="true">
+    <input class="btn btn-info modal confirm" type="submit" value="Générer le ZIP pour les images : Fiche Lieu"/>
+</form>
+
