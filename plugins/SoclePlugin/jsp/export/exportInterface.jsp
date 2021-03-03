@@ -45,3 +45,7 @@ if(getBooleanParameter("exportImg", false)) {
 
 <hr>
 
+<h3>Export Etablissement personnes agées</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportSeniorCitizensEstablishment.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+
+<hr>
