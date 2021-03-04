@@ -15,11 +15,29 @@
     <field name="urlPageGoogle" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
       <label xml:lang="fr">URL Page Google</label>
     </field>
+    <field name="surchargeNoteGoogle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Surcharge note Google</label>
+    </field>
+    <field name="surchargeNbReviewsGoogle" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Surcharge nb reviews Google</label>
+    </field>
     <field name="urlPageTripadvisor" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
       <label xml:lang="fr">URL Page Tripadvisor</label>
     </field>
+    <field name="surchargeNoteTripadvisor" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Surcharge note Tripadvisor</label>
+    </field>
+    <field name="surchargeNbReviewsTripadvisor" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Surcharge nb reviews Tripadvisor</label>
+    </field>
     <field name="urlPageFacebook" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
       <label xml:lang="fr">URL Page Facebook</label>
+    </field>
+    <field name="surchargeNoteFacebook" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Surcharge note Facebook</label>
+    </field>
+    <field name="surchargeNbReviewsFacebook" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Surcharge nb reviews Facebook</label>
     </field>
     <field type="super" />
   </fields>

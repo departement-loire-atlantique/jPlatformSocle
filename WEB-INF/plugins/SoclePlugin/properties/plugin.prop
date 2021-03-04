@@ -487,7 +487,6 @@ jcmsplugin.socle.infolocale.login:
 jcmsplugin.socle.infolocale.password: 
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
-jcmsplugin.socle.infolocale.flux.metadata: b47b84d4-35eb-4ae3-ad14-700cc376f471
 jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
 jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
 jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/annonces/

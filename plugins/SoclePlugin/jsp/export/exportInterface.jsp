@@ -30,7 +30,7 @@ if(getBooleanParameter("exportImg", false)) {
 <h2>Chemin du fichier ZIP des images : <%= ExportImgZip.getZipFilePath() %></h2>
 <b>Le fichier ZIP existe : <%= ExportImgZip.imgZipFileExists() %></b>
 <jalios:if predicate="<%= ExportImgZip.imgZipFileExists() %>">
-<a href="<%= ExportImgZip.getZipRelativeFilePath() %>" class="btn btn-success modal confirm" target="_blank">TÈlÈcharger le ZIP</a>
+<a href="<%= ExportImgZip.getZipRelativeFilePath() %>" class="btn btn-success modal confirm" target="_blank">T√©l√©charger le ZIP</a>
 </jalios:if>
 
 <h3>Export Fiches Article</h3>
@@ -40,7 +40,7 @@ if(getBooleanParameter("exportImg", false)) {
 <form>
     <input type="hidden" name="contentType" value="FicheArticle">
     <input type="hidden" name="exportImg" value="true">
-    <input class="btn btn-info modal confirm" type="submit" value="GÈnÈrer le ZIP pour les images : Fiche Article"/>
+    <input class="btn btn-info modal confirm" type="submit" value="G√©n√©rer le ZIP pour les images : Fiche Article"/>
 </form>
 
 <hr>
@@ -52,8 +52,13 @@ if(getBooleanParameter("exportImg", false)) {
 <form>
     <input type="hidden" name="contentType" value="FicheLieu">
     <input type="hidden" name="exportImg" value="true">
-    <input class="btn btn-info modal confirm" type="submit" value="GÈnÈrer le ZIP pour les images : Fiche Lieu"/>
+    <input class="btn btn-info modal confirm" type="submit" value="G√©n√©rer le ZIP pour les images : Fiche Lieu"/>
 </form>
+
+<hr>
+
+<h3>Export Etablissement personnes ag√©es</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportSeniorCitizensEstablishment.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
 
 <hr>
 
