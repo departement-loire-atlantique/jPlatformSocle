@@ -55,3 +55,7 @@ if(getBooleanParameter("exportImg", false)) {
     <input class="btn btn-info modal confirm" type="submit" value="Générer le ZIP pour les images : Fiche Lieu"/>
 </form>
 
+<hr>
+
+<h3>Export SAAD</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportSAAD.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
