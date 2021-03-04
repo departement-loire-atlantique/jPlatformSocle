@@ -648,6 +648,7 @@
     <file path="jsp/rgpd/orejimeConfig.jsp" include="EMPTY_HEADER_BODY_START" />
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
     <file path="jsp/include/includePortletQueryForeachAlert.jsp" include="SOCLE_ALERTE" />
+    <file path="jsp/include/logout.jsp" include="SITE_TOPBAR_RIGHT_END" />
   </public-files>
   <webapp-files>
     <file path="types/PortletSelection/doSelection.jspf" />
