@@ -45,7 +45,7 @@ String nbReviewsTripadvisor = Util.isEmpty(box.getSurchargeNbReviewsTripadvisor(
                   <ul class="ds44-list ds44-flex-container ds44-fg1">
                       <jalios:foreach name="itRs" type="String" array="<%= socialNetworkToShow %>">
                       <li class="ds44-flex-align-center">
-                        <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork." + itRs)) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-<%= itRs %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %></span></a>
+                        <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork." + itRs)) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetworks.title") %> <%= glp("jcmsplugin.socle.socialnetwork." + itRs) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-<%= itRs %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %></span></a>
                       </li>
                       </jalios:foreach>
                   </ul>
