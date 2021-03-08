@@ -35,7 +35,7 @@
     <field name="videoPrincipale" editor="link" required="false" compactDisplay="false" type="generated.Video" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Vidéo principale</label>
     </field>
-    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" abstract="true">
       <label xml:lang="fr">Chapo</label>
     </field>
     <!-- Contenu -->
