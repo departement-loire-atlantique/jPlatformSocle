@@ -1,13 +1,31 @@
 package fr.cg44.plugin.socle.export;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.SortedSet;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.jalios.jcms.Channel;
+import com.jalios.jcms.Content;
+import com.jalios.jcms.Data;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
 import com.jalios.jcms.WorkflowConstants;
 import com.jalios.jcms.handler.QueryHandler;
+import com.jalios.jcms.portlet.PortalElement;
 import com.jalios.util.HtmlUtil;
 import com.jalios.util.Util;
 
@@ -18,11 +36,283 @@ public class ExportCsvUtils {
   private static final String SEPARATOR = ";";
   private static final char DOUBLE_QUOTE = '"';
   
+  private static final Logger LOGGER = Logger.getLogger(ExportCsvUtils.class);
+    
+  /**
+   * Renvoie le fichier XML associé à un type de contenu, si le fichier / type existe
+   * @param type
+   * @return
+   */
+  public static File getXmlFileForType(String type) {
+    File xmlFile = new File(Channel.getChannel().getDataPath("/types/" + type + "/" + type + ".xml"));
+    if (xmlFile.exists()) return xmlFile;
+    return null;
+  }
+  
+  /**
+   * Renvoie des headers CSV à partir des champs déclarés dans un CSV, suivant une langue
+   * @param typeName
+   * @param userLang
+   * @return
+   */
+  public static String getCsvHeaderFromXml(String typeName, String userLang) {
+    if (Util.isEmpty(typeName) || Util.isEmpty(userLang)) return "";
+    
+    StringBuilder header = new StringBuilder();
+    
+    File itXml = getXmlFileForType(typeName);
+    
+    if (Util.isEmpty(itXml)) return null;
+      
+    // Récupérer les nodes 'field'
+      
+    NodeList nodeList = getNodeListFieldsFromXml(itXml);
+    
+    for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++) {
+      Node node = nodeList.item(nodeIndex);
+      header.append(DOUBLE_QUOTE + getFormattedCsvValueWysiwyg(getXmlFieldLabel(node, userLang)) + DOUBLE_QUOTE + SEPARATOR);
+    }
+    
+    return header.toString();
+  }
+  
+  public static String getCsvHeaderFromXml(String typeName) {
+    return getCsvHeaderFromXml(typeName, Channel.getChannel().getLanguage());
+  }
+  
+  /**
+   * Renvoie le NodeList associé aux nodes "field" du XML d'un type
+   * @param itXml
+   * @return
+   */
+  public static NodeList getNodeListFieldsFromXml(File itXml) {
+    
+    if (Util.isEmpty(itXml) || !itXml.exists()) return null;
+    
+    try {
+
+      DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+      
+      DocumentBuilder db = dbf.newDocumentBuilder();
+      
+      Document doc = db.parse(itXml);
+      
+      doc.getDocumentElement().normalize();
+      
+      // Récupérer les nodes 'field'
+      
+      NodeList nodeList = doc.getElementsByTagName("field");
+      
+      return nodeList;
+    
+    } catch (Exception e) {
+      LOGGER.warn("Exception sur getNodeListFieldsFromXml : " + e.getMessage());
+      return null;
+    }
+  }
+  
+  /**
+   * Renvoie le libellé d'un champ d'un type depuis un node XML
+   * @param itNode
+   * @return
+   */
+  public static String getXmlFieldLabel(Node itNode, String userLang) {
+    if (!(itNode instanceof Element)) return "";
+    
+    Element itElement = (Element) itNode;
+    
+    NodeList labelNodeList = itElement.getElementsByTagName("label");
+    
+    for (int index = 0; index < labelNodeList.getLength(); index++) {
+      Node itLabelNode = labelNodeList.item(index);
+      if (itLabelNode.getAttributes().getNamedItem("xml:lang").getNodeValue().equals(userLang)) {
+        return itLabelNode.getTextContent();
+      }
+    }
+    
+    return "";
+  }
+  
+  /**
+   * Renvoie une ligne CSV contenant les valeurs des champs d'une publication.
+   * Dans le cas de ce process, toute donnée ayant un Contenu ou une Portlet affichera son nom
+   * @param itContent
+   * @param userLang
+   * @param typeName
+   * @return
+   */
+  public static String getXmlFieldValuesFromPublication(Publication itPub, String userLang, String typeName, Member itMember) {
+    
+    if (Util.isEmpty(itPub) || Util.isEmpty(userLang) || Util.isEmpty(typeName)) return "";
+    
+    File itXmlFile = getXmlFileForType(typeName);
+    
+    if (Util.isEmpty(itXmlFile)) return "";
+    
+    StringBuilder csvLine = new StringBuilder();
+    
+    NodeList fieldsNodeList = getNodeListFieldsFromXml(itXmlFile);
+    
+    for (int index = 0; index < fieldsNodeList.getLength(); index++) {
+      Node itFieldNode = fieldsNodeList.item(index);
+      csvLine.append(HtmlUtil.html2text(getXmlFieldValueFromPublication(itPub, userLang, itFieldNode, itMember)));
+      if (index+1 < fieldsNodeList.getLength()) csvLine.append(SEPARATOR);
+    }
+    
+    return csvLine.toString();
+  }
+  
+  /**
+   * Renvoie la valeur d'un champ d'un contenu à partir de son nom technique dans un XML associé
+   * @param itContent
+   * @param userLang
+   * @param itNode
+   * @return
+   */
+  public static String getXmlFieldValueFromPublication(Publication itPub, String userLang, Node itNode, Member itMember) {
+    
+    if (Util.isEmpty(itPub) || Util.isEmpty(userLang) || Util.isEmpty(itNode)) return "";
+      
+    // Récupérer le nom technique
+    String fieldName = itNode.getAttributes().getNamedItem("name").getNodeValue();
+    
+    // Récupérer le type de donnée du node
+    String dataType = itNode.getAttributes().getNamedItem("type").getNodeValue();
+    
+    // Récupérer l'éditeur du node (pour un cas particulier)
+    String editorType = itNode.getAttributes().getNamedItem("editor").getNodeValue();
+    
+    try {
+      
+    switch(editorType) {
+    
+      case "link":
+        // Data -> Content ou PortalElement
+        if (dataType.contains("[]")) {
+          return listNameOfData( (Data[])itPub.getFieldValue(fieldName, userLang) );
+        } else {
+          return getNameOfData ( (Data)itPub.getFieldValue(fieldName, userLang) );
+        }
+        
+      case "category":
+        // Catégories
+        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember));
+        
+      case "date":
+        // Objet date
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(((Date)itPub.getFieldValue(fieldName, userLang)));
+        
+      case "boolean":
+        // Booléen. Pas de multivalué :)
+        return ((Boolean) itPub.getBooleanFieldValue(fieldName)).toString();
+        
+      case "int":
+        // Nombre entier
+        return Integer.toString((int) itPub.getFieldValue(fieldName, userLang));
+        
+      case "double":
+        // Utilisation d'un 'double'
+        return Double.toString((double) itPub.getFieldValue(fieldName, userLang));
+        
+      case "duration":
+        // Utilisation d'un float
+        return Float.toString((float) itPub.getFieldValue(fieldName, userLang));
+        
+      default:
+        // Tout ce qui peut être donné directement en String
+        if (dataType.contains("[]")) {
+          return formatStringArray((String[]) itPub.getFieldValue(fieldName, userLang));
+        } else {
+          return (String)itPub.getFieldValue(fieldName, userLang);
+        }
+    }
+    
+    } catch (Exception e) {
+      LOGGER.info("Anomalie sur getXmlFieldValueFromPublication (" + fieldName + ", " + dataType + ", " + editorType + ") -> " + e.getMessage());
+    }
+    
+    return "";
+  }
+  
+  /**
+   * Renvoie le nom d'une donnée "Data"
+   * @param fieldValue
+   * @return 
+   */
+  private static String getNameOfData(Data itData) {
+    if (Util.isEmpty(itData)) return "";
+    if (itData instanceof PortalElement) {
+      return ((PortalElement)itData).getTitle();
+    }
+    return ((Content)itData).getTitle();
+  }
+
+  /**
+   * Liste les noms d'un array de Data avec un séparateur
+   * @param itData
+   */
+  private static String listNameOfData(Data[] itData) {
+    if (Util.isEmpty(itData) || Util.isEmpty(itData[0])) return "";
+    if (itData[0] instanceof PortalElement) {
+      return SocleUtils.listNameOfPortalElements((PortalElement[])itData);
+    }
+    return SocleUtils.listNameOfContent((Content[])itData);
+  }
+  
+  /**
+   * Print un CSV pour l'export d'un type de contenu
+   * @param type
+   * @param userLang
+   */
+  public static void printCsvFileForPublicationType(String type, String userLang, Member itMember, Writer paramWriter) {
+    PrintWriter localPrintWriter = new PrintWriter(paramWriter);
+   
+    StringBuilder csvContent = new StringBuilder();
+    
+    SortedSet<Publication> sortedPubs = ExportCsvUtils.getPublicationsOfType(type, itMember);
+    
+    // Header
+    csvContent.append(getIdCsvHeader());
+    csvContent.append(getCsvHeaderFromXml(type));
+    csvContent.append(getMetadataCsvHeader());
+    
+    for (Iterator<Publication> iter = sortedPubs.iterator(); iter.hasNext();) {
+      Publication itPub = iter.next();
+      csvContent.append(getXmlFieldValuesFromPublication(itPub, userLang, type, itMember));
+      
+      csvContent.append(ExportCsvUtils.getMetadataCsvPublication(itPub, type));
+      
+      localPrintWriter.println(csvContent);
+    }
+  }
+
+  /**
+   * Renvoie la valeur CSV pour le nom de la colonne "ID". A modifier en cas d'autres préfixes
+   * @return
+   */
+  public static String getIdCsvHeader(){
+    StringBuilder header = new StringBuilder();
+    
+    header.append(DOUBLE_QUOTE + "ID" + DOUBLE_QUOTE + SEPARATOR);
+    
+    return header.toString();
+  }
+  
+  /**
+   * Renvoie la valeur CSV de l'ID d'un contenu. A modifier en cas d'autres préfixes
+   * @param itPub
+   * @return
+   */
+  public static String getIdPubForCsv(Publication itPub) {
+    return getFormattedCsvValue(itPub.getId(), true);
+  }
+  
   /**
    * Renvoie les headers metadatas communes
    * @return
    */
-  public static String getMetadataCsvHeader(){    
+  public static String getMetadataCsvHeader(){
     StringBuilder header = new StringBuilder();
     
     header.append(DOUBLE_QUOTE + "Version" + DOUBLE_QUOTE + SEPARATOR);
@@ -119,13 +409,12 @@ public class ExportCsvUtils {
   }
   
   /**
-   * Concatène les éléments d'un tableau de String avec un séparateur
+   * Formatte un array de String en une valeur unique
    * @param strArray
-   * @param separator
    * @return
    */
-  public static String getFormattedCsvValueStringArray(String[] strArray, boolean separator) {
-    if (Util.isEmpty(strArray)) return getFormattedCsvValue("", separator);
+  public static String formatStringArray(String[] strArray) {
+    if (Util.isEmpty(strArray)) return "";
     
     StringBuilder concatenatedStr = new StringBuilder();
     
@@ -137,7 +426,19 @@ public class ExportCsvUtils {
       if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
     }
     
-    return getFormattedCsvValue(concatenatedStr.toString(), separator);
+    return concatenatedStr.toString();
+  }
+  
+  /**
+   * Concatène les éléments d'un tableau de String avec un séparateur
+   * @param strArray
+   * @param separator
+   * @return
+   */
+  public static String getFormattedCsvValueStringArray(String[] strArray, boolean separator) {
+    if (Util.isEmpty(strArray)) return getFormattedCsvValue("", separator);
+    
+    return getFormattedCsvValue(formatStringArray(strArray), separator);
   }
   
   public static String getFormattedCsvValueStringArray(String[] strArray) {
@@ -151,17 +452,7 @@ public class ExportCsvUtils {
   public static String getFormattedCsvValueStringArrayWysiwyg(String[] strArray, boolean separator) {
     if (Util.isEmpty(strArray)) return getFormattedCsvValue("", separator);
     
-    StringBuilder concatenatedStr = new StringBuilder();
-    
-    String strSeparator = " / ";
-    
-    for (int counter = 0; counter < strArray.length; counter++) {
-      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
-      
-      if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
-    }
-    
-    return getFormattedCsvValueWysiwyg(concatenatedStr.toString(), separator);
+    return getFormattedCsvValueWysiwyg(formatStringArray(strArray), separator);
   }
   
   public static String getFormattedCsvValueStringArrayWysiwyg(String[] strArray) {
