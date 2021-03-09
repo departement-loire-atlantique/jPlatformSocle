@@ -65,6 +65,7 @@ if(isOK){
     pageUtileForm.setTitle("Page utile");
     pageUtileForm.setUtile(pageUtile);
     pageUtileForm.setCommentaire(commentaire);
+    pageUtileForm.setEmail(emailReponse);
     pageUtileForm.setIdContenu(id);
     pageUtileForm.setUrl(url);
     pageUtileForm.setAuthor(opAuthor);
