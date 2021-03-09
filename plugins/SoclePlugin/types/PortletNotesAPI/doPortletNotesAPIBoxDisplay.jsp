@@ -34,20 +34,19 @@ String nbReviewsTripadvisor = Util.isEmpty(box.getSurchargeNbReviewsTripadvisor(
                <p class="hashtag"><%= hashtagLabel %></p>
             </div>
             <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksCommon.jspf" %>
-                  <%
-                  Map<String, String> mapSocialNetworks = new HashMap<>();
-                  for (int counter = 0; counter < socialNetworksLabels.length; counter++) {
-                    mapSocialNetworks.put(socialNetworksLabels[counter], socialNetworksUrls[counter]);
-                  }
-                        
-                  String[] socialNetworkToShow = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.carrouselImagesHome", new String[]{});
-                  %>
                   <ul class="ds44-list ds44-flex-container ds44-fg1">
-                      <jalios:foreach name="itRs" type="String" array="<%= socialNetworkToShow %>">
+                  <%
+                  for(int i=0; i<socialNetworksLabelsList.size(); i++){
+                    String url = socialNetworksUrlsList.get(i);
+                    String title = glp("jcmsplugin.socle.socialnetworks.title")+" "+socialNetworksLabelsList.get(i); 
+                    if(! SocleUtils.isURLInterne(url)) title = title + " " + glp("jcmsplugin.socle.accessibily.newTabLabel");
+                  %>
                       <li class="ds44-flex-align-center">
-                        <a href='<%= mapSocialNetworks.get(glp("jcmsplugin.socle.socialnetwork." + itRs)) %>' target="_blank" class="ds44-rsLink" title='<%= glp("jcmsplugin.socle.socialnetworks.title") %> <%= glp("jcmsplugin.socle.socialnetwork." + itRs) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><i class="icon icon-<%= itRs %>" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.socialnetwork.depsur." + itRs) %></span></a>
+                        <a href='<%= url %>' target="_blank" class="ds44-rsLink" title='<%= title %>'><i class="icon icon-<%=socialNetworksLabelsList.get(i).toLowerCase().replaceAll("\\s","")%>" aria-hidden="true"></i><span class="visually-hidden"><%= title %></span></a>
                       </li>
-                      </jalios:foreach>
+                  <%
+                  }
+                  %>
                   </ul>
          </section>
       </div>
