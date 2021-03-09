@@ -2022,4 +2022,64 @@ public final class SocleUtils {
     
     return listNameOfContent(Arrays.asList(contentArray));
   }
+
+	/**
+	 * Récupère la liste des (sous-)catégories "branches", ou les (sous-)catégories de navigation d'une publication
+	 * @param pub la publication dont on veut connaitre les catégories de navigation (ou les sous-catégories)
+	 * @param niveau la proximité de parenté avec les catégories de navigation (0 = catégorie de navigation, 1 = enfant de catégorie de navigation, 2 = enfant d'enfant de catégorie de navigation...)
+	 * @return un set avec la liste des (sous-)catégories de navigation, un set vide si la publication est null
+	 */
+	public static Set<Category> getCategorieDeNavigation(Publication pub, int niveau) {
+
+		Set<Category> allCategorieDeNavigation = new TreeSet<>();
+
+		if(Util.notEmpty(pub)) {
+			for(Category cat : pub.getCategorySet()) {
+				Category catNav = getCategorieParentDeNavigation(cat, niveau);
+				if(Util.notEmpty(catNav)) allCategorieDeNavigation.add(catNav);
+			}
+		}
+
+		return allCategorieDeNavigation;
+	}
+	
+	/**
+	 * Récupère la liste des catégories "branches" qui sont enfant de navigation d'une publication
+	 * @param pub la publication dont on veut connaitre les catégories de navigation
+	 * @return un set avec la liste des catégories de navigation, un set vide si la publication est null
+	 */
+	public static Set<Category> getCategorieDeNavigation(Publication pub) {
+		return getCategorieDeNavigation(pub, 0);
+	}
+	
+	/**
+	 * Retourne la catégorie parent qui est une catégorie de navigation (ou une sous-catégorie)
+	 * @param cat la catégorie dont on veut la catégorie de navigation (ou la sous-catégorie)
+	 * @param niveau la proximité de parenté avec les catégories de navigation (0 = catégorie de navigation, 1 = enfant de catégorie de navigation, 2 = enfant d'enfant de catégorie de navigation...)
+	 * @return cat si c'est une (sous-)catégorie de navigation, une (sous-)catégorie navigation si un des parents de cat l'est, null s'il n'y en a pas ou que cat est null
+	 */
+	public static Category getCategorieParentDeNavigation(Category cat, int niveau) {
+
+		if(Util.notEmpty(cat)) {
+			
+			Category catRacine = channel.getCategory("$jcmsplugin.socle.cat.root");
+			Category catRacineNavigation = channel.getCategory("$jcmsplugin.socle.category.categorieDeNavigation.root");
+			
+			Category catParentTeste = cat;
+
+			for(int i = 0; i < niveau; i++) {
+				if(Util.isEmpty(catParentTeste)) break;
+				catParentTeste = catParentTeste.getParent();
+			}
+			
+			if(catRacine.equals(cat)) {
+				return null;
+			} else if(catRacineNavigation.getChildrenSet().contains(catParentTeste)) {
+				return cat;
+			} else {
+				return getCategorieParentDeNavigation(cat.getParent(), niveau);
+			}
+		}
+		return null;
+	}
 }
