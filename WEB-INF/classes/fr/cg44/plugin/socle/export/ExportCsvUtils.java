@@ -70,7 +70,7 @@ public class ExportCsvUtils {
     
     for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++) {
       Node node = nodeList.item(nodeIndex);
-      header.append(DOUBLE_QUOTE + getFormattedCsvValueWysiwyg(getXmlFieldLabel(node, userLang)) + DOUBLE_QUOTE + SEPARATOR);
+      header.append(getFormattedCsvValueWysiwyg(getXmlFieldLabel(node, userLang)) + SEPARATOR);
     }
     
     return header.toString();
@@ -144,7 +144,7 @@ public class ExportCsvUtils {
   public static String getXmlFieldValuesFromPublication(Publication itPub, String userLang, String typeName, Member itMember) {
     
     if (Util.isEmpty(itPub) || Util.isEmpty(userLang) || Util.isEmpty(typeName)) return "";
-    
+
     File itXmlFile = getXmlFileForType(typeName);
     
     if (Util.isEmpty(itXmlFile)) return "";
@@ -152,8 +152,9 @@ public class ExportCsvUtils {
     StringBuilder csvLine = new StringBuilder();
     
     NodeList fieldsNodeList = getNodeListFieldsFromXml(itXmlFile);
-    
+            
     for (int index = 0; index < fieldsNodeList.getLength(); index++) {
+      
       Node itFieldNode = fieldsNodeList.item(index);
       csvLine.append(HtmlUtil.html2text(getXmlFieldValueFromPublication(itPub, userLang, itFieldNode, itMember)));
       if (index+1 < fieldsNodeList.getLength()) csvLine.append(SEPARATOR);
@@ -172,7 +173,7 @@ public class ExportCsvUtils {
   public static String getXmlFieldValueFromPublication(Publication itPub, String userLang, Node itNode, Member itMember) {
     
     if (Util.isEmpty(itPub) || Util.isEmpty(userLang) || Util.isEmpty(itNode)) return "";
-      
+        
     // Récupérer le nom technique
     String fieldName = itNode.getAttributes().getNamedItem("name").getNodeValue();
     
@@ -181,7 +182,7 @@ public class ExportCsvUtils {
     
     // Récupérer l'éditeur du node (pour un cas particulier)
     String editorType = itNode.getAttributes().getNamedItem("editor").getNodeValue();
-    
+
     try {
       
     switch(editorType) {
@@ -276,9 +277,18 @@ public class ExportCsvUtils {
     csvContent.append(getIdCsvHeader());
     csvContent.append(getCsvHeaderFromXml(type));
     csvContent.append(getMetadataCsvHeader());
-    
+    // Print header
+    localPrintWriter.println(csvContent);
+        
     for (Iterator<Publication> iter = sortedPubs.iterator(); iter.hasNext();) {
+      
+      // Reset Csv Content pour la ligne
+      csvContent = new StringBuilder();
+      
       Publication itPub = iter.next();
+      
+      csvContent.append(getFormattedCsvValue(itPub.getId(), true));
+      
       csvContent.append(getXmlFieldValuesFromPublication(itPub, userLang, type, itMember));
       
       csvContent.append(ExportCsvUtils.getMetadataCsvPublication(itPub, type));
