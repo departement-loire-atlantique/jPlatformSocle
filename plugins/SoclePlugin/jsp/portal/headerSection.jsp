@@ -44,7 +44,7 @@ if(multilingue){
 %>
 
 <header role="banner" id="topPage">
-    <div class="ds44-blocBandeau ds44-header">
+    <div class="ds44-blocBandeau ds44-header <%= multilingue ? "ds44-header--patrimoine" : "" %>">
         <div class="ds44-container-large">
     
             <ul class="ds44-list ds44-skiplinks">
@@ -86,123 +86,122 @@ if(multilingue){
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="ds44-blocMenu" aria-hidden="true">
-        <section class="ds44-menuBox" id="menu">
-            <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" aria-modal="true" role="dialog" aria-label="<%=glp("jcmsplugin.socle.menu.principal1")%>" id="nav1">
 
-				<jalios:if predicate='<%=multilingue%>'>
-					<a href="<%=changeLangUrl%>"
-						class="ds44-titleLink ds44-posAbs ds44-posTopCont mlm ds44-center"
-						title="<%=langTitle%>">
-                        <i class="icon icon--large <%=langIcon%>" aria-hidden="true"></i>
-                        <span class="ds44-btnInnerText--bottom"><%=langLabel%></span>
-					</a>
-				</jalios:if>
-				
-				<button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
-                
-                <p role="heading" aria-level="1" class="visually-hidden"><%=glp("jcmsplugin.socle.menu")%></p>
-        
-                <nav role="navigation" class="ds44-navContainer ds44-flex-container--column" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
-                    <div class="ds44-inner-container ds44-flex-mauto">
-                        <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
+		<div class="ds44-blocMenu" aria-hidden="true">
+		        <section class="ds44-menuBox" id="menu">
+		            <div class="ds44-overlay ds44-theme ds44-bgCircle ds44-bg-br ds44-overlay--navNiv1" aria-modal="true" role="dialog" aria-label="<%=glp("jcmsplugin.socle.menu.principal1")%>" id="nav1">
+		                <p role="heading" aria-level="1" class="visually-hidden"><%=glp("jcmsplugin.socle.menu.navigation")%></p>                
+		                
+		                <jalios:if predicate='<%=multilingue%>'>
+		                    <a href="<%=changeLangUrl%>" 
+		                        class="ds44-btnOverlay ds44-btnOverlay--language ds44-show-mobile"
+		                        title="<%=langTitle%>">
+		                      <i class="icon icon-english icon--xlarge" aria-hidden="true"></i>
+		                      <span class="ds44-btnInnerText--bottom" lang="en">English</span>
+		                    </a>
+		                </jalios:if>
+		                
+		                <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.fermer")%></span></button>
+		        
+		                <nav role="navigation" class="ds44-navContainer ds44-flex-container--column" aria-label="<%=glp("jcmsplugin.socle.menu.navigation")%>">
+		                    <div class="ds44-inner-container ds44-flex-mauto">
+		                        <ul class="ds44-navList ds44-multiCol ds44-xl-gap ds44-list">
+		
+		                        <% Map<Category, String> listCatNavId = new HashMap<Category, String>(); %>
+		
+		                        <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
+		                            <%
+		                                String navId = "nav"+itCounter + 1;
+		                            %>
+		                            <li>
+		                                <jalios:select>
+		                                    <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
+		                                        <%-- Bloc près de chez vous --%>
+		                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
+		                                    </jalios:if>
+		                                    <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
+		                                    
+		                                    <%-- Si présence de contenu principal dans la catégorie, alors lien vers ce contenu,
+		                                         sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%>
+		                                         
+		                                    <%Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCat);%>
+		                                    <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) || Util.notEmpty(itContenuPrincipal) %>">
+		                                        <%
+		                                        String cible= "";
+		                                        String title = "";
+		                                        String lien = "";
+		                                        if(Util.notEmpty(itContenuPrincipal)){
+		                                            lien = itContenuPrincipal.getDisplayUrl(userLocale);
+		                                        }
+		                                        else{
+		                                            lien = itCat.getDisplayUrl(userLocale);
+		                                        }
+		                                        boolean targetBlank = "true".equals(itCat.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
+		                                        if(targetBlank){
+		                                            cible="target=\"_blank\" ";
+		                                            title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+		                                        }
+		                                        %>
+		                                        <a class="ds44-menuBtn" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
+		                                    </jalios:if>
+		                                    <jalios:default>
+		                                        <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
+		                                        <% listCatNavId.put(itCat, navId); %>
+		                                    </jalios:default>
+		                                </jalios:select>
+		                                
+		                            </li>
+		                        </jalios:foreach>
+		                        </ul>
+		                        <hr class="ds44-navSep" />
+		                        <ul class="ds44-multiCol ds44-xl-gap ds44-list">
+		                           <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
+		                               <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
+		                           </jalios:foreach>
+		                           </ul>
+		                    </div>
+		            
+		                    <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
+		                        <%@ include file='socialNetworksHeader.jspf' %>
+		                    </div>   
+		                    <%-- Navigation sites et applis --%>
+		                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
+		                  </nav>
+		            </div>
+		        </section>
+		        
+		        <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
+		            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>'/>
+		        </jalios:foreach>
+		        
+		        <%-- Bloc près de chez vous --%>
+		        <jalios:if predicate='<%= Util.notEmpty(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
+		        <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
+		        </jalios:if>
+		        
+		        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-modal="true" aria-label='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.menu.principal2", glp("jcmsplugin.socle.sitesapplis"))) %>' id="navApplis">
+		        
+		        <div class="ds44-container-menuBackLink">
+		            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">
+		                 <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
+		            </button>
+		            <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
+		        </div>
+		        
+		        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
+		        
+		        <%-- Inclusion liste des sites et applis --%>
+		        <%@include file="sitesEtApplis.jspf" %>
+		
+		                            
+		        </section>
+		        
+		        <jalios:if predicate="<%= displaySearchMenu %>">
+		            <%@ include file="blocMenuRecherche.jspf" %>
+		        </jalios:if>        
+		        
+		    </div>
 
-                        <% Map<Category, String> listCatNavId = new HashMap<Category, String>(); %>
-
-                        <jalios:foreach collection="<%= menuCatList %>" name="itCat" type="Category">
-                            <%
-                                String navId = "nav"+itCounter + 1;
-                            %>
-                            <li>
-                                <jalios:select>
-                                    <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
-                                        <%-- Bloc près de chez vous --%>
-                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
-                                    </jalios:if>
-                                    <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
-                                    
-                                    <%-- Si présence de contenu principal dans la catégorie, alors lien vers ce contenu,
-                                         sinon génération des enfants ou lien direct vers la catégorie si pas d'enfants. --%>
-                                         
-                                    <%Publication itContenuPrincipal = SocleUtils.getContenuPrincipal(itCat);%>
-                                    <jalios:if predicate="<%= Util.isEmpty(itCat.getChildrenSet()) || Util.notEmpty(itContenuPrincipal) %>">
-                                        <%
-                                        String cible= "";
-                                        String title = "";
-                                        String lien = "";
-                                        if(Util.notEmpty(itContenuPrincipal)){
-                                        	lien = itContenuPrincipal.getDisplayUrl(userLocale);
-                                        }
-                                        else{
-                                        	lien = itCat.getDisplayUrl(userLocale);
-                                        }
-                                        boolean targetBlank = "true".equals(itCat.getExtraData("extra.Category.plugin.tools.blank")) ? true : false;
-                                        if(targetBlank){
-                                            cible="target=\"_blank\" ";
-                                            title = "title=\"" + libelleCat + " " + JcmsUtil.glp(userLang, "jcmsplugin.socle.accessibily.newTabLabel")+"\"";
-                                        }
-                                        %>
-                                        <a class="ds44-menuBtn" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
-                                    </jalios:if>
-                                    <jalios:default>
-                                        <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
-                                        <% listCatNavId.put(itCat, navId); %>
-                                    </jalios:default>
-                                </jalios:select>
-                                
-                            </li>
-                        </jalios:foreach>
-                        </ul>
-                        <hr class="ds44-navSep" />
-                        <ul class="ds44-multiCol ds44-xl-gap ds44-list">
-                           <jalios:foreach collection="<%= subMenuCatList %>" name="itCat" type="Category">
-                               <ds:menuLink itCategory="<%= itCat %>" userLang="<%= userLang %>" userLocale="<%= userLocale %>"/>
-                           </jalios:foreach>
-                           </ul>
-                    </div>
-            
-                    <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
-<%--                         <jsp:include page="socialNetworksHeader.jspf"/>  --%>
-                        <%@ include file='socialNetworksHeader.jspf' %>
-                    </div>   
-                    <%-- Navigation sites et applis --%>
-                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
-                  </nav>
-            </div>
-        </section>
-        
-        <jalios:foreach name="itCatSsMenu" type="Category" collection="<%= listCatNavId.keySet() %>">
-            <ds:levelTwoMenu rootCat="<%= itCatSsMenu %>" id='<%= listCatNavId.get(itCatSsMenu) %>'/>
-        </jalios:foreach>
-        
-        <%-- Bloc près de chez vous --%>
-        <jalios:if predicate='<%= Util.notEmpty(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
-        <%@ include file='/plugins/SoclePlugin/jsp/portal/blocMenuPDCV.jspf' %>
-        </jalios:if>
-        
-        <section class="ds44-overlay ds44-overlay--navFromBottom ds44-wave-grey ds44-bg-b" role="dialog" aria-modal="true" aria-label='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.menu.principal2", glp("jcmsplugin.socle.sitesapplis"))) %>' id="navApplis">
-        
-        <div class="ds44-container-menuBackLink">
-            <button type="button" title="Retour au menu de navigation" class="ds44-btn-backOverlay">
-                 <i class="icon icon-arrow-left icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%=glp("jcmsplugin.socle.retour")%></span>
-            </button>
-            <p role="heading" aria-level="1" class="ds44-menuBackLink"><%=glp("jcmsplugin.socle.sitesapplis")%></p>
-        </div>
-        
-        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
-        
-        <%-- Inclusion liste des sites et applis --%>
-        <%@include file="sitesEtApplis.jspf" %>
-
-                            
-        </section>
-        
-        <jalios:if predicate="<%= displaySearchMenu %>">
-            <%@ include file="blocMenuRecherche.jspf" %>
-        </jalios:if>        
-        
     </div>
     
 </header>

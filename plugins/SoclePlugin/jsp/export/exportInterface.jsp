@@ -57,7 +57,7 @@ if(getBooleanParameter("exportImg", false)) {
 
 <hr>
 
-<h3>Export Etablissement personnes agées</h3>
+<h3>Export Etablissement personnes âgées</h3>
 <a href="plugins/SoclePlugin/jsp/export/exportSeniorCitizensEstablishment.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
 
 <hr>
@@ -67,5 +67,18 @@ if(getBooleanParameter("exportImg", false)) {
 
 <hr>
 
+<h3>Export Fiches Aide</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportFicheAide.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+
+<h3>Export Images Fiche Aide</h3>
+<form>
+    <input type="hidden" name="contentType" value="FicheAide">
+    <input type="hidden" name="exportImg" value="true">
+    <input class="btn btn-info modal confirm" type="submit" value="Générer le ZIP pour les images : Fiche Aide"/>
+</form>
+
 <h3>Export Formulaire Page Utile</h3>
 <a href="plugins/SoclePlugin/jsp/export/exportPageUtileForm.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+
+<%@ include file="/admin/doAdminFooter.jspf" %>
+

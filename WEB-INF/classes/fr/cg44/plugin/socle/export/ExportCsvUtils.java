@@ -47,10 +47,17 @@ public class ExportCsvUtils {
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
     
-    StringBuilder chaine = new StringBuilder();
+    StringBuilder chaine = new StringBuilder();    
     
     String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
     String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
+    
+    // CAS PARTICULIER -> FicheLieu (utilisation de 'Place' au lieu de 'FicheLieu'
+    
+    if ("FicheLieu".equals(itType)) {
+      extraDataLat = "extra.Place.plugin.tools.geolocation.latitude";
+      extraDataLon = "extra.Place.plugin.tools.geolocation.longitude";
+    }
     
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
