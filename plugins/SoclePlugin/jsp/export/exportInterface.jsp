@@ -24,7 +24,20 @@ if(getBooleanParameter("exportImg", false)) {
 
 %>
 <%@ include file='/admin/doAdminHeader.jspf' %>
-
+<div class="jcms-message alert no-focus alert-info ">
+    <h2>Importer le fichier CSV dans Excel</h2>
+    <p>Pour ne pas avoir de problème d'encodage de caractères, suivre cette procédure dans Excel :</p>
+	<ol>
+		<li>Ouvrir un nouveau fichier</li>
+		<li>Aller dans le menu "Données"</li>
+		<li>Choisir "A partir d'un fichier texte/CSV"</li>
+		<li>Sélectionner le fichier CSV préalablement téléchargé</li>
+		<li>Cliquer sur "Importer"</li>
+		<li>Dans la nouvelle fenêtre, modifier le 1er champ "Origine du fichier" et remplacer "1252: Europe de l'Ouest" par "65001: Unicode (UTF-8)"</li>
+		<li>Cliquer sur "Charger"</li>
+	    <li>Enregistrer en xlsx</li>
+	</ol>
+</div>
 <div class="page-header"><h1>Export CSV et d'images de contenu</h1></div>
 
 <h2>Chemin du fichier ZIP des images : <%= ExportImgZip.getZipFilePath() %></h2>
