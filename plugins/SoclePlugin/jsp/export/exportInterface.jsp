@@ -77,4 +77,8 @@ if(getBooleanParameter("exportImg", false)) {
     <input class="btn btn-info modal confirm" type="submit" value="Générer le ZIP pour les images : Fiche Aide"/>
 </form>
 
+<h3>Export Formulaire Page Utile</h3>
+<a href="plugins/SoclePlugin/jsp/export/exportPageUtileForm.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+
 <%@ include file="/admin/doAdminFooter.jspf" %>
+
