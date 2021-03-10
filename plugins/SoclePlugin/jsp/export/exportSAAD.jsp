@@ -1,4 +1,4 @@
-<%@page import="fr.cg44.plugin.socle.export.ExportCsvSAAD"%>
+<%@page import="fr.cg44.plugin.socle.export.ExportCsvUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
 response.setHeader("Content-Disposition", "attachment; filename=Export_SAAD.csv");
@@ -14,6 +14,6 @@ if (!isAdmin) {
 
 out.clear();
 
-ExportCsvSAAD.generateCsv(loggedMember, userLang, out);
+ExportCsvUtils.printCsvFileForPublicationType("SAAD", userLang, loggedMember, out);
 
 %>
