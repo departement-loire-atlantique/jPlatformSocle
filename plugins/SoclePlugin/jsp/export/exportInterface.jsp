@@ -30,11 +30,11 @@ if(getBooleanParameter("exportImg", false)) {
 <h2>Chemin du fichier ZIP des images : <%= ExportImgZip.getZipFilePath() %></h2>
 <b>Le fichier ZIP existe : <%= ExportImgZip.imgZipFileExists() %></b>
 <jalios:if predicate="<%= ExportImgZip.imgZipFileExists() %>">
-<a href="<%= ExportImgZip.getZipRelativeFilePath() %>" class="btn btn-success modal confirm" target="_blank">Télécharger le ZIP</a>
+<p><a href="<%= ExportImgZip.getZipRelativeFilePath() %>" class="btn btn-success modal confirm" target="_blank">Télécharger le ZIP</a></p>
 </jalios:if>
 
 <h3>Export Fiches Article</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportFicheArticle.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheArticle" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <h3>Export Images Fiche Article</h3>
 <form>
@@ -46,7 +46,7 @@ if(getBooleanParameter("exportImg", false)) {
 <hr>
 
 <h3>Export Fiches Lieu</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportFicheLieu.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheLieu" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <h3>Export Images Fiche Lieu</h3>
 <form>
@@ -58,17 +58,17 @@ if(getBooleanParameter("exportImg", false)) {
 <hr>
 
 <h3>Export Etablissement personnes âgées</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportSeniorCitizensEstablishment.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=SeniorCitizensEstablishment" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <hr>
 
 <h3>Export SAAD</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportSAAD.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=SAAD" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <hr>
 
 <h3>Export Fiches Aide</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportFicheAide.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheAide" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <h3>Export Images Fiche Aide</h3>
 <form>
@@ -78,7 +78,28 @@ if(getBooleanParameter("exportImg", false)) {
 </form>
 
 <h3>Export Formulaire Page Utile</h3>
-<a href="plugins/SoclePlugin/jsp/export/exportPageUtileForm.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a>
+<p><a href="plugins/SoclePlugin/jsp/export/exportPageUtileForm.jsp" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+
+<hr>
+
+<h3>Export Communes</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=City" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=CommuneHorsDepartement" class="btn btn-info modal confirm" target="_blank">Exporter les communes hors département en CSV</a></p>
+
+<hr>
+
+<h3>Export Fiches élus</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=ElectedMember" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+
+<hr>
+
+<h3>Export Fiches contacts</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=Contact" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+
+<hr>
+
+<h3>Export Fiches action éducative</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheActionEducative" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <%@ include file="/admin/doAdminFooter.jspf" %>
 
