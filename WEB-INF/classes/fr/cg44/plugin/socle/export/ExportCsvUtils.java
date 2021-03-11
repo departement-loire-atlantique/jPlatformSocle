@@ -274,7 +274,7 @@ public class ExportCsvUtils {
     SortedSet<Publication> sortedPubs = ExportCsvUtils.getPublicationsOfType(type, itMember);
     
     // Header
-    csvContent.append(getIdCsvHeader());
+    csvContent.append(getCommonPrefixCsvHeader());
     csvContent.append(getCsvHeaderFromXml(type));
     csvContent.append(getMetadataCsvHeader());
     // Print header
@@ -287,6 +287,8 @@ public class ExportCsvUtils {
       
       Publication itPub = iter.next();
       
+      csvContent.append(getCommonPrefixCsvValues(itPub));
+      
       csvContent.append(getFormattedCsvValue(itPub.getId(), true));
       
       csvContent.append(getXmlFieldValuesFromPublication(itPub, userLang, type, itMember));
@@ -298,24 +300,30 @@ public class ExportCsvUtils {
   }
 
   /**
-   * Renvoie la valeur CSV pour le nom de la colonne "ID". A modifier en cas d'autres préfixes
+   * Renvoie la valeur CSV des noms de colonnes pour les éléments communs en préfixe.
    * @return
    */
-  public static String getIdCsvHeader(){
+  public static String getCommonPrefixCsvHeader(){
     StringBuilder header = new StringBuilder();
     
     header.append(DOUBLE_QUOTE + "ID" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Title" + DOUBLE_QUOTE + SEPARATOR);
     
     return header.toString();
   }
   
   /**
-   * Renvoie la valeur CSV de l'ID d'un contenu. A modifier en cas d'autres préfixes
+   * Renvoie les valeurs CSV pour les éléments communs en préfixe
    * @param itPub
    * @return
    */
-  public static String getIdPubForCsv(Publication itPub) {
-    return getFormattedCsvValue(itPub.getId(), true);
+  public static String getCommonPrefixCsvValues(Publication itPub) {
+    StringBuilder prefix = new StringBuilder();
+    
+    prefix.append(getFormattedCsvValue(itPub.getId(), true));
+    prefix.append(getFormattedCsvValue(itPub.getTitle(), true));
+    
+    return prefix.toString();
   }
   
   /**
