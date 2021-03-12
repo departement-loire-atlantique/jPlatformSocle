@@ -401,6 +401,8 @@ jcmsplugin.socle.ficheaide.modal.suivredemande.validercodesuivi: Valider votre c
 jcmsplugin.socle.ficheaide.modal.suivredemande.suivrevotredemande: Pour suivre votre demande en ligne
 jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique.fr/code/{0}/load
 jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
+jcmsplugin.socle.ficheaide.plusdedetails.label: More details
+jcmsplugin.socle.ficheaide.plusdedetails.title: More details : access the [{0}] tab content on this page
 
 jcmsplugin.socle.titre.pour-qui: For who ?
 jcmsplugin.socle.titre.quoi: What is it ?
