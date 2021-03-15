@@ -152,9 +152,6 @@
         <template name="mos3popafull" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
         </template>
-        <template name="mos4pafull" file="doCarouselMosaiqueX4paysageFullDisplay.jsp" usage="full">
-            <label xml:lang="fr">DS44 : mosaique X4 paysage</label>
-        </template>
         
         <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
@@ -191,9 +188,6 @@
         </template>
         <template name="mos3popa" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
-        </template>
-        <template name="mos4pa" file="doCarouselMosaiqueX4paysageFullDisplay.jsp" usage="query">
-            <label xml:lang="fr">DS44 : mosaique X4 paysage</label>
         </template>
     </templates>
     <templates type="CarouselElement">
