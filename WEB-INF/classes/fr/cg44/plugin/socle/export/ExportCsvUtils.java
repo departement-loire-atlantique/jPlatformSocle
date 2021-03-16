@@ -289,8 +289,6 @@ public class ExportCsvUtils {
       
       csvContent.append(getCommonPrefixCsvValues(itPub));
       
-      csvContent.append(getFormattedCsvValue(itPub.getId(), true));
-      
       csvContent.append(getXmlFieldValuesFromPublication(itPub, userLang, type, itMember));
       
       csvContent.append(ExportCsvUtils.getMetadataCsvPublication(itPub, type));
