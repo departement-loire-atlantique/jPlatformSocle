@@ -56,6 +56,8 @@
       // ------ DEBUT OVERRIDE CD44 --------------------------------------------------------------------
       if(Util.notEmpty(pub) && Util.notEmpty(SocleUtils.getImageForSocialNetworks(pub))){
         request.setAttribute("metaimage", channel.getUrl() + SocleUtils.getImageForSocialNetworks(pub));
+      } else {
+        request.setAttribute("metaimage", channel.getProperty("jcmsplugin.socle.site.src.logo"));
       }
       // -------- FIN OVERRIDE CD44 --------------------------------------------------------------------
       

@@ -22,7 +22,8 @@
   String headTitle      = titleOfThePage + " - " + channel.getName();
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
-  
+  if (Util.isEmpty(pageImage)) pageImage = channel.getProperty("jcmsplugin.socle.site.src.logo");
+    
   boolean opengraphEnabled = channel.getBooleanProperty(PortalManager.SEO_OPENGRAPH_ENABLED_PROP, true);
   
   //DEP44 : ajout balise meta pour twiiter card
