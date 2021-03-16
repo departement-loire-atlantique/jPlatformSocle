@@ -2063,7 +2063,7 @@ public final class SocleUtils {
 		if(Util.notEmpty(cat)) {
 			
 			Category catRacine = channel.getCategory("$jcmsplugin.socle.cat.root");
-			Category catRacineNavigation = channel.getCategory("$jcmsplugin.socle.category.categorieDeNavigation.root");
+			Category catRacineNavigation = channel.getCategory("$jcmsplugin.socle.category.navigationDesEspaces.root");
 			
 			Category catParentTeste = cat;
 
