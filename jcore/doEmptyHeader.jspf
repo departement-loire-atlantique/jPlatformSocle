@@ -27,7 +27,7 @@
   
   //DEP44 : ajout balise meta pour twiiter card
   if (opengraphEnabled) {
-    jcmsContext.addCustomHeader("<meta name=\"twitter:card\" content=\"summary\" />");
+    jcmsContext.addCustomHeader("<meta name=\"twitter:card\" content=\"summary_large_image\" />");
     if (Util.notEmpty(strDescription)) {
       jcmsContext.addCustomHeader("<meta name=\"twitter:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
       jcmsContext.addCustomHeader("<meta property=\"og:description\" content=\""+ encodeForHTMLAttribute(strDescription) + "\" />");
