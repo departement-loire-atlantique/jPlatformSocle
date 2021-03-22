@@ -842,8 +842,8 @@ jcmsplugin.socle.apinotes.cache.enabled: Api notes : activé
 jcmsplugin.socle.api.horaire.ouvert: Open
 jcmsplugin.socle.api.horaire.ferme: Close
 
-jcmsplugin.socle.api.horaire.jour.ouvert: ouvre {0} à {1}
-jcmsplugin.socle.api.horaire.jour.ferme: ferme {0} à {1}
+jcmsplugin.socle.api.horaire.jour.ouvert: open {0} at {1}
+jcmsplugin.socle.api.horaire.jour.ferme: closed {0} at {1}
 
 # Exposition
 jcmsplugin.socle.exposition.intro.title: Presentation
