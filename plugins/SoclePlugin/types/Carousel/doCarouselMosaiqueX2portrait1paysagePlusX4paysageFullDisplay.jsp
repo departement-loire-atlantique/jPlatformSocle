@@ -36,7 +36,7 @@
 		</jalios:if>
 	</ul>
 	
-	<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[3]) %>">
+	<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[2]) || Util.notEmpty(elemCarouselArr[3]) %>">
 		<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
 			<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement" skip="2" max="2">
 	
@@ -48,19 +48,19 @@
 	
 			</jalios:foreach>
 		</ul>
-		<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[5]) %>">
-			<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
-				<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement" skip="4" max="2">
-		
-					<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
-						<li>
-							<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
-						</li>
-					</jalios:if>
-		
-				</jalios:foreach>
-			</ul>
-		</jalios:if>
+	</jalios:if>
+	<jalios:if predicate="<%= Util.notEmpty(elemCarouselArr[4]) || Util.notEmpty(elemCarouselArr[5]) %>">
+		<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
+			<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement" skip="4" max="2">
+	
+				<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
+					<li>
+						<ds:mosaiqueImage image="<%= elemCarousel %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
+					</li>
+				</jalios:if>
+	
+			</jalios:foreach>
+		</ul>
 	</jalios:if>
 
 </jalios:foreach>
