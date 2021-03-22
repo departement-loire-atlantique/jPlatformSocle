@@ -6,10 +6,13 @@ import com.jalios.jcms.Publication;
 import com.jalios.jcms.comparator.BasicComparator;
 
 import generated.AccueilAnnuaireAgenda;
+import generated.Dossier;
 import generated.ElectedMember;
+import generated.FicheActu;
 import generated.FicheAide;
 import generated.FicheArticle;
 import generated.FicheLieu;
+import generated.PageCarrefour;
 
 /**
  * RS-1313 Comparateur sur les types de publications.
@@ -30,7 +33,7 @@ public class TypesComparator extends BasicComparator<Publication>{
       return -1;
     }
     
-    Class<Publication>[] clazz = new Class[] {AccueilAnnuaireAgenda.class, FicheAide.class, FicheArticle.class, FicheLieu.class, ElectedMember.class, FileDocument.class};
+    Class<Publication>[] clazz = new Class[] {AccueilAnnuaireAgenda.class, PageCarrefour.class, FicheAide.class, FicheArticle.class, Dossier.class, FicheActu.class, FicheLieu.class, ElectedMember.class, FileDocument.class};
     
     for(int i=0 ; i < clazz.length ; i++) {
 	    if(clazz[i].isAssignableFrom(pub_1.getClass()) && !clazz[i].isAssignableFrom(pub_2.getClass())) {
