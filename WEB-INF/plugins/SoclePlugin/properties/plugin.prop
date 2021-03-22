@@ -228,7 +228,7 @@ wysiwyg.sanitize-html.whitelist.default.tags:\
   picture[class],\
   pre[class|style|id|lang|dir],\
   q[cite],\
-  section[class],\
+  section[class|style],\
   small,\
   span[class|style|id|title|lang|dir],\
   s[class|style|id],\
