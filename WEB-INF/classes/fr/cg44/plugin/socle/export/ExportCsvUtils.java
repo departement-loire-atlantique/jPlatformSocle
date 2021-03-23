@@ -198,7 +198,7 @@ public class ExportCsvUtils {
         
       case "category":
         // Catégories
-        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember));
+        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember), " ## ");
         
       case "date":
         // Objet date
