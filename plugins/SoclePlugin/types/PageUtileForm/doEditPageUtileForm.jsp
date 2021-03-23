@@ -60,7 +60,7 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
             <form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Avis page négatif","label": "$bloc-utile-informations-questions|text"}'>
                 <div class="grid-2-small-1 ds44-box">
                     <div class="col">
-                        <p id="bloc-utile-informations" class="h4-like" aria-level="3" role="heading" tabindex="-1"><%= glp("jcmsplugin.socle.pageutile.motif-non.titre") %></p>
+                        <p id="bloc-utile-informations" class="h4-like" aria-level="3" role="heading" tabindex="-1"><%= glp("jcmsplugin.socle.pageutile.motif-non.titre") %><sup aria-hidden="true">*</sup></p>
 						<div id="form-element-65721" data-name="bloc-utile-informations-questions" class="ds44-form__checkbox_container ds44-form__container" data-required="true">
 					        <p id="mandatory-message-form-element-65721" class="ds44-mandatory_message"><%= glp("jcmsplugin.socle.pageutile.message-case") %></p>
 					
@@ -81,8 +81,8 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
                         <p id="form-bloc-utils-N"><%= glp("jcmsplugin.socle.pageutile.aide-ameliorer") %></p>
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
-							    <label for="commentaire-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.commentaire") %></span></span></label>
-							    <textarea rows="5" cols="1" id="commentaire-non" name="commentaire" class="ds44-inpStd" aria-describedby="form-bloc-utils-N"></textarea>
+							    <label for="commentaire-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.commentaire") %><sup aria-hidden="true">*</sup></span></span></label>
+							    <textarea rows="5" cols="1" id="commentaire-non" name="commentaire" class="ds44-inpStd" aria-describedby="form-bloc-utils-N" required></textarea>
 							</div>
 						</div>
 						<div class="ds44-form__container">
