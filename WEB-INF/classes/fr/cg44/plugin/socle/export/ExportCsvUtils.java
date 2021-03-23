@@ -226,7 +226,7 @@ public class ExportCsvUtils {
         if (dataType.contains("[]")) {
           return formatStringArray((String[]) itPub.getFieldValue(fieldName, userLang));
         } else {
-          return ((String)itPub.getFieldValue(fieldName, userLang)).replaceAll(";", ":");
+          return renderStringSafeForCsv((String)itPub.getFieldValue(fieldName, userLang));
         }
     }
     
@@ -467,7 +467,7 @@ public class ExportCsvUtils {
     String strSeparator = " ## ";
     
     for (int counter = 0; counter < strArray.length; counter++) {
-      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter].replaceAll(";", ":"));
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(renderStringSafeForCsv(strArray[counter]));
       
       if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
     }
@@ -518,6 +518,15 @@ public class ExportCsvUtils {
   
   public static String getFormattedCsvValueWysiwyg(String wysiwyg) {
     return getFormattedCsvValueWysiwyg(wysiwyg, false);
+  }
+  
+  /**
+   * Rend un String safe pour l'import dans un CSV en remplaçant les caractères sensibles par des caractères différents
+   * @param originalTxt
+   * @return
+   */
+  public static String renderStringSafeForCsv(String originalTxt) {
+    return originalTxt.replaceAll(SEPARATOR, ":").replaceAll("\"", "'");
   }
   
 }
