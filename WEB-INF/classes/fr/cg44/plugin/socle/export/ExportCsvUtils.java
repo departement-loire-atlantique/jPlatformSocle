@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle.export;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -23,6 +24,7 @@ import com.jalios.jcms.Data;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
+import com.jalios.jcms.TypeFieldEntry;
 import com.jalios.jcms.WorkflowConstants;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.portlet.PortalElement;
@@ -30,6 +32,7 @@ import com.jalios.util.HtmlUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
+import generated.FicheArticle;
 
 public class ExportCsvUtils {
   
@@ -206,7 +209,7 @@ public class ExportCsvUtils {
         
       case "boolean":
         // Booléen. Pas de multivalué :)
-        return ((Boolean) itPub.getBooleanFieldValue(fieldName)).toString();
+        return getBooleanLabelValue(itPub, fieldName, userLang, ((Boolean) itPub.getBooleanFieldValue(fieldName)));
         
       case "int":
         // Nombre entier
@@ -236,6 +239,28 @@ public class ExportCsvUtils {
     return "";
   }
   
+  /**
+   * Renvoie le label localisée de la valeur d'un boolean pour un champ de contenu
+   * @param itPub
+   * @param userLang
+   * @return
+   */
+  public static String getBooleanLabelValue(Publication itPub, String fieldName, String userLang, boolean value) {
+    if (Util.isEmpty(itPub) || Util.isEmpty(fieldName) || Util.isEmpty(userLang)) return "";
+    try {
+      TypeFieldEntry[] entries = (TypeFieldEntry[]) itPub.getClass().getMethod("getTypeFieldEntries").invoke(itPub.getClass());
+      for (int entryCounter = 0; entryCounter < entries.length; entryCounter++) {
+        if (entries[entryCounter].getName().equals(fieldName)) {    
+            return value ? entries[entryCounter].getOnLabel(userLang) : entries[entryCounter].getOffLabel(userLang);
+        }
+      }
+    } catch (Exception e) {
+      LOGGER.warn("Anomalie dans getBooleanLabelValue : " + e.getMessage());
+      return "";
+    }
+    return "";
+  }
+
   /**
    * Renvoie le nom d'une donnée "Data"
    * @param fieldValue
