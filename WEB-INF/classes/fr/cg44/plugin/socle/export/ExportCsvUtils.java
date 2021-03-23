@@ -226,7 +226,7 @@ public class ExportCsvUtils {
         if (dataType.contains("[]")) {
           return formatStringArray((String[]) itPub.getFieldValue(fieldName, userLang));
         } else {
-          return (String)itPub.getFieldValue(fieldName, userLang);
+          return ((String)itPub.getFieldValue(fieldName, userLang)).replaceAll(";", ":");
         }
     }
     
@@ -467,7 +467,7 @@ public class ExportCsvUtils {
     String strSeparator = " ## ";
     
     for (int counter = 0; counter < strArray.length; counter++) {
-      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter].replaceAll(";", ":"));
       
       if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
     }
