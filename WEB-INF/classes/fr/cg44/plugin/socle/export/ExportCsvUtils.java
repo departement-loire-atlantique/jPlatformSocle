@@ -3,7 +3,6 @@ package fr.cg44.plugin.socle.export;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -32,7 +31,6 @@ import com.jalios.util.HtmlUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
-import generated.FicheArticle;
 
 public class ExportCsvUtils {
   
@@ -466,7 +464,7 @@ public class ExportCsvUtils {
     
     StringBuilder concatenatedStr = new StringBuilder();
     
-    String strSeparator = " / ";
+    String strSeparator = " ## ";
     
     for (int counter = 0; counter < strArray.length; counter++) {
       if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
