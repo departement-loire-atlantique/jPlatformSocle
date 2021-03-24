@@ -578,6 +578,11 @@
   <jars>
     <!-- utilisé pour la taglib interne -->
     <jar path="jstl-standard.jar" />
+    <!-- mailjet -->
+    <jar path="json-20190722.jar" />
+    <jar path="mailjet-client-5.1.1.jar" />
+    <jar path="okhttp-3.12.0.jar" />
+    <jar path="okio-1.15.0.jar" />
   </jars>
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>   
