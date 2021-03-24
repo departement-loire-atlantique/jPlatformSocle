@@ -9,11 +9,9 @@
 			    <img src="//design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg" alt="Loire-Atlantique" />
 			</picture>
 	    </div>
-	    <div class="col-5-small-1">
+	    <div class="col-5-small-1">	    
 	        <%-- Inclusion de la portlet JSP de Newsletter --%>
-	        <%--
-	        <%@ include file='abonnementNewsletterFooter.jspf' %>
-	         --%>
+	        <%@ include file='abonnementNewsletterFooter.jspf' %>	        	        
 	    </div>
 	    <div class="col-5-small-1">
 	        <%-- Inclusion de la portlet réseaux sociaux --%>
