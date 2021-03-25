@@ -158,7 +158,7 @@ public class ExportCsvUtils {
       
       Node itFieldNode = fieldsNodeList.item(index);
       csvLine.append(HtmlUtil.html2text(getXmlFieldValueFromPublication(itPub, userLang, itFieldNode, itMember)));
-      if (index+1 < fieldsNodeList.getLength()) csvLine.append(SEPARATOR);
+      csvLine.append(SEPARATOR);
     }
     
     return csvLine.toString();
@@ -211,15 +211,15 @@ public class ExportCsvUtils {
         
       case "int":
         // Nombre entier
-        return Integer.toString((int) itPub.getFieldValue(fieldName, userLang));
+        return Integer.toString((int) itPub.getIntFieldValue(fieldName));
         
       case "double":
         // Utilisation d'un 'double'
-        return Double.toString((double) itPub.getFieldValue(fieldName, userLang));
+        return Double.toString((double) itPub.getDoubleFieldValue(fieldName));
         
       case "duration":
         // Utilisation d'un float
-        return Float.toString((float) itPub.getFieldValue(fieldName, userLang));
+        return Long.toString((long) itPub.getLongFieldValue(fieldName));
         
       default:
         // Tout ce qui peut être donné directement en String
