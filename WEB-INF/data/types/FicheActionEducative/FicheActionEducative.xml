@@ -34,7 +34,7 @@
       <label xml:lang="fr">Thème</label>
     </field>
     <field name="soustheme" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactioneducative.sousTheme.root">
-      <label xml:lang="fr">Sous-thème</label>
+      <label xml:lang="fr">Tarif</label>
     </field>
     <field name="parcoursEducationNationale" editor="category" required="true" compactDisplay="false" tab="pratique" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.ficheactioneducative.parcoursEduNationale.root">
       <label xml:lang="fr">Parcours éducation nationale</label>

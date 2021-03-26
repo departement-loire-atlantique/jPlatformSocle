@@ -27,7 +27,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
             <hr class="mbs"aria-hidden="true" />
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pub.getFormat(loggedMember)) %></p>
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-user-group ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pub.getNiveau(loggedMember)) %></p>
-            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-date ds44-docListIco" aria-hidden="true"></i><jalios:wysiwyg><%= pub.getDepotDuDossier().replaceFirst("<p>", "<p>" + glp("jcmsplugin.socle.actuedu.depotdossier.label") + " ") %></jalios:wysiwyg></div>
+            <div class="ds44-docListElem ds44-mt-std"><i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.formatCategories(pub.getSoustheme(loggedMember)) %></div>
         </div>
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
