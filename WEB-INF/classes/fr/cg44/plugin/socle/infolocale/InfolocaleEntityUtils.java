@@ -643,6 +643,12 @@ public class InfolocaleEntityUtils {
       if (Util.notEmpty(box.getGroupeDevenements())) {
         parameters.put("groupe", box.getGroupeDevenements());
       }
+      
+      // Recherche textuelle
+      String text = request.getParameter("text");
+      if (Util.notEmpty(text)) {
+        parameters.put("recherche", text);
+      }
            
       // Recherche sur une commune
       String commune = request.getParameter("commune");
