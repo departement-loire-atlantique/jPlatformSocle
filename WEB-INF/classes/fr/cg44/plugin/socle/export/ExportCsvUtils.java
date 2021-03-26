@@ -23,6 +23,7 @@ import com.jalios.jcms.Data;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
+import com.jalios.jcms.TypeFieldEntry;
 import com.jalios.jcms.WorkflowConstants;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.portlet.PortalElement;
@@ -157,7 +158,7 @@ public class ExportCsvUtils {
       
       Node itFieldNode = fieldsNodeList.item(index);
       csvLine.append(HtmlUtil.html2text(getXmlFieldValueFromPublication(itPub, userLang, itFieldNode, itMember)));
-      if (index+1 < fieldsNodeList.getLength()) csvLine.append(SEPARATOR);
+      csvLine.append(SEPARATOR);
     }
     
     return csvLine.toString();
@@ -197,7 +198,7 @@ public class ExportCsvUtils {
         
       case "category":
         // Catégories
-        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember));
+        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember), " ## ");
         
       case "date":
         // Objet date
@@ -206,26 +207,26 @@ public class ExportCsvUtils {
         
       case "boolean":
         // Booléen. Pas de multivalué :)
-        return ((Boolean) itPub.getBooleanFieldValue(fieldName)).toString();
+        return getBooleanLabelValue(itPub, fieldName, userLang, ((Boolean) itPub.getBooleanFieldValue(fieldName)));
         
       case "int":
         // Nombre entier
-        return Integer.toString((int) itPub.getFieldValue(fieldName, userLang));
+        return Integer.toString((int) itPub.getIntFieldValue(fieldName));
         
       case "double":
         // Utilisation d'un 'double'
-        return Double.toString((double) itPub.getFieldValue(fieldName, userLang));
+        return Double.toString((double) itPub.getDoubleFieldValue(fieldName));
         
       case "duration":
         // Utilisation d'un float
-        return Float.toString((float) itPub.getFieldValue(fieldName, userLang));
+        return Long.toString((long) itPub.getLongFieldValue(fieldName));
         
       default:
         // Tout ce qui peut être donné directement en String
         if (dataType.contains("[]")) {
           return formatStringArray((String[]) itPub.getFieldValue(fieldName, userLang));
         } else {
-          return (String)itPub.getFieldValue(fieldName, userLang);
+          return renderStringSafeForCsv((String)itPub.getFieldValue(fieldName, userLang));
         }
     }
     
@@ -236,6 +237,28 @@ public class ExportCsvUtils {
     return "";
   }
   
+  /**
+   * Renvoie le label localisée de la valeur d'un boolean pour un champ de contenu
+   * @param itPub
+   * @param userLang
+   * @return
+   */
+  public static String getBooleanLabelValue(Publication itPub, String fieldName, String userLang, boolean value) {
+    if (Util.isEmpty(itPub) || Util.isEmpty(fieldName) || Util.isEmpty(userLang)) return "";
+    try {
+      TypeFieldEntry[] entries = (TypeFieldEntry[]) itPub.getClass().getMethod("getTypeFieldEntries").invoke(itPub.getClass());
+      for (int entryCounter = 0; entryCounter < entries.length; entryCounter++) {
+        if (entries[entryCounter].getName().equals(fieldName)) {    
+            return value ? entries[entryCounter].getOnLabel(userLang) : entries[entryCounter].getOffLabel(userLang);
+        }
+      }
+    } catch (Exception e) {
+      LOGGER.warn("Anomalie dans getBooleanLabelValue : " + e.getMessage());
+      return "";
+    }
+    return "";
+  }
+
   /**
    * Renvoie le nom d'une donnée "Data"
    * @param fieldValue
@@ -441,10 +464,10 @@ public class ExportCsvUtils {
     
     StringBuilder concatenatedStr = new StringBuilder();
     
-    String strSeparator = " / ";
+    String strSeparator = " ## ";
     
     for (int counter = 0; counter < strArray.length; counter++) {
-      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(renderStringSafeForCsv(strArray[counter]));
       
       if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
     }
@@ -495,6 +518,15 @@ public class ExportCsvUtils {
   
   public static String getFormattedCsvValueWysiwyg(String wysiwyg) {
     return getFormattedCsvValueWysiwyg(wysiwyg, false);
+  }
+  
+  /**
+   * Rend un String safe pour l'import dans un CSV en remplaçant les caractères sensibles par des caractères différents
+   * @param originalTxt
+   * @return
+   */
+  public static String renderStringSafeForCsv(String originalTxt) {
+    return originalTxt.replaceAll(SEPARATOR, ":").replaceAll("\"", "'");
   }
   
 }
