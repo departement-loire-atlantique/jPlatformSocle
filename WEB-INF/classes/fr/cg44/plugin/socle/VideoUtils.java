@@ -38,11 +38,13 @@ public final class VideoUtils {
     webappUrl = webappUrl.substring(0, webappUrl.length()-1);
     
     Map<String, String[]> map = new HashMap<>();
+    map.put("autoplay", new String[] { "1" });
     map.put("enablejsapi", new String[] { "1" });
     map.put("frameborder", new String[] { "0" });
     map.put("html5", new String[] { "1" });
     map.put("origin", new String[] { webappUrl });
     map.put("rel", new String[] { "0" });
+    map.put("showinfo", new String[] { "0" });
 
     builtUrl = URLUtils.buildUrl(builtUrl, map);
 
