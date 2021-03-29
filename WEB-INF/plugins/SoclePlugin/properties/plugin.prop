@@ -516,10 +516,11 @@ jcmsplugin.socle.infolocale.metadata.front.accessibilite: accessibilite
 jcmsplugin.socle.infolocale.metadata.front.prefix.groupeTheme: grtheme:
 jcmsplugin.socle.infolocale.metadata.front.prefix.theme: theme:
 
-jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: mentionAccessibleHandicapAuditif
-jcmsplugin.socle.infolocale.metadata.accessibilite.mental: mentionAccessibleHandicapMental
-jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: mentionAccessibleHandicapVisuel
-jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: mentionAccessibleHandicapMoteur
+jcmsplugin.socle.infolocale.metadata.accessibilite: accessibilite
+jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: 0
+jcmsplugin.socle.infolocale.metadata.accessibilite.mental: 2
+jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: 1
+jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: 3
 jcmsplugin.socle.infolocale.metadata.thematiques: thematiques
 jcmsplugin.socle.infolocale.metadata.thematiqueId: thematiqueId
 jcmsplugin.socle.infolocale.metadata.parentId: parentId
