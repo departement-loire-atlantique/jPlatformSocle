@@ -552,6 +552,8 @@ jcmsplugin.socle.infolocale.search.field.thematiquePerso: thematiquePerso
 jcmsplugin.socle.infolocale.search.field.order: order
 jcmsplugin.socle.infolocale.search.field.recherche: recherche
 jcmsplugin.socle.infolocale.search.field.organisme: organisme
+jcmsplugin.socle.infolocale.search.field.gratuit: gratuit
+jcmsplugin.socle.infolocale.search.field.recherche: recherche
 
 # ------------------------------------------------------------
 #  IDs virtuels de contenus

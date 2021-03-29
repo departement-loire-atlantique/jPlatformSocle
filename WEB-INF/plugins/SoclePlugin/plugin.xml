@@ -65,6 +65,7 @@
     <type name="PortletFacetteAgendaAccessibilit"></type>
     <type name="PortletFacetteAgendaCommune"></type>
     <type name="PortletFacetteAgendaDate"></type>
+    <type name="PortletFacetteAgendaTarif"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
     <type name="PortletFacetteCategoriesLiees"></type>
@@ -414,6 +415,11 @@
     </templates>
     <templates type="PortletFacetteAgendaDate">
         <template name="default" file="doPortletFacetteAgendaDateBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
+    <templates type="PortletFacetteAgendaTarif">
+        <template name="default" file="doPortletFacetteAgendaTarifBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>

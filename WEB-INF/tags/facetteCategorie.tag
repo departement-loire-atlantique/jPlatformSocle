@@ -38,6 +38,13 @@
         type="Map<String, Set<Genre>>" 
         description="Map de couples libellés / genres (pour l'agenda)" 
 %>
+<%@ attribute name="singleCat" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true"
+        type="Category" 
+        description="Catégorie unique" 
+%>
 <%@ attribute name="dataURL" 
         required="false" 
         fragment="false" 
@@ -94,7 +101,13 @@
         type="Boolean" 
         description="Si à 'true', force la taille du champ en Std" 
 %>
-<%
+<%@ attribute name="forcedName" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="Attribut html 'name' forcé à cette valeur" 
+%><%
     Member loggedMember = Channel.getChannel().getCurrentJcmsContext().getLoggedMember();
     String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 
@@ -108,6 +121,8 @@
     labelChamp = Util.notEmpty(forcedLabel) ? forcedLabel : labelChamp;
     String classInputDisabled = isDisabled ? " ds44-inputDisabled" : "";
     
+    String dataName = Util.notEmpty(forcedName) ? forcedName : "cids";
+    
 %>
 <div class="ds44-form__container">
     <div class='<%= "ds44-select__shape ds44-inp" + styleChamps + classInputDisabled %>'>
@@ -120,7 +135,7 @@
             String classTypeInput = selectionMultiple ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
             classTypeInput = Util.isEmpty(dataURL) && !profondeur ? "ds44-js-select-multilevel" : classTypeInput; 
         %>
-        <div id='<%= idFormElement %>' data-name='<%= "cids" + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
+        <div id='<%= idFormElement %>' data-name='<%= dataName + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
                 <%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
                 <%= obj.getFacetteObligatoire() ? "data-required=\"true\"" : ""%>
                 <%= isDisabled ? "data-disabled=\"true\"" : "" %>
@@ -155,6 +170,20 @@
             </div>
         </jalios:if>
         <% int nbrTotalCat = 0; %>
+        <jalios:if predicate='<%= Util.notEmpty(singleCat) %>'>
+            <div class="ds44-listSelect">
+                <ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
+                    <li class="ds44-select-list_elem">
+                                    
+                        <ds:facetteCategorieListElem cat='<%= singleCat %>' 
+                            idFormElement='<%= idFormElement %>' 
+                            typeDeSelection='<%= selectionMultiple %>' 
+                            numCat='<%= nbrTotalCat %>'/>
+                                
+                    </li>
+                 </ul>
+            </div>
+        </jalios:if>
         <jalios:if predicate='<%= Util.notEmpty(dataURL) || profondeur %>'>
             
             <div class="ds44-listSelect">
