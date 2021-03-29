@@ -23,8 +23,13 @@
 
 <jalios:foreach array="<%= elemCarousel2DArr %>" name="elemCarouselArr" type="CarouselElement[]">
 
-	<ul class="grid-3-tiny-1 ds44-mosaique ds44-gutter ds44-list">
-		<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement">
+	<ul class="grid-2-tiny-1 ds44-mosaique ds44-gutter ds44-list">
+	
+		<li class="row-2">
+			<ds:mosaiqueImage image="<%= elemCarouselArr[0] %>" hasPopin="<%= carousel.getImageMosaiqueAvecPopin() %>"/>
+		</li>
+
+		<jalios:foreach array="<%= elemCarouselArr %>" name="elemCarousel" type="CarouselElement" skip="1">
 
 			<jalios:if predicate="<%= Util.notEmpty(elemCarousel) %>">
 				<li>
