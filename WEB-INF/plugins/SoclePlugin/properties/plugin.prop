@@ -282,6 +282,7 @@ media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionU
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
+media.data-template.default.Exposition: /plugins/SoclePlugin/jsp/cards/doExpositionCardFull.jsp
 media.data-template.default.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp?wysiwygEmbed=true
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
@@ -317,6 +318,7 @@ media.data-template.cardFull.CarouselElement: /plugins/SoclePlugin/jsp/cards/doC
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
+media.data-template.cardFull.Exposition: /plugins/SoclePlugin/jsp/cards/doExpositionCardFull.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.cardFull.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp
