@@ -668,6 +668,13 @@ public class InfolocaleEntityUtils {
         parameters.put(rayonField, rayon.replaceAll("[km ]", ""));
       }
       
+      // Gratuit ?
+      String gratuitField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.gratuit");
+      String[] gratuit = request.getParameterValues("isGratuit");
+      if (Util.notEmpty(gratuit)) {
+        parameters.put(gratuitField, true);
+      }
+      
       // Recherche sur un genre
       String prefixeGrp = "produit_";
       String[] genres = request.getParameterValues("cids");
