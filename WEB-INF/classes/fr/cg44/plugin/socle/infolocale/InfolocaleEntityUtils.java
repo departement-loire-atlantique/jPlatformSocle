@@ -106,7 +106,7 @@ public class InfolocaleEntityUtils {
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
-        String mentionAnnule = "mentionEvenementAnnule";
+        String mentionAnnule = "annule";
         
         try {
           
