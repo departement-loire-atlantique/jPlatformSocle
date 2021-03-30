@@ -73,7 +73,16 @@
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
         <jalios:foreach name="itPortlet" array="<%= obj.getPortletsBas() %>" type="com.jalios.jcms.portlet.PortalElement">
-           <section class="ds44-container-fluid ds44--l-padding">
+           <%
+           String portletCss = "";
+           if(itPortlet instanceof PortletPush) {
+             PortletPush itPortletPush = (PortletPush) itPortlet;
+             if(channel.getProperty("jcmsplugin.socle.horizontal.value").equals(itPortletPush.getAffichage()) || itPortletPush.getListeDeContenusPush().length == 1) {
+               portletCss = "PortletPush";
+             }
+           }
+           %>
+           <section class="ds44-container-fluid <%= portletCss %>">
                <jalios:include id="<%= itPortlet.getId() %>" />
             </section>
         </jalios:foreach>
