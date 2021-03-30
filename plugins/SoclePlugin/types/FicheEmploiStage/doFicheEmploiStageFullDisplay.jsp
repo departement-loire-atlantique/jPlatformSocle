@@ -483,8 +483,6 @@ boolean afficherMentions = !obj.getMasquerMentions();
         </section>
         </jalios:if>
         
-        
-        
         <%-- Bas de page --%>
         
     </article>
