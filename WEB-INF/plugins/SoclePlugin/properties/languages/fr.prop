@@ -403,6 +403,7 @@ jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique
 jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
 jcmsplugin.socle.ficheaide.plusdedetails.label: Plus de détails
 jcmsplugin.socle.ficheaide.plusdedetails.title: Plus de détails : accéder au contenu de l'onglet [{0}] de cette page
+jcmsplugin.socle.ficheaide.fermer-aide.label: Fermer l'aide : {0}
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
