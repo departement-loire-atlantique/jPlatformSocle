@@ -441,7 +441,9 @@ boolean afficherMentions = !obj.getMasquerMentions();
                </div>
            </section>
         </jalios:if>
-               
+        
+        <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
         
         <%-- Bloc Portlet Push --%>
         <jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheemploi.id"))%>'>
@@ -480,6 +482,8 @@ boolean afficherMentions = !obj.getMasquerMentions();
             </div>
         </section>
         </jalios:if>
+        
+        
         
         <%-- Bas de page --%>
         
