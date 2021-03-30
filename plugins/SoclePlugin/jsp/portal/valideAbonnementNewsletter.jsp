@@ -3,7 +3,7 @@
 <% request.setAttribute("inFO", true); %>
 <%@ include file='/jcore/doInitPage.jspf' %>
 
-<% request.setAttribute("title", "Inscription newsletter");%>
+<% request.setAttribute("title", glp("jcmsplugin.socle.newletter.title.lbl"));%>
 
 <%@ include file='/jcore/doEmptyHeader.jspf' %>
 
@@ -16,11 +16,23 @@
 
 StringEncrypter des3Encrypter = new StringEncrypter(StringEncrypter.DESEDE_ENCRYPTION_SCHEME, channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"));
 
-String email = des3Encrypter.decrypt(request.getParameter("newletters-mail-encrypt"));
-String[] segment = request.getParameterValues("segmentid");
+// Decode le paramètre "confirm" avec les informations de l'inscription à la newsletter
+Map<String, String[]> params = URLUtils.parseUrlQueryString(des3Encrypter.decrypt(request.getParameter("confirm")));
+
+// Récupère l'email et les segment pour mailjet
+String email = Util.getFirst(params.get("newletters-mail"));
+String[] segment = params.get("segmentid");
+
+// récupère la date d'expiration 
+Calendar calendar = Calendar.getInstance();
+calendar.setTimeInMillis(Long.parseLong(Util.getFirst(params.get("expire"))));
+// Date courrante
+Date currentDate = Calendar.getInstance().getTime();
+
+boolean isExpire = currentDate.after(calendar.getTime());
 
 boolean isValide = false;
-if(MailjetManager.addContactList(email)) {
+if(!isExpire && MailjetManager.addContactList(email)) {
   if(MailjetManager.addContactProperties(email, segment)) {
     isValide = true;
   }
@@ -56,6 +68,10 @@ if(MailjetManager.addContactList(email)) {
 		                        <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide") %></h2>                      
 		                        <p><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme}) %></p>   
 	                        </jalios:if>
+	                        <jalios:if predicate="<%= isExpire %>">
+                                <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-expire") %></h2>                      
+                                <p><%= glp("jcmsplugin.socle.newletter.mail.inscription-expire.content", new String[]{theme}) %></p>   
+                            </jalios:if>
 	                        <jalios:default>
 	                            <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.erreur") %></h2>    
 	                            <p><%= glp("jcmsplugin.socle.newletter.mail.erreur.description") %>

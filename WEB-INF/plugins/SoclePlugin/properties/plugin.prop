@@ -102,6 +102,7 @@ $jcmsplugin.socle.footer.newsletter.thematiques.cat: c_1354966
 $jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
 
 jcmsplugin.socle.footer.newsletter.confidentialite.pub.link: 
+jcmsplugin.socle.footer.newsletter.expire.heure: 72 
 
 jcmsplugin.socle.mailjet.apiKey:
 jcmsplugin.socle.mailjet.apiSecretKey:

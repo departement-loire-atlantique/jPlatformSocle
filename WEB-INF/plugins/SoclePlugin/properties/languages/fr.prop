@@ -603,7 +603,10 @@ jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre Inscription
 jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre inscription à la newsletter en cliquant sur le lien suivant : <a href="{0}"/>Je confirme mon inscription</a><p><p>Si le lien ne fonctionne pas coller l'url suivante dans votre navigateur : {0}</p><p>Les thématiques choisies : {1}
 
 jcmsplugin.socle.newletter.lbl: Newsletter
+jcmsplugin.socle.newletter.title.lbl: Inscription newsletter
 jcmsplugin.socle.newletter.mail.inscription-valide: Inscription validée
+jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
+jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
 jcmsplugin.socle.newletter.mail.inscription-valide.content: Vous être inscrit à la newsletter aux thématiques suivantes {0}
 jcmsplugin.socle.newletter.mail.erreur: Erreur
 jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.

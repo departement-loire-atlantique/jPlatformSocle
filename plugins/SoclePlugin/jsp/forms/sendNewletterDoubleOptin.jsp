@@ -18,19 +18,27 @@ JsonArray jsonArray = new JsonArray();
 
 Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
-// Permet de crypter l'email pour validation de la newsletter
+// Permet de crypter les paramètres pour validation de la newsletter
 StringEncrypter des3Encrypter = new StringEncrypter(StringEncrypter.DESEDE_ENCRYPTION_SCHEME, channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"));
 
 String mail = request.getParameter("newletters-mail[value]");
 String[] segment = parametersMap.get("segmentid");
 
-// Le mail est encododé pour la génération du lien de validation
-// Ne pas utiliser newletters-mail car sinon le mail encodé sera enregistré comme email dans le formulaire de newsletter de la page de validation
-parametersMap.remove("newletters-mail");
-parametersMap.put("newletters-mail-encrypt", new String[]{des3Encrypter.encrypt(mail)});
 
+// Ajout de la date d'expiration du lien de validation
+Calendar calendar = Calendar.getInstance();
+calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(channel.getProperties("jcmsplugin.socle.footer.newsletter.expire.heure")));
+parametersMap.put("expire", new String[]{Long.toString(calendar.getTimeInMillis())});
+
+
+// Encode les paramètres de la requete  pour la génération du lien de validation
+Map<String, String[]> parametersEncodeMap = new HashMap<String, String[]>();
+String decodeParamsQuery = URLUtils.getQueryString(parametersMap);
+parametersEncodeMap.put("confirm", new String[]{des3Encrypter.encrypt(decodeParamsQuery)});
+
+// Création du lien de confirmation pour la newsletter
 String redirectUrl = channel.getUrl() + "plugins/SoclePlugin/jsp/portal/valideAbonnementNewsletter.jsp";
-String url = URLUtils.buildUrl(redirectUrl, parametersMap);
+String url = URLUtils.buildUrl(redirectUrl, parametersEncodeMap);
 
 %>
 
