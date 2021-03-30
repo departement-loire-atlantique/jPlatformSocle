@@ -634,6 +634,16 @@ public class InfolocaleEntityUtils {
         parameters.put("organisme", box.getOrganismesInfolocale());
       }
       
+      // Recherche sur les groupes d'organisme
+      if (Util.notEmpty(box.getGrpOrganismesInfolocale())) {
+        parameters.put("organismeGroupeIds", box.getGrpOrganismesInfolocale());
+      }
+      
+      // Recherche sur les groupes d'événements
+      if (Util.notEmpty(box.getGrpEvenementsInfolocale())) {
+        parameters.put("organismeGroupeIds", box.getGrpEvenementsInfolocale());
+      }
+      
       // Ajouter un filtre sur les IDs à exclure
       if (Util.notEmpty(box.getIdsAExclure())) {
         parameters.put("excludeIds", box.getIdsAExclure());
