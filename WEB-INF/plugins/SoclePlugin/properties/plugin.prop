@@ -517,6 +517,7 @@ jcmsplugin.socle.infolocale.metadata.front.prefix.groupeTheme: grtheme:
 jcmsplugin.socle.infolocale.metadata.front.prefix.theme: theme:
 
 jcmsplugin.socle.infolocale.metadata.accessibilite: accessibilite
+jcmsplugin.socle.infolocale.metadata.accessibilite.field: accessibilites
 jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: 0
 jcmsplugin.socle.infolocale.metadata.accessibilite.mental: 2
 jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: 1

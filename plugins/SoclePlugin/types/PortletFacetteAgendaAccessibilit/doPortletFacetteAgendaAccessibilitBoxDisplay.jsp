@@ -10,10 +10,10 @@
 <% 
 String uid = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")); 
 LinkedHashMap<String, String> accessibiliteValues = new LinkedHashMap<>();
-accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif"), glp("jcmsplugin.socle.infolocale.label.accessibilite.auditif"));
-accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"), glp("jcmsplugin.socle.infolocale.label.accessibilite.mental"));
-accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"), glp("jcmsplugin.socle.infolocale.label.accessibilite.visuel"));
-accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"), glp("jcmsplugin.socle.infolocale.label.accessibilite.moteur"));
+accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif"), glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif"));
+accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental"), glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapmental"));
+accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel"), glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel"));
+accessibiliteValues.put(channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur"), glp("jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur"));
 String title = Util.getString(obj.getLabel(userLang, false), glp("jcmsplugin.socle.facette.accessibilite.title"));
 boolean isRequired = obj.getFacetteObligatoire();   
 %>

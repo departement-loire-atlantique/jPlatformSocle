@@ -1,6 +1,6 @@
 package fr.cg44.plugin.socle.infolocale;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
@@ -12,7 +12,6 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
-import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil;
 import generated.EvenementInfolocale;
 
@@ -22,6 +21,8 @@ import generated.EvenementInfolocale;
  *
  */
 public class InfolocaleMetadataUtils {
+  
+    private static String[] accessibiliteNamesArray = new String[] {"auditif", "mental", "visuel", "moteur"};
     
     private InfolocaleMetadataUtils() {}
     
@@ -250,7 +251,7 @@ public class InfolocaleMetadataUtils {
      * @return
      */
     private static String getMetaAccessibilite(JSONObject jsonEvent) {
-        StringBuilder accessibilite = buildAccessibiliteHtmlBlock(jsonEvent, "auditif", "mental", "visuel", "moteur");
+        StringBuilder accessibilite = buildAccessibiliteHtmlBlock(jsonEvent);
         if (Util.isEmpty(accessibilite)) {
             return ""; 
         } else {
@@ -258,29 +259,35 @@ public class InfolocaleMetadataUtils {
         }
     }
     
-    private static StringBuilder buildAccessibiliteHtmlBlock(JSONObject jsonEvent, String... accessibilite) {
+    private static StringBuilder buildAccessibiliteHtmlBlock(JSONObject jsonEvent) {
         StringBuilder value = new StringBuilder();
-        for (String itAccessibilite : accessibilite) {
-            value.append(getHtmlForAccessibilite(jsonEvent, itAccessibilite, Util.notEmpty(value.toString())));
+        ArrayList<Integer> idsAccessibilitesEvent = new ArrayList<>();
+        try {
+          JSONArray itAccessibiliteArray = jsonEvent.getJSONArray(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.field"));          
+          if (itAccessibiliteArray.length() <= 0) return value;
+          for (int counterAccessibiliteArray = 0; counterAccessibiliteArray < itAccessibiliteArray.length(); counterAccessibiliteArray ++) {
+            idsAccessibilitesEvent.add(itAccessibiliteArray.getJSONObject(counterAccessibiliteArray).getInt("hanId"));
+          }
+        } catch (JSONException e) {
+          LOGGER.warn("Anomalie in buildAccessibiliteHtmlBlock : " + e.getMessage());
+          return value;
+        }
+        for (Iterator<Integer> iter = idsAccessibilitesEvent.iterator(); iter.hasNext();) {
+            int itId = iter.next();
+            value.append(getHtmlForAccessibilite(jsonEvent, itId, iter.hasNext()));
         }
         return value;
     }
 
-    private static String getHtmlForAccessibilite(JSONObject jsonEvent, String itAccessibilite, boolean addSeparator) {
+    private static String getHtmlForAccessibilite(JSONObject jsonEvent, int idAccessibilite, boolean addSeparator) {
         StringBuilder value = new StringBuilder();
         Channel channel = Channel.getChannel();
-        try {
-            if (jsonEvent.getBoolean(channel.getProperty("jcmsplugin.socle.infolocale.metadata."+ itAccessibilite + cssVisuel))) {
-                if (addSeparator) value.append(separator);
-                value.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon." + itAccessibilite + cssVisuel) + baliseItalicEnd);
-                value.append(baliseSpanStart);
-                value.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label." + itAccessibilite + cssVisuel));
-                value.append(baliseSpanEnd);
-            }
-        }
-        catch (Exception e) {
-            LOGGER.debug("Erreur dans getMetaAccessibilite : accessibilité visuelle non trouvée");
-        }
+        
+        value.append(baliseItalicStart + channel.getProperty("jcmsplugin.socle.infolocale.metadata.icon.accessibilite." + accessibiliteNamesArray[idAccessibilite]) + baliseItalicEnd);
+        value.append(baliseSpanStart);
+        value.append(JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.accessibilite.handicap" + accessibiliteNamesArray[idAccessibilite]));
+        value.append(baliseSpanEnd);
+        if (addSeparator) value.append("<br/>");
         
         return value.toString();
     }

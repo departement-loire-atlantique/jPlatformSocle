@@ -53,17 +53,17 @@ public class RequestManager {
      * Envoie une requête pour s'authentifier à Infolocale et générer les tokens d'authentification
      */
     public static void initTokens() {
-        sendTokenRequest("https://api.infolocale.fr/auth/signin", initToken);
+        sendTokenRequest("https://api.infolocale.fr/auth/signin", initToken, true);
     }
     
     /**
      * Regénère les tokens d'authentification. En cas de token invalide, procède à l'authentification
      */
     public static void regenerateTokens() {
-        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", refreshToken);
+        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", refreshToken, false);
     }
     
-    private static void sendTokenRequest(String url, String type) {
+    private static void sendTokenRequest(String url, String type, boolean stopOnFail) {
         boolean invalidToken = false;
         
         TokenManager tokenManager = TokenManager.getInstance();
@@ -123,8 +123,12 @@ public class RequestManager {
         
         // Si la requête consistait à refresh les tokens, en cas d'échec, demander une initialisation des tokens
         if (invalidToken && "refresh_token".equals(type)) {
-            LOGGER.debug("Token invalide. Tentative de regénération de token via authentification...");
-            initTokens();
+            if (stopOnFail) {
+              LOGGER.debug("Authentification invalide. Veuillez mettre à jour les identifiants Infolocale...");
+            } else {
+              LOGGER.debug("Token invalide. Tentative de regénération de token via authentification...");
+              initTokens();
+            }
         }
     }
 
