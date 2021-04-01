@@ -862,3 +862,6 @@ jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
 # ------------------------------------------------------------
 jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin relatif du dossier du ZIP
 jcmsplugin.socle.export.csv.link: Export CSV de contenu
+
+# Tableau de bord formulaire Page Utile
+jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
