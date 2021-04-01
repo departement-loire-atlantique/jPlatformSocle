@@ -21,7 +21,7 @@
 	
 	Category fakeCategory = new Category();
 	fakeCategory.setId("estGratuit");
-	fakeCategory.setName(glp("jcmsplugin.socle.gratuit"));
+	fakeCategory.setName(Util.notEmpty(obj.getLibelle(userLang)) ? obj.getLibelle(userLang) : glp("jcmsplugin.socle.gratuit"));
 	
 %>
 
