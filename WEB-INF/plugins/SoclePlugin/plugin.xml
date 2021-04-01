@@ -65,6 +65,7 @@
     <type name="PortletFacetteAgendaAccessibilit"></type>
     <type name="PortletFacetteAgendaCommune"></type>
     <type name="PortletFacetteAgendaDate"></type>
+    <type name="PortletFacetteAgendaTarif"></type>
     <type name="PortletFacetteCanton"></type>
     <type name="PortletFacetteCategorie"></type>
     <type name="PortletFacetteCategoriesLiees"></type>
@@ -152,6 +153,9 @@
         <template name="mos3popafull" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="full">
             <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
         </template>
+        <template name="mos3pofull" file="doCarouselMosaiqueX3portraitFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : mosaique X3 portrait</label>
+        </template>
         
         <template name="default" file="doCarouselSwiperOneBlocFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : gabarit avec fondu à un seul bloc d'images</label>
@@ -188,6 +192,9 @@
         </template>
         <template name="mos3popa" file="doCarouselMosaiqueX3portrait1paysageFullDisplay.jsp" usage="query">
             <label xml:lang="fr">DS44 : mosaique X3 portrait et paysage</label>
+        </template>
+        <template name="mos3po" file="doCarouselMosaiqueX3portraitFullDisplay.jsp" usage="query">
+            <label xml:lang="fr">DS44 : mosaique X3 portrait</label>
         </template>
     </templates>
     <templates type="CarouselElement">
@@ -417,6 +424,11 @@
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
     </templates>
+    <templates type="PortletFacetteAgendaTarif">
+        <template name="default" file="doPortletFacetteAgendaTarifBoxDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique simple</label>
+        </template>
+    </templates>
     <templates type="PortletFacetteCanton">
         <template name="default" file="doPortletFacetteCantonBoxDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
@@ -629,6 +641,7 @@
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  
+    <file path="jsp/tableauDeBord/tableauDeBordPageUtileFormLink.jsp" include="ADMIN_MONITORING" />
     <file path="jsp/reprise/repriseFicheLieuLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseAutresTypesLink.jsp" include="ADMIN_OPERATION" />
     <file path="jsp/reprise/repriseContenuContactLink.jsp" include="ADMIN_OPERATION" />

@@ -1,36 +1,36 @@
 <%@page import="com.jalios.jcms.HttpUtil"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="fr.cg44.plugin.socle.LiensUtils"%>
-<%
 
-if(!channel.getBooleanProperty("jcmsplugin.socle.socialnetworks.share.actif", false)){
-	return;
-}
+<jalios:if predicate='<%= channel.getBooleanProperty("jcmsplugin.socle.socialnetworks.share.actif", false) %>'>
 
-Publication pubCourante = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-String urlCourante = ServletUtil.getUrl(request, false);
+    <%
+    Publication pubCourante = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+    String urlCourante = ServletUtil.getUrl(request, false);
+    
+    String[] socialNetworks = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.share", new String[]{});
+    List<String> socialNetworksList = Arrays.asList(socialNetworks);
+    %>
+    <div class="ds44-inner-container">
+        <section class="ds44-partage ds44-flex-container ds44-flex-align-center pal">
+            <h2 class="h4-like" id="idPartageRS"><%= glp("jcmsplugin.socle.partagerpage") %></h2>
+                <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
+                    <jalios:foreach name="itSocialNetwork" type="String" collection="<%= socialNetworksList %>">
+                        <%
+                        String itSocialNetworkValue = itSocialNetwork.toLowerCase().replaceAll("\\s","");
+                        String itSocialNetworkTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.socialnetwork.share."+itSocialNetworkValue));
+                        String itSocialNetworkLink = LiensUtils.createLink(itSocialNetwork, urlCourante, pubCourante);
+                        String itSocialNetworkLabel = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.socialnetwork.depsur."+itSocialNetworkValue)));
+                        %>
+                        <%
+                        if(Util.notEmpty(itSocialNetworkTitle) && Util.notEmpty(itSocialNetworkLink)){ %>
+                            <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= itSocialNetworkLabel %></span></a></li>
+                        <%}else{
+                            logger.error("Partagez cette page : erreur de title ou de lien pour le réseau social " + itSocialNetwork);
+                        } %>
+                    </jalios:foreach>
+                </ul>
+        </section>
+    </div>
 
-String[] socialNetworks = channel.getStringArrayProperty("jcmsplugin.socle.socialnetworks.share", new String[]{});
-List<String> socialNetworksList = Arrays.asList(socialNetworks);
-%>
-<div class="ds44-inner-container">
-    <section class="ds44-partage ds44-flex-container ds44-flex-align-center pal">
-        <h2 class="h4-like" id="idPartageRS"><%= glp("jcmsplugin.socle.partagerpage") %></h2>
-            <ul class="ds44-list ds44-flex-container ds44-flex-align-center ds44-fse">
-                <jalios:foreach name="itSocialNetwork" type="String" collection="<%= socialNetworksList %>">
-                    <%
-                    String itSocialNetworkValue = itSocialNetwork.toLowerCase().replaceAll("\\s","");
-                    String itSocialNetworkTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.socialnetwork.share."+itSocialNetworkValue));
-                    String itSocialNetworkLink = LiensUtils.createLink(itSocialNetwork, urlCourante, pubCourante);
-                    String itSocialNetworkLabel = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.socialnetwork.depsur."+itSocialNetworkValue)));
-                    %>
-                    <%
-                    if(Util.notEmpty(itSocialNetworkTitle) && Util.notEmpty(itSocialNetworkLink)){ %>
-                        <li><a href="<%= itSocialNetworkLink %>" target="_blank" class="ds44-rsLink" title='<%= itSocialNetworkTitle %>' data-statistic='{"name": "declenche-evenement","category": "Partage page","action": "<%= HttpUtil.encodeForHTMLAttribute(itSocialNetwork) %>"}'><i class="icon icon-<%= itSocialNetworkValue %> icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= itSocialNetworkLabel %></span></a></li>
-                    <%}else{
-                        logger.error("Partagez cette page : erreur de title ou de lien pour le réseau social " + itSocialNetwork);
-                    } %>
-                </jalios:foreach>
-            </ul>
-    </section>
-</div>
+</jalios:if>

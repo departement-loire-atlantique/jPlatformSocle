@@ -106,7 +106,7 @@ public class InfolocaleEntityUtils {
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
-        String mentionAnnule = "mentionEvenementAnnule";
+        String mentionAnnule = "annule";
         
         try {
           
@@ -634,6 +634,16 @@ public class InfolocaleEntityUtils {
         parameters.put("organisme", box.getOrganismesInfolocale());
       }
       
+      // Recherche sur les groupes d'organisme
+      if (Util.notEmpty(box.getGrpOrganismesInfolocale())) {
+        parameters.put("organismeGroupeIds", box.getGrpOrganismesInfolocale());
+      }
+      
+      // Recherche sur les groupes d'événements
+      if (Util.notEmpty(box.getGrpEvenementsInfolocale())) {
+        parameters.put("organismeGroupeIds", box.getGrpEvenementsInfolocale());
+      }
+      
       // Ajouter un filtre sur les IDs à exclure
       if (Util.notEmpty(box.getIdsAExclure())) {
         parameters.put("excludeIds", box.getIdsAExclure());
@@ -642,6 +652,12 @@ public class InfolocaleEntityUtils {
       // Ajouter un filtre sur le groupe d'événement
       if (Util.notEmpty(box.getGroupeDevenements())) {
         parameters.put("groupe", box.getGroupeDevenements());
+      }
+      
+      // Recherche textuelle
+      String text = request.getParameter("text");
+      if (Util.notEmpty(text)) {
+        parameters.put("recherche", text);
       }
            
       // Recherche sur une commune
@@ -660,6 +676,13 @@ public class InfolocaleEntityUtils {
       String rayon = request.getParameter(rayonField);
       if(Util.notEmpty(rayon)) {
         parameters.put(rayonField, rayon.replaceAll("[km ]", ""));
+      }
+      
+      // Gratuit ?
+      String gratuitField = channel.getProperty("jcmsplugin.socle.infolocale.search.field.gratuit");
+      String[] gratuit = request.getParameterValues("isGratuit");
+      if (Util.notEmpty(gratuit)) {
+        parameters.put(gratuitField, true);
       }
       
       // Recherche sur un genre
@@ -719,26 +742,16 @@ public class InfolocaleEntityUtils {
       }
       
       // Recherche sur l'accessibilité
-      String mentionAccessibiliteAuditif = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.auditif");
-      String mentionAccessibiliteMental = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.mental");
-      String mentionAccessibiliteVisuel = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.visuel");
-      String mentionAccessibiliteMoteur = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite.moteur");
-      
-      String searchAccessibilite = request.getParameter("accessibilite");
+      String accessibilite = channel.getProperty("jcmsplugin.socle.infolocale.metadata.accessibilite");
+      String[] searchAccessibilite = request.getParameterValues(accessibilite);
+      ArrayList<String> paramAccessibilite = new ArrayList<>();
       
       if (Util.notEmpty(searchAccessibilite)) {
-        if (searchAccessibilite.contains(mentionAccessibiliteAuditif)) {
-          parameters.put(mentionAccessibiliteAuditif, true);
+        for (int indexAccessibilite = 0; indexAccessibilite < searchAccessibilite.length; indexAccessibilite++) {
+          String itValue = searchAccessibilite[indexAccessibilite];
+          if (itValue.matches("[0-3]")) paramAccessibilite.add(itValue);
         }
-        if (searchAccessibilite.contains(mentionAccessibiliteMental)) {
-          parameters.put(mentionAccessibiliteMental, true);
-        }
-        if (searchAccessibilite.contains(mentionAccessibiliteVisuel)) {
-          parameters.put(mentionAccessibiliteVisuel, true);
-        }
-        if (searchAccessibilite.contains(mentionAccessibiliteMoteur)) {
-          parameters.put(mentionAccessibiliteMoteur, true);
-        }
+        if (Util.notEmpty(paramAccessibilite)) parameters.put(accessibilite, String.join(",", paramAccessibilite.toArray(new String[paramAccessibilite.size()])));
       }
       
       parameters.put("limit", channel.getIntegerProperty("jcmsplugin.socle.infolocale.max.limit", 100)); 

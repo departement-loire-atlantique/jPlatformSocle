@@ -31,8 +31,10 @@
     
     <%-- FAQ --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-        <div class="ds44-inner-container ds44-grid12-offset-1">
-            <jalios:include id="<%= obj.getFaq().getId() %>" />
+        <div class="ds44-inner-container">
+            <div class="ds44-grid12-offset-1">
+                <jalios:include id="<%= obj.getFaq().getId() %>" />
+            </div>
         </div>
     </jalios:if>
     
