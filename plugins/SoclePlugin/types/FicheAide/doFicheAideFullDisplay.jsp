@@ -138,7 +138,7 @@
 									<h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
 									<jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>
 								</jalios:if>
-								<button onclick="document.getElementById('label_id_second').click();MiscUtils.scrollTo(MiscUtils.getPositionY(document.getElementById('label_id_second')))" class="js-tablist__link ds44-btnStd ds44-btnStd--large ds44-btn--invert" 
+								<button onclick="document.getElementById('label_id_second').click();MiscUtils.scrollTo(MiscUtils.getPositionY(document.getElementById('tabs')) - 150); " class="ds44-mt2 js-tablist__link ds44-btnStd ds44-btnStd--large ds44-btn--invert" 
 								title='<%= glp("jcmsplugin.socle.ficheaide.plusdedetails.title", glp("jcmsplugin.socle.onglet.detail"))%>'>
 								    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.plusdedetails.label") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 								</button>
