@@ -540,12 +540,8 @@ jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
 jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
 jcmsplugin.socle.infolocale.photo.404.url: URL photo 404 pour les événements agenda
 jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
-jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
-jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
-jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
-jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
-jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap cognitif
 jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
 jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
