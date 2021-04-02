@@ -454,14 +454,9 @@ public class ExportCsvUtils {
    */
   private static Set<Category> getAllCategoriesN3N4() {
     // Pas de récursion, car on connaît les limites à atteindre
-    Category rootNav = Channel.getChannel().getCategory(Channel.getChannel().getProperty(propCatRootMenu));
-    Set<Category> allCatsN1 = rootNav.getChildrenSet();
-    Set<Category> allCatsN2 = new TreeSet<>();
+    Set<Category> allCatsN2 = getAllCategoriesN2();
     Set<Category> allCatsN3 = new TreeSet<>();
     Set<Category> allCatsN3N4 = new TreeSet<>();
-    for (Category itCatN1 : allCatsN1) {
-      if (Util.notEmpty(itCatN1.getChildrenSet())) allCatsN2.addAll(itCatN1.getChildrenSet());
-    }
     for (Category itCatN2 : allCatsN2) {
       if (Util.notEmpty(itCatN2.getChildrenSet())) allCatsN3.addAll(itCatN2.getChildrenSet());
     }
