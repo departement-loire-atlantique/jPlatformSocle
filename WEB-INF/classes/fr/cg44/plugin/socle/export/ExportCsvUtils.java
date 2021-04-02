@@ -381,13 +381,6 @@ public class ExportCsvUtils {
     String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
     String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
     
-    // CAS PARTICULIER -> FicheLieu (utilisation de 'Place' au lieu de 'FicheLieu'
-    
-    if ("FicheLieu".equals(itType)) {
-      extraDataLat = "extra.Place.plugin.tools.geolocation.latitude";
-      extraDataLon = "extra.Place.plugin.tools.geolocation.longitude";
-    }
-    
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getId(), true));
