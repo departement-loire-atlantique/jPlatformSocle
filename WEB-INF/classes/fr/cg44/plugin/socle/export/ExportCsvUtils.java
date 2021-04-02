@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.SortedSet;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -221,6 +224,10 @@ public class ExportCsvUtils {
         // Utilisation d'un float
         return Long.toString((long) itPub.getLongFieldValue(fieldName));
         
+      case "enumerate":
+        // Liste énumérée. On récupère les labels, pas les valeurs
+        return getValueLabelsFromEnumerateList(itNode, (String[]) itPub.getFieldValue(fieldName, userLang), userLang);
+        
       default:
         // Tout ce qui peut être donné directement en String
         if (dataType.contains("[]")) {
@@ -237,6 +244,30 @@ public class ExportCsvUtils {
     return "";
   }
   
+  /**
+   * Récupérer les labels associés aux valeurs d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String[] fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    String separatorVertical = "|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    for (String itFieldValue : Arrays.asList(fieldValue)) {
+      if (listValues.contains(itFieldValue)) {
+        listDisplayedLabels.add(listLabels.get(listLabels.indexOf(itFieldValue)));
+      }
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
+  }
+
   /**
    * Renvoie le label localisée de la valeur d'un boolean pour un champ de contenu
    * @param itPub
