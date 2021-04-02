@@ -231,6 +231,11 @@ public class ExportCsvUtils {
         
       case "enumerate":
         // Liste énumérée. On récupère les labels, pas les valeurs
+        // Cas 1 -> une seule valeur
+        if (itNode.getAttributes().getNamedItem("type").getNodeValue().equals("String")) {
+          return getValueLabelsFromEnumerateList(itNode, (String) itPub.getFieldValue(fieldName, userLang), userLang);
+        }
+        // Cas 2 -> plusieurs valeurs
         return getValueLabelsFromEnumerateList(itNode, (String[]) itPub.getFieldValue(fieldName, userLang), userLang);
         
       default:
@@ -247,6 +252,28 @@ public class ExportCsvUtils {
     }
     
     return "";
+  }
+  
+  /**
+   * Récupérer le label associé à la valeur d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    String separatorVertical = "\\|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    if (listValues.contains(fieldValue)) {
+      listDisplayedLabels.add(listLabels.get(listValues.indexOf(fieldValue)));
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
   }
   
   /**
