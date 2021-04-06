@@ -2095,14 +2095,14 @@ public final class SocleUtils {
 	}
 	
   /**
-   * Regarde si une publication possède telle catégorie comme ancètre
+   * Regarde si une publication est dans telle branche de catégorie
    * @param pub la publication à tester
-   * @param cat la catégorie dont on veut savoir si elle contient la publication pub
-   * @return true si la publication pub a bien pour ancètre la catégorie cat. Sinon false.
+   * @param cat la catégorie racine de la branche à tester
+   * @return true si la publication pub est bien dans la branche de la catégorie cat. Sinon false.
    */ 
   public static boolean hasAncestorCat(Publication pub, Category ancestorCat) {
-    for (Category itPubCategory : pub.getCategorySet()) {
-      if(itPubCategory.hasAncestor(ancestorCat) || itPubCategory.equals(ancestorCat)) {
+    for (Category itCat : pub.getCategorySet()) {
+      if(itCat.hasAncestor(ancestorCat) || itCat.equals(ancestorCat)) {
         return true;
       }
     }
