@@ -263,6 +263,15 @@ public class ExportCsvUtils {
    */
   public static String getValueLabelsFromEnumerateList(Node itNode, String fieldValue, String userLang) {
     if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+   
+    // Cas particulier civilité Mme / Mr pour les fiches contact
+    if (fieldValue.equals("mrs")) {
+      return "Mme";
+    }
+    if (fieldValue.equals("mr")) {
+      return "M.";
+    }
+    
     String separatorVertical = "\\|";
     
     List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
@@ -655,7 +664,8 @@ public class ExportCsvUtils {
   public static String renderStringSafeForCsv(String originalTxt) {
     return originalTxt.replaceAll(SEPARATOR, ":").replaceAll("\"", "'");
   }
-  
+ 
 
 }
+
 
