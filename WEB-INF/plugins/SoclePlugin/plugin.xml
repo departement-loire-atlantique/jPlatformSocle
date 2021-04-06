@@ -494,7 +494,11 @@
         <template name="tuiles1colhome" file="doPortletMiseEnAvantDeContenusBoxOneColumnHome.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuiles sur une colonne pour page d'accueil</label>
           <description xml:lang="fr">(ex : "En un clic")</description>
-        </template>        
+        </template>
+        <template name="tuiles1colhomeXSTheme" file="doPortletMiseEnAvantDeContenusBoxOneColumnHomeExtraSmallTheme.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles XS avec couleur du thème sur une colonne pour page d'accueil</label>
+          <description xml:lang="fr">(ex : "En un clic")</description>
+        </template>                
         <template name="plusRecherches" file="doPortletMiseEnAvantDeContenusBoxPlusRecherches.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit bloc liste d'éléments simple</label>
           <description xml:lang="fr">(ex : "Contenus les plus recherchés")</description>
