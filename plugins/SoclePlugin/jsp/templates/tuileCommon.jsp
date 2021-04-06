@@ -18,11 +18,21 @@ String titleAttr = ""; // code HTML de l'attribut "title"
 String titleValue = ""; // valeur de l'attribut "title"
 String styleContext= Util.notEmpty(request.getParameter("context")) ? "ds44-darkContext" : "";
 boolean isSmall = Util.notEmpty(request.getParameter("size")) ? true : false;
+boolean isExtraSmall = (Util.notEmpty(request.getParameter("size")) && request.getParameter("size").equals("extrasmall")) ? true : false;
+boolean colorTheme = Util.notEmpty(request.getParameter("colorTheme")) ? true : false;
+String paddingVignette = (Util.notEmpty(request.getParameter("padding")) && request.getParameter("padding").equals("small")) ? "ds44--s-padding" : "";
+String styleVignette = "";
 boolean isInSixPanelsContext = Util.notEmpty(request.getParameter("cssSix")) ? true : false;
 boolean isLargeTuile = Util.notEmpty(request.getParameter("largePic")) ? true : false;
 String subTitle = "";
 String location = "";
 boolean isDossier = pub instanceof Dossier;
+
+if(isExtraSmall){
+  styleVignette = "--dim80";
+}else if(isSmall){
+  styleVignette = "--dim110";
+}
    
 /* Le type de contenu "Lien" peut pointer vers une publication ou un site externe 
    Dans le cas d'une pub, si c'est un FileDoc alors on fait le lien direct sur le fichier,
