@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -227,6 +229,15 @@ public class ExportCsvUtils {
         // Utilisation d'un float
         return Long.toString((long) itPub.getLongFieldValue(fieldName));
         
+      case "enumerate":
+        // Liste énumérée. On récupère les labels, pas les valeurs
+        // Cas 1 -> une seule valeur
+        if (itNode.getAttributes().getNamedItem("type").getNodeValue().equals("String")) {
+          return getValueLabelsFromEnumerateList(itNode, (String) itPub.getFieldValue(fieldName, userLang), userLang);
+        }
+        // Cas 2 -> plusieurs valeurs
+        return getValueLabelsFromEnumerateList(itNode, (String[]) itPub.getFieldValue(fieldName, userLang), userLang);
+        
       default:
         // Tout ce qui peut être donné directement en String
         if (dataType.contains("[]")) {
@@ -243,6 +254,52 @@ public class ExportCsvUtils {
     return "";
   }
   
+  /**
+   * Récupérer le label associé à la valeur d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    String separatorVertical = "\\|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    if (listValues.contains(fieldValue)) {
+      listDisplayedLabels.add(listLabels.get(listValues.indexOf(fieldValue)));
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
+  }
+  
+  /**
+   * Récupérer les labels associés aux valeurs d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String[] fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    String separatorVertical = "|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    for (String itFieldValue : Arrays.asList(fieldValue)) {
+      if (listValues.contains(itFieldValue)) {
+        listDisplayedLabels.add(listLabels.get(listLabels.indexOf(itFieldValue)));
+      }
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
+  }
+
   /**
    * Renvoie le label localisée de la valeur d'un boolean pour un champ de contenu
    * @param itPub
@@ -454,9 +511,14 @@ public class ExportCsvUtils {
    */
   private static Set<Category> getAllCategoriesN3N4() {
     // Pas de récursion, car on connaît les limites à atteindre
-    Set<Category> allCatsN2 = getAllCategoriesN2();
+    Category rootNav = Channel.getChannel().getCategory(Channel.getChannel().getProperty(propCatRootMenu));
+    Set<Category> allCatsN1 = rootNav.getChildrenSet();
+    Set<Category> allCatsN2 = new TreeSet<>();
     Set<Category> allCatsN3 = new TreeSet<>();
     Set<Category> allCatsN3N4 = new TreeSet<>();
+    for (Category itCatN1 : allCatsN1) {
+      if (Util.notEmpty(itCatN1.getChildrenSet())) allCatsN2.addAll(itCatN1.getChildrenSet());
+    }
     for (Category itCatN2 : allCatsN2) {
       if (Util.notEmpty(itCatN2.getChildrenSet())) allCatsN3.addAll(itCatN2.getChildrenSet());
     }
