@@ -75,8 +75,8 @@ if(getBooleanParameter("exportImg", false)) {
 
 <hr>
 
-<h3>Export SAAD</h3>
-<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=SAAD" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+<h3>Export Fiche SAAD</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheSAAD" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
 <hr>
 
