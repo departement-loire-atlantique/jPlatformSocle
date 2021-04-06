@@ -308,6 +308,9 @@ jcmsplugin.socle.lien: Link
 jcmsplugin.socle.page-concernee: Page concerned
 jcmsplugin.socle.structure: Structure
 jcmsplugin.socle.ville: City
+jcmsplugin.socle.source: Source
+jcmsplugin.socle.date-actualisation: Actualisé le
+jcmsplugin.socle.voiraussi: Voir aussi
 
 # ------------------------------------------------------------
 #  Header
