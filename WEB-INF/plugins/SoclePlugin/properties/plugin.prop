@@ -291,6 +291,7 @@ media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFi
 media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
 media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
+media.data-template.tuileHorizontaleLightExtraSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=extrasmall&colorTheme=true&padding=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
 media.data-template.tuileVerticaleGpla.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=gpla
