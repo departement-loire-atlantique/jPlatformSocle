@@ -10,10 +10,14 @@
 	}
 	
 	Exposition pub = (Exposition) data;
+	
+	String imagePath = pub.getImageCarree(userLang);
+	
+	if(Util.isEmpty(imagePath)) imagePath = pub.getImagePrincipale(userLang);
 %>
 
 <ds:card title="<%= pub.getTitle(userLang) %>" 
-		imagePath="<%= pub.getImagePrincipale(userLang) %>" 
+		imagePath="<%= imagePath %>" 
 		alt="<%= pub.getTexteAlternatif(userLang) %>" 
 		link="<%= pub.getDisplayUrl(userLocale) %>" 
 		format="horizontal" 
