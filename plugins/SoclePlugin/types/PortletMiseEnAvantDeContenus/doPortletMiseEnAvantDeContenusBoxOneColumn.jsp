@@ -10,8 +10,8 @@ if (Util.notEmpty(box.getFirstPublications())) {
 
 <%@ include file="/types/PortletQueryForeach/doQuery.jspf" %>
 <%@ include file="/types/PortletQueryForeach/doSort.jspf" %>
-
 <%
+
 if (Util.notEmpty(collection)) {
     allContents.addAll(collection);
 }
@@ -19,7 +19,7 @@ if (Util.notEmpty(collection)) {
 
 <section id="services1clic_<%= box.getId() %>">
     <p role="heading" aria-level="2" class="ds44-box-heading"><%= box.getTitreVisuel(userLang) %></p>
-    <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
+    <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="<%= box.getMaxResults() %>">
         <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleDark"/>
     </jalios:foreach>
 </section>
