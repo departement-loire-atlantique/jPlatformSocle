@@ -263,13 +263,13 @@ public class ExportCsvUtils {
    */
   public static String getValueLabelsFromEnumerateList(Node itNode, String fieldValue, String userLang) {
     if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
-   
+    
     // Cas particulier civilité Mme / Mr pour les fiches contact
     if (fieldValue.equals("mrs")) {
       return "Mme";
     }
     if (fieldValue.equals("mr")) {
-      return "M.";
+      return "Mr";
     }
     
     String separatorVertical = "\\|";
@@ -454,13 +454,6 @@ public class ExportCsvUtils {
     
     String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
     String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
-    
-    // CAS PARTICULIER -> FicheLieu (utilisation de 'Place' au lieu de 'FicheLieu'
-    
-    if ("FicheLieu".equals(itType)) {
-      extraDataLat = "extra.Place.plugin.tools.geolocation.latitude";
-      extraDataLon = "extra.Place.plugin.tools.geolocation.longitude";
-    }
     
     chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getCategoriesN2(itPub), doubleHashtag), true));
     chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getCategoriesN3N4(itPub), doubleHashtag), true));
@@ -664,8 +657,5 @@ public class ExportCsvUtils {
   public static String renderStringSafeForCsv(String originalTxt) {
     return originalTxt.replaceAll(SEPARATOR, ":").replaceAll("\"", "'");
   }
- 
-
+  
 }
-
-
