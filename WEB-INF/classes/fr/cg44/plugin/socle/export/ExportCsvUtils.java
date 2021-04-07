@@ -269,7 +269,7 @@ public class ExportCsvUtils {
       return "Mme";
     }
     if (fieldValue.equals("mr")) {
-      return "Mr";
+      return "M.";
     }
     
     String separatorVertical = "\\|";
