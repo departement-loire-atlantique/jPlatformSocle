@@ -143,5 +143,13 @@ boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue",
 	
 	<input type='hidden' name='id' value='<%= currentPub.getId()%>' data-technical-field />
 	<input type='hidden' name='idFaq' value='<%= obj.getId()%>' data-technical-field />
+	
+	<% Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.socle.form.contact.portlet-rgpd.id")); %>
+                
+    <jalios:if predicate="<%= Util.notEmpty(rgpdPub) && (rgpdPub instanceof PortletWYSIWYG) %>">
+	    <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
+	       <%= ((PortletWYSIWYG) rgpdPub).getWysiwyg() %>
+	    </jalios:wysiwyg>
+    </jalios:if>
 
 </form>
