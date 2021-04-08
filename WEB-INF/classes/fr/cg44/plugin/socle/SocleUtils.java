@@ -2079,7 +2079,7 @@ public final class SocleUtils {
 			Category catParentTeste = cat;
 
 			for(int i = 0; i < niveau; i++) {
-				if(Util.isEmpty(catParentTeste)) break;
+				if(Util.isEmpty(catParentTeste.getParent())) break;
 				catParentTeste = catParentTeste.getParent();
 			}
 			
@@ -2090,7 +2090,7 @@ public final class SocleUtils {
 			} else {
 				return getCategorieParentDeNavigation(cat.getParent(), niveau);
 			}
-		}
+		} 
 		return null;
 	}
 	
