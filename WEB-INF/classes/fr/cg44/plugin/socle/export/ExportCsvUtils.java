@@ -425,13 +425,13 @@ public class ExportCsvUtils {
    */
   public static String getMetadataCsvHeader(){
     StringBuilder header = new StringBuilder();
-    
+
+    header.append(DOUBLE_QUOTE + "Catégories N-1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Catégories N-2" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "Catégories N-3 et N-4" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Catégories exactes" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Version" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Auteur" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "ID auteur" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "ID catégories" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de création" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de publication" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de modification" + DOUBLE_QUOTE + SEPARATOR);
@@ -454,13 +454,13 @@ public class ExportCsvUtils {
     
     String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
     String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
-    
-    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getCategoriesN2(itPub), doubleHashtag), true));
-    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getCategoriesN3N4(itPub), doubleHashtag), true));
+
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 1), doubleHashtag), true));
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 2), doubleHashtag), true));
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getAllNavCategories(itPub), doubleHashtag), true));
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getId(), true));
-    chaine.append(getFormattedCsvValue(SocleUtils.listCategoriesId(itPub.getCategorySet()), true));
     chaine.append(getFormattedCsvValue(sdf.format(itPub.getCdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getPdate()) ? "" : sdf.format(itPub.getPdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getMdate()) ? "" : sdf.format(itPub.getMdate()), true));
@@ -472,63 +472,25 @@ public class ExportCsvUtils {
   }
   
   /**
-   * Récupères toutes les catégories N2 depuis une publication, en la formattant pour une valeur CSV
+   * Renvoie toutes les catégories de navigation d'un contenu, sauf N-1 et N-2
    * @param itPub
    * @return
    */
-  public static Set<Category> getCategoriesN2(Publication itPub) {
-    Set<Category> catsN2Set = new TreeSet<>(Arrays.asList(itPub.getCategories(Channel.getChannel().getCurrentLoggedMember())));
-    catsN2Set.retainAll(getAllCategoriesN2());
-    return catsN2Set;
-  }
-
-  /**
-   * Récupères toutes les catégories N3-N4 depuis une publication, en la formattant pour une valeur CSV
-   * @param itPub
-   * @return
-   */
-  public static Set<Category> getCategoriesN3N4(Publication itPub) {
-    Set<Category> catsN3N4Set = new TreeSet<>(Arrays.asList(itPub.getCategories(Channel.getChannel().getCurrentLoggedMember())));
-    catsN3N4Set.retainAll(getAllCategoriesN3N4());
-    return catsN3N4Set;
-  }
-  
-  /**
-   * Retourne un set de catégories N2 depuis la racine de navigation
-   * @return
-   */
-  private static Set<Category> getAllCategoriesN2() {
-    Category rootNav = Channel.getChannel().getCategory(Channel.getChannel().getProperty(propCatRootMenu));
-    Set<Category> allCatsN1 = rootNav.getChildrenSet();
-    Set<Category> allCatsN2 = new TreeSet<>();
-    for (Category itCatN1 : allCatsN1) {
-      if (Util.notEmpty(itCatN1.getChildrenSet())) allCatsN2.addAll(itCatN1.getChildrenSet());
-    }
-    return allCatsN2;
-  }
-  
-  /**
-   * Retourne un set de catégories N3-N4 depuis la racine de navigation
-   * @return
-   */
-  private static Set<Category> getAllCategoriesN3N4() {
-    // Pas de récursion, car on connaît les limites à atteindre
-    Category rootNav = Channel.getChannel().getCategory(Channel.getChannel().getProperty(propCatRootMenu));
-    Set<Category> allCatsN1 = rootNav.getChildrenSet();
-    Set<Category> allCatsN2 = new TreeSet<>();
-    Set<Category> allCatsN3 = new TreeSet<>();
-    Set<Category> allCatsN3N4 = new TreeSet<>();
-    for (Category itCatN1 : allCatsN1) {
-      if (Util.notEmpty(itCatN1.getChildrenSet())) allCatsN2.addAll(itCatN1.getChildrenSet());
-    }
-    for (Category itCatN2 : allCatsN2) {
-      if (Util.notEmpty(itCatN2.getChildrenSet())) allCatsN3.addAll(itCatN2.getChildrenSet());
-    }
-    allCatsN3N4.addAll(allCatsN3);
-    for (Category itCatN3 : allCatsN3) {
-      if (Util.notEmpty(itCatN3.getChildrenSet())) allCatsN3N4.addAll(itCatN3.getChildrenSet());
-    }
-    return allCatsN3N4;
+  public static Set<Category> getAllNavCategories(Publication itPub) {
+    Set<Category> pubNavCats = new TreeSet<>();
+    if (Util.isEmpty(itPub)) return pubNavCats;
+    Category[] itPubCats = itPub.getCategories(Channel.getChannel().getCurrentLoggedMember());
+    if (Util.isEmpty(itPubCats)) return pubNavCats;
+    Set<Category> allNavCats = SocleUtils.getCategorieDeNavigation(itPub);
+    
+    pubNavCats.addAll(Arrays.asList(itPubCats));
+    
+    pubNavCats.retainAll(allNavCats);
+    
+    pubNavCats.removeAll(SocleUtils.getCategorieDeNavigation(itPub, 1));
+    pubNavCats.removeAll(SocleUtils.getCategorieDeNavigation(itPub, 2));
+    
+    return pubNavCats;
   }
 
   /**
