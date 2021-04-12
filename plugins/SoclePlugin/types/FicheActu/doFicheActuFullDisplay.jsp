@@ -72,7 +72,7 @@
     
     <%-- TODO : bloc Je m'abonne --%>
     <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id")) %>'>
-        <section class="ds44-container-fluid ds44--l-padding">
+        <section class="ds44-container-fluid">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id") %>'/>
         </section>
     </jalios:if>
