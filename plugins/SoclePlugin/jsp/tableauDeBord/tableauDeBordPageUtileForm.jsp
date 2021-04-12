@@ -89,19 +89,15 @@
 <div class="page-header"><h1>Tableau de bord des formulaires pages utiles</h1></div>
 
 <% 
-	SortedSet<Publication> sortedPubs = ExportCsvUtils.getPublicationsOfType("PageUtileForm", loggedMember); 
+	TreeSet<PageUtileForm> sortedPubs = channel.getPublicationSet(PageUtileForm.class, loggedMember);
 	int nbrAvis, nbrAvisPositif, nbrAvisNegatif, nbrPasAssezComplet, nbrInformationTropComplique, nbrTropALire, nbrComm, nbrCommPositif, nbrCommNegatif;
 	nbrAvis = nbrAvisPositif = nbrAvisNegatif = nbrPasAssezComplet = nbrInformationTropComplique = nbrTropALire = nbrComm = nbrCommPositif = nbrCommNegatif = 0;
 	
-	for (Iterator<Publication> iter = sortedPubs.iterator(); iter.hasNext();) {
-		Publication itPub = iter.next();
-		if (Util.isEmpty(itPub) || !(itPub instanceof PageUtileForm)) {
-			continue;
-		}
+	for (Iterator<PageUtileForm> iter = sortedPubs.iterator(); iter.hasNext();) {
 		
 		nbrAvis++;
 		
-		PageUtileForm itPageUtileForm = (PageUtileForm) itPub;
+		PageUtileForm itPageUtileForm = iter.next();
 		
 		if(itPageUtileForm.getUtile()) {
 			nbrAvisPositif++;
