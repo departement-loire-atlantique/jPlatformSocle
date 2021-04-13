@@ -27,7 +27,7 @@ String[] segment = parametersMap.get("segmentid");
 
 // Ajout de la date d'expiration du lien de validation
 Calendar calendar = Calendar.getInstance();
-calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(channel.getProperties("jcmsplugin.socle.footer.newsletter.expire.heure")));
+calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(channel.getProperty("jcmsplugin.socle.footer.newsletter.expire.heure")));
 parametersMap.put("expire", new String[]{Long.toString(calendar.getTimeInMillis())});
 
 
