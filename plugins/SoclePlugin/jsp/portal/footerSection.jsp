@@ -11,7 +11,15 @@
 	    </div>
 	    <div class="col-5-small-1">	    
 	        <%-- Inclusion de la portlet JSP de Newsletter --%>
-	        <%@ include file='abonnementNewsletterFooter.jspf' %>	        	        
+	        <jalios:if predicate='<%= Util.notEmpty(channel.getCategory("$jcmsplugin.socle.footer.newsletter.parutions.cat")) &&
+	            Util.notEmpty(channel.getCategory("$jcmsplugin.socle.footer.newsletter.thematiques.cat")) &&
+	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.apiKey")) &&
+	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.apiSecretKey")) &&
+	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.contactList")) &&
+	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"))
+	            %>'>
+	           <%@ include file='abonnementNewsletterFooter.jspf' %>	 
+	        </jalios:if>       	        
 	    </div>
 	    <div class="col-5-small-1">
 	        <%-- Inclusion de la portlet réseaux sociaux --%>
