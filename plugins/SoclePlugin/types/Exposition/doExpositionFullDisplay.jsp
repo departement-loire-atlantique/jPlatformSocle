@@ -78,7 +78,7 @@
 											<jalios:if predicate="<%= Util.notEmpty(obj.getUrlReservation(userLang)) %>">
 												<p>
 													<% String lienReserverTitle = Util.notEmpty(obj.getTexteAlternatifReservation(userLang)) ? obj.getTexteAlternatifReservation(userLang) : glp("jcmsplugin.socle.reserverlien", obj.getTitle()); %>
-													<a class="ds44-btnStd ds44-btn--invertWhite" title="<%= lienReserverTitle %>" href="<%= obj.getUrlReservation(userLang) %>">
+													<a class="ds44-btnStd ds44-btnStd--large ds44-btn--invertWhite" title="<%= lienReserverTitle %>" href="<%= obj.getUrlReservation(userLang) %>">
 														<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.reserver") %></span>
 														<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 													</a>
