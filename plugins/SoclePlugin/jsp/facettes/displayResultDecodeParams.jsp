@@ -36,6 +36,9 @@ if( channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false)) {
 	
 	// Ajout l'id de la recherche à la requete décodée pour que la jsp suivante puisse l'ajouter au json retourné au js
 	parametersMap.put("searchId", new String[]{(idSearch)});
+}else {
+  // Id à 0 mais non null pour le fonctionnement du js lorsque la ré-écriture d'url est désactivée
+  parametersMap.put("searchId", new String[]{("0")});
 }
 
 String redirectUrl = Util.notEmpty(request.getParameter("redirectUrl[value]")) ? request.getParameter("redirectUrl[value]") : "plugins/SoclePlugin/jsp/facettes/displayResult.jsp";
