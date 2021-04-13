@@ -65,7 +65,11 @@ try {
 	msg.setTo(mail);
 		
 	msg.setSubject(glp("jcmsplugin.socle.newletter.mail.confirme.sujet"));
-	msg.setContentHtml(glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme}));
+	//msg.setContentHtml(glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme}));
+	HashMap mailParam = new HashMap<String, String>();
+	mailParam.put("mailUrl", url);
+	mailParam.put("mailTheme", mailTheme);
+	msg.setContentHtmlFromJsp("/plugins/SoclePlugin/jsp/forms/doValideMail.jsp", loggedMember, userLang, mailParam, null);
 	msg.send();	
 }catch (MessagingException e) {
     mailStatusOk = false;
