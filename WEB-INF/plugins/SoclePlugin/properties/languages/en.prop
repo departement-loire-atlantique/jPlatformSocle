@@ -835,8 +835,8 @@ jcmsplugin.socle.chiffrescles.lien: All data
 jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 
 # Multilingue
-jcmsplugin.socle.multilingue.english-version.title: English : Visit the english version of the website {0}
-jcmsplugin.socle.multilingue.french-version.title: French : Visit the french version of the website {0}
+jcmsplugin.socle.multilingue.version.title: Version française : consultez la version française du site {0}
+jcmsplugin.socle.multilingue.version.label: Français
 
 # API Notes et lieux
 jcmsplugin.socle.apinotes.cache.schedule: Api notes : CRON pour le cache

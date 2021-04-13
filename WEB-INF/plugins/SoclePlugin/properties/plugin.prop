@@ -723,8 +723,6 @@ upload.permission.size.default: 104857600
 #  Multilingues
 # ------------------------------------------------------------
 jcmsplugin.socle.multilingue: false
-jcmsplugin.socle.multilingue.english-version.label: English
-jcmsplugin.socle.multilingue.french-version.label: French
 
 # ------------------------------------------------------------
 #  API Notes et lieux
