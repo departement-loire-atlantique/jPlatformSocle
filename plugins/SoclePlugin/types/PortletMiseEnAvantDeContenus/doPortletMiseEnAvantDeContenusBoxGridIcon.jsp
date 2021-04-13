@@ -27,7 +27,7 @@ if(Util.notEmpty(box.getLienExterne())) {
                 
     <header class="txtcenter ds44--xl-padding-b ds44-container-large">
       <h2 class="h2-like ds44-dark" id="titreMEA<%= box.getId() %>"><%= box.getTitreVisuel(userLang) %></h2>
-        <a class="ds44-block" title="<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", glp("jcmsplugin.socle.gpla.site")) %>" href="<%= glp("jcmsplugin.socle.gpla.site.url") %>" target="_blank" >       
+        <a class="ds44-block" title="<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", glp("jcmsplugin.socle.gpla.site")) %>" href="<%= channel.getProperty("jcmsplugin.socle.gpla.site.url") %>" target="_blank" >       
 	      <picture>
 	          <img src='<%= channel.getProperty("jcmsplugin.socle.gpla.site.logo") %>' alt='<%= glp("jcmsplugin.socle.gpla.site") %>' class="ds44-logoCard"/>
 	      </picture>
