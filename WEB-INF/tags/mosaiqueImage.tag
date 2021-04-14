@@ -42,12 +42,12 @@
 <jalios:buffer name="btnImage">
 	<jalios:if predicate="<%= hasPopin %>">
 		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.popin.title")) %>'>
-			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio is-height-set">
+			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" <% if (!hasFigcaption) { %>alt=""<% } %> class="ds44-imgRatio is-height-set">
 		</button>
 	</jalios:if>
 	
 	<jalios:if predicate="<%= !hasPopin %>">
-		<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio is-height-set">
+		<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" <% if (hasFigcaption) { %>alt=""<% } %> class="ds44-imgRatio is-height-set">
 	</jalios:if>
 </jalios:buffer>
 
