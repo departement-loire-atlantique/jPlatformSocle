@@ -10,7 +10,20 @@
 			<div class="col-<%= largeurDiv %>-small-1">
 				<h3 class="h4-like"><%= Util.notEmpty(obj.getSoustitre(userLang)) ? obj.getSoustitre(userLang) : glp("jcmsplugin.socle.faq.consulter-question-frequente") %></h3>
 				<ul class="ds44-collapser ds44-mb-std ">
-					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>' counter='nbrQuestRep'>
+				    <%-- Afficher les entrées dans l'ordre --%>
+				    <%
+				    Set<FaqEntry> orderedListFaq = new TreeSet<>(new Comparator<FaqEntry>() {
+				      @Override
+				      public int compare(FaqEntry o1, FaqEntry o2) {
+				        if (Util.isEmpty(o1.getOrder()) && Util.notEmpty(o2.getOrder())) return -1;
+				        if (Util.notEmpty(o1.getOrder()) && Util.isEmpty(o2.getOrder())) return 1;
+				        if (Util.isEmpty(o1.getOrder()) && Util.isEmpty(o2.getOrder())) return o1.compareTo(o2);
+				        return Integer.compare(o1.getOrder(), o2.getOrder());
+				      }
+				    });
+				    orderedListFaq.addAll(obj.getLinkIndexedDataSet(FaqEntry.class));
+				    %>
+					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= orderedListFaq %>' counter='nbrQuestRep'>
 						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
 							<p role="heading" aria-level="3">
 								<button type="button" class="ds44-collapser_button">
