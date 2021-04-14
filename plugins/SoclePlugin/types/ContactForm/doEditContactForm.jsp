@@ -280,7 +280,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" role="listbox" id="listbox-form-element-sujet" aria-labelledby="button-message-form-element-sujet"  aria-required="true">
 					<jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
-						<li class="ds44-select-list_elem" name="sujet" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
+						<li class="ds44-select-list_elem" name="sujet" role="option" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
 							<%= itCat.getName(userLang) %>
 						</li>
 					</jalios:foreach>
