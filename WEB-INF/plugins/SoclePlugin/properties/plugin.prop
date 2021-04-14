@@ -6,6 +6,8 @@ channel.favicon: plugins/SoclePlugin/images/favicon/favicon.ico
 
 # Logo du site pour site patrimoniaux
 jcmsplugin.socle.gpla.site.logo: https://design.loire-atlantique.fr/assets/images/logos/logo-grand-patrimoine-blanc.svg
+# Lien sur le logo des sites patrimoniaux (portlet de mise en avant)
+jcmsplugin.socle.gpla.site.url: https://www.loire-atlantique.fr/grand-patrimoine
 
 # ------------------------------------------------------------
 #  Propriétés éditables

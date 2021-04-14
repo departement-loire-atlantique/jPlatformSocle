@@ -26,10 +26,12 @@ if(Util.notEmpty(box.getLienExterne())) {
 <section class="ds44-container-fluid ds44-bgDark ds44-bg-patrimoine-sites ds44--xxl-padding-tb">
                 
     <header class="txtcenter ds44--xl-padding-b ds44-container-large">
-      <h2 class="h2-like ds44-dark" id="titreMEA<%= box.getId() %>"><%= box.getTitreVisuel(userLang) %></h2>          
-      <picture>
-          <img src='<%= channel.getProperty("jcmsplugin.socle.gpla.site.logo") %>' alt='<%= glp("jcmsplugin.socle.gpla.site") %>' class="ds44-logoCard"/>
-      </picture>     
+      <h2 class="h2-like ds44-dark" id="titreMEA<%= box.getId() %>"><%= box.getTitreVisuel(userLang) %></h2>
+        <a class="ds44-block" title="<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", glp("jcmsplugin.socle.gpla.site")) %>" href="<%= channel.getProperty("jcmsplugin.socle.gpla.site.url") %>" target="_blank" >       
+	      <picture>
+	          <img src='<%= channel.getProperty("jcmsplugin.socle.gpla.site.logo") %>' alt='<%= glp("jcmsplugin.socle.gpla.site") %>' class="ds44-logoCard"/>
+	      </picture>
+        </a>     
     </header>
 
     <div class="ds44-mobile-extra-smt"> 
