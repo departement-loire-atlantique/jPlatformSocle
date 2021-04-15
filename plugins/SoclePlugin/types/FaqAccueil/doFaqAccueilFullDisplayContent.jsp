@@ -12,18 +12,15 @@
 				<ul class="ds44-collapser ds44-mb-std ">
 				    <%-- Afficher les entrées dans l'ordre --%>
 				    <%
-				    Set<FaqEntry> orderedListFaq = new TreeSet<>(new Comparator<FaqEntry>() {
-				      @Override
-				      public int compare(FaqEntry o1, FaqEntry o2) {
-				        if (Util.isEmpty(o1.getOrder()) && Util.notEmpty(o2.getOrder())) return -1;
-				        if (Util.notEmpty(o1.getOrder()) && Util.isEmpty(o2.getOrder())) return 1;
-				        if (Util.isEmpty(o1.getOrder()) && Util.isEmpty(o2.getOrder())) return o1.compareTo(o2);
-				        return Integer.compare(o1.getOrder(), o2.getOrder());
-				      }
-				    });
-				    orderedListFaq.addAll(obj.getLinkIndexedDataSet(FaqEntry.class));
-				    %>
-					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= orderedListFaq %>' counter='nbrQuestRep'>
+					boolean isPreview = getBooleanParameter("preview", false);
+					DataSelector authorizedSelector = new Publication.AuthorizedSelector(loggedMember);
+					DataSelector selector = isPreview ? authorizedSelector : new AndDataSelector(authorizedSelector, new Publication.VisibleStateSelector());
+					%>
+					<jalios:query name="entrySet"
+					dataset="<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>"
+					comparator="<%=  new custom.CustomEditFaqEntryHandler.OrderComparator() %>"
+					selector="<%= selector %>"/>
+					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= entrySet %>' counter='nbrQuestRep'>
 						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
 							<p role="heading" aria-level="3">
 								<button type="button" class="ds44-collapser_button">
