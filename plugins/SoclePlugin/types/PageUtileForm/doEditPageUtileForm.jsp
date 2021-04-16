@@ -3,6 +3,7 @@
 
 <%
 String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
+Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.socle.form.contact.portlet-rgpd.id"));
 %>
 
 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
@@ -52,6 +53,12 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
                 <input type="hidden" name="utile" value="true" data-technical-field/>
 		        <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
 		        <input type="hidden" name="url" value='<%= ServletUtil.getUrl(request) %>' data-technical-field />
+		        
+		        <jalios:if predicate="<%= Util.notEmpty(rgpdPub) && (rgpdPub instanceof PortletWYSIWYG) %>">
+                    <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
+                      <%= ((PortletWYSIWYG) rgpdPub).getWysiwyg() %>
+                    </jalios:wysiwyg>
+                </jalios:if>
                 
             </form>
             <p class="ds44-keyboard-show"><a href="#ds44-choiceY"><%= glp("jcmsplugin.socle.pageutile.retour-oui") %></a></p>
@@ -103,8 +110,6 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
                 <input type="hidden" name="utile" value="false" data-technical-field/>
                 <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
                 <input type="hidden" name="url" value='<%= ServletUtil.getUrl(request) %>' data-technical-field />
-
-                <% Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.socle.form.contact.portlet-rgpd.id")); %>
                 
                 <jalios:if predicate="<%= Util.notEmpty(rgpdPub) && (rgpdPub instanceof PortletWYSIWYG) %>">
                     <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
