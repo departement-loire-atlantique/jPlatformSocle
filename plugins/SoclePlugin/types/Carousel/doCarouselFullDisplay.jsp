@@ -12,8 +12,15 @@
 	SimpleDateFormat sdfTuiles = new SimpleDateFormat("yyyy/MM"); 
 %>
 
-<jalios:if predicate="<%= Util.notEmpty(obj.getTitre(userLang, false)) %>">
-	<h4 class="h4-like"><%= obj.getTitre(userLang, false) %></h4>
+<jalios:if predicate="<%= Util.notEmpty(obj.getTitre(userLang, false)) || Util.notEmpty(obj.getSoustitre(userLang, false)) %>">
+	<header class="txtcenter ds44--l-padding-tb">		
+		<jalios:if predicate="<%= Util.notEmpty(obj.getTitre(userLang, false)) %>">
+			<h3 class="h3-like"><%= obj.getTitre(userLang, false) %></h3>
+		</jalios:if>
+		<jalios:if predicate="<%= Util.notEmpty(obj.getSoustitre(userLang, false)) %>">
+			<h4 class="h4-like"><%= obj.getSoustitre(userLang, false) %></h4>
+		</jalios:if>
+	</header>
 </jalios:if>
 <div class="swipper-carousel-wrap swipper-carousel-slideshow" data-nb-visible-slides="1">
 	<div class="swiper-container">
