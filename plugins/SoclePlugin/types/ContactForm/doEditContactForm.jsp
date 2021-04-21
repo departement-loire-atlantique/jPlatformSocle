@@ -225,7 +225,7 @@
                     <span class="ds44-labelTypePlaceholder"><%= villeLabel %></span>
                 </span>
             </label>
-            <input type="text" id="form-element-ville" name="ville" class="ds44-inpStd" />
+            <input type="text" id="form-element-ville" name="ville" class="ds44-inpStd" autocomplete=”address-level2” />
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
                 <span class="visually-hidden">
@@ -248,7 +248,7 @@
                 </span>
             </label>
             <input type="text" id="form-element-pays" name="pays" class="ds44-inpStd" required
-                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' />
+                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' autocomplete=”country”/>
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
                 <span class="visually-hidden">
