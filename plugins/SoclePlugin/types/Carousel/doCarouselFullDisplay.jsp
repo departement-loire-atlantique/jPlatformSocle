@@ -49,11 +49,11 @@
 				</li>
 			</jalios:foreach>
 		</ul>
-		<button class="swiper-button-prev swiper-button-white swiper-button-disabled" type="button">
+		<button class="swiper-button-prev swiper-button-white swiper-button-disabled ds44-bgDark" type="button">
 			<i class="icon icon-left" aria-hidden="true"></i> 
 			<span class="visually-hidden"></span>
 		</button>
-		<button class="swiper-button-next swiper-button-white swiper-button-disabled" type="button">
+		<button class="swiper-button-next swiper-button-white swiper-button-disabled ds44-bgDark" type="button">
 			<i class="icon icon-right" aria-hidden="true"></i> 
 			<span class="visually-hidden"></span>
 		</button>
@@ -80,9 +80,9 @@
 							String titreTuile = glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false));
 						%>
 						<li class="swiper-slide">
-							<div class="ds44-diaporama-thumb" style="background-image: url('<%= urlImage %>');">
+							<button class="ds44-diaporama-thumb" style="background-image: url('<%= urlImage %>');">
 								<p class="visually-hidden"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></p>
-							</div>
+							</button>
 						</li>
 					</jalios:foreach>
 				</ul>
