@@ -98,6 +98,20 @@ jcmsplugin.socle.footer.portletcontact.id : c_1275593
 jcmsplugin.socle.posezUnequestion.actif:true
 jcmsplugin.socle.socialnetworks.share.actif: true
 
+# Newsletter
+$jcmsplugin.socle.footer.newsletter.intro.wysiwyg: 
+$jcmsplugin.socle.footer.newsletter.thematiques.cat: c_1354966
+$jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
+
+jcmsplugin.socle.footer.newsletter.confidentialite.pub.link: 
+jcmsplugin.socle.footer.newsletter.expire.heure: 72 
+
+jcmsplugin.socle.mailjet.apiKey:
+jcmsplugin.socle.mailjet.apiSecretKey:
+jcmsplugin.socle.mailjet.contactList: 
+
+jcmsplugin.socle.newsletter.encrypt.key: 
+
 # Comparator
 comparator.Publication.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
 comparator.ElectedMember.presidence: fr.cg44.plugin.socle.comparator.PresidenceComparator

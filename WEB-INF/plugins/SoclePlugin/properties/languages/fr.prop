@@ -90,6 +90,17 @@ jcmsplugin.socle.recherche.type.PageCarrefour: Rubrique
 jcmsplugin.socle.recherche.type.FicheSAAD: Service d’aide à domicile (SAAD)
 jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
 
+# Newsletter
+$jcmsplugin.socle.footer.newsletter.intro.wysiwyg: Id de la portlet wysiwyg de la pop-in newsletter en footer
+$jcmsplugin.socle.footer.newsletter.thematiques.cat: Id de la catégorie flash info thématique (newsletter)
+$jcmsplugin.socle.footer.newsletter.parutions.cat: Id de la catégorie prochaines parutions (newsletter)
+
+jcmsplugin.socle.footer.newsletter.confidentialite.pub.link: Lien vers la politique de confidentialité (newsletter)
+
+jcmsplugin.socle.mailjet.apiKey: Clé API mailjet
+jcmsplugin.socle.mailjet.apiSecretKey:Clé secrète mailjet
+jcmsplugin.socle.mailjet.contactList: Id liste de contact mailjet (newsletter)
+
 # ------------------------------------------------------------
 #  Recherche à facettes
 # ------------------------------------------------------------
@@ -582,6 +593,29 @@ jcmsplugin.socle.newsletter.abonnement.chapo:Pour être alerté lors de la parut
 jcmsplugin.socle.newsletter.abonnement.labelBouton:Je m'abonne
 jcmsplugin.socle.newsletter.abonnement.titleBouton:Je m'abonne par mail aux informations du CD44
 
+jcmsplugin.socle.newletter.titre: Recevoir l’actualité par mail
+jcmsplugin.socle.newletter.mention: Les champs marqués d’un astérisque * sont obligatoires
+jcmsplugin.socle.newletter.alert.parution: M’alerter des prochaines parutions
+jcmsplugin.socle.newletter.flash.info: M’abonner aux flash infos thématiques
+jcmsplugin.socle.newletter.politique-confidentialite: Vous affirmez avoir pris connaissance de notre <a target="blank" href="{0}">Politique de confidentialité</a>. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant à l’adresse <a href="mailto:{1}" title="Contacter par email : désinscription à la newsletter - {1}">{1}</a>
+jcmsplugin.socle.newletter.inscrire: M'inscrire
+jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actualité par email
+jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
+jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre Inscription
+jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre inscription à la newsletter en cliquant sur le lien suivant : <a href="{0}"/>Je confirme mon inscription</a></p><p>Les thématiques choisies : {1} </p>
+jcmsplugin.socle.newletter.mail.conrfirm.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
+
+jcmsplugin.socle.newletter.lbl: Newsletter
+jcmsplugin.socle.newletter.title.lbl: Inscription newsletter
+jcmsplugin.socle.newletter.mail.inscription-valide: Inscription validée
+jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
+jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
+jcmsplugin.socle.newletter.mail.inscription-valide.content: Vous être inscrit à la newsletter aux thématiques suivantes {0}
+jcmsplugin.socle.newletter.mail.erreur: Erreur
+jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
+
+jcmsplugin.socle.newsletter.encrypt.key: La clé à utiliser pour le chiffrage (24 caractères ou plus)
+
 # ------------------------------------------------------------
 #  Insertion unifiée
 # ------------------------------------------------------------
@@ -865,3 +899,4 @@ jcmsplugin.socle.export.csv.link: Export CSV de contenu
 
 # Tableau de bord formulaire Page Utile
 jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
+
