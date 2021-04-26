@@ -8,7 +8,8 @@
     description="Titre du header simple" 
     body-content="scriptless" 
     import="com.jalios.jcms.Channel, com.jalios.util.ServletUtil, com.jalios.util.Util, com.jalios.jcms.JcmsUtil, 
-        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument, com.jalios.jcms.Publication"
+        com.jalios.jcms.taglib.ThumbnailTag, com.jalios.io.ImageFormat, generated.Video, com.jalios.jcms.FileDocument,
+        com.jalios.jcms.Publication, com.jalios.jcms.HttpUtil"
 %>
 <%@ attribute name="title"
     required="true"
@@ -94,12 +95,20 @@
     type="Boolean"
     description="Indique si le fil d'ariane doit être affiché"
 %>
+<%@ attribute name="backButton"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Indique si le bouton de retour doit être affiché (si on arrive du moteur de recherche à facettes)"
+%>
 
 <%
 String userLang = Channel.getChannel().getCurrentUserLang();
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+boolean retour = Util.notEmpty(backButton) && backButton;
 
 //Récupération des infos de vidéo, dans la cas d'une fiche article ou actu
 String titreVideo = "";
@@ -121,7 +130,12 @@ if(Util.notEmpty(video)) {
 
 %>
 
-<div class="ds44-lightBG">
+<div class="ds44-lightBG <%= retour ? "ds44-posRel" : "" %>">
+
+    <jalios:if predicate='<%= retour %>'>
+        <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+    </jalios:if>
+    
     <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
         <div class="ds44-grid12-offset-2">
 	        <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>

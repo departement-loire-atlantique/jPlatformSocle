@@ -60,8 +60,10 @@
     
     <%-- FAQ --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-        <div class="ds44-inner-container ds44-grid12-offset-1">
-            <jalios:include id="<%= obj.getFaq().getId() %>" />
+        <div class="ds44-inner-container">
+            <div class="ds44-grid12-offset-1">
+                <jalios:include id="<%= obj.getFaq().getId() %>" />
+            </div>
         </div>
     </jalios:if>
     
@@ -70,7 +72,7 @@
     
     <%-- TODO : bloc Je m'abonne --%>
     <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id")) %>'>
-        <section class="ds44-container-fluid ds44--l-padding">
+        <section class="ds44-container-fluid">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id") %>'/>
         </section>
     </jalios:if>

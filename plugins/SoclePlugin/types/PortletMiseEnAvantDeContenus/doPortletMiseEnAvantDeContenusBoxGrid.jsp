@@ -28,7 +28,7 @@ if (Util.notEmpty(collection)) {
 	    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel ds44-container-large" data-nb-visible-slides="5" data-mobile-only="true">
 		    <div class="swiper-container">
 		        <ul class="swiper-wrapper ds44-list grid-5-small-1 has-gutter-l ds44-carousel-swiper">
-		            <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>">
+		            <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="<%= box.getMaxResults() %>">
 		                <li class="swiper-slide">
                             <jalios:media data="<%=itContent %>" template="tuileVerticaleLight"/>
 		                </li>

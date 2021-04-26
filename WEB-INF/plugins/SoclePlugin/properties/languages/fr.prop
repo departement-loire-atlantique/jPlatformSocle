@@ -30,6 +30,7 @@ jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
+jcmsplugin.socle.form.contact.mailTo: Mail par défaut du formulaire de contact
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 jcmsplugin.socle.portletPush.ficheemploi.id: ID Jalios de la portlet Push à afficher dans les fiches emploi
 jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
@@ -319,6 +320,9 @@ jcmsplugin.socle.lien: Lien
 jcmsplugin.socle.page-concernee: Page concernée
 jcmsplugin.socle.structure: Structure
 jcmsplugin.socle.ville: Ville
+jcmsplugin.socle.source: Source
+jcmsplugin.socle.motscles: Mots clés
+jcmsplugin.socle.voiraussi: Voir aussi
 
 # ------------------------------------------------------------
 #  Header
@@ -414,6 +418,7 @@ jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique
 jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
 jcmsplugin.socle.ficheaide.plusdedetails.label: Plus de détails
 jcmsplugin.socle.ficheaide.plusdedetails.title: Plus de détails : accéder au contenu de l'onglet [{0}] de cette page
+jcmsplugin.socle.ficheaide.fermer-aide.label: Fermer l'aide : {0}
 
 jcmsplugin.socle.titre.pour-qui: Pour qui ?
 jcmsplugin.socle.titre.quoi: C’est quoi ?
@@ -550,12 +555,8 @@ jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
 jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
 jcmsplugin.socle.infolocale.photo.404.url: URL photo 404 pour les événements agenda
 jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
-jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
-jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
-jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
-jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
-jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap cognitif
 jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
 jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
@@ -568,6 +569,7 @@ jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du d
 jcmsplugin.socle.infolocale.label.payant: Payant
 jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
 jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
+jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
 
 # Metadonnees Infolocale pour le front
@@ -866,8 +868,8 @@ jcmsplugin.socle.chiffrescles.lien: Toutes les données
 jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 
 # Multilingue
-jcmsplugin.socle.multilingue.english-version.title: English : consultez la version anglaise du site {0}
-jcmsplugin.socle.multilingue.french-version.title: French : consultez la version française du site {0}
+jcmsplugin.socle.multilingue.version.title: English version : visit the english version of the website {0}
+jcmsplugin.socle.multilingue.version.label: English
 
 # API Notes et lieux
 jcmsplugin.socle.apinotes.cache.schedule: Api notes : CRON pour le cache
@@ -894,3 +896,7 @@ jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
 # ------------------------------------------------------------
 jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin relatif du dossier du ZIP
 jcmsplugin.socle.export.csv.link: Export CSV de contenu
+
+# Tableau de bord formulaire Page Utile
+jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
+

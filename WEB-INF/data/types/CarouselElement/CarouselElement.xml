@@ -12,7 +12,7 @@
     </field>
     <field name="image" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" imageMap="false" descriptionType="text" html="false" checkHtml="true" dataimage="true" resize="false" resizeWidth="100" resizeHeight="75" tab="commun">
       <label xml:lang="fr">Image principale</label>
-      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 810x620px&lt;/p&gt;&lt;/div&gt;</description>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : paysage 930x620px ou portrait 500x701px&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75" tab="commun">
       <label xml:lang="fr">Image mobile</label>

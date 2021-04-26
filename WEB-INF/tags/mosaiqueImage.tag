@@ -38,16 +38,20 @@
 	String copyright = image.getImageCopyright(userLang);
 	
 	Boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
+	
+	String alt = SocleUtils.getAltTextFromPub(pub);
+	    
+	if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
+	   alt = "";
+	}
 %>
 <jalios:buffer name="btnImage">
 	<jalios:if predicate="<%= hasPopin %>">
 		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.popin.title")) %>'>
-			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio is-height-set">
-		</button>
 	</jalios:if>
-	
-	<jalios:if predicate="<%= !hasPopin %>">
-		<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="" class="ds44-imgRatio is-height-set">
+			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" <% if (!hasFigcaption) { %>alt="<%= alt %>"<% } %> class="ds44-imgRatio is-height-set">
+	<jalios:if predicate="<%= hasPopin %>">
+		</button>
 	</jalios:if>
 </jalios:buffer>
 

@@ -4,9 +4,14 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,12 +22,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Content;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.Member;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.QueryResultSet;
+import com.jalios.jcms.TypeFieldEntry;
 import com.jalios.jcms.WorkflowConstants;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.portlet.PortalElement;
@@ -35,6 +42,8 @@ public class ExportCsvUtils {
   
   private static final String SEPARATOR = ";";
   private static final char DOUBLE_QUOTE = '"';
+  private static final String doubleHashtag = " ## ";
+  private static final String propCatRootMenu = "jcmsplugin.socle.site.menu.cat.root";
   
   private static final Logger LOGGER = Logger.getLogger(ExportCsvUtils.class);
     
@@ -157,7 +166,7 @@ public class ExportCsvUtils {
       
       Node itFieldNode = fieldsNodeList.item(index);
       csvLine.append(HtmlUtil.html2text(getXmlFieldValueFromPublication(itPub, userLang, itFieldNode, itMember)));
-      if (index+1 < fieldsNodeList.getLength()) csvLine.append(SEPARATOR);
+      csvLine.append(SEPARATOR);
     }
     
     return csvLine.toString();
@@ -197,7 +206,7 @@ public class ExportCsvUtils {
         
       case "category":
         // Catégories
-        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember));
+        return SocleUtils.formatCategories(itPub.getCategoryFieldValue(fieldName, itMember), doubleHashtag);
         
       case "date":
         // Objet date
@@ -206,26 +215,35 @@ public class ExportCsvUtils {
         
       case "boolean":
         // Booléen. Pas de multivalué :)
-        return ((Boolean) itPub.getBooleanFieldValue(fieldName)).toString();
+        return getBooleanLabelValue(itPub, fieldName, userLang, ((Boolean) itPub.getBooleanFieldValue(fieldName)));
         
       case "int":
         // Nombre entier
-        return Integer.toString((int) itPub.getFieldValue(fieldName, userLang));
+        return Integer.toString((int) itPub.getIntFieldValue(fieldName));
         
       case "double":
         // Utilisation d'un 'double'
-        return Double.toString((double) itPub.getFieldValue(fieldName, userLang));
+        return Double.toString((double) itPub.getDoubleFieldValue(fieldName));
         
       case "duration":
         // Utilisation d'un float
-        return Float.toString((float) itPub.getFieldValue(fieldName, userLang));
+        return Long.toString((long) itPub.getLongFieldValue(fieldName));
+        
+      case "enumerate":
+        // Liste énumérée. On récupère les labels, pas les valeurs
+        // Cas 1 -> une seule valeur
+        if (itNode.getAttributes().getNamedItem("type").getNodeValue().equals("String")) {
+          return getValueLabelsFromEnumerateList(itNode, (String) itPub.getFieldValue(fieldName, userLang), userLang);
+        }
+        // Cas 2 -> plusieurs valeurs
+        return getValueLabelsFromEnumerateList(itNode, (String[]) itPub.getFieldValue(fieldName, userLang), userLang);
         
       default:
         // Tout ce qui peut être donné directement en String
         if (dataType.contains("[]")) {
           return formatStringArray((String[]) itPub.getFieldValue(fieldName, userLang));
         } else {
-          return (String)itPub.getFieldValue(fieldName, userLang);
+          return renderStringSafeForCsv((String)itPub.getFieldValue(fieldName, userLang));
         }
     }
     
@@ -236,6 +254,83 @@ public class ExportCsvUtils {
     return "";
   }
   
+  /**
+   * Récupérer le label associé à la valeur d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    
+    // Cas particulier civilité Mme / Mr pour les fiches contact
+    if (fieldValue.equals("mrs")) {
+      return "Mme";
+    }
+    if (fieldValue.equals("mr")) {
+      return "M.";
+    }
+    
+    String separatorVertical = "\\|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    if (listValues.contains(fieldValue)) {
+      listDisplayedLabels.add(listLabels.get(listValues.indexOf(fieldValue)));
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
+  }
+  
+  /**
+   * Récupérer les labels associés aux valeurs d'une liste énumérée pour le champ d'un contenu
+   * @param itNode
+   * @param fieldValue
+   * @param userLang
+   * @return
+   */
+  public static String getValueLabelsFromEnumerateList(Node itNode, String[] fieldValue, String userLang) {
+    if (Util.isEmpty(itNode) || Util.isEmpty(fieldValue) || Util.isEmpty(userLang) || !(itNode.getAttributes().getNamedItem("editor").getNodeValue().equals("enumerate"))) return "";
+    String separatorVertical = "|";
+    
+    List<String> listValues = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("valueList").getNodeValue().split(separatorVertical)));
+    List<String> listLabels = new ArrayList<>(Arrays.asList(itNode.getAttributes().getNamedItem("labelList").getNodeValue().split(separatorVertical)));
+    List<String> listDisplayedLabels = new ArrayList<>();
+    
+    for (String itFieldValue : Arrays.asList(fieldValue)) {
+      if (listValues.contains(itFieldValue)) {
+        listDisplayedLabels.add(listLabels.get(listLabels.indexOf(itFieldValue)));
+      }
+    }
+    
+    return String.join(doubleHashtag, listDisplayedLabels.toArray(new String[listDisplayedLabels.size()]));
+  }
+
+  /**
+   * Renvoie le label localisée de la valeur d'un boolean pour un champ de contenu
+   * @param itPub
+   * @param userLang
+   * @return
+   */
+  public static String getBooleanLabelValue(Publication itPub, String fieldName, String userLang, boolean value) {
+    if (Util.isEmpty(itPub) || Util.isEmpty(fieldName) || Util.isEmpty(userLang)) return "";
+    try {
+      TypeFieldEntry[] entries = (TypeFieldEntry[]) itPub.getClass().getMethod("getTypeFieldEntries").invoke(itPub.getClass());
+      for (int entryCounter = 0; entryCounter < entries.length; entryCounter++) {
+        if (entries[entryCounter].getName().equals(fieldName)) {    
+            return value ? entries[entryCounter].getOnLabel(userLang) : entries[entryCounter].getOffLabel(userLang);
+        }
+      }
+    } catch (Exception e) {
+      LOGGER.warn("Anomalie dans getBooleanLabelValue : " + e.getMessage());
+      return "";
+    }
+    return "";
+  }
+
   /**
    * Renvoie le nom d'une donnée "Data"
    * @param fieldValue
@@ -256,9 +351,9 @@ public class ExportCsvUtils {
   private static String listNameOfData(Data[] itData) {
     if (Util.isEmpty(itData) || Util.isEmpty(itData[0])) return "";
     if (itData[0] instanceof PortalElement) {
-      return SocleUtils.listNameOfPortalElements((PortalElement[])itData);
+      return SocleUtils.listNameOfPortalElements((PortalElement[])itData, doubleHashtag);
     }
-    return SocleUtils.listNameOfContent((Content[])itData);
+    return SocleUtils.listNameOfContent((Content[])itData, doubleHashtag);
   }
   
   /**
@@ -330,11 +425,13 @@ public class ExportCsvUtils {
    */
   public static String getMetadataCsvHeader(){
     StringBuilder header = new StringBuilder();
-    
+
+    header.append(DOUBLE_QUOTE + "Catégories N-1" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Catégories N-2" + DOUBLE_QUOTE + SEPARATOR);
+    header.append(DOUBLE_QUOTE + "Catégories exactes" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Version" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Auteur" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "ID auteur" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "ID catégories" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de création" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de publication" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Date de modification" + DOUBLE_QUOTE + SEPARATOR);
@@ -357,18 +454,13 @@ public class ExportCsvUtils {
     
     String extraDataLat = "extra." + itType + ".plugin.tools.geolocation.latitude";
     String extraDataLon = "extra." + itType + ".plugin.tools.geolocation.longitude";
-    
-    // CAS PARTICULIER -> FicheLieu (utilisation de 'Place' au lieu de 'FicheLieu'
-    
-    if ("FicheLieu".equals(itType)) {
-      extraDataLat = "extra.Place.plugin.tools.geolocation.latitude";
-      extraDataLon = "extra.Place.plugin.tools.geolocation.longitude";
-    }
-    
+
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 1), doubleHashtag), true));
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 2), doubleHashtag), true));
+    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getAllNavCategories(itPub), doubleHashtag), true));
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getId(), true));
-    chaine.append(getFormattedCsvValue(SocleUtils.listCategoriesId(itPub.getCategorySet()), true));
     chaine.append(getFormattedCsvValue(sdf.format(itPub.getCdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getPdate()) ? "" : sdf.format(itPub.getPdate()), true));
     chaine.append(getFormattedCsvValue(Util.isEmpty(itPub.getMdate()) ? "" : sdf.format(itPub.getMdate()), true));
@@ -379,6 +471,28 @@ public class ExportCsvUtils {
     
   }
   
+  /**
+   * Renvoie toutes les catégories de navigation d'un contenu, sauf N-1 et N-2
+   * @param itPub
+   * @return
+   */
+  public static Set<Category> getAllNavCategories(Publication itPub) {
+    Set<Category> pubNavCats = new TreeSet<>();
+    if (Util.isEmpty(itPub)) return pubNavCats;
+    Category[] itPubCats = itPub.getCategories(Channel.getChannel().getCurrentLoggedMember());
+    if (Util.isEmpty(itPubCats)) return pubNavCats;
+    Set<Category> allNavCats = SocleUtils.getCategorieDeNavigation(itPub);
+    
+    pubNavCats.addAll(Arrays.asList(itPubCats));
+    
+    pubNavCats.retainAll(allNavCats);
+    
+    pubNavCats.removeAll(SocleUtils.getCategorieDeNavigation(itPub, 1));
+    pubNavCats.removeAll(SocleUtils.getCategorieDeNavigation(itPub, 2));
+    
+    return pubNavCats;
+  }
+
   /**
    * Permet d'échapper les double quotes, à utiliser pour les champs au contenu textuel
    * @param value
@@ -441,10 +555,10 @@ public class ExportCsvUtils {
     
     StringBuilder concatenatedStr = new StringBuilder();
     
-    String strSeparator = " / ";
+    String strSeparator = doubleHashtag;
     
     for (int counter = 0; counter < strArray.length; counter++) {
-      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(strArray[counter]);
+      if (Util.notEmpty(strArray[counter])) concatenatedStr.append(renderStringSafeForCsv(strArray[counter]));
       
       if (counter+1 < strArray.length) concatenatedStr.append(strSeparator);
     }
@@ -495,6 +609,15 @@ public class ExportCsvUtils {
   
   public static String getFormattedCsvValueWysiwyg(String wysiwyg) {
     return getFormattedCsvValueWysiwyg(wysiwyg, false);
+  }
+  
+  /**
+   * Rend un String safe pour l'import dans un CSV en remplaçant les caractères sensibles par des caractères différents
+   * @param originalTxt
+   * @return
+   */
+  public static String renderStringSafeForCsv(String originalTxt) {
+    return originalTxt.replaceAll(SEPARATOR, ":").replaceAll("\"", "'");
   }
   
 }

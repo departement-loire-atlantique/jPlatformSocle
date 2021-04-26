@@ -21,6 +21,9 @@ if(contenus[0] instanceof FileDocument){
 else if(contenus[0] instanceof FicheLieu){
 	usage = "listeContacts";
 }
+else if(contenus[0] instanceof Exposition){
+	usage = "listeExpositions";
+}
 else{
 	return;
 }

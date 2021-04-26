@@ -21,7 +21,7 @@ DataSelector authorizedPubSelector = Publication.getAuthorizedSelector(loggedMem
 JcmsUtil.applyDataSelector(allContents, authorizedPubSelector);
 
 // On calcule le nombre de pub dans chaque colonne.
-int nbPub = allContents.size();
+int nbPub = box.getMaxResults() <= allContents.size() && box.getMaxResults() > 0 ? box.getMaxResults() : allContents.size();
 int nbPubCol1 = nbPub/2 + nbPub%2;
 int nbPubCol2 = nbPub-nbPubCol1;
 
@@ -76,7 +76,7 @@ else{
 				</div>
 				<jalios:if predicate='<%=nbPub > 1 %>'>
 		            <div class="col-4 colFocusProjets">
-		                <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" skip="<%= nbPubCol1 %>">
+		                <jalios:foreach name="itContent" type="Content" collection="<%= allContents %>" max="<%= nbPubCol2 %>" skip="<%= nbPubCol1 %>">
 		                    <jalios:media data="<%= (Publication) itContent %>" template="tuileHorizontaleDark"/>
 		                </jalios:foreach>
 		            </div>

@@ -6,6 +6,8 @@ channel.favicon: plugins/SoclePlugin/images/favicon/favicon.ico
 
 # Logo du site pour site patrimoniaux
 jcmsplugin.socle.gpla.site.logo: https://design.loire-atlantique.fr/assets/images/logos/logo-grand-patrimoine-blanc.svg
+# Lien sur le logo des sites patrimoniaux (portlet de mise en avant)
+jcmsplugin.socle.gpla.site.url: https://www.loire-atlantique.fr/grand-patrimoine
 
 # ------------------------------------------------------------
 #  Propriétés éditables
@@ -296,6 +298,7 @@ media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionU
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
+media.data-template.default.Exposition: /plugins/SoclePlugin/jsp/cards/doExpositionCardFull.jsp
 media.data-template.default.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp?wysiwygEmbed=true
 media.data-template.temoignage.Content: /plugins/SoclePlugin/jsp/templates/temoignageTemplate.jsp
@@ -304,6 +307,7 @@ media.data-template.contact.FicheLieu: /plugins/SoclePlugin/types/FicheLieu/doFi
 media.data-template.tuileHorizontaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp
 media.data-template.tuileHorizontaleDark.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
 media.data-template.tuileHorizontaleLightSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=small
+media.data-template.tuileHorizontaleLightExtraSmall.Publication: /plugins/SoclePlugin/jsp/templates/tuileHorizontale.jsp?context=dark&size=extrasmall&colorTheme=true&padding=small
 media.data-template.tuileVerticaleDark.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp
 media.data-template.tuileVerticaleLight.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark
 media.data-template.tuileVerticaleGpla.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=gpla
@@ -331,6 +335,7 @@ media.data-template.cardFull.CarouselElement: /plugins/SoclePlugin/jsp/cards/doC
 media.data-template.card.City: /plugins/SoclePlugin/jsp/cards/doCityCard.jsp
 media.data-template.cardFull.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp
 media.data-template.card.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp
+media.data-template.cardFull.Exposition: /plugins/SoclePlugin/jsp/cards/doExpositionCardFull.jsp
 media.data-template.card.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCard.jsp
 media.data-template.cardFull.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp
 media.data-template.cardFull.FALC: /plugins/SoclePlugin/jsp/cards/doFALCCardFull.jsp
@@ -528,10 +533,12 @@ jcmsplugin.socle.infolocale.metadata.front.accessibilite: accessibilite
 jcmsplugin.socle.infolocale.metadata.front.prefix.groupeTheme: grtheme:
 jcmsplugin.socle.infolocale.metadata.front.prefix.theme: theme:
 
-jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: mentionAccessibleHandicapAuditif
-jcmsplugin.socle.infolocale.metadata.accessibilite.mental: mentionAccessibleHandicapMental
-jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: mentionAccessibleHandicapVisuel
-jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: mentionAccessibleHandicapMoteur
+jcmsplugin.socle.infolocale.metadata.accessibilite: accessibilite
+jcmsplugin.socle.infolocale.metadata.accessibilite.field: accessibilites
+jcmsplugin.socle.infolocale.metadata.accessibilite.auditif: 0
+jcmsplugin.socle.infolocale.metadata.accessibilite.mental: 2
+jcmsplugin.socle.infolocale.metadata.accessibilite.visuel: 1
+jcmsplugin.socle.infolocale.metadata.accessibilite.moteur: 3
 jcmsplugin.socle.infolocale.metadata.thematiques: thematiques
 jcmsplugin.socle.infolocale.metadata.thematiqueId: thematiqueId
 jcmsplugin.socle.infolocale.metadata.parentId: parentId
@@ -566,6 +573,8 @@ jcmsplugin.socle.infolocale.search.field.thematiquePerso: thematiquePerso
 jcmsplugin.socle.infolocale.search.field.order: order
 jcmsplugin.socle.infolocale.search.field.recherche: recherche
 jcmsplugin.socle.infolocale.search.field.organisme: organisme
+jcmsplugin.socle.infolocale.search.field.gratuit: gratuit
+jcmsplugin.socle.infolocale.search.field.recherche: recherche
 
 # ------------------------------------------------------------
 #  IDs virtuels de contenus
@@ -730,8 +739,6 @@ upload.permission.size.default: 104857600
 #  Multilingues
 # ------------------------------------------------------------
 jcmsplugin.socle.multilingue: false
-jcmsplugin.socle.multilingue.english-version.label: English
-jcmsplugin.socle.multilingue.french-version.label: French
 
 # ------------------------------------------------------------
 #  API Notes et lieux

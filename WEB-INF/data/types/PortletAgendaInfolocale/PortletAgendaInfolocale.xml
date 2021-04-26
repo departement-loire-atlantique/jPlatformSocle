@@ -23,6 +23,14 @@
       <label xml:lang="fr">Organisme(s) infolocale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs organismes sur Infolocale (ex. "1,2,3")&lt;/p&gt;&lt;/div&gt;</description>
     </field>
+    <field name="grpOrganismesInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Groupes d'organisme(s) infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs groupes d'organismes sur Infolocale (ex. "1,2,3")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="grpEvenementsInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Groupes d'événement(s) infolocale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p class="h2-like"&gt;Correspond à l'ID d'un ou plusieurs groupes d'événements sur Infolocale (ex. "1,2,3")&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field name="genresInfolocale" editor="textfield" required="false" compactDisplay="false" tab="filtres_api" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
       <label xml:lang="fr">Genre(s) infolocale</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Liste de codes genres, séparés par une virgule (ex. "131,132,133")&lt;/p&gt;&lt;/div&gt;</description>

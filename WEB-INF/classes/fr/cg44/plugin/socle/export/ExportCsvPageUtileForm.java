@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
@@ -57,15 +57,11 @@ public class ExportCsvPageUtileForm {
 
 		printHeader(localPrintWriter);
 
-		SortedSet<Publication> sortedPubs = ExportCsvUtils.getPublicationsOfType("PageUtileForm", itMember);
+		TreeSet<PageUtileForm> sortedPubs = channel.getPublicationSet(PageUtileForm.class, itMember);
 
-		for (Iterator<Publication> iter = sortedPubs.iterator(); iter.hasNext();) {
-			Publication itPub = iter.next();
-			if (Util.isEmpty(itPub) || !(itPub instanceof PageUtileForm)) {
-				continue;
-			}
+		for (Iterator<PageUtileForm> iter = sortedPubs.iterator(); iter.hasNext();) {
 
-			PageUtileForm itPageUtileForm = (PageUtileForm) itPub;
+			PageUtileForm itPageUtileForm = iter.next();
 			
 			SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
 			SimpleDateFormat sdfHeure = new SimpleDateFormat("hh:mm");
@@ -78,8 +74,8 @@ public class ExportCsvPageUtileForm {
 
 			String idDuContenu = itPageUtileForm.getIdContenu();
 
-			String date  = sdfDate.format(itPub.getCdate());
-			String heure = sdfHeure.format(itPub.getCdate());
+			String date  = sdfDate.format(itPageUtileForm.getCdate());
+			String heure = sdfHeure.format(itPageUtileForm.getCdate());
 
 			String titreDuContenu = Util.notEmpty(contenu) ? contenu.getTitle(userLang) : "";
 

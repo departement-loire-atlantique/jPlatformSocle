@@ -3,6 +3,7 @@
 
 <%
 String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
+Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.socle.form.contact.portlet-rgpd.id"));
 %>
 
 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
@@ -36,7 +37,7 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"/>
+							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email"/>
 							</div>
                         </div>
                         
@@ -52,6 +53,12 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
                 <input type="hidden" name="utile" value="true" data-technical-field/>
 		        <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
 		        <input type="hidden" name="url" value='<%= ServletUtil.getUrl(request) %>' data-technical-field />
+		        
+		        <jalios:if predicate="<%= Util.notEmpty(rgpdPub) && (rgpdPub instanceof PortletWYSIWYG) %>">
+                    <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
+                      <%= ((PortletWYSIWYG) rgpdPub).getWysiwyg() %>
+                    </jalios:wysiwyg>
+                </jalios:if>
                 
             </form>
             <p class="ds44-keyboard-show"><a href="#ds44-choiceY"><%= glp("jcmsplugin.socle.pageutile.retour-oui") %></a></p>
@@ -103,7 +110,12 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkPageUtile.jsp";
                 <input type="hidden" name="utile" value="false" data-technical-field/>
                 <input type="hidden" name="id" value='<%= request.getParameter("id") %>' data-technical-field />
                 <input type="hidden" name="url" value='<%= ServletUtil.getUrl(request) %>' data-technical-field />
-
+                
+                <jalios:if predicate="<%= Util.notEmpty(rgpdPub) && (rgpdPub instanceof PortletWYSIWYG) %>">
+                    <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
+		              <%= ((PortletWYSIWYG) rgpdPub).getWysiwyg() %>
+		            </jalios:wysiwyg>
+                </jalios:if>
                 
             </form>
             <p class="ds44-keyboard-show"><a href="#ds44-choiceN"><%= glp("jcmsplugin.socle.pageutile.retour-non") %></a></p>

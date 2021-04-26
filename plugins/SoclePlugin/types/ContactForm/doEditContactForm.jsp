@@ -225,7 +225,7 @@
                     <span class="ds44-labelTypePlaceholder"><%= villeLabel %></span>
                 </span>
             </label>
-            <input type="text" id="form-element-ville" name="ville" class="ds44-inpStd" />
+            <input type="text" id="form-element-ville" name="ville" class="ds44-inpStd" autocomplete=”address-level2” />
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
                 <span class="visually-hidden">
@@ -248,7 +248,7 @@
                 </span>
             </label>
             <input type="text" id="form-element-pays" name="pays" class="ds44-inpStd" required
-                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' />
+                   title='<%= glp("jcmsplugin.socle.faq.selectionner-pays") %>' autocomplete=”country”/>
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
                 <span class="visually-hidden">
@@ -280,7 +280,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" role="listbox" id="listbox-form-element-sujet" aria-labelledby="button-message-form-element-sujet"  aria-required="true">
 					<jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
-						<li class="ds44-select-list_elem" name="sujet" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
+						<li class="ds44-select-list_elem" name="sujet" role="option" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
 							<%= itCat.getName(userLang) %>
 						</li>
 					</jalios:foreach>

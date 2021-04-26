@@ -78,6 +78,8 @@ public final class SocleUtils {
 	private static final String debugNoImageBandeau = "pas d'image bandeau";
 	private static final String debugNoImageMobile = "pas d'image mobile";
 	private static final String debugNoImageCarree = "pas d'image carrée";
+	
+	private static final String defaultSeparator = " / ";
 
 	private SocleUtils() {
 		throw new IllegalStateException("Utility class");
@@ -1965,18 +1967,17 @@ public final class SocleUtils {
 	/**
 	 * Retourne une liste de titres d'un tableau de PortalElement, dans le format "titre 1 / titre 2 / titre 3"
 	 * Utilisé principalement pour l'export CSV
+	 * @param string 
 	 * @param contentList
 	 * @return
 	 */
-	public static String listNameOfPortalElements(PortalElement[] portalElements) {
+	public static String listNameOfPortalElements(PortalElement[] portalElements, String separator) {
 	  if (Util.isEmpty(portalElements) || portalElements.length <= 0) return "";
 	  
 	  Channel channel = Channel.getChannel();
 	  String userLang = channel.getCurrentUserLang();
 	  
 	  StringBuilder listNames = new StringBuilder();
-	  
-	  String separator = " / ";
 	  
 	  List<PortalElement> listContent = new ArrayList<>(Arrays.asList(portalElements));
 	  
@@ -1989,22 +1990,24 @@ public final class SocleUtils {
 	  return listNames.toString();
 	}
 	
+	public static String listNameOfPortalElements(PortalElement[] portalElements) {
+	  return listNameOfPortalElements(portalElements, defaultSeparator);
+	}
 	 
   /**
    * Retourne une liste de titres d'un tableau de Content, dans le format "titre 1 / titre 2 / titre 3"
    * Utilisé principalement pour l'export CSV
    * @param contentList
+   * @param separator 
    * @return
    */
-  public static String listNameOfContent(List<Content> contentList) {
+  public static String listNameOfContent(List<Content> contentList, String separator) {
     if (Util.isEmpty(contentList) || contentList.size() <= 0) return "";
     
     Channel channel = Channel.getChannel();
     String userLang = channel.getCurrentUserLang();
     
     StringBuilder listNames = new StringBuilder();
-    
-    String separator = " / ";
     
     for (Iterator<Content> iter = contentList.iterator(); iter.hasNext();) {
       Content itContent = iter.next();
@@ -2017,10 +2020,18 @@ public final class SocleUtils {
     return listNames.toString();
   }
   
-  public static String listNameOfContent(Content[] contentArray) {
+  public static String listNameOfContent(List<Content> contentList) {
+    return listNameOfContent(contentList, defaultSeparator);
+  }
+  
+  public static String listNameOfContent(Content[] contentArray, String separator) {
     if (Util.isEmpty(contentArray) || contentArray.length <= 0) return "";
     
-    return listNameOfContent(Arrays.asList(contentArray));
+    return listNameOfContent(Arrays.asList(contentArray), separator);
+  }
+  
+  public static String listNameOfContent(Content[] contentArray) {
+    return listNameOfContent(contentArray, defaultSeparator);
   }
 
 	/**
@@ -2068,7 +2079,7 @@ public final class SocleUtils {
 			Category catParentTeste = cat;
 
 			for(int i = 0; i < niveau; i++) {
-				if(Util.isEmpty(catParentTeste)) break;
+				if(Util.isEmpty(catParentTeste.getParent())) break;
 				catParentTeste = catParentTeste.getParent();
 			}
 			
@@ -2079,7 +2090,22 @@ public final class SocleUtils {
 			} else {
 				return getCategorieParentDeNavigation(cat.getParent(), niveau);
 			}
-		}
+		} 
 		return null;
 	}
+	
+  /**
+   * Regarde si une publication est dans telle branche de catégorie
+   * @param pub la publication à tester
+   * @param cat la catégorie racine de la branche à tester
+   * @return true si la publication pub est bien dans la branche de la catégorie cat. Sinon false.
+   */ 
+  public static boolean hasAncestorCat(Publication pub, Category ancestorCat) {
+    for (Category itCat : pub.getCategorySet()) {
+      if(itCat.hasAncestor(ancestorCat) || itCat.equals(ancestorCat)) {
+        return true;
+      }
+    }
+    return false;
+  }	
 }

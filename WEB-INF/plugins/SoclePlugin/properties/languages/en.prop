@@ -30,6 +30,7 @@ jcmsplugin.socle.js-urls.help: Séparer les valeurs par des espaces
 jcmsplugin.socle.site.src.carte.pdcv: URL de l'image de carte Près de chez vous
 jcmsplugin.socle.site.src.carte.pdcv.mobile: URL de l'image mobile de carte Près de chez vous
 jcmsplugin.socle.contact-faq.default-mail: Mail de contact par défaut dans les FAQ Accueil
+jcmsplugin.socle.form.contact.mailTo: Mail par défaut du formulaire de contact
 jcmsplugin.socle.portletPush.ficheactu.id: ID Jalios de la portlet Push à afficher dans les fiches actu
 jcmsplugin.socle.portletPush.ficheemploi.id: ID Jalios de la portlet Push à afficher dans les fiches emploi
 jcmsplugin.socle.site.pdcv.portlet.id: ID Jalios de la portlet Facette pour la recherche PDCV
@@ -319,6 +320,9 @@ jcmsplugin.socle.lien: Link
 jcmsplugin.socle.page-concernee: Page concerned
 jcmsplugin.socle.structure: Structure
 jcmsplugin.socle.ville: City
+jcmsplugin.socle.source: Source
+jcmsplugin.socle.date-actualisation: Actualisé le
+jcmsplugin.socle.voiraussi: Voir aussi
 
 # ------------------------------------------------------------
 #  Header
@@ -555,7 +559,7 @@ jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
 jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
 jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
-jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap intellectuel
+jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap cognitif
 jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
 jcmsplugin.socle.infolocale.label.accessibilite.handicapmoteur: Handicap moteur
 jcmsplugin.socle.infolocale.label.duree: jour(s)
@@ -865,8 +869,8 @@ jcmsplugin.socle.chiffrescles.lien: All data
 jcmsplugin.socle.falc.titre: Facile À Lire et À Comprendre (FALC)
 
 # Multilingue
-jcmsplugin.socle.multilingue.english-version.title: English : Visit the english version of the website {0}
-jcmsplugin.socle.multilingue.french-version.title: French : Visit the french version of the website {0}
+jcmsplugin.socle.multilingue.version.title: Version française : consultez la version française du site {0}
+jcmsplugin.socle.multilingue.version.label: Français
 
 # API Notes et lieux
 jcmsplugin.socle.apinotes.cache.schedule: Api notes : CRON pour le cache

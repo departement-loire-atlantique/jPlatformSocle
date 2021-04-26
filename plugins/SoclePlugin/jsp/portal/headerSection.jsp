@@ -22,7 +22,7 @@ boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.he
 boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
 String changeLang = "";
 String langIcon = "";
-String langLabel = "";
+String langLabel = glp("jcmsplugin.socle.multilingue.version.label");
 String langTitle = "";
 String changeLangUrl = "";
 
@@ -30,14 +30,12 @@ if(multilingue){
 	if(userLang.equals("fr")){
 	  changeLang = "en";
 	  langIcon = "icon-english";
-	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.english-version.label");
-	  langTitle = glp("jcmsplugin.socle.multilingue.english-version.title", glp("jcmsplugin.socle.nomDuSite"));
+	  langTitle = glp("jcmsplugin.socle.multilingue.version.title", JcmsUtil.glp("en", "jcmsplugin.socle.nomDuSite"));
 	}
 	else{
 	  changeLang = "fr";
 	  langIcon = "icon-french";
-	  langLabel = channel.getProperty("jcmsplugin.socle.multilingue.french-version.label");
-	  langTitle = glp("jcmsplugin.socle.multilingue.french-version.title", glp("jcmsplugin.socle.nomDuSite"));
+	  langTitle = glp("jcmsplugin.socle.multilingue.version.title", JcmsUtil.glp("fr", "jcmsplugin.socle.nomDuSite"));
 	}
 	changeLangUrl = LangTag.getChangeUrl(request, changeLang);
 }
@@ -69,7 +67,7 @@ if(multilingue){
                 <div class="ds44-colRight">
                     <jalios:if predicate='<%= multilingue %>'>
 	                    <a href="<%= changeLangUrl %>" class="ds44-btnIcoText--maxi ds44--xl-padding ds44-hide-mobile" title="<%= langTitle %>">
-	                        <span class="ds44-btnInnerText"><%= langLabel %></span><i class="icon icon--large <%= langIcon %>" aria-hidden="true"></i>
+	                        <span class="ds44-btnInnerText" lang="<%= changeLang %>"><%= langLabel %></span><i class="icon icon--large <%= langIcon %>" aria-hidden="true"></i>
 	                    </a>
                     </jalios:if>
                     <jalios:if predicate="<%= displaySearchMenu %>">
@@ -96,8 +94,8 @@ if(multilingue){
 		                    <a href="<%=changeLangUrl%>" 
 		                        class="ds44-btnOverlay ds44-btnOverlay--language ds44-show-mobile"
 		                        title="<%=langTitle%>">
-		                      <i class="icon icon-english icon--xlarge" aria-hidden="true"></i>
-		                      <span class="ds44-btnInnerText--bottom" lang="en">English</span>
+		                      <i class="icon icon--xlarge <%= langIcon %>" aria-hidden="true"></i>
+		                      <span class="ds44-btnInnerText--bottom" lang="<%= changeLang %>"><%= langLabel %></span>
 		                    </a>
 		                </jalios:if>
 		                
