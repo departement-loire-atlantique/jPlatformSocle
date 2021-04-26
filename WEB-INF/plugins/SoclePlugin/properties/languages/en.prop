@@ -418,6 +418,7 @@ jcmsplugin.socle.ficheaide.demarche.suivi.url: https://demarche.loire-atlantique
 jcmsplugin.socle.ficheaide.demarche.login.url: https://compte.loire-atlantique.fr/login/
 jcmsplugin.socle.ficheaide.plusdedetails.label: More details
 jcmsplugin.socle.ficheaide.plusdedetails.title: More details : access the [{0}] tab content on this page
+jcmsplugin.socle.ficheaide.fermer-aide.label: Fermer l'aide : {0}
 
 jcmsplugin.socle.titre.pour-qui: For who ?
 jcmsplugin.socle.titre.quoi: What is it ?
@@ -554,10 +555,6 @@ jcmsplugin.socle.infolocale.flux.default: ID du flux par défaut
 jcmsplugin.socle.infolocale.metadata.default: Metadata agenda par défaut pour le site
 jcmsplugin.socle.infolocale.photo.404.url: URL photo 404 pour les événements agenda
 jcmsplugin.socle.infolocale.label.accessibilite: Accessibilite
-jcmsplugin.socle.infolocale.label.accessibilite.auditif: Auditif
-jcmsplugin.socle.infolocale.label.accessibilite.mental: Mental
-jcmsplugin.socle.infolocale.label.accessibilite.visuel: Visuel
-jcmsplugin.socle.infolocale.label.accessibilite.moteur: Moteur
 jcmsplugin.socle.infolocale.label.accessibilite.handicapauditif: Handicap auditif
 jcmsplugin.socle.infolocale.label.accessibilite.handicapmental: Handicap cognitif
 jcmsplugin.socle.infolocale.label.accessibilite.handicapvisuel: Handicap visuel
@@ -572,6 +569,7 @@ jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du d
 jcmsplugin.socle.infolocale.label.payant: Payant
 jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
 jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
+jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
 
 # Metadonnees Infolocale pour le front
@@ -605,6 +603,7 @@ jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actuali
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
 jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre Inscription
 jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre inscription à la newsletter en cliquant sur le lien suivant : <a href="{0}"/>Je confirme mon inscription</a><p><p>Si le lien ne fonctionne pas coller l'url suivante dans votre navigateur : {0}</p><p>Les thématiques choisies : {1}
+jcmsplugin.socle.newletter.mail.conrfirm.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
 
 jcmsplugin.socle.newletter.lbl: Newsletter
 jcmsplugin.socle.newletter.title.lbl: Inscription newsletter
@@ -897,3 +896,6 @@ jcmsplugin.socle.mosaique.popin.title: Zoom on mosaic element
 # ------------------------------------------------------------
 jcmsplugin.socle.export.img.filepath: Export images ZIP - chemin relatif du dossier du ZIP
 jcmsplugin.socle.export.csv.link: Export CSV de contenu
+
+# Tableau de bord formulaire Page Utile
+jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
