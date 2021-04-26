@@ -5,11 +5,29 @@ String text = request.getParameter("text");
 // Création de la requete avec le text recherché
 if(Util.notEmpty(text)) {
 
+    Set resultat = new HashSet();
+  
+    // Recherche textuelle
     QueryHandler boxQh = Util.notEmpty(box.getQueries()) ? new QueryHandler(box.getQueries()[0]) : new QueryHandler(); 
     boxQh.setText(text);
+    // Si JCMS 10sp4 décommenter les lignes ci-dessous et supprimer la partie "Recherche textuelle dans les documents attachés aux publications"
+//     docQh.setSearchInFiles(true);
+//     docQh.setReplaceFileDoc(true);
     boxQh.setLoggedMember(loggedMember);
+    resultat.addAll(boxQh.getResultSet());
+      
+    // Recherche textuelle dans les documents attachés aux publications
+    // Attention fonctionnement spécifique en 10sp3 (compatible 10sp4), mais comportement plus simple en 10sp4 sans avoir ce dev 
+    QueryHandler docQh = new QueryHandler();
+    docQh.setText(text);
+    docQh.setCids();
+    docQh.setSearchInFiles(true);
+    docQh.setReplaceFileDoc(true);
+    docQh.setTypes(Util.addAll(boxQh.getTypes(),"com.jalios.jcms.FileDocument"));
+    resultat.addAll(docQh.getResultSet());
     
-    collection.retainAll(boxQh.getResultSet());
+
+    collection.retainAll(resultat);
     resultSize = collection.size();
 }
 %>
