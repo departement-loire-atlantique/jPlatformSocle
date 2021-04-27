@@ -603,7 +603,7 @@ jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actuali
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
 jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre Inscription
 jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre inscription à la newsletter en cliquant sur le lien suivant : <a href="{0}"/>Je confirme mon inscription</a><p><p>Si le lien ne fonctionne pas coller l'url suivante dans votre navigateur : {0}</p><p>Les thématiques choisies : {1}
-jcmsplugin.socle.newletter.mail.conrfirm.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
+jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
 
 jcmsplugin.socle.newletter.lbl: Newsletter
 jcmsplugin.socle.newletter.title.lbl: Inscription newsletter
