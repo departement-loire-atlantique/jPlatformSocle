@@ -43,6 +43,9 @@ jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
 jcmsplugin.socle.meme-theme.max: 20
 jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
+jcmsplugin.socle.canton.logo.population: https://design.loire-atlantique.fr/assets/images/pictos/picto-dataviz-logement.svg
+jcmsplugin.socle.canton.logo.superficie: https://design.loire-atlantique.fr/assets/images/pictos/picto-dataviz-hectare.svg
+
 jcmsplugin.socle.idpub.annuaire.elus: c_1279194
 
 jcmsplugin.socle.alertpri.id: 

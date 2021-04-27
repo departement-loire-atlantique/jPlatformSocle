@@ -20,7 +20,7 @@
                         String itSocialNetworkValue = itSocialNetwork.toLowerCase().replaceAll("\\s","");
                         String itSocialNetworkTitle = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.socialnetwork.share."+itSocialNetworkValue));
                         String itSocialNetworkLink = LiensUtils.createLink(itSocialNetwork, urlCourante, pubCourante);
-                        String itSocialNetworkLabel = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", glp("jcmsplugin.socle.socialnetwork.depsur."+itSocialNetworkValue)));
+                        String itSocialNetworkLabel = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.socialnetwork.depsur."+itSocialNetworkValue));
                         %>
                         <%
                         if(Util.notEmpty(itSocialNetworkTitle) && Util.notEmpty(itSocialNetworkLink)){ %>
