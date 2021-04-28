@@ -4,7 +4,7 @@
 Portlet itPortlet = channel.getData(Portlet.class, channel.getProperty("jcmsplugin.socle.alertpri.id"));
 %>
 
-<jalios:if predicate="<%= Util.notEmpty(itPortlet) && (itPortlet instanceof PortletQueryForeach) %>">
+<jalios:if predicate='<%= Util.notEmpty(itPortlet) && (itPortlet instanceof PortletQueryForeach) && Util.isEmpty(request.getAttribute("isSearchFacetPanel")) %>'>
     <%
     PortletQueryForeach box = (PortletQueryForeach) itPortlet;
     %>
