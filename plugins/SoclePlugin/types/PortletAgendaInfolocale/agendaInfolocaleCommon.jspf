@@ -50,6 +50,6 @@ String flux = Util.isEmpty(box.getIdDeFlux()) ? channel.getProperty("jcmsplugin.
 
 JSONObject extractedFlux = RequestManager.filterFluxData(flux, parameters);
 
-boolean fluxSuccess = Boolean.parseBoolean(extractedFlux.getString("success"));
+boolean fluxSuccess = extractedFlux.getBoolean("success");
 
 %>
