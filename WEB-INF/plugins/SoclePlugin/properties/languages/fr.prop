@@ -700,6 +700,7 @@ jcmsplugin.socle.elu.mission-thematique: Mission thématique :
 jcmsplugin.socle.elu.en-lien-avec: en lien avec
 jcmsplugin.socle.elu.en-binome-avec: En binôme avec : 
 jcmsplugin.socle.elu.remplacant: Remplaçant·e : 
+jcmsplugin.socle.elu.remplacants: Remplaçant·es : 
 jcmsplugin.socle.elu.elu-en: Élu en {0}
 jcmsplugin.socle.elu.elue-en: Élue en {0}
 jcmsplugin.socle.elu.reelu-en: Réélu en {0}
@@ -750,7 +751,7 @@ jcmsplugin.socle.canton.voirfiche : Voir la fiche canton
 jcmsplugin.socle.canton.lien.title: Voir la fiche canton de : {0}
 jcmsplugin.socle.canton.conseillers: Conseillère et conseiller départementaux :
 jcmsplugin.socle.canton.bref: Le canton en bref :  
-jcmsplugin.socle.canton.superficie: Superficie :
+jcmsplugin.socle.canton.superficie: de superficie
 jcmsplugin.socle.canton.population: Population :
 jcmsplugin.socle.canton.habitants: habitant·es
 jcmsplugin.socle.canton.source: (populations légales des cantons en vigueur au 1er janvier 2017. Source : INSEE, Recensement de la population 2016) 

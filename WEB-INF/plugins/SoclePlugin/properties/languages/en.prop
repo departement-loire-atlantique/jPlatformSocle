@@ -700,6 +700,7 @@ jcmsplugin.socle.elu.mission-thematique: Mission thématique :
 jcmsplugin.socle.elu.en-lien-avec: en lien avec
 jcmsplugin.socle.elu.en-binome-avec: En binôme avec : 
 jcmsplugin.socle.elu.remplacant: Remplaçant·e : 
+jcmsplugin.socle.elu.remplacants: Remplaçant·es : 
 jcmsplugin.socle.elu.elu-en: Élu en {0}
 jcmsplugin.socle.elu.elue-en: Élue en {0}
 jcmsplugin.socle.elu.reelu-en: Réélu en {0}

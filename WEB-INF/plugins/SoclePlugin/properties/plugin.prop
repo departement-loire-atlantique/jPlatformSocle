@@ -43,6 +43,9 @@ jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
 jcmsplugin.socle.meme-theme.max: 20
 jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
+jcmsplugin.socle.canton.logo.population: https://design.loire-atlantique.fr/assets/images/pictos/picto-dataviz-logement.svg
+jcmsplugin.socle.canton.logo.superficie: https://design.loire-atlantique.fr/assets/images/pictos/picto-dataviz-hectare.svg
+
 jcmsplugin.socle.idpub.annuaire.elus: c_1279194
 
 jcmsplugin.socle.alertpri.id: 
@@ -296,6 +299,7 @@ media.data-template.default.CarouselElement: /plugins/SoclePlugin/jsp/cards/doCa
 media.data-template.default.Content: /plugins/SoclePlugin/jsp/insertionUnifiee/mediaTemplateContent.jsp
 media.data-template.default.ListeDeContenus: /plugins/SoclePlugin/jsp/insertionUnifiee/listeDeContenusTemplate.jsp
 media.data-template.default.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardFull.jsp?wysiwygEmbed=true
+media.data-template.tuileVerte.ChiffresCles: /plugins/SoclePlugin/jsp/cards/doChiffresClesCardGreen.jsp
 media.data-template.default.Contact: /plugins/SoclePlugin/jsp/cards/doContactCard.jsp?wysiwygEmbed=true
 media.data-template.default.ElectedMember: /plugins/SoclePlugin/jsp/cards/doElectedMemberCardFull.jsp?wysiwygEmbed=true
 media.data-template.default.Exposition: /plugins/SoclePlugin/jsp/cards/doExpositionCardFull.jsp
