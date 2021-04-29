@@ -892,6 +892,9 @@ jcmsplugin.socle.contacts.title: Contacts et réservation
 jcmsplugin.socle.mosaique.btn.label: Ouvir la boîte de dialogue : {0}
 jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
 
+# Portlet Recherche Facettes à afficher sur les pages Canton
+jcmsplugin.socle.canton.recherche.portlet.id: ID Portlet Recherche Facettes pages Canton
+
 # ------------------------------------------------------------
 #  Export CSV / Images
 # ------------------------------------------------------------

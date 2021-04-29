@@ -724,6 +724,9 @@ $jcmsplugin.socle.falc.icone.cat:
 # Alerte
 $jcmsplugin.socle.alerte.icone: cda_1341350
 
+# Portlet Recherche Facettes à afficher sur les pages Canton
+jcmsplugin.socle.canton.recherche.portlet.id: 
+
 # ------------------------------------------------------------
 # Limites de taille de fichier à l'upload
 # ------------------------------------------------------------

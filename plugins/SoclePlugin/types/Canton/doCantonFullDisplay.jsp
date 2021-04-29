@@ -143,6 +143,12 @@ List<String> remplacants = new ArrayList<String>();
         </jalios:if>
         
         <%-- TODO : carte dynamique du canton --%>  
+        <%
+        PortalElement itPortalElem = channel.getData(PortalElement.class, channel.getProperty("jcmsplugin.socle.canton.recherche.portlet.id"));
+        %>
+        <jalios:if predicate="<%= Util.notEmpty(itPortalElem) %>">
+            <jalios:include pub="<%= itPortalElem %>"/>
+        </jalios:if>
             
 	    <%-- Partagez cette page --%>
 	    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
