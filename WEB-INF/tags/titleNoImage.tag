@@ -42,13 +42,6 @@
     type="String"
     description="La date à afficher (si renseignée)"
 %>
-<%@ attribute name="alertText"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="Texte du conteneur alerte secondaire"
-%>
 
 <% String uid = ServletUtil.generateUniqueDOMId(request, "uid"); %>
 
@@ -82,18 +75,6 @@
     <div class="ds44-grid12-offset-1">
       <section class="ds44-box ds44-theme">
         <div class="ds44-innerBoxContainer">
-        
-            <%-- Texte intro / alerte secondaire --%>
-            <jalios:if predicate="<%= Util.notEmpty(alertText) %>">
-                <div class="ds44-grid12-offset-1">
-	                <div class="ds44--l-padding ds44-lightBG ds44-mb3">
-		                <p class="ds44-docListElem mts">
-		                  <strong><i class="icon icon-attention ds44-docListIco" aria-hidden="true"></i><%= alertText %></strong>
-		                </p>
-	                </div>
-                </div>
-            </jalios:if>
-            <%-- fin alerte secondaire --%>
 
             <%-- Contenu bloc coloré --%>
             <%= coloredSection %>

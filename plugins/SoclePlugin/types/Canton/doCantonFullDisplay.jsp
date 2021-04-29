@@ -110,13 +110,33 @@ List<String> remplacants = new ArrayList<String>();
     
         <jalios:include target="SOCLE_ALERTE"/>
     
-        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>" alertText="<%= obj.getTexteIntro() %>"></ds:titleNoImage>
+        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
         
         <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>
             <section class="ds44-contenuArticle" id="section2">
                 <div class="ds44-inner-container ds44-mtb3">
-                    <div class="ds44-grid12-offset-2">
+                    <div class="ds44-grid12-offset-2 ds44-introduction">
                         <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+                    </div>
+                </div>
+            </section>
+        </jalios:if>
+        
+        <%-- Chiffres clés --%>
+        <jalios:if predicate="<%= Util.notEmpty(obj.getLienVersContenuChiffresCles()) %>">
+            <section id="sectionCards" class="ds44-contenuArticle">
+                <div class="ds44-inner-container ds44-mtb3">
+                    <div class="ds44-grid12-offset-2">
+                        <jalios:if predicate="<%= Util.notEmpty(obj.getTexteIntro(userLang)) %>">
+                        <h2 id="idTitre3" class="h3-like"><%= obj.getTexteIntro(userLang) %></h2>
+                        </jalios:if>
+                        <div class="grid-2-small-1">
+	                        <jalios:foreach name="itChiffreCle" type="ChiffresCles" array="<%= obj.getLienVersContenuChiffresCles() %>">
+				                <div class="col mrs ds44-mtb1">
+				                    <jalios:media data="<%= itChiffreCle %>" template="tuileVerte" />
+				                </div>
+				            </jalios:foreach>
+                        </div>
                     </div>
                 </div>
             </section>

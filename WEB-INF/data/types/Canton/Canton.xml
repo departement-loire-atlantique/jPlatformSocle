@@ -5,11 +5,11 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="texteIntro" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Texte intro</label>
-    </field>
     <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="true" html="false" checkHtml="true">
       <label xml:lang="fr">Description</label>
+    </field>
+    <field name="texteIntro" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte intro</label>
     </field>
     <field name="lienVersContenuChiffresCles" editor="link" required="false" compactDisplay="false" type="generated.ChiffresCles[]">
       <label xml:lang="fr">Lien vers contenu chiffres clés</label>
