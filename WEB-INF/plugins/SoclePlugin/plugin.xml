@@ -573,6 +573,9 @@
         <template name="pdcv" file="doPortletRechercheFacettePdcv.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit de recherche PDCV</label>
         </template>
+        <template name="nofacette" file="doPortletRechercheFacettesNoFacettesDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit carte et résultats sans facettes</label>
+        </template>
     </templates>
     <templates type="PortletSearch">
         <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
