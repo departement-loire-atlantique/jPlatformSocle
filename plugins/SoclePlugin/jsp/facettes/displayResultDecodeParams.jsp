@@ -15,7 +15,8 @@ response.setContentType("application/json");
 Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
 // Si la ré-écriture d'url est activé alors enregistrement en BDD
-if( channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false)) {
+// Ne pas réécrire dans le cas particulier d'une carte sans facette
+if( channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false) && Util.isEmpty(request.getAttribute("noFacette"))) {
 	
 	// Compress et encode en base 64 les paramètre de la recherche
 	String queryRequest = ServletUtil.getQueryString(request, false);
