@@ -39,7 +39,7 @@
 	
 	Boolean hasFigcaption = Util.notEmpty(legend) || Util.notEmpty(copyright);
 	
-	String alt = SocleUtils.getAltTextFromPub(pub);
+	String alt = SocleUtils.getAltTextFromPub(image);
 	    
 	if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
 	   alt = "";
