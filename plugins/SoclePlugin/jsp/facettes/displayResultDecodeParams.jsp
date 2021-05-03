@@ -16,30 +16,32 @@ Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
 // Si la ré-écriture d'url est activé alors enregistrement en BDD
 // Ne pas réécrire dans le cas particulier d'une carte sans facette
-if( channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false) && Util.isEmpty(request.getAttribute("noFacette"))) {
-	
-	// Compress et encode en base 64 les paramètre de la recherche
-	String queryRequest = ServletUtil.getQueryString(request, false);
-	MessageDigest digest = MessageDigest.getInstance("SHA-256");
-	byte[] hash = digest.digest(queryRequest.getBytes(StandardCharsets.UTF_8));
-	String idSearch = HttpUtil.encodeForURL(Base64.getEncoder().encodeToString(hash));
-	
-	
-	// Si la requete n'a jamais été faite alors la stocker en bdd
-	FacetSearch currentFacetSearch = HibernateUtil.queryUnique(FacetSearch.class, "guid", idSearch);
-	if(Util.isEmpty(currentFacetSearch)) {   
-	  FacetSearch facetSearch = new FacetSearch();
-	  facetSearch.setCpt(1);
-	  facetSearch.setGuid(idSearch);
-	  facetSearch.setQuery(queryRequest);
-	  HibernateUtil.save(facetSearch); 
+if (Util.isEmpty(request.getParameter("noFacette[value]"))) {
+	if( channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false)) {
+	    
+	    // Compress et encode en base 64 les paramètre de la recherche
+	    String queryRequest = ServletUtil.getQueryString(request, false);
+	    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	    byte[] hash = digest.digest(queryRequest.getBytes(StandardCharsets.UTF_8));
+	    String idSearch = HttpUtil.encodeForURL(Base64.getEncoder().encodeToString(hash));
+	    
+	    
+	    // Si la requete n'a jamais été faite alors la stocker en bdd
+	    FacetSearch currentFacetSearch = HibernateUtil.queryUnique(FacetSearch.class, "guid", idSearch);
+	    if(Util.isEmpty(currentFacetSearch)) {   
+	      FacetSearch facetSearch = new FacetSearch();
+	      facetSearch.setCpt(1);
+	      facetSearch.setGuid(idSearch);
+	      facetSearch.setQuery(queryRequest);
+	      HibernateUtil.save(facetSearch); 
+	    }
+	    
+	    // Ajout l'id de la recherche à la requete décodée pour que la jsp suivante puisse l'ajouter au json retourné au js
+	    parametersMap.put("searchId", new String[]{(idSearch)});
+	}else {
+	  // Id à 0 mais non null pour le fonctionnement du js lorsque la ré-écriture d'url est désactivée
+	  parametersMap.put("searchId", new String[]{("0")});
 	}
-	
-	// Ajout l'id de la recherche à la requete décodée pour que la jsp suivante puisse l'ajouter au json retourné au js
-	parametersMap.put("searchId", new String[]{(idSearch)});
-}else {
-  // Id à 0 mais non null pour le fonctionnement du js lorsque la ré-écriture d'url est désactivée
-  parametersMap.put("searchId", new String[]{("0")});
 }
 
 String redirectUrl = Util.notEmpty(request.getParameter("redirectUrl[value]")) ? request.getParameter("redirectUrl[value]") : "plugins/SoclePlugin/jsp/facettes/displayResult.jsp";

@@ -19,7 +19,6 @@
 	request.setAttribute("showFiltres", showFiltres);
 	
 	request.setAttribute("rechercheId", obj.getId());
-	request.setAttribute("noFacette", true);
 %>
 
 
@@ -28,6 +27,9 @@
         <div class="ds44-facette-body">
 	        <form method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
 	           
+	            <input type="hidden" name="redirectUrl" value="plugins/SoclePlugin/jsp/facettes/displayResultCanton.jsp" data-technical-field />
+	            <input type="hidden" name="noFacette" value="true" data-technical-field />
+	            
 	            <input type="hidden" name='<%= "typeDeTuileFicheLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeTuileFicheLieu() %>' data-technical-field />
 	        
 	            <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
@@ -91,6 +93,5 @@
 </div>
 <% 
 request.removeAttribute("rechercheId");
-request.removeAttribute("noFacette");
 %>
 

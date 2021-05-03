@@ -28,16 +28,7 @@ Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
-//Custom canton : ajouter les fiches lieu associés au canton
-if (Util.notEmpty(session.getAttribute("cantonMapSearch"))) {
-  Publication itPubCanton = (Publication) session.getAttribute("cantonMapSearch");
-  Set<Data> refSet = itPubCanton.getReferrerSet();
-  for (Data itData : refSet) {
-    if (itData instanceof FicheLieu) collection.add((FicheLieu) itData);
-  }
-  session.removeAttribute("cantonMapSearch");
-}
-
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQuerySpecificCantons.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
