@@ -864,7 +864,7 @@ public class InfolocaleEntityUtils {
     try {
       JSONObject objListeThematiques = objThematiques.getJSONObject(listMetadata);
       if (objListeThematiques.has(arrayMeta)) {
-        for (int metaCounter = 0; metaCounter <= objListeThematiques.getJSONArray(arrayMeta).length(); metaCounter++) {
+        for (int metaCounter = 0; metaCounter < objListeThematiques.getJSONArray(arrayMeta).length(); metaCounter++) {
           genresWithLabels.putAll(getGenresWithLabelFromObject(objListeThematiques.getJSONArray(arrayMeta).getJSONObject(metaCounter), lblThematiques, idThematiques));
         }
       } else {
