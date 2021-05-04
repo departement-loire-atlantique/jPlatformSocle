@@ -571,7 +571,7 @@ public class InfolocaleEntityUtils {
       
       Integer jsonEventId = Util.toInteger(event.getId().replace("INFOLOC-", ""), -1);
       
-      for (int jsonArrayCounter = 0; jsonArrayCounter <= jsonArray.length(); jsonArrayCounter++) {
+      for (int jsonArrayCounter = 0; jsonArrayCounter < jsonArray.length(); jsonArrayCounter++) {
         JSONObject itJsonObject;
         try {
           itJsonObject = jsonArray.getJSONObject(jsonArrayCounter);
