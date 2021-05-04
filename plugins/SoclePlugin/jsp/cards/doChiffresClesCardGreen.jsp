@@ -22,6 +22,6 @@ String urlImage = SocleUtils.getDescriptionChampCategorie(pub.getIconePrincipale
       <picture class="ds44-boxPic ds44-boxPic--light">
          <img src="<%= urlImage %>" alt="">
       </picture>
-      <p><strong><span class="ds44-txtExergue"><%= pub.getChiffrePrincipal() %></span> en 2020 dans les collèges publics</strong></p>
+      <p><strong><span class="ds44-txtExergue"><%= pub.getChiffrePrincipal() %></span></strong><%= HtmlUtil.html2text(pub.getLibelleChiffrePrincipal()) %></p>
    </div>
 </section>

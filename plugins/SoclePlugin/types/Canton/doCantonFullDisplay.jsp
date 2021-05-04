@@ -79,8 +79,8 @@ List<String> remplacants = new ArrayList<String>();
                                 <span class="ds44-js-dynamic-number" data-stop="<%= obj.getPopulation() %>"><%= NumberFormat.getInstance(userLocale).format(obj.getPopulation()) %></span>
                                 <%= glp("jcmsplugin.socle.canton.habitants") %>
                             </span>
-                            <%= Util.isEmpty(obj.getCommentairePopulation()) ? glp("jcmsplugin.socle.canton.source") : obj.getCommentairePopulation() %>
                         </strong>
+                        <%= Util.isEmpty(obj.getCommentairePopulation()) ? glp("jcmsplugin.socle.canton.source") : obj.getCommentairePopulation() %>
                     </p>
                 </li>
                 
@@ -94,8 +94,8 @@ List<String> remplacants = new ArrayList<String>();
                                 <span class="ds44-js-dynamic-number" data-stop="<%= obj.getSuperficie() %>"><%= (new DecimalFormat("#,###.##")).format(obj.getSuperficie()) %></span>
                                 <%= glp("jcmsplugin.socle.km2") %>
                             </span>
-                            <%= glp("jcmsplugin.socle.canton.superficie") %>
                         </strong>
+                        <%= glp("jcmsplugin.socle.canton.superficie") %>
                     </p>
                 </li>
             
@@ -110,7 +110,7 @@ List<String> remplacants = new ArrayList<String>();
     
         <jalios:include target="SOCLE_ALERTE"/>
     
-        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>"></ds:titleNoImage>
+        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>" alertText="<%= obj.getTexteIntro() %>"></ds:titleNoImage>
         
         <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>
             <section class="ds44-contenuArticle" id="section2">
@@ -127,9 +127,6 @@ List<String> remplacants = new ArrayList<String>();
             <section id="sectionCards" class="ds44-contenuArticle">
                 <div class="ds44-inner-container ds44-mtb3">
                     <div class="ds44-grid12-offset-2">
-                        <jalios:if predicate="<%= Util.notEmpty(obj.getTexteIntro(userLang)) %>">
-                        <h2 id="idTitre3" class="h3-like"><%= obj.getTexteIntro(userLang) %></h2>
-                        </jalios:if>
                         <div class="grid-2-small-1">
 	                        <jalios:foreach name="itChiffreCle" type="ChiffresCles" array="<%= obj.getLienVersContenuChiffresCles() %>">
 				                <div class="col mrs ds44-mtb1">
