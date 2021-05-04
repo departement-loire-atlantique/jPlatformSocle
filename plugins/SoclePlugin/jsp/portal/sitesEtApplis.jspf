@@ -23,9 +23,9 @@ mapThemes.put("territoire", new String[] {"vuduciel", "vuduciel","atlas"});
     <div class="ds44-inner-container">
 		<ul class="ds44-navListApplis ds44-multiCol ds44-multiCol--3 ds44-multiCol--border ds44-m-gap ds44-list">
 			<%
-			  for (Map.Entry itTheme : mapThemes.entrySet()) {
+			  for (Map.Entry<String, String[]> itTheme : mapThemes.entrySet()) {
 			    String themeLabel = glp("jcmsplugin.socle.sites-applis." + itTheme.getKey() + ".label");
-			    String[] sitesArray = (String[])itTheme.getValue();
+			    String[] sitesArray = itTheme.getValue();
 			%>
 			<li>
 				<p role="heading" aria-level="2" class="ds44-menuApplisTitle"><%=themeLabel%></p>
