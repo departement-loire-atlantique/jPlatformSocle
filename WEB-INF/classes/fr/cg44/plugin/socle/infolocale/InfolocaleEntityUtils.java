@@ -854,14 +854,44 @@ public class InfolocaleEntityUtils {
 	 * @return
 	 */
 	private static Map<String, Set<Genre>> getAllThematiquesWithLibelles(String fluxId, String[] lblThematiques, String[] idThematiques) {
-	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
-
+	  
 	  JSONObject objThematiques = RequestManager.getFluxMetadata(fluxId, "thematique_perso");
-    String idLbl = "id";
+	  
+	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
+    String arrayMeta = "arrayMeta";
+    String listMetadata = "listMetadata";
     
     try {
-      JSONObject objListeThematiques = objThematiques.getJSONObject("listMetadata");
-      
+      JSONObject objListeThematiques = objThematiques.getJSONObject(listMetadata);
+      if (objListeThematiques.has(arrayMeta)) {
+        for (int metaCounter = 0; metaCounter <= objListeThematiques.getJSONArray(arrayMeta).length(); metaCounter++) {
+          genresWithLabels.putAll(getGenresWithLabelFromObject(objListeThematiques.getJSONArray(arrayMeta).getJSONObject(metaCounter), lblThematiques, idThematiques));
+        }
+      } else {
+        genresWithLabels = getGenresWithLabelFromObject(objListeThematiques, lblThematiques, idThematiques);
+      }
+    } catch (JSONException e) {
+      LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
+    }
+    
+
+    return genresWithLabels;
+	}
+	
+	/**
+	 * Exécute la récupération des genres avec labels liés à leur ID
+	 * @param objListeThematiques
+	 * @param lblThematiques
+	 * @param idThematiques
+	 * @return
+	 */
+	private static Map<String, Set<Genre>> getGenresWithLabelFromObject(JSONObject objListeThematiques, String[] lblThematiques, String[] idThematiques) {
+	  
+	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
+	  
+	  String idLbl = "id";
+	  
+	  try {      
       for(int i = 0 ; i < objListeThematiques.length() ; i++) {
         JSONArray listeThematiques = objListeThematiques.getJSONArray(objListeThematiques.names().getString(i));
         
@@ -884,8 +914,8 @@ public class InfolocaleEntityUtils {
     } catch (JSONException e) {
       LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
     }
-
-    return genresWithLabels;
+	  
+	  return genresWithLabels;
 	}
 	
 	 /**

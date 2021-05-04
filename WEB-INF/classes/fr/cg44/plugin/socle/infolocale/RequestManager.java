@@ -349,7 +349,7 @@ public class RequestManager {
                   else if (Util.isEmpty(metadata) || Util.notEmpty(responseContent)) {
                     fluxData = new JSONObject();
                     if (responseContent.startsWith("[")) {
-                      fluxData.put("listMetadata", new JSONObject(responseContent.replaceFirst("\\[", "").replace("}]}]", "}]}")));
+                      fluxData.put("listMetadata", new JSONObject().put("arrayMeta", new JSONArray(responseContent)));
                     } else {
                       fluxData.put("listMetadata", new JSONObject(responseContent));
                     }
