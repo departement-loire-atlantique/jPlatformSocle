@@ -428,7 +428,6 @@ public class ExportCsvUtils {
 
     header.append(DOUBLE_QUOTE + "Catégories N-1" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Catégories N-2" + DOUBLE_QUOTE + SEPARATOR);
-    header.append(DOUBLE_QUOTE + "Catégories exactes" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Version" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "Auteur" + DOUBLE_QUOTE + SEPARATOR);
     header.append(DOUBLE_QUOTE + "ID auteur" + DOUBLE_QUOTE + SEPARATOR);
@@ -457,7 +456,6 @@ public class ExportCsvUtils {
 
     chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 1), doubleHashtag), true));
     chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(SocleUtils.getCategorieDeNavigation(itPub, 2), doubleHashtag), true));
-    chaine.append(getFormattedCsvValue(SocleUtils.formatCategories(getAllNavCategories(itPub), doubleHashtag), true));
     chaine.append(getFormattedCsvValue(itPub.getVersionString(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getFullName(), true));
     chaine.append(getFormattedCsvValue(itPub.getAuthor().getId(), true));
