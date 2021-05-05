@@ -1,12 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
-%><%-- This file has been automatically generated. --%><%
-%><%--
-  @Summary: Lien display page
-  @Category: Generated
-  @Author: JCMS Type Processor
-  @Customizable: True
-  @Requestable: True
---%><%
+
+// Empêche l'indexation par les moteurs de recherche.
+request.setAttribute("noindex", true);
+
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% Lien obj = (Lien)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><%@ include file='/front/doFullDisplay.jspf' %>
