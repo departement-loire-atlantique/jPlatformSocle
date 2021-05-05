@@ -904,3 +904,84 @@ jcmsplugin.socle.export.csv.link: Export CSV de contenu
 # Tableau de bord formulaire Page Utile
 jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
 
+# ------------------------------------------------------------
+#  Sites et applis
+# ------------------------------------------------------------
+jcmsplugin.socle.sites-applis.citoyennete.label: Citoyenneté
+jcmsplugin.socle.sites-applis.enfance-famille.label: Enfance, famille
+jcmsplugin.socle.sites-applis.handicap.label: Handicap
+jcmsplugin.socle.sites-applis.education.label: Education
+jcmsplugin.socle.sites-applis.sport.label: Sport
+jcmsplugin.socle.sites-applis.environnement.label: Environnement
+jcmsplugin.socle.sites-applis.culture.label: Culture
+jcmsplugin.socle.sites-applis.deplacements.label: Déplacements
+jcmsplugin.socle.sites-applis.developpement-innovation.label: Développement innovation
+jcmsplugin.socle.sites-applis.territoire.label: Territoire
+
+jcmsplugin.socle.sites-applis.institutionnel.label: Site du Département
+jcmsplugin.socle.sites-applis.institutionnel.url: https://www.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.budget.label: Budget 2021
+jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2021
+jcmsplugin.socle.sites-applis.participer.label: Participer
+jcmsplugin.socle.sites-applis.participer.url: https://participer.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.parents.label: Questions de parents
+jcmsplugin.socle.sites-applis.parents.url: https://parents.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.assmat.label: Assistantes maternelles
+jcmsplugin.socle.sites-applis.assmat.url: https://assmat.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.handicap.label: Handicap en Loire-Atlantique
+jcmsplugin.socle.sites-applis.handicap.url: https://handicap.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.stages3.label: Stages de 3e
+jcmsplugin.socle.sites-applis.stages3.url: https://stage3e.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.classes-presse.label: Classes presse
+jcmsplugin.socle.sites-applis.classes-presse.url: https://classespresse.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.rando.label: Randonnée
+jcmsplugin.socle.sites-applis.rando.url: https://rando.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.nature.label: Nature
+jcmsplugin.socle.sites-applis.nature.url: https://nature.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.grandlieu.label: Maison du lac de Grand-Lieu
+jcmsplugin.socle.sites-applis.grandlieu.url: https://maisondulacdegrandlieu.com
+jcmsplugin.socle.sites-applis.bdla.label: Bibliothèque départementale de Loire-Atlantique (BDLA)
+jcmsplugin.socle.sites-applis.bdla.url: https://bdla.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.archives.label: Archives
+jcmsplugin.socle.sites-applis.archives.url: https://archives.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.dobree.label: Collections du musée Dobrée
+jcmsplugin.socle.sites-applis.dobree.url: https://www.loire-atlantique.fr/grand-patrimoine
+jcmsplugin.socle.sites-applis.ressources-edu.label: Ressources éducatives Grand Patrimoine
+jcmsplugin.socle.sites-applis.ressources-edu.url: https://ressources-educatives-gpla.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.chateau-chateaubriant.label: Château de Châteaubriant
+jcmsplugin.socle.sites-applis.chateau-chateaubriant.url: https://www.chateau-chateaubriant.fr
+jcmsplugin.socle.sites-applis.chateau-clisson.label: Château de Clisson
+jcmsplugin.socle.sites-applis.chateau-clisson.url: https://www.chateau-clisson.fr
+jcmsplugin.socle.sites-applis.garenne-lemot.label: Domaine de la Garenne Lemot
+jcmsplugin.socle.sites-applis.garenne-lemot.url: https://www.domaine-garenne-lemot.fr
+jcmsplugin.socle.sites-applis.folies-siffait.label: Jardins des Folies Siffait
+jcmsplugin.socle.sites-applis.folies-siffait.url: https://www.jardins-folies-siffait.fr
+jcmsplugin.socle.sites-applis.blanche-couronne.label: Abbaye de Blanche Couronne
+jcmsplugin.socle.sites-applis.blanche-couronne.url: https://www.abbaye-blanche-couronne.fr
+jcmsplugin.socle.sites-applis.eglise-vieux-bourg.label: Eglise du Vieux-Bourg de St-Sulpice-des-Landes
+jcmsplugin.socle.sites-applis.eglise-vieux-bourg.url: https://www.eglise-saint-sulpice-des-landes.fr
+jcmsplugin.socle.sites-applis.inforoutes.label: Infos routes
+jcmsplugin.socle.sites-applis.inforoutes.url: https://inforoutes.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.pont-st-naz.label: Appli Pont de Saint-Nazaire
+jcmsplugin.socle.sites-applis.pont-st-naz.url: https://inforoutes.loire-atlantique.fr/applis-mobiles
+jcmsplugin.socle.sites-applis.bacs.label: Appli bacs de Loire
+jcmsplugin.socle.sites-applis.bacs.url: https://inforoutes.loire-atlantique.fr/applis-mobiles
+jcmsplugin.socle.sites-applis.opendata.label: Open data
+jcmsplugin.socle.sites-applis.opendata.url: https://data.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.numerique.label: Numérique
+jcmsplugin.socle.sites-applis.numerique.url: https://numerique.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.agirseniors.label: Conférence des financeurs
+jcmsplugin.socle.sites-applis.agirseniors.url: https://agirseniors.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.lad.label: Loire-Atlantique développement
+jcmsplugin.socle.sites-applis.lad.url: https://loireatlantique-developpement.fr
+jcmsplugin.socle.sites-applis.tourisme.label: Tourisme
+jcmsplugin.socle.sites-applis.tourisme.url: https://tourisme-loireatlantique.com
+jcmsplugin.socle.sites-applis.imagine-la.label: Imagine LA
+jcmsplugin.socle.sites-applis.imagine-la.url: https://www.imaginela.fr
+jcmsplugin.socle.sites-applis.vuduciel.label: Vuduciel
+jcmsplugin.socle.sites-applis.vuduciel.url: https://vuduciel.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.observatoire.label: Observatoire
+jcmsplugin.socle.sites-applis.observatoire.url: https://observatoire.loire-atlantique.fr
+jcmsplugin.socle.sites-applis.atlas.label: Atlas
+jcmsplugin.socle.sites-applis.atlas.url: https://atlas.loire-atlantique.fr
+
