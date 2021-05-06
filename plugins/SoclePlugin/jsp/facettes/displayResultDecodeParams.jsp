@@ -47,12 +47,12 @@ if (Util.isEmpty(request.getParameter("noFacette[value]"))) {
 String redirectUrl = Util.notEmpty(request.getParameter("redirectUrl[value]")) ? request.getParameter("redirectUrl[value]") : "plugins/SoclePlugin/jsp/facettes/displayResult.jsp";
 
 String url = URLUtils.buildUrl(redirectUrl, parametersMap);
-
+/**
 // Fix error HTTPS infra (mixed content). Passe en url absolue
 if(url.indexOf("http") != 0) {
   url = channel.getUrl() + url;
 }
-
+**/
 sendRedirect(url);
 
 %>

@@ -1,12 +1,22 @@
+<%@page import="fr.cg44.plugin.socle.queryfilter.CantonQueryFilter"%>
 <%
-//Custom canton : ajouter les fiches lieu associés au canton
-if (Util.notEmpty(session.getAttribute("cantonMapSearch"))) {
-  Publication itPubCanton = (Publication) session.getAttribute("cantonMapSearch");
-  Set<Data> refSet = itPubCanton.getReferrerSet();
-  for (Data itData : refSet) {
-    if (itData instanceof FicheLieu) collection.add((FicheLieu) itData);
-  }
+
+if (Util.notEmpty(request.getParameter("canton"))) {
   
-  session.removeAttribute("cantonMapSearch");
+  Set resultat = new HashSet();
+  
+  CantonQueryFilter cqf = new CantonQueryFilter();
+  QueryHandler cantonQh = new QueryHandler();
+  
+  cantonQh.setTypes("FicheLieu");
+  
+  String[] citiesCodeSearchArray = request.getParameterValues("canton");
+  cqf.addCantonSearch(cantonQh, request, citiesCodeSearchArray);
+  
+  resultat.addAll(cantonQh.getResultSet());
+  System.out.println(resultat);
+  collection.retainAll(resultat);
+  resultSize = collection.size();
+  
 }
 %>
