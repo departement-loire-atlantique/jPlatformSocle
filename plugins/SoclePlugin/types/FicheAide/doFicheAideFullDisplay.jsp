@@ -7,37 +7,37 @@
 	FicheAide obj = (FicheAide)request.getAttribute(PortalManager.PORTAL_PUBLICATION); 
 	String imageFile = obj.getImageBandeau() ;
 	String imageMobileFile = obj.getImageMobile();
-	String title = obj.getTitle();
+	String title = obj.getTitle(userLang);
 	String legende = obj.getLegende(userLang);
 	String copyright = obj.getCopyright(userLang);
 	
-	boolean displayEnResume = Util.notEmpty(obj.getChapo()) || Util.notEmpty(obj.getPourQui());
+	boolean displayEnResume = Util.notEmpty(obj.getChapo(userLang)) || Util.notEmpty(obj.getPourQui(userLang));
 	
-	boolean displayDetails = Util.notEmpty(obj.getIntro())
-								|| Util.notEmpty(obj.getEligibilite())
-								|| Util.notEmpty(obj.getCestQuoi())
-								|| Util.notEmpty(obj.getCommentFaireUneDemande())
-								|| Util.notEmpty(obj.getQuelsDocumentsFournir());
+	boolean displayDetails = Util.notEmpty(obj.getIntro(userLang))
+								|| Util.notEmpty(obj.getEligibilite(userLang))
+								|| Util.notEmpty(obj.getCestQuoi(userLang))
+								|| Util.notEmpty(obj.getCommentFaireUneDemande(userLang))
+								|| Util.notEmpty(obj.getQuelsDocumentsFournir(userLang));
 	
 	boolean displayFaq = Util.notEmpty(obj.getFaq());
 	
 	request.setAttribute("contactfaq", obj.getContactFAQ(userLang));
 	
 	boolean displayQuiContacter = Util.notEmpty(obj.getQuiContacter())
-									|| Util.notEmpty(obj.getIntroContact())
-									|| Util.notEmpty(obj.getComplementContact())
-									|| Util.notEmpty(obj.getBesoinDaide())
-									|| (Util.notEmpty(obj.getTypeDeLieu()) && obj.getInstructionDelegation());
+									|| Util.notEmpty(obj.getIntroContact(userLang))
+									|| Util.notEmpty(obj.getComplementContact(userLang))
+									|| Util.notEmpty(obj.getBesoinDaide(userLang))
+									|| (Util.notEmpty(obj.getTypeDeLieu(userLang)) && obj.getInstructionDelegation());
 	
 	boolean hasContactCol = false;
 	
 	boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  
 									|| ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) 
-									|| Util.notEmpty(obj.getIntroFaireUneDemande());
+									|| Util.notEmpty(obj.getIntroFaireUneDemande(userLang));
 	
 	Category publikCat = channel.getCategory("$jcmsplugin.socle.ficheaide.publik.root");
 	
-	boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande()) || ((Util.notEmpty(obj.getUrlSuiviEdemarche()) || obj.hasCategory(publikCat)));
+	boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande(userLang)) || ((Util.notEmpty(obj.getUrlSuiviEdemarche(userLang)) || obj.hasCategory(publikCat)));
 %>
 
 
@@ -55,202 +55,118 @@
 				<ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
 			</jalios:default>
 		</jalios:select>
-		<section class="ds44-ongletsContainer">
-
-			<div class="ds44-tabs" data-existing-hx="h2" data-tabs-prefix-class="ds44" id="onglets">
-				<div class="ds44-theme ds44-flex-container ds44-flex-wrap-large">
-					<nav role="navigation" aria-label='<%= glp("jcmsplugin.socle.navOnglet") %>' id="ligneOnglets"
-						class="ds44-flex-container ds44-fg1 ds44-navOnglets ds44-hiddenPrint">
-						<!-- Résumé / détail / FAQ -->
-						<ul class="ds44-tabs__list ds44-fg1 ds44-flex-container ds44-list js-tabs" id="tabs">
-							<jalios:if predicate="<%= displayEnResume %>">
-								<li class="ds44-tabs__item ds44-fg1" id="tabs__1">
-									<a href="#id_first" class="js-tablist__link ds44-tabs__link" id="label_id_first" aria-current="true"> 
-										<%= glp("jcmsplugin.socle.onglet.resume") %>
-									</a>
-								</li>
-							</jalios:if>
-							<jalios:if predicate="<%= displayDetails %>">
-								<li class="ds44-tabs__item ds44-fg1" id="tabs__2">
-									<a href="#id_second" class="js-tablist__link ds44-tabs__link" id="label_id_second" aria-disabled="true"> 
-										<%= glp("jcmsplugin.socle.onglet.detail") %>
-									</a>
-								</li>
-							</jalios:if>
-							<jalios:if predicate="<%= displayFaq %>">
-								<li class="ds44-tabs__item ds44-fg1" id="tabs__3">
-									<a href="#id_third" class="js-tablist__link ds44-tabs__link" id="label_id_third" aria-disabled="true"> 
-										<%= glp("jcmsplugin.socle.onglet.faq") %>
-									</a>
-								</li>
-							</jalios:if>
-						</ul>
-					</nav>
-
-					<div class="ds44-flex-container ds44-flex-grow1-large ds44-fse">
-						<!-- Contact / faire demande / suivre demande  -->
-						<ul class="ds44-flex-container ds44--l-padding-tb ds44-blocBtnOnglets ds44-list">
-							<jalios:if predicate="<%= displayQuiContacter %>">
-								<li class="mrs mls ds44-ongletsBtnItem">
-									<button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-qui-contacter" 
-											data-js="ds44-modal" data-open-overlay="true">
-										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span> 
-										<i class="icon icon-phone icon--sizeL" aria-hidden="true"></i>
-									</button>
-								</li>
-							</jalios:if>
-							<jalios:if predicate="<%= displayFaireDemande %>">
-								<li class="mrs ds44-ongletsBtnItem">
-									<button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" 
-											data-js="ds44-modal" data-open-overlay="true">
-										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span> 
-										<i class="icon icon-file icon--sizeL" aria-hidden="true"></i>
-									</button>
-								</li>
-							</jalios:if>
-							<jalios:if predicate="<%= displaySuivreDemande %>">
-								<li class="mrs ds44-ongletsBtnItem">
-									<button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" 
-											data-js="ds44-modal" data-open-overlay="true">
-										<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span> 
-										<i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-									</button>
-								</li>
-							</jalios:if>
-						</ul>
-					</div>
-				</div>
-
-				<!--  En résumé -->
-				<jalios:if predicate="<%= displayEnResume %>">
-					<div id="id_first" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" 
-							aria-labelledby="label_id_first">
-						<a name="onglet-1" id="onglet-1"></a>
-						<h2 class="visually-hidden" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.premier-onglet.label") %></h2>
-						<div class="grid-12-small-1">
-							<div class="col-7">
-								<jalios:if predicate="<%= Util.notEmpty(obj.getChapo()) %>">
-									<div class="ds44-introduction">
-										<jalios:wysiwyg><%= obj.getChapo() %></jalios:wysiwyg>
-									</div>
-								</jalios:if>
-								<jalios:if predicate="<%= Util.notEmpty(obj.getPourQui()) %>">
-									<h2 class="h2-like mtm"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-									<jalios:wysiwyg><%= obj.getPourQui() %></jalios:wysiwyg>
-								</jalios:if>
-								<button onclick="document.getElementById('label_id_second').click();MiscUtils.scrollTo(MiscUtils.getPositionY(document.getElementById('tabs')) - 150); " class="ds44-mt2 js-tablist__link ds44-btnStd ds44-btnStd--large ds44-btn--invert" 
-								title='<%= glp("jcmsplugin.socle.ficheaide.plusdedetails.title", glp("jcmsplugin.socle.onglet.detail"))%>'>
-								    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.plusdedetails.label") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-								</button>
-							</div>
-
-							<div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
-
-							<aside class="col-4">
-								<%@ include file="doFicheAideEncadre.jspf"%>
-							</aside>
-
-						</div>
-
-						<p class="ds44-keyboard-show">
-							<a href="#label_id_first"> 
-								<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.resume")) %>
-							</a>
-						</p>
-
-					</div>
-				</jalios:if>
-
-				<!-- En détail -->
-				<jalios:if predicate="<%= displayDetails %>">
-					<div id="id_second" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" 
-							aria-labelledby="label_id_second" aria-hidden="true">
-						<a name="onglet-2" id="onglet-2"></a>
-						<h2 class="visually-hidden" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.deuxieme-onglet.label") %></h2>
-						<div class="grid-12-small-1">
-							<div class="col-7">
-								<jalios:if predicate="<%= Util.notEmpty(obj.getIntro()) %>">
-									<div class="ds44-introduction">
-										<jalios:wysiwyg><%= obj.getIntro()%></jalios:wysiwyg>
-									</div>
-								</jalios:if>
-								<jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite()) %>">
-									<section id="section1" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-										<jalios:wysiwyg><%= obj.getEligibilite() %></jalios:wysiwyg>
-									</section>
-								</jalios:if>
-
-								<jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi()) %>">
-									<section id="section2" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
-										<jalios:wysiwyg><%= obj.getCestQuoi() %></jalios:wysiwyg>
-									</section>
-								</jalios:if>
-
-								<jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande()) %>">
-									<section id="section3" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-										<jalios:wysiwyg><%= obj.getCommentFaireUneDemande() %></jalios:wysiwyg>
-									</section>
-								</jalios:if>
-
-								<jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir()) %>">
-									<section id="section4" class="ds44-contenuArticle">
-										<h2 class="h2-like"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
-										<jalios:wysiwyg><%= obj.getQuelsDocumentsFournir() %></jalios:wysiwyg>
-									</section>
-								</jalios:if>
-							</div>
-
-							<div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
-
-							<aside class="col-4">
-								<%@ include file="doFicheAideEncadre.jspf"%>
-							</aside>
-
-						</div>
-
-						<p class="ds44-keyboard-show">
-							<a href="#label_id_second"> 
-								<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.detail")) %>
-							</a>
-						</p>
-
-					</div>
-				</jalios:if>
-
-				<!-- FAQ -->
-				<jalios:if predicate="<%= displayFaq %>">
-					<div id="id_third" class="js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb" 
-							aria-labelledby="label_id_third" aria-hidden="true">
-						<a name="onglet-3" id="onglet-3"></a>
-						<h2 class="visually-hidden" tabindex="-1"><%= glp("jcmsplugin.socle.ficheaide.troisieme-onglet.label") %></h2>
-						<jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
-							<% 
-								ServletUtil.backupAttribute(pageContext, PortalManager.PORTAL_PUBLICATION);
-								request.setAttribute("pubParent",obj);
-							%>
-							<jalios:include pub="<%= obj.getFaq() %>" usage="full" />
-							<% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
-						</jalios:if>
-
-						<p class="ds44-keyboard-show">
-							<a href="#label_id_third"> 
-								<%= glp("jcmsplugin.socle.revenirOnglet", glp("jcmsplugin.socle.onglet.faq")) %>
-							</a>
-						</p>
-					</div>
-				</jalios:if>
-
-
-			</div>
-
-			<%-- Partagez cette page --%>
-			<%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf"%>
-
-		</section>
-
+				
+		<section class="ds44-container-large">
+		   <div class="ds44-mt3 ds44--xl-padding-t">
+		      <div class="ds44-inner-container">
+		         <div class="grid-12-medium-1 grid-12-small-1">
+		            <aside class="col-4 ds44-hide-tinyToLarge ds44-js-aside-summary">
+		               <section class="ds44-box ds44-theme" style="position: static;">
+		                  <div class="ds44-innerBoxContainer">
+		                     <p role="heading" aria-level="2" class="ds44-box-heading">Sommaire</p>
+		                     <ul class="ds44-list ds44-list--puces">
+		                        <jalios:if predicate="<%= displayEnResume %>">
+		                        <li><a href="#sectionPourQui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
+		                        <li><a href="#sectionCestQuoi" class=""><%= glp("jcmsplugin.socle.titre.quoi") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
+		                        <li><a href="#sectionDocuments" class=""><%= glp("jcmsplugin.socle.titre.fournir-documents") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= displayFaireDemande %>">
+		                        <li><a href="#sectionFaireDemande" class=""><%= glp("jcmsplugin.socle.titre.comment-demande") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= displaySuivreDemande %>">
+		                        <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= displayQuiContacter %>">
+		                        <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= displayFaq %>">
+		                        <li><a href="#sectionFaq" class=""><%= glp("jcmsplugin.socle.recherche.type.FaqAccueil") %></a></li>
+		                        </jalios:if>
+		                     </ul>
+		                  </div>
+		               </section>
+		            </aside>
+		            <div class="col-1 grid-offset ds44-hide-tinyToLarge"></div>
+		            <article class="col-7 ds44-contenuDossier">
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
+			               <div class="ds44-introduction">
+			                  <jalios:wysiwyg><%= obj.getChapo(userLang) %></jalios:wysiwyg>
+			               </div>
+		               </jalios:if>
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
+			               <section class="ds44-contenuArticle" id="sectionPourQui" tabindex="-1">
+			                  <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+			                  <jalios:wysiwyg><%= obj.getPourQui(userLang) %></jalios:wysiwyg>
+			               </section>
+		               </jalios:if>
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
+		               <section class="ds44-contenuArticle" id="sectionCestQuoi" tabindex="-1">
+		                  <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+		                  <jalios:wysiwyg><%= obj.getCestQuoi(userLang) %></jalios:wysiwyg>
+		               </section>
+		               </jalios:if>
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
+		               <section class="ds44-contenuArticle" id="sectionDocuments" tabindex="-1">
+		                  <h2 id="idTitre4"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+		                  <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir(userLang) %></jalios:wysiwyg>
+		               </section>
+		               </jalios:if>
+		               <jalios:if predicate="<%= displayFaireDemande %>">
+		               <section class="ds44-contenuArticle" id="#sectionFaireDemande" tabindex="-1">
+		                  <h2 id="idTitre5"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+		                  <jalios:wysiwyg>
+		                      <%= obj.getCommentFaireUneDemande(userLang) %>
+		                      <p><button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-faire-demande" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.faire-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
+		                  </jalios:wysiwyg>
+		               </section>
+		               </jalios:if>
+		               <jalios:if predicate="<%= displaySuivreDemande %>">
+		               <section class="ds44-contenuArticle" id="sectionSuivreDemande" tabindex="-1">
+		                  <h2 id="idTitre6"><%= glp("jcmsplugin.socle.titre.suivre-demande") %></h2>
+		                  <jalios:wysiwyg>
+		                     <%= obj.getIntroSuivreUneDemande(userLang) %>
+		                     <p><button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-suivre-demande" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.suivre-demande") %></span><i class="icon icon-computer icon--sizeL" aria-hidden="true"></i></button></p>
+		                  </jalios:wysiwyg>
+		               </section>
+		               </jalios:if>
+		               <jalios:if predicate="<%= displayQuiContacter %>">
+		               <section class="ds44-contenuArticle" id="sectionContact" tabindex="-1">
+		                  <h2 id="idTitre7"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h2>
+		                  <jalios:wysiwyg>
+                             <%= obj.getIntroContact(userLang) %>
+		                     <p><button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-qui-contacter" data-js="ds44-modal" data-open-overlay="true"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.demande.qui-contacter") %></span><i class="icon icon-phone icon--sizeL" aria-hidden="true"></i></button></p>
+		                  </jalios:wysiwyg>
+		               </section>
+		               </jalios:if>
+		            </article>
+		         </div>
+		         
+		         <jalios:if predicate="<%= displayFaq %>">
+		         <section class="ds44-mt3" id="sectionFaq" tabindex="-1">
+		            <section class="ds44--xxl-padding-tb">
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
+                            <% 
+                                ServletUtil.backupAttribute(pageContext, PortalManager.PORTAL_PUBLICATION);
+                                request.setAttribute("pubParent",obj);
+                            %>
+                            <jalios:include pub="<%= obj.getFaq() %>" usage="full" />
+                            <% ServletUtil.restoreAttribute(pageContext, PortalManager.PORTAL_PUBLICATION); %>
+                        </jalios:if>
+		            </section>
+		         </section>
+		         </jalios:if>
+		         
+		         <%-- Partagez cette page --%>
+                 <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
+		         
+		      </div>
+		   </div>
+		</section>	
+		
 	</section>
 
 	<%-- Page utile --%>
