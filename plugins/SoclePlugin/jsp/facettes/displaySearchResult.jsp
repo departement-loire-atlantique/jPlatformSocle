@@ -47,24 +47,13 @@ jsonObject.addProperty("nb-result-per-page", maxResult);
 jsonObject.addProperty("nb-result", collection.getResultSize());
 
 jsonObject.add("result", jsonArray);
+%>
 
-
-%><jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication" max='<%= maxResult %>' skip='<%= (pager - 1) * maxResult  %>'><%
-    %><jalios:buffer name="itPubListGabarit"><%
-        %>
-        <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray  ">           
-            <div class="ds44-card__section">            
-	            <div class="ds44-innerBoxContainer">
-		            <h2 class="h4-like ds44-cardTitle" id="1"><a href="<%= itPub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= itPub.getTitle() %></a></h2>
-		            <hr class="mbs" aria-hidden="true"/>
-		            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.getTypeLibelle(itPub, userLang) %></p>	           
-	            </div>
-	            <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
-            </div>
-        </section>
-        <%
-    %></jalios:buffer><%
-    %><%     
+<jalios:foreach collection="<%= resultSet %>" name="itPub" type="Publication" max='<%= maxResult %>' skip='<%= (pager - 1) * maxResult  %>'>
+    <jalios:buffer name="itPubListGabarit">
+        <jalios:media data="<%= itPub %>" template="search"/>
+    </jalios:buffer>
+    <%     
      jsonArray.add(SocleUtils.publicationToJsonObject(itPub, itPubListGabarit, null, null));
     %><%
  %></jalios:foreach><%                                    
