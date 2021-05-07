@@ -97,6 +97,9 @@
 			                  <jalios:wysiwyg><%= obj.getChapo(userLang) %></jalios:wysiwyg>
 			               </div>
 		               </jalios:if>
+		               <jalios:if predicate="<%= Util.notEmpty(obj.getIntro(userLang)) %>">
+                           <jalios:wysiwyg><%= obj.getIntro(userLang) %></jalios:wysiwyg> 		               
+		               </jalios:if>
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
 			               <section class="ds44-contenuArticle" id="sectionPourQui" tabindex="-1">
 			                  <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
