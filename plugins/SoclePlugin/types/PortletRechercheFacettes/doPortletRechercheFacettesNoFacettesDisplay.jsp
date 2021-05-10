@@ -28,6 +28,11 @@
 	        <form method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
 	           
 	            <input type="hidden" name="noFacette" value="true" data-technical-field />
+	            	            
+	            <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("cantonMapSearch")) %>'>
+	               <% Canton cantonSearch = (Canton) request.getAttribute("cantonMapSearch"); %>
+	               <input type="hidden" name='<%= "canton" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= cantonSearch.getCantonCode() %>' data-technical-field />        
+	            </jalios:if>
 	            
 	            <input type="hidden" name='<%= "typeDeTuileFicheLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeTuileFicheLieu() %>' data-technical-field />
 	        
