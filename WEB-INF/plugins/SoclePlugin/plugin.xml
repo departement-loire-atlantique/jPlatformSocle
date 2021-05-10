@@ -342,6 +342,9 @@
         <template name="default" file="doListeDeContenusContacts.jsp" usage="listeContacts">
             <label xml:lang="fr">Gabarit de liste de contacts (fiche lieu)</label>
         </template>
+        <template name="default" file="doListeDeContenusVideos.jsp" usage="listeVideos">
+            <label xml:lang="fr">Gabarit de liste de vidéos</label>
+        </template>
     </templates>
     <templates type="Lien">
         <template name="default" file="doLienFullDisplay.jsp" usage="full"> 

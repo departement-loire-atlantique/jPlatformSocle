@@ -28,7 +28,7 @@ if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
 %>
 
 <jalios:if predicate="<%= Util.notEmpty(titleVideo) %>">
-    <h3 class="h3-like" id="titreVideo"><%= titleVideo %></h3>
+    <h3 class="h3-like"><%= titleVideo %></h3>
 </jalios:if>
 <jalios:if predicate="<%= Util.notEmpty(chapoVideo) %>">
     <jalios:wysiwyg><%= chapoVideo %></jalios:wysiwyg>
