@@ -16,7 +16,7 @@ Publication pub = (Publication) data;
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">           
     <div class="ds44-card__section">            
         <div class="ds44-innerBoxContainer">
-            <h2 class="h4-like ds44-cardTitle" id="1"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h2>
+            <h2 class="h4-like ds44-cardTitle"><a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a></h2>
             <hr class="mbs" aria-hidden="true"/>
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= SocleUtils.getTypeLibelle(pub, userLang) %></p>            
         </div>
