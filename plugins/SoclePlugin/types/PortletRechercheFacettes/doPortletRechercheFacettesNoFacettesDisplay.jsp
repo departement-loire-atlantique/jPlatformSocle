@@ -29,7 +29,7 @@
 	           
 	            <input type="hidden" name="noFacette" value="true" data-technical-field />
 	            	            
-	            <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("cantonMapSearch")) %>'>
+	            <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("cantonMapSearch")) && (request.getAttribute("cantonMapSearch") instanceof Canton) %>'>
 	               <% Canton cantonSearch = (Canton) request.getAttribute("cantonMapSearch"); %>
 	               <input type="hidden" name='<%= "canton" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= cantonSearch.getCantonCode() %>' data-technical-field />        
 	            </jalios:if>
