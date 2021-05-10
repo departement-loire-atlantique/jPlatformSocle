@@ -11,13 +11,7 @@
 	String legende = obj.getLegende(userLang);
 	String copyright = obj.getCopyright(userLang);
 	
-	boolean displayEnResume = Util.notEmpty(obj.getChapo(userLang)) || Util.notEmpty(obj.getPourQui(userLang));
-	
-	boolean displayDetails = Util.notEmpty(obj.getIntro(userLang))
-								|| Util.notEmpty(obj.getEligibilite(userLang))
-								|| Util.notEmpty(obj.getCestQuoi(userLang))
-								|| Util.notEmpty(obj.getCommentFaireUneDemande(userLang))
-								|| Util.notEmpty(obj.getQuelsDocumentsFournir(userLang));
+	boolean displayEnResume = Util.notEmpty(obj.getPourQui(userLang)) || Util.notEmpty(obj.getEligibilite(userLang));
 	
 	boolean displayFaq = Util.notEmpty(obj.getFaq());
 	
@@ -100,10 +94,15 @@
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getIntro(userLang)) %>">
                            <jalios:wysiwyg><%= obj.getIntro(userLang) %></jalios:wysiwyg> 		               
 		               </jalios:if>
-		               <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
+		               <jalios:if predicate="<%= displayEnResume %>">
 			               <section class="ds44-contenuArticle" id="sectionPourQui" tabindex="-1">
 			                  <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
-			                  <jalios:wysiwyg><%= obj.getPourQui(userLang) %></jalios:wysiwyg>
+			                  <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
+                                 <jalios:wysiwyg><%= obj.getPourQui(userLang) %></jalios:wysiwyg>
+                              </jalios:if>
+                              <jalios:if predicate="<%= Util.notEmpty(obj.getEligibilite(userLang)) %>">
+                                 <jalios:wysiwyg><%= obj.getEligibilite(userLang) %></jalios:wysiwyg>
+                              </jalios:if>
 			               </section>
 		               </jalios:if>
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
