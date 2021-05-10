@@ -24,6 +24,9 @@ else if(contenus[0] instanceof FicheLieu){
 else if(contenus[0] instanceof Exposition){
 	usage = "listeExpositions";
 }
+else if(contenus[0] instanceof Video){
+  usage = "listeVideos";
+}
 else{
 	return;
 }
