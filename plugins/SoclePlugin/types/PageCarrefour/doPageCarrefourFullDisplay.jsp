@@ -66,9 +66,13 @@ String copyright = obj.getCopyright(userLang);
     </section>
 
     <jalios:if predicate="<%= Util.notEmpty(obj.getBottomportlets()) %>">
+        <% request.setAttribute("currentCatSearch", currentCategory.getId());%>
+        <% request.setAttribute("parentCatSearch", currentCategory.getParent().getId());%>
         <jalios:foreach name="itPortlet" array="<%= obj.getBottomportlets() %>" type="com.jalios.jcms.Publication">
             <jalios:include id="<%= itPortlet.getId() %>" />
         </jalios:foreach>
+        <% request.removeAttribute("currentCatSearch"); %>
+        <% request.removeAttribute("parentCatSearch"); %>
     </jalios:if>
 
         

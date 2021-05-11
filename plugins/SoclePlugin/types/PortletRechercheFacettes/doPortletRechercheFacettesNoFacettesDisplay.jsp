@@ -34,6 +34,11 @@
 	               <input type="hidden" name='<%= "canton" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= cantonSearch.getCantonCode() %>' data-technical-field />        
 	            </jalios:if>
 	            
+                <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("currentCatSearch")) &&  Util.notEmpty(request.getAttribute("parentCatSearch"))%>'>
+                   <input type="hidden" name='cids' value='<%= request.getAttribute("currentCatSearch") %>' data-technical-field />
+                   <input type="hidden" name='cidBranches' value='<%= request.getAttribute("parentCatSearch") %>' data-technical-field />        
+                </jalios:if>	            
+	            
 	            <input type="hidden" name='<%= "typeDeTuileFicheLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeTuileFicheLieu() %>' data-technical-field />
 	        
 	            <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
