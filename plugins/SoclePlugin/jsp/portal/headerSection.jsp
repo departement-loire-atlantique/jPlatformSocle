@@ -48,7 +48,9 @@ if(multilingue){
             <ul class="ds44-list ds44-skiplinks">
                 <li><a href="#content" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.content") %></a></li>
                 <li><a href="#open-menu" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.menu") %></a></li>
-                <li><a href="#open-search" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
+                <jalios:if predicate="<%= displaySearchMenu %>">
+                    <li><a href="#open-search" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.search") %></a></li>
+                </jalios:if>
                 <li><a href="<%= channel.getUrl() %>accessibilite" class="ds44-skiplinks--link"><%= glp("jcmsplugin.socle.skiplinks.accessibility") %></a></li>
             </ul>
     

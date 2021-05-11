@@ -1335,6 +1335,8 @@ public final class SocleUtils {
       }
       else if(nameParam.contains("[value]")) {
     	  itNameKey = nameParam.replace("[value]", "");
+      }else if(!nameParam.contains("[")) {
+        itNameKey = nameParam;
       }
       // Enregistre les paramètres dans une map dans un format plus classique pour le serveur
       if(Util.notEmpty(itNameKey) && !skip) {

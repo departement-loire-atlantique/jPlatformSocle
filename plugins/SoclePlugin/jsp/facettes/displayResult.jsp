@@ -25,6 +25,10 @@ String typeDeTuileFicheLieu = request.getParameter("typeDeTuileFicheLieu");
 Category typeDelieuMisEnAvant_1 = channel.getCategory(box.getTypeDeLieu());
 Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
 
+// Pager
+boolean hasPager = box.getPager();
+Integer pager = getIntParameter("page", 1);
+int maxResult = box.getMaxResults(); 
 
 %><%
 
@@ -76,8 +80,10 @@ if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("af
 }
 
 
-%><%@ include file="/types/PortletQueryForeach/doSort.jspf" %><%
+%>
 
+
+<%@ include file="/types/PortletQueryForeach/doSort.jspf" %><%
 
 // Place les contenu mis en avant en tête de résultat
 if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2)) {
@@ -121,10 +127,22 @@ if(Util.notEmpty(typeDelieuMisEnAvant_1) || Util.notEmpty(typeDelieuMisEnAvant_2
 JsonArray jsonArray = new JsonArray();
 JsonObject jsonObject = new JsonObject();
 
+// Gestion du pager
+if(hasPager) {
+  jsonObject.addProperty("page-index", pager);
+} else {
+  jsonObject.addProperty("max-result", maxResult);
+}
+
+
 jsonObject.addProperty("nb-result", collection.size());
-jsonObject.addProperty("nb-result-per-page", box.getMaxResults());
-jsonObject.addProperty("max-result", box.getMaxResults());
+jsonObject.addProperty("nb-result-per-page", maxResult);
+
 jsonObject.add("result", jsonArray);
+
+
+
+
 
 // Id unique de la recherche stocké en bdd et généré depuis la jsp displayResultDecodeParams.jsp (null si pas de ré-écriture d'url)
 jsonObject.addProperty("id", request.getParameter("searchId"));
@@ -134,9 +152,11 @@ session.setAttribute("isSearchFacetLink", true);
 
 %><%
 
-%><%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %><%
+%>
 
-    %><jalios:buffer name="itPubListGabarit"><%       
+<jalios:foreach collection="<%= collection %>" name="itPub" type="Publication" max='<%= maxResult %>' skip='<%= (pager - 1) * maxResult  %>'>
+
+    <jalios:buffer name="itPubListGabarit"><%       
 	    %><jalios:select><%	        
 	        %><jalios:if predicate="<%= itPub instanceof FicheLieu %>"><%
 	           %><%
@@ -178,6 +198,6 @@ session.setAttribute("isSearchFacetLink", true);
      jsonArray.add(SocleUtils.publicationToJsonObject(itPub, itPubListGabarit, itPubListGabarit, null));
     %><%
                                         
-%><%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf" %><%
+%></jalios:foreach> <%
 request.removeAttribute("tagRootCatId");
 %><%= jsonObject %>
