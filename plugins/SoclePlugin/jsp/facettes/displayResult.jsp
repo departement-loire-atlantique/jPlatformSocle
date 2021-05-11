@@ -29,7 +29,7 @@ Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
 %><%
 
 %><%@ include file="/types/PortletQueryForeach/doQuery.jspf" %><%
-
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQuerySpecificCantons.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
@@ -37,7 +37,7 @@ Category typeDelieuMisEnAvant_2 = channel.getCategory(box.getTypeDeLieu2());
 
 // Filtre les communes non sectorisées (id ref vide) quand la sectorisation est activée
 // Car en cas de recherche avec sectorisation le filtre sur les commune est désactivé (car une commune peut avoir un lieu en dehors de cette même commune)
-if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("sectorisation"))) {
+if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("sectorisation")) && Util.notEmpty(box.getQueries())) {
   request.setAttribute("communeHorsSectorisation", true);
   QueryHandler qhCommune = new QueryHandler(box.getQueries()[0]);
   Set resultCommuneSet = qhCommune.getResultSet();

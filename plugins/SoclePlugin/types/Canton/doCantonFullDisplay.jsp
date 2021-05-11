@@ -144,7 +144,7 @@ List<String> remplacants = new ArrayList<String>();
         PortalElement itPortalElem = channel.getData(PortalElement.class, channel.getProperty("jcmsplugin.socle.canton.recherche.portlet.id"));
         %>
         <jalios:if predicate="<%= Util.notEmpty(itPortalElem) %>">
-            <% request.setAttribute("cantonMapSearch", obj); // nécessaire pour afficher des résultats canton. Sera supprimé une fois les éléments de recherche affichés %>
+            <% session.setAttribute("cantonMapSearch", obj); // nécessaire pour afficher des résultats canton. Sera supprimé une fois les éléments de recherche affichés %>
             <jalios:include pub="<%= itPortalElem %>"/>
         </jalios:if>
             
