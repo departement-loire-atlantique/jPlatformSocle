@@ -15,7 +15,9 @@
                 %>
                 <jalios:if predicate="<%= Util.notEmpty(portletSearch) %>">
 	                <div class="col-<%= Util.isEmpty(portletMea) ? "12" : "5" %>-small-1 txtcenter">
-	                    <jalios:include pub="<%= portletSearch %>"/>
+	                    <% request.setAttribute("headerMenu", true); %> 
+                        <jalios:include pub="<%= portletSearch %>"/> 
+                        <% request.removeAttribute("headerMenu"); %> 
 	                </div>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(portletSearch) && Util.notEmpty(portletMea) %>">

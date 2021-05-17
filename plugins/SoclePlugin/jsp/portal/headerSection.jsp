@@ -19,6 +19,13 @@ Set<Category> subMenuCatList = Util.notEmpty(subMenuRootCat) ? SocleUtils.getOrd
 
 boolean displaySearchMenu = channel.getBooleanProperty("jcmsplugin.socle.site.header.show.rechercher", true);
 
+
+//Si la portlet de recherche à facette est affichée alors ne pas afficher celle de la top-bar (sinon conflit JS)
+Publication portletSearchTopbar = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletsearch.id"));
+if(Util.notEmpty(portletSearchTopbar) && portletSearchTopbar.getId().equalsIgnoreCase(request.getParameter("boxIdform-element[value]"))) {
+  displaySearchMenu = false;
+}
+
 boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
 String changeLang = "";
 String langIcon = "";
