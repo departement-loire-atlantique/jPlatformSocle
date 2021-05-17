@@ -15,7 +15,7 @@ mapThemes.put("environnement", new String[] {"nature", "grandlieu"});
 mapThemes.put("culture", new String[] {"bdla", "archives", "dobree", "ressources-edu", "chateau-chateaubriant", "chateau-clisson", "garenne-lemot", "folies-siffait", "blanche-couronne", "eglise-vieux-bourg"});
 mapThemes.put("deplacements", new String[] {"inforoutes", "pont-st-naz", "bacs"});
 mapThemes.put("developpement-innovation", new String[] {"opendata", "numerique", "agirseniors", "lad", "tourisme", "imagine-la"});
-mapThemes.put("territoire", new String[] {"vuduciel", "vuduciel","atlas"});
+mapThemes.put("territoire", new String[] {"vuduciel", "observatoire","atlas"});
 
 %>
 
