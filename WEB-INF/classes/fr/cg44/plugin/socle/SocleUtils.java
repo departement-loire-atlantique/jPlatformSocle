@@ -471,13 +471,13 @@ public final class SocleUtils {
 	
 		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
 				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
-				"", fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", "");
+				fichelieu.getCs2(), fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", fichelieu.getCedex2());
 	}	
 	
 
 	
 	/**
-	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Commune sous la forme suivante :</p>
+	 * <p>Concatène et formate toutes les infos d'une adresse en un String à partir d'une Commune sous la forme suivante :</p>adresse
 	 * <p>[adresse mairie]<br\></p>
 	 * <p>CS [cs]<br\></p>
 	 * <p>[codePostal] [commune]</p>
