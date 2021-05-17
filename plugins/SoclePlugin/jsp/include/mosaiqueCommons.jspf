@@ -1,0 +1,37 @@
+<%
+
+Object obj = request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+
+Carousel carousel;
+if(obj instanceof Carousel) {
+    carousel = (Carousel) obj;
+} else {
+    %><%@ page import="com.jalios.jcms.taglib.card.*"%>
+    <%@ include file='/jcore/media/mediaTemplateInit.jspf'%><%
+    carousel = (Carousel) data;
+}
+
+if (Util.isEmpty(carousel.getElements1())) {
+    return;
+}
+
+CarouselElement[][] elemCarousel2DArr = SocleUtils.initCarouselElement2DArr(carousel.getElements1(), tuileNb);
+
+String titreMosaique = carousel.getTitre(userLang);
+String sousTitreMosaique = carousel.getSoustitre(userLang);
+
+%>
+<jalios:if predicate="<%= Util.notEmpty(titreMosaique) || Util.notEmpty(sousTitreMosaique) %>">
+<header class="txtcenter ds44--l-padding-tb">
+          <jalios:if predicate="<%= Util.notEmpty(titreMosaique) %>">
+          <h3 class="h3-like">
+              <%= titreMosaique %>
+          </h3>
+          </jalios:if>
+          <jalios:if predicate="<%= Util.notEmpty(sousTitreMosaique) %>">
+          <h4 class="h4-like">
+              <%= sousTitreMosaique %>
+          </h4>
+          </jalios:if>
+</header>
+</jalios:if>
