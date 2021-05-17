@@ -86,8 +86,8 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
           <%
           String titreCommune = Util.notEmpty(pub.getCommune()) ? pub.getCommune().getTitle() : "";
           String adresse = SocleUtils.formatAddress("", pub.getEtageCouloirEscalier(),
-              pub.getEntreeBatimentImmeuble(), pub.getNdeVoie(), pub.getLibelleDeVoie(), pub.getLieudit(), "",
-              pub.getCodePostal(), titreCommune, "");
+              pub.getEntreeBatimentImmeuble(), pub.getNdeVoie(), pub.getLibelleDeVoie(), pub.getLieudit(), pub.getCs2(),
+              pub.getCodePostal(), titreCommune, pub.getCedex2());
           %>
           <jalios:if predicate="<%= Util.notEmpty(adresse) %>">
               <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.adresse") %> : </span><%= adresse %></p>
