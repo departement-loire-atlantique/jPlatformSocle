@@ -90,7 +90,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
+    <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="com.jalios.jcms.Content[]">
       <label xml:lang="fr">Qui contacter ?</label>
     </field>
     <field name="introContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
