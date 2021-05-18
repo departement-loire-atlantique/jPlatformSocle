@@ -66,7 +66,7 @@ if(!isExpire && MailjetManager.addContactList(email)) {
                         <jalios:select>
 	                        <jalios:if predicate="<%= isValide %>">
 		                        <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide") %></h2>                      
-		                        <p><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme}) %></p>   
+		                        <%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme}) %> 
 	                        </jalios:if>
 	                        <jalios:if predicate="<%= isExpire %>">
                                 <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-expire") %></h2>                      

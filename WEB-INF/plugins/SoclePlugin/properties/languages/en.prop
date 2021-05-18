@@ -95,7 +95,8 @@ $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: Id de la portlet wysiwyg de l
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: Id de la catégorie flash info thématique (newsletter)
 $jcmsplugin.socle.footer.newsletter.parutions.cat: Id de la catégorie prochaines parutions (newsletter)
 
-jcmsplugin.socle.footer.newsletter.confidentialite.pub.link: Lien vers la politique de confidentialité (newsletter)
+jcmsplugin.socle.form.newsletter.portlet-rgpd.id: ID de la portlet Wysiwyg. Mention lié aux données personnelles (newsletter)
+jcmsplugin.socle.form.newsletter.mailTo: Email pour l'envoi (newsletter)
 
 jcmsplugin.socle.mailjet.apiKey: Clé API mailjet
 jcmsplugin.socle.mailjet.apiSecretKey:Clé secrète mailjet
@@ -598,20 +599,19 @@ jcmsplugin.socle.newletter.titre: Recevoir l’actualité par mail
 jcmsplugin.socle.newletter.mention: Les champs marqués d’un astérisque * sont obligatoires
 jcmsplugin.socle.newletter.alert.parution: M’alerter des prochaines parutions
 jcmsplugin.socle.newletter.flash.info: M’abonner aux flash infos thématiques
-jcmsplugin.socle.newletter.politique-confidentialite: Vous affirmez avoir pris connaissance de notre <a target="blank" href="{0}">Politique de confidentialité</a>. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant à l’adresse <a href="mailto:{1}" title="Contacter par email : désinscription à la newsletter - {1}">{1}</a>
 jcmsplugin.socle.newletter.inscrire: M'inscrire
 jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actualité par email
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
-jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre Inscription
-jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre inscription à la newsletter en cliquant sur le lien suivant : <a href="{0}"/>Je confirme mon inscription</a><p><p>Si le lien ne fonctionne pas coller l'url suivante dans votre navigateur : {0}</p><p>Les thématiques choisies : {1}
+jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer vos abonnements
+jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer vos abonnements aux actualités du Département en cliquant sur le lien suivant : <a href="{0}">Je confirme mon inscription</a></p><p>Les thématiques choisies :</p> {1} <p>Merci pour l'intérêt porté à  l'actualité du Département de Loire-Atlantiqueà bientôt sur le site loire-atlantique.fr</p>
 jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
 
-jcmsplugin.socle.newletter.lbl: Newsletter
-jcmsplugin.socle.newletter.title.lbl: Inscription newsletter
-jcmsplugin.socle.newletter.mail.inscription-valide: Inscription validée
+jcmsplugin.socle.newletter.lbl: Recevez nos infos par mail
+jcmsplugin.socle.newletter.title.lbl: Confirmer vos abonnements
+jcmsplugin.socle.newletter.mail.inscription-valide: Vos abonnements sont validés
 jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
 jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
-jcmsplugin.socle.newletter.mail.inscription-valide.content: Vous être inscrit à la newsletter aux thématiques suivantes {0}
+jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt sur loire-atlantique.fr</p>
 jcmsplugin.socle.newletter.mail.erreur: Erreur
 jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
 

@@ -134,7 +134,14 @@
                 </button>
             
             </form>
-            <p class="ds44-textLegend--mentions mtm" id="valid-form"><%= glp("jcmsplugin.socle.newletter.politique-confidentialite", new String[]{channel.getProperty("jcmsplugin.socle.footer.newsletter.confidentialite.pub.link"), channel.getProperty("jcmsplugin.socle.form.contact.mailTo")}) %></p>
+            
+            <% Data newsletterWysiwyg = channel.getData(channel.getProperty("jcmsplugin.socle.form.newsletter.portlet-rgpd.id")); %>
+            <jalios:if predicate='<%= Util.notEmpty(newsletterWysiwyg) && newsletterWysiwyg instanceof PortletWYSIWYG %>'>
+              <jalios:wysiwyg css="ds44-textLegend--mentions mtm">
+                  <%= ((PortletWYSIWYG) newsletterWysiwyg).getWysiwyg() %>
+              </jalios:wysiwyg>
+            </jalios:if>
+                    
         </div>
     </div>
 </section>
