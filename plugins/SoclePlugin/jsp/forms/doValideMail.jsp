@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><%= glp("jcmsplugin.socle.newletter.title.lbl") %></title>
   
-  <jsp:include page="stylesEmail.jsp" />
+  <jsp:include page="/plugins/SoclePlugin/jsp/mail/stylesEmail.jsp" />
   
 </head>
 

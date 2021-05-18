@@ -106,7 +106,9 @@ $jcmsplugin.socle.footer.newsletter.intro.wysiwyg:
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: c_1354966
 $jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
 
-jcmsplugin.socle.footer.newsletter.confidentialite.pub.link: 
+jcmsplugin.socle.form.newsletter.portlet-rgpd.id:
+jcmsplugin.socle.form.newsletter.mailTo:
+
 jcmsplugin.socle.footer.newsletter.expire.heure: 72 
 
 jcmsplugin.socle.mailjet.apiKey:

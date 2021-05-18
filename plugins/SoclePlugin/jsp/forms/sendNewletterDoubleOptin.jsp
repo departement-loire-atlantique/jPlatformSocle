@@ -61,7 +61,7 @@ Boolean mailStatusOk = channel.isMailEnabled();
 
 try { 
 	MailMessage msg = new MailMessage("Newsletter");
-	msg.setFrom(channel.getDefaultEmail());
+	msg.setFrom(channel.getProperty("jcmsplugin.socle.form.newsletter.mailTo"));
 	msg.setTo(mail);
 		
 	msg.setSubject(glp("jcmsplugin.socle.newletter.mail.confirme.sujet"));
