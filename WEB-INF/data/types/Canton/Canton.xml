@@ -5,10 +5,10 @@
     <label xml:lang="en">Title</label>
   </title>
   <fields>
-    <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="true" html="false" checkHtml="true">
+    <field name="description" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="true" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="default">
       <label xml:lang="fr">Description</label>
     </field>
-    <field name="texteIntro" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="texteIntro" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Texte intro</label>
     </field>
     <field name="lienVersContenuChiffresCles" editor="link" required="false" compactDisplay="false" type="generated.ChiffresCles[]">

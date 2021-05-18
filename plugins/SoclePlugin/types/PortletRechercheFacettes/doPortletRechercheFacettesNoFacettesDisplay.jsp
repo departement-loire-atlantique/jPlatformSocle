@@ -22,7 +22,7 @@
 %>
 
 
-<div class="ds44-container-large">
+
     <div class="ds44-facette">
         <div class="ds44-facette-body">
 	        <form method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
@@ -99,7 +99,7 @@
 	   </jalios:if>
 	</div>
 
-</div>
+
 <% 
 request.removeAttribute("rechercheId");
 %>
