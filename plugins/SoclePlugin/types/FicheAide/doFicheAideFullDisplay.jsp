@@ -118,7 +118,7 @@
 		               </section>
 		               </jalios:if>
 		               <jalios:if predicate="<%= displayFaireDemande %>">
-		               <section class="ds44-contenuArticle" id="#sectionFaireDemande" tabindex="-1">
+		               <section class="ds44-contenuArticle" id="sectionFaireDemande" tabindex="-1">
 		                  <h2 id="idTitre5"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
 		                  <jalios:wysiwyg>
 		                      <%= obj.getCommentFaireUneDemande(userLang) %>
