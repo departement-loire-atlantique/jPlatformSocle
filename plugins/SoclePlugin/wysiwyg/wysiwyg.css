@@ -1,0 +1,8 @@
+div.mce-htmlembed-preview {
+	background-color: #E6E6E6 ;
+	border : 1px solid gray;
+	min-height:60px;
+}
+div.mce-htmlembed-preview:before{
+	content: 'Contenu HTML intégré';
+}
