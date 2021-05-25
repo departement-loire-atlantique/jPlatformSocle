@@ -369,7 +369,7 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Genre genre = new Genre();
         try {
-            genre.setGenreId(json.getString("id"));
+            genre.setGenreId(Integer.toString(json.getInt("id")));
             genre.setCategorie(json.getString("categorie"));
             genre.setLibelle(json.getString("libelle"));
             if (!json.isNull("photos")) {
