@@ -896,6 +896,10 @@ jcmsplugin.socle.mosaique.popin.title: Zoom on mosaic element
 # Portlet Recherche Facettes à afficher sur les pages Canton
 jcmsplugin.socle.canton.recherche.portlet.id: Portlet Recherche Facettes ID on Canton display
 
+# Opendata
+jcmsplugin.socle.opendata.link.label: Consulter sur le site opendata : {0}
+jcmsplugin.socle.opendata.link.title: Consulter sur le site opendata : {0} - nouvelle fenêtre
+
 # ------------------------------------------------------------
 #  Export CSV / Images
 # ------------------------------------------------------------
