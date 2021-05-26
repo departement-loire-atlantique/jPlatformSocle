@@ -756,6 +756,9 @@ jcmsplugin.socle.canton.superficie: Superficie :
 jcmsplugin.socle.canton.population: Population :
 jcmsplugin.socle.canton.habitants: habitant·es
 jcmsplugin.socle.canton.source: (populations légales des cantons en vigueur au 1er janvier 2017. Source : INSEE, Recensement de la population 2016) 
+jcmsplugin.socle.canton.quotidien: Au quotidien
+jcmsplugin.socle.canton.communes: Communes du canton : 
+jcmsplugin.socle.canton.carte.titre: Le Département près de chez vous :
 
 # ------------------------------------------------------------
 #  Fiche SAAD

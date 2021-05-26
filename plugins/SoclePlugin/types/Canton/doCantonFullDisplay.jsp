@@ -110,13 +110,28 @@ List<String> remplacants = new ArrayList<String>();
     
         <jalios:include target="SOCLE_ALERTE"/>
     
-        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>" alertText="<%= obj.getTexteIntro() %>"></ds:titleNoImage>
+        <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" coloredSection="<%= coloredSectionContent %>" alertText="<%= obj.getTexteIntro(userLang) %>"></ds:titleNoImage>
         
-        <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>
+        <%-- Communes du canton --%>
+        <%
+        Set<City> communesSet = channel.getLinkIndexedDataSet(obj, City.class, "canton");
+        %>
+        <jalios:if predicate='<%= Util.notEmpty(communesSet) && communesSet.size() > 1 %>'>
+	        <section>
+		        <div class="ds44-inner-container ds44-mtb3">
+		           <div class="ds44-grid12-offset-2">
+		               <h2 class="h3-like" id="titre_communes"><%= glp("jcmsplugin.socle.canton.communes") %></h2>
+		               <p><%= JcmsUtil.join(communesSet, ", ", userLang)  %></p>
+		           </div>
+		        </div>
+	         </section>
+         </jalios:if>
+        
+        <jalios:if predicate='<%= Util.notEmpty(obj.getDescription(userLang)) %>'>
             <section class="ds44-contenuArticle" id="section2">
                 <div class="ds44-inner-container ds44-mtb3">
                     <div class="ds44-grid12-offset-2 ds44-introduction">
-                        <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+                        <jalios:wysiwyg><%= obj.getDescription(userLang) %></jalios:wysiwyg>
                     </div>
                 </div>
             </section>
@@ -127,6 +142,7 @@ List<String> remplacants = new ArrayList<String>();
             <section id="sectionCards" class="ds44-contenuArticle">
                 <div class="ds44-inner-container ds44-mtb3">
                     <div class="ds44-grid12-offset-2">
+                        <h2 class="h3-like" id="titre_quotidien"><%= glp("jcmsplugin.socle.canton.quotidien") %></h2>
                         <div class="grid-2-small-1">
 	                        <jalios:foreach name="itChiffreCle" type="ChiffresCles" array="<%= obj.getLienVersContenuChiffresCles() %>">
 				                <div class="col mrs ds44-mtb1">
@@ -145,7 +161,14 @@ List<String> remplacants = new ArrayList<String>();
         %>
         <jalios:if predicate="<%= Util.notEmpty(itPortalElem) %>">
             <% request.setAttribute("cantonMapSearch", obj); // nécessaire pour afficher des résultats canton. Sera supprimé une fois les éléments de recherche affichés %>
-            <jalios:include pub="<%= itPortalElem %>"/>
+            <div class="ds44-inner-container ds44-mtb3">
+                <h3 id="titre_carte"><%= glp("jcmsplugin.socle.canton.carte.titre") %></h3>
+            
+                <div class="ds44-mainResults mtm">
+                    <jalios:include pub="<%= itPortalElem %>"/>
+                </div>
+                
+            </div>
         </jalios:if>
             
 	    <%-- Partagez cette page --%>

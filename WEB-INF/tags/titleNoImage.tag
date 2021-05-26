@@ -87,7 +87,7 @@
 			<jalios:if predicate="<%= Util.notEmpty(alertText) %>">
 			   <div class="ds44-grid12-offset-1">
 			      <div class="ds44--l-padding ds44-lightBG ds44-mb3">
-			         <p class="ds44-docListElem mts"><strong><i class="icon icon-attention ds44-docListIco" aria-hidden="true"></i><jalios:wysiwyg><%= alertText %></jalios:wysiwyg></strong>                       </p>
+			       <jalios:wysiwyg css="mts"><%= alertText %></jalios:wysiwyg>
 			      </div>
 			   </div>
 			</jalios:if>

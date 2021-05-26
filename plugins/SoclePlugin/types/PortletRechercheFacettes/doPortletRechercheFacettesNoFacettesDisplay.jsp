@@ -19,19 +19,28 @@
 	request.setAttribute("showFiltres", showFiltres);
 	
 	request.setAttribute("rechercheId", obj.getId());
+	
+	boolean isContainerLarge = Util.isEmpty(request.getAttribute("cantonMapSearch"));
 %>
 
+<jalios:if predicate="<%= isContainerLarge %>">
+    <div class="ds44-container-large">
+</jalios:if>
 
-<div class="ds44-container-large">
+
     <div class="ds44-facette">
         <div class="ds44-facette-body">
 	        <form method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
 	           
 	            <input type="hidden" name="noFacette" value="true" data-technical-field />
-	            	            
+	            
+	            <% Integer codeCanton = null; %>	            
 	            <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("cantonMapSearch")) && (request.getAttribute("cantonMapSearch") instanceof Canton) %>'>
-	               <% Canton cantonSearch = (Canton) request.getAttribute("cantonMapSearch"); %>
-	               <input type="hidden" name='<%= "canton" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= cantonSearch.getCantonCode() %>' data-technical-field />        
+	               <% 
+	               Canton cantonSearch = (Canton) request.getAttribute("cantonMapSearch");
+	               codeCanton = cantonSearch.getCantonCode();
+	               %>
+	               <input type="hidden" name='<%= "canton" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= codeCanton %>' data-technical-field />        
 	            </jalios:if>
 	            
                 <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("currentCatSearch")) &&  Util.notEmpty(request.getAttribute("parentCatSearch"))%>'>
@@ -86,11 +95,12 @@
 	      <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
 	      </button>
 	      <div class="ds44-mapResults">
-	         <div class="ds44-mapResults-container">
+	         <div class="ds44-mapResults-container">	          
 	            <div class="ds44-js-map" 
 	               data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : channel.getProperty(obj.getTypeDeCarte()) %>' 
 	               data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
-	               data-geojson-refine='<%= obj.getCarteDynamique() %>'></div>
+	               data-geojson-refine='<%= obj.getCarteDynamique() %>' 
+	               data-geojson-code='<%= codeCanton %>'></div>
 	            <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 	            <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
 	            </button>
@@ -99,7 +109,10 @@
 	   </jalios:if>
 	</div>
 
-</div>
+<jalios:if predicate="<%= isContainerLarge %>">
+    </div>
+</jalios:if>
+
 <% 
 request.removeAttribute("rechercheId");
 %>
