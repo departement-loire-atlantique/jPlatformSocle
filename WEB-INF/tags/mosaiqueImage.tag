@@ -49,7 +49,7 @@
 	<jalios:if predicate="<%= hasPopin %>">
 		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.popin.title")) %>'>
 	</jalios:if>
-			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" <% if (!hasFigcaption) { %>alt="<%= alt %>"<% } %> class="ds44-imgRatio is-height-set">
+			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="<%= alt %>" class="ds44-imgRatio is-height-set">
 	<jalios:if predicate="<%= hasPopin %>">
 		</button>
 	</jalios:if>
