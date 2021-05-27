@@ -14,6 +14,8 @@
 	if (Util.isEmpty(obj.getElements1())) {
 		return;
 	}
+	
+	obj.setTemplate("query.simple");
 %>
 <%ServletUtil.backupAttribute(pageContext , PortalManager.PORTAL_PUBLICATION);%>
 <jalios:include pub="<%= obj %>" usage="query"/>
