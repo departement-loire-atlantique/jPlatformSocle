@@ -19,6 +19,8 @@
 
 <main role="main" id="content">
 
+<%= getPortlet(bufferMap,"top") %>
+
 <jalios:include target="SOCLE_ALERTE"/>
  
 <section class="ds44-container-large ds44-homepage-container ds44-homepage-container--ha ds44--xxl-padding-b">

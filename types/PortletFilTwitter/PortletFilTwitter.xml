@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletFilTwitter" superclass="generated.AbstractPortletSkinable" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Portlet Fil Twitter</label>
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="libelleTwitter" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé twitter</label>
+    </field>
+    <field name="lienTwitter" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" openWindow="false" pattern="^((http)|(https)|(ftp)|(mailto)):.*">
+      <label xml:lang="fr">Lien twitter</label>
+    </field>
+    <field name="requeteTwitter" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Requête Twitter</label>
+    </field>
+    <field name="texteEtendu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Texte étendu</label>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="consumerKey" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Consumer Key</label>
+    </field>
+    <field name="consumerSecret" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Consumer Secret</label>
+    </field>
+    <field name="accessToken" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Access Token</label>
+    </field>
+    <field name="accessTokenSecret" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Access Token Secret</label>
+    </field>
+    <field name="activerCache" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Activer cache</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="dureeDuCacheEnMinutes" editor="int" required="false" compactDisplay="false" type="int" default="0">
+      <label xml:lang="fr">Durée du cache (en minutes)</label>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+
