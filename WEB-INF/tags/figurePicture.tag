@@ -212,6 +212,11 @@ else {
   label = alt;
 }
 
+// Pas de alt s'il y a un caption
+if (hasFigcaption) {
+  alt = "";
+}
+
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
     <jalios:if predicate="<%= hasFigcaption %>">
