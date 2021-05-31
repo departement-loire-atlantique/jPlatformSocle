@@ -72,9 +72,9 @@ try {
     <div class="ds44-box ds44-theme ds44-bgTriangle-left">
         <div class="ds44-flex-container ds44-flex-container--colMed ds44-flex-container--colMed--colRev">
             <p class="ds44-boxPushContent--fluid ds44-boxPushPic--horizontal" aria-level="2" role="heading">
-                <a href="#" target="_blank" class="ds44-rsLink" title="#ObservatoireLA - Les tweets sur l'observatoire du Département de Loire-Atlantique - nouvelle fenêtre">
+                <a href="<%= box.getLienTwitter() %>" target="_blank" class="ds44-rsLink" title='<%= box.getLibelleTwitter(userLang) %> - <%= HttpUtil.encodeForHTMLAttribute(box.getTitreTwitter(userLang)) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'>
                     <i class="icon icon-twitter icon--xlarge ds44-mr1 ds44-mtb1" aria-hidden="true"></i>
-                    <span class="p-medium ds44-mtb1">#ObservatoireLA</span></a>
+                    <span class="p-medium ds44-mtb1"><%= box.getLibelleTwitter(userLang) %></span></a>
             </p>
             
             <ul class="ds44-boxPushContent ds44-boxPushContent--fluid ds44-list ds44-noMrg">
