@@ -298,6 +298,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="AbonnementMailjet">
+        <template name="embed" file="doAbonnementMailjetEmbedDisplay.jsp" usage="embed">
+            <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
+        </template>
+    </templates>
     <templates type="FileDocument">
         <template name="embed" file="doFileDocumentEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>

@@ -22,6 +22,9 @@ Map<String, String[]> params = URLUtils.parseUrlQueryString(des3Encrypter.decryp
 // Récupère l'email et les segment pour mailjet
 String email = Util.getFirst(params.get("newletters-mail"));
 String[] segment = params.get("segmentid");
+String nomList = Util.getFirst(params.get("nom-list"));
+String idListString = Util.getFirst(params.get("id-list"));
+
 
 // récupère la date d'expiration 
 Calendar calendar = Calendar.getInstance();
@@ -32,8 +35,15 @@ Date currentDate = Calendar.getInstance().getTime();
 boolean isExpire = currentDate.after(calendar.getTime());
 
 boolean isValide = false;
-if(!isExpire && MailjetManager.addContactList(email)) {
+// Newsletter avec propriétés
+if(Util.notEmpty(segment) && !isExpire && MailjetManager.addContactList(email)) {
   if(MailjetManager.addContactProperties(email, segment)) {
+    isValide = true;
+  }
+} else if(Util.notEmpty(idListString)) {
+  //Newsletter sans propriété avec un id de liste de contact spécifique
+  Integer idList = Integer.parseInt(idListString);
+  if(idList != null && !isExpire && MailjetManager.addContactList(email, idList)) {
     isValide = true;
   }
 }
@@ -42,14 +52,21 @@ if(!isExpire && MailjetManager.addContactList(email)) {
 
 <jalios:buffer name="theme">
 	<ul>
-	    <jalios:foreach array="<%= segment %>" name="itCatId" type="String">
-	        <%
-	        Category itCat = channel.getCategory(itCatId);
-	        %>
-	        <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
-	            <li><%= itCat.getName(userLang) %></li>
-	        </jalios:if>
-	    </jalios:foreach>
+	
+	    <jalios:if predicate='<%= Util.notEmpty(nomList) %>'>
+            <li><%= nomList %></li>
+        </jalios:if>
+	
+	     <jalios:if predicate='<%= Util.notEmpty(segment) %>'>
+		    <jalios:foreach array="<%= segment %>" name="itCatId" type="String">
+		        <%
+		        Category itCat = channel.getCategory(itCatId);
+		        %>
+		        <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+		            <li><%= itCat.getName(userLang) %></li>
+		        </jalios:if>
+		    </jalios:foreach>
+		 </jalios:if>
 	</ul>
 </jalios:buffer>
 
