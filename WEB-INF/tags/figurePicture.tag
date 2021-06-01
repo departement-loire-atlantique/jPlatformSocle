@@ -197,7 +197,7 @@ if ("-1".equals(alt)) { // si le alt est à -1, forcer un alt vide
 }
 
 if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
-  alt = "";
+  alt = Util.isEmpty(legend) ? "" : legend;
 }
 
 String label = ariaLabel;
@@ -227,12 +227,7 @@ else {
 	    
 	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
-	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                <%=legend%>
-	            </jalios:if>
-	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
-	            </jalios:if>
+	            <%= label %>
 	        </figcaption>
 	</figure>
 	</jalios:if>
