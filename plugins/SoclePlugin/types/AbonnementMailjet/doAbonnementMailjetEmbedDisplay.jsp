@@ -13,13 +13,13 @@
 			<div class="ds44-form__container">   
 			
 				<div class="ds44-posRel">				  
-				   <label for="newletters-mail" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup></span></span></label>                       
-                   <input type="email" id="newletters-mail" name="newletters-mail" class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.faq.votre-email"))) %>'  required autocomplete="email"   aria-describedby="explanation-newletters-mail titre-modale-newsletter" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>                                    				
+				   <label for='<%= "newletters-mail" + obj.getId() %>' class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup></span></span></label>                       
+                   <input type="email" id='<%= "newletters-mail" + obj.getId() %>' name="newletters-mail" class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.faq.votre-email"))) %>'  required autocomplete="email"   aria-describedby="explanation-newletters-mail titre-modale-newsletter" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>                                    				
 				</div>
 				
 				<div class="ds44-field-information" aria-live="polite">
                     <ul class="ds44-field-information-list ds44-list">
-                        <li id="explanation-newletters-mail" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.email") %></li>
+                        <li id='<%= "explanation-newletters-mail" + obj.getId() %>' class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.email") %></li>
                     </ul>
                 </div>
 				
