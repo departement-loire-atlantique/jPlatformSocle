@@ -775,3 +775,9 @@ jcmsplugin.socle.api.places.facebook.id:
 #  Export CSV / Images
 # ------------------------------------------------------------
 jcmsplugin.socle.export.img.filepath:
+
+# ------------------------------------------------------------
+#  Fil Twitter
+# ------------------------------------------------------------
+jcmsplugin.socle.portlet-twitter.timeout: 5000
+jcmsplugin.socle.portlet-twitter.retry: 3

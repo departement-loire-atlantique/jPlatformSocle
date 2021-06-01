@@ -79,6 +79,7 @@
     <type name="PortletNotesAPI"></type>
     <type name="PortletPush"></type>
     <type name="PortletRechercheFacettes"></type>
+    <type name="PortletFilTwitter"></type>
     <type name="PressCommunique"></type>
     <type name="ResultatDeRecherche"></type>
     <type name="SAAD"></type>
@@ -599,7 +600,12 @@
         <template name="default" file="doShowFullDisplay.jsp" usage='full'>
           <label xml:lang="fr">DS44 : gabarit générique simple</label>
         </template>
-    </templates>    
+    </templates>
+    <templates type="PortletFilTwitter">
+      <template name="default" file="doPortletFilTwitterFullDisplay.jsp" usage='box'>
+          <label xml:lang="fr">Portlet Fil Twitter</label>
+      </template>
+    </templates>        
   </types>
 
   <jars>
@@ -610,6 +616,11 @@
     <jar path="mailjet-client-5.1.1.jar" />
     <jar path="okhttp-3.12.0.jar" />
     <jar path="okio-1.15.0.jar" />
+    <!-- Twitter -->
+    <jar path="twitter4j-async-4.0.6.jar" />
+    <jar path="twitter4j-core-4.0.6.jar" />
+    <jar path="twitter4j-media-support-4.0.6.jar" />
+    <jar path="twitter4j-stream-4.0.6.jar" />    
   </jars>
   <java-classes>
     <java package="fr.cg44.plugin.socle"/>   
