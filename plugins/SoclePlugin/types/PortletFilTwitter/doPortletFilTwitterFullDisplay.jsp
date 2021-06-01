@@ -17,9 +17,11 @@ cb.setOAuthConsumerKey(box.getConsumerKey());
 cb.setOAuthConsumerSecret(box.getConsumerSecret());
 cb.setOAuthAccessToken(box.getAccessToken());
 cb.setOAuthAccessTokenSecret(box.getAccessTokenSecret());
+cb.setHttpReadTimeout(channel.getIntegerProperty("jcmsplugin.socle.portlet-twitter.timeout", 60000));
+cb.setHttpRetryCount(channel.getIntegerProperty("jcmsplugin.socle.portlet-twitter.retry", 0));
+
 // Tweet sur 140 ou 280 caractères
 cb.setTweetModeExtended(box.getTexteEtendu());
-
 Twitter twitter = new TwitterFactory(cb.build()).getInstance();
 // Requête de recherche sur Twitter
 Query query = new Query(box.getRequeteTwitter());
