@@ -207,14 +207,10 @@ if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
     label += " ";
     label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
   }
+  alt = label;
 }
 else {
   label = alt;
-}
-
-// Pas de alt s'il y a un caption
-if (hasFigcaption) {
-  alt = "";
 }
 
 %>
@@ -232,12 +228,7 @@ if (hasFigcaption) {
 	    
 	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
-	            <jalios:if predicate="<%= Util.notEmpty(legend)%>">
-	                <%=legend%>
-	            </jalios:if>
-	            <jalios:if predicate="<%= Util.notEmpty(copyright)%>">
-	                <%= JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") %> <%=copyright%>
-	            </jalios:if>
+	            <%= label %>
 	        </figcaption>
 	</figure>
 	</jalios:if>
