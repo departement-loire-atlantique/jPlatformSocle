@@ -23,7 +23,7 @@ StringEncrypter des3Encrypter = new StringEncrypter(StringEncrypter.DESEDE_ENCRY
 
 String mail = request.getParameter("newletters-mail[value]");
 String[] segment = parametersMap.get("segmentid");
-
+String nomList = Util.getFirst(parametersMap.get("nom-list"));
 
 // Ajout de la date d'expiration du lien de validation
 Calendar calendar = Calendar.getInstance();
@@ -43,15 +43,21 @@ String url = URLUtils.buildUrl(redirectUrl, parametersEncodeMap);
 %>
 
 <jalios:buffer name="mailTheme">
-    <ul>
-        <jalios:foreach array="<%= segment %>" name="itCatId" type="String">
-            <%
-            Category itCat = channel.getCategory(itCatId);
-            %>
-            <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
-                <li><%= itCat.getName(userLang) %></li>
-            </jalios:if>
-        </jalios:foreach>
+    <ul>   
+        <jalios:if predicate='<%= Util.notEmpty(nomList) %>'>
+            <li><%= nomList %></li>
+        </jalios:if>
+    
+        <jalios:if predicate='<%= Util.notEmpty(segment) %>'>
+	        <jalios:foreach array="<%= segment %>" name="itCatId" type="String">
+	            <%
+	            Category itCat = channel.getCategory(itCatId);
+	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+	                <li><%= itCat.getName(userLang) %></li>
+	            </jalios:if>
+	        </jalios:foreach>
+	    </jalios:if>
     </ul>
 </jalios:buffer>
 

@@ -69,7 +69,19 @@ public class MailjetManager {
   public static boolean addContactList(String email) throws JSONException {
     
     int contactListId = getChannel().getIntegerProperty("jcmsplugin.socle.mailjet.contactList", 0);
-    
+    return addContactList(email, contactListId);
+   
+  }
+  
+  /**
+   * Ajoute le l'email à la liste de contact
+   * Création du contact si celui-ci n'existe pas dans mailJet
+   * @param email
+   * @return
+   * @throws JSONException 
+   */
+  public static boolean addContactList(String email, int contactListId) throws JSONException {
+        
     if(Util.isEmpty(email) || contactListId == 0) {
       return false;
     }
