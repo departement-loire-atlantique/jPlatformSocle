@@ -197,7 +197,7 @@ if ("-1".equals(alt)) { // si le alt est à -1, forcer un alt vide
 }
 
 if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
-  alt = "";
+  alt = Util.isEmpty(legend) ? "" : legend;
 }
 
 String label = ariaLabel;
@@ -207,7 +207,6 @@ if (Util.isEmpty(label) && Util.notEmpty(legend) || Util.notEmpty(copyright)) {
     label += " ";
     label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
   }
-  alt = label;
 }
 else {
   label = alt;
