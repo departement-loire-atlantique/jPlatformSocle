@@ -1160,6 +1160,19 @@ public final class SocleUtils {
   public static String getUrlOfFormattedImageDiaporamaVignette(String imagePath) {
     return generateVignette(imagePath, channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.width", 0), channel.getIntegerProperty("jcmsplugin.socle.image.diaporama.vignette.height", 0)); 
   }
+  
+  /**
+   * Génère une image formattée pour les vignettes dans un format customisé
+   * La largeur est fixe mais la hauteur dépend du ratio de l'image. 
+   * @param imagePath
+   * @return
+   */
+  public static String getUrlOfFormattedImageCustomMobile(String imagePath) {
+    double ratio = SocleUtils.getRatio(imagePath);
+    int imageWidth = channel.getIntegerProperty("jcmsplugin.socle.image.col4.width", 0);
+    int imageHeight = (int)Math.round(imageWidth / ratio);
+    return generateVignette(imagePath, imageWidth, imageHeight); 
+  }  
 
 
 	/**
@@ -2110,4 +2123,18 @@ public final class SocleUtils {
     }
     return false;
   }	
+  
+  /**
+   * Calcule le ratio d'une image afin de générer la vignette au bon ratio 
+   * @param imagePath le chemin de l'image à tester
+   * @return le ratio de l'image
+   */ 
+  public static double getRatio(String imagePath) {
+    double ratio = 0.0;
+    FileDocument file = FileDocument.getFileDocumentFromFilename(imagePath);
+    if(null != file) {
+      ratio = (double)file.getWidth() / (double)file.getHeight();
+    }
+    return ratio;
+  }   
 }
