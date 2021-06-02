@@ -19,7 +19,7 @@ String copyright = obj.getCopyright(userLang);
         
         <ds:titleBanner pub="<%= obj %>" imagePath="<%=imageFile %>" mobileImagePath="<%=imageMobileFile %>" title="<%=title %>" legend="<%=legende %>" copyright="<%=copyright%>" breadcrumb="true"></ds:titleBanner>
 
-        <div class="ds44-inner-container ds44-xl-margin-tb">
+        <div class="ds44-inner-container <%= Util.notEmpty(obj.getChapo(userLang)) || Util.notEmpty(obj.getTopportlets()) ? "ds44-xl-margin-tb" : "" %>">
             <div class="grid-12-small-1">
                 <div class="col-7">
                     <jalios:if predicate="<%= Util.notEmpty(obj.getChapo(userLang)) %>">
