@@ -181,6 +181,12 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   if (Util.isEmpty(formattedMobilePath)) {
     formattedMobilePath = SocleUtils.getUrlOfFormattedImageCarouselAccueilMobile(image);
   }
+} else if (format.equals("custom") || format.equals("unchanged")){
+  formattedMobilePath = SocleUtils.getUrlOfFormattedImageCustomMobile(imageMobile);
+
+  if (Util.isEmpty(formattedMobilePath)) {
+    formattedMobilePath = SocleUtils.getUrlOfFormattedImageCustomMobile(image);
+  }
 } else {
   // défaut 
   formattedMobilePath = SocleUtils.getUrlOfFormattedImageMobile(imageMobile);

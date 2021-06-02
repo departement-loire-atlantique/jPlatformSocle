@@ -8,6 +8,7 @@
 
   <types>
     <type name="AbstractPortletFacette"></type>
+    <type name="AbonnementMailjet"></type>
     <type name="AccueilAnnuaireAgenda"></type>
     <type name="AccueilDelegation"></type>
     <type name="Action"></type>

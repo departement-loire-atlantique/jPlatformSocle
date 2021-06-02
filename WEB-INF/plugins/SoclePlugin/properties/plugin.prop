@@ -203,6 +203,7 @@ jcmsplugin.socle.image.carrousel.width: 363
 jcmsplugin.socle.image.carrousel.height: 240
 jcmsplugin.socle.image.enavant.width: 1240
 jcmsplugin.socle.image.enavant.height: 520
+jcmsplugin.socle.image.col4.width: 370
 
 # ------------------------------------------------------------
 #  Wysiwyg
