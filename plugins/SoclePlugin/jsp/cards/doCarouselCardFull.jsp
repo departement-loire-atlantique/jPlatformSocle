@@ -15,7 +15,7 @@
 		return;
 	}
 	
-	obj.setTemplate("query.simple");
+	obj.setTemplate("query.mos2pa2papo");
 %>
 <%ServletUtil.backupAttribute(pageContext , PortalManager.PORTAL_PUBLICATION);%>
 <jalios:include pub="<%= obj %>" usage="query"/>
