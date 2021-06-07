@@ -119,9 +119,19 @@
 		               <jalios:if predicate="<%= displayFaireDemande %>">
 		               <section class="ds44-contenuArticle" id="sectionFaireDemande" tabindex="-1">
 		                  <h2 id="idTitre5"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
-		                  <jalios:wysiwyg>
-		                      <%= obj.getCommentFaireUneDemande(userLang) %>
-		                  </jalios:wysiwyg>
+		                  
+			              <jalios:select>
+			                  <jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande(userLang)) %>">
+			                      <jalios:wysiwyg>
+                                  <%= obj.getCommentFaireUneDemande(userLang) %>
+                                  </jalios:wysiwyg>
+                              </jalios:if>
+                              <jalios:if predicate="<%= Util.notEmpty(obj.getIntroFaireUneDemande(userLang)) %>">
+                                  <jalios:wysiwyg>
+                                  <%= obj.getIntroFaireUneDemande(userLang) %>
+                                  </jalios:wysiwyg>
+                              </jalios:if>
+			              </jalios:select>
 		                  <div class="ds44-mt3 grid-12-small-1">
 		                    <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsUtiles()) %>">
 		                        <% 
