@@ -27,7 +27,8 @@
 	
 	boolean displayFaireDemande = ( Util.notEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getUrlEdemarche(userLang)) )  
 									|| ( Util.isEmpty(obj.getEdemarche(loggedMember)) && Util.notEmpty(obj.getDocumentsUtiles()) ) 
-									|| Util.notEmpty(obj.getIntroFaireUneDemande(userLang));
+									|| Util.notEmpty(obj.getIntroFaireUneDemande(userLang))
+									|| Util.notEmpty(obj.getCommentFaireUneDemande(userLang));
 	
 	Category publikCat = channel.getCategory("$jcmsplugin.socle.ficheaide.publik.root");
 	
