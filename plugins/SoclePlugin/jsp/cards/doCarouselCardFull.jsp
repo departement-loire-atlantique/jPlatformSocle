@@ -23,7 +23,7 @@
 	    break;
 	  }
 	}
-	
+
 %>
 <%ServletUtil.backupAttribute(pageContext , PortalManager.PORTAL_PUBLICATION);%>
 <jalios:include pub="<%= obj %>" usage="query"/>
