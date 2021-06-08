@@ -15,7 +15,15 @@
 		return;
 	}
 	
-	obj.setTemplate("query.mos2pa2papo");
+	String[] templates = obj.getTemplates();
+	
+	for (int templateIndex = 0; templateIndex < templates.length; templateIndex++) {
+	  if (templates[templateIndex].startsWith("query.")) {
+	    obj.setTemplate(templates[templateIndex]);
+	    break;
+	  }
+	}
+	
 %>
 <%ServletUtil.backupAttribute(pageContext , PortalManager.PORTAL_PUBLICATION);%>
 <jalios:include pub="<%= obj %>" usage="query"/>
