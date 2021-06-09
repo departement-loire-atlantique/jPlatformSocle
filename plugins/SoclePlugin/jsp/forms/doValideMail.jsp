@@ -37,7 +37,7 @@
                         <tr>
                           <td>
                               <a href="<%= channel.getUrl() %>">
-                                  <img src="http://design.loire-atlantique.fr/assets/images/newsletter/logo-loire-atlantique-information.svg" style="height=62px;" alt="image" class="" />
+                                  <img src="https://design.loire-atlantique.fr/assets/images/newsletter/logo-loire-atlantique-information.svg" style="height=62px;" alt="image" class="" />
                               </a>
                           </td>
                         </tr>
