@@ -25,9 +25,15 @@ if (Util.notEmpty(request.getAttribute("overrideVidChapo"))) {
   chapoVideo = request.getAttribute("overrideVidChapo").toString();
   request.setAttribute("overrideVidChapo", null);
 }
+
+boolean hideTitle = false;
+if (Util.notEmpty(request.getAttribute("hideVideoTitle"))) {
+  hideTitle = Boolean.parseBoolean(request.getAttribute("hideVideoTitle").toString());
+  request.setAttribute("hideVideoTitle", false);
+}
 %>
 
-<jalios:if predicate="<%= Util.notEmpty(titleVideo) %>">
+<jalios:if predicate="<%= Util.notEmpty(titleVideo) && !hideTitle %>">
     <h3 class="h3-like"><%= titleVideo %></h3>
 </jalios:if>
 <jalios:if predicate="<%= Util.notEmpty(chapoVideo) %>">
