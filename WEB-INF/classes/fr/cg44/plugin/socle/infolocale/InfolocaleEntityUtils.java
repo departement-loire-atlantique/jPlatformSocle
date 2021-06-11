@@ -239,7 +239,7 @@ public class InfolocaleEntityUtils {
               itEvent.setMetadataHiddenLabel(metadataDefault);
             }
         } catch (JSONException e) {
-            LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
+            LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem (ID " + (Util.isEmpty(itEvent.getId()) ? "unknown " : itEvent.getId()) + e.getMessage());
             itEvent = null;
         }
         
