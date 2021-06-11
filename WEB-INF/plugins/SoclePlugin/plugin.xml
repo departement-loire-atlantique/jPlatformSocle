@@ -378,11 +378,6 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
-    <templates type="TimelineElement">
-        <template name="default" file="doTimelineElementFullDisplay.jsp" usage="full"> 
-            <label xml:lang="fr">DS44 : gabarit par défaut</label>
-        </template>
-    </templates> 
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
