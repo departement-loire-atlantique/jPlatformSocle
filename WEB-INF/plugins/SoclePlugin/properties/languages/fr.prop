@@ -95,8 +95,10 @@ $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: Id de la portlet wysiwyg de l
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: Id de la catégorie flash info thématique (newsletter)
 $jcmsplugin.socle.footer.newsletter.parutions.cat: Id de la catégorie prochaines parutions (newsletter)
 
-jcmsplugin.socle.form.newsletter.portlet-rgpd.id: ID de la portlet Wysiwyg. Mention lié aux données personnelles (newsletter)
+jcmsplugin.socle.form.newsletter.portlet-rgpd.id: Id de la portlet Wysiwyg pour les mentions RGPD du formulaire de newletter
 jcmsplugin.socle.form.newsletter.mailTo: Email pour l'envoi (newsletter)
+
+jcmsplugin.socle.newletter.postal.mailTo : Email de réception pour newsletter par courrier postal
 
 jcmsplugin.socle.mailjet.apiKey: Clé API mailjet
 jcmsplugin.socle.mailjet.apiSecretKey:Clé secrète mailjet
@@ -603,8 +605,16 @@ jcmsplugin.socle.newletter.inscrire: M'inscrire
 jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actualité par email
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
 jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer vos abonnements
-jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer vos abonnements aux actualités du Département en cliquant sur le lien suivant : <a href="{0}">Je confirme mon inscription</a></p><p>Les thématiques choisies : </p>{1}<p>Merci pour l'intérêt porté à  l'actualité du Département de Loire-Atlantiqueà bientôt sur le site loire-atlantique.fr</p>
+jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer vos abonnements aux actualités du Département en cliquant sur le lien suivant : <a href="{0}">Je confirme mon inscription</a></p><p>Les thématiques choisies : </p>{1}<p> <p>NB : Le lien contenu dans le mail reçu doit être utilisé dans les 72 heures, au-delà il est rendu inactif pour votre sécurité.</p> Merci pour l'intérêt porté à  l'actualité du Département de Loire-Atlantique à bientôt sur le site loire-atlantique.fr</p>
 jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
+
+jcmsplugin.socle.newletter.info.titre: Recevoir nos infos
+jcmsplugin.socle.newletter.postal.recevoir: Recevoir nos publications par courrier postal
+jcmsplugin.socle.newletter.flash.mail: M’abonner aux <span lang="en">flash</span> infos par mail
+jcmsplugin.socle.newletter.abonnement.actu.title: Je m'abonne pour recevoir l’actualité du CD44 par email
+
+jcmsplugin.socle.newletter.postal.mail.sujet: Demande d'inscription par courrier postal
+jcmsplugin.socle.newletter.postal.mail.content: Bonjour, <p> Une demande d'inscription par courrier postal a été faite par : <br/> nom : {0} <br/> prénom : {1} <br/> adresse : {2} </p> <p>Les thématiques choisies sont : </p>{3}
 
 jcmsplugin.socle.newletter.lbl: Recevez nos infos par mail
 jcmsplugin.socle.newletter.title.lbl: Confirmer vos abonnements
