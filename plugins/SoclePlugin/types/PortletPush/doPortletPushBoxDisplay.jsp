@@ -5,16 +5,7 @@
 <%
 if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à afficher
 
-boolean doNotAddContainer = false;
-Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-if (Util.notEmpty(obj)) {
-  doNotAddContainer = obj instanceof FicheActu;
-}
 %>
-
-<jalios:if predicate="<%= !doNotAddContainer %>">
-<div class="ds44-container-large">
-</jalios:if>
 
     <jalios:select>
         <jalios:if predicate='<%= channel.getProperty("jcmsplugin.socle.horizontal.value").equals(box.getAffichage()) || box.getListeDeContenusPush().length == 1 %>'>
@@ -81,7 +72,3 @@ if (Util.notEmpty(obj)) {
             </div>
         </jalios:default>
     </jalios:select>
-
-<jalios:if predicate="<%= !doNotAddContainer %>">
-</div>
-</jalios:if> 
