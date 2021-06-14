@@ -16,7 +16,7 @@ boolean isWysiwygEmbed = Util.notEmpty(request.getParameter("wysiwygEmbed"));
 
 %>
 
-<section class='ds44-card ds44-box ds44-bgGray <%= isWysiwygEmbed ? "large-w50 ds44-wsg-transparent" : ""%>'>
+<section class='ds44-card ds44-box ds44-bgGray <%= isWysiwygEmbed ? " ds44-wsg-transparent" : ""%>'>
   <div class="ds44-flex-container ds44-flex-valign-center">
     <jalios:if predicate='<%= Util.notEmpty(pub.getPhotoDidentite()) %>'>
 	    <div class="ds44-card__section--horizontal--img">
