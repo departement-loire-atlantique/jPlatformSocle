@@ -86,6 +86,7 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
                     </div>
                     <div class="col ds44--xl-padding-l">
                         <p id="form-bloc-utils-N"><%= glp("jcmsplugin.socle.pageutile.aide-ameliorer") %></p>
+                        <p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="commentaire-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.commentaire") %><sup aria-hidden="true">*</sup></span></span></label>
