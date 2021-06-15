@@ -28,6 +28,13 @@
     type="String"
     description="Introduction"
 %>
+<%@ attribute name="hideTitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Cache le titre si true"
+%>
 <%
 if (Util.notEmpty(title)) {
   request.setAttribute("overrideVidTitle", title);
@@ -35,6 +42,9 @@ if (Util.notEmpty(title)) {
 
 if (Util.notEmpty(intro)) {
   request.setAttribute("overrideVidIntro", intro);
+}
+if (Util.notEmpty(hideTitle)) {
+  request.setAttribute("hideVideoTitle", hideTitle);
 }
 %>
 <section id="contentVideo" class="ds44-contenuArticle">

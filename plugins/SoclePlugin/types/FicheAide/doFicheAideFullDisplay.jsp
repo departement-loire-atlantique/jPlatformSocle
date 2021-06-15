@@ -57,7 +57,7 @@
 		            <aside class="col-4 ds44-hide-tinyToLarge ds44-js-aside-summary">
 		               <section class="ds44-box ds44-theme" style="position: static;">
 		                  <div class="ds44-innerBoxContainer">
-		                     <p role="heading" aria-level="2" class="ds44-box-heading">Sommaire</p>
+		                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
 		                     <ul class="ds44-list ds44-list--puces">
 		                        <jalios:if predicate="<%= displayEnResume %>">
 		                        <li><a href="#sectionPourQui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></a></li>

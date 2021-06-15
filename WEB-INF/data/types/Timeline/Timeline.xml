@@ -18,13 +18,14 @@
       <label xml:lang="fr">Vidéo</label>
       <description xml:lang="fr">URL de la vidéo</description>
     </field>
-    <field name="categorieParDefaut" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.timeline.classement" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false">
-      <label xml:lang="fr">Année par défaut</label>
-      <description xml:lang="fr">Cochez la catégorie sur laquelle se positionnera la Timeline lors de son ouverture</description>
+    <field name="premierElement" editor="link" required="false" compactDisplay="false" type="generated.Lien" parent="false">
+      <label xml:lang="fr">Premier élément</label>
     </field>
-    <field name="ordre" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="listbox" valueList="croissant|decroissant" ml="false" descriptionType="text" labelList="Croissant|Décroissant" searchable="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Ordre</label>
-      <description xml:lang="fr">Ordre d'affichage des éléments de la Timeline</description>
+    <field name="elementsTimelines" editor="link" required="true" compactDisplay="false" type="generated.Lien[]" ml="false" descriptionType="tooltip" tabGroup="elementsTimeline" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Eléments timelines</label>
+    </field>
+    <field name="libelleElementsTimeline" editor="textfield" required="true" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="elementsTimeline">
+      <label xml:lang="fr">Libellé élements timeline</label>
     </field>
   </fields>
 </type>

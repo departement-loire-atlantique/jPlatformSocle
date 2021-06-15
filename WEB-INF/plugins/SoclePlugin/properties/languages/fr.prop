@@ -993,3 +993,9 @@ jcmsplugin.socle.sites-applis.observatoire.url: https://observatoire.loire-atlan
 jcmsplugin.socle.sites-applis.atlas.label: Atlas
 jcmsplugin.socle.sites-applis.atlas.url: https://atlas.loire-atlantique.fr
 
+# ------------------------------------------------------------
+#  Contenu Timeline
+# ------------------------------------------------------------
+jcmsplugin.socle.barrenavsecondaire: Barre de navigation secondaire
+jcmsplugin.socle.contexte: Contexte
+jcmsplugin.socle.goto: Aller à :
