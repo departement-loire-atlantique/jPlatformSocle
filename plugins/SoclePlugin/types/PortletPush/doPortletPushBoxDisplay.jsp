@@ -40,17 +40,17 @@ if (Util.isEmpty(box.getListeDeContenusPush())) return; // pas de contenu push à
                             <jalios:if predicate="<%= itCounter > 3 && (box.getListeDeContenusPush().length - itCounter) <= 3 %>">
                                 <%-- On arrive à la dernière ligne. On détermine si on affiche un élément horizontal (1 restant) ou des éléments verticaux (2/3 restants) --%>
                                 <jalios:select>
-                                    <jalios:if predicate="<%= box.getListeDeContenusPush().length == itCounter %>">
-                                        </div>
-                                        <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushHorizontalCard.jspf" %>
-                                    </jalios:if>
-                                    <jalios:default>
-                                        <%
-                                        lastLine = true;
-                                        int colSize = finalColSize;
-                                        %>
-                                        <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushVerticalCard.jspf" %>
-                                    </jalios:default>
+	                                <jalios:if predicate="<%= box.getListeDeContenusPush().length == itCounter %>">
+	                                    </div>
+	                                    <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushHorizontalCard.jspf" %>
+	                                </jalios:if>
+	                                <jalios:default>
+		                                <%
+		                                lastLine = true;
+		                                int colSize = finalColSize;
+		                                %>
+		                                <%@ include file="/plugins/SoclePlugin/types/ContenuPush/doContenuPushVerticalCard.jspf" %>
+	                                </jalios:default>
                                 </jalios:select>
                             </jalios:if>
                             <jalios:default>
