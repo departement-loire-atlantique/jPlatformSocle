@@ -2,7 +2,7 @@
 
 <%@include file="doContenuPushCommon.jspf" %>
 
-<div class="ds44-box ds44-theme <%= itPush.getStyleDeFond() %>">
+<div class="ds44-box ds44-theme ds44-container-large <%= itPush.getStyleDeFond() %>">
     <div class="ds44-flex-container ds44-flex-container--colMed ds44-flex-container--colMed--colRev">
         <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) || Util.notEmpty(itPush.getImageMobile()) %>">
             <picture class="ds44-boxPushPic ds44-boxPushPic--horizontal">
