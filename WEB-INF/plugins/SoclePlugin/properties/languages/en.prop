@@ -913,6 +913,12 @@ jcmsplugin.socle.export.csv.link: Export CSV de contenu
 jcmsplugin.socle.tableau-de-bord.page-utile-form.link: Tableau de bord des formulaires Page Utile
 
 # ------------------------------------------------------------
+#  Import CSV / Lieu
+# ------------------------------------------------------------
+
+jcmsplugin.socle.import.lieux.link: Import CSV de contenus Lieu
+
+# ------------------------------------------------------------
 #  Sites et applis
 # ------------------------------------------------------------
 jcmsplugin.socle.sites-applis.citoyennete.label: Citoyenneté
