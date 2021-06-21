@@ -68,7 +68,10 @@
                         String url = (String) request.getAttribute("mailUrl");
                         String mailTheme = (String) request.getAttribute("mailTheme");
                         %>
-                        <%= glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme}) %>
+                        <jalios:buffer name="footerLink">
+                            <a href="<%= channel.getUrl() %>"><%= channel.getUrl() %></a>
+                        </jalios:buffer>
+                        <%= glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme, footerLink}) %>
                       </tr>
                     </tbody>
                   </table>
@@ -77,8 +80,8 @@
               
 
               <tr>
-                <td>
-                  <div style="font-size: 11px; color: #999; width: 100%; text-align: center;"><%= glp("jcmsplugin.socle.newletter.mail.confirme.footer") %></div>
+                <td>                 
+                  <div style="font-size: 11px; color: #999; width: 100%; text-align: center;"><%= glp("jcmsplugin.socle.newletter.mail.confirme.footer", new String[]{channel.getUrl()}) %></div>
                 </td>
               </tr>
             </tbody>

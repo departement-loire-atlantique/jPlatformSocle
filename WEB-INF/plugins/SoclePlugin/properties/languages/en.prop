@@ -604,9 +604,9 @@ jcmsplugin.socle.newletter.flash.info: M’abonner aux flash infos thématiques
 jcmsplugin.socle.newletter.inscrire: M'inscrire
 jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actualité par email
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
-jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer vos abonnements
-jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer vos abonnements aux actualités du Département en cliquant sur le lien suivant : <a href="{0}">Je confirme mon inscription</a></p><p>Les thématiques choisies :</p> {1} <p>Merci pour l'intérêt porté à  l'actualité du Département de Loire-Atlantique à bientôt sur le site loire-atlantique.fr</p>
-jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
+jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre abonnement
+jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre abonnement à :</p> {1} <p>en cliquant sur ce lien : <a href="{0}">Je confirme mon inscription</a> </p> <p>NB : Le lien contenu dans le mail reçu doit être utilisé dans les 72 heures, au-delà il est rendu inactif pour votre sécurité.</p>À bientôt sur le site {2}.</p>
+jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par {0}.
 
 jcmsplugin.socle.newletter.info.titre: Recevoir nos infos
 jcmsplugin.socle.newletter.postal.recevoir: Recevoir nos publications par courrier postal
@@ -614,10 +614,10 @@ jcmsplugin.socle.newletter.flash.mail: M’abonner aux <span lang="en">flash</sp
 jcmsplugin.socle.newletter.abonnement.actu.title: Je m'abonne pour recevoir l’actualité du CD44 par email
 
 jcmsplugin.socle.newletter.postal.mail.sujet: Demande d'inscription par courrier postal
-jcmsplugin.socle.newletter.postal.mail.content: Bonjour, <br/> Une demande d'inscription par courrier postal fait par : <br/> nom : {0} <br/> prénom : {1} <br/> adresse : {2}
+jcmsplugin.socle.newletter.postal.mail.content: Bonjour, <p> Une demande d'inscription par courrier postal a été faite par : <br/> nom : {0} <br/> prénom : {1} <br/> adresse : {2} </p> <p>Les thématiques choisies sont : </p>{3}
 
 jcmsplugin.socle.newletter.lbl: Recevez nos infos par mail
-jcmsplugin.socle.newletter.title.lbl: Confirmer vos abonnements
+jcmsplugin.socle.newletter.title.lbl: Confirmer votre abonnement
 jcmsplugin.socle.newletter.mail.inscription-valide: Vos abonnements sont validés
 jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
 jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
