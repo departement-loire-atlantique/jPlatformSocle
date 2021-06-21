@@ -1,10 +1,5 @@
-<%@page import="fr.cg44.plugin.socle.export.ExportCsvUtils"%>
-<%@page import="fr.cg44.plugin.socle.export.ExportImgZip"%>
-<%@page import="com.jalios.jcms.handler.MemberQueryHandler"%>
-<%@page import="java.util.regex.Matcher"%>
-<%@page import="java.util.regex.Pattern"%>
-<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
-<%@page import="com.jalios.jcms.handler.QueryHandler"%>
+<%@page import="fr.cg44.plugin.socle.importation.ImportLieuFromCsv"%>
+<%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.io.IOException" %>
 <%
 %><%@ include file="/jcore/doInitPage.jsp" %><%
@@ -14,29 +9,77 @@ if(!isAdmin) {
     return;
 }
 
-if(getBooleanParameter("importLieux", false)) {
+Map<String, String> filecheckLog = new TreeMap<>();
 
-    System.out.println(request.getParameter("fichier"));
+if(getBooleanParameter("importLieux", false)) {
+    
+    FileItem file = (FileItem) request.getAttribute("file");
+    if (getBooleanParameter("test", false)) {
+        filecheckLog = ImportLieuFromCsv.checkCsvImport(file);
+    } else {
+        ImportLieuFromCsv.importFichesLieuCsv(file);
+    }
 }
 
 %>
 <%@ include file='/admin/doAdminHeader.jspf' %>
+
+<%@ include file='/jcore/doMessageBox.jspf' %>
+
+<jalios:if predicate='<%= Util.notEmpty(request.getAttribute("traceImport")) %>'>
+    <div class="jcms-message alert no-focus alert-warning ">
+        <h2>Description de l'erreur : </h2>
+        <%= trace %>
+    </div>
+</jalios:if>
+
+<jalios:if predicate="<%= Util.notEmpty(filecheckLog) %>">
+<div class="jcms-message alert no-focus alert-warning ">
+    <h2>Des points d'attention ont ï¿½tï¿½ remontï¿½s suite ï¿½ la vï¿½rification du fichier CSV</h2>
+    <ul>
+    <jalios:foreach name="itLine" type="String" collection="<%= filecheckLog.keySet() %>">
+        <li>
+            <strong><%= itLine %></strong> -> <%= filecheckLog.get(itLine) %>
+        </li>
+    </jalios:foreach>
+    </ul>
+</div>
+</jalios:if>
+
 <div class="jcms-message alert no-focus alert-info ">
     <h2>Notes importantes sur l'import de contenu Lieu</h2>
-    <p>Ne <strong>pas</strong> utiliser l'import une fois le site initialisé ! L'objectif de cet import est d'initialiser un nouvel environnement.</p>
-	<p>Réaliser un nouvel import après initialisation des contenus a un risque de <strong>dupliquer</strong> des contenus.</p>
+    <p>Ne <strong>pas</strong> utiliser l'import une fois le site initialisï¿½ ! L'objectif de cet import est d'initialiser un nouvel environnement.</p>
+    <p>Rï¿½aliser un nouvel import aprï¿½s initialisation des contenus a un risque de <strong>dupliquer</strong> des contenus.</p>
 </div>
 
 <div class="page-header"><h1>Test d'import de contenu Lieu</h1></div>
 
-<h2>Lancer une vérification du fichier CSV sans générer d'import</h2>
-<form method="POST" enctype="multipart/form-data">
+<h2>Lancer une vï¿½rification du fichier CSV sans gï¿½nï¿½rer d'import</h2>
+<form method="POST" enctype="multipart/form-data" action="plugins/SoclePlugin/jsp/import/importLieuInterface.jsp">
     <input type="hidden" name="importLieux" value="true">
     <input type="hidden" name="test" value="true">
-    <p>Sélectionner un CSV à importer</p>
-    <input type="file" name="fichier" accept=".csv"/>
+    <p>Sï¿½lectionner un CSV ï¿½ importer</p>
+    <jalios:field name="file" label="Fichier CSV"> 
+        <jalios:control settings="<%= new FileSettings().mode(FileSettings.Mode.SIMPLE_FILE) %>" /> 
+    </jalios:field>
     <br/>
     <input class="btn btn-info modal confirm" type="submit" value="Lancer un test d'import"/>
+</form>
+
+<hr>
+
+<h2>Lancer l'import CSV</h2>
+<div class="jcms-message alert no-focus alert-warning">
+    <p><strong>Ne pas lancer sans vï¿½rification prï¿½alable</strong></p>
+</div>
+<form method="POST" enctype="multipart/form-data" action="plugins/SoclePlugin/jsp/import/importLieuInterface.jsp">
+    <input type="hidden" name="importLieux" value="true">
+    <p>Sï¿½lectionner un CSV ï¿½ importer</p>
+    <jalios:field name="file" label="Fichier CSV"> 
+        <jalios:control settings="<%= new FileSettings().mode(FileSettings.Mode.SIMPLE_FILE) %>" /> 
+    </jalios:field>
+    <br/>
+    <input class="btn btn-info modal confirm" type="submit" value="Lancer l'import"/>
 </form>
 
 
