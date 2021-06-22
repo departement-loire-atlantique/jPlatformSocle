@@ -1,0 +1,188 @@
+<h2 class="h4-like" id="idTitreFooter1"><%=glp("jcmsplugin.socle.newsletter.abonnement.titre")%></h2>
+<p class="ds44-mb-std ds44-mobile-reduced-mb"><%=glp("jcmsplugin.socle.newsletter.abonnement.chapo")%></p>
+<p>
+	<button class="ds44-btnStd ds44-mobile-extra-mb" type="button"
+		title="<%=glp("jcmsplugin.socle.newsletter.abonnement.titleBouton")%>"
+		data-target="#overlay-newsletter-archives" data-js="ds44-modal">
+		<span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.newsletter.abonnement.labelBouton")%></span><i
+			class="icon icon-long-arrow-right" aria-hidden="true"></i>
+	</button>
+</p>
+
+<section class="ds44-modal-container" id="overlay-newsletter-archives" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-newsletter-archives-title">
+	<div class="ds44-modal-box">
+		<button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title= '<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.newletter.titre"))) %>' data-js="ds44-modal-action-close">
+            <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+        </button>
+		<h1 id="overlay-newsletter-archives-title" class="h2-like"><%= glp("jcmsplugin.socle.newletter.info.titre") %></h1>
+		<div class="ds44-modal-gab">
+		
+		    <%
+            Publication introWysiwyg = channel.getPublication("$jcmsplugin.socle.footer.newsletter.intro.wysiwyg");
+            %>
+            <jalios:if predicate='<%= Util.notEmpty(introWysiwyg) %>'>
+                <jalios:include pub='<%= introWysiwyg %>' />
+            </jalios:if>
+		
+			<p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.newletter.mention") %></p>
+			<form data-is-ajax="true" data-is-inline="true" action="plugins/SoclePlugin/jsp/forms/sendNewletterDoubleOptin.jsp" >
+				
+				<div id="overlay-newsletter-buttons" class="ds44-flex-container">
+                    <button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44--l-padding" type="button" aria-describedby="titre-modale-newsletter">
+                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.tout-cocher") %></span><i class="icon icon-check icon--medium" aria-hidden="true"></i>
+                    </button>
+                    <button class="ds44-btnStd ds44-bgGray ds44-btnStd--plat ds44-fg1 ds44-border-left--light ds44--l-padding" type="button" aria-describedby="titre-modale-newsletter">
+                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.tout-decocher") %></span><i class="icon icon-cross icon--medium" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
+				<div class="mtm">
+
+
+                    <%
+                    Category parutionRoot = channel.getCategory("$jcmsplugin.socle.footer.newsletter.parutions.cat");
+                    Set<Category> parutionCat = new TreeSet<Category>(Category.getDeepOrderComparator());
+                    if(parutionRoot != null) {
+                      parutionCat.addAll(parutionRoot.getChildrenSet());
+                    }
+                    %>
+
+					<h2 class="h4-like" id="titre-13"><%= glp("jcmsplugin.socle.newletter.postal.recevoir") %></h2>
+					<ul class="ds44-list grid-12 mtm">
+									
+						
+						<jalios:foreach collection="<%= parutionCat %>" name="itCat" type="Category">                        
+	                        <li class="ds44-select-list_elem col-6 ds44-noMrg">                       
+	                            <div id="form-element-parution-<%= itCat.getId() %>" data-name='<%= "publicationcatid" + glp("jcmsplugin.socle.facette.form-element") + itCat.getId() %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
+	                                <div class="ds44-form__container ds44-checkBox-radio_list ">
+	                                    <input type="checkbox" id="name-check-form-element-<%= itCat.getId() %>" name="form-element-<%= itCat.getId() %>" value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="" />
+	                                    <label for="name-check-form-element-<%= itCat.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getId() %>"><%= itCat.getName(userLang) %></label> 
+	                                </div>      
+	                            </div>                          
+	                        </li>                        
+	                    </jalios:foreach>
+						
+						
+						<li class="col-6 ds44-minTiny-margin-r">
+							<div class="ds44-form__container">
+								<div class="ds44-posRel">
+									<label for="form-element-nom" class="ds44-formLabel"><span
+										class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.nom") %><sup
+												aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label> <input type="text"
+										id="form-element-nom" name="newsletter-nom"
+										class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.nom"))) %>' required
+										autocomplete="family-name" />
+									<button class="ds44-reset" type="button">
+										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span
+											class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.nom")) %></span>
+									</button>
+
+								</div>
+
+							</div>
+						</li>
+						
+						
+						<li class="col-6 ds44-minTiny-margin-l">
+							<div class="ds44-form__container">
+								<div class="ds44-posRel">
+									<label for="form-element-prenom" class="ds44-formLabel"><span
+										class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.prenom") %><sup
+												aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label> <input type="text"
+										id="form-element-prenom" name="newsletter-prenom"
+										class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.prenom"))) %>' required
+										autocomplete="given-name" />
+									<button class="ds44-reset" type="button">
+										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span
+											class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.prenom")) %></span>
+									</button>
+								</div>
+							</div>
+						</li>
+						
+						
+						<li class="col-12">
+							<div class="ds44-form__container">
+
+								<div class="ds44-posRel">
+									<label for="form-element-adresse" class="ds44-formLabel"><span
+										class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.facette.adresse.default-label") %><sup
+												aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label> <input type="text"
+										id="form-element-adresse" name="newsletter-adresse"
+										class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.facette.adresse.default-label"))) %>' required />
+									<button class="ds44-reset" type="button">
+										<i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span
+											class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.facette.adresse.default-label")) %></span>
+									</button>
+
+								</div>
+
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+				
+				
+				 <%
+                    Category flashRoot = channel.getCategory("$jcmsplugin.socle.footer.newsletter.thematiques.cat");                                                                                                            
+                 %>
+                    
+	            <jalios:if predicate='<%= Util.notEmpty("flashRoot") %>'>        
+					<div class="mtm">
+					
+						<h2 class="h4-like" id="fash-mail"><%= glp("jcmsplugin.socle.newletter.flash.mail") %></h2>					
+						<div class="ds44-list grid-12-small-1 mtm ds44-js-linked-fields">
+	
+	    
+	                        <div id="form-element-<%= flashRoot.getId() %>" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>'  class="ds44-form__checkbox_container ds44-form__container ds44-select-list_elem col-12 ds44-noMrg">
+	                            <div class="ds44-form__container ds44-checkBox-radio_list ">
+	                                    
+	                                 <input type="checkbox" id="name-check-form-element-<%= flashRoot.getId() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= flashRoot.getId() %>" class="ds44-checkbox" aria-describedby="" />
+	                                 <label for="name-check-form-element-<%= flashRoot.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= flashRoot.getId() %>"><%= flashRoot.getName(userLang) %></label>
+	                                    
+	                            </div>
+	                        </div>
+					
+								
+	
+							<div class="ds44-form__container ds44-mb-std col-12">
+	
+								<div class="ds44-posRel">
+			                        <label for="newletters-mail" class="ds44-formLabel ds44-inputDisabled"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>		                        
+			                        <input type="email" id="newletters-mail" name="newletters-mail" class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.faq.votre-email"))) %>'  required autocomplete="email" readonly  aria-describedby="explanation-newletters-mail titre-modale-newsletter" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>
+			                    </div>
+			        
+			                    <div class="ds44-field-information" aria-live="polite">
+			                        <ul class="ds44-field-information-list ds44-list">
+			                            <li id="explanation-newletters-mail" class="ds44-field-information-explanation"><%= glp("jcmsplugin.socle.form.exemple.email") %></li>
+			                        </ul>
+			                    </div>
+							</div>
+	
+	
+						</div>
+					</div>
+				</jalios:if>
+				
+				<button class="ds44-btnStd ds44-btn--invert ds44-w100 ds44-bntALeft" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.newletter.abonnement.actu.title")) %>' aria-describedby="valid-form">
+                    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.newsletter.abonnement.labelBouton") %></span>
+                    <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+                </button>
+                
+                <input type="hidden" name='<%= "no-segment" + glp("jcmsplugin.socle.facette.form-element") %>' value='true' data-technical-field />
+				
+			</form>
+
+			
+			<% Data newsletterWysiwyg = channel.getData(channel.getProperty("jcmsplugin.socle.form.newsletter.portlet-rgpd.id")); %>
+            <jalios:if predicate='<%= Util.notEmpty(newsletterWysiwyg) && newsletterWysiwyg instanceof PortletWYSIWYG %>'>
+              <jalios:wysiwyg css="ds44-textLegend--mentions mtm">
+                  <%= ((PortletWYSIWYG) newsletterWysiwyg).getWysiwyg() %>
+              </jalios:wysiwyg>
+            </jalios:if>
+			
+			
+		</div>
+	</div>
+</section>

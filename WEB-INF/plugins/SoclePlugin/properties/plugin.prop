@@ -108,6 +108,7 @@ $jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
 
 jcmsplugin.socle.form.newsletter.portlet-rgpd.id:
 jcmsplugin.socle.form.newsletter.mailTo:
+jcmsplugin.socle.newletter.postal.mailTo:
 
 jcmsplugin.socle.footer.newsletter.expire.heure: 72 
 
