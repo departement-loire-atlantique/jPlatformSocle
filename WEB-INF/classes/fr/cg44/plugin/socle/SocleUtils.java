@@ -2136,5 +2136,29 @@ public final class SocleUtils {
       ratio = (double)file.getWidth() / (double)file.getHeight();
     }
     return ratio;
-  }   
+  }
+  
+  /**
+   * Regarde si une catégorie contient certains types de contenus
+   * @param cat la catégorie à tester
+   * @param types les types à rechercher
+   * @param exactCat indique si on doit chercher dans les catégories filles ou non
+   * @return true si des contenus ont été trouvés, false sinon
+   */
+  public static boolean containsPublications(Category cat, String[] types, boolean exactCat) {
+    Member loggedMember = channel.getCurrentLoggedMember();   
+    QueryHandler qh = new QueryHandler();
+    qh.setTypes(types);
+    qh.setCids(cat.getId());
+    qh.setLoggedMember(loggedMember);
+    qh.setExactCat(exactCat);
+    QueryResultSet result = qh.getResultSet();
+    LOGGER.debug(result.size()+ " publications trouvées dans la catégorie "+cat.getName() + " / " + cat.getId());
+    LOGGER.debug(qh.getQueryString()+"\r\n");
+    
+    if(!result.isEmpty()) {
+      return true;
+    }
+    return false;
+  }  
 }
