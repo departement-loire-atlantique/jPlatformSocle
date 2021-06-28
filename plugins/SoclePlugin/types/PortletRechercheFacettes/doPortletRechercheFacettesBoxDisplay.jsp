@@ -172,6 +172,11 @@
             <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getSectorisation() %>' data-technical-field />
 		    <input type="hidden" name='<%= "afficheCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAffichageDeLaCarte() %>" data-technical-field />
 		
+		    <input type="hidden" name='<%= "afficheCommunes" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAfficherLesCommunesConcernees() %>" data-technical-field />
+		    <input type="hidden" name='<%= "afficheEpci" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAfficherLesEPCIConcernes() %>" data-technical-field />
+		    
+		
+		
             <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
             <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
             

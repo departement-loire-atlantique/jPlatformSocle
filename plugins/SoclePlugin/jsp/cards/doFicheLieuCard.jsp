@@ -15,6 +15,8 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isFocus = "true".equals(request.getParameter("isFocus"));
 boolean noPic = "true".equals(request.getParameter("noPic"));
 boolean isPartenaire = "true".equals(request.getParameter("isPartenaire")) && Util.isEmpty(pub.getServiceDuDepartement(loggedMember));
+Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));;
+Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));;
 
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
@@ -102,6 +104,15 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
                 </ul>
 			  </div>
 		  </jalios:if>
+		  
+		  <jalios:if predicate="<%= displayCommunesConcernees && Util.notEmpty(pub.getCommunes()) %>">
+              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.communes.label") %> : </span><%= JcmsUtil.join(Arrays.asList(pub.getCommunes()), ", ", userLang) %></p>
+          </jalios:if>
+          
+          <jalios:if predicate="<%= displayEPCIConcernees && Util.notEmpty(pub.getEpci(loggedMember)) %>">
+              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.epci.label") %> : </span><%= JcmsUtil.join(pub.getEpci(loggedMember), ", ", userLang) %></p>
+          </jalios:if>
+		  
       </div>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
