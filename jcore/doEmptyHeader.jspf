@@ -20,6 +20,11 @@
   
   //DEP44 : modification du titre de la page
   String headTitle      = titleOfThePage + " - " + channel.getName();
+  // Optionnel module SEO : titre de page selon extradata seo
+  Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+  if (Util.notEmpty(obj) && Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang))) {
+      headTitle = obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
+  }
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
   
@@ -49,6 +54,12 @@
   
   jcmsContext.setPageTitle(titleOfThePage);
   jcmsContext.setPageZone(jcmsContext.getPageZone("Public"));
+  
+  %>
+  
+  <jalios:include target="EMPTY_HEADER_TITLE"/>
+  
+  <%
     
   if (trace != null) {
     trace.put("title", titleOfThePage);
