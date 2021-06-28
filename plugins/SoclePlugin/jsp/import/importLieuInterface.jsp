@@ -35,7 +35,7 @@ if(getBooleanParameter("importLieux", false)) {
 
 <jalios:if predicate="<%= Util.notEmpty(filecheckLog) %>">
 <div class="jcms-message alert no-focus alert-warning ">
-    <h2>Des points d'attention ont ï¿½tï¿½ remontï¿½s suite ï¿½ la vï¿½rification du fichier CSV</h2>
+    <h2>Des points d'attention ont été remontés suite à la vérification du fichier CSV</h2>
     <ul>
     <jalios:foreach name="itLine" type="String" collection="<%= filecheckLog.keySet() %>">
         <li>
@@ -48,17 +48,17 @@ if(getBooleanParameter("importLieux", false)) {
 
 <div class="jcms-message alert no-focus alert-info ">
     <h2>Notes importantes sur l'import de contenu Lieu</h2>
-    <p>Ne <strong>pas</strong> utiliser l'import une fois le site initialisï¿½ ! L'objectif de cet import est d'initialiser un nouvel environnement.</p>
-    <p>Rï¿½aliser un nouvel import aprï¿½s initialisation des contenus a un risque de <strong>dupliquer</strong> des contenus.</p>
+    <p>Ne <strong>pas</strong> utiliser l'import une fois le site initialisé ! L'objectif de cet import est d'initialiser un nouvel environnement.</p>
+    <p>Réaliser un nouvel import aprés initialisation des contenus a un risque de <strong>dupliquer</strong> des contenus.</p>
 </div>
 
 <div class="page-header"><h1>Test d'import de contenu Lieu</h1></div>
 
-<h2>Lancer une vï¿½rification du fichier CSV sans gï¿½nï¿½rer d'import</h2>
+<h2>Lancer une vérification du fichier CSV sans générer d'import</h2>
 <form method="POST" enctype="multipart/form-data" action="plugins/SoclePlugin/jsp/import/importLieuInterface.jsp">
     <input type="hidden" name="importLieux" value="true">
     <input type="hidden" name="test" value="true">
-    <p>Sï¿½lectionner un CSV ï¿½ importer</p>
+    <p>Sélectionner un CSV à importer</p>
     <jalios:field name="file" label="Fichier CSV"> 
         <jalios:control settings="<%= new FileSettings().mode(FileSettings.Mode.SIMPLE_FILE) %>" /> 
     </jalios:field>
@@ -70,11 +70,11 @@ if(getBooleanParameter("importLieux", false)) {
 
 <h2>Lancer l'import CSV</h2>
 <div class="jcms-message alert no-focus alert-warning">
-    <p><strong>Ne pas lancer sans vï¿½rification prï¿½alable</strong></p>
+    <p><strong>Ne pas lancer sans vérification préalable</strong></p>
 </div>
 <form method="POST" enctype="multipart/form-data" action="plugins/SoclePlugin/jsp/import/importLieuInterface.jsp">
     <input type="hidden" name="importLieux" value="true">
-    <p>Sï¿½lectionner un CSV ï¿½ importer</p>
+    <p>Sélectionner un CSV à importer</p>
     <jalios:field name="file" label="Fichier CSV"> 
         <jalios:control settings="<%= new FileSettings().mode(FileSettings.Mode.SIMPLE_FILE) %>" /> 
     </jalios:field>
