@@ -19,12 +19,16 @@ public class FileDocumentDataController extends BasicDataController implements P
 
 	@Override
 	/* 
-	 * Ajoute une catégorie de classement sur les filedocuments (RS-1199)
+	 * Ajoute une catégorie de classement sur les filedocuments d'extension '.txt' (RS-1199)
 	 * */
 	public void beforeWrite(Data data, int op, Member mbr, Map context) {
 	    
 	    if (Util.notEmpty(classementCategory)) {
     	    FileDocument itFileDoc = (FileDocument) data;
+
+    	    if (itFileDoc.getFile().getName().endsWith(".txt")) {
+    	        itFileDoc.addCategory(classementCategory);
+    	    }
     	    
     	    itFileDoc.addCategory(classementCategory);
 	    }
