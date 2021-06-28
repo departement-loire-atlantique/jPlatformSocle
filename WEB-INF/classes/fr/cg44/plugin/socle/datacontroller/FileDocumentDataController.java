@@ -1,0 +1,32 @@
+package fr.cg44.plugin.socle.datacontroller;
+
+import java.util.Map;
+
+import com.jalios.jcms.BasicDataController;
+import com.jalios.jcms.Category;
+import com.jalios.jcms.Channel;
+import com.jalios.jcms.Data;
+import com.jalios.jcms.FileDocument;
+import com.jalios.jcms.Member;
+import com.jalios.jcms.plugin.PluginComponent;
+
+public class FileDocumentDataController extends BasicDataController implements PluginComponent {
+
+	private static Channel channel = Channel.getChannel();
+
+	private static final Category classementCategory = channel.getCategory("$jcmsplugin.socle.category.classementfiledoc.root");
+
+	@Override
+	/* 
+	 * Ajoute une catégorie de classement sur les filedocuments (RS-1199)
+	 * */
+	public void beforeWrite(Data data, int op, Member mbr, Map context) {
+
+	    FileDocument itFileDoc = (FileDocument) data;
+	    
+	    itFileDoc.addCategory(classementCategory);
+	
+	}
+
+
+}

@@ -433,6 +433,7 @@ $jcmsplugin.socle.category.thematiquesBesoins.root: c_1155164
 $jcmsplugin.socle.category.toutesLesCommunesEPCI.root: aca_7086
 $jcmsplugin.socle.category.enCeMoment.root: c_1154087
 $jcmsplugin.socle.category.navigationDesEspaces.root: c_5025
+$jcmsplugin.socle.category.classementfiledoc.root: c_1308781
 
 # Fiche actu
 $jcmsplugin.socle.ficheactu.types.root: c_1156291
@@ -783,3 +784,4 @@ jcmsplugin.socle.export.img.filepath:
 # ------------------------------------------------------------
 jcmsplugin.socle.portlet-twitter.timeout: 5000
 jcmsplugin.socle.portlet-twitter.retry: 3
+
