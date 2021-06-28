@@ -33,6 +33,10 @@
 	Category publikCat = channel.getCategory("$jcmsplugin.socle.ficheaide.publik.root");
 	
 	boolean displaySuivreDemande = Util.notEmpty(obj.getIntroSuivreUneDemande(userLang)) || ((Util.notEmpty(obj.getUrlSuiviEdemarche(userLang)) || obj.hasCategory(publikCat)));
+	
+	boolean displayVideo = Util.notEmpty(obj.getVideo());
+	
+	String titleTemoignage = Util.notEmpty(obj.getTitreVideo(userLang)) ? obj.getTitreVideo(userLang) : glp("jcmsplugin.socle.titre.temoignage");
 %>
 
 <main role="main" id="content">
@@ -75,8 +79,11 @@
 		                        <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= displayQuiContacter %>">
-		                        <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
-		                        </jalios:if>
+                                <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+                                </jalios:if>
+                                <jalios:if predicate="<%= displayVideo %>">
+                                <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>
+                                </jalios:if>
 		                        <jalios:if predicate="<%= displayFaq %>">
 		                        <li><a href="#sectionFaq" class=""><%= glp("jcmsplugin.socle.recherche.type.FaqAccueil") %></a></li>
 		                        </jalios:if>
@@ -400,6 +407,17 @@
 		                    </jalios:if>
 		                  </div>
 		               </section>
+		               </jalios:if>
+		               
+		               <jalios:if predicate="<%= displayVideo %>">
+		                 <section class="ds44-contenuArticle" id="sectionTemoignage" tabindex="-1">
+		                          <jalios:if predicate="<%= Util.notEmpty(obj.getTitreVideo(userLang)) %>">
+		                              <h2 id="titre_temoignages"><%= titleTemoignage %></h2>
+		                          </jalios:if>
+		                          <jalios:foreach name="itVideo" type="Video" array="<%= obj.getVideo() %>">
+		                              <ds:articleVideo video="<%= itVideo %>" title="<%= itVideo.getTitreTemoignage(userLang) %>" intro="<%= itVideo.getChapo(userLang) %>"></ds:articleVideo>
+		                          </jalios:foreach> 
+		                 </section>
 		               </jalios:if>
 		            </article>
 		         </div>

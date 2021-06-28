@@ -63,7 +63,7 @@
     <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="encadres" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre vidéo</label>
     </field>
-    <field name="video" editor="link" required="false" compactDisplay="false" tab="encadres" type="generated.Temoignage[]">
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="encadres" type="generated.Video[]">
       <label xml:lang="fr">Vidéo</label>
     </field>
     <field name="portletEncadres" editor="link" required="false" compactDisplay="false" tab="encadres" type="com.jalios.jcms.portlet.PortalElement[]">

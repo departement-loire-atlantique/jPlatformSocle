@@ -25,9 +25,12 @@ public class FileDocumentDataController extends BasicDataController implements P
 	    
 	    if (Util.notEmpty(classementCategory)) {
     	    FileDocument itFileDoc = (FileDocument) data;
+
     	    if (itFileDoc.getFile().getName().endsWith(".txt")) {
     	        itFileDoc.addCategory(classementCategory);
     	    }
+    	    
+    	    itFileDoc.addCategory(classementCategory);
 	    }
 	
 	}
