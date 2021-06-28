@@ -15,8 +15,8 @@ FicheArticle pub = (FicheArticle) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
-Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));;
-Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));;
+Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));
+Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));
 
 %>
 

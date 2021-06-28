@@ -15,8 +15,8 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 boolean isFocus = "true".equals(request.getParameter("isFocus"));
 boolean noPic = "true".equals(request.getParameter("noPic"));
 boolean isPartenaire = "true".equals(request.getParameter("isPartenaire")) && Util.isEmpty(pub.getServiceDuDepartement(loggedMember));
-Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));;
-Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));;
+Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));
+Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));
 
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
