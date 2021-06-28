@@ -47,7 +47,7 @@
 
 							<div class="col col-2">
 								<p role="heading" aria-level="3" class="ds44-box-heading">
-									<%= obj.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin") %> <%= glp("jcmsplugin.socle.elu.canton") %> <%= obj.getCanton().getTitle() %>
+									<%= obj.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin") %> <%= obj.getCanton().getTitle() %>
 								</p>
 								<% String strVicePresident = SocleUtils.getElectedMemberFullFunctionVicePresident(obj); %>
 								<jalios:if predicate="<%= Util.notEmpty(strVicePresident) || Util.notEmpty(obj.getCommittees(loggedMember))%>">
