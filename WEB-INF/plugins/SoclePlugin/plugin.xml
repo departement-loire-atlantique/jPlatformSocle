@@ -539,9 +539,6 @@
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Gabarit menu accordéon</label>
         </template>
-        <template name="menuCollapseHideEmptyChildren" file="doPortletNavigateMenuCollapseHideEmptyChildrenFullDisplay.jsp" usage='box'>
-          <label xml:lang="fr">Gabarit menu accordéon avec contrôle des enfants</label>
-        </template>         
         <template name="breadcrumb" file="doPortletNavigateBreadcrumb.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit fil d'ariane</label>
         </template>
@@ -645,6 +642,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureFormDataController" types="CandidatureForm" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureSpontaneeFormDataController" types="CandidatureSpontaneeForm" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheEmploiStageDataController" types="FicheEmploiStage" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FileDocumentDataController" types="FileDocument" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />

@@ -437,6 +437,9 @@ $jcmsplugin.socle.category.navigationDesEspaces.root: c_5025
 # Fiche actu
 $jcmsplugin.socle.ficheactu.types.root: c_1156291
 
+# Catégorie de classement FileDocument
+jcmsplugin.socle.category.classementfiledoc: c_1308781
+
 # Fiche aide
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
@@ -783,3 +786,4 @@ jcmsplugin.socle.export.img.filepath:
 # ------------------------------------------------------------
 jcmsplugin.socle.portlet-twitter.timeout: 5000
 jcmsplugin.socle.portlet-twitter.retry: 3
+

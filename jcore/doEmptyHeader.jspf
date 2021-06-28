@@ -22,8 +22,8 @@
   String headTitle      = titleOfThePage + " - " + channel.getName();
   // Optionnel module SEO : titre de page selon extradata seo
   Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-  if (Util.notEmpty(obj) && Util.notEmpty(obj.getExtraData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
-      headTitle = obj.getExtraData("extradb.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
+  if (Util.notEmpty(obj) && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
+      headTitle = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
   }
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
@@ -130,7 +130,7 @@
 <% } %>
   <title><%= Util.html2Ascii(headTitle) %></title>
 <%
-// DEP44 : désactivation des styles en front office sauf pour les membres autorisés
+// DEP44 : dÃ©sactivation des styles en front office sauf pour les membres autorisÃ©s
 if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
     if (!Util.toBoolean(request.getAttribute("css-at-bottom"), false)) {
 	  for (Iterator it = jcmsContext.getFinalCSSMap().entrySet().iterator() ; it.hasNext() ; ) { 
