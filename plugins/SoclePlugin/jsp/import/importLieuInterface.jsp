@@ -11,7 +11,7 @@ if(!isAdmin) {
 
 Map<String, String> filecheckLog = new TreeMap<>();
 
-if(getBooleanParameter("importLieux", false)) {
+if(getBooleanParameter("importLieux", false) && Util.notEmpty(request.getAttribute("file"))) {
     
     FileItem file = (FileItem) request.getAttribute("file");
     if (getBooleanParameter("test", false)) {
