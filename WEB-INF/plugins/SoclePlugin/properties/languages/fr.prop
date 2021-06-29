@@ -480,6 +480,9 @@ jcmsplugin.socle.ficheaide.bonASavoir.label: Bon à savoir
 jcmsplugin.socle.ficheaide.tuile.besoin.label: Besoin :
 jcmsplugin.socle.ficheaide.tuile.typeAide.label: Type d'aide :
 
+jcmsplugin.socle.fichearticle.tuile.communes.label: Communes :
+jcmsplugin.socle.fichearticle.tuile.epci.label: EPCI :
+
 jcmsplugin.socle.faq.votre-question: Votre question
 jcmsplugin.socle.faq.votre-email: Votre email
 jcmsplugin.socle.faq.vous-avez-question: Vous avez une question ?
