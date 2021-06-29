@@ -617,6 +617,7 @@ jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé pa
 jcmsplugin.socle.newletter.info.titre: Recevoir nos infos
 jcmsplugin.socle.newletter.postal.recevoir: Recevoir nos publications par courrier postal
 jcmsplugin.socle.newletter.flash.mail: M’abonner aux <span lang="en">flash</span> infos par mail
+jcmsplugin.socle.newletter.newsletter.mail: M’abonner à la <span lang="en">newsletter</span>
 jcmsplugin.socle.newletter.abonnement.actu.title: Je m'abonne pour recevoir l’actualité du CD44 par email
 
 jcmsplugin.socle.newletter.postal.mail.sujet: Demande d'inscription par courrier postal

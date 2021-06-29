@@ -32,7 +32,7 @@
      
 					<div class="mtm">
 					
-						<h2 class="h4-like" id="fash-mail"><%= glp("jcmsplugin.socle.newletter.flash.mail") %></h2>					
+						<h2 class="h4-like" id="fash-mail"><%= glp("jcmsplugin.socle.newletter.newsletter.mail") %></h2>					
 						
 						<div class="ds44-form__container ds44-mb-std">
 
