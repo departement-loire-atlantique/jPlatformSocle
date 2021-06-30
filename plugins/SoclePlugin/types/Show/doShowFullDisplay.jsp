@@ -282,7 +282,7 @@
 					<%-- Diaporama --%>
                     <jalios:if predicate='<%= Util.notEmpty(obj.getSlideShow())  %>'>
                         <div class="mtm">
-                            <jalios:include pub="<%= obj.getSlideShow() %>"/>
+                            <jalios:include pub="<%= obj.getSlideShow() %>" usage="query"/>
                         </div>
                     </jalios:if>  
                     
