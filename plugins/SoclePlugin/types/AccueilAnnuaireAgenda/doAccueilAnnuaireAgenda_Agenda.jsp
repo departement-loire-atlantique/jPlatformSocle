@@ -45,7 +45,13 @@
     
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
         <jalios:foreach name="itPortletBas" type="PortalElement" array="<%= obj.getPortletsBas() %>">
+            <jalios:if predicate="<%= itPortletBas instanceof PortletPush %>">
+            <section class="ds44-container-fluid ds44--l-padding">
+            </jalios:if>
             <jalios:include pub="<%= itPortletBas %>"/>
+            <jalios:if predicate="<%= itPortletBas instanceof PortletPush %>">
+            </section>
+            </jalios:if>
         </jalios:foreach>    
     </jalios:if>
 </main>
