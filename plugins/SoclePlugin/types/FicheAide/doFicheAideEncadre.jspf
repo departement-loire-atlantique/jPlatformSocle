@@ -19,7 +19,7 @@
 <%-- Témoignages --%>
 <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
     <section class="ds44-box">
-        <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignage") %></p>
+        <p role="heading" aria-level="2" class="ds44-box-heading"><%= Util.notEmpty(obj.getTitreVideo()) ? obj.getTitreVideo() : glp("jcmsplugin.socle.titre.temoignages") %></p>
         <jalios:foreach name="itVideo" type="generated.Temoignage" array="<%= obj.getVideo() %>">
             <jalios:media data='<%=itVideo %>' template='temoignage' />
         </jalios:foreach>
