@@ -415,7 +415,7 @@
 		                              <h2 id="titre_temoignages"><%= titleTemoignage %></h2>
 		                          </jalios:if>
 		                          <jalios:foreach name="itVideo" type="Video" array="<%= obj.getVideo() %>">
-		                              <ds:articleVideo video="<%= itVideo %>" title="<%= itVideo.getTitreTemoignage(userLang) %>" intro="<%= itVideo.getChapo(userLang) %>"></ds:articleVideo>
+		                              <ds:articleVideo video="<%= itVideo %>" title="<%= itVideo.getTitreTemoignage(userLang) %>" intro="<%= itVideo.getChapo(userLang) %>" noOffset="<%= true %>"></ds:articleVideo>
 		                          </jalios:foreach> 
 		                 </section>
 		               </jalios:if>
