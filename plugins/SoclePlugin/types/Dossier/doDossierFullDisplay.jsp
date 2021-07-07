@@ -167,7 +167,9 @@
 		<div class="ds44-grid-valign-center ds44-w100">
 			<ul class="ds44-list ds44-list--puces">
 				<jalios:foreach type="String" name="itTitreRubrique" array="<%= obj.getTitreRubrique() %>">
-					<li><a href="#section<%= itCounter %>"><%= itTitreRubrique %></a></li>
+				    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreRubrique(userLang)[itCounter-1])%>">
+					   <li><a href="#section<%= itCounter %>"><%= itTitreRubrique %></a></li>
+					</jalios:if>
 				</jalios:foreach>
 			</ul>
 		</div>

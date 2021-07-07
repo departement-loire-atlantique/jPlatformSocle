@@ -79,11 +79,11 @@
 		                        <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= displayQuiContacter %>">
-                                <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
-                                </jalios:if>
-                                <jalios:if predicate="<%= displayVideo %>">
-                                <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>
-                                </jalios:if>
+                    <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+                    </jalios:if>
+                    <jalios:if predicate="<%= displayVideo %>">
+                    <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>
+                    </jalios:if>
 		                        <jalios:if predicate="<%= displayFaq %>">
 		                        <li><a href="#sectionFaq" class=""><%= glp("jcmsplugin.socle.recherche.type.FaqAccueil") %></a></li>
 		                        </jalios:if>
@@ -192,9 +192,9 @@
 		                                        <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
 		                                    </a>
 		                                </p>
-		                                <jalios:if predicate="<%= Util.notEmpty(obj.getDureeEdemarche()) %>">
+		                    <jalios:if predicate="<%= Util.notEmpty(obj.getDureeEdemarche()) %>">
 		                                    <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
-		                                </jalios:if>
+		                    </jalios:if>
 		                            </div>
 		                        </jalios:if>
 		
@@ -229,7 +229,7 @@
 		                                    <jalios:select>
 		                                        <jalios:if predicate='<%= Util.isEmpty(obj.getDocumentsUtiles()) %>'>
 		                                            <%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %>
-		                                        </jalios:if>
+		                            </jalios:if>
 		                                        <jalios:default>
 		                                            <%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %>
 		                                        </jalios:default>
@@ -243,9 +243,9 @@
 		                                    
 			                                <jalios:media data="<%= itContent %>" template="contact" />
 
- 		                                    <jalios:if predicate="<%= lieuCounter != contentArray.length %>">
+ 		                        <jalios:if predicate="<%= lieuCounter != contentArray.length %>">
 		                                        <hr />
-		                                    </jalios:if>
+		                        </jalios:if>
 		
 		                                </jalios:foreach>
 		                            </div>
@@ -377,17 +377,17 @@
 		                                <% hasContactCol = true; %>
 		                                <div class='col-<%= Util.isEmpty(obj.getBesoinDaide()) ? "12" : "6 ds44-modal-column" %>'>
 		
-		                                    <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
+		                        <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact()) %>">
 		                                        <jalios:wysiwyg><%= obj.getComplementContact() %></jalios:wysiwyg>
-		                                    </jalios:if>
+		                        </jalios:if>
 		                                    <div class="ds44-mt1"></div>
 		                                    <jalios:foreach name="itContent" type="Content" array="<%= obj.getQuiContacter() %>" counter="lieuCounter">
 		
 	                                            <jalios:media data="<%= itContent %>" template="contact" />
 		
-		                                        <jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
+		                            <jalios:if predicate="<%= lieuCounter != obj.getQuiContacter().length %>">
 		                                            <hr />
-		                                        </jalios:if>
+		                            </jalios:if>
 		
 		                                    </jalios:foreach>
 		
@@ -450,3 +450,45 @@
 	<jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp" />
 
 </main>
+
+<section id="summaryMenu" class="ds44-overlay ds44-overlay--navFromBottom" aria-modal="true" role="dialog" aria-label='<%= glp("jcmsplugin.socle.dossier.sommaire") %>' aria-hidden="true"
+    aria-labelledby="titreSommaire">
+    <div class="ds44-container-menuBackLink">
+        <p role="heading" aria-level="1" class="ds44-menuBackLink" id="titreRechercher"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
+    </div>
+    <button type="button" class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" aria-label='<%= glp("jcmsplugin.socle.dossier.fermer-menu-sommaire") %>'>
+        <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+    </button>
+    <p id="titreSommaire" role="heading" aria-level="1" class="visually-hidden"><%= glp("jcmsplugin.socle.dossier.menu-sommaire") %></p>
+    <div class="ds44-flex-container ds44-flex-valign-center ds44-flex-align-center ds44-hv100 ds44-container-large ds44-tiny-to-med-atop ds44-ttl-pt9">
+        <div class="ds44-grid-valign-center ds44-w100">
+            <ul class="ds44-list ds44-list--puces">
+                <jalios:if predicate="<%= displayEnResume %>">
+                <li><a href="#sectionPourQui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
+                <li><a href="#sectionCestQuoi" class=""><%= glp("jcmsplugin.socle.titre.quoi") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
+                <li><a href="#sectionDocuments" class=""><%= glp("jcmsplugin.socle.titre.fournir-documents") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= displayFaireDemande %>">
+                <li><a href="#sectionFaireDemande" class=""><%= glp("jcmsplugin.socle.titre.comment-demande") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= displaySuivreDemande %>">
+                <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= displayQuiContacter %>">
+                <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= displayVideo %>">
+                <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>
+                </jalios:if>
+                <jalios:if predicate="<%= displayFaq %>">
+                <li><a href="#sectionFaq" class=""><%= glp("jcmsplugin.socle.recherche.type.FaqAccueil") %></a></li>
+                </jalios:if>
+            </ul>
+        </div>
+    </div>
+
+</section>
