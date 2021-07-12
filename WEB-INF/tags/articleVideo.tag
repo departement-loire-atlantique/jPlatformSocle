@@ -35,6 +35,13 @@
     type="Boolean"
     description="Cache le titre si true"
 %>
+<%@ attribute name="noOffset"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Ne pas ajouter un bloc 'grid' si à true"
+%>
 <%
 if (Util.notEmpty(title)) {
   request.setAttribute("overrideVidTitle", title);
@@ -49,8 +56,12 @@ if (Util.notEmpty(hideTitle)) {
 %>
 <section id="contentVideo" class="ds44-contenuArticle">
 	<div class="ds44-inner-container ds44-mtb3">
+	    <jalios:if predicate="<%= !noOffset %>">
 		<div class="ds44-grid12-offset-2">
+		</jalios:if>
 			<jalios:media data='<%= video %>' />
+        <jalios:if predicate="<%= !noOffset %>">
 		</div>
+		</jalios:if>
 	</div>
 </section>
