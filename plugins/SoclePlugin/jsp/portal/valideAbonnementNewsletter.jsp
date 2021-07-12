@@ -83,7 +83,7 @@ if((noSegment || Util.notEmpty(segment)) && !isExpire && MailjetManager.addConta
                         <jalios:select>
 	                        <jalios:if predicate="<%= isValide %>">
 		                        <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide") %></h2>                      
-		                        <%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme}) %> 
+		                        <%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme,channel.getUrl()}) %> 
 	                        </jalios:if>
 	                        <jalios:if predicate="<%= isExpire %>">
                                 <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-expire") %></h2>                      
