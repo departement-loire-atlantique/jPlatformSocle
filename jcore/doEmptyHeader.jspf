@@ -22,8 +22,12 @@
   String headTitle      = titleOfThePage + " - " + channel.getName();
   // Optionnel module SEO : titre de page selon extradata seo
   Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-  if (Util.notEmpty(obj) && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
-      headTitle = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
+  if (Util.notEmpty(obj)) {
+      if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
+          headTitle = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
+      } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang))){
+          headTitle = obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
+      }
   }
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
