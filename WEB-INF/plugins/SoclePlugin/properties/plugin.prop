@@ -105,6 +105,7 @@ jcmsplugin.socle.socialnetworks.share.actif: true
 $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: 
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: c_1354966
 $jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
+jcmsplugin.socle.footer.newsletter.publication.chooser-publication: 
 
 jcmsplugin.socle.form.newsletter.portlet-rgpd.id:
 jcmsplugin.socle.form.newsletter.mailTo:

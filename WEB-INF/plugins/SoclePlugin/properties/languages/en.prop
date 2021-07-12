@@ -94,6 +94,7 @@ jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
 $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: Id de la portlet wysiwyg de la pop-in newsletter en footer
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: Id de la catégorie flash info thématique (newsletter)
 $jcmsplugin.socle.footer.newsletter.parutions.cat: Id de la catégorie prochaines parutions (newsletter)
+jcmsplugin.socle.footer.newsletter.publication: Lien vers la publication pour inscription à la newsletter
 
 jcmsplugin.socle.form.newsletter.portlet-rgpd.id: Id de la portlet Wysiwyg pour les mentions RGPD du formulaire de newletter
 jcmsplugin.socle.form.newsletter.mailTo: Email pour l'envoi (newsletter)
