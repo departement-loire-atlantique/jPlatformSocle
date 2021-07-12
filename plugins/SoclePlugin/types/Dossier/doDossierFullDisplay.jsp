@@ -66,9 +66,11 @@
 
 	<%-- FAQ --%>
 	<jalios:if predicate="<%=Util.notEmpty(obj.getFaq())%>">
+	    <% request.setAttribute("noQuestionButton", true); %>
 		<div>
 			<jalios:include id="<%=obj.getFaq().getId()%>" />
 		</div>
+		<% request.removeAttribute("noQuestionButton"); %>
 	</jalios:if>
 
 	<%-- Partagez cette page --%>
