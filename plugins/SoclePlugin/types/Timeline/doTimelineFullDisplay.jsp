@@ -3,14 +3,41 @@
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><% Timeline obj = (Timeline)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><%@ include file='/front/doFullDisplay.jspf' %>
+<%
 
+boolean hasImage = Util.notEmpty(obj.getVisuel());
+boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
+
+%>
 <main role="main" id="content">
 
 <jalios:include target="SOCLE_ALERTE"/>
 
 	<section class="ds44-container-large">
 	
-	   <ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getVisuel() %>" title="<%= obj.getTitle(userLang) %>" breadcrumb="true"></ds:titleBanner>
+	   <ds:titleNoImage title="<%= obj.getTitle(userLang) %>" breadcrumb="true" subtitle="<%= obj.getSoustitre(userLang) %>"></ds:titleNoImage>
+	   
+	   <jalios:if predicate="<%= hasImage || hasDesc %>">
+	   <section id="imageChapo" class="ds44-contenuArticle">
+            <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-1">
+                    <div class="grid-<%= hasImage && hasDesc ? "2" : "1" %>-small-1">
+                        <jalios:if predicate="<%= hasImage %>">
+                        <div class='col mrl mbs'>
+                           <ds:figurePicture imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" 
+                             pub="<%= obj %>" image="<%= obj.getVisuel() %>"/>
+                        </div>
+                        </jalios:if>
+                        <jalios:if predicate="<%= hasDesc %>">
+                        <div class='col <%= hasImage ? "mll" : "" %> mbs'>
+                            <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getDescription(userLang) %></jalios:wysiwyg></div>
+                        </div>
+                        </jalios:if>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </jalios:if>
 	
 	    <nav class="ds44-theme txtcenter ds44--xl-padding ds44-timeline_index ds44-mtb5" aria-label='<%= glp("jcmsplugin.socle.barrenavsecondaire") %>'>
 	        <p class="inbl"><%= glp("jcmsplugin.socle.goto") %></p>
