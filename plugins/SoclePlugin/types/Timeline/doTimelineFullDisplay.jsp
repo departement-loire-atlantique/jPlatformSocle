@@ -45,7 +45,8 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
 	            <%-- générer automatiquement sur la liste des éléments --%>
 	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Lien" counter="counterTimeline">
 	            <%
-	            String titleLink = titleLink = obj.getLibelleElementsTimeline(userLang)[counterTimeline-1];
+	            String titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+	            if (Util.isEmpty(titleLink)) titleLink = itElement.getTitle(userLang);
 	            %>
 	            <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
 	            </jalios:foreach>
@@ -59,7 +60,8 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
 	            <%-- Affichage des éléments --%>
 	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Lien" counter="counterTimeline">
                 <%
-                String titleElement = obj.getLibelleElementsTimeline(userLang)[counterTimeline-1];
+                String titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+                if (Util.isEmpty(titleElement)) titleElement = itElement.getTitle(userLang);
                 %>
                 
                 <section id="time_elem_<%= itElement.getId() %>" class="ds44-timeline_elem">
