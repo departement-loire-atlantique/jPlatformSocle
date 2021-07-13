@@ -207,6 +207,7 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une%20page%20pou
 # ------------------------------------------------------------
 #  Libellés communs
 # ------------------------------------------------------------
+jcmsplugin.socle.deux-points: &nbsp;:&nbsp;
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.socle.lien.site.nouvelonglet: Visiter le site web : {0} - nouvelle fenêtre
