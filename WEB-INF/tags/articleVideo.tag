@@ -53,14 +53,15 @@ if (Util.notEmpty(intro)) {
 if (Util.notEmpty(hideTitle)) {
   request.setAttribute("hideVideoTitle", hideTitle);
 }
+boolean addOffest = Util.notEmpty(noOffset) ? !noOffset : true;
 %>
 <section id="contentVideo" class="ds44-contenuArticle">
 	<div class="ds44-inner-container ds44-mtb3">
-	    <jalios:if predicate="<%= !noOffset %>">
+	    <jalios:if predicate="<%= addOffest %>">
 		<div class="ds44-grid12-offset-2">
 		</jalios:if>
 			<jalios:media data='<%= video %>' />
-        <jalios:if predicate="<%= !noOffset %>">
+        <jalios:if predicate="<%= addOffest %>">
 		</div>
 		</jalios:if>
 	</div>
