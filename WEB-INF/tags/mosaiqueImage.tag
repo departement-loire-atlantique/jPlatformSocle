@@ -61,7 +61,7 @@
 		String figcaption = Util.notEmpty(legend) ? legend + " " : "";
 		if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
 	%>
-	<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom " data-target="#overlay-mosaique" data-js="ds44-modal" 
+	<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom <%= style %>" data-target="#overlay-mosaique" data-js="ds44-modal" 
 			role="figure" aria-label="<%=figcaption%>">
 		<%= btnImage %>
 		<figcaption class="ds44-imgCaption">
