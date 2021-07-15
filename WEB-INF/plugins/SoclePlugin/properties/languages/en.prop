@@ -271,7 +271,7 @@ jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Access the video: {0}
 jcmsplugin.socle.partenaire: Partner
 jcmsplugin.socle.participants: number of participants
-jcmsplugin.socle.tarifs: Rates:
+jcmsplugin.socle.tarifs: Rates
 jcmsplugin.socle.tarif.normal: Normal:
 jcmsplugin.socle.tarif.reduit: Reduced rate:
 jcmsplugin.socle.gratuit: FREE

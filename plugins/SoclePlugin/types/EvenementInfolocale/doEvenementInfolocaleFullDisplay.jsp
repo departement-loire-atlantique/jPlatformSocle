@@ -186,7 +186,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                   <div class="col">
                      <jalios:if predicate="<%= Util.notEmpty(obj.getTarifs()) %>">
 	                     <div class="ds44-mb3">
-	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.tarifs") %></h2>
+	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.tarifs") %><%=glp("jcmsplugin.socle.deux-points") %></h2>
 	                        <ul class="ds44-uList">
 	                           <jalios:foreach name="itTarif" type="Tarif" array="<%= obj.getTarifs() %>">
 	                               <%
