@@ -5,7 +5,7 @@ String idPortletBas = (String) request.getAttribute("idPortletBas");
 %>    
 		<jalios:if predicate='<%= Util.notEmpty(channel.getData(idPortletBas)) %>'>
 		      <jalios:wysiwyg css="ds44-wsg-smallText ds44-mt3">
-		          <%= ((PortletWYSIWYG) channel.getData(idPortletBas)).getWysiwyg() %>
+		          <%= ((PortletWYSIWYG) channel.getData(idPortletBas)).getWysiwyg(userLang) %>
 		      </jalios:wysiwyg>
 		</jalios:if>
 
