@@ -2,7 +2,7 @@
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><% 
 FileDocument obj = (FileDocument)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
-String title = HttpUtil.encodeForHTMLAttribute(obj.getTitle());
+String title = HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang));
 String fileType = FileDocument.getExtension(obj.getFilename()).toUpperCase();
 String fileSize = Util.formatFileSize(obj.getSize());
 String fileUrl = ServletUtil.getBaseUrl(request) + obj.getDownloadUrl(); 

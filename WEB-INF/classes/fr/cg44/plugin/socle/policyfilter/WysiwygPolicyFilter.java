@@ -116,7 +116,7 @@ public class WysiwygPolicyFilter extends BasicWysiwygPolicyFilter {
 	 */
 	public String checkExternalLinks(String text, Locale userLocale) {
 
-	  String suffixe = " "+JcmsUtil.glp(userLocale.getCountry(), "jcmsplugin.socle.accessibily.newTabLabel");		
+	  String suffixe = " "+JcmsUtil.glp(userLocale.getLanguage(), "jcmsplugin.socle.accessibily.newTabLabel");		
 	  Pattern patternTarget = Pattern.compile("<a(.*?) target=\"_blank\"(.*?)>(.*?)</a>");
 	  Pattern patternTitle = Pattern.compile("<a(.*?)title=\"(.*?)\"(.*?)</a>");		
 	  Matcher matcherTarget = patternTarget.matcher(text);
