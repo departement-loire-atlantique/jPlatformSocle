@@ -465,9 +465,9 @@ jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
 jcmsplugin.socle.ficheaide.accessibilite-lieu.titre: Accessibilité du lieu :
 jcmsplugin.socle.ficheaide.info-accessibilite.label: Infos accessibilité
-jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contacter par mail : {0} : {1}
-jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contacter par mail
-jcmsplugin.socle.ficheaide.visiter-site.label: Visiter le site
+jcmsplugin.socle.ficheaide.contacter-x-par-mail.label: Contact by mail : {0} : {1}
+jcmsplugin.socle.ficheaide.contacter-par-mail.label: Contact by mail
+jcmsplugin.socle.ficheaide.visiter-site.label: Visit the website
 jcmsplugin.socle.ficheaide.nousRencontrer: Nous rencontrer
 jcmsplugin.socle.ficheaide.adresse: Adresse
 jcmsplugin.socle.ficheaide.nousContacter: Nous contacter
