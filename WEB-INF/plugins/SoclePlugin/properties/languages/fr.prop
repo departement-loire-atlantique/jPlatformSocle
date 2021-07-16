@@ -47,20 +47,11 @@ jcmsplugin.socle.url-rewriting.mdate: Enregistrer date de dernière appel pour l
 jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
 jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
-
-jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
-jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale
-jcmsplugin.socle.rgpd.notice.logo: RGPD - Logo affiché en haut de la modale
-jcmsplugin.socle.rgpd.notice.description: RGPD - Description notice
-jcmsplugin.socle.rgpd.notice.learn-more: RGPD - libellé bouton "je paramètre"
-jcmsplugin.socle.rgpd.bouton.accept: RGPD - libellé bouton "j'accepte"
-jcmsplugin.socle.rgpd.bouton.accept-all: RGPD - libellé bouton "j'accepte tout" 
-jcmsplugin.socle.rgpd.bouton.decline: RGPD - libellé bouton "je refuse"
-jcmsplugin.socle.rgpd.bouton.decline-all: RGPD - libellé bouton "je refuse tout"
-jcmsplugin.socle.rgpd.privacyPolicy.name: RGPD - politique de confidentialité
-jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidentialité"
+fr.jcmsplugin.socle.rgpd.description-modale: RGPD - texte description modale FR
+fr.jcmsplugin.socle.rgpd.description-notice: RGPD - texte description notice FR
+en.jcmsplugin.socle.rgpd.description-modale: RGPD - texte description modale EN
+en.jcmsplugin.socle.rgpd.description-notice: RGPD - texte description notice EN
 jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
-
 jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
 jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
 
@@ -1018,3 +1009,19 @@ jcmsplugin.socle.sites-applis.atlas.url: https://atlas.loire-atlantique.fr
 jcmsplugin.socle.barrenavsecondaire: Barre de navigation secondaire
 jcmsplugin.socle.contexte: Contexte
 jcmsplugin.socle.goto: Aller à :
+
+# ------------------------------------------------------------
+#  RGPD / Orejime
+# ------------------------------------------------------------
+jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies
+jcmsplugin.socle.rgpd.notice.learn-more: Je paramètre les cookies
+jcmsplugin.socle.rgpd.bouton.accept: J’accepte les cookies
+jcmsplugin.socle.rgpd.bouton.accept-all: J’accepte tout
+jcmsplugin.socle.rgpd.bouton.decline: Je refuse les cookies
+jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
+jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
+jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
+jcmsplugin.socle.rgpd.cookie.jsessionid.descr: Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.
+jcmsplugin.socle.rgpd.cookie.google.descr: Nous utilisons Google Analytics par l’intermédiaire de Google Tag Manager pour collecter des informations analytiques sur nos utilisateurs.
+jcmsplugin.socle.rgpd.cookie.orejime.descr: Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.
+

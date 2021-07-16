@@ -9,42 +9,71 @@
         translations: {
             fr: {
                 consentModal: {
-                    title: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.modale.titre")) %>',
-                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.modale.description")) %>',
+                    title: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.modale.titre")) %>',
+                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("fr.jcmsplugin.socle.rgpd.description-modale")) %>',
                     privacyPolicy: {
-                        name: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
-                        text: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
+                        name: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
+                        text: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
                     }
                 },
                 consentNotice: {
-                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.notice.description")) %>',
-                    learnMore: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.notice.learn-more")) %>',
+                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("fr.jcmsplugin.socle.rgpd.description-notice")) %>',
+                    learnMore: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.notice.learn-more")) %>',
                     privacyPolicy: {
-                        name: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
-                        text: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
+                        name: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
+                        text: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
                     }
                 },
-                accept: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.accept")) %>',
-                acceptAll: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
-                decline: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.decline")) %>',
-                declineAll: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
+                accept: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept")) %>',
+                acceptAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
+                decline: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline")) %>',
+                declineAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
                 purposes: {
                     analytics: 'Analyse'
                 },
                 "jsessionid":{
-                    description: "Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.",
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.jsessionid.descr")) %>",
                 },
                 "google-tag-manager":{
-                    description: "Nous utilisons Google Analytics par l’intermédiaire de Google Tag Manager pour collecter des informations analytiques sur nos utilisateurs.",
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.google.descr")) %>",
                 },
                 "orejime":{
-                    description: "Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.",
-                },                
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.orejime.descr")) %>",
+                },
             },
             en: {
+                consentModal: {
+                    title: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.modale.titre")) %>',
+                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("en.jcmsplugin.socle.rgpd.description-modale")) %>',
+                    privacyPolicy: {
+                        name: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
+                        text: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
+                    }
+                },
+                consentNotice: {
+                    description: '<%= HttpUtil.encodeForJavaScript(channel.getProperty("en.jcmsplugin.socle.rgpd.description-notice")) %>',
+                    learnMore: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.notice.learn-more")) %>',
+                    privacyPolicy: {
+                        name: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.name")) %>',
+                        text: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.privacyPolicy.text")) %> {privacyPolicy}'
+                    }
+                },
+                accept: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept")) %>',
+                acceptAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
+                decline: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline")) %>',
+                declineAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
                 purposes: {
-                    analytics: 'Analytics'
-                }
+                    analytics: 'analytics'
+                },
+                "jsessionid":{
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.jsessionid.descr")) %>",
+                },
+                "google-tag-manager":{
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.google.descr")) %>",
+                },
+                "orejime":{
+                    description: "<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.cookie.orejime.descr")) %>",
+                },                
             },
         },
         apps: [
