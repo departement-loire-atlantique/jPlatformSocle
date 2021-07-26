@@ -45,9 +45,7 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 	                 <section class="txtcenter">
 	                 
 	                    <jalios:if predicate='<%= Util.notEmpty(itElu.getPicture()) %>'>
-	                        <picture class="ds44-container-imgRatio ds44-container-imgRatio--profil ds44-centeredBlock">
-	                            <img src="<%= itElu.getPicture() %>" alt="" class="ds44-w100 ds44-imgRatio--profil">
-	                        </picture>
+	                        <ds:figurePicture format="custom" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--profil ds44-centeredBlock" image="<%= itElu.getPicture() %>" imgCss="ds44-imgRatio--profil" width="110" height="110"/>
 	                    </jalios:if>
 	                    
 	                     <div class="ds44-card__section">
