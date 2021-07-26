@@ -1025,3 +1025,8 @@ jcmsplugin.socle.rgpd.cookie.jsessionid.descr: Ce cookie est utilisé par le ser
 jcmsplugin.socle.rgpd.cookie.google.descr: Nous utilisons Google Analytics par l’intermédiaire de Google Tag Manager pour collecter des informations analytiques sur nos utilisateurs.
 jcmsplugin.socle.rgpd.cookie.orejime.descr: Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.
 
+# ------------------------------------------------------------
+#  Formulaires page utile
+# ------------------------------------------------------------
+
+jcmsplugin.socle.formpageutile.alloweddelay: Page utile : délai en secondes pour les doublons

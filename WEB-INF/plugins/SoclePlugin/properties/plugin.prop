@@ -783,3 +783,8 @@ jcmsplugin.socle.export.img.filepath:
 jcmsplugin.socle.portlet-twitter.timeout: 5000
 jcmsplugin.socle.portlet-twitter.retry: 3
 
+# ------------------------------------------------------------
+#  Formulaires page utile
+# ------------------------------------------------------------
+
+jcmsplugin.socle.formpageutile.alloweddelay: 3
