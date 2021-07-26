@@ -140,6 +140,7 @@ jcmsplugin.socle.form.login.oublie-passe: Forgot your password ?
 jcmsplugin.socle.form.contact-mail.title: Contact form
 jcmsplugin.socle.form.contact-mail.origine: Loire Atlantique Departement
 jcmsplugin.socle.form.exemple.structure : Exemple : Association Les petits poissons
+jcmsplugin.socle.form.valider-envoi: Valider
 
 # ------------------------------------------------------------
 #  Mail
@@ -1024,3 +1025,9 @@ jcmsplugin.socle.rgpd.privacyPolicy.text: To learn more, please read our
 jcmsplugin.socle.rgpd.cookie.jsessionid.descr: This cookie is used server-side to manage user session and allow a user-friendly navigation. It is erased at the end of the session or when the browser is closed.
 jcmsplugin.socle.rgpd.cookie.google.descr: We use Google Analytics through Google Tag Manager to collect analytics information about our users
 jcmsplugin.socle.rgpd.cookie.orejime.descr: This cookie is used by our cookie manager to save your preferences.
+
+# ------------------------------------------------------------
+#  Formulaires page utile
+# ------------------------------------------------------------
+
+jcmsplugin.socle.formpageutile.alloweddelay: Page utile : délai en secondes pour les doublons
