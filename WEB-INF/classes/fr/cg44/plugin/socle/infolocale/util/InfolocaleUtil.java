@@ -535,7 +535,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées, et les doublons
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées, les doublons, et événements annulés
      * @param eventList
      * @param arrayDebutFin
      * @return
@@ -545,7 +545,7 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées et potentiellement les doublons
+     * Supprime les événements qui ne rentrent pas dans les limites de dates indiquées et potentiellement les doublons, également ceux annulés
      * S'il n'y a pas de limite de date, celle-ci est initialisée de J à J+2 ans
      * S'il n'y a pas de limite, et que l'option de duplication est à "FALSE", aucun tri ne sera au final fait
      * @param source
@@ -577,6 +577,11 @@ public class InfolocaleUtil {
       String dateFin = arrayDebutFin.length > 1 ? arrayDebutFin[1] : arrayDebutFin[0];
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
         EvenementInfolocale itEvent = iter.next();
+        // si l'événement est annulé, on ne l'ajoute simplement pas
+        if (itEvent.getMentionAnnule()) {
+            iter.remove();
+        }
+        
         // si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
         if ((deleteDuplicates && usedIds.contains(itEvent.getId())) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
           iter.remove();

@@ -99,6 +99,14 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			        </div>
       </jalios:buffer>
       
+      <jalios:buffer name="eventAnnule">
+	      <jalios:if predicate="<%= true %>">
+	        <div class="ds44-container-large txtcenter ds44-mt2 ds44-iconInnerText">
+	            <p class="h2-like"><i class="icon icon-attention" aria-hidden="true"></i> <%= glp("jcmsplugin.socle.infolocale.annule") %></h1>
+	        </div>
+	      </jalios:if>
+      </jalios:buffer>
+      
       <jalios:select>
               
                     <jalios:if predicate='<%= InfolocaleUtil.organisationIdIsInPropList(obj.getOrganismeId()) || (texteCourtEmpty && descEmpty) %>'>
@@ -112,6 +120,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 		                              </figure>
 	                              </jalios:if>
 	                              <%= eventSummary %>
+	                              <%= eventAnnule %>
 	                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
 									 <div class="grid-1-small-1">
 										<div class="col mll mbs">
@@ -129,6 +138,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                        <div class="ds44-inner-container">
 		                        <div class="ds44-grid12-offset-1">
 		                           <%=eventSummary%>
+		                           <%= eventAnnule %>
 		                        </div>
 	                        </div>
                         </div>
