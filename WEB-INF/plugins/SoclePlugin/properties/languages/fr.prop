@@ -99,6 +99,7 @@ jcmsplugin.socle.mailjet.contactList: Id liste de contact mailjet (newsletter)
 # Catégorie de classement FileDocument
 jcmsplugin.socle.category.classementfiledoc: ID catégorie de classement FileDocument
 
+
 # ------------------------------------------------------------
 #  Recherche à facettes
 # ------------------------------------------------------------

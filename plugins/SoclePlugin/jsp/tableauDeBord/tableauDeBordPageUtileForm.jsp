@@ -211,9 +211,9 @@
 				if(nbrInformationTropComplique > avisPlusNombreux) avisPlusNombreux = nbrInformationTropComplique;
 				if(nbrTropALire > avisPlusNombreux) avisPlusNombreux = nbrTropALire;
 			%>
-			<a style="width: <%= (nbrPasAssezComplet*100/avisPlusNombreux) %>%;" title="Pas assez complet : <%= nbrPasAssezComplet %>"></a>
-			<a style="width: <%= (nbrInformationTropComplique*100/avisPlusNombreux) %>%;" title="L'information est trop compliqué : <%= nbrInformationTropComplique %>"></a>
-			<a style="width: <%= (nbrTropALire*100/avisPlusNombreux) %>%;" title="Il y a trop à lire : <%= nbrTropALire %>"></a>
+			<a style="width: <%= avisPlusNombreux == 0 ? 0 : (nbrPasAssezComplet*100/avisPlusNombreux) %>%;" title="Pas assez complet : <%= nbrPasAssezComplet %>"></a>
+			<a style="width: <%= avisPlusNombreux == 0 ? 0 : (nbrInformationTropComplique*100/avisPlusNombreux) %>%;" title="L'information est trop compliqué : <%= nbrInformationTropComplique %>"></a>
+			<a style="width: <%= avisPlusNombreux == 0 ? 0 : (nbrTropALire*100/avisPlusNombreux) %>%;" title="Il y a trop à lire : <%= nbrTropALire %>"></a>
 		</div>
 	</div>
 	<div>
