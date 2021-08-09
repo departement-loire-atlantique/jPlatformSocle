@@ -91,6 +91,7 @@
     <type name="Timeline"></type>
     <type name="TimelineElement"></type>
     <type name="Video"></type>
+    <type name="Webdoc"></type>
 
     
     
@@ -375,6 +376,11 @@
     </templates>  
     <templates type="Timeline">
         <template name="default" file="doTimelineFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Webdoc">
+        <template name="default" file="doWebdocFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
