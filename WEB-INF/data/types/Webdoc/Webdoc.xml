@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="Webdoc" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" hbm="true" authgroups="||" categories="">
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="urlIframe" editor="url" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="true" openWindow="false">
+      <label xml:lang="fr">URL iframe</label>
+    </field>
+    <field name="lienRetourInterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien retour interne</label>
+    </field>
+    <field name="ouvertureDansUnNouvelOnglet" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Ouverture dans un nouvel onglet</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="lienRetourExterne" editor="url" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" openWindow="false">
+      <label xml:lang="fr">Lien retour externe</label>
+    </field>
+    <field name="altLien" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Alt lien</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Webdoc</label>
+</type>
+

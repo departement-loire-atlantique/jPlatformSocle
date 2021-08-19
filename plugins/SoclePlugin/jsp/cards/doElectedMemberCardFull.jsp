@@ -30,9 +30,7 @@ if (Util.isEmpty(urlImage)) urlImage = pub.getPicture();
 %>
 
 <section class='ds44-card ds44-box ds44-js-card ds44-card--verticalPicture ds44-card--verticalPicture--elu ds44--m-padding-b <%= Util.notEmpty(request.getParameter("wysiwygEmbed")) ? "large-w50" : ""%>'>
-    <picture class="ds44-container-imgRatio ds44-container-imgRatio--profilXL">
-        <img src="<%= urlImage %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
-    </picture>
+    <ds:figurePicture format="custom" image="<%= obj.getPicture() %>" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--profilXL" imgCss="ds44-imgRatio--profil" width="160" height="160"/>
     <div class="ds44-card__section txtleft mts">
         <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileElu_<%= uid %>">
             <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title='<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>'><%= fullName %></a>
