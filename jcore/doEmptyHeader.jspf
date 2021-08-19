@@ -11,6 +11,17 @@
   String publicationDescription = (String)request.getAttribute("metadescription");
   String strDescription = Util.getString(channelDescription, "") + (Util.notEmpty(channelDescription) && Util.notEmpty(publicationDescription) ? ", " : "") + Util.getString(publicationDescription, "");
     
+  // DEP44 : modification description page selon extradata seo
+  Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+  if (Util.notEmpty(obj)) {
+    if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang))) {
+      strDescription = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang);
+    } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang))){
+      strDescription = obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang);
+    }
+}  
+  
+  
   jcmsContext.addHttpNameHeader("keywords",    strKeyWords);
   jcmsContext.addHttpNameHeader("description", strDescription);
 
@@ -18,10 +29,9 @@
   String titleOfThePage = jcmsContext.getPageTitle("");
   String titlePrefix    = (String) request.getAttribute("title.prefix");
   
-  //DEP44 : modification du titre de la page
+  // DEP44 : modification du titre de la page
   String headTitle      = titleOfThePage + " - " + channel.getName();
   // Optionnel module SEO : titre de page selon extradata seo
-  Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
   if (Util.notEmpty(obj)) {
       if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
           headTitle = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang) + " - " + channel.getName();
