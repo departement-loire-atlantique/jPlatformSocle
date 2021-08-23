@@ -36,3 +36,7 @@
 		</button> 
 	</div>
 </div>
+
+<jalios:if predicate='<%= obj.getRechercherDansLesNomsDesCategori()%>'>
+    <input type="hidden" name='<%= "catName" + glp("jcmsplugin.socle.facette.form-element") %>' value='true' data-technical-field />            
+</jalios:if>
