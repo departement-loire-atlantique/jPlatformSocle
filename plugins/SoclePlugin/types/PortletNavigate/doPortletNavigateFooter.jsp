@@ -53,7 +53,7 @@ String nofollow = box.getNavigatePortlet() ? "" : "rel='nofollow'";
             
             <!-- Lien "cookies présent systématiquement pour ouvrir la modale Orejime -->
             <li class="ds44-footerLink">
-                <a href="#" class="ds44-js-orejime-show" role="button" tabindex="0"><%= glp("jcmsplugin.socle.cookies") %></a>
+                <a href="javascript:;" class="ds44-js-orejime-show" role="button" tabindex="0" lang="en"><%= glp("jcmsplugin.socle.cookies") %></a>
             </li>
         </ul>
     </section>
