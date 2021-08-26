@@ -102,7 +102,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       <jalios:buffer name="eventAnnule">
 	      <jalios:if predicate="<%= true %>">
 	        <div class="ds44-container-large txtcenter ds44-mt2 ds44-iconInnerText">
-	            <p class="h2-like"><i class="icon icon-attention" aria-hidden="true"></i> <%= glp("jcmsplugin.socle.infolocale.annule") %></h1>
+	            <p class="h2-like"><i class="icon icon-attention ds44--l-padding-b" aria-hidden="true"></i> <%= glp("jcmsplugin.socle.infolocale.annule") %></h1>
 	        </div>
 	      </jalios:if>
       </jalios:buffer>
