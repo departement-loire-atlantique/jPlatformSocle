@@ -31,6 +31,13 @@ if (Util.notEmpty(request.getAttribute("hideVideoTitle"))) {
   hideTitle = Boolean.parseBoolean(request.getAttribute("hideVideoTitle").toString());
   request.setAttribute("hideVideoTitle", false);
 }
+
+String heightIframe = "480px";
+if (Util.notEmpty(request.getAttribute("forcedHeight"))) {
+    heightIframe = request.getAttribute("forcedHeight").toString();
+    request.setAttribute("hideVideoTitle", null);
+  }
+
 %>
 
 <jalios:if predicate="<%= Util.notEmpty(titleVideo) && !hideTitle %>">
@@ -41,7 +48,7 @@ if (Util.notEmpty(request.getAttribute("hideVideoTitle"))) {
 </jalios:if>
 
 <div class="ds44-negativeOffset-2 ds44-mtb3">
-    <iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint" style="width: 100%; height: 480px; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
+    <iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint" style="width: 100%; height: <%= heightIframe %>; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen></iframe>
     <jalios:if predicate="<%=Util.notEmpty(fichierTranscript)%>">
         <%
         String fileType = FileDocument.getExtension(obj.getFichierTranscript(userLang).getFilename()).toUpperCase();
