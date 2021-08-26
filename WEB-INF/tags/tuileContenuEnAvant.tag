@@ -1,3 +1,4 @@
+<%@tag import="generated.Lien"%>
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag pageEncoding="UTF-8" description="Tuile de slider"
@@ -87,6 +88,10 @@
     String titleUrl = "";
     
     String alt="";
+    if (pub instanceof Lien) {
+        Lien itLien = (Lien) pub;
+        alt = SocleUtils.getAltFromLien(itLien);
+    }
     
 %>
 <% if (!Boolean.parseBoolean(isUnique)) { %>
