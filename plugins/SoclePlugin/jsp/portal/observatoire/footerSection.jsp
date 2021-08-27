@@ -16,7 +16,7 @@
 	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.contactList")) &&
 	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"))
 	            %>'>
-	           <%@ include file='abonnementNewsletterObservatoireFooter.jspf' %>	 
+	           <%@ include file='../abonnementNewsletterSimpleFooter.jspf' %>   
 	        </jalios:if>       	        
 	    </div>
 	    <div class="col-5-small-1">
