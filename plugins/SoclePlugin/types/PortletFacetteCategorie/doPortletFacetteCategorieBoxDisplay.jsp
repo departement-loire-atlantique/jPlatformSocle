@@ -20,7 +20,7 @@
 		request='<%= request %>' 
 		selectionMultiple='<%= obj.getTypeDeSelection() %>' 
 		profondeur='<%= obj.getProfondeur() %>'
-		isSizeStd='<%= isInRechercheFacette %>'/>
+		isSizeStd='<%= isInRechercheFacette || isInEncadre %>'/>
 		
 
 

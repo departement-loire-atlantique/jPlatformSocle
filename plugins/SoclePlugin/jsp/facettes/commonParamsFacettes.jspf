@@ -1,4 +1,5 @@
 <%
 Publication publication = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
 Boolean isInRechercheFacette = portal.equals(channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal"));
+Boolean isInEncadre = request.getAttribute("isInEncadre") != null ? (Boolean) request.getAttribute("isInEncadre") : false;
 %>

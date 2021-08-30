@@ -55,7 +55,7 @@ if(Util.notEmpty(delegation)){
 		        dataUrl="<%= dataUrl %>" 
 		        label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		        option='<%= Util.isEmpty(delegation) || (Util.notEmpty(delegation) && Util.arrayContains(channel.getStringArrayProperty("jcmsplugin.socle.delegation.needAddress", null), delegation.getCodePostal())) ? "adresse" : "" %>'
-		        isLarge='<%= !isInRechercheFacette %>'/>		        
+		        isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>		        
 	</jalios:default>
 	
 </jalios:select>

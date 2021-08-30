@@ -17,4 +17,4 @@ PortletFacetteAdresse obj = (PortletFacetteAdresse)portlet;
 		option='<%= Util.notEmpty(obj.getRayon(loggedMember)) ? "rayon" : "" %>'
 		setRayons="<%= Util.notEmpty(obj.getRayon(loggedMember)) ? obj.getRayon(loggedMember) : new TreeSet<Category>() %>"
 		autourMoi="<%= obj.getAutourDeMoi() %>"
-		isLarge='<%= !isInRechercheFacette %>'/>
+		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>
