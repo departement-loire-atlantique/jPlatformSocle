@@ -19,12 +19,12 @@
 	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.contactList")) &&
 	            Util.notEmpty(channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"))
 	            %>'>
-	           <%@ include file='../abonnementNewsletterSimpleFooter.jspf' %>	 
+	           <%@ include file='/plugins/SoclePlugin/jsp/portal/abonnementNewsletterSimpleFooter.jspf' %>	 
 	        </jalios:if>       	        
 	    </div>
 	    <div class="col-3-small-1">
 	        <%-- Inclusion de la portlet réseaux sociaux --%>
-	        <%@ include file='../socialNetworksFooter.jspf' %>
+	        <%@ include file='/plugins/SoclePlugin/jsp/portal/socialNetworksFooter.jspf' %>
 	    </div>
 	</div>
 </section>
