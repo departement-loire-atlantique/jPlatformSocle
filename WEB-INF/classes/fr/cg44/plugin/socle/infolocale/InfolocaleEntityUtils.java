@@ -109,10 +109,6 @@ public class InfolocaleEntityUtils {
         String mentionAnnule = "mentionEvenementAnnule";
         
         try {
-          
-            if (json.has(mentionAnnule) && !json.isNull(mentionAnnule) && json.getBoolean(mentionAnnule)) {
-              return null; // événement annulé, on ne le créée pas car il ne doit pas être affiché
-            }
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
@@ -203,6 +199,9 @@ public class InfolocaleEntityUtils {
             }
             if (!json.isNull("duree")) {
               itEvent.setDuree(json.getInt("duree"));
+            }
+            if (json.has(mentionAnnule) && !json.isNull(mentionAnnule)) {
+              itEvent.setMentionAnnule(json.getBoolean(mentionAnnule));
             }
             if (!json.isNull("mentionEvenementComplet")) {
               itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
