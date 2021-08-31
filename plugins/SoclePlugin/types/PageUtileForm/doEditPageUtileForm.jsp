@@ -24,7 +24,7 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
             <button class="ds44-btnStd js-tablist__link" type="button" aria-pressed="false" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.pageutile.non")) %>' data-href="#ds44-choiceN" data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Non"}'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.non") %></span><i class="icon icon-dislike icon--sizeL" aria-hidden="true"></i></button>
         </div>
         <div id="ds44-choiceY" class="hidden">
-            <form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' >
+            <form class="ds44-js-oneSubmit" data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' >
                 <div class="grid-1-small-1 ds44-box">
                     <div>
                         <p id="form-bloc-utils-Y" tabindex="-1"><%= glp("jcmsplugin.socle.pageutile.merci") %></p>
@@ -37,8 +37,7 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email" aria-describedby="explanation-email-oui"/>
-                                <span class="ds44-labelTypeInfoComp" id="explanation-email-oui"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email"/>
 							</div>
                         </div>
                         
@@ -97,8 +96,7 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email" aria-describedby="explanation-email-non"/>
-							    <span class="ds44-labelTypeInfoComp" id="explanation-email-non"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
+							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"/>
 							</div>
                         </div>
                     </div>
