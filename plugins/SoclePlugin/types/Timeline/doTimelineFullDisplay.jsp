@@ -77,7 +77,7 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                       </jalios:if>
                       <jalios:select>
                         <jalios:if predicate="<%= Util.notEmpty(itElement.getVideo()) %>">
-                            <ds:articleVideo video="<%= itElement.getVideo() %>" hideTitle="<%= true %>"/>
+                            <ds:articleVideo video="<%= itElement.getVideo() %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
                         </jalios:if>
                         <jalios:if predicate="<%= Util.notEmpty(itElement.getImagePrincipale()) %>">
                             <ds:figurePicture format="custom" width="510" height="327" image="<%= itElement.getImagePrincipale() %>"></ds:figurePicture>
