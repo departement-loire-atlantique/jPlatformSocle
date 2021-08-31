@@ -81,7 +81,7 @@
 			    %>
 		        
 
-		        <form role="search" method='<%= channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false) ? "POST" : "GET" %>' data-seo-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting")%>' data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax='false' data-auto-load='false' action='<%= seoUrl + "?boxId=" + obj.getId() %>'>
+		        <form class="ds44-fieldVertical"  role="search" method='<%= channel.getBooleanProperty("jcmsplugin.socle.url-rewriting", false) ? "POST" : "GET" %>' data-seo-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting")%>' data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax='false' data-auto-load='false' action='<%= seoUrl + "?boxId=" + obj.getId() %>'>
 		        
 		        
 		            <% 
@@ -93,7 +93,7 @@
 	        
 	                    <% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
 	        
-	                    <div class='ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+	                    <div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
 	                        <jalios:include pub="<%= itFacette %>" usage="box"/>
 	                    </div>
 	                    

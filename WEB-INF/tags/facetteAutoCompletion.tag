@@ -132,7 +132,7 @@
 		%>
 
         <% Boolean isInEncadre = request.getAttribute("isInEncadre") != null ? (Boolean) request.getAttribute("isInEncadre") : false;  %>
-		<div class='ds44-fieldContainer ds44-champsLies ds44-js-linked-fields <%= isInEncadre ? "ds44-form__container" : "" %>'>
+		<div class='ds44-fieldContainer ds44-champsLies ds44-js-linked-fields <%= isInEncadre  ? "ds44-form__container w100" : "" %>'>
 			<div class="ds44-form__container">
 
 
