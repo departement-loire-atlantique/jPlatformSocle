@@ -15,7 +15,7 @@
 	
 	String labelChamp = Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : obj.getCategoriePrincipales(loggedMember).first().getName();
 %>
-<div class='ds44-champsLies ds44-js-linked-fields <%= isInEncadre ? "ds44-form__container ds44-fieldContainer" : "" %>' >
+<div class="ds44-fieldContainer ds44-champsLies ds44-js-linked-fields">
 	
 	<div class="ds44-form__container">
 		<div class='<%= "ds44-select__shape ds44-inp" + styleChamps %>'>
