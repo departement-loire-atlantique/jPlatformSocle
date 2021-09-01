@@ -597,6 +597,9 @@
         <template name="nofacette" file="doPortletRechercheFacettesNoFacettesDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit carte et résultats sans facettes</label>
         </template>
+        <template name="encadre" file="doPortletRechercheFacettesEncadreDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche pour encadré</label>
+        </template>
     </templates>
     <templates type="PortletSearch">
         <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
@@ -683,6 +686,7 @@
     <directory path="types" />
     <directory path="wysiwyg" />
     <directory path="images" />
+    <directory path="types" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  

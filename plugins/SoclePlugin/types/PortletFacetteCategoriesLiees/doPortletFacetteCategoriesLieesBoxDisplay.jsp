@@ -10,7 +10,7 @@
 	String rechercheId = (String) request.getAttribute("rechercheId");
 	String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId();
 
-	String styleChamps = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || isInRechercheFacette ? "Std" : "Large";
+	String styleChamps = (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean) request.getAttribute("showFiltres")) || isInRechercheFacette || isInEncadre ? "Std" : "Large";
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "XL" : "L";
 	
 	String labelChamp = Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : obj.getCategoriePrincipales(loggedMember).first().getName();
@@ -66,7 +66,7 @@
 			request='<%= request %>' 
 			selectionMultiple='<%= facetteLie.getTypeDeSelection() %>' 
 			profondeur='<%= facetteLie.getProfondeur() %>'
-            isSizeStd='<%= isInRechercheFacette %>'/>
+            isSizeStd='<%= isInRechercheFacette || isInEncadre %>'/>
 			
 		
 			

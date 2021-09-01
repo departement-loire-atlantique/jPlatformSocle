@@ -8,7 +8,7 @@
     String rechercheId = (String) request.getAttribute("rechercheId");
     String idFormElement = ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element"));
 
-	String styleChamps = isInRechercheFacette || (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres")) ? "Std" : "Large"; 
+	String styleChamps = isInEncadre || isInRechercheFacette || (Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres")) ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 	

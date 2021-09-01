@@ -22,4 +22,4 @@
 		dataUrl="<%= dataUrl %>" 
 		label='<%= Util.notEmpty(obj.getLabel()) ? obj.getLabel() : glp("jcmsplugin.socle.facette.commune.default-label") %>'
 		option='<%= Util.isEmpty(obj.getRechercheEtendue()) || obj.getRechercheEtendue().equalsIgnoreCase("aucune") ? "" : obj.getRechercheEtendue() %>'
-		isLarge='<%= !isInRechercheFacette %>'/>
+		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>
