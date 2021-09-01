@@ -574,6 +574,9 @@
         </template>
         <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
+        </template>
+        <template name="simpleList" file="doPortletQueryForeachListeSimple.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit en liste</label>
         </template>        
     </templates>
     <templates type="PortletCarousel">
