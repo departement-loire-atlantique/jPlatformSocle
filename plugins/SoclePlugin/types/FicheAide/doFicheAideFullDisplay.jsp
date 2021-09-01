@@ -423,7 +423,7 @@
 		         </div>
 		         
 		         <jalios:if predicate="<%= displayFaq %>">
-		         <section class="ds44-mt3" id="sectionFaq" tabindex="-1">
+		         <section id="sectionFaq" tabindex="-1">
 		            <section class="ds44--xxl-padding-tb">
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getFaq()) %>">
                             <% 
