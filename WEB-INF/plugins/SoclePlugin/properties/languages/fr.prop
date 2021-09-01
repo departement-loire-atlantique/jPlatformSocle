@@ -577,6 +577,7 @@ jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de pres
 jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
 jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
+jcmsplugin.socle.infolocale.annule: Cet événement est annulé.
 
 # Metadonnees Infolocale pour le front
 

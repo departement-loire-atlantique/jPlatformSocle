@@ -37,7 +37,8 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-oui" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email"/>
+							    <input id="email-oui" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email" aria-describedby="explanation-email-oui"/>
+                                <span class="ds44-labelTypeInfoComp" id="explanation-email-oui"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 							</div>
                         </div>
                         
@@ -96,7 +97,8 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
 						<div class="ds44-form__container">
 							<div class="ds44-posRel">
 							    <label for="email-non" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.pageutile.email") %></span></span></label>
-							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd"/>
+							    <input id="email-non" name="email" type="text" class="form-control control-email form-control-value ds44-inpStd" autocomplete="email" aria-describedby="explanation-email-non"/>
+							    <span class="ds44-labelTypeInfoComp" id="explanation-email-non"><%= glp("jcmsplugin.socle.faq.ex-email") %></span>
 							</div>
                         </div>
                     </div>

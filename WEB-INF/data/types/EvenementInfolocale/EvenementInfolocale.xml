@@ -59,6 +59,13 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="mentionAnnule" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
+      <label xml:lang="fr">Mention Annulé</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field name="mentionAccessibleHandicapAuditif" editor="boolean" required="false" compactDisplay="false" type="boolean" default="on">
       <label xml:lang="fr">Mention Accessible Handicap Auditif</label>
       <onLabel xml:lang="en">Yes</onLabel>
