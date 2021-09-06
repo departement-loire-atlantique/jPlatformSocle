@@ -1,4 +1,4 @@
-<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+ <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%
     PortletCarousel box = (PortletCarousel) portlet;
     String themeClair = "tuileVerticaleLight";

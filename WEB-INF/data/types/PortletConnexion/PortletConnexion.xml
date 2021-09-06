@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletConnexion" superclass="generated.PortletLogin" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Connexion CD44</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field type="super" />
+    <field name="titreDuBloc" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre du bloc</label>
+    </field>
+    <field name="urlRedirection" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="200" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">URL redirection après connexion</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;URL de destination après authentification. Si vide, redirige vers la publication courante.&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="contenuRedirection" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false">
+      <label xml:lang="fr">Contenu redirection après connexion</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Contenu de destination après authentification. Si vide, redirige vers la publication courante.&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="typeLogin" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="text|email" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Texte|Email">
+      <label xml:lang="fr">Type du champ identifiant</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Le type de champ qui servira en tant qu'identifiant. De ce choix dépendra le type de contrôle effectué sur le champ. Par défaut, la valeur "Texte" n'induira aucun contrôle de saisie.&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+  </fields>
+</type>
+
