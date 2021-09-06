@@ -60,6 +60,7 @@
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
     <type name="PortletCarrouselDimagesHome"></type>
+    <type name="PortletConnexion"></type>
     <type name="PortletConteneurAgenda"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaCategorie"></type>
@@ -574,7 +575,7 @@
         </template>
         <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
-        </template>        
+        </template>
     </templates>
     <templates type="PortletCarousel">
         <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
@@ -620,7 +621,12 @@
       <template name="default" file="doPortletFilTwitterFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Portlet Fil Twitter</label>
       </template>
-    </templates>        
+    </templates>
+    <templates type="PortletConnexion">
+        <template name="default" file="doPortletConnexionFullDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique</label>
+        </template>
+    </templates>            
   </types>
 
   <jars>

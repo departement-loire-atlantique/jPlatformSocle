@@ -324,6 +324,9 @@ jcmsplugin.socle.source: Source
 jcmsplugin.socle.date-actualisation: Actualisé le
 jcmsplugin.socle.voiraussi: Voir aussi
 jcmsplugin.socle.cookies: Cookies
+jcmsplugin.socle.utilisateur-connecte: Connected user: {0}
+jcmsplugin.socle.deconnexion: Disconnect
+jcmsplugin.socle.identifiant: Login
 
 # ------------------------------------------------------------
 #  Header

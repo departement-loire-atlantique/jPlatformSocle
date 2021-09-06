@@ -325,6 +325,9 @@ jcmsplugin.socle.source: Source
 jcmsplugin.socle.motscles: Mots clés
 jcmsplugin.socle.voiraussi: Voir aussi
 jcmsplugin.socle.cookies: Cookies
+jcmsplugin.socle.utilisateur-connecte: Utilisateur connecté : {0}
+jcmsplugin.socle.deconnexion: Déconnexion
+jcmsplugin.socle.identifiant: Identifiant
 
 # ------------------------------------------------------------
 #  Header
