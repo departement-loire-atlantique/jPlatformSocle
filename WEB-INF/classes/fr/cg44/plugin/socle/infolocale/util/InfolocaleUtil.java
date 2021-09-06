@@ -578,13 +578,11 @@ public class InfolocaleUtil {
       for (Iterator<EvenementInfolocale> iter = eventList.iterator(); iter.hasNext();) {
         EvenementInfolocale itEvent = iter.next();
         // si l'événement est annulé, on ne l'ajoute simplement pas
-        if (itEvent.getMentionAnnule()) {
+        if (itEvent.getMentionAnnule()
+                // OU si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
+                || (deleteDuplicates && usedIds.contains(itEvent.getId())) || !eventIsInDateRange(itEvent, dateDebut, dateFin)
+                ) {
             iter.remove();
-        }
-        
-        // si un événement est déjà listé, ou si la date de l'événement dépasse les limites de dates, on ne le récupère pas
-        if ((deleteDuplicates && usedIds.contains(itEvent.getId())) || !eventIsInDateRange(itEvent, dateDebut, dateFin)) {
-          iter.remove();
         // autrement, on le récupère, et on indique qu'on a ajouté cet événement
         } else {
           usedIds.add(itEvent.getId());
