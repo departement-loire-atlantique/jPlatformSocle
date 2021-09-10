@@ -470,7 +470,7 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
                         <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
