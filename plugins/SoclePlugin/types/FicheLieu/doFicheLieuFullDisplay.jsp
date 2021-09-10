@@ -354,7 +354,7 @@
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
                                 </jalios:if>
                                 <jalios:default>
-                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
+                            <picture class="ds44-legendeContainer ds44-container-imgRatio" 
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
                                 </jalios:default>
                             </jalios:select>
