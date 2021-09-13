@@ -21,17 +21,17 @@ jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-globale"));
         </div>                
         
         <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
-		
-		<div class="ds44-loader hidden">
-		    <div class="ds44-loader-body">
-		        <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
-		            <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
-		        </svg>
-		    </div>
-		</div>
-		
-		<div class="ds44-facette">
-			
+        
+        <div class="ds44-loader hidden">
+            <div class="ds44-loader-body">
+                <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+                    <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="ds44-facette">
+            
             <div class="ds44-facette-body">
                 <form role="search" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displaySearchResult.jsp"
                       data-legacy-url='<%= channel.getProperty("jcmsplugin.socle.url-rewriting.disabled")%>'
@@ -39,31 +39,31 @@ jcmsContext.setPageTitle(glp("jcmsplugin.socle.title.recherche-globale"));
                 
                     <div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
     
-	                   <div class="ds44-fieldContainer ds44-fg1">	                                       
-	                        <div class="ds44-form__container">		
-								<div class="ds44-posRel">
-								    <label for="form-element-<%= formUid %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge"><span><%= glp("jcmsplugin.socle.recherche.votrerecherche") %></span></span></label>								    
-								    <input type="text" id="form-element-<%= formUid %>" name="searchtext" class="ds44-inpLarge" data-url="plugins/SoclePlugin/jsp/facettes/acSearchResult.jsp" role="combobox" aria-autocomplete="list" autocomplete="off" data-mode="free-text" title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.recherche.motcle.title")) %>'  required=""/><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.recherche.votrerecherche")) %></span></button>																							
-								    <div class="ds44-autocomp-container hidden">
-								        <div class="ds44-autocomp-list">
-								            <ul class="ds44-list" role="listbox"></ul>
-								        </div>
-								    </div>
-								</div>												
-						   </div>
-	                   </div>
+                       <div class="ds44-fieldContainer ds44-fg1">                                          
+                            <div class="ds44-form__container">      
+                                <div class="ds44-posRel">
+                                    <label for="form-element-<%= formUid %>" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge"><span><%= glp("jcmsplugin.socle.recherche.votrerecherche") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span></label>                                   
+                                    <input type="text" id="form-element-<%= formUid %>" name="searchtext" class="ds44-inpLarge" data-url="plugins/SoclePlugin/jsp/facettes/acSearchResult.jsp" role="combobox" aria-autocomplete="list" aria-expanded="false" autocomplete="off" data-mode="free-text" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", glp("jcmsplugin.socle.recherche.votrerecherche")) %>' required=""/><button class="ds44-reset" type="button" ><i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.recherche.votrerecherche")) %></span></button>
+                                    <div class="ds44-autocomp-container hidden">
+                                        <div class="ds44-autocomp-list">
+                                            <ul class="ds44-list" role="listbox"></ul>
+                                        </div>
+                                    </div>
+                                </div>                                              
+                           </div>
+                       </div>
  
                        <div class="ds44-fieldContainer ds44-small-fg1">
                             <button class="ds44-btnStd ds44-theme  ds44-btnStd--large" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lancer.recherche")) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
-					   </div>
-					</div>
-				</form>
-			</div>
-				
-		    
-		    
-		</div>
-	</section>				                    
+                       </div>
+                    </div>
+                </form>
+            </div>
+                
+            
+            
+        </div>
+    </section>                                  
        
        
     <section class="ds44-container-large">
