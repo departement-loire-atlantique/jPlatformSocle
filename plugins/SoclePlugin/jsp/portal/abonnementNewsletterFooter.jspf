@@ -46,7 +46,7 @@
                         
                         <jalios:foreach collection="<%= parutionCat %>" name="itCat" type="Category">                        
                             <li class="ds44-select-list_elem col-6 ds44-noMrg">                       
-                                <div id="form-element-parution" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + itCat.getId() %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
+                                <div id="form-element-parution-<%= itCat.getId() %>" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + itCat.getId() %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
                                     <div class="ds44-form__container ds44-checkBox-radio_list ">
                                         <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name="form-element-<%= itCat.getDescription() %>" value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-11" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label> 
                                     </div>      

@@ -22,7 +22,7 @@
                 <jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
                     <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
                 </jalios:if>
-                <h1 class="h1-like mbs mts " id="idTitre1"><%=obj.getTitle()%></h1>
+                <h1 class="h1-like mbs mts " id="idTitre1"><%=obj.getTitle(userLang)%></h1>
                 <% String ariaLevelPHeading = "2"; %>
                 <jalios:if predicate='<%=Util.notEmpty(obj.getSoustitre())%>'>
                     <% ariaLevelPHeading = "3"; %>
@@ -354,7 +354,7 @@
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
                                 </jalios:if>
                                 <jalios:default>
-                            <picture class="ds44-legendeContainer ds44-container-imgRatio" role="figure" 
+                            <picture class="ds44-legendeContainer ds44-container-imgRatio" 
                                     <%= Util.notEmpty(sbfLegendeCopyright.toString()) ? "aria-label='"+ HttpUtil.encodeForHTMLAttribute(sbfLegendeCopyright.toString())+"'" : "" %>>
                                 </jalios:default>
                             </jalios:select>
@@ -470,7 +470,7 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
                         <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>

@@ -16,4 +16,4 @@
 		dataMode="select-only" 
 		dataUrl="plugins/SoclePlugin/jsp/facettes/acSearchPublication.jsp?query=types%3Dgenerated.Delegation" 
 		label='<%= Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.delegation.default-label") %>'
-		isLarge='<%= !isInRechercheFacette %>'/>
+		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>

@@ -106,13 +106,9 @@ public class InfolocaleEntityUtils {
         
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
-        String mentionAnnule = "annule";
+        String mentionAnnule = "mentionEvenementAnnule";
         
         try {
-          
-            if (json.has(mentionAnnule) && !json.isNull(mentionAnnule) && json.getBoolean(mentionAnnule)) {
-              return null; // événement annulé, on ne le créée pas car il ne doit pas être affiché
-            }
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
@@ -204,6 +200,9 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("duree")) {
               itEvent.setDuree(json.getInt("duree"));
             }
+            if (json.has(mentionAnnule) && !json.isNull(mentionAnnule)) {
+              itEvent.setMentionAnnule(json.getBoolean(mentionAnnule));
+            }
             if (!json.isNull("mentionEvenementComplet")) {
               itEvent.setMentionEvenementComplet(json.getBoolean("mentionEvenementComplet"));
             }
@@ -223,7 +222,9 @@ public class InfolocaleEntityUtils {
                 itEvent.setLangues(createLanguesArrayFromJsonArray(json.getJSONArray("langues")));
             }
             itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
-            itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
+            if (Util.notEmpty(json.get("urlOrganisme"))) {
+              itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
+            }
             metadataDefault = Util.isEmpty(metadataDefault) ? Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.default") : metadataDefault;
             if (Util.notEmpty(metadata1) && !metadata1.equals(metadataDefault)) {
               itEvent.setMetadata1(InfolocaleMetadataUtils.getMetadataHtml(metadata1, json, itEvent));
@@ -237,7 +238,7 @@ public class InfolocaleEntityUtils {
               itEvent.setMetadataHiddenLabel(metadataDefault);
             }
         } catch (JSONException e) {
-            LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem: " + e.getMessage());
+            LOGGER.error("Erreur in createEvenementInfolocaleFromJsonItem (ID " + (Util.isEmpty(itEvent.getId()) ? "unknown " : itEvent.getId()) + e.getMessage());
             itEvent = null;
         }
         
@@ -408,7 +409,9 @@ public class InfolocaleEntityUtils {
             contact.setTypeId(json.getInt("typeId"));
             contact.setType(json.getString("type"));
             contact.setTelephone1(json.getString("telephone1"));
-            contact.setTelephone2(json.getString("telephone2"));
+            if (Util.notEmpty(json.get("telephone2"))) {
+              contact.setTelephone2(json.getString("telephone2"));
+            }
             contact.setUrl(json.getString("url"));
             contact.setEmail(json.getString("email"));
         } catch (JSONException e) {

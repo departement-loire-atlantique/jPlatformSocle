@@ -25,6 +25,12 @@ String mail = request.getParameter("newletters-mail[value]");
 String[] segment = parametersMap.get("segmentid");
 String nomList = Util.getFirst(parametersMap.get("nom-list"));
 
+
+String nom = request.getParameter("newsletter-nom[value]");
+String prenom = request.getParameter("newsletter-prenom[value]");
+String adresse = request.getParameter("newsletter-adresse[value]");
+String[] publicationcatid = parametersMap.get("publicationcatid");
+
 // Ajout de la date d'expiration du lien de validation
 Calendar calendar = Calendar.getInstance();
 calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(channel.getProperty("jcmsplugin.socle.footer.newsletter.expire.heure")));
@@ -61,28 +67,68 @@ String url = URLUtils.buildUrl(redirectUrl, parametersEncodeMap);
     </ul>
 </jalios:buffer>
 
+
+<%-- Thématiques choies pour newsletter par courrier postal --%>
+<jalios:buffer name="courrierTheme">
+<ul>
+    <jalios:if predicate='<%= Util.notEmpty(publicationcatid) %>'>
+        <jalios:foreach array="<%= publicationcatid %>" name="itCatId" type="String">
+            <%
+            Category itCat = channel.getCategory(itCatId);
+            %>
+            <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                <li><%= itCat.getName(userLang) %></li>
+            </jalios:if>
+        </jalios:foreach>
+    </jalios:if>
+
+</ul>
+</jalios:buffer>
+
+
 <%
 
-Boolean mailStatusOk = channel.isMailEnabled();
+Boolean courrierStatusOk = false;
+Boolean mailStatusOk = false;
 
-try { 
-	MailMessage msg = new MailMessage("Newsletter");
-	msg.setFrom(channel.getProperty("jcmsplugin.socle.form.newsletter.mailTo"));
-	msg.setTo(mail);
-		
-	msg.setSubject(glp("jcmsplugin.socle.newletter.mail.confirme.sujet"));
-	//msg.setContentHtml(glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme}));
-	HashMap mailParam = new HashMap<String, String>();
-	mailParam.put("mailUrl", url);
-	mailParam.put("mailTheme", mailTheme);
-	msg.setContentHtmlFromJsp("/plugins/SoclePlugin/jsp/forms/doValideMail.jsp", loggedMember, userLang, mailParam, null);
-	msg.send();	
-}catch (MessagingException e) {
-    mailStatusOk = false;
+if(Util.notEmpty(mail) && channel.isMailEnabled()) {
+	try { 
+		MailMessage msg = new MailMessage("Newsletter");
+		msg.setFrom(channel.getProperty("jcmsplugin.socle.form.newsletter.mailTo"));
+		msg.setTo(mail);
+			
+		msg.setSubject(glp("jcmsplugin.socle.newletter.mail.confirme.sujet"));
+		HashMap mailParam = new HashMap<String, String>();
+		mailParam.put("mailUrl", url);
+		mailParam.put("mailTheme", mailTheme);
+		msg.setContentHtmlFromJsp("/plugins/SoclePlugin/jsp/forms/doValideMail.jsp", loggedMember, userLang, mailParam, null);
+		msg.send();	
+		mailStatusOk = true;
+	}catch (MessagingException e) {
+	    mailStatusOk = false;
+	}
+}
+
+String courrierPostalMailTo = channel.getProperty("jcmsplugin.socle.newletter.postal.mailTo");
+if(Util.notEmpty(nom) && Util.notEmpty(prenom) && Util.notEmpty(adresse) && channel.isMailEnabled() && Util.notEmpty(courrierPostalMailTo)) {
+  try{
+	  MailMessage msg = new MailMessage("Publication par courrier postal");
+	  msg.setFrom(channel.getProperty("jcmsplugin.socle.form.newsletter.mailTo"));
+	  msg.setTo(courrierPostalMailTo);
+	  msg.setSubject("Demande d'inscription postal");
+	  msg.setContentHtml(glp("jcmsplugin.socle.newletter.postal.mail.content", new String[]{nom, prenom, adresse, courrierTheme}));
+	  msg.send();
+	  courrierStatusOk = true;
+  }catch (MessagingException e) {
+    courrierStatusOk = false;
+  }
 }
 
 
-if(mailStatusOk) {
+if(courrierStatusOk && !mailStatusOk) {
+  jsonObject.addProperty("status", "information");
+  jsonObject.addProperty("message", glp("jcmsplugin.socle.newletter.valide-courrier"));  
+}else if(mailStatusOk) {
   jsonObject.addProperty("status", "information");
   jsonObject.addProperty("message", glp("jcmsplugin.socle.newletter.valide-email"));  
 }else {
@@ -91,6 +137,6 @@ if(mailStatusOk) {
 }
 
 
-%>
 
+%>
 <%= jsonObject %>

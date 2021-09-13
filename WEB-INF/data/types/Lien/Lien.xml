@@ -39,6 +39,14 @@
     <field name="horaire" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.Horaire" parent="false">
       <label xml:lang="fr">Horaire</label>
     </field>
+    <field name="dateActu" editor="date" required="false" compactDisplay="false" tab="contenu" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Date affichée</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Sera affichée sur les tuiles carrousel&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tab="contenu">
+      <label xml:lang="fr">Lieu affiché</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Sera affichée sur les tuiles carrousel&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
     <field name="titreTemoignage" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="temoignage">
       <label xml:lang="fr">Titre témoignage</label>
     </field>
@@ -76,19 +84,37 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
+    <field name="description" editor="textarea" required="false" compactDisplay="false" tab="timeline" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" wysiwygConfigurationId="" checkHtml="true">
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="dateDebut" editor="date" required="false" compactDisplay="false" tab="timeline" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Date début</label>
+    </field>
+    <field name="dateFin" editor="date" required="false" compactDisplay="false" tab="timeline" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Date fin</label>
+    </field>
+    <field name="libelleDate" editor="textfield" required="false" compactDisplay="false" tab="timeline" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Libellé date</label>
+    </field>
+    <field name="video" editor="link" required="false" compactDisplay="false" tab="timeline" type="generated.Video" parent="false">
+      <label xml:lang="fr">Vidéo</label>
+    </field>
   </fields>
   <tabs>
     <tab id="contenu">
       <label xml:lang="fr">Contenu</label>
     </tab>
-    <tab id="temoignage">
-      <label xml:lang="fr">Témoignage</label>
-    </tab>
     <tab id="rattachement">
       <label xml:lang="fr">Navigation et classement</label>
     </tab>
+    <tab id="temoignage">
+      <label xml:lang="fr">Témoignage</label>
+    </tab>
     <tab id="territoire">
       <label xml:lang="fr">Territoire</label>
+    </tab>
+    <tab id="timeline">
+      <label xml:lang="fr">Timeline</label>
     </tab>
   </tabs>
 </type>

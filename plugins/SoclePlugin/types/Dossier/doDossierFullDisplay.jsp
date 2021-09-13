@@ -66,9 +66,11 @@
 
 	<%-- FAQ --%>
 	<jalios:if predicate="<%=Util.notEmpty(obj.getFaq())%>">
+	    <% request.setAttribute("noQuestionButton", true); %>
 		<div>
 			<jalios:include id="<%=obj.getFaq().getId()%>" />
 		</div>
+		<% request.removeAttribute("noQuestionButton"); %>
 	</jalios:if>
 
 	<%-- Partagez cette page --%>
@@ -157,7 +159,7 @@
 <section id="summaryMenu" class="ds44-overlay ds44-overlay--navFromBottom" aria-modal="true" role="dialog" aria-label='<%= glp("jcmsplugin.socle.dossier.sommaire") %>' aria-hidden="true"
 	aria-labelledby="titreSommaire">
 	<div class="ds44-container-menuBackLink">
-		<p role="heading" aria-level="1" class="ds44-menuBackLink" id="titreRechercher"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
+		<p role="heading" aria-level="1" class="ds44-menuBackLink"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
 	</div>
 	<button type="button" class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" aria-label='<%= glp("jcmsplugin.socle.dossier.fermer-menu-sommaire") %>'>
 		<i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
@@ -167,7 +169,9 @@
 		<div class="ds44-grid-valign-center ds44-w100">
 			<ul class="ds44-list ds44-list--puces">
 				<jalios:foreach type="String" name="itTitreRubrique" array="<%= obj.getTitreRubrique() %>">
-					<li><a href="#section<%= itCounter %>"><%= itTitreRubrique %></a></li>
+				    <jalios:if predicate="<%= Util.notEmpty(obj.getTitreRubrique(userLang)[itCounter-1])%>">
+					   <li><a href="#section<%= itCounter %>"><%= itTitreRubrique %></a></li>
+					</jalios:if>
 				</jalios:foreach>
 			</ul>
 		</div>

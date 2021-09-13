@@ -47,20 +47,11 @@ jcmsplugin.socle.url-rewriting.mdate: Enregistrer date de dernière appel pour l
 jcmsplugin.socle.page-utile.disabled: Désactive le composant "Page utile" (true | false) ?
 jcmsplugin.socle.idpub.annuaire.elus: ID Jalios de la publication "Annuaire des élu-e-s"
 jcmsplugin.socle.alertpri.id: ID Jalios de la portlet RI "Alertes"
-
-jcmsplugin.socle.rgpd.modale.titre: RGPD - titre de la modale 
-jcmsplugin.socle.rgpd.modale.description: RGPD - texte de description de la modale
-jcmsplugin.socle.rgpd.notice.logo: RGPD - Logo affiché en haut de la modale
-jcmsplugin.socle.rgpd.notice.description: RGPD - Description notice
-jcmsplugin.socle.rgpd.notice.learn-more: RGPD - libellé bouton "je paramètre"
-jcmsplugin.socle.rgpd.bouton.accept: RGPD - libellé bouton "j'accepte"
-jcmsplugin.socle.rgpd.bouton.accept-all: RGPD - libellé bouton "j'accepte tout" 
-jcmsplugin.socle.rgpd.bouton.decline: RGPD - libellé bouton "je refuse"
-jcmsplugin.socle.rgpd.bouton.decline-all: RGPD - libellé bouton "je refuse tout"
-jcmsplugin.socle.rgpd.privacyPolicy.name: RGPD - politique de confidentialité
-jcmsplugin.socle.rgpd.privacyPolicy.text: RGPD - phrase "politique de confidentialité"
+fr.jcmsplugin.socle.rgpd.description-modale: RGPD - texte description modale FR
+fr.jcmsplugin.socle.rgpd.description-notice: RGPD - texte description notice FR
+en.jcmsplugin.socle.rgpd.description-modale: RGPD - texte description modale EN
+en.jcmsplugin.socle.rgpd.description-notice: RGPD - texte description notice EN
 jcmsplugin.socle.rgpd.privacyPolicy.url: RGPD - URL intuitive de la politique de confidentialité
-
 jcmsplugin.socle.meme-theme.max: "Sur le même thème" : nombre max d'éléments du carrousel
 jcmsplugin.socle.meme-theme.ficheactu.types: Types de contenus "Sur le même thème" / Fiche actu 
 
@@ -94,13 +85,20 @@ jcmsplugin.socle.recherche.type.SAAD: Service d’aide à domicile (SAAD)
 $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: Id de la portlet wysiwyg de la pop-in newsletter en footer
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: Id de la catégorie flash info thématique (newsletter)
 $jcmsplugin.socle.footer.newsletter.parutions.cat: Id de la catégorie prochaines parutions (newsletter)
+jcmsplugin.socle.footer.newsletter.publication: Lien vers la publication pour inscription à la newsletter
 
-jcmsplugin.socle.form.newsletter.portlet-rgpd.id: ID de la portlet Wysiwyg. Mention lié aux données personnelles (newsletter)
+jcmsplugin.socle.form.newsletter.portlet-rgpd.id: Id de la portlet Wysiwyg pour les mentions RGPD du formulaire de newletter
 jcmsplugin.socle.form.newsletter.mailTo: Email pour l'envoi (newsletter)
+
+jcmsplugin.socle.newletter.postal.mailTo : Email de réception pour newsletter par courrier postal
 
 jcmsplugin.socle.mailjet.apiKey: Clé API mailjet
 jcmsplugin.socle.mailjet.apiSecretKey:Clé secrète mailjet
 jcmsplugin.socle.mailjet.contactList: Id liste de contact mailjet (newsletter)
+
+# Catégorie de classement FileDocument
+jcmsplugin.socle.category.classementfiledoc: ID catégorie de classement FileDocument
+
 
 # ------------------------------------------------------------
 #  Recherche à facettes
@@ -143,6 +141,7 @@ jcmsplugin.socle.form.login.oublie-passe: Mot de passe oublié ?
 jcmsplugin.socle.form.contact-mail.title: Formulaire de contact
 jcmsplugin.socle.form.contact-mail.origine: Département de Loire Atlantique
 jcmsplugin.socle.form.exemple.structure : Exemple : Association Les petits poissons
+jcmsplugin.socle.form.valider-envoi: Valider
 
 # ------------------------------------------------------------
 #  Mail
@@ -201,6 +200,7 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une%20page%20pou
 # ------------------------------------------------------------
 #  Libellés communs
 # ------------------------------------------------------------
+jcmsplugin.socle.deux-points: &nbsp;:&nbsp;
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
 jcmsplugin.socle.lien.site.nouvelonglet: Visiter le site web : {0} - nouvelle fenêtre
@@ -264,7 +264,7 @@ jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Accéder à la vidéo : {0}
 jcmsplugin.socle.partenaire: Partenaire
 jcmsplugin.socle.participants: participants
-jcmsplugin.socle.tarifs: Tarifs :
+jcmsplugin.socle.tarifs: Tarifs
 jcmsplugin.socle.tarif.normal: Normal :
 jcmsplugin.socle.tarif.reduit: Réduit :
 jcmsplugin.socle.gratuit: GRATUIT
@@ -324,6 +324,10 @@ jcmsplugin.socle.ville: Ville
 jcmsplugin.socle.source: Source
 jcmsplugin.socle.motscles: Mots clés
 jcmsplugin.socle.voiraussi: Voir aussi
+jcmsplugin.socle.cookies: Cookies
+jcmsplugin.socle.utilisateur-connecte: Utilisateur connecté : {0}
+jcmsplugin.socle.deconnexion: Déconnexion
+jcmsplugin.socle.identifiant: Identifiant
 
 # ------------------------------------------------------------
 #  Header
@@ -431,8 +435,8 @@ jcmsplugin.socle.titre.autre-lieu-associes: Autres lieux associés :
 jcmsplugin.socle.titre.contacts: Qui contacter ?
 jcmsplugin.socle.titre.suivre-demande: Suivre votre demande
 
-jcmsplugin.socle.titre.temoignage: Témoignages
-
+jcmsplugin.socle.titre.temoignage: Témoignage
+jcmsplugin.socle.titre.temoignages: Témoignages
 
 jcmsplugin.socle.titre.endetails: En détails
 jcmsplugin.socle.titre.publicvise: Public visé
@@ -474,6 +478,9 @@ jcmsplugin.socle.ficheaide.plus-info-accessibilite: Plus d’informations sur l�
 jcmsplugin.socle.ficheaide.bonASavoir.label: Bon à savoir
 jcmsplugin.socle.ficheaide.tuile.besoin.label: Besoin :
 jcmsplugin.socle.ficheaide.tuile.typeAide.label: Type d'aide :
+
+jcmsplugin.socle.fichearticle.tuile.communes.label: Communes :
+jcmsplugin.socle.fichearticle.tuile.epci.label: EPCI :
 
 jcmsplugin.socle.faq.votre-question: Votre question
 jcmsplugin.socle.faq.votre-email: Votre email
@@ -573,6 +580,7 @@ jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de pres
 jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} - nouvelle fenêtre
 jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
+jcmsplugin.socle.infolocale.annule: Cet événement est annulé.
 
 # Metadonnees Infolocale pour le front
 
@@ -602,16 +610,25 @@ jcmsplugin.socle.newletter.flash.info: M’abonner aux flash infos thématiques
 jcmsplugin.socle.newletter.inscrire: M'inscrire
 jcmsplugin.socle.newletter.inscrire-recevoir: M'inscrire et recevoir l’actualité par email
 jcmsplugin.socle.newletter.valide-email: Merci de votre inscription, vous allez recevoir un email de confirmation pour valider votre inscription
-jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer vos abonnements
-jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer vos abonnements aux actualités du Département en cliquant sur le lien suivant : <a href="{0}">Je confirme mon inscription</a></p><p>Les thématiques choisies : </p>{1}<p>Merci pour l'intérêt porté à  l'actualité du Département de Loire-Atlantiqueà bientôt sur le site loire-atlantique.fr</p>
-jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par Loire-atlantique.fr
+jcmsplugin.socle.newletter.mail.confirme.sujet: Confirmer votre abonnement
+jcmsplugin.socle.newletter.mail.confirme.content: <p>Bonjour,</p> <p>Merci de confirmer votre abonnement à :</p> {1} <p>en cliquant sur ce lien : <a href="{0}">Je confirme mon inscription</a> </p> <p>NB : Le lien contenu dans le mail reçu doit être utilisé dans les 72 heures, au-delà il est rendu inactif pour votre sécurité.</p>À bientôt sur le site {2}.</p>
+jcmsplugin.socle.newletter.mail.confirme.footer: Ce mail vous a été envoyé par {0}.
+
+jcmsplugin.socle.newletter.info.titre: Recevoir nos infos
+jcmsplugin.socle.newletter.postal.recevoir: Recevoir nos publications par courrier postal
+jcmsplugin.socle.newletter.flash.mail: M’abonner aux <span lang="en">flash</span> infos par mail
+jcmsplugin.socle.newletter.newsletter.mail: M’abonner à la <span lang="en">newsletter</span>
+jcmsplugin.socle.newletter.abonnement.actu.title: Je m'abonne pour recevoir l’actualité du CD44 par email
+
+jcmsplugin.socle.newletter.postal.mail.sujet: Demande d'inscription par courrier postal
+jcmsplugin.socle.newletter.postal.mail.content: Bonjour, <p> Une demande d'inscription par courrier postal a été faite par : <br/> nom : {0} <br/> prénom : {1} <br/> adresse : {2} </p> <p>Les thématiques choisies sont : </p>{3}
 
 jcmsplugin.socle.newletter.lbl: Recevez nos infos par mail
-jcmsplugin.socle.newletter.title.lbl: Confirmer vos abonnements
-jcmsplugin.socle.newletter.mail.inscription-valide: Vos abonnements sont validés
+jcmsplugin.socle.newletter.title.lbl: Confirmer votre abonnement
+jcmsplugin.socle.newletter.mail.inscription-valide: Votre abonnement est validé
 jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
 jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
-jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt sur loire-atlantique.fr</p>
+jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt sur {1}</p>
 jcmsplugin.socle.newletter.mail.erreur: Erreur
 jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
 
@@ -999,3 +1016,30 @@ jcmsplugin.socle.sites-applis.observatoire.url: https://observatoire.loire-atlan
 jcmsplugin.socle.sites-applis.atlas.label: Atlas
 jcmsplugin.socle.sites-applis.atlas.url: https://atlas.loire-atlantique.fr
 
+# ------------------------------------------------------------
+#  Contenu Timeline
+# ------------------------------------------------------------
+jcmsplugin.socle.barrenavsecondaire: Barre de navigation secondaire
+jcmsplugin.socle.contexte: Contexte
+jcmsplugin.socle.goto: Aller à :
+
+# ------------------------------------------------------------
+#  RGPD / Orejime
+# ------------------------------------------------------------
+jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies
+jcmsplugin.socle.rgpd.notice.learn-more: Je paramètre les cookies
+jcmsplugin.socle.rgpd.bouton.accept: J’accepte les cookies
+jcmsplugin.socle.rgpd.bouton.accept-all: J’accepte tout
+jcmsplugin.socle.rgpd.bouton.decline: Je refuse les cookies
+jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
+jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
+jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
+jcmsplugin.socle.rgpd.cookie.jsessionid.descr: Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.
+jcmsplugin.socle.rgpd.cookie.google.descr: Nous utilisons Google Analytics par l’intermédiaire de Google Tag Manager pour collecter des informations analytiques sur nos utilisateurs.
+jcmsplugin.socle.rgpd.cookie.orejime.descr: Ce cookie est utilisé par notre gestionnaire de cookies pour mémoriser vos préférences.
+
+# ------------------------------------------------------------
+#  Formulaires page utile
+# ------------------------------------------------------------
+
+jcmsplugin.socle.formpageutile.alloweddelay: Page utile : délai en secondes pour les doublons

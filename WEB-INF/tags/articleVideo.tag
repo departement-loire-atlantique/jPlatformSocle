@@ -28,6 +28,34 @@
     type="String"
     description="Introduction"
 %>
+<%@ attribute name="hideTitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Cache le titre si true"
+%>
+<%@ attribute name="noOffset"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Ne pas ajouter un bloc 'grid' si à true"
+%>
+<%@ attribute name="forcedHeight"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Valeur forcée pour le height du iframe"
+%>
+<%@ attribute name="offsetLevel"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Integer"
+    description="Valeur custom pour le offset du conteneur"
+%>
 <%
 if (Util.notEmpty(title)) {
   request.setAttribute("overrideVidTitle", title);
@@ -36,11 +64,27 @@ if (Util.notEmpty(title)) {
 if (Util.notEmpty(intro)) {
   request.setAttribute("overrideVidIntro", intro);
 }
+if (Util.notEmpty(hideTitle)) {
+  request.setAttribute("hideVideoTitle", hideTitle);
+}
+if (Util.notEmpty(forcedHeight)) {
+    request.setAttribute("forcedHeight", forcedHeight);
+  }
+boolean addOffest = Util.notEmpty(noOffset) ? !noOffset : true;
+
+String offsetContainerClass = "ds44-grid12-offset-2";
+if (Util.notEmpty(offsetLevel)) {
+    offsetContainerClass = "ds44-grid12-offset-" + offsetLevel;
+}
 %>
 <section id="contentVideo" class="ds44-contenuArticle">
 	<div class="ds44-inner-container ds44-mtb3">
-		<div class="ds44-grid12-offset-2">
+	    <jalios:if predicate="<%= addOffest %>">
+		<div class="<%= offsetContainerClass %>">
+		</jalios:if>
 			<jalios:media data='<%= video %>' />
+        <jalios:if predicate="<%= addOffest %>">
 		</div>
+		</jalios:if>
 	</div>
 </section>

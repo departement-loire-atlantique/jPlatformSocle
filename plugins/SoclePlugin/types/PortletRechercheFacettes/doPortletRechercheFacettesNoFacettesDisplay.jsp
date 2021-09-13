@@ -30,7 +30,7 @@
 
     <div class="ds44-facette">
         <div class="ds44-facette-body">
-	        <form method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
+	        <form role="search" method="POST" data-seo-url="false" data-keep-tab-name="true" data-search-url="plugins/SoclePlugin/jsp/facettes/displayParameters.jsp" data-is-ajax="true" data-auto-load="true" action="plugins/SoclePlugin/jsp/facettes/displayResultDecodeParams.jsp" novalidate="true">
 	           
 	            <input type="hidden" name="noFacette" value="true" data-technical-field />
 	            
@@ -48,22 +48,8 @@
                    <input type="hidden" name='cidBranches' value='<%= request.getAttribute("parentCatSearch") %>' data-technical-field />        
                 </jalios:if>	            
 	            
-	            <input type="hidden" name='<%= "typeDeTuileFicheLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getTypeDeTuileFicheLieu() %>' data-technical-field />
-	        
-	            <input type="hidden" name='<%= "facetOperatorUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesFacettes() %>' data-technical-field />
+	            <%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
 	            
-	            <input type="hidden" name='<%= "sectorisation" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getSectorisation() %>' data-technical-field />
-	            <input type="hidden" name='<%= "afficheCarte" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAffichageDeLaCarte() %>" data-technical-field />
-	        
-	            <input type="hidden" name='<%= "modCatBranchexsUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
-	            <input type="hidden" name='<%= "modCatNivUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesCategories() %>' data-technical-field />
-	            
-	            <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeLieu()) && Util.notEmpty(channel.getCategory(obj.getTypeDeLieu())) %>">
-	               <input type="hidden" name='<%= "cidTypeLieu" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= channel.getCategory(obj.getTypeDeLieu()).getId() %>" data-technical-field />
-	            </jalios:if>
-	        
-	            <input type="hidden" name='<%= "boxId" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getId() %>' data-technical-field />
-	            <input type="hidden" name='pubId' value='<%= Util.notEmpty(request.getAttribute("publication")) ? ((Publication)request.getAttribute("publication")).getId() : "" %>' data-technical-field />
 	        </form>
         </div>
     </div>

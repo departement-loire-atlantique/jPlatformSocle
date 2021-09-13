@@ -21,11 +21,11 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	    <strong><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i>
 	       <jalios:select>
 	           <jalios:if predicate='<%= pubNonRepertoriee %>'>
-	               <%= obj.getTitle() %>
+	               <%= obj.getTitle(userLang) %>
 	           </jalios:if>
 	               
 	           <jalios:default>
-	               <a class="ds44-titleLink" href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle()%></a>
+	               <a class="ds44-titleLink" href="<%=obj.getDisplayUrl(userLocale)%>"><%=obj.getTitle(userLang)%></a>
 	           </jalios:default>
 	        </jalios:select>
 	    </strong>
@@ -49,14 +49,14 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
         
         <jalios:if predicate='<%= obj.getTelephone().length == 1 %>'>
             <% String numTel = obj.getTelephone()[0]; %>
-            <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
+            <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"/>
         </jalios:if>
 
         <jalios:if predicate='<%= obj.getTelephone().length > 1 %>'>
             <ul class="ds44-list">
                 <jalios:foreach name="numTel" type="String" array="<%= obj.getTelephone() %>">
                     <li>
-                        <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"/>
+                        <ds:phone number="<%= numTel %>" pubTitle="<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"/>
                     </li>
                 </jalios:foreach>
             </ul>
@@ -85,8 +85,8 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	
        <jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
            <% String email = obj.getEmail()[0]; %>
-           <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
-                 data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}' > 
+           <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(userLang), email)) %>'
+                 data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}' > 
                <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
            </a>
        </jalios:if>
@@ -95,8 +95,8 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
            <ul class="ds44-list">
                <jalios:foreach name="email" type="String" array='<%= obj.getEmail() %>'>
                    <li>
-                       <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(), email)) %>'
-                         data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
+                       <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(userLang), email)) %>'
+                         data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'> 
                            <%= email %>
                        </a>
                    </li>
@@ -129,8 +129,8 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	
         <jalios:if predicate='<%= obj.getSiteInternet().length == 1 %>'>
             <% String site = obj.getSiteInternet()[0]; %>
-            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle()) %>' target="_blank"
-   	            data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
+            <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", obj.getTitle(userLang)) %>' target="_blank"
+   	            data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'>
                 <%= glp("jcmsplugin.socle.ficheaide.visiter-site.label") %>
             </a>
         </jalios:if>
@@ -140,7 +140,7 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
                 <jalios:foreach name="site" type="String" array='<%= obj.getSiteInternet() %>'>
                     <li>
                         <a href='<%= SocleUtils.parseUrl(site) %>' title='<%= glp("jcmsplugin.socle.lien.site.nouvelonglet", site) %>' target="_blank"
-                           data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'> 
+                           data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Site web","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}'> 
                             <%= SocleUtils.parseUrl(site) %>
                         </a>
                     </li>

@@ -31,13 +31,13 @@
           <table class="content" style="line-height:150%;width:600px;max-width:600px;min-width:320px;font-family:Arial, Verdana, Geneva, sans-serif;color:#000000;margin:0 auto;" width="600" cellspacing="0" cellpadding="0" align="center">
             <tbody>
                 <tr>
-                  <th>
+                  <th style="text-align: left;">
                     <table style="margin: 15px 0 ; color: #000000;">
                       <tbody>
                         <tr>
                           <td>
                               <a href="<%= channel.getUrl() %>">
-                                  <img src="https://design.loire-atlantique.fr/assets/images/newsletter/logo-loire-atlantique-information.svg" style="height=62px;" alt="image" class="" />
+                                  <img src="https://design.loire-atlantique.fr/assets/images/newsletter/logo-loire-atlantique-information.png" style="height=62px;" alt="image" class="" />
                               </a>
                           </td>
                         </tr>
@@ -68,7 +68,10 @@
                         String url = (String) request.getAttribute("mailUrl");
                         String mailTheme = (String) request.getAttribute("mailTheme");
                         %>
-                        <%= glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme}) %>
+                        <jalios:buffer name="footerLink">
+                            <a href="<%= channel.getUrl() %>"><%= channel.getUrl() %></a>
+                        </jalios:buffer>
+                        <%= glp("jcmsplugin.socle.newletter.mail.confirme.content", new String[]{url, mailTheme, footerLink}) %>
                       </tr>
                     </tbody>
                   </table>
@@ -77,8 +80,8 @@
               
 
               <tr>
-                <td>
-                  <div style="font-size: 11px; color: #999; width: 100%; text-align: center;"><%= glp("jcmsplugin.socle.newletter.mail.confirme.footer") %></div>
+                <td>                 
+                  <div style="font-size: 11px; color: #999; width: 100%; text-align: center;"><%= glp("jcmsplugin.socle.newletter.mail.confirme.footer", new String[]{channel.getUrl()}) %></div>
                 </td>
               </tr>
             </tbody>

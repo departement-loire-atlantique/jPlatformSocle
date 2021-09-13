@@ -22,4 +22,4 @@
 		dataMode="free-text" 
 		dataUrl='<%= dataUrl %>' 
 		label='<%= Util.notEmpty(obj.getLabel(userLang, false)) ? obj.getLabel(userLang, false) : glp("jcmsplugin.socle.facette.titre.default-label") %>'
-		isLarge='<%= !isInRechercheFacette %>'/>
+		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>

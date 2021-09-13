@@ -1,6 +1,7 @@
 <%
 //Récupère le text de recherche
 String text = request.getParameter("text");
+boolean hasCatName = Boolean.valueOf(request.getParameter("catName"));
 
 // Création de la requete avec le text recherché
 if(Util.notEmpty(text)) {
@@ -13,7 +14,12 @@ if(Util.notEmpty(text)) {
     // Si JCMS 10sp4 décommenter les lignes ci-dessous et supprimer la partie "Recherche textuelle dans les documents attachés aux publications"
 //     docQh.setSearchInFiles(true);
 //     docQh.setReplaceFileDoc(true);
-    boxQh.setLoggedMember(loggedMember);
+    // Active la recherche
+    if(hasCatName) {
+      boxQh.appendAdvanced("catName", true);
+      boxQh.getQueryString();
+    }
+    boxQh.setLoggedMember(loggedMember);   
     resultat.addAll(boxQh.getResultSet());
       
     // Recherche textuelle dans les documents attachés aux publications

@@ -15,6 +15,9 @@ FicheArticle pub = (FicheArticle) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
+Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));
+Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));
+
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-box ds44-bgGray  ">
@@ -41,6 +44,15 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
                     <%= SocleUtils.formatCategories(allTagChildren) %>
                 </p>
             </jalios:if>
+          </jalios:if>
+          
+          
+          <jalios:if predicate="<%= displayCommunesConcernees && Util.notEmpty(pub.getCommunes()) %>">
+              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.communes.label") %> : </span><%= JcmsUtil.join(Arrays.asList(pub.getCommunes()), ", ", userLang) %></p>
+          </jalios:if>
+          
+          <jalios:if predicate="<%= displayEPCIConcernees && Util.notEmpty(pub.getEpci(loggedMember)) %>">
+              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.epci.label") %> : </span><%= JcmsUtil.join(pub.getEpci(loggedMember), ", ", userLang) %></p>
           </jalios:if>
           
           

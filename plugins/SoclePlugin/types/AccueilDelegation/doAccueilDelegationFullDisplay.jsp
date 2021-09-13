@@ -73,7 +73,7 @@
     <%-- Portlets bas --%>
     <jalios:if predicate="<%= Util.notEmpty(obj.getPortletsBas()) %>">
         <jalios:foreach name="itPortlet" array="<%= obj.getPortletsBas() %>" type="com.jalios.jcms.portlet.PortalElement">      
-           <section class="ds44-container-fluid">
+           <section class='ds44-container-fluid<%= itPortlet instanceof PortletPush ? " ds44--l-padding" : "" %>'>
                <jalios:include id="<%= itPortlet.getId() %>" />
             </section>
         </jalios:foreach>

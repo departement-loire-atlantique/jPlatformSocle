@@ -60,6 +60,7 @@
     <type name="PortletAgendaInfolocale"></type>
     <type name="PortletCarousel"></type>
     <type name="PortletCarrouselDimagesHome"></type>
+    <type name="PortletConnexion"></type>
     <type name="PortletConteneurAgenda"></type>
     <type name="PortletFacetteAdresse"></type>
     <type name="PortletFacetteAgendaCategorie"></type>
@@ -91,6 +92,7 @@
     <type name="Timeline"></type>
     <type name="TimelineElement"></type>
     <type name="Video"></type>
+    <type name="Webdoc"></type>
 
     
     
@@ -372,7 +374,17 @@
         <template name="default" file="doPressCommuniqueFullDisplay.jsp" usage="full"> 
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
-    </templates>     
+    </templates>  
+    <templates type="Timeline">
+        <template name="default" file="doTimelineFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
+    <templates type="Webdoc">
+        <template name="default" file="doWebdocFullDisplay.jsp" usage="full"> 
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     
     <!-- Portlets -->
     <templates type="AbstractPortletSkinable">
@@ -563,6 +575,9 @@
         </template>
         <template name="card" file="doPortletQueryForeachCard.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit tuile pour démo</label>
+        </template>
+        <template name="simpleList" file="doPortletQueryForeachListeSimple.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit en liste</label>
         </template>        
     </templates>
     <templates type="PortletCarousel">
@@ -586,6 +601,9 @@
         <template name="nofacette" file="doPortletRechercheFacettesNoFacettesDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit carte et résultats sans facettes</label>
         </template>
+        <template name="encadre" file="doPortletRechercheFacettesEncadreDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche pour encadré</label>
+        </template>
     </templates>
     <templates type="PortletSearch">
         <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
@@ -606,7 +624,12 @@
       <template name="default" file="doPortletFilTwitterFullDisplay.jsp" usage='box'>
           <label xml:lang="fr">Portlet Fil Twitter</label>
       </template>
-    </templates>        
+    </templates>
+    <templates type="PortletConnexion">
+        <template name="default" file="doPortletConnexionFullDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit générique</label>
+        </template>
+    </templates>            
   </types>
 
   <jars>
@@ -637,6 +660,8 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureFormDataController" types="CandidatureForm" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.CandidatureSpontaneeFormDataController" types="CandidatureSpontaneeForm" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheEmploiStageDataController" types="FicheEmploiStage" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FileDocumentDataController" types="FileDocument" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PageUtileFormDataController" types="PageUtileForm" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
@@ -670,6 +695,7 @@
     <directory path="types" />
     <directory path="wysiwyg" />
     <directory path="images" />
+    <directory path="types" />
     <file path="jsp/jcore/topbar/displayTopbar.jsp" include="DISPLAY_BEFORE_RENDER"/>
     <file path="jsp/addCustomCss.jsp" include="EMPTY_HEADER"/>
     <file path="jsp/addCustomJs.jsp" include="EMPTY_FOOTER"/>  

@@ -87,6 +87,22 @@
       <label xml:lang="fr">Type de tuile fiche lieu</label>
       <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, seul l'apparence des résultats de type fiche lieu sont impacté par ce paramètre&lt;/p&gt;&lt;/div&gt;</description>
     </field>
+    <field name="afficherLesCommunesConcernees" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Afficher les communes concernées</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, seul l'apparence des résultats de type fiche article est impactée par ce paramètre&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="afficherLesEPCIConcernes" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Afficher les EPCI concernés</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Attention, seul l'apparence des résultats de type article lieu est impactée par ce paramètre&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field name="modeDaffichageDuContenu" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Mode d'affichage du contenu</label>
       <onLabel xml:lang="en">Yes</onLabel>

@@ -24,7 +24,7 @@ String email = Util.getFirst(params.get("newletters-mail"));
 String[] segment = params.get("segmentid");
 String nomList = Util.getFirst(params.get("nom-list"));
 String idListString = Util.getFirst(params.get("id-list"));
-
+Boolean noSegment = Util.notEmpty(params.get("no-segment"));
 
 // récupère la date d'expiration 
 Calendar calendar = Calendar.getInstance();
@@ -36,8 +36,8 @@ boolean isExpire = currentDate.after(calendar.getTime());
 
 boolean isValide = false;
 // Newsletter avec propriétés
-if(Util.notEmpty(segment) && !isExpire && MailjetManager.addContactList(email)) {
-  if(MailjetManager.addContactProperties(email, segment)) {
+if((noSegment || Util.notEmpty(segment)) && !isExpire && MailjetManager.addContactList(email)) {
+  if(noSegment || MailjetManager.addContactProperties(email, segment)) {
     isValide = true;
   }
 } else if(Util.notEmpty(idListString)) {
@@ -83,7 +83,7 @@ if(Util.notEmpty(segment) && !isExpire && MailjetManager.addContactList(email)) 
                         <jalios:select>
 	                        <jalios:if predicate="<%= isValide %>">
 		                        <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-valide") %></h2>                      
-		                        <%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme}) %> 
+		                        <%= glp("jcmsplugin.socle.newletter.mail.inscription-valide.content", new String[]{theme,channel.getUrl()}) %> 
 	                        </jalios:if>
 	                        <jalios:if predicate="<%= isExpire %>">
                                 <h2 class="h3-like mts"><%= glp("jcmsplugin.socle.newletter.mail.inscription-expire") %></h2>                      

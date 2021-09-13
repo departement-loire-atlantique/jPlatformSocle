@@ -28,18 +28,13 @@ jcmsplugin.socle.url-rewriting: false
 jcmsplugin.socle.url-rewriting.mdate.boolean: true
 jcmsplugin.socle.page-utile.disabled:false
 
-jcmsplugin.socle.rgpd.modale.titre: Gestion de vos préférences sur les cookies
-jcmsplugin.socle.rgpd.modale.description.area: La description RGPD
+fr.jcmsplugin.socle.rgpd.description-modale.area: La description FR de la modale RGPD
+fr.jcmsplugin.socle.rgpd.description-notice.area: La description FR de la notice RGPD
+en.jcmsplugin.socle.rgpd.description-modale.area: La description EN de la modale RGPD
+en.jcmsplugin.socle.rgpd.description-notice.area: La description EN de la notice RGPD
 jcmsplugin.socle.rgpd.notice.logo: https://design.loire-atlantique.fr/assets/images/pictos/picto-cookies.svg
-jcmsplugin.socle.rgpd.notice.description.area: Description de notice en français
-jcmsplugin.socle.rgpd.notice.learn-more: Je paramètre
-jcmsplugin.socle.rgpd.bouton.accept: J’accepte les cookies
-jcmsplugin.socle.rgpd.bouton.accept-all: J’accepte tout
-jcmsplugin.socle.rgpd.bouton.decline: Je refuse les cookies
-jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
-jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
-jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.privacyPolicy.url: /rgpd
+
 jcmsplugin.socle.meme-theme.max: 20
 jcmsplugin.socle.meme-theme.ficheactu.types: FicheArticle FicheActu Dossier Lien
 
@@ -105,9 +100,11 @@ jcmsplugin.socle.socialnetworks.share.actif: true
 $jcmsplugin.socle.footer.newsletter.intro.wysiwyg: 
 $jcmsplugin.socle.footer.newsletter.thematiques.cat: c_1354966
 $jcmsplugin.socle.footer.newsletter.parutions.cat: c_1354965
+jcmsplugin.socle.footer.newsletter.publication.chooser-publication: 
 
 jcmsplugin.socle.form.newsletter.portlet-rgpd.id:
 jcmsplugin.socle.form.newsletter.mailTo:
+jcmsplugin.socle.newletter.postal.mailTo:
 
 jcmsplugin.socle.footer.newsletter.expire.heure: 72 
 
@@ -436,6 +433,9 @@ $jcmsplugin.socle.category.navigationDesEspaces.root: c_5025
 # Fiche actu
 $jcmsplugin.socle.ficheactu.types.root: c_1156291
 
+# Catégorie de classement FileDocument
+jcmsplugin.socle.category.classementfiledoc: c_1308781
+
 # Fiche aide
 $jcmsplugin.socle.ficheaide.edemarche.root : p2_1054474
 $jcmsplugin.socle.ficheaide.annuaires.root : c_1154130
@@ -718,7 +718,7 @@ $jcmsplugin.socle.action.etatAvancement.cat: p2_911671
 # Login
 $jcmsplugin.socle.login.redirect.pub: c_1320077
 $jcmsplugin.socle.login.pub: c_1314351
-jcms.resource.mail-password: plugins/SoclePlugin/types/PortletLogin/mailPassword.jsp
+jcms.resource.mail-password: plugins/SoclePlugin/types/PortletConnexion/mailPassword.jsp
 
 # Calculette Obligation alimentaire
 jcmsplugin.socle.calculetteOA.partsMax : 10
@@ -782,3 +782,9 @@ jcmsplugin.socle.export.img.filepath:
 # ------------------------------------------------------------
 jcmsplugin.socle.portlet-twitter.timeout: 5000
 jcmsplugin.socle.portlet-twitter.retry: 3
+
+# ------------------------------------------------------------
+#  Formulaires page utile
+# ------------------------------------------------------------
+
+jcmsplugin.socle.formpageutile.alloweddelay: 3

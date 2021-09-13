@@ -50,14 +50,14 @@
 									<jalios:if predicate="<%= Util.notEmpty(obj.getHoraires(userLang)) %>">
 										<div class="ds44-mb3">
 											<% String titreHoraires = Util.notEmpty(obj.getTitreHoraires(userLang)) ? obj.getTitreHoraires(userLang) : glp("jcmsplugin.socle.horaires.title"); %>
-											<h3 class="h3-like" id="idTitre-list2"><%= titreHoraires %> :</h3>
+											<h3 class="h3-like" id="idTitre-list2"><%= titreHoraires %><%=glp("jcmsplugin.socle.deux-points") %></h3>
 											<jalios:wysiwyg><%= obj.getHoraires(userLang) %></jalios:wysiwyg>
 										</div>
 									</jalios:if>
 									<jalios:if predicate="<%= Util.notEmpty(obj.getTarifs(userLang)) %>">
 										<div class="ds44-mb3">
 											<% String titreTarifs = Util.notEmpty(obj.getTitreTarifs(userLang)) ? obj.getTitreTarifs(userLang) : glp("jcmsplugin.socle.tarifs"); %>
-											<h3 class="h3-like" id="idTitre-list4"><%= titreTarifs %></h3>
+											<h3 class="h3-like" id="idTitre-list4"><%= titreTarifs %><%=glp("jcmsplugin.socle.deux-points") %></h3>
 											<jalios:wysiwyg><%= obj.getTarifs(userLang) %></jalios:wysiwyg>
 										</div>
 									</jalios:if>
@@ -69,7 +69,7 @@
 								<div class="col ds44--xl-padding-l">
 									<div class="ds44-mb3">
 										<% String titreContacts = Util.notEmpty(obj.getTitreContacts(userLang)) ? obj.getTitreContacts(userLang) : glp("jcmsplugin.socle.contacts.title"); %>
-										<h3 class="h3-like" id="idTitre-list3"><%= titreContacts %> :</h3>
+										<h3 class="h3-like" id="idTitre-list3"><%= titreContacts %><%=glp("jcmsplugin.socle.deux-points") %></h3>
 										<div class="ds44-ml1">
 											<jalios:if predicate="<%= Util.notEmpty(obj.getContactsEtReservation(userLang)) %>">
 												<jalios:wysiwyg><%= obj.getContactsEtReservation(userLang) %></jalios:wysiwyg>

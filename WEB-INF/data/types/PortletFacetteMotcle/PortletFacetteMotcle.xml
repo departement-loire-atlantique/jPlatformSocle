@@ -6,6 +6,13 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
+    <field name="rechercherDansLesNomsDesCategori" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Rechercher dans les noms des catégories</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field type="super" />
   </fields>
 </type>

@@ -47,7 +47,7 @@
 
 							<div class="col col-2">
 								<p role="heading" aria-level="3" class="ds44-box-heading">
-									<%= obj.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin") %> <%= glp("jcmsplugin.socle.elu.canton") %> <%= obj.getCanton().getTitle() %>
+									<%= obj.getGender() ? glp("jcmsplugin.socle.elu.conseiller.masculin") : glp("jcmsplugin.socle.elu.conseiller.feminin") %> <%= obj.getCanton().getTitle() %>
 								</p>
 								<% String strVicePresident = SocleUtils.getElectedMemberFullFunctionVicePresident(obj); %>
 								<jalios:if predicate="<%= Util.notEmpty(strVicePresident) || Util.notEmpty(obj.getCommittees(loggedMember))%>">
@@ -118,9 +118,7 @@
 								<div class="col col1 ds44--xl-padding-l">
 
 									<jalios:if predicate="<%= Util.notEmpty(obj.getPicture()) %>">
-										<picture class="ds44-container-imgRatio ds44-container-imgRatio--profilXL">
-											<img src="<%= obj.getPicture() %>" alt="" class="ds44-w100 ds44-imgRatio ds44-imgRatio--profil">
-										</picture>
+										<ds:figurePicture format="custom" image="<%= obj.getPicture() %>" pictureCss="ds44-container-imgRatio ds44-container-imgRatio--profilXL" imgCss="ds44-imgRatio--profil" width="160" height="160"/>
 									</jalios:if>
 
 									<jalios:if predicate='<%=Util.notEmpty(obj.getMails())%>'>

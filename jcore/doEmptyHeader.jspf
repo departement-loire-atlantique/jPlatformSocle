@@ -7,10 +7,25 @@
   String publicationKeyWords = (String)request.getAttribute("metakeywords");
   String strKeyWords = Util.getString(channelKeyWords, "") + (Util.notEmpty(channelKeyWords) && Util.notEmpty(publicationKeyWords) ? ", " : "") + Util.getString(publicationKeyWords, "");
 
-  String channelDescription = channel.getProperty("channel.description","");
-  String publicationDescription = (String)request.getAttribute("metadescription");
-  String strDescription = Util.getString(channelDescription, "") + (Util.notEmpty(channelDescription) && Util.notEmpty(publicationDescription) ? ", " : "") + Util.getString(publicationDescription, "");
+  //String channelDescription = channel.getProperty("channel.description","");
+  //String publicationDescription = (String)request.getAttribute("metadescription");
+  //String strDescription = Util.getString(channelDescription, "") + (Util.notEmpty(channelDescription) && Util.notEmpty(publicationDescription) ? ", " : "") + Util.getString(publicationDescription, "");
     
+  /* DEP44 : modification description page selon extradata seo
+   * On initialise avec les valeurs du module, et on surcharge si la description a été remplie au niveau des contenus
+  */
+  String strDescription = userLang.equals("fr") ?  channel.getProperty("fr.jcmsplugin.seo.meta-description") :  channel.getProperty("en.jcmsplugin.seo.meta-description");
+   
+  Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+  if (Util.notEmpty(obj)) {
+    if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang))) {
+      strDescription = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang);
+    } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang))){
+      strDescription = obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang);
+    }
+}  
+  
+  
   jcmsContext.addHttpNameHeader("keywords",    strKeyWords);
   jcmsContext.addHttpNameHeader("description", strDescription);
 
@@ -18,7 +33,16 @@
   String titleOfThePage = jcmsContext.getPageTitle("");
   String titlePrefix    = (String) request.getAttribute("title.prefix");
   
-  //DEP44 : modification du titre de la page
+ //Optionnel module SEO : titre de page selon extradata seo
+ if (Util.notEmpty(obj)) {
+     if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
+         titleOfThePage = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang);
+     } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang))){
+         titleOfThePage = obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang);
+     }
+ }
+  
+  // DEP44 : modification du titre de la page
   String headTitle      = titleOfThePage + " - " + channel.getName();
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
@@ -49,6 +73,12 @@
   
   jcmsContext.setPageTitle(titleOfThePage);
   jcmsContext.setPageZone(jcmsContext.getPageZone("Public"));
+  
+  %>
+  
+  <jalios:include target="EMPTY_HEADER_TITLE"/>
+  
+  <%
     
   if (trace != null) {
     trace.put("title", titleOfThePage);
@@ -119,7 +149,7 @@
 <% } %>
   <title><%= Util.html2Ascii(headTitle) %></title>
 <%
-// DEP44 : désactivation des styles en front office sauf pour les membres autorisés
+// DEP44 : dÃ©sactivation des styles en front office sauf pour les membres autorisÃ©s
 if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
     if (!Util.toBoolean(request.getAttribute("css-at-bottom"), false)) {
 	  for (Iterator it = jcmsContext.getFinalCSSMap().entrySet().iterator() ; it.hasNext() ; ) { 
