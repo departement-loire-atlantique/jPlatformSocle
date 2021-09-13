@@ -5,11 +5,13 @@ import org.apache.log4j.Logger;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.util.Locale;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jalios.jcms.Category;
+import com.jalios.jcms.Channel;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.plugin.Plugin;
 import com.jalios.jcms.policy.BasicPortalPolicyFilter;
@@ -18,6 +20,7 @@ import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.SocleUtils;
+import generated.ContenuRedirection;
 
 
 public class SoclePortalPolicyFilter extends BasicPortalPolicyFilter {
@@ -37,15 +40,33 @@ public class SoclePortalPolicyFilter extends BasicPortalPolicyFilter {
 	@Override
 	public void filterDisplayContext(PortalManager.DisplayContextParameters dcp) {
 
+	  
+	  HttpServletRequest request = getChannel().getCurrentServletRequest();
+	  HttpServletResponse response = getChannel().getCurrentServletResponse();   
+	  Locale userLocale = getChannel().getCurrentUserLocale();  
+
+
+	  // Redirection d'un contenu vers un autre contenu
+	  // Géré par le contenu : Contenu redirection
+	  Set<ContenuRedirection> redirectionSet = Channel.getChannel().getAllPublicationSet(ContenuRedirection.class, Channel.getChannel().getDefaultAdmin() , true);
+	  if(Util.notEmpty(redirectionSet)) {
+	    for(ContenuRedirection itRedirect : redirectionSet) {
+	      if(dcp.id.equalsIgnoreCase(itRedirect.getIdDeLaPublicationSource())) {
+	        Publication redirectPub = itRedirect.getPublicationCible();
+	        response.setStatus(Integer.parseInt(itRedirect.getTypeDeRedirection()));
+	        response.setHeader("Location", ServletUtil.toAbsoluteUrl(request, redirectPub.getDisplayUrl(userLocale)));
+	        return;
+	      }
+	    }
+	  }
+
+	  
 		// Redirection pour les catégorie avec un contenu "mis en avant" (Contenu appartenant à la catégorie "mis en avant")
 		Category currentCat = getChannel().getCategory(dcp.id);
 		Publication redirectPub = SocleUtils.getContenuPrincipal(currentCat);
 	
 		if(Util.notEmpty(redirectPub)) {
-			logger.debug("Publication affichée pour la catégorie " + currentCat.getId() + " : " + redirectPub.getId());								
-			HttpServletRequest request = getChannel().getCurrentServletRequest();
-			HttpServletResponse response = getChannel().getCurrentServletResponse();				
-			Locale userLocale = getChannel().getCurrentUserLocale();				
+			logger.debug("Publication affichée pour la catégorie " + currentCat.getId() + " : " + redirectPub.getId());																		
 			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 			response.setHeader("Location", ServletUtil.toAbsoluteUrl(request, redirectPub.getDisplayUrl(userLocale)));				
 		}
