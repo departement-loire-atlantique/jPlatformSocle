@@ -39,7 +39,7 @@
 
 					<div class="col-1 grid-offset ds44-hide-tinyToLarge"></div>
 
-					<a         rticle class="col-7 ds44-contenuDossier">
+					<article class="col-7 ds44-contenuDossier">
 						<jalios:if predicate="<%= Util.notEmpty(obj.getDate()) %>">
 							<p class="ds44-textLegend"><%= glp("jcmsplugin.socle.publiele", SocleUtils.formatDate("dd/MM/yy", obj.getDate())) %></p>
 						</jalios:if>
