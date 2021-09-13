@@ -270,7 +270,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 	<div class="ds44-form__container">
 		<div class="ds44-select__shape ds44-inpStd">
 			<p class="ds44-selectLabel" aria-hidden="true"><%= sujetLabel %><sup aria-hidden="true">*</sup></p>
-			<div id="sujet" data-name="sujet" class="ds44-js-select-standard ds44-selectDisplay"  data-required="true"></div>
+			<div id="sujet" data-name="sujet" class="ds44-js-select-standard ds44-selectDisplay" data-required="true"></div>
 			<button type="button" id="button-form-element-sujet" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", sujetLabel) %>"  ><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-form-element-sujet" class="visually-hidden"><%= sujetLabel %></span></button>
 			<button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", sujetLabel) %></span></button>
 		
@@ -280,7 +280,7 @@ sujetCatSet.addAll(formHandler.getSujetRoot().getChildrenSet());
 			<div class="ds44-listSelect">
 				<ul class="ds44-list" role="listbox" id="listbox-form-element-sujet" aria-labelledby="button-message-form-element-sujet"  aria-required="true">
 					<jalios:foreach name="itCat" type="Category" collection="<%= sujetCatSet %>">
-						<li class="ds44-select-list_elem" name="sujet" role="option" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
+						<li class="ds44-select-list_elem" role="option" data-value="<%= itCat.getId() %>" id="form-element-sujet-<%= itCounter %>" tabindex="0">
 							<%= itCat.getName(userLang) %>
 						</li>
 					</jalios:foreach>
