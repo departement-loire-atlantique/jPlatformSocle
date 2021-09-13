@@ -2186,7 +2186,6 @@ public final class SocleUtils {
           return null;
       }
   }
-  }
   
   /**
    * Regarde si une catégorie contient certains types de contenus
