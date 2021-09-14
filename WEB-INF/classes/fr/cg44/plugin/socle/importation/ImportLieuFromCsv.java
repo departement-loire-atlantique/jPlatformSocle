@@ -15,6 +15,7 @@ import com.csvreader.CsvReader;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Content;
+import com.jalios.jcms.ControllerStatus;
 import com.jalios.jcms.Publication;
 import com.jalios.jcms.context.JcmsMessage;
 import com.jalios.util.Util;
@@ -225,7 +226,7 @@ public class ImportLieuFromCsv {
                 cpt++;
             }
             csvReader.close();
-            if(!result){
+            if(result){
                 message = "Le fichier contient des lignes en erreur.";
                 channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, message));
             }
@@ -357,6 +358,8 @@ public class ImportLieuFromCsv {
                     }
                     itLieu.setCantons(cantons.toArray(new Canton[cantons.size()]));
                 }
+                
+                itLieu.setAuthor(channel.getCurrentLoggedMember());
                 
                 lieuxToCreate.add(itLieu);
             }
