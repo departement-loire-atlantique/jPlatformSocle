@@ -2156,7 +2156,7 @@ public final class SocleUtils {
    */
   public static City getCommuneFromInsee(Integer insee) {
       // Le code INSEE doit commencer par 44
-      if (Util.isEmpty(insee) || insee.toString().startsWith("44")) {
+      if (Util.isEmpty(insee) || !insee.toString().startsWith("44")) {
           return null;
       }
       

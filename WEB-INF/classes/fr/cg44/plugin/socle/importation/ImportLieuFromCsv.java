@@ -104,7 +104,7 @@ public class ImportLieuFromCsv {
                     if (Util.isEmpty(values[0])) { // titre
                         lineLog.append("Le titre (champ obligatoire) est vide. # ");
                     }
-                    if (Util.notEmpty(values[10]) && !communeInseeCheck(values[10])) { // check code INSEE commune
+                    if (Util.notEmpty(values[10]) ? !communeInseeCheck(values[10]) : false) { // check code INSEE commune
                         lineLog.append("Le champ Code INSEE présente un code INSEE incorrect. Aucune commune 44 n'est associée à la valeur donnée. # ");
                     }
                     if (Util.isEmpty(values[20])) { // navigation et classement
@@ -112,22 +112,22 @@ public class ImportLieuFromCsv {
                     } else if (!categoryCheck(values[20], channel.getCategory("$jcmsplugin.socle.category.navigationDesEspaces.root"))) { // check branche navigation et existence de catégories
                         lineLog.append("Le champ Navigation et classement (obligatoire) présente des catégories incorrectes (mauvaise branche ou IDs n'existant pas) # ");
                     }
-                    if (Util.notEmpty(values[21]) && cantonsArrayCheck(values[21])) { // Territoire communes concernées
+                    if (Util.notEmpty(values[21]) ? !inseeArrayCheck(values[21]) : false) { // Territoire communes concernées
                         lineLog.append("Le champ Territoire communes concernées présente des codes INSEE incorrects (INSEE non 44 ou pas de commune associée à un code INSEE) # ");
                     }
-                    if (Util.notEmpty(values[24]) && !categoryCheck(values[24], channel.getCategory("$jcmsplugin.socle.category.toutesLesCommunesEPCI.root"))) { // check branche EPCI
+                    if (Util.notEmpty(values[24]) ? !categoryCheck(values[24], channel.getCategory("$jcmsplugin.socle.category.toutesLesCommunesEPCI.root")) : false) { // check branche EPCI
                         lineLog.append("Le champ EPCI présente des catégories incorrectes (mauvaise branche ou IDs n'existant pas) # ");
                     }
                     
-                    if (Util.notEmpty(values[23]) && !contentCheck(values[23],Delegation.class)) { // délégations
+                    if (Util.notEmpty(values[23]) ? !contentCheck(values[23],Delegation.class) : false) { // délégations
                         lineLog.append("Le champ Délégations présente des contenus incorrects (un ou plusieurs contenus n'existent pas / ne sont pas des délégations) # ");
                     }
                     
-                    if (Util.notEmpty(values[25]) && !contentCheck(values[25], Canton.class)) { // cantons
-                        lineLog.append("Le champ Délégations présente des contenus incorrects (un ou plusieurs contenus n'existent pas / ne sont pas des délégations) # ");
+                    if (Util.notEmpty(values[25]) ? !contentCheck(values[25], Canton.class) : false) { // cantons
+                        lineLog.append("Le champ Cantons présente des contenus incorrects (un ou plusieurs contenus n'existent pas / ne sont pas des cantons) # ");
                     }
                     
-                    if (Util.notEmpty(lineLog)) {
+                    if (Util.notEmpty(lineLog.toString())) {
                         returnedLog.put("Ligne " + (cpt), lineLog.toString());
                     }
                     
@@ -151,7 +151,7 @@ public class ImportLieuFromCsv {
      * @param string
      * @return
      */
-    private static boolean cantonsArrayCheck(String codesInsee) {
+    private static boolean inseeArrayCheck(String codesInsee) {
         String[] arrayInsee = codesInsee.split(doubleHashtag);
         for (int counter = 0; counter < arrayInsee.length; counter++) {
             if (Util.isEmpty(communeInseeCheck(arrayInsee[counter]))) {
@@ -207,7 +207,7 @@ public class ImportLieuFromCsv {
     }
 
     private static boolean fileIsNotCorrectCsv(FileItem fileItem) {
-        boolean result = true;
+        boolean result = false;
         String message = "";
         String trace = "";
 
@@ -220,7 +220,7 @@ public class ImportLieuFromCsv {
                 values = csvReader.getValues();
                 if(values.length != 26){
                     trace += "Le fichier contient une ligne incorrecte [ligne " + cpt + "], nombre de colonnes différent de 26 \r\n" + csvReader.getRawRecord() + "\r\n";
-                    result = false;
+                    result = true;
                 }
                 cpt++;
             }
@@ -230,7 +230,7 @@ public class ImportLieuFromCsv {
                 channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, message));
             }
             else{
-                result = true;
+                result = false;
                 message = "La syntaxe du fichier est correcte.";
                 channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.INFO, message));
             }
@@ -238,11 +238,11 @@ public class ImportLieuFromCsv {
             channel.getCurrentJcmsContext().getRequest().setAttribute("traceImport", trace);
             
         } catch (FileNotFoundException e) {
-            result = false;
+            result = true;
             message = "Impossible de trouver le fichier";
             channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, message));
         } catch (IOException e) {
-            result = false;
+            result = true;
             message = "Erreur lors de la lecture du fichier";
             channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, message));
             channel.getCurrentJcmsContext().getRequest().setAttribute("traceImport", e);
