@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ContenuRedirection" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Contenu Redirection</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="description" editor="wysiwyg" required="false" type="String" searchable="true" wysiwygConfigurationId="default" ml="true" compactDisplay="false" descriptionType="tooltip" abstract="true" truncate="400" html="false" checkHtml="true" inline="true">
+      <label xml:lang="en">Description</label>
+      <label xml:lang="fr">Description</label>
+    </field>
+    <field name="idDeLaPublicationSource" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Id de la publication source</label>
+    </field>
+    <field name="publicationCible" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Publication cible</label>
+    </field>
+    <field name="typeDeRedirection" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="301|302" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Permanente (301)|Temporaire (302)">
+      <label xml:lang="fr">Type de redirection</label>
+    </field>
+  </fields>
+</type>
+

@@ -27,6 +27,7 @@
     <type name="Contact"></type>
     <type name="ContactForm"><file path="editFormContactForm.jsp" /></type>
     <type name="ContenuPush"></type>
+    <type name="ContenuRedirection"></type> 
     <type name="CultureProfessionalCard"></type>
     <type name="Delegation"></type>
     <type name="Directory"></type>
