@@ -16,7 +16,7 @@
     <field name="publicationCible" editor="link" required="true" compactDisplay="false" type="com.jalios.jcms.Publication" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Publication cible</label>
     </field>
-    <field name="typeDeRedirection" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="301|302" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Permanante|Temporaire">
+    <field name="typeDeRedirection" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="301|302" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Permanente (301)|Temporaire (302)">
       <label xml:lang="fr">Type de redirection</label>
     </field>
   </fields>
