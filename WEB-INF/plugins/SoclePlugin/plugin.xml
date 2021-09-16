@@ -49,6 +49,7 @@
     <type name="FicheSAAD"></type>   
     <type name="Help"></type>
     <type name="Horaire"></type>
+    <type name="InscriptionPressForm"><file path="editFormInscriptionPressForm.jsp" /></type>
     <type name="Lien"></type>
     <type name="ListeDeContenus"></type>
     <type name="Magazine"></type>
@@ -663,6 +664,7 @@
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheEmploiStageDataController" types="FicheEmploiStage" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FileDocumentDataController" types="FileDocument" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PageUtileFormDataController" types="PageUtileForm" />
+    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.InscriptionPressFormDataController" types="InscriptionPressForm" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.SoclePortalPolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCityEnginePolicyFilter" />
     <policyfilter    class="fr.cg44.plugin.socle.policyfilter.PublicationFacetedSearchCantonEnginePolicyFilter" />
