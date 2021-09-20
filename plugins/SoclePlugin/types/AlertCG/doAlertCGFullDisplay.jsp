@@ -31,9 +31,9 @@ String iconId = SocleUtils.getDescriptionChampCategorie(obj.getIcone(loggedMembe
         <div class="ds44-collapser_element">
             <p role="heading" aria-level="1">
                 <button type="button" class="ds44-collapser_button">
-                    <h1 class="ds44-card__title">
+                    <div class="h1-like ds44-card__title">
                         <i class="icon <%= iconId %>" aria-hidden="true"></i><%= obj.getTitle(userLang) %>
-                    </h1>
+                    </div>
                     <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
                 </button>
             </p>
