@@ -231,7 +231,7 @@ else {
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
-	        <img src="<%=formattedImagePath%>" alt="<%= alt %>" class='<%= Util.isEmpty(imgCss) ? "" : imgCss %>' id="<%=uid%>"/>
+	        <img src="<%=formattedImagePath%>" alt="<%= HttpUtil.encodeForHTMLAttribute(alt) %>" class='<%= Util.isEmpty(imgCss) ? "" : imgCss %>' id="<%=uid%>"/>
 	    </picture>
 	    
 	<jalios:if predicate="<%= hasFigcaption%>">
