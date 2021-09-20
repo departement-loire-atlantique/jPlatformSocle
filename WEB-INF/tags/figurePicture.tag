@@ -1,3 +1,4 @@
+<%@tag import="generated.Lien"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
 <%@ tag 
     pageEncoding="UTF-8"
@@ -196,7 +197,9 @@ if (format.equals("principale") || format.equals("bandeau") ||format.equals("car
   }
 }
 
-if ("-1".equals(alt)) { // si le alt est à -1, forcer un alt vide
+if (pub instanceof Lien) { // si le contenu est un Lien, récupérer son alt
+  alt = SocleUtils.getAltFromLien((Lien) pub);
+} else if ("-1".equals(alt)) { // si le alt est à -1, forcer un alt vide
   alt = "";
 } else if (Util.isEmpty(alt)){
   alt = SocleUtils.getAltTextFromPub(pub);
