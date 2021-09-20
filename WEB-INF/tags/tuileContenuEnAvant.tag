@@ -1,3 +1,4 @@
+<%@tag import="com.jalios.jcms.HttpUtil"%>
 <%@tag import="generated.Lien"%>
 <%@tag import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib uri="jcms.tld" prefix="jalios" %>
@@ -90,7 +91,7 @@
     String alt="";
     if (pub instanceof Lien) {
         Lien itLien = (Lien) pub;
-        alt = SocleUtils.getAltFromLien(itLien);
+        alt = HttpUtil.encodeForHTMLAttribute(SocleUtils.getAltFromLien(itLien));
     }
     
 %>

@@ -1,4 +1,4 @@
-<h2 class="h4-like" id="idTitreFooter1"><%= glp("jcmsplugin.socle.newsletter.abonnement.titre") %></h2>
+<h2 class="h4-like" id="idTitreFooterNewsletter"><%= glp("jcmsplugin.socle.newsletter.abonnement.titre") %></h2>
 <p class="ds44-mb-std ds44-mobile-reduced-mb"><%= glp("jcmsplugin.socle.newsletter.abonnement.chapo") %></p>
 <p><button class="ds44-btnStd ds44-mobile-extra-mb" type="button" title="<%= glp("jcmsplugin.socle.newsletter.abonnement.titleBouton") %>" data-target="#overlay-newsletter" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.newsletter.abonnement.labelBouton") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button></p>
 

@@ -35,7 +35,7 @@ PortletFaq portletFaq = SocleUtils.searchPortletFaq(currentCategory);
     
         <section class="ds44-modal-container" id="navFAQ" aria-modal="true" aria-hidden="true" role="dialog">
             <div class="ds44-modal-box ds44-whiteBG ds44-wave-grey">
-                <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= glp("jcmsplugin.socle.ficheaide.fermer-aide.label", glp("jcmsplugin.socle.faq.vous-avez-question")) %>' data-js="ds44-modal-action-close">
+                <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.fermer-aide.label", glp("jcmsplugin.socle.faq.vous-avez-question"))) %>' data-js="ds44-modal-action-close">
                     <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
                 </button>
                 <div class="ds44-container-menuBackLink">
