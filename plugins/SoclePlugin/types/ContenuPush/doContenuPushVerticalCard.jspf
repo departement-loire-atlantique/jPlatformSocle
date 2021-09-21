@@ -12,7 +12,7 @@
                     </jalios:if>
                     <jalios:if predicate="<%= Util.notEmpty(itPush.getImageDesktop()) %>">
                         <source media="(min-width: 36em)" srcset="<%=itPush.getImageDesktop()%>">
-                        <img src="<%= itPush.getImageDesktop() %>" alt="<%= itPush.getTitle() %>">
+                        <img src="<%= itPush.getImageDesktop() %>" alt="">
                     </jalios:if>
                 </picture>
             </jalios:if>

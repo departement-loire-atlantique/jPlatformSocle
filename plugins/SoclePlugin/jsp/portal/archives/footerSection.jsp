@@ -21,7 +21,7 @@
 	             <% Publication newsletterPub = channel.getPublication(channel.getProperty("jcmsplugin.socle.footer.newsletter.publication"));  %>
 	             
 	             <jalios:if predicate='<%= Util.notEmpty(newsletterPub) %>'>                
-	                <h2 class="h4-like" id="idTitreFooter1"><%=glp("jcmsplugin.socle.newsletter.abonnement.titre")%></h2>
+	                <h2 class="h4-like" id="idTitreFooterSection"><%=glp("jcmsplugin.socle.newsletter.abonnement.titre")%></h2>
 					<p class="ds44-mb-std ds44-mobile-reduced-mb"><%=glp("jcmsplugin.socle.newsletter.abonnement.chapo")%></p>
 					<p>
 					    <a href="<%= newsletterPub.getDisplayUrl(userLocale) %>" class="ds44-btnStd ds44-mobile-extra-mb" type="button"

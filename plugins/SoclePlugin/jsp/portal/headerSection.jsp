@@ -124,7 +124,7 @@ if(multilingue){
 		                                <jalios:select>
 		                                    <jalios:if predicate='<%= itCat.equals(channel.getCategory("$jcmsplugin.socle.site.pdcv.cat.id")) %>'>
 		                                        <%-- Bloc près de chez vous --%>
-		                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
+		                                         <button type="button" class="ds44-menuBtn" data-ssmenu="navPdcv" aria-haspopup="true"><%= glp("jcmsplugin.socle.menu.pdcv") %><i class="icon icon-right" aria-hidden="true"></i></button>
 		                                    </jalios:if>
 		                                    <%String libelleCat = Util.notEmpty(itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCat.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCat.getName(userLang); %>
 		                                    
@@ -152,7 +152,7 @@ if(multilingue){
 		                                        <a class="ds44-menuBtn" href="<%= lien %>" <%=title%> <%=cible%>><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></a>
 		                                    </jalios:if>
 		                                    <jalios:default>
-		                                        <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>'><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
+		                                        <button type="button" class="ds44-menuBtn" data-ssmenu='<%= navId %>' aria-haspopup="true"><%= libelleCat %><i class="icon icon-right" aria-hidden="true"></i></button>
 		                                        <% listCatNavId.put(itCat, navId); %>
 		                                    </jalios:default>
 		                                </jalios:select>
