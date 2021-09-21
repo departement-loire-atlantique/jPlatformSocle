@@ -126,6 +126,7 @@ jcmsplugin.socle.form.exemple.complement-adresse: Example: Surry Hills
 jcmsplugin.socle.form.exemple.codepostal: Example: 2010
 jcmsplugin.socle.form.exemple.types-docs: Arrêté de nomination, inscription sur liste d’aptitude...
 jcmsplugin.socle.form.exemple.formats: Formats : PDF ou DOC, taille max. : 1Mo
+jcmsplugin.socle.form.exemple.type-media: Exemple : Nom journal, radio...
 jcmsplugin.socle.form.error.taille: Un ou plusieurs fichiers ne sont pas valides, merci de les vérifier. Taille maximum des fichiers : 1Mo
 jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
@@ -141,6 +142,12 @@ jcmsplugin.socle.form.contact-mail.title: Contact form
 jcmsplugin.socle.form.contact-mail.origine: Loire Atlantique Departement
 jcmsplugin.socle.form.exemple.structure : Exemple : Association Les petits poissons
 jcmsplugin.socle.form.valider-envoi: Valider
+jcmsplugin.socle.form.inscription-presse.titre: Créer un compte
+jcmsplugin.socle.form.inscription-presse.validation: Votre inscription est en attente. Un courriel de confirmation vient de vous être envoyé.
+jcmsplugin.socle.form.inscription-presse.inscription-succes: Votre inscription est validée. Un courriel contenant votre mot de passe vient de vous être envoyé.
+jcmsplugin.socle.form.inscription-presse.inscription-echec: Une erreur s'est produite lors de votre inscription. Merci de contacter le service presse.
+jcmsplugin.socle.form.inscription-presse.inscription-expire: Le délai de confirmation de votre inscription a expiré. Veuillez vous inscrire à nouveau.
+jcmsplugin.socle.form.mail-existe: Un utilisateur existe déjà avec ce courriel. Merci d'en choisir un autre ou de lancer la procédure de récupération de mot de passe.
 
 # ------------------------------------------------------------
 #  Mail
@@ -152,7 +159,8 @@ jcmsplugin.socle.email.candidature.objet: Réponse à l'offre d'emploi - {0}
 jcmsplugin.socle.email.faq.objet: FAQ
 jcmsplugin.socle.email.pageutile.objet.utile: HELPFUL
 jcmsplugin.socle.email.pageutile.objet.inutile: NOT HELPFUL
-
+jcmsplugin.socle.email.inscription-presse.compte-validation.objet: Demande de validation de création de compte
+jcmsplugin.socle.email.inscription-presse.compte-creation.objet: Compte créé
 
 # ------------------------------------------------------------
 #  Sectorisation
@@ -327,6 +335,7 @@ jcmsplugin.socle.cookies: Cookies
 jcmsplugin.socle.utilisateur-connecte: Connected user: {0}
 jcmsplugin.socle.deconnexion: Disconnect
 jcmsplugin.socle.identifiant: Login
+jcmsplugin.socle.media: Média
 
 # ------------------------------------------------------------
 #  Header

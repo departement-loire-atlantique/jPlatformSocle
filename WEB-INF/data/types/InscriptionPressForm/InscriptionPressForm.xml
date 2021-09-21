@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="InscriptionPressForm" superclass="com.jalios.jcms.Form" formOneSubmit="false" formNotify="true" formAuthor="j_2" formRedirectMode="currentCategory" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="true" hbm="true" debatable="false" unitFieldEdition="true" audienced="false" categories="" database="true">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+    <label xml:lang="en">Title</label>
+  </title>
+  <fields>
+    <field name="nom" editor="textfield" required="false" type="String" searchable="true" size="80" compactDisplay="false" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Nom</label>
+      <label xml:lang="en">Name</label>
+    </field>
+    <field name="prenom" editor="textfield" required="false" type="String" searchable="true" size="80" compactDisplay="false" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Prénom</label>
+    </field>
+    <field name="mail" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" maxlength="500" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Courriel</label>
+    </field>  
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="false">
+      <label xml:lang="fr">Téléphone</label>
+    </field>
+    <field name="media" editor="textfield" required="false" type="String" searchable="true" size="80" compactDisplay="false" ml="false" descriptionType="tooltip" html="false" checkHtml="false">
+      <label xml:lang="fr">Média</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Création de compte - espace presse</label>
+</type>
+

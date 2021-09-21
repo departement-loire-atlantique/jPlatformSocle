@@ -20,6 +20,7 @@ import generated.CandidatureForm;
 import generated.CandidatureSpontaneeForm;
 import generated.ContactForm;
 import generated.FicheEmploiStage;
+import generated.InscriptionPressForm;
 
 public final class MailUtils {
   private static Channel channel = Channel.getChannel();
@@ -277,8 +278,65 @@ public final class MailUtils {
   public static boolean envoiMailPageUtile(boolean pageUtile, String titre, String url, String commentaire, String date, String motif, String emailRedacteur) {
     return envoiMailPageUtile(pageUtile, titre, url, commentaire, date, motif, emailRedacteur, null);
   }
-  
 
+
+  /**
+   * Envoi de l'email de demande de confirmation de création de compte pour Espace Presse
+   */
+  public static void envoiMailDemandeConfirmationCreationCompte(InscriptionPressForm form, String emailTo, String lienDeConfirmation) {
+    String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireEspacePresseDemandeConfirmationInscriptionTemplate.jsp";
+
+    // Objet
+    String objet = prefixeObjetMail + " / ";
+    objet += JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-validation.objet");
+
+    // Contenu
+    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+    parametersMap.put("nom", form.getNom());
+    parametersMap.put("prenom", form.getPrenom());
+    parametersMap.put("email", form.getMail());
+    parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
+    parametersMap.put("media", Util.notEmpty(form.getMedia()) ? form.getMedia() : "");
+    parametersMap.put("lien", lienDeConfirmation);
+
+    try {
+      sendMail(objet, null, channel.getDefaultEmail(), emailTo, null, null, jsp, parametersMap);
+      msgEnvoiMailValidation();
+    } catch (Exception e) {
+      msgEchecEnvoiMailContact();
+      LOGGER.error("Erreur lors de l'envoi du mail" + e.getMessage());
+    }
+  }
+  
+  /**
+   * Envoi de l'email de confirmation de création de compte pour Espace Presse
+   */
+  public static boolean envoiMailConfirmationCreationCompte(String id, String pwd) {
+    String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireEspacePresseConfirmationInscriptionTemplate.jsp";
+    String emailTo = id;
+    boolean result = false;
+
+    // Objet
+    String objet = prefixeObjetMail + " / ";
+    objet += JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-creation.objet");
+
+    // Contenu
+    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+    parametersMap.put("id", id);
+    parametersMap.put("pwd", pwd);
+
+    try {
+      sendMail(objet, null, channel.getDefaultEmail(), emailTo, null, null, jsp, parametersMap);
+      msgEnvoiMailValidation();
+      result = true;
+    } catch (Exception e) {
+      msgEchecEnvoiMailContact();
+      LOGGER.error("Erreur lors de l'envoi du mail" + e.getMessage());
+    }
+    
+    return result;
+  }  
+  
   /**
    * Envoi de mail
    * 
@@ -349,6 +407,7 @@ public final class MailUtils {
     
     sendMail(subject, content, emailFrom, emailTo, null, listePieceJointe, null, null);
   }  
+
   /**
    * Envoi du message de confirmation de l'envoi du mail.
    */
@@ -356,7 +415,6 @@ public final class MailUtils {
     String userLang = channel.getCurrentJcmsContext().getUserLang();
     HttpServletRequest request = channel.getCurrentServletRequest();
     JcmsContext.setInfoMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.email.message.succes"), request);
-    LOGGER.debug(JcmsUtil.glpd("jcmsplugin.socle.email.message.succes"));
   }
 
   /**
@@ -369,6 +427,15 @@ public final class MailUtils {
     LOGGER.warn(JcmsUtil.glpd("jcmsplugin.socle.email.message.echec"));
   }  
 
+  /**
+   * Envoi du message de confirmation de l'envoi du mail.
+   */
+  public static void msgEnvoiMailValidation() {
+    String userLang = channel.getCurrentJcmsContext().getUserLang();
+    HttpServletRequest request = channel.getCurrentServletRequest();
+    JcmsContext.setInfoMsgSession(JcmsUtil.glp(userLang, "jcmsplugin.socle.form.inscription-presse.validation"), request);
+  }
+  
   /**
    * Ajout des clauses à la fin du message.
    * 
