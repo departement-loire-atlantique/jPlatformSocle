@@ -32,14 +32,25 @@
 			<jalios:foreach name="itElement" type="CarouselElement" array="<%= obj.getElements1() %>">
 				<%
 					String urlImage = SocleUtils.getUrlImageElementCarousel(itElement, userLang, jcmsContext);
-					String titreTuile = glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false));
+					String titreTuile = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false)));
+					String legend = Util.notEmpty(itElement.getImageLegend(userLang, false)) ? itElement.getImageLegend(userLang, false) : "";
+                    String copyright = Util.notEmpty(itElement.getImageCopyright(userLang, false)) ? itElement.getImageCopyright(userLang, false) : "";
+                    
+                    String label = "";
+                    if (Util.notEmpty(legend) || Util.notEmpty(copyright)) {
+                        label = legend;
+                        if (Util.notEmpty(copyright)) {
+                          label += " ";
+                          label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+                        }
+                    }
 				%>
 				<li class="swiper-slide">
 					<div class="ds44-diaporama-vignette">
 						<jalios:if predicate="<%= Util.notEmpty(itElement.getImageLegend(userLang, false)) %>">
 							<figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
-								<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %> ' />
-								<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></figcaption>
+								<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt='<%= titreTuile %>' />
+								<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><jalios:if predicate="<%= Util.notEmpty(label) %>"><br /><%= label %></jalios:if></figcaption>
 							</figure>
 						</jalios:if>
 						<jalios:if predicate="<%= Util.isEmpty(itElement.getImageLegend(userLang, false)) %>">
@@ -77,11 +88,23 @@
 							
 							urlImage = SocleUtils.getUrlOfFormattedImageDiaporamaVignette(urlImage);
 							
-							String titreTuile = glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false));
+							String titreTuile = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.diaporama.titre", sdfTuiles.format(itElement.getPdate()), itElement.getTitle(userLang, false)));
+							
+							String legend = Util.notEmpty(itElement.getImageLegend(userLang, false)) ? itElement.getImageLegend(userLang, false) : "";
+							String copyright = Util.notEmpty(itElement.getImageCopyright(userLang, false)) ? itElement.getImageCopyright(userLang, false) : "";
+							
+							String label = "";
+							if (Util.notEmpty(legend) || Util.notEmpty(copyright)) {
+							    label = legend;
+							    if (Util.notEmpty(copyright)) {
+							      label += " ";
+							      label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+							    }
+							}
 						%>
 						<li class="swiper-slide">
 							<button class="ds44-diaporama-thumb" style="background-image: url('<%= urlImage %>');">
-								<p class="visually-hidden"><%= titreTuile %><br /><%= itElement.getImageLegend(userLang, false) %></p>
+								<p class="visually-hidden"><%= titreTuile %><jalios:if predicate="<%= Util.notEmpty(label) %>"><br /><%= label %></jalios:if></p>
 							</button>
 						</li>
 					</jalios:foreach>
