@@ -2117,12 +2117,22 @@ public final class SocleUtils {
    */ 
   public static boolean hasAncestorCat(Publication pub, Category ancestorCat) {
     for (Category itCat : pub.getCategorySet()) {
-      if(itCat.hasAncestor(ancestorCat) || itCat.equals(ancestorCat)) {
+      if(catHasAncestor(itCat, ancestorCat)) {
         return true;
       }
     }
     return false;
-  }	
+  } 
+  
+  /**
+   * Regarde si une catégorie a une autre catégorie en tant qu'ancêtre
+   * @param catTest
+   * @param ancestorCat
+   * @return true si la catégorie catTest a ancestorCat en ancêtre, sinon false
+   */
+  public static boolean catHasAncestor(Category catTest, Category ancestorCat) {
+      return (catTest.hasAncestor(ancestorCat) || catTest.equals(ancestorCat));
+  }
   
   /**
    * Calcule le ratio d'une image afin de générer la vignette au bon ratio 
@@ -2136,6 +2146,45 @@ public final class SocleUtils {
       ratio = (double)file.getWidth() / (double)file.getHeight();
     }
     return ratio;
+  }   
+  
+  /**
+   * Récupérer la commune associée à un code INSEE
+   * Renvoie NULL si aucune commune n'a été trouvée
+   * @param insee
+   * @return
+   */
+  public static City getCommuneFromInsee(Integer insee) {
+      // Le code INSEE doit commencer par 44
+      if (Util.isEmpty(insee) || !insee.toString().startsWith("44")) {
+          return null;
+      }
+      
+      TreeSet<City> allCommunes = channel.getAllDataSet(City.class);
+      
+      for (City itCity : allCommunes) {
+          if (itCity.getCityCode() == insee) {
+              return itCity;
+          }
+      }
+      
+      return null;
+  }
+  
+  /**
+   * Récupérer la commune associée à un code INSEE
+   * Renvoie NULL si aucune commune n'a été trouvée
+   * @param insee
+   * @return
+   */
+  public static City getCommuneFromInsee(String inseeStr) {
+      if (Util.isEmpty(inseeStr)) return null;
+      try {
+      return getCommuneFromInsee(Integer.parseInt(inseeStr));
+      } catch (Exception e) {
+          LOGGER.error("Erreur dans getCommuneFromInsee -> le code INSEE " + inseeStr + " n'est pas un nombre.");
+          return null;
+      }
   }
   
   /**
