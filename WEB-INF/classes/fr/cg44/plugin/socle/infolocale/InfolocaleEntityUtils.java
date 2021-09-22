@@ -112,72 +112,96 @@ public class InfolocaleEntityUtils {
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
-            if (Util.notEmpty(json.get("organismeId")) && !(json.get("organismeId").toString().equals("null"))) {
+            if (!(json.isNull("organismeId"))) {
               itEvent.setOrganismeId(json.getInt("organismeId"));
             }
-            if (Util.notEmpty(json.get("organismeNom")) && !(json.get("organismeNom").toString().equals("null"))) {
+            if (!(json.isNull("organismeNom"))) {
               itEvent.setOrganismeNom(json.getString("organismeNom"));
             }
-            itEvent.setTitre(json.getString("titre"));
-            itEvent.setTitreSlug(json.getString("titreSlug"));
-            itEvent.setDescription(json.getString("descriptif"));
-            itEvent.setDateCreation(json.getString("dateCreation"));
-            itEvent.setDateModification(json.getString("dateModification"));
-            if (Util.notEmpty(json.get("lieu"))) {
+            if (!(json.isNull("titre"))) {
+                itEvent.setTitre(json.getString("titre"));
+            }
+            if (!(json.isNull("titreSlug"))) {
+                itEvent.setTitreSlug(json.getString("titreSlug"));
+            }
+            if (!(json.isNull("descriptif"))) {
+                itEvent.setDescription(json.getString("descriptif"));
+            }
+            if (!(json.isNull("dateCreation"))) {
+                itEvent.setDateCreation(json.getString("dateCreation"));
+            }
+            if (!(json.isNull("dateModification"))) {
+                itEvent.setDateModification(json.getString("dateModification"));
+            }
+            if (!(json.isNull("lieu"))) {
                 itEvent.setLieu(createLieuFromJsonItem(json.getJSONObject("lieu")));
                 // Ajout de la longitude / latitute en extradata pour s'afficher sur les cartes comme les autres publications JCMS
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
-            JSONArray tarifs = json.getJSONArray("tarifs");
-            if (Util.notEmpty(tarifs)) {
-              itEvent.setTarifs(createTarrifArrayFromJsonArray(tarifs));
+            if (!(json.isNull("tarifs"))) {
+                JSONArray tarifs = json.getJSONArray("tarifs");
+                itEvent.setTarifs(createTarrifArrayFromJsonArray(tarifs));
             }
-            JSONArray billetteries = json.getJSONArray("billetteries");
-            if (billetteries.length() > 0) {
-              JSONObject billetterie = billetteries.getJSONObject(0);
-              itEvent.setUrlBilletterie(billetterie.getString("url"));
-            }
-            JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
-            if (donneesComplementaires.length() > 0) {
-              JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
-              if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
-              if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
-              if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
-            }
-            JSONArray ressources = json.getJSONArray("ressources");
-            if (ressources.length() > 0) {
-              List<String> urlVideos = new ArrayList<>();
-              List<DossierPresse> listDossiers = new ArrayList<>();
-              for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
-                JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
-                switch (itRessource.getString("type")) {
-                  case "video" :
-                    urlVideos.add(itRessource.getString("url"));
-                    break;
-                  case "dossier_presse" :
-                    DossierPresse itDossier = new DossierPresse();
-                    itDossier.setUrl(itRessource.getString("url"));
-                    listDossiers.add(itDossier);
-                    break;
+            if (!(json.isNull("billetteries"))) {
+                JSONArray billetteries = json.getJSONArray("billetteries");
+                if (billetteries.length() > 0) {
+                  JSONObject billetterie = billetteries.getJSONObject(0);
+                  if (Util.notEmpty(billetterie.getString("url")) && !(billetterie.isNull("url"))) {
+                      itEvent.setUrlBilletterie(billetterie.getString("url"));
+                  }
                 }
-              }
-              itEvent.setUrlVideos(urlVideos);
-              itEvent.setDossiersDePresse(listDossiers);
             }
-            if (Util.notEmpty(json.get("dates"))) {
+            if (!(json.isNull("donneesComplementaires"))) {
+                JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
+                if (donneesComplementaires.length() > 0) {
+                  JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
+                  if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
+                  if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
+                  if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
+                }
+            }
+            if (!(json.isNull("ressources"))) {
+                JSONArray ressources = json.getJSONArray("ressources");
+                if (ressources.length() > 0) {
+                  List<String> urlVideos = new ArrayList<>();
+                  List<DossierPresse> listDossiers = new ArrayList<>();
+                  for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
+                    JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
+                    switch (itRessource.getString("type")) {
+                      case "video" :
+                        urlVideos.add(itRessource.getString("url"));
+                        break;
+                      case "dossier_presse" :
+                        DossierPresse itDossier = new DossierPresse();
+                        itDossier.setUrl(itRessource.getString("url"));
+                        listDossiers.add(itDossier);
+                        break;
+                    }
+                  }
+                  itEvent.setUrlVideos(urlVideos);
+                  itEvent.setDossiersDePresse(listDossiers);
+                }
+            }
+            if (!(json.isNull("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
             }
-            itEvent.setDateString(json.getString("dateString"));
-            if (Util.notEmpty(json.get("contacts"))) {
+            if (!(json.isNull("dateString"))) {
+                itEvent.setDateString(json.getString("dateString"));
+            }
+            if (!(json.isNull("contacts"))) {
                 itEvent.setContacts(createContactArrayFromJsonArray(json.getJSONArray("contacts")));
             }
-            itEvent.setReservation(json.getString("reservation"));
-            itEvent.setProvider(json.getString("provider"));
-            if (Util.notEmpty(json.get("genre"))) {
+            if (!(json.isNull("reservation"))) {
+                itEvent.setReservation(json.getString("reservation"));
+            }
+            if (!(json.isNull("provider"))) {
+                itEvent.setProvider(json.getString("provider"));
+            }
+            if (!(json.isNull("genre"))) {
                 itEvent.setGenre(createGenreFromJsonItem(json.getJSONObject("genre")));
             }
-            if (Util.notEmpty(json.get("photos"))) {
+            if (!(json.isNull("photos"))) {
                 itEvent.setPhotos(createPhotosArrayFromJsonArray(json.getJSONArray("photos")));
             }
             if (!json.isNull("ageMinimum")) {
@@ -186,7 +210,7 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("ageMaximum")) {
               itEvent.setAgeMaximum(json.getInt("ageMaximum"));
             }
-            if (json.getJSONArray("categoriesAge").length() > 0) {
+            if (!(json.isNull("categoriesAge")) && json.getJSONArray("categoriesAge").length() > 0) {
               JSONArray jsonAgeArray = json.getJSONArray("categoriesAge");
               String[] tmpCatAge = new String[jsonAgeArray.length()];
               for (int countArrayAge = 0; countArrayAge < jsonAgeArray.length(); countArrayAge++) {
@@ -218,11 +242,13 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("mentionAccessibleHandicapMoteur")) {
               itEvent.setMentionAccessibleHandicapMoteur(json.getBoolean("mentionAccessibleHandicapMoteur"));
             }
-            if (Util.notEmpty(json.get("langues"))) {
+            if (!json.isNull("langues")) {
                 itEvent.setLangues(createLanguesArrayFromJsonArray(json.getJSONArray("langues")));
             }
-            itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
-            if (Util.notEmpty(json.get("urlOrganisme"))) {
+            if (!json.isNull("urlAnnonce")) {
+                itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
+            }
+            if (!json.isNull("urlOrganisme")) {
               itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
             }
             metadataDefault = Util.isEmpty(metadataDefault) ? Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.default") : metadataDefault;
