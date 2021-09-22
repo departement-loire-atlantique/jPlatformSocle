@@ -379,9 +379,15 @@ public class InfolocaleEntityUtils {
             if (!(json.isNull("ratio"))) {
               photo.setRatio(Double.parseDouble(json.getString("ratio")));
             }
-            photo.setLegend(json.getString("legend"));
-            photo.setCredit(json.getString("credit"));
-            photo.setFormat(json.getString("format"));
+            if (!json.isNull("legend")) {
+                photo.setLegend(json.getString("legend"));
+            }
+            if (!json.isNull("credit")) {
+                photo.setCredit(json.getString("credit"));
+            }
+            if (!json.isNull("format")) {
+                photo.setFormat(json.getString("format"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createPhotoFromJsonItem: " + e.getMessage());
             photo = new Photo();
@@ -397,8 +403,12 @@ public class InfolocaleEntityUtils {
         Genre genre = new Genre();
         try {
             genre.setGenreId(Integer.toString(json.getInt("id")));
-            genre.setCategorie(json.getString("categorie"));
-            genre.setLibelle(json.getString("libelle"));
+            if (!json.isNull("categorie")) {
+                genre.setCategorie(json.getString("categorie"));
+            }
+            if (!json.isNull("libelle")) {
+                genre.setLibelle(json.getString("libelle"));
+            }
             if (!json.isNull("photos")) {
               JSONObject photo = json.getJSONObject("photos");
               if (!photo.isNull("L")) genre.setUrlPhotoLarge(photo.getString("L"));
@@ -432,14 +442,24 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Contact contact = new Contact();
         try {
-            contact.setTypeId(json.getInt("typeId"));
-            contact.setType(json.getString("type"));
-            contact.setTelephone1(json.getString("telephone1"));
-            if (Util.notEmpty(json.get("telephone2"))) {
+            if (!json.isNull("typeId")) {
+                contact.setTypeId(json.getInt("typeId"));
+            }
+            if (!json.isNull("type")) {
+                contact.setType(json.getString("type"));
+            }
+            if (!json.isNull("telephone1")) {
+                contact.setTelephone1(json.getString("telephone1"));
+            }
+            if (!json.isNull("telephone2")) {
               contact.setTelephone2(json.getString("telephone2"));
             }
-            contact.setUrl(json.getString("url"));
-            contact.setEmail(json.getString("email"));
+            if (!json.isNull("url")) {
+                contact.setUrl(json.getString("url"));
+            }
+            if (!json.isNull("email")) {
+                contact.setEmail(json.getString("email"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createContactFromJsonItem: " + e.getMessage());
             contact = new Contact();
@@ -469,34 +489,40 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         DateInfolocale date = new DateInfolocale();
         try {
-            date.setDebut(json.getString("debut"));
-            date.setFin(json.getString("fin"));
-            String tmpHoraireString = json.getString("horaire");
-            StringBuilder horaireBuilder = new StringBuilder();
-            boolean isReadingHoraire = false;
-            if (Util.notEmpty(tmpHoraireString)) {
-              for (Character itChar : tmpHoraireString.toCharArray()) {
-                if (itChar.equals('{')) { // début d'un horaire
-                  isReadingHoraire = true;
-                  continue;
-                }
-                if (itChar.equals('}')) { // fin d'un horaire
-                  isReadingHoraire = false;
-                  continue;
-                }
-                if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
-                  horaireBuilder.append(" - ");
-                  continue;
-                }
-                if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
-                  horaireBuilder.append(", ");
-                  continue;
-                }
-                // Dans tous les autres cas, on concatène normalement
-                horaireBuilder.append(itChar);
-              }
+            if (!json.isNull("debut")) {
+                date.setDebut(json.getString("debut"));
             }
-            date.setHoraire(horaireBuilder.toString().replace(":", "h"));
+            if (!json.isNull("fin")) {
+                date.setFin(json.getString("fin"));
+            }
+            if (!json.isNull("horaire")) {
+                String tmpHoraireString = json.getString("horaire");
+                StringBuilder horaireBuilder = new StringBuilder();
+                boolean isReadingHoraire = false;
+                if (Util.notEmpty(tmpHoraireString)) {
+                  for (Character itChar : tmpHoraireString.toCharArray()) {
+                    if (itChar.equals('{')) { // début d'un horaire
+                      isReadingHoraire = true;
+                      continue;
+                    }
+                    if (itChar.equals('}')) { // fin d'un horaire
+                      isReadingHoraire = false;
+                      continue;
+                    }
+                    if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
+                      horaireBuilder.append(" - ");
+                      continue;
+                    }
+                    if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
+                      horaireBuilder.append(", ");
+                      continue;
+                    }
+                    // Dans tous les autres cas, on concatène normalement
+                    horaireBuilder.append(itChar);
+                  }
+                }
+                date.setHoraire(horaireBuilder.toString().replace(":", "h"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new DateInfolocale();
@@ -511,11 +537,19 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Lieu lieu = new Lieu();
         try {
-            lieu.setNom(json.getString("nom"));
-            lieu.setAdresse(json.getString("adresse"));
-            lieu.setLongitude(json.getString("longitude"));
-            lieu.setLatitude(json.getString("latitude"));
-            if (Util.notEmpty(json.get("commune"))) {
+            if (!json.isNull("nom")) {
+                lieu.setNom(json.getString("nom"));
+            }
+            if (!json.isNull("adresse")) {
+                lieu.setAdresse(json.getString("adresse"));
+            }
+            if (!json.isNull("longitude")) {
+                lieu.setLongitude(json.getString("longitude"));
+            }
+            if (!json.isNull("latitude")) {
+                lieu.setLatitude(json.getString("latitude"));
+            }
+            if (!json.isNull("commune")) {
                 lieu.setCommune(createCommuneFromJsonItem(json.getJSONObject("commune")));
             }
         } catch (JSONException e) {
@@ -532,13 +566,27 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Commune commune = new Commune();
         try {
-            commune.setInsee(json.getString("insee"));
-            commune.setNom(json.getString("nom"));
-            commune.setSlug(json.getString("slug"));
-            commune.setDepartement(json.getString("departement"));
-            commune.setLatitude(json.getString("latitude"));
-            commune.setLongitude(json.getString("longitude"));
-            commune.setCodePostal(json.getString("codePostal"));
+            if (!json.isNull("insee")) {
+                commune.setInsee(json.getString("insee"));
+            }
+            if (!json.isNull("nom")) {
+                commune.setNom(json.getString("nom"));
+            }
+            if (!json.isNull("slug")) {
+                commune.setSlug(json.getString("slug"));
+            }
+            if (!json.isNull("departement")) {
+                commune.setDepartement(json.getString("departement"));
+            }
+            if (!json.isNull("latitude")) {
+                commune.setLatitude(json.getString("latitude"));
+            }
+            if (!json.isNull("longitude")) {
+                commune.setLongitude(json.getString("longitude"));
+            }
+            if (!json.isNull("codePostal")) {
+                commune.setCodePostal(json.getString("codePostal"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createCommuneFromJsonItem: " + e.getMessage());
             commune = new Commune();
@@ -1050,8 +1098,12 @@ public class InfolocaleEntityUtils {
     Genre genreObj = new Genre();
     
     try {
-      genreObj.setLibelle(jsonGenre.getString("libelle"));
-      genreObj.setId(jsonGenre.getString("code"));
+      if (!jsonGenre.isNull("libelle")) {
+            genreObj.setLibelle(jsonGenre.getString("libelle"));
+      }
+      if (!jsonGenre.isNull("code")) {
+          genreObj.setId(jsonGenre.getString("code"));
+      }
     } catch (JSONException e) {
       LOGGER.warn("Error in generateGenreFromJson : " + e.getMessage());
     }
@@ -1068,8 +1120,12 @@ public class InfolocaleEntityUtils {
     Genre genreObj = new Genre();
     
     try {
-      genreObj.setLibelle(jsonGenre.getString("libelle"));
-      genreObj.setId(jsonGenre.getString("id"));
+      if (!jsonGenre.isNull("libelle")) {
+          genreObj.setLibelle(jsonGenre.getString("libelle"));
+      }
+      if (!jsonGenre.isNull("id")) {
+          genreObj.setId(jsonGenre.getString("id"));
+      }
     } catch (JSONException e) {
       LOGGER.warn("Error in generateGenreThematiqueFromJson : " + e.getMessage());
     }
