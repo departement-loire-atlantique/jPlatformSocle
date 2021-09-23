@@ -35,7 +35,7 @@
     String formAction = "plugins/SoclePlugin/jsp/forms/doFormDecodeParams.jsp";
     Publication currentPub = (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
     %>
-    <form action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data">
+    <form action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" autocomplete="off">
         
         <% request.setAttribute("formHandler", formHandler); %>
         

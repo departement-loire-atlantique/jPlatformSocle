@@ -69,11 +69,25 @@ public class InscriptionPressFormDataController extends BasicDataController impl
      
      /* On vérifie qu'il n'existe pas déjà un membre avec cette adresse mail
       */
-     if(Util.notEmpty(channel.getMemberFromEmail(form.getMail()))) {
+     if(Util.notEmpty(channel.getMemberFromLogin(form.getMail()))) {
        isOK = false;
        JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.form.mail-existe")));
      }
+    }
+
+    // Password
+    if (Util.isEmpty(req.getParameter("password1"))) {
+     isOK = false;
+     JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "ui.fo.login.lbl.passwd")));
     } 
+    if (Util.isEmpty(req.getParameter("password2"))) {
+      isOK = false;
+      JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "ui.fo.resetpass.reset.password2.placeholder")));
+    }
+    if (Util.notEmpty(req.getParameter("password1")) && Util.notEmpty(req.getParameter("password2")) && !req.getParameter("password1").equals(req.getParameter("password2"))) {
+      isOK = false;
+      JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "ui.fo.resetpass.reset.form.invalid-password")));
+    }
 
     // Téléphone
     if (!multilingue && Util.notEmpty(form.getTelephone())) {

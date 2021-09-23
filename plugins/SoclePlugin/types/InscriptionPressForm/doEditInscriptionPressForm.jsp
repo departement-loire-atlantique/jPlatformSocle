@@ -73,6 +73,39 @@
     </div>
 </div>
 
+<%-- Password ------------------------------------------------------------ --%>
+<% String passwordLabel = glp("ui.fo.login.lbl.passwd"); %>
+<div class="ds44-mb3">
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="password1" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder"><span><%= passwordLabel %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span>
+            </label>                        
+            <input type="password" id="password1" name="password1" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", passwordLabel) %>'
+                required autocomplete="new-password"/>
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", passwordLabel) %></span>
+            </button>                                     
+        </div>
+    </div>
+</div>
+
+<% String confirmPasswordLabel = glp("ui.fo.resetpass.reset.password2.placeholder"); %>
+<div class="ds44-mb3">
+    <div class="ds44-form__container">
+        <div class="ds44-posRel">
+            <label for="password2" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder"><span><%= confirmPasswordLabel %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup></span></span>
+            </label>                        
+            <input type="password" id="password2" name="password2" class="ds44-inpStd" title='<%= glp("jcmsplugin.socle.facette.champ-obligatoire.title", confirmPasswordLabel) %>'
+                 autocomplete="new-password"/>
+            <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", confirmPasswordLabel) %></span>
+            </button>                                     
+        </div>
+    </div>
+</div>
+
 <%-- Telephone ------------------------------------------------------------ --%>
 <%  String telephoneLabel = glp("jcmsplugin.socle.telephone");
     String telAutocompleteValue = multilingue ? "tel" : "tel-national";

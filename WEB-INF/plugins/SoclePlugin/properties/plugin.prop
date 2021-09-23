@@ -410,6 +410,7 @@ jcmsplugin.socle.form.candidature.portlet-rgpd.id: c_1305481
 jcmsplugin.socle.form.candidature.file.size.max: 1048576
 $jcmsplugin.socle.form.candidature.idArticle: c_1306503
 $jcmsplugin.socle.form.inscription-presse.groupe-presse: aca_11106
+jcmsplugin.socle.form.inscription-presse.service-presse-email: service.presse@loire-atlantique.fr
 
 # Catégorie racine pour les rayons agenda
 jcmsplugin.socle.rayon.agenda.root.id: c_1301887

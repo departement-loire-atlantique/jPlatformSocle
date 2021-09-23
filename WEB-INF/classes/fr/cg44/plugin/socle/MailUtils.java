@@ -284,23 +284,18 @@ public final class MailUtils {
    * Envoi de l'email de demande de confirmation de création de compte pour Espace Presse
    */
   public static void envoiMailDemandeConfirmationCreationCompte(InscriptionPressForm form, String emailTo, String lienDeConfirmation) {
+    String emailFrom = channel.getProperty("jcmsplugin.socle.form.inscription-presse.service-presse-email");
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireEspacePresseDemandeConfirmationInscriptionTemplate.jsp";
 
     // Objet
-    String objet = prefixeObjetMail + " / ";
-    objet += JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-validation.objet");
+    String objet = JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-validation.objet");
 
     // Contenu
     HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
-    parametersMap.put("nom", form.getNom());
-    parametersMap.put("prenom", form.getPrenom());
-    parametersMap.put("email", form.getMail());
-    parametersMap.put("telephone", Util.notEmpty(form.getTelephone()) ? form.getTelephone() : "");
-    parametersMap.put("media", Util.notEmpty(form.getMedia()) ? form.getMedia() : "");
     parametersMap.put("lien", lienDeConfirmation);
 
     try {
-      sendMail(objet, null, channel.getDefaultEmail(), emailTo, null, null, jsp, parametersMap);
+      sendMail(objet, null, emailFrom, emailTo, null, null, jsp, parametersMap);
       msgEnvoiMailValidation();
     } catch (Exception e) {
       msgEchecEnvoiMailContact();
@@ -311,22 +306,22 @@ public final class MailUtils {
   /**
    * Envoi de l'email de confirmation de création de compte pour Espace Presse
    */
-  public static boolean envoiMailConfirmationCreationCompte(String id, String pwd) {
+  public static boolean envoiMailConfirmationCreationCompte(String emailTo) {
     String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireEspacePresseConfirmationInscriptionTemplate.jsp";
-    String emailTo = id;
+    String emailFrom = channel.getProperty("jcmsplugin.socle.form.inscription-presse.service-presse-email");
+    Publication redirectPub = channel.getPublication("$jcmsplugin.socle.login.pub");
+    String redirectUrl = redirectPub.getDisplayUrl(channel.getCurrentUserLocale());
     boolean result = false;
 
     // Objet
-    String objet = prefixeObjetMail + " / ";
-    objet += JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-creation.objet");
+    String objet = JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.compte-creation.objet");
 
     // Contenu
     HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
-    parametersMap.put("id", id);
-    parametersMap.put("pwd", pwd);
+    parametersMap.put("lien", redirectUrl);
 
     try {
-      sendMail(objet, null, channel.getDefaultEmail(), emailTo, null, null, jsp, parametersMap);
+      sendMail(objet, null, emailFrom, emailTo, null, null, jsp, parametersMap);
       msgEnvoiMailValidation();
       result = true;
     } catch (Exception e) {
@@ -336,6 +331,33 @@ public final class MailUtils {
     
     return result;
   }  
+
+  /**
+   * Envoi de l'email de confirmation de création de compte pour Espace Presse
+   */
+  public static void envoiMailNotificationCreationComptePresse(String nom, String prenom, String mail, String telephone, String medium) {
+    String jsp = "/plugins/SoclePlugin/jsp/mail/formulaireEspacePresseNotificationInscriptionTemplate.jsp";
+    String emailFrom = channel.getDefaultEmail();
+    String emailTo = channel.getProperty("jcmsplugin.socle.form.inscription-presse.service-presse-email");
+
+    // Objet
+    String objet = JcmsUtil.glpd("jcmsplugin.socle.email.inscription-presse.notification-creation.objet");
+
+    // Contenu
+    HashMap<Object, Object> parametersMap = new HashMap<Object, Object>();
+    parametersMap.put("nom", nom);
+    parametersMap.put("prenom", prenom);
+    parametersMap.put("mail", mail);
+    parametersMap.put("telephone", telephone);
+    parametersMap.put("medium", medium);
+
+    try {
+      sendMail(objet, null, emailFrom, emailTo, null, null, jsp, parametersMap);
+    } catch (Exception e) {
+      LOGGER.error("Erreur lors de l'envoi du mail" + e.getMessage());
+    }
+    
+  }    
   
   /**
    * Envoi de mail

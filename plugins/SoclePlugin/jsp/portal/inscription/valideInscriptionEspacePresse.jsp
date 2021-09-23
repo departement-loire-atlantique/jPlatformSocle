@@ -14,6 +14,7 @@ String prenom = Util.getFirst(params.get("prenom"));
 String mail = Util.getFirst(params.get("mail"));
 String telephone = Util.getFirst(params.get("telephone"));
 String medium = Util.getFirst(params.get("media"));
+String password = Util.getFirst(params.get("password1"));
 
 // Vérification de la date d'expiration du lien 
 Calendar calendar = Calendar.getInstance();
@@ -25,7 +26,6 @@ boolean isExpire = currentDate.after(calendar.getTime());
 if(!isExpire){
     // Création du membre
     Member opAuthor = channel.getDefaultAdmin();
-    String password = PasswordGenerator.generateRandomPassword(9);
     
     Member member = new Member();
     member.setLogin(mail);
@@ -33,7 +33,7 @@ if(!isExpire){
     member.setFirstName(prenom);
     member.setEmail(mail);
     member.setPhone(telephone);
-    member.setPassword(password);
+    member.setPassword(channel.crypt(password));
     
     if(Util.notEmpty(medium)) {
       member.setJobTitle(medium);
@@ -54,8 +54,7 @@ if(!isExpire){
     }
     else{
       // Envoi du mail de confirmation à l'utilisateur
-      
-      if(! MailUtils.envoiMailConfirmationCreationCompte(mail, password)){
+      if(! MailUtils.envoiMailConfirmationCreationCompte(mail)){
         // Erreur d'envoi de mail.
         jcmsContext.setErrorMsgSession(glp("jcmsplugin.socle.form.inscription-presse.inscription-echec"));
         logger.error("Impossible d'envoyer le mail de confirmation suite à la création du membre suivant dans l'espace presse : " + mail);
@@ -64,7 +63,8 @@ if(!isExpire){
         jcmsContext.setInfoMsgSession(glp("jcmsplugin.socle.form.inscription-presse.inscription-succes"));
       }
       
-    // Envoi du mail de confirmation à l'espace presse
+      // Envoi du mail de confirmation à l'espace presse
+      MailUtils.envoiMailNotificationCreationComptePresse(nom, prenom, mail, telephone, medium);
     }
     
 }

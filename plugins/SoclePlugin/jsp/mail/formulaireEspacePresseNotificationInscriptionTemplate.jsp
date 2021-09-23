@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><%= glp("jcmsplugin.socle.email.inscription-presse.compte-creation.objet") %></title>
+  <title><%= glp("jcmsplugin.socle.email.inscription-presse.notification-creation.objet") %></title>
   
   <jsp:include page="stylesEmail.jsp" />
   
@@ -34,7 +34,15 @@
                     <tbody>
                       <tr>
                         <td>
-                            <%= glp("jcmsplugin.socle.email.inscription-presse.inscription-valide.content", new String[]{(String)request.getAttribute("lien"), channel.getName()}) %>
+                            <p>Bonjour,</p>
+                            <p>Une nouvelle inscription à l'espace presse a été enregistrée :</p>
+                            <p><%= glp("jcmsplugin.socle.nom") %> : <%=request.getAttribute("nom") %><br>
+                            <%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %><br>
+                            <%= glp("jcmsplugin.socle.mail") %> : <%=request.getAttribute("mail") %><br>
+                            <%= glp("jcmsplugin.socle.telephone") %> : <%=request.getAttribute("telephone") %><br>
+                            <% if(Util.notEmpty(request.getAttribute("medium"))) { %>
+                                <%= glp("jcmsplugin.socle.media") %> : <%=request.getAttribute("medium") %>
+                            <% } %>
                         </td>
                       </tr>
                     </tbody>

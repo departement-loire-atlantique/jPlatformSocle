@@ -34,20 +34,7 @@
                     <tbody>
                       <tr>
                         <td>
-                        <p>Bonjour, vous avez demandé la création d'un compte pour accéder à l'espace presse.</p>
-                        <p>Voici les informations que vous avez saisies : </p>
-                        <p>
-                        <%= glp("jcmsplugin.socle.nom") %> : <%=request.getAttribute("nom") %><br>
-                        <%= glp("jcmsplugin.socle.prenom") %> : <%=request.getAttribute("prenom") %><br>
-                        <%= glp("jcmsplugin.socle.mail") %> : <%=request.getAttribute("email") %><br>
-                        <%= glp("jcmsplugin.socle.telephone") %> : <%=request.getAttribute("telephone") %><br>
-                        <% if(Util.notEmpty(request.getAttribute("media"))) { %>
-                          <%= glp("jcmsplugin.socle.media") %> : <%=request.getAttribute("media") %><br>
-                        <% } %>
-                        </p>
-                        <p>Pour confirmer votre inscription, merci de cliquer sur le lien suivant, ou de le recopier dans votre navigateur : </p>
-                        <a href="<%=request.getAttribute("lien") %>"><%=request.getAttribute("lien") %></a>
-
+                            <%= glp("jcmsplugin.socle.email.inscription-presse.confirme.content", new String[]{(String)request.getAttribute("lien"), channel.getName()}) %>
                         </td>
                       </tr>
                     </tbody>
