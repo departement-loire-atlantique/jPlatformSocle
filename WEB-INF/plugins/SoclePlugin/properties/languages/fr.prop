@@ -144,7 +144,7 @@ jcmsplugin.socle.form.exemple.structure : Exemple : Association Les petits poiss
 jcmsplugin.socle.form.valider-envoi: Valider
 jcmsplugin.socle.form.inscription-presse.titre: Créer un compte
 jcmsplugin.socle.form.inscription-presse.validation: Votre inscription est en attente. Un courriel de confirmation vient de vous être envoyé.
-jcmsplugin.socle.form.inscription-presse.inscription-succes: Votre inscription est validée. Un courriel contenant votre mot de passe vient de vous être envoyé.
+jcmsplugin.socle.form.inscription-presse.inscription-succes: Votre inscription est validée. Un courriel de confirmation vient de vous être envoyé.
 jcmsplugin.socle.form.inscription-presse.inscription-echec: Une erreur s'est produite lors de votre inscription. Merci de contacter le service presse.
 jcmsplugin.socle.form.inscription-presse.inscription-expire: Le délai de confirmation de votre inscription a expiré. Veuillez vous inscrire à nouveau.
 jcmsplugin.socle.form.mail-existe: Un utilisateur existe déjà avec ce courriel. Merci d'en choisir un autre ou de lancer la procédure de récupération de mot de passe.
@@ -159,8 +159,11 @@ jcmsplugin.socle.email.candidature.objet: Réponse à l'offre d'emploi - {0}
 jcmsplugin.socle.email.faq.objet: FAQ
 jcmsplugin.socle.email.pageutile.objet.utile: UTILE
 jcmsplugin.socle.email.pageutile.objet.inutile: PAS UTILE
-jcmsplugin.socle.email.inscription-presse.compte-validation.objet: Demande de validation de création de compte
-jcmsplugin.socle.email.inscription-presse.compte-creation.objet: Compte créé
+jcmsplugin.socle.email.inscription-presse.compte-validation.objet: Inscription à l’espace presse du Département de Loire-Atlantique
+jcmsplugin.socle.email.inscription-presse.compte-creation.objet: Inscription confirmée à l’espace presse du Département de Loire-Atlantique
+jcmsplugin.socle.email.inscription-presse.notification-creation.objet: Nouvelle inscription à l’espace presse
+jcmsplugin.socle.email.inscription-presse.confirme.content: <p>Bonjour,</p><p>Pour confirmer votre inscription à l’espace presse du Département de Loire-Atlantique, merci de cliquer sur ce lien : <a href="{0}">Je confirme mon inscription</a></p> <p>NB : Le lien contenu dans le mail reçu doit être utilisé dans les 72 heures, au-delà il est rendu inactif pour votre sécurité.</p>À bientôt sur {1}.</p>
+jcmsplugin.socle.email.inscription-presse.inscription-valide.content: <p>Bonjour,</p><p>Merci pour votre inscription à l’espace presse du Département de Loire-Atlantique.</p><p>Pour vous connecter, cliquez sur ce lien : <a href="{0}">je me connecte à l’espace presse.</a></p><p>À bientôt sur {1}.</p>
 
 # ------------------------------------------------------------
 #  Sectorisation
