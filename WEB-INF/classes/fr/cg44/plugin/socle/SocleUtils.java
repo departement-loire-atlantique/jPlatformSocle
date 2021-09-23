@@ -2210,4 +2210,28 @@ public final class SocleUtils {
     }
     return false;
   }  
+  
+  /**
+   * Renvoie une valeur hh:mm:ss en une quantité de secondes
+   * Par exemple : 00:03:23 renverra 203, car 3600*0 + 60*3 + 23
+   * @param timestamp
+   * @return
+   */
+  /**
+ * @param timestamp
+ * @return
+ */
+public static int getTimeInSecondsFromHhMmSs(String timestamp) {
+      try {
+          String[] separatedTImestamps = timestamp.split(":");
+          int secondsInHours = 3600 * Integer.parseInt(separatedTImestamps[0]);
+          int secondsInMinutes = 60 * Integer.parseInt(separatedTImestamps[1]);
+          int seconds = Integer.parseInt(separatedTImestamps[2]);
+          
+          return secondsInHours + secondsInMinutes + seconds;
+      } catch (Exception e) {
+          LOGGER.warn("Erreur en essayant de convertir " + timestamp + " en secondes : " + e.getMessage());
+          return -1;
+      }
+  }
 }

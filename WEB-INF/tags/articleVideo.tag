@@ -77,7 +77,7 @@ if (Util.notEmpty(offsetLevel)) {
     offsetContainerClass = "ds44-grid12-offset-" + offsetLevel;
 }
 %>
-<section id="contentVideo" class="ds44-contenuArticle">
+<section class="ds44-contenuMedia">
 	<div class="ds44-inner-container ds44-mtb3">
 	    <jalios:if predicate="<%= addOffest %>">
 		<div class="<%= offsetContainerClass %>">
