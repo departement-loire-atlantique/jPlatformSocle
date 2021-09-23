@@ -128,6 +128,13 @@ public class ImportLieuFromCsv {
                         lineLog.append("Le champ Cantons présente des contenus incorrects (un ou plusieurs contenus n'existent pas / ne sont pas des cantons) # ");
                     }
                     
+                    FicheLieu itFiche = generateFicheLieuFromCsvValues(values);
+                    
+                    ControllerStatus status = itFiche.checkCreate(channel.getCurrentLoggedMember());
+                    if (!status.isOK()) {
+                        lineLog.append(status.getMessage(channel.getCurrentUserLang()));   
+                    }
+                    
                     if (Util.notEmpty(lineLog.toString())) {
                         returnedLog.put("Ligne " + (cpt), lineLog.toString());
                     }
@@ -252,6 +259,105 @@ public class ImportLieuFromCsv {
     }
     
     /**
+     * Générer une fiche lieu à partir des valeurs d'une ligne CSV
+     * @param values
+     */
+    private static FicheLieu generateFicheLieuFromCsvValues(String[] values) {
+        
+        FicheLieu itLieu = new FicheLieu();
+        // Titre
+        itLieu.setTitle(values[0]);
+        // Sous-titre
+        itLieu.setSoustitre(values[1]);
+        // Etage, couloir, escalier
+        itLieu.setEtageCouloirEscalier(values[2]);
+        // Entrée, bâtiment, immeuble
+        itLieu.setEntreeBatimentImmeuble(values[3]);
+        // N° de voie
+        itLieu.setNdeVoie(values[4]);
+        // Libellé de voie
+        itLieu.setLibelleDeVoie(values[5]);
+        // Lieu-dit
+        itLieu.setLieudit(values[6]);
+        // Code postal
+        itLieu.setCodePostal(values[7]);
+        // CS
+        itLieu.setCs2(values[8]);
+        // Cedex
+        itLieu.setCedex2(values[9]);
+        // Commune
+        itLieu.setCommune(SocleUtils.getCommuneFromCode(values[10]));
+        // Telephone
+        itLieu.setTelephone(values[11].split(doubleHashtag));
+        // Email
+        itLieu.setEmail(values[12].split(doubleHashtag));
+        // Site internet
+        itLieu.setSiteInternet(values[13].split(doubleHashtag));
+        // Lien page facebook
+        itLieu.setLienDeLaPageFacebook(values[14]);
+        // Lien page instagram
+        itLieu.setLienDeLaPageInstagram(values[15]);
+        // Latitude
+        if (Util.notEmpty(values[16])) {
+            itLieu.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", values[16]);
+        }
+        // Longitude
+        if (Util.notEmpty(values[17])) {
+            itLieu.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", values[17]);
+        }
+        // Plus de détails interne
+        if (Util.notEmpty(values[18])) {
+            itLieu.setPlusDeDetailInterne(channel.getData(Content.class, values[18]));
+        }
+        // Type d'accès
+        if (Util.notEmpty(values[19])) {
+            itLieu.addCategory(channel.getCategory(values[19]));
+        }
+        // Navigation et classement
+        if (Util.notEmpty(values[20])) {
+            for (String itCid : values[20].split(doubleHashtag)) {
+                itLieu.addCategory(channel.getCategory(itCid));
+            }
+        }
+        // Communes concernées
+        if (Util.notEmpty(values[21])) {
+            List<City> communes = new ArrayList<>();
+            for (String itInsee : values[21].split(doubleHashtag)) {
+                communes.add(SocleUtils.getCommuneFromCode(itInsee));
+            }
+            itLieu.setCommunes(communes.toArray(new City[communes.size()]));
+        }
+        // Toutes les communes du département
+        itLieu.setToutesLesCommunesDuDepartement("oui".equalsIgnoreCase(values[22]));
+        // Délégations
+        if (Util.notEmpty(values[23])) {
+            List<Delegation> delegations = new ArrayList<>();
+            for (String itId : values[23].split(doubleHashtag)) {
+                delegations.add(channel.getData(Delegation.class, itId));
+            }
+            itLieu.setDelegations(delegations.toArray(new Delegation[delegations.size()]));
+        }
+        // EPCI
+        if (Util.notEmpty(values[24])) {
+            for (String itCid : values[24].split(doubleHashtag)) {
+                itLieu.addCategory(channel.getCategory(itCid));
+            }
+        }
+        // Cantons
+        if (Util.notEmpty(values[25])) {
+            List<Canton> cantons = new ArrayList<>();
+            for (String itId : values[25].split(doubleHashtag)) {
+                cantons.add(channel.getData(Canton.class, itId));
+            }
+            itLieu.setCantons(cantons.toArray(new Canton[cantons.size()]));
+        }
+        
+        itLieu.setAuthor(channel.getCurrentLoggedMember());
+        
+        return itLieu;
+    }
+    
+    /**
      * Procéder à l'import de fiches lieu via CSV
      * Assume que le fichier a été vérifié au préalable
      * @param fileItem
@@ -271,107 +377,31 @@ public class ImportLieuFromCsv {
                 }
 
                 values = csvReader.getValues();
-                FicheLieu itLieu = new FicheLieu();
-                // Titre
-                itLieu.setTitle(values[0]);
-                // Sous-titre
-                itLieu.setSoustitre(values[1]);
-                // Etage, couloir, escalier
-                itLieu.setEtageCouloirEscalier(values[2]);
-                // Entrée, bâtiment, immeuble
-                itLieu.setEntreeBatimentImmeuble(values[3]);
-                // N° de voie
-                itLieu.setNdeVoie(values[4]);
-                // Libellé de voie
-                itLieu.setLibelleDeVoie(values[5]);
-                // Lieu-dit
-                itLieu.setLieudit(values[6]);
-                // Code postal
-                itLieu.setCodePostal(values[7]);
-                // CS
-                itLieu.setCs2(values[8]);
-                // Cedex
-                itLieu.setCedex2(values[9]);
-                // Commune
-                itLieu.setCommune(SocleUtils.getCommuneFromCode(values[10]));
-                // Telephone
-                itLieu.setTelephone(values[11].split(doubleHashtag));
-                // Email
-                itLieu.setEmail(values[12].split(doubleHashtag));
-                // Site internet
-                itLieu.setSiteInternet(values[13].split(doubleHashtag));
-                // Lien page facebook
-                itLieu.setLienDeLaPageFacebook(values[14]);
-                // Lien page instagram
-                itLieu.setLienDeLaPageInstagram(values[15]);
-                // Latitude
-                if (Util.notEmpty(values[16])) {
-                    itLieu.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", values[16]);
-                }
-                // Longitude
-                if (Util.notEmpty(values[17])) {
-                    itLieu.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", values[17]);
-                }
-                // Plus de détails interne
-                if (Util.notEmpty(values[18])) {
-                    itLieu.setPlusDeDetailInterne(channel.getData(Content.class, values[18]));
-                }
-                // Type d'accès
-                if (Util.notEmpty(values[19])) {
-                    itLieu.addCategory(channel.getCategory(values[19]));
-                }
-                // Navigation et classement
-                if (Util.notEmpty(values[20])) {
-                    for (String itCid : values[20].split(doubleHashtag)) {
-                        itLieu.addCategory(channel.getCategory(itCid));
-                    }
-                }
-                // Communes concernées
-                if (Util.notEmpty(values[21])) {
-                    List<City> communes = new ArrayList<>();
-                    for (String itInsee : values[21].split(doubleHashtag)) {
-                        communes.add(SocleUtils.getCommuneFromCode(itInsee));
-                    }
-                    itLieu.setCommunes(communes.toArray(new City[communes.size()]));
-                }
-                // Toutes les communes du département
-                itLieu.setToutesLesCommunesDuDepartement("oui".equalsIgnoreCase(values[22]));
-                // Délégations
-                if (Util.notEmpty(values[23])) {
-                    List<Delegation> delegations = new ArrayList<>();
-                    for (String itId : values[23].split(doubleHashtag)) {
-                        delegations.add(channel.getData(Delegation.class, itId));
-                    }
-                    itLieu.setDelegations(delegations.toArray(new Delegation[delegations.size()]));
-                }
-                // EPCI
-                if (Util.notEmpty(values[24])) {
-                    for (String itCid : values[24].split(doubleHashtag)) {
-                        itLieu.addCategory(channel.getCategory(itCid));
-                    }
-                }
-                // Cantons
-                if (Util.notEmpty(values[25])) {
-                    List<Canton> cantons = new ArrayList<>();
-                    for (String itId : values[25].split(doubleHashtag)) {
-                        cantons.add(channel.getData(Canton.class, itId));
-                    }
-                    itLieu.setCantons(cantons.toArray(new Canton[cantons.size()]));
-                }
                 
-                itLieu.setAuthor(channel.getCurrentLoggedMember());
-                
-                lieuxToCreate.add(itLieu);
+                lieuxToCreate.add(generateFicheLieuFromCsvValues(values));
             }
+            
         } catch (Exception e) {
             channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, "Erreur lors de la lecture du CSV : " + e.getMessage()));
             LOGGER.error("Erreur sur importFichesLieuCsv : " + e.getMessage());
         }
         
+        int counterImported = 0;
+        
         for (FicheLieu itLieu : lieuxToCreate) {
-            itLieu.checkAndPerformCreate(channel.getCurrentLoggedMember());
+            ControllerStatus importStatus = itLieu.checkAndPerformCreate(channel.getCurrentLoggedMember());
+            if (!importStatus.isOK()) {
+                LOGGER.warn("Anomalie lors de l'import du lieu " + itLieu.getTitle() + " : " + importStatus.getMessage(channel.getCurrentUserLang()));
+            } else {
+                counterImported++;
+            }
         }
         
-        channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.SUCCESS, "Un total de " + lieuxToCreate.size() + " fiches lieux ont été créées."));
+        if (counterImported == lieuxToCreate.size()) {        
+            channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.SUCCESS, "Un total de " + lieuxToCreate.size() + " fiches lieux ont été créées."));
+        } else {
+            channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.WARN, "Un total de " + counterImported
+                + " fiches lieux ont été créées sur les " + lieuxToCreate.size() + " possibles. Veuillez inspecter les logs.")); 
+        }
     }
 }
