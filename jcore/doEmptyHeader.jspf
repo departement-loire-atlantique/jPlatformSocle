@@ -11,10 +11,13 @@
   //String publicationDescription = (String)request.getAttribute("metadescription");
   //String strDescription = Util.getString(channelDescription, "") + (Util.notEmpty(channelDescription) && Util.notEmpty(publicationDescription) ? ", " : "") + Util.getString(publicationDescription, "");
     
-  /* DEP44 : modification description page selon extradata seo
+  /* DEP44 : modification description + titre page selon extradata seo
    * On initialise avec les valeurs du module, et on surcharge si la description a été remplie au niveau des contenus
+   * Si le titre n'st pas renseigné on utilise le channel.name
   */
-  String strDescription = userLang.equals("fr") ?  channel.getProperty("fr.jcmsplugin.seo.meta-description") :  channel.getProperty("en.jcmsplugin.seo.meta-description");
+  String strDescription = userLang.equals("fr") ? channel.getProperty("fr.jcmsplugin.seo.meta-description") : channel.getProperty("en.jcmsplugin.seo.meta-description");
+  String strTitle = userLang.equals("fr") ? channel.getProperty("fr.jcmsplugin.seo.meta-title") : channel.getProperty("en.jcmsplugin.seo.meta-title");
+  if(Util.isEmpty(strTitle)) strTitle = channel.getName();
    
   Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
   if (Util.notEmpty(obj)) {
@@ -43,7 +46,7 @@
  }
   
   // DEP44 : modification du titre de la page
-  String headTitle      = titleOfThePage + " - " + channel.getName();
+  String headTitle      = titleOfThePage + " - " + strTitle;
   String docType        = jcmsContext.getDocType(channel.getProperty("channel.doctype"));
   String pageImage      = (String) request.getAttribute("metaimage");
   
