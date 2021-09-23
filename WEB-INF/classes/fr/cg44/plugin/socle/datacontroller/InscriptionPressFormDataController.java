@@ -75,15 +75,6 @@ public class InscriptionPressFormDataController extends BasicDataController impl
      }
     }
 
-    String tmpPwd = req.getParameter("password1");
-    LOGGER.warn(tmpPwd);
-    LOGGER.warn(Util.encodeBASE64(tmpPwd));
-    try {
-      LOGGER.warn(Util.encryptDES3(tmpPwd));
-    } catch (EncryptionException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
     // Password
     if (Util.isEmpty(req.getParameter("password1"))) {
      isOK = false;
