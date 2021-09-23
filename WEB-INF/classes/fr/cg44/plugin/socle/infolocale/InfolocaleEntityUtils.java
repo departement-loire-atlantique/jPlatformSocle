@@ -112,72 +112,96 @@ public class InfolocaleEntityUtils {
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
             itEvent.setEvenementId(json.getInt("id"));
-            if (Util.notEmpty(json.get("organismeId")) && !(json.get("organismeId").toString().equals("null"))) {
+            if (!(json.isNull("organismeId"))) {
               itEvent.setOrganismeId(json.getInt("organismeId"));
             }
-            if (Util.notEmpty(json.get("organismeNom")) && !(json.get("organismeNom").toString().equals("null"))) {
+            if (!(json.isNull("organismeNom"))) {
               itEvent.setOrganismeNom(json.getString("organismeNom"));
             }
-            itEvent.setTitre(json.getString("titre"));
-            itEvent.setTitreSlug(json.getString("titreSlug"));
-            itEvent.setDescription(json.getString("descriptif"));
-            itEvent.setDateCreation(json.getString("dateCreation"));
-            itEvent.setDateModification(json.getString("dateModification"));
-            if (Util.notEmpty(json.get("lieu"))) {
+            if (!(json.isNull("titre"))) {
+                itEvent.setTitre(json.getString("titre"));
+            }
+            if (!(json.isNull("titreSlug"))) {
+                itEvent.setTitreSlug(json.getString("titreSlug"));
+            }
+            if (!(json.isNull("descriptif"))) {
+                itEvent.setDescription(json.getString("descriptif"));
+            }
+            if (!(json.isNull("dateCreation"))) {
+                itEvent.setDateCreation(json.getString("dateCreation"));
+            }
+            if (!(json.isNull("dateModification"))) {
+                itEvent.setDateModification(json.getString("dateModification"));
+            }
+            if (!(json.isNull("lieu"))) {
                 itEvent.setLieu(createLieuFromJsonItem(json.getJSONObject("lieu")));
                 // Ajout de la longitude / latitute en extradata pour s'afficher sur les cartes comme les autres publications JCMS
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.longitude", itEvent.getLieu().getLongitude());
                 itEvent.setExtraData("extra.EvenementInfolocale.plugin.tools.geolocation.latitude", itEvent.getLieu().getLatitude());
             }
-            JSONArray tarifs = json.getJSONArray("tarifs");
-            if (Util.notEmpty(tarifs)) {
-              itEvent.setTarifs(createTarrifArrayFromJsonArray(tarifs));
+            if (!(json.isNull("tarifs"))) {
+                JSONArray tarifs = json.getJSONArray("tarifs");
+                itEvent.setTarifs(createTarrifArrayFromJsonArray(tarifs));
             }
-            JSONArray billetteries = json.getJSONArray("billetteries");
-            if (billetteries.length() > 0) {
-              JSONObject billetterie = billetteries.getJSONObject(0);
-              itEvent.setUrlBilletterie(billetterie.getString("url"));
-            }
-            JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
-            if (donneesComplementaires.length() > 0) {
-              JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
-              if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
-              if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
-              if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
-            }
-            JSONArray ressources = json.getJSONArray("ressources");
-            if (ressources.length() > 0) {
-              List<String> urlVideos = new ArrayList<>();
-              List<DossierPresse> listDossiers = new ArrayList<>();
-              for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
-                JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
-                switch (itRessource.getString("type")) {
-                  case "video" :
-                    urlVideos.add(itRessource.getString("url"));
-                    break;
-                  case "dossier_presse" :
-                    DossierPresse itDossier = new DossierPresse();
-                    itDossier.setUrl(itRessource.getString("url"));
-                    listDossiers.add(itDossier);
-                    break;
+            if (!(json.isNull("billetteries"))) {
+                JSONArray billetteries = json.getJSONArray("billetteries");
+                if (billetteries.length() > 0) {
+                  JSONObject billetterie = billetteries.getJSONObject(0);
+                  if (Util.notEmpty(billetterie.getString("url")) && !(billetterie.isNull("url"))) {
+                      itEvent.setUrlBilletterie(billetterie.getString("url"));
+                  }
                 }
-              }
-              itEvent.setUrlVideos(urlVideos);
-              itEvent.setDossiersDePresse(listDossiers);
             }
-            if (Util.notEmpty(json.get("dates"))) {
+            if (!(json.isNull("donneesComplementaires"))) {
+                JSONArray donneesComplementaires = json.getJSONArray("donneesComplementaires");
+                if (donneesComplementaires.length() > 0) {
+                  JSONObject tmpDonnees = donneesComplementaires.getJSONObject(0);
+                  if (!tmpDonnees.isNull("titreLibre")) itEvent.setTitreLibre(tmpDonnees.getString("titreLibre"));
+                  if (!tmpDonnees.isNull("texteCourt")) itEvent.setTexteCourt(tmpDonnees.getString("texteCourt"));
+                  if (!tmpDonnees.isNull("texteLong")) itEvent.setTexteLong(tmpDonnees.getString("texteLong"));
+                }
+            }
+            if (!(json.isNull("ressources"))) {
+                JSONArray ressources = json.getJSONArray("ressources");
+                if (ressources.length() > 0) {
+                  List<String> urlVideos = new ArrayList<>();
+                  List<DossierPresse> listDossiers = new ArrayList<>();
+                  for (int ressourceCounter = 0; ressourceCounter < ressources.length(); ressourceCounter++) {
+                    JSONObject itRessource = ressources.getJSONObject(ressourceCounter);
+                    switch (itRessource.getString("type")) {
+                      case "video" :
+                        urlVideos.add(itRessource.getString("url"));
+                        break;
+                      case "dossier_presse" :
+                        DossierPresse itDossier = new DossierPresse();
+                        itDossier.setUrl(itRessource.getString("url"));
+                        listDossiers.add(itDossier);
+                        break;
+                    }
+                  }
+                  itEvent.setUrlVideos(urlVideos);
+                  itEvent.setDossiersDePresse(listDossiers);
+                }
+            }
+            if (!(json.isNull("dates"))) {
                 itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
             }
-            itEvent.setDateString(json.getString("dateString"));
-            if (Util.notEmpty(json.get("contacts"))) {
+            if (!(json.isNull("dateString"))) {
+                itEvent.setDateString(json.getString("dateString"));
+            }
+            if (!(json.isNull("contacts"))) {
                 itEvent.setContacts(createContactArrayFromJsonArray(json.getJSONArray("contacts")));
             }
-            itEvent.setReservation(json.getString("reservation"));
-            itEvent.setProvider(json.getString("provider"));
-            if (Util.notEmpty(json.get("genre"))) {
+            if (!(json.isNull("reservation"))) {
+                itEvent.setReservation(json.getString("reservation"));
+            }
+            if (!(json.isNull("provider"))) {
+                itEvent.setProvider(json.getString("provider"));
+            }
+            if (!(json.isNull("genre"))) {
                 itEvent.setGenre(createGenreFromJsonItem(json.getJSONObject("genre")));
             }
-            if (Util.notEmpty(json.get("photos"))) {
+            if (!(json.isNull("photos"))) {
                 itEvent.setPhotos(createPhotosArrayFromJsonArray(json.getJSONArray("photos")));
             }
             if (!json.isNull("ageMinimum")) {
@@ -186,7 +210,7 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("ageMaximum")) {
               itEvent.setAgeMaximum(json.getInt("ageMaximum"));
             }
-            if (json.getJSONArray("categoriesAge").length() > 0) {
+            if (!(json.isNull("categoriesAge")) && json.getJSONArray("categoriesAge").length() > 0) {
               JSONArray jsonAgeArray = json.getJSONArray("categoriesAge");
               String[] tmpCatAge = new String[jsonAgeArray.length()];
               for (int countArrayAge = 0; countArrayAge < jsonAgeArray.length(); countArrayAge++) {
@@ -218,11 +242,13 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("mentionAccessibleHandicapMoteur")) {
               itEvent.setMentionAccessibleHandicapMoteur(json.getBoolean("mentionAccessibleHandicapMoteur"));
             }
-            if (Util.notEmpty(json.get("langues"))) {
+            if (!json.isNull("langues")) {
                 itEvent.setLangues(createLanguesArrayFromJsonArray(json.getJSONArray("langues")));
             }
-            itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
-            if (Util.notEmpty(json.get("urlOrganisme"))) {
+            if (!json.isNull("urlAnnonce")) {
+                itEvent.setUrlAnnonce(json.getString("urlAnnonce"));
+            }
+            if (!json.isNull("urlOrganisme")) {
               itEvent.setUrlOrganisme(json.getString("urlOrganisme"));
             }
             metadataDefault = Util.isEmpty(metadataDefault) ? Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.default") : metadataDefault;
@@ -353,9 +379,15 @@ public class InfolocaleEntityUtils {
             if (!(json.isNull("ratio"))) {
               photo.setRatio(Double.parseDouble(json.getString("ratio")));
             }
-            photo.setLegend(json.getString("legend"));
-            photo.setCredit(json.getString("credit"));
-            photo.setFormat(json.getString("format"));
+            if (!json.isNull("legend")) {
+                photo.setLegend(json.getString("legend"));
+            }
+            if (!json.isNull("credit")) {
+                photo.setCredit(json.getString("credit"));
+            }
+            if (!json.isNull("format")) {
+                photo.setFormat(json.getString("format"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createPhotoFromJsonItem: " + e.getMessage());
             photo = new Photo();
@@ -371,8 +403,12 @@ public class InfolocaleEntityUtils {
         Genre genre = new Genre();
         try {
             genre.setGenreId(Integer.toString(json.getInt("id")));
-            genre.setCategorie(json.getString("categorie"));
-            genre.setLibelle(json.getString("libelle"));
+            if (!json.isNull("categorie")) {
+                genre.setCategorie(json.getString("categorie"));
+            }
+            if (!json.isNull("libelle")) {
+                genre.setLibelle(json.getString("libelle"));
+            }
             if (!json.isNull("photos")) {
               JSONObject photo = json.getJSONObject("photos");
               if (!photo.isNull("L")) genre.setUrlPhotoLarge(photo.getString("L"));
@@ -406,14 +442,24 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Contact contact = new Contact();
         try {
-            contact.setTypeId(json.getInt("typeId"));
-            contact.setType(json.getString("type"));
-            contact.setTelephone1(json.getString("telephone1"));
-            if (Util.notEmpty(json.get("telephone2"))) {
+            if (!json.isNull("typeId")) {
+                contact.setTypeId(json.getInt("typeId"));
+            }
+            if (!json.isNull("type")) {
+                contact.setType(json.getString("type"));
+            }
+            if (!json.isNull("telephone1")) {
+                contact.setTelephone1(json.getString("telephone1"));
+            }
+            if (!json.isNull("telephone2")) {
               contact.setTelephone2(json.getString("telephone2"));
             }
-            contact.setUrl(json.getString("url"));
-            contact.setEmail(json.getString("email"));
+            if (!json.isNull("url")) {
+                contact.setUrl(json.getString("url"));
+            }
+            if (!json.isNull("email")) {
+                contact.setEmail(json.getString("email"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createContactFromJsonItem: " + e.getMessage());
             contact = new Contact();
@@ -443,34 +489,40 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         DateInfolocale date = new DateInfolocale();
         try {
-            date.setDebut(json.getString("debut"));
-            date.setFin(json.getString("fin"));
-            String tmpHoraireString = json.getString("horaire");
-            StringBuilder horaireBuilder = new StringBuilder();
-            boolean isReadingHoraire = false;
-            if (Util.notEmpty(tmpHoraireString)) {
-              for (Character itChar : tmpHoraireString.toCharArray()) {
-                if (itChar.equals('{')) { // début d'un horaire
-                  isReadingHoraire = true;
-                  continue;
-                }
-                if (itChar.equals('}')) { // fin d'un horaire
-                  isReadingHoraire = false;
-                  continue;
-                }
-                if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
-                  horaireBuilder.append(" - ");
-                  continue;
-                }
-                if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
-                  horaireBuilder.append(", ");
-                  continue;
-                }
-                // Dans tous les autres cas, on concatène normalement
-                horaireBuilder.append(itChar);
-              }
+            if (!json.isNull("debut")) {
+                date.setDebut(json.getString("debut"));
             }
-            date.setHoraire(horaireBuilder.toString().replace(":", "h"));
+            if (!json.isNull("fin")) {
+                date.setFin(json.getString("fin"));
+            }
+            if (!json.isNull("horaire")) {
+                String tmpHoraireString = json.getString("horaire");
+                StringBuilder horaireBuilder = new StringBuilder();
+                boolean isReadingHoraire = false;
+                if (Util.notEmpty(tmpHoraireString)) {
+                  for (Character itChar : tmpHoraireString.toCharArray()) {
+                    if (itChar.equals('{')) { // début d'un horaire
+                      isReadingHoraire = true;
+                      continue;
+                    }
+                    if (itChar.equals('}')) { // fin d'un horaire
+                      isReadingHoraire = false;
+                      continue;
+                    }
+                    if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
+                      horaireBuilder.append(" - ");
+                      continue;
+                    }
+                    if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
+                      horaireBuilder.append(", ");
+                      continue;
+                    }
+                    // Dans tous les autres cas, on concatène normalement
+                    horaireBuilder.append(itChar);
+                  }
+                }
+                date.setHoraire(horaireBuilder.toString().replace(":", "h"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
             date = new DateInfolocale();
@@ -485,11 +537,19 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Lieu lieu = new Lieu();
         try {
-            lieu.setNom(json.getString("nom"));
-            lieu.setAdresse(json.getString("adresse"));
-            lieu.setLongitude(json.getString("longitude"));
-            lieu.setLatitude(json.getString("latitude"));
-            if (Util.notEmpty(json.get("commune"))) {
+            if (!json.isNull("nom")) {
+                lieu.setNom(json.getString("nom"));
+            }
+            if (!json.isNull("adresse")) {
+                lieu.setAdresse(json.getString("adresse"));
+            }
+            if (!json.isNull("longitude")) {
+                lieu.setLongitude(json.getString("longitude"));
+            }
+            if (!json.isNull("latitude")) {
+                lieu.setLatitude(json.getString("latitude"));
+            }
+            if (!json.isNull("commune")) {
                 lieu.setCommune(createCommuneFromJsonItem(json.getJSONObject("commune")));
             }
         } catch (JSONException e) {
@@ -506,13 +566,27 @@ public class InfolocaleEntityUtils {
         if (Util.isEmpty(json)) return null;
         Commune commune = new Commune();
         try {
-            commune.setInsee(json.getString("insee"));
-            commune.setNom(json.getString("nom"));
-            commune.setSlug(json.getString("slug"));
-            commune.setDepartement(json.getString("departement"));
-            commune.setLatitude(json.getString("latitude"));
-            commune.setLongitude(json.getString("longitude"));
-            commune.setCodePostal(json.getString("codePostal"));
+            if (!json.isNull("insee")) {
+                commune.setInsee(json.getString("insee"));
+            }
+            if (!json.isNull("nom")) {
+                commune.setNom(json.getString("nom"));
+            }
+            if (!json.isNull("slug")) {
+                commune.setSlug(json.getString("slug"));
+            }
+            if (!json.isNull("departement")) {
+                commune.setDepartement(json.getString("departement"));
+            }
+            if (!json.isNull("latitude")) {
+                commune.setLatitude(json.getString("latitude"));
+            }
+            if (!json.isNull("longitude")) {
+                commune.setLongitude(json.getString("longitude"));
+            }
+            if (!json.isNull("codePostal")) {
+                commune.setCodePostal(json.getString("codePostal"));
+            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createCommuneFromJsonItem: " + e.getMessage());
             commune = new Commune();
@@ -1024,8 +1098,12 @@ public class InfolocaleEntityUtils {
     Genre genreObj = new Genre();
     
     try {
-      genreObj.setLibelle(jsonGenre.getString("libelle"));
-      genreObj.setId(jsonGenre.getString("code"));
+      if (!jsonGenre.isNull("libelle")) {
+            genreObj.setLibelle(jsonGenre.getString("libelle"));
+      }
+      if (!jsonGenre.isNull("code")) {
+          genreObj.setId(jsonGenre.getString("code"));
+      }
     } catch (JSONException e) {
       LOGGER.warn("Error in generateGenreFromJson : " + e.getMessage());
     }
@@ -1042,8 +1120,12 @@ public class InfolocaleEntityUtils {
     Genre genreObj = new Genre();
     
     try {
-      genreObj.setLibelle(jsonGenre.getString("libelle"));
-      genreObj.setId(jsonGenre.getString("id"));
+      if (!jsonGenre.isNull("libelle")) {
+          genreObj.setLibelle(jsonGenre.getString("libelle"));
+      }
+      if (!jsonGenre.isNull("id")) {
+          genreObj.setId(jsonGenre.getString("id"));
+      }
     } catch (JSONException e) {
       LOGGER.warn("Error in generateGenreThematiqueFromJson : " + e.getMessage());
     }
