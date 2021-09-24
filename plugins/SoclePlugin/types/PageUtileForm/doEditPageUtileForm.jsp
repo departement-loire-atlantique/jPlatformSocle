@@ -64,7 +64,7 @@ Publication rgpdPub = channel.getPublication(channel.getProperty("jcmsplugin.soc
             <p class="ds44-keyboard-show"><a href="#ds44-choiceY"><%= glp("jcmsplugin.socle.pageutile.retour-oui") %></a></p>
         </div>
         <div id="ds44-choiceN" class="hidden">
-            <form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Avis page négatif","label": "$bloc-utile-informations-questions|text"}'>
+            <form class="ds44-js-oneSubmit" data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Avis page négatif","label": "$bloc-utile-informations-questions|text"}'>
                 <div class="grid-2-small-1 ds44-box">
                     <div class="col">
                         <p id="bloc-utile-informations" class="h4-like" aria-level="3" role="heading" tabindex="-1"><%= glp("jcmsplugin.socle.pageutile.motif-non.titre") %><sup aria-hidden="true">*</sup></p>
