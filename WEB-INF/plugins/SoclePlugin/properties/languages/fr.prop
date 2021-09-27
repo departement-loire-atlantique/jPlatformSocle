@@ -642,7 +642,7 @@ jcmsplugin.socle.newletter.title.lbl: Confirmer votre abonnement
 jcmsplugin.socle.newletter.mail.inscription-valide: Votre abonnement est validé
 jcmsplugin.socle.newletter.mail.inscription-expire: Inscription expirée
 jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirmation de votre inscription à la newsletter a expiré. Veuillez vous inscrire à nouveau à la newsletter.
-jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt sur {1}</p>
+jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt.</p>
 jcmsplugin.socle.newletter.mail.erreur: Erreur
 jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
 
