@@ -139,7 +139,7 @@ public class GoogleApiManager {
     if(!isOpen && Util.notEmpty(ouvertureJour)) {
       horaire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.jour.ouvert", new String[]{currentDay + 1 == openingDay ? "" : ouvertureJour, ouvertureHeure.substring(0, 2) + ":" + ouvertureHeure.substring(2)}));      
     } else if(Util.notEmpty(fermetureHeure)) {
-      String fermetureJour = DayOfWeek.of(currentDay).getDisplayName(TextStyle.FULL, Channel.getChannel().getCurrentUserLocale());      
+      //String fermetureJour = DayOfWeek.of(currentDay).getDisplayName(TextStyle.FULL, Channel.getChannel().getCurrentUserLocale());      
       horaire.append(" - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.jour.ferme", new String[]{"", fermetureHeure.substring(0, 2) + ":" + fermetureHeure.substring(2)}));
     }
     

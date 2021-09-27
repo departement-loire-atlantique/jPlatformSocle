@@ -64,6 +64,13 @@
     <field name="types" editor="category" required="false" compactDisplay="false" tab="classement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.ficheactu.types.root">
       <label xml:lang="fr">Types</label>
     </field>
+    <!-- Territoire -->
+    <field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
+      <label xml:lang="fr">Communes concernées</label>
+    </field>
+    <field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
+      <label xml:lang="fr">EPCI concernés</label>
+    </field> 
   </fields>
   <tabs>
     <tab id="contenu">
@@ -71,6 +78,9 @@
     </tab>
     <tab id="classement">
       <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+    <tab id="territoire">
+      <label xml:lang="fr">Territoire</label>
     </tab>
   </tabs>
 </type>
