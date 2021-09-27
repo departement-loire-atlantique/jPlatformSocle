@@ -13,9 +13,6 @@ if (data == null) {
 PressCommunique pub = (PressCommunique) data;
 String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 
-Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));
-Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));
-
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
@@ -25,15 +22,7 @@ Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"
                 <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
             </p>
             <hr class="mbs" aria-hidden="true">
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-date ds44-docListIco" aria-hidden="true"></i><jalios:date format="dd/MM/yyyy" date="<%= pub.getPdate() %>"/></p>
-                       
-            <jalios:if predicate="<%= displayCommunesConcernees && Util.notEmpty(pub.getCommunes()) %>">
-              <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.communes.label") %> : </span><%= JcmsUtil.join(Arrays.asList(pub.getCommunes()), ", ", userLang) %></p>
-	        </jalios:if>
-	          
-	        <jalios:if predicate="<%= displayEPCIConcernees && Util.notEmpty(pub.getEpci(loggedMember)) %>">
-	          <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.epci.label") %> : </span><%= JcmsUtil.join(pub.getEpci(loggedMember), ", ", userLang) %></p>
-	        </jalios:if>
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-date ds44-docListIco" aria-hidden="true"></i><jalios:date format="dd/MM/yyyy" date="<%= pub.getPdate() %>"/></p>                  
             
         </div>
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>

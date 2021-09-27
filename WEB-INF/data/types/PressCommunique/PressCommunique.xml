@@ -53,13 +53,6 @@
     <field hidden="true" name="linkMedias" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="false" rows="16" cols="100" ml="true" toolbars="basic,format" checkHtml="true" inline="true">
       <label xml:lang="fr">Médias liés</label>
     </field>
-    <!-- Territoire -->
-	<field name="communes" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.City[]">
-	  <label xml:lang="fr">Communes concernées</label>
-	</field>
-	<field name="epci" editor="category" required="false" compactDisplay="false" tab="territoire" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.toutesLesCommunesEPCI.root">
-	  <label xml:lang="fr">EPCI concernés</label>
-	</field> 
   </fields>
   <tabs>
     <tab id="contenu">
@@ -67,9 +60,6 @@
     </tab>
     <tab id="rattachement">
       <label xml:lang="fr">Navigation et classement</label>
-    </tab>
-    <tab id="territoire">
-      <label xml:lang="fr">Territoire</label>
     </tab>
   </tabs>
   <label xml:lang="fr">Communiqué / Dossier de presse</label>
