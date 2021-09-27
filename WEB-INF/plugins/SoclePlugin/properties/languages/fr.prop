@@ -553,9 +553,6 @@ jcmsplugin.socle.facette.date.exemple.annee: {0} : annee (ex. 2020)
 jcmsplugin.socle.video.telecharger-transcript.label: Télécharger le fichier de transcription de la vidéo
 jcmsplugin.socle.video.telecharger-transcript.title: Télécharger le fichier de transcription de la vidéo : {0} - {1} - {2} - nouvelle fenêtre
 
-jcmsplugin.socle.video.leschapitres: Les chapitres
-jcmsplugin.socle.video.title.chapitrelink: Aller à {0} : {1}
-
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
@@ -1046,6 +1043,7 @@ jcmsplugin.socle.rgpd.bouton.accept: J’accepte les cookies
 jcmsplugin.socle.rgpd.bouton.accept-all: J’accepte tout
 jcmsplugin.socle.rgpd.bouton.decline: Je refuse les cookies
 jcmsplugin.socle.rgpd.bouton.decline-all: Je refuse tout
+jcmsplugin.socle.rgpd.bouton.close: Fermer - Gestion de vos préférences sur les cookies
 jcmsplugin.socle.rgpd.privacyPolicy.name: politique de confidentialité
 jcmsplugin.socle.rgpd.privacyPolicy.text: Pour en savoir plus, merci de lire notre
 jcmsplugin.socle.rgpd.cookie.jsessionid.descr: Ce cookie est utilisé par le serveur pour identifier une session utilisateur et permettre une navigation correcte. Il est supprimé lors de la fin de la session de navigation ou à la fermeture du navigateur.
