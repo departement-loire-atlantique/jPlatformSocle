@@ -28,6 +28,7 @@
                 acceptAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
                 decline: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline")) %>',
                 declineAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
+                close: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.close")) %>',
                 purposes: {
                     analytics: 'Analyse'
                 },
@@ -62,6 +63,7 @@
                 acceptAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.accept-all")) %>',
                 decline: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline")) %>',
                 declineAll: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.decline-all")) %>',
+                close: '<%= HttpUtil.encodeForJavaScript(glp("jcmsplugin.socle.rgpd.bouton.close")) %>',
                 purposes: {
                     analytics: 'analytics'
                 },
