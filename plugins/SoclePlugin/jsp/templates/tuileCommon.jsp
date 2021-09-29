@@ -48,14 +48,14 @@ if (isLien) {
 		fileSize = Util.formatFileSize(itDoc.getSize());
 		urlPub = itDoc.getDownloadUrl();
 		targetBlank = true;
-		titleValue = glp("jcmsplugin.socle.lien.document.nouvelonglet", itLien.getTitle(), fileSize, fileType);
+		titleValue = glp("jcmsplugin.socle.lien.document.nouvelonglet", itLien.getTitle(userLang), fileSize, fileType);
       }else{
         urlPub = itLien.getLienInterne().getDisplayUrl(userLocale);
       }
   }else if (Util.notEmpty(itLien.getLienExterne())) {
     urlPub = itLien.getLienExterne();
     targetBlank = true;
-    titleValue = glp("jcmsplugin.socle.lien.site.nouvelonglet", itLien.getTitle());
+    titleValue = glp("jcmsplugin.socle.lien.site.nouvelonglet", itLien.getTitle(userLang));
   }
 }
 
