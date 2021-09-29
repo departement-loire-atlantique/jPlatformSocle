@@ -38,7 +38,7 @@ libelletimecode = libellestimecodes[itCounter-1];
 int seekAtVideo = SocleUtils.getTimeInSecondsFromHhMmSs(timecode);
 %>
 <li>
-<a id="#video<%=uniqueID%>" href="#<%= uniqueIDiframe %>" role="button" class="ds44-js-video-seek-to" data-video-id="<%= videoId %>" data-seek-to="<%= seekAtVideo %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.video.title.chapitrelink", timecode, itChapitre)) %>'><%= itChapitre %></a>
+<a id="#video<%=uniqueID%>" href="#<%= uniqueIDiframe %>" role="button" class="ds44-js-video-seek-to" data-video-id="<%= videoId %>" data-seek-to="<%= seekAtVideo %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.video.title.chapitrelink", timecode, libelletimecode)) %>'><%= libelletimecode %></a>
 </li>
 <%
 }
