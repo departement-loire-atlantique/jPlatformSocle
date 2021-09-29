@@ -553,6 +553,9 @@ jcmsplugin.socle.facette.date.exemple.annee: {0} : annee (ex. 2020)
 jcmsplugin.socle.video.telecharger-transcript.label: Télécharger le fichier de transcription de la vidéo
 jcmsplugin.socle.video.telecharger-transcript.title: Télécharger le fichier de transcription de la vidéo : {0} - {1} - {2} - nouvelle fenêtre
 
+jcmsplugin.socle.video.leschapitres: Les chapitres
+jcmsplugin.socle.video.title.chapitrelink: Aller à {0} : {1}
+
 # ------------------------------------------------------------
 #  Fil ariane
 # ------------------------------------------------------------
