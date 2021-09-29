@@ -755,12 +755,13 @@ jcmsplugin.socle.fichepublication.ausommaire:Summary
 jcmsplugin.socle.fichepublication.dossier:Headline
 jcmsplugin.socle.fichepublication.portraits:Testimony
 jcmsplugin.socle.fichepublication.actualites:News
-jcmsplugin.socle.fichepublication.question:La question
-jcmsplugin.socle.fichepublication.lireenligne:Lire le magazine en ligne
-jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Département - nouvelle fenêtre
-jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
-jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
-jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
+jcmsplugin.socle.fichepublication.question:The question
+jcmsplugin.socle.fichepublication.lireenligne:Read the online issue
+jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Département - new tab
+jcmsplugin.socle.fichepublication.lire.title.custom: {0} : {1} - new tab
+jcmsplugin.socle.fichepublication.ecoutermagazine.title: Listen to the audio issue : {0}
+jcmsplugin.socle.fichepublication.telechargermagazine.title: Download the issue : {0} - {1} - {2} - new tab
+jcmsplugin.socle.fichepublication.telechargerdaisy.title: Download the issue's Daisy version : {0} - {1} - {2} - new tab"
 
 # ------------------------------------------------------------
 #  Etablissement personnes agees
