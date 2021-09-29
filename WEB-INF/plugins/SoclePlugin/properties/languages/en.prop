@@ -755,7 +755,7 @@ jcmsplugin.socle.fichepublication.actualites:News
 jcmsplugin.socle.fichepublication.question:La question
 jcmsplugin.socle.fichepublication.lireenligne:Lire le magazine en ligne
 jcmsplugin.socle.fichepublication.lire.title: {0} : lire le magazine du Département - nouvelle fenêtre
-jcmsplugin.socle.fichepublication.lire.title.newtab.custom: {0} : {1} - nouvelle fenêtre
+jcmsplugin.socle.fichepublication.lire.title.custom: {0} : {1} - new tab
 jcmsplugin.socle.fichepublication.ecoutermagazine.title: Écouter le magazine : {0}
 jcmsplugin.socle.fichepublication.telechargermagazine.title: Télécharger le magazine : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.fichepublication.telechargerdaisy.title: Télécharger la version Daisy du magazine : {0} - {1} - {2} - nouvelle fenêtre"
