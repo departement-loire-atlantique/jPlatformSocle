@@ -3,7 +3,7 @@
 		predicate="<%= Util.notEmpty( currentLien.getLienExterne() ) %>">
 		<a class="ds44-arrowLink" href="<%= currentLien.getLienExterne() %>"
 			target="_blank"
-			title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle())) %>'><%= currentLien.getTitle() %><i
+			title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.site.nouvelonglet", currentLien.getTitle(userLang))) %>'><%= currentLien.getTitle(userLang) %><i
 			class="icon icon-arrow-right"></i></a>
 	</jalios:if>
 	<jalios:default>
@@ -23,12 +23,12 @@
                   fileInfos = " - " + fileSize + " - " + fileType;
                   urlContent = itDoc.getDownloadUrl();
                   targetAttr = "target=\"_blank\" ";
-                  titleAttr = "title=\"" +  itDoc.getTitle() + fileInfos + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
+                  titleAttr = "title=\"" +  itDoc.getTitle(userLang) + fileInfos + " " + glp("jcmsplugin.socle.accessibily.newTabLabel")+"\"";
                 }
                 
                 %>
 		<a class="ds44-arrowLink" <%= titleAttr %>
-			href="<%= urlContent %>" <%= targetAttr %>><%= currentLien.getTitle() %><i
+			href="<%= urlContent %>" <%= targetAttr %>><%= currentLien.getTitle(userLang) %><i
 			class="icon icon-arrow-right"></i></a>
 	</jalios:default>
 </jalios:select>

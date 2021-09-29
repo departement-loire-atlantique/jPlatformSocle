@@ -26,7 +26,7 @@ if(pub instanceof FileDocument){
                     <%@ include file="plusRechercheLien.jspf" %>
                 </jalios:if>
                 <jalios:if predicate="<%= ! (itContent instanceof FileDocument) %>">
-                    <a class="ds44-arrowLink" title="<%= HttpUtil.encodeForHTMLAttribute(itContent.getTitle()) %>" href="<%= itContent.getDisplayUrl(userLocale) %>"><%= itContent.getTitle() %><i class="icon icon-arrow-right"></i></a>
+                    <a class="ds44-arrowLink" title="<%= HttpUtil.encodeForHTMLAttribute(itContent.getTitle(userLang)) %>" href="<%= itContent.getDisplayUrl(userLocale) %>"><%= itContent.getTitle() %><i class="icon icon-arrow-right"></i></a>
                 </jalios:if>
             </jalios:select>
         </jalios:foreach>
@@ -38,6 +38,6 @@ if(pub instanceof FileDocument){
 	</jalios:if>
 	
 	<jalios:default>
-	    <a class="ds44-arrowLink" href="<%= pub.getDisplayUrl(userLocale) %>"><%= pub.getTitle() %><i class="icon icon-arrow-right"></i></a>
+	    <a class="ds44-arrowLink" href="<%= pub.getDisplayUrl(userLocale) %>"><%= pub.getTitle(userLang) %><i class="icon icon-arrow-right"></i></a>
 	</jalios:default>
 </jalios:select>

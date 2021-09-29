@@ -60,8 +60,10 @@ if(Util.notEmpty(box.getLienExterne())) {
     </div>
 
     <jalios:if predicate='<%= Util.notEmpty(urlLien) && Util.notEmpty(libelleLien) %>'>
-	    <div class="txtcenter ds44-container-large ">
-	        <a href="<%= urlLien %>" title="<%= titleLien %>" <%= Util.notEmpty(box.getLienExterne()) ? "target=\"_blank\"" : "" %> class="ds44-btnStd ds44-btnStd--white ds44-btnStd--large ds44-btnFullMobile" type="button"><span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>                      
+        <div class="txtcenter ds44-container-large ">
+            <p>
+                <a href="<%= urlLien %>" title="<%= titleLien %>" <%= Util.notEmpty(box.getLienExterne()) ? "target=\"_blank\"" : "" %> class="ds44-btnStd ds44-btnStd--white ds44-btnStd--large ds44-btnFullMobile" type="button"><span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></a>
+            </p>                      
 	    </div>
     </jalios:if>
 
