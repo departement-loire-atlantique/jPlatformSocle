@@ -39,8 +39,8 @@ if (Util.notEmpty(request.getAttribute("forcedHeight"))) {
     request.setAttribute("hideVideoTitle", null);
   }
 
-String videoId = obj.getUrlVideo().substring(obj.getUrlVideo().indexOf("?v=") + 3); // récupérer l'ID de la vidéo YT
-// le JS se base sur cette ID et va alors forcer cette ID dans l'url de la vidéo. Utiliser un UID va casser l'affichage de la vidéo 
+String videoId = VideoUtils.getYoutubeVideoId(obj.getUrlVideo()); // récupérer l'ID de la vidéo YT
+// le JS se base sur cette ID et va alors forcer cette ID dans l'url de la vidéo. Utiliser un UID va casser l'affichage de la vidéo
 
 %>
 
