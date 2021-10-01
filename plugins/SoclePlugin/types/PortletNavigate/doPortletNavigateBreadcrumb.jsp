@@ -1,4 +1,5 @@
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ page import="fr.cg44.plugin.seo.SEOUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%@ include file='/jcore/portal/doPortletParams.jspf' %>
 <%@ include file='/types/PortletNavigate/doInitPortletNavigate.jspf' %>
@@ -49,7 +50,7 @@ String cible="";
 String title = "";
 String textColorStyle = "";
 
-String lblAltTitle = glp("jcmsplugin.socle.retour.accueil");
+String lblAltTitle = glp("jcmsplugin.socle.retour.accueil", SEOUtils.getSiteName());
 
 // texte du breadcrumb clair/sombre
 if(Util.notEmpty(request.getAttribute("textColor"))){
@@ -60,7 +61,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
 <nav role="navigation" aria-label='<%=glp("jcmsplugin.socle.breadcrumb.position")%>' class="ds44-hide-mobile">
     <ul class="ds44-list ds44-breadcrumb <%=textColorStyle%>">
         <li class="ds44-breadcrumb_item">
-            <a href="index.jsp" title="<%= lblAltTitle %> <%=channel.getName()%>"><i class="icon icon-home icon--medium" aria-hidden="true"></i><span class="visually-hidden">Accueil</span></a>
+            <a href="index.jsp" title="<%= lblAltTitle %>"><i class="icon icon-home icon--medium" aria-hidden="true"></i><span class="visually-hidden">Accueil</span></a>
         </li>
         
         <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" counter="itCounter">
