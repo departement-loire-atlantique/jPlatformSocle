@@ -8,6 +8,11 @@
 <%@ include file='/front/doFullDisplay.jspf'%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 
+<button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button"
+    data-target="#navSommaire">
+    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.dossier.sommaire") %></span><i class="icon icon-summary" aria-hidden="true"></i>
+</button>
+
 <main role="main" id="content">
 
     <jalios:include target="SOCLE_ALERTE"/>
@@ -24,8 +29,8 @@
 
 					<aside class="col-4 ds44-hide-tiny-to-medium ds44-js-aside-summary">
 						<section class="ds44-box ds44-theme">
-							<div class="ds44-innerBoxContainer">
-								<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
+							<nav role="navigation" class="ds44-innerBoxContainer" aria-labelledby="titreSommaireDossier">
+								<p role="heading" aria-level="2" id="titreSommaireDossier" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
 								<ul class="ds44-list ds44-list--puces">
 									<jalios:foreach type="String" name="itTitreRubrique" array="<%= obj.getTitreRubrique(userLang) %>">
 									   <jalios:if predicate="<%= Util.notEmpty(obj.getTitreRubrique(userLang)[itCounter-1])%>">
@@ -33,7 +38,7 @@
 										</jalios:if>
 									</jalios:foreach>
 								</ul>
-							</div>
+							</nav>
 						</section>
 					</aside>
 
@@ -150,11 +155,6 @@
 	<jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp" />
 	
 </main>
-
-<button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button"
-	data-target="#navSommaire">
-	<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.dossier.sommaire") %></span><i class="icon icon-summary" aria-hidden="true"></i>
-</button>
 
 <section id="summaryMenu" class="ds44-overlay ds44-overlay--navFromBottom" aria-modal="true" role="dialog" aria-label='<%= glp("jcmsplugin.socle.dossier.sommaire") %>' aria-hidden="true"
 	aria-labelledby="titreSommaire">
