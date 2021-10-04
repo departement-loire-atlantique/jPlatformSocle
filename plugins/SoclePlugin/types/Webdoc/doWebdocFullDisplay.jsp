@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
+%><%@ page import="fr.cg44.plugin.seo.SEOUtils"%><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><% Webdoc obj = (Webdoc)request.getAttribute(PortalManager.PORTAL_PUBLICATION); %><%
 %><% jcmsContext.setPageTitle(obj.getTitle(userLang)); %><%
@@ -24,7 +25,7 @@ String href = Util.notEmpty(obj.getLienRetourInterne()) ? obj.getLienRetourInter
             <div class="ds44-colRight" style="flex: revert;">
                 <a href="index.jsp" class="ds44-logoContainer">
                     <picture class="ds44-logo">  
-                        <img class="" style="margin-top: 15px;" src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil")) %> <%=channel.getName() %>' />
+                        <img class="" style="margin-top: 15px;" src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil", SEOUtils.getSiteName())) %>' />
                     </picture>
                 </a>
             </div>

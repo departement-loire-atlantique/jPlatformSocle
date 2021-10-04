@@ -3,6 +3,7 @@
 <%@ include file='/jcore/portal/doPortletParams.jsp' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
+<%@ page import="fr.cg44.plugin.seo.SEOUtils"%>
 
 
 <%
@@ -30,19 +31,20 @@ boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue",
 String changeLang = "";
 String langIcon = "";
 String langLabel = glp("jcmsplugin.socle.multilingue.version.label");
-String langTitle = "";
+String langTitle = glp("jcmsplugin.socle.multilingue.version.title", glp("jcmsplugin.seo.meta-title"));
 String changeLangUrl = "";
+String siteName = SEOUtils.getSiteName();
+boolean isHome = PortalManager.getHomeCategory().equals(currentCategory) ? true : false;
+String altValue = isHome ? siteName : glp("jcmsplugin.socle.retour.accueil", siteName);  
 
 if(multilingue){
 	if(userLang.equals("fr")){
 	  changeLang = "en";
 	  langIcon = "icon-english";
-	  langTitle = glp("jcmsplugin.socle.multilingue.version.title", JcmsUtil.glp("en", "jcmsplugin.socle.nomDuSite"));
 	}
 	else{
 	  changeLang = "fr";
 	  langIcon = "icon-french";
-	  langTitle = glp("jcmsplugin.socle.multilingue.version.title", JcmsUtil.glp("fr", "jcmsplugin.socle.nomDuSite"));
 	}
 	changeLangUrl = LangTag.getChangeUrl(request, changeLang);
 }
@@ -69,7 +71,7 @@ if(multilingue){
                                 <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
                                 <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
                             </jalios:if>
-                            <img class='<%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>' src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.retour.accueil")) %> <%=channel.getName() %>" />
+                            <img class='<%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>' src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(altValue) %>" />
                         </picture>
                     </a>
                 </div>
