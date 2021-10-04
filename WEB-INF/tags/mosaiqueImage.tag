@@ -47,7 +47,7 @@
 %>
 <jalios:buffer name="btnImage">
 	<jalios:if predicate="<%= hasPopin %>">
-		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.popin.title")) %>'>
+		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.popin.title")) %>'>
 	</jalios:if>
 			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="<%= alt %>" class="ds44-imgRatio is-height-set">
 	<jalios:if predicate="<%= hasPopin %>">
