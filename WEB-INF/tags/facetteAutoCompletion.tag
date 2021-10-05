@@ -316,7 +316,7 @@
 								</span>
 							</span> 
 						</label>
-						<input type="text" id='<%= idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-js-field-address' 
+						<input type="text" id='<%= "option-" + idFormElement %>' class='<%= "ds44-inp" + styleChamps %> ds44-js-field-address' 
 								name='<%= option %>'
 								role="combobox" 
 								aria-autocomplete="list" 
