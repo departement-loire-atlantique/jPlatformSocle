@@ -161,7 +161,7 @@
 						title='<%= titleAttr %>' 
 						data-mode='<%= dataMode %>' 
 						<%= isFacetteObligatoire ? "required" : ""%> />
-				<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
+				<button class="ds44-reset" type="button">
 					<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> 
 					<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 				</button>
@@ -260,7 +260,7 @@
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
 						<div id='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="rayon"></div>
-						<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
+						<button class="ds44-reset" type="button">
 							<i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label")) %>
@@ -326,7 +326,7 @@
 								title='<%= titleOption %>'
 								data-mode="select-only" 
 								required="">
-						<button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
+						<button class="ds44-reset" type="button">
 							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.adresse.default-label")) %>
