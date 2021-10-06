@@ -207,6 +207,7 @@ jcmsplugin.socle.image.col4.width: 370
 # ------------------------------------------------------------
 channel.forbidden-html: (javascript:)|(<\\s*(link))|(</\\s*body)
 wysiwyg.custom.configuration.charte: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-charteconfig.conf
+wysiwyg.configuration.default: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-default.conf
 wysiwyg.configuration.simple: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-simple.conf
 wysiwyg.additional.configuration.styles: /WEB-INF/plugins/SoclePlugin/wysiwyg/configuration-styles.conf
 wysiwyg.plugins.dsicons: plugins/SoclePlugin/wysiwyg/plugins/dsicons/plugin.js 
