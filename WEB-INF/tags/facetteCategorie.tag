@@ -141,7 +141,7 @@
                 <%= isDisabled ? "data-disabled=\"true\"" : "" %>
                 <%= Util.notEmpty(request.getAttribute("isFilter")) && (Boolean)(request.getAttribute("isFilter")) ? "data-auto-submit=\"true\"" : "" %>></div>
 
-        <button class="ds44-reset" type="button" aria-describedby="label-<%= idFormElement %>">
+        <button class="ds44-reset" type="button">
             <i class='icon icon-cross icon--size<%= styleChamps2 %>' aria-hidden="true"></i>
             <span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", labelChamp) %></span>
         </button>
