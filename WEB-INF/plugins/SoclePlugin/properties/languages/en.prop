@@ -935,6 +935,9 @@ jcmsplugin.socle.canton.recherche.portlet.id: Portlet Recherche Facettes ID on C
 jcmsplugin.socle.opendata.link.label: Consulter sur le site opendata : {0}
 jcmsplugin.socle.opendata.link.title: Consulter sur le site opendata : {0} - nouvelle fenêtre
 
+# Webdoc
+jcmsplugin.socle.webdoc.retour.label: Retour sur le site du Département de Loire-Atlantique
+
 # ------------------------------------------------------------
 #  Export CSV / Images
 # ------------------------------------------------------------
