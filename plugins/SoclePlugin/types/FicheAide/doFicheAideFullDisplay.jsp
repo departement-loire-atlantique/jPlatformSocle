@@ -39,6 +39,10 @@
 	String titleTemoignage = Util.notEmpty(obj.getTitreVideo(userLang)) ? obj.getTitreVideo(userLang) : glp("jcmsplugin.socle.titre.temoignage");
 %>
 
+<button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button" data-target="#navSommaire">
+    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.dossier.sommaire") %></span><i class="icon icon-summary" aria-hidden="true"></i>
+</button>
+
 <main role="main" id="content">
 
 	<jalios:include target="SOCLE_ALERTE" />
@@ -450,10 +454,6 @@
 	<jsp:include page="/plugins/SoclePlugin/types/PageUtileForm/editFormPageUtileForm.jsp" />
 
 </main>
-
-<button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button" data-target="#navSommaire">
-    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.dossier.sommaire") %></span><i class="icon icon-summary" aria-hidden="true"></i>
-</button>
 
 <section id="summaryMenu" class="ds44-overlay ds44-overlay--navFromBottom" aria-modal="true" role="dialog" aria-label='<%= glp("jcmsplugin.socle.dossier.sommaire") %>' aria-hidden="true"
     aria-labelledby="titreSommaire">
