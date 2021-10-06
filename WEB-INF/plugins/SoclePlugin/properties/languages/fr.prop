@@ -343,7 +343,7 @@ jcmsplugin.socle.media: Média
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.retour.accueil: Retour à l’accueil du site
+jcmsplugin.socle.retour.accueil: Retour à l’accueil du site : {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.retour: Retour au premier niveau du menu de navigation
