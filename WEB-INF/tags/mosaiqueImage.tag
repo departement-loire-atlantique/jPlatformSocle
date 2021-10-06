@@ -41,8 +41,11 @@
 	
 	String alt = SocleUtils.getAltTextFromPub(image);
 	    
+	String figcaption = Util.notEmpty(legend) ? legend + " " : "";
+    if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+	
 	if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
-	   alt = "";
+	   alt = figcaption;
 	}
 %>
 <jalios:buffer name="btnImage">
@@ -57,10 +60,6 @@
 
 
 <jalios:if predicate="<%=hasFigcaption%>">
-	<%
-		String figcaption = Util.notEmpty(legend) ? legend + " " : "";
-		if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
-	%>
 	<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom <%= style %>" data-target="#overlay-mosaique" data-js="ds44-modal" 
 			role="figure" aria-label="<%=figcaption%>">
 		<%= btnImage %>
