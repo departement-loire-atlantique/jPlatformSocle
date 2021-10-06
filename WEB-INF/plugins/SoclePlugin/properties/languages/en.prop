@@ -343,7 +343,7 @@ jcmsplugin.socle.media: Média
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.retour.accueil: Back to home page : {0}
+jcmsplugin.socle.retour.accueil: Back to home
 jcmsplugin.socle.menu.ouvrir: Open the main menu
 jcmsplugin.socle.menu.fermer: Close the main menu
 jcmsplugin.socle.menu.retour: Back to the first level of the main menu
@@ -546,9 +546,9 @@ jcmsplugin.socle.facette.date.select.example.label: Ex : 20/05/2020
 jcmsplugin.socle.facette.date.select.du.label: From
 jcmsplugin.socle.facette.date.select.jusquau.label: to
 jcmsplugin.socle.facette.date.calendrier.afficher: Display the calendar for the field: {0}
-jcmsplugin.socle.facette.date.exemple.jour: {0} : day (ex. 20)
-jcmsplugin.socle.facette.date.exemple.mois: {0} : month (ex. 05)
-jcmsplugin.socle.facette.date.exemple.annee: {0} : year (ex. 2020)
+jcmsplugin.socle.facette.date.exemple.jour: {0} : day (example : 20)
+jcmsplugin.socle.facette.date.exemple.mois: {0} : month (example : 05)
+jcmsplugin.socle.facette.date.exemple.annee: {0} : year (example : 2020)
 
 jcmsplugin.socle.video.telecharger-transcript.label: Download the video transcript file
 jcmsplugin.socle.video.telecharger-transcript.title: Download the video transcript file: {0} - {1} - {2} - new window
@@ -935,9 +935,6 @@ jcmsplugin.socle.canton.recherche.portlet.id: Portlet Recherche Facettes ID on C
 jcmsplugin.socle.opendata.link.label: Consulter sur le site opendata : {0}
 jcmsplugin.socle.opendata.link.title: Consulter sur le site opendata : {0} - nouvelle fenêtre
 
-# Webdoc
-jcmsplugin.socle.webdoc.retour.label: Retour sur le site du Département de Loire-Atlantique
-
 # ------------------------------------------------------------
 #  Export CSV / Images
 # ------------------------------------------------------------
@@ -968,7 +965,6 @@ jcmsplugin.socle.sites-applis.developpement-innovation.label: Développement inn
 jcmsplugin.socle.sites-applis.territoire.label: Territoire
 
 jcmsplugin.socle.sites-applis.institutionnel.label: Site du Département
-jcmsplugin.socle.sites-applis.institutionnel.long.label: Site du Département de Loire-Atlantique
 jcmsplugin.socle.sites-applis.institutionnel.url: https://www.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.budget.label: Budget 2021
 jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2021
