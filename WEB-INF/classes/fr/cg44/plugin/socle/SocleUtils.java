@@ -1270,11 +1270,16 @@ public final class SocleUtils {
     if (Util.isEmpty(communeCode)) {
       return null;
     }
-    Set<City> setCities = channel.getDataSet(City.class);
-    for (City itCity : setCities) {
-      if (itCity.getCityCode() == Integer.parseInt(communeCode)) {
-        return itCity;
-      }
+    try {
+        Set<City> setCities = channel.getDataSet(City.class);
+        for (City itCity : setCities) {
+          if (itCity.getCityCode() == Integer.parseInt(communeCode)) {
+            return itCity;
+          }
+        }
+    }
+    catch (Exception e) {
+        LOGGER.warn("Anomalie sur getCommuneFromCode : " + e.getMessage());
     }
     return null;
   }
