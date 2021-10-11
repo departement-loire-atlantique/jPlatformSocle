@@ -23,6 +23,10 @@ String videoId = obj.getUrlVideo().substring(obj.getUrlVideo().indexOf("?v=") + 
         <section class="ds44-contenuArticle">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
+                
+                    <%-- Chapitres --%>
+                    <%@ include file="doVideoChapitres.jspf" %>
+                    
                     <jalios:if predicate="<%= Util.notEmpty(obj.getDescription(userLang)) %>">
                         <jalios:foreach name="itDesc" type="String" array='<%= obj.getDescription(userLang) %>'>
                         <div>
@@ -35,9 +39,6 @@ String videoId = obj.getUrlVideo().substring(obj.getUrlVideo().indexOf("?v=") + 
                         </jalios:foreach>
                         
                     </jalios:if>
-                    
-                    <%-- Chapitres --%>
-                    <%@ include file="doVideoChapitres.jspf" %>   
                     
                 </div>
             </div>
