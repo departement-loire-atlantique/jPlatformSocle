@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -18,6 +19,9 @@ DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
 String urlPhoto = Util.notEmpty(InfolocaleUtil.getLargestPicture(itEvent)) ? InfolocaleUtil.getLargestPicture(itEvent).getPath() : "s.gif";
 
+if (itEvent.getId().equals("INFOLOC-7340344")) {
+    System.out.println(currentDisplayedDate.getDebut());
+}
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
@@ -30,17 +34,7 @@ String urlPhoto = Util.notEmpty(InfolocaleUtil.getLargestPicture(itEvent)) ? Inf
         %>
         <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink" tabindex="-1"><%= itEvent.getTitle() %></a> </p>
         <p class="ds44-cardDate"><i class="icon icon-date" aria-hidden="true"></i> <%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
-            <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
-               <span class="ds44-iconInnerText"><%= itEvent.getMetadataDefaultContent() %></span>
-            </p>
-        </jalios:if>
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
-            <p><%= itEvent.getMetadata1() %></p>
-        </jalios:if>
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
-            <p><%= itEvent.getMetadata2() %></p>
-        </jalios:if>
+        <%@ include file="../include/doMetadataEventInfolocale.jspf" %>
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
 </section>

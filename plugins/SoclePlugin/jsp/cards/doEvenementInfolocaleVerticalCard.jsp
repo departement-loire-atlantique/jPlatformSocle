@@ -49,17 +49,7 @@ String urlPhoto = InfolocaleUtil.getUrlOfLargestPicture(itEvent);
 	            </jalios:select>
             </jalios:if>
           </p>
-             <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
-	            <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
-	               <span class="ds44-iconInnerText"><%= itEvent.getMetadataDefaultContent() %></span>
-	            </p>
-	         </jalios:if>
-	         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
-	            <p><%= itEvent.getMetadata1() %></p>
-	         </jalios:if>
-	         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
-	            <p><%= itEvent.getMetadata2() %></p>
-	         </jalios:if>
+	         <%@ include file="../include/doMetadataEventInfolocale.jspf" %>
       </div>
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
