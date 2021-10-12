@@ -19,9 +19,6 @@ DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
 String urlPhoto = Util.notEmpty(InfolocaleUtil.getLargestPicture(itEvent)) ? InfolocaleUtil.getLargestPicture(itEvent).getPath() : "s.gif";
 
-if (itEvent.getId().equals("INFOLOC-7340344")) {
-    System.out.println(currentDisplayedDate.getDebut());
-}
 %>
 
 <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
