@@ -42,11 +42,13 @@
 	String alt = SocleUtils.getAltTextFromPub(image);
 	    
 	String figcaption = Util.notEmpty(legend) ? legend + " " : "";
-    if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
 	
 	if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
-	   alt = figcaption;
+	    alt = figcaption;
 	}
+	
+    if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+	
 %>
 <jalios:buffer name="btnImage">
 	<jalios:if predicate="<%= hasPopin %>">
