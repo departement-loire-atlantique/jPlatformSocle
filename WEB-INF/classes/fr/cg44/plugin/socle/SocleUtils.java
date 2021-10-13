@@ -44,6 +44,7 @@ import com.jalios.jcms.context.JcmsJspContext;
 import com.jalios.jcms.handler.QueryHandler;
 import com.jalios.jcms.portlet.PortalElement;
 import com.jalios.jcms.taglib.ThumbnailTag;
+import com.jalios.jcms.wysiwyg.WysiwygRenderer;
 import com.jalios.util.Util;
 
 import generated.AbstractPortletFacette;
@@ -54,6 +55,7 @@ import generated.City;
 import generated.Contact;
 import generated.Delegation;
 import generated.ElectedMember;
+import generated.FaqEntry;
 import generated.FicheEmploiStage;
 import generated.FicheLieu;
 import generated.Lien;
@@ -2222,11 +2224,8 @@ public final class SocleUtils {
    * @param timestamp
    * @return
    */
-  /**
- * @param timestamp
- * @return
- */
-public static int getTimeInSecondsFromHhMmSs(String timestamp) {
+
+  public static int getTimeInSecondsFromHhMmSs(String timestamp) {
       try {
           String[] separatedTImestamps = timestamp.split(":");
           int secondsInHours = 3600 * Integer.parseInt(separatedTImestamps[0]);
@@ -2239,4 +2238,51 @@ public static int getTimeInSecondsFromHhMmSs(String timestamp) {
           return -1;
       }
   }
+
+
+  /**
+   * Génération de flux json pour données de FAQ
+   * @param faqEntrySet le Set de FaqEntry à retourner dans le flux json
+   * @param userLang la langue de l'utilisateur courant
+   * @return un objet json contenant les donénes de FAQ formatées pour les moteurs de recherche.
+   */
+  
+  public static JsonObject faqToJson(Set<FaqEntry> faqEntrySet, String userLang) {
+    
+    if(Util.notEmpty(faqEntrySet)) {
+      
+      // Construction de l'objet FAQPage
+      JsonObject faqJsonObject = new JsonObject();
+      faqJsonObject.addProperty("@context", "https://schema.org");
+      faqJsonObject.addProperty("@type", "FAQPage");
+      
+      // Construction du tableau de questions
+      JsonArray questionsJsonArray = new JsonArray();
+      
+      for(FaqEntry itFaq : faqEntrySet) {
+  
+        // Construction de l'objet Answer
+        JsonObject itAnswerJsonObject = new JsonObject();
+        itAnswerJsonObject.addProperty("@type", "Answer");
+        itAnswerJsonObject.addProperty("text", WysiwygRenderer.processWysiwyg(itFaq.getAnswer(userLang), channel.getCurrentUserLocale()));
+          
+        // Construction de l'objet Question
+        JsonObject itQuestionJsonObject = new JsonObject();
+        itQuestionJsonObject.addProperty("@type", "Question");
+        itQuestionJsonObject.addProperty("name", HttpUtil.encodeForHTMLAttribute(itFaq.getTitle(userLang)));
+        itQuestionJsonObject.add("acceptedAnswer", itAnswerJsonObject);
+          
+        questionsJsonArray.add(itQuestionJsonObject);
+      }
+      
+      faqJsonObject.add("mainEntity", questionsJsonArray);
+      
+      return faqJsonObject;
+    }
+    
+    return null;
+  
+  }
+
+
 }

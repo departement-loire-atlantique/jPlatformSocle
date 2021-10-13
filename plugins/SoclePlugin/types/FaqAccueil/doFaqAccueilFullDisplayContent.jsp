@@ -1,3 +1,4 @@
+<%@ page import="fr.cg44.plugin.socle.SocleUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 
@@ -20,6 +21,7 @@
 					dataset="<%= obj.getLinkIndexedDataSet(FaqEntry.class) %>"
 					comparator="<%=  new custom.CustomEditFaqEntryHandler.OrderComparator() %>"
 					selector="<%= selector %>"/>
+					
 					<jalios:foreach name="itQuestRep" type="FaqEntry" collection='<%= entrySet %>' counter='nbrQuestRep'>
 						<li class='ds44-collapser_element <%= nbrQuestRep > obj.getNombreDeQuestionsAffichees() ? "hidden" : "" %>'>
 							<p role="heading" aria-level="3">
@@ -62,5 +64,11 @@
 				</div>
 			</jalios:if>
 		</div>
+		
+		<%--  Ajout de données structurées json pour SEO. Elles seront affichées dans le <head>
+		      via une target pointant sur addFaqStructuredData.jsp --%>
+		<jalios:if predicate='<%= Util.notEmpty(entrySet) %>'>
+		  <% request.setAttribute("jsonFaq", SocleUtils.faqToJson(entrySet, userLang)); %>
+		</jalios:if>
 
 

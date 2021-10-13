@@ -725,6 +725,7 @@
     <file path="jsp/portal/retourFacettesListe.jsp" include="EMPTY_HEADER" />
     <file path="jsp/include/includePortletQueryForeachAlert.jsp" include="SOCLE_ALERTE" />
     <file path="jsp/include/logout.jsp" include="SITE_TOPBAR_RIGHT_END" />
+    <file path="jsp/include/addFaqStructuredData.jsp" include="EMPTY_HEADER"/>
   </public-files>
   <webapp-files>
     <file path="types/PortletSelection/doSelection.jspf" />
