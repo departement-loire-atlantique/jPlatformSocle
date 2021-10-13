@@ -41,13 +41,18 @@
 	
 	String alt = SocleUtils.getAltTextFromPub(image);
 	    
+	String figcaption = Util.notEmpty(legend) ? legend + " " : "";
+	
 	if (Util.isEmpty(alt)) { // s'assurer d'éviter d'avoir "alt = null"
-	   alt = "";
+	    alt = figcaption;
 	}
+	
+    if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+	
 %>
 <jalios:buffer name="btnImage">
 	<jalios:if predicate="<%= hasPopin %>">
-		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mozaique.popin.title")) %>'>
+		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.popin.title")) %>'>
 	</jalios:if>
 			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="<%= alt %>" class="ds44-imgRatio is-height-set">
 	<jalios:if predicate="<%= hasPopin %>">
@@ -57,10 +62,6 @@
 
 
 <jalios:if predicate="<%=hasFigcaption%>">
-	<%
-		String figcaption = Util.notEmpty(legend) ? legend + " " : "";
-		if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
-	%>
 	<figure class="ds44-legendeContainer ds44-container-imgRatio ds44-container-imgZoom <%= style %>" data-target="#overlay-mosaique" data-js="ds44-modal" 
 			role="figure" aria-label="<%=figcaption%>">
 		<%= btnImage %>

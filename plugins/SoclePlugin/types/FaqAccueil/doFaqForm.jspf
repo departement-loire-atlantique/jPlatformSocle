@@ -25,7 +25,7 @@ boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue",
     </div>
 </div>
 
-<form data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
+<form class="ds44-js-oneSubmit" data-is-ajax='true' data-is-inline="true" action='<%= formAction %>' method='post' name='editForm' accept-charset="UTF-8"  enctype="multipart/form-data" data-statistic='{"name": "declenche-evenement","category": "Formulaire","action": "Poser une question","label": "$commune|text"}'>
 	<p class="h4-like" aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faq.poser-question") %> :</p>
     <p class="ds44-textLegend ds44-textLegend--mentions"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
     
@@ -35,7 +35,7 @@ boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue",
 			<label for="<%= idFormElement1 %>" class="ds44-formLabel">
                             <span class="ds44-labelTypePlaceholder">
 					<span class="ds44-labelTypePlaceholder">
-						<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true">*</sup>
+						<%= glp("jcmsplugin.socle.faq.votre-question") %><sup aria-hidden="true"><%= glp("jcmsplugin.socle.facette.asterisque") %></sup>
 					</span>
 				</span>
 			</label>
