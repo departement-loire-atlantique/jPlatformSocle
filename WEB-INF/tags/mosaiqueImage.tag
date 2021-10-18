@@ -48,6 +48,10 @@
 	}
 	
     if(Util.notEmpty(copyright)) figcaption += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
+    
+    if (Util.isEmpty(alt)) { // s'il n'y a pas eu de légende, on indique le copyright. Demande d'accessibilité quelques peu étrange, vu que le alt ne décrit plus l'image...
+        alt = figcaption;
+    }
 	
 %>
 <jalios:buffer name="btnImage">
