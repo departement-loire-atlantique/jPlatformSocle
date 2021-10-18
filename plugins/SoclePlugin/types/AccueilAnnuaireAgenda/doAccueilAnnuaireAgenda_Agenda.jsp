@@ -20,7 +20,7 @@
                         <h2 id="titreAccueilAgenda" class="h2-like center"><%= obj.getSoustitreSelectionAgenda(userLang) %></h2>
                     </jalios:if>
                     <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSelectionAgenda()) %>">
-	                    <p role="heading" aria-level="3" class="ds44-component-chapo ds44-centeredBlock">
+	                    <p role="heading" class="ds44-component-chapo ds44-centeredBlock">
 	                        <jalios:wysiwyg><%= obj.getIntroSelectionAgenda(userLang) %></jalios:wysiwyg>
 	                    </p>
                     </jalios:if>

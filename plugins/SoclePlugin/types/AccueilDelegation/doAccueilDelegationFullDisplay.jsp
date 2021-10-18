@@ -20,7 +20,7 @@
                     <h2 class="h2-like center"><%= obj.getTitreAnnuaire() %></h2>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getIntroAnnuaire()) %>">
-                    <p role="heading" aria-level="3" class="ds44-component-chapo ds44-centeredBlock"><jalios:wysiwyg><%= obj.getIntroAnnuaire() %></jalios:wysiwyg></p>
+                    <p role="heading" class="ds44-component-chapo ds44-centeredBlock"><jalios:wysiwyg><%= obj.getIntroAnnuaire() %></jalios:wysiwyg></p>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
                     <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
@@ -52,7 +52,7 @@
                     <header class="txtcenter">
                         <h2 class="h2-like center"><%= obj.getTitreAgenda(userLang) %></h2>
 		                <jalios:if predicate='<%= Util.notEmpty(obj.getIntroAgenda(userLang)) %>'>
-		                   <p role="heading" aria-level="3" class="ds44-component-chapo ds44-centeredBlock"><%= obj.getIntroAgenda(userLang) %></p>
+		                   <p role="heading" class="ds44-component-chapo ds44-centeredBlock"><%= obj.getIntroAgenda(userLang) %></p>
 		                </jalios:if>
                     </header>
     	        </div>
