@@ -38,7 +38,7 @@
 	            <header class="txtcenter ds44--l-padding-b">
 	               <h2 class="h2-like center"><%= box.getTitre(userLang) %></h2>
 	               <jalios:if predicate='<%= Util.notEmpty(box.getSoustitre(userLang)) %>'>
-	                  <p role="heading" aria-level="3" class="ds44-component-chapo ds44-centeredBlock"><%= box.getSoustitre(userLang) %></p>
+	                  <p role="heading" class="ds44-component-chapo ds44-centeredBlock"><%= box.getSoustitre(userLang) %></p>
 	               </jalios:if>
 	            </header>
 	         </div>
