@@ -18,7 +18,7 @@ request.setAttribute("isInPortletConteneur", true);
 	            <h2 class="h2-like center"><%= titreBloc %></h2>
 	            
 	            <jalios:if predicate="<%= Util.notEmpty(sousTitreBloc) %>">
-	                <p role="heading" class="ds44-component-chapo ds44-centeredBlock">
+	                <p class="ds44-component-chapo ds44-centeredBlock">
 	                    <jalios:wysiwyg><%= sousTitreBloc %></jalios:wysiwyg>
 	                </p>
 	            </jalios:if>
