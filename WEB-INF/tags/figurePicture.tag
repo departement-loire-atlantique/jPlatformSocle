@@ -98,6 +98,27 @@
     type="String"
     description="Le format de l'image principale"
 %>
+<%@ attribute name="urlHref"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Valeur HREF pour un lien custom - penser au titre"
+%>
+<%@ attribute name="urlTitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Valeur title pour un lien custom - penser au HREF"
+%>
+<%@ attribute name="urlIsExterne"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Determine si un lien est externe ou pas"
+%>
 
 <%
 
@@ -226,6 +247,9 @@ else {
     <jalios:if predicate="<%= hasFigcaption %>">
 	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle(userLang, false) : label %>">
 	</jalios:if>
+	<jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+	   <a href="<%= urlHref %>" title="<%= urlTitle %>" <% if (urlIsExterne) { %>target="_blank"<% } %>>
+	</jalios:if>
 	    <picture class='<%= Util.isEmpty(pictureCss) ? "" : pictureCss %>'>
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
@@ -233,7 +257,9 @@ else {
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
 	        <img src="<%=formattedImagePath%>" alt="<%= HttpUtil.encodeForHTMLAttribute(alt) %>" class='<%= Util.isEmpty(imgCss) ? "" : imgCss %>' id="<%=uid%>"/>
 	    </picture>
-	    
+	<jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+        </a>
+    </jalios:if>    
 	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
 	            <%= label %>

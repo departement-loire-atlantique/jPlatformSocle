@@ -1,0 +1,22 @@
+<%@page import="generated.CarouselElement"%>
+<%
+String urlLien = "";
+String titleLien = "";
+boolean isExterne = false;
+try {
+    CarouselElement itCarouselElemCommon = (CarouselElement) request.getAttribute("itCarouselElement");
+    isExterne = itCarouselElemCommon.getNewTab();
+    if(Util.notEmpty(itCarouselElemCommon.getExternalLink())) {
+        urlLien = itCarouselElemCommon.getExternalLink();
+    } else if(Util.notEmpty(itCarouselElemCommon.getInternalLink())) {
+        urlLien = itCarouselElemCommon.getInternalLink().getDisplayUrl(userLocale);
+    }
+    if (isExterne) {
+        titleLien = HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lien.nouvelonglet", itCarouselElemCommon.getLinkTitle()));
+    } else {
+        titleLien = HttpUtil.encodeForHTMLAttribute(itCarouselElemCommon.getLinkTitle());
+    }
+} catch (Exception e) {
+    logger.warn("Erreur dans elementCarouselLinkCommons : " + e.getMessage());
+}
+%>

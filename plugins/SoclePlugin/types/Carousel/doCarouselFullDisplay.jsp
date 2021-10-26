@@ -44,7 +44,7 @@
                           label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
                         }
                     }
-				%>
+                %>
 				<li class="swiper-slide">
 					<div class="ds44-diaporama-vignette">
 						<jalios:if predicate="<%= Util.notEmpty(itElement.getImageLegend(userLang, false)) %>">
