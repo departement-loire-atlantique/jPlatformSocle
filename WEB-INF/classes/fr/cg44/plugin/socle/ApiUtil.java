@@ -16,9 +16,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.HttpUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.RequestManager;
@@ -123,7 +125,7 @@ public class ApiUtil {
       
       try {
         
-        CloseableHttpResponse response = ApiUtil.createGetConnection(url, token);
+        CloseableHttpResponse response = ApiUtil.createGetConnection(HttpUtil.encodeForHTML(url), token);
         
         if (Util.isEmpty(response)) {
             LOGGER.warn("Method getJsonObjectFromApi => pas de réponse HTTP");
@@ -154,8 +156,55 @@ public class ApiUtil {
     
   }
   
+  /**
+   * Génère une requête GET vers une URL et récupère une réponse en format JSONArray
+   * @param token
+   * @param url
+   * @return
+   */
+  public static JSONArray getJsonArrayFromApi(String url, String token) {
+
+      JSONArray fluxData = new JSONArray();
+      
+      try {
+        
+        CloseableHttpResponse response = ApiUtil.createGetConnection(HttpUtil.encodeForHTML(url), token);
+        
+        if (Util.isEmpty(response)) {
+            LOGGER.warn("Method getJsonArrayFromApi => pas de réponse HTTP");
+            return fluxData;
+        }
+        
+        int status = response.getStatusLine().getStatusCode();
+                    
+        switch (status) {
+            case 200:
+                
+                fluxData = new JSONArray(SocleUtils.convertStreamToString(response.getEntity().getContent()));
+                
+                break;
+            case 404:
+                LOGGER.warn("Erreur 404 -> URL " + url + " non trouvée.");
+                break;
+            default:
+                LOGGER.warn("Erreur HTTP inconnue : " + response.getStatusLine().getReasonPhrase());
+                break;
+        }
+        
+    } catch (Exception e) {
+        LOGGER.warn("Exception sur getJsonArrayFromApi : " + e.getMessage());
+    }
+    
+    return fluxData;
+    
+  }
+  
   public static JSONObject getJsonObjectFromApi(String url) {
     return getJsonObjectFromApi(url, null);
+  }
+  
+  public static JSONArray getJsonArrayFromApi(String url) {
+      return getJsonArrayFromApi(url, null);
   }
   
 }
