@@ -56,6 +56,9 @@
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Catégorie de navigation</label>
     </field>
+    <field name="categorieDeClassement" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.lien.classement.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Catégorie de classement</label>
+    </field>    
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="rattachement" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mise en avant</label>
     </field>

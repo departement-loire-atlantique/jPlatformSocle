@@ -50,10 +50,6 @@ jcmsplugin.socle.connection.timeout: 5
 # Durée du cache pour les horaires des lieux (en ms)
 jcmsplugin.socle.horaire.cache.time: 60000
 
-# Retirer l'option "ajout de média" pour des raisons d'accessibilité
-# A réactiver une fois l'accessibilité et le contrôle des paramètres d'une image intégrés dans JPlatforme
-unified-insert.items.media.enabled: false
-
 # ------------------------------------------------------------
 #  Sectorisation
 # ------------------------------------------------------------
@@ -743,6 +739,10 @@ $jcmsplugin.socle.alerte.icone: cda_1341350
 
 # Portlet Recherche Facettes à afficher sur les pages Canton
 jcmsplugin.socle.canton.recherche.portlet.id: 
+
+# Liens
+$jcmsplugin.socle.lien.classement.root: c_1378629
+$id.jcmsplugin.socle.lien.importWS: c_1378677 
 
 # ------------------------------------------------------------
 # Limites de taille de fichier à l'upload
