@@ -691,6 +691,7 @@ jcmsplugin.socle.ficheemploi.label.repondrecourrier2: Ou envoyer votre candidatu
 jcmsplugin.socle.ficheemploi.label.serviceRessources: Service ressources
 jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de situation administrative ou attestation de réussite au concours.
 jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Département de Loire-Atlantique<br/>Direction des Ressources Humaines,<br/>Service Emploi et Compétences<br/>3 Quai Ceineray, CS 94109<br/>44041 Nantes cedex 1
+jcmsplugin.socle.ficheemploi.label.reference: (Réf : {0})
 
 # ------------------------------------------------------------
 #  Portlet Carrousel d'images en home
