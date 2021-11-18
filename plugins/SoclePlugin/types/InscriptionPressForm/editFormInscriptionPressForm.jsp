@@ -12,7 +12,7 @@
   if (formHandler.validate()) {
     return;
   }
-  boolean formInPortal = jcmsContext.isInFrontOffice(); 
+  boolean formInPortal = jcmsContext.isInFrontOffice();
 %>   
 <jalios:if predicate='<%= !formInPortal %>'>
 <%@ include file='/jcore/doHeader.jspf' %>
