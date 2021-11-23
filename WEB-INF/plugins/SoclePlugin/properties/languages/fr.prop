@@ -666,12 +666,13 @@ jcmsplugin.socle.dossier.fermer-menu-sommaire : Fermer le menu Sommaire
 #  Fiche emploi / stage
 # ------------------------------------------------------------
 
-jcmsplugin.socle.ficheemploi.label.vosmissions: Vos missions
+jcmsplugin.socle.ficheemploi.label.vosmissions: Vos futures missions
 jcmsplugin.socle.ficheemploi.label.activites: Activités
-jcmsplugin.socle.ficheemploi.label.competencesattendues: Compétences attendues
+jcmsplugin.socle.ficheemploi.label.competencesattendues: Vous êtes fait·e pour le poste si...
 jcmsplugin.socle.ficheemploi.label.conditions: Conditions à remplir
+jcmsplugin.socle.ficheemploi.label.avantagessociaux: Avantages sociaux liés au poste
 jcmsplugin.socle.ficheemploi.label.specificites: Spécificités du poste
-jcmsplugin.socle.ficheemploi.label.modalites: Modalités de candidature
+jcmsplugin.socle.ficheemploi.label.modalites: Vous êtes intéressé·e ?
 jcmsplugin.socle.ficheemploi.label.reference: Référence : {0}
 jcmsplugin.socle.ficheemploi.label.informations: Informations sur l'offre :
 jcmsplugin.socle.ficheemploi.label.profil: Profil souhaité :
