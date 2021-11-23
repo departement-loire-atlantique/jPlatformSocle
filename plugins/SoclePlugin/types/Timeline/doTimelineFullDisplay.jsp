@@ -46,9 +46,10 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
 	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Lien" counter="counterTimeline">
 	            <%
 	            String titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
-	            if (Util.isEmpty(titleLink)) titleLink = itElement.getTitle(userLang);
 	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(titleLink) %>">
 	            <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
+	            </jalios:if>
 	            </jalios:foreach>
 	        </ul>
 	    </nav>
@@ -61,14 +62,15 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
 	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Lien" counter="counterTimeline">
                 <%
                 String titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
-                if (Util.isEmpty(titleElement)) titleElement = itElement.getTitle(userLang);
                 %>
                 
                 <section id="time_elem_<%= itElement.getId() %>" class="ds44-timeline_elem">
                    <div class="ds44-timeline_elem_body aos-init aos-animate" data-aos="fade-up">
+                      <jalios:if predicate="<%= Util.notEmpty(titleElement) %>">
                       <header class="ds44-timeline_elem__header">
                          <h2 class="h2-like" id="titreTimeline<%= itElement.getId() %>"><%= titleElement %></h2>
                       </header>
+                      </jalios:if>
                       <jalios:if predicate="<%= Util.notEmpty(itElement.getDateDebut()) %>">
                       <%
                       SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
