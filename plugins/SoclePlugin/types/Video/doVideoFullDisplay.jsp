@@ -17,7 +17,7 @@ String videoId = obj.getUrlVideo().substring(obj.getUrlVideo().indexOf("?v=") + 
 <jalios:include target="SOCLE_ALERTE"/>
 
     <article class="ds44-container-large">
-        <ds:titleSimple pub="<%= obj %>" video="<%= obj %>" title="<%= obj.getTitle(userLang) %>" chapo="<%= obj.getChapo(userLang) %>"
+        <ds:titleSimple pub="<%= obj %>" video="<%= obj %>" videoId="<%= videoId %>" uidVideoIFrame="<%= uniqueIDiframe %>" title="<%= obj.getTitle(userLang) %>" chapo="<%= obj.getChapo(userLang) %>"
             legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true">
         </ds:titleSimple>
         <section class="ds44-contenuArticle">

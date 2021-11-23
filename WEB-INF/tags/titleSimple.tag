@@ -53,6 +53,20 @@
     type="generated.Video"
     description="Video"
 %>
+<%@ attribute name="videoId"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="UID unique de la vidéo"
+%>
+<%@ attribute name="uidVideoIFrame"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="UID unique de la vidéo pour son iframe"
+%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
@@ -158,15 +172,17 @@ if(Util.notEmpty(video)) {
     </div>
 </div>
 <jalios:select>
-	<jalios:if predicate="<%=Util.notEmpty(urlVideo)%>">
-	    <div class="ds44-img50">
-	        <div class="ds44-inner-container">
-	            <div class="ds44-grid12-offset-1">
-	                <iframe title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
-                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
-				        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript)) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
-				    </jalios:if>
-                </div>
+	<jalios:if predicate="<%=Util.notEmpty(urlVideo) && Util.notEmpty(uidVideoIFrame) && Util.notEmpty(videoId) %>">
+	    <div class="ds44-inner-container">
+	       <div class="ds44-js-youtube-video" data-video-id="<%= videoId %>">
+		        <div class="ds44-video-container">
+		            <div class="ds44-grid12-offset-1">
+		                <iframe title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' id="<%= uidVideoIFrame %>" style="width: 100%; height: 480px; border: none; position: inherit;" src="<%= urlVideo %>" class="ds44-video-item" allowfullscreen></iframe>
+	                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
+					        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript)) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
+					    </jalios:if>
+	                </div>
+		        </div>
 	        </div>
 	    </div>
 	</jalios:if>
