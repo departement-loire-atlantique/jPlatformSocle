@@ -14,6 +14,7 @@
   request.setAttribute("classBeingProcessed", generated.ContactForm.class);
   
   boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
+  boolean displayVilleField = channel.getBooleanProperty("jcmsplugin.socle.contact.display.ville", false);
 %>
 <%-- Name ------------------------------------------------------------ --%>
 <% String nomLabel = glp("jcmsplugin.socle.nom"); %>
@@ -216,7 +217,7 @@
 </jalios:if>
 
 <%-- Ville ------------------------------------------------------------ --%>
-<jalios:if predicate='<%= multilingue && userLang.equals("fr") %>'>
+<jalios:if predicate='<%= (multilingue && userLang.equals("fr")) || displayVilleField %>'>
     <% String villeLabel = glp("jcmsplugin.socle.ville"); %>
     <div class="ds44-form__container">
         <div class="ds44-posRel">

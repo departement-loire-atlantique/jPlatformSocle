@@ -98,6 +98,12 @@ public class InscriptionPressFormDataController extends BasicDataController impl
       JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.telephone")));
      }
    }
+    
+    // Média
+    if (Util.isEmpty(form.getMedia())) {
+     isOK = false;
+     JcmsContext.addMsg(req, new JcmsMessage(Level.WARN, JcmsUtil.glp(userLang, "jcmsplugin.socle.media")));
+    }
 
     // Formulaire non valide. On value le titre de la messageBox.
     if(!isOK) {

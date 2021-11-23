@@ -37,7 +37,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 					   <jalios:select>
 						   <jalios:if predicate="<%= isEmploiWithSuffixe %>">
 							   <span>
-							      <%= glp("jcmsplugin.socle.ficheemploi.label.emploi", glp("jcmsplugin.socle.ficheemploi.label.catemploi", pub.getCategorieDemploi(loggedMember).first())) %>
+							      <%= glp("jcmsplugin.socle.ficheemploi.label.emploi", glp("jcmsplugin.socle.ficheemploi.label.catemploi", pub.getCategorieDemploi(loggedMember).first())) %> <%= glp("jcmsplugin.socle.ficheemploi.label.reference", pub.getNumeroDePoste(userLang)) %>
 							   </span>
 							   <jalios:if predicate="<%= Util.notEmpty(pub.getCategorieDemploi(loggedMember).first().getDescription()) %>">
 							   <button type="button" class="js-simple-tooltip button" data-simpletooltip-content-id="tooltip-case_<%= uid %>">
@@ -47,7 +47,7 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
 						   </jalios:if>
 						   <jalios:default>
 							   <span>
-							      <%= glp("jcmsplugin.socle.ficheemploi.label.catemploi", pub.getCategorieDemploi(loggedMember).first()) %>
+							      <%= glp("jcmsplugin.socle.ficheemploi.label.catemploi", pub.getCategorieDemploi(loggedMember).first()) %> <%= glp("jcmsplugin.socle.ficheemploi.label.reference", pub.getNumeroDePoste(userLang)) %>
 							   </span>
 						   </jalios:default>
 					   </jalios:select>

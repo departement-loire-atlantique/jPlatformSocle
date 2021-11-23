@@ -135,9 +135,9 @@
     <div class="ds44-form__container">
         <div class="ds44-posRel">
             <label for="form-element-media" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder"><span><%= mediaLabel %></span></span>
+                <span class="ds44-labelTypePlaceholder"><span><%= mediaLabel %><sup aria-hidden="true">*</sup></span></span>
             </label>
-            <input type="text" id="form-element-media" name="media" class="ds44-inpStd" aria-describedby="explanation-form-element-media">
+            <input type="text" id="form-element-media" name="media" class="ds44-inpStd" required aria-describedby="explanation-form-element-media">
             <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", mediaLabel) %></span>
             </button>
