@@ -247,19 +247,19 @@ else {
     <jalios:if predicate="<%= hasFigcaption %>">
 	<figure role="figure" <%= Util.isEmpty(figureCss) ? "" : ("class='" + figureCss + "'") %> aria-label="<%= Util.isEmpty(label) ? pub.getTitle(userLang, false) : label %>">
 	</jalios:if>
-	<jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
-	   <a href="<%= urlHref %>" title="<%= urlTitle %>" <% if (urlIsExterne) { %>target="_blank"<% } %>>
-	</jalios:if>
 	    <picture class='<%= Util.isEmpty(pictureCss) ? "" : pictureCss %>'>
 	        <jalios:if predicate="<%= Util.notEmpty(formattedMobilePath) %>">
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+	        <jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+		    <a href="<%= urlHref %>" title="<%= urlTitle %>" <% if (urlIsExterne) { %>target="_blank"<% } %>>
+		    </jalios:if>
 	        <img src="<%=formattedImagePath%>" alt="<%= HttpUtil.encodeForHTMLAttribute(alt) %>" class='<%= Util.isEmpty(imgCss) ? "" : imgCss %>' id="<%=uid%>"/>
+	        <jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+            </a>
+            </jalios:if> 
 	    </picture>
-	<jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
-        </a>
-    </jalios:if>    
 	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
 	            <%= label %>

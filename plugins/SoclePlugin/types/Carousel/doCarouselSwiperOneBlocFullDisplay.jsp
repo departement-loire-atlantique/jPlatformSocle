@@ -33,13 +33,21 @@
 		    <div class="swiper-container ds44-titleContainer ds44-titleContainer--home swiper-container-fade swiper-container-horizontal">
 		        <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
 		            <jalios:foreach name="itTuile" type="CarouselElement" array="<%= obj.getElements1() %>">
+		                <%
+		                request.setAttribute("itCarouselElement", itTuile);
+	                    %>
+	                    <%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+	                    <%
+	                    request.removeAttribute("itCarouselElement");
+		                %>
 			            <li class="swiper-slide">
 			                <div class="ds44-titleContainer ds44-titleContainer--home">
 			                    <div class="ds44-alphaGradient ds44-alphaGradient--header"></div>
 			                    <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer"
 			                           figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
 			                           pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
-			                           copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
+			                           copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
+			                           urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
 			                </div>
 			            </li>
 		            </jalios:foreach>
@@ -52,7 +60,12 @@
     <jalios:default>
 	    <%
 	    CarouselElement itTuile = (CarouselElement) obj.getElements1()[0];
-	    %>
+	    request.setAttribute("itCarouselElement", itTuile);
+        %>
+        <%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+        <%
+        request.removeAttribute("itCarouselElement");
+        %>
 	    <div class="ds44-titleContainer ds44-titleContainer--home">
 	    
             <%= titreBloc %>
@@ -61,7 +74,8 @@
             <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer"
                 figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
                 pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
-                copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
+                copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
+                urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
 	   </div>
     </jalios:default>
     

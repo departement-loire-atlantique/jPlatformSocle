@@ -23,10 +23,18 @@
 			            <li class="swiper-slide">
 			                <div class="ds44-titleContainer ds44-titleContainer--home">
 							    <div class="ds44-alphaGradient ds44-alphaGradient--header"></div>
+							    <%
+							    request.setAttribute("itCarouselElement", itTuile);
+						        %>
+						        <%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+						        <%
+						        request.removeAttribute("itCarouselElement");
+						        %>
 							    <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer"
 							     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
 	                             pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
-	                             copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
+	                             copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
+	                             urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
 							</div>
 			            </li>
 			            </jalios:foreach>
@@ -42,10 +50,18 @@
                             <ul class="swiper-wrapper ds44-list has-gutter-l ds44-carousel-swiper">
 	                            <jalios:foreach name="itTuile" type="CarouselElement" array="<%= obj.getElementsDiaporamasSecondaires() %>">
 	                                <li class="swiper-slide">
+	                                  <%
+	                                  request.setAttribute("itCarouselElement", itTuile);
+		                              %>
+		                              <%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+		                              <%
+		                              request.removeAttribute("itCarouselElement");
+		                              %>
 	                                  <ds:figurePicture imgCss="ds44-headerImg" pictureCss="ds44-pageHeaderContainer__pictureContainer" 
 	                                     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselCarree"
 		                                 pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
-		                                 copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"/>
+		                                 copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
+		                                 urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
 						            </li>
 					            </jalios:foreach>
                             </ul>
