@@ -53,20 +53,6 @@
     type="generated.Video"
     description="Video"
 %>
-<%@ attribute name="videoId"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="UID unique de la vidéo"
-%>
-<%@ attribute name="uidVideoIFrame"
-    required="false"
-    fragment="false"
-    rtexprvalue="true"
-    type="String"
-    description="UID unique de la vidéo pour son iframe"
-%>
 <%@ attribute name="alt"
     required="false"
     fragment="false"
@@ -131,15 +117,15 @@ String fichierTranscriptVideo = "";
 String typeFichierTranscript = "";
 String tailleFichierTranscript = "";
 if(Util.notEmpty(video)) {
-	titreVideo = video.getTitle();
-	urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(video.getUrlVideo()));
-	
-	// Récupération des infos du fichier de transcription
-	if(Util.notEmpty(video.getFichierTranscript(userLang))){
-		fichierTranscriptVideo = video.getFichierTranscript(userLang).getDownloadUrl();
-		typeFichierTranscript = FileDocument.getExtension(video.getFichierTranscript().getFilename()).toUpperCase();
-		tailleFichierTranscript = Util.formatFileSize(video.getFichierTranscript().getSize());
-	}
+    titreVideo = video.getTitle();
+    urlVideo = Util.decodeUrl(VideoUtils.buildYoutubeUrl(video.getUrlVideo()));
+    
+    // Récupération des infos du fichier de transcription
+    if(Util.notEmpty(video.getFichierTranscript(userLang))){
+        fichierTranscriptVideo = video.getFichierTranscript(userLang).getDownloadUrl();
+        typeFichierTranscript = FileDocument.getExtension(video.getFichierTranscript().getFilename()).toUpperCase();
+        tailleFichierTranscript = Util.formatFileSize(video.getFichierTranscript().getSize());
+    }
 }
 
 %>
@@ -152,47 +138,45 @@ if(Util.notEmpty(video)) {
     
     <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-mobile-reduced-pt">
         <div class="ds44-grid12-offset-2">
-	        <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
-		        <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
-	        </jalios:if>
-	        <h1 class="h1-like mbs mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt" id="titreActualite"><%=title%></h1>
-	        <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
-	            <h2 id="sousTitre" class="h2-like"><%= subtitle %></h2>
-	        </jalios:if>
-	        <jalios:if predicate="<%= Util.notEmpty(date) %>">
-	            <p class="ds44-textLegend"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.publiele", date) %></p>
-	        </jalios:if>
-	        <%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
-			<jalios:if predicate='<%=Util.notEmpty(urlVideo) && Util.notEmpty(chapo) %>'>
-				<div class="ds44-introduction">
-				    <jalios:wysiwyg><%=chapo%></jalios:wysiwyg>
-				</div>
-			</jalios:if>
-	    </div>
+            <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
+                <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
+            </jalios:if>
+            <h1 class="h1-like mbs mts ds44-mobile-reduced-mb ds44-mobile-reduced-mt" id="titreActualite"><%=title%></h1>
+            <jalios:if predicate="<%= Util.notEmpty(subtitle) %>">
+                <h2 id="sousTitre" class="h2-like"><%= subtitle %></h2>
+            </jalios:if>
+            <jalios:if predicate="<%= Util.notEmpty(date) %>">
+                <p class="ds44-textLegend"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.publiele", date) %></p>
+            </jalios:if>
+            <%-- Si vidéo au lieu de l'image, alors le chapo apparait au-dessus de la vidéo --%>
+            <jalios:if predicate='<%=Util.notEmpty(urlVideo) && Util.notEmpty(chapo) %>'>
+                <div class="ds44-introduction">
+                    <jalios:wysiwyg><%=chapo%></jalios:wysiwyg>
+                </div>
+            </jalios:if>
+        </div>
     </div>
 </div>
 <jalios:select>
-	<jalios:if predicate="<%=Util.notEmpty(urlVideo) && Util.notEmpty(uidVideoIFrame) && Util.notEmpty(videoId) %>">
-	    <div class="ds44-inner-container">
-	       <div class="ds44-js-youtube-video" data-video-id="<%= videoId %>">
-		        <div class="ds44-video-container">
-		            <div class="ds44-grid12-offset-1">
-		                <iframe title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' id="<%= uidVideoIFrame %>" style="width: 100%; height: 480px; border: none; position: inherit;" src="<%= urlVideo %>" class="ds44-video-item" allowfullscreen></iframe>
-	                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
-					        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript)) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
-					    </jalios:if>
-	                </div>
-		        </div>
-	        </div>
-	    </div>
-	</jalios:if>
-	<jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
-	    <div class="ds44-img50">
-	        <div class="ds44-inner-container">
-	            <div class="ds44-grid12-offset-1">
-	                <ds:figurePicture pub="<%= pub %>" imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
-				</div>
-	        </div>
-	    </div>
-	</jalios:if>
+    <jalios:if predicate="<%=Util.notEmpty(urlVideo)%>">
+        <div class="ds44-img50">
+            <div class="ds44-inner-container">
+                <div class="ds44-grid12-offset-1">
+                    <iframe title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
+                    <jalios:if predicate="<%=Util.notEmpty(fichierTranscriptVideo)%>">
+                        <p><a href="<%= fichierTranscriptVideo %>" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.telecharger-transcript.title", titreVideo,typeFichierTranscript,tailleFichierTranscript)) %>"><%= JcmsUtil.glp(userLang,"jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
+                    </jalios:if>
+                </div>
+            </div>
+        </div>
+    </jalios:if>
+    <jalios:if predicate="<%=Util.notEmpty(imagePath)%>">
+        <div class="ds44-img50">
+            <div class="ds44-inner-container">
+                <div class="ds44-grid12-offset-1">
+                    <ds:figurePicture pub="<%= pub %>" imgCss="ds44-w100 ds44-imgRatio" pictureCss="ds44-legendeContainer ds44-container-imgRatio" format="principale" image="<%= imagePath %>" imageMobile="<%= mobileImagePath %>" alt="<%= alt %>" copyright="<%= copyright %>" legend="<%= legend %>"/>
+                </div>
+            </div>
+        </div>
+    </jalios:if>
 </jalios:select>
