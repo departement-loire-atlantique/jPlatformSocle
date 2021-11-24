@@ -146,31 +146,27 @@ boolean afficherMentions = !obj.getMasquerMentions();
         </div>
         
         <%-- Texte en-tête --%>
-        <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) || Util.notEmpty(obj.getImage()) %>">
-            <section id="chapoFiche" class="ds44-contenuArticle">
-               <div class="ds44-inner-container ds44-mtb3">
-                    <div class="ds44-grid12-offset-1">
-                       <div class="grid-<%= Util.notEmpty(obj.getImage()) ? "2" : "1" %>-small-1">
-                           <jalios:if predicate='<%=Util.notEmpty(obj.getImage())%>'>
-                                <div class="col mrl mbs">
-                                    <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= obj.getTitle() %>'>
-                                        <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImage()) %>' alt="" class="ds44-w100 ds44-imgRatio">
-                                    </figure>
-                                </div>
-                            </jalios:if>
-                            
-                            <jalios:if predicate="<%= Util.notEmpty(obj.getTexteentete()) %>">
-                               <div class='col <%= Util.notEmpty(obj.getImage()) ? "mll" : "" %> mbs'>
-                                   <div class="ds44-introduction">
-                                       <jalios:wysiwyg><%= obj.getTexteentete() %></jalios:wysiwyg>
-                                    </div>
-                               </div>
-                           </jalios:if>
-                       </div>
+        <section id="chapoFiche" class="ds44-contenuArticle">
+           <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-1">
+                   <div class="grid-<%= Util.notEmpty(obj.getImage()) ? "2" : "1" %>-small-1">
+                       <jalios:if predicate='<%=Util.notEmpty(obj.getImage())%>'>
+                            <div class="col mrl mbs">
+                                <figure class="ds44-legendeContainer ds44-container-imgRatio" role="figure" aria-label='<%= obj.getTitle() %>'>
+                                    <img src='<%= SocleUtils.getUrlOfFormattedImagePrincipale(obj.getImage()) %>' alt="" class="ds44-w100 ds44-imgRatio">
+                                </figure>
+                            </div>
+                        </jalios:if>
+                        
+                        <div class='col <%= Util.notEmpty(obj.getImage()) ? "mll" : "" %> mbs'>
+                            <div class="ds44-introduction">
+                                <jalios:wysiwyg><%= obj.getTexteentete() %></jalios:wysiwyg>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </jalios:if>
+                 </div>
+             </div>
+         </section>
         
         <%-- Vos missions --%>
         <section id="blocmissions" class="ds44-contenuArticle">
@@ -211,6 +207,18 @@ boolean afficherMentions = !obj.getMasquerMentions();
                     <div class="ds44-grid12-offset-2">
                         <h3 id="titreblocconditions"><%= glp("jcmsplugin.socle.ficheemploi.label.conditions") %></h3>
                         <jalios:wysiwyg><%= obj.getConditionsARemplir() %></jalios:wysiwyg>
+                    </div>
+                </div>
+            </section>
+        </jalios:if>
+        
+        <%-- Avantages sociaux liés au poste --%>
+        <jalios:if predicate="<%= Util.notEmpty(obj.getAvantagesSociauxLiesAuPoste()) %>">
+            <section id="blocavantagessociaux" class="ds44-contenuArticle">
+                <div class="ds44-inner-container ds44-mtb3">
+                    <div class="ds44-grid12-offset-2">
+                        <h3 id="titreblocavantagessociaux"><%= glp("jcmsplugin.socle.ficheemploi.label.avantagessociaux") %></h3>
+                        <jalios:wysiwyg><%= obj.getAvantagesSociauxLiesAuPoste() %></jalios:wysiwyg>
                     </div>
                 </div>
             </section>
