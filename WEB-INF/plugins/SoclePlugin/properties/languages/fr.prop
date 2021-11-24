@@ -926,7 +926,7 @@ jcmsplugin.socle.horaires.title: Horaires d'ouverture
 jcmsplugin.socle.contacts.title: Contacts et réservation
 
 # Mosaique
-jcmsplugin.socle.mosaique.btn.label: Ouvir la boîte de dialogue : {0}
+jcmsplugin.socle.mosaique.btn.label: Ouvrir la boîte de dialogue : {0}
 jcmsplugin.socle.mosaique.popin.title: Zoom sur un élément de mosaïque
 
 # Portlet Recherche Facettes à afficher sur les pages Canton
