@@ -90,7 +90,17 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                           </picture>
                         </jalios:if>
                       </jalios:select>
-                      <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><%= itElement.getTitle() %></h4>
+                      <jalios:select>
+                            <jalios:if predicate="<%= Util.notEmpty(itElement.getLienInterne()) %>">
+                                <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itElement.getLienInterne().getDisplayUrl(userLocale) %>"><%= itElement.getTitle() %></a></h4>
+                            </jalios:if>
+                            <jalios:if predicate="<%= Util.notEmpty(itElement.getLienExterne()) %>">
+                                <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itElement.getLienExterne() %>" target="_blank"><%= itElement.getTitle() %></a></h4>
+                            </jalios:if>
+                            <jalios:default>
+                                <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><%= itElement.getTitle() %></h4>
+                            </jalios:default>
+                         </jalios:select>
                       <jalios:wysiwyg><%= itElement.getDescription(userLang) %></jalios:wysiwyg>
                       </div>
                 </section>
