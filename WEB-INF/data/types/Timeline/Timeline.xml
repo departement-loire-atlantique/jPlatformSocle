@@ -21,7 +21,7 @@
     <field name="premierElement" editor="link" required="false" compactDisplay="false" type="generated.Lien" parent="false">
       <label xml:lang="fr">Premier élément</label>
     </field>
-    <field name="elementsTimelines" editor="link" required="true" compactDisplay="false" type="generated.Lien[]" ml="false" descriptionType="tooltip" tabGroup="elementsTimeline" searchable="false" html="false" checkHtml="true">
+    <field name="elementsTimelines" editor="link" required="true" compactDisplay="false" type="Publication[]" ml="false" descriptionType="tooltip" tabGroup="elementsTimeline" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Eléments timelines</label>
     </field>
     <field name="libelleElementsTimeline" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="elementsTimeline">
