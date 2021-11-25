@@ -22,6 +22,6 @@ request.removeAttribute("itCarouselElement");
         legend="<%= pub.getImageLegend() %>" 
         copyright="<%= pub.getImageCopyright() %>"
         urlHref="<%= urlLien %>"
-        urlTitle="<%= titleLien %>"
+        urlTitle="<%= pub.getImageLegend() %>"
         urlIsExterne="<%= isExterne %>"/>
 

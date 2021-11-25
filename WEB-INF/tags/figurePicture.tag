@@ -242,6 +242,10 @@ else {
   label = alt;
 }
 
+if (Util.notEmpty(urlTitle) && urlIsExterne) {
+    urlTitle = JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", urlTitle);
+}
+
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
     <jalios:if predicate="<%= hasFigcaption %>">

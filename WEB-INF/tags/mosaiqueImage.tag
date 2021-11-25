@@ -69,9 +69,9 @@
             urlLien = image.getInternalLink().getDisplayUrl(userLocale);
         }
         if (isExterne) {
-            titleLien = HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", image.getLinkTitle()));
+            titleLien = HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", alt));
         } else {
-            titleLien = HttpUtil.encodeForHTMLAttribute(image.getLinkTitle());
+            titleLien = HttpUtil.encodeForHTMLAttribute(alt);
         }
     } catch (Exception e) {
         // sorry nothing, pas de logger ici
@@ -82,7 +82,7 @@
     %>
 <jalios:buffer name="btnImage">
     <jalios:select>
-	<jalios:if predicate="<%= hasPopin %>">
+	<jalios:if predicate="<%= hasPopin && !hasLink %>">
 		<button type="button" title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.btn.label", JcmsUtil.glp(userLang, "jcmsplugin.socle.mosaique.popin.title")) %>'>
 	</jalios:if>
 	<jalios:if predicate="<%= hasLink %>">
@@ -91,7 +91,7 @@
 	</jalios:select>
 			<img src="<%= SocleUtils.getUrlImageElementCarousel(image, userLang, jcmsContext) %>" alt="<%= alt %>" class="ds44-imgRatio is-height-set">
 	<jalios:select>
-	<jalios:if predicate="<%= hasPopin %>">
+	<jalios:if predicate="<%= hasPopin && !hasLink %>">
 		</button>
 	</jalios:if>
 	<jalios:if predicate="<%= hasLink %>">

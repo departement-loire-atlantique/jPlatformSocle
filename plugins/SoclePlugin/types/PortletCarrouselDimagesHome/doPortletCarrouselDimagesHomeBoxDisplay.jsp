@@ -34,7 +34,7 @@
 							     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselFull"
 	                             pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
 	                             copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
-	                             urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
+	                             urlHref="<%= urlLien %>" urlTitle="<%= itTuile.getTitle() %>" urlIsExterne="<%= isExterne %>"/>
 							</div>
 			            </li>
 			            </jalios:foreach>
@@ -61,7 +61,7 @@
 	                                     figureCss="ds44-pageHeaderContainer__pictureContainer" format="carouselCarree"
 		                                 pub="<%= itTuile %>" imageMobile="<%= itTuile.getImageMobile() %>" alt="<%= itTuile.getTitle() %>" 
 		                                 copyright="<%= itTuile.getImageCopyright() %>" legend="<%= itTuile.getImageLegend() %>" ariaLabel="<%= itTuile.getTitle() %>"
-		                                 urlHref="<%= urlLien %>" urlTitle="<%= titleLien %>" urlIsExterne="<%= isExterne %>"/>
+		                                 urlHref="<%= urlLien %>" urlTitle="<%= itTuile.getTitle() %>" urlIsExterne="<%= isExterne %>"/>
 						            </li>
 					            </jalios:foreach>
                             </ul>

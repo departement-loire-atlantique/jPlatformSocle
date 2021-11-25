@@ -55,18 +55,24 @@
 					<div class="ds44-diaporama-vignette">
 						<jalios:if predicate="<%= Util.notEmpty(itElement.getImageLegend(userLang, false)) %>">
 							<figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
-							    <jalios:if predicate="<%= Util.notEmpty(urlLien) && Util.notEmpty(titleLien) %>">
-							    <a href="<%= urlLien %>" title="<%= titleLien %>" <% if (isExterne) { %>target="_blank"<% } %>>
+							    <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+							    <a href="<%= urlLien %>" title="<%= titreTuile %>" <% if (isExterne) { %>target="_blank"<% } %>>
 							    </jalios:if>
 								<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt='<%= titreTuile %>' />
-								<jalios:if predicate="<%= Util.notEmpty(urlLien) && Util.notEmpty(titleLien) %>">
+								<jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
 								</a>
 								</jalios:if>
 								<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><jalios:if predicate="<%= Util.notEmpty(label) %>"><br /><%= label %></jalios:if></figcaption>
 							</figure>
 						</jalios:if>
 						<jalios:if predicate="<%= Util.isEmpty(itElement.getImageLegend(userLang, false)) %>">
-							<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %> ' />
+						    <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+                            <a href="<%= urlLien %>" title="<%= titreTuile %>" <% if (isExterne) { %>target="_blank"<% } %>>
+                            </jalios:if>
+							<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt='<%= titreTuile %>' />
+							<jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+                            </a>
+                            </jalios:if>
 						</jalios:if>
 					</div>
 				</li>
