@@ -44,17 +44,35 @@
                           label += JcmsUtil.glp(userLang, "jcmsplugin.socle.symbol.copyright") + " " + copyright;
                         }
                     }
-				%>
+                    request.setAttribute("itCarouselElement", itElement);
+                    %>
+                    <%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+                    <%
+                    request.removeAttribute("itCarouselElement");
+                    
+                %>
 				<li class="swiper-slide">
 					<div class="ds44-diaporama-vignette">
 						<jalios:if predicate="<%= Util.notEmpty(itElement.getImageLegend(userLang, false)) %>">
 							<figure class="ds44-diaporama-vignette-container" role="figure" aria-label='<%= titreTuile %>'>
+							    <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+							    <a href="<%= urlLien %>" title="<%= titreTuile %>" <% if (isExterne) { %>target="_blank"<% } %>>
+							    </jalios:if>
 								<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt='<%= titreTuile %>' />
+								<jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+								</a>
+								</jalios:if>
 								<figcaption class="ds44-diaporama-vignette-text"><%= titreTuile %><jalios:if predicate="<%= Util.notEmpty(label) %>"><br /><%= label %></jalios:if></figcaption>
 							</figure>
 						</jalios:if>
 						<jalios:if predicate="<%= Util.isEmpty(itElement.getImageLegend(userLang, false)) %>">
-							<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt=<%= titreTuile %> ' />
+						    <jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+                            <a href="<%= urlLien %>" title="<%= titreTuile %>" <% if (isExterne) { %>target="_blank"<% } %>>
+                            </jalios:if>
+							<img class="ds44-diaporama-vignette-image" src="<%= urlImage %>" alt='<%= titreTuile %>' />
+							<jalios:if predicate="<%= Util.notEmpty(urlLien) %>">
+                            </a>
+                            </jalios:if>
 						</jalios:if>
 					</div>
 				</li>

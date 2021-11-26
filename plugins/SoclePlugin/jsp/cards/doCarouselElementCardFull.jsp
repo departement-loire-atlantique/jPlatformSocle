@@ -9,12 +9,19 @@ if (data == null) {
   return;
 }
 CarouselElement pub = (CarouselElement) data;
+request.setAttribute("itCarouselElement", pub);
 %>
-
+<%@ include file="/plugins/SoclePlugin/jsp/include/elementCarouselLinkCommons.jspf" %>
+<%
+request.removeAttribute("itCarouselElement");
+%>
 <ds:figurePicture pub="<%= pub %>" 
-		image="<%= pub.getImage() %>" 
-		format="principale" 
-		alt="<%= pub.getImageLegend() %>" 
-		legend="<%= pub.getImageLegend() %>" 
-		copyright="<%= pub.getImageCopyright() %>"/>
+        image="<%= pub.getImage() %>" 
+        format="principale" 
+        alt="<%= pub.getImageLegend() %>" 
+        legend="<%= pub.getImageLegend() %>" 
+        copyright="<%= pub.getImageCopyright() %>"
+        urlHref="<%= urlLien %>"
+        urlTitle="<%= pub.getImageLegend() %>"
+        urlIsExterne="<%= isExterne %>"/>
 

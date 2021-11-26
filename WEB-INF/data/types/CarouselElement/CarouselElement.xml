@@ -30,9 +30,10 @@
       <label xml:lang="en">Image copyright</label>
       <label xml:lang="fr">Copyright image</label>
     </field>
-    <field name="linkTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" tab="commun">
+    <field name="linkTitle" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" tab="commun" descriptionType="text">
       <label xml:lang="en">Link title</label>
       <label xml:lang="fr">Titre du lien</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Nécessaire pour les liens internes dans les carrousels&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="internalLink" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.Content" parent="false" tab="commun">
       <label xml:lang="en">Internal link</label>
@@ -52,10 +53,10 @@
     </field>
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation">
       <label xml:lang="fr">Rubrique concernée</label>
-    </field>    
+    </field>
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" tab="navigation">
       <label xml:lang="fr">Mise en avant</label>
-    </field>    
+    </field>
   </fields>
   <tabs>
     <tab id="commun">
@@ -64,6 +65,6 @@
     <tab id="navigation">
       <label xml:lang="fr">Navigation et classement</label>
     </tab>
-  </tabs>  
+  </tabs>
 </type>
 

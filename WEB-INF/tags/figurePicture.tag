@@ -98,6 +98,27 @@
     type="String"
     description="Le format de l'image principale"
 %>
+<%@ attribute name="urlHref"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Valeur HREF pour un lien custom - penser au titre"
+%>
+<%@ attribute name="urlTitle"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="String"
+    description="Valeur title pour un lien custom - penser au HREF"
+%>
+<%@ attribute name="urlIsExterne"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Determine si un lien est externe ou pas"
+%>
 
 <%
 
@@ -221,6 +242,10 @@ else {
   label = alt;
 }
 
+if (Util.notEmpty(urlTitle) && urlIsExterne) {
+    urlTitle = JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", urlTitle);
+}
+
 %>
 <jalios:if predicate="<%= Util.notEmpty(formattedImagePath) %>">
     <jalios:if predicate="<%= hasFigcaption %>">
@@ -231,9 +256,14 @@ else {
 	            <source media="(max-width: 36em)" srcset="<%=formattedMobilePath%>">
 	        </jalios:if>
 	        <source media="(min-width: 36em)" srcset="<%=formattedImagePath%>">
+	        <jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+		    <a href="<%= urlHref %>" title="<%= urlTitle %>" <% if (urlIsExterne) { %>target="_blank"<% } %>>
+		    </jalios:if>
 	        <img src="<%=formattedImagePath%>" alt="<%= HttpUtil.encodeForHTMLAttribute(alt) %>" class='<%= Util.isEmpty(imgCss) ? "" : imgCss %>' id="<%=uid%>"/>
+	        <jalios:if predicate="<%= Util.notEmpty(urlHref) && Util.notEmpty(urlTitle) %>">
+            </a>
+            </jalios:if> 
 	    </picture>
-	    
 	<jalios:if predicate="<%= hasFigcaption%>">
 	        <figcaption class="ds44-imgCaption">
 	            <%= label %>
