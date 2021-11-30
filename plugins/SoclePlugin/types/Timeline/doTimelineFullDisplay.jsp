@@ -74,19 +74,15 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                       <%
                       SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                       %>
-                      <jalios:select>
-                        <jalios:if predicate="<%= itElement instanceof Lien %>">
-                            <%
-                            Lien itLienElem = (Lien) itElement;
-                            %>
-	                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getDateDebut()) %>">
-		                      <h3 class="h4-like ds44-mt5"><%= sdf.format(itLienElem.getDateDebut()) %><jalios:if predicate="<%= Util.notEmpty(itLienElem.getDateFin()) %>"> - <%= sdf.format(itLienElem.getDateFin()) %></jalios:if></h3>
-		                    </jalios:if>
-                        </jalios:if>
-                        <jalios:default>
-                            <h3 class="h4-like ds44-mt5"><%= sdf.format(itElement.getPdate()) %></h3>
-                        </jalios:default>
-                      </jalios:select>
+                      
+                      <jalios:if predicate="<%= itElement instanceof Lien %>">
+                          <%
+                          Lien itLienElem = (Lien) itElement;
+                          %>
+	                      <jalios:if predicate="<%= Util.notEmpty(itLienElem.getDateDebut()) %>">
+		                    <h3 class="h4-like ds44-mt5"><%= sdf.format(itLienElem.getDateDebut()) %><jalios:if predicate="<%= Util.notEmpty(itLienElem.getDateFin()) %>"> - <%= sdf.format(itLienElem.getDateFin()) %></jalios:if></h3>
+		                  </jalios:if>
+                      </jalios:if>
                       
                       <jalios:select>
                         <%-- Le contenu est un Lien --%>
