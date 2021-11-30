@@ -1,0 +1,17 @@
+<%@page import="generated.CarouselElement"%>
+<%
+String urlLien = "";
+String titleLien = "";
+boolean isExterne = false;
+try {
+    CarouselElement itCarouselElemCommon = (CarouselElement) request.getAttribute("itCarouselElement");
+    isExterne = itCarouselElemCommon.getNewTab();
+    if(Util.notEmpty(itCarouselElemCommon.getExternalLink())) {
+        urlLien = itCarouselElemCommon.getExternalLink();
+    } else if(Util.notEmpty(itCarouselElemCommon.getInternalLink())) {
+        urlLien = itCarouselElemCommon.getInternalLink().getDisplayUrl(userLocale);
+    }
+} catch (Exception e) {
+    logger.warn("Erreur dans elementCarouselLinkCommons : " + e.getMessage());
+}
+%>

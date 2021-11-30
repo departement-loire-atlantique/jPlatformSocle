@@ -134,7 +134,7 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                             </jalios:if>
                         </jalios:default>
                       </jalios:select>
-                      
+
                       </div>
                 </section>
                 
