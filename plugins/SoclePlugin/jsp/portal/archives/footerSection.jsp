@@ -6,7 +6,7 @@
 	<div class="grid-12-small-1 has-gutter-l">
 	    <div class="col-2-small-1">
 	        <picture class="ds44-logo ds44-mb3 ds44-mobile-reduced-mt ds44-mobile-reduced-pt">
-	            <img src="//design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg" alt="Loire Atlantique" class="mbm">
+	            <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logofooter") %>' alt="Loire Atlantique" class="mbm">
 	        </picture>
 	    </div>
 	    

@@ -130,6 +130,7 @@ comparator.ElectedMember.presidence: fr.cg44.plugin.socle.comparator.PresidenceC
 # ------------------------------------------------------------
 jcmsplugin.socle.site.src.logo: https://design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
 jcmsplugin.socle.site.src.logomobile:
+jcmsplugin.socle.site.src.logofooter: //design.loire-atlantique.fr/assets/images/logo-loire-atlantique.svg
 jcmsplugin.socle.site.logo.style:
 jcmsplugin.socle.site.src.carte.pdcv: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-desktop.svg
 jcmsplugin.socle.site.src.carte.pdcv.mobile: https://design.loire-atlantique.fr/assets/images/cd44-carte-secteurs-mobile.svg
