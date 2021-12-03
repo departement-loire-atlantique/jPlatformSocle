@@ -186,9 +186,9 @@ public class InfolocaleMetadataUtils {
      * @return
      */
     private static String getMetaHoraires(EvenementInfolocale event) {
-      // Mettre la valeur "horaire" pour récupérer l'horaire associé à la date affichée d'un événement dans une tuile
-      return "horaire";
-    }
+        // Mettre la valeur "horaire" pour récupérer l'horaire associé à la date affichée d'un événement
+        return InfolocaleUtil.getHoraireDisplay(InfolocaleUtil.getClosestDate(event));
+      }
     
     /**
      * Récupère la métadonnée Durée
