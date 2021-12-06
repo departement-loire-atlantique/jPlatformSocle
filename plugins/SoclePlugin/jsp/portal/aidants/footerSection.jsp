@@ -10,10 +10,10 @@
                 <img src="//dev-design.loire-atlantique.fr/assets/images/logos/logo-udaf.svg" alt="UDAF Loire-Atlantique : Le site des aidants">
             </div>
         </div>
-        <div class="col-4-small-1 ds44-mb3">
+        <div class="col-5-small-1 ds44-mb3">
             <jalios:include id='<%= channel.getProperty("jcmsplugin.socle.footer.portletcontact.id") %>'/>
         </div>      
-        <div class="col-3-small-1">     
+        <div class="col-5-small-1">     
             <%-- Inclusion de la portlet JSP de Newsletter --%>
             <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.apiKey")) &&
                 Util.notEmpty(channel.getProperty("jcmsplugin.socle.mailjet.apiSecretKey")) &&
@@ -22,10 +22,6 @@
                 %>'>
                <%@ include file='/plugins/SoclePlugin/jsp/portal/abonnementNewsletterSimpleFooter.jspf' %>   
             </jalios:if>                
-        </div>
-        <div class="col-3-small-1">
-            <%-- Inclusion de la portlet réseaux sociaux --%>
-            <%@ include file='/plugins/SoclePlugin/jsp/portal/socialNetworksFooter.jspf' %>
         </div>
     </div>
 </section>
