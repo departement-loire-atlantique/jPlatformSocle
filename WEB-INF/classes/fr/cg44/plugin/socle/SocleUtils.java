@@ -3,6 +3,7 @@ package fr.cg44.plugin.socle;
 import static com.jalios.jcms.Channel.getChannel;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,6 +31,7 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.jalios.io.ImageFormat;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Content;
@@ -1256,11 +1258,16 @@ public final class SocleUtils {
    * @param imagePath
    * @return
    */
-  public static String generateVignette(String imagePath, int width, int height) {
-    if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {
-      return ThumbnailTag.buildThumbnail(imagePath, width, height, imagePath); 
+  public static String generateVignette(String imagePath, int width, int height) {       
+    if (Util.notEmpty(imagePath) && Util.notEmpty(width) && Util.notEmpty(height)) {            
+      File file = ThumbnailTag.createThumbnail(null, new File(channel.getRealPath(imagePath)), null, ImageFormat.JPEG, width, height);
+      if(file != null) {
+        return channel.getRelativePath(file);
+      } else {
+        LOGGER.debug("Echec de la génération de miniature pour " + imagePath);
+      }
     }
-    return "";
+    return imagePath;
   }
   
   /**
