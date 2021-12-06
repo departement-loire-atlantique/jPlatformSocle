@@ -369,6 +369,10 @@ jcmsplugin.socle.recherche.resultats: Résultats de votre recherche
 
 jcmsplugin.socle.gpla.site: Grand Patrimoine de Loire-Atlantique
 
+# Paramétrable
+
+jcmsplugin.socle.header.hidesiteapplis: Cacher le bouton "Sites et applis" et les réseaux sociaux en header
+
 # ------------------------------------------------------------
 #  Près de chez vous
 # ------------------------------------------------------------
