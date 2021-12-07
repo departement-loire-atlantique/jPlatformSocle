@@ -1,3 +1,4 @@
+<%@page import="generated.PortletRechercheFacettes"%>
 <%@page import="generated.PortletMiseEnAvantDeContenus"%>
 <section id="menuRech">
     <div class="ds44-overlay ds44-overlay--navNiv2 ds44-wave-grey ds44-bg-pdr ds44-whiteBG" role="dialog" aria-modal="true" aria-label='<%= glp("jcmsplugin.socle.recherche.menu") %>' aria-hidden="true">
@@ -12,6 +13,10 @@
                 <%
                 Publication portletSearch = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletsearch.id"));
                 Publication portletMea = channel.getPublication(channel.getProperty("jcmsplugin.socle.recherche.portletmea.id"));
+                if (portletSearch instanceof PortletRechercheFacettes) {
+                    portletSearch = (Publication) portletSearch.getUpdateInstance();
+                    portletSearch.setTemplate("box.header");
+                }
                 %>
                 <jalios:if predicate="<%= Util.notEmpty(portletSearch) %>">
 	                <div class="col-<%= Util.isEmpty(portletMea) ? "12" : "5" %>-small-1 txtcenter">

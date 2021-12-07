@@ -606,6 +606,9 @@
         <template name="encadre" file="doPortletRechercheFacettesEncadreDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit de recherche pour encadré</label>
         </template>
+        <template name="header" file="doPortletRechercheFacettesHeader.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche en header</label>
+        </template>
     </templates>
     <templates type="PortletSearch">
         <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
