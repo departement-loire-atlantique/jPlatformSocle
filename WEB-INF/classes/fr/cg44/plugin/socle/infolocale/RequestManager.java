@@ -64,7 +64,7 @@ public class RequestManager {
     }
     
     private static void sendTokenRequest(String url, String type, boolean stopOnFail) {
-        boolean invalidToken = false;
+        boolean invalidToken = true;
         
         TokenManager tokenManager = TokenManager.getInstance();
         
@@ -104,10 +104,10 @@ public class RequestManager {
                     
                     LOGGER.debug("Tokens générés");
                     resetTokenRefreshCounter();
+                    invalidToken = false;
                     break;
                 case 400:
                     LOGGER.warn(type + " : " + httpError + status + ". Token non valide.");
-                    invalidToken = true;
                     break;
                 case 401:
                     LOGGER.warn(type + " : " + httpError + status + ". Authentification échouée.");
@@ -121,9 +121,9 @@ public class RequestManager {
             LOGGER.warn("Exception sur " + type + " : " + e.getMessage());
         }
         
-        // Si la requête consistait à refresh les tokens, en cas d'échec, demander une initialisation des tokens
-        if (invalidToken && "refresh_token".equals(type)) {
-            if (stopOnFail) {
+        // en cas d'échec, relancer la demande jusqu'à 3 fois ou au premier échec si stopOnFail == true
+        if (invalidToken) {
+            if (stopOnFail || iterateTokenRefreshCounter()) {
               LOGGER.debug("Authentification invalide. Veuillez mettre à jour les identifiants Infolocale...");
             } else {
               LOGGER.debug("Token invalide. Tentative de regénération de token via authentification...");
@@ -170,7 +170,7 @@ public class RequestManager {
             switch (status) {
                 case 401:
                     tokensOk = false;
-                    while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                    while (!iterateTokenRefreshCounter() && !tokensOk) {
                       regenerateTokens();
                     }
                     if (!tokensOk) {
@@ -205,8 +205,12 @@ public class RequestManager {
         }
         
         if (expiredToken) {
-            LOGGER.debug("Token invalide. Tentative de regénération de token...");
-            regenerateTokens();
+            if (attempsToRefresh >= 3) {
+                LOGGER.debug("Le token n'a pas pu être régénéré.");
+            } else {
+                LOGGER.debug("Token invalide. Tentative de regénération de token...");
+                regenerateTokens();
+            }
         }
         
         return fluxData;
@@ -247,7 +251,7 @@ public class RequestManager {
           switch (status) {
               case 401:
                   tokensOk = false;
-                  while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                  while (!iterateTokenRefreshCounter() && !tokensOk) {
                     regenerateTokens();
                   }
                   if (!tokensOk) {
@@ -329,7 +333,7 @@ public class RequestManager {
                       
               case 401:
                   tokensOk = false;
-                  while ((attempsToRefresh > 0 || !iterateTokenRefreshCounter()) && !tokensOk) {
+                  while (!iterateTokenRefreshCounter() && !tokensOk) {
                     regenerateTokens();
                   }
                   if (!tokensOk) {
