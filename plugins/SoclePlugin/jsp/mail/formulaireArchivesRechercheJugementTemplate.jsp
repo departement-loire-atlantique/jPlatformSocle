@@ -38,7 +38,7 @@
                         
                         <p><%= glp("jcmsplugin.archives.email.communication.sous-titre") %> <%=request.getAttribute("date") %></p>
                         
-                        <h2><%= glp("jcmsplugin.archives.form.vous-etes") %></h2>
+                        <legend><h2><%= glp("jcmsplugin.archives.form.vous-etes") %></h2></legend>
                         
                         <p><%= glp("jcmsplugin.archives.form.nom") %> : <%=request.getAttribute("nom") %></p>
                         <p><%= glp("jcmsplugin.archives.form.prenom") %> : <%=request.getAttribute("prenom") %></p>
@@ -50,7 +50,7 @@
                         <p><%= glp("jcmsplugin.archives.form.ville") %> : <%=request.getAttribute("ville") %></p>
                         <p><%= glp("jcmsplugin.archives.form.telephone") %> : <%=request.getAttribute("telephone") %></p>
                         
-                        <h2><%= glp("jcmsplugin.archives.form.caracteristiquesJugement") %></h2>
+                        <legend><h2><%= glp("jcmsplugin.archives.form.caracteristiquesJugement") %></h2></legend>
 
                         <% if(Util.notEmpty(request.getAttribute("anneeJugement"))) { %>
                             <p><%= glp("jcmsplugin.archives.form.anneeJugement") %> : <%=request.getAttribute("anneeJugement") %></p>
@@ -71,14 +71,14 @@
                             <p><%= glp("jcmsplugin.archives.form.prenomPersonne2") %> : <%=request.getAttribute("prenomPersonne2") %></p>
                         <% }%>
                                                 
-                        <h2><%= glp("jcmsplugin.archives.form.motifJugement") %></h2>
+                        <legend><h2><%= glp("jcmsplugin.archives.form.motifJugement") %></h2></legend>
 
                         <p><%= glp("jcmsplugin.archives.form.motifJugement") %> : <%=request.getAttribute("motifJugement") %></p>
                         <% if(Util.notEmpty(request.getAttribute("autreMotifJugement"))) { %>
                             <p><%= glp("jcmsplugin.archives.form.autreMotifJugement") %> : <%=request.getAttribute("autreMotifJugement") %></p>
                         <% }%>
                                                 
-                        <h2><%= glp("jcmsplugin.archives.form.motivationDemandeJugement") %></h2>
+                        <legend><h2><%= glp("jcmsplugin.archives.form.motivationDemandeJugement") %></h2></legend>
                         
                         <p><%= glp("jcmsplugin.archives.form.motivations") %> : <%=request.getAttribute("motivations") %></p>
   
