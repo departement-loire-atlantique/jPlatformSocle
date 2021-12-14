@@ -225,7 +225,7 @@ for (Iterator it = jcmsContext.getCustomHeaders().iterator() ; it.hasNext() ; ) 
   jcmsContext.addBodyAttributes("class", classValues);
 }
 %>
-<body <% for (Iterator it = jcmsContext.getBodyAttributes().entrySet().iterator() ; it.hasNext() ; ) { Map.Entry itHeader = (Map.Entry) it.next(); %> <%= itHeader.getKey() %>="<%= itHeader.getValue() %>"<%}%>><jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" /><%
+<body data-sitename="<%= strTitle %>"<% for (Iterator it = jcmsContext.getBodyAttributes().entrySet().iterator() ; it.hasNext() ; ) { Map.Entry itHeader = (Map.Entry) it.next(); %> <%= itHeader.getKey() %>="<%= itHeader.getValue() %>"<%}%>><jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" /><%
   %><script <%= cspNonceAttribute %>>document.body.className = document.body.className + ' js'</script><%
   boolean jcmsShieldEnabled = Util.toBoolean(request.getAttribute("com.jalios.jcms.JCMS_JS_SHIELD"), false);
   if (jcmsShieldEnabled) { %>
