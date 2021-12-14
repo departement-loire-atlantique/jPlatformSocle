@@ -89,11 +89,13 @@
     <field name="emailSpecifique" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true">
       <label xml:lang="fr">Email spécifique</label>
     </field>
-    <field name="introModalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
-      <label xml:lang="fr">Intro modalités de candidature</label>
-    </field>
-    <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
+    <field name="introModalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="text" html="false">
       <label xml:lang="fr">Vous êtes intéressé·e ?</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;(Laisser vide, un message s'affichera automatiquement avec la référence et la date limite de candidature. A renseigner uniquement si les modalités de candidatures sont spécifiques, par exemple si offre partenaire)&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="modalitesDeCandidature" editor="wysiwyg" required="false" compactDisplay="false" tab="contacts" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Informations complémentaires</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;(Laisser vide, un message s'affichera automatiquement avec l'adresse d'envoi par courrier de la candidature. A renseigner uniquement si les modalités de candidatures sont spécifiques, par exemple si offre partenaire).&lt;/p&gt;&lt;/div&gt;</description>
     </field>
     <field name="contactRH" editor="textfield" required="false" compactDisplay="false" tab="contacts" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" tabGroup="contactRH">
       <label xml:lang="fr">Contact RH</label>
