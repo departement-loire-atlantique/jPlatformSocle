@@ -84,7 +84,7 @@
       <label xml:lang="fr">Spécificités du poste</label>
     </field>
     <field name="avantagesSociauxLiesAuPoste" editor="wysiwyg" required="false" compactDisplay="false" tab="competences_attendues" type="String" searchable="false" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
-      <label xml:lang="fr">Avantages sociaux liés au poste</label>
+      <label xml:lang="fr">Avantages liés au poste</label>
     </field>
     <field name="emailSpecifique" editor="email" required="false" compactDisplay="false" type="String" searchable="false" size="50" ml="false" descriptionType="tooltip" tab="contacts" html="false" checkHtml="true">
       <label xml:lang="fr">Email spécifique</label>
