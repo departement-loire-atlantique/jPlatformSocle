@@ -125,7 +125,7 @@ public class ApiUtil {
       
       try {
         
-        CloseableHttpResponse response = ApiUtil.createGetConnection(HttpUtil.encodeForURL(url), token);
+        CloseableHttpResponse response = ApiUtil.createGetConnection(url, token);
         
         if (Util.isEmpty(response)) {
             LOGGER.warn("Method getJsonObjectFromApi => pas de réponse HTTP");
@@ -168,7 +168,7 @@ public class ApiUtil {
       
       try {
         
-        CloseableHttpResponse response = ApiUtil.createGetConnection(HttpUtil.encodeForURL(url), token);
+        CloseableHttpResponse response = ApiUtil.createGetConnection(url, token);
         
         if (Util.isEmpty(response)) {
             LOGGER.warn("Method getJsonArrayFromApi => pas de réponse HTTP");
