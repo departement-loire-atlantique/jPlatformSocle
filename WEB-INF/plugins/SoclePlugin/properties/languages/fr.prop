@@ -674,7 +674,7 @@ jcmsplugin.socle.ficheemploi.label.vosmissions: Vos futures missions
 jcmsplugin.socle.ficheemploi.label.activites: Activités
 jcmsplugin.socle.ficheemploi.label.competencesattendues: Vous êtes fait·e pour le poste si...
 jcmsplugin.socle.ficheemploi.label.conditions: Conditions à remplir
-jcmsplugin.socle.ficheemploi.label.avantagessociaux: Avantages sociaux liés au poste
+jcmsplugin.socle.ficheemploi.label.avantagessociaux: Avantages liés au poste
 jcmsplugin.socle.ficheemploi.label.specificites: Spécificités du poste
 jcmsplugin.socle.ficheemploi.label.modalites: Vous êtes intéressé·e ?
 jcmsplugin.socle.ficheemploi.label.reference: Référence : {0}
@@ -694,7 +694,7 @@ jcmsplugin.socle.ficheemploi.label.repondrecourrier: Ou par courrier, à l'atten
 jcmsplugin.socle.ficheemploi.label.emploi: Emploi - {0}
 jcmsplugin.socle.ficheemploi.label.repondrecourrier2: Ou envoyer votre candidature par courrier
 jcmsplugin.socle.ficheemploi.label.serviceRessources: Service ressources
-jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de situation administrative ou attestation de réussite au concours.
+jcmsplugin.socle.ficheemploi.txt.modalites: Adressez votre candidature sous la référence {0} au plus tard le {1} accompagnée d’un curriculum vitae détaillé et d’une lettre de motivation.
 jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Département de Loire-Atlantique<br/>Direction des Ressources Humaines,<br/>Service Emploi et Compétences<br/>3 Quai Ceineray, CS 94109<br/>44041 Nantes cedex 1
 jcmsplugin.socle.ficheemploi.label.reference: (Réf : {0})
 

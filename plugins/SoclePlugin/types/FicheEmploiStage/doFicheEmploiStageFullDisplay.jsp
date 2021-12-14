@@ -178,16 +178,6 @@ boolean afficherMentions = !obj.getMasquerMentions();
             </div>
         </section>
         
-        <%-- Activités --%>
-        <section id="blocactivites" class="ds44-contenuArticle">
-            <div class="ds44-inner-container ds44-mtb3">
-                <div class="ds44-grid12-offset-2">
-                    <h3 id="titreblocactivites"><%= glp("jcmsplugin.socle.ficheemploi.label.activites") %></h3>
-                    <jalios:wysiwyg><%= obj.getActivites() %></jalios:wysiwyg>
-                </div>
-            </div>
-        </section>
-        
         <%-- Compétences attendues --%>
         <jalios:if predicate="<%= Util.notEmpty(obj.getConnaissancesEtExperiences()) %>">
             <section id="bloccompetencesattendues" class="ds44-contenuArticle">
