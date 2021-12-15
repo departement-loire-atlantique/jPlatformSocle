@@ -115,7 +115,7 @@
 		               </jalios:if>
 		               <jalios:if predicate="<%= displayEnResume %>">
 			               <section class="ds44-contenuArticle" id="sectionPourQui" tabindex="-1">
-			                  <h2 id="idTitre2"><%= gtitrePourQui %></h2>
+			                  <h2 id="idTitre2"><%= titrePourQui %></h2>
 			                  <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
                                  <jalios:wysiwyg><%= obj.getPourQui(userLang) %></jalios:wysiwyg>
                               </jalios:if>
