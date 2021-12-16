@@ -34,6 +34,9 @@
     <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="false" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true">
       <label xml:lang="fr">Chapo</label>
     </field>
+    <field name="titreSEOPourQui" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO pour qui ?</label>
+    </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
@@ -44,11 +47,20 @@
     <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Éligibilité</label>
     </field>
+    <field name="titreSEOCestQuoi" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO c'est quoi ?</label>
+    </field>
     <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">C’est quoi ?</label>
     </field>
     <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Comment faire une demande ?</label>
+    </field>
+    <field name="titreSEOCommentFaireUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO comment faire une demande ?</label>
+    </field>
+    <field name="titreSEOQuelsDocumentsFournir" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO quels documents fournir ?</label>
     </field>
     <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Quels documents fournir ?</label>
@@ -90,6 +102,9 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="titreSEOQuiContacter" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO qui contacter ?</label>
+    </field>
     <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="com.jalios.jcms.Content[]">
       <label xml:lang="fr">Qui contacter ?</label>
     </field>
@@ -116,7 +131,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-     <field name="typeDeLieuDemande" editor="enumerate" required="false" compactDisplay="false" tab="demande" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat|$jcmsplugin.socle.type.sectorisation.developpement-local.cat|$jcmsplugin.socle.type.sectorisation.ressources.cat|$jcmsplugin.socle.type.sectorisation.solidarites.cat|$jcmsplugin.socle.type.sectorisation.eds.cat|$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat|$jcmsplugin.socle.type.sectorisation.unites-emplois.cat|$jcmsplugin.socle.type.sectorisation.cli.cat|$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat|$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat|$jcmsplugin.socle.type.sectorisation.missions-locales.cat|$jcmsplugin.socle.type.sectorisation.clic.cat|$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat|$jcmsplugin.socle.type.sectorisation.ccas.cat|$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement|Service développement local|Service ressources|Service solidarités|Espaces départementaux des solidarités (EDS)|Unités agrément des assistant-e-s maternel-le-s|Unités emplois|CLI|Aide sociale à l'enfance|Unités accueil familial|Missions locales|Centres locaux d'information et de coordination (CLIC)|Relais assistants maternels|CCAS|Points information personnes handicapées">
+    <field name="typeDeLieuDemande" editor="enumerate" required="false" compactDisplay="false" tab="demande" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat|$jcmsplugin.socle.type.sectorisation.developpement-local.cat|$jcmsplugin.socle.type.sectorisation.ressources.cat|$jcmsplugin.socle.type.sectorisation.solidarites.cat|$jcmsplugin.socle.type.sectorisation.eds.cat|$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat|$jcmsplugin.socle.type.sectorisation.unites-emplois.cat|$jcmsplugin.socle.type.sectorisation.cli.cat|$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat|$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat|$jcmsplugin.socle.type.sectorisation.missions-locales.cat|$jcmsplugin.socle.type.sectorisation.clic.cat|$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat|$jcmsplugin.socle.type.sectorisation.ccas.cat|$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement|Service développement local|Service ressources|Service solidarités|Espaces départementaux des solidarités (EDS)|Unités agrément des assistant-e-s maternel-le-s|Unités emplois|CLI|Aide sociale à l'enfance|Unités accueil familial|Missions locales|Centres locaux d'information et de coordination (CLIC)|Relais assistants maternels|CCAS|Points information personnes handicapées">
       <label xml:lang="fr">Type de lieu</label>
     </field>
     <field name="typeDeLieuSecondaireDemande" editor="enumerate" required="false" compactDisplay="false" tab="demande" type="String" chooser="listbox" valueList="$jcmsplugin.socle.type.sectorisation.paph.cat|$jcmsplugin.socle.type.sectorisation.delegations.cat|$jcmsplugin.socle.type.sectorisation.amenagement.cat|$jcmsplugin.socle.type.sectorisation.developpement-local.cat|$jcmsplugin.socle.type.sectorisation.ressources.cat|$jcmsplugin.socle.type.sectorisation.solidarites.cat|$jcmsplugin.socle.type.sectorisation.eds.cat|$jcmsplugin.socle.type.sectorisation.ua-assistante-maternel.cat|$jcmsplugin.socle.type.sectorisation.unites-emplois.cat|$jcmsplugin.socle.type.sectorisation.cli.cat|$jcmsplugin.socle.type.sectorisation.aide-sociale-enfance.cat|$jcmsplugin.socle.type.sectorisation.unites-accueil-familial.cat|$jcmsplugin.socle.type.sectorisation.missions-locales.cat|$jcmsplugin.socle.type.sectorisation.clic.cat|$jcmsplugin.socle.type.sectorisation.relais-assistants-maternels.cat|$jcmsplugin.socle.type.sectorisation.ccas.cat|$jcmsplugin.socle.type.sectorisation.information-personnes-handicapees.cat" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Unité personnes âgées / personnes handicapées|Délégations|Service aménagement|Service développement local|Service ressources|Service solidarités|Espaces départementaux des solidarités (EDS)|Unités agrément des assistant-e-s maternel-le-s|Unités emplois|CLI|Aide sociale à l'enfance|Unités accueil familial|Missions locales|Centres locaux d'information et de coordination (CLIC)|Relais assistants maternels|CCAS|Points information personnes handicapées">
@@ -146,6 +161,9 @@
     </field>
     <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Durée e-démarche</label>
+    </field>
+    <field name="titreSEOSuivreUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO suivre une demande</label>
     </field>
     <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro suivre une demande</label>
