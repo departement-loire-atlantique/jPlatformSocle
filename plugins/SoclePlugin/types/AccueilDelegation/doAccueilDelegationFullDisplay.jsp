@@ -20,7 +20,7 @@
                     <h2 class="h2-like center"><%= obj.getTitreAnnuaire() %></h2>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getIntroAnnuaire()) %>">
-                    <p class="ds44-component-chapo ds44-centeredBlock"><jalios:wysiwyg><%= obj.getIntroAnnuaire() %></jalios:wysiwyg></p>
+                    <p class="ds44-component-chapo ds44-centeredBlock"><%= HtmlUtil.html2text(obj.getIntroAnnuaire()) %>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getPortletRecherche()) %>">
                     <jalios:include pub="<%= obj.getPortletRecherche() %>"/>
