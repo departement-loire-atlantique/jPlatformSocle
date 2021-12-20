@@ -7,7 +7,7 @@
 
 boolean hasImage = Util.notEmpty(obj.getVisuel());
 boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
-
+SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 %>
 <main role="main" id="content">
 
@@ -71,9 +71,6 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                          <h2 class="h2-like" id="titreTimeline<%= itElement.getId() %>"><%= titleElement %></h2>
                       </header>
                       </jalios:if>
-                      <%
-                      SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-                      %>
                       
                       <jalios:if predicate="<%= itElement instanceof Lien %>">
                           <%
@@ -129,6 +126,32 @@ boolean hasDesc = Util.notEmpty(obj.getDescription(userLang));
                             %>
                             
                             <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itElement.getDisplayUrl(userLocale) %>"><%= itElement.getTitle() %></a></h4>
+                            <!-- Spécifique dossier : afficher la date -->
+                            <jalios:if predicate="<%= itElement instanceof Dossier %>">
+                                <%
+                                Dossier itDossier = (Dossier) itElement;
+                                %>
+                                <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
+		                        <h3 class="h4-like ds44-mt5"><%= sdf.format(itDossier.getDate()) %></h3>
+		                        </jalios:if>
+                            </jalios:if>
+                            <!-- Spécifique Fiche Actu : afficher la date -->
+                            <jalios:if predicate="<%= itElement instanceof FicheActu %>">
+                                <%
+                                FicheActu itFiche = (FicheActu) itElement;
+                                %>
+                                <jalios:if predicate="<%= Util.notEmpty(itFiche.getDateActu()) %>">
+                                <h3 class="h4-like ds44-mt5"><%= sdf.format(itFiche.getDateActu()) %></h3>
+                                </jalios:if>
+                            </jalios:if>
+                            <!-- Spécifique vidéo : afficher la vidéo -->
+                            <jalios:if predicate="<%= itElement instanceof Video %>">
+                                <%
+                                Video itVideo = (Video) itElement;
+                                %>
+                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
+                            </jalios:if>
+                            <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
                                 <jalios:wysiwyg><%= displayedText %></jalios:wysiwyg>
                             </jalios:if>
