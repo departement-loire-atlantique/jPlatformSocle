@@ -339,6 +339,9 @@ jcmsplugin.socle.utilisateur-connecte: Connected user: {0}
 jcmsplugin.socle.deconnexion: Disconnect
 jcmsplugin.socle.identifiant: Login
 jcmsplugin.socle.media: Média
+jcmsplugin.socle.videodesactivee: Video deactivated
+jcmsplugin.socle.devezaccepterdepotcookie: You must accept streaming cookies to play the video.
+jcmsplugin.socle.acceptercookies: Accept cookies
 
 # ------------------------------------------------------------
 #  Header
