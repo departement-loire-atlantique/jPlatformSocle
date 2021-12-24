@@ -11,6 +11,12 @@ String formAction = "plugins/SoclePlugin/jsp/forms/checkFaq.jsp";
 Publication currentPub = null!=request.getAttribute("pubParent") ? 
 	    (Publication) request.getAttribute("pubParent") :
 	    (Publication) request.getAttribute(PortalManager.PORTAL_PUBLICATION);
+	    
+// S'il n'y a pas de publication parente ni courante, il n'y a rien à afficher 
+if (Util.isEmpty(currentPub)) {
+    return;
+}
+	    
 String redirectValue = currentPub.getDisplayUrl(userLocale);
 
 boolean multilingue = channel.getBooleanProperty("jcmsplugin.socle.multilingue", false);
