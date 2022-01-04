@@ -59,22 +59,29 @@
     request.setAttribute("itCarouselElement", image);
     
     String urlLien = "";
-    String titleLien = "";
-    boolean isExterne = false;
-    try {
-        isExterne = image.getNewTab();
-        if(Util.notEmpty(image.getExternalLink())) {
-            urlLien = image.getExternalLink();
-        } else if(Util.notEmpty(image.getInternalLink())) {
-            urlLien = image.getInternalLink().getDisplayUrl(userLocale);
-        }
+    String titleLien = image.getLinkTitle(userLang);
+    boolean isExterne = image.getNewTab();
+    if (Util.isEmpty(titleLien)) {
+	    try {
+	        if(Util.notEmpty(image.getExternalLink())) {
+	            urlLien = image.getExternalLink();
+	        } else if(Util.notEmpty(image.getInternalLink())) {
+	            urlLien = image.getInternalLink().getDisplayUrl(userLocale);
+	        }
+	        if (isExterne) {
+	            titleLien = HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", alt));
+	        } else {
+	            titleLien = HttpUtil.encodeForHTMLAttribute(alt);
+	        }
+	    } catch (Exception e) {
+	        // sorry nothing, pas de logger ici
+	    }
+    } else {
         if (isExterne) {
-            titleLien = HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", alt));
+            titleLien = HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.lien.nouvelonglet", titleLien));
         } else {
-            titleLien = HttpUtil.encodeForHTMLAttribute(alt);
+            titleLien = HttpUtil.encodeForHTMLAttribute(titleLien);
         }
-    } catch (Exception e) {
-        // sorry nothing, pas de logger ici
     }
     
     boolean hasLink = Util.notEmpty(urlLien) && Util.notEmpty(titleLien);
