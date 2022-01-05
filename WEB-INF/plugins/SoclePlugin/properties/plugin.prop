@@ -144,6 +144,7 @@ jcmsplugin.socle.css-urls:https://design.loire-atlantique.fr/css/cd44.css https:
 jcmsplugin.socle.js-urls:https://design.loire-atlantique.fr/js/cd44.js
 
 jcmsplugin.socle.header.hidesiteapplis.boolean: false
+jcmsplugin.socle.header.hidesocialnetworks.boolean: false
 
 # Recherche
 
