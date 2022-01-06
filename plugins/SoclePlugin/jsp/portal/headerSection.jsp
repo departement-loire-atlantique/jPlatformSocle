@@ -49,8 +49,11 @@ if(multilingue){
 	changeLangUrl = LangTag.getChangeUrl(request, changeLang);
 }
 
-// cacher la barre "sites et appli" et RS ?
-boolean hideSitesApplisRS = channel.getBooleanProperty("jcmsplugin.socle.header.hidesiteapplis", false);
+// cacher la barre "sites et appli" ?
+boolean hideSitesApplis = channel.getBooleanProperty("jcmsplugin.socle.header.hidesiteapplis", false);
+
+// cacher les RS ?
+boolean hideSocialNetworkds = channel.getBooleanProperty("jcmsplugin.socle.header.hidesocialnetworks", false);
 %>
 
 <header role="banner" id="topPage">
@@ -173,7 +176,7 @@ boolean hideSitesApplisRS = channel.getBooleanProperty("jcmsplugin.socle.header.
 		                           </ul>
 		                    </div>
 		            
-		                    <jalios:if predicate="<%= !hideSitesApplisRS %>">
+		                    <jalios:if predicate="<%= !hideSocialNetworkds %>">
 		                    <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
 		                        <%@ include file='socialNetworksHeader.jspf' %>
 		                    </div>   
@@ -206,7 +209,7 @@ boolean hideSitesApplisRS = channel.getBooleanProperty("jcmsplugin.socle.header.
 		        <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button" aria-label="<%=glp("jcmsplugin.socle.sitesapplis.menu.fermer")%>"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
 		        
 		        <%-- Inclusion liste des sites et applis --%>
-		        <jalios:if predicate="<%= !hideSitesApplisRS %>">
+		        <jalios:if predicate="<%= !hideSitesApplis %>">
 		        <%@include file="sitesEtApplis.jspf" %>
 		        </jalios:if>
 		                            
