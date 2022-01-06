@@ -40,7 +40,7 @@
 	
 	// Titres H2 optionnels SEO
 	String titrePourQui = Util.notEmpty(obj.getTitreSEOPourQui(userLang)) ? obj.getTitreSEOPourQui(userLang) : glp("jcmsplugin.socle.titre.pour-qui");
-	String titreCestQuoi = Util.notEmpty(obj.getTitreSEOCestQuoi()(userLang)) ? obj.getTitreSEOCestQuoi(userLang) : glp("jcmsplugin.socle.titre.quoi");
+	String titreCestQuoi = Util.notEmpty(obj.getTitreSEOCestQuoi(userLang)) ? obj.getTitreSEOCestQuoi(userLang) : glp("jcmsplugin.socle.titre.quoi");
 	String titreCommentFaireDemande = Util.notEmpty(obj.getTitreSEOCommentFaireUneDemande(userLang)) ? obj.getTitreSEOCommentFaireUneDemande(userLang) : glp("jcmsplugin.socle.titre.comment-demande");
 	String titreQuelDocuments = Util.notEmpty(obj.getTitreSEOQuelsDocumentsFournir(userLang)) ? obj.getTitreSEOQuelsDocumentsFournir(userLang) : glp("jcmsplugin.socle.titre.fournir-documents");
 	String titreQuiContacter = Util.notEmpty(obj.getTitreSEOQuiContacter(userLang)) ? obj.getTitreSEOQuiContacter(userLang) : glp("jcmsplugin.socle.ficheaide.modal.quicontacter");

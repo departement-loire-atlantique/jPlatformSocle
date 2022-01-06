@@ -37,6 +37,21 @@
     <field name="titreSEOPourQui" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Titre SEO pour qui ?</label>
     </field>
+    <field name="titreSEOCestQuoi" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO c'est quoi ?</label>
+    </field>
+    <field name="titreSEOCommentFaireUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO comment faire une demande ?</label>
+    </field>
+    <field name="titreSEOQuelsDocumentsFournir" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO quels documents fournir ?</label>
+    </field>
+    <field name="titreSEOQuiContacter" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO qui contacter ?</label>
+    </field>
+    <field name="titreSEOSuivreUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO suivre une demande</label>
+    </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
@@ -47,20 +62,11 @@
     <field name="eligibilite" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Éligibilité</label>
     </field>
-    <field name="titreSEOCestQuoi" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO c'est quoi ?</label>
-    </field>
     <field name="cestQuoi" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">C’est quoi ?</label>
     </field>
     <field name="commentFaireUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="false" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Comment faire une demande ?</label>
-    </field>
-    <field name="titreSEOCommentFaireUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO comment faire une demande ?</label>
-    </field>
-    <field name="titreSEOQuelsDocumentsFournir" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO quels documents fournir ?</label>
     </field>
     <field name="quelsDocumentsFournir" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="false" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Quels documents fournir ?</label>
@@ -101,9 +107,6 @@
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
-    </field>
-    <field name="titreSEOQuiContacter" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO qui contacter ?</label>
     </field>
     <field name="quiContacter" editor="link" required="false" compactDisplay="false" tab="contact" type="com.jalios.jcms.Content[]">
       <label xml:lang="fr">Qui contacter ?</label>
@@ -161,9 +164,6 @@
     </field>
     <field name="dureeEdemarche" editor="textfield" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Durée e-démarche</label>
-    </field>
-    <field name="titreSEOSuivreUneDemande" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO suivre une demande</label>
     </field>
     <field name="introSuivreUneDemande" editor="wysiwyg" required="false" compactDisplay="false" tab="demande" type="String" searchable="false" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Intro suivre une demande</label>
