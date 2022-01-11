@@ -180,10 +180,13 @@ boolean hideSocialNetworkds = channel.getBooleanProperty("jcmsplugin.socle.heade
 		                    <div class="ds44-flex-container ds44-flex-align-center ds44-rsHeaderContainer">
 		                        <%@ include file='socialNetworksHeader.jspf' %>
 		                    </div>   
-		                    <%-- Navigation sites et applis --%>
+		                    </jalios:if>
 		                    
+		                    <%-- Navigation sites et applis --%>
+		                    <jalios:if predicate="<%= !hideSitesApplis %>">
 		                    <button type="button" class="ds44-fullWBtn ds44-btn--invert" id="ds44-btn-applis"><span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.sitesapplis")%></span><i class="icon icon-down" aria-hidden="true"></i></button>
 		                    </jalios:if>
+		                    
 		                  </nav>
 		            </div>
 		        </section>
