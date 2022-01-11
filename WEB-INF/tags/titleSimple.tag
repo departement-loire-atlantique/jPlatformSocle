@@ -174,8 +174,8 @@ if(Util.notEmpty(video)) {
 		                  <p><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.videodesactivee") %></p>
 		                  <p><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.devezaccepterdepotcookie") %></p>
 		                  <button class="ds44-btnStd ds44-btn--contextual" data-consent="accept-streaming-cookie">
-		                  <span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.acceptercookies") %><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
-		                  </span>
+		                      <span class="ds44-btnInnerText"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.acceptercookies") %></span>
+		                      <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 		                  </button>
 		               </div>
 		            </div>
