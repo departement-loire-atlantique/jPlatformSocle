@@ -22,6 +22,9 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
     </jalios:if>
     
 	<ul class="ds44-list">
+	       <%
+	       request.setAttribute("embedNoParagraph", true);
+	       %>
 	       <jalios:foreach name="itData" type="com.jalios.jcms.Content" array="<%= obj.getContenus() %>">
 	           <jalios:if predicate="<%=itData != null && itData instanceof FileDocument && itData.canBeReadBy(loggedMember)%>">
 	               <% 
@@ -30,11 +33,14 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
 	                String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
 	                String fileSize = Util.formatFileSize(itDoc.getSize());
 	              %>
-	                <li class="mts">
+	                <li class="mts ds44-docListElem">
 	                  <jalios:include pub="<%= itDoc %>" usage="embed"/>
 	                </li>
 	            </jalios:if>
 	       </jalios:foreach>
+	       <%
+	       request.removeAttribute("embedNoParagraph");
+	       %>
     </ul>
     
     <jalios:if predicate="<%= hasFond %>">

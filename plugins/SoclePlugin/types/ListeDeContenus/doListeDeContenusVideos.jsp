@@ -23,16 +23,20 @@ if (Util.notEmpty(obj.getStyleDeFond()) && !obj.getStyleDeFond().equals("none"))
     </jalios:if>
     
 	<ul class="ds44-list">
-	
+	    <%
+        request.setAttribute("embedNoParagraph", true);
+        %>
 	    <jalios:foreach name="itData" type="com.jalios.jcms.Content" array="<%= obj.getContenus() %>">
 	        <jalios:if predicate="<%=itData != null && itData instanceof Video && itData.canBeReadBy(loggedMember)%>">
 	            <% Video itDoc = (Video)itData; %>
-                <li class="mts">
+                <li class="mts ds44-docListElem">
                     <jalios:include pub="<%= itData %>" usage="embed"/>
                 </li>	            
 	        </jalios:if>
 	    </jalios:foreach>
-
+        <%
+        request.removeAttribute("embedNoParagraph");
+        %>
     </ul>
     
     <jalios:if predicate="<%= hasFond %>">

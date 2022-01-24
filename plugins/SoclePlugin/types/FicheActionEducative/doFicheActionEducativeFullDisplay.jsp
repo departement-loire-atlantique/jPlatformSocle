@@ -241,14 +241,14 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 <p class='ds44-box-heading <%= addLineBreak ? "ds44-mt-std" : "" %>' role="heading" aria-level="2"><%= currentDocBlocTitle %></p>
                                 </jalios:if>
                                 <jalios:foreach name="itDoc" type="FileDocument" array="<%= currentDocBlocElements %>">
-                                <li class="mts">
+                                <li class="mts ds44-docListElem">
                                 <%
                                 // Récupérer l'extension du fichier
                                 String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
                                 // Récupérer la taille du fichier
                                 String fileSize = Util.formatFileSize(itDoc.getSize());
                                 %>
-                                <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> - <%= fileType %> - <%= HtmlUtil.html2text(fileSize) %>  <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> - <%= fileType %> - <%= HtmlUtil.html2text(fileSize) %>  <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
                                 </li>
                                 </jalios:foreach>
                                 <% addLineBreak = true; %>
@@ -273,8 +273,8 @@ boolean hasParcoursCollege = obj.getCategorySet().contains(channel.getCategory("
                                 Util.notEmpty(obj.getNomDuSite(userLang)[itSiteCpt-1]);
                             String lbl = hasAssociatedTitle ? obj.getNomDuSite(userLang)[itSiteCpt-1] : itAdresse;
                             %>
-                            <li class="mts">
-                            <p class="ds44-docListElem"><i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(lbl) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>' href="<%= SocleUtils.parseUrl(itAdresse) %>"><%= lbl %></a></p>
+                            <li class="mts ds44-docListElem">
+                            <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i><a target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(lbl) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>' href="<%= SocleUtils.parseUrl(itAdresse) %>"><%= lbl %></a>
                             </li>
                             </jalios:foreach>
                             </ul>
