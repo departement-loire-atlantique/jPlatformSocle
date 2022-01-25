@@ -164,7 +164,7 @@
 		                            <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 		                            <ul class="ds44-list">
 		                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-		                                    <li class="mts">
+		                                    <li class="mts ds44-docListElem">
 		                                        <% 
 		                                            // Récupérer l'extension du fichier
 		                                            String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
@@ -173,7 +173,6 @@
 		                                            
 		                                            String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
 		                                        %>
-		                                        <p class="ds44-docListElem">
 		                                            <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 		                                            <% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
 		                                            <a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
@@ -181,7 +180,6 @@
 		                                                <%= itDoc.getTitle() %>
 		                                            </a> 
 		                                            <span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
-		                                        </p>
 		                                    </li>
 		                                </jalios:foreach>
 		                            </ul>
