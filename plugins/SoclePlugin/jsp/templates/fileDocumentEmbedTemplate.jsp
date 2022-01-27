@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
-%><%@ include file='plugins/SoclePlugin/jsp/include/embedCommons.jspf' %><%
+%><%@ include file='/plugins/SoclePlugin/jsp/include/embedCommons.jspf' %><%
 
 if (data == null) {
   return;
