@@ -40,7 +40,7 @@
 	
 	// Titres H2 optionnels SEO
 	String titrePourQui = Util.notEmpty(obj.getTitreSEOPourQui(userLang)) ? obj.getTitreSEOPourQui(userLang) : glp("jcmsplugin.socle.titre.pour-qui");
-	String titreCestQuoi = Util.notEmpty(obj.getTitreSEOCestQuoi()(userLang)) ? obj.getTitreSEOCestQuoi(userLang) : glp("jcmsplugin.socle.titre.quoi");
+	String titreCestQuoi = Util.notEmpty(obj.getTitreSEOCestQuoi(userLang)) ? obj.getTitreSEOCestQuoi(userLang) : glp("jcmsplugin.socle.titre.quoi");
 	String titreCommentFaireDemande = Util.notEmpty(obj.getTitreSEOCommentFaireUneDemande(userLang)) ? obj.getTitreSEOCommentFaireUneDemande(userLang) : glp("jcmsplugin.socle.titre.comment-demande");
 	String titreQuelDocuments = Util.notEmpty(obj.getTitreSEOQuelsDocumentsFournir(userLang)) ? obj.getTitreSEOQuelsDocumentsFournir(userLang) : glp("jcmsplugin.socle.titre.fournir-documents");
 	String titreQuiContacter = Util.notEmpty(obj.getTitreSEOQuiContacter(userLang)) ? obj.getTitreSEOQuiContacter(userLang) : glp("jcmsplugin.socle.ficheaide.modal.quicontacter");
@@ -164,7 +164,7 @@
 		                            <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 		                            <ul class="ds44-list">
 		                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-		                                    <li class="mts">
+		                                    <li class="mts ds44-docListElem">
 		                                        <% 
 		                                            // Récupérer l'extension du fichier
 		                                            String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
@@ -173,7 +173,6 @@
 		                                            
 		                                            String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
 		                                        %>
-		                                        <p class="ds44-docListElem">
 		                                            <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 		                                            <% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
 		                                            <a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
@@ -181,7 +180,6 @@
 		                                                <%= itDoc.getTitle() %>
 		                                            </a> 
 		                                            <span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
-		                                        </p>
 		                                    </li>
 		                                </jalios:foreach>
 		                            </ul>
@@ -192,18 +190,21 @@
 		
 		                        <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
 		                            <div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
+		                                
+		                                <jalios:if predicate="<%= Util.notEmpty(obj.getUrlEdemarche(userLang)) %>">
+		                                  <h2 class="h4-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
+		                                
 		
-		                                <h2 class="h4-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
-		
-		                                <p>
-		                                    <a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
-		                                            title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
-		                                            data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
-		                                            target="_blank"> 
-		                                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
-		                                        <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-		                                    </a>
-		                                </p>
+			                                <p>
+			                                    <a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
+			                                            title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
+			                                            data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
+			                                            target="_blank"> 
+			                                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
+			                                        <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
+			                                    </a>
+			                                </p>
+		                                </jalios:if>
 		                    <jalios:if predicate="<%= Util.notEmpty(obj.getDureeEdemarche()) %>">
 		                                    <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
 		                    </jalios:if>

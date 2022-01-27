@@ -339,6 +339,9 @@ jcmsplugin.socle.utilisateur-connecte: Utilisateur connecté : {0}
 jcmsplugin.socle.deconnexion: Déconnexion
 jcmsplugin.socle.identifiant: Identifiant
 jcmsplugin.socle.media: Média
+jcmsplugin.socle.videodesactivee: Vidéo désactivée
+jcmsplugin.socle.devezaccepterdepotcookie: Merci d’accepter le dépôt de <span lang="en">cookies</span> de <span lang="en">streaming</span> pour lire la vidéo
+jcmsplugin.socle.acceptercookies: Accepter les <span lang="en">cookies</span>
 
 # ------------------------------------------------------------
 #  Header
@@ -371,7 +374,8 @@ jcmsplugin.socle.gpla.site: Grand Patrimoine de Loire-Atlantique
 
 # Paramétrable
 
-jcmsplugin.socle.header.hidesiteapplis: Cacher le bouton "Sites et applis" et les réseaux sociaux en header
+jcmsplugin.socle.header.hidesiteapplis: Cacher le bouton "Sites et applis" en header
+jcmsplugin.socle.header.hidesocialnetworks: Cacher les réseaux sociaux en header
 
 # ------------------------------------------------------------
 #  Près de chez vous
@@ -694,7 +698,7 @@ jcmsplugin.socle.ficheemploi.label.repondrecourrier: Ou par courrier, à l'atten
 jcmsplugin.socle.ficheemploi.label.emploi: Emploi - {0}
 jcmsplugin.socle.ficheemploi.label.repondrecourrier2: Ou envoyer votre candidature par courrier
 jcmsplugin.socle.ficheemploi.label.serviceRessources: Service ressources
-jcmsplugin.socle.ficheemploi.txt.modalites: Adressez votre candidature sous la référence {0} au plus tard le {1} accompagnée d’un curriculum vitae détaillé et d’une lettre de motivation.
+jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de situation administrative ou attestation de réussite au concours.
 jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Département de Loire-Atlantique<br/>Direction des Ressources Humaines,<br/>Service Emploi et Compétences<br/>3 Quai Ceineray, CS 94109<br/>44041 Nantes cedex 1
 jcmsplugin.socle.ficheemploi.label.reference: (Réf : {0})
 

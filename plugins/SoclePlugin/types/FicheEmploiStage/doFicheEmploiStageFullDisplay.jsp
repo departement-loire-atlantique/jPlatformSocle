@@ -190,18 +190,6 @@ boolean afficherMentions = !obj.getMasquerMentions();
             </section>
         </jalios:if>
         
-        <%-- Conditions à remplir --%>
-        <jalios:if predicate="<%= Util.notEmpty(obj.getConditionsARemplir()) %>">
-            <section id="blocconditions" class="ds44-contenuArticle">
-                <div class="ds44-inner-container ds44-mtb3">
-                    <div class="ds44-grid12-offset-2">
-                        <h3 id="titreblocconditions"><%= glp("jcmsplugin.socle.ficheemploi.label.conditions") %></h3>
-                        <jalios:wysiwyg><%= obj.getConditionsARemplir() %></jalios:wysiwyg>
-                    </div>
-                </div>
-            </section>
-        </jalios:if>
-        
         <%-- Avantages sociaux liés au poste --%>
         <jalios:if predicate="<%= Util.notEmpty(obj.getAvantagesSociauxLiesAuPoste()) %>">
             <section id="blocavantagessociaux" class="ds44-contenuArticle">
@@ -469,8 +457,8 @@ boolean afficherMentions = !obj.getMasquerMentions();
                                     // Récupérer la taille du fichier
                                     String fileSize = Util.formatFileSize(itDoc.getSize());
                                     %>
-                                    <li class="mts">
-                                        <p class="ds44-docListElem"><i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span></p>
+                                    <li class="mts ds44-docListElem">
+                                        <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i><a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(itDoc.getTitle()) %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'><%= itDoc.getTitle() %></a><span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
                                     </li>
                                 </jalios:foreach>
                             </ul>
