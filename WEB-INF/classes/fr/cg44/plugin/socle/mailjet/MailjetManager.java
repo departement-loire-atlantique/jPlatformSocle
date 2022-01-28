@@ -1,5 +1,7 @@
 package fr.cg44.plugin.socle.mailjet;
 
+import static com.jalios.jcms.Channel.getChannel;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,17 +13,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Category;
-import static com.jalios.jcms.Channel.getChannel;
 import com.jalios.util.Util;
 import com.mailjet.client.ClientOptions;
 import com.mailjet.client.MailjetClient;
 import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
 import com.mailjet.client.errors.MailjetException;
+import com.mailjet.client.resource.Campaign;
 import com.mailjet.client.resource.Contact;
 import com.mailjet.client.resource.Contactdata;
 import com.mailjet.client.resource.ContactslistManageContact;
 
+import fr.cg44.plugin.socle.SocleUtils;
 import okhttp3.OkHttpClient;
 
 public class MailjetManager {
@@ -180,6 +183,35 @@ public class MailjetManager {
     }
     return response.getStatus() == 201;
   }
+  
+  
+  /**
+   * Récupération d'une liste de campagnes
+   * @param from    l'id de l'expéditeur de la campagne
+   * @param limit   le nombre max de campagnes à récupérer
+   * @param sort    le tri à appliquer sur la liste de campagnes
+   * @return
+   */
+  public static JSONArray getCampaigns(String from, String limit, String sort) {
+    
+    JSONArray fluxData = new JSONArray();
+    
+    MailjetClient client = getMailJetClient();
+    MailjetRequest request;
+    MailjetResponse response;
+    request = new MailjetRequest(Campaign.resource)
+        .filter(Campaign.FROMID, from)
+        .filter(Campaign.LIMIT, limit)
+        .filter("Sort", sort);
+    
+    try {
+      response = client.get(request);
+      fluxData = response.getData();
+    } catch (MailjetException e) {
+      LOGGER.warn("Récupération des campagnes impossible dans mailjet ", e);
+    }
+    return fluxData;
+  }  
   
 
 }
