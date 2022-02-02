@@ -95,10 +95,6 @@ boolean isEmploiWithSuffixe = Util.notEmpty(pub.getCategorieDemploi(loggedMember
                 <%= pub.getCommune() %>
 		    </p>
 			</jalios:if>
-			<hr class="mbs" aria-hidden="true">
-			<jalios:if predicate="<%= Util.notEmpty(pub.getTexteentete()) %>">
-			  <jalios:wysiwyg><%= pub.getTexteentete() %></jalios:wysiwyg>
-			</jalios:if>
 		</div>
 		<i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
