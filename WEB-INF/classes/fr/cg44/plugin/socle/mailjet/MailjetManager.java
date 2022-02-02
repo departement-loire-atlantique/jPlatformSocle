@@ -26,6 +26,7 @@ import com.mailjet.client.resource.Contactdata;
 import com.mailjet.client.resource.ContactslistManageContact;
 import com.mailjet.client.resource.Listrecipient;
 
+import fr.cg44.plugin.socle.SocleUtils;
 import okhttp3.OkHttpClient;
 
 public class MailjetManager {
@@ -194,7 +195,6 @@ public class MailjetManager {
    * @return
    */
   public static JSONArray getCampaigns(String from, String limit, String sort) {
-
     JSONArray fluxData = new JSONArray();
     
     MailjetClient client = getMailJetClient();
