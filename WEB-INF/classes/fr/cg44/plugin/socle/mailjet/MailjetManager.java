@@ -4,6 +4,7 @@ import static com.jalios.jcms.Channel.getChannel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,7 @@ import com.mailjet.client.resource.Campaign;
 import com.mailjet.client.resource.Contact;
 import com.mailjet.client.resource.Contactdata;
 import com.mailjet.client.resource.ContactslistManageContact;
+import com.mailjet.client.resource.Listrecipient;
 
 import fr.cg44.plugin.socle.SocleUtils;
 import okhttp3.OkHttpClient;
@@ -193,7 +195,6 @@ public class MailjetManager {
    * @return
    */
   public static JSONArray getCampaigns(String from, String limit, String sort) {
-    
     JSONArray fluxData = new JSONArray();
     
     MailjetClient client = getMailJetClient();
@@ -211,6 +212,87 @@ public class MailjetManager {
       LOGGER.warn("Récupération des campagnes impossible dans mailjet ", e);
     }
     return fluxData;
+  }
+  
+  /**
+   * Récupère les emails des contacts appartenant à un groupe
+   * 
+   * @param id        l'id du groupe Mailjet
+   * @return emails   la liste des emails des contacts du groupe
+   */
+  
+  public static ArrayList<String> getEmailsFromGroup(String id) {
+
+    if (Util.isEmpty(id)) {
+      return null;
+    }
+    
+    ArrayList<String> emails = new ArrayList<String>();
+    JSONArray fluxData = new JSONArray();
+    
+    MailjetClient client = getMailJetClient();
+    MailjetRequest request;
+    MailjetResponse response;
+    request = new MailjetRequest(Listrecipient.resource)
+        .filter(Listrecipient.CONTACTSLIST, id);
+    
+    try {
+      response = client.get(request);
+      fluxData = response.getData();
+      
+      for(int i=0 ; i<fluxData.length() ; i++) {
+        JSONObject contactData = new JSONObject();
+        try {
+          contactData = (JSONObject) fluxData.get(i);
+          emails.add(getEmailFromContact(contactData.get("ContactID").toString()));
+        } catch (JSONException e) {
+          LOGGER.warn("Erreur de récupération d'un contact Mailjet à partir de la liste de contacts (id=" + id + ") ", e);
+        }
+      }
+
+    } catch (MailjetException e) {
+      LOGGER.warn("Récupération de la liste de contacts (id=" + id + ") impossible dans mailjet ", e);
+    }
+    LOGGER.warn(emails.toString());
+    return emails; 
+
+  } 
+  
+  
+  /**
+   * Récupère l'email d'un contact à partir de son ID
+   * 
+   * @param id      l'identifiant Mailjet du contact
+   * @return email  l'email du contact
+   */
+  public static String getEmailFromContact(String id) {
+
+    if (Util.isEmpty(id)) {
+      return null;
+    }
+    
+    JSONObject contactData = new JSONObject();
+    
+    MailjetClient client = getMailJetClient();
+    MailjetRequest request;
+    MailjetResponse response;
+    request = new MailjetRequest(Contact.resource)
+        .filter(Contact.ID, id);
+    
+    try {
+      response = client.get(request);
+      contactData = response.getData().getJSONObject(0);
+      return contactData.get("Email").toString(); 
+      
+    } catch (JSONException e) {
+      LOGGER.warn("Récupération du contact " + id + " impossible dans mailjet ", e);
+      
+    } catch (MailjetException e) {
+      LOGGER.warn("Récupération du mail du contact " + id +" impossible dans mailjet ", e);
+    }
+    
+    return "";
+    
   }  
   
 
