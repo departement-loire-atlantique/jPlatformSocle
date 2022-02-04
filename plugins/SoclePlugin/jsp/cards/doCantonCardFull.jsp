@@ -49,7 +49,7 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 	                    </jalios:if>
 	                    
 	                     <div class="ds44-card__section">
-	                       <p role="heading" aria-level="3" class="ds44-card__title"><a href="<%= itElu.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title="<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>"><%= fullName %></a></p>
+	                       <p class="ds44-card__title"><a href="<%= itElu.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title="<%= glp("jcmsplugin.socle.elu.ficheDetaillee", fullName) %>"><%= fullName %></a></p>
 	                       <p><%= itElu.getPoliticalParty(loggedMember).first() %></p>
 	                     </div>
 	                 </section>

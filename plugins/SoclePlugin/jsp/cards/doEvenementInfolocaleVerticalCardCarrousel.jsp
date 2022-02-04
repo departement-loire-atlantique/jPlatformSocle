@@ -29,7 +29,7 @@ String urlPhoto = Util.notEmpty(InfolocaleUtil.getLargestPicture(itEvent)) ? Inf
         <%
           String dateIndexParam = Util.notEmpty(itEvent.getIndexDate()) ? "?dateIndex=" + itEvent.getIndexDate() : "";
         %>
-        <p role="heading" aria-level="2" class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink" tabindex="-1"><%= itEvent.getTitle() %></a> </p>
+        <p class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink" tabindex="-1"><%= itEvent.getTitle() %></a> </p>
         <p class="ds44-cardDate"><i class="icon icon-date" aria-hidden="true"></i> <%= InfolocaleUtil.getFullStringFromEventDate(currentDisplayedDate) %></p>
         <%@ include file="../include/doMetadataEventInfolocale.jspf" %>
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
