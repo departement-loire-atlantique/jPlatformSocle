@@ -27,7 +27,7 @@ Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"
     
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="titleFicheArticle_<%= uid %>">
+            <p class="h4-like ds44-cardTitle" id="titleFicheArticle_<%= uid %>">
                 <jalios:select>
                     <jalios:if predicate="<%= Util.notEmpty(pub.getLienInterne()) %>">
                         <a href="<%= pub.getLienInterne().getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>

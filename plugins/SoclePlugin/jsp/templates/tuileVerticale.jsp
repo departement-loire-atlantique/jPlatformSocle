@@ -37,7 +37,7 @@ boolean isGpla = Util.notEmpty(request.getParameter("context")) && "gpla".equals
 <section class='ds44-card ds44-js-card ds44-card--verticalPicture <%= isGpla ? "ds44-darkContext" : "" %> <%=styleContext%> <%= isInSixPanelsContext ? "ds44-posRel" : "" %>'>
 	<ds:figurePicture pub="<%= pub %>" format="<%= formatTuile %>" pictureCss='<%= isInSixPanelsContext ? "" : "ds44-container-imgRatio" %>' imgCss='<%= isInSixPanelsContext ? "" : "ds44-imgRatio" %>' alt="<%= imageAlt %>"></ds:figurePicture>
     <div class="ds44-card__section">
-        <p role="heading" aria-level="3" class="ds44-card__title">
+        <p class="ds44-card__title">
             <a class="ds44-card__globalLink" href="<%= urlPub %>" <%=titleAttr%> <%=targetAttr%>>
                 <jalios:select>
                     <jalios:if predicate="<%= isGpla && data instanceof Lien && Util.notEmpty(((Lien)data).getPicto()) %>">

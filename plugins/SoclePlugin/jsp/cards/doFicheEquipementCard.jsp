@@ -18,7 +18,7 @@ boolean hasBottomInfos = Util.notEmpty(pub.getThematique(loggedMember)) || (Util
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileEquipement_<%= pub.getId() %>">
+            <p class="h4-like ds44-cardTitle" id="tuileEquipement_<%= pub.getId() %>">
                 <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
             </p>
             <jalios:if predicate="<%= hasBottomInfos %>">
