@@ -207,7 +207,7 @@ public class MailjetManager {
     MailjetClient client = getMailJetClient();
     MailjetRequest request;
     MailjetResponse response;
-    request = new MailjetRequest(Campaigndraft.resource)
+    request = new MailjetRequest(Campaign.resource)
         .filter(Campaign.FROMID, from)
         .filter(Campaign.LIMIT, limit)
         .filter("Sort", sort);
