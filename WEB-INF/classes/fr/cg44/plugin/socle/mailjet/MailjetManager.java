@@ -4,7 +4,6 @@ import static com.jalios.jcms.Channel.getChannel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Category;
+import com.jalios.util.HtmlUtil;
 import com.jalios.util.Util;
 import com.mailjet.client.ClientOptions;
 import com.mailjet.client.MailjetClient;
@@ -21,18 +21,25 @@ import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.resource.Campaign;
+import com.mailjet.client.resource.Campaigndraft;
+import com.mailjet.client.resource.CampaigndraftDetailcontent;
+import com.mailjet.client.resource.CampaigndraftSend;
+import com.mailjet.client.resource.CampaigndraftTest;
 import com.mailjet.client.resource.Contact;
 import com.mailjet.client.resource.Contactdata;
 import com.mailjet.client.resource.ContactslistManageContact;
 import com.mailjet.client.resource.Listrecipient;
+import com.mailjet.client.resource.Newsletter;
+import com.mailjet.client.resource.NewsletterTest;
 
-import fr.cg44.plugin.socle.SocleUtils;
 import okhttp3.OkHttpClient;
 
 public class MailjetManager {
   
   private static Logger LOGGER = Logger.getLogger(MailjetManager.class);
   
+  private static final int EXIT_SUCCESS = 0;
+  private static final int EXIT_ERROR = 1;
   
   /**
    * Création d'un client pour mailJet
@@ -294,6 +301,79 @@ public class MailjetManager {
     return "";
     
   }  
+  
+  /**
+   * Envoie une newsletter à un groupe
+   * 
+   * @param groupId ID du groupe
+   * @param senderMail Email de l'expéditeur
+   * @param subject Sujet du mail
+   * @param message Corps du mail en HTML
+   */
+  public static Integer sendNewsletter(String groupId, String senderMail, String senderName, String subject, String message, boolean isTest) {
+
+    // Création de la newsletter  
+    com.mailjet.client.MailjetClient client = MailjetManager.getMailJetClient();
+    String newsletterID = new String();
+    MailjetRequest request;
+    MailjetResponse response;
+
+    request = new MailjetRequest(Campaigndraft.resource)      
+        .property(Campaigndraft.LOCALE, "fr_FR")
+        .property(Campaigndraft.SENDER, senderName) 
+        .property(Campaigndraft.SENDERNAME, senderName) 
+        .property(Campaigndraft.SENDEREMAIL, senderMail)
+        .property(Campaigndraft.SUBJECT, subject)
+        .property(Newsletter.CONTACTSLISTID, groupId)
+        .property(Campaigndraft.TITLE, subject)
+        .property(Campaigndraft.EDITMODE, "html2");
+    try {
+      response = client.post(request);
+      newsletterID = response.getData().getJSONObject(0).getString("ID");
+    } catch (MailjetException | JSONException e) {
+      LOGGER.warn("Erreur lors de la préparation de la newsletter par l'API Mailjet", e);
+      return EXIT_ERROR;
+    }
+
+
+    // Ajout du gabarit à la newsletter  
+    request = new MailjetRequest(CampaigndraftDetailcontent.resource, newsletterID)
+        .property(CampaigndraftDetailcontent.HTMLPART, message)
+        .property(CampaigndraftDetailcontent.TEXTPART, HtmlUtil.html2text(message));
+    try {
+      response = client.post(request);
+    } catch (MailjetException e) {
+      LOGGER.warn("Erreur lors de l'ajout d'un corps de texte à la newsletter par l'API Mailjet", e);
+      return EXIT_ERROR;
+    }
+    
+
+    // Envoi de la newsletter  
+    try {
+      if(isTest) {
+        JSONArray jsonArrayRecipients = new JSONArray();
+        JSONObject jsonRecipient = new JSONObject();
+        jsonRecipient.put("Email", "support.jcms@loire-atlantique.fr");
+        jsonRecipient.put("Name", "Département de Loire-Atlantique");
+        jsonArrayRecipients.put(jsonRecipient);
+
+        request = new MailjetRequest(CampaigndraftTest.resource, newsletterID)
+            .property(NewsletterTest.RECIPIENTS, jsonArrayRecipients);
+
+        response = client.post(request);
+
+      } else {
+        request = new MailjetRequest(CampaigndraftSend.resource, newsletterID);
+        response = client.post(request);
+
+      }
+
+    } catch (MailjetException | JSONException e) {
+      LOGGER.warn("Erreur lors de l'envoi de la newsletter par l'API Mailjet", e);
+      return EXIT_ERROR;
+    }  
+    return EXIT_SUCCESS;
+  }
   
 
 }
