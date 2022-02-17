@@ -48,7 +48,6 @@ boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj
 boolean hasTexteLong = Util.notEmpty(obj.getTexteLong()) && !"null".equals(obj.getTexteLong());
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
 
-obj.setTexteLong("<p>Bonjour</p><p>Nous sommes heureux de vous annoncer que nous organisons notre&nbsp;10e troc plantes graines &agrave; Conquereuil, le 3 avril&nbsp;(de 9h &agrave; 12h &agrave; Donatien). Nous serions heureux de vous y retrouver pour &eacute;changer&nbsp;des plantes, des graines, des plants, des pots, des livres sur le th&egrave;me du jardinage... Mais aussi autour du th&egrave;me du jardin. C&#39;est gratuit et sans obligation. Tout ce que vous apportez est mis en commun et vous repartez avec ce que vous voulez.&nbsp;</p><p>Au plaisir d&#39;un &eacute;change</p><p>Jardinement votre</p><p>L&#39;association graines et fleurs &agrave; Conquereuil</p>");
 %>
 
 <main role="main" id="content">
