@@ -665,7 +665,7 @@ public class InfolocaleUtil {
         
         // Modifier le format HH:mm:ss en HH'h'mm
         itHoraireDebut = formatTimeToHhMm(itHoraireDebut);
-        itHoraireFin = formatTimeToHhMm(itHoraireDebut);
+        itHoraireFin = formatTimeToHhMm(itHoraireFin);
         
         horaireToAdd.append(getHoraireDisplay(itHoraireDebut, itHoraireFin));
         
