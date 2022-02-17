@@ -1,5 +1,5 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils"%>
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>

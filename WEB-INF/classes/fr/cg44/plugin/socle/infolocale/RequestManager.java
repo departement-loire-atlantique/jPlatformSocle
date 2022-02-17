@@ -212,7 +212,7 @@ public class RequestManager {
                 regenerateTokens();
             }
         }
-        
+        LOGGER.info(fluxData);
         return fluxData;
     }
     

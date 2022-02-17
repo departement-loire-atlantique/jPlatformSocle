@@ -1,5 +1,5 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
@@ -14,7 +14,7 @@ if (data == null) {
 
 EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
-DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
+DateHoraires currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
 String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAttribute("cssCard").toString() : "";
 
@@ -28,20 +28,8 @@ String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAtt
          <p class="ds44-card__title"><a href="<%= itEvent.getDisplayUrl(userLocale) %><%= dateIndexParam %>" class="ds44-card__globalLink"><%= itEvent.getTitre() %></a></p>
 		<p>
 			<span class="ds44-docListElem ds44-inlineBlock"> <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
-			    <jalios:select>
-					<jalios:if
-						predicate="<%=InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate)%>">
-						<%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut())%>
-						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false)%>
-					</jalios:if>
-					<jalios:default>
-						<%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut())%>
-						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false)%>
-                                -
-                                <%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin())%>
-						<%=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false)%>
-					</jalios:default>
-				</jalios:select>
+			    <%=InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDate())%>
+                %=InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDate(), false)%>
 			</span>
 		</p>
          <%@ include file="../include/doMetadataEventInfolocale.jspf" %>
