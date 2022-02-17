@@ -546,6 +546,8 @@ jcmsplugin.socle.infolocale.caroussel.days: 60
 
 jcmsplugin.socle.infolocale.date.receive.format: yyyy-MM-dd
 jcmsplugin.socle.infolocale.date.send.format: dd-MM-yyyy
+jcmsplugin.socle.infolocale.horaire.receive.format: HH:mm:ss
+jcmsplugin.socle.infolocale.horaire.send.format: HH'h'mm
 
 # Metadonnees Infolocale pour le front
 

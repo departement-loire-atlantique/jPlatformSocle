@@ -1,5 +1,7 @@
 package fr.cg44.plugin.socle.infolocale;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,9 +28,10 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
-import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
+import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
 import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
+import fr.cg44.plugin.socle.infolocale.entities.Horaires;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
@@ -183,8 +186,11 @@ public class InfolocaleEntityUtils {
                   itEvent.setDossiersDePresse(listDossiers);
                 }
             }
-            if (!(json.isNull("dates"))) {
-                itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
+            if (!(json.isNull("dateHoraires"))) {
+                itEvent.setDates(createDateHorairesArrayFromJsonArray(json.getJSONArray("dateHoraires")));
+            }
+            if (!(json.isNull("horaires"))) {
+                itEvent.setHoraires(createHorairesArrayFromJsonArray(json.getJSONArray("horaires")));
             }
             if (!(json.isNull("dateString"))) {
                 itEvent.setDateString(json.getString("dateString"));
@@ -272,6 +278,97 @@ public class InfolocaleEntityUtils {
     }
 
     /**
+     * Créée un tableau d'objets Horaires à partir d'un tableau JSON
+     * @param jsonArray
+     * @return
+     */
+    public static Horaires[] createHorairesArrayFromJsonArray(JSONArray jsonArray) {
+        Horaires[] horaires = new Horaires[jsonArray.length()];
+        for (int counter = 0; counter < jsonArray.length(); counter++) {
+            try {
+              horaires[counter] = createHoraireFromJsonItem(jsonArray.getJSONObject(counter));
+            } catch (JSONException e) {
+                LOGGER.error("Erreur in createHorairesArrayFromJsonArray: " + e.getMessage());
+            }
+        }
+        return horaires;
+    }
+
+    /**
+     * Créée un objet Horaires depuis un objet JSON
+     * @param json
+     * @return
+     */
+    public static Horaires createHoraireFromJsonItem(JSONObject json) {
+        if (Util.isEmpty(json)) return null;
+        Horaires horaires = new Horaires();
+        try {
+            horaires.setJourId(json.getInt("jour"));
+            horaires.setJourLibelle(json.getString("jourLibelle"));
+            ArrayList<String> plagesDebut = new ArrayList<>();
+            ArrayList<String> plagesFin = new ArrayList<>();
+            JSONArray plages = json.getJSONArray("plages");
+            for (int counter = 0; counter < plages.length(); counter++) {
+                plagesDebut.add(plages.getJSONObject(counter).getString("debut"));
+                plagesFin.add(plages.getJSONObject(counter).getString("fin"));
+            }
+            horaires.setPlagesDebut(plagesDebut);
+            horaires.setPlagesFin(plagesFin);
+        } catch (JSONException e) {
+            LOGGER.error("Erreur in createHoraireFromJsonItem: " + e.getMessage());
+            return null;
+        }
+        return horaires;
+    }
+
+    /**
+     * Créée un tableau de DateHoraires depuis un array JSON
+     * @param jsonArray
+     * @return
+     */
+    public static DateHoraires[] createDateHorairesArrayFromJsonArray(JSONArray jsonArray) {
+        DateHoraires[] dates = new DateHoraires[jsonArray.length()];
+        for (int counter = 0; counter < jsonArray.length(); counter++) {
+            try {
+                dates[counter] = createDateHorairesFromJsonItem(jsonArray.getJSONObject(counter));
+            } catch (JSONException e) {
+                LOGGER.error("Erreur in createDateHorairesArrayFromJsonArray: " + e.getMessage());
+            }
+        }
+        return dates;
+    }
+
+    /**
+     * Créée un objet DateHoraires depuis un objet JSON
+     * @param jsonObject
+     * @return
+     */
+    public static DateHoraires createDateHorairesFromJsonItem(JSONObject json) {
+        if (Util.isEmpty(json)) return null;
+        DateHoraires date = new DateHoraires();
+        SimpleDateFormat sdf = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.date.receive.format"));
+        try {
+            date.setDate(sdf.parse(json.getString("date")));
+            ArrayList<String> horairesDebut = new ArrayList<>();
+            ArrayList<String> horairesFin = new ArrayList<>();
+            JSONArray horaires = json.getJSONArray("horaires");
+            for (int counter = 0; counter < horaires.length(); counter++) {
+                horairesDebut.add(horaires.getJSONObject(counter).getString("debut"));
+                horairesFin.add(horaires.getJSONObject(counter).getString("fin"));
+            }
+            date.setHorairesDebut(horairesDebut);
+            date.setHorairesFin(horairesFin);
+        } catch (JSONException e) {
+            LOGGER.error("Erreur in createDateHorairesFromJsonItem: " + e.getMessage());
+            return null;
+        } catch (ParseException e) {
+            LOGGER.error("ParseException in createDateHorairesFromJsonItem: " + e.getMessage());
+            return null;
+        }
+        return date;
+    }
+
+    /**
      * Créé un tableau d'objets Tarif depuis du JSON
      * @param jsonArray
      * @return
@@ -284,7 +381,7 @@ public class InfolocaleEntityUtils {
         } catch (JSONException e) {
             LOGGER.error("Erreur in createTarrifArrayFromJsonArray: " + e.getMessage());
         }
-    }
+      }
       return tarifs;
     }
 
@@ -304,7 +401,7 @@ public class InfolocaleEntityUtils {
           tarif.setPayantLibelle(json.getString("payantLibelle"));
           tarif.setPayantMontant(json.getString("payantMontant"));
       } catch (JSONException e) {
-          LOGGER.error("Erreur in createLangueFromJsonItem: " + e.getMessage());
+          LOGGER.error("Erreur in createTarifFromJsonItem: " + e.getMessage());
           return null;
       }
       return tarif;
@@ -409,10 +506,6 @@ public class InfolocaleEntityUtils {
             if (!json.isNull("libelle")) {
                 genre.setLibelle(json.getString("libelle"));
             }
-            if (!json.isNull("photos")) {
-              JSONObject photo = json.getJSONObject("photos");
-              if (!photo.isNull("L")) genre.setUrlPhotoLarge(photo.getString("L"));
-            }
         } catch (JSONException e) {
             LOGGER.error("Erreur in createGenreFromJsonItem: " + e.getMessage());
             genre = new Genre();
@@ -465,69 +558,6 @@ public class InfolocaleEntityUtils {
             contact = new Contact();
         }
         return contact;
-    }
-
-    /**
-     * Créé un tableau d'objets Date (infolocale) depuis du JSON
-     */
-    public static DateInfolocale[] createDateArrayFromJsonArray(JSONArray jsonArray) {
-        DateInfolocale[] dates = new DateInfolocale[jsonArray.length()];
-        for (int counter = 0; counter < jsonArray.length(); counter++) {
-            try {
-                dates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
-            } catch (JSONException e) {
-                LOGGER.error("Erreur in createDateArrayFromJsonArray: " + e.getMessage());
-            }
-        }
-        return dates;
-    }
-
-    /**
-     * Créé un objet Date (infolocale) depuis du JSON
-     */
-    public static DateInfolocale createDateFromJsonItem(JSONObject json) {
-        if (Util.isEmpty(json)) return null;
-        DateInfolocale date = new DateInfolocale();
-        try {
-            if (!json.isNull("debut")) {
-                date.setDebut(json.getString("debut"));
-            }
-            if (!json.isNull("fin")) {
-                date.setFin(json.getString("fin"));
-            }
-            if (!json.isNull("horaire")) {
-                String tmpHoraireString = json.getString("horaire");
-                StringBuilder horaireBuilder = new StringBuilder();
-                boolean isReadingHoraire = false;
-                if (Util.notEmpty(tmpHoraireString)) {
-                  for (Character itChar : tmpHoraireString.toCharArray()) {
-                    if (itChar.equals('{')) { // début d'un horaire
-                      isReadingHoraire = true;
-                      continue;
-                    }
-                    if (itChar.equals('}')) { // fin d'un horaire
-                      isReadingHoraire = false;
-                      continue;
-                    }
-                    if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
-                      horaireBuilder.append(" - ");
-                      continue;
-                    }
-                    if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
-                      horaireBuilder.append(", ");
-                      continue;
-                    }
-                    // Dans tous les autres cas, on concatène normalement
-                    horaireBuilder.append(itChar);
-                  }
-                }
-                date.setHoraire(horaireBuilder.toString().replace(":", "h"));
-            }
-        } catch (JSONException e) {
-            LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
-            date = new DateInfolocale();
-        }
-        return date;
     }
 
     /**
