@@ -617,11 +617,12 @@ public class InfolocaleUtil {
      */
     public static String getPlagesDisplayHoraires(Horaires itHoraires) {
         StringBuilder finalDisplay = new StringBuilder();
-        for (int counter = 1; counter < itHoraires.getPlagesDebut().size(); counter++) {
+        for (int counter = 0; counter < itHoraires.getPlagesDebut().size(); counter++) {
             String horaireToAdd = getHoraireDisplay(itHoraires.getPlagesDebut().get(counter), itHoraires.getPlagesFin().get(counter));
             
+            finalDisplay.append(horaireToAdd);
+            
             if (counter+1 < itHoraires.getPlagesDebut().size() && Util.notEmpty(horaireToAdd)) {
-                finalDisplay.append(horaireToAdd);
                 finalDisplay.append(suffixeHoraire);
             }
         }
