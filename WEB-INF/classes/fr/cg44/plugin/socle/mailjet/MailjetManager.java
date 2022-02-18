@@ -329,6 +329,7 @@ public class MailjetManager {
         .property(Campaigndraft.EDITMODE, "html2");
     try {
       response = client.post(request);
+      LOGGER.debug(response.getData().getJSONObject(0));
       newsletterID = response.getData().getJSONObject(0).getString("ID");
     } catch (MailjetException | JSONException e) {
       LOGGER.warn("Erreur lors de la préparation de la newsletter par l'API Mailjet", e);
