@@ -29,6 +29,7 @@ import fr.cg44.plugin.socle.SocleUtils;
 import fr.cg44.plugin.socle.infolocale.entities.Commune;
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Horaires;
@@ -186,8 +187,11 @@ public class InfolocaleEntityUtils {
                   itEvent.setDossiersDePresse(listDossiers);
                 }
             }
+            if (!(json.isNull("dates"))) {
+                itEvent.setDates(createDateArrayFromJsonArray(json.getJSONArray("dates")));
+            }
             if (!(json.isNull("dateHoraires"))) {
-                itEvent.setDates(createDateHorairesArrayFromJsonArray(json.getJSONArray("dateHoraires")));
+                itEvent.setDatesHoraires(createDateHorairesArrayFromJsonArray(json.getJSONArray("dateHoraires")));
             }
             if (!(json.isNull("horaires"))) {
                 itEvent.setHoraires(createHorairesArrayFromJsonArray(json.getJSONArray("horaires")));
@@ -319,6 +323,69 @@ public class InfolocaleEntityUtils {
             return null;
         }
         return horaires;
+    }
+    
+    /**
+     * Créé un tableau d'objets Date (infolocale) depuis du JSON
+     */
+    public static DateInfolocale[] createDateArrayFromJsonArray(JSONArray jsonArray) {
+        DateInfolocale[] dates = new DateInfolocale[jsonArray.length()];
+        for (int counter = 0; counter < jsonArray.length(); counter++) {
+            try {
+                dates[counter] = createDateFromJsonItem(jsonArray.getJSONObject(counter));
+            } catch (JSONException e) {
+                LOGGER.error("Erreur in createDateArrayFromJsonArray: " + e.getMessage());
+            }
+        }
+        return dates;
+    }
+
+    /**
+     * Créé un objet Date (infolocale) depuis du JSON
+     */
+    public static DateInfolocale createDateFromJsonItem(JSONObject json) {
+        if (Util.isEmpty(json)) return null;
+        DateInfolocale date = new DateInfolocale();
+        try {
+            if (!json.isNull("debut")) {
+                date.setDebut(json.getString("debut"));
+            }
+            if (!json.isNull("fin")) {
+                date.setFin(json.getString("fin"));
+            }
+            if (!json.isNull("horaire")) {
+                String tmpHoraireString = json.getString("horaire");
+                StringBuilder horaireBuilder = new StringBuilder();
+                boolean isReadingHoraire = false;
+                if (Util.notEmpty(tmpHoraireString)) {
+                  for (Character itChar : tmpHoraireString.toCharArray()) {
+                    if (itChar.equals('{')) { // début d'un horaire
+                      isReadingHoraire = true;
+                      continue;
+                    }
+                    if (itChar.equals('}')) { // fin d'un horaire
+                      isReadingHoraire = false;
+                      continue;
+                    }
+                    if (itChar.equals(',') && isReadingHoraire) { // virgule au sein d'un horaire formatté autrement
+                      horaireBuilder.append(" - ");
+                      continue;
+                    }
+                    if (itChar.equals(',') && !isReadingHoraire) { // virgule séparant deux horaires formatté autrement
+                      horaireBuilder.append(", ");
+                      continue;
+                    }
+                    // Dans tous les autres cas, on concatène normalement
+                    horaireBuilder.append(itChar);
+                  }
+                }
+                date.setHoraire(horaireBuilder.toString().replace(":", "h"));
+            }
+        } catch (JSONException e) {
+            LOGGER.error("Erreur in createDateFromJsonItem: " + e.getMessage());
+            date = new DateInfolocale();
+        }
+        return date;
     }
 
     /**

@@ -8,6 +8,7 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
@@ -16,7 +17,7 @@
 
 int dateIndex = Util.notEmpty(request.getParameter("dateIndex")) ? Integer.parseInt((String) request.getParameter("dateIndex")) : 0;
 
-DateHoraires currentDisplayedDate;
+DateInfolocale currentDisplayedDate;
 
 if (dateIndex >= 1 && obj.getDates().length >= 2) {
   currentDisplayedDate = obj.getDates()[dateIndex];
@@ -72,7 +73,16 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                        <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
 				           <span class="ds44-docListElem h4-like ds44-inlineBlock">
 				              <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
-				              <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDate()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDate(), false) %>
+				              <jalios:select>
+                                 <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                                 </jalios:if>
+                                 <jalios:default>
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                                    -
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+                                 </jalios:default>
+                              </jalios:select>
 				           </span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
@@ -81,9 +91,11 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
 			           </jalios:if>
+			           <%-- TODO : afficher les horaires des dateHoraires associées à la date ou les dates affichées
 			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) && Util.notEmpty(currentDisplayedDate.getHorairesDebut()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
 			           </jalios:if>
+			            --%>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
 			           </jalios:if>

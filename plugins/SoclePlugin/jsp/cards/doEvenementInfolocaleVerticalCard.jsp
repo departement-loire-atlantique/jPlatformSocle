@@ -1,4 +1,4 @@
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -14,7 +14,7 @@ if (data == null) {
 
 EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
-DateHoraires currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
+DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
 String urlPhoto = InfolocaleUtil.getUrlOfLargestPicture(itEvent);
 
@@ -37,7 +37,16 @@ String urlPhoto = InfolocaleUtil.getUrlOfLargestPicture(itEvent);
           <p class="ds44-docListElem ds44-mt-std">
             <i class="icon icon-date ds44-docListIco" aria-hidden="true"></i>
             <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) %>">
-	            <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDate()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDate(), false) %>
+	            <jalios:select>
+                    <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+                        <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                    </jalios:if>
+                    <jalios:default>
+                        <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                        -
+                        <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+                    </jalios:default>
+                </jalios:select>
             </jalios:if>
           </p>
 	         <%@ include file="../include/doMetadataEventInfolocale.jspf" %>

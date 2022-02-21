@@ -26,7 +26,7 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
-import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Horaires;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
@@ -69,7 +69,7 @@ public class InfolocaleUtil {
             if (Util.isEmpty(itEvent.getId())) {
                 iter.remove();
             }
-            else if (eventOccursToday(itEvent)) {
+            else if (eventStartsToday(itEvent)) {
                 sortedEvents.add(itEvent);
                 iter.remove();
             }
@@ -94,12 +94,19 @@ public class InfolocaleUtil {
         @Override
         public int compare(EvenementInfolocale o1, EvenementInfolocale o2) {
           if (Util.isEmpty(o1.getDates()) || Util.isEmpty(o2.getDates())
-              || Util.isEmpty(o1.getDates()[0].getDate()) || Util.isEmpty(o2.getDates()[0].getDate())) {
+                  || Util.isEmpty(o1.getDates()[0].getDebut()) || Util.isEmpty(o2.getDates()[0].getDebut())) {
             return 0;
           }
           
-          if (o1.getDates()[0].getDate().after(o2.getDates()[0].getDate())) return 1;
-          if (o2.getDates()[0].getDate().after(o1.getDates()[0].getDate())) return -1;
+          SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+          try {
+            Date date1 = sdf.parse(o1.getDates()[0].getDebut());
+            Date date2 = sdf.parse(o2.getDates()[0].getDebut());
+            if (date1.after(date2)) return 1;
+            if (date2.after(date1)) return -1;
+          } catch (ParseException e) {
+            LOGGER.warn("Exception while comparing events : " + e.getMessage());
+          }
           
           return 0;
         }
@@ -113,15 +120,39 @@ public class InfolocaleUtil {
      * @param itEvent
      * @return
      */
-    public static boolean eventOccursToday(EvenementInfolocale itEvent) {
-        DateHoraires[] eventDates = itEvent.getDates();
+    public static boolean eventStartsToday(EvenementInfolocale itEvent) {
+        DateInfolocale[] eventDates = itEvent.getDates();
         if (Util.isEmpty(eventDates)) return false;
         
-        return eventDateListContainsToday(eventDates);
+        // récupérer toutes les dates de fin
+        List<String> datesFin = new ArrayList<>();
+        for (DateInfolocale itDate : eventDates) {
+            datesFin.add(itDate.getFin());
+        }
+
+        return eventDateListContainsToday(datesFin);
     }
 
-    private static boolean eventDateListContainsToday(DateHoraires[] eventDates) {
-        if (Util.isEmpty(eventDates)) {
+    /**
+     * Détermine si un événement infolocale se termine aujourd'hui
+     * @param itEvent
+     * @return
+     */
+    public static boolean eventEndsToday(EvenementInfolocale itEvent) {
+        DateInfolocale[] eventDates = itEvent.getDates();
+        if (Util.isEmpty(eventDates)) return false;
+
+        // récupérer toutes les dates de début
+        List<String> datesFin = new ArrayList<>();
+        for (DateInfolocale itDate : eventDates) {
+            datesFin.add(itDate.getDebut());
+        }
+
+        return eventDateListContainsToday(datesFin);
+    }
+
+    private static boolean eventDateListContainsToday(List<String> datesString) {
+        if (Util.isEmpty(datesString)) {
           return false;
         }
         
@@ -129,13 +160,16 @@ public class InfolocaleUtil {
         
         String dateStringToday = sdf.format(Calendar.getInstance().getTime());
         
-        for (DateHoraires itDateHoraires : eventDates) {
-            Date itDate = itDateHoraires.getDate();
-            String dateStringEvent = sdf.format(itDate);
-            // Les deux dates sont au même jour, on renvoie true
-            if (dateStringEvent.equals(dateStringToday)) return true;
-                
-            // autrement, on continue normalement dans la boucle
+        for (String itDateString : datesString) {
+            try {
+                Date itDate = sdf.parse(itDateString);
+                String dateStringEvent = sdf.format(itDate);
+                // Les deux dates sont au même jour, on renvoie true
+                if (dateStringEvent.equals(dateStringToday)) return true;
+                // autrement, on continue normalement dans la boucle
+            } catch (ParseException e) {
+                LOGGER.warn("eventDateListContainsToday -> error parsing date " + itDateString + " into a usable Date item.");
+            }
         }
         
         return false; // pas de date trouvée correspondant à aujourd'hui
@@ -147,30 +181,37 @@ public class InfolocaleUtil {
      * @param event
      * @return
      */
-    public static DateHoraires getClosestDate(EvenementInfolocale event) {
+    public static DateInfolocale getClosestDate(EvenementInfolocale event) {
         
         if (Util.isEmpty(event) || Util.isEmpty(event.getDates())) return null;
         
-        DateHoraires[] allDates = event.getDates();
+        DateInfolocale[] allDates = event.getDates();
         
-        DateHoraires value = null;
+        DateInfolocale value = null;
         
         Calendar cal = Calendar.getInstance();
         Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
                 
-        for (DateHoraires itDate : allDates) {
+        for (DateInfolocale itDate : allDates) {
             try {
-                Date itJavaDate = itDate.getDate();
+                Date itJavaDate = sdf.parse(itDate.getDebut());
                 Instant itInstant = itJavaDate.toInstant().truncatedTo(ChronoUnit.DAYS);
+                Date itJavaDateEnd = sdf.parse(itDate.getFin());
+                Instant itInstantEnd = itJavaDateEnd.toInstant().truncatedTo(ChronoUnit.DAYS);
                 
                 // Fix sur un bug natif Java où si une date a pour valeur XX/XX/XXXX 00:00:00
                 // alors l'instant généré sera à J-1
                 while (Date.from(itInstant).before(itJavaDate)) {
                   itInstant = itInstant.plus(Duration.ofHours(24));
                 }
+                while (Date.from(itInstantEnd).before(itJavaDateEnd)) {
+                    itInstantEnd = itInstantEnd.plus(Duration.ofHours(24));
+                }
                 
-                // Date est avant la date actuelle / la date la plus proche actuelle
-                if (itInstant.isBefore(instantNow)) {
+                // Date de début et de fin sont avant la date actuelle / la date la plus proche actuelle
+                if (itInstant.isBefore(instantNow) && itInstantEnd.isBefore(instantNow)) {
                   continue;
                 }
                 
@@ -188,15 +229,16 @@ public class InfolocaleUtil {
                     continue;
                 }
                 
-                if (value != null && Util.notEmpty(value) && Util.notEmpty(value.getDate())) {
+                if (value != null && Util.notEmpty(value) && Util.notEmpty(value.getDebut())) {
                   // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
-                  Date currentFoundJavaDate = value.getDate();
+                    Date currentFoundJavaDate = sdf.parse(value.getDebut());
                   Instant currentFoundInstant = currentFoundJavaDate.toInstant();
                   if (instantNow.equals(itInstant) || currentFoundInstant.isAfter(itInstant)) {
                       value = itDate;
                   }
                 }
-
+            } catch (ParseException e) {
+                LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
             } catch (NullPointerException e) {
               LOGGER.warn("NPE in getClosestDate : " + e.getMessage());
             }
@@ -210,10 +252,9 @@ public class InfolocaleUtil {
      * @param dateEvent
      * @return
      */
-    public static boolean infolocaleDateIsSingleDay(DateHoraires dateEvent) {
-        /* if (Util.isEmpty(dateEvent)) return true;
-        return dateEvent.getDate().equals(dateEvent.getFin()); */
-        return true; // la v1.3 n'a pas de plages de dates
+    public static boolean infolocaleDateIsSingleDay(DateInfolocale date) {
+        if (Util.isEmpty(date)) return true;
+        return date.getDebut().equals(date.getFin());
     }
     
     /**
@@ -221,12 +262,17 @@ public class InfolocaleUtil {
      * @param dateStr
      * @return
      */
-    public static String getDayOfMonthLabel(Date date) {
-        if (Util.isEmpty(date)) return "";
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+    public static String getDayOfMonthLabel(String dateStr) {
+        if (Util.isEmpty(dateStr)) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(sdf.parse(dateStr));
+            return Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+        } catch (ParseException e) {
+            LOGGER.warn("Error in getDayLabel parsing date " + dateStr);
+            return "";
+        }
     }
     
     /**
@@ -235,10 +281,12 @@ public class InfolocaleUtil {
      * @param abbreviated
      * @return
      */
-    public static String getMonthLabel(Date date, boolean abbreviated) {
-        if (Util.isEmpty(date)) return "";
+    public static String getMonthLabel(String dateStr, boolean abbreviated) {
+        if (Util.isEmpty(dateStr)) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        try {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
+            cal.setTime(sdf.parse(dateStr));
             DateFormatSymbols dfs = DateFormatSymbols.getInstance(Channel.getChannel().getCurrentUserLocale());
             String returnedValue = dfs.getMonths()[cal.get(Calendar.MONTH)];
             if (abbreviated) {
@@ -261,6 +309,10 @@ public class InfolocaleUtil {
                 }
             }
             return returnedValue;
+        } catch (ParseException e) {
+            LOGGER.warn("Error in getMonthLabel parsing date " + dateStr);
+            return "";
+        }
     }
     
     /**
@@ -268,11 +320,17 @@ public class InfolocaleUtil {
      * @param date
      * @return
      */
-    public static String getYearLabel(Date date) {
-      if (Util.isEmpty(date)) return "";
-      Calendar cal = Calendar.getInstance();
-      cal.setTime(date);
-      return Integer.toString(cal.get(Calendar.YEAR));
+    public static String getYearLabel(String dateStr) {
+        if (Util.isEmpty(dateStr)) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(sdf.parse(dateStr));
+            return Integer.toString(cal.get(Calendar.YEAR));
+        } catch (ParseException e) {
+            LOGGER.warn("Error in getDayLabel parsing date " + dateStr);
+            return "";
+        }
     }
     
     /**
@@ -280,10 +338,15 @@ public class InfolocaleUtil {
      * @param dateEvent
      * @return
      */
-    public static String getFullStringFromEventDate(DateHoraires dateEvent) {
-      if (Util.isEmpty(dateEvent)) return "";
-      return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang() ,"jcmsplugin.socle.infolocale.label.carrousel.tuile.date",
-            getDayOfMonthLabel(dateEvent.getDate()), getMonthLabel(dateEvent.getDate() ,false), getYearLabel(dateEvent.getDate()));
+    public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
+        if (infolocaleDateIsSingleDay(dateEvent)) {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang() ,"jcmsplugin.socle.infolocale.label.carrousel.tuile.date",
+                getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
+        } else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.carrousel.tuile.periode",
+                getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
+                getDayOfMonthLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
+        }
     }
     
     /**
@@ -318,9 +381,9 @@ public class InfolocaleUtil {
     private static List<EvenementInfolocale> splitEventIntoEventListFromDates(EvenementInfolocale event) {
       List<EvenementInfolocale> splittedList = new ArrayList<>();
       int counter = 0;
-      for (DateHoraires itDate : event.getDates()) {
+      for (DateInfolocale itDate : event.getDates()) {
         EvenementInfolocale eventClone = (EvenementInfolocale) event.clone();
-        eventClone.setDates(new DateHoraires[]{itDate});
+        eventClone.setDates(new DateInfolocale[]{itDate});
         eventClone.setIndexDate(counter);
         splittedList.add(eventClone);
         counter++;
@@ -541,14 +604,14 @@ public class InfolocaleUtil {
       try {
         Date limitStart = sdf.parse(dateDebut);
         Date limitEnd = sdf.parse(dateFin);
-        Date eventDate = itEvent.getDates()[0].getDate();
+        Date debutEvent = sdf.parse(itEvent.getDates()[0].getDebut());
+        Date finEvent = sdf.parse(itEvent.getDates()[0].getFin());
         
-        // si la date de l'événement est égal à une des limites, OK
-        boolean dateEqualsOneLimit = limitStart.equals(eventDate) || limitEnd.equals(eventDate);
-        // si la date de l'événement est entre début et fin, OK
-        boolean eventIsInLimits = limitStart.before(eventDate) && limitEnd.after(eventDate);
+        boolean beginsInLimits = (limitStart.before(debutEvent) || limitStart.equals(debutEvent)) && (limitEnd.after(debutEvent) || limitEnd.equals(debutEvent));
+        boolean endsInLimits = (limitStart.before(finEvent) || limitStart.equals(finEvent)) && (limitEnd.after(finEvent) || limitEnd.equals(finEvent));
+        boolean eventContainsLimit = (limitStart.after(debutEvent) || limitStart.equals(debutEvent)) && (limitEnd.before(finEvent) || limitEnd.equals(finEvent));
         
-        return dateEqualsOneLimit || eventIsInLimits;
+        return beginsInLimits || endsInLimits || eventContainsLimit;
         
       } catch (ParseException e) {
         LOGGER.warn("Error in convertDateToInfolocaleFormat : incorrect source date for SimpleDateFormat : " + e.getMessage());
@@ -617,11 +680,12 @@ public class InfolocaleUtil {
      */
     public static String getPlagesDisplayHoraires(Horaires itHoraires) {
         StringBuilder finalDisplay = new StringBuilder();
-        for (int counter = 1; counter < itHoraires.getPlagesDebut().size(); counter++) {
+        for (int counter = 0; counter < itHoraires.getPlagesDebut().size(); counter++) {
             String horaireToAdd = getHoraireDisplay(itHoraires.getPlagesDebut().get(counter), itHoraires.getPlagesFin().get(counter));
             
+            finalDisplay.append(horaireToAdd);
+            
             if (counter+1 < itHoraires.getPlagesDebut().size() && Util.notEmpty(horaireToAdd)) {
-                finalDisplay.append(horaireToAdd);
                 finalDisplay.append(suffixeHoraire);
             }
         }
@@ -650,30 +714,59 @@ public class InfolocaleUtil {
      * @param dateHoraires
      * @return
      */
-    public static String getHoraireDisplay(DateHoraires dateHoraires) {
-      if (Util.isEmpty(dateHoraires) || Util.isEmpty(dateHoraires.getHorairesDebut())) return "";
-      // nul besoin de tester horairesFin -> les deux listes ont la même taille
+    public static String getHoraireDisplay(EvenementInfolocale event, DateInfolocale dateInfoloc) {
+      if (Util.isEmpty(event) || Util.isEmpty(event.getDatesHoraires()) || Util.isEmpty(dateInfoloc) || Util.isEmpty(dateInfoloc.getHoraire())) return "";
+
+      String separatorHoraire = " - ";
+      String suffixeHoraire = ", ";
+      
+      // Il faut récupérer les DateHoraires qui correspondent à la date ou la plage de date indiquée sous dateInfoloc
+      // -> demande envoyée par mail
+      
       
       // séparation par les virgules
+      String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
       StringBuilder finalHoraire = new StringBuilder();
       
-      for (int counter = 0; counter < dateHoraires.getHorairesDebut().size(); counter++) {
+      for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
         
-        String itHoraireDebut = dateHoraires.getHorairesDebut().get(counter);
-        String itHoraireFin = dateHoraires.getHorairesFin().get(counter);
+        String itHoraire = iter.next();
         StringBuilder horaireToAdd = new StringBuilder();
         
-        // Modifier le format HH:mm:ss en HH'h'mm
-        itHoraireDebut = formatTimeToHhMm(itHoraireDebut);
-        itHoraireFin = formatTimeToHhMm(itHoraireFin);
-        
-        horaireToAdd.append(getHoraireDisplay(itHoraireDebut, itHoraireFin));
+        if (!itHoraire.contains(separatorHoraire)) {
+
+            horaireToAdd.append(itHoraire);
+
+          } else {
+
+            String[] splittedTimes = itHoraire.split(separatorHoraire);
+
+            int counterSplit = 0;
+
+            while (counterSplit < splittedTimes.length) {
+              String horaire_1 = splittedTimes[counterSplit];
+              counterSplit++;
+              String horaire_2 = splittedTimes[counterSplit];
+
+              if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
+                horaireToAdd.append(horaire_1);
+              } else {
+                horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+              }
+
+              counterSplit++;
+
+            }
+
+            if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1]) && Util.isEmpty(horaireToAdd)) horaireToAdd.append(splittedTimes[0]);
+
+          }
         
         if (Util.notEmpty(horaireToAdd)) {
           finalHoraire.append(horaireToAdd.toString());
         }
         
-        if (counter+1 < dateHoraires.getHorairesDebut().size() && Util.notEmpty(horaireToAdd)) {
+        if (iter.hasNext() && Util.notEmpty(horaireToAdd)) {
           finalHoraire.append(suffixeHoraire);
         }
         
