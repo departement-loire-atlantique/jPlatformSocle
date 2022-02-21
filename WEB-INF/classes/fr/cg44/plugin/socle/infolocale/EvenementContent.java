@@ -7,6 +7,7 @@ import com.jalios.jcms.Publication;
 
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
 import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
+import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Horaires;
@@ -28,7 +29,8 @@ public class EvenementContent extends Content {
     String urlBilletterie;
     Lieu lieu;
     Contact[] contacts;
-    DateHoraires[] dates;
+    DateHoraires[] datesHoraires;
+    DateInfolocale[] dates;
     Horaires[] horaires;
     Tarif[] tarifs;
     Genre genre;
@@ -202,20 +204,28 @@ public class EvenementContent extends Content {
       this.indexDate = indexDate;
     }
 
-    public DateHoraires[] getDates() {
-        return dates;
-    }
-
-    public void setDates(DateHoraires[] dates) {
-        this.dates = dates;
-    }
-
     public Horaires[] getHoraires() {
         return horaires;
     }
 
     public void setHoraires(Horaires[] horaires) {
         this.horaires = horaires;
+    }
+
+    public DateHoraires[] getDatesHoraires() {
+        return datesHoraires;
+    }
+
+    public void setDatesHoraires(DateHoraires[] datesHoraires) {
+        this.datesHoraires = datesHoraires;
+    }
+
+    public DateInfolocale[] getDates() {
+        return dates;
+    }
+
+    public void setDates(DateInfolocale[] dates) {
+        this.dates = dates;
     }
     
 }

@@ -1,5 +1,5 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.InfolocaleMetadataUtils"%>
-<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
@@ -15,7 +15,7 @@ if (data == null) {
 
 EvenementInfolocale itEvent = (EvenementInfolocale) data;
 
-DateHoraires currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
+DateInfolocale currentDisplayedDate = InfolocaleUtil.getClosestDate(itEvent);
 
 String urlPhoto = Util.notEmpty(InfolocaleUtil.getLargestPicture(itEvent)) ? InfolocaleUtil.getLargestPicture(itEvent).getPath() : "s.gif";
 
