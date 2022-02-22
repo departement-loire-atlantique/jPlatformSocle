@@ -91,11 +91,9 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
 			           </jalios:if>
-			           <%-- TODO : afficher les horaires des dateHoraires associées à la date ou les dates affichées
-			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) && Util.notEmpty(currentDisplayedDate.getHorairesDebut()) %>">
-			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
+			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) && InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) && Util.notEmpty(obj.getDatesHoraires()) %>">
+			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(obj)%></span>
 			           </jalios:if>
-			            --%>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
 			           </jalios:if>

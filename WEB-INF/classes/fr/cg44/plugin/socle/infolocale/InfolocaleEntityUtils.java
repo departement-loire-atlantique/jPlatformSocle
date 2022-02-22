@@ -415,7 +415,7 @@ public class InfolocaleEntityUtils {
         DateHoraires date = new DateHoraires();
         SimpleDateFormat sdf = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.date.receive.format"));
         try {
-            date.setDate(sdf.parse(json.getString("date")));
+            date.setDate(json.getString("date"));
             ArrayList<String> horairesDebut = new ArrayList<>();
             ArrayList<String> horairesFin = new ArrayList<>();
             JSONArray horaires = json.getJSONArray("horaires");
@@ -427,9 +427,6 @@ public class InfolocaleEntityUtils {
             date.setHorairesFin(horairesFin);
         } catch (JSONException e) {
             LOGGER.error("Erreur in createDateHorairesFromJsonItem: " + e.getMessage());
-            return null;
-        } catch (ParseException e) {
-            LOGGER.error("ParseException in createDateHorairesFromJsonItem: " + e.getMessage());
             return null;
         }
         return date;

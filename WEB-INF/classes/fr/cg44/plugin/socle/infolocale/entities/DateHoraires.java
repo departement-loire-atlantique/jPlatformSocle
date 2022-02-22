@@ -7,14 +7,14 @@ import com.jalios.jcms.Data;
 
 public class DateHoraires extends Data {
     
-    Date date;
+    String date;
     ArrayList<String> horairesDebut;
     ArrayList<String> horairesFin;
     
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public ArrayList<String> getHorairesDebut() {
