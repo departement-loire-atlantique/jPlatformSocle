@@ -26,6 +26,7 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
+import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
 import fr.cg44.plugin.socle.infolocale.entities.Horaires;
@@ -714,65 +715,47 @@ public class InfolocaleUtil {
      * @param dateHoraires
      * @return
      */
-    public static String getHoraireDisplay(EvenementInfolocale event, DateInfolocale dateInfoloc) {
-      if (Util.isEmpty(event) || Util.isEmpty(event.getDatesHoraires()) || Util.isEmpty(dateInfoloc) || Util.isEmpty(dateInfoloc.getHoraire())) return "";
-
-      String separatorHoraire = " - ";
-      String suffixeHoraire = ", ";
+    public static String getHoraireDisplay(EvenementInfolocale event) {
+      if (Util.isEmpty(event) || Util.isEmpty(event.getDates()) || (Util.isEmpty(event.getDatesHoraires()) && Util.isEmpty(event.getHoraires()))) return "";
       
-      // Il faut récupérer les DateHoraires qui correspondent à la date ou la plage de date indiquée sous dateInfoloc
-      // -> demande envoyée par mail
+      DateInfolocale currentDate = event.getDates()[0];
       
+      // Cas "plage de dates" -> les horaires sont sous le champ "horaires", on n'affiche donc rien
+      if (!infolocaleDateIsSingleDay(currentDate)) return "";
       
-      // séparation par les virgules
-      String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
-      StringBuilder finalHoraire = new StringBuilder();
+      // Cas "date unique" -> on récupère la dateHoraire associée à la date courante    
+      StringBuilder finalHoraire = new StringBuilder();      
       
-      for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
-        
-        String itHoraire = iter.next();
-        StringBuilder horaireToAdd = new StringBuilder();
-        
-        if (!itHoraire.contains(separatorHoraire)) {
+      for (DateHoraires itDateHoraire : event.getDatesHoraires()) {
+          // boucle sur les dateHoraires
+          if (itDateHoraire.getDate().equals(currentDate.getDebut())) {
+              // date correspondante trouvée
+              for (int counterHoraire = 0; counterHoraire < itDateHoraire.getHorairesDebut().size(); counterHoraire++) {
+                  
+                  StringBuilder horaireToAdd = new StringBuilder();
 
-            horaireToAdd.append(itHoraire);
-
-          } else {
-
-            String[] splittedTimes = itHoraire.split(separatorHoraire);
-
-            int counterSplit = 0;
-
-            while (counterSplit < splittedTimes.length) {
-              String horaire_1 = splittedTimes[counterSplit];
-              counterSplit++;
-              String horaire_2 = splittedTimes[counterSplit];
-
-              if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
-                horaireToAdd.append(horaire_1);
-              } else {
-                horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+                  String horaire_1 = formatTimeToHhMm(itDateHoraire.getHorairesDebut().get(counterHoraire));
+                  String horaire_2 = formatTimeToHhMm(itDateHoraire.getHorairesFin().get(counterHoraire));
+                  
+                  if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
+                      horaireToAdd.append(horaire_1);
+                    } else {
+                      horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+                  }
+                 
+                  
+                  if (Util.notEmpty(horaireToAdd)) {
+                    finalHoraire.append(horaireToAdd.toString());
+                  }
+                  
+                  if (counterHoraire+1 < itDateHoraire.getHorairesDebut().size() && Util.notEmpty(horaireToAdd)) {
+                    finalHoraire.append(suffixeHoraire);
+                  }
               }
-
-              counterSplit++;
-
-            }
-
-            if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1]) && Util.isEmpty(horaireToAdd)) horaireToAdd.append(splittedTimes[0]);
-
           }
-        
-        if (Util.notEmpty(horaireToAdd)) {
-          finalHoraire.append(horaireToAdd.toString());
-        }
-        
-        if (iter.hasNext() && Util.notEmpty(horaireToAdd)) {
-          finalHoraire.append(suffixeHoraire);
-        }
-        
       }
-      
-      return deleteDoublonsFromString(finalHoraire.toString(), suffixeHoraire);
+          
+      return finalHoraire.toString();
     }
     
     /**
