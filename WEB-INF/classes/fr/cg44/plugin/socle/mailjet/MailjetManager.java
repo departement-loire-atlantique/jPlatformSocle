@@ -314,7 +314,7 @@ public class MailjetManager {
 
     // Création de la newsletter  
     com.mailjet.client.MailjetClient client = MailjetManager.getMailJetClient();
-    String newsletterID = new String();
+    Long newsletterID = null;
     MailjetRequest request;
     MailjetResponse response;
 
@@ -329,7 +329,8 @@ public class MailjetManager {
         .property(Campaigndraft.EDITMODE, "html2");
     try {
       response = client.post(request);
-      newsletterID = response.getData().getJSONObject(0).getString("ID");
+      LOGGER.debug(response.getData().getJSONObject(0));
+      newsletterID = response.getData().getJSONObject(0).getLong("ID");
     } catch (MailjetException | JSONException e) {
       LOGGER.warn("Erreur lors de la préparation de la newsletter par l'API Mailjet", e);
       return EXIT_ERROR;
