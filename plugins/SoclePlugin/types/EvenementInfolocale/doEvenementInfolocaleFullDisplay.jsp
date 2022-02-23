@@ -49,7 +49,7 @@ boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj
 boolean hasTexteLong = Util.notEmpty(obj.getTexteLong()) && !"null".equals(obj.getTexteLong());
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
 
-String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj);
+String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj, true);
 boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
 boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
 
@@ -95,11 +95,11 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
 			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
+                          <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
+                       </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
-			           </jalios:if>
-			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
-			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
 			              <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>

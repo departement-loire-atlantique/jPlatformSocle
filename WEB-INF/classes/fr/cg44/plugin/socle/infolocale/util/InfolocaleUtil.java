@@ -667,7 +667,7 @@ public class InfolocaleUtil {
         Date transitionDate;
         try {
             transitionDate = originalFormat.parse(oldTime);
-            return finalFormat.format(transitionDate);
+            return finalFormat.format(transitionDate).replace("h00", "h");
         } catch (ParseException e) {
             LOGGER.warn("ParseException in formatTimeToHhMm : " + e.getMessage());
             return oldTime;
@@ -711,11 +711,38 @@ public class InfolocaleUtil {
     }
     
     /**
+     * Renvoie un format d'affichage moins littéraire pour des horaires
+     * @param heureDebut
+     * @param heureFin
+     * @return
+     */
+    public static String getShortenedHoraireDisplay(String heureDebut, String heureFin) {
+     // début et fin sont identiques -> un seul horaire
+        if (heureDebut.equals(heureFin)) {
+           return heureDebut;
+        }
+        // sinon, une période
+        else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode.short", heureDebut, heureFin);
+        }
+    }
+    
+    /**
      * Renvoie un horaire de date infolocale dans un format propre
-     * @param dateHoraires
+     * @param event
      * @return
      */
     public static String getHoraireDisplay(EvenementInfolocale event) {
+        return getHoraireDisplay(event, false);
+    }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param event
+     * @param hortened
+     * @return
+     */
+    public static String getHoraireDisplay(EvenementInfolocale event, boolean shortened) {
       if (Util.isEmpty(event) || Util.isEmpty(event.getDates()) || (Util.isEmpty(event.getDatesHoraires()) && Util.isEmpty(event.getHoraires()))) return "";
       
       DateInfolocale currentDate = event.getDates()[0];
@@ -735,7 +762,7 @@ public class InfolocaleUtil {
               // hélas une seconde boucle pour passer sur les plages par jour...
               // mauvais pour les performances. Peut-être y a-t-il mieux ?
               for (int counterPlages = 0; counterPlages < itHoraires.getPlagesDebut().size(); counterPlages++) {
-                  String tmpHoraire = getHoraireDisplay(itHoraires.getPlagesDebut().get(counterPlages), itHoraires.getPlagesFin().get(counterPlages));
+                  String tmpHoraire = getShortenedHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counterPlages)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counterPlages)));
 
                   if (!formattedHoraires.contains(tmpHoraire)) {
                       if (passedFirstDay) {
@@ -780,7 +807,7 @@ public class InfolocaleUtil {
                   if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
                       horaireToAdd.append(horaire_1);
                     } else {
-                      horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+                      horaireToAdd.append(shortened ? getShortenedHoraireDisplay(horaire_1, horaire_2) : getHoraireDisplay(horaire_1, horaire_2));
                   }
                  
                   
