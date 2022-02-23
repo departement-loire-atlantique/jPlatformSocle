@@ -49,6 +49,10 @@ boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj
 boolean hasTexteLong = Util.notEmpty(obj.getTexteLong()) && !"null".equals(obj.getTexteLong());
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
 
+String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj);
+boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+
 %>
 
 <main role="main" id="content">
@@ -83,6 +87,9 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
                                     <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
                                  </jalios:default>
                               </jalios:select>
+                              <jalios:if predicate="<%= allowHorairesDisplay %>">
+                                    - <%= displayHoraires %>
+                              </jalios:if>
 				           </span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
@@ -90,9 +97,6 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
-			           </jalios:if>
-			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) && InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) && Util.notEmpty(obj.getDatesHoraires()) %>">
-			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(obj)%></span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
@@ -207,7 +211,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
             <div class="ds44-grid12-offset-2">
                <div class="grid-2-small-1">
                   <div class="col">
-                     <jalios:if predicate="<%= Util.notEmpty(obj.getHoraires()) %>">
+                     <jalios:if predicate="<%= showPlagesHoraires %>">
                          <div class="ds44-mb3">
                             <h2 class="h3-like"><%= glp("jcmsplugin.socle.horaires") %><%=glp("jcmsplugin.socle.deux-points") %></h2>
                             <ul class="ds44-uList">

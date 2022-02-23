@@ -607,6 +607,11 @@ jcmsplugin.socle.infolocale.search.field.organisme: organisme
 jcmsplugin.socle.infolocale.search.field.gratuit: gratuit
 jcmsplugin.socle.infolocale.search.field.recherche: recherche
 
+# Données techniques infolocale
+
+# à utiliser si un événement, sur une plage de dates, a des horaires différents par jour
+jcmsplugin.socle.infolocale.technique.multipleHorairesEvent: MULTIPLEHORAIRES_EVENT
+
 # ------------------------------------------------------------
 #  IDs virtuels de contenus
 # ------------------------------------------------------------
