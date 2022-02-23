@@ -685,7 +685,7 @@ public class InfolocaleUtil {
     public static String getPlagesDisplayHoraires(Horaires itHoraires) {
         StringBuilder finalDisplay = new StringBuilder();
         for (int counter = 0; counter < itHoraires.getPlagesDebut().size(); counter++) {
-            String horaireToAdd = getHoraireDisplay(itHoraires.getPlagesDebut().get(counter), itHoraires.getPlagesFin().get(counter));
+            String horaireToAdd = getHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counter)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counter)));
             
             finalDisplay.append(horaireToAdd);
             
