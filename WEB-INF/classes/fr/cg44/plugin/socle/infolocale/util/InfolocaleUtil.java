@@ -667,7 +667,10 @@ public class InfolocaleUtil {
         Date transitionDate;
         try {
             transitionDate = originalFormat.parse(oldTime);
-            return finalFormat.format(transitionDate).replace("h00", "h");
+            String formattedTime = finalFormat.format(transitionDate);
+            formattedTime = formattedTime.replace("h00", "h");
+            if (formattedTime.startsWith("0")) formattedTime = formattedTime.substring(1, formattedTime.length());
+            return formattedTime;
         } catch (ParseException e) {
             LOGGER.warn("ParseException in formatTimeToHhMm : " + e.getMessage());
             return oldTime;
