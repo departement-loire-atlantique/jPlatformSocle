@@ -6,8 +6,8 @@
         
         // spécifique horaires -> ne pas afficher si une donnée est égale à une donnée technique
         boolean displayDefault = Util.notEmpty(defaultMetadata) && !defaultMetadata.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
-        boolean displayMetadata1 = Util.notEmpty(metadata1) && !metadata1.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
-        boolean displayMetadata2 = Util.notEmpty(metadata2) && !metadata2.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
+        boolean displayMetadata1 = Util.notEmpty(metadata1) && !metadata1.contains(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
+        boolean displayMetadata2 = Util.notEmpty(metadata2) && !metadata2.contains(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
         %>
         
         <jalios:if predicate="<%= displayDefault %>">
