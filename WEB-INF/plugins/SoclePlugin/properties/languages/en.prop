@@ -592,7 +592,7 @@ jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3}
 jcmsplugin.socle.infolocale.label.carrousel.date: Le {0} 
 jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
 jcmsplugin.socle.infolocale.label.horaire.periode: de {0} à {1}
-jcmsplugin.socle.infolocale.label.horaire.periode.short: {0}-{1}
+jcmsplugin.socle.infolocale.label.horaire.periode.short: {0} à {1}
 jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du département
 jcmsplugin.socle.infolocale.label.payant: Payant
 jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
