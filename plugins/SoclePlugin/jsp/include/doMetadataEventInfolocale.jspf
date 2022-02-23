@@ -1,37 +1,23 @@
         <% 
         String displayHoraires = InfolocaleUtil.getHoraireDisplay(itEvent, true); 
-        boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+        String defaultMetadata = itEvent.getMetadataDefaultContent();
+        String metadata1 = itEvent.getMetadata1();
+        String metadata2 = itEvent.getMetadata2();
+        
+        // spécifique horaires -> ne pas afficher si une donnée est égale à une donnée technique
+        boolean displayDefault = Util.notEmpty(defaultMetadata) && !defaultMetadata.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
+        boolean displayMetadata1 = Util.notEmpty(metadata1) && !metadata1.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
+        boolean displayMetadata2 = Util.notEmpty(metadata2) && !metadata2.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
         %>
         
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
+        <jalios:if predicate="<%= displayDefault %>">
                 <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
-                <jalios:select>
-	                <jalios:if predicate='<%= itEvent.getMetadataDefaultContent().equals("horaire") && allowHorairesDisplay %>'>
-	                    <span class="ds44-iconInnerText"><%= displayHoraires %></span>
-	                </jalios:if>
-	                <jalios:default>
-                        <span class="ds44-iconInnerText"><%= itEvent.getMetadataDefaultContent() %></span>
-	                </jalios:default>
-	            </jalios:select>
+                    <span class="ds44-iconInnerText"><%= defaultMetadata %></span>
 	            </p>
          </jalios:if>
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
-            <jalios:select>
-                <jalios:if predicate='<%= itEvent.getMetadata1().equals("horaire") && allowHorairesDisplay %>'>
-                    <p><%= displayHoraires %></p>
-                </jalios:if>
-                <jalios:default>
-                    <p><%= itEvent.getMetadata1() %></p>
-                </jalios:default>
-            </jalios:select>
+        <jalios:if predicate="<%= displayMetadata1 %>">
+                <p><%= metadata1 %></p>
         </jalios:if>
-        <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
-            <jalios:select>
-                <jalios:if predicate='<%= itEvent.getMetadata2().equals("horaire") && allowHorairesDisplay %>'>
-                    <p><%= displayHoraires %></p>
-                </jalios:if>
-                <jalios:default>
-                    <p><%= itEvent.getMetadata2() %></p>
-                </jalios:default>
-            </jalios:select>
+        <jalios:if predicate="<%= displayMetadata2 %>">
+                <p><%= metadata2 %></p>
         </jalios:if>
