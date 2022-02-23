@@ -1,7 +1,12 @@
+        <% 
+        String displayHoraires = InfolocaleUtil.getHoraireDisplay(itEvent); 
+        boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+        %>
+        
         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadataDefaultContent()) %>">
                 <p class="ds44-cardLocalisation"><i class="icon <%= itEvent.getMetadataDefaultIcon() %>" aria-hidden="true"></i><span class="visually-hidden"><%= itEvent.getMetadataHiddenLabel() %></span>
                 <jalios:select>
-	                <jalios:if predicate='<%= itEvent.getMetadataDefaultContent().equals("horaire") && InfolocaleUtil.infolocaleDateIsSingleDay(itEvent.getDates()[0]) %>'>
+	                <jalios:if predicate='<%= itEvent.getMetadataDefaultContent().equals("horaire") && allowHorairesDisplay %>'>
 	                    <span class="ds44-iconInnerText"><%= InfolocaleUtil.getHoraireDisplay(itEvent) %></span>
 	                </jalios:if>
 	                <jalios:default>
@@ -12,7 +17,7 @@
          </jalios:if>
         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata1()) %>">
             <jalios:select>
-                <jalios:if predicate='<%= itEvent.getMetadata1().equals("horaire") && InfolocaleUtil.infolocaleDateIsSingleDay(itEvent.getDates()[0]) %>'>
+                <jalios:if predicate='<%= itEvent.getMetadata1().equals("horaire") && allowHorairesDisplay %>'>
                     <p><%= InfolocaleUtil.getHoraireDisplay(itEvent) %></p>
                 </jalios:if>
                 <jalios:default>
@@ -22,7 +27,7 @@
         </jalios:if>
         <jalios:if predicate="<%= Util.notEmpty(itEvent.getMetadata2()) %>">
             <jalios:select>
-                <jalios:if predicate='<%= itEvent.getMetadata2().equals("horaire") && InfolocaleUtil.infolocaleDateIsSingleDay(itEvent.getDates()[0]) %>'>
+                <jalios:if predicate='<%= itEvent.getMetadata2().equals("horaire") && allowHorairesDisplay %>'>
                     <p><%= InfolocaleUtil.getHoraireDisplay(itEvent) %></p>
                 </jalios:if>
                 <jalios:default>

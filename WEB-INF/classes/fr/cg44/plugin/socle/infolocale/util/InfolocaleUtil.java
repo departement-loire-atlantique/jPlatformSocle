@@ -667,7 +667,7 @@ public class InfolocaleUtil {
         Date transitionDate;
         try {
             transitionDate = originalFormat.parse(oldTime);
-            return finalFormat.format(transitionDate);
+            return finalFormat.format(transitionDate).replace("h00", "h");
         } catch (ParseException e) {
             LOGGER.warn("ParseException in formatTimeToHhMm : " + e.getMessage());
             return oldTime;
@@ -711,21 +711,88 @@ public class InfolocaleUtil {
     }
     
     /**
+     * Renvoie un format d'affichage moins littéraire pour des horaires
+     * @param heureDebut
+     * @param heureFin
+     * @return
+     */
+    public static String getShortenedHoraireDisplay(String heureDebut, String heureFin) {
+     // début et fin sont identiques -> un seul horaire
+        if (heureDebut.equals(heureFin)) {
+           return heureDebut;
+        }
+        // sinon, une période
+        else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode.short", heureDebut, heureFin);
+        }
+    }
+    
+    /**
      * Renvoie un horaire de date infolocale dans un format propre
-     * @param dateHoraires
+     * @param event
      * @return
      */
     public static String getHoraireDisplay(EvenementInfolocale event) {
+        return getHoraireDisplay(event, false);
+    }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param event
+     * @param hortened
+     * @return
+     */
+    public static String getHoraireDisplay(EvenementInfolocale event, boolean shortened) {
       if (Util.isEmpty(event) || Util.isEmpty(event.getDates()) || (Util.isEmpty(event.getDatesHoraires()) && Util.isEmpty(event.getHoraires()))) return "";
       
       DateInfolocale currentDate = event.getDates()[0];
       
-      // Cas "plage de dates" -> les horaires sont sous le champ "horaires", on n'affiche donc rien
-      if (!infolocaleDateIsSingleDay(currentDate)) return "";
+      StringBuilder finalHoraire = new StringBuilder();
       
-      // Cas "date unique" -> on récupère la dateHoraire associée à la date courante    
-      StringBuilder finalHoraire = new StringBuilder();      
+      // Cas "plage de dates" -> les horaires sont sous le champ "horaires"
+      if (!infolocaleDateIsSingleDay(currentDate)) {
+          // On veut récupérer l'affichage de tous les horaires dans une liste, en évitant les dupliqués
+          // pour ensuite les afficher les uns après les autres
+          
+          boolean passedFirstDay = false;
+          
+          // Récupération de tous les horaires formattés dans une collection
+          ArrayList<String> formattedHoraires = new ArrayList<>();
+          for (Horaires itHoraires : event.getHoraires()) {
+              // hélas une seconde boucle pour passer sur les plages par jour...
+              // mauvais pour les performances. Peut-être y a-t-il mieux ?
+              for (int counterPlages = 0; counterPlages < itHoraires.getPlagesDebut().size(); counterPlages++) {
+                  String tmpHoraire = getShortenedHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counterPlages)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counterPlages)));
+
+                  if (!formattedHoraires.contains(tmpHoraire)) {
+                      if (passedFirstDay) {
+                          // cas 1 : les horaires diffèrent par jour. On envoie une donnée technique au lieu de l'horaire pour l'indiquer
+                          // cette donnée technique indique qu'il faut suivre une certaine règle d'affichage
+                          return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent");
+                      }
+                      // cas 2 : on n'a que des doublons sur toutes les dates, donc on affiche l'horaire.
+                      // nécessité de passer par toutes les journées pour vérifier l'absence du cas 1...
+                      // éviter les doublons
+                      formattedHoraires.add(tmpHoraire);
+                  }
+              }
+              
+              // premier jour passé
+              passedFirstDay = true;
+          }
+          
+          // Horaires récupérés, générer le string qui sera retourné
+          for (Iterator<String> iter = formattedHoraires.iterator(); iter.hasNext();) {
+              finalHoraire.append(iter.next());
+              if (iter.hasNext()) {
+                  finalHoraire.append(suffixeHoraire);
+              }
+          }
+          
+          return finalHoraire.toString();
+      }
       
+      // Cas "date unique" -> on récupère la dateHoraire associée à la date courante
       for (DateHoraires itDateHoraire : event.getDatesHoraires()) {
           // boucle sur les dateHoraires
           if (itDateHoraire.getDate().equals(currentDate.getDebut())) {
@@ -740,7 +807,7 @@ public class InfolocaleUtil {
                   if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
                       horaireToAdd.append(horaire_1);
                     } else {
-                      horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
+                      horaireToAdd.append(shortened ? getShortenedHoraireDisplay(horaire_1, horaire_2) : getHoraireDisplay(horaire_1, horaire_2));
                   }
                  
                   
