@@ -107,6 +107,8 @@ public class InfolocaleEntityUtils {
     public static EvenementInfolocale createEvenementInfolocaleFromJsonItem(JSONObject json, String metadata1, String metadata2, String metadataDefault) {
         if (Util.isEmpty(json)) return null;
         
+        LOGGER.debug("Creating event - START");
+        
         EvenementInfolocale itEvent = new EvenementInfolocale();
         
         String mentionAnnule = "mentionEvenementAnnule";
@@ -114,6 +116,7 @@ public class InfolocaleEntityUtils {
         try {
             
             itEvent.setId("INFOLOC-"+json.getInt("id"));
+            LOGGER.debug("Event ID -> " + itEvent.getId());
             itEvent.setEvenementId(json.getInt("id"));
             if (!(json.isNull("organismeId"))) {
               itEvent.setOrganismeId(json.getInt("organismeId"));
@@ -277,6 +280,8 @@ public class InfolocaleEntityUtils {
             itEvent = null;
         }
         
+        LOGGER.debug("Event created - END");
+        
         return itEvent;
     }
 
@@ -289,6 +294,8 @@ public class InfolocaleEntityUtils {
         // spécifique : faire un tableua de 7 horaires, chacun correspondant à un jour
         // l'objectif est de les trier dans l'ordre chronologique
         // les horaires manquants seront créés mais indiqués comme "jours fermés" avec un boolean
+        
+        LOGGER.debug("Creating horaires - START");
 
         // liste à trier plus tard
         ArrayList<Horaires> itHoraires = new ArrayList<>();
@@ -299,8 +306,10 @@ public class InfolocaleEntityUtils {
         for (int counterJson = 0; counterJson < jsonArray.length(); counterJson++) {
             try {
                 Horaires createdHoraires = createHoraireFromJsonItem(jsonArray.getJSONObject(counterJson));
+                if (Util.isEmpty(createdHoraires)) continue; // jour mal généré
                 itHoraires.add(createdHoraires);
                 idDaysUsed.add(createdHoraires.getJourId());
+                LOGGER.debug("Adding horaire w/ ID " + createdHoraires.getJourId());
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createHorairesArrayFromJsonArray: " + e.getMessage());
             }
@@ -314,6 +323,7 @@ public class InfolocaleEntityUtils {
                 tmpHoraires.setFerme(true);
                 tmpHoraires.setJourId(counterDays);
                 tmpHoraires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(counterDays));
+                LOGGER.debug("Adding missing day w/ ID " + counterDays);
                 itHoraires.add(tmpHoraires);
             }
         }
@@ -326,6 +336,8 @@ public class InfolocaleEntityUtils {
             }
             
         });
+        
+        LOGGER.debug("Creating horaires - END");
         
         return itHoraires.toArray(new Horaires[itHoraires.size()]);
     }
@@ -340,7 +352,8 @@ public class InfolocaleEntityUtils {
         Horaires horaires = new Horaires();
         try {
             horaires.setJourId(json.getInt("jour"));
-            horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId())); // on ignore le libellé infolocale pour utiliser nos labels
+            if (Util.isEmpty(horaires.getJourId())) return null;
+            horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId()));
             ArrayList<String> plagesDebut = new ArrayList<>();
             ArrayList<String> plagesFin = new ArrayList<>();
             JSONArray plages = json.getJSONArray("plages");
