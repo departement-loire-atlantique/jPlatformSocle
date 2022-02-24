@@ -299,6 +299,7 @@ public class InfolocaleEntityUtils {
         for (int counterJson = 0; counterJson < jsonArray.length(); counterJson++) {
             try {
                 Horaires createdHoraires = createHoraireFromJsonItem(jsonArray.getJSONObject(counterJson));
+                if (Util.isEmpty(createdHoraires)) continue; // jour mal généré
                 itHoraires.add(createdHoraires);
                 idDaysUsed.add(createdHoraires.getJourId());
             } catch (JSONException e) {
@@ -340,7 +341,8 @@ public class InfolocaleEntityUtils {
         Horaires horaires = new Horaires();
         try {
             horaires.setJourId(json.getInt("jour"));
-            horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId())); // on ignore le libellé infolocale pour utiliser nos labels
+            if (Util.isEmpty(horaires.getJourId())) return null;
+            horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId()));
             ArrayList<String> plagesDebut = new ArrayList<>();
             ArrayList<String> plagesFin = new ArrayList<>();
             JSONArray plages = json.getJSONArray("plages");
