@@ -605,6 +605,14 @@ jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} 
 jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
 jcmsplugin.socle.infolocale.annule: Cet événement est annulé.
+jcmsplugin.socle.infolocale.label.day.1: Lundi
+jcmsplugin.socle.infolocale.label.day.2: Mardi
+jcmsplugin.socle.infolocale.label.day.3: Mercredi
+jcmsplugin.socle.infolocale.label.day.4: Jeudi
+jcmsplugin.socle.infolocale.label.day.5: Vendredi
+jcmsplugin.socle.infolocale.label.day.6: Samedi
+jcmsplugin.socle.infolocale.label.day.7: Dimanche
+jcmsplugin.socle.infolocale.label.day.closed: Fermé
 
 # Metadonnees Infolocale pour le front
 

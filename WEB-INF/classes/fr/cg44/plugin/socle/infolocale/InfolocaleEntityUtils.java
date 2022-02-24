@@ -1,6 +1,5 @@
 package fr.cg44.plugin.socle.infolocale;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -287,15 +286,48 @@ public class InfolocaleEntityUtils {
      * @return
      */
     public static Horaires[] createHorairesArrayFromJsonArray(JSONArray jsonArray) {
-        Horaires[] horaires = new Horaires[jsonArray.length()];
-        for (int counter = 0; counter < jsonArray.length(); counter++) {
+        // spécifique : faire un tableua de 7 horaires, chacun correspondant à un jour
+        // l'objectif est de les trier dans l'ordre chronologique
+        // les horaires manquants seront créés mais indiqués comme "jours fermés" avec un boolean
+
+        // liste à trier plus tard
+        ArrayList<Horaires> itHoraires = new ArrayList<>();
+        
+        // conserver les IDs utilisés
+        ArrayList<Integer> idDaysUsed = new ArrayList<>();
+        
+        for (int counterJson = 0; counterJson < jsonArray.length(); counterJson++) {
             try {
-              horaires[counter] = createHoraireFromJsonItem(jsonArray.getJSONObject(counter));
+                Horaires createdHoraires = createHoraireFromJsonItem(jsonArray.getJSONObject(counterJson));
+                itHoraires.add(createdHoraires);
+                idDaysUsed.add(createdHoraires.getJourId());
             } catch (JSONException e) {
                 LOGGER.error("Erreur in createHorairesArrayFromJsonArray: " + e.getMessage());
             }
         }
-        return horaires;
+        
+        // vérifier les dates manquantes
+        // si manquant, alors créer un horaires vide avec ferme = true;
+        for (int counterDays = 1; counterDays <= 7; counterDays++) {
+            if (!idDaysUsed.contains(counterDays)) {
+                Horaires tmpHoraires = new Horaires();
+                tmpHoraires.setFerme(true);
+                tmpHoraires.setJourId(counterDays);
+                tmpHoraires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(counterDays));
+                itHoraires.add(tmpHoraires);
+            }
+        }
+        
+        Collections.sort(itHoraires, new Comparator<Horaires>() {
+
+            @Override
+            public int compare(Horaires o1, Horaires o2) {
+                return Integer.compare(o1.getJourId(), o2.getJourId());
+            }
+            
+        });
+        
+        return itHoraires.toArray(new Horaires[itHoraires.size()]);
     }
 
     /**
@@ -308,7 +340,7 @@ public class InfolocaleEntityUtils {
         Horaires horaires = new Horaires();
         try {
             horaires.setJourId(json.getInt("jour"));
-            horaires.setJourLibelle(json.getString("jourLibelle"));
+            horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId())); // on ignore le libellé infolocale pour utiliser nos labels
             ArrayList<String> plagesDebut = new ArrayList<>();
             ArrayList<String> plagesFin = new ArrayList<>();
             JSONArray plages = json.getJSONArray("plages");
@@ -318,6 +350,7 @@ public class InfolocaleEntityUtils {
             }
             horaires.setPlagesDebut(plagesDebut);
             horaires.setPlagesFin(plagesFin);
+            horaires.setFerme(false);
         } catch (JSONException e) {
             LOGGER.error("Erreur in createHoraireFromJsonItem: " + e.getMessage());
             return null;

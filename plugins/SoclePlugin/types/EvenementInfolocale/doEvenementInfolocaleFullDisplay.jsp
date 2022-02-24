@@ -217,7 +217,7 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
                             <ul class="ds44-uList">
                                 <jalios:foreach name="itHoraire" type="Horaires" array="<%= obj.getHoraires() %>">
                                     <li>
-                                        <%= itHoraire.getJourLibelle() %> : <%= InfolocaleUtil.getPlagesDisplayHoraires(itHoraire) %>
+                                        <%= itHoraire.getJourLibelle() %> : <%= itHoraire.isFerme() ? glp("jcmsplugin.socle.infolocale.label.day.closed") : InfolocaleUtil.getPlagesDisplayHoraires(itHoraire) %>
                                     </li>
                                 </jalios:foreach>
                             </ul>
