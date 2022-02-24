@@ -764,6 +764,7 @@ public class InfolocaleUtil {
           for (Horaires itHoraires : event.getHoraires()) {
               // hélas une seconde boucle pour passer sur les plages par jour...
               // mauvais pour les performances. Peut-être y a-t-il mieux ?
+              if (itHoraires.isFerme()) continue; // on skip les jours fermés
               for (int counterPlages = 0; counterPlages < itHoraires.getPlagesDebut().size(); counterPlages++) {
                   String tmpHoraire = getShortenedHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counterPlages)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counterPlages)));
 
@@ -1132,5 +1133,14 @@ public class InfolocaleUtil {
       }
       
       return false;
+    }
+
+    /**
+     * Renvoie un libellé de jour Infolocale selon un ID de 1 (lundi) à 7 (dimanche)
+     * @param counterDays
+     * @return
+     */
+    public static String getJourInfolocaleLibelle(int idDay) {
+        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.label.day." + idDay);
     }
 }
