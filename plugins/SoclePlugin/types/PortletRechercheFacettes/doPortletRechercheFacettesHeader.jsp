@@ -32,10 +32,6 @@
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
 	    
-	Boolean hasFonctionsAdditionnelles = false; // TODO
-	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
-	request.setAttribute("showFiltres", showFiltres);
-	    
 	request.setAttribute("rechercheId", obj.getId());
 	    
 	// Remplace le titre de l'url par le titre de la recherche à facette au lieu du titre du portail
