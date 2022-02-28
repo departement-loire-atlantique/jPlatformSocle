@@ -139,7 +139,7 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
 								  <jalios:if predicate="<%= hasTexteLong %>">
 								     <div class="grid-1-small-1">
 								        <div class="col mll mbs">
-								            <div class="ds44-introduction">
+								            <div class="mtm mbm">
 								                <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
 								            </div>
 								        </div>
