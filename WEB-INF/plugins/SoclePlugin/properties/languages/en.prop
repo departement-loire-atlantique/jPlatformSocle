@@ -213,7 +213,7 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject= a page for you 
 jcmsplugin.socle.deux-points: :&nbsp;
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - new window
-jcmsplugin.socle.lien.site.nouvelonglet: Visit the website: {0} - new window
+jcmsplugin.socle.lien.site.nouvelonglet: {0} - Visit the website - new window
 jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - new window
 jcmsplugin.socle.lien.nouvelonglet: {0} - new window
 jcmsplugin.socle.contactmail: Contact by mail: {0} : {1}

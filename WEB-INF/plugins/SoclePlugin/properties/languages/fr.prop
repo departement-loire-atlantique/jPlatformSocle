@@ -213,7 +213,7 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject=Une%20page%20pou
 jcmsplugin.socle.deux-points: &nbsp;:&nbsp;
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - nouvelle fenêtre
-jcmsplugin.socle.lien.site.nouvelonglet: Visiter le site web : {0} - nouvelle fenêtre
+jcmsplugin.socle.lien.site.nouvelonglet: {0} - Visiter le site web - nouvelle fenêtre
 jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - nouvelle fenêtre
 jcmsplugin.socle.lien.nouvelonglet: {0} - nouvelle fenêtre
 jcmsplugin.socle.contactmail: Contacter par mail : {0} : {1}
