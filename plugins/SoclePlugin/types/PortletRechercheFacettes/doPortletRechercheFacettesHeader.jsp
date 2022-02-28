@@ -28,6 +28,11 @@
 	
 	String descPortal = DescriptiveURLs.cleanDescriptiveURLText(portalFacet.getTitle(userLang), userLocale);
 	String descFacet = DescriptiveURLs.cleanDescriptiveURLText(obj.getTitre(userLang), userLocale);
+	
+	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
+	request.setAttribute("query", query);
+	    
+	request.setAttribute("rechercheId", obj.getId());
 	    
 	// Remplace le titre de l'url par le titre de la recherche à facette au lieu du titre du portail
 	String seoUrl = urlFacet.replaceAll(descPortal, descFacet);
