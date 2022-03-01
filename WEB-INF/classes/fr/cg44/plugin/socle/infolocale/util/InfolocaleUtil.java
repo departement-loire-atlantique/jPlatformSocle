@@ -1142,6 +1142,6 @@ public class InfolocaleUtil {
      */
     public static String getJourInfolocaleLibelle(int idDay) {
         LOGGER.debug("Getting jour libelle for day id " + idDay);
-        return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(), "jcmsplugin.socle.infolocale.label.day." + idDay);
+        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.day." + idDay);
     }
 }
