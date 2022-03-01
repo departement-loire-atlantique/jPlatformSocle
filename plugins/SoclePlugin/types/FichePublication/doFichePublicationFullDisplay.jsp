@@ -58,7 +58,7 @@
                         
                         <jalios:if predicate='<%= Util.notEmpty(obj.getUrlLiseuse(userLang, false)) %>'>
                             <p class="ds44-mt4">
-                            <% String titleBtnLiseuse = Util.notEmpty(obj.getLibelleBoutonLiseuse(userLang, false)) ? glp("jcmsplugin.socle.fichepublication.lire.title.custom", obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang), obj.getLibelleBoutonLiseuse(userLang, false)) : glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang)); %>
+                            <% String titleBtnLiseuse = Util.notEmpty(obj.getLibelleBoutonLiseuse(userLang, false)) ? glp("jcmsplugin.socle.fichepublication.lire.title.custom", obj.getLibelleBoutonLiseuse(userLang, false), obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang)) : glp("jcmsplugin.socle.fichepublication.lire.title",obj.getTitreUne(userLang)+" - "+obj.getTitle(userLang)); %>
                                 <a href="<%= obj.getUrlLiseuse(userLang) %>" class="ds44-btnStd ds44-btnStd--large ds44-btn--invert ds44-bntALeft" target="_blank" title="<%= HttpUtil.encodeForHTMLAttribute(titleBtnLiseuse) %>">
                                     <span class="ds44-btnInnerText"><%= Util.notEmpty(obj.getLibelleBoutonLiseuse(userLang, false)) ? obj.getLibelleBoutonLiseuse(userLang, false) : glp("jcmsplugin.socle.fichepublication.lireenligne") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                                 </a>
