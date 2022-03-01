@@ -343,6 +343,7 @@ jcmsplugin.socle.media: Média
 jcmsplugin.socle.videodesactivee: Vidéo désactivée
 jcmsplugin.socle.devezaccepterdepotcookie: Merci d’accepter le dépôt de <span lang="en">cookies</span> de <span lang="en">streaming</span> pour lire la vidéo
 jcmsplugin.socle.acceptercookies: Accepter les <span lang="en">cookies</span>
+jcmsplugin.socle.illustration: Illustration
 
 # ------------------------------------------------------------
 #  Header
