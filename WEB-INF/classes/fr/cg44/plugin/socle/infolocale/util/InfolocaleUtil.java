@@ -796,31 +796,33 @@ public class InfolocaleUtil {
           return finalHoraire.toString();
       }
       
-      // Cas "date unique" -> on récupère la dateHoraire associée à la date courante
-      for (DateHoraires itDateHoraire : event.getDatesHoraires()) {
-          // boucle sur les dateHoraires
-          if (itDateHoraire.getDate().equals(currentDate.getDebut())) {
-              // date correspondante trouvée
-              for (int counterHoraire = 0; counterHoraire < itDateHoraire.getHorairesDebut().size(); counterHoraire++) {
-                  
-                  StringBuilder horaireToAdd = new StringBuilder();
-
-                  String horaire_1 = formatTimeToHhMm(itDateHoraire.getHorairesDebut().get(counterHoraire));
-                  String horaire_2 = formatTimeToHhMm(itDateHoraire.getHorairesFin().get(counterHoraire));
-                  
-                  if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
-                      horaireToAdd.append(horaire_1);
-                    } else {
-                      horaireToAdd.append(shortened ? getShortenedHoraireDisplay(horaire_1, horaire_2) : getHoraireDisplay(horaire_1, horaire_2));
-                  }
-                 
-                  
-                  if (Util.notEmpty(horaireToAdd)) {
-                    finalHoraire.append(horaireToAdd.toString());
-                  }
-                  
-                  if (counterHoraire+1 < itDateHoraire.getHorairesDebut().size() && Util.notEmpty(horaireToAdd)) {
-                    finalHoraire.append(suffixeHoraire);
+      if (Util.notEmpty(event.getDatesHoraires())) {
+          // Cas "date unique" -> on récupère la dateHoraire associée à la date courante
+          for (DateHoraires itDateHoraire : event.getDatesHoraires()) {
+              // boucle sur les dateHoraires
+              if (itDateHoraire.getDate().equals(currentDate.getDebut())) {
+                  // date correspondante trouvée
+                  for (int counterHoraire = 0; counterHoraire < itDateHoraire.getHorairesDebut().size(); counterHoraire++) {
+                      
+                      StringBuilder horaireToAdd = new StringBuilder();
+    
+                      String horaire_1 = formatTimeToHhMm(itDateHoraire.getHorairesDebut().get(counterHoraire));
+                      String horaire_2 = formatTimeToHhMm(itDateHoraire.getHorairesFin().get(counterHoraire));
+                      
+                      if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
+                          horaireToAdd.append(horaire_1);
+                        } else {
+                          horaireToAdd.append(shortened ? getShortenedHoraireDisplay(horaire_1, horaire_2) : getHoraireDisplay(horaire_1, horaire_2));
+                      }
+                     
+                      
+                      if (Util.notEmpty(horaireToAdd)) {
+                        finalHoraire.append(horaireToAdd.toString());
+                      }
+                      
+                      if (counterHoraire+1 < itDateHoraire.getHorairesDebut().size() && Util.notEmpty(horaireToAdd)) {
+                        finalHoraire.append(suffixeHoraire);
+                      }
                   }
               }
           }

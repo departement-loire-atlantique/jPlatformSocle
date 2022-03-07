@@ -14,6 +14,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -44,7 +45,7 @@ public class ApiUtil {
         .setConnectionRequestTimeout(timeout * 1000)
         .setSocketTimeout(timeout * 1000).build();
     
-      CloseableHttpClient httpClient =  HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+      CloseableHttpClient httpClient =  HttpClientBuilder.create().setRedirectStrategy(new LaxRedirectStrategy()).setDefaultRequestConfig(config).build();
       
       HttpPost post = new HttpPost(url);
       
@@ -91,7 +92,7 @@ public class ApiUtil {
         .setSocketTimeout(timeout * 1000).build();
        
     
-      CloseableHttpClient httpClient =  HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+      CloseableHttpClient httpClient =  HttpClientBuilder.create().setRedirectStrategy(new LaxRedirectStrategy()).setDefaultRequestConfig(config).build();
 
       HttpGet get = new HttpGet(url);
       
