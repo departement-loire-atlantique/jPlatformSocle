@@ -89,7 +89,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                             %>
                             <jalios:select>
 		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getVideo()) %>">
-		                            <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
+		                            <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" hideChapitrage="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImagePrincipale()) %>">
 		                            <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImagePrincipale() %>"></ds:figurePicture>

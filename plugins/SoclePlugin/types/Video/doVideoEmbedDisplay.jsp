@@ -33,6 +33,12 @@ if (Util.notEmpty(request.getAttribute("hideVideoTitle"))) {
   request.setAttribute("hideVideoTitle", false);
 }
 
+boolean hideChapitrage = false;
+if (Util.notEmpty(request.getAttribute("hideChapitrage"))) {
+    hideChapitrage = Boolean.parseBoolean(request.getAttribute("hideChapitrage").toString());
+    request.setAttribute("hideChapitrage", false);
+  }
+
 String heightIframe = "480px";
 if (Util.notEmpty(request.getAttribute("forcedHeight"))) {
     heightIframe = request.getAttribute("forcedHeight").toString();
@@ -79,6 +85,7 @@ String videoId = VideoUtils.getYoutubeVideoId(obj.getUrlVideo()); // récupérer
             <p><a href="<%= fichierTranscript %>" target="_blank" title="<%= glp("jcmsplugin.socle.video.telecharger-transcript.title", obj.getFichierTranscript(userLang).getTitle(),fileSize,fileType) %>"><%= glp("jcmsplugin.socle.video.telecharger-transcript.label") %></a></p>
         </jalios:if>
         <!-- Désactivation temporaire des chapitres -> l'overlay est la proprité. Sera remis une fois le JS traité 
+        <jalios:if predicate="<%= !hideChapitrage %>">
         <%@ include file="doVideoChapitres.jspf" %>  
-        
+        </jalios:if>
         -->
