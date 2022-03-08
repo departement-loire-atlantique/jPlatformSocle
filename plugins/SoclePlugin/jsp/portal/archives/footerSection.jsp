@@ -24,7 +24,7 @@
 	                <h2 class="h4-like" id="idTitreFooterSection"><%=glp("jcmsplugin.socle.newsletter.abonnement.titre")%></h2>
 					<p class="ds44-mb-std ds44-mobile-reduced-mb"><%=glp("jcmsplugin.socle.newsletter.abonnement.chapo")%></p>
 					<p>
-					    <a href="<%= newsletterPub.getDisplayUrl(userLocale) %>" class="ds44-btnStd ds44-mobile-extra-mb" type="button"
+					    <a href="<%= newsletterPub.getDisplayUrl(userLocale) %>" class="ds44-btnStd ds44-mobile-extra-mb"
 					        title="<%=glp("jcmsplugin.socle.newsletter.abonnement.titleBouton")%>">
 					        <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.newsletter.abonnement.labelBouton")%></span><i
 					            class="icon icon-long-arrow-right" aria-hidden="true"></i>
