@@ -37,6 +37,14 @@
 	boolean displayVideo = Util.notEmpty(obj.getVideo());
 	
 	String titleTemoignage = Util.notEmpty(obj.getTitreVideo(userLang)) ? obj.getTitreVideo(userLang) : glp("jcmsplugin.socle.titre.temoignage");
+	
+	// Titres H2 optionnels SEO
+	String titrePourQui = Util.notEmpty(obj.getTitreSEOPourQui(userLang)) ? obj.getTitreSEOPourQui(userLang) : glp("jcmsplugin.socle.titre.pour-qui");
+	String titreCestQuoi = Util.notEmpty(obj.getTitreSEOCestQuoi(userLang)) ? obj.getTitreSEOCestQuoi(userLang) : glp("jcmsplugin.socle.titre.quoi");
+	String titreCommentFaireDemande = Util.notEmpty(obj.getTitreSEOCommentFaireUneDemande(userLang)) ? obj.getTitreSEOCommentFaireUneDemande(userLang) : glp("jcmsplugin.socle.titre.comment-demande");
+	String titreQuelDocuments = Util.notEmpty(obj.getTitreSEOQuelsDocumentsFournir(userLang)) ? obj.getTitreSEOQuelsDocumentsFournir(userLang) : glp("jcmsplugin.socle.titre.fournir-documents");
+	String titreQuiContacter = Util.notEmpty(obj.getTitreSEOQuiContacter(userLang)) ? obj.getTitreSEOQuiContacter(userLang) : glp("jcmsplugin.socle.ficheaide.modal.quicontacter");
+	String titreSuivreDemande = Util.notEmpty(obj.getTitreSEOSuivreUneDemande(userLang)) ? obj.getTitreSEOSuivreUneDemande(userLang) : glp("jcmsplugin.socle.titre.suivre-demande");
 %>
 
 <button class="ds44-btnStd ds44-btn--invert ds44-fullWBtn ds44-btn-fixed ds44-show-tinyToLarge ds44-hide-large" id="ds44-summary-button" type="button" data-target="#navSommaire">
@@ -68,22 +76,22 @@
 		                     <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.dossier.sommaire") %></p>
 		                     <ul class="ds44-list ds44-list--puces">
 		                        <jalios:if predicate="<%= displayEnResume %>">
-		                        <li><a href="#sectionPourQui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></a></li>
+		                        <li><a href="#sectionPourQui"><%= titrePourQui %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
-		                        <li><a href="#sectionCestQuoi" class=""><%= glp("jcmsplugin.socle.titre.quoi") %></a></li>
+		                        <li><a href="#sectionCestQuoi" class=""><%= titreCestQuoi %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
-		                        <li><a href="#sectionDocuments" class=""><%= glp("jcmsplugin.socle.titre.fournir-documents") %></a></li>
+		                        <li><a href="#sectionDocuments" class=""><%= titreQuelDocuments %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= displayFaireDemande %>">
-		                        <li><a href="#sectionFaireDemande" class=""><%= glp("jcmsplugin.socle.titre.comment-demande") %></a></li>
+		                        <li><a href="#sectionFaireDemande" class=""><%= titreCommentFaireDemande %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= displaySuivreDemande %>">
-		                        <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
+		                        <li><a href="#sectionSuivreDemande" class=""><%= titreSuivreDemande %></a></li>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= displayQuiContacter %>">
-                    <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+                    <li><a href="#sectionContact" class=""><%= titreQuiContacter %></a></li>
                     </jalios:if>
                     <jalios:if predicate="<%= displayVideo %>">
                     <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>
@@ -107,7 +115,7 @@
 		               </jalios:if>
 		               <jalios:if predicate="<%= displayEnResume %>">
 			               <section class="ds44-contenuArticle" id="sectionPourQui" tabindex="-1">
-			                  <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h2>
+			                  <h2 id="idTitre2"><%= titrePourQui %></h2>
 			                  <jalios:if predicate="<%= Util.notEmpty(obj.getPourQui(userLang)) %>">
                                  <jalios:wysiwyg><%= obj.getPourQui(userLang) %></jalios:wysiwyg>
                               </jalios:if>
@@ -118,19 +126,19 @@
 		               </jalios:if>
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
 		               <section class="ds44-contenuArticle" id="sectionCestQuoi" tabindex="-1">
-		                  <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.quoi") %></h2>
+		                  <h2 id="idTitre3"><%= titreCestQuoi %></h2>
 		                  <jalios:wysiwyg><%= obj.getCestQuoi(userLang) %></jalios:wysiwyg>
 		               </section>
 		               </jalios:if>
 		               <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
 		               <section class="ds44-contenuArticle" id="sectionDocuments" tabindex="-1">
-		                  <h2 id="idTitre4"><%= glp("jcmsplugin.socle.titre.fournir-documents") %></h2>
+		                  <h2 id="idTitre4"><%= titreQuelDocuments %></h2>
 		                  <jalios:wysiwyg><%= obj.getQuelsDocumentsFournir(userLang) %></jalios:wysiwyg>
 		               </section>
 		               </jalios:if>
 		               <jalios:if predicate="<%= displayFaireDemande %>">
 		               <section class="ds44-contenuArticle" id="sectionFaireDemande" tabindex="-1">
-		                  <h2 id="idTitre5"><%= glp("jcmsplugin.socle.titre.comment-demande") %></h2>
+		                  <h2 id="idTitre5"><%= titreCommentFaireDemande %></h2>
 		                  
 			              <jalios:select>
 			                  <jalios:if predicate="<%= Util.notEmpty(obj.getCommentFaireUneDemande(userLang)) %>">
@@ -156,7 +164,7 @@
 		                            <h2 class="h4-like" id="titre_documents_utiles"><%= glp("jcmsplugin.socle.ficheaide.docutils.label") %></h2>
 		                            <ul class="ds44-list">
 		                                <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsUtiles()) %>">
-		                                    <li class="mts">
+		                                    <li class="mts ds44-docListElem">
 		                                        <% 
 		                                            // Récupérer l'extension du fichier
 		                                            String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
@@ -165,7 +173,6 @@
 		                                            
 		                                            String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
 		                                        %>
-		                                        <p class="ds44-docListElem">
 		                                            <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
 		                                            <% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
 		                                            <a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
@@ -173,7 +180,6 @@
 		                                                <%= itDoc.getTitle() %>
 		                                            </a> 
 		                                            <span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
-		                                        </p>
 		                                    </li>
 		                                </jalios:foreach>
 		                            </ul>
@@ -184,18 +190,21 @@
 		
 		                        <jalios:if predicate="<%= Util.notEmpty(obj.getEdemarche(loggedMember)) %>">
 		                            <div class='col-<%= Util.notEmpty(obj.getDocumentsUtiles()) ? "6 ds44-modal-column" : "12" %>'>
+		                                
+		                                <jalios:if predicate="<%= Util.notEmpty(obj.getUrlEdemarche(userLang)) %>">
+		                                  <h2 class="h4-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
+		                                
 		
-		                                <h2 class="h4-like" id="titre_en_ligne"><%= glp("jcmsplugin.socle.ficheaide.enligne.label") %></h2>
-		
-		                                <p>
-		                                    <a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
-		                                            title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
-		                                            data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
-		                                            target="_blank"> 
-		                                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
-		                                        <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
-		                                    </a>
-		                                </p>
+			                                <p>
+			                                    <a class="ds44-btnStd ds44-btn--invert mts" href="<%= obj.getUrlEdemarche(userLang)  %>"
+			                                            title='<%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %> <%= glp("jcmsplugin.socle.accessibily.newTabLabel") %>'
+			                                            data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Demande en ligne","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'
+			                                            target="_blank"> 
+			                                        <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.ficheaide.fairedemandeligne.label") %></span> 
+			                                        <i class="icon icon-computer icon--sizeL" aria-hidden="true"></i>
+			                                    </a>
+			                                </p>
+		                                </jalios:if>
 		                    <jalios:if predicate="<%= Util.notEmpty(obj.getDureeEdemarche()) %>">
 		                                    <p><%= glp("jcmsplugin.socle.ficheaide.duree.label") %> <%= obj.getDureeEdemarche() %></p>
 		                    </jalios:if>
@@ -232,7 +241,7 @@
 		                                <h2 class="h4-like" id="titre_envoie_dossier">
 		                                    <jalios:select>
 		                                        <jalios:if predicate='<%= Util.isEmpty(obj.getDocumentsUtiles()) %>'>
-		                                            <%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %>
+		                                            <%= titreQuiContacter %>
 		                            </jalios:if>
 		                                        <jalios:default>
 		                                            <%= glp("jcmsplugin.socle.ficheaide.adresseenvoiedossier.label") %>
@@ -260,7 +269,7 @@
 		               </jalios:if>
 		               <jalios:if predicate="<%= displaySuivreDemande %>">
 		               <section class="ds44-contenuArticle" id="sectionSuivreDemande" tabindex="-1">
-		                  <h2 id="idTitre6"><%= glp("jcmsplugin.socle.titre.suivre-demande") %></h2>
+		                  <h2 id="idTitre6"><%= titreSuivreDemande %></h2>
 		                  <jalios:wysiwyg>
 		                     <%= obj.getIntroSuivreUneDemande(userLang) %>
 		                  </jalios:wysiwyg>
@@ -345,7 +354,7 @@
 		               </jalios:if>
 		               <jalios:if predicate="<%= displayQuiContacter %>">
 		               <section class="ds44-contenuArticle" id="sectionContact" tabindex="-1">
-		                  <h2 id="idTitre7"><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></h2>
+		                  <h2 id="idTitre7"><%= titreQuiContacter %></h2>
 		                  <jalios:wysiwyg>
                              <%= obj.getIntroContact(userLang) %>
 		                  </jalios:wysiwyg>
@@ -468,22 +477,22 @@
         <div class="ds44-grid-valign-center ds44-w100">
             <ul class="ds44-list ds44-list--puces">
                 <jalios:if predicate="<%= displayEnResume %>">
-                <li><a href="#sectionPourQui"><%= glp("jcmsplugin.socle.titre.pour-qui") %></a></li>
+                <li><a href="#sectionPourQui"><%= titrePourQui %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getCestQuoi(userLang)) %>">
-                <li><a href="#sectionCestQuoi" class=""><%= glp("jcmsplugin.socle.titre.quoi") %></a></li>
+                <li><a href="#sectionCestQuoi" class=""><%= titreCestQuoi %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(obj.getQuelsDocumentsFournir(userLang)) %>">
-                <li><a href="#sectionDocuments" class=""><%= glp("jcmsplugin.socle.titre.fournir-documents") %></a></li>
+                <li><a href="#sectionDocuments" class=""><%= titreQuelDocuments %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= displayFaireDemande %>">
-                <li><a href="#sectionFaireDemande" class=""><%= glp("jcmsplugin.socle.titre.comment-demande") %></a></li>
+                <li><a href="#sectionFaireDemande" class=""><%= titreCommentFaireDemande %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= displaySuivreDemande %>">
-                <li><a href="#sectionSuivreDemande" class=""><%= glp("jcmsplugin.socle.titre.suivre-demande") %></a></li>
+                <li><a href="#sectionSuivreDemande" class=""><%= titreSuivreDemande %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= displayQuiContacter %>">
-                <li><a href="#sectionContact" class=""><%= glp("jcmsplugin.socle.ficheaide.modal.quicontacter") %></a></li>
+                <li><a href="#sectionContact" class=""><%= titreQuiContacter %></a></li>
                 </jalios:if>
                 <jalios:if predicate="<%= displayVideo %>">
                 <li><a href="#sectionTemoignage" class=""><%= glp("jcmsplugin.socle.titre.temoignage") %></a></li>

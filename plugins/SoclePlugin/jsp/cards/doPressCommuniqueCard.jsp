@@ -18,7 +18,7 @@ String uid = ServletUtil.generateUniqueDOMId(request, "uid");
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuilePressCommunique_<%= uid %>">
+            <p class="h4-like ds44-cardTitle" id="tuilePressCommunique_<%= uid %>">
                 <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
             </p>
             <hr class="mbs" aria-hidden="true">

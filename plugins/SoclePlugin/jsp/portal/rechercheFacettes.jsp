@@ -17,6 +17,11 @@
 <jalios:include target="SOCLE_ALERTE"/>
 
  <section class="ds44-container-large">
+ 
+    <div class="txtcenter ds44-lightBG ds44--l-padding-b ds44--xl-padding-t ">
+        <h1 class="center"><%= glp("jcmsplugin.socle.recherche.resultats") %></h1>
+    </div>
+ 
     <jalios:select>
         <!-- Utilisation de boxId plutot que boxId...[value] si ré-écriture d'url -->
         <jalios:if predicate='<%= hasParameter("boxId") %>'>

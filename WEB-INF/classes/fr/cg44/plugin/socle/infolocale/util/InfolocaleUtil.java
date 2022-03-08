@@ -26,8 +26,10 @@ import com.jalios.jcms.JcmsUtil;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.socle.infolocale.InfolocaleEntityUtils;
+import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
+import fr.cg44.plugin.socle.infolocale.entities.Horaires;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
 import fr.cg44.plugin.socle.infolocale.entities.Tarif;
 import generated.EvenementInfolocale;
@@ -38,6 +40,8 @@ public class InfolocaleUtil {
     private static final Logger LOGGER = Logger.getLogger(InfolocaleUtil.class);
     
     public static final String dateInfolocalePattern = "yyyy-MM-dd";
+    
+    public static final String suffixeHoraire = ", ";
     
     private InfolocaleUtil() {}
     
@@ -59,23 +63,14 @@ public class InfolocaleUtil {
         List<EvenementInfolocale> sortedEvents = new ArrayList<>();
         List<EvenementInfolocale> listClone = new ArrayList<>(listEvents);
         
-        // Récupérer tous les événements dont la date actuelle est égale à leur date de fin
+        // Récupérer tous les événements dont la date actuelle est égale à leur date
         for (Iterator<EvenementInfolocale> iter = listClone.iterator(); iter.hasNext();) {
             EvenementInfolocale itEvent = iter.next();
             // En profiter pour retirer les événements vides
             if (Util.isEmpty(itEvent.getId())) {
                 iter.remove();
             }
-            else if (eventEndsToday(itEvent)) {
-                sortedEvents.add(itEvent);
-                iter.remove();
-            }
-        }
-        
-        // Récupérer tous les événements dont la date actuelle est égale à leur date de début
-        for (Iterator<EvenementInfolocale> iter = listClone.iterator(); iter.hasNext();) {
-            EvenementInfolocale itEvent = iter.next();
-            if (eventStartsToday(itEvent)) {
+            else if (eventStartsToday(itEvent)) {
                 sortedEvents.add(itEvent);
                 iter.remove();
             }
@@ -100,7 +95,7 @@ public class InfolocaleUtil {
         @Override
         public int compare(EvenementInfolocale o1, EvenementInfolocale o2) {
           if (Util.isEmpty(o1.getDates()) || Util.isEmpty(o2.getDates())
-              || Util.isEmpty(o1.getDates()[0].getDebut()) || Util.isEmpty(o2.getDates()[0].getDebut())) {
+                  || Util.isEmpty(o1.getDates()[0].getDebut()) || Util.isEmpty(o2.getDates()[0].getDebut())) {
             return 0;
           }
           
@@ -122,7 +117,7 @@ public class InfolocaleUtil {
     }
 
     /**
-     * Détermine si un événement Infolocale commence aujourd'hui
+     * Détermine si un événement Infolocale apparaît aujourd'hui
      * @param itEvent
      * @return
      */
@@ -135,7 +130,7 @@ public class InfolocaleUtil {
         for (DateInfolocale itDate : eventDates) {
             datesFin.add(itDate.getFin());
         }
-        
+
         return eventDateListContainsToday(datesFin);
     }
 
@@ -147,13 +142,13 @@ public class InfolocaleUtil {
     public static boolean eventEndsToday(EvenementInfolocale itEvent) {
         DateInfolocale[] eventDates = itEvent.getDates();
         if (Util.isEmpty(eventDates)) return false;
-        
+
         // récupérer toutes les dates de début
         List<String> datesFin = new ArrayList<>();
         for (DateInfolocale itDate : eventDates) {
             datesFin.add(itDate.getDebut());
         }
-        
+
         return eventDateListContainsToday(datesFin);
     }
 
@@ -172,7 +167,6 @@ public class InfolocaleUtil {
                 String dateStringEvent = sdf.format(itDate);
                 // Les deux dates sont au même jour, on renvoie true
                 if (dateStringEvent.equals(dateStringToday)) return true;
-                
                 // autrement, on continue normalement dans la boucle
             } catch (ParseException e) {
                 LOGGER.warn("eventDateListContainsToday -> error parsing date " + itDateString + " into a usable Date item.");
@@ -200,7 +194,7 @@ public class InfolocaleUtil {
         Instant instantNow = cal.getTime().toInstant().truncatedTo(ChronoUnit.DAYS);
         
         SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
-        
+                
         for (DateInfolocale itDate : allDates) {
             try {
                 Date itJavaDate = sdf.parse(itDate.getDebut());
@@ -214,7 +208,7 @@ public class InfolocaleUtil {
                   itInstant = itInstant.plus(Duration.ofHours(24));
                 }
                 while (Date.from(itInstantEnd).before(itJavaDateEnd)) {
-                  itInstantEnd = itInstantEnd.plus(Duration.ofHours(24));
+                    itInstantEnd = itInstantEnd.plus(Duration.ofHours(24));
                 }
                 
                 // Date de début et de fin sont avant la date actuelle / la date la plus proche actuelle
@@ -238,15 +232,14 @@ public class InfolocaleUtil {
                 
                 if (value != null && Util.notEmpty(value) && Util.notEmpty(value.getDebut())) {
                   // une valeur a été déterminée : il faut que la nouvelle date soit entre la date enregistrée et la date du jour
-                  Date currentFoundJavaDate = sdf.parse(value.getDebut());
+                    Date currentFoundJavaDate = sdf.parse(value.getDebut());
                   Instant currentFoundInstant = currentFoundJavaDate.toInstant();
                   if (instantNow.equals(itInstant) || currentFoundInstant.isAfter(itInstant)) {
                       value = itDate;
                   }
                 }
-               
             } catch (ParseException e) {
-               LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
+                LOGGER.warn("Error in getClosestDate parsing date " + itDate.getDebut());
             } catch (NullPointerException e) {
               LOGGER.warn("NPE in getClosestDate : " + e.getMessage());
             }
@@ -257,7 +250,7 @@ public class InfolocaleUtil {
     
     /**
      * Détermine si une date infolocale n'indique qu'une journée unique
-     * @param date
+     * @param dateEvent
      * @return
      */
     public static boolean infolocaleDateIsSingleDay(DateInfolocale date) {
@@ -325,20 +318,20 @@ public class InfolocaleUtil {
     
     /**
      * Renvoie la valeur numérique de l'année d'un string de date infolocale
-     * @param dateStr
+     * @param date
      * @return
      */
     public static String getYearLabel(String dateStr) {
-      if (Util.isEmpty(dateStr)) return "";
-      SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
-      try {
-          Calendar cal = Calendar.getInstance();
-          cal.setTime(sdf.parse(dateStr));
-          return Integer.toString(cal.get(Calendar.YEAR));
-      } catch (ParseException e) {
-          LOGGER.warn("Error in getDayLabel parsing date " + dateStr);
-          return "";
-      }
+        if (Util.isEmpty(dateStr)) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateInfolocalePattern);
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(sdf.parse(dateStr));
+            return Integer.toString(cal.get(Calendar.YEAR));
+        } catch (ParseException e) {
+            LOGGER.warn("Error in getDayLabel parsing date " + dateStr);
+            return "";
+        }
     }
     
     /**
@@ -347,15 +340,14 @@ public class InfolocaleUtil {
      * @return
      */
     public static String getFullStringFromEventDate(DateInfolocale dateEvent) {
-      if (Util.isEmpty(dateEvent)) return "";
-      if (infolocaleDateIsSingleDay(dateEvent)) {
-        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang() ,"jcmsplugin.socle.infolocale.label.carrousel.tuile.date",
-            getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
-      } else {
-        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.carrousel.tuile.periode",
-            getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
-            getDayOfMonthLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
-      }
+        if (infolocaleDateIsSingleDay(dateEvent)) {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang() ,"jcmsplugin.socle.infolocale.label.carrousel.tuile.date",
+                getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()));
+        } else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.carrousel.tuile.periode",
+                getDayOfMonthLabel(dateEvent.getDebut()), getMonthLabel(dateEvent.getDebut() ,false), getYearLabel(dateEvent.getDebut()),
+                getDayOfMonthLabel(dateEvent.getFin()), getMonthLabel(dateEvent.getFin() ,false), getYearLabel(dateEvent.getFin()));
+        }
     }
     
     /**
@@ -665,65 +657,176 @@ public class InfolocaleUtil {
     }
     
     /**
-     * Renvoie un horaire de date infolocale dans un format propre
-     * @param dateInfoloc
+     * Transforme un horaire de format H:m:s en format H'h'm
+     * @param oldTime
      * @return
      */
-    public static String getHoraireDisplay(DateInfolocale dateInfoloc) {
-      if (Util.isEmpty(dateInfoloc) || Util.isEmpty(dateInfoloc.getHoraire())) return "";
+    public static String formatTimeToHhMm(String oldTime) {
+        SimpleDateFormat originalFormat = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.horaire.receive.format"));
+        SimpleDateFormat finalFormat = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.horaire.send.format"));
+        Date transitionDate;
+        try {
+            transitionDate = originalFormat.parse(oldTime);
+            String formattedTime = finalFormat.format(transitionDate);
+            formattedTime = formattedTime.replace("h00", "h");
+            if (formattedTime.startsWith("0")) formattedTime = formattedTime.substring(1, formattedTime.length());
+            return formattedTime;
+        } catch (ParseException e) {
+            LOGGER.warn("ParseException in formatTimeToHhMm : " + e.getMessage());
+            return oldTime;
+        }
+    }
+    
+    /**
+     * Renvoie la liste des horaires tirées d'une plage d'horaire sous Infolocale
+     * @param itHoraires
+     * @return
+     */
+    public static String getPlagesDisplayHoraires(Horaires itHoraires) {
+        StringBuilder finalDisplay = new StringBuilder();
+        for (int counter = 0; counter < itHoraires.getPlagesDebut().size(); counter++) {
+            String horaireToAdd = getHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counter)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counter)));
+            
+            finalDisplay.append(horaireToAdd);
+            
+            if (counter+1 < itHoraires.getPlagesDebut().size() && Util.notEmpty(horaireToAdd)) {
+                finalDisplay.append(suffixeHoraire);
+            }
+        }
+        return finalDisplay.toString();
+    }
+    
+    /**
+     * Renvoie un format correct pour deux horaires au format H:m:s
+     * @param heureDebut
+     * @param heureFin
+     * @return
+     */
+    public static String getHoraireDisplay(String heureDebut, String heureFin) {
+        // début et fin sont identiques -> un seul horaire
+        if (heureDebut.equals(heureFin)) {
+           return heureDebut;
+        }
+        // sinon, une période
+        else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", heureDebut, heureFin);
+        }
+    }
+    
+    /**
+     * Renvoie un format d'affichage moins littéraire pour des horaires
+     * @param heureDebut
+     * @param heureFin
+     * @return
+     */
+    public static String getShortenedHoraireDisplay(String heureDebut, String heureFin) {
+     // début et fin sont identiques -> un seul horaire
+        if (heureDebut.equals(heureFin)) {
+           return heureDebut;
+        }
+        // sinon, une période
+        else {
+            return JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode.short", heureDebut, heureFin);
+        }
+    }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param event
+     * @return
+     */
+    public static String getHoraireDisplay(EvenementInfolocale event) {
+        return getHoraireDisplay(event, false);
+    }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param event
+     * @param hortened
+     * @return
+     */
+    public static String getHoraireDisplay(EvenementInfolocale event, boolean shortened) {
+      if (Util.isEmpty(event) || Util.isEmpty(event.getDates()) || (Util.isEmpty(event.getDatesHoraires()) && Util.isEmpty(event.getHoraires()))) return "";
       
-      String separatorHoraire = " - ";
-      String suffixeHoraire = ", ";
+      DateInfolocale currentDate = event.getDates()[0];
       
-      // séparation par les virgules
-      String[] splittedHoraires = dateInfoloc.getHoraire().split(suffixeHoraire);
       StringBuilder finalHoraire = new StringBuilder();
       
-      for (Iterator<String> iter = Arrays.asList(splittedHoraires).iterator(); iter.hasNext();) {
-        
-        String itHoraire = iter.next();
-        StringBuilder horaireToAdd = new StringBuilder();
-        
-        if (!itHoraire.contains(separatorHoraire)) {
+      // Cas "plage de dates" -> les horaires sont sous le champ "horaires"
+      if (!infolocaleDateIsSingleDay(currentDate)) {
+          // On veut récupérer l'affichage de tous les horaires dans une liste, en évitant les dupliqués
+          // pour ensuite les afficher les uns après les autres
           
-          horaireToAdd.append(itHoraire);
+          boolean passedFirstDay = false;
           
-        } else {
-          
-          String[] splittedTimes = itHoraire.split(separatorHoraire);
-          
-          int counterSplit = 0;
-          
-          while (counterSplit < splittedTimes.length) {
-            String horaire_1 = splittedTimes[counterSplit];
-            counterSplit++;
-            String horaire_2 = splittedTimes[counterSplit];
-            
-            if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
-              horaireToAdd.append(horaire_1);
-            } else {
-              horaireToAdd.append(JcmsUtil.glp(Channel.getChannel().getCurrentJcmsContext().getUserLang(),"jcmsplugin.socle.infolocale.label.horaire.periode", horaire_1, horaire_2));
-            }
-            
-            counterSplit++;
-            
+          // Récupération de tous les horaires formattés dans une collection
+          ArrayList<String> formattedHoraires = new ArrayList<>();
+          for (Horaires itHoraires : event.getHoraires()) {
+              // hélas une seconde boucle pour passer sur les plages par jour...
+              // mauvais pour les performances. Peut-être y a-t-il mieux ?
+              if (itHoraires.isFerme()) continue; // on skip les jours fermés
+              for (int counterPlages = 0; counterPlages < itHoraires.getPlagesDebut().size(); counterPlages++) {
+                  String tmpHoraire = getShortenedHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counterPlages)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counterPlages)));
+
+                  if (!formattedHoraires.contains(tmpHoraire)) {
+                      if (passedFirstDay) {
+                          // cas 1 : les horaires diffèrent par jour. On envoie une donnée technique au lieu de l'horaire pour l'indiquer
+                          // cette donnée technique indique qu'il faut suivre une certaine règle d'affichage
+                          return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent");
+                      }
+                      // cas 2 : on n'a que des doublons sur toutes les dates, donc on affiche l'horaire.
+                      // nécessité de passer par toutes les journées pour vérifier l'absence du cas 1...
+                      // éviter les doublons
+                      formattedHoraires.add(tmpHoraire);
+                  }
+              }
+              
+              // premier jour passé
+              passedFirstDay = true;
           }
           
-          if (splittedTimes.length < 2 || splittedTimes[0].equals(splittedTimes[1]) && Util.isEmpty(horaireToAdd)) horaireToAdd.append(splittedTimes[0]);
+          // Horaires récupérés, générer le string qui sera retourné
+          for (Iterator<String> iter = formattedHoraires.iterator(); iter.hasNext();) {
+              finalHoraire.append(iter.next());
+              if (iter.hasNext()) {
+                  finalHoraire.append(suffixeHoraire);
+              }
+          }
           
-        }
-        
-        if (Util.notEmpty(horaireToAdd)) {
-          finalHoraire.append(horaireToAdd.toString());
-        }
-        
-        if (iter.hasNext() && Util.notEmpty(horaireToAdd)) {
-          finalHoraire.append(suffixeHoraire);
-        }
-        
+          return finalHoraire.toString();
       }
       
-      return deleteDoublonsFromString(finalHoraire.toString(), suffixeHoraire);
+      // Cas "date unique" -> on récupère la dateHoraire associée à la date courante
+      for (DateHoraires itDateHoraire : event.getDatesHoraires()) {
+          // boucle sur les dateHoraires
+          if (itDateHoraire.getDate().equals(currentDate.getDebut())) {
+              // date correspondante trouvée
+              for (int counterHoraire = 0; counterHoraire < itDateHoraire.getHorairesDebut().size(); counterHoraire++) {
+                  
+                  StringBuilder horaireToAdd = new StringBuilder();
+
+                  String horaire_1 = formatTimeToHhMm(itDateHoraire.getHorairesDebut().get(counterHoraire));
+                  String horaire_2 = formatTimeToHhMm(itDateHoraire.getHorairesFin().get(counterHoraire));
+                  
+                  if (horaire_1.equals(horaire_2) || Util.isEmpty(horaire_2)) {
+                      horaireToAdd.append(horaire_1);
+                    } else {
+                      horaireToAdd.append(shortened ? getShortenedHoraireDisplay(horaire_1, horaire_2) : getHoraireDisplay(horaire_1, horaire_2));
+                  }
+                 
+                  
+                  if (Util.notEmpty(horaireToAdd)) {
+                    finalHoraire.append(horaireToAdd.toString());
+                  }
+                  
+                  if (counterHoraire+1 < itDateHoraire.getHorairesDebut().size() && Util.notEmpty(horaireToAdd)) {
+                    finalHoraire.append(suffixeHoraire);
+                  }
+              }
+          }
+      }
+          
+      return finalHoraire.toString();
     }
     
     /**
@@ -1030,5 +1133,15 @@ public class InfolocaleUtil {
       }
       
       return false;
+    }
+
+    /**
+     * Renvoie un libellé de jour Infolocale selon un ID de 1 (lundi) à 7 (dimanche)
+     * @param counterDays
+     * @return
+     */
+    public static String getJourInfolocaleLibelle(int idDay) {
+        LOGGER.debug("Getting jour libelle for day id " + idDay);
+        return JcmsUtil.glp(Channel.getChannel().getCurrentUserLang(), "jcmsplugin.socle.infolocale.label.day." + idDay);
     }
 }

@@ -6,9 +6,11 @@ import com.jalios.jcms.Content;
 import com.jalios.jcms.Publication;
 
 import fr.cg44.plugin.socle.infolocale.entities.Contact;
+import fr.cg44.plugin.socle.infolocale.entities.DateHoraires;
 import fr.cg44.plugin.socle.infolocale.entities.DateInfolocale;
 import fr.cg44.plugin.socle.infolocale.entities.DossierPresse;
 import fr.cg44.plugin.socle.infolocale.entities.Genre;
+import fr.cg44.plugin.socle.infolocale.entities.Horaires;
 import fr.cg44.plugin.socle.infolocale.entities.Langue;
 import fr.cg44.plugin.socle.infolocale.entities.Lieu;
 import fr.cg44.plugin.socle.infolocale.entities.Photo;
@@ -27,7 +29,9 @@ public class EvenementContent extends Content {
     String urlBilletterie;
     Lieu lieu;
     Contact[] contacts;
+    DateHoraires[] datesHoraires;
     DateInfolocale[] dates;
+    Horaires[] horaires;
     Tarif[] tarifs;
     Genre genre;
     Photo[] photos;
@@ -99,12 +103,6 @@ public class EvenementContent extends Content {
     }
     public void setContacts(Contact[] contacts) {
         this.contacts = contacts;
-    }
-    public DateInfolocale[] getDates() {
-        return dates;
-    }
-    public void setDates(DateInfolocale[] dates) {
-        this.dates = dates;
     }
     public Genre getGenre() {
         return genre;
@@ -204,6 +202,30 @@ public class EvenementContent extends Content {
 
     public void setIndexDate(int indexDate) {
       this.indexDate = indexDate;
+    }
+
+    public Horaires[] getHoraires() {
+        return horaires;
+    }
+
+    public void setHoraires(Horaires[] horaires) {
+        this.horaires = horaires;
+    }
+
+    public DateHoraires[] getDatesHoraires() {
+        return datesHoraires;
+    }
+
+    public void setDatesHoraires(DateHoraires[] datesHoraires) {
+        this.datesHoraires = datesHoraires;
+    }
+
+    public DateInfolocale[] getDates() {
+        return dates;
+    }
+
+    public void setDates(DateInfolocale[] dates) {
+        this.dates = dates;
     }
     
 }

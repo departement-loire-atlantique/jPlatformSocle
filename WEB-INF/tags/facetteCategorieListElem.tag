@@ -58,7 +58,7 @@
     
 	<label for='<%= idInput %>' 
 			class='<%= "ds44-" + labelInput + "Label"  %>'
-			id="<%= nameType + "-label-" + nameInput %>">
+			id="<%= nameType + "-label-" + nameInput + "-" + numCat %>">
 
 		<%= cat.getName() %>
 

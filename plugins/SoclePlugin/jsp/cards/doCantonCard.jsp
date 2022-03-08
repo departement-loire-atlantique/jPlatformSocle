@@ -21,7 +21,7 @@ referencedElus.addAll(pub.getLinkIndexedDataSet(ElectedMember.class));
 <section class="ds44-card ds44-js-card ds44-card--contact ds44-bgGray">
     <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileCanton_<%= uid %>">
+            <p class="h4-like ds44-cardTitle" id="tuileCanton_<%= uid %>">
                 <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink" title="<%= glp("jcmsplugin.socle.canton.lien.title", pub.getTitle()) %>"><%= pub.getTitle() %></a>
             </p>
             <jalios:if predicate="<%= Util.notEmpty(referencedElus) %>">

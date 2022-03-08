@@ -22,7 +22,7 @@ boolean isFocus = "true".equals(request.getParameter("isFocus"));
     <div class="ds44-card__section">
       
       <div class="ds44-innerBoxContainer">
-          <p role="heading" aria-level="2" class="h4-like ds44-cardTitle" id="tuileSaad_<%= uid %>">
+          <p class="h4-like ds44-cardTitle" id="tuileSaad_<%= uid %>">
             <a href="<%= pub.getDisplayUrl(userLocale) %>" class="ds44-card__globalLink"><%= pub.getTitle() %></a>
           </p>
           <hr class="mbs" aria-hidden="true">

@@ -213,7 +213,7 @@ jcmsplugin.socle.socialnetwork.share.mail.link: mailto:?subject= a page for you 
 jcmsplugin.socle.deux-points: :&nbsp;
 jcmsplugin.socle.targetblank: target="_blank"
 jcmsplugin.socle.accessibily.newTabLabel: - new window
-jcmsplugin.socle.lien.site.nouvelonglet: Visit the website: {0} - new window
+jcmsplugin.socle.lien.site.nouvelonglet: {0} - Visit the website - new window
 jcmsplugin.socle.lien.document.nouvelonglet : {0} - {1} - {2} - new window
 jcmsplugin.socle.lien.nouvelonglet: {0} - new window
 jcmsplugin.socle.contactmail: Contact by mail: {0} : {1}
@@ -274,6 +274,7 @@ jcmsplugin.socle.maire: Maire
 jcmsplugin.socle.video.acceder: Access the video: {0}
 jcmsplugin.socle.partenaire: Partner
 jcmsplugin.socle.participants: number of participants
+jcmsplugin.socle.horaires: Timetable
 jcmsplugin.socle.tarifs: Rates
 jcmsplugin.socle.tarif.normal: Normal:
 jcmsplugin.socle.tarif.reduit: Reduced rate:
@@ -339,6 +340,9 @@ jcmsplugin.socle.utilisateur-connecte: Connected user: {0}
 jcmsplugin.socle.deconnexion: Disconnect
 jcmsplugin.socle.identifiant: Login
 jcmsplugin.socle.media: Média
+jcmsplugin.socle.videodesactivee: Video deactivated
+jcmsplugin.socle.devezaccepterdepotcookie: You must accept streaming cookies to play the video.
+jcmsplugin.socle.acceptercookies: Accept cookies
 
 # ------------------------------------------------------------
 #  Header
@@ -588,6 +592,7 @@ jcmsplugin.socle.infolocale.label.carrousel.tuile.periode: Du {0} {1} {2} au {3}
 jcmsplugin.socle.infolocale.label.carrousel.date: Le {0} 
 jcmsplugin.socle.infolocale.label.carrousel.periode: Du {0} au {2}
 jcmsplugin.socle.infolocale.label.horaire.periode: de {0} à {1}
+jcmsplugin.socle.infolocale.label.horaire.periode.short: {0} à {1}
 jcmsplugin.socle.infolocale.organisme.dep.id.list: Liste d'IDs d'organismes du département
 jcmsplugin.socle.infolocale.label.payant: Payant
 jcmsplugin.socle.infolocale.label.consulterdossier: Consultez le dossier de presse
@@ -595,6 +600,14 @@ jcmsplugin.socle.infolocale.label.titleliendossier: Le dossier de presse :  {0} 
 jcmsplugin.socle.infolocale.label.tarif: Tarif
 jcmsplugin.socle.infolocale.caroussel.days: Caroussel Infolocale : portée en jours
 jcmsplugin.socle.infolocale.annule: This event has been canceled.
+jcmsplugin.socle.infolocale.label.day.1: Monday
+jcmsplugin.socle.infolocale.label.day.2: Tuesday
+jcmsplugin.socle.infolocale.label.day.3: Wednesday
+jcmsplugin.socle.infolocale.label.day.4: Thursday
+jcmsplugin.socle.infolocale.label.day.5: Friday
+jcmsplugin.socle.infolocale.label.day.6: Saturday
+jcmsplugin.socle.infolocale.label.day.7: Sunday
+jcmsplugin.socle.infolocale.label.day.closed: Closed
 
 # Metadonnees Infolocale pour le front
 
@@ -690,7 +703,7 @@ jcmsplugin.socle.ficheemploi.label.repondrecourrier: Ou par courrier, à l'atten
 jcmsplugin.socle.ficheemploi.label.emploi: Emploi - {0}
 jcmsplugin.socle.ficheemploi.label.repondrecourrier2: Ou envoyer votre candidature par courrier
 jcmsplugin.socle.ficheemploi.label.serviceRessources: Service ressources
-jcmsplugin.socle.ficheemploi.txt.modalites: Adressez votre candidature sous la référence {0} au plus tard le {1} accompagnée d’un curriculum vitae détaillé et d’une lettre de motivation.
+jcmsplugin.socle.ficheemploi.txt.modalites: Merci de nous adresser votre candidature sous la référence {0} au plus tard le {1} accompagnée d'un curriculum vitae détaillé, d'une lettre de motivation et de votre dernier arrêté de situation administrative ou attestation de réussite au concours.
 jcmsplugin.socle.ficheemploi.html.contact: Monsieur le Président du Département de Loire-Atlantique<br/>Direction des Ressources Humaines,<br/>Service Emploi et Compétences<br/>3 Quai Ceineray, CS 94109<br/>44041 Nantes cedex 1
 jcmsplugin.socle.ficheemploi.label.reference: (Ref : {0})
 

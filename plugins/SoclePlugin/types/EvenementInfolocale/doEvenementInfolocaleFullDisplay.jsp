@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.Horaires"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.Tarif"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.Photo"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DossierPresse"%>
@@ -8,6 +9,7 @@
 <%@page import="fr.cg44.plugin.socle.infolocale.RequestManager"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.entities.DateInfolocale"%>
+<%@page import="fr.cg44.plugin.socle.infolocale.entities.DateHoraires"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
@@ -44,7 +46,13 @@ labelLegendCopyright += credit;
 String displayedTitle = Util.notEmpty(obj.getTitreLibre()) ? obj.getTitreLibre() : obj.getTitle();
 
 boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj.getTexteCourt());
+boolean hasTexteLong = Util.notEmpty(obj.getTexteLong()) && !"null".equals(obj.getTexteLong());
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
+
+String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj, true);
+boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
+
 %>
 
 <main role="main" id="content">
@@ -70,28 +78,28 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 				           <span class="ds44-docListElem h4-like ds44-inlineBlock">
 				              <i class="icon icon-date icon--sizeM ds44-docListIco ds44-posTop7" aria-hidden="true"></i>
 				              <jalios:select>
-				                 <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
-				                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-				                 </jalios:if>
-				                 <jalios:default>
-				                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
-				                    -
-				                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
-				                 </jalios:default>
-				              </jalios:select>
+                                 <jalios:if predicate="<%= InfolocaleUtil.infolocaleDateIsSingleDay(currentDisplayedDate) %>">
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                                 </jalios:if>
+                                 <jalios:default>
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getDebut()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getDebut(), false) %>
+                                    -
+                                    <%= InfolocaleUtil.getDayOfMonthLabel(currentDisplayedDate.getFin()) %> <%= InfolocaleUtil.getMonthLabel(currentDisplayedDate.getFin(), false) %>
+                                 </jalios:default>
+                              </jalios:select>
+                              <jalios:if predicate="<%= allowHorairesDisplay %>">
+                                    - <%= displayHoraires %>
+                              </jalios:if>
 				           </span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getGenre()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><%= obj.getGenre().getLibelle() %></span>
 			           </jalios:if>
+			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
+                          <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
+                       </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getLieu()) && Util.notEmpty(obj.getLieu().getCommune()) %>">
 			              <span class="ds44-docListElem"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><%= obj.getLieu().getCommune().getNom() %></span>
-			           </jalios:if>
-			           <jalios:if predicate="<%= Util.notEmpty(currentDisplayedDate) && Util.notEmpty(currentDisplayedDate.getHoraire()) %>">
-			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getHoraireDisplay(currentDisplayedDate)%></span>
-			           </jalios:if>
-			           <jalios:if predicate="<%= Util.notEmpty(obj.getDuree()) && Util.notEmpty(InfolocaleUtil.getLabelDuree(obj.getDuree())) %>">
-			              <span class="ds44-docListElem"><i class="icon icon-time ds44-docListIco" aria-hidden="true"></i><%= InfolocaleUtil.getLabelDuree(obj.getDuree()) %></span>
 			           </jalios:if>
 			           <jalios:if predicate="<%= Util.notEmpty(obj.getNombreDeParticipants()) && obj.getNombreDeParticipants() > 0 %>">
 			              <span class="ds44-docListElem"><i class="icon icon-user ds44-docListIco" aria-hidden="true"></i><%= obj.getNombreDeParticipants() %> <%= glp("jcmsplugin.socle.participants") %></span>
@@ -109,7 +117,7 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
       
       <jalios:select>
               
-                    <jalios:if predicate='<%= InfolocaleUtil.organisationIdIsInPropList(obj.getOrganismeId()) || (texteCourtEmpty && descEmpty) %>'>
+                    <jalios:if predicate='<%= InfolocaleUtil.organisationIdIsInPropList(obj.getOrganismeId()) || (texteCourtEmpty && descEmpty) || hasTexteLong  %>'>
                         <div class="ds44-img50 ds44-img50--event">
 	                        <div class="ds44-inner-container">
 	                           <div class="ds44-grid12-offset-1">
@@ -121,12 +129,21 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 	                              </jalios:if>
 	                              <%= eventSummary %>
 	                              <%= eventAnnule %>
-	                              <jalios:if predicate="<%= !texteCourtEmpty || !descEmpty %>">
+	                              <jalios:if predicate="<%= (!texteCourtEmpty || !descEmpty) && !hasTexteLong %>">
 									 <div class="grid-1-small-1">
 										<div class="col mll mbs">
 											<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
 										</div>
 									 </div>
+								  </jalios:if>
+								  <jalios:if predicate="<%= hasTexteLong %>">
+								     <div class="grid-1-small-1">
+								        <div class="col mll mbs">
+								            <div class="mtm mbm">
+								                <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
+								            </div>
+								        </div>
+								     </div>
 								  </jalios:if>
 								</div>
 	                        </div>
@@ -194,6 +211,18 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
             <div class="ds44-grid12-offset-2">
                <div class="grid-2-small-1">
                   <div class="col">
+                     <jalios:if predicate="<%= showPlagesHoraires %>">
+                         <div class="ds44-mb3">
+                            <h2 class="h3-like"><%= glp("jcmsplugin.socle.horaires") %><%=glp("jcmsplugin.socle.deux-points") %></h2>
+                            <ul class="ds44-uList">
+                                <jalios:foreach name="itHoraire" type="Horaires" array="<%= obj.getHoraires() %>">
+                                    <li>
+                                        <%= itHoraire.getJourLibelle() %> : <%= itHoraire.isFerme() ? glp("jcmsplugin.socle.infolocale.label.day.closed") : InfolocaleUtil.getPlagesDisplayHoraires(itHoraire) %>
+                                    </li>
+                                </jalios:foreach>
+                            </ul>
+                         </div>
+                     </jalios:if>
                      <jalios:if predicate="<%= Util.notEmpty(obj.getTarifs()) %>">
 	                     <div class="ds44-mb3">
 	                        <h2 class="h3-like"><%= glp("jcmsplugin.socle.tarifs") %><%=glp("jcmsplugin.socle.deux-points") %></h2>
@@ -241,20 +270,6 @@ boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getD
 			                           </jalios:foreach>
 			                        </li>
 	                           </jalios:if>
-	                           <jalios:select>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && (Util.isEmpty(obj.getAgeMaximum()) || obj.getAgeMaximum() <= 0 || obj.getAgeMaximum() >= 100) %>">
-	                                    <li><%= glp("jcmsplugin.socle.age.apartirde", obj.getAgeMinimum()) %></li>
-	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0 && obj.getAgeMaximum() < 100 && (Util.isEmpty(obj.getAgeMinimum()) || obj.getAgeMinimum() <= 0) %>">
-	                                    <li><%= glp("jcmsplugin.socle.age.jusqua", obj.getAgeMaximum()) %></li>
-	                                </jalios:if>
-	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAgeMinimum()) && obj.getAgeMinimum() > 0 && obj.getAgeMinimum() < 100 && Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() > 0%>">
-	                                    <li><%= glp("jcmsplugin.socle.age.de.a", obj.getAgeMinimum(), obj.getAgeMaximum()) %></li>
-	                                </jalios:if>
-	                                <jalios:if predicate='<%= Util.notEmpty(obj.getAgeMaximum()) && obj.getAgeMaximum() >= 100 && Util.notEmpty(obj.getCategorieDage()) && !(Arrays.asList(obj.getCategorieDage()).contains(glp("jcmsplugin.socle.age.tous"))) %>'>
-	                                    <li><%= glp("jcmsplugin.socle.age.tous") %></li>
-	                                </jalios:if>
-	                           </jalios:select>
 	                        </ul>
 	                     </div>
                      </jalios:if>

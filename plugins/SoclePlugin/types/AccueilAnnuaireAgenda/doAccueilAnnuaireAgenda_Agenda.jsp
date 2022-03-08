@@ -21,7 +21,7 @@
                     </jalios:if>
                     <jalios:if predicate="<%= Util.notEmpty(obj.getIntroSelectionAgenda()) %>">
 	                    <p class="ds44-component-chapo ds44-centeredBlock">
-	                        <jalios:wysiwyg><%= obj.getIntroSelectionAgenda(userLang) %></jalios:wysiwyg>
+	                       <%= HtmlUtil.html2text(obj.getIntroSelectionAgenda(userLang)) %>
 	                    </p>
                     </jalios:if>
                 </header>

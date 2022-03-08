@@ -8,11 +8,11 @@ import com.jalios.jcms.Data;
  *
  */
 public class DateInfolocale extends Data {
-    
+
     String debut;
     String fin;
     String horaire;
-    
+
     public String getDebut() {
         return debut;
     }
@@ -31,5 +31,5 @@ public class DateInfolocale extends Data {
     public void setHoraire(String horaire) {
         this.horaire = horaire;
     }
-    
+
 }
