@@ -136,18 +136,24 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
 										</div>
 									 </div>
 								  </jalios:if>
-								  <jalios:if predicate="<%= hasTexteLong %>">
-								     <div class="grid-1-small-1">
-								        <div class="col mll mbs">
-								            <div class="mtm mbm">
-								                <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
-								            </div>
-								        </div>
-								     </div>
-								  </jalios:if>
 								</div>
 	                        </div>
                         </div>
+                        <jalios:if predicate="<%= hasTexteLong %>">
+                            <section class="ds44-contenuArticle" id="sectionDescription">
+	                            <div class="ds44-inner-container ds44-mtb5">
+		                            <div class="ds44-grid12-offset-1">
+			                            <div class="grid-1-small-1">
+				                            <div class="col mll mbs">
+					                            <div class="mtm mbm">
+					                             <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
+					                            </div>
+				                            </div>
+			                            </div>
+		                            </div>
+	                            </div>
+                            </section>
+                        </jalios:if>
                     </jalios:if>
                     
                     <jalios:default>
@@ -179,10 +185,17 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
 										</jalios:if>
 										<jalios:default>
 											<div class="grid-1-small-1">
-												<div class="col mll mbs">
-													<p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
-												</div>
-											</div>
+                                                <div class="col mll mbs">
+                                                    <jalios:select>
+                                                        <jalios:if predicate="<%= Util.notEmpty(obj.getTexteLong()) %>">
+                                                            <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
+                                                        </jalios:if>
+                                                        <jalios:default>
+                                                            <p class="ds44-introduction"><%=!texteCourtEmpty ? obj.getTexteCourt() : obj.getDescription()%></p>
+                                                        </jalios:default>
+                                                    </jalios:select>
+                                                </div>
+                                            </div>
 										</jalios:default>
 									</jalios:select>
 		
