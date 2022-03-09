@@ -537,8 +537,8 @@ jcmsplugin.socle.infolocale.password:
 jcmsplugin.socle.infolocale.limit: 20
 jcmsplugin.socle.infolocale.flux.default: f24ba875-a641-47aa-b1b5-01c23a1b6812
 jcmsplugin.socle.infolocale.defaultOrder: dateDebut asc
-jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/flux/
-jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/annonces/
+jcmsplugin.socle.infolocale.flux.url: https://api.infolocale.fr/v2/flux/
+jcmsplugin.socle.infolocale.extract.url: https://api.infolocale.fr/v2/annonces/
 jcmsplugin.socle.infolocale.organisme.dep.id.list: id1,id2,id3
 jcmsplugin.socle.infolocale.max.limit: 200
 jcmsplugin.socle.infolocale.photo.404.url: https://www.infolocale.fr/build/images/article/article_no_image.png
