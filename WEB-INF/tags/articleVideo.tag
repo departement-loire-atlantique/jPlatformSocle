@@ -35,6 +35,13 @@
     type="Boolean"
     description="Cache le titre si true"
 %>
+<%@ attribute name="hideChapitrage"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Cache le chapitrage si true"
+%>
 <%@ attribute name="noOffset"
     required="false"
     fragment="false"
@@ -65,11 +72,14 @@ if (Util.notEmpty(intro)) {
   request.setAttribute("overrideVidIntro", intro);
 }
 if (Util.notEmpty(hideTitle)) {
-  request.setAttribute("hideVideoTitle", hideTitle);
+    request.setAttribute("hideVideoTitle", hideTitle);
+}
+if (Util.notEmpty(hideChapitrage)) {
+    request.setAttribute("hideChapitrage", hideChapitrage);
 }
 if (Util.notEmpty(forcedHeight)) {
     request.setAttribute("forcedHeight", forcedHeight);
-  }
+}
 boolean addOffest = Util.notEmpty(noOffset) ? !noOffset : true;
 
 String offsetContainerClass = "ds44-grid12-offset-2";
