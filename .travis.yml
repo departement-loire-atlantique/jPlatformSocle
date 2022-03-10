@@ -17,7 +17,7 @@ before_script:
 - docker pull sguellec/jplatformbuild
 
 script:
-- docker run -v ${TRAVIS_BUILD_DIR}:/root/source --name buildimage -t julienbayle/jplatformbuild
+- docker run -v ${TRAVIS_BUILD_DIR}:/root/source --name buildimage -t sguellec/jplatformbuild
 - docker cp buildimage:/root/dist .
 - export CODE_VERSION=`git describe`
 - sonar-scanner -Dsonar.projectVersion=$CODE_VERSION
