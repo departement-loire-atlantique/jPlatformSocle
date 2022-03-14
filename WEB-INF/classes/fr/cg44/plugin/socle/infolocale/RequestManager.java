@@ -53,14 +53,14 @@ public class RequestManager {
      * Envoie une requête pour s'authentifier à Infolocale et générer les tokens d'authentification
      */
     public static void initTokens() {
-        sendTokenRequest("https://api.infolocale.fr/v2/auth/signin", initToken, true);
+        sendTokenRequest("https://api.infolocale.fr/auth/signin", initToken, true);
     }
     
     /**
      * Regénère les tokens d'authentification. En cas de token invalide, procède à l'authentification
      */
     public static void regenerateTokens() {
-        sendTokenRequest("https://api.infolocale.fr/v2/auth/refresh-token", refreshToken, false);
+        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", refreshToken, false);
     }
     
     private static void sendTokenRequest(String url, String type, boolean stopOnFail) {
