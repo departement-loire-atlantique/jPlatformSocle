@@ -352,6 +352,8 @@ public class InfolocaleEntityUtils {
         Horaires horaires = new Horaires();
         try {
             horaires.setJourId(json.getInt("jour"));
+            // spécifique -> "dimanche" est à 0. Passage à 7 pour conserver la logique lundi 0 -> dimanche 7
+            if (horaires.getJourId() == 0) horaires.setJourId(7);
             if (Util.isEmpty(horaires.getJourId())) return null;
             horaires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(horaires.getJourId()));
             ArrayList<String> plagesDebut = new ArrayList<>();

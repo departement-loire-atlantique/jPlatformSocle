@@ -761,10 +761,15 @@ public class InfolocaleUtil {
           
           // Récupération de tous les horaires formattés dans une collection
           ArrayList<String> formattedHoraires = new ArrayList<>();
+          
           for (Horaires itHoraires : event.getHoraires()) {
               // hélas une seconde boucle pour passer sur les plages par jour...
               // mauvais pour les performances. Peut-être y a-t-il mieux ?
-              if (itHoraires.isFerme()) continue; // on skip les jours fermés
+                           
+              if (itHoraires.isFerme()) {
+                  return Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent");
+              } // on a un jour fermé, on doit donc afficher une certaine règle d'affichage en front
+              
               for (int counterPlages = 0; counterPlages < itHoraires.getPlagesDebut().size(); counterPlages++) {
                   String tmpHoraire = getShortenedHoraireDisplay(formatTimeToHhMm(itHoraires.getPlagesDebut().get(counterPlages)), formatTimeToHhMm(itHoraires.getPlagesFin().get(counterPlages)));
 
