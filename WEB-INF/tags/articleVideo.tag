@@ -49,6 +49,13 @@
     type="Boolean"
     description="Ne pas ajouter un bloc 'grid' si à true"
 %>
+<%@ attribute name="noChapo"
+    required="false"
+    fragment="false"
+    rtexprvalue="true"
+    type="Boolean"
+    description="Ne pas ajouter le chapo si à true"
+%>
 <%@ attribute name="forcedHeight"
     required="false"
     fragment="false"
@@ -79,6 +86,9 @@ if (Util.notEmpty(hideChapitrage)) {
 }
 if (Util.notEmpty(forcedHeight)) {
     request.setAttribute("forcedHeight", forcedHeight);
+}
+if (Util.notEmpty(noChapo)) {
+    request.setAttribute("noChapo", noChapo);
 }
 boolean addOffest = Util.notEmpty(noOffset) ? !noOffset : true;
 

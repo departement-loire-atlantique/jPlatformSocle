@@ -39,6 +39,12 @@ if (Util.notEmpty(request.getAttribute("hideChapitrage"))) {
     request.setAttribute("hideChapitrage", false);
   }
 
+boolean noChapo = false;
+if (Util.notEmpty(request.getAttribute("noChapo"))) {
+    noChapo = Boolean.parseBoolean(request.getAttribute("noChapo").toString());
+    request.setAttribute("noChapo", false);
+  }
+
 String heightIframe = "480px";
 if (Util.notEmpty(request.getAttribute("forcedHeight"))) {
     heightIframe = request.getAttribute("forcedHeight").toString();
@@ -53,7 +59,7 @@ String videoId = VideoUtils.getYoutubeVideoId(obj.getUrlVideo()); // récupérer
 <jalios:if predicate="<%= Util.notEmpty(titleVideo) && !hideTitle %>">
     <h3 class="h3-like"><%= titleVideo %></h3>
 </jalios:if>
-<jalios:if predicate="<%= Util.notEmpty(chapoVideo) %>">
+<jalios:if predicate="<%= Util.notEmpty(chapoVideo) && !noChapo %>">
     <jalios:wysiwyg><%= chapoVideo %></jalios:wysiwyg>
 </jalios:if>
 

@@ -88,8 +88,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                             Lien itLienElem = (Lien) itElement;
                             %>
                             <jalios:select>
+                                <jalios:if predicate="<%= Util.notEmpty(itLienElem.getLienInterne()) %>">
+                                    <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itLienElem.getLienInterne().getDisplayUrl(userLocale) %>"><%= itLienElem.getTitle() %></a></h4>
+                                </jalios:if>
+                                <jalios:if predicate="<%= Util.notEmpty(itLienElem.getLienExterne()) %>">
+                                    <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itLienElem.getLienExterne() %>" target="_blank"><%= itLienElem.getTitle() %></a></h4>
+                                </jalios:if>
+                                <jalios:default>
+                                    <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><%= itLienElem.getTitle() %></h4>
+                                </jalios:default>
+                           </jalios:select>
+                           
+                            <jalios:select>
 		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getVideo()) %>">
-		                            <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" hideChapitrage="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
+		                            <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" hideChapitrage="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>"/>
 		                        </jalios:if>
 		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImagePrincipale()) %>">
 		                            <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImagePrincipale() %>"></ds:figurePicture>
@@ -101,17 +113,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 		                        </jalios:if>
 	                        </jalios:select>
 	                        
-	                        <jalios:select>
-	                            <jalios:if predicate="<%= Util.notEmpty(itLienElem.getLienInterne()) %>">
-	                                <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itLienElem.getLienInterne().getDisplayUrl(userLocale) %>"><%= itLienElem.getTitle() %></a></h4>
-	                            </jalios:if>
-	                            <jalios:if predicate="<%= Util.notEmpty(itLienElem.getLienExterne()) %>">
-	                                <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itLienElem.getLienExterne() %>" target="_blank"><%= itLienElem.getTitle() %></a></h4>
-	                            </jalios:if>
-	                            <jalios:default>
-	                                <h4 class="h3-like" id="titreTimeline<%= itLienElem.getId() %>_2"><%= itLienElem.getTitle() %></h4>
-	                            </jalios:default>
-	                       </jalios:select>
 	                       <jalios:wysiwyg><%= itLienElem.getDescription(userLang) %></jalios:wysiwyg>
                         </jalios:if>
                         <jalios:default>
@@ -132,7 +133,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 Dossier itDossier = (Dossier) itElement;
                                 %>
                                 <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
-		                        <h3 class="h4-like ds44-mt5"><%= sdf.format(itDossier.getDate()) %></h3>
+		                        <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
 		                        </jalios:if>
                             </jalios:if>
                             <!-- Spécifique Fiche Actu : afficher la date -->
@@ -141,7 +142,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 FicheActu itFiche = (FicheActu) itElement;
                                 %>
                                 <jalios:if predicate="<%= Util.notEmpty(itFiche.getDateActu()) %>">
-                                <h3 class="h4-like ds44-mt5"><%= sdf.format(itFiche.getDateActu()) %></h3>
+                                <h3 class="h4-like ds44-mts"><%= sdf.format(itFiche.getDateActu()) %></h3>
                                 </jalios:if>
                             </jalios:if>
                             <!-- Spécifique vidéo : afficher la vidéo -->
@@ -149,7 +150,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 <%
                                 Video itVideo = (Video) itElement;
                                 %>
-                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' offsetLevel='<%= 1 %>'/>
+                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
                             </jalios:if>
                             <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
