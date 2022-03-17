@@ -71,15 +71,21 @@ boolean hideSocialNetworkds = channel.getBooleanProperty("jcmsplugin.socle.heade
     
             <div class="ds44-flex-container ds44-flex-valign-center">
                 <div class="ds44-colLeft">
-                    <a href="index.jsp" class="ds44-logoContainer">
-                        <picture class="ds44-logo">
-                            <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
-                                <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
-                                <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
-                            </jalios:if>
-                            <img class='<%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>' src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(altValue) %>" />
-                        </picture>
-                    </a>
+                    <p class="ds44-logoContainer">
+	                    <jalios:if predicate='<%= !isHome %>'>
+	                        <a href="index.jsp">
+	                    </jalios:if>
+	                        <picture class="ds44-logo">
+	                            <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
+	                                <source media='(max-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logomobile") %>'>
+	                                <source media='(min-width: 47.9375em)' srcset='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>'>
+	                            </jalios:if>
+	                            <img class='<%= channel.getProperty("jcmsplugin.socle.site.logo.style")%>' src='<%= channel.getProperty("jcmsplugin.socle.site.src.logo") %>' alt="<%= HttpUtil.encodeForHTMLAttribute(altValue) %>" />
+	                        </picture>
+	                    <jalios:if predicate='<%= !isHome %>'>
+	                        </a>
+	                    </jalios:if>
+                    </p>
                 </div>
                 <div class="ds44-colRight">
                     <jalios:if predicate='<%= multilingue %>'>
