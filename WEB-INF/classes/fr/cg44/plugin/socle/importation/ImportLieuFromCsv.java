@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.log4j.Logger;
 
 import com.csvreader.CsvReader;
@@ -175,7 +176,14 @@ public class ImportLieuFromCsv {
      * @return
      */
     private static boolean communeInseeCheck(String inseeStr) {
-        City itCommune = SocleUtils.getCommuneFromInsee(inseeStr);
+        City itCommune = null;
+        // Cas 1 -> que des nombres dans le string
+        if (NumberUtils.isNumber(inseeStr)) {
+            itCommune = SocleUtils.getCommuneFromInsee(inseeStr);
+        } else {
+            // cas 2 -> nom de ville, on récupère depuis celui-ci
+            itCommune = SocleUtils.getCommuneFromName(inseeStr);
+        }
         return Util.notEmpty(itCommune);
     }
 
@@ -255,6 +263,7 @@ public class ImportLieuFromCsv {
             channel.getCurrentJcmsContext().addMsgSession(new JcmsMessage(JcmsMessage.Level.ERROR, message));
             channel.getCurrentJcmsContext().getRequest().setAttribute("traceImport", e);
         } 
+        channel.getCurrentJcmsContext().getRequest().setAttribute("traceImport", trace);
         return result;
     }
     
@@ -286,7 +295,11 @@ public class ImportLieuFromCsv {
         // Cedex
         itLieu.setCedex2(values[9]);
         // Commune
-        itLieu.setCommune(SocleUtils.getCommuneFromCode(values[10]));
+        if (NumberUtils.isNumber(values[10])) {
+            itLieu.setCommune(SocleUtils.getCommuneFromCode(values[10]));
+        } else {
+            itLieu.setCommune(SocleUtils.getCommuneFromName(values[10]));
+        }        
         // Telephone
         itLieu.setTelephone(values[11].split(doubleHashtag));
         // Email
