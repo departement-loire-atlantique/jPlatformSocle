@@ -29,7 +29,7 @@ if(getBooleanParameter("importLieux", false) && Util.notEmpty(request.getAttribu
 <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("traceImport")) %>'>
     <div class="jcms-message alert no-focus alert-warning ">
         <h2>Description de l'erreur : </h2>
-        <%= trace %>
+        <%= request.getAttribute("traceImport") %>
     </div>
 </jalios:if>
 
