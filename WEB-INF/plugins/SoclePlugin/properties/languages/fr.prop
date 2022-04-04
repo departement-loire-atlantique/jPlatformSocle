@@ -347,7 +347,7 @@ jcmsplugin.socle.acceptercookies: Accepter les <span lang="en">cookies</span>
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.retour.accueil: Accueil du site : {0}
+jcmsplugin.socle.retour.accueil: Retour à l'accueil du site : {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.retour: Retour au premier niveau du menu de navigation
@@ -990,8 +990,8 @@ jcmsplugin.socle.sites-applis.territoire.label: Territoire
 jcmsplugin.socle.sites-applis.institutionnel.label: Site du Département
 jcmsplugin.socle.sites-applis.institutionnel.long.label: Site du Département de Loire-Atlantique
 jcmsplugin.socle.sites-applis.institutionnel.url: https://www.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.budget.label: Budget 2021
-jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2021
+jcmsplugin.socle.sites-applis.budget.label: Budget 2022
+jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2022
 jcmsplugin.socle.sites-applis.participer.label: Participer
 jcmsplugin.socle.sites-applis.participer.url: https://participer.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.parents.label: Questions de parents
@@ -1002,12 +1002,8 @@ jcmsplugin.socle.sites-applis.handicap.label: Handicap en Loire-Atlantique
 jcmsplugin.socle.sites-applis.handicap.url: https://handicap.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.stages3.label: Stages de 3e
 jcmsplugin.socle.sites-applis.stages3.url: https://stage3e.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.classes-presse.label: Classes presse
-jcmsplugin.socle.sites-applis.classes-presse.url: https://classespresse.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.rando.label: Randonnée
 jcmsplugin.socle.sites-applis.rando.url: https://rando.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.nature.label: Nature
-jcmsplugin.socle.sites-applis.nature.url: https://nature.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.grandlieu.label: Maison du lac de Grand-Lieu
 jcmsplugin.socle.sites-applis.grandlieu.url: https://maisondulacdegrandlieu.com
 jcmsplugin.socle.sites-applis.bdla.label: Bibliothèque départementale de Loire-Atlantique (BDLA)
@@ -1040,8 +1036,6 @@ jcmsplugin.socle.sites-applis.opendata.label: Open data
 jcmsplugin.socle.sites-applis.opendata.url: https://data.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.numerique.label: Numérique
 jcmsplugin.socle.sites-applis.numerique.url: https://numerique.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.agirseniors.label: Conférence des financeurs
-jcmsplugin.socle.sites-applis.agirseniors.url: https://agirseniors.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.lad.label: Loire-Atlantique développement
 jcmsplugin.socle.sites-applis.lad.url: https://loireatlantique-developpement.fr
 jcmsplugin.socle.sites-applis.tourisme.label: Tourisme
