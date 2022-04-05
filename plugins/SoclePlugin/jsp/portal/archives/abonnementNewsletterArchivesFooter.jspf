@@ -55,7 +55,7 @@
 	                        <li class="ds44-select-list_elem col-6 ds44-noMrg">                       
 	                            <div id="form-element-parution-<%= itCat.getId() %>" data-name='<%= "publicationcatid" + glp("jcmsplugin.socle.facette.form-element") + itCat.getId() %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
 	                                <div class="ds44-form__container ds44-checkBox-radio_list ">
-	                                    <input type="checkbox" id="name-check-form-element-<%= itCat.getId() %>" name="form-element-<%= itCat.getId() %>" value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="" />
+	                                    <input type="checkbox" id="name-check-form-element-<%= itCat.getId() %>" name="form-element-<%= itCat.getId() %>" value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="tire-13" />
 	                                    <label for="name-check-form-element-<%= itCat.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getId() %>"><%= itCat.getName(userLang) %></label> 
 	                                </div>      
 	                            </div>                          
@@ -138,7 +138,7 @@
 	                        <div id="form-element-<%= flashRoot.getId() %>" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>'  class="ds44-form__checkbox_container ds44-form__container ds44-select-list_elem col-12 ds44-noMrg">
 	                            <div class="ds44-form__container ds44-checkBox-radio_list ">
 	                                    
-	                                 <input type="checkbox" id="name-check-form-element-<%= flashRoot.getId() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= flashRoot.getId() %>" class="ds44-checkbox" aria-describedby="" />
+	                                 <input type="checkbox" id="name-check-form-element-<%= flashRoot.getId() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= flashRoot.getId() %>" class="ds44-checkbox" aria-describedby="fash-mail" />
 	                                 <label for="name-check-form-element-<%= flashRoot.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= flashRoot.getId() %>"><%= flashRoot.getName(userLang) %></label>
 	                                    
 	                            </div>
