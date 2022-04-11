@@ -77,6 +77,12 @@
 		</div>
 		<% request.removeAttribute("noQuestionButton"); %>
 	</jalios:if>
+	
+	<jalios:if predicate='<%= Util.notEmpty(obj.getPortletBas()) %>'>
+        <jalios:foreach name="portlet" type="PortalElement" array='<%= obj.getPortletBas() %>'>
+            <jalios:include pub='<%= portlet %>'></jalios:include>
+        </jalios:foreach>
+    </jalios:if>
 
 	<%-- Partagez cette page --%>
     <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>

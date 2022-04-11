@@ -40,6 +40,9 @@
     <field name="paragrapheRubrique" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="listeRubrique" html="false" tab="contenu">
       <label xml:lang="fr">Paragraphe rubrique</label>
     </field>
+    <field name="portletBas" editor="link" required="false" compactDisplay="false" tab="contenu" type="com.jalios.jcms.portlet.PortalElement[]">
+      <label xml:lang="fr">Portlet bas</label>
+    </field>
     <!-- Classement -->
     <field name="faq" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FaqAccueil" parent="false">
       <label xml:lang="fr">FAQ</label>
