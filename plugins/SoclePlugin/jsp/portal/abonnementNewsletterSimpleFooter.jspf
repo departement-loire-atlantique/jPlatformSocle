@@ -39,7 +39,7 @@
 		                    <div class="ds44-posRel">
 		                        <label for="newletters-mail" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder"><span><%= glp("jcmsplugin.socle.faq.votre-email") %><sup aria-hidden="true">*</sup></span></span></label>
 		                        
-		                        <input type="email" id="newletters-mail" name="newletters-mail" class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.faq.votre-email"))) %>'  required autocomplete="email"   aria-describedby="explanation-newletters-mail titre-modale-newsletter" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>
+		                        <input type="email" id="newletters-mail" name="newletters-mail" class="ds44-inpStd" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.facette.champ-obligatoire.title",  glp("jcmsplugin.socle.faq.votre-email"))) %>'  required autocomplete="email"   aria-describedby="explanation-newletters-mail overlay-newsletter-simple-title" /><button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.socle.faq.votre-email")) %></span></button>
 		                    </div>
 		        
 		                    <div class="ds44-field-information" aria-live="polite">
@@ -53,7 +53,7 @@
 					</div>
 			
 				
-				<button class="ds44-btnStd ds44-btn--invert ds44-w100 ds44-bntALeft" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.newletter.abonnement.actu.title")) %>' aria-describedby="valid-form">
+				<button class="ds44-btnStd ds44-btn--invert ds44-w100 ds44-bntALeft" title='<%= encodeForHTMLAttribute(glp("jcmsplugin.socle.newletter.abonnement.actu.title")) %>' aria-describedby="valid-form-newsletter">
                     <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.newsletter.abonnement.labelBouton") %></span>
                     <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                 </button>
@@ -66,9 +66,11 @@
 			
 			<% Data newsletterWysiwyg = channel.getData(channel.getProperty("jcmsplugin.socle.form.newsletter.portlet-rgpd.id")); %>
             <jalios:if predicate='<%= Util.notEmpty(newsletterWysiwyg) && newsletterWysiwyg instanceof PortletWYSIWYG %>'>
-              <jalios:wysiwyg css="ds44-textLegend--mentions mtm">
-                  <%= ((PortletWYSIWYG) newsletterWysiwyg).getWysiwyg() %>
-              </jalios:wysiwyg>
+              <div id="valid-form-newsletter">
+	              <jalios:wysiwyg css="ds44-textLegend--mentions mtm">
+	                  <%= ((PortletWYSIWYG) newsletterWysiwyg).getWysiwyg() %>
+	              </jalios:wysiwyg>
+              </div>
             </jalios:if>
 			
 			
