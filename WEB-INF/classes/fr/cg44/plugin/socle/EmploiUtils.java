@@ -9,8 +9,10 @@ import org.apache.log4j.Logger;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Member;
+import com.jalios.jcms.db.HibernateUtil;
 import com.jalios.util.Util;
 
+import generated.AlerteOffresDemploi;
 import generated.City;
 import generated.Delegation;
 import generated.FicheEmploiStage;
@@ -112,7 +114,16 @@ public final class EmploiUtils {
    */
   public static boolean isEmploi(FicheEmploiStage job) {
     return getTypeOffre(job).equals("emploi");
-  }   
+  }  
+  
+  
+  /**
+   * Retourne l'abonnement offre d'emploi du mail correspondant
+   * @param email
+   */
+  public static AlerteOffresDemploi getAbonnementAlertEmploi(String email) {
+    return HibernateUtil.queryUnique(AlerteOffresDemploi.class, "mail", email);
+  }
   
   
 	

@@ -121,6 +121,8 @@ jcmsplugin.socle.mailjet.contactList:
 
 jcmsplugin.socle.newsletter.encrypt.key: 
 
+jcmsplugin.socle.alert-emploi.template.id: 
+
 # Comparator
 comparator.Publication.servicesDepartement: fr.cg44.plugin.socle.comparator.ServicesDepartementComparator
 comparator.ElectedMember.presidence: fr.cg44.plugin.socle.comparator.PresidenceComparator
