@@ -25,6 +25,13 @@ String mail = Util.getFirst(parametersMap.get("mail"));
 String commune = Util.getFirst(parametersMap.get("commune"));
 String communeHorsDept = Util.getFirst(parametersMap.get("communeHorsDept"));
 
+// Le champ toutes delegation est sortie de la variable "delegation" car ce n'est pas une catégorie
+// deplace vers "touteDelegation"
+if(Util.arrayContains(parametersMap.get("delegation"), "toute")) {
+  parametersMap.put("touteDelegation", new String[]{"toute"});
+  parametersMap.put("delegation", (String[]) Util.removeArray(parametersMap.get("delegation"), "toute"));
+}
+
 String touteDelegation = Util.getFirst(parametersMap.get("touteDelegation"));
 String[] delegation = parametersMap.get("delegation");
 String[] type = parametersMap.get("type");

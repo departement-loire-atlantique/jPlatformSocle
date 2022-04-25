@@ -20,10 +20,10 @@ Category delegationRoot = formhandler.getDelegationsRoot();
 
 <form data-is-ajax="true" data-is-inline="true" action="plugins/SoclePlugin/jsp/forms/sendAlerteEmploiDoubleOptin.jsp">
 
-
-<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.alert-emploi.titre") %></p>
-<p class="ds44-textLegend--mentions ds44-mb2"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
-
+<div class="mtm">  
+	<p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.alert-emploi.titre") %></p>
+	<p class="ds44-textLegend--mentions ds44-mb2"><%= glp("jcmsplugin.socle.facette.champs-obligatoires") %></p>
+</div>
 
 <div class="mtm">   
 
@@ -86,32 +86,32 @@ Category delegationRoot = formhandler.getDelegationsRoot();
     %>
     
     <h2 class="h4-like" id="titre-delegation"><%= glp("jcmsplugin.socle.alert-emploi.recherche") %></h2>
-    <ul class="ds44-list grid-12-small-1 mtm">
-        
-        
-      <li class="ds44-select-list_elem col-6 ds44-noMrg">                       
-             <div id="form-element-parution-toute" data-name='<%= "touteDelegation" + glp("jcmsplugin.socle.facette.form-element") %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
-                 <div class="ds44-form__container ds44-checkBox-radio_list ">
-                     <input type="checkbox" id="name-check-form-element-toute" name="form-element-toute" value="toute" class="ds44-checkbox" aria-describedby="titre-delegation" /><label for="name-check-form-element-toute" class="ds44-boxLabel" id="name-check-label-form-element-toute"><%= glp("jcmsplugin.socle.alert-emploi.toute-loire") %></label> 
-                 </div>      
-             </div>                          
-        </li>            
-        
-        <jalios:foreach collection="<%= delegationCat %>" name="itCat" type="Category">                        
-            <li class="ds44-select-list_elem col-6 ds44-noMrg">                       
-                <div id="form-element-parution-<%= itCat.getId() %>" data-name='<%= "delegation" + glp("jcmsplugin.socle.facette.form-element") + itCat.getId() %>' class="ds44-form__checkbox_container ds44-form__container" >                                                                                                                
-                    <div class="ds44-form__container ds44-checkBox-radio_list ">
-                        <input type="checkbox" id="name-check-form-element-<%= itCat.getId() %>" name="form-element-<%= itCat.getId() %>" value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-delegation" /><label for="name-check-form-element-<%= itCat.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getId() %>"><%= itCat.getName(userLang) %></label> 
-                    </div>      
-                </div>                          
-            </li>                        
-        </jalios:foreach>
-    
-    </ul>
+
+    <div id="form-element-delegation" data-name='<%= "delegation" + glp("jcmsplugin.socle.facette.form-element") %>' class="ds44-form__checkbox_container" data-required="true" >
+        <p id="mandatory-message-form-element-delegation" class="ds44-mandatory_message"><%= glp("jcmsplugin.socle.pageutile.message-case") %></p>
+		
+		<ul class="ds44-list grid-12-small-1 mtm">	
+					
+			<li class="ds44-select-list_elem col-6 ds44-noMrg">                       
+	            <div class="ds44-form__checkbox_container ds44-form__container">   
+	                 <div class="ds44-form__container ds44-checkBox-radio_list ">
+	                     <input required type="checkbox" id="name-check-form-element-toute" name='<%= "delegation" + glp("jcmsplugin.socle.facette.form-element") %>' value="toute" class="ds44-checkbox" aria-describedby="titre-delegation" /><label for="name-check-form-element-toute" class="ds44-boxLabel" id="name-check-label-form-element-toute"><%= glp("jcmsplugin.socle.alert-emploi.toute-loire") %></label> 
+	                 </div>      
+	             </div>                          
+	        </li>            
+				
+	        <jalios:foreach collection="<%= delegationCat %>" name="itCat" type="Category">                        	            			                             
+	            <li class="ds44-select-list_elem col-6 ds44-noMrg">  
+	                <div class="ds44-form__checkbox_container ds44-form__container">             
+			            <div class="ds44-form__container  ds44-checkBox-radio_list ">
+			                <input type="checkbox" id="name-check-form-element-<%= itCat.getId() %>" name='<%= "delegation" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" required  aria-describedby="mandatory-message-form-element-delegation titre-delegation" /><label for="name-check-form-element-<%= itCat.getId() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getId() %>"><%= itCat.getName(userLang) %></label> 
+			            </div>  
+		            </div>
+	            </li>                        			                             	                             		                                
+	        </jalios:foreach>		
+		</ul>		
+    </div>
 </div>
-
-
-
 
 
 <button class="ds44-btnStd ds44-btn--invert" type="button" data-target="#overlay-test" data-js="ds44-modal"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.alert-emploi.carte-delegation") %></span></button>
