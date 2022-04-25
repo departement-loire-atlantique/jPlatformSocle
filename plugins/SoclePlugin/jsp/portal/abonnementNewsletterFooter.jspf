@@ -77,15 +77,15 @@
                     int col1Size =  flashCat.size() % 3 != 0 ? colSize + 1 : colSize;
                     %>
                     
-                    <h2 class="h4-like" id="titre-newsletter-falsh-info"><%= glp("jcmsplugin.socle.newletter.flash.info") %></h2>
+                    <h2 class="h4-like" id="titre-newsletter-flash-info"><%= glp("jcmsplugin.socle.newletter.flash.info") %></h2>
                     <div class="ds44-list grid-12-small-1 mtm">
                         
                         <div class="ds44-select-list_elem col-4 ds44-noMrg">                                                                            
-                            <div id="form-element-fash-info-col-1" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-1" %>' class="ds44-form__checkbox_container ds44-form__container" >
+                            <div id="form-element-flash-info-col-1" data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-1" %>' class="ds44-form__checkbox_container ds44-form__container" >
                 
                                 <jalios:foreach collection="<%= flashCat %>" name="itCat" type="Category" max="<%= col1Size %>">
                                     <div class="ds44-form__container ds44-checkBox-radio_list ">
-                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-falsh-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
+                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-flash-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
                                     </div>
                                 </jalios:foreach>                                       
         
@@ -93,11 +93,11 @@
                         </div>
                         
                         <div class="ds44-select-list_elem col-4 ds44-noMrg">                           
-                            <div id="form-element-fash-info-col-2"  data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-2" %>' class="ds44-form__checkbox_container ds44-form__container" >
+                            <div id="form-element-flash-info-col-2"  data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-2" %>' class="ds44-form__checkbox_container ds44-form__container" >
                                                                
                                 <jalios:foreach collection="<%= flashCat %>" name="itCat" type="Category" skip="<%= col1Size %>" max="<%= col1Size %>">
                                     <div class="ds44-form__container ds44-checkBox-radio_list ">
-                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-falsh-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
+                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-flash-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
                                     </div>
                                 </jalios:foreach>    
                                                                 
@@ -105,11 +105,11 @@
                         </div>
                         
                         <div class="ds44-select-list_elem col-4 ds44-noMrg">
-                            <div id="form-element-fash-info-col-3"  data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-3" %>' class="ds44-form__checkbox_container ds44-form__container" >
+                            <div id="form-element-flash-info-col-3"  data-name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") + "col-3" %>' class="ds44-form__checkbox_container ds44-form__container" >
     
                                 <jalios:foreach collection="<%= flashCat %>" name="itCat" type="Category" skip="<%= col1Size * 2 %>" max="<%= colSize %>">
                                     <div class="ds44-form__container ds44-checkBox-radio_list ">
-                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-falsh-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
+                                        <input type="checkbox" id="name-check-form-element-<%= itCat.getDescription() %>" name='<%= "segmentid" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= itCat.getId() %>" class="ds44-checkbox" aria-describedby="titre-newsletter-flash-info" /><label for="name-check-form-element-<%= itCat.getDescription() %>" class="ds44-boxLabel" id="name-check-label-form-element-<%= itCat.getDescription() %>"><%= itCat.getName(userLang) %></label>
                                     </div>
                                 </jalios:foreach>
     
