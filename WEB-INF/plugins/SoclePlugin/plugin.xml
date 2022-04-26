@@ -581,6 +581,9 @@
         <template name="simpleList" file="doPortletQueryForeachListeSimple.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit en liste</label>
         </template>        
+        <template name="tuiles" file="doPortletQueryForeachTuiles.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit en tuiles style "résultats recherche facettes"</label>
+        </template> 
     </templates>
     <templates type="PortletCarousel">
         <template name="sliderTrois" file="doPortletCarouselSliderThreePanels.jsp" usage="box">
