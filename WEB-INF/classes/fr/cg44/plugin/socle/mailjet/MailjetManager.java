@@ -4,7 +4,10 @@ import static com.jalios.jcms.Channel.getChannel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -13,7 +16,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jalios.jcms.Category;
+import com.jalios.jcms.Channel;
 import com.jalios.util.HtmlUtil;
+import com.jalios.util.StringEncrypter;
+import com.jalios.util.StringEncrypter.EncryptionException;
+import com.jalios.util.URLUtils;
 import com.jalios.util.Util;
 import com.mailjet.client.ClientOptions;
 import com.mailjet.client.MailjetClient;
@@ -31,6 +38,8 @@ import com.mailjet.client.resource.ContactslistManageContact;
 import com.mailjet.client.resource.Listrecipient;
 import com.mailjet.client.resource.Newsletter;
 import com.mailjet.client.resource.NewsletterTest;
+import com.mailjet.client.resource.Emailv31;
+import com.mailjet.client.resource.TemplateDetailcontent;
 
 import okhttp3.OkHttpClient;
 
@@ -40,6 +49,8 @@ public class MailjetManager {
   
   private static final int EXIT_SUCCESS = 0;
   private static final int EXIT_ERROR = 1;
+  
+  private static Channel channel = Channel.getChannel();
   
   /**
    * Création d'un client pour mailJet
@@ -376,5 +387,53 @@ public class MailjetManager {
     return EXIT_SUCCESS;
   }
   
-
+  
+  
+  public static boolean sendMailTemplate(Collection<String> email, int template, JSONObject variables, String deinscriptionBaseUrl) throws JSONException, MailjetException, EncryptionException  {
+    
+    if(!channel.isMailEnabled()){
+      LOGGER.warn("L'envoi des e-mail désactivé");
+      return false;
+    }
+    
+    MailjetClient client = getMailJetClient();
+    MailjetRequest request;
+    MailjetResponse response;
+     
+    // Permet de crypter les paramètres pour validation de la newsletter
+    StringEncrypter des3Encrypter = new StringEncrypter(StringEncrypter.DESEDE_ENCRYPTION_SCHEME, channel.getProperty("jcmsplugin.socle.newsletter.encrypt.key"));
+    
+    JSONArray messages = new JSONArray();
+    for(String itMail : email) {   
+      
+      // Encode le mail pour la génération du lien de deinscription
+      Map<String, String[]> parametersEncodeMap = new HashMap<String, String[]>();
+      parametersEncodeMap.put("confirm", new String[]{des3Encrypter.encrypt("email=" + itMail)});
+      // Création du lien sécurisé pour la désincription     
+      String deinscriptionUrl = URLUtils.buildUrl(deinscriptionBaseUrl, parametersEncodeMap);
+      
+      messages.put(new JSONObject()
+          .put(Emailv31.Message.TO, new JSONArray()
+              .put(new JSONObject()
+                  .put("Email", itMail)
+                  ))
+          .put(Emailv31.Message.VARIABLES, new JSONObject()
+              .put("LIEN_DESINSCRIPTION", deinscriptionUrl))
+          );    
+    }
+        
+    request = new MailjetRequest(Emailv31.resource)
+        .property("Globals", new JSONObject()
+                  .put(Emailv31.Message.TEMPLATEID, template)
+                  .put(Emailv31.Message.TEMPLATELANGUAGE, true)
+                  .put(Emailv31.Message.VARIABLES, variables)
+                  )        
+        .property(Emailv31.MESSAGES, messages);
+    
+        response = client.post(request);
+        LOGGER.debug(response);
+        return true;
+  }
+  
+  
 }
