@@ -150,7 +150,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 <%
                                 Video itVideo = (Video) itElement;
                                 %>
-                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
+                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>"/>
                             </jalios:if>
                             <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
