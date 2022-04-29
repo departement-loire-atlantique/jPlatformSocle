@@ -87,8 +87,7 @@
 	                    alt='<%= glp("jcmsplugin.socle.pdcv.carte.alt") %>'
 	                    class="ds44-imgMap" usemap="#CarteDesDelegationsMob"
 	                      aria-hidden="true">
-	                <map name="CarteDesDelegationsMob" 
-	                     aria-hidden="true">
+	                <map name="CarteDesDelegationsMob">
 	                    <area shape="poly"
 	                        coords="1,103,-9,145,26,174,81,133,97,135,134,157,146,142,124,118,112,118,112,97,123,91,118,85,108,85,101,75,80,64,36,69,9,78"
 	                        href="delegation-saintnazaire" alt='<%= glp("jcmsplugin.socle.pdcv.select.delegation", glp("jcmsplugin.socle.pdcv.stnazaire")) %>'
