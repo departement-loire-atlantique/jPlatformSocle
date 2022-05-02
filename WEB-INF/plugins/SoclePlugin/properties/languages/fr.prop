@@ -96,6 +96,8 @@ jcmsplugin.socle.mailjet.apiKey: Clé API mailjet
 jcmsplugin.socle.mailjet.apiSecretKey:Clé secrète mailjet
 jcmsplugin.socle.mailjet.contactList: Id liste de contact mailjet (newsletter)
 
+jcmsplugin.socle.alert-emploi.template.id: Id du template mailJet pour les alertes offre d'emploi
+
 # Catégorie de classement FileDocument
 jcmsplugin.socle.category.classementfiledoc: ID catégorie de classement FileDocument
 
@@ -347,7 +349,7 @@ jcmsplugin.socle.acceptercookies: Accepter les <span lang="en">cookies</span>
 # ------------------------------------------------------------
 #  Header
 # ------------------------------------------------------------
-jcmsplugin.socle.retour.accueil: Accueil du site : {0}
+jcmsplugin.socle.retour.accueil: Retour à l'accueil du site : {0}
 jcmsplugin.socle.menu.ouvrir: Ouvrir le menu de navigation
 jcmsplugin.socle.menu.fermer: Fermer le menu de navigation
 jcmsplugin.socle.menu.retour: Retour au premier niveau du menu de navigation
@@ -663,8 +665,26 @@ jcmsplugin.socle.newletter.mail.inscription-expire.content: Le délai de confirm
 jcmsplugin.socle.newletter.mail.inscription-valide.content: <p>Les thématiques que vous avez choisies sont : </p>{0}<p class="mtl">Merci et à bientôt.</p>
 jcmsplugin.socle.newletter.mail.erreur: Erreur
 jcmsplugin.socle.newletter.mail.erreur.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
+jcmsplugin.socle.newletter.mail.erreur-desincription.description: Une erreur est survenue pendant votre inscription. Merci de rééssayer plus tard.
+jcmsplugin.socle.newletter.mail.desincription-valide: Votre déinscription est validée
+jcmsplugin.socle.newletter.mail.desincription-valide.content: Votre adresse e-mail {0} à été supprimée des alertes emploi
+jcmsplugin.socle.newletter.mail.desincription-inconnu: Votre adresse e-mail {0} n'a pas été trouvée
 
 jcmsplugin.socle.newsletter.encrypt.key: La clé à utiliser pour le chiffrage (24 caractères ou plus)
+
+# ------------------------------------------------------------
+#  Abonnement alerte emploi
+# ------------------------------------------------------------
+
+jcmsplugin.socle.alert-emploi.titre: Abonnement aux alertes d'offres d'emploi
+jcmsplugin.socle.alert-emploi.commune-hd: Votre Commune (hors Loire-Atlantique)
+jcmsplugin.socle.alert-emploi.toute-loire: Toute la Loire-Atlantique
+
+jcmsplugin.socle.alert-emploi.recherche: Votre recherche porte sur :
+jcmsplugin.socle.alert-emploi.carte-delegation: Carte des délégations
+jcmsplugin.socle.alert-emploi.ferme-modal: Fermer la boîte de dialogue : {0}
+
+jcmsplugin.socle.alert-emploi.mail.inscription-expire.content: Le délai de confirmation de votre inscription a expiré. Veuillez vous inscrire à nouveau.
 
 # ------------------------------------------------------------
 #  Insertion unifiée
@@ -990,8 +1010,8 @@ jcmsplugin.socle.sites-applis.territoire.label: Territoire
 jcmsplugin.socle.sites-applis.institutionnel.label: Site du Département
 jcmsplugin.socle.sites-applis.institutionnel.long.label: Site du Département de Loire-Atlantique
 jcmsplugin.socle.sites-applis.institutionnel.url: https://www.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.budget.label: Budget 2021
-jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2021
+jcmsplugin.socle.sites-applis.budget.label: Budget 2022
+jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2022
 jcmsplugin.socle.sites-applis.participer.label: Participer
 jcmsplugin.socle.sites-applis.participer.url: https://participer.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.parents.label: Questions de parents
@@ -1002,12 +1022,8 @@ jcmsplugin.socle.sites-applis.handicap.label: Handicap en Loire-Atlantique
 jcmsplugin.socle.sites-applis.handicap.url: https://handicap.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.stages3.label: Stages de 3e
 jcmsplugin.socle.sites-applis.stages3.url: https://stage3e.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.classes-presse.label: Classes presse
-jcmsplugin.socle.sites-applis.classes-presse.url: https://classespresse.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.rando.label: Randonnée
 jcmsplugin.socle.sites-applis.rando.url: https://rando.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.nature.label: Nature
-jcmsplugin.socle.sites-applis.nature.url: https://nature.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.grandlieu.label: Maison du lac de Grand-Lieu
 jcmsplugin.socle.sites-applis.grandlieu.url: https://maisondulacdegrandlieu.com
 jcmsplugin.socle.sites-applis.bdla.label: Bibliothèque départementale de Loire-Atlantique (BDLA)
@@ -1040,8 +1056,6 @@ jcmsplugin.socle.sites-applis.opendata.label: Open data
 jcmsplugin.socle.sites-applis.opendata.url: https://data.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.numerique.label: Numérique
 jcmsplugin.socle.sites-applis.numerique.url: https://numerique.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.agirseniors.label: Conférence des financeurs
-jcmsplugin.socle.sites-applis.agirseniors.url: https://agirseniors.loire-atlantique.fr
 jcmsplugin.socle.sites-applis.lad.label: Loire-Atlantique développement
 jcmsplugin.socle.sites-applis.lad.url: https://loireatlantique-developpement.fr
 jcmsplugin.socle.sites-applis.tourisme.label: Tourisme

@@ -1,0 +1,99 @@
+<%
+EditAbonnementAlerteOffresDemploiHandler formHandler = new EditAbonnementAlerteOffresDemploiHandler();
+%>
+
+<jalios:buffer name="mailTheme">
+
+        <p><%= glp("jcmsplugin.socle.alert-emploi.titre") %></p>
+
+        <jalios:if predicate='<%= Util.notEmpty(delegation) || "toute".equalsIgnoreCase(touteDelegation) %>'>
+             
+            <p><%= glp("jcmsplugin.socle.alert-emploi.recherche") %></p>
+        
+            <ul>
+            
+            <jalios:if predicate='<%= "toute".equalsIgnoreCase(touteDelegation) %>'>
+                <li><%= glp("jcmsplugin.socle.alert-emploi.toute-loire") %></li>
+            </jalios:if>
+            
+            <jalios:foreach array="<%= delegation %>" name="itCatId" type="String">
+                <%
+                Category itCat = channel.getCategory(itCatId);
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                    <li><%= itCat.getName(userLang) %></li>
+                </jalios:if>               
+            </jalios:foreach>
+            </ul>
+        </jalios:if>
+
+
+    
+        <jalios:if predicate='<%= Util.notEmpty(type) %>'>
+        
+            <p><%= formHandler.getTypeDoffreRoot().getName(userLang) %> : </p>
+        
+            <ul>
+            <jalios:foreach array="<%= type %>" name="itCatId" type="String">
+                <%
+                Category itCat = channel.getCategory(itCatId);
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                    <li><%= itCat.getName(userLang) %></li>
+                </jalios:if>
+            </jalios:foreach>
+            </ul>
+        </jalios:if>
+        
+        
+        <jalios:if predicate='<%= Util.notEmpty(domaine) %>'>
+            
+            <p><%= formHandler.getDomaineMetierRoot().getName(userLang) %> : </p>
+            
+            <ul>
+            <jalios:foreach array="<%= domaine %>" name="itCatId" type="String">
+                <%
+                Category itCat = channel.getCategory(itCatId);
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                    <li><%= itCat.getName(userLang) %></li>
+                </jalios:if>
+            </jalios:foreach>
+            </ul>
+        </jalios:if>
+        
+        
+        <jalios:if predicate='<%= Util.notEmpty(categorie) %>'>
+        
+            <p><%= formHandler.getCategorieRoot().getName(userLang) %> : </p>
+        
+            <ul>
+            <jalios:foreach array="<%= categorie %>" name="itCatId" type="String">
+                <%
+                Category itCat = channel.getCategory(itCatId);
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                    <li><%= itCat.getName(userLang) %></li>
+                </jalios:if>
+            </jalios:foreach>
+            </ul>
+        </jalios:if>
+        
+        
+        <jalios:if predicate='<%= Util.notEmpty(filiere) %>'>
+            
+            <p><%= formHandler.getFiliereRoot().getName(userLang) %> : </p>
+            
+            <ul>
+            <jalios:foreach array="<%= filiere %>" name="itCatId" type="String">
+                <%
+                Category itCat = channel.getCategory(itCatId);
+                %>
+                <jalios:if predicate="<%= Util.notEmpty(itCat) %>">
+                    <li><%= itCat.getName(userLang) %></li>
+                </jalios:if>
+            </jalios:foreach>
+            </ul>
+        </jalios:if>
+
+</jalios:buffer>

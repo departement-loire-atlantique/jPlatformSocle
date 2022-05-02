@@ -9,12 +9,12 @@ HashMap<String, String[]> mapThemes = new LinkedHashMap<String, String[]>();
 mapThemes.put("citoyennete", new String[] {"institutionnel", "budget","participer"});
 mapThemes.put("enfance-famille", new String[] {"parents", "assmat"});
 mapThemes.put("handicap", new String[] {"handicap"});
-mapThemes.put("education", new String[] {"stages3", "classes-presse"});
+mapThemes.put("education", new String[] {"stages3"});
 mapThemes.put("sport", new String[] {"rando"});
-mapThemes.put("environnement", new String[] {"nature", "grandlieu"});
+mapThemes.put("environnement", new String[] {"grandlieu"});
 mapThemes.put("culture", new String[] {"bdla", "archives", "dobree", "ressources-edu", "chateau-chateaubriant", "chateau-clisson", "garenne-lemot", "folies-siffait", "blanche-couronne", "eglise-vieux-bourg"});
 mapThemes.put("deplacements", new String[] {"inforoutes", "pont-st-naz", "bacs"});
-mapThemes.put("developpement-innovation", new String[] {"opendata", "numerique", "agirseniors", "lad", "tourisme", "imagine-la"});
+mapThemes.put("developpement-innovation", new String[] {"opendata", "numerique", "lad", "tourisme", "imagine-la"});
 mapThemes.put("territoire", new String[] {"vuduciel", "observatoire","atlas"});
 
 %>

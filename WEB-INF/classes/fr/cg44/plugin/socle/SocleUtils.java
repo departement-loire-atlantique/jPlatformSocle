@@ -1294,6 +1294,21 @@ public final class SocleUtils {
   }
   
   /**
+   * Retourner le code INSEE d'une commune depuis son nom. Celui-ci doit être trouvé dans un QueryFilter
+   * @param commune
+   * @return
+   */
+  public static City getCommuneFromName(String commune) {
+      QueryHandler qh = new QueryHandler();
+      qh.setTypes(new String[] { City.class.getName() } );
+      qh.setText(commune);
+      QueryResultSet qrs = qh.getResultSet();
+      SortedSet<Publication> set = qrs.getAsSortedSet();
+      if (Util.isEmpty(set)) return null;
+      return ((City)set.first());
+  }
+  
+  /**
    * Récupère une commune à partir de son code postal
    * @param zipCode
    * @return

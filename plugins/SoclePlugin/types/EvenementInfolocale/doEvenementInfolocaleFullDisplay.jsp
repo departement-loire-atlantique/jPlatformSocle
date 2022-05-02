@@ -144,8 +144,8 @@ boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.e
 	                            <div class="ds44-inner-container ds44-mtb5">
 		                            <div class="ds44-grid12-offset-1">
 			                            <div class="grid-1-small-1">
-				                            <div class="col mll ds44-introduction">
-					                             <jalios:wiki css="u-normal"><%= obj.getTexteLong() %></jalios:wiki>
+				                            <div class="col mll u-big">
+					                             <jalios:wiki><%= obj.getTexteLong() %></jalios:wiki>
 				                            </div>
 			                            </div>
 		                            </div>
