@@ -38,30 +38,36 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             </div>
         </section>
         </jalios:if>
-    
-        <nav class="ds44-theme txtcenter ds44--xl-padding ds44-timeline_index ds44-mtb5" aria-label='<%= glp("jcmsplugin.socle.barrenavsecondaire") %>'>
-            <p class="inbl"><%= glp("jcmsplugin.socle.goto") %></p>
-            <ul class="ds44-list">
-                <%-- générer automatiquement sur la liste des éléments --%>
-                <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
+	
+	    <nav class="ds44-theme txtcenter ds44--xl-padding ds44-timeline_index ds44-mtb5" aria-label='<%= glp("jcmsplugin.socle.barrenavsecondaire") %>'>
+	        <p class="inbl"><%= glp("jcmsplugin.socle.goto") %></p>
+	        <ul class="ds44-list">
+	            <%-- générer automatiquement sur la liste des éléments --%>
+	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
+	            <%
+	            String titleLink = "";
+	            if (Util.notEmpty(obj.getLibelleElementsTimeline(userLang))) {
+	                titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+	            }
+	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(titleLink) %>">
+	            <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
+	            </jalios:if>
+	            </jalios:foreach>
+	        </ul>
+	    </nav>
+	
+	    <div class="ds44-inner-container">
+	
+	        <div class="ds44-timeline_container">
+	
+	            <%-- Affichage des éléments --%>
+	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
                 <%
-                String titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
-                %>
-                <jalios:if predicate="<%= Util.notEmpty(titleLink) %>">
-                <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
-                </jalios:if>
-                </jalios:foreach>
-            </ul>
-        </nav>
-    
-        <div class="ds44-inner-container">
-    
-            <div class="ds44-timeline_container">
-    
-                <%-- Affichage des éléments --%>
-                <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
-                <%
-                String titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+                String titleElement = "";
+                if (Util.notEmpty(obj.getLibelleElementsTimeline(userLang))) {
+                    titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+                }
                 %>
                 
                 <section id="time_elem_<%= itElement.getId() %>" class="ds44-timeline_elem">
@@ -100,20 +106,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                            </jalios:select>
                            
                             <jalios:select>
-                                <jalios:if predicate="<%= Util.notEmpty(itLienElem.getVideo()) %>">
-                                    <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" hideChapitrage="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>"/>
-                                </jalios:if>
-                                <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImagePrincipale()) %>">
-                                    <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImagePrincipale() %>"></ds:figurePicture>
-                                </jalios:if>
-                                <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImageMobile()) %>">
-                                  <picture>
-                                    <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImageMobile() %>"></ds:figurePicture>
-                                  </picture>
-                                </jalios:if>
-                            </jalios:select>
-                            
-                           <jalios:wysiwyg><%= itLienElem.getDescription(userLang) %></jalios:wysiwyg>
+		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getVideo()) %>">
+		                            <ds:articleVideo video="<%= itLienElem.getVideo() %>" hideTitle="<%= true %>" hideChapitrage="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>"/>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImagePrincipale()) %>">
+		                            <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImagePrincipale() %>"></ds:figurePicture>
+		                        </jalios:if>
+		                        <jalios:if predicate="<%= Util.notEmpty(itLienElem.getImageMobile()) %>">
+		                          <picture>
+		                            <ds:figurePicture format="custom" width="510" height="327" image="<%= itLienElem.getImageMobile() %>"></ds:figurePicture>
+		                          </picture>
+		                        </jalios:if>
+	                        </jalios:select>
+	                        
+	                       <jalios:wysiwyg><%= itLienElem.getDescription(userLang) %></jalios:wysiwyg>
+
                         </jalios:if>
                         <jalios:default>
                             <%-- Le contenu n'est pas un lien, on récupère la valeur du champ 'chapo' pour l'afficher --%>
@@ -133,8 +140,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 Dossier itDossier = (Dossier) itElement;
                                 %>
                                 <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
-                                <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
-                                </jalios:if>
+		                        <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
+		                        </jalios:if>
+
                             </jalios:if>
                             <!-- Spécifique Fiche Actu : afficher la date -->
                             <jalios:if predicate="<%= itElement instanceof FicheActu %>">
@@ -150,7 +158,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 <%
                                 Video itVideo = (Video) itElement;
                                 %>
-                                <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>"/>
+
+                              <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
+
                             </jalios:if>
                             <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
