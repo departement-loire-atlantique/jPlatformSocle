@@ -38,30 +38,36 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             </div>
         </section>
         </jalios:if>
-    
-        <nav class="ds44-theme txtcenter ds44--xl-padding ds44-timeline_index ds44-mtb5" aria-label='<%= glp("jcmsplugin.socle.barrenavsecondaire") %>'>
-            <p class="inbl"><%= glp("jcmsplugin.socle.goto") %></p>
-            <ul class="ds44-list">
-                <%-- générer automatiquement sur la liste des éléments --%>
-                <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
+	
+	    <nav class="ds44-theme txtcenter ds44--xl-padding ds44-timeline_index ds44-mtb5" aria-label='<%= glp("jcmsplugin.socle.barrenavsecondaire") %>'>
+	        <p class="inbl"><%= glp("jcmsplugin.socle.goto") %></p>
+	        <ul class="ds44-list">
+	            <%-- générer automatiquement sur la liste des éléments --%>
+	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
+	            <%
+	            String titleLink = "";
+	            if (Util.notEmpty(obj.getLibelleElementsTimeline(userLang))) {
+	                titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+	            }
+	            %>
+	            <jalios:if predicate="<%= Util.notEmpty(titleLink) %>">
+	            <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
+	            </jalios:if>
+	            </jalios:foreach>
+	        </ul>
+	    </nav>
+	
+	    <div class="ds44-inner-container">
+	
+	        <div class="ds44-timeline_container">
+	
+	            <%-- Affichage des éléments --%>
+	            <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
                 <%
-                String titleLink = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
-                %>
-                <jalios:if predicate="<%= Util.notEmpty(titleLink) %>">
-                <li><a href="#time_elem_<%= itElement.getId() %>"><%= titleLink %></a></li>
-                </jalios:if>
-                </jalios:foreach>
-            </ul>
-        </nav>
-    
-        <div class="ds44-inner-container">
-    
-            <div class="ds44-timeline_container">
-    
-                <%-- Affichage des éléments --%>
-                <jalios:foreach array="<%= obj.getElementsTimelines() %>" name="itElement" type="Publication" counter="counterTimeline">
-                <%
-                String titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+                String titleElement = "";
+                if (Util.notEmpty(obj.getLibelleElementsTimeline(userLang))) {
+                    titleElement = counterTimeline <= obj.getLibelleElementsTimeline(userLang).length ? obj.getLibelleElementsTimeline(userLang)[counterTimeline-1] : "";
+                }
                 %>
                 
                 <section id="time_elem_<%= itElement.getId() %>" class="ds44-timeline_elem">
