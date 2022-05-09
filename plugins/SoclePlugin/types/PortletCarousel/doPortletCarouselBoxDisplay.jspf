@@ -50,8 +50,6 @@
 
 	<%@ include file="/types/PortletQueryForeach/doQuery.jspf"%>
 	<%@ include file="/types/PortletQueryForeach/doSort.jspf"%>
-	<%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf"%>
-	<%@ include file="/types/PortletQueryForeach/doForeachFooter.jspf"%>
     
     <jalios:if predicate='<%= Util.notEmpty(collection) %>'>
 	    <div class="ds44-container-large">
