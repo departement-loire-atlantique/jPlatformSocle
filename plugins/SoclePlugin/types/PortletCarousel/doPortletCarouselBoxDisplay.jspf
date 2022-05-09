@@ -58,7 +58,7 @@
 		    <div class="mod--hidden ds44-list swipper-carousel-wrap ds44-posRel" data-nb-visible-slides="<%= collection.size() < 4 ? collection.size() : sliderAmounts %>">
 		        <div class="swiper-container">
 		            <ul class='swiper-wrapper ds44-list <%= cssSliderSize %> has-gutter-l ds44-carousel-swiper'>
-		                <jalios:foreach name="itPub" type="Publication" collection="<%= collection %>">
+		                <jalios:foreach name="itPub" type="Publication" collection="<%= collection %>" max="<%= box.getMaxResults() %>">
 		                	<li class="swiper-slide">
 							    <jalios:media data="<%=itPub %>" template="<%= box.getSelectionDuTheme() %>"/>
 							</li>
