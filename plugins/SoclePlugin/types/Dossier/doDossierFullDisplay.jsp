@@ -77,17 +77,17 @@
 		</div>
 		<% request.removeAttribute("noQuestionButton"); %>
 	</jalios:if>
-
-	<%-- Partagez cette page --%>
-    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
-    
-    <jalios:if predicate='<%= Util.notEmpty(obj.getPortletBas()) %>'>
+	
+	<jalios:if predicate='<%= Util.notEmpty(obj.getPortletBas()) %>'>
         <div class=""ds44-container-large">
         <jalios:foreach name="portlet" type="PortalElement" array='<%= obj.getPortletBas() %>'>
             <jalios:include pub='<%= portlet %>'></jalios:include>
         </jalios:foreach>
         </div>
     </jalios:if>
+
+	<%-- Partagez cette page --%>
+    <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>    
 
 	<%-- TODO : bloc Je m'abonne --%>
 	<jalios:if predicate='<%=Util.notEmpty(channel.getProperty("jcmsplugin.socle.portletPush.ficheactu.id"))%>'>
