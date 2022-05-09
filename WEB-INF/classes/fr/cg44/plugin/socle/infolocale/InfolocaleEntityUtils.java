@@ -461,7 +461,6 @@ public class InfolocaleEntityUtils {
     public static DateHoraires createDateHorairesFromJsonItem(JSONObject json) {
         if (Util.isEmpty(json)) return null;
         DateHoraires date = new DateHoraires();
-        SimpleDateFormat sdf = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.date.receive.format"));
         try {
             date.setDate(json.getString("date"));
             ArrayList<String> horairesDebut = new ArrayList<>();
