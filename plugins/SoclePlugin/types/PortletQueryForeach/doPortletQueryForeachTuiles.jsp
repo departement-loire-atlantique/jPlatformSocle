@@ -3,7 +3,7 @@
 <% PortletQueryForeach box = (PortletQueryForeach) portlet;  %>
 <%@ include file="/types/PortletQueryForeach/doQuery.jspf" %>
 <%@ include file="/types/PortletQueryForeach/doSort.jspf" %>
-<div class="ds44-results">
+<div class="ds44-results ds44-inner-container">
     <div class="ds44-listResults">
 		<ul class="ds44-list ds44-list--results ds44-flex-container">
 		  <%@ include file="/types/PortletQueryForeach/doForeachHeader.jspf" %>
