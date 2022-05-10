@@ -28,7 +28,7 @@ public class FicheLieuDataController extends BasicDataController implements Plug
             Group groupAsu = Channel.getChannel().getGroup("$jcmsplugin.socle.fichelieu.groupe.asu");
             if (Util.notEmpty(groupAsu)) {
                 for (FileDocument itDoc : itFiche.getDocumentsASU()) {
-                    if (Util.isEmpty(itDoc.getAuthorizedGroupSet()) || itDoc.getAuthorizedGroupSet().contains(groupAsu)) {
+                    if (Util.isEmpty(itDoc.getAuthorizedGroupSet()) || !itDoc.getAuthorizedGroupSet().contains(groupAsu)) {
                         FileDocument docClone = (FileDocument) itDoc.getUpdateInstance();
                         TreeSet<Group> tmpGrpSet = new TreeSet<>();
                         if (Util.notEmpty(docClone.getAuthorizedGroupSet())) tmpGrpSet.addAll(docClone.getAuthorizedGroupSet());
