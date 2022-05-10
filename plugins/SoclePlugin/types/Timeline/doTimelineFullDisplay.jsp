@@ -142,7 +142,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
 		                        <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
 		                        </jalios:if>
-
+                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             </jalios:if>
                             <!-- Spécifique Fiche Actu : afficher la date -->
                             <jalios:if predicate="<%= itElement instanceof FicheActu %>">
@@ -152,6 +152,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                                 <jalios:if predicate="<%= Util.notEmpty(itFiche.getDateActu()) %>">
                                 <h3 class="h4-like ds44-mts"><%= sdf.format(itFiche.getDateActu()) %></h3>
                                 </jalios:if>
+                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
                             </jalios:if>
                             <!-- Spécifique vidéo : afficher la vidéo -->
                             <jalios:if predicate="<%= itElement instanceof Video %>">
@@ -162,7 +163,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                               <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
 
                             </jalios:if>
-                            <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
+                            
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
                                 <jalios:wysiwyg><%= displayedText %></jalios:wysiwyg>
                             </jalios:if>
