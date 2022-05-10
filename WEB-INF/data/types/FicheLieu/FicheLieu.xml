@@ -142,6 +142,14 @@
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
+    <field name="reserveASU" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="text" html="false">
+      <label xml:lang="fr">Réservé ASU</label>
+      <description xml:lang="fr"><div class="wysiwyg"><p>Le contenu ne sera visible que pour les partenaires ASU connectés</p></div></description>
+    </field>
+    <field name="documentsASU" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.FileDocument[]" ml="true" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Documents ASU</label>
+      <description xml:lang="fr"><div class="wysiwyg"><p>Les documents ne seront téléchargeables que pour les partenaires ASU connectés</p></div></description>
+    </field>
     <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre vidéo</label>
     </field>
