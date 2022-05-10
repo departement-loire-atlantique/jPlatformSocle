@@ -537,14 +537,41 @@
         </section>
     </jalios:if>
     
-    <jalios:if predicate='<%= loggedMember.isAccount() && loggedMember.belongsToGroup(channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu")) %>'>
+    <jalios:if predicate='<%= (Util.notEmpty(obj.getReserveASU(userLang)) || Util.notEmpty(obj.getDocumentsASU())) && loggedMember.isAccount() && loggedMember.belongsToGroup(channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu")) %>'>
         <%-- Bloc spécifique ASU --%>
         <div class="ds44-inner-container">
             <div class="ds44-grid12-offset-1">
 		        <section class="ds44-box ds44-theme" id="sectionASU">
 				  <div class="ds44-innerBoxContainer">
-				    <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.fichelieu.asu") %></p>
-				      <jalios:wysiwyg><%= obj.getReserveASU(userLang) %></jalios:wysiwyg>
+				      <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.fichelieu.asu") %></p>
+				      <jalios:if predicate="<%= Util.notEmpty(obj.getReserveASU(userLang)) %>">
+				        <jalios:wysiwyg><%= obj.getReserveASU(userLang) %></jalios:wysiwyg>
+				      </jalios:if>
+				      
+				      <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsASU()) %>">
+					      <h2 class="h4-like ds44-mt3" id="titre_documents_asu"><%= glp("jcmsplugin.socle.fichelieu.dl.docs") %></h2>
+	                      <ul class="ds44-list">
+		                      <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsASU()) %>">
+			                      <li class="mts ds44-docListElem">
+				                      <% 
+					                      // Récupérer l'extension du fichier
+					                      String fileType = FileDocument.getExtension(itDoc.getFilename()).toUpperCase();
+					                      // Récupérer la taille du fichier
+					                      String fileSize = Util.formatFileSize(itDoc.getSize());
+					                                                    
+					                      String fileUrl = ServletUtil.getBaseUrl(request) + itDoc.getDownloadUrl(); 
+				                      %>
+				                      <i class="icon icon-file ds44-docListIco" aria-hidden="true"></i>
+				                      <% String titleModalFaireDemande = itDoc.getTitle() + " - " + fileType + " - " + fileSize + " " + glp("jcmsplugin.socle.accessibily.newTabLabel"); %>
+				                      <a href="<%= itDoc.getDownloadUrl() %>" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(titleModalFaireDemande) %>'
+				                        data-statistic='{"name": "declenche-evenement","category": "Faire une demande","action": "Téléchargement","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle()) %>"}'>
+				                         <%= itDoc.getTitle() %>
+				                      </a> 
+				                      <span class="ds44-cardFile"><%= fileType %> - <%= fileSize %></span>
+			                      </li>
+		                      </jalios:foreach>
+	                      </ul>
+                      </jalios:if>
 				  </div>
 				</section>
 			</div>
