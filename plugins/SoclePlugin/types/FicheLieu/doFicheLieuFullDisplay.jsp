@@ -536,8 +536,10 @@
             </div>
         </section>
     </jalios:if>
-    
-    <jalios:if predicate='<%= (Util.notEmpty(obj.getReserveASU(userLang)) || Util.notEmpty(obj.getDocumentsASU())) && Util.notEmpty(loggedMember) && loggedMember.isAccount() && loggedMember.belongsToGroup(channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu")) %>'>
+    <%
+    Group groupeAsu = channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu");
+    %>
+    <jalios:if predicate='<%= (Util.notEmpty(obj.getReserveASU(userLang)) || Util.notEmpty(obj.getDocumentsASU())) && Util.notEmpty(groupeAsu) && Util.notEmpty(loggedMember) && loggedMember.isAccount() && loggedMember.belongsToGroup(groupeAsu) %>'>
         <%-- Bloc spécifique ASU --%>
         <div class="ds44-inner-container">
             <div class="ds44-grid12-offset-1">
