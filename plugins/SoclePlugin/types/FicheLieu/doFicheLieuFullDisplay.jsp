@@ -536,6 +536,20 @@
             </div>
         </section>
     </jalios:if>
+    
+    <jalios:if predicate='<%= loggedMember.isAccount() && loggedMember.belongsToGroup(channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu")) %>'>
+        <%-- Bloc spécifique ASU --%>
+        <div class="ds44-inner-container">
+            <div class="ds44-grid12-offset-1">
+		        <section class="ds44-box ds44-theme" id="sectionASU">
+				  <div class="ds44-innerBoxContainer">
+				    <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.fichelieu.asu") %></p>
+				      <jalios:wysiwyg><%= obj.getReserveASU(userLang) %></jalios:wysiwyg>
+				  </div>
+				</section>
+			</div>
+		</div>
+    </jalios:if>
 
     <jalios:if predicate="<%= Util.notEmpty(obj.getVideo()) %>">
         <%

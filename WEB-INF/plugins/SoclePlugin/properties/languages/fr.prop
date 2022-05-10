@@ -1097,3 +1097,10 @@ jcmsplugin.socle.rgpd.cookie.orejime.descr: Ce cookie est utilisé par notre ges
 # ------------------------------------------------------------
 
 jcmsplugin.socle.formpageutile.alloweddelay: Page utile : délai en secondes pour les doublons
+
+# ------------------------------------------------------------
+#  Fiches Lieu
+# ------------------------------------------------------------
+
+jcmsplugin.socle.fichelieu.asu: Accueil Social Universel
+jcmsplugin.socle.fichelieu.dl.docs: Téléchargez les documents
