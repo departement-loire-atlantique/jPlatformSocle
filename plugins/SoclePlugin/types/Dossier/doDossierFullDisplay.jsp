@@ -18,8 +18,15 @@
     <jalios:include target="SOCLE_ALERTE"/>
 
 	<section class="ds44-container-large">
-		<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
-				legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
+	    <jalios:select>
+	    <jalios:if predicate="<%= Util.isEmpty(obj.getImageBandeau()) && Util.isEmpty(obj.getImagePrincipale()) %>">
+		    <ds:titleNoBanner title="<%= obj.getTitle(userLang) %>" breadcrumb="true"></ds:titleNoBanner>
+		</jalios:if>
+		<jalios:default>
+			<ds:titleBanner pub="<%= obj %>" imagePath="<%= obj.getImageBandeau() %>" mobileImagePath="<%= obj.getImageMobile() %>" title="<%= obj.getTitle(userLang) %>"
+	                legend="<%= obj.getLegende(userLang) %>" copyright="<%= obj.getCopyright(userLang) %>" breadcrumb="true"></ds:titleBanner>
+		</jalios:default>
+		</jalios:select>
 	</section>
 
 	<section class="ds44-container-large ds44--xxl-padding-b">
