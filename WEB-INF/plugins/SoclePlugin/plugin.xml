@@ -663,7 +663,6 @@
     <channellistener class="fr.cg44.plugin.socle.channellistener.SocleChannelListener" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.PortletCarrouselDimagesHomeDataController" types="PortletCarrouselDimagesHome" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheArticleDataController" types="FicheArticle" />
-    <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FicheLieuDataController" types="FicheLieu" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.IndexationDataController" types="Publication" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.FichePublicationDataController" types="FichePublication" />
     <datacontroller  class="fr.cg44.plugin.socle.datacontroller.ContactFormDataController" types="ContactForm" />

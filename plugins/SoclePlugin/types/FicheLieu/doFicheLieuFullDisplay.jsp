@@ -542,7 +542,7 @@
     <jalios:if predicate='<%= (Util.notEmpty(obj.getReserveASU(userLang)) || Util.notEmpty(obj.getDocumentsASU())) && Util.notEmpty(groupeAsu) && Util.notEmpty(loggedMember) && loggedMember.isAccount() && loggedMember.belongsToGroup(groupeAsu) %>'>
         <%-- Bloc spécifique ASU --%>
         <div class="ds44-inner-container">
-            <div class="ds44-grid12-offset-1">
+            <div class="ds44-grid12-offset-2">
 		        <section class="ds44-box ds44-theme" id="sectionASU">
 				  <div class="ds44-innerBoxContainer">
 				      <p role="heading" aria-level="2" class="ds44-box-heading"><%= glp("jcmsplugin.socle.fichelieu.asu") %></p>
@@ -551,7 +551,7 @@
 				      </jalios:if>
 				      
 				      <jalios:if predicate="<%= Util.notEmpty(obj.getDocumentsASU()) %>">
-					      <h2 class="h4-like ds44-mt3" id="titre_documents_asu"><%= glp("jcmsplugin.socle.fichelieu.dl.docs") %></h2>
+					      <p class="ds44-box-heading ds44-mt3" id="titre_documents_asu"><%= glp("jcmsplugin.socle.fichelieu.dl.docs") %></p>
 	                      <ul class="ds44-list">
 		                      <jalios:foreach name="itDoc" type="FileDocument" collection="<%= Arrays.asList(obj.getDocumentsASU()) %>">
 			                      <li class="mts ds44-docListElem">
