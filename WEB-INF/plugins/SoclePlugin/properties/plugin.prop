@@ -748,7 +748,7 @@ jcms.resource.mail-password: plugins/SoclePlugin/types/PortletConnexion/mailPass
 
 # Calculette Obligation alimentaire
 jcmsplugin.socle.calculetteOA.partsMax : 10
-jcmsplugin.socle.calculetteOA.seuil : 1300
+jcmsplugin.socle.calculetteOA.seuil : 1400
 jcmsplugin.socle.calculetteOA.demi-part : 350
 
 # Chiffres cles
