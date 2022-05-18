@@ -9,7 +9,7 @@ public class InfolocaleTokenAlarmListener implements AlarmListener {
 	
 	@Override
 	public void handleAlarm(AlarmEntry alarm) {
-		RequestManager.regenerateTokens();
+		RequestManager.initTokens();
 	}
 	
 }

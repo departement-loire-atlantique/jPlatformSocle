@@ -56,13 +56,6 @@ public class RequestManager {
         sendTokenRequest("https://api.infolocale.fr/auth/signin", initToken, true);
     }
     
-    /**
-     * Regénère les tokens d'authentification. En cas de token invalide, procède à l'authentification
-     */
-    public static void regenerateTokens() {
-        sendTokenRequest("https://api.infolocale.fr/auth/refresh-token", refreshToken, false);
-    }
-    
     private static void sendTokenRequest(String url, String type, boolean stopOnFail) {
         boolean invalidToken = true;
         
@@ -171,7 +164,7 @@ public class RequestManager {
                 case 401:
                     tokensOk = false;
                     while (!iterateTokenRefreshCounter() && !tokensOk) {
-                      regenerateTokens();
+                        initTokens();
                     }
                     if (!tokensOk) {
                       LOGGER.warn(methodFilterFluxDataError + status + ". Token expiré.");
@@ -209,7 +202,7 @@ public class RequestManager {
                 LOGGER.debug("Le token n'a pas pu être régénéré.");
             } else {
                 LOGGER.debug("Token invalide. Tentative de regénération de token...");
-                regenerateTokens();
+                initTokens();
             }
         }
         LOGGER.info(fluxData);
@@ -252,7 +245,7 @@ public class RequestManager {
               case 401:
                   tokensOk = false;
                   while (!iterateTokenRefreshCounter() && !tokensOk) {
-                    regenerateTokens();
+                      initTokens();
                   }
                   if (!tokensOk) {
                     LOGGER.warn(methodGetSingleEventError + status + ". Token expiré.");
@@ -287,7 +280,7 @@ public class RequestManager {
       
       if (expiredToken) {
           LOGGER.debug("Token invalide. Tentative de regénération de token...");
-          regenerateTokens();
+          initTokens();
       }
       
       return fluxData;
@@ -334,7 +327,7 @@ public class RequestManager {
               case 401:
                   tokensOk = false;
                   while (!iterateTokenRefreshCounter() && !tokensOk) {
-                    regenerateTokens();
+                      initTokens();
                   }
                   if (!tokensOk) {
                     LOGGER.warn(methodGetFluxMetadataError + status + ". Token expiré.");
@@ -380,7 +373,7 @@ public class RequestManager {
       
           LOGGER.debug("Token invalide. Tentative de regénération de token...");
       if (expiredToken) {
-          regenerateTokens();
+          initTokens();
       }
       return fluxData;
       
