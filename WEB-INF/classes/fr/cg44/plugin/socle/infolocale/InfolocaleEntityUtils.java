@@ -1,6 +1,5 @@
 package fr.cg44.plugin.socle.infolocale;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
