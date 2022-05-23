@@ -1,5 +1,5 @@
 <%
-EditAbonnementAlerteOffresDemploiHandler formHandler = new EditAbonnementAlerteOffresDemploiHandler();
+EditAlerteOffresDemploiHandler formHandler = new EditAlerteOffresDemploiHandler();
 %>
 
 <jalios:buffer name="mailTheme">
