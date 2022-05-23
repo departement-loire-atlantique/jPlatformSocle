@@ -454,7 +454,7 @@ public final class SocleUtils {
 		
 		return SocleUtils.formatAddress(delegation.getLibelleAutreAdresse(),
 				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
-				libelleDeVoie, lieudit, delegation.getCs2(), codePostal, communeEcrire,
+				libelleDeVoie, lieudit, Util.notEmpty(delegation.getLibelleAutreAdresse()) ? null : delegation.getCs2(), codePostal, communeEcrire,
 				delegation.getCedex2());
 	}
 
