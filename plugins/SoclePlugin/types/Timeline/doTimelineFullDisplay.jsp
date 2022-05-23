@@ -134,36 +134,41 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                             %>
                             
                             <h4 class="h3-like" id="titreTimeline<%= itElement.getId() %>_2"><a class="ds44-card__globalLink" href="<%= itElement.getDisplayUrl(userLocale) %>"><%= itElement.getTitle() %></a></h4>
-                            <!-- Spécifique dossier : afficher la date -->
-                            <jalios:if predicate="<%= itElement instanceof Dossier %>">
-                                <%
-                                Dossier itDossier = (Dossier) itElement;
-                                %>
-                                <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
-		                        <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
-		                        </jalios:if>
-                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
-                            </jalios:if>
-                            <!-- Spécifique Fiche Actu : afficher la date -->
-                            <jalios:if predicate="<%= itElement instanceof FicheActu %>">
-                                <%
-                                FicheActu itFiche = (FicheActu) itElement;
-                                %>
-                                <jalios:if predicate="<%= Util.notEmpty(itFiche.getDateActu()) %>">
-                                <h3 class="h4-like ds44-mts"><%= sdf.format(itFiche.getDateActu()) %></h3>
-                                </jalios:if>
-                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
-                            </jalios:if>
-                            <!-- Spécifique vidéo : afficher la vidéo -->
-                            <jalios:if predicate="<%= itElement instanceof Video %>">
-                                <%
-                                Video itVideo = (Video) itElement;
-                                %>
-
-                              <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
-
-                            </jalios:if>
-                            
+                            <jalios:select>
+	                            <!-- Spécifique dossier : afficher la date -->
+	                            <jalios:if predicate="<%= itElement instanceof Dossier %>">
+	                                <%
+	                                Dossier itDossier = (Dossier) itElement;
+	                                %>
+	                                <jalios:if predicate="<%= Util.notEmpty(itDossier.getDate()) %>">
+			                        <h3 class="h4-like ds44-mts"><%= sdf.format(itDossier.getDate()) %></h3>
+			                        </jalios:if>
+	                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
+	                            </jalios:if>
+	                            <!-- Spécifique Fiche Actu : afficher la date -->
+	                            <jalios:if predicate="<%= itElement instanceof FicheActu %>">
+	                                <%
+	                                FicheActu itFiche = (FicheActu) itElement;
+	                                %>
+	                                <jalios:if predicate="<%= Util.notEmpty(itFiche.getDateActu()) %>">
+	                                <h3 class="h4-like ds44-mts"><%= sdf.format(itFiche.getDateActu()) %></h3>
+	                                </jalios:if>
+	                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
+	                            </jalios:if>
+	                            <!-- Spécifique vidéo : afficher la vidéo -->
+	                            <jalios:if predicate="<%= itElement instanceof Video %>">
+	                                <%
+	                                Video itVideo = (Video) itElement;
+	                                %>
+	
+	                              <ds:articleVideo video="<%= itVideo %>" hideTitle="<%= true %>" forcedHeight='<%= "327px" %>' noOffset="<%= true %>" noChapo="<%= true %>"/>
+	
+	                            </jalios:if>
+	                            <!-- Tout autre contenu : on doit afficher l'image principale s'il y a  -->
+	                            <jalios:default>
+	                                <ds:figurePicture format="custom" width="510" height="327" pub="<%= itElement %>"/>
+	                            </jalios:default>
+                            </jalios:select>
                             <jalios:if predicate="<%= Util.notEmpty(displayedText) %>">
                                 <jalios:wysiwyg><%= displayedText %></jalios:wysiwyg>
                             </jalios:if>
