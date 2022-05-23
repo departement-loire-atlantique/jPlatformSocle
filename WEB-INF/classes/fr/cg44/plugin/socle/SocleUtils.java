@@ -418,7 +418,7 @@ public final class SocleUtils {
 
 		return SocleUtils.formatAddress(fichelieu.getLibelleAutreAdresse(),
 				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
-				libelleDeVoie, lieudit, fichelieu.getCs2(), codePostal, communeEcrire,
+				libelleDeVoie, lieudit, Util.notEmpty(fichelieu.getLibelleAutreAdresse()) ? null : fichelieu.getCs2(), codePostal, communeEcrire,
 				fichelieu.getCedex2());
 	}
 	
@@ -454,7 +454,7 @@ public final class SocleUtils {
 		
 		return SocleUtils.formatAddress(delegation.getLibelleAutreAdresse(),
 				etageCouloirEscalier, entreeBatimentImmeuble, ndeVoie,
-				libelleDeVoie, lieudit, Util.notEmpty(delegation.getLibelleAutreAdresse()) ? null : delegation.getCs2(), codePostal, communeEcrire,
+				libelleDeVoie, lieudit, delegation.getCs2(), codePostal, communeEcrire,
 				delegation.getCedex2());
 	}
 
