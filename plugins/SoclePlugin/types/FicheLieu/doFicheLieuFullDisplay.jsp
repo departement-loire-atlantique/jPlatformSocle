@@ -43,6 +43,8 @@
                     String adresse = SocleUtils.formatAdressePhysique(obj);
 
                     String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
+                    
+                    if (adresse.equals(adresseEcrire)) adresse = SocleUtils.formatAdressePhysique(obj, true);
                 %>
                 <jalios:if
                     predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)

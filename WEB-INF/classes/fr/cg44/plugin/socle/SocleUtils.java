@@ -471,13 +471,16 @@ public final class SocleUtils {
 	 * @param fichelieu
 	 * @return un String contenant l'adresse physique de la FicheLieu
 	 */
-	public static String formatAdressePhysique(FicheLieu fichelieu) {
+	public static String formatAdressePhysique(FicheLieu fichelieu, boolean hideCs) {
 	
 		return SocleUtils.formatAddress("", fichelieu.getEtageCouloirEscalier(), fichelieu.getEntreeBatimentImmeuble(),
 				fichelieu.getNdeVoie(), fichelieu.getLibelleDeVoie(), fichelieu.getLieudit(),
-				fichelieu.getCs2(), fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", fichelieu.getCedex2());
+				hideCs ? null : fichelieu.getCs2(), fichelieu.getCodePostal(), Util.notEmpty(fichelieu.getCommune()) ? fichelieu.getCommune().getTitle() : "", fichelieu.getCedex2());
 	}	
 	
+	public static String formatAdressePhysique(FicheLieu fichelieu) {
+	    return formatAdressePhysique(fichelieu, false);
+	}
 
 	
 	/**
