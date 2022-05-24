@@ -40,7 +40,7 @@
                     String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
                     String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
-                    String adresse = SocleUtils.formatAdressePhysique(obj);
+                    String adresse = SocleUtils.formatAdressePhysique(obj, true);
 
                     String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
                 %>
