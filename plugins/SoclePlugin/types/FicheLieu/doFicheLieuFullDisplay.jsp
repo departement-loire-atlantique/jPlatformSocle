@@ -40,9 +40,11 @@
                     String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
 
                     String commune = Util.notEmpty(obj.getCommune()) ? obj.getCommune().getTitle() : "";
-                    String adresse = SocleUtils.formatAdressePhysique(obj, true);
+                    String adresse = SocleUtils.formatAdressePhysique(obj);
 
                     String adresseEcrire = SocleUtils.formatAdresseEcrire(obj);
+                    
+                    if (adresse.equals(adresseEcrire)) adresse = SocleUtils.formatAdressePhysique(obj, true);
                 %>
                 <jalios:if
                     predicate='<%=Util.notEmpty(obj.getComplementTypeDacces()) || Util.notEmpty(adresse)
