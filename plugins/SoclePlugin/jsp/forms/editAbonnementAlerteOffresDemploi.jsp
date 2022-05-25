@@ -6,7 +6,7 @@
 
 <%
 
-EditAbonnementAlerteOffresDemploiHandler formhandler = new EditAbonnementAlerteOffresDemploiHandler();;
+EditAlerteOffresDemploiHandler formhandler = new EditAlerteOffresDemploiHandler();
 Category typeOffreRoot = formhandler.getTypeDoffreRoot();
 Category domaineMetierRoot = formhandler.getDomaineMetierRoot();
 Category categorieRoot = formhandler.getCategorieRoot();
