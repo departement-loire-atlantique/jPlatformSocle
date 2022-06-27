@@ -36,6 +36,7 @@ int maxResult = box.getMaxResults();
 
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryText.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryCids.jspf" %><%
+%><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryBoolean.jspf" %><%
 %><%@ include file="/plugins/SoclePlugin/jsp/facettes/doQueryGeoloc.jspf" %><%
 
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PortletFacetteBooleen" superclass="generated.AbstractPortletFacette" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Portlet Facette Booléen</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="nomTechniqueDuBooleen" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nom technique du booléen</label>
+    </field>
+    <field name="inverseResultat" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Inversé résultat</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field type="super" />
+  </fields>
+</type>
+

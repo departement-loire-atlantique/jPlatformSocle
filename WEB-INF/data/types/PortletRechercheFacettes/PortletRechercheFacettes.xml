@@ -25,6 +25,9 @@
     <field name="facettesSecondaires" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facettes secondaires</label>
     </field>
+        <field name="facettesTertiaire" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]">
+      <label xml:lang="fr">Facettes tertiaire</label>
+    </field>
     <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Mode des catégories dans une même branche</label>
       <onLabel xml:lang="en">Yes</onLabel>

@@ -1,0 +1,25 @@
+<%@page import="java.lang.reflect.Field"%>
+<%
+//Récupère les booleans de la recherche 
+String[] booleanParams = request.getParameterValues("boolean");
+if(Util.notEmpty(booleanParams) && Util.notEmpty(collection)) {  
+  List<Publication> removeList = new ArrayList();  
+  for(String itBoolParam : booleanParams) {  
+     boolean isInverse = Boolean.parseBoolean(request.getParameter("inverse_" + itBoolParam));    
+     for(Object itObj : collection) {
+       
+       Publication itPub = (Publication) itObj;
+       Field itfield = ReflectUtil.getField(itPub.getClass(), itBoolParam);    
+       Boolean itFiltre = (Boolean) ReflectUtil.invokeMethod(itPub, ReflectUtil.getGetterMethodName(itfield), null);       
+       if((!itFiltre && !isInverse) || (itFiltre && isInverse)) {
+         removeList.add(itPub);
+       }       
+     }
+  }  
+  if(Util.notEmpty(removeList)) {
+    collection.removeAll(removeList);
+  } 
+  resultSize = collection.size();
+}
+
+%>
