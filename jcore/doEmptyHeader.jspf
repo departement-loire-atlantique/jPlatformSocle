@@ -21,9 +21,9 @@
    
   Publication obj = (Publication)request.getAttribute(PortalManager.PORTAL_PUBLICATION);
   if (Util.notEmpty(obj)) {
-    if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang))) {
+    if (obj.isDBData() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang))) {
       strDescription = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.descriptionseo." + userLang);
-    } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang))){
+    } else if (!obj.isDBData() && Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang))){
       strDescription = obj.getExtraData("extra.Content.jcmsplugin.seo.descriptionseo." + userLang);
     }
 }  
@@ -38,9 +38,9 @@
   
  //Optionnel module SEO : titre de page selon extradata seo
  if (Util.notEmpty(obj)) {
-     if (obj.isInDatabase() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
+     if (obj.isDBData() && Util.notEmpty(obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang))) {
          titleOfThePage = obj.getExtraDBData("extradb.Content.jcmsplugin.seo.titreseo." + userLang);
-     } else if (Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang))){
+     } else if (!obj.isDBData() && Util.notEmpty(obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang))){
          titleOfThePage = obj.getExtraData("extra.Content.jcmsplugin.seo.titreseo." + userLang);
      }
  }
