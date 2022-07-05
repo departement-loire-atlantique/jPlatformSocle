@@ -138,10 +138,10 @@
 							</jalios:foreach>
 
 							<% request.removeAttribute("isFilter"); %>
-
 						</div>
 					</jalios:if>
-		
+					
+	
 					<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
 						<div class="ds44-push ds44-small-fg1 ds44-hide-tiny-to-medium ds44-show-medium">
 							<ul class="ds44-list">
@@ -162,6 +162,39 @@
 					</jalios:if>
 		
 				</div>
+				
+				
+				
+			    <jalios:if predicate='<%= Util.notEmpty(obj.getFacettesTertiaire()) %>'>
+			      <div class="ds44-facetteContainer ds44-theme ds44-flex-container ds44-medium-flex-col ds44--noPdg-t">
+                     <div class="ds44-fg1 ds44-flex-container ds44-medium-flex-col">
+   
+     
+                         <% 
+                             int maxFacettesTertiaire = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesTertiaire(), loggedMember); 
+                             request.setAttribute("isFilter", true);
+                         %>
+
+                         <jalios:foreach array="<%= obj.getFacettesTertiaire() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesTertiaire %>">
+     
+                             <% 
+                             Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; 
+                             Boolean isBoolean = itFacette instanceof PortletFacetteBooleen;
+                             %>
+     
+                             <div class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %>  <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+                                 <jalios:include pub="<%= itFacette %>" usage="box"/>
+                             </div>
+     
+                         </jalios:foreach>
+                         <% request.removeAttribute("isFilter"); %>
+
+                     </div>
+                   </div>
+                 </jalios:if>
+				
+				
+				
 			</jalios:if>
 			
 			<%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
