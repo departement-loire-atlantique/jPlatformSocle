@@ -619,6 +619,12 @@
         <template name="header" file="doPortletRechercheFacettesHeader.jsp" usage='box'>
           <label xml:lang="fr">DS44 : gabarit de recherche en header</label>
         </template>
+        
+        <template name="accueil" file="doPortletRechercheFacettesAccueilDisplay.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit de recherche en accueil</label>
+        </template>
+        
+        
     </templates>
     <templates type="PortletSearch">
         <template name="header" file="doPortletSearchHeader.jsp" usage='box'>
