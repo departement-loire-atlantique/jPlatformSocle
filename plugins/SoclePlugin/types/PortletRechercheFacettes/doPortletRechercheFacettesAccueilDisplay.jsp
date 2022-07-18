@@ -21,7 +21,7 @@ request.setAttribute("rechercheId", obj.getId());
  <jalios:select>
  
     <jalios:if predicate="<%= isInRechercheFacette %>">
-        <% String url = "plugins/SoclePlugin/types/PortletRechercheFacettes/doPortletRechercheFacettesBoxDisplay.jsp?redirectUrl=" + channel.getProperty("jcmsplugin.socle.recherche.acceuil.jsp.display"); %>
+        <% String url = "plugins/SoclePlugin/types/PortletRechercheFacettes/doPortletRechercheFacettesBoxDisplay.jsp?redirectUrl=" + channel.getProperty("jcmsplugin.socle.recherche.accueil.jsp.display"); %>
         <jalios:include jsp='<%= url %>' />
     </jalios:if>
     

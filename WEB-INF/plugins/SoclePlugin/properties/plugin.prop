@@ -764,7 +764,7 @@ $jcmsplugin.socle.alerte.icone: cda_1341350
 
 # Portlet Recherche Facettes à afficher sur les pages Canton
 jcmsplugin.socle.canton.recherche.portlet.id: 
-jcmsplugin.socle.recherche.acceuil.jsp.display:
+jcmsplugin.socle.recherche.accueil.jsp.display:
 
 # Liens
 $jcmsplugin.socle.lien.classement.root: c_1378629
