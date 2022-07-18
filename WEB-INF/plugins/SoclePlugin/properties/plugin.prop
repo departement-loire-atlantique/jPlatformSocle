@@ -176,7 +176,12 @@ jcmsplugin.socle.recherche.geojson.communes-contour.url: https://cartes.loire-at
 
 jcmsplugin.socle.autocompletion.adresse.url: https://api-adresse.data.gouv.fr/search/?limit=5&citycode=$parentValue
 
+jcmsplugin.socle.recherche.accueil.jsp.display:
+jcmsplugin.socle.recherche.export.pdf:
+jcmsplugin.socle.recherche.map.icon:
+
 extra.Category.jcmsplugin.socle.cat.search.mapping:
+
 
 # ------------------------------------------------------------
 #  Formats d'images
@@ -764,7 +769,6 @@ $jcmsplugin.socle.alerte.icone: cda_1341350
 
 # Portlet Recherche Facettes à afficher sur les pages Canton
 jcmsplugin.socle.canton.recherche.portlet.id: 
-jcmsplugin.socle.recherche.accueil.jsp.display:
 
 # Liens
 $jcmsplugin.socle.lien.classement.root: c_1378629

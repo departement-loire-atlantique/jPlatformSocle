@@ -154,7 +154,7 @@
 							  <jalios:if predicate="<%= obj.getAfficherPDF() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-									<a href="<%= request.getContextPath() %>/assmat.pdf?type=detail" target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+									<a href='<%= request.getContextPath() %><%= channel.getProperty("jcmsplugin.socle.recherche.export.pdf") %>' target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 								</li>
 							  </jalios:if>
 							  <jalios:if predicate="<%= obj.getAfficherCSV() %>">
@@ -277,7 +277,7 @@
                       		data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : channel.getProperty(obj.getTypeDeCarte()) %>' 
                       		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
                       		data-geojson-refine='<%= obj.getCarteDynamique() %>'
-                      		data-icons-marker='[{"#AEC900":"http://localhost:9080/jcms/plugins/AssmatPlugin/images/marqueurVert.png","#f78b00":"http://localhost:9080/jcms/plugins/AssmatPlugin/images/marqueurOrange.png","#bebebe":"http://localhost:9080/jcms/plugins/AssmatPlugin/images/marqueurGris.png"}]'></div>
+                      		data-icons-marker='<%= channel.getProperty("jcmsplugin.socle.recherche.map.icon") %>'></div>
 				      
 				      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
