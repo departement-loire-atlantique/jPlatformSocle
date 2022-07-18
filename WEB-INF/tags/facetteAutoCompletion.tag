@@ -108,7 +108,7 @@
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
 	
-	Boolean isAdress = "adresse".equalsIgnoreCase((String) request.getAttribute("facetteType"));
+	Boolean isAdresse = "adresse".equalsIgnoreCase((String) request.getAttribute("facetteType"));
 	
 %>
 
@@ -147,7 +147,7 @@
 				</label>
 				<% 
 					String styleCss = "ds44-inp" + styleChamps;
-			        if(isAdress) {
+			        if(isAdresse) {
 						if(Util.notEmpty(autourMoi) && autourMoi) {
 							styleCss += " ds44-autocomp--location";
 						}
@@ -169,7 +169,7 @@
 					<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 				</button>
 
-				<jalios:if predicate='<%= isAdress && Util.notEmpty(autourMoi) && autourMoi %>'>
+				<jalios:if predicate='<%= isAdresse && Util.notEmpty(autourMoi) && autourMoi %>'>
 
 					<button class="ds44-location" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.title", label)%>" 
 							aria-describedby="label-<%= idFormElement %>">
