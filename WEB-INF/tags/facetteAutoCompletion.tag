@@ -107,6 +107,9 @@
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") || (Util.notEmpty(isLarge) && !isLarge) ? "Std" : "Large"; 
 	String styleChamps2 = styleChamps.equalsIgnoreCase("large") ? "Large" : "";
 	String styleChamps3 = styleChamps.equalsIgnoreCase("large") ? "large" : "sizeL";
+	
+	Boolean isAdresse = "adresse".equalsIgnoreCase((String) request.getAttribute("facetteType"));
+	
 %>
 
 <jalios:if predicate='<%= Util.notEmpty(option) %>'>
@@ -144,7 +147,7 @@
 				</label>
 				<% 
 					String styleCss = "ds44-inp" + styleChamps;
-					if(name.equalsIgnoreCase("adresse")) {
+			        if(isAdresse) {
 						if(Util.notEmpty(autourMoi) && autourMoi) {
 							styleCss += " ds44-autocomp--location";
 						}
@@ -166,7 +169,7 @@
 					<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
 				</button>
 
-				<jalios:if predicate='<%= name.equalsIgnoreCase("adresse") && Util.notEmpty(autourMoi) && autourMoi %>'>
+				<jalios:if predicate='<%= isAdresse && Util.notEmpty(autourMoi) && autourMoi %>'>
 
 					<button class="ds44-location" title="<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.localisation.title", label)%>" 
 							aria-describedby="label-<%= idFormElement %>">
@@ -286,7 +289,7 @@
 								<jalios:if predicate="<%= Util.notEmpty(setRayons) %>">
 									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
 										<li class="ds44-select-list_elem" 
-												data-value='<%= itCat.getName() %>' 
+												data-value='<%= Util.notEmpty(itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping")) ? itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping") : itCat.getName() %>' 
 												tabindex="0">
 											<%= itCat.getName() %>
 										</li>

@@ -176,6 +176,13 @@ jcmsplugin.socle.recherche.geojson.communes-contour.url: https://cartes.loire-at
 
 jcmsplugin.socle.autocompletion.adresse.url: https://api-adresse.data.gouv.fr/search/?limit=5&citycode=$parentValue
 
+jcmsplugin.socle.recherche.accueil.jsp.display:
+jcmsplugin.socle.recherche.export.pdf:
+jcmsplugin.socle.recherche.map.icon:
+
+extra.Category.jcmsplugin.socle.cat.search.mapping:
+
+
 # ------------------------------------------------------------
 #  Formats d'images
 # ------------------------------------------------------------

@@ -13,7 +13,7 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
-    <field name="rayon" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="cda_5058">
+    <field name="rayon" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.type.rayon.cat">
       <label xml:lang="fr">Rayon</label>
     </field>
     <field type="super" />

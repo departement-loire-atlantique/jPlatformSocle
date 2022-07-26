@@ -735,47 +735,66 @@ public final class SocleUtils {
 	 * @param pubMarkerGabarit
 	 * @return
 	 */
-	public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
-		JsonObject jsonObject = new JsonObject();
-		String id = pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId();
-		
-		jsonObject.addProperty("value", pub.getTitle());
-		if(Util.notEmpty(pubFullGabarit)) {
-		  jsonObject.addProperty("content_html", pubFullGabarit);
-		}
-		JsonObject jsonMetaObject = new JsonObject();
-		// Cas particulier pour les type de contenu Lien
-		String url = channel.getUrl() + pub.getDisplayUrl(null);
-		if(pub instanceof Lien) {
-			Lien lien = (Lien) pub;
-			if(Util.notEmpty(lien.getLienInterne())) {
-				url = channel.getUrl() + lien.getLienInterne().getDisplayUrl(null);
-				id =  lien.getLienInterne().getId();
-			} else {
-				url = lien.getLienExterne();
-				jsonObject.addProperty("redirectUrl", true);
-				jsonObject.addProperty("target", "_blank");
-			}			
-		}
-		jsonObject.addProperty("id", id);
-		jsonMetaObject.addProperty("url", url);
-	  // Cas particulier pour le type de contenu Contact
-    if (pub instanceof Contact) {
-      jsonObject.remove("id");
-      jsonObject.addProperty("id", "-1");
+  public static JsonObject publicationToJsonObject(Publication pub, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+    String latitude = null;
+    String longitude = null;
+    if(!pub.isDBData()) {
+      latitude = pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude");
+      longitude = pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude");
     }
-		jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
-		jsonMetaObject.addProperty("lat", pub.getExtraData("extra."+ pub.getClass().getSimpleName() +".plugin.tools.geolocation.latitude"));
-		jsonMetaObject.addProperty("long", pub.getExtraData("extra."+ pub.getClass().getSimpleName() + ".plugin.tools.geolocation.longitude"));
-		if(Util.notEmpty(pubListGabarit)) {
-			jsonMetaObject.addProperty("html_list", pubListGabarit);
-		}
-		if(Util.notEmpty(pubMarkerGabarit)) {
-			jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-		}		
-		jsonObject.add("metadata", jsonMetaObject);
-		return jsonObject;
-	}
+    return publicationToJsonObject(pub, latitude, longitude, null, pubListGabarit, pubMarkerGabarit, pubFullGabarit);
+  }
+	
+	
+	 public static JsonObject publicationToJsonObject(Publication pub, String latitude, String longitude, String icon, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+	   JsonObject jsonObject = new JsonObject();
+	    String id = pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId();
+	    
+	    jsonObject.addProperty("value", pub.getTitle());
+	    if(Util.notEmpty(pubFullGabarit)) {
+	      jsonObject.addProperty("content_html", pubFullGabarit);
+	    }
+	    JsonObject jsonMetaObject = new JsonObject();
+	    // Cas particulier pour les type de contenu Lien
+	    String url = channel.getUrl() + pub.getDisplayUrl(null);
+	    if(pub instanceof Lien) {
+	      Lien lien = (Lien) pub;
+	      if(Util.notEmpty(lien.getLienInterne())) {
+	        url = channel.getUrl() + lien.getLienInterne().getDisplayUrl(null);
+	        id =  lien.getLienInterne().getId();
+	      } else {
+	        url = lien.getLienExterne();
+	        jsonObject.addProperty("redirectUrl", true);
+	        jsonObject.addProperty("target", "_blank");
+	      }     
+	    }
+	    jsonObject.addProperty("id", id);
+	    jsonMetaObject.addProperty("url", url);
+	    // Cas particulier pour le type de contenu Contact
+	    if (pub instanceof Contact) {
+	      jsonObject.remove("id");
+	      jsonObject.addProperty("id", "-1");
+	    }
+	    jsonMetaObject.addProperty("type", pub.getClass().getSimpleName());
+	    
+	    if(Util.notEmpty(latitude) && Util.notEmpty(longitude)) {
+	      jsonMetaObject.addProperty("lat", latitude);
+	      jsonMetaObject.addProperty("long", longitude);
+	    }
+	    
+	    if(Util.notEmpty(icon)) {
+	      jsonMetaObject.addProperty("icon_marker", icon);
+	    }
+	        
+	    if(Util.notEmpty(pubListGabarit)) {
+	      jsonMetaObject.addProperty("html_list", pubListGabarit);
+	    }
+	    if(Util.notEmpty(pubMarkerGabarit)) {
+	      jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
+	    }   
+	    jsonObject.add("metadata", jsonMetaObject);
+	    return jsonObject;
+	  }
 		
 	
 	/**
@@ -1362,9 +1381,6 @@ public final class SocleUtils {
         }
       } else if (nameParam.startsWith("accessibilite")) {
         itNameKey = "accessibilite";
-      } else if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")) && nameParam.contains("[value]")){
-        // paramètre classique de la recherche à facettes
-        itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
       } else if(nameParam.startsWith("map")){
         // Position de la carte
         itNameKey = nameParam.replace("[0]", "[long]").replace("[1]", "[lat]");
@@ -1374,6 +1390,13 @@ public final class SocleUtils {
           itNameKey = "latitude";
         } else {
           itNameKey = "longitude";
+        }       
+      } else if(nameParam.contains(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element"))){
+        // paramètre classique de la recherche à facettes
+        if(nameParam.contains("[value]")) {
+          itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element")));
+        } else if(nameParam.contains("[text]")) {
+          itNameKey = nameParam.substring(0, nameParam.indexOf(JcmsUtil.glpd("jcmsplugin.socle.facette.form-element"))) + "[text]";
         }
       } else if(nameParam.contains("[value]") && (nameParam.startsWith("limitrophe") || nameParam.startsWith("epci"))) {
         itNameKey = "commune";

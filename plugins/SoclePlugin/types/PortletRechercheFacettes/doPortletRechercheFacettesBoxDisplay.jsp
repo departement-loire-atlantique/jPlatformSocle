@@ -27,7 +27,7 @@
 	String query = Util.notEmpty(obj.getQueries()) ? obj.getQueries()[0] : "";
 	request.setAttribute("query", query);
 	
-	Boolean hasFonctionsAdditionnelles = false; // TODO
+	Boolean hasFonctionsAdditionnelles = obj.getAfficherSelection() || obj.getAfficherPDF() ||  obj.getAfficherCSV();
 	Boolean showFiltres = isInRechercheFacette && Util.notEmpty(obj.getFacettesSecondaires()) || hasFonctionsAdditionnelles;
 	request.setAttribute("showFiltres", showFiltres);
 	
@@ -107,7 +107,7 @@
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
 					<% String styleButton = showFiltres || (isInRechercheFacette && !obj.getAfficherResultatDansLannuaire()) ? "" : "--large"; %>
-					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>'>
+					<button class='<%= "jcms-js-submit ds44-btnStd ds44-btnStd"+styleButton+" ds44-theme" %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lancer.recherche")) %>'>
 						<span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span>
 						<i class="icon icon-long-arrow-right" aria-hidden="true"></i>
 					</button>					
@@ -145,18 +145,24 @@
 					<jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
 						<div class="ds44-push ds44-small-fg1 ds44-hide-tiny-to-medium ds44-show-medium">
 							<ul class="ds44-list">
+							  <jalios:if predicate="<%= obj.getAfficherSelection() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 0) %></a>
 								</li>
+							  </jalios:if>	
+							  <jalios:if predicate="<%= obj.getAfficherPDF() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+									<a href='<%= request.getContextPath() %><%= channel.getProperty("jcmsplugin.socle.recherche.export.pdf") %>' target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 								</li>
+							  </jalios:if>
+							  <jalios:if predicate="<%= obj.getAfficherCSV() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
 									<a href="#" aria-label='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.csv")) %>'><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
 								</li>
+							  </jalios:if>
 							</ul>
 						</div>
 					</jalios:if>
@@ -199,6 +205,12 @@
 			
 			<%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
 		
+	
+		    
+		    <jalios:if predicate='<%= HttpUtil.hasParameter(request, "redirectUrl") %>'>
+		      <input type="hidden" name="redirectUrl" value="<%= request.getParameter("redirectUrl") %>" data-technical-field />
+		    </jalios:if>
+		    
 		</form>
 	</div>
 	
@@ -264,7 +276,8 @@
 				      <div class="ds44-js-map" 
                       		data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : channel.getProperty(obj.getTypeDeCarte()) %>' 
                       		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
-                      		data-geojson-refine='<%= obj.getCarteDynamique() %>'></div>
+                      		data-geojson-refine='<%= obj.getCarteDynamique() %>'
+                      		data-icons-marker='<%= channel.getProperty("jcmsplugin.socle.recherche.map.icon") %>'></div>
 				      
 				      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
