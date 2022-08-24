@@ -319,6 +319,7 @@ public class InfolocaleEntityUtils {
         for (int counterDays = 1; counterDays <= 7; counterDays++) {
             if (!idDaysUsed.contains(counterDays)) {
                 Horaires tmpHoraires = new Horaires();
+                tmpHoraires.setEmpty(true);
                 tmpHoraires.setFerme(true);
                 tmpHoraires.setJourId(counterDays);
                 tmpHoraires.setJourLibelle(InfolocaleUtil.getJourInfolocaleLibelle(counterDays));
