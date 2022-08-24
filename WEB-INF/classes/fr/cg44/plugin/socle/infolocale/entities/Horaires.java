@@ -11,6 +11,7 @@ public class Horaires extends Data {
     ArrayList<String> plagesDebut;
     ArrayList<String> plagesFin;
     boolean isFerme;
+    boolean isEmpty;
     
     public int getJourId() {
         return jourId;
@@ -41,6 +42,12 @@ public class Horaires extends Data {
     }
     public void setFerme(boolean isFerme) {
         this.isFerme = isFerme;
+    }
+    public boolean isEmpty() {
+      return isEmpty;
+    }
+    public void setEmpty(boolean isEmpty) {
+      this.isEmpty = isEmpty;
     }
 
 }
