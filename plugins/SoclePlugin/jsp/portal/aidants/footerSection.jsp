@@ -6,8 +6,8 @@
     <div class="grid-12-small-1 ds44-hasGutter-xxl">
         <div class="col-2-small-1">
             <div class="ds44-logo ds44-mb3 ds44-mobile-reduced-mt ds44-mobile-reduced-pt">
-                <img src="//design.loire-atlantique.fr/assets/images/logos/logo-udaf.svg" alt="UDAF Loire-Atlantique : Le site des aidants">
-                <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logofooter") %>' alt="Loire Atlantique" class="mbm">
+                <img src="//design.loire-atlantique.fr/assets/images/logos/logo-udaf.svg" alt="UDAF Loire-Atlantique : Le site des aidants" class="mbm">
+                <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logofooter") %>' alt="Loire Atlantique">
             </div>
         </div>
         <div class="col-5-small-1 ds44-mb3">
