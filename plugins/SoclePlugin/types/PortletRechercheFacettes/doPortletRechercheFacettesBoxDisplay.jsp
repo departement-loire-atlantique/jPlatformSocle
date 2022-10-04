@@ -96,13 +96,18 @@
 		
 				<jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
 		
-					<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
+		            <jalios:buffer name="itFacetteBuffer">
+                      <jalios:include pub="<%= itFacette %>" usage="box"/>
+                    </jalios:buffer>
+		
+					<% Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ;%>
 		
 					<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
-						<jalios:include pub="<%= itFacette %>" usage="box"/>
+						<%= itFacetteBuffer %>
 					</div>
 				</jalios:foreach>
 
+                <% request.removeAttribute("isSelectFacette"); %>
 				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
