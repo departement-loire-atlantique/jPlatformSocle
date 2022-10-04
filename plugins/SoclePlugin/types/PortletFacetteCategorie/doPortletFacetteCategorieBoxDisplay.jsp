@@ -4,6 +4,9 @@
 <%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
 <% 
+
+    request.setAttribute("isSelectFacette", true);
+
 	PortletFacetteCategorie obj = (PortletFacetteCategorie)portlet; 
 
 	String rechercheId = (String) request.getAttribute("rechercheId");
