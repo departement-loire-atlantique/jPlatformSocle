@@ -5,6 +5,8 @@
 <%@ page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ include file='/plugins/SoclePlugin/jsp/facettes/commonParamsFacettes.jspf' %>
 <% 
+    request.setAttribute("isSelectFacette", true);
+
 	PortletFacetteCategoriesLiees obj = (PortletFacetteCategoriesLiees)portlet; 
 
 	String rechercheId = (String) request.getAttribute("rechercheId");

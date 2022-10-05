@@ -96,13 +96,18 @@
 		
 				<jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesPrincipales %>">
 		
-					<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
+		            <jalios:buffer name="itFacetteBuffer">
+                      <jalios:include pub="<%= itFacette %>" usage="box"/>
+                    </jalios:buffer>
+		
+					<% Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ;%>
 		
 					<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
-						<jalios:include pub="<%= itFacette %>" usage="box"/>
+						<%= itFacetteBuffer %>
 					</div>
 				</jalios:foreach>
 
+                <% request.removeAttribute("isSelectFacette"); %>
 				<% request.removeAttribute("isFilter"); %>
 		
 				<div class="ds44-fieldContainer ds44-small-fg1">
@@ -129,11 +134,18 @@
 
 							<jalios:foreach array="<%= obj.getFacettesSecondaires() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesSecondaires %>">
 		
-								<% Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; %>
+		                        <jalios:buffer name="itFacetteBuffer">
+		                          <jalios:include pub="<%= itFacette %>" usage="box"/>
+		                        </jalios:buffer>
 		
-								<div class='ds44-fieldContainer ds44-fg1 <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
-									<jalios:include pub="<%= itFacette %>" usage="box"/>
+								<% Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ; %>
+		                        <% Boolean isBoolean = itFacette instanceof PortletFacetteBooleen; %>
+		
+								<div class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %> <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+                                    <%= itFacetteBuffer %>
 								</div>
+		  
+		                        <% request.removeAttribute("isSelectFacette"); %>
 		
 							</jalios:foreach>
 
@@ -180,17 +192,23 @@
                              int maxFacettesTertiaire = SocleUtils.getNbrFacetteBeforeMaxWeight(8, obj.getFacettesTertiaire(), loggedMember); 
                              request.setAttribute("isFilter", true);
                          %>
-
+                         
                          <jalios:foreach array="<%= obj.getFacettesTertiaire() %>" name="itFacette" type="AbstractPortletFacette" max="<%= maxFacettesTertiaire %>">
      
+                            <jalios:buffer name="itFacetteBuffer">
+                                <jalios:include pub="<%= itFacette %>" usage="box"/>
+                            </jalios:buffer>
+     
                              <% 
-                             Boolean isSelect = itFacette instanceof PortletFacetteCategorie || itFacette instanceof PortletFacetteCategoriesLiees; 
+                             Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ;
                              Boolean isBoolean = itFacette instanceof PortletFacetteBooleen;
                              %>
      
                              <div class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %>  <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
-                                 <jalios:include pub="<%= itFacette %>" usage="box"/>
+                                 <%= itFacetteBuffer %>
                              </div>
+                             
+                             <% request.removeAttribute("isSelectFacette"); %>
      
                          </jalios:foreach>
                          <% request.removeAttribute("isFilter"); %>
@@ -227,18 +245,24 @@
 	    <jalios:if predicate="<%= hasFonctionsAdditionnelles %>">
 		     <div class="ds44-facette-mobile-export ds44-push ds44-small-fg1 ds44-show-tiny-to-medium ds44-hide-medium">
 		        <ul class="ds44-list">
-		            <li class="ds44-docListElem">
-		                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-		                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
-		            </li>
-		            <li class="ds44-docListElem">
-		                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-		                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
-		            </li>
-		            <li class="ds44-docListElem">
-		                <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
-		                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
-		            </li>
+		            <jalios:if predicate="<%= obj.getAfficherSelection() %>">
+			            <li class="ds44-docListElem">
+			                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+			                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+			            </li>
+			        </jalios:if>
+			        <jalios:if predicate="<%= obj.getAfficherPDF() %>">
+			            <li class="ds44-docListElem">
+			                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
+			                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+			            </li>
+		            </jalios:if>
+		            <jalios:if predicate="<%= obj.getAfficherCSV() %>">
+			            <li class="ds44-docListElem">
+			                <i class="icon icon-csv ds44-docListIco" aria-hidden="true"></i>
+			                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.csv") %></a>
+			            </li>
+		            </jalios:if>
 		        </ul>
 		    </div>
 	   </jalios:if>
