@@ -167,7 +167,7 @@ if(Util.notEmpty(video)) {
                <div>
                   <div class="ds44-cookie-overlay-container">
                      <div class="ds44-video-container">
-                        <iframe title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' style="width: 100%; height: 480px; border: none;" src="<%= urlVideo %>" allowfullscreen></iframe>
+                        <iframe type="opt-in" data-name="streaming-video" data-src="<%= urlVideo %>" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glp(userLang, "jcmsplugin.socle.video.acceder", titreVideo)) %>' style="width: 100%; height: 480px; border: none;" allowfullscreen></iframe>
                      </div>
                      <div class="ds44-media-overlay" style="display: none;">
 		               <div class="ds44-msg-media-desactive">
