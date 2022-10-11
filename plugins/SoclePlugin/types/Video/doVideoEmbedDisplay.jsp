@@ -68,7 +68,7 @@ String videoId = VideoUtils.getYoutubeVideoId(obj.getUrlVideo()); // récupérer
     <div class="ds44-cookie-overlay-container">
 	    <div class="ds44-video-container">
 			
-			<iframe title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint ds44-video-item" style="width: 100%; height: <%= heightIframe %>; border: none;" src="<%=urlVideo%>" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+			<iframe type="opt-in" data-name="streaming-video" data-src="<%=urlVideo%>" title='<%= HttpUtil.encodeForHTML(glp("jcmsplugin.socle.video.acceder", titleVideo)) %>' id="<%=uniqueIDiframe%>" class="ds44-hiddenPrint ds44-video-item" style="width: 100%; height: <%= heightIframe %>; border: none;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 			<div class="ds44-media-overlay" style="display: none;">
 		        <div class="ds44-msg-media-desactive">
 		            <p><%= glp("jcmsplugin.socle.videodesactivee") %></p>
