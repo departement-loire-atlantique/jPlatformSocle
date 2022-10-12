@@ -362,12 +362,21 @@ public class ExportCsvUtils {
    * @param userLang
    */
   public static void printCsvFileForPublicationType(String type, String userLang, Member itMember, Writer paramWriter) {
+    printCsvFileForPublicationTypeAndSet(type, userLang, itMember, paramWriter, ExportCsvUtils.getPublicationsOfType(type, itMember));
+  }
+  
+  /**
+   * Print un CSV pour l'export d'un type de contenu, depuis une liste déterminée
+   * @param type
+   * @param userLang
+   * @param itMember
+   * @param paramWriter
+   */
+  public static void printCsvFileForPublicationTypeAndSet(String type, String userLang, Member itMember, Writer paramWriter, SortedSet<Publication> sortedPubs) {
     PrintWriter localPrintWriter = new PrintWriter(paramWriter);
-   
+    
     StringBuilder csvContent = new StringBuilder();
-    
-    SortedSet<Publication> sortedPubs = ExportCsvUtils.getPublicationsOfType(type, itMember);
-    
+        
     // Header
     csvContent.append(getCommonPrefixCsvHeader());
     csvContent.append(getCsvHeaderFromXml(type));

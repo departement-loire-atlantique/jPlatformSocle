@@ -49,6 +49,7 @@ import com.jalios.jcms.taglib.ThumbnailTag;
 import com.jalios.jcms.wysiwyg.WysiwygRenderer;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.export.ExportCsvUtils;
 import generated.AbstractPortletFacette;
 import generated.AccueilAnnuaireAgenda;
 import generated.Canton;
@@ -68,6 +69,7 @@ import generated.PortletFacetteCommune;
 import generated.PortletFacetteCommuneAdresseLiee;
 import generated.PortletFaq;
 import generated.PortletPortalRedirect;
+import generated.Video;
 
 public final class SocleUtils {
 	private static Channel channel = Channel.getChannel();
@@ -2153,7 +2155,7 @@ public final class SocleUtils {
 				catParentTeste = catParentTeste.getParent();
 			}
 			
-			if(catRacine.equals(cat)) {
+			if(catRacine.equals(cat) || Util.isEmpty(catRacineNavigation) || Util.isEmpty(catRacineNavigation.getChildrenSet())) {
 				return null;
 			} else if(catRacineNavigation.getChildrenSet().contains(catParentTeste)) {
 				return cat;
@@ -2332,5 +2334,23 @@ public final class SocleUtils {
   
   }
 
-
+  /**
+   * Récupère tous les contenus vidéos sans transcript dans une liste ordonnée
+   * @return
+   */
+  public static SortedSet<Publication> getAllVideosWithoutTranscript() {
+    SortedSet<Publication> videoSet = ExportCsvUtils.getPublicationsOfType("Video", Channel.getChannel().getCurrentLoggedMember());
+    for (Iterator<Publication> iter = videoSet.iterator(); iter.hasNext();) {
+      Publication itPub = iter.next();
+      if (!(itPub instanceof Video)) {
+        return null;
+      }
+      Video itVideo = (Video) itPub;
+      if (Util.notEmpty(itVideo.getFichierTranscript())) {
+        iter.remove();
+      }
+    }
+    return videoSet;
+  }
+  
 }

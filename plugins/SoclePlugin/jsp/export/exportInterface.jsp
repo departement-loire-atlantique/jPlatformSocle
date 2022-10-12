@@ -114,5 +114,10 @@ if(getBooleanParameter("exportImg", false)) {
 <h3>Export Fiches action éducative</h3>
 <p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=FicheActionEducative" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
 
+<hr>
+
+<h3>Export Vidéos sans transcript</h3>
+<p><a href="plugins/SoclePlugin/jsp/export/exportCsvPrinter.jsp?type=Video" class="btn btn-info modal confirm" target="_blank">Exporter en CSV</a></p>
+
 <%@ include file="/admin/doAdminFooter.jspf" %>
 

@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@page import="fr.cg44.plugin.socle.export.ExportCsvUtils"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
@@ -16,6 +17,11 @@ if (!isAdmin) {
 
 out.clear();
 
-ExportCsvUtils.printCsvFileForPublicationType(type, userLang, loggedMember, out);
-
+switch (type) {
+case "Video":
+  ExportCsvUtils.printCsvFileForPublicationTypeAndSet(type, userLang, loggedMember, out, SocleUtils.getAllVideosWithoutTranscript());
+  break;
+default:
+  ExportCsvUtils.printCsvFileForPublicationType(type, userLang, loggedMember, out);
+}
 %>
