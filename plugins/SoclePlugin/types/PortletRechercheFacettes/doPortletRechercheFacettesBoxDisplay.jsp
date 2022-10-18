@@ -90,7 +90,7 @@
 			<div class="ds44-facetteContainer ds44-bgDark ds44-flex-container ds44-medium-flex-col">
 		
 				<% 
-					int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(4, obj.getFacettesPrincipales(), loggedMember); 
+					int maxFacettesPrincipales = SocleUtils.getNbrFacetteBeforeMaxWeight(5, obj.getFacettesPrincipales(), loggedMember); 
 					request.setAttribute("isFilter", false);
 				%>
 		
