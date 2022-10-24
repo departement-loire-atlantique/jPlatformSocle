@@ -43,7 +43,7 @@ request.setAttribute("rechercheId", obj.getId());
 	               
 	            <% request.setAttribute("isInEncadre", true); %>   
 	               
-	            <jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette" max="3">
+	            <jalios:foreach array="<%= obj.getFacettesPrincipales() %>" name="itFacette" type="AbstractPortletFacette">
 	                 <jalios:include pub="<%= itFacette %>" usage="box"/>
 	            </jalios:foreach>
 	            
