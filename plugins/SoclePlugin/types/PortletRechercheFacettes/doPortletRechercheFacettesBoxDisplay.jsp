@@ -140,12 +140,15 @@
 		
 								<% Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ; %>
 		                        <% Boolean isBoolean = itFacette instanceof PortletFacetteBooleen; %>
+		                        <% String dataEnabledByField = (String) request.getAttribute("dataEnabledByField"); %>
 		
-								<div class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %> <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+		
+								<div <%= dataEnabledByField %> class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %> <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
                                     <%= itFacetteBuffer %>
 								</div>
 		  
 		                        <% request.removeAttribute("isSelectFacette"); %>
+		                        <% request.removeAttribute("dataEnabledByField"); %>
 		
 							</jalios:foreach>
 
@@ -301,7 +304,8 @@
                       		data-geojson-url='<%= Util.notEmpty(obj.getUrlDeGeojsonLibre()) ? obj.getUrlDeGeojsonLibre() : channel.getProperty(obj.getTypeDeCarte()) %>' 
                       		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
                       		data-geojson-refine='<%= obj.getCarteDynamique() %>'
-                      		data-icons-marker='<%= channel.getProperty("jcmsplugin.socle.recherche.map.icon") %>'></div>
+                      		data-icons-marker='<%= channel.getProperty("jcmsplugin.socle.recherche.map.icon") %>'
+                      		<%= obj.getCluster() ? "data-use-cluster='true' data-cluster-theme='theme-2'" : "" %>></div>
 				      
 				      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
@@ -318,6 +322,8 @@
 <jalios:if predicate="<%= isInPortletConteneur %>">
     </div>
 </jalios:if>
+
+
 
 <% 
 request.removeAttribute("rechercheId");
