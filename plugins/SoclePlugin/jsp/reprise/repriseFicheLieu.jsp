@@ -208,8 +208,8 @@ for(Publication itPub : result) {
 		   
 		   
 		   // extradata
-		   itFiche.setExtraData("extra.Place.plugin.tools.geolocation.longitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.longitude"));
-		   itFiche.setExtraData("extra.Place.plugin.tools.geolocation.latitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.latitude"));
+		   itFiche.setExtraData("extra.FicheLieu.plugin.tools.geolocation.longitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.longitude"));
+		   itFiche.setExtraData("extra.FicheLieu.plugin.tools.geolocation.latitude", itPlace.getExtraData("extra.Place.plugin.tools.geolocation.latitude"));
 		   
 		   // meta donné et écriture
 		   itFiche.setAuthor(itPlace.getAuthor());
