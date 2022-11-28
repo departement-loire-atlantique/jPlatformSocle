@@ -7,13 +7,14 @@
 PortletFacetteAdresse obj = (PortletFacetteAdresse)portlet;
 
 String rechercheId = (String) request.getAttribute("rechercheId");
+String idFormElement = glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId(); 
 
 request.setAttribute("facetteType", "adresse");
 
 %>
 
 
-<ds:facetteAutoCompletion idFormElement='<%= ServletUtil.generateUniqueDOMId(request, glp("jcmsplugin.socle.facette.form-element")) %>' 
+<ds:facetteAutoCompletion idFormElement='<%= idFormElement %>' 
 		name='<%= "adresse" + glp("jcmsplugin.socle.facette.form-element") + "-" + rechercheId + obj.getId() %>'
 		request="<%= request %>" 
 		isFacetteObligatoire="<%= obj.getFacetteObligatoire() %>" 

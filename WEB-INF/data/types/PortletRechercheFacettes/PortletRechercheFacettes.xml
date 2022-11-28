@@ -25,7 +25,7 @@
     <field name="facettesSecondaires" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Facettes secondaires</label>
     </field>
-        <field name="facettesTertiaire" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]">
+    <field name="facettesTertiaire" editor="link" required="false" compactDisplay="false" type="generated.AbstractPortletFacette[]">
       <label xml:lang="fr">Facettes tertiaire</label>
     </field>
     <field name="modeDesCategories" editor="boolean" required="false" compactDisplay="false" type="boolean" default="true" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
@@ -154,6 +154,13 @@
     </field>
     <field name="afficherCSV" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Afficher CSV</label>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="cluster" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Cluster</label>
       <onLabel xml:lang="en">Yes</onLabel>
       <onLabel xml:lang="fr">Oui</onLabel>
       <offLabel xml:lang="en">No</offLabel>

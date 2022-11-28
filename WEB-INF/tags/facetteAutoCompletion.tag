@@ -162,7 +162,9 @@
 							aria-expanded="false" 
 							data-url='<%= dataUrl %>'
 							title='<%= titleAttr %>' 
-							data-mode='<%= dataMode %>' 
+							data-mode='<%= dataMode %>'
+							data-enabled-field-value='44109',
+							data-url-prefix=", 44"
 							<%= isFacetteObligatoire ? "required" : ""%> />
 					<button class="ds44-reset" type="button">
 						<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> 
@@ -260,23 +262,23 @@
 				<div class="ds44-form__container">
 
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-inputDisabled'>
-						<p id="label-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
+						<p id="label-rayon-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
 						</p>
 						<input class="ds44-input-value" type="hidden" value="">
-						<div id='<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="rayon"></div>
+						<div id='rayon-<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="rayon"></div>
 						<button class="ds44-reset" type="button">
 							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
 							<span class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label")) %>
 							</span>
 						</button>
-						<button id="button-<%= idFormElement %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
+						<button id="button-rayon-<%= idFormElement %>" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" 
 								type="button"
 								aria-expanded="false" 
 								title='<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") + " - " + JcmsUtil.glp(userLang, "jcmsplugin.socle.obligatoire") %>'>
 							<i class="icon icon-down icon--<%= styleChamps3 %>" aria-hidden="true"></i>
-							<span id='<%= "button-message-"+idFormElement %>' class="visually-hidden">
+							<span id='<%= "button-message-rayon-"+idFormElement %>' class="visually-hidden">
 								<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %>
 							</span>
 						</button>
