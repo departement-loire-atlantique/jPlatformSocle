@@ -163,7 +163,7 @@
 							data-url='<%= dataUrl %>'
 							title='<%= titleAttr %>' 
 							data-mode='<%= dataMode %>'
-							data-enabled-field-value='44109',
+							data-enabled-field-value='44109*',
 							data-url-prefix=", 44"
 							<%= isFacetteObligatoire ? "required" : ""%> />
 					<button class="ds44-reset" type="button">
