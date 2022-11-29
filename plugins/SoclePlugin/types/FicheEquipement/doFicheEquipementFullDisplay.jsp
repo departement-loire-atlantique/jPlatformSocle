@@ -9,6 +9,9 @@
 String longitude = obj.getExtraData("extra.FicheEquipement.plugin.tools.geolocation.longitude");
 String latitude = obj.getExtraData("extra.FicheEquipement.plugin.tools.geolocation.latitude");
 String localisation = SocleUtils.formatOpenStreetMapLink(latitude, longitude);
+
+//SEO : bloque l'indexation des pages de résultats
+request.setAttribute("noindex", true);
 %>
 
 <%-- bouton Retour a la liste --%>
