@@ -32,6 +32,8 @@
 	request.setAttribute("showFiltres", showFiltres);
 	
 	request.setAttribute("rechercheId", obj.getId());
+	
+	Set<String> panierSet = (Set<String>) request.getSession().getAttribute("panier");
 %>
 
 
@@ -163,7 +165,7 @@
 							  <jalios:if predicate="<%= obj.getAfficherSelection() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", 0) %></a>
+									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
 								</li>
 							  </jalios:if>	
 							  <jalios:if predicate="<%= obj.getAfficherPDF() %>">
@@ -250,8 +252,8 @@
 		        <ul class="ds44-list">
 		            <jalios:if predicate="<%= obj.getAfficherSelection() %>">
 			            <li class="ds44-docListElem">
-			                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-			                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", 2) %></a>
+			                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>			                
+			                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
 			            </li>
 			        </jalios:if>
 			        <jalios:if predicate="<%= obj.getAfficherPDF() %>">
@@ -284,7 +286,7 @@
 	      <div class="ds44-listResults ds44-innerBoxContainer ds44-innerBoxContainer--list">
 	          <div class="ds44-js-results-container">
 	              <div class="ds44-js-results-card" data-url="plugins/SoclePlugin/jsp/facettes/displayPub.jsp" aria-hidden="true"></div>
-	              <div class="ds44-js-results-list" data-display-mode='<%= obj.getModeDaffichageDuContenu() ? "external" : "inline" %>'>
+	              <div class="ds44-js-results-list" <%= obj.getTuileMultiLiens() ? "data-multi-links='true'" : "" %>  data-display-mode='<%= obj.getModeDaffichageDuContenu() ? "external" : "inline" %>'>
 	                  <p aria-level="2" role="heading" id="ds44-results-new-search" class="h3-like mbs txtcenter center ds44--3xl-padding-t ds44--3xl-padding-b">
 	                    <span aria-level="2" role="heading"><%= glp("jcmsplugin.socle.faire.recherche") %></span>
 	                  </p>            
