@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="fr.cg44.plugin.socle.SocleUtils"%>
 <%@ page import="fr.cg44.plugin.seo.SEOUtils"%>
 <%@ include file='/jcore/doInitPage.jspf' %>
@@ -8,10 +9,10 @@
     On adapte la liste au design system et on gère les extradatas de catégories (libellé, target)
     Les liens pointent vers les catégories. Un portalPolicyFilter s'occupe de rediriger vers le
     bon contenu.
-    On n'affiche pas dans le fil d'Ariane les catégories qui ne contiennt pas de contenu principal.
+    On n'affiche pas dans le fil d'Ariane les catégories qui ne contienent pas de contenu principal.
     Les arborescences peuvent être différentes selon les sites mais on aura en commun les niveaux suivants : 
     "Navigation" > "Navigation des espaces"
-    On récupère les ancetres de la catégorie courante et on supprime les 2 premiers niveaux ci-dessus.
+    On récupère les ancêtres de la catégorie courante et on supprime les 2 premiers niveaux ci-dessus.
     
     MAJ 20/10/2020 : on n'affiche pas le fil d'ariane si on est en mode "résultat de recherche à facette" car
     le calcul de la catégorie courante est faussé.
@@ -67,7 +68,7 @@ if(Util.notEmpty(request.getAttribute("textColor"))){
         <jalios:foreach collection="<%= ancestors %>" type="Category" name="itCategory" counter="itCounter">
            <jalios:select>
              <jalios:if predicate='<%= itCounter == 1 && Util.isEmpty(SocleUtils.getContenuPrincipal(itCategory)) %>'>
-                <%-- On affiche le 1er ancêtre s'il existe --%>
+                <%-- On affiche le 1er ancÃªtre s'il existe --%>
                 <%
                 libelleCat = Util.notEmpty(itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title")) ? itCategory.getExtraData("extra.Category.plugin.tools.synonyme.facet.title") : itCategory.getName(userLang);
                 counter++;
