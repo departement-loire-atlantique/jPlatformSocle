@@ -1011,7 +1011,7 @@ jcmsplugin.socle.sites-applis.territoire.label: Territoire
 jcmsplugin.socle.sites-applis.institutionnel.label: Site du Département
 jcmsplugin.socle.sites-applis.institutionnel.long.label: Site du Département de Loire-Atlantique
 jcmsplugin.socle.sites-applis.institutionnel.url: https://www.loire-atlantique.fr
-jcmsplugin.socle.sites-applis.budget.label: Budget 2022
+jcmsplugin.socle.sites-applis.budget.label: Budget (datavisualisation)
 jcmsplugin.socle.sites-applis.budget.url: https://dataviz.loire-atlantique.fr/budget2022
 jcmsplugin.socle.sites-applis.participer.label: Participer
 jcmsplugin.socle.sites-applis.participer.url: https://participer.loire-atlantique.fr
