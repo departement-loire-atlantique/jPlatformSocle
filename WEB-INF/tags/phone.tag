@@ -20,6 +20,7 @@
     type="String"
     description="Le titre de la publication. Utilisé pour les stats"
 %>
+
 <%
 String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 String statLabel = "null";
@@ -36,7 +37,7 @@ String linkPhone = "+33" + number.substring(1);
 JcmsContext jcmsContext = Channel.getChannel().getCurrentJcmsContext();
 %>
 <jalios:if predicate='<%= ! jcmsContext.getBrowser().isSmallDevice() %>'>
-	<%= displayedPhone %><br>
+	<%= displayedPhone %>
 </jalios:if>
 <jalios:if predicate='<%= jcmsContext.getBrowser().isSmallDevice() %>'>
 	<a class="ds44-m-t-xl-noUnderline" href="tel:<%= linkPhone %>" title="<%= displayedPhone %>" <%= statAttr %>><%= displayedPhone %></a>
