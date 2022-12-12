@@ -112,7 +112,7 @@ public final class SocleUtils {
 	}
 	
 	/**
-	 * Permet de récupérer le contenu principal d'une catégorie si celle-ci existe
+	 * Permet de récupérer le contenu principal (contenu ou portlet) d'une catégorie si celle-ci existe
 	 * @param currentCat la catégorie courante
 	 * @return La publication principale de la catégorie, sinon NULL
 	 */
@@ -122,6 +122,7 @@ public final class SocleUtils {
 			QueryHandler qh = new QueryHandler();
 			qh.setCids(getChannel().getProperty(MISE_EN_AVANT_CAT_PROP), currentCat.getId());
 			qh.setLoggedMember(loggedMember);
+			qh.setTypes("Publication");
 			qh.setExactCat(true);
 			QueryResultSet result = qh.getResultSet();
 			return Util.getFirst(result);
