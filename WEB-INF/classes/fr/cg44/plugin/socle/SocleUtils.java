@@ -187,6 +187,38 @@ public final class SocleUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	}
+
+  /**
+   * Récupère les 2 chiffres correspondant au jour à partir d'une date de format "dd/MM/yyyy"
+   * @param date
+   * @return les 2 chiffres du jour
+   */
+  public static String getDayFromDate(String date) {
+    if (Util.isEmpty(date) || date.length()!=10) return "";
+    return date.substring(0,2);
+  }
+  
+  /**
+   * Récupère les 2 chiffres correspondant au mois à partir d'une date de format "dd/MM/yyyy"
+   * @param date
+   * @return les 2 chiffres du mois
+   */
+  public static String getMonthFromDate(String date) {
+    if (Util.isEmpty(date) || date.length()!=10) return "";
+    return date.substring(3,5);
+  }
+  
+  /**
+   * Récupère les 4 chiffres correspondant à l'année à partir d'une date de format "dd/MM/yyyy"
+   * @param date
+   * @return les 4 chiffres de l'année
+   */
+  public static String getYearFromDate(String date) {
+    if (Util.isEmpty(date) || date.length()!=10) return "";
+    return date.substring(6,10);
+  }  
+  
+  
 	
 	/**
      * G�n�re un string � partir du contenu d'un InputStream
