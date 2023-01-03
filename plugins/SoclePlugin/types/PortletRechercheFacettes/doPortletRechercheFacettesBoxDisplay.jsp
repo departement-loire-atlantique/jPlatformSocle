@@ -207,13 +207,15 @@
                              <% 
                              Boolean isSelect = Util.notEmpty(request.getAttribute("isSelectFacette")) ? (Boolean) request.getAttribute("isSelectFacette") : false ;
                              Boolean isBoolean = itFacette instanceof PortletFacetteBooleen;
+                             String dataEnabledByField = (String) request.getAttribute("dataEnabledByField");
                              %>
      
-                             <div class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %>  <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
+                             <div <%= dataEnabledByField %> class='ds44-fieldContainer ds44-fg1 <%= isBoolean ? "all-wauto" : "" %>  <%= isSelect ? "ds44-fieldContainer--select" : "" %>'>
                                  <%= itFacetteBuffer %>
                              </div>
                              
                              <% request.removeAttribute("isSelectFacette"); %>
+                             <% request.removeAttribute("dataEnabledByField"); %>
      
                          </jalios:foreach>
                          <% request.removeAttribute("isFilter"); %>
