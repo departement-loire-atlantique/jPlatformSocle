@@ -45,6 +45,7 @@ int maxResult = box.getMaxResults();
 if(Util.notEmpty(collection) && "true".equalsIgnoreCase(request.getParameter("sectorisation"))) {
   request.setAttribute("communeHorsSectorisation", true);
   QueryHandler qhCommune = new QueryHandler(box.getQueries()[0]);
+  qhCommune.setLoggedMember(loggedMember);
   Set resultCommuneSet = qhCommune.getResultSet();
   request.removeAttribute("communeHorsSectorisation");
   
