@@ -15,7 +15,7 @@
 					class="mbm ds44-logo ds44-valignTop ds44-inblLinks" /></li>
 				<li class="ds44-inlineBlock"><img
 					src="//design.loire-atlantique.fr/assets/images/logos/footer/Caisse_d_allocations_familiales_france_logo.png"
-					alt="Caisse l'allocations familiales de France"
+					alt="Caisse d'allocations familiales de France - CAF de Loire-Atlantique"
 					class="ds44-logo--label ds44-valignTop ds44-inblLinks" /></li>
 			</ul>
 		</div>
