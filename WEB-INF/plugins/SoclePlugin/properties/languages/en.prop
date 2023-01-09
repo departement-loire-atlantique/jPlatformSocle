@@ -519,6 +519,8 @@ jcmsplugin.socle.facette.filtrer-par: Filter by
 jcmsplugin.socle.facette.form-element: form-element
 jcmsplugin.socle.facette.effacer-contenu: Clear
 jcmsplugin.socle.facette.effacer-contenu-champ: Clear: {0}
+jcmsplugin.socle.facette.afficher-contenu: Display
+jcmsplugin.socle.facette.afficher-contenu-champ: Display: {0}
 jcmsplugin.socle.facette.adresse.default-label: Address
 jcmsplugin.socle.facette.canton.default-label: Canton
 jcmsplugin.socle.facette.categorie.default-label: Topic
