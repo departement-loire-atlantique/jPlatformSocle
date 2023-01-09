@@ -264,8 +264,7 @@
 					<div class='ds44-select__shape <%= "ds44-inp" + styleChamps %> ds44-inputDisabled'>
 						<p id="label-rayon-<%= idFormElement %>" class="ds44-selectLabel" aria-hidden="true">
 							<%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.rayon.label") %><%= isFacetteObligatoire ? "<sup aria-hidden=\"true\">*</sup>" : "" %>
-						</p>
-						<input class="ds44-input-value" type="hidden" value="">
+						</p>						
 						<div id='rayon-<%= idFormElement %>' class="ds44-js-select-standard ds44-selectDisplay" name="rayon"></div>
 						<button class="ds44-reset" type="button">
 							<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
@@ -292,7 +291,8 @@
 									aria-required="true">
 								<jalios:if predicate="<%= Util.notEmpty(setRayons) %>">
 									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
-										<li class="ds44-select-list_elem" 
+									    <% String itCatExtraData = itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping"); %>									   
+										<li class='ds44-select-list_elem <%=  "0".equals(itCatExtraData)  ? "selected_option" : ""  %>' 
 												data-value='<%= Util.notEmpty(itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping")) ? itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping") : itCat.getName() %>' 
 												tabindex="0">
 											<%= itCat.getName() %>

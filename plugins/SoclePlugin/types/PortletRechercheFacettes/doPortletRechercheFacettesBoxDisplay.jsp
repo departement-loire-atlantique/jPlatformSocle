@@ -309,7 +309,8 @@
                       		data-geojson-mode='<%= obj.getNatureDeLaCarte() ? "static" : "dynamic" %>' 
                       		data-geojson-refine='<%= obj.getCarteDynamique() %>'
                       		data-icons-marker='<%= channel.getProperty("jcmsplugin.socle.recherche.map.icon") %>'
-                      		<%= obj.getCluster() ? "data-use-cluster='true' data-cluster-theme='theme-2'" : "" %>></div>
+                      		<%= obj.getCluster() ? "data-use-cluster='true' data-cluster-theme='theme-2'" : "" %>
+                      		<%= obj.getCarteFixe() ? "data-no-refresh" : "" %> ></div>
 				      
 				      <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
 				          <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
