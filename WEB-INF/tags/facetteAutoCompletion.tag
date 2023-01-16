@@ -290,9 +290,8 @@
 									aria-labelledby='<%= "button-message-"+idFormElement %>' 
 									aria-required="true">
 								<jalios:if predicate="<%= Util.notEmpty(setRayons) %>">
-									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>
-									    <% String itCatExtraData = itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping"); %>									   
-										<li class='ds44-select-list_elem <%=  "0".equals(itCatExtraData)  ? "selected_option" : ""  %>' 
+									<jalios:foreach name="itCat" type="Category" collection='<%= setRayons %>'>								   
+										<li class='ds44-select-list_elem'> 
 												data-value='<%= Util.notEmpty(itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping")) ? itCat.getExtraData("extra.Category.jcmsplugin.socle.cat.search.mapping") : itCat.getName() %>' 
 												tabindex="0">
 											<%= itCat.getName() %>
