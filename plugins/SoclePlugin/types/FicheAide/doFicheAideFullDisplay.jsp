@@ -300,7 +300,7 @@
 		                                                </span>
 		                                            </label> 
 		
-		                                            <input type="text" id="<%= idFormElement %>" name="<%= idFormElement %>" class="ds44-inpStd"
+		                                            <input type="text" id="<%= idFormElement %>" name="codeSuivi" class="ds44-inpStd"
 		                                                title='<%= glp("jcmsplugin.socle.ficheaide.modal.suivredemande.codesuivi") %> - <%= glp("jcmsplugin.socle.obligatoire") %>' 
 		                                                required aria-describedby="explanation-<%= idFormElement %>" />
 		                                            <button class="ds44-reset" type="button">
