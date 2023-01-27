@@ -102,7 +102,10 @@ public class SocleChannelListener extends ChannelListener{
 	 * Initialise l'alarmlistener des tokens Infolocale
 	 */
 	private void initInfolocaleTokenAlarmListener() {
-		String schedule = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.schedule");
+    if (!Channel.getChannel().getBooleanProperty("jcmsplugin.socle.infolocale.enabled", true)) {
+      return;
+    }
+	  String schedule = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.schedule");
 		InfolocaleTokenAlarmListener alarmListener = new InfolocaleTokenAlarmListener();
 		AlarmEntry alarmEntry;
 		try {
