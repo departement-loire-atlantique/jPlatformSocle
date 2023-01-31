@@ -23,7 +23,7 @@
                 </jalios:if>
                 <jalios:if predicate="<%= Util.notEmpty(url) %>">
                     <p class="mtm">
-                        <a class="ds44-btnStd" type="button" href="<%= url %>" <%= targetAttr %> <%= titleAttr %>>
+                        <a class="ds44-btnStd" href="<%= url %>" <%= targetAttr %> <%= titleAttr %>>
                             <span class="ds44-btnInnerText"><%= itPush.getLibelleDeLien() %></span>
                             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
                         </a>
