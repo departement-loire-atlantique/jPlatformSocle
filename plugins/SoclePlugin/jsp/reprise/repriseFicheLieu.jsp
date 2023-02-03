@@ -153,8 +153,7 @@ for(Publication itPub : result) {
 		   FicheLieu itFiche = new FicheLieu();
 		   
 		   itFiche.setTitle(itPlace.getTitle());
-		   itFiche.setIdReferentiel(itPlace.getSolisId());
-		   
+		   itFiche.setIdSolis(itPlace.getSolisId());
 		   itFiche.setIdAncienContenu(itPlace.getId());
 		   
 		   itFiche.setSoustitre(itPlace.getServiceOrHubOrUnit());
@@ -188,7 +187,7 @@ for(Publication itPub : result) {
 		   itFiche.setEmail(itPlace.getMails());
 		   itFiche.setSiteInternet(itPlace.getWebsites());
 		   
-		   categories.add(itPlace.getOpenToPublic() ? channel.getCategory("c_1156286") : channel.getCategory("c_1156287"));
+		   categories.add(itPlace.getOpenToPublic() ? channel.getCategory("asm_269312") : channel.getCategory("asm_269313"));
 		   
 		   itFiche.setHorairesEtAcces(itPlace.getHours());
 		   itFiche.setTransportsEnCommun(itPlace.getTransport());

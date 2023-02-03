@@ -39,6 +39,9 @@
     <field name="idAncienContenu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" hidden="true" descriptionType="tooltip">
       <label xml:lang="fr">ID ancien contenu</label>
     </field>
+    <field name="idSolis" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" hidden="true" descriptionType="tooltip">
+      <label xml:lang="fr">ID Solis</label>
+    </field>      
     <!-- Coordonnées -->
     <field name="etageCouloirEscalier" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Étage - couloir - escalier</label>
@@ -181,7 +184,7 @@
     <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root">
       <label xml:lang="fr">Mise en avant</label>
     </field>
-    <field name="serviceDuDepartement" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="c_1285247">
+    <field name="serviceDuDepartement" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.fichelieu.serviceDepartement.root">
       <label xml:lang="fr">Service du Département</label>
     </field>
     <field name="statut" editor="category" required="false" compactDisplay="false" tab="navigation" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.fichelieu.statut.root" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" displayRoot="false">
