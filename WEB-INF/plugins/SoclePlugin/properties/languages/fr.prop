@@ -135,7 +135,7 @@ jcmsplugin.socle.form.candidature.mailTo: Email du destinataire des candidatures
 jcmsplugin.socle.form.candidature.titreArticle: Réponse à une offre d'emploi : {0}
 jcmsplugin.socle.form.candidature.reference-invalide: La référence de cette offre ne correspond pas à un poste valide
 jcmsplugin.socle.form.faq.mailTo: Email du destinataire par défaut des FAQ
-jcmsplugin.socle.form.login.legend: Vous avez déjà  un compte, connectez-vous
+jcmsplugin.socle.form.login.legend: Vous avez déjà un compte, connectez-vous
 jcmsplugin.socle.form.login.valid-compte: Valider l'accès à  votre compte
 jcmsplugin.socle.form.login.memoriser: Rester connecté
 $jcmsplugin.socle.login.redirect.pub: Contenu à viser après authentification pour l'espace presse
