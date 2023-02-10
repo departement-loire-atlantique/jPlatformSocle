@@ -903,11 +903,37 @@ public final class SocleUtils {
 	 * @return
 	 */
 	public static JsonObject categoryToJsonObject(Category cat) {
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("id", cat.getId());
-		jsonObject.addProperty("value", cat.getName());
-		return jsonObject;
+		return categoryToJsonObject(cat, false);
 	}
+	
+	 /**
+   * Retourne une catégorie sous forme de json
+   * @param cat
+   * @return
+   */
+  public static JsonObject categoryToJsonObject(Category cat, Boolean ShowChildren) {
+    JsonObject jsonObject = new JsonObject();
+    jsonObject.addProperty("id", cat.getId());
+    jsonObject.addProperty("value", cat.getName());
+    
+    if(ShowChildren && Util.notEmpty(cat.getChildrenSet())) {
+      JsonArray jsonArrayChildren = new JsonArray();  
+      for(Category itCat : cat.getChildrenSet()) {
+        jsonArrayChildren.add(categoryToJsonObject(itCat));
+      }     
+      jsonObject.add("children", jsonArrayChildren);
+    }         
+    return jsonObject;
+  }
+  
+  /**
+   * Retourne les catégories sous forme de json
+   * @param categories
+   * @return
+   */
+  public static JsonArray categoriesToJsonArray(Set<Category> categories) {
+    return categoriesToJsonArray(categories, false);
+  }
 	
 	
 	/**
@@ -915,10 +941,10 @@ public final class SocleUtils {
 	 * @param categories
 	 * @return
 	 */
-	public static JsonArray categoriesToJsonArray(Set<Category> categories) {
+	public static JsonArray categoriesToJsonArray(Set<Category> categories, Boolean ShowChildren) {
 		JsonArray jsonArray = new JsonArray();
 		for(Category itCat : categories) {
-			jsonArray.add(categoryToJsonObject(itCat));
+			jsonArray.add(categoryToJsonObject(itCat, ShowChildren));
 		}
 		return jsonArray;
 	}

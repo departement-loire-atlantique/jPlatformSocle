@@ -17,4 +17,4 @@ for(Category itCat : collection) {
 
 
 %><% 
-%><%=  SocleUtils.categoriesToJsonArray(result) %>
+%><%=  SocleUtils.categoriesToJsonArray(result, getBooleanParameter("showChildren", false)) %>

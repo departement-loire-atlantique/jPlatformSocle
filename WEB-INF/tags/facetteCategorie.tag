@@ -133,7 +133,7 @@
         
         <% 
             String classTypeInput = selectionMultiple ? "ds44-js-select-checkbox" : "ds44-js-select-radio"; 
-            classTypeInput = Util.isEmpty(dataURL) && !profondeur ? "ds44-js-select-multilevel" : classTypeInput; 
+            classTypeInput = !profondeur ? "ds44-js-select-multilevel" : classTypeInput; 
         %>
         <div id='<%= idFormElement %>' data-name='<%= dataName + idFormElement %>' class='<%= classTypeInput + " ds44-selectDisplay" %>' 
                 <%= Util.notEmpty(dataURL) ? "data-url=\"" + dataURL + "\"" : "" %> 
@@ -184,9 +184,11 @@
                  </ul>
             </div>
         </jalios:if>
+        
+          
         <jalios:if predicate='<%= Util.notEmpty(dataURL) || profondeur %>'>
             
-            <div class="ds44-listSelect">
+            <div class='ds44-listSelect <%= !profondeur ? "ds44-collapser" : "" %>'>
                 <ul class="ds44-list" id='<%= "listbox-" + idFormElement %>'>
                     <%-- Catégories classiques --%>
                     <jalios:if predicate="<%= Util.notEmpty(listeCategory) %>">

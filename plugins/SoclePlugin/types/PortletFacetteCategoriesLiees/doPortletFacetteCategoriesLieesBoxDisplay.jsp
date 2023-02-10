@@ -62,7 +62,7 @@
 	<% PortletFacetteCategorie facetteLie = obj.getFacetteLiee(); %>
 	<ds:facetteCategorie obj='<%= facetteLie %>' 
 			listeCategory='<%= facetteLie.getCategoriesRacines(loggedMember) %>' 
-			dataURL="plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp" 
+			dataURL='<%= "plugins/SoclePlugin/jsp/facettes/searchCategoriesLiees.jsp?showChildren=" + !facetteLie.getProfondeur()  %>'
 			idFormElement='<%= idFormElement+"-2" %>' 
 			isDisabled='<%= true %>' 
 			request='<%= request %>' 
