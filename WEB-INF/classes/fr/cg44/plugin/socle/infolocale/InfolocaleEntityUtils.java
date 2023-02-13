@@ -1108,10 +1108,17 @@ public class InfolocaleEntityUtils {
 	  Map<String, Set<Genre>> genresWithLabels = new LinkedHashMap<>();
 	  
 	  String idLbl = "id";
+	  String v2Arraylbl = "enfants";
 	  
 	  try {      
       for(int i = 0 ; i < objListeThematiques.length() ; i++) {
-        JSONArray listeThematiques = objListeThematiques.getJSONArray(objListeThematiques.names().getString(i));
+        JSONArray listeThematiques;
+        
+        if (objListeThematiques.has(v2Arraylbl)) {
+          listeThematiques = objListeThematiques.getJSONArray(v2Arraylbl);
+        } else {
+          listeThematiques = objListeThematiques.getJSONArray(objListeThematiques.names().getString(i));
+        }
         
         for (int counterThematiques = 0; counterThematiques < idThematiques.length; counterThematiques++) {
           if (Util.isEmpty(lblThematiques[counterThematiques])) continue;
@@ -1130,7 +1137,7 @@ public class InfolocaleEntityUtils {
         }
       }
     } catch (JSONException e) {
-      LOGGER.warn("Exception sur getAllGenreOfThematiques : "+ e.getMessage());
+      LOGGER.warn("Exception sur getGenresWithLabelFromObject : "+ e.getMessage());
     }
 	  
 	  return genresWithLabels;
@@ -1155,7 +1162,7 @@ public class InfolocaleEntityUtils {
     try {
       if (Util.isEmpty(fluxMetadataGenres) || !fluxMetadataGenres.getBoolean("success")
           || fluxMetadataGenres.isNull(listMetadataLbl)) {
-        LOGGER.warn("getAllGenreOfThematiquesPerso -> aucune thématique perso trouvée (flux " + fluxId + ")");
+        LOGGER.warn("getAllGenresWithLibelle -> aucune thématique perso trouvée (flux " + fluxId + ")");
       }
 
       allStyles = fluxMetadataGenres.getJSONObject(listMetadataLbl).getJSONArray("styles");
@@ -1171,7 +1178,7 @@ public class InfolocaleEntityUtils {
         }
       }
     } catch (JSONException e) {
-      LOGGER.warn("Exception sur getAllGenreOfThematiquesPerso : "+ e.getMessage());
+      LOGGER.warn("Exception sur getAllGenresWithLibelle : "+ e.getMessage());
       return null;
     }
 
