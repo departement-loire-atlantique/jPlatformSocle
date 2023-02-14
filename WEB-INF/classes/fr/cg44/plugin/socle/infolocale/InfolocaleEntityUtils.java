@@ -53,6 +53,8 @@ public class InfolocaleEntityUtils {
     
     private static final String listMetadataLbl = "listMetadata";
     
+    private static final boolean isV2 = Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.flux.url").contains("/v2/");
+    
     /**
      * Créé un tableau d'évenements infolocale à partir de JSON
      * @param jsonArray
@@ -1126,8 +1128,14 @@ public class InfolocaleEntityUtils {
           String listIdGenres = idThematiques[counterThematiques];
           Set<Genre> foundGenres = new TreeSet<>();
           for (int counterJson = 0; counterJson < listeThematiques.length(); counterJson++) {
-            if (listIdGenres.contains(listeThematiques.getJSONObject(counterJson).getString(idLbl))) {
-              foundGenres.add(generateGenreThematiqueFromJson(listeThematiques.getJSONObject(counterJson)));
+            if (isV2) { // le champ "id" est devenu un int sur la v2
+              if (listIdGenres.contains(Integer.toString(listeThematiques.getJSONObject(counterJson).getInt(idLbl)))) {
+                foundGenres.add(generateGenreThematiqueFromJson(listeThematiques.getJSONObject(counterJson)));
+              }
+            } else {
+              if (listIdGenres.contains(listeThematiques.getJSONObject(counterJson).getString(idLbl))) {
+                foundGenres.add(generateGenreThematiqueFromJson(listeThematiques.getJSONObject(counterJson)));
+              }
             }
           }
           if (Util.notEmpty(foundGenres)) {
@@ -1272,7 +1280,11 @@ public class InfolocaleEntityUtils {
           genreObj.setLibelle(jsonGenre.getString("libelle"));
       }
       if (!jsonGenre.isNull("id")) {
-          genreObj.setId(jsonGenre.getString("id"));
+          if (isV2) { 
+            genreObj.setId(Integer.toString(jsonGenre.getInt("id")));
+          } else {
+            genreObj.setId(jsonGenre.getString("id"));
+          }
       }
     } catch (JSONException e) {
       LOGGER.warn("Error in generateGenreThematiqueFromJson : " + e.getMessage());
