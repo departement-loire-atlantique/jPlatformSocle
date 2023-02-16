@@ -43,9 +43,16 @@ public class CategoryFacetUtil {
       
       // Si un enfant d'une catégorie est sélectionné alors
       // la catégorie parente est retirée des cids            
-      List<Category> cidsParamParentCatList = cidsParamCatList.stream().map(Category::getParent).collect(Collectors.toList());
+//      List<Category> cidsParamParentCatList = cidsParamCatList.stream().map(Category::getParent).collect(Collectors.toList());
+      
+      // Tous les asscendants d'une catégorie séléctionné sont retirés
+      List<Category> cidsParamParentCatList = new ArrayList<Category>();
+      for(Category itCat : cidsParamCatList) {
+        cidsParamParentCatList.addAll(itCat.getAncestorList());
+      }           
       List<String> cidsFilterCatIdList = cidsParamCatList.stream().filter(e -> !cidsParamParentCatList.contains(e) ).map(Category::getId).collect(Collectors.toList());
 
+      
       // Récupère les catégories enfants de cette branche de catégorie (permettra de filtrer seulement sur les cids de cette branche)
       String itCidBranche = cidBranches[i];
       Category itCatBranche = getChannel().getCategory(itCidBranche);     
