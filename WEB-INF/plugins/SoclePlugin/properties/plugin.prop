@@ -181,6 +181,7 @@ jcmsplugin.socle.recherche.export.pdf:
 jcmsplugin.socle.recherche.map.icon:
 
 extra.Category.jcmsplugin.socle.cat.search.mapping:
+$id.jcmsplugin.socle.selection.page.cat: 
 
 
 # ------------------------------------------------------------

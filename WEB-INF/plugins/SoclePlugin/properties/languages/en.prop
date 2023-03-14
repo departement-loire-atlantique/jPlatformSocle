@@ -107,6 +107,7 @@ jcmsplugin.socle.category.classementfiledoc: ID catégorie de classement FileDoc
 $jcmsplugin.socle.recherche.facettes.portal: ID du Portail de la recherche à facettes
 jcmsplugin.socle.recherche.facettes.commune.autocomplete.title: Enter your city name
 extra.Category.jcmsplugin.socle.cat.search.mapping: Valeur pour la recherche à facette
+$id.jcmsplugin.socle.selection.page.cat: ID de la catégorie pour la page de séléction (panier) 
 
 # ------------------------------------------------------------
 #  Formulaires

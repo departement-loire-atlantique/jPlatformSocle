@@ -34,6 +34,12 @@
 	request.setAttribute("rechercheId", obj.getId());
 	
 	Set<String> panierSet = (Set<String>) request.getSession().getAttribute("panier");
+	
+	String panierLink = "#";
+	Category panierCat = channel.getCategory("$id.jcmsplugin.socle.selection.page.cat");
+	if(Util.notEmpty(panierCat)) {
+	  panierLink = panierCat.getDisplayUrl(userLocale);
+	}
 %>
 
 
@@ -165,7 +171,7 @@
 							  <jalios:if predicate="<%= obj.getAfficherSelection() %>">
 								<li class="ds44-docListElem">
 									<i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
-									<a href="#" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
+									<a href="<%= panierLink %>" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.selection")) %>'><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
 								</li>
 							  </jalios:if>	
 							  <jalios:if predicate="<%= obj.getAfficherPDF() %>">
@@ -255,7 +261,7 @@
 		            <jalios:if predicate="<%= obj.getAfficherSelection() %>">
 			            <li class="ds44-docListElem">
 			                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>			                
-			                <a href="#"><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
+			                <a href="<%= panierLink %>"><%= glp("jcmsplugin.socle.recherche.ma-selection", (Util.isEmpty(panierSet)) ? "0" : panierSet.size() +"") %></a>
 			            </li>
 			        </jalios:if>
 			        <jalios:if predicate="<%= obj.getAfficherPDF() %>">
