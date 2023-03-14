@@ -102,6 +102,13 @@
         type="String" 
         description="Valeur de l'attribut 'aria-described-by'" 
 %>
+<%@ attribute name="dataLimitChar" 
+        required="false" 
+        fragment="false" 
+        rtexprvalue="true" 
+        type="String" 
+        description="Limite minimale de caractères pour lancer une recherche" 
+%>
 <% 
 	String userLang = Channel.getChannel().getCurrentJcmsContext().getUserLang();
 	String styleChamps = Util.notEmpty(request.getAttribute("showFiltres")) && (Boolean)request.getAttribute("showFiltres") || (Util.notEmpty(isLarge) && !isLarge) ? "Std" : "Large"; 
@@ -165,7 +172,8 @@
 							data-mode='<%= dataMode %>'
 							data-enabled-field-value='44109*',
 							data-url-prefix=", 44"
-							<%= isFacetteObligatoire ? "required" : ""%> />
+							<%= isFacetteObligatoire ? "required" : ""%> 
+							<%= Util.notEmpty(dataLimitChar) ? "data-limit-char='" + dataLimitChar + "'" : "" %>/>
 					<button class="ds44-reset" type="button">
 						<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i> 
 						<span class="visually-hidden"><%= JcmsUtil.glp(userLang, "jcmsplugin.socle.facette.effacer-contenu-champ", label) %></span>
@@ -376,7 +384,8 @@
 					data-url='<%= dataUrl %>' 
 					data-mode='<%= dataMode %>'
 					<%= Util.notEmpty(title) ? "title=\""+title+"\"" : ""%>
-					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> />
+					<%= isFacetteObligatoire ? "required aria-required=\"true\"" : ""%> 
+					<%= Util.notEmpty(dataLimitChar) ? "data-limit-char='" + dataLimitChar + "'" : "" %>/>
 
 			<button class="ds44-reset" type="button">
 				<i class="icon icon-cross icon--<%= styleChamps3 %>" aria-hidden="true"></i>
