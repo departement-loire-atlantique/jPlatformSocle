@@ -7,7 +7,7 @@
 
 <input type="hidden" name='<%= "afficheCommunes" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAfficherLesCommunesConcernees() %>" data-technical-field />
 <input type="hidden" name='<%= "afficheEpci" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getAfficherLesEPCIConcernes() %>" data-technical-field />
-
+<input type="hidden" name='<%= "afficheLiens" + glp("jcmsplugin.socle.facette.form-element") %>' value="<%= obj.getTuileMultiLiens() %>" data-technical-field />
 
 
 <input type="hidden" name='<%= "modCatBranchesUnion" + glp("jcmsplugin.socle.facette.form-element") %>' value='<%= obj.getModeDesBranches() %>' data-technical-field />
