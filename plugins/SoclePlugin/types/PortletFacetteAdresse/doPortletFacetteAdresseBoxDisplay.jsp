@@ -24,6 +24,7 @@ request.setAttribute("facetteType", "adresse");
 		option='<%= Util.notEmpty(obj.getRayon(loggedMember)) ? "rayon" : "" %>'
 		setRayons="<%= Util.notEmpty(obj.getRayon(loggedMember)) ? obj.getRayon(loggedMember) : new TreeSet<Category>() %>"
 		autourMoi="<%= obj.getAutourDeMoi() %>"
-		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'/>
+		isLarge='<%= !isInRechercheFacette && !isInEncadre %>'
+		dataLimitChar="3"/>
 		
 <% request.removeAttribute("facetteType"); %>
