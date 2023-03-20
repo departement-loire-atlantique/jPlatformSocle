@@ -17,6 +17,7 @@ boolean noPic = "true".equals(request.getParameter("noPic"));
 boolean isPartenaire = "true".equals(request.getParameter("isPartenaire")) && Util.isEmpty(pub.getServiceDuDepartement(loggedMember));
 Boolean displayCommunesConcernees = "true".equals(request.getParameter("afficheCommunes"));
 Boolean displayEPCIConcernees = "true".equals(request.getParameter("afficheEpci"));
+Boolean displayLinks = "true".equals(request.getParameter("afficheLiens"));
 
 Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootCatId"));
 %>
@@ -111,6 +112,93 @@ Category tagRootCat = channel.getCategory((String)request.getAttribute("tagRootC
           
           <jalios:if predicate="<%= displayEPCIConcernees && Util.notEmpty(pub.getEpci(loggedMember)) %>">
               <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.fichearticle.tuile.epci.label") %> : </span><%= JcmsUtil.join(pub.getEpci(loggedMember), ", ", userLang) %></p>
+          </jalios:if>
+          
+          <jalios:if predicate="<%= displayLinks %>">
+              <jalios:if predicate='<%=Util.notEmpty(pub.getEmail())%>'>
+			    <jalios:select>
+			        <jalios:if predicate='<%=pub.getEmail().length > 1%>'>
+			            <div class="ds44-docListElem mts">
+			        </jalios:if>
+			        <jalios:default>
+			            <p class="ds44-docListElem mts">
+			        </jalios:default>
+			    </jalios:select>
+			    <i class="icon icon-mail ds44-docListIco" aria-hidden="true"></i>
+			    <jalios:if predicate='<%=pub.getEmail().length == 1%>'>
+				    <%
+				    String email = pub.getEmail()[0];
+				    %>
+				    <a href='<%="mailto:" + email%>'
+				        title='<%=HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", pub.getTitle(), email))%>'
+				        data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(pub.getTitle())%>"}'>
+				    <%=glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")%>
+				    </a>
+			    </jalios:if>
+			    <jalios:if predicate='<%=pub.getEmail().length > 1%>'>
+				    <ul class="ds44-list">
+				    <jalios:foreach name="email" type="String" array='<%=pub.getEmail()%>'>
+					    <li><a href='<%="mailto:" + email%>'
+					        title='<%=HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", pub.getTitle(), email))%>'
+					        data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Mailto","label": "<%=HttpUtil.encodeForHTMLAttribute(pub.getTitle())%>"}'>
+					    <%=email%>
+					    </a></li>
+				    </jalios:foreach>
+				    </ul>
+			    </jalios:if>
+			    <jalios:select>
+				    <jalios:if predicate='<%=pub.getEmail().length > 1%>'>
+				        </div>
+				    </jalios:if>
+				    <jalios:default>
+				        </p>
+				    </jalios:default>
+			    </jalios:select>
+			</jalios:if>
+			
+			<jalios:if predicate='<%=Util.notEmpty(pub.getSiteInternet())%>'>
+			    <jalios:select>
+			        <jalios:if predicate='<%=pub.getSiteInternet().length > 1%>'>
+			            <div class="ds44-docListElem mts">
+			        </jalios:if>
+			        <jalios:default>
+			            <p class="ds44-docListElem mts">
+			        </jalios:default>
+			    </jalios:select>
+			    <i class="icon icon-link ds44-docListIco" aria-hidden="true"></i>
+			    <jalios:if predicate='<%=pub.getSiteInternet().length == 1%>'>
+			        <%
+			        String site = pub.getSiteInternet()[0];
+			        %>
+				    <a href='<%=SocleUtils.parseUrl(site)%>'
+				        title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", pub.getTitle())%>'
+				        target="_blank"
+				        data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(pub.getTitle())%>"}'>
+				    <%=glp("jcmsplugin.socle.ficheaide.visiter-site.label")%>
+				    </a>
+			    </jalios:if>
+			    <jalios:if predicate='<%=pub.getSiteInternet().length > 1%>'>
+				    <ul class="ds44-list">
+				    <jalios:foreach name="site" type="String" array='<%=pub.getSiteInternet()%>'>
+					    <li><a href='<%=SocleUtils.parseUrl(site)%>'
+					        title='<%=glp("jcmsplugin.socle.lien.site.nouvelonglet", site)%>'
+					        target="_blank"
+					        data-statistic='{"name": "declenche-evenement","category": "BlocNousContacter","action": "Site web","label": "<%=HttpUtil.encodeForHTMLAttribute(pub.getTitle())%>"}'>
+					    <%=SocleUtils.parseUrl(site)%>
+					    </a></li>
+				    </jalios:foreach>
+				    </ul>
+			    </jalios:if>
+			    <jalios:select>
+				    <jalios:if predicate='<%=pub.getSiteInternet().length > 1%>'>
+				         </div>
+				    </jalios:if>
+				    <jalios:default>
+				         </p>
+				    </jalios:default>
+			    </jalios:select>
+			</jalios:if>
+			
           </jalios:if>
 		  
       </div>
