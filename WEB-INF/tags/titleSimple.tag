@@ -137,7 +137,7 @@ if(Util.notEmpty(video)) {
         <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
     </jalios:if>
     
-    <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablet-reduced-pt">
+    <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablet-augment-pt">
         <div class="ds44-grid12-offset-2">
             <jalios:if predicate='<%=breadcrumb && Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")) %>'>
                 <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id") %>'/>
