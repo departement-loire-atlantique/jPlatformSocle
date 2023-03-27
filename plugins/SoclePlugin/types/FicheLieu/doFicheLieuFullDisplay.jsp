@@ -15,9 +15,11 @@
 
     <div class='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) ? "ds44-js-results-card" : "ds44-lightBG ds44-posRel"%>'>
         <%-- bouton Retour a la liste --%>
-        <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+        <p class="ds44-noMrg">
+            <%@ include file="/plugins/SoclePlugin/jsp/facettes/doRetourListe.jspf" %>
+        </p>
         
-        <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablette-reduced-pt">
+        <div class="ds44-inner-container ds44--xl-padding-t ds44--m-padding-b ds44-tablet-augment-pt">
             <div class="ds44-grid12-offset-2">
                 <jalios:if predicate='<%=Util.notEmpty(Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id"))%>'>
                     <jalios:include id='<%=Channel.getChannel().getProperty("jcmsplugin.socle.portlet.filariane.id")%>' />
