@@ -337,6 +337,37 @@
 
 
 <% 
+Boolean showModalSearch = getBooleanParameter("showModalSearch[value]", false);
+%>
+
+<jalios:if predicate="<%= showModalSearch %>">
+
+
+	<button class="ds44-btnStd ds44-btn--invert ds44-btnQuestion ds44-btnLeft ds44-btn-fixed ds44-js-button-sticky" type="button" data-target="#contactRelais" data-js="ds44-modal">
+	    <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.modal.button.lbl") %></span><i class="icon icon-help icon--sizeL" aria-hidden="true"></i>
+	</button>
+
+
+	<section class="ds44-modal-container" id="contactRelais" data-search-modal role="dialog" aria-modal="true" aria-labelledby="overlay-faire-demande-title">
+	    <div class="ds44-modal-box ds44-whiteBG ">
+	        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer l'aide : Contacter votre relais" data-js="ds44-modal-action-close">
+	            <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+	        </button>
+	        <h1 id="overlay-faire-demande-title" class="h2-like"><%= glp("jcmsplugin.socle.modal.title") %></h1>
+	        <div class="ds44-modal-gab">
+	            <p><%= glp("jcmsplugin.socle.modal.description") %></p>
+	            
+	            <div data-search-modal-content>           	                    	            
+	            
+	          	</div>
+	        
+	        </div>
+	    </div>
+	</section>
+
+</jalios:if>
+
+<% 
 request.removeAttribute("rechercheId");
 %>
 

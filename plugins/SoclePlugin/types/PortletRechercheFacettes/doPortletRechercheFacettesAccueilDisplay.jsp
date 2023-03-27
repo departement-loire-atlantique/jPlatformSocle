@@ -48,7 +48,10 @@ request.setAttribute("rechercheId", obj.getId());
 	            </jalios:foreach>
 	            
 	            <% request.removeAttribute("IsInEncadre"); %>
-	         
+	           
+	           
+	            <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />
+	           
 	            
 	            <%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
 	            
