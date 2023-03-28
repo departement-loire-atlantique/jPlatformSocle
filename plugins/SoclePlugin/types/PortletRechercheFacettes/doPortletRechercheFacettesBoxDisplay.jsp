@@ -237,10 +237,20 @@
 			<%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
 		
 	
+		   
 		    
-		    <jalios:if predicate='<%= HttpUtil.hasParameter(request, "redirectUrl") %>'>
-		      <input type="hidden" name="redirectUrl" value="<%= request.getParameter("redirectUrl") %>" data-technical-field />
-		    </jalios:if>
+		    <jalios:select>
+		    
+			    <jalios:if predicate='<%= HttpUtil.hasParameter(request, "redirectUrl") %>'>
+			      <input type="hidden" name="redirectUrl" value="<%= request.getParameter("redirectUrl") %>" data-technical-field />
+			    </jalios:if>
+			    
+			     <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
+	              <input type="hidden" name="redirectUrl" value='<%= channel.getProperty("jcmsplugin.socle.recherche.accueil.jsp.display") %>' data-technical-field />   
+	              <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />         
+	            </jalios:if> 
+            
+            </jalios:select>
 		    
 		</form>
 	</div>

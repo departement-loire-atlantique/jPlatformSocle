@@ -181,6 +181,14 @@
       <offLabel xml:lang="en">No</offLabel>
       <offLabel xml:lang="fr">Non</offLabel>
     </field>
+    <field name="utiliserLeMoteurSpecifique" editor="boolean" required="false" compactDisplay="false" type="boolean" default="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Utiliser le moteur spécifique</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Permet d'utiliser le moteur de recherche défini dans la propriété "jcmsplugin.socle.recherche.accueil.jsp.display"&lt;/p&gt;&lt;/div&gt;</description>
+      <onLabel xml:lang="en">Yes</onLabel>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="en">No</offLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
     <field type="super" />
   </fields>
   <label xml:lang="fr">Portlet Recherche Facettes</label>
