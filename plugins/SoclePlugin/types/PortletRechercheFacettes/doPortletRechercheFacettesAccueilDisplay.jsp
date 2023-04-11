@@ -56,7 +56,7 @@ request.setAttribute("rechercheId", obj.getId());
 	            <%@ include file='/plugins/SoclePlugin/types/PortletRechercheFacettes/doSearchHiddenParams.jspf' %>
 	            
 	            
-	            <button class="ds44-btnStd ds44-bntFullw ds44-bntALeft ds44-btn--contextual" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lancer.recherche")) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
+	            <button style="z-index: 1" class="ds44-btnStd ds44-bntFullw ds44-bntALeft ds44-btn--contextual" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.lancer.recherche")) %>'><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.rechercher") %></span><i class="icon icon-long-arrow-right" aria-hidden="true"></i></button>
 	            
 	        
 	        </form>
