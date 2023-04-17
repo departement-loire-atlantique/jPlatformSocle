@@ -780,8 +780,12 @@ public final class SocleUtils {
     return publicationToJsonObject(pub, latitude, longitude, null, pubListGabarit, pubMarkerGabarit, pubFullGabarit);
   }
 	
+  
+  public static JsonObject publicationToJsonObject(Publication pub, String latitude, String longitude, String icon, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+    return publicationToJsonObject(pub, "", latitude, longitude, icon, pubListGabarit, pubMarkerGabarit, pubFullGabarit);
+  }
 	
-	 public static JsonObject publicationToJsonObject(Publication pub, String latitude, String longitude, String icon, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+	 public static JsonObject publicationToJsonObject(Publication pub, String sufixId, String latitude, String longitude, String icon, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
 	   JsonObject jsonObject = new JsonObject();
 	    String id = pub instanceof Canton ? String.valueOf(((Canton) (pub)).getCantonCode()) : pub.getId();
 	    
@@ -803,7 +807,7 @@ public final class SocleUtils {
 	        jsonObject.addProperty("target", "_blank");
 	      }     
 	    }
-	    jsonObject.addProperty("id", id);
+	    jsonObject.addProperty("id", id + sufixId);
 	    jsonMetaObject.addProperty("url", url);
 	    // Cas particulier pour le type de contenu Contact
 	    if (pub instanceof Contact) {
