@@ -27,3 +27,4 @@
 	</div>
 
 </section>
+<jalios:include target="ASSMAT_FOOTER_BOTTOM" />
