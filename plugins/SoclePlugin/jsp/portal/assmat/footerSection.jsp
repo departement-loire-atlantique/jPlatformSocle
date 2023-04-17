@@ -27,4 +27,4 @@
 	</div>
 
 </section>
-<jalios:include target="ASSMAT_FOOTER_BOTTOM" />
+<jalios:include target="SOCLE_FOOTER_BOTTOM" />
