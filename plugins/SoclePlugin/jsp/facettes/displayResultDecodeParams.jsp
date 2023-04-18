@@ -12,6 +12,11 @@
 
 response.setContentType("application/json");
 
+
+URL rechercheUrl = new URL(ServletUtil.getUrl(request));
+String urlRecherche = "http://localhost:9080/jcms/jcms/commun-portail-page-recherche-a-facettes/fr/asm_268792?" + rechercheUrl.getQuery() + "&boxIdform-element%5Bvalue%5D=asm_268788";
+session.setAttribute("urlRecherche", urlRecherche);
+
 Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
 // Si la ré-écriture d'url est activé alors enregistrement en BDD

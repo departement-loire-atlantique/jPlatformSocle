@@ -277,7 +277,7 @@
 			        <jalios:if predicate="<%= obj.getAfficherPDF() %>">
 			            <li class="ds44-docListElem">
 			                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-			                <a href="#"><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+			                <a href='<%= request.getContextPath() %><%= channel.getProperty("jcmsplugin.socle.recherche.export.pdf") %>' target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 			            </li>
 		            </jalios:if>
 		            <jalios:if predicate="<%= obj.getAfficherCSV() %>">

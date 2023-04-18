@@ -1,4 +1,12 @@
 <%-- Bouton retour à la liste de recherche à facettes --%>
+<%
+
+String link = (String) session.getAttribute("urlRecherche");
+
+if(Util.notEmpty(request.getAttribute("urlRetour"))) {
+  link = (String) request.getAttribute("urlRetour");
+}
+%>
 <jalios:select> 
 	<jalios:if predicate='<%= Util.notEmpty(request.getAttribute("isSearchFacetPanel")) %>'>
 	    <button class="ds44-btnStd ds44-mt2 ds44-mb3" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glpd("jcmsplugin.socle.retourALaListeLieux")) %>'> 
@@ -7,9 +15,18 @@
 	    </button>
 	</jalios:if>
 	<jalios:if predicate='<%= Util.notEmpty(session.getAttribute("isSearchFacetLink")) %>'>
-	   <a href='#' onclick="history.back(); return false;" class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glpd("jcmsplugin.socle.retourALaListeLieux")) %>'> 
+	   <a href='<%= link %>' onclick='<%= Util.notEmpty(link) ? "" : "history.back(); return false;" %>' class="ds44-btnStd ds44-btnStd--retourPage" title='<%= HttpUtil.encodeForHTMLAttribute(JcmsUtil.glpd("jcmsplugin.socle.retourALaListe.title")) %>'> 
             <i class="icon icon-long-arrow-left" aria-hidden="true"></i> 
-            <span class="ds44-btnInnerText"><%= JcmsUtil.glpd("jcmsplugin.socle.retourALaListe") %></span>
+            <span class="ds44-btnInnerText">
+                <jalios:select>
+	                <jalios:if predicate='<%= Util.notEmpty(request.getAttribute("libelle")) %>'>
+	                    <%= request.getAttribute("libelle") %>
+	                </jalios:if>
+	                <jalios:default>
+	                    <%= JcmsUtil.glpd("jcmsplugin.socle.retourALaListe") %>
+	                </jalios:default>
+                </jalios:select>
+            </span>
         </a>
 	</jalios:if>
 </jalios:select> 
