@@ -34,7 +34,7 @@ String langLabel = glp("jcmsplugin.socle.multilingue.version.label");
 String langTitle = glp("jcmsplugin.socle.multilingue.version.title", glp("jcmsplugin.seo.meta-title"));
 String changeLangUrl = "";
 String siteName = SEOUtils.getSiteName();
-boolean isHome = PortalManager.getHomeCategory().equals(currentCategory) ? true : false;
+boolean isHome = channel.getCategory(channel.getProperty("channel.default-index")).equals(currentCategory) ? true : false;
 String altValue = isHome ? siteName : glp("jcmsplugin.socle.retour.accueil", siteName);  
 
 if(multilingue){
@@ -73,7 +73,7 @@ boolean hideSocialNetworkds = channel.getBooleanProperty("jcmsplugin.socle.heade
                 <div class="ds44-colLeft">
                     <p class="ds44-logoContainer">
 	                    <jalios:if predicate='<%= !isHome %>'>
-	                        <a href="index.jsp">
+	                        <a href="<%= channel.getCategory(channel.getProperty("channel.default-index")).getDisplayUrl(userLocale) %>">
 	                    </jalios:if>
 	                        <picture class="ds44-logo">
 	                            <jalios:if predicate='<%= Util.notEmpty(channel.getProperty("jcmsplugin.socle.site.src.logomobile")) %>'>
