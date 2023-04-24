@@ -27,3 +27,4 @@
 	</div>
 
 </section>
+<jalios:include target="SOCLE_FOOTER_BOTTOM" />
