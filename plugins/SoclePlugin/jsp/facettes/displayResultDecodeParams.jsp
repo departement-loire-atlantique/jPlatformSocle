@@ -12,6 +12,12 @@
 
 response.setContentType("application/json");
 
+
+URL rechercheUrl = new URL(ServletUtil.getUrl(request));
+Publication recherchePortal = channel.getPublication("$jcmsplugin.socle.recherche.facettes.portal");
+String urlRecherche = recherchePortal.getDisplayUrl(userLocale) + "?" + rechercheUrl.getQuery();
+session.setAttribute("urlRecherche", urlRecherche);
+
 Map<String, String[]> parametersMap = SocleUtils.getFacetsParameters(request);
 
 // Si la ré-écriture d'url est activé alors enregistrement en BDD

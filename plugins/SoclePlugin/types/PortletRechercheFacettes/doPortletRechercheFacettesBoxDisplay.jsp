@@ -245,12 +245,14 @@
 			      <input type="hidden" name="redirectUrl" value="<%= request.getParameter("redirectUrl") %>" data-technical-field />
 			    </jalios:if>
 			    
-			     <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
+			    <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
 	              <input type="hidden" name="redirectUrl" value='<%= channel.getProperty("jcmsplugin.socle.recherche.accueil.jsp.display") %>' data-technical-field />   
-	              <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />         
-	            </jalios:if> 
-            
+	            </jalios:if>            
             </jalios:select>
+            
+            <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
+                <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />                        
+            </jalios:if>
 		    
 		</form>
 	</div>
@@ -277,7 +279,7 @@
 			        <jalios:if predicate="<%= obj.getAfficherPDF() %>">
 			            <li class="ds44-docListElem">
 			                <i class="icon icon-pdf ds44-docListIco" aria-hidden="true"></i>
-			                <a data-link-has-result href='<%= request.getContextPath() %><%= channel.getProperty("jcmsplugin.socle.recherche.export.pdf") %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
+			                <a data-link-has-result href='<%= request.getContextPath() %><%= channel.getProperty("jcmsplugin.socle.recherche.export.pdf") %>' target="_blank" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.export.pdf")) %>'><%= glp("jcmsplugin.socle.recherche.export.pdf") %></a>
 			            </li>
 		            </jalios:if>
 		            <jalios:if predicate="<%= obj.getAfficherCSV() %>">
