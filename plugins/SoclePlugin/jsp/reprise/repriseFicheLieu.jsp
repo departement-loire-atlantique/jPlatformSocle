@@ -153,7 +153,7 @@ for(Publication itPub : result) {
 		   FicheLieu itFiche = new FicheLieu();
 		   
 		   itFiche.setTitle(itPlace.getTitle());
-		   itFiche.setIdSolis(itPlace.getIdSolid());
+		   itFiche.setIdSolis(itPlace.getSolisId());
 		   itFiche.setIdAncienContenu(itPlace.getId());
 		   
 		   itFiche.setSoustitre(itPlace.getServiceOrHubOrUnit());
