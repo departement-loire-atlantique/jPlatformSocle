@@ -245,12 +245,14 @@
 			      <input type="hidden" name="redirectUrl" value="<%= request.getParameter("redirectUrl") %>" data-technical-field />
 			    </jalios:if>
 			    
-			     <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
+			    <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
 	              <input type="hidden" name="redirectUrl" value='<%= channel.getProperty("jcmsplugin.socle.recherche.accueil.jsp.display") %>' data-technical-field />   
-	              <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />         
-	            </jalios:if> 
-            
+	            </jalios:if>            
             </jalios:select>
+            
+            <jalios:if predicate="<%= obj.getUtiliserLeMoteurSpecifique() %>">
+                <input type="hidden" name='showModalSearch' value='<%= true %>' data-technical-field />                        
+            </jalios:if>
 		    
 		</form>
 	</div>
