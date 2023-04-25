@@ -20,10 +20,11 @@ if(Util.notEmpty(pub)){
     } else {
       panierSet.add(pubIdString);
     }
-  }
-  
-  session.setAttribute("panier", panierSet);
- 
+  } 
+  session.setAttribute("panier", panierSet); 
+} else if(Util.notEmpty(request.getParameter("removeAll"))) {
+  panierSet.clear();
+  session.setAttribute("panier", panierSet); 
 }
 
 
