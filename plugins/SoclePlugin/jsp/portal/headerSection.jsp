@@ -98,15 +98,30 @@ boolean hideSocialNetworkds = channel.getBooleanProperty("jcmsplugin.socle.heade
                            <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.rechercher")%></span><i class="icon icon-magnifier icon--large" aria-hidden="true"></i>
                         </button>
                     </jalios:if>
+                    
+                    
+                    
+                    <jalios:include target="DISPLAY_BEFORE_HEADER_LIST_CAT" targetContext="empty" />
+                    
+                    
                     <jalios:foreach array="<%= headerCatList %>" name="itCat" type="Category">
                         <a href="<%= itCat.getDisplayUrl(userLocale) %>" class="ds44-btnIcoText--maxi ds44--xl-padding"><span class="ds44-btnInnerText"><%= itCat.getName() %></span><i class="icon <%= itCat.getIcon() %> icon--large" aria-hidden="true"></i></a>                          
                     </jalios:foreach>
+                    
+                    
+                    <jalios:include target="DISPLAY_AFTER_HEADER_LIST_CAT" targetContext="empty" />
+                                     
+                    
                     <button class="ds44-btn--menu ds44-btnIcoText--maxi ds44-btn--contextual ds44--xl-padding" type="button" aria-label="<%=glp("jcmsplugin.socle.menu.ouvrir")%>" aria-controls="menu" id="open-menu">
                        <span class="ds44-btnInnerText"><%=glp("jcmsplugin.socle.menu")%></span><i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
+        
+          
+        <jalios:include target="DISPLAY_BEFORE_BLOC_MENU" targetContext="empty" />   
+                     
 
 		<div class="ds44-blocMenu" aria-hidden="true">
 		        <section class="ds44-menuBox" id="menu">
