@@ -85,10 +85,28 @@ boolean pubNonRepertoriee = SocleUtils.isNonRepertoriee(obj);
 	
        <jalios:if predicate='<%= obj.getEmail().length == 1 %>'>
            <% String email = obj.getEmail()[0]; %>
-           <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(userLang), email)) %>'
-                 data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}' > 
-               <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
-           </a>
+                            
+           <jalios:select>
+                      
+               <jalios:if predicate='<%= obj.containsCategory(channel.getCategory("$jcmsplugin.socle.fichelieu.contact-form.cat")) %>'>                        
+                   <%
+                   Data contactData = channel.getData(channel.getProperty("jcmsplugin.assmatplugin.formulaire.contact.ram"));
+                   if(Util.notEmpty(contactData)){
+                       String contactLien = contactData.getDisplayUrl(userLocale) + "?idRAM=" + encodeForHTML(obj.getId());
+                       %><a href='<%= contactLien %>'><%=glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")%></a><%
+                   }
+                   %>                  
+               </jalios:if>
+                                                           
+               <jalios:default>                    
+                   <a href='<%= "mailto:"+email %>' title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.ficheaide.contacter-x-par-mail.label", obj.getTitle(userLang), email)) %>'
+                        data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(obj.getTitle(userLang)) %>"}' > 
+                       <%=  glp("jcmsplugin.socle.ficheaide.contacter-par-mail.label")  %>
+                   </a>                 
+               </jalios:default>
+                  
+         </jalios:select>
+              
        </jalios:if>
 
        <jalios:if predicate='<%= obj.getEmail().length > 1 %>'>
