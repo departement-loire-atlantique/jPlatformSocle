@@ -1108,3 +1108,5 @@ jcmsplugin.socle.formpageutile.alloweddelay: Page utile : délai en secondes pou
 
 jcmsplugin.socle.fichelieu.asu: Accueil Social Universel
 jcmsplugin.socle.fichelieu.dl.docs: Téléchargez les documents
+
+$jcmsplugin.socle.fichelieu.contact-form.cat : Catégorie de fiche lieu avec formulaire de contact
