@@ -160,6 +160,9 @@
 							}
 							styleCss += " ds44-js-field-address";
 						}
+				        
+				        Boolean isBAN = dataUrl.equals(Channel.getChannel().getProperty("jcmsplugin.socle.autocompletion.adresse.loire.url"));
+				        
 					%>
 					<input type="text" id='<%= idFormElement %>' class='<%= styleCss %>' <%= name.equalsIgnoreCase("adresse") ? "type='text'" : "" %>
 							name='<%= name %>' 
@@ -171,7 +174,7 @@
 							title='<%= titleAttr %>' 
 							data-mode='<%= dataMode %>'
 							data-enabled-field-value='44109*',
-							data-url-prefix=", 44"
+							data-url-prefix='<%= isBAN ? ", 44" : "" %>'
 							<%= isFacetteObligatoire ? "required" : ""%> 
 							<%= Util.notEmpty(dataLimitChar) ? "data-limit-char='" + dataLimitChar + "'" : "" %>/>
 					<button class="ds44-reset" type="button">

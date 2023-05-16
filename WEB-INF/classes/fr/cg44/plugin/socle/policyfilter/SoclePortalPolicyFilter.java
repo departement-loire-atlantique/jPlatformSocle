@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.jalios.jcms.Category;
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.Publication;
+import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcms.plugin.Plugin;
 import com.jalios.jcms.policy.BasicPortalPolicyFilter;
 import com.jalios.jcms.portlet.PortalManager;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.socle.SocleConstants;
 import fr.cg44.plugin.socle.SocleUtils;
 import generated.ContenuRedirection;
 
@@ -45,6 +47,12 @@ public class SoclePortalPolicyFilter extends BasicPortalPolicyFilter {
 	  HttpServletResponse response = getChannel().getCurrentServletResponse();   
 	  Locale userLocale = getChannel().getCurrentUserLocale();  
 
+	  JcmsContext ctxt = getChannel().getCurrentJcmsContext();
+	  
+	  // AS-196 Permet de cacher le menu d'action d'une publication si l'utilsateur n'a pas la topbar 
+    if(ctxt.isLogged() && !ctxt.getLoggedMember().belongsToGroup(getChannel().getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP))) {
+      Channel.getChannel().getCurrentServletRequest().setAttribute("jcms.publication.actions.hide", true);
+    }  
 
 	  // Redirection d'un contenu vers un autre contenu
 	  // Géré par le contenu : Contenu redirection
