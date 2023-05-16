@@ -6,8 +6,8 @@
 	<div class="grid-12-small-1 has-gutter-l">
 	    <div class="col-2-small-1">
 	        <div class="ds44-logo ds44-mb3 ds44-mobile-reduced-mt ds44-mobile-reduced-pt">
-	            <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logofooter") %>' alt="Loire Atlantique" class="mbm">
-	            <img src="//design.loire-atlantique.fr/assets/images/logos/logo-mdph-2023.svg" alt="la MDPH - Maison départementale des personnes handicapées de Loire Atlantique">
+	           <img src="//design.loire-atlantique.fr/assets/images/logos/logo-mdph-2023.svg" alt="la MDPH - Maison départementale des personnes handicapées de Loire Atlantique">
+	           <img src='<%= channel.getProperty("jcmsplugin.socle.site.src.logofooter") %>' alt="Loire Atlantique" class="mbm">
 	        </div>
 	    </div>
 	    <div class="col-5-small-1 ds44-mb3">
