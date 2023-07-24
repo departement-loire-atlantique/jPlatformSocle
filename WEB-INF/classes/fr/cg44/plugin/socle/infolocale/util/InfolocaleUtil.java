@@ -746,9 +746,19 @@ public class InfolocaleUtil {
      * @return
      */
     public static String getHoraireDisplay(EvenementInfolocale event, boolean shortened) {
+      return getHoraireDisplay(event, shortened, 0);
+    }
+    
+    /**
+     * Renvoie un horaire de date infolocale dans un format propre
+     * @param event
+     * @param hortened
+     * @return
+     */
+    public static String getHoraireDisplay(EvenementInfolocale event, boolean shortened, int dateIndex) {
       if (Util.isEmpty(event) || Util.isEmpty(event.getDates()) || (Util.isEmpty(event.getDatesHoraires()) && Util.isEmpty(event.getHoraires()))) return "";
       
-      DateInfolocale currentDate = event.getDates()[0];
+      DateInfolocale currentDate = event.getDates()[dateIndex];
       
       StringBuilder finalHoraire = new StringBuilder();
       

@@ -49,7 +49,7 @@ boolean texteCourtEmpty = Util.isEmpty(obj.getTexteCourt()) || "null".equals(obj
 boolean hasTexteLong = Util.notEmpty(obj.getTexteLong()) && !"null".equals(obj.getTexteLong());
 boolean descEmpty = Util.isEmpty(obj.getDescription()) || "null".equals(obj.getDescription());
 
-String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj, true);
+String displayHoraires = InfolocaleUtil.getHoraireDisplay(obj, true, dateIndex);
 boolean allowHorairesDisplay = Util.notEmpty(displayHoraires) && !displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
 boolean showPlagesHoraires = Util.notEmpty(displayHoraires) && displayHoraires.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent")) ;
 
