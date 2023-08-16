@@ -13,7 +13,7 @@
 
   Publication publication  = pub;
 
-  if (portal.equals(publication)) {
+  if (((Publication)portal).equals(publication)) {
     publication = null;
   }
 
@@ -29,6 +29,14 @@
     if (trace != null) { trace.put("jsp", jsp); } 
     request.setAttribute("isInPortletSelection", Boolean.TRUE); // Deprecated
     jcmsContext.setTemplateUsage(TypeTemplateEntry.USAGE_DISPLAY_FULL);
+    
+    if (jcmsContext.isDebugTemplate()) {
+      jcmsContext.addCSSHeader("css/jalios/ux/jalios-debug-template.css");
+      %><div class="jalios-debug-template publication-template" title="<%= encodeForHTMLAttribute("Template path for usage '"+TypeTemplateEntry.USAGE_DISPLAY_FULL+"'") %>"><%
+        %><% if (publication!=null) { %><code class="jalios-debug-template-class"><%= Util.getClassShortName(publication.getClass()) %></code><br/><% } %><%
+        %><code class="jalios-debug-template-path"><%= jsp %></code><%
+      %></div><%
+    }
 
     %><jsp:include page='<%= "/"+jsp %>' flush="true" /><% 
 
@@ -84,7 +92,7 @@
     if ((publication instanceof PortalElement) && (! (((PortalElement)publication).isChildTreeNode(selection) || selection.equals(publication)))) {
       displayPortlet = (PortalElement) publication;
       %><%@ include file='/jcore/portal/doIncludePortlet.jspf' %><%
-    } else if (!(publication instanceof PortalElement)) { %><div class="selection-wrapper pub-action-toggler-<%= publication.getId() %>"><%
+    } else if (!(publication instanceof PortalElement)) { %><div class="selection-wrapper pub-action-toggler-<%= publication.getId() %> pub-pstatus-<%= publication.getPstatus() %>"><%
       if (includeHF) { %>
         <div class="selection-header"><%@ include file='/jcore/doDisplayHeader.jspf' %></div>
         <% 
@@ -102,8 +110,18 @@
 
       request.setAttribute("isInContentFullDisplay", Boolean.TRUE); // Deprecated
       String displayTemplate = "/" + publication.getTemplatePath(jcmsContext);
-      String selectionMainClasses = hideSelectionSide ? " wide" : ""; 
-      %><% if (!hideSelectionSide) { %><div class="selection-main<%= selectionMainClasses %>"><% } %>
+      String selectionMainClasses = hideSelectionSide ? " wide" : "";
+      %><% if (!hideSelectionSide) { %><div class="selection-main<%= selectionMainClasses %>"><% }
+      
+      if (jcmsContext.isDebugTemplate()) {
+        jcmsContext.addCSSHeader("css/jalios/ux/jalios-debug-template.css");
+        %><div class="jalios-debug-template publication-template" title="<%= encodeForHTMLAttribute("Template path for Publication") %>"><%
+          %><% if (publication!=null) { %><code class="jalios-debug-template-class"><%= Util.getClassShortName(publication.getClass()) %></code><br/><% } %><%
+          %><code class="jalios-debug-template-path"><%= displayTemplate %></code><%
+        %></div><%
+      }
+      
+      %>
         <jsp:include page='<%= displayTemplate %>' flush="true" />
       <% if (!hideSelectionSide) { %></div><% } %><%
       request.removeAttribute("isInContentFullDisplay"); // Deprecated

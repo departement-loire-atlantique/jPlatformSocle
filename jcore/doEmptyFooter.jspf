@@ -7,9 +7,9 @@
 --%><%@page import="com.jalios.util.Util"%><%
 %><%@page import="fr.cg44.plugin.socle.SocleConstants"%><%
 %><%@ include file='/jcore/toastr/doToastr.jspf' %><%
-%><%@ include file="/jcore/wiki/doWikiToolbar.jspf" %>
-<jalios:include target="EMPTY_FOOTER" targetContext="htmlcomments"/>
-<%
+%><%@ include file="/jcore/wiki/doWikiToolbar.jspf" %><%
+%><jalios:include target="EMPTY_FOOTER" targetContext="htmlcomments"/><%= com.jalios.jcms.taglib.LangTag.getLangFormMenu() %><%
+%><%
 if(isLogged){
 %>
 <%= com.jalios.jcms.taglib.LangTag.getLangFormMenu() %>
@@ -33,6 +33,28 @@ boolean serveJS = Util.toBoolean(channel.getProperty("channel.serve-js-to-anonym
 //if (serveJS || isLogged) {
 if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConstants.VISIBLE_TOPBAR_GROUP_PROP)))){
 %>
+
+<%-- JCMS-7048: Propagate some parameters --%>
+<%
+boolean isCssPackerEnabled = com.jalios.jcms.tools.PackerUtils.isCssPackerEnabled();
+boolean isJsPackerEnabled = com.jalios.jcms.tools.PackerUtils.isJsPackerEnabled();
+if (isCssPackerEnabled || isJsPackerEnabled) {
+  boolean noCssPack = hasParameter("no-css-pack");
+  boolean noJsPack = hasParameter("no-js-pack");
+  if (noCssPack || noJsPack) {
+    %>
+    <script <%= cspNonceAttribute %>>
+    // Namespace
+    if (!jQuery.jalios) { jQuery.jalios = {}; }
+    jQuery.extend(true, jQuery.jalios, { "AjaxRefreshPropagation" : {} });
+    <% if (isCssPackerEnabled && noCssPack) { %> jQuery.jalios.AjaxRefreshPropagation.noCssPack = <%= noCssPack %>;
+    <% } %>
+    <% if (isJsPackerEnabled && noJsPack) { %> jQuery.jalios.AjaxRefreshPropagation.noJsPack = <%= noJsPack %>;
+    <% } %>
+    </script>
+  <% } %>
+<% } %>
+
 <script <%= cspNonceAttribute %>>
 /* <![CDATA[ */
   document.t0 = new Date().getTime();
@@ -118,6 +140,16 @@ if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConst
 	}
 }
 %>
+<div id="ajaxWaitIconWrapper" class="hide">
+    <jalios:icon src="ajax-wait" htmlAttributes="id=\"ajaxWaitIcon\"" />
+  </div>
+  <div class="handlebar-templates hide">
+    <script id="jalios-loading-wave" type="text/x-handlebars-template">
+      <jalios:icon src="wait-inline" />
+    </script>
+
+    <%= jcmsContext.getHandlebarTemplates() %>
+</div>
 </body>
 </html>
 <%@ include file='/admin/analytics/doAddEventData.jspf' %>

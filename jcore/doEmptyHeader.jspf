@@ -87,8 +87,9 @@
     trace.put("title", titleOfThePage);
   }
   
+  boolean headerDevMode = channel.getBooleanProperty("channel.dev-mode.enabled", true);
   // Do not perform compile if site is not in devmode
-  if (channel.getBooleanProperty("channel.dev-mode.enabled", true)){
+  if (headerDevMode){
   
 	  // Handle LESS params
 	  if (isLogged && HttpUtil.hasParameter(request, "less-compile")) {
@@ -138,7 +139,7 @@
 %><%= docType %>
 <html <%= htmlLang %> <%= htmlXmlns %> <%= htmlAttrib %> <%= htmlDebug %>>
 <head>
-  <base href="<%= ServletUtil.getBaseUrl(request) %>" <% if (HttpUtil.hasParameter(request, "basetarget")) { %>target="<%= encodeForHTMLAttribute(HttpUtil.getAlphaNumParameter(request, "basetarget", "_blank")) %>"<% } %> />
+  <base href="<%= ServletUtil.getBaseUrl(request) %>" <% if (HttpUtil.hasParameter(request, "basetarget")) { %>target="<%= encodeForHTMLAttribute(HttpUtil.getAlphaNumParameter(request, "basetarget", "_blank")) %>"<% } %> <% if (!ServletUtil.getBaseUrl(request).equals(channel.getSecuredBaseUrl(request))) { %>data-secured-href="<%= encodeForHTMLAttribute(channel.getSecuredBaseUrl(request)) %>"<% } %> />
   
   <meta charset="UTF-8" />
 <%
@@ -180,6 +181,9 @@ if(!inFO || (isLogged && loggedMember.belongsToGroup(channel.getGroup(SocleConst
 <% if (Util.notEmpty(request.getAttribute("customHeaderStyleContent"))) { %>
   <style><%= request.getAttribute("customHeaderStyleContent") %></style>
 <% } %> 
+<% if (Util.notEmpty(request.getAttribute("customHeaderJPortalStyleContent"))) { %>
+  <style data-jalios-jportal-style="true"><%= request.getAttribute("customHeaderJPortalStyleContent") %></style>
+<% } %> 
   
   <script <%= cspNonceAttribute %>>
   /* <![CDATA[ */
@@ -219,13 +223,25 @@ for (Iterator it = jcmsContext.getCustomHeaders().iterator() ; it.hasNext() ; ) 
   if (Util.notEmpty(zoneCss)) {
     classValues += " zone_" + zoneCss;
   }
+  
+  if (headerDevMode) {
+    classValues += " is-dev-mode";
+  }
     
   classValues += " WS_"+workspace.getId();
     
   jcmsContext.addBodyAttributes("class", classValues);
 }
 %>
-<body data-sitename="<%= strTitle %>"<% for (Iterator it = jcmsContext.getBodyAttributes().entrySet().iterator() ; it.hasNext() ; ) { Map.Entry itHeader = (Map.Entry) it.next(); %> <%= itHeader.getKey() %>="<%= itHeader.getValue() %>"<%}%>><jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" /><%
+<body data-channel-name="<%= encodeForHTMLAttribute(channel.getName()) %>" data-sitename="<%= strTitle %>" data-theme="<%= channel.getProperty(UIComponentsConstants.THEME_PROP, "default") %>" <% for (Iterator it = jcmsContext.getBodyAttributes().entrySet().iterator() ; it.hasNext() ; ) { Map.Entry itHeader = (Map.Entry) it.next(); %> <%= itHeader.getKey() %>="<%= itHeader.getValue() %>"<%}%>><jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" />
+  <% if (Util.notEmpty(jcmsContext.getAvoidanceLinks())) { %>
+  <ul class="a11y-nav">
+  <% for (String itTarget : jcmsContext.getAvoidanceLinks().keySet()) { %>
+    <li><a class="" href="<%= ServletUtil.getUrl(request) %>#<%= itTarget %>"><%= jcmsContext.getAvoidanceLinks().get(itTarget) %></a></li>
+    <% } %>
+  </ul>
+  <% } %>
+  <jalios:include target="EMPTY_HEADER_BODY_START" targetContext="body" /><%
   %><script <%= cspNonceAttribute %>>document.body.className = document.body.className + ' js'</script><%
   boolean jcmsShieldEnabled = Util.toBoolean(request.getAttribute("com.jalios.jcms.JCMS_JS_SHIELD"), false);
   if (jcmsShieldEnabled) { %>
