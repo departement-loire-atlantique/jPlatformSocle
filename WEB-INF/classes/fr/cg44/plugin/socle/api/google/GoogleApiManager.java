@@ -91,7 +91,7 @@ public class GoogleApiManager {
     }
     
     // Récupère la donnée si le lieu est ouvert ou fermé actuellement  
-    boolean isOpen = place.getResult().getOpeningHours().getOpenNow();    
+    boolean isOpen = place.getResult().getOpeningHours().getOpenNow();
     if(isOpen) {
       horaire.append(JcmsUtil.glp(userLang, "jcmsplugin.socle.api.horaire.ouvert"));
     }else {
@@ -114,9 +114,9 @@ public class GoogleApiManager {
     int cpt = 1;
     while(Util.isEmpty(ouvertureHeure) && cpt < 7) {
       for(Period itPeriod : place.getResult().getOpeningHours().getPeriods()) {
-        if(itPeriod.getOpen().getDay() == openingDay) {        
-          String itOuvertureHeure = itPeriod.getOpen().getTime();       
-          String itFermetureHeure = itPeriod.getClose().getTime();        
+        if(itPeriod.getOpen().getDay() == openingDay) {
+          String itOuvertureHeure = itPeriod.getOpen().getTime();
+          String itFermetureHeure = itPeriod.getClose().getTime();
           // Détermine l'heure d'ouverture (doit être après l'heure courante ou un autre jour)
           if(Util.isEmpty(ouvertureHeure) && (Integer.parseInt(itOuvertureHeure) > heureMinute) || currentDay != openingDay) {
             ouvertureHeure = itOuvertureHeure;
@@ -129,7 +129,8 @@ public class GoogleApiManager {
           // Dimanche est le jour 7 et non 0 pour la méthode
           int day = openingDay != 0 ? openingDay : 7;
           ouvertureJour =  DayOfWeek.of(day).getDisplayName(TextStyle.FULL, Channel.getChannel().getCurrentUserLocale());
-        }        
+          if (Util.notEmpty(ouvertureJour)) break;
+        }
       }
       openingDay = openingDay < 6 ? openingDay+1 : 0;
       cpt++;
