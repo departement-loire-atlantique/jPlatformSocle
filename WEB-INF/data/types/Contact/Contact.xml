@@ -6,32 +6,53 @@
     <label xml:lang="fr">Titre</label>
   </title>
   <fields>
-    <field name="nom" editor="textfield" required="true" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+    <field name="nom" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Nom</label>
     </field>
-    <field name="prenom" editor="textfield" required="true" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+    <field name="prenom" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Prénom</label>
     </field>
-    <field name="civilite" editor="enumerate" required="false" compactDisplay="false" tab="contenu" type="String" chooser="checkbox" valueList="mrs|mr" ml="false" descriptionType="tooltip" labelList="Femme|Homme" searchable="false" html="false" checkHtml="true">
+    <field name="civilite" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="checkbox" valueList="mrs|mr" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" labelList="Femme|Homme">
       <label xml:lang="fr">Civilité</label>
     </field>
-    <field name="photoDidentite" editor="image" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="80" ml="false">
+    <field name="photoDidentite" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="tooltip" html="false" checkHtml="true" resize="false" resizeWidth="100" resizeHeight="75">
       <label xml:lang="fr">Photo d'identité</label>
     </field>
-    <field name="fonction" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false">
+      <label xml:lang="fr">Image Principale</label>
+    </field>
+    <field name="fonction" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Fonction</label>
     </field>
-    <field name="lieuDeRattachement" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FicheLieu" parent="false">
+    <field name="lieuDeRattachement" editor="link" required="false" compactDisplay="false" type="generated.FicheLieu" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu de rattachement</label>
     </field>
-    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="contenu" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
+    <field name="telephone" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String[]" searchable="false" size="10" ml="false" html="false" checkHtml="true" descriptionType="tooltip" pattern="\d{10}">
       <label xml:lang="fr">Téléphone</label>
     </field>
-    <field name="adresseMail" editor="email" required="false" compactDisplay="false" tab="contenu" type="String" searchable="false" size="50" ml="false">
+    <field name="adresseMail" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="false">
       <label xml:lang="fr">Adresse mail</label>
     </field>
-    <field name="contactPourLesFichesLieux" editor="link" required="false" compactDisplay="false" tab="contenu" type="generated.FicheLieu[]">
+    <field name="complementContact" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Complément Contact</label>
+    </field>
+    <field name="contactPourLesFichesLieux" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
       <label xml:lang="fr">Contact pour les fiches lieux</label>
+    </field>
+    <field name="intro" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="detail">
+      <label xml:lang="fr">Intro</label>
+    </field>
+    <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="detail" tabGroup="detailTextGroup">
+      <label xml:lang="fr">Titre paragraphe</label>
+    </field>
+    <field name="contenuParagraphe" editor="wysiwyg" required="false" compactDisplay="false" tab="detail" type="String[]" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="detailTextGroup" html="false">
+      <label xml:lang="fr">Contenu Paragraphe</label>
+    </field>
+    <field name="libelleLien" editor="textfield" required="false" compactDisplay="false" tab="detail" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="DetailLienGroup">
+      <label xml:lang="fr">Libellé Lien</label>
+    </field>
+    <field name="lienExterne" editor="url" required="false" compactDisplay="false" tab="detail" type="String[]" searchable="false" size="80" ml="false" openWindow="false" descriptionType="tooltip" tabGroup="DetailLienGroup" html="false" checkHtml="true">
+      <label xml:lang="fr">Lien Externe</label>
     </field>
     <field name="categorieDeNavigation" editor="category" required="false" compactDisplay="false" tab="navigation_et_classement" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.categorieDeNavigation.root">
       <label xml:lang="fr">Catégorie de navigation</label>
@@ -61,16 +82,25 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
+    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" tab="contenu" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Portlets bas</label>
+    </field>
   </fields>
   <tabs>
-    <tab id="contenu">
-      <label xml:lang="fr">Contenu</label>
+    <tab id="contact">
+      <label xml:lang="fr">Contact</label>
+    </tab>
+    <tab id="detail">
+      <label xml:lang="fr">Détail</label>
     </tab>
     <tab id="navigation_et_classement">
       <label xml:lang="fr">Navigation et classement</label>
     </tab>
     <tab id="territoire">
       <label xml:lang="fr">Territoire</label>
+    </tab>
+    <tab id="contenu">
+      <label xml:lang="fr">Contenu</label>
     </tab>
   </tabs>
 </type>
