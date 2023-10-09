@@ -118,7 +118,9 @@
 	                                    </div>
 	                                    <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact(userLang)) %>">
 		                                    <div class="mbs">
+		                                       <jalios:wysiwyg>
 		                                       <%= obj.getComplementContact(userLang) %>
+		                                       </jalios:wysiwyg>
 		                                    </div>
 	                                    </jalios:if>
 	                                    

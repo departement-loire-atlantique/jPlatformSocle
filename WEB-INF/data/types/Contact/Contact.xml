@@ -33,7 +33,7 @@
     <field name="adresseMail" editor="email" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="50" ml="false">
       <label xml:lang="fr">Adresse mail</label>
     </field>
-    <field name="complementContact" editor="textfield" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+    <field name="complementContact" editor="wysiwyg" required="false" compactDisplay="false" tab="contact" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" wiki="false">
       <label xml:lang="fr">Complément Contact</label>
     </field>
     <field name="contactPourLesFichesLieux" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
