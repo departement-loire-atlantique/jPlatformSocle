@@ -158,6 +158,9 @@
 	            <jalios:include pub='<%= portlet %>'></jalios:include>
 	        </jalios:foreach>
 	    </jalios:if>
+	    
+	    <%-- Partagez cette page --%>
+        <%@ include file="/plugins/SoclePlugin/jsp/portal/socialNetworksShare.jspf" %>
 		
     </article>
     
