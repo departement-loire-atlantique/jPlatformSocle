@@ -39,7 +39,7 @@
     <field name="contactPourLesFichesLieux" editor="link" required="false" compactDisplay="false" tab="contact" type="generated.FicheLieu[]">
       <label xml:lang="fr">Contact pour les fiches lieux</label>
     </field>
-    <field name="intro" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="detail">
+    <field name="intro" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="detail">
       <label xml:lang="fr">Intro</label>
     </field>
     <field name="titreParagraphe" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tab="detail" tabGroup="detailTextGroup">
