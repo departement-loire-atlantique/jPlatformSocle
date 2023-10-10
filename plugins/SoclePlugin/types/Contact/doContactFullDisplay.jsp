@@ -21,22 +21,12 @@
 		    String copyright = "";
 		%>
 		
-		<%-- <jalios:select> 
-		    <jalios:if predicate="<%=Util.notEmpty(imageFile) %>">
-		       <ds:titleBanner pub="<%= obj %>" imagePath="<%= imageFile %>" title="<%= title %>" breadcrumb="true"></ds:titleBanner>
-		    </jalios:if>
-		    <jalios:default>
-		       <ds:titleNoBanner title="<%= title %>" breadcrumb="true"></ds:titleNoBanner>
-		    </jalios:default>
-		</jalios:select> --%>
-		
 		<ds:titleSimple pub="<%= obj %>" imagePath="<%= imageFile %>" title="<%= title %>" 
 		      breadcrumb="true"></ds:titleSimple>
 		
-		<section class="ds44-ongletsContainer">
-		    <div class="js-tabs ds44-tabs" data-existing-hx="h2"
-		        data-tabs-prefix-class="ds44" id="onglets">		
-		    <%
+		<section>
+		    <div>		
+		        <%
 		        String[] currentTitresParagraphes = new String[0];
 		        String[] currentContenusParagraphes = new String[0];
 		        String[] currentTitresEncadres = new String[0];
@@ -54,12 +44,12 @@
 		        }
 		        %>
 		        
-		        <div id="id" class='js-tabcontent ds44-tabs__content ds44-inner-container ds44-xl-margin-tb' aria-labelledby="label_id_"<%= chapoDisplayed ? " style='display: none; opacity: 0;'" : "" %>>
+		        <div class='ds44-inner-container ds44-xl-margin-tb'>
 		        
 		           <div class="grid-12-small-1">
 		               <div class="col-7">
 		
-		                   <jalios:if predicate="<%=Util.notEmpty(obj.getIntro(userLang)) && !chapoDisplayed%>">
+		                    <jalios:if predicate="<%=Util.notEmpty(obj.getIntro(userLang)) && !chapoDisplayed%>">
 		                        <div class="ds44-introduction">
 		                            <jalios:wysiwyg><%=obj.getIntro(userLang)%></jalios:wysiwyg>
 		                        </div>
@@ -93,7 +83,7 @@
 							     <section class="ds44-box ds44-theme mbm">
 	                                <div class="ds44-innerBoxContainer">
 	                                    
-	                                    <p class="ds44-box-heading" role="heading" aria-level="2">Contact</p>
+	                                    <p class="ds44-box-heading" role="heading" aria-level="2"><%= glp("ui.com.lbl.contact") %></p>
 	                        
 	                                    <div class="mbm">
 	                                       <div>
