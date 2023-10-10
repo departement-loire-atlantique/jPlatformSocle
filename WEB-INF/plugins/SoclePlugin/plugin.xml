@@ -344,6 +344,9 @@
         <template name="default" file="doPageCarrefourFullDisplay.jsp" usage='full'>
             <label xml:lang="fr">DS44 : gabarit Spécifique</label>
         </template>
+        <template name="navigationEnTuile" file="doPageCarrefourVisuelFullDisplay.jsp" usage='full'>
+          <label xml:lang="fr">DS44: colonne unique avec navigation en tuile</label>
+        </template>
     </templates>
     <templates type="ListeDeContenus">
         <template name="default" file="doListeDeContenusFullDisplay.jsp" usage="full"> 
