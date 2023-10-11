@@ -343,6 +343,7 @@ media.data-template.tuileVerticaleDarkSix.Publication: /plugins/SoclePlugin/jsp/
 media.data-template.tuileVerticaleLightSix.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark&cssSix=true
 # format d'image grand -> 1e tuile
 media.data-template.tuileVerticaleDarkSixFirst.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?cssSix=true&largePic=true
+media.data-template.tuileVerticaleDark.FicheActu: /plugins/SoclePlugin/jsp/cards/doFicheActuCard.jsp
 media.data-template.tuileVerticaleLightSixFirst.Publication: /plugins/SoclePlugin/jsp/templates/tuileVerticale.jsp?context=dark&cssSix=true&largePic=true
 media.data-template.tuileHorizontaleGrey.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 media.data-template.tuileHorizontaleGrey.ListeDeContenus: /plugins/SoclePlugin/types/ListeDeContenus/doListeDeContenusTuileHorizontale.jsp
@@ -374,6 +375,7 @@ media.data-template.marker.EvenementInfolocale: /plugins/SoclePlugin/jsp/cards/d
 media.data-template.card.FicheActionEducative: /plugins/SoclePlugin/jsp/cards/doFicheActionEducativeCard.jsp
 media.data-template.card.FicheAide: /plugins/SoclePlugin/jsp/cards/doFicheAideCard.jsp
 media.data-template.card.FicheArticle: /plugins/SoclePlugin/jsp/cards/doFicheArticleCard.jsp
+media.data-template.card.FicheActu: /plugins/SoclePlugin/jsp/cards/doFicheActuCard.jsp
 media.data-template.card.Dossier: /plugins/SoclePlugin/jsp/cards/doDossierCard.jsp
 media.data-template.card.Lien: /plugins/SoclePlugin/jsp/cards/doLienCard.jsp
 media.data-template.card.FicheEmploiStage: /plugins/SoclePlugin/jsp/cards/doFicheEmploiStageCard.jsp
