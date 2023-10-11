@@ -8,6 +8,9 @@
     <field name="dateActu" editor="date" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
       <label xml:lang="fr">Date actu</label>
     </field>
+    <field name="dateFinActu" editor="date" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Date fin actu</label>
+    </field>
     <field name="lieu" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Lieu</label>
     </field>
