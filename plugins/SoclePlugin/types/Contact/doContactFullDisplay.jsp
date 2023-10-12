@@ -21,8 +21,7 @@
 		    String copyright = "";
 		%>
 		
-		<ds:titleSimple pub="<%= obj %>" imagePath="<%= imageFile %>" title="<%= title %>" 
-		      breadcrumb="true"></ds:titleSimple>
+		<ds:titleSimple pub="<%= obj %>" title="<%= title %>" breadcrumb="true"></ds:titleSimple>
 		
 		<section>
 		    <div>		
