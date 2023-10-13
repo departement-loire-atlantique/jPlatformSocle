@@ -16,7 +16,7 @@
 		<%
 		    String imageFile = obj.getImagePrincipale();
 		    String imageMobileFile = "";
-		    String title = obj.getPrenom()+" "+obj.getNom()+", "+obj.getFonction(userLang);;
+		    String title = obj.getPrenom()+" "+obj.getNom()+", "+obj.getFonction(userLang);
 		    String legende = "";
 		    String copyright = "";
 		%>
