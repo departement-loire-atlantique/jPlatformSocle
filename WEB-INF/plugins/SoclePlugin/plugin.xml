@@ -563,7 +563,10 @@
         </template>
         <template name="footer" file="doPortletNavigateFooter.jsp" usage="box">
             <label xml:lang="fr">DS44 : gabarit footer</label>
-        </template>        
+        </template>
+        <template name="ImageWithStickersTitle" file="doPortletNavigateImagesWithStickersTitle.jsp" usage='box'>
+          <label xml:lang="fr">DS44: gabarit images avec titre en étiquette</label>
+        </template>
     </templates>
     <templates type="PortletNotesAPI">
         <template name="default" file="doPortletNotesAPIBoxDisplay.jsp" usage='box'>
