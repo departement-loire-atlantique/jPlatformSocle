@@ -54,6 +54,15 @@ boolean isWysiwygEmbed = Util.notEmpty(request.getParameter("wysiwygEmbed"));
             </ul>
           </div>
       </jalios:if>
+      <jalios:if predicate="<%= Util.notEmpty(pub.getIntro(userLang)) %>">
+        <p class="ds44-cardLocalisation">
+            <i class="icon icon-user" aria-hidden="true"></i>
+            <span class="ds44-iconInnerText">
+                <a title='<%= glp("jcmsplugin.socle.contact.link.nominatif", pub.getPrenom(), pub.getNom()) %>' 
+                        href="<%= pub.getDisplayUrl(userLocale) %>"><%= glp("jcmsplugin.socle.contact.link") %></a>
+            </span>
+        </p>
+      </jalios:if>
       <jalios:if predicate="<%= Util.notEmpty(pub.getAdresseMail()) %>">
         <p class="ds44-cardLocalisation"><i class="icon icon-mail" aria-hidden="true"></i><span class="ds44-iconInnerText"><a title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.contactmail", pub.getTitle(), pub.getAdresseMail())) %>' href="mailto:<%= pub.getAdresseMail() %>" data-statistic='{"name": "declenche-evenement","category": "Contacts","action": "Mailto","label": "<%= HttpUtil.encodeForHTMLAttribute(pub.getTitle()) %>"}'><%= glp("jcmsplugin.socle.contactmail.label") %></a></span></p>
       </jalios:if>
