@@ -16,13 +16,12 @@
 		<%
 		    String imageFile = obj.getImagePrincipale();
 		    String imageMobileFile = "";
-		    String title = obj.getPrenom()+" "+obj.getNom()+", "+obj.getFonction(userLang);;
+		    String title = obj.getPrenom()+" "+obj.getNom()+", "+obj.getFonction(userLang);
 		    String legende = "";
 		    String copyright = "";
 		%>
 		
-		<ds:titleSimple pub="<%= obj %>" imagePath="<%= imageFile %>" title="<%= title %>" 
-		      breadcrumb="true"></ds:titleSimple>
+		<ds:titleSimple pub="<%= obj %>" title="<%= title %>" breadcrumb="true"></ds:titleSimple>
 		
 		<section>
 		    <div>		
@@ -109,19 +108,29 @@
 	                                    <jalios:if predicate="<%= Util.notEmpty(obj.getComplementContact(userLang)) %>">
 		                                    <div class="mbs">
 		                                       <jalios:wysiwyg>
-		                                       <%= obj.getComplementContact(userLang) %>
+		                                          <%= obj.getComplementContact(userLang) %>
 		                                       </jalios:wysiwyg>
 		                                    </div>
 	                                    </jalios:if>
 	                                    
-	                                    <jalios:if predicate="<%= Util.notEmpty(obj.getContactPourLesFichesLieux()) %>">
+	                                    <jalios:if predicate="<%= Util.notEmpty(obj.getLienExterne()) %>">
 		                                    <div class="mbm">
-			                                    <jalios:foreach name="itFicheContact" type="FicheLieu" array="<%= obj.getContactPourLesFichesLieux() %>">
+			                                    <jalios:foreach name="itUrl" type="String" array="<%= obj.getLienExterne() %>">
 			                                       <div class="mbs">
-				                                       <a href="<%= itFicheContact.getDisplayUrl(userLocale) %>">
-				                                       <button class="ds44-btnStd ds44-fullWBtn ds44-bntALeft">
-				                                         <span class="ds44-btnInnerText"><%= itFicheContact.getTitle(userLang) %></span>
-				                                       </button>
+				                                       <a href="<%= itUrl %>">
+					                                       <button class="ds44-btnStd ds44-fullWBtn ds44-bntALeft">
+					                                         <span class="ds44-btnInnerText">
+					                                           <% 
+					                                           if(Util.notEmpty(Util.notEmpty(obj.getLibelleLien(userLang)))) {
+					                                             String libelle = obj.getLibelleLien(userLang).length < itCounter || Util.isEmpty(obj.getLibelleLien(userLang)[itCounter-1]) ?
+					                                                 itUrl : obj.getLibelleLien(userLang)[itCounter-1];
+					                                             %><%= libelle %><%
+					                                           } else {
+					                                             %><%= itUrl %><%
+					                                           }
+					                                           %>
+					                                         </span>
+					                                       </button>
 				                                       </a>
 			                                       </div>
 			                                    </jalios:foreach>
