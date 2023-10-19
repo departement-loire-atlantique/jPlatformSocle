@@ -394,6 +394,8 @@ media.data-template.cardResultFocus.FicheLieu: /plugins/SoclePlugin/jsp/cards/do
 media.data-template.card.FichePublication: /plugins/SoclePlugin/jsp/templates/doFichePublicationTuileHorizontaleGrey.jsp
 media.data-template.card.Show: /plugins/SoclePlugin/jsp/cards/doSpectacleCard.jsp
 
+media.data-template.tuileVerticale.Contact: /plugins/SoclePlugin/jsp/cards/doContactCardVerticale.jsp
+
 # Card pour moteur de recherche global
 media.data-template.search.Publication: /plugins/SoclePlugin/jsp/cards/doPublicationCard.jsp
 media.template.search.application: /plugins/SoclePlugin/jsp/cards/doPublicationCard.jsp
