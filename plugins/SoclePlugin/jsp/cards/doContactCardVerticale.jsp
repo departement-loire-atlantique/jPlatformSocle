@@ -46,8 +46,9 @@ String title = contact.getPrenom()+" "+contact.getNom();
 	      </p>
 	      <jalios:if predicate="<%= Util.notEmpty(contact.getFonction()) %>">
 	        <p class="ds44-docListElem ds44-mt-std">
-	            <%= contact.getFonction() %>
-	        </p>
+                <i class="icon icon-star-empty ds44-docListIco" aria-hidden="true"></i>
+                <%= contact.getFonction() %>
+            </p>
 	      </jalios:if>
 	      <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
 	    </div>

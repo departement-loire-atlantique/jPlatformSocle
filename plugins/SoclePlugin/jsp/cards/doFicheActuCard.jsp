@@ -17,7 +17,7 @@ if(pub instanceof FicheActu) {
   FicheActu ficheActu = (FicheActu) pub;
   if(Util.notEmpty(ficheActu.getDateActu())) {    
     if(Util.notEmpty(ficheActu.getDateFinActu())) {
-      subTitle = glp("jcmsplugin.arcantique.date.periode.label",
+      subTitle = glp("jcmsplugin.socle.infolocale.label.carrousel.periode",
           sdf.format(ficheActu.getDateActu()),sdf.format(ficheActu.getDateFinActu()));
     } else {
       subTitle = sdf.format(ficheActu.getDateActu());
