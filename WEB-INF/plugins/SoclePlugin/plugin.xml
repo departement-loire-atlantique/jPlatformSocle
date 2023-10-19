@@ -553,6 +553,10 @@
           <label xml:lang="fr">DS44 : gabarit témoignages</label>
           <description xml:lang="fr">(fonctionne uniquement pour types "Vidéo", "Articles", "Lien" et "Fiche actu")</description>
         </template> 
+        <template name="3col" file="doPortletMiseEnAvant3Col.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit 3 colonnes</label>
+          <description xml:lang="fr">(ex: equipe pluridisciplinaire)</description>
+        </template>
     </templates>
     <templates type="PortletNavigate">
         <template name="menuCollapse" file="doPortletNavigateMenuCollapseFullDisplay.jsp" usage='box'>
