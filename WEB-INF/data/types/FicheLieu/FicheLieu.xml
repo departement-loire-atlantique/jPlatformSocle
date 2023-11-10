@@ -41,7 +41,7 @@
     </field>
     <field name="idSolis" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" hidden="true" descriptionType="tooltip">
       <label xml:lang="fr">ID Solis</label>
-    </field>      
+    </field>
     <!-- Coordonnées -->
     <field name="etageCouloirEscalier" editor="textfield" required="false" compactDisplay="false" tab="coordonnees" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Étage - couloir - escalier</label>
@@ -127,31 +127,57 @@
     <field name="complementTypeDacces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Complément type d'accès</label>
     </field>
+    <field name="titreSeoPourQui" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip">
+      <label xml:lang="fr">Titre SEO « Pour qui ? »</label>
+    </field>
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
+    </field>
+    <field name="titreSeoModaliteAccueil" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Modalités d'accueil »</label>
     </field>
     <field name="modalitesDaccueil" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Modalités d'accueil</label>
     </field>
+    <field name="titreSeoHorairesAcces" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Horaires et accès »</label>
+    </field>
     <field name="horairesEtAcces" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip">
       <label xml:lang="fr">Horaires et accès</label>
+    </field>
+    <field name="titreSeoTransportEnCommun" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Transports en commun »</label>
     </field>
     <field name="transportsEnCommun" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" inline="true">
       <label xml:lang="fr">Transports en commun</label>
     </field>
+    <field name="titreSeoParkings" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Parkings »</label>
+    </field>
     <field name="parkings" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Parkings</label>
+    </field>
+    <field name="titreSeoDescription" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Description »</label>
     </field>
     <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Description</label>
     </field>
     <field name="reserveASU" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="text" html="false">
       <label xml:lang="fr">Réservé ASU</label>
-      <description xml:lang="fr"><div class="wysiwyg"><p>Le contenu ne sera visible que pour les partenaires ASU connectés</p></div></description>
+      <description xml:lang="fr">
+        <div class="wysiwyg">
+          <p>Le contenu ne sera visible que pour les partenaires ASU connectés</p>
+        </div>
+      </description>
     </field>
     <field name="documentsASU" editor="link" required="false" compactDisplay="false" tab="details" type="com.jalios.jcms.FileDocument[]" ml="true" descriptionType="text" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Documents ASU</label>
-      <description xml:lang="fr"><div class="wysiwyg"><p>Les documents ne seront téléchargeables que pour les partenaires ASU connectés</p></div></description>
+      <description xml:lang="fr">
+        <div class="wysiwyg">
+          <p>Les documents ne seront téléchargeables que pour les partenaires ASU connectés</p>
+        </div>
+      </description>
     </field>
     <field name="titreVideo" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre vidéo</label>
