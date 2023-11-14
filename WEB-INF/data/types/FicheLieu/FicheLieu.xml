@@ -136,10 +136,10 @@
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
-    <field name="titreSeoDescription" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+    <field name="titreSeoDescription" editor="textfield" required="false" compactDisplay="false" tab="details" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="description">
       <label xml:lang="fr">Titre SEO « Description »</label>
     </field>
-    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String[]" searchable="true" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false" tabGroup="description">
       <label xml:lang="fr">Description</label>
     </field>
     <field name="titreSeoModaliteAccueil" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">

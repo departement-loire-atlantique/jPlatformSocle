@@ -492,15 +492,22 @@
         <section class="ds44-contenuArticle" id="section5">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
-                    <jalios:if predicate='<%= Util.notEmpty(obj.getTitreSeoDescription()) %>'>
-	                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-	                        <h2 id="idTitre2"><%= obj.getTitreSeoDescription() %></h2>
+                    <jalios:foreach name="it" type="String" array="<%= obj.getDescription() %>">
+	                    <% 
+	                    int itCount = itCounter-1;
+	                    String itTitre = obj.getTitreSeoDescription().length>itCount? 
+	                        obj.getTitreSeoDescription()[itCount] : null;
+	                    %>
+	                    <jalios:if predicate='<%= Util.notEmpty(itTitre) %>'>
+		                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+		                        <h2 id="idTitre2"><%= itTitre %></h2>
+		                    </jalios:if>
+		                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+		                        <h3 id="idTitre2"><%= itTitre %></h3>
+		                    </jalios:if>
 	                    </jalios:if>
-	                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-	                        <h3 id="idTitre2"><%= obj.getTitreSeoDescription() %></h3>
-	                    </jalios:if>
-                    </jalios:if>
-                    <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
+	                    <jalios:wysiwyg><%= obj.getDescription()[itCount] %></jalios:wysiwyg>
+                    </jalios:foreach>
                 </div>
             </div>
         </section>
