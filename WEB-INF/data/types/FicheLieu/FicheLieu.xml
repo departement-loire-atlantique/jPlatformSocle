@@ -9,6 +9,9 @@
     <field name="idReferentiel" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">ID référentiel</label>
     </field>
+    <field name="idInfolocale" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" hidden="true" descriptionType="tooltip">
+      <label xml:lang="fr">ID Infolocale</label>
+    </field>
     <field name="soustitre" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="true" html="false" checkHtml="true">
       <label xml:lang="fr">Sous-titre</label>
     </field>
@@ -133,6 +136,12 @@
     <field name="pourQui" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
       <label xml:lang="fr">Pour qui ?</label>
     </field>
+    <field name="titreSeoDescription" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Titre SEO « Description »</label>
+    </field>
+    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
+      <label xml:lang="fr">Description</label>
+    </field>
     <field name="titreSeoModaliteAccueil" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
       <label xml:lang="fr">Titre SEO « Modalités d'accueil »</label>
     </field>
@@ -156,12 +165,6 @@
     </field>
     <field name="parkings" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" html="false">
       <label xml:lang="fr">Parkings</label>
-    </field>
-    <field name="titreSeoDescription" editor="textfield" required="false" compactDisplay="false" tab="details" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
-      <label xml:lang="fr">Titre SEO « Description »</label>
-    </field>
-    <field name="description" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="true" rows="16" cols="100" ml="true" wysiwygConfigurationId="" checkHtml="true" inline="true">
-      <label xml:lang="fr">Description</label>
     </field>
     <field name="reserveASU" editor="wysiwyg" required="false" compactDisplay="false" tab="details" type="String" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="text" html="false">
       <label xml:lang="fr">Réservé ASU</label>

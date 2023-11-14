@@ -474,13 +474,33 @@
         <section class="ds44-contenuArticle" id="section2">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
+                    <% String titrePourQui = Util.notEmpty(obj.getTitreSeoPourQui())? 
+                        obj.getTitreSeoPourQui() : glp("jcmsplugin.socle.titre.pour-qui"); %>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
+                        <h2 id="idTitre2"><%= titrePourQui %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-                        <h3 id="idTitre2"><%= glp("jcmsplugin.socle.titre.pour-qui") %></h3>
+                        <h3 id="idTitre2"><%= titrePourQui %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
+                </div>
+            </div>
+        </section>
+    </jalios:if>
+    
+    <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>
+        <section class="ds44-contenuArticle" id="section5">
+            <div class="ds44-inner-container ds44-mtb3">
+                <div class="ds44-grid12-offset-2">
+                    <jalios:if predicate='<%= Util.notEmpty(obj.getTitreSeoDescription()) %>'>
+	                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
+	                        <h2 id="idTitre2"><%= obj.getTitreSeoDescription() %></h2>
+	                    </jalios:if>
+	                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
+	                        <h3 id="idTitre2"><%= obj.getTitreSeoDescription() %></h3>
+	                    </jalios:if>
+                    </jalios:if>
+                    <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
                 </div>
             </div>
         </section>
@@ -490,11 +510,13 @@
         <section class="ds44-contenuArticle" id="section3">
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
+                    <% String titreModalAccueil = Util.notEmpty(obj.getTitreSeoModaliteAccueil())? 
+                        obj.getTitreSeoModaliteAccueil() : glp("jcmsplugin.socle.titre.qui-accueille"); %>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h2>
+                        <h2 id="idTitre3"><%= titreModalAccueil %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-                        <h3 id="idTitre3"><%= glp("jcmsplugin.socle.titre.qui-accueille") %></h3>
+                        <h3 id="idTitre3"><%= titreModalAccueil %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%= obj.getModalitesDaccueil() %></jalios:wysiwyg>
                 </div>
@@ -508,7 +530,9 @@
             <div class="ds44-inner-container ds44-mtb3">
                 <div class="ds44-grid12-offset-2">
                     <div class="ds44-wsg-encadreContour">
-                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading"><%= glp("jcmsplugin.socle.titre.horaires-acces") %></p>
+                        <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading">
+                            <%= Util.notEmpty(obj.getTitreSeoHorairesAcces())? obj.getTitreSeoHorairesAcces() : glp("jcmsplugin.socle.titre.horaires-acces") %>
+                        </p>
 
                         <jalios:if predicate='<%= Util.notEmpty(obj.getHorairesEtAcces()) %>'>
                             <div class="ds44-docListElem mtm ds44-m-fluid-margin" role="heading" aria-level="4">
@@ -516,8 +540,14 @@
                                 <jalios:wysiwyg><%= obj.getHorairesEtAcces() %></jalios:wysiwyg>
                             </div>
                         </jalios:if>
+                        
 
                         <jalios:if predicate='<%= Util.notEmpty(obj.getTransportsEnCommun()) %>'>
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getTitreSeoTransportEnCommun()) %>">
+	                            <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading">
+	                                <%= obj.getTitreSeoTransportEnCommun() %>     
+	                            </p>
+	                        </jalios:if>
                             <div class="ds44-docListElem mtm ds44-m-fluid-margin">
                                 <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i>
                                 <jalios:wysiwyg><%= obj.getTransportsEnCommun() %></jalios:wysiwyg>
@@ -529,8 +559,16 @@
                                 --%>
                             </div>
                         </jalios:if>
+                        
+                        
 
                         <jalios:if predicate='<%= Util.notEmpty(obj.getParkings()) %>'>
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getTitreSeoParkings()) %>">
+	                            <p role="heading" aria-level="<%= ariaLevelPHeading %>" class="ds44-box-heading">
+	                                <%= obj.getTitreSeoParkings() %>     
+	                            </p>
+	                        </jalios:if>
+                        
                             <div class="ds44-docListElem mtm ds44-m-fluid-margin">
                                 <i class="icon icon-parking ds44-docListIco" aria-hidden="true"></i>
                                 <jalios:wysiwyg><%= obj.getParkings() %></jalios:wysiwyg>
@@ -547,19 +585,7 @@
             </div>
         </section>
     </jalios:if>
-
-    <jalios:if predicate='<%= Util.notEmpty(obj.getDescription()) %>'>
-        <section class="ds44-contenuArticle" id="section5">
-            <div class="ds44-inner-container ds44-mtb3">
-                <div class="ds44-grid12-offset-2">
-                    <jalios:wysiwyg><%= obj.getDescription() %></jalios:wysiwyg>
-                </div>
-            </div>
-        </section>
-    </jalios:if>
-    <%
-    Group groupeAsu = channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu");
-    %>
+    <% Group groupeAsu = channel.getGroup("$jcmsplugin.socle.fichelieu.groupe.asu"); %>
     <jalios:if predicate='<%= (Util.notEmpty(obj.getReserveASU(userLang)) || Util.notEmpty(obj.getDocumentsASU())) && Util.notEmpty(groupeAsu) && (Util.notEmpty(loggedMember) ? loggedMember.isAccount() && loggedMember.belongsToGroup(groupeAsu) : false)  %>'>
         <%-- Bloc spécifique ASU --%>
         <div class="ds44-inner-container">
