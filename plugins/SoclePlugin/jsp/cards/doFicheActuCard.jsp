@@ -22,8 +22,10 @@ if(pub instanceof FicheActu) {
     } else {
       subTitle = sdf.format(ficheActu.getDateActu());
     }
-  } else if (Util.notEmpty(ficheActu.getDateLibre())) {
-    subTitle = ficheActu.getDateLibre(userLang);
+    subTitle += "<br>";
+  }
+  if (Util.notEmpty(ficheActu.getDateLibre())) {
+    subTitle += ficheActu.getDateLibre(userLang);
   }
   if(Util.notEmpty(ficheActu.getLieu())) {
     location = ficheActu.getLieu();
