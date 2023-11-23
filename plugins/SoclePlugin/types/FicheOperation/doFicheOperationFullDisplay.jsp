@@ -13,72 +13,61 @@ boolean hasImage = Util.notEmpty(obj.getImagePrincipale()) || Util.notEmpty(obj.
             <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
             <jalios:if predicate="<%= Util.notEmpty(obj.getCommune()) %>">
                 <p class="ds44-docListElem mts">
-                    <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-                    <strong><%= glp("getCommune") %></strong> 
+                    <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
+                    <strong><%= glp("Commune·s") %>:</strong> 
                     <jalios:foreach name="itCommune" type="City" array="<%= obj.getCommune() %>">
-                        <jalios:link data="<%= itCommune %>"/>
+                        <span><jalios:link data="<%= itCommune %>"/><% if(itCounter<obj.getCommune().length){ %>,<% } %></span>
                     </jalios:foreach>
                 </p>
             </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getAnneeDebutEtFin(loggedMember)) %>">
-	            <p class="ds44-docListElem mts">
-	                <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	                <strong><%= glp("getAnneeDebutEtFin") %></strong> 
-	                <%= SocleUtils.formatCategories(obj.getAnneeDebutEtFin(loggedMember)) %>
-	            </p>
-            </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getAvancement(loggedMember)) %>">
-	            <p class="ds44-docListElem mts">
-	                <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	                <strong><%= glp("getAvancement") %></strong> 
-	                <%= SocleUtils.formatCategories(obj.getAvancement(loggedMember)) %>
-	            </p>
-            </jalios:if>
             <jalios:if predicate="<%= Util.notEmpty(obj.getPeriode(loggedMember)) %>">
-	            <p class="ds44-docListElem mts">
-	                <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	                <strong><%= glp("getPeriode") %></strong> 
-	                <%= SocleUtils.formatCategories(obj.getPeriode(loggedMember)) %>
-	            </p>
+                <p class="ds44-docListElem mts">
+                    <i class="icon icon-historic ds44-docListIco" aria-hidden="true"></i> 
+                    <strong><%= glp("Période principale d’occupation") %>:</strong> 
+                    <%= SocleUtils.formatCategories(obj.getPeriode(loggedMember)) %>
+                </p>
             </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getMotscles(loggedMember)) %>">
-	            <p class="ds44-docListElem mts">
-	                <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	                <strong><%= glp("getMotscles") %></strong> 
-	                <%= SocleUtils.formatCategories(obj.getMotscles(loggedMember)) %>
-	            </p>
+            <jalios:if predicate="<%= Util.notEmpty(obj.getResponsableDoperation()) %>">
+                <p class="ds44-docListElem mts">
+                    <i class="icon icon-user ds44-docListIco" aria-hidden="true"></i> 
+                    <strong><%= glp("Responsable d’opération") %>:</strong> 
+                    <jalios:foreach name="itContact" type="Contact" array="<%= obj.getResponsableDoperation() %>">
+                        <span>
+	                        <jalios:link data="<%= itContact %>"><%= itContact.getPrenom()+" "+itContact.getNom() %></jalios:link>
+	                        <% if(itCounter<obj.getCommune().length){ %>,<% } %>
+                        </span>
+                    </jalios:foreach>
+                </p>
+            </jalios:if>
+            <jalios:if predicate="<%= Util.notEmpty(obj.getAmenageur(userLang)) %>">
+                <p class="ds44-docListElem mts">
+                    <i class="icon icon-directions ds44-docListIco" aria-hidden="true"></i> 
+                    <span><strong><%= glp("Aménageur") %>:</strong></span>
+                    <%= obj.getAmenageur(userLang) %>
+                </p>
             </jalios:if>
         </div>
         <div class="col ds44--xl-padding-l">
             <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
+            <jalios:if predicate="<%= Util.notEmpty(obj.getRaisonDeLintervention(userLang)) %>">
+                <p class="ds44-docListElem mts">
+                    <i class="icon icon-document ds44-docListIco" aria-hidden="true"></i> 
+                    <strong><%= glp("Raison de l’intervention") %>:</strong> 
+                    <div><%= obj.getRaisonDeLintervention(userLang) %></div>
+                </p>
+            </jalios:if>
             <jalios:if predicate="<%= Util.notEmpty(obj.getTypeDeChantier(loggedMember)) %>">
                 <p class="ds44-docListElem mts">
-                    <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-                    <strong><%= glp("getTypeDeChantier") %></strong> 
+                    <i class="icon icon-travaux ds44-docListIco" aria-hidden="true"></i> 
+                    <strong><%= glp("Type de chantier") %>:</strong> 
                     <%= SocleUtils.formatCategories(obj.getTypeDeChantier(loggedMember)) %>
                 </p>
             </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getResponsableDoperation()) %>">
-	            <p class="ds44-docListElem mts">
-	                <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-	                <strong><%= glp("getResponsableDoperation") %></strong> 
-	                <jalios:foreach name="itContact" type="Contact" array="<%= obj.getResponsableDoperation() %>">
-	                    <jalios:link data="<%= itContact %>"/>
-	                </jalios:foreach>
-	            </p>
-            </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getAmenageur(userLang)) %>">
+            <jalios:if predicate="<%= Util.notEmpty(obj.getMotscles(loggedMember)) %>">
                 <p class="ds44-docListElem mts">
-                    <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-                    <strong><%= glp("getAmenageur") %></strong> 
-                    <%= obj.getAmenageur(userLang) %>
-                </p>
-            </jalios:if>
-            <jalios:if predicate="<%= Util.notEmpty(obj.getRaisonDeLintervention(userLang)) %>">
-                <p class="ds44-docListElem mts">
-                    <i class="icon icon-cost ds44-docListIco" aria-hidden="true"></i> 
-                    <strong><%= glp("getRaisonDeLintervention") %></strong> 
-                    <div><%= obj.getRaisonDeLintervention(userLang) %></div>
+                    <i class="icon icon-etudes ds44-docListIco" aria-hidden="true"></i> 
+                    <strong><%= glp("Mots-clés") %>:</strong> 
+                    <%= SocleUtils.formatCategories(obj.getMotscles(loggedMember)) %>
                 </p>
             </jalios:if>
         </div>
@@ -106,6 +95,17 @@ boolean hasImage = Util.notEmpty(obj.getImagePrincipale()) || Util.notEmpty(obj.
                         </div>
                         </jalios:if>
                         <div class='col <%= hasImage ? "mll" : "" %> mbs'>
+                            <jalios:if predicate="<%= Util.notEmpty(obj.getAvancement(loggedMember)) %>">
+				                <p role="heading" aria-level="2" class="ds44-wsg-exergue">
+	                                <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i> 
+	                                <%= obj.getAvancement(loggedMember).first().getName(userLang) %> 
+	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAnneeDebutEtFin(loggedMember)) %>">
+					                    – <%= SocleUtils.formatCategories(obj.getAnneeDebutEtFin(loggedMember), " – ") %>
+						            </jalios:if>
+	                            </p>
+				            </jalios:if>
+                            
+                            <div class="ds44-mb-std"></div>
                             <div class="ds44-introduction"><jalios:wysiwyg><%= obj.getChapo(userLang) %></jalios:wysiwyg></div>
                         </div>
                     </div>
