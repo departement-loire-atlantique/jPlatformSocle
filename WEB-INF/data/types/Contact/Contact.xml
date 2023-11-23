@@ -82,7 +82,7 @@
     <field name="cantons" editor="link" required="false" compactDisplay="false" tab="territoire" type="generated.Canton[]" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Cantons concernés</label>
     </field>
-    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" tab="contenu" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true">
+    <field name="bottomportlets" editor="link" required="false" compactDisplay="false" type="com.jalios.jcms.portlet.PortalElement[]" parent="false" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" hidden="true">
       <label xml:lang="fr">Portlets bas</label>
     </field>
   </fields>
@@ -98,9 +98,6 @@
     </tab>
     <tab id="territoire">
       <label xml:lang="fr">Territoire</label>
-    </tab>
-    <tab id="contenu">
-      <label xml:lang="fr">Contenu</label>
     </tab>
   </tabs>
 </type>
