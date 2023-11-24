@@ -63,6 +63,12 @@
     <field name="contenuDetails" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="Details" tab="details" html="false">
       <label xml:lang="fr">Contenu Détails</label>
     </field>
+        <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation_et_classement">
+      <label xml:lang="fr">Rubrique concernée</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
   </fields>
   <tabs>
     <tab id="description">
@@ -70,6 +76,9 @@
     </tab>
     <tab id="details">
       <label xml:lang="fr">Details</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
     </tab>
   </tabs>
 </type>

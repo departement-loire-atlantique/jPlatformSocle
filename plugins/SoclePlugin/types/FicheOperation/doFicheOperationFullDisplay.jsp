@@ -97,7 +97,7 @@ boolean hasImage = Util.notEmpty(obj.getImagePrincipale()) || Util.notEmpty(obj.
                         <div class='col <%= hasImage ? "mll" : "" %> mbs'>
                             <jalios:if predicate="<%= Util.notEmpty(obj.getAvancement(loggedMember)) %>">
 				                <p role="heading" aria-level="2" class="ds44-wsg-exergue">
-	                                <i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i> 
+	                                <i class="icon icon-tag" aria-hidden="true"></i> 
 	                                <%= obj.getAvancement(loggedMember).first().getName(userLang) %> 
 	                                <jalios:if predicate="<%= Util.notEmpty(obj.getAnneeDebutEtFin(loggedMember)) %>">
 					                    – <%= SocleUtils.formatCategories(obj.getAnneeDebutEtFin(loggedMember), " – ") %>
