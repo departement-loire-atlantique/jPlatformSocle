@@ -6,7 +6,8 @@
 String[] themes = channel.getStringArrayProperty("jcmsplugin.socle.sites-applis.themes", new String[]{});
 List<String> themesList = Arrays.asList(themes);
 
-HashMap<String, String[]> mapThemes = LiensUtils.getLinkOtherSites(true);
+boolean isSiteGPLA = channel.getBooleanProperty("jcmsplugin.socle.sites-applis.themes.is-gpla", false);
+HashMap<String, String[]> mapThemes = LiensUtils.getLinkOtherSites(isSiteGPLA);
 int nbColumn = mapThemes.size()>1?3:1;
 %>
 
