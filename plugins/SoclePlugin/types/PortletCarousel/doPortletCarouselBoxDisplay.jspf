@@ -80,4 +80,31 @@
 		    </div>
 	    </div>
     </jalios:if>
+    
+    <jalios:if predicate='<%=Util.notEmpty(box.getLabelDuLien(userLang)) %>'>
+        <%
+        // Gestion du bouton
+        boolean isLienExterne = Util.isEmpty(box.getLienInterne());
+        String labelBouton = box.getLabelDuLien();
+        String urlBouton = "";
+        String targetAttr = "";
+        String titleValue = Util.notEmpty(box.getTitreCompletDeLien()) ? box.getTitreCompletDeLien() : labelBouton;
+
+        if(isLienExterne){
+          urlBouton = box.getLienExterne();
+          targetAttr = glp("jcmsplugin.socle.targetblank");
+          titleValue = glp("jcmsplugin.socle.lien.site.nouvelonglet", titleValue);
+        }
+        else{
+          urlBouton = box.getLienInterne().getDisplayUrl(userLocale);  
+        }
+        %>
+        <div class="txtcenter ds44-container-large">
+            <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
+                    class="ds44-btnStd ds44-btnStd--large ds44-btnFullMobile">
+                <span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span>
+                <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </jalios:if>
 </section>
