@@ -183,6 +183,7 @@ jcmsplugin.socle.recherche.map.icon:
 extra.Category.jcmsplugin.socle.cat.search.mapping:
 $id.jcmsplugin.socle.selection.page.cat: 
 
+jcmsplugin.socle.sites-applis.themes.is-gpla.boolean : true
 
 # ------------------------------------------------------------
 #  Formats d'images
