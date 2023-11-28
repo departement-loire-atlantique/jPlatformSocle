@@ -98,8 +98,6 @@
     <type name="TimelineElement"></type>
     <type name="Video"></type>
     <type name="Webdoc"></type>
-
-    
     
     <!-- Types de contenus -->    
     <templates type="AccueilAnnuaireAgenda">
@@ -403,6 +401,9 @@
     <templates type="AbstractPortletSkinable">
         <template name="simpleTitle" file="doAbstractPortletSkinableSimpleTitleResultDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : habillage simple titre</label>
+        </template>
+        <template name="h2Title" file="doAbstractPortletSkinableH2TitleResultDisplay.jsp" usage='box'>
+          <label xml:lang="fr">Titre h2 et description centrés</label>
         </template>
     </templates>    
     <templates type="PortletAgendaInfolocale">
