@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.jalios.util.Util;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -110,7 +111,12 @@ public class SectorResult {
 	 * Renvoie un idendifiant unique de l'entité
 	 */
 	public String getUniqueId() {
-		return "INSEE".equalsIgnoreCase(getOrigineMatricule().getCode().trim()) ? getMatricule().trim() : getOrigineMatricule().getCode().trim() +"_"+getMatricule().trim();
+	  
+	  if(Util.notEmpty(getOrigineMatricule()) && Util.notEmpty(getOrigineMatricule().getCode()) && Util.notEmpty(getMatricule())){
+	      return "INSEE".equalsIgnoreCase(getOrigineMatricule().getCode().trim()) ? getMatricule().trim() : getOrigineMatricule().getCode().trim() +"_"+getMatricule().trim();  
+	  }
+	  
+		return "";
 	}
 	
 	
