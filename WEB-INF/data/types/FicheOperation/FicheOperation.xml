@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="FicheOperation" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true">
+  <label xml:lang="fr">Fiche opération</label>
+  <title ml="true">
+    <label xml:lang="en">Title</label>
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="imagePrincipale" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Image principale</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 930x620px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="imageCarree" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Image carrée</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 138x138px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="imageMobile" editor="image" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" descriptionType="text" html="false" checkHtml="true">
+      <label xml:lang="fr">Image mobile</label>
+      <description xml:lang="fr">&lt;div class="wysiwyg"&gt;&lt;p&gt;Format attendu : 300x200px&lt;/p&gt;&lt;/div&gt;</description>
+    </field>
+    <field name="copyright" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Copyright</label>
+    </field>
+    <field name="legende" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Légende</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="true" html="false" checkHtml="true">
+      <label xml:lang="fr">Texte alternatif</label>
+    </field>
+    <field name="chapo" editor="wysiwyg" required="false" compactDisplay="false" type="String" searchable="true" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" wysiwygConfigurationId="simple" inline="true" tab="details" abstract="true" truncate="400">
+      <label xml:lang="fr">Intro</label>
+    </field>
+    <field name="responsableDoperation" editor="link" required="false" compactDisplay="false" type="generated.Contact[]" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Responsable d'opération</label>
+    </field>
+    <field name="commune" editor="link" required="false" compactDisplay="false" type="generated.City[]" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Commune</label>
+    </field>
+    <field name="anneeDebutEtFin" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15565" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Année début et fin</label>
+    </field>
+    <field name="avancement" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="sbi_15566" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Avancement</label>
+    </field>
+    <field name="periode" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15567" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Période</label>
+    </field>
+    <field name="amenageur" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="description">
+      <label xml:lang="fr">Aménageur</label>
+    </field>
+    <field name="raisonDeLintervention" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" tab="description">
+      <label xml:lang="fr">Raison de l’intervention</label>
+    </field>
+    <field name="typeDeChantier" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15568" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Type de chantier</label>
+    </field>
+    <field name="motscles" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15570" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mots-clés</label>
+    </field>
+    <field name="titreDetails" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Details" tab="details">
+      <label xml:lang="fr">Titre Détails</label>
+    </field>
+    <field name="contenuDetails" editor="wysiwyg" required="false" compactDisplay="false" type="String[]" searchable="false" rows="16" cols="100" ml="true" checkHtml="true" inline="true" descriptionType="tooltip" tabGroup="Details" tab="details" html="false">
+      <label xml:lang="fr">Contenu Détails</label>
+    </field>
+        <field name="categorieDeNavigation" editor="category" required="true" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.categorieDeNavigation.root" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" displayRoot="false" tab="navigation_et_classement">
+      <label xml:lang="fr">Rubrique concernée</label>
+    </field>
+    <field name="miseEnAvant" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.miseEnAvant.root" ml="false" descriptionType="tooltip" tab="navigation_et_classement" searchable="false" html="false" checkHtml="true" displayRoot="false">
+      <label xml:lang="fr">Mise en avant</label>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="description">
+      <label xml:lang="fr">Description</label>
+    </tab>
+    <tab id="details">
+      <label xml:lang="fr">Details</label>
+    </tab>
+    <tab id="navigation_et_classement">
+      <label xml:lang="fr">Navigation et classement</label>
+    </tab>
+  </tabs>
+</type>
+

@@ -46,6 +46,7 @@
     <type name="FicheEmploiStage"></type>
     <type name="FicheEquipement"></type>
     <type name="FicheLieu"></type>
+    <type name="FicheOperation"></type>
     <type name="FichePublication"></type>
     <type name="FicheSAAD"></type>   
     <type name="Help"></type>
@@ -97,8 +98,6 @@
     <type name="TimelineElement"></type>
     <type name="Video"></type>
     <type name="Webdoc"></type>
-
-    
     
     <!-- Types de contenus -->    
     <templates type="AccueilAnnuaireAgenda">
@@ -293,6 +292,11 @@
             <label xml:lang="fr">DS44 : gabarit par défaut</label>
         </template>
     </templates>
+    <templates type="FicheOperation">
+        <template name="default" file="doFicheOperationFullDisplay.jsp" usage="full">
+            <label xml:lang="fr">DS44 : gabarit par défaut</label>
+        </template>
+    </templates>
     <templates type="CollectivityArticle">
         <template name="embed" file="doCollectivityArticleEmbedDisplay.jsp" usage="embed">
             <label xml:lang="fr">Gabarit imbriqué pour affichage dans un autre contenu</label>
@@ -397,6 +401,9 @@
     <templates type="AbstractPortletSkinable">
         <template name="simpleTitle" file="doAbstractPortletSkinableSimpleTitleResultDisplay.jsp" usage='box'>
           <label xml:lang="fr">DS44 : habillage simple titre</label>
+        </template>
+        <template name="h2Title" file="doAbstractPortletSkinableH2TitleResultDisplay.jsp" usage='box'>
+          <label xml:lang="fr">Titre h2 et description centrés</label>
         </template>
     </templates>    
     <templates type="PortletAgendaInfolocale">

@@ -1,5 +1,8 @@
 package fr.cg44.plugin.socle;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import com.jalios.jcms.Channel;
 import com.jalios.jcms.HttpUtil;
 import com.jalios.jcms.JcmsUtil;
@@ -96,6 +99,30 @@ public final class LiensUtils {
 	 */
 	public static String createEmailLink(String url, String titrePub) {
 	  return JcmsUtil.glp(channel.getCurrentUserLang(), "jcmsplugin.socle.socialnetwork.share.mail.link", channel.getName(), HttpUtil.encodeForURL(titrePub), HttpUtil.encodeForURL(url));
-	}	  	  
+	}
+	
+	/**
+	 * @param isGPLA , sort les sites de grands patrimoines ( gpla ) ou tout les autres ?
+	 * @return sites et applis du département de Loire-Atlantique
+	 */
+	public static HashMap<String, String[]> getLinkOtherSites(boolean isGPLA) {
+	  HashMap<String, String[]> mapThemes = new LinkedHashMap<String, String[]>();
+	  if(isGPLA) {
+	    mapThemes.put("gpla", new String[] {"garenne-lemot", "chateau-clisson","chateau-chateaubriant", 
+	        "folies-siffait", "eglise-vieux-bourg", "blanche-couronne", "archeo", "arcantique"});
+	  } else {
+	    mapThemes.put("citoyennete", new String[] {"institutionnel", "budget","participer"});
+	    mapThemes.put("enfance-famille", new String[] {"parents", "assmat"});
+	    mapThemes.put("handicap", new String[] {"handicap"});
+	    mapThemes.put("education", new String[] {"stages3"});
+	    mapThemes.put("sport", new String[] {"rando"});
+	    mapThemes.put("environnement", new String[] {"grandlieu"});
+	    mapThemes.put("culture", new String[] {"bdla", "archives", "dobree", "ressources-edu", "chateau-chateaubriant", "chateau-clisson", "garenne-lemot", "folies-siffait", "blanche-couronne", "eglise-vieux-bourg"});
+	    mapThemes.put("deplacements", new String[] {"inforoutes", "pont-st-naz", "bacs"});
+	    mapThemes.put("developpement-innovation", new String[] {"opendata", "numerique", "lad", "tourisme", "imagine-la"});
+	    mapThemes.put("territoire", new String[] {"vuduciel", "observatoire","atlas"});
+	  }
+	  return mapThemes;
+  }
 
 }
