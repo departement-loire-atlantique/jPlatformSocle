@@ -477,10 +477,10 @@
                     <% String titrePourQui = Util.notEmpty(obj.getTitreSeoPourQui())? 
                         obj.getTitreSeoPourQui() : glp("jcmsplugin.socle.titre.pour-qui"); %>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre2"><%= titrePourQui %></h2>
+                        <h2><%= titrePourQui %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-                        <h3 id="idTitre2"><%= titrePourQui %></h3>
+                        <h3><%= titrePourQui %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%=obj.getPourQui()%></jalios:wysiwyg>
                 </div>
@@ -500,10 +500,10 @@
 	                    %>
 	                    <jalios:if predicate='<%= Util.notEmpty(itTitre) %>'>
 		                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-		                        <h2 id="idTitre2"><%= itTitre %></h2>
+		                        <h2><%= itTitre %></h2>
 		                    </jalios:if>
 		                    <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-		                        <h3 id="idTitre2"><%= itTitre %></h3>
+		                        <h3><%= itTitre %></h3>
 		                    </jalios:if>
 	                    </jalios:if>
 	                    <jalios:wysiwyg><%= obj.getDescription()[itCount] %></jalios:wysiwyg>
@@ -520,10 +520,10 @@
                     <% String titreModalAccueil = Util.notEmpty(obj.getTitreSeoModaliteAccueil())? 
                         obj.getTitreSeoModaliteAccueil() : glp("jcmsplugin.socle.titre.qui-accueille"); %>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("2") %>'>
-                        <h2 id="idTitre3"><%= titreModalAccueil %></h2>
+                        <h2><%= titreModalAccueil %></h2>
                     </jalios:if>
                     <jalios:if predicate='<%= ariaLevelPHeading.equalsIgnoreCase("3") %>'>
-                        <h3 id="idTitre3"><%= titreModalAccueil %></h3>
+                        <h3><%= titreModalAccueil %></h3>
                     </jalios:if>
                     <jalios:wysiwyg><%= obj.getModalitesDaccueil() %></jalios:wysiwyg>
                 </div>

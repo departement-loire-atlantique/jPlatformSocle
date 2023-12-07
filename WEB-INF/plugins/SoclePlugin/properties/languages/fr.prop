@@ -481,6 +481,14 @@ jcmsplugin.socle.actuedu.realisationaction.label: Réalisation de l'action :
 jcmsplugin.socle.actuedu.nouscontacter.label: Contacter par mail
 jcmsplugin.socle.actuedu.contactmail.label: Contacter par mail : {0}
 jcmsplugin.socle.actuedu.pour-eleve.label: Pour les élèves de : 
+jcmsplugin.socle.actuedu.responsable.label: Responsable d’opération
+jcmsplugin.socle.actuedu.periode-occupation.label: Période principale d’occupation
+jcmsplugin.socle.actuedu.commune-s.label: Commune·s
+jcmsplugin.socle.actuedu.amenageur.label: Aménageur
+jcmsplugin.socle.actuedu.raison-intervention.label: Raison de l’intervention
+jcmsplugin.socle.actuedu.type-chantier.label: Type de chantier
+jcmsplugin.socle.actuedu.mot-cle.label: Mots-clés
+
 
 jcmsplugin.socle.fichelieu.telecharger-plan-acces.label: Télécharger le plan d'accès
 jcmsplugin.socle.ficheaide.localiser-carte.label: Localiser sur une carte
