@@ -36,13 +36,13 @@
     <field name="commune" editor="link" required="false" compactDisplay="false" type="generated.City[]" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true">
       <label xml:lang="fr">Commune</label>
     </field>
-    <field name="anneeDebutEtFin" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15565" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="anneeDebutEtFin" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.fiche-operation.anneeDebutEtFin.root" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Année début et fin</label>
     </field>
-    <field name="avancement" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="sbi_15566" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="avancement" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="true" root="$jcmsplugin.socle.category.fiche-operation.avancement.root" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Avancement</label>
     </field>
-    <field name="periode" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15567" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="periode" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.fiche-operation.periode.root" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Période</label>
     </field>
     <field name="amenageur" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="description">
@@ -51,10 +51,10 @@
     <field name="raisonDeLintervention" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="true" wiki="false" html="false" checkHtml="true" descriptionType="tooltip" tab="description">
       <label xml:lang="fr">Raison de l’intervention</label>
     </field>
-    <field name="typeDeChantier" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15568" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="typeDeChantier" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.fiche-operation.typeDeChantier.root" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Type de chantier</label>
     </field>
-    <field name="motscles" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="sbi_15570" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
+    <field name="motscles" editor="category" required="false" compactDisplay="false" type="java.util.TreeSet" chooser="tree" exclusive="false" root="$jcmsplugin.socle.category.fiche-operation.motscles.root" ml="false" descriptionType="tooltip" tab="description" searchable="false" html="false" checkHtml="true" displayRoot="false">
       <label xml:lang="fr">Mots-clés</label>
     </field>
     <field name="titreDetails" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="true" size="80" ml="true" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Details" tab="details">
