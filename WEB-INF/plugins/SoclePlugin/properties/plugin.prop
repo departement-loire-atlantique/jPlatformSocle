@@ -399,8 +399,6 @@ media.data-template.card.FicheOperation: /plugins/SoclePlugin/jsp/cards/doFicheO
 
 media.data-template.tuileVerticale.Contact: /plugins/SoclePlugin/jsp/cards/doContactCardVerticale.jsp
 
-media.data-template.tuileVerticale.Contact: /plugins/SoclePlugin/jsp/cards/doContactCardVerticale.jsp
-
 # Card pour moteur de recherche global
 media.data-template.search.Publication: /plugins/SoclePlugin/jsp/cards/doPublicationCard.jsp
 media.template.search.application: /plugins/SoclePlugin/jsp/cards/doPublicationCard.jsp
@@ -551,6 +549,13 @@ $jcmsplugin.socle.accueilannuaireagenda.miseEnAvant.root: c_1154084
 # Contact
 
 $jcmsplugin.socle.contact.typeContact.root: c_1283251
+
+# Fiche opération
+$jcmsplugin.socle.category.fiche-operation.anneeDebutEtFin.root: blc_6021
+$jcmsplugin.socle.category.fiche-operation.avancement.root: blc_5788
+$jcmsplugin.socle.category.fiche-operation.periode.root: blc_5787
+$jcmsplugin.socle.category.fiche-operation.typeDeChantier.root: blc_5786
+$jcmsplugin.socle.category.fiche-operation.motscles.root: blc_6208
 
 # ------------------------------------------------------------
 #  Configuration Infolocale
