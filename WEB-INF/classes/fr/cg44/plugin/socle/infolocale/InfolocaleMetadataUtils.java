@@ -188,7 +188,25 @@ public class InfolocaleMetadataUtils {
     private static String getMetaHoraires(EvenementInfolocale event) {
         // Mettre la valeur "horaire" pour récupérer l'horaire associé à la date affichée d'un événement
         return InfolocaleUtil.getHoraireDisplay(event, true);
-      }
+    }
+    
+    /**
+     * Récupère les métadonnées Horaires avec HTML
+     * @param jsonEvent
+     * @return
+     */
+    public static String getMetaHorairesHtml(EvenementInfolocale event) {
+      StringBuilder htmlMetadata = new StringBuilder();
+      String metadataIcon = getMetadataIcon(Channel.getChannel().getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires"));
+      
+      htmlMetadata.append(baliseItalicStart);
+      htmlMetadata.append(metadataIcon);
+      htmlMetadata.append(baliseItalicEnd + baliseSpanStart);
+      htmlMetadata.append(getMetaHoraires(event));
+      htmlMetadata.append(baliseSpanEnd);
+      
+      return htmlMetadata.toString();
+    }
     
     /**
      * Récupère la métadonnée Durée
