@@ -17,6 +17,13 @@
         if (channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(request.getAttribute("metadata2"))) {
           metadata2 = InfolocaleMetadataUtils.getMetaHorairesHtml(itEvent);
         }
+        if (displayDefault && 
+            channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(request.getAttribute("defaultMetadata"))
+            || (Util.isEmpty(request.getAttribute("defaultMetadata")) 
+                && channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(channel.getProperty("jcmsplugin.socle.infolocale.metadata.default")))
+            ) {
+          defaultMetadata = InfolocaleUtil.getHoraireDisplay(itEvent, true);
+        }
           
           
         %>

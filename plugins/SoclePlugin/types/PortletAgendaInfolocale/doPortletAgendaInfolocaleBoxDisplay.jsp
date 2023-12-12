@@ -65,7 +65,8 @@ if (Util.isEmpty(box)) return;
 	                <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
 	                    <%
 		                    request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
-		                    request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_1());
+		                    request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_2());
+		                    request.setAttribute("defaultMetadata", box.getMetadonneeParDefaut());
 		                    request.setAttribute("cssCard", box.getStyleDesTuilesCarrousel());
 	                    %>
 	                    <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>">
@@ -83,6 +84,7 @@ if (Util.isEmpty(box)) return;
 	                    <%
 	                    request.removeAttribute("metadata1");
 	                    request.removeAttribute("metadata2");
+	                    request.removeAttribute("defaultMetadata");
 	                    request.removeAttribute("cssCard");
 	                    %>
 	                </ul>

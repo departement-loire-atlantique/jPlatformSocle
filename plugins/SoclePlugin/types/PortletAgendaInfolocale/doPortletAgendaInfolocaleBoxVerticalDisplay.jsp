@@ -43,7 +43,8 @@
       </jalios:if>
       <%
          request.setAttribute("metadata1", box.getMetadonneesTuileCarrousel_1());
-         request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_1());
+         request.setAttribute("metadata2", box.getMetadonneesTuileCarrousel_2());
+         request.setAttribute("defaultMetadata", box.getMetadonneeParDefaut());
          request.setAttribute("cssCard", box.getStyleDesTuilesCarrousel());
          %>
       <jalios:foreach name="itEvent" type="EvenementInfolocale" collection="<%= sortedEvents %>" max="<%= box.getNombreDeTuiles() %>">
@@ -59,6 +60,7 @@
       <%
          request.removeAttribute("metadata1");
          request.removeAttribute("metadata2");
+         request.removeAttribute("defaultMetadata");
          request.removeAttribute("cssCard");
          %>
    </jalios:if>
