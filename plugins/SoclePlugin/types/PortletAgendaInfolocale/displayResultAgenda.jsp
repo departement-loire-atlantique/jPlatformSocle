@@ -47,6 +47,10 @@ jsonObject.add("result", jsonArray);
 
 session.setAttribute("isSearchFacetLink", true);
 
+request.setAttribute("metadata1", box.getMetadonneesTuileResultat_1());
+request.setAttribute("metadata2", box.getMetadonneesTuileResultat_2());
+request.setAttribute("defaultMetadata", box.getMetadonneeParDefaut());
+
 %><%
 
 %><jalios:foreach collection="<%= allEvents %>" name="itEven" type="EvenementInfolocale"> <%
@@ -71,4 +75,7 @@ session.setAttribute("isSearchFacetLink", true);
     %><%
                                         
 %></jalios:foreach><%
+request.removeAttribute("metadata1");
+request.removeAttribute("metadata2");
+request.removeAttribute("defaultMetadata");
 %><%= jsonObject %>

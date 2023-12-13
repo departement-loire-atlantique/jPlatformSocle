@@ -5,19 +5,26 @@
         String metadata1 = itEvent.getMetadata1();
         String metadata2 = itEvent.getMetadata2();
         
-        // sp�cifique horaires -> ne pas afficher si une donn�e est �gale � une donn�e technique
+        // spécifique horaires -> ne pas afficher si une donnée est égale à une donnée technique
         boolean displayDefault = Util.notEmpty(defaultMetadata) && !defaultMetadata.equals(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
         boolean displayMetadata1 = Util.notEmpty(metadata1) && !metadata1.contains(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
         boolean displayMetadata2 = Util.notEmpty(metadata2) && !metadata2.contains(channel.getProperty("jcmsplugin.socle.infolocale.technique.multipleHorairesEvent"));
         
-        // Sp�cifique horaires -> reg�n�rer les horaires dans le cas d'horaires diff�rents sur plusieurs dates
+        // Spécifique horaires -> regénérer les horaires dans le cas d'horaires différents sur plusieurs dates
         if (channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(request.getAttribute("metadata1"))) {
           metadata1 = InfolocaleMetadataUtils.getMetaHorairesHtml(itEvent);
         }
         if (channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(request.getAttribute("metadata2"))) {
           metadata2 = InfolocaleMetadataUtils.getMetaHorairesHtml(itEvent);
         }
-          
+
+        if (displayDefault && 
+            channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(request.getAttribute("defaultMetadata"))
+            || (Util.isEmpty(request.getAttribute("defaultMetadata")) 
+                && channel.getProperty("jcmsplugin.socle.infolocale.metadata.front.horaires").equals(channel.getProperty("jcmsplugin.socle.infolocale.metadata.default")))
+            ) {
+          defaultMetadata = InfolocaleUtil.getHoraireDisplay(itEvent, true);
+        }        
           
         %>
         
