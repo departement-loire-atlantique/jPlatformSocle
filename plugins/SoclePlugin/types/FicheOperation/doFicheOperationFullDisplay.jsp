@@ -10,7 +10,7 @@ boolean hasImage = Util.notEmpty(obj.getImagePrincipale()) || Util.notEmpty(obj.
 <jalios:buffer name="coloredSectionContent">
     <div class="grid-2-small-1 ds44-grid12-offset-1">
         <div class='col'>
-            <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div>
+            <%-- <div class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.infopratiques.label") %></div> --%>
             <jalios:if predicate="<%= Util.notEmpty(obj.getCommune()) %>">
                 <p class="ds44-docListElem mts">
                     <i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ boolean hasImage = Util.notEmpty(obj.getImagePrincipale()) || Util.notEmpty(obj.
             </jalios:if>
         </div>
         <div class="col ds44--xl-padding-l">
-            <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p>
+            <%-- <p class="ds44-box-heading" role="heading" aria-level="3"><%= glp("jcmsplugin.socle.actuedu.votrecontact.label") %></p> --%>
             <jalios:if predicate="<%= Util.notEmpty(obj.getRaisonDeLintervention(userLang)) %>">
                 <p class="ds44-docListElem mts">
                     <i class="icon icon-document ds44-docListIco" aria-hidden="true"></i> 
