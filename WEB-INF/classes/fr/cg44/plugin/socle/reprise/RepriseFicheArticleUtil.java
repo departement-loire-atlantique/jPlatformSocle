@@ -78,12 +78,16 @@ public class RepriseFicheArticleUtil {
   }
   
   /**
-   * Write the CSv line corresponding to an article
+   * Write the CSV line corresponding to an article
+   * DO NOT export article without tab
    * @param itArticle
    * @param csvData
    * @param loggedMember
    */
   private static void writePubLine(FicheArticle itArticle, StringBuffer csvData, Member loggedMember) {
+    if (itArticle.getTypeSimple()) {
+      return; // only export article without tab
+    }
     // calcul information
     StringBuffer communesConcernees = new StringBuffer();
     if (Util.notEmpty(itArticle.getCommunes())) {

@@ -18,5 +18,5 @@ if (!isLogged) {
   return;
 }
 
-RepriseFicheArticleUtil.exportNew(out, loggedMember)
+RepriseFicheArticleUtil.exportNew(out, loggedMember);
 %>

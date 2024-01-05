@@ -18,6 +18,6 @@ if(!isAdmin) {
 
 <h3>Export CSV des Fiches Article</h3>
 <p><i>Affiche les champs .... dans un fichier CSV</i></p>
-<a href="plugins/SoclePlugin/jsp/reprise/repriseFicheLieuExportCsv.jsp" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
+<a href="plugins/SoclePlugin/jsp/reprise/repriseFicheArticleExportCsv.jsp" class="btn btn-primary modal confirm" style="max-width: 120px;">Lancer l'export</a>
 
 <%@ include file='/admin/doAdminFooter.jspf' %> 
