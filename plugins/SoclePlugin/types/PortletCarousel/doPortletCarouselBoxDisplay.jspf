@@ -101,7 +101,7 @@
         %>
         <div class="txtcenter ds44-container-large">
             <a href="<%= urlBouton %>" title='<%= HttpUtil.encodeForHTMLAttribute(titleValue) %>' <%= targetAttr %> 
-                    class="ds44-btnStd ds44-btnStd--large ds44-btnFullMobile">
+                    class="ds44-btnStd ds44-btnStd--large">
                 <span class="ds44-btnInnerText"><%= box.getLabelDuLien(userLang) %></span>
                 <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
             </a>

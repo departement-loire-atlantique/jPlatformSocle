@@ -548,6 +548,10 @@
           <label xml:lang="fr">DS44 : gabarit tuiles en grille</label>
           <description xml:lang="fr">(ex : "Nos sites et applis")</description>
         </template>
+        <template name="grilleDetail" file="doPortletMiseEnAvantDeContenusBoxGridDetail.jsp" usage='box'>
+          <label xml:lang="fr">DS44 : gabarit tuiles en grille détaillé</label>
+          <description xml:lang="fr">(ex : "Nos sites et applis")</description>
+        </template>
         <template name="grilleIcone" file="doPortletMiseEnAvantDeContenusBoxGridIcon.jsp" usage='box'>
           <label xml:lang="fr">GPLA : gabarit tuiles en grille avec icone</label>
           <description xml:lang="fr">(ex : "Tous les sites patrimoniaux")</description>
